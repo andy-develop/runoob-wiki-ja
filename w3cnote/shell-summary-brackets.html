@@ -60,9 +60,6 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div>
 <div class="row">
 <div class="col right-list">
-<button class="btn btn-responsive-nav btn-inverse" id="pull">
-<i class="fa fa-navicon"></i>
-</button>
 </div>
 <div class="col search search-desktop last">
 <div class="search-input">
@@ -79,26 +76,26 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="col middle-column big-middle-column">
 <div class="article">
 <div class="article-heading">
-<h2>Shell 中的中括号用法总结</h2> <h3><em>分类</em> <a href="../w3cnote_genre/code.html" title="编程技术">编程技术</a> </h3>
+<h2>Shell における角括弧の使用法まとめ</h2> <h3><em>分类</em> <a href="../w3cnote_genre/code.html" title="编程技术">编程技术</a> </h3>
 </div>
 <div class="article-body note-body">
 <div class="article-intro">
 <!-- ad start-->
 <!-- ad end-->
-<p>Shell 里面的中括号（包括单中括号与双中括号）可用于一些条件的测试：</p>
+<p>Shell における角括弧（単角括弧と二重角括弧を含む）は、いくつかの条件のテストに使用できます：</p>
 <ul>
-<li>算术比较, 比如一个变量是否为0,<code>[ $var -eq 0 ]</code>。</li>
-<li>文件属性测试，比如一个文件是否存在，<code>[ -e $var ]</code>, 是否是目录，<code>[ -d $var ]</code>。</li>
-<li>字符串比较, 比如两个字符串是否相同，<code>[[ $var1 = $var2 ]]</code>。</li>
+<li>算術比較、例えば変数が0であるかどうか、<code>[ $var -eq 0 ]</code>。</li>
+<li>ファイル属性のテスト、例えばファイルが存在するかどうか、<code>[ -e $var ]</code>、ディレクトリかどうか、<code>[ -d $var ]</code>。</li>
+<li>文字列比較、例えば2つの文字列が同じかどうか、<code>[[ $var1 = $var2 ]]</code>。</li>
 </ul>
-<p>[] 常常可以使用 test 命令来代替，后面有介绍。</p>
+<p>[] はしばしば test コマンドで代用できます。後述します。</p>
 <h3>算术比较</h3>
-<p>对变量或值进行算术条件判断：</p>
+<p>変数または値に対して算術条件判断を行う：</p>
 <pre>[ $var -eq 0 ]  # 当 $var 等于 0 时，返回真
 [ $var -ne 0 ]  # 当 $var 不等于 0 时，返回真</pre>
-<p>需要注意的是 [ 与 ] 与操作数之间一定要有一个空格，否则会报错。比如下面这样就会报错:</p>
+<p>注意すべき点として、[ と ] とオペランドの間には必ずスペースが必要です。そうでないとエラーになります。例えば以下のようにするとエラーになります：</p>
 <pre>[$var -eq 0 ]  或 [ $var -ne 0] </pre>
-<p>其他比较操作符：</p>
+<p>その他の比較演算子：</p>
 <table class="reference">
 <thead>
 <tr>
@@ -123,11 +120,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <td align="center">小于或等于</td>
 </tr>
 </tbody></table>
-<p>可以通过 -a (and) 或 -o (or) 结合多个条件进行测试：</p>
+<p>-a (and) または -o (or) を使用して複数の条件を組み合わせてテストできます：</p>
 <pre>[ $var1 -ne 0 -a $var2 -gt 2 ]  # 使用逻辑与 -a
 [ $var1 -ne 0 -o $var2 -gt 2 ]  # 使用逻辑或 -o</pre>
-<h3>文件系统属性测试</h3>
-<p>使用不同的条件标志测试不同的文件系统属性。</p>
+<h3>ファイルシステム属性テスト</h3>
+<p>異なる条件フラグを使用して、異なるファイルシステム属性をテストします。</p>
 <table class="reference">
 <thead>
 <tr>
@@ -137,53 +134,53 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </thead>
 <tbody><tr>
 <td align="left"><code>[ -f $file_var ]</code></td>
-<td align="left">变量 $file_var 是一个正常的文件路径或文件名 (file)，则返回真</td>
+<td align="left">変数 $file_var が正常なファイルパスまたはファイル名（file）である場合、真を返します</td>
 </tr>
 <tr>
 <td align="left"><code>[ -x $var ]</code></td>
-<td align="left">变量 $var 包含的文件可执行 (execute)，则返回真</td>
+<td align="left">変数 $var が含むファイルが実行可能（execute）である場合、真を返します</td>
 </tr>
 <tr>
 <td align="left"><code>[ -d $var ]</code></td>
-<td align="left">变量 $var 包含的文件是目录 (directory)，则返回真</td>
+<td align="left">変数 $var が含むファイルがディレクトリ (directory) であれば真を返す</td>
 </tr>
 <tr>
 <td align="left"><code>[ -e $var ]</code></td>
-<td align="left">变量 $var 包含的文件存在 (exist)，则返回真</td>
+<td align="left">変数 $var が含むファイルが存在する（exist）場合、真を返します</td>
 </tr>
 <tr>
 <td align="left"><code>[ -c $var ]</code></td>
-<td align="left">变量 $var 包含的文件是一个字符设备文件的路径 (character)，则返回真</td>
+<td align="left">変数 $var が含むファイルがキャラクタデバイスファイルのパス（character）である場合、真を返します</td>
 </tr>
 <tr>
 <td align="left"><code>[ -b $var ]</code></td>
-<td align="left">变量 $var 包含的文件是一个块设备文件的路径 (block)，则返回真</td>
+<td align="left">変数 $var が含むファイルがブロックデバイスファイルのパス（block）である場合、真を返します</td>
 </tr>
 <tr>
 <td align="left"><code>[ -w $var ]</code></td>
-<td align="left">变量 $var 包含的文件可写(write)，则返回真</td>
+<td align="left">変数 $var が含むファイルが書き込み可能（write）である場合、真を返します</td>
 </tr>
 <tr>
 <td align="left"><code>[ -r $var ]</code></td>
-<td align="left">变量 $var 包含的文件可读 (read)，则返回真</td>
+<td align="left">変数 $var が含むファイルが読み取り可能（read）である場合、真を返します</td>
 </tr>
 <tr>
 <td align="left"><code>[ -L $var ]</code></td>
-<td align="left">变量 $var 包含是一个符号链接 (link)，则返回真</td>
+<td align="left">変数 $var が含むものがシンボリックリンク（link）である場合、真を返します</td>
 </tr>
-</tbody></table><p>使用方法如下：</p><pre>fpath="/etc/passwd"
+</tbody></table><p>使用方法は以下の通り：</p><pre>fpath="/etc/passwd"
 if [ -e $fpath ]; then
   echo File exits;
 else
   echo Does not exit;
 fi</pre>
 <h3>字符串比较</h3>
-<p>在进行字符串比较时，最好使用双中括号 [[ ]]. 因为单中括号可能会导致一些错误，因此最好避开它们。</p>
-<p>检查两个字符串是否相同：</p>
+<p>文字列比較を行う際は、二重角括弧 [[ ]] を使用するのが最善です。単角括弧はエラーを引き起こす可能性があるため、避けるのが賢明です。</p>
+<p>2つの文字列が同じかどうかを確認する：</p>
 <pre>[[ $str1 = $str2 ]]</pre>
-<p>当 str1等于str1等于str2 时，返回真。也就是说，str1 和 str2 包含的文本是一样的。其中的单等于号也可以写成双等于号，也就是说，上面的字符串比较等效于 [[ $str1 == $str2 ]]。</p>
-<p>注意 = 前后有一个空格，如果忘记加空格, 就变成了赋值语句，而非比较关系了。</p>
-<p>字符串的其他比较情况：</p>
+<p>str1 が str2 と等しい場合、真を返します。つまり、str1 と str2 に含まれるテキストは同じです。単一の等号は二重等号に置き換えることもできます。つまり、上記の文字列比較は [[ $str1 == $str2 ]] と同等です。</p>
+<p>= の前後にはスペースがあることに注意してください。スペースを忘れると、比較ではなく代入文になってしまいます。</p>
+<p>文字列のその他の比較ケース：</p>
 <table class="reference">
 <thead>
 <tr>
@@ -193,25 +190,25 @@ fi</pre>
 </thead>
 <tbody><tr>
 <td align="left"><code>[[ $str1 != $str2 ]]</code></td>
-<td align="left">如果 str1 与 str2 不相同，则返回真</td>
+<td align="left">str1 と str2 が異なる場合、真を返します</td>
 </tr>
 <tr>
 <td align="left"><code>[[ -z $str1 ]]</code></td>
-<td align="left">如果 str1 是空字符串，则返回真</td>
+<td align="left">str1 が空文字列である場合、真を返します</td>
 </tr>
 <tr>
 <td align="left"><code>[[ -n $str1 ]]</code></td>
-<td align="left">如果 str1 是非空字符串，则返回真</td>
+<td align="left">str1 が非空文字列である場合、真を返します</td>
 </tr>
 </tbody></table>
-<p>使用逻辑运算符 &amp;&amp; 和 || 可以轻松地将多个条件组合起来, 比如：</p>
+<p>論理演算子 &amp;&amp; と || を使用すると、複数の条件を簡単に組み合わせられます。例えば：</p>
 <pre>str1="Not empty"
 str2=""
 if [[ -n $str1 ]] &amp;&amp; [[ -z $str2 ]];
 then
   echo str1 is nonempty and str2 is empty string.
 fi</pre>
-<p>test 命令也可以从来执行条件检测，用 test 可以避免使用过多的括号，[] 中的测试条件同样可以通过 test 来完成。</p>
+<p>test コマンドでも条件判定を実行できます。test を使用すると括弧を多用せずに済みます。[] 内のテスト条件は test でも実行できます。</p>
 <pre>if [ $var -eq 0 ]; then echo "True"; fi</pre>
 <p>等价于:</p>
 <pre>if test $var -eq 0; then echo "True"; fi</pre>
@@ -327,7 +324,7 @@ fi</pre>
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>点我分享笔记</h3>
+<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 &lt;p style="font-size:14px;"&gt;笔记需要是本篇文章的内容扩展！&lt;/p&gt;&lt;br&gt;
 	&lt;p style="font-size:12px;"&gt;&lt;a href="../tougao.html" target="_blank"&gt;文章投稿，可点击这里&lt;/a&gt;&lt;/p&gt;
 	&lt;p style="font-size:14px;"&gt;&lt;a href="./runoob-user-test-intro.html" target="_blank"&gt;注册邀请码获取方式&lt;/a&gt;&lt;/p&gt;
@@ -576,181 +573,6 @@ var aid = 21318;
 
 </div>
 -->
-<div class="sidebar-box cate-list" style="display:none;">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">热门文章</a>
-</div>
-<div class="membership">
-<ul class="membership">
-<li><a href="https://mp.weixin.qq.com/s/ZaP6YNgKTCHYy3r2WPBBaw" target="_blank" title="2024 年 04 月 JavaScript 框架排行榜">2024 年 04 月 JavaScript 框架排行榜</a></li>
-<li><a href="https://mp.weixin.qq.com/s/JBR2twC0t6krjjuxqvhsEQ" target="_blank" title="免费、开源、好用的 SQL 客户端合集">免费、开源、好用的 SQL 客户端合集</a></li>
-<li><a href="https://mp.weixin.qq.com/s/TwV3YQjA1glyaW7TiHvhlA" target="_blank" title="优雅的代码规范，提升代码质量">优雅的代码规范，提升代码质量</a></li>
-<li><a href="https://mp.weixin.qq.com/s/CnUJ-2OHPbBKlnVpjDzavA" target="_blank" title="命令行中的趣味世界，牛也能说话，有趣又好玩">命令行中的趣味世界，牛也能说话，有趣又好玩</a></li>
-<li><a href="https://mp.weixin.qq.com/s/7NKl-mD7N8CeSNQlbKDEWA" target="_blank" title="2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？">2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？</a></li>
-<li><a href="https://mp.weixin.qq.com/s/yWlSVDKobtDhThnhirVRpw" target="_blank" title="免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端">免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端</a></li>
-</ul>
-</div>
-</div>
-<div class="sidebar-box cate-list">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">教程列表</a>
-</div>
-<div class="cate-items">
-<a href="../ado.html">ADO 教程</a>
-<a href="../ai-agent.html">AI Agent 教程</a>
-<a href="../ai.html">AI 入门教程</a>
-<a href="../ai-math.html">AI 数学基础</a>
-<a href="../ajax.html">Ajax 教程</a>
-<a href="../android.html">Android 教程</a>
-<a href="../angularjs2.html">Angular2 教程</a>
-<a href="../angularjs.html">AngularJS 教程</a>
-<a href="../appml.html">AppML 教程</a>
-<a href="../asp.html">ASP 教程</a>
-<a href="../aspnet.html">ASP.NET 教程</a>
-<a href="../bootstrap.html">Bootstrap 教程</a>
-<a href="../bootstrap4.html">Bootstrap4 教程</a>
-<a href="../bootstrap5.html">Bootstrap5 教程</a>
-<a href="../cprogramming.html">C 教程</a>
-<a href="../c-dsa.html">C 语言数据结构与算法</a>
-<a href="../csharp.html">C# 教程</a>
-<a href="../cplusplus.html">C++ 教程</a>
-<a href="../chartjs.html">Chart.js 教程</a>
-<a href="../claude-code.html">Claude Code 教程</a>
-<a href="../cmake.html">CMake 教程</a>
-<a href="../codex.html">Codex 教程</a>
-<a href="../cssref.html">CSS 参考手册</a>
-<a href="../css.html">CSS 教程</a>
-<a href="../css3.html">CSS3 教程</a>
-<a href="../cursor.html">Cursor 教程</a>
-<a href="../dart.html">Dart 教程</a>
-<a href="../dash.html">Dash 教程</a>
-<a href="../deepseek-harness.html">DeepSeek Harness</a>
-<a href="../django.html">Django 教程</a>
-<a href="../docker.html">Docker 教程</a>
-<a href="../dtd.html">DTD 教程</a>
-<a href="../echarts.html">ECharts 教程</a>
-<a href="../eclipse.html">Eclipse 教程</a>
-<a href="../electron.html">Electron 教程</a>
-<a href="../fastapi.html">FastAPI 教程</a>
-<a href="../firebug.html">Firebug 教程</a>
-<a href="../flask.html">Flask 教程</a>
-<a href="../flutter.html">Flutter 教程</a>
-<a href="../font-awesome.html">Font Awesome 图标</a>
-<a href="../foundation.html">Foundation 教程</a>
-<a href="../git.html">Git 教程</a>
-<a href="../go.html">Go 语言教程</a>
-<a href="../googleapi.html">Google 地图 API 教程</a>
-<a href="../hermes-agent.html">Hermes Agent</a>
-<a href="../highcharts.html">Highcharts 教程</a>
-<a href="../htmldom.html">HTML DOM 教程</a>
-<a href="../tags.html">HTML 参考手册</a>
-<a href="../charsets.html">HTML 字符集</a>
-<a href="../html.html">HTML 教程</a>
-<a href="../http.html">HTTP 教程</a>
-<a href="../ionic.html">ionic 教程</a>
-<a href="../ios.html">iOS 教程</a>
-<a href="../java.html">Java 教程</a>
-<a href="../jsref.html">JavaScript 参考手册</a>
-<a href="../js.html">Javascript 教程</a>
-<a href="../jeasyui.html">jQuery EasyUI 教程</a>
-<a href="../jquerymobile.html">jQuery Mobile 教程</a>
-<a href="../jqueryui.html">jQuery UI 教程</a>
-<a href="../jquery.html">jQuery 教程</a>
-<a href="../json.html">JSON 教程</a>
-<a href="../jsp.html">JSP 教程</a>
-<a href="../julia.html">Julia 教程</a>
-<a href="../jupyter-notebook.html">Jupyter Notebook 教程</a>
-<a href="../kotlin.html">Kotlin 教程</a>
-<a href="../langchain.html">LangChain 教程</a>
-<a href="../latex.html">LaTeX 教程</a>
-<a href="../linux.html">Linux 教程</a>
-<a href="../lua.html">Lua 教程</a>
-<a href="../markdown.html">Markdown 教程</a>
-<a href="../matplotlib.html">Matplotlib 教程</a>
-<a href="../maven.html">Maven 教程</a>
-<a href="../memcached.html">Memcached 教程</a>
-<a href="../mongodb.html">MongoDB 教程</a>
-<a href="../mysql.html">MySQL 教程</a>
-<a href="../nextjs.html">Next.js 教程</a>
-<a href="../nlp.html">NLP 教程</a>
-<a href="../nodejs.html">Node.js 教程</a>
-<a href="../numpy.html">NumPy 教程</a>
-<a href="../obsidian.html">Obsidian 教程</a>
-<a href="../ollama.html">Ollama 教程</a>
-<a href="../opencode.html">OpenCode 教程</a>
-<a href="../opencv.html">OpenCV 教程</a>
-<a href="../pandas.html">Pandas 教程</a>
-<a href="../perl.html">Perl 教程</a>
-<a href="../php.html">PHP 教程</a>
-<a href="../pi-agent.html">Pi Agent</a>
-<a href="../pillow.html">Pillow 教程</a>
-<a href="../playwright.html">Playwright 教程</a>
-<a href="../postgresql.html">PostgreSQL 教程</a>
-<a href="../powershell.html">PowerShell</a>
-<a href="../pycharm.html">Pycharm 教程</a>
-<a href="../python3.html">Python 3 教程</a>
-<a href="../python.html">Python 基础教程</a>
-<a href="../python-design-pattern.html">Python 设计模式</a>
-<a href="../python-qt.html">Python 量化交易</a>
-<a href="../pytorch.html">PyTorch 教程</a>
-<a href="../r.html">R 教程</a>
-<a href="../rdf.html">RDF 教程</a>
-<a href="../react.html">React 教程</a>
-<a href="../redis.html">Redis 教程</a>
-<a href="../restfulapi.html">RESTful API</a>
-<a href="../rss.html">RSS 教程</a>
-<a href="../ruby.html">Ruby 教程</a>
-<a href="../rust.html">Rust 教程</a>
-<a href="../sass.html">Sass 教程</a>
-<a href="../scala.html">Scala 教程</a>
-<a href="../scipy.html">SciPy 教程</a>
-<a href="../selenium.html">Selenium 教程</a>
-<a href="../servlet.html">Servlet 教程</a>
-<a href="../skills.html">Skills 教程</a>
-<a href="../sklearn.html">Sklearn 教程</a>
-<a href="../soap.html">SOAP 教程</a>
-<a href="../sql.html">SQL 教程</a>
-<a href="../sqlite.html">SQLite 教程</a>
-<a href="../svg.html">SVG 教程</a>
-<a href="../svn.html">SVN 教程</a>
-<a href="../swagger.html">Swagger 教程</a>
-<a href="../swift.html">Swift 教程</a>
-<a href="../tailwindcss.html">Tailwind CSS 教程</a>
-<a href="../tcpip.html">TCP/IP 教程</a>
-<a href="../tensorflow.html">TensorFlow 教程</a>
-<a href="../typescript.html">TypeScript 教程</a>
-<a href="../uniapp.html">uni-app 教程</a>
-<a href="../vbscript.html">VBScript 教程</a>
-<a href="../vibe-coding.html">Vibe Coding 教程</a>
-<a href="../vscode.html">VSCode 教程</a>
-<a href="../vue2.html">Vue.js 教程</a>
-<a href="../vue3.html">Vue3 教程</a>
-<a href="../w3c.html">W3C 教程</a>
-<a href="../webservices.html">Web Service 教程</a>
-<a href="../wsdl.html">WSDL 教程</a>
-<a href="../xlink.html">XLink 教程</a>
-<a href="../dom.html">XML DOM 教程</a>
-<a href="../schema.html">XML Schema 教程</a>
-<a href="../xml.html">XML 教程</a>
-<a href="../xpath.html">XPath 教程</a>
-<a href="../xquery.html">XQuery 教程</a>
-<a href="../xslfo.html">XSLFO 教程</a>
-<a href="../xsl.html">XSLT 教程</a>
-<a href="../zig.html">Zig 教程</a>
-<a href="../data-structures.html">数据结构</a>
-<a href="../ml.html">机器学习</a>
-<a href="../regexp.html">正则表达式</a>
-<a href="../assembly.html">汇编语言</a>
-<a href="../quiz.html">测验</a>
-<a href="../browsers.html">浏览器</a>
-<a href="../quality.html">网站品质</a>
-<a href="../web.html">网站建设指南</a>
-<a href="../hosting.html">网站服务器教程</a>
-<a href="../np.html">网络协议</a>
-<a href="../computer-organization.html">计算机组成原理</a>
-<a href="../design-pattern.html">设计模式</a>
-</div>
-</div>
 </div>
 </div>
 </div>

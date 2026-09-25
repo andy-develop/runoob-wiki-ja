@@ -60,9 +60,6 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div>
 <div class="row">
 <div class="col right-list">
-<button class="btn btn-responsive-nav btn-inverse" id="pull">
-<i class="fa fa-navicon"></i>
-</button>
 </div>
 <div class="col search search-desktop last">
 <div class="search-input">
@@ -79,44 +76,44 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="col middle-column big-middle-column">
 <div class="article">
 <div class="article-heading">
-<h2>原码、反码、补码</h2> <h3><em>分类</em> <a href="../w3cnote_genre/code.html" title="编程技术">编程技术</a> </h3>
+<h2>符号絶対値表現、1の補数、2の補数</h2> <h3><em>分类</em> <a href="../w3cnote_genre/code.html" title="编程技术">编程技术</a> </h3>
 </div>
 <div class="article-body note-body">
 <div class="article-intro">
 <!-- ad start-->
 <!-- ad end-->
-<p>在计算机科学中，原码、反码和补码是数字表示方法，它们用于简化计算机中数字的算术运算，尤其是二进制数的加减运算。下面我将简要介绍这三种表示方法：</p>
+<p>コンピュータ科学において、符号絶対値表現（原码）、1の補数、2の補数は数値の表現方法であり、コンピュータ内の数値の算術演算、特に二進数の加算・減算を簡素化するために用いられます。以下でこれら3つの表現方法について簡単に紹介します。</p>
 <ol>
 <li>
-<p><strong>原码</strong>：原码是最直观的表示方法，它直接用二进制数表示一个数，包括正负号。在原码中，最高位（最左边的位）是符号位，0 表示正数，1 表示负数。其余位表示数值本身。例如，十进制数 +5 的原码表示为<code class="">0000 0101</code>，而 -5 的原码表示为<code class="">1000 0101</code>。</p>
+<p><strong>原码</strong>：符号絶対値表現は最も直感的な表現方法であり、数値を符号を含めて直接二進数で表します。符号絶対値表現では、最上位ビット（最左ビット）が符号ビットで、0 は正の数、1 は負の数を示します。残りのビットは数値そのものを表します。例えば、十進数の +5 の符号絶対値表現は次のように表されます。<code class="">0000 0101</code>、一方、-5 の原码表現は<code class="">1000 0101</code>。</p>
 </li>
 <li>
-<p><strong>反码</strong>：反码主要用于表示负数。对于正数，其反码与其原码相同。对于负数，其反码是将原码除符号位外的所有位取反（0 变 1，1 变 0）。例如，十进制数-5的反码表示为<code class="">1111 1010</code>。</p>
+<p><strong>反码</strong>：1の補数は主に負の数を表すために使用されます。正の数では、その1の補数は符号絶対値表現と同じです。負の数では、1の補数は、符号絶対値表現の符号ビット以外のすべてのビットを反転（0 を 1 に、1 を 0 に）したものです。例えば、十進数の -5 の1の補数は次のように表されます。<code class="">1111 1010</code>。</p>
 </li>
 <li>
-<p><strong>补码</strong>：补码是计算机中最常用的表示方法，用于进行二进制加法运算。对于正数，其补码与其原码相同。对于负数，其补码是其反码加 1。补码的一个重要特性是，任何数的补码加上该数本身，结果总是 0。例如，十进制数 -5 的补码表示为<code class="">1111 1011</code>。</p>
+<p><strong>补码</strong>：2の補数はコンピュータで最も一般的に用いられる表現方法であり、2進数の加算演算に使用されます。正数の場合、その2の補数は原码と同じです。負数の場合、その2の補数は1の補数に1を加えたものです。2の補数の重要な特徴として、任意の数の2の補数とその数自体を加算すると、結果は必ず0になります。例えば、10進数の -5 の2の補数表現は<code class="">1111 1011</code>。</p>
 </li>
 </ol>
-<p>补码的使用可以简化计算机中的算术运算，因为加法和减法可以统一为加法运算。当进行减法运算时，可以将减数的补码与被减数相加，从而得到结果。</p>
-<p>这里有一个简单的示例来说明补码运算：</p><ul>
-<li>假设我们要计算十进制数 5 - (-3)。</li>
-<li>首先，将两个数转换为二进制：5 的二进制是<code class="">0000 0101</code>，因为 5 是正数，所以它的补码也是 00000101。-3 的二进制补码表示： 3 的原码是 00000011，取反为 11111100，加 1 为 11111101， 所以 -3 的补码表示是 11111101。</li>
-<li>然后，将问题转化为加法： 5 - (-3) 等同于 5 + 3，即我们需要计算 5 和 3 的补码相加。</li>
-<li>再后，将 5 和 3 的补码进行二进制加法运算：<code class="">0000 0101</code> + <code class="">0000 0011</code> = <code class="">0000 1000</code>。</li>
-<li>最后，将结果转换回十进制：<code class="">0000 1000</code>等于 8，这与 5 + 3 的结果一致。</li>
+<p>2の補数の使用により、コンピュータの算術演算を簡素化できます。加算と減算を加算演算に統一できるからです。減算を行う場合、減数の2の補数を被減数に加算することで、結果を得ることができます。</p>
+<p>ここに2の補数の演算を説明する簡単な例を示します。</p><ul>
+<li>十進数で 5 - (-3) を計算すると仮定します。</li>
+<li>まず、2つの数を二進数に変換します：5 の二進数は<code class="">0000 0101</code>5 は正の数なので、その2の補数も 00000101 です。-3 の2の補数表現：3 の符号絶対値表現は 00000011 で、反転すると 11111100、1 を加えると 11111101 になるので、-3 の2の補数表現は 11111101 です。</li>
+<li>次に、問題を加算に変換します：5 - (-3) は 5 + 3 と同じなので、5 と 3 の2の補数を加算する必要があります。</li>
+<li>その後、5 と 3 の2の補数を使って二進数の加算演算を行います：<code class="">0000 0101</code> + <code class="">0000 0011</code> = <code class="">0000 1000</code>。</li>
+<li>最後に、結果を10進数に変換し直す：<code class="">0000 1000</code>8に等しく、これは 5 + 3 の結果と一致します。</li>
 </ul>
 <h3>原码（Sign-Magnitude）</h3>
 <p><strong>概念</strong>：</p>
 <ul>
-<li>原码是一种最简单的表示有符号数的方法。</li>
-<li>使用最高位（最左边的一位）表示符号：0表示正数，1表示负数。</li>
-<li>其余位表示数值的大小。</li>
+<li>符号絶対値表現は、符号付き数を表す最も簡単な方法の1つです。</li>
+<li>最上位ビット（最左ビット）を使用して符号を表します：0 は正の数、1 は負の数を示します。</li>
+<li>残りのビットは数値の大きさを表します。</li>
 </ul>
 <p><strong>规则</strong>：</p>
-<ul><li>对于正数：原码的表示与其二进制值相同。</li><li>对于负数：将其绝对值的二进制表示取原码，并将最高位设置为1（表示负数）。</li></ul>
+<ul><li>正の数の場合：符号絶対値表現はその二進数の値と同じです。</li><li>負の数の場合：その絶対値の二進数表現を符号絶対値表現とし、最上位ビットを1（負の数を示す）に設定します。</li></ul>
 <p><strong>示例</strong>：</p>
 <ul>
-<li>8位原码表示：<ul>
+<li>8ビット符号絶対値表現：<ul>
 <li>+5：00000101</li>
 <li>-5：10000101</li>
 </ul>
@@ -125,15 +122,15 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h3>反码（Ones' Complement）</h3>
 <p><strong>概念</strong>：</p>
 <ul>
-<li>反码是通过对原码的数值部分逐位取反（0变1，1变0）得到的。</li>
-<li>正数的反码和原码相同。</li>
-<li>负数的反码是其原码除符号位外所有位取反。</li>
+<li>1の補数は、符号絶対値表現の数値部分をビットごとに反転（0 を 1 に、1 を 0 に）することで得られます。</li>
+<li>正数の1の補数は原码と同じです。</li>
+<li>負の数の1の補数は、その符号絶対値表現の符号ビットを除くすべてのビットを反転したものです。</li>
 </ul>
 <p><strong>规则:</strong></p>
-<ul><li>对于正数，反码与原码相同。</li><li>对于负数，反码是将原码中所有位（除了符号位）取反，即将每个二进制位从 0 改为 1，或者从 1 改为 0。</li></ul>
+<ul><li>正数については、1の補数は原码と同じです。</li><li>負の数の場合、1の補数は符号絶対値表現のすべてのビット（符号ビットを除く）を反転したものであり、各二進ビットを 0 から 1 に、または 1 から 0 に変更します。</li></ul>
 <p><strong>示例</strong>：</p>
 <ul>
-<li>8位反码表示：<ul>
+<li>8ビット1の補数表現：<ul>
 <li>+5：00000101</li>
 <li>-5：11111010</li>
 </ul>
@@ -142,14 +139,14 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h3>补码（Two's Complement）</h3>
 <p><strong>概念</strong>：</p>
 <ul>
-<li>补码是反码加1得到的。</li>
-<li>正数的补码和原码相同。</li>
-<li>负数的补码是其反码加1。</li>
+<li>2の補数は、1の補数に1を加えることで得られます。</li>
+<li>正数の2の補数は原码と同じです。</li>
+<li>負数の2の補数は、その1の補数に1を加えたものです。</li>
 </ul>
-<p><strong>规则:</strong></p><ul><li>对于正数，补码与原码相同。</li><li>对于负数，补码是将反码加 1。</li></ul>
+<p><strong>规则:</strong></p><ul><li>正数については、2の補数は原码と同じです。</li><li>負の数の場合、2の補数は1の補数に1を加えたものです。</li></ul>
 <p><strong>示例</strong>：</p>
 <ul>
-<li>8位补码表示：<ul>
+<li>8ビット2の補数表現：<ul>
 <li>+5：00000101</li>
 <li>-5：11111011（反码为11111010，加1得到11111011）</li>
 </ul>
@@ -157,11 +154,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </ul>
 <h3>总结</h3>
 <ul>
-<li><strong>原码</strong>：简单但有两个零。</li>
-<li><strong>反码</strong>：解决了一部分问题，但仍有两个零。</li>
-<li><strong>补码</strong>：最常用、最有效，只有一个零，简化了计算机的加减法运算。</li>
+<li><strong>原码</strong>：単純だが、ゼロが2つある。</li>
+<li><strong>反码</strong>：問題の一部は解決されたが、依然として2つのゼロが存在します。</li>
+<li><strong>补码</strong>：最も一般的で効果的であり、ゼロは1つだけで、コンピュータの加算・減算演算を簡素化します。</li>
 </ul>
-<p>计算机内部广泛使用补码表示有符号整数，因为它简化了硬件设计和运算处理。了解这些概念有助于理解计算机的底层运算机制和一些算法的实现原理。</p> </div>
+<p>コンピュータ内部では、符号付き整数を2の補数で表すことが広く行われています。これは、ハードウェア設計と演算処理を簡素化するためです。これらの概念を理解することは、コンピュータの低レベルの演算メカニズムや一部のアルゴリズムの実装原理を理解するのに役立ちます。</p> </div>
 </div>
 <div class="previous-next-links">
 <div class="previous-design-link">← <a href="./python-import-and-from-import.html" rel="prev">Python import 和 from … import 的主要区别</a> </div>
@@ -270,7 +267,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>点我分享笔记</h3>
+<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 &lt;p style="font-size:14px;"&gt;笔记需要是本篇文章的内容扩展！&lt;/p&gt;&lt;br&gt;
 	&lt;p style="font-size:12px;"&gt;&lt;a href="../tougao.html" target="_blank"&gt;文章投稿，可点击这里&lt;/a&gt;&lt;/p&gt;
 	&lt;p style="font-size:14px;"&gt;&lt;a href="./runoob-user-test-intro.html" target="_blank"&gt;注册邀请码获取方式&lt;/a&gt;&lt;/p&gt;
@@ -519,181 +516,6 @@ var aid = 25684;
 
 </div>
 -->
-<div class="sidebar-box cate-list" style="display:none;">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">热门文章</a>
-</div>
-<div class="membership">
-<ul class="membership">
-<li><a href="https://mp.weixin.qq.com/s/ZaP6YNgKTCHYy3r2WPBBaw" target="_blank" title="2024 年 04 月 JavaScript 框架排行榜">2024 年 04 月 JavaScript 框架排行榜</a></li>
-<li><a href="https://mp.weixin.qq.com/s/JBR2twC0t6krjjuxqvhsEQ" target="_blank" title="免费、开源、好用的 SQL 客户端合集">免费、开源、好用的 SQL 客户端合集</a></li>
-<li><a href="https://mp.weixin.qq.com/s/TwV3YQjA1glyaW7TiHvhlA" target="_blank" title="优雅的代码规范，提升代码质量">优雅的代码规范，提升代码质量</a></li>
-<li><a href="https://mp.weixin.qq.com/s/CnUJ-2OHPbBKlnVpjDzavA" target="_blank" title="命令行中的趣味世界，牛也能说话，有趣又好玩">命令行中的趣味世界，牛也能说话，有趣又好玩</a></li>
-<li><a href="https://mp.weixin.qq.com/s/7NKl-mD7N8CeSNQlbKDEWA" target="_blank" title="2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？">2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？</a></li>
-<li><a href="https://mp.weixin.qq.com/s/yWlSVDKobtDhThnhirVRpw" target="_blank" title="免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端">免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端</a></li>
-</ul>
-</div>
-</div>
-<div class="sidebar-box cate-list">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">教程列表</a>
-</div>
-<div class="cate-items">
-<a href="../ado.html">ADO 教程</a>
-<a href="../ai-agent.html">AI Agent 教程</a>
-<a href="../ai.html">AI 入门教程</a>
-<a href="../ai-math.html">AI 数学基础</a>
-<a href="../ajax.html">Ajax 教程</a>
-<a href="../android.html">Android 教程</a>
-<a href="../angularjs2.html">Angular2 教程</a>
-<a href="../angularjs.html">AngularJS 教程</a>
-<a href="../appml.html">AppML 教程</a>
-<a href="../asp.html">ASP 教程</a>
-<a href="../aspnet.html">ASP.NET 教程</a>
-<a href="../bootstrap.html">Bootstrap 教程</a>
-<a href="../bootstrap4.html">Bootstrap4 教程</a>
-<a href="../bootstrap5.html">Bootstrap5 教程</a>
-<a href="../cprogramming.html">C 教程</a>
-<a href="../c-dsa.html">C 语言数据结构与算法</a>
-<a href="../csharp.html">C# 教程</a>
-<a href="../cplusplus.html">C++ 教程</a>
-<a href="../chartjs.html">Chart.js 教程</a>
-<a href="../claude-code.html">Claude Code 教程</a>
-<a href="../cmake.html">CMake 教程</a>
-<a href="../codex.html">Codex 教程</a>
-<a href="../cssref.html">CSS 参考手册</a>
-<a href="../css.html">CSS 教程</a>
-<a href="../css3.html">CSS3 教程</a>
-<a href="../cursor.html">Cursor 教程</a>
-<a href="../dart.html">Dart 教程</a>
-<a href="../dash.html">Dash 教程</a>
-<a href="../deepseek-harness.html">DeepSeek Harness</a>
-<a href="../django.html">Django 教程</a>
-<a href="../docker.html">Docker 教程</a>
-<a href="../dtd.html">DTD 教程</a>
-<a href="../echarts.html">ECharts 教程</a>
-<a href="../eclipse.html">Eclipse 教程</a>
-<a href="../electron.html">Electron 教程</a>
-<a href="../fastapi.html">FastAPI 教程</a>
-<a href="../firebug.html">Firebug 教程</a>
-<a href="../flask.html">Flask 教程</a>
-<a href="../flutter.html">Flutter 教程</a>
-<a href="../font-awesome.html">Font Awesome 图标</a>
-<a href="../foundation.html">Foundation 教程</a>
-<a href="../git.html">Git 教程</a>
-<a href="../go.html">Go 语言教程</a>
-<a href="../googleapi.html">Google 地图 API 教程</a>
-<a href="../hermes-agent.html">Hermes Agent</a>
-<a href="../highcharts.html">Highcharts 教程</a>
-<a href="../htmldom.html">HTML DOM 教程</a>
-<a href="../tags.html">HTML 参考手册</a>
-<a href="../charsets.html">HTML 字符集</a>
-<a href="../html.html">HTML 教程</a>
-<a href="../http.html">HTTP 教程</a>
-<a href="../ionic.html">ionic 教程</a>
-<a href="../ios.html">iOS 教程</a>
-<a href="../java.html">Java 教程</a>
-<a href="../jsref.html">JavaScript 参考手册</a>
-<a href="../js.html">Javascript 教程</a>
-<a href="../jeasyui.html">jQuery EasyUI 教程</a>
-<a href="../jquerymobile.html">jQuery Mobile 教程</a>
-<a href="../jqueryui.html">jQuery UI 教程</a>
-<a href="../jquery.html">jQuery 教程</a>
-<a href="../json.html">JSON 教程</a>
-<a href="../jsp.html">JSP 教程</a>
-<a href="../julia.html">Julia 教程</a>
-<a href="../jupyter-notebook.html">Jupyter Notebook 教程</a>
-<a href="../kotlin.html">Kotlin 教程</a>
-<a href="../langchain.html">LangChain 教程</a>
-<a href="../latex.html">LaTeX 教程</a>
-<a href="../linux.html">Linux 教程</a>
-<a href="../lua.html">Lua 教程</a>
-<a href="../markdown.html">Markdown 教程</a>
-<a href="../matplotlib.html">Matplotlib 教程</a>
-<a href="../maven.html">Maven 教程</a>
-<a href="../memcached.html">Memcached 教程</a>
-<a href="../mongodb.html">MongoDB 教程</a>
-<a href="../mysql.html">MySQL 教程</a>
-<a href="../nextjs.html">Next.js 教程</a>
-<a href="../nlp.html">NLP 教程</a>
-<a href="../nodejs.html">Node.js 教程</a>
-<a href="../numpy.html">NumPy 教程</a>
-<a href="../obsidian.html">Obsidian 教程</a>
-<a href="../ollama.html">Ollama 教程</a>
-<a href="../opencode.html">OpenCode 教程</a>
-<a href="../opencv.html">OpenCV 教程</a>
-<a href="../pandas.html">Pandas 教程</a>
-<a href="../perl.html">Perl 教程</a>
-<a href="../php.html">PHP 教程</a>
-<a href="../pi-agent.html">Pi Agent</a>
-<a href="../pillow.html">Pillow 教程</a>
-<a href="../playwright.html">Playwright 教程</a>
-<a href="../postgresql.html">PostgreSQL 教程</a>
-<a href="../powershell.html">PowerShell</a>
-<a href="../pycharm.html">Pycharm 教程</a>
-<a href="../python3.html">Python 3 教程</a>
-<a href="../python.html">Python 基础教程</a>
-<a href="../python-design-pattern.html">Python 设计模式</a>
-<a href="../python-qt.html">Python 量化交易</a>
-<a href="../pytorch.html">PyTorch 教程</a>
-<a href="../r.html">R 教程</a>
-<a href="../rdf.html">RDF 教程</a>
-<a href="../react.html">React 教程</a>
-<a href="../redis.html">Redis 教程</a>
-<a href="../restfulapi.html">RESTful API</a>
-<a href="../rss.html">RSS 教程</a>
-<a href="../ruby.html">Ruby 教程</a>
-<a href="../rust.html">Rust 教程</a>
-<a href="../sass.html">Sass 教程</a>
-<a href="../scala.html">Scala 教程</a>
-<a href="../scipy.html">SciPy 教程</a>
-<a href="../selenium.html">Selenium 教程</a>
-<a href="../servlet.html">Servlet 教程</a>
-<a href="../skills.html">Skills 教程</a>
-<a href="../sklearn.html">Sklearn 教程</a>
-<a href="../soap.html">SOAP 教程</a>
-<a href="../sql.html">SQL 教程</a>
-<a href="../sqlite.html">SQLite 教程</a>
-<a href="../svg.html">SVG 教程</a>
-<a href="../svn.html">SVN 教程</a>
-<a href="../swagger.html">Swagger 教程</a>
-<a href="../swift.html">Swift 教程</a>
-<a href="../tailwindcss.html">Tailwind CSS 教程</a>
-<a href="../tcpip.html">TCP/IP 教程</a>
-<a href="../tensorflow.html">TensorFlow 教程</a>
-<a href="../typescript.html">TypeScript 教程</a>
-<a href="../uniapp.html">uni-app 教程</a>
-<a href="../vbscript.html">VBScript 教程</a>
-<a href="../vibe-coding.html">Vibe Coding 教程</a>
-<a href="../vscode.html">VSCode 教程</a>
-<a href="../vue2.html">Vue.js 教程</a>
-<a href="../vue3.html">Vue3 教程</a>
-<a href="../w3c.html">W3C 教程</a>
-<a href="../webservices.html">Web Service 教程</a>
-<a href="../wsdl.html">WSDL 教程</a>
-<a href="../xlink.html">XLink 教程</a>
-<a href="../dom.html">XML DOM 教程</a>
-<a href="../schema.html">XML Schema 教程</a>
-<a href="../xml.html">XML 教程</a>
-<a href="../xpath.html">XPath 教程</a>
-<a href="../xquery.html">XQuery 教程</a>
-<a href="../xslfo.html">XSLFO 教程</a>
-<a href="../xsl.html">XSLT 教程</a>
-<a href="../zig.html">Zig 教程</a>
-<a href="../data-structures.html">数据结构</a>
-<a href="../ml.html">机器学习</a>
-<a href="../regexp.html">正则表达式</a>
-<a href="../assembly.html">汇编语言</a>
-<a href="../quiz.html">测验</a>
-<a href="../browsers.html">浏览器</a>
-<a href="../quality.html">网站品质</a>
-<a href="../web.html">网站建设指南</a>
-<a href="../hosting.html">网站服务器教程</a>
-<a href="../np.html">网络协议</a>
-<a href="../computer-organization.html">计算机组成原理</a>
-<a href="../design-pattern.html">设计模式</a>
-</div>
-</div>
 </div>
 </div>
 </div>

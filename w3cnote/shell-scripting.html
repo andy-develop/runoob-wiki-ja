@@ -60,9 +60,6 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div>
 <div class="row">
 <div class="col right-list">
-<button class="btn btn-responsive-nav btn-inverse" id="pull">
-<i class="fa fa-navicon"></i>
-</button>
 </div>
 <div class="col search search-desktop last">
 <div class="search-input">
@@ -79,66 +76,66 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="col middle-column big-middle-column">
 <div class="article">
 <div class="article-heading">
-<h2>Shell脚本编程初体验</h2> <h3><em>分类</em> <a href="../w3cnote_genre/code.html" title="编程技术">编程技术</a> </h3>
+<h2>Shellスクリプトプログラミング初体験</h2> <h3><em>分类</em> <a href="../w3cnote_genre/code.html" title="编程技术">编程技术</a> </h3>
 </div>
 <div class="article-body note-body">
 <div class="article-intro">
 <!-- ad start-->
 <!-- ad end-->
-<p>通常，当人们提到"shell脚本语言"时，浮现在他们脑海中是bash，ksh，sh或者其它相类似的linux/unix脚本语言。脚本语言是与计算机交流的另外一种途径。使用图形化窗口界面（不管是windows还是linux都无所谓）用户可以移动鼠标并点击各种对象，比如按钮、列表、选框等等。但这种方式在每次用户想要计算机/服务器完成相同任务时（比如说批量转换照片，或者下载新的电影、mp3等）却是十分不方便。要想让所有这些事情变得简单并且自动化，我们可以使用shell脚本。</p>
-<p>某些编程语言，像pascal、foxpro、C、java之类，在执行前需要先进行编译。它们需要合适的编译器来让我们的代码完成某个任务。</p>
+<p>通常、人々が「シェルスクリプト言語」と言うとき、頭に浮かぶのはbash、ksh、sh、またはその他の類似したLinux/Unixスクリプト言語です。スクリプト言語はコンピュータと対話するもう一つの方法です。グラフィカルなウィンドウインターフェース（WindowsでもLinuxでも関係ありません）を使用すると、ユーザーはマウスを移動してボタン、リスト、チェックボックスなどのさまざまなオブジェクトをクリックできます。しかし、この方法は、ユーザーが毎回コンピュータ/サーバーに同じタスクを実行させたい場合（例えば、写真の一括変換、新しい映画やMP3のダウンロードなど）には非常に不便です。これらすべてのことを簡単かつ自動化するために、シェルスクリプトを使用できます。</p>
+<p>一部のプログラミング言語（Pascal、FoxPro、C、Javaなど）は、実行前にコンパイルが必要です。コードに特定のタスクを実行させるには、適切なコンパイラが必要です。</p>
 <p><img alt="Shell脚本编程初体验" class="aligncenter" decoding="async" fetchpriority="high" height="375" src="http://static.codeceo.com/images/2015/06/113720s46pren00n2681cr.jpg" width="500"/></p>
-<p>而其它一些编程语言，像php、javascript、visualbasic之类，则不需要编译器，因此它们需要解释器，而我们不需要编译代码就可以运行程序。</p>
-<p>shell脚本也像解释器一样，但它通常用于调用外部已编译的程序。然后，它会捕获输出结果、退出代码并根据情况进行处理。</p>
-<p>Linux世界中最为流行的shell脚本语言之一，就是bash。而我认为（这是我自己的看法）原因在于，默认情况下bash shell可以让用户便捷地通过历史命令（先前执行过的）导航，与之相反的是，ksh则要求对.profile进行一些调整，或者记住一些"魔术"组合键来查阅历史并修正命令。</p>
-<p>好了，我想这些介绍已经足够了，剩下来哪个环境最适合你，就留给你自己去判断吧。从现在开始，我将只讲bash及其脚本。在下面的例子中，我将使用CentOS 6.6和bash-4.1.2。请确保你有相同版本，或者更高版本。</p>
-<h2>Shell脚本流</h2>
-<p>shell脚本语言就跟和几个人聊天类似。你只需把所有命令想象成能帮你做事的那些人，只要你用正确的方式来请求他们去做。比如说，你想要写文档。首先，你需要纸。然后，你需要把内容说给某个人听，让他帮你写。最后，你想要把它存放到某个地方。或者说，你想要造一所房子，因而你需要请合适的人来清空场地。在他们说"事情干完了"，那么另外一些工程师就可以帮你来砌墙。最后，当这些工程师们也告诉你"事情干完了"的时候，你就可以叫油漆工来给房子粉饰了。如果你让油漆工在墙砌好前就来粉饰，会发生什么呢？我想，他们会开始发牢骚了。几乎所有这些像人一样的命令都会说话，如果它们完成了工作而没有发生什么问题，那么它们就会告诉"标准输出"。如果它们不能做你叫它们做的事——它们会告诉"标准错误"。这样，最后，所有的命令都通过"标准输入"来听你的话。</p>
-<p>快速实例——当你打开linux终端并写一些文本时——你正通过"标准输入"和bash说话。那么，让我们来问问bash shell<strong>who am i（我是谁？）</strong>吧。</p>
+<p>一方、php、javascript、visualbasicのような他のプログラミング言語はコンパイラを必要としない。そのため、それらはインタープリタを必要とするが、私たちはコードをコンパイルせずにプログラムを実行できる。</p>
+<p>shellスクリプトもインタープリタのようなものだが、通常は外部のコンパイル済みプログラムを呼び出すために使われる。そして、出力結果や終了コードを取得し、状況に応じて処理する。</p>
+<p>Linux世界で最も人気のあるシェルスクリプト言語の1つがbashです。そして私が思うに（これは私個人の見解ですが）、その理由は、デフォルトのbashシェルでは、ユーザーが履歴コマンド（以前に実行したもの）を簡単にナビゲートできるからです。対照的に、kshでは履歴を確認してコマンドを修正するために、.profileを調整したり、「魔法の」キーの組み合わせを覚えたりする必要があります。</p>
+<p>さて、この紹介で十分だと思います。どの環境が自分に最適かは、あなた自身が判断してください。これからは、bashとそのスクリプトについてのみ説明します。以下の例では、CentOS 6.6とbash-4.1.2を使用します。同じバージョンか、それ以上のバージョンがあることを確認してください。</p>
+<h2>Shellスクリプトのストリーム</h2>
+<p>シェルスクリプト言語は、数人の人々とおしゃべりするようなものです。すべてのコマンドを、あなたを助けてくれる人々として想像してください。ただし、正しい方法で彼らに頼む必要があります。例えば、文書を書きたいとします。まず、紙が必要です。次に、誰かに内容を話して、書いてもらいます。最後に、それをどこかに保存したいと思います。あるいは、家を建てたい場合、土地を空にする適切な人を雇う必要があります。彼らが「仕事は終わった」と言ったら、今度はレンガを積んでくれる別の技術者を頼ることができます。最後に、それらの技術者たちも「仕事は終わった」とあなたに伝えたら、塗装工を呼んで家をペイントしてもらえます。もし壁ができる前にペンキを塗らせたらどうなるでしょうか？彼らは文句を言い始めるでしょう。ほぼすべてのこれらの人間のようなコマンドは話すことができます。問題なく仕事を完了したら、「標準出力」に知らせます。もし頼まれたことを実行できない場合は、「標準エラー」に知らせます。こうして、最終的にすべてのコマンドは「標準入力」を通じてあなたの指示を聞きます。</p>
+<p>簡単な例——Linuxターミナルを開いてテキストを入力するとき、あなたは「標準入力」を通じてbashと話している。では、bashシェルに尋ねてみよう。<strong>who am i（私は誰？）</strong>吧。</p>
 <pre>
 root@localhost ~]# who am i                                &lt;--- 你通过标准输入对 bash shell 说
 root     pts/0        2015-04-22 20:17 (192.168.1.123)     &lt;--- bash shell通过标准输出回答你
 </pre>
-<p>现在，让我们说一些bash听不懂的问题：</p>
+<p>さて、bashが理解できないいくつかの問題について話しましょう：</p>
 <pre>
 [root@localhost ~]# blablabla           &lt;--- 哈，你又在和标准输入说话了
 -bash: blablabla: command not found     &lt;--- bash通过标准错误在发牢骚了
 </pre>
-<p>":"之前的第一个单词通常是向你发牢骚的命令。实际上，这些流中的每一个都有它们自己的索引号（LCTT 译注：文件句柄号）：</p>
+<p>「:」の前の最初の単語は、通常あなたに文句を言うコマンドです。実際には、これらのストリームのそれぞれには独自のインデックス番号（LCTT注釈：ファイルハンドル番号）があります：</p>
 <ul>
 <li>标准输入（<strong>stdin</strong>） – 0</li>
 <li>标准输出（<strong>stdout</strong>） – 1</li>
 <li>标准错误（<strong>stderr</strong>） – 2</li>
 </ul>
-<p>如果你真的想要知道哪个输出命令说了些什么——你需要将那次发言重定向到（在命令后使用大于号"&gt;"和流索引）文件：</p>
+<p>実際にどの出力コマンドが何を言ったかを知りたい場合は、その発言をファイルにリダイレクトする必要があります（コマンドの後に大なり記号"&gt;"とストリームインデックスを使用）：</p>
 <pre>
 [root@localhost ~]# blablabla 1&gt; output.txt
 -bash: blablabla: command not found
 </pre>
-<p>在本例中，我们试着重定向流1（<strong>stdout</strong>）到名为output.txt的文件。让我们来看对该文件内容所做的事情吧，使用cat命令可以做这事：</p>
+<p>この例では、ストリーム1（<strong>stdout</strong>）をoutput.txtという名前のファイルにリダイレクトしてみます。そのファイルの内容を確認してみましょう。catコマンドでそれを行うことができます：</p>
 <pre>
 [root@localhost ~]# cat output.txt
 [root@localhost ~]#
 </pre>
-<p>看起来似乎是空的。好吧，现在让我们来重定向流2（<strong>stderr</strong>）：</p>
+<p>空のようです。では、ストリーム2（<strong>stderr</strong>）：</p>
 <pre>
 [root@localhost ~]# blablabla 2&gt; error.txt
 [root@localhost ~]#
 </pre>
-<p>好吧，我们看到牢骚话没了。让我们检查一下那个文件：</p>
+<p>さて、文句が消えました。そのファイルを確認してみましょう：</p>
 <pre>
 [root@localhost ~]# cat error.txt
 -bash: blablabla: command not found
 [root@localhost ~]#
 </pre>
-<p>果然如此！我们看到，所有牢骚话都被记录到errors.txt文件里头去了。</p>
-<p>有时候，命令会同时产生<strong>stdout</strong>和<strong>stderr</strong>。要重定向它们到不同的文件，我们可以使用以下语句：</p>
+<p>案の定です！すべての文句がerrors.txtファイルに記録されていることがわかります。</p>
+<p>時には、コマンドは同時に生成する<strong>stdout</strong>和<strong>stderr</strong>。それらを異なるファイルにリダイレクトするには、次のステートメントを使用できます：</p>
 <pre>command 1&gt;out.txt 2&gt;err.txt</pre>
-<p>要缩短一点语句，我们可以忽略"1"，因为默认情况下<strong>stdout</strong>会被重定向：</p>
+<p>ステートメントを少し短くするには、"1"を省略できます。デフォルトでは<strong>stdout</strong>リダイレクトされる：</p>
 <pre>command &gt;out.txt 2&gt;err.txt</pre>
-<p>好吧，让我们试试做些"坏事"。让我们用rm命令把file1和folder1给删了吧：</p>
+<p>では、「悪いこと」をしてみましょう。rmコマンドでfile1とfolder1を削除してみましょう：</p>
 <pre>[root@localhost ~]# rm -vf folder1 file1 &gt; out.txt 2&gt;err.txt</pre>
-<p>现在来检查以下输出文件：</p>
+<p>では、以下の出力ファイルを確認しよう：</p>
 <pre>
 [root@localhost ~]# cat out.txt
 removed `file1'
@@ -146,12 +143,12 @@ removed `file1'
 rm: cannot remove `folder1': Is a directory
 [root@localhost ~]#
 </pre>
-<p>正如我们所看到的，不同的流被分离到了不同的文件。有时候，这也不是很方便，因为我们想要查看出现错误时，在某些操作前面或后面所连续发生的事情。要实现这一目的，我们可以重定向两个流到同一个文件：</p>
+<p>見てわかるように、異なるストリームは異なるファイルに分離されました。時には、これもあまり便利ではありません。エラーが発生したときに、特定の操作の前後で連続して起こったことを確認したい場合があるからです。これを実現するには、2つのストリームを同じファイルにリダイレクトできます：</p>
 <pre>command &gt;&gt;out_err.txt 2&gt;&gt;out_err.txt</pre>
-<p>注意：请注意，我使用"&gt;&gt;"替代了"&gt;"。它允许我们附加到文件，而不是覆盖文件。</p>
-<p>我们也可以重定向一个流到另一个：</p>
+<p>注意："&gt;"の代わりに"&gt;&gt;"を使用していることに注意してください。これにより、ファイルを上書きするのではなく、追記できます。</p>
+<p>あるストリームを別のストリームにリダイレクトすることもできます：</p>
 <pre>command &gt;out_err.txt 2&gt;&amp;1</pre>
-<p>让我来解释一下吧。所有命令的标准输出将被重定向到out_err.txt，错误输出将被重定向到流1（上面已经解释过了），而该流会被重定向到同一个文件。让我们看这个实例：</p>
+<p>説明しよう。すべてのコマンドの標準出力はout_err.txtにリダイレクトされ、エラー出力はストリーム1（上で説明した）にリダイレクトされ、そのストリームは同じファイルにリダイレクトされる。この例を見てみよう：</p>
 <pre>
 [root@localhost ~]# rm -fv folder2 file2 &gt;out_err.txt 2&gt;&amp;1
 [root@localhost ~]# cat out_err.txt
@@ -159,48 +156,48 @@ rm: cannot remove `folder2': Is a directory
 removed `file2'
 [root@localhost ~]#
 </pre>
-<p>看着这些组合的输出，我们可以将其说明为：首先，<strong>rm</strong>命令试着将folder2删除，而它不会成功，因为linux要求<strong>-r</strong>键来允许<strong>rm</strong>命令删除文件夹，而第二个file2会被删除。通过为<strong>rm</strong>提供<strong>-v</strong>（详情）键，我们让rm命令告诉我们每个被删除的文件或文件夹。</p>
-<p>这些就是你需要知道的，关于重定向的几乎所有内容了。我是说几乎，因为还有一个更为重要的重定向工具，它称之为"管道"。通过使用|（管道）符号，我们通常重定向<strong>stdout</strong>流。</p>
-<p>比如说，我们有这样一个文本文件：</p>
+<p>これらの組み合わせた出力を見ると、次のように説明できます：まず、<strong>rm</strong>コマンドはfolder2の削除を試みますが、それは成功しません。なぜならLinuxでは<strong>-r</strong>键来允许<strong>rm</strong>フォルダを削除するコマンドが必要だからです。一方、2番目のfile2は削除されます。<strong>rm</strong>提供<strong>-v</strong>（詳細）キーを指定することで、rmコマンドに削除された各ファイルまたはフォルダを報告させます。</p>
+<p>これらが、リダイレクトについて知っておくべきほぼすべてです。「ほぼ」と言ったのは、もう一つ重要なリダイレクトツールである「パイプ」があるからです。|（パイプ）記号を使用することで、通常は<strong>stdout</strong>流。</p>
+<p>例えば、次のようなテキストファイルがあるとします：</p>
 <pre>[root@localhost ~]# cat text_file.txt
 This line does not contain H e l l o  word
 This lilne contains Hello
 This also containd Hello
 This one no due to HELLO all capital
 Hello bash world!</pre>
-<p>而我们需要找到其中某些带有"Hello"的行，Linux中有个<strong>grep</strong>命令可以完成该工作：</p>
+<p>そして、その中から"Hello"を含む行を見つける必要があります。Linuxには<strong>grep</strong>その作業を実行できるコマンド：</p>
 <pre>[root@localhost ~]# grep Hello text_file.txt
 This lilne contains Hello
 This also containd Hello
 Hello bash world!
 [root@localhost ~]#</pre>
-<p>当我们有个文件，想要在里头搜索的时候，这用起来很不错。当如果我们需要在另一个命令的输出中查找某些东西，这又该怎么办呢？是的，当然，我们可以重定向输出到文件，然后再在文件里头查找：</p>
+<p>ファイルがあり、その中を検索したいとき、これはとても便利だ。しかし、別のコマンドの出力の中から何かを探す必要がある場合はどうすればいいだろう？ そう、もちろん、出力をファイルにリダイレクトしてから、そのファイルの中を検索すればよい：</p>
 <pre>[root@localhost ~]# fdisk -l&gt;fdisk.out
 [root@localhost ~]# grep "Disk /dev" fdisk.out
 Disk /dev/sda: 8589 MB, 8589934592 bytes
 Disk /dev/mapper/VolGroup-lv_root: 7205 MB, 7205814272 bytes
 Disk /dev/mapper/VolGroup-lv_swap: 855 MB, 855638016 bytes
 [root@localhost ~]#</pre>
-<p>如果你打算grep一些双引号引起来带有空格的内容呢！</p>
-<p>注意：fdisk命令显示关于Linux操作系统磁盘驱动器的信息。</p>
-<p>就像我们看到的，这种方式很不方便，因为我们不一会儿就把临时文件空间给搞乱了。要完成该任务，我们可以使用管道。它们允许我们重定向一个命令的<strong>stdout</strong>到另一个命令的<strong>stdin</strong>流：</p>
+<p>もし二重引用符で囲まれたスペースを含む内容をgrepしようとしたらどうでしょう！</p>
+<p>注意：fdiskコマンドは、Linuxオペレーティングシステムのディスクドライブに関する情報を表示します。</p>
+<p>見てわかるように、この方法は非常に不便です。なぜなら、すぐに一時ファイルスペースを散らかしてしまうからです。このタスクを実行するには、パイプを使用できます。パイプを使用すると、あるコマンドの<strong>stdout</strong>別のコマンドへの<strong>stdin</strong>流：</p>
 <pre>[root@localhost ~]# fdisk -l | grep "Disk /dev"
 Disk /dev/sda: 8589 MB, 8589934592 bytes
 Disk /dev/mapper/VolGroup-lv_root: 7205 MB, 7205814272 bytes
 Disk /dev/mapper/VolGroup-lv_swap: 855 MB, 855638016 bytes
 [root@localhost ~]#</pre>
-<p>如你所见，我们不需要任何临时文件就获得了相同的结果。我们把<strong>fdisk stdout</strong>重定向到了<strong>grep stdin</strong>。</p>
-<p><strong>注意</strong>： 管道重定向总是从左至右的。</p>
-<p>还有几个其它重定向，但是我们将把它们放在后面讲。</p>
-<h2>在shell中显示自定义信息</h2>
-<p>正如我们所知道的，通常，与shell的交流以及shell内的交流是以对话的方式进行的。因此，让我们创建一些真正的脚本吧，这些脚本也会和我们讲话。这会让你学到一些简单的命令，并对脚本的概念有一个更好的理解。</p>
-<p>假设我们是某个公司的总服务台经理，我们想要创建某个shell脚本来注册呼叫信息：电话号码、用户名以及问题的简要描述。我们打算把这些信息存储到普通文本文件data.txt中，以便今后统计。脚本它自己就是以对话的方式工作，这会让总服务台的工作人员的小日子过得轻松点。那么，首先我们需要显示提问。对于显示信息，我们可以用echo和printf命令。这两个都是用来显示信息的，但是printf更为强大，因为我们可以通过它很好地格式化输出，我们可以让它右对齐、左对齐或者为信息留出专门的空间。让我们从一个简单的例子开始吧。要创建文件，请使用你惯用的文本编辑器（kate，nano，vi，……），然后创建名为note.sh的文件，里面写入这些命令：</p>
+<p>ご覧のとおり、一時ファイルなしで同じ結果を得られた。私たちは、<strong>fdisk stdout</strong>重定向到了<strong>grep stdin</strong>。</p>
+<p><strong>注意</strong>：パイプリダイレクトは常に左から右へ行われます。</p>
+<p>他にもいくつかのリダイレクトがありますが、それらは後で説明します。</p>
+<h2>シェルでカスタムメッセージを表示する</h2>
+<p>ご存じのとおり、通常、シェルとの対話やシェル内での対話は、会話形式で行われます。それでは、実際に私たちと話すスクリプトを作成してみましょう。これにより、いくつかの簡単なコマンドを学び、スクリプトの概念をより深く理解できるでしょう。</p>
+<p>ある会社のヘルプデスク管理者だとしよう。コール情報（電話番号、ユーザー名、問題の簡単な説明）を登録するシェルスクリプトを作成したい。この情報は、後で統計を取るために、プレーンテキストファイルdata.txtに保存するつもりだ。スクリプト自体は対話形式で動作し、ヘルプデスクのスタッフの仕事を少し楽にしてくれるだろう。では、まず質問を表示する必要がある。情報を表示するには、echoコマンドとprintfコマンドを使うことができる。どちらも情報を表示するためのものだが、printfの方がより強力である。なぜなら、出力をうまく整形でき、右揃え、左揃え、またはメッセージのための専用スペースを確保することができるからだ。簡単な例から始めよう。ファイルを作成するには、お好みのテキストエディタ（kate、nano、viなど）を使い、note.shという名前のファイルを作成して、次のコマンドを書き込んでください：</p>
 <pre>echo "Phone number ?"</pre>
 <h2>如何运行/执行脚本？</h2>
-<p>在保存文件后，我们可以使用bash命令来运行，把我们的文件作为它的参数：</p>
+<p>ファイルを保存した後、bashコマンドを使って実行できます。そのファイルを引数として渡します：</p>
 <pre>[root@localhost ~]# bash note.sh
 Phone number ?</pre>
-<p>实际上，这样来执行脚本是很不方便的。如果不使用<strong>bash</strong>命令作为前缀来执行，会更舒服一些。要让脚本可执行，我们可以使用<strong>chmod</strong>命令：</p>
+<p>実際、このようにスクリプトを実行するのは非常に不便です。もし<strong>bash</strong>コマンドをプレフィックスとして使用せずに実行できれば、より快適です。スクリプトを実行可能にするには、次のコマンドを使用できます：<strong>chmod</strong>命令：</p>
 <pre>[root@localhost ~]# ls -la note.sh
 -rw-r--r--. 1 root root 22 Apr 23 20:52 note.sh
 [root@localhost ~]# chmod +x note.sh
@@ -208,31 +205,31 @@ Phone number ?</pre>
 -rwxr-xr-x. 1 root root 22 Apr 23 20:52 note.sh
 [root@localhost ~]#</pre>
 <p><img alt="Shell脚本编程初体验" decoding="async" src="http://static.codeceo.com/images/2015/06/Capture.png"/></p>
-<p><strong>注意</strong>： ls命令显示了当前文件夹内的文件。通过添加-la键，它会显示更多文件信息。</p>
-<p>如我们所见，在<strong>chmod</strong>命令执行前，脚本只有读（r）和写（w）权限。在执行<strong>chmod +x</strong>后，它就获得了执行（x）权限。（关于权限的更多细节，我会在下一篇文章中讲述。）现在，我们只需这么来运行：</p>
+<p><strong>注意</strong>：lsコマンドは現在のフォルダ内のファイルを表示します。-laキーを追加すると、より多くのファイル情報が表示されます。</p>
+<p>私たちが見たように、<strong>chmod</strong>コマンド実行前、スクリプトには読み取り（r）と書き込み（w）の権限しかありません。実行すると、<strong>chmod +x</strong>その後、実行（x）権限を取得します。（権限の詳細については、次の記事で説明します。）さて、今は次のように実行するだけです：</p>
 <pre>[root@localhost ~]# ./note.sh
 Phone number ?</pre>
-<p>在脚本名前，我添加了 ./ 组合。.(点）在unix世界中意味着当前位置（当前文件夹），/（斜线）是文件夹分隔符。（在Windows系统中，我们使用反斜线 / 表示同样功能）所以，这整个组合的意思是说："从当前文件夹执行note.sh脚本"。我想，如果我用完整路径来运行这个脚本的话，你会更加清楚一些：</p>
+<p>スクリプト名の前に、./ という組み合わせを付けました。.（ドット）はUNIXの世界では現在の場所（現在のフォルダー）を意味し、/（スラッシュ）はフォルダーの区切り文字です。（Windowsシステムでは、同じ機能を表すのにバックスラッシュ / を使います。）つまり、この組み合わせ全体の意味は「現在のフォルダーからnote.shスクリプトを実行する」ということです。完全なパスでこのスクリプトを実行すれば、もっと明確になると思います：</p>
 <pre>[root@localhost ~]# /root/note.sh
 Phone number ?
 [root@localhost ~]#</pre>
-<p>它也能工作。</p>
-<p>如果所有linux用户都有相同的默认shell，那就万事OK。如果我们只是执行该脚本，默认的用户shell就会用于解析脚本内容并运行命令。不同的shell的语法、内部命令等等有着一丁点不同，所以，为了保证我们的脚本会使用<strong>bash</strong>，我们应该添加<strong>#!/bin/bash</strong>到文件首行。这样，默认的用户shell将调用<strong>/bin/bash</strong>，而只有在那时候，脚本中的命令才会被执行：</p>
+<p>それも動作します。</p>
+<p>すべてのLinuxユーザーが同じデフォルトシェルを持っていれば、それで万事OKです。単にスクリプトを実行するだけなら、デフォルトのユーザーシェルがスクリプトの内容を解析してコマンドを実行するために使われます。シェルによって構文や組み込みコマンドなどが少しずつ異なるため、私たちのスクリプトが確実に使うようにするには、<strong>bash</strong>、私たちは追加すべきです<strong>#!/bin/bash</strong>ファイルの先頭行に追加します。これにより、デフォルトのユーザーシェルが<strong>/bin/bash</strong>を呼び出し、そのとき初めてスクリプト内のコマンドが実行されます：</p>
 <pre>[root@localhost ~]# cat note.sh
 #!/bin/bash
 echo "Phone number ?"</pre>
-<p>直到现在，我们才100%确信<strong>bash</strong>会用来解析我们的脚本内容。让我们继续。</p>
+<p>今になってようやく、私たちは100%確信している<strong>bash</strong>がスクリプトの内容を解析するために使用されます。続けましょう。</p>
 <h2>读取输入</h2>
-<p>在显示信息后，脚本会等待用户回答。有个<strong>read</strong>命令用来接收用户的回答：</p>
+<p>情報を表示した後、スクリプトはユーザーの回答を待ちます。次の<strong>read</strong>コマンドはユーザーの回答を受け取るために使われる：</p>
 <pre>#!/bin/bash
 echo "Phone number ?"
 read phone</pre>
-<p>在执行后，脚本会等待用户输入，直到用户按[ENTER]键结束输入：</p>
+<p>実行後、スクリプトはユーザーが[ENTER]キーを押して入力を終了するまで、ユーザーの入力を待ちます：</p>
 <pre>[root@localhost ~]# ./note.sh
 Phone number ?
 12345                               &lt;--- 这儿是我输入的内容
 [root@localhost ~]#</pre>
-<p>你输入的所有东西都会被存储到变量<strong>phone</strong>中，要显示变量的值，我们同样可以使用<strong>echo</strong>命令：</p>
+<p>入力したすべての内容は変数<strong>phone</strong>に格納されます。変数の値を表示するには、同様に<strong>echo</strong>命令：</p>
 <pre>[root@localhost ~]# cat note.sh
 #!/bin/bash
 echo "Phone number ?"
@@ -243,8 +240,8 @@ Phone number ?
 123456
 You have entered 123456 as a phone number
 [root@localhost ~]#</pre>
-<p>在<strong>bash</strong>shell中，一般我们使用<strong>$</strong>（美元）符号来表明这是一个变量，除了读入到变量和其它为数不多的时候才不用这个$（将在今后说明）。</p>
-<p>好了，现在我们准备添加剩下的问题了：</p>
+<p>在<strong>bash</strong>シェルでは、通常私たちは使用します<strong>$</strong>（ドル）記号を使用して、これが変数であることを示します。ただし、変数への読み込みやその他ごく少数の場面を除いて、$は使用しません（後で説明します）。</p>
+<p>さて、残りの質問を追加する準備ができました：</p>
 <pre>#!/bin/bash
 echo "Phone number?"
 read phone
@@ -260,10 +257,10 @@ Jim
 Issue?
 script is not working.
 [root@localhost ~]#</pre>
-<h2>使用流重定向</h2>
-<p>太完美了！剩下来就是重定向所有东西到文件data.txt了。作为字段分隔符，我们将使用/（斜线）符号。</p>
-<p><strong>注意</strong>： 你可以选择任何你认为是最好的分隔符，但是确保文件内容不会包含这些符号在内，否则它会导致在文本行中产生额外字段。</p>
-<p>别忘了使用"&gt;&gt;"来代替"&gt;"，因为我们想要将输出内容附加到文件末！</p>
+<h2>ストリームリダイレクトを使用する</h2>
+<p>完璧です！残っているのは、すべてをdata.txtファイルにリダイレクトすることだけです。フィールド区切り文字として、/（スラッシュ）記号を使用します。</p>
+<p><strong>注意</strong>：最適だと思う任意の区切り文字を選択できますが、ファイルの内容にこれらの記号が含まれないようにしてください。含まれると、テキスト行に余分なフィールドが生成される原因になります。</p>
+<p>"&gt;"の代わりに"&gt;&gt;"を使用することを忘れないでください。出力内容をファイルの末尾に追記したいからです！</p>
 <pre>[root@localhost ~]# tail -2 note.sh
 read issue
 echo "$phone/$name/$issue"&gt;&gt;data.txt
@@ -277,8 +274,8 @@ Keybord issue.
 [root@localhost ~]# cat data.txt
 987/Jimmy/Keybord issue.
 [root@localhost ~]#</pre>
-<p><strong>注意</strong> ： <strong>tail</strong>命令显示了文件的最后的<strong>n</strong>行。</p>
-<p>搞定。让我们再来运行一次看看：</p>
+<p><strong>注意</strong> ： <strong>tail</strong>コマンドはファイルの最後の部分を表示する<strong>n</strong>行。</p>
+<p>完了。もう一度実行してみましょう：</p>
 <pre>[root@localhost ~]# ./note.sh
 Phone number?
 556
@@ -290,12 +287,12 @@ Mouse was broken.
 987/Jimmy/Keybord issue.
 556/Janine/Mouse was broken.
 [root@localhost ~]#</pre>
-<p>我们的文件在增长，让我们在每行前面加个日期吧，这对于今后摆弄这些统计数据时会很有用。要实现这功能，我们可以使用date命令，并指定某种格式，因为我不喜欢默认格式：</p>
+<p>ファイルは増え続けています。各行の先頭に日付を追加しましょう。これは後でこれらの統計データを扱うときに役立ちます。これを実現するには、dateコマンドを使用し、何らかの形式を指定します。デフォルトの形式が好きではないからです：</p>
 <pre>[root@localhost ~]# date
 Thu Apr 23 21:33:14 EEST 2015                     &lt;---- date命令的默认输出
 [root@localhost ~]# date "+%Y.%m.%d %H:%M:%S"
 2015.04.23 21:33:18                               &lt;---- 格式化后的输出</pre>
-<p>有几种方式可以读取命令的输出到变量，在这种简单的情况下，我们将使用`（是反引号，不是单引号，和波浪号~在同一个键位）：</p>
+<p>コマンドの出力を変数に読み込む方法はいくつかありますが、この単純なケースでは、`（これはバッククォートです。シングルクォートではなく、チルダ~と同じキーにあります）を使用します：</p>
 <pre>[root@localhost ~]# cat note.sh
 #!/bin/bash
 now=`date "+%Y.%m.%d %H:%M:%S"`
@@ -316,7 +313,7 @@ Script hanging.
 [root@localhost ~]# cat data.txt
 2015.04.23 21:38:56/123/Jim/Script hanging.
 [root@localhost ~]#</pre>
-<p>嗯…… 我们的脚本看起来有点丑啊，让我们来美化一下。如果你要手动读取<strong>read</strong>命令，你会发现read命令也可以显示一些信息。要实现该功能，我们应该使用-p键加上信息：</p>
+<p>うーん……私たちのスクリプトは少し見苦しいですね。美化しましょう。手動で読み取りたい場合は<strong>read</strong>コマンドを使用すると、readコマンドでもいくつかの情報を表示できることがわかります。この機能を実現するには、-pキーと情報を使用する必要があります：</p>
 <pre>[root@localhost ~]# cat note.sh
 #!/bin/bash
 now=`date "+%Y.%m.%d %H:%M:%S"`
@@ -324,8 +321,8 @@ read -p "Phone number: " phone
 read -p "Name: " name
 read -p "Issue: " issue
 echo "$now/$phone/$name/$issue"&gt;&gt;data.txt</pre>
-<p>你可以直接从控制台查找到各个命令的大量有趣的信息，只需输入：<strong>man read, man echo, man date, man ……</strong></p>
-<p>同意吗？它看上去是舒服多了！</p>
+<p>コンソールから直接、各コマンドに関する多くの興味深い情報を見つけることができます。次のように入力するだけです：<strong>man read, man echo, man date, man ……</strong></p>
+<p>同意しますか？ ずっと見やすくなったでしょう！</p>
 <pre>[root@localhost ~]# ./note.sh
 Phone number: 321
 Name: Susane
@@ -334,9 +331,9 @@ Issue: Mouse was stolen
 2015.04.23 21:38:56/123/Jim/Script hanging.
 2015.04.23 21:43:50/321/Susane/Mouse was stolen
 [root@localhost ~]#</pre>
-<p>光标在消息的后面（不是在新的一行中），这有点意思。（LCTT 译注：如果用 echo 命令输出显示的话，可以用 -n 参数来避免换行。）</p>
+<p>カーソルがメッセージの後ろにある（新しい行ではなく）というのは、ちょっと面白いですね。（LCTT注釈：echoコマンドで出力表示する場合は、-nパラメータを使用して改行を防ぐことができます。）</p>
 <h2>循环</h2>
-<p>是时候来改进我们的脚本了。如果用户一整天都在接电话，如果每次都要去运行，这岂不是很麻烦？让我们让这些活动都永无止境地循环去吧：</p>
+<p>そろそろスクリプトを改良する時です。ユーザーが一日中電話を受けるとしたら、そのたびに実行するのは面倒ではないでしょうか？ この一連の動作を無限ループにしましょう：</p>
 <pre>[root@localhost ~]# cat note.sh
 #!/bin/bash
 while true
@@ -347,7 +344,7 @@ do
         read -p "Issue: " issue
         echo "$now/$phone/$name/$issue"&gt;&gt;data.txt
 done</pre>
-<p>我已经交换了<strong>read phone</strong>和<strong>now=date</strong>行的位置。这是因为我想要在输入电话号码后再获得时间。如果我把它放在循环的首行，那么循环一次后，变量 now 就会在数据存储到文件中后马上获得时间。而这并不好，因为下一次呼叫可能在20分钟后，甚至更晚。</p>
+<p>私はすでに交換しました<strong>read phone</strong>和<strong>now=date</strong>行の位置。これは、電話番号を入力した後に時刻を取得したいからです。これをループの先頭に置くと、ループの1回の実行後、変数 now はデータがファイルに保存された直後に時刻を取得することになります。これは良くありません。次の呼び出しが20分後、あるいはそれ以降かもしれないからです。</p>
 <pre>[root@localhost ~]# ./note.sh
 Phone number: 123
 Name: Jim
@@ -362,9 +359,9 @@ Phone number: ^C
 2015.04.23 21:47:55/123/Jim/Script still not works.
 2015.04.23 21:48:16/777/Daniel/I broke my monitor
 [root@localhost ~]#</pre>
-<p>注意： 要从无限循环中退出，你可以按[Ctrl]+[C]键。Shell会显示^表示 CTRL 键<sup>。</sup></p>
-<h2>使用管道重定向</h2>
-<p>让我们添加更多功能到我们的"弗兰肯斯坦（Frankenstein）"，我想要脚本在每次呼叫后显示某个统计数据。比如说，我想要查看各个号码呼叫了我几次。对于这个，我们应该cat文件data.txt：</p>
+<p>注意：無限ループから抜け出すには、[Ctrl]+[C]キーを押すことができます。シェルは^を表示してCTRLキーを表します。<sup>。</sup></p>
+<h2>パイプリダイレクトを使用する</h2>
+<p>私たちの「フランケンシュタイン」にさらに機能を追加しましょう。スクリプトが各コールの後に統計データを表示するようにしたいのです。例えば、各番号が私に何回コールしてきたかを確認したいとします。そのためには、ファイルdata.txtをcatする必要があります：</p>
 <pre>[root@localhost ~]# cat data.txt
 2015.04.23 21:38:56/123/Jim/Script hanging.
 2015.04.23 21:43:50/321/Susane/Mouse was stolen
@@ -372,7 +369,7 @@ Phone number: ^C
 2015.04.23 21:48:16/777/Daniel/I broke my monitor
 2015.04.23 22:02:14/123/Jimmy/New script also not working!!!
 [root@localhost ~]#</pre>
-<p>现在，所有输出我们都可以重定向到<strong>cut</strong>命令，让<strong>cut</strong>来把每行切成一块一块（我们使用分隔符"/"），然后打印第二个字段：</p>
+<p>さて、すべての出力をリダイレクトできます。<strong>cut</strong>命令，让<strong>cut</strong>各行をデリミタ「/」で区切って、2番目のフィールドを出力します：</p>
 <pre>[root@localhost ~]# cat data.txt | cut -d"/" -f2
 123
 321
@@ -380,7 +377,7 @@ Phone number: ^C
 777
 123
 [root@localhost ~]#</pre>
-<p>现在，我们可以把这个输出重定向打另外一个命令<strong>sort</strong>：</p>
+<p>次に、この出力を別のコマンドにリダイレクトできます。<strong>sort</strong>：</p>
 <pre>[root@localhost ~]# cat data.txt | cut -d"/" -f2|sort
 123
 123
@@ -388,13 +385,13 @@ Phone number: ^C
 321
 777
 [root@localhost ~]#</pre>
-<p>然后只留下唯一的行。要统计唯一条目，只需添加<strong>-c</strong>键到<strong>uniq</strong>命令：</p>
+<p>そして一意な行だけを残します。一意なエントリを数えるには、単に追加するだけです。<strong>-c</strong>键到<strong>uniq</strong>命令：</p>
 <pre>[root@localhost ~]# cat data.txt | cut -d"/" -f2 | sort | uniq -c
     3 123
     1 321
     1 777
 [root@localhost ~]#</pre>
-<p>只要把这个添加到我们的循环的最后：</p>
+<p>これをループの最後に追加するだけです：</p>
 <pre>#!/bin/bash
 while true
 do
@@ -420,14 +417,14 @@ Issue: Windows license expired.
 --------------------------------
 Phone number: ^C</pre>
 <p><img alt="Shell脚本编程初体验" decoding="async" src="http://static.codeceo.com/images/2015/06/113726pspohsviiozpmdnd.png"/></p>
-<p>当前场景贯穿了几个熟知的步骤：</p>
+<p>現在のシナリオは、いくつかのよく知られた手順を通っています：</p>
 <ul>
 <li>显示消息</li>
-<li>获取用户输入</li>
-<li>存储值到文件</li>
-<li>处理存储的数据</li>
+<li>ユーザー入力の取得</li>
+<li>値をファイルに保存する</li>
+<li>保存されたデータの処理</li>
 </ul>
-<p>但是，如果用户有点责任心，他有时候需要输入数据，有时候需要统计，或者可能要在存储的数据中查找一些东西呢？对于这些事情，我们需要使用switches/cases，并知道怎样来很好地格式化输出。这对于在shell中"画"表格的时候很有用。</p>
+<p>しかし、ユーザーに少し責任があるなら、データを入力する必要があるときもあれば、統計を取るときもあるでしょう。あるいは、保存されたデータから何かを検索したいかもしれません。そのような場合には、switches/casesを使用し、出力をうまくフォーマットする方法を知る必要があります。これはシェルで表を「描く」ときに役立ちます。</p>
 <p>来源：http://linux.cn/article-5591-1.html</p> </div>
 </div>
 <div class="previous-next-links">
@@ -537,7 +534,7 @@ Phone number: ^C</pre>
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>点我分享笔记</h3>
+<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてメモを共有</h3>
 &lt;p style="font-size:14px;"&gt;笔记需要是本篇文章的内容扩展！&lt;/p&gt;&lt;br&gt;
 	&lt;p style="font-size:12px;"&gt;&lt;a href="../tougao.html" target="_blank"&gt;文章投稿，可点击这里&lt;/a&gt;&lt;/p&gt;
 	&lt;p style="font-size:14px;"&gt;&lt;a href="./runoob-user-test-intro.html" target="_blank"&gt;注册邀请码获取方式&lt;/a&gt;&lt;/p&gt;
@@ -786,181 +783,6 @@ var aid = 12357;
 
 </div>
 -->
-<div class="sidebar-box cate-list" style="display:none;">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">热门文章</a>
-</div>
-<div class="membership">
-<ul class="membership">
-<li><a href="https://mp.weixin.qq.com/s/ZaP6YNgKTCHYy3r2WPBBaw" target="_blank" title="2024 年 04 月 JavaScript 框架排行榜">2024 年 04 月 JavaScript 框架排行榜</a></li>
-<li><a href="https://mp.weixin.qq.com/s/JBR2twC0t6krjjuxqvhsEQ" target="_blank" title="免费、开源、好用的 SQL 客户端合集">免费、开源、好用的 SQL 客户端合集</a></li>
-<li><a href="https://mp.weixin.qq.com/s/TwV3YQjA1glyaW7TiHvhlA" target="_blank" title="优雅的代码规范，提升代码质量">优雅的代码规范，提升代码质量</a></li>
-<li><a href="https://mp.weixin.qq.com/s/CnUJ-2OHPbBKlnVpjDzavA" target="_blank" title="命令行中的趣味世界，牛也能说话，有趣又好玩">命令行中的趣味世界，牛也能说话，有趣又好玩</a></li>
-<li><a href="https://mp.weixin.qq.com/s/7NKl-mD7N8CeSNQlbKDEWA" target="_blank" title="2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？">2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？</a></li>
-<li><a href="https://mp.weixin.qq.com/s/yWlSVDKobtDhThnhirVRpw" target="_blank" title="免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端">免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端</a></li>
-</ul>
-</div>
-</div>
-<div class="sidebar-box cate-list">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">教程列表</a>
-</div>
-<div class="cate-items">
-<a href="../ado.html">ADO 教程</a>
-<a href="../ai-agent.html">AI Agent 教程</a>
-<a href="../ai.html">AI 入门教程</a>
-<a href="../ai-math.html">AI 数学基础</a>
-<a href="../ajax.html">Ajax 教程</a>
-<a href="../android.html">Android 教程</a>
-<a href="../angularjs2.html">Angular2 教程</a>
-<a href="../angularjs.html">AngularJS 教程</a>
-<a href="../appml.html">AppML 教程</a>
-<a href="../asp.html">ASP 教程</a>
-<a href="../aspnet.html">ASP.NET 教程</a>
-<a href="../bootstrap.html">Bootstrap 教程</a>
-<a href="../bootstrap4.html">Bootstrap4 教程</a>
-<a href="../bootstrap5.html">Bootstrap5 教程</a>
-<a href="../cprogramming.html">C 教程</a>
-<a href="../c-dsa.html">C 语言数据结构与算法</a>
-<a href="../csharp.html">C# 教程</a>
-<a href="../cplusplus.html">C++ 教程</a>
-<a href="../chartjs.html">Chart.js 教程</a>
-<a href="../claude-code.html">Claude Code 教程</a>
-<a href="../cmake.html">CMake 教程</a>
-<a href="../codex.html">Codex 教程</a>
-<a href="../cssref.html">CSS 参考手册</a>
-<a href="../css.html">CSS 教程</a>
-<a href="../css3.html">CSS3 教程</a>
-<a href="../cursor.html">Cursor 教程</a>
-<a href="../dart.html">Dart 教程</a>
-<a href="../dash.html">Dash 教程</a>
-<a href="../deepseek-harness.html">DeepSeek Harness</a>
-<a href="../django.html">Django 教程</a>
-<a href="../docker.html">Docker 教程</a>
-<a href="../dtd.html">DTD 教程</a>
-<a href="../echarts.html">ECharts 教程</a>
-<a href="../eclipse.html">Eclipse 教程</a>
-<a href="../electron.html">Electron 教程</a>
-<a href="../fastapi.html">FastAPI 教程</a>
-<a href="../firebug.html">Firebug 教程</a>
-<a href="../flask.html">Flask 教程</a>
-<a href="../flutter.html">Flutter 教程</a>
-<a href="../font-awesome.html">Font Awesome 图标</a>
-<a href="../foundation.html">Foundation 教程</a>
-<a href="../git.html">Git 教程</a>
-<a href="../go.html">Go 语言教程</a>
-<a href="../googleapi.html">Google 地图 API 教程</a>
-<a href="../hermes-agent.html">Hermes Agent</a>
-<a href="../highcharts.html">Highcharts 教程</a>
-<a href="../htmldom.html">HTML DOM 教程</a>
-<a href="../tags.html">HTML 参考手册</a>
-<a href="../charsets.html">HTML 字符集</a>
-<a href="../html.html">HTML 教程</a>
-<a href="../http.html">HTTP 教程</a>
-<a href="../ionic.html">ionic 教程</a>
-<a href="../ios.html">iOS 教程</a>
-<a href="../java.html">Java 教程</a>
-<a href="../jsref.html">JavaScript 参考手册</a>
-<a href="../js.html">Javascript 教程</a>
-<a href="../jeasyui.html">jQuery EasyUI 教程</a>
-<a href="../jquerymobile.html">jQuery Mobile 教程</a>
-<a href="../jqueryui.html">jQuery UI 教程</a>
-<a href="../jquery.html">jQuery 教程</a>
-<a href="../json.html">JSON 教程</a>
-<a href="../jsp.html">JSP 教程</a>
-<a href="../julia.html">Julia 教程</a>
-<a href="../jupyter-notebook.html">Jupyter Notebook 教程</a>
-<a href="../kotlin.html">Kotlin 教程</a>
-<a href="../langchain.html">LangChain 教程</a>
-<a href="../latex.html">LaTeX 教程</a>
-<a href="../linux.html">Linux 教程</a>
-<a href="../lua.html">Lua 教程</a>
-<a href="../markdown.html">Markdown 教程</a>
-<a href="../matplotlib.html">Matplotlib 教程</a>
-<a href="../maven.html">Maven 教程</a>
-<a href="../memcached.html">Memcached 教程</a>
-<a href="../mongodb.html">MongoDB 教程</a>
-<a href="../mysql.html">MySQL 教程</a>
-<a href="../nextjs.html">Next.js 教程</a>
-<a href="../nlp.html">NLP 教程</a>
-<a href="../nodejs.html">Node.js 教程</a>
-<a href="../numpy.html">NumPy 教程</a>
-<a href="../obsidian.html">Obsidian 教程</a>
-<a href="../ollama.html">Ollama 教程</a>
-<a href="../opencode.html">OpenCode 教程</a>
-<a href="../opencv.html">OpenCV 教程</a>
-<a href="../pandas.html">Pandas 教程</a>
-<a href="../perl.html">Perl 教程</a>
-<a href="../php.html">PHP 教程</a>
-<a href="../pi-agent.html">Pi Agent</a>
-<a href="../pillow.html">Pillow 教程</a>
-<a href="../playwright.html">Playwright 教程</a>
-<a href="../postgresql.html">PostgreSQL 教程</a>
-<a href="../powershell.html">PowerShell</a>
-<a href="../pycharm.html">Pycharm 教程</a>
-<a href="../python3.html">Python 3 教程</a>
-<a href="../python.html">Python 基础教程</a>
-<a href="../python-design-pattern.html">Python 设计模式</a>
-<a href="../python-qt.html">Python 量化交易</a>
-<a href="../pytorch.html">PyTorch 教程</a>
-<a href="../r.html">R 教程</a>
-<a href="../rdf.html">RDF 教程</a>
-<a href="../react.html">React 教程</a>
-<a href="../redis.html">Redis 教程</a>
-<a href="../restfulapi.html">RESTful API</a>
-<a href="../rss.html">RSS 教程</a>
-<a href="../ruby.html">Ruby 教程</a>
-<a href="../rust.html">Rust 教程</a>
-<a href="../sass.html">Sass 教程</a>
-<a href="../scala.html">Scala 教程</a>
-<a href="../scipy.html">SciPy 教程</a>
-<a href="../selenium.html">Selenium 教程</a>
-<a href="../servlet.html">Servlet 教程</a>
-<a href="../skills.html">Skills 教程</a>
-<a href="../sklearn.html">Sklearn 教程</a>
-<a href="../soap.html">SOAP 教程</a>
-<a href="../sql.html">SQL 教程</a>
-<a href="../sqlite.html">SQLite 教程</a>
-<a href="../svg.html">SVG 教程</a>
-<a href="../svn.html">SVN 教程</a>
-<a href="../swagger.html">Swagger 教程</a>
-<a href="../swift.html">Swift 教程</a>
-<a href="../tailwindcss.html">Tailwind CSS 教程</a>
-<a href="../tcpip.html">TCP/IP 教程</a>
-<a href="../tensorflow.html">TensorFlow 教程</a>
-<a href="../typescript.html">TypeScript 教程</a>
-<a href="../uniapp.html">uni-app 教程</a>
-<a href="../vbscript.html">VBScript 教程</a>
-<a href="../vibe-coding.html">Vibe Coding 教程</a>
-<a href="../vscode.html">VSCode 教程</a>
-<a href="../vue2.html">Vue.js 教程</a>
-<a href="../vue3.html">Vue3 教程</a>
-<a href="../w3c.html">W3C 教程</a>
-<a href="../webservices.html">Web Service 教程</a>
-<a href="../wsdl.html">WSDL 教程</a>
-<a href="../xlink.html">XLink 教程</a>
-<a href="../dom.html">XML DOM 教程</a>
-<a href="../schema.html">XML Schema 教程</a>
-<a href="../xml.html">XML 教程</a>
-<a href="../xpath.html">XPath 教程</a>
-<a href="../xquery.html">XQuery 教程</a>
-<a href="../xslfo.html">XSLFO 教程</a>
-<a href="../xsl.html">XSLT 教程</a>
-<a href="../zig.html">Zig 教程</a>
-<a href="../data-structures.html">数据结构</a>
-<a href="../ml.html">机器学习</a>
-<a href="../regexp.html">正则表达式</a>
-<a href="../assembly.html">汇编语言</a>
-<a href="../quiz.html">测验</a>
-<a href="../browsers.html">浏览器</a>
-<a href="../quality.html">网站品质</a>
-<a href="../web.html">网站建设指南</a>
-<a href="../hosting.html">网站服务器教程</a>
-<a href="../np.html">网络协议</a>
-<a href="../computer-organization.html">计算机组成原理</a>
-<a href="../design-pattern.html">设计模式</a>
-</div>
-</div>
 </div>
 </div>
 </div>

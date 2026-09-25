@@ -60,9 +60,6 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div>
 <div class="row">
 <div class="col right-list">
-<button class="btn btn-responsive-nav btn-inverse" id="pull">
-<i class="fa fa-navicon"></i>
-</button>
 </div>
 <div class="col search search-desktop last">
 <div class="search-input">
@@ -79,56 +76,56 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="col middle-column big-middle-column">
 <div class="article">
 <div class="article-heading">
-<h2>Redis 数据结构使用场景</h2> <h3><em>分类</em> <a href="../w3cnote_genre/code.html" title="编程技术">编程技术</a> </h3>
+<h2>Redisデータ構造の使用シーン</h2> <h3><em>分类</em> <a href="../w3cnote_genre/code.html" title="编程技术">编程技术</a> </h3>
 </div>
 <div class="article-body note-body">
 <div class="article-intro">
 <!-- ad start-->
 <!-- ad end-->
-<h3>一、redis 数据结构使用场景</h3>
-<p>原来看过 redisbook 这本书，对 redis 的基本功能都已经熟悉了，从上周开始看 redis 的源码。目前目标是吃透 redis 的数据结构。我们都知道，在 redis 中一共有5种数据结构，那每种数据结构的使用场景都是什么呢？</p>
+<h3>一、redisデータ構造の使用シーン</h3>
+<p>以前redisbookという本を読んで、redisの基本機能はすでに熟知していましたが、先週からredisのソースコードを読み始めました。現在の目標はredisのデータ構造を完全に理解することです。ご存知の通り、redisには全部で5つのデータ構造がありますが、それぞれのデータ構造の使用シーンはどのようなものなのでしょうか。</p>
 <ul>
-<li>String——字符串</li>
+<li>String——文字列</li>
 <li>Hash——字典</li>
 <li>List——列表</li>
 <li>Set——集合</li>
-<li>Sorted Set——有序集合</li>
+<li>Sorted Set——ソート済みセット</li>
 </ul>
-<p>下面我们就来简单说明一下它们各自的使用场景：</p>
-<h4>1. String——字符串</h4>
-<p>String 数据结构是简单的 key-value 类型，value 不仅可以是 String，也可以是数字（当数字类型用 Long 可以表示的时候encoding 就是整型，其他都存储在 sdshdr 当做字符串）。使用 Strings 类型，可以完全实现目前 Memcached 的功能，并且效率更高。还可以享受 Redis 的定时持久化（可以选择 RDB 模式或者 AOF 模式），操作日志及 Replication 等功能。除了提供与 Memcached 一样的 get、set、incr、decr 等操作外，Redis 还提供了下面一些操作：</p><ul>
-<li><code>LEN niushuai</code>：O(1)获取字符串长度</li>
-<li><code>APPEND niushuai redis</code>：往字符串 append 内容，而且采用智能分配内存（每次2倍）</li>
-<li>设置和获取字符串的某一段内容</li>
-<li>设置及获取字符串的某一位（bit）</li>
-<li>批量设置一系列字符串的内容</li>
+<p>それでは、それぞれの使用シーンについて簡単に説明します：</p>
+<h4>1. String——文字列</h4>
+<p>Stringデータ構造はシンプルなkey-value型で、valueはStringだけでなく数値にもなります（数値型がLongで表現できる場合、encodingは整数型になり、それ以外はすべてsdshdrに文字列として格納されます）。Strings型を使用すると、現在のMemcachedの機能を完全に実装でき、しかも効率がさらに高くなります。また、Redisの定期永続化（RDBモードまたはAOFモードを選択可能）、操作ログ、Replicationなどの機能も利用できます。Memcachedと同じget、set、incr、decrなどの操作を提供するだけでなく、Redisは以下の操作も提供しています：</p><ul>
+<li><code>LEN niushuai</code>：O(1)で文字列長を取得</li>
+<li><code>APPEND niushuai redis</code>文字列に内容をappendし、しかもインテリジェントなメモリ割り当て（毎回2倍）を採用します。</li>
+<li>文字列の特定の範囲の内容を設定および取得する</li>
+<li>文字列の特定のビット（bit）を設定・取得します。</li>
+<li>一連の文字列の内容を一括設定する</li>
 <li>原子计数器</li>
-<li>GETSET 命令的妙用，请于清空旧值的同时设置一个新值，配合原子计数器使用</li>
+<li>GETSETコマンドの巧妙な使い方：古い値をクリアすると同時に新しい値を設定し、アトミックカウンターと併用します。</li>
 </ul>
 <h4>2. Hash——字典</h4>
-<p>在 Memcached 中，我们经常将一些结构化的信息打包成 hashmap，在客户端序列化后存储为一个字符串的值（一般是 JSON 格式），比如用户的昵称、年龄、性别、积分等。这时候在需要修改其中某一项时，通常需要将字符串（JSON）取出来，然后进行反序列化，修改某一项的值，再序列化成字符串（JSON）存储回去。简单修改一个属性就干这么多事情，消耗必定是很大的，也不适用于一些可能并发操作的场合（比如两个并发的操作都需要修改积分）。而 Redis 的 Hash 结构可以使你像在数据库中 Update 一个属性一样只修改某一项属性值。</p><ul>
-<li>存储、读取、修改用户属性</li>
+<p>Memcachedでは、構造化された情報をhashmapにまとめ、クライアント側でシリアライズした後に文字列の値（通常はJSON形式）として格納することがよくあります。例えば、ユーザーのニックネーム、年齢、性別、ポイントなどです。このとき、その中の特定の項目を変更する必要がある場合、通常は文字列（JSON）を取り出してデシリアライズし、特定の項目の値を変更してから、再び文字列（JSON）にシリアライズして保存し直す必要があります。単純な属性を1つ変更するだけでこれだけのことを行うのは、コストが大きくなり、並行操作が発生する可能性のある場面（例えば、2つの並行操作がどちらもポイントを変更する必要がある場合）にも適していません。一方、RedisのHash構造を使用すると、データベースで属性をUpdateするように、特定の属性値を1つだけ変更できます。</p><ul>
+<li>ユーザー属性の保存、読み取り、変更</li>
 </ul>
 <h4>3. List——列表</h4>
-<p>List 说白了就是链表（redis 使用双端链表实现的 List），相信学过数据结构知识的人都应该能理解其结构。使用 List 结构，我们可以轻松地实现最新消息排行等功能（比如新浪微博的 TimeLine ）。List 的另一个应用就是消息队列，可以利用 List 的 *PUSH 操作，将任务存在 List 中，然后工作线程再用 POP 操作将任务取出进行执行。Redis 还提供了操作 List 中某一段元素的 API，你可以直接查询，删除 List 中某一段的元素。</p><ul>
+<p>Listは要するにリンクリストです（redisは双方向リンクリストでListを実現しています）。データ構造の知識を学んだことがある人なら誰でもその構造を理解できるはずです。List構造を使用することで、最新メッセージランキングなどの機能（例えば新浪微博のTimeLine）を簡単に実装できます。Listのもう一つの応用はメッセージキューです。Listの*PUSH操作を利用してタスクをListに保存し、ワーカースレッドがPOP操作でタスクを取り出して実行します。Redisはまた、List内の特定の範囲の要素を操作するAPIを提供しており、List内の特定の範囲の要素を直接照会したり削除したりできます。</p><ul>
 <li>微博 TimeLine</li>
 <li>消息队列</li>
 </ul>
 <h4>4. Set——集合</h4>
-<p>Set 就是一个集合，集合的概念就是一堆不重复值的组合。利用 Redis 提供的 Set 数据结构，可以存储一些集合性的数据。比如在微博应用中，可以将一个用户所有的关注人存在一个集合中，将其所有粉丝存在一个集合。因为 Redis 非常人性化的为集合提供了求交集、并集、差集等操作，那么就可以非常方便的实现如共同关注、共同喜好、二度好友等功能，对上面的所有集合操作，你还可以使用不同的命令选择将结果返回给客户端还是存集到一个新的集合中。</p><ul>
-<li>共同好友、二度好友</li>
-<li>利用唯一性，可以统计访问网站的所有独立 IP</li>
-<li>好友推荐的时候，根据 tag 求交集，大于某个 threshold 就可以推荐</li>
+<p>Setはつまり集合です。集合の概念とは、重複しない値の組み合わせのことです。Redisが提供するSetデータ構造を利用して、集合的なデータを保存できます。例えば、微博アプリでは、あるユーザーのすべてのフォロー先を一つの集合に保存し、そのすべてのファンを別の集合に保存できます。Redisは集合に対して積集合、和集合、差集合などの操作を非常に使いやすく提供しているため、共通のフォロー、共通の好み、友達の友達などの機能を非常に簡単に実現できます。上記のすべての集合操作について、異なるコマンドを使用して、結果をクライアントに返すか新しい集合に保存するかを選択できます。</p><ul>
+<li>共通の友達、友達の友達</li>
+<li>一意性を利用して、ウェブサイトにアクセスするすべての独立したIPを統計できます。</li>
+<li>友達を推薦する際に、tagに基づいて積集合を求め、あるしきい値（threshold）より大きければ推薦できます。</li>
 </ul>
-<h4>5. Sorted Set——有序集合</h4>
-<p>和Sets相比，Sorted Sets是将 Set 中的元素增加了一个权重参数 score，使得集合中的元素能够按 score 进行有序排列，比如一个存储全班同学成绩的 Sorted Sets，其集合 value 可以是同学的学号，而 score 就可以是其考试得分，这样在数据插入集合的时候，就已经进行了天然的排序。另外还可以用 Sorted Sets 来做带权重的队列，比如普通消息的 score 为1，重要消息的 score 为2，然后工作线程可以选择按 score 的倒序来获取工作任务。让重要的任务优先执行。</p><ul>
-<li>带有权重的元素，比如一个游戏的用户得分排行榜</li>
-<li>比较复杂的数据结构，一般用到的场景不算太多</li>
+<h4>5. Sorted Set——ソート済みセット</h4>
+<p>Setsと比較すると、Sorted SetsはSetの要素に重みパラメータであるscoreを追加したもので、集合内の要素がscoreに従って順序よく並ぶようにします。例えば、クラス全員の成績を格納するSorted Setsでは、その集合のvalueは生徒の学籍番号にでき、scoreは試験の点数にできます。これにより、データを集合に挿入する時点で、自然な並び替えがすでに行われています。また、Sorted Setsを重み付きキューとして使うこともできます。例えば、普通のメッセージのscoreを1、重要なメッセージのscoreを2にし、ワーカースレッドがscoreの降順で作業タスクを取得するように選択できます。重要なタスクを優先的に実行させることができます。</p><ul>
+<li>重みを持つ要素、例えばゲームのユーザースコアランキング。</li>
+<li>比較的複雑なデータ構造であり、一般的に使用されるシーンはそれほど多くありません。</li>
 </ul>
-<h3>二、redis 其他功能使用场景</h3>
-<h4>1. 订阅-发布系统</h4>
-<p>Pub/Sub 从字面上理解就是发布（Publish）与订阅（Subscribe），在 Redis 中，你可以设定对某一个 key 值进行消息发布及消息订阅，当一个 key 值上进行了消息发布后，所有订阅它的客户端都会收到相应的消息。这一功能最明显的用法就是用作实时消息系统，比如普通的即时聊天，群聊等功能。</p><h4>2. 事务——Transactions</h4>
-<p>谁说 NoSQL 都不支持事务，虽然 Redis 的 Transactions 提供的并不是严格的 ACID 的事务（比如一串用 EXEC 提交执行的命令，在执行中服务器宕机，那么会有一部分命令执行了，剩下的没执行），但是这个 Transactions 还是提供了基本的命令打包执行的功能（在服务器不出问题的情况下，可以保证一连串的命令是顺序在一起执行的，中间有会有其它客户端命令插进来执行）。Redis 还提供了一个 Watch 功能，你可以对一个 key 进行 Watch，然后再执行 Transactions，在这过程中，如果这个 Watched 的值进行了修改，那么这个 Transactions 会发现并拒绝执行。</p> </div>
+<h3>二、redisのその他の機能の使用シーン</h3>
+<h4>1. パブリッシュ/サブスクライブシステム</h4>
+<p>Pub/Subは、文字通り理解すると公開（Publish）と購読（Subscribe）です。Redisでは、特定のkey値に対してメッセージの公開とメッセージの購読を設定できます。あるkey値に対してメッセージが公開されると、それを購読しているすべてのクライアントが対応するメッセージを受信します。この機能の最も明確な使い方は、リアルタイムメッセージシステムとしての利用です。例えば、通常のインスタントチャット、グループチャットなどの機能です。</p><h4>2. 事务——Transactions</h4>
+<p>NoSQLがすべてトランザクションをサポートしないと誰が言ったのでしょうか。RedisのTransactionsは厳密なACIDトランザクションではありませんが（例えば、EXECで送信して実行される一連のコマンドの実行中にサーバーがダウンした場合、一部のコマンドは実行され、残りは実行されません）、このTransactionsはそれでも基本的なコマンドのパッケージ実行機能を提供します（サーバーに問題が発生しない場合、一連のコマンドが順番にまとめて実行されることを保証でき、その間に他のクライアントのコマンドが割り込んで実行されることはありません）。RedisはまたWatch機能を提供しており、あるkeyをWatchしてからTransactionsを実行できます。その過程で、このWatchされた値が変更された場合、このTransactionsはそれを検出して実行を拒否します。</p> </div>
 </div>
 <div class="previous-next-links">
 <div class="previous-design-link">← <a href="./speed-up-your-website.html" rel="prev">加快网站访问速度的9大方法</a> </div>
@@ -237,7 +234,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>点我分享笔记</h3>
+<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 &lt;p style="font-size:14px;"&gt;笔记需要是本篇文章的内容扩展！&lt;/p&gt;&lt;br&gt;
 	&lt;p style="font-size:12px;"&gt;&lt;a href="../tougao.html" target="_blank"&gt;文章投稿，可点击这里&lt;/a&gt;&lt;/p&gt;
 	&lt;p style="font-size:14px;"&gt;&lt;a href="./runoob-user-test-intro.html" target="_blank"&gt;注册邀请码获取方式&lt;/a&gt;&lt;/p&gt;
@@ -486,181 +483,6 @@ var aid = 9481;
 
 </div>
 -->
-<div class="sidebar-box cate-list" style="display:none;">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">热门文章</a>
-</div>
-<div class="membership">
-<ul class="membership">
-<li><a href="https://mp.weixin.qq.com/s/ZaP6YNgKTCHYy3r2WPBBaw" target="_blank" title="2024 年 04 月 JavaScript 框架排行榜">2024 年 04 月 JavaScript 框架排行榜</a></li>
-<li><a href="https://mp.weixin.qq.com/s/JBR2twC0t6krjjuxqvhsEQ" target="_blank" title="免费、开源、好用的 SQL 客户端合集">免费、开源、好用的 SQL 客户端合集</a></li>
-<li><a href="https://mp.weixin.qq.com/s/TwV3YQjA1glyaW7TiHvhlA" target="_blank" title="优雅的代码规范，提升代码质量">优雅的代码规范，提升代码质量</a></li>
-<li><a href="https://mp.weixin.qq.com/s/CnUJ-2OHPbBKlnVpjDzavA" target="_blank" title="命令行中的趣味世界，牛也能说话，有趣又好玩">命令行中的趣味世界，牛也能说话，有趣又好玩</a></li>
-<li><a href="https://mp.weixin.qq.com/s/7NKl-mD7N8CeSNQlbKDEWA" target="_blank" title="2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？">2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？</a></li>
-<li><a href="https://mp.weixin.qq.com/s/yWlSVDKobtDhThnhirVRpw" target="_blank" title="免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端">免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端</a></li>
-</ul>
-</div>
-</div>
-<div class="sidebar-box cate-list">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">教程列表</a>
-</div>
-<div class="cate-items">
-<a href="../ado.html">ADO 教程</a>
-<a href="../ai-agent.html">AI Agent 教程</a>
-<a href="../ai.html">AI 入门教程</a>
-<a href="../ai-math.html">AI 数学基础</a>
-<a href="../ajax.html">Ajax 教程</a>
-<a href="../android.html">Android 教程</a>
-<a href="../angularjs2.html">Angular2 教程</a>
-<a href="../angularjs.html">AngularJS 教程</a>
-<a href="../appml.html">AppML 教程</a>
-<a href="../asp.html">ASP 教程</a>
-<a href="../aspnet.html">ASP.NET 教程</a>
-<a href="../bootstrap.html">Bootstrap 教程</a>
-<a href="../bootstrap4.html">Bootstrap4 教程</a>
-<a href="../bootstrap5.html">Bootstrap5 教程</a>
-<a href="../cprogramming.html">C 教程</a>
-<a href="../c-dsa.html">C 语言数据结构与算法</a>
-<a href="../csharp.html">C# 教程</a>
-<a href="../cplusplus.html">C++ 教程</a>
-<a href="../chartjs.html">Chart.js 教程</a>
-<a href="../claude-code.html">Claude Code 教程</a>
-<a href="../cmake.html">CMake 教程</a>
-<a href="../codex.html">Codex 教程</a>
-<a href="../cssref.html">CSS 参考手册</a>
-<a href="../css.html">CSS 教程</a>
-<a href="../css3.html">CSS3 教程</a>
-<a href="../cursor.html">Cursor 教程</a>
-<a href="../dart.html">Dart 教程</a>
-<a href="../dash.html">Dash 教程</a>
-<a href="../deepseek-harness.html">DeepSeek Harness</a>
-<a href="../django.html">Django 教程</a>
-<a href="../docker.html">Docker 教程</a>
-<a href="../dtd.html">DTD 教程</a>
-<a href="../echarts.html">ECharts 教程</a>
-<a href="../eclipse.html">Eclipse 教程</a>
-<a href="../electron.html">Electron 教程</a>
-<a href="../fastapi.html">FastAPI 教程</a>
-<a href="../firebug.html">Firebug 教程</a>
-<a href="../flask.html">Flask 教程</a>
-<a href="../flutter.html">Flutter 教程</a>
-<a href="../font-awesome.html">Font Awesome 图标</a>
-<a href="../foundation.html">Foundation 教程</a>
-<a href="../git.html">Git 教程</a>
-<a href="../go.html">Go 语言教程</a>
-<a href="../googleapi.html">Google 地图 API 教程</a>
-<a href="../hermes-agent.html">Hermes Agent</a>
-<a href="../highcharts.html">Highcharts 教程</a>
-<a href="../htmldom.html">HTML DOM 教程</a>
-<a href="../tags.html">HTML 参考手册</a>
-<a href="../charsets.html">HTML 字符集</a>
-<a href="../html.html">HTML 教程</a>
-<a href="../http.html">HTTP 教程</a>
-<a href="../ionic.html">ionic 教程</a>
-<a href="../ios.html">iOS 教程</a>
-<a href="../java.html">Java 教程</a>
-<a href="../jsref.html">JavaScript 参考手册</a>
-<a href="../js.html">Javascript 教程</a>
-<a href="../jeasyui.html">jQuery EasyUI 教程</a>
-<a href="../jquerymobile.html">jQuery Mobile 教程</a>
-<a href="../jqueryui.html">jQuery UI 教程</a>
-<a href="../jquery.html">jQuery 教程</a>
-<a href="../json.html">JSON 教程</a>
-<a href="../jsp.html">JSP 教程</a>
-<a href="../julia.html">Julia 教程</a>
-<a href="../jupyter-notebook.html">Jupyter Notebook 教程</a>
-<a href="../kotlin.html">Kotlin 教程</a>
-<a href="../langchain.html">LangChain 教程</a>
-<a href="../latex.html">LaTeX 教程</a>
-<a href="../linux.html">Linux 教程</a>
-<a href="../lua.html">Lua 教程</a>
-<a href="../markdown.html">Markdown 教程</a>
-<a href="../matplotlib.html">Matplotlib 教程</a>
-<a href="../maven.html">Maven 教程</a>
-<a href="../memcached.html">Memcached 教程</a>
-<a href="../mongodb.html">MongoDB 教程</a>
-<a href="../mysql.html">MySQL 教程</a>
-<a href="../nextjs.html">Next.js 教程</a>
-<a href="../nlp.html">NLP 教程</a>
-<a href="../nodejs.html">Node.js 教程</a>
-<a href="../numpy.html">NumPy 教程</a>
-<a href="../obsidian.html">Obsidian 教程</a>
-<a href="../ollama.html">Ollama 教程</a>
-<a href="../opencode.html">OpenCode 教程</a>
-<a href="../opencv.html">OpenCV 教程</a>
-<a href="../pandas.html">Pandas 教程</a>
-<a href="../perl.html">Perl 教程</a>
-<a href="../php.html">PHP 教程</a>
-<a href="../pi-agent.html">Pi Agent</a>
-<a href="../pillow.html">Pillow 教程</a>
-<a href="../playwright.html">Playwright 教程</a>
-<a href="../postgresql.html">PostgreSQL 教程</a>
-<a href="../powershell.html">PowerShell</a>
-<a href="../pycharm.html">Pycharm 教程</a>
-<a href="../python3.html">Python 3 教程</a>
-<a href="../python.html">Python 基础教程</a>
-<a href="../python-design-pattern.html">Python 设计模式</a>
-<a href="../python-qt.html">Python 量化交易</a>
-<a href="../pytorch.html">PyTorch 教程</a>
-<a href="../r.html">R 教程</a>
-<a href="../rdf.html">RDF 教程</a>
-<a href="../react.html">React 教程</a>
-<a href="../redis.html">Redis 教程</a>
-<a href="../restfulapi.html">RESTful API</a>
-<a href="../rss.html">RSS 教程</a>
-<a href="../ruby.html">Ruby 教程</a>
-<a href="../rust.html">Rust 教程</a>
-<a href="../sass.html">Sass 教程</a>
-<a href="../scala.html">Scala 教程</a>
-<a href="../scipy.html">SciPy 教程</a>
-<a href="../selenium.html">Selenium 教程</a>
-<a href="../servlet.html">Servlet 教程</a>
-<a href="../skills.html">Skills 教程</a>
-<a href="../sklearn.html">Sklearn 教程</a>
-<a href="../soap.html">SOAP 教程</a>
-<a href="../sql.html">SQL 教程</a>
-<a href="../sqlite.html">SQLite 教程</a>
-<a href="../svg.html">SVG 教程</a>
-<a href="../svn.html">SVN 教程</a>
-<a href="../swagger.html">Swagger 教程</a>
-<a href="../swift.html">Swift 教程</a>
-<a href="../tailwindcss.html">Tailwind CSS 教程</a>
-<a href="../tcpip.html">TCP/IP 教程</a>
-<a href="../tensorflow.html">TensorFlow 教程</a>
-<a href="../typescript.html">TypeScript 教程</a>
-<a href="../uniapp.html">uni-app 教程</a>
-<a href="../vbscript.html">VBScript 教程</a>
-<a href="../vibe-coding.html">Vibe Coding 教程</a>
-<a href="../vscode.html">VSCode 教程</a>
-<a href="../vue2.html">Vue.js 教程</a>
-<a href="../vue3.html">Vue3 教程</a>
-<a href="../w3c.html">W3C 教程</a>
-<a href="../webservices.html">Web Service 教程</a>
-<a href="../wsdl.html">WSDL 教程</a>
-<a href="../xlink.html">XLink 教程</a>
-<a href="../dom.html">XML DOM 教程</a>
-<a href="../schema.html">XML Schema 教程</a>
-<a href="../xml.html">XML 教程</a>
-<a href="../xpath.html">XPath 教程</a>
-<a href="../xquery.html">XQuery 教程</a>
-<a href="../xslfo.html">XSLFO 教程</a>
-<a href="../xsl.html">XSLT 教程</a>
-<a href="../zig.html">Zig 教程</a>
-<a href="../data-structures.html">数据结构</a>
-<a href="../ml.html">机器学习</a>
-<a href="../regexp.html">正则表达式</a>
-<a href="../assembly.html">汇编语言</a>
-<a href="../quiz.html">测验</a>
-<a href="../browsers.html">浏览器</a>
-<a href="../quality.html">网站品质</a>
-<a href="../web.html">网站建设指南</a>
-<a href="../hosting.html">网站服务器教程</a>
-<a href="../np.html">网络协议</a>
-<a href="../computer-organization.html">计算机组成原理</a>
-<a href="../design-pattern.html">设计模式</a>
-</div>
-</div>
 </div>
 </div>
 </div>

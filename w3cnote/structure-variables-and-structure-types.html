@@ -60,9 +60,6 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div>
 <div class="row">
 <div class="col right-list">
-<button class="btn btn-responsive-nav btn-inverse" id="pull">
-<i class="fa fa-navicon"></i>
-</button>
 </div>
 <div class="col search search-desktop last">
 <div class="search-input">
@@ -79,103 +76,103 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="col middle-column big-middle-column">
 <div class="article">
 <div class="article-heading">
-<h2>结构体变量和结构体类型的定义</h2> <h3><em>分类</em> <a href="../w3cnote_genre/code.html" title="编程技术">编程技术</a> </h3>
+<h2>構造体変数と構造体型の定義</h2> <h3><em>分类</em> <a href="../w3cnote_genre/code.html" title="编程技术">编程技术</a> </h3>
 </div>
 <div class="article-body note-body">
 <div class="article-intro">
 <!-- ad start-->
 <!-- ad end-->
-<h3>1.结构体类型定义</h3>
-<p>定义方式1：</p>
+<h3>1.構造体タイプ定義</h3>
+<p>定義方法1：</p>
 <pre>Typedef struct  LNode {
    int  data;  // 数据域
    struct LNode   *next;  // 指针域
 } *LinkList;</pre>
-<p>定义方式2：</p>
+<p>定義方法2：</p>
 <pre>struct  LNode {
    int  data;  // 数据域
    struct LNode   *next;  // 指针域
 
 };
 Typedef struct  LNode  *LinkList;</pre>
-<p>以上两个定义方式是等价的，是将<strong>*LinkList</strong>定 义为<strong>struct  LNode</strong>类型，即<strong>LinkList</strong>被定义为一个类型名。这样就可以用<strong>LinkList</strong>来定义说明新的变量了，如：</p>
+<p>上記の2つの定義方法は等価であり、つまり<strong>*LinkList</strong>定 义为<strong>struct  LNode</strong>类型，即<strong>LinkList</strong>型名として定義される。これにより、以下のように使用できる。<strong>LinkList</strong>新しい変数を定義・宣言するために使用します。例：</p>
 <pre>LinkList  L;</pre>
-<p>即将<strong>L</strong>定义为<strong>struct  LNode</strong>类型的指针变量。</p>
-<h3>2.结构体类型变量定义</h3>
-<p>定义方式1：</p>
+<p>即将<strong>L</strong>定义为<strong>struct  LNode</strong>型のポインタ変数。</p>
+<h3>2. 構造体型変数の定義</h3>
+<p>定義方法1：</p>
 <pre>struct  LNode {
    int  data;  // 数据域
    struct LNode   *next;  // 指针域
 
 }LnodeA;</pre>
-<p>定义方式2：</p>
+<p>定義方法2：</p>
 <pre>struct  LNode {
    int  data;  // 数据域
    struct LNode   *next;  // 指针域
 
 };
 struct  LNode LnodeA;</pre>
-<p>以上两个定义方式也是等价的，这样就将<strong>LnodeA</strong>定义为一个<strong>struct  LNode</strong>类型的变量，即<strong>LnodeA</strong>为一个<strong>struct  LNode</strong>类型的变量名。</p>
-<hr/><h2>结构体内标的定义方式</h2>
-<h3>1.结构体，透明表区，DATA ELEMENT，DOMAIN</h3>
-<p>透明表是对一个物理表的逻辑描述，透明表里有许多字段，并且定义某些字段为 PRIMARY KEY，字段里又包含 DATA ELEMENT，用来描述语言属性和技术属性。DATA ELEMENT 中又包含 DOMAIN，它是定义数据类型和字段长度。</p>
-<p>结构体一般是用来定义一个结构变量，有临时数据的储存，没有 PRIMARY KEY，结构体里包含 COMPONENT 而不是 FIELD</p>
+<p>上記の2つの定義方法も等価であり、これにより<strong>LnodeA</strong>定义为一个<strong>struct  LNode</strong>型の変数、すなわち<strong>LnodeA</strong>为一个<strong>struct  LNode</strong>型の変数名。</p>
+<hr/><h2>構造体の内部テーブルの定義方法</h2>
+<h3>1. 構造体、透過テーブル領域、DATA ELEMENT、DOMAIN</h3>
+<p>透明テーブルは物理テーブルの論理的な記述です。透明テーブルには多くのフィールドがあり、特定のフィールドがPRIMARY KEYとして定義されます。フィールドには、言語属性と技術属性を記述するDATA ELEMENTが含まれます。DATA ELEMENTには、データ型とフィールド長を定義するDOMAINが含まれます。</p>
+<p>構造体は通常、構造変数を定義するために使用され、一時データの保存領域を持ち、PRIMARY KEYはありません。構造体にはFIELDではなくCOMPONENTが含まれます。</p>
 <h3>2.Internal table 中的属性分为三种 LINE TYPE ，KEY，TABLE KIND。</h3>
-<p>LINE TYPE 在 INTERNAL TABLE 里单独的一行叫 LINE TYPE，每一行的结构都一样。</p>
-<p>KEY：相当于数据库里的主键。在排序的时候有用，UNIQUE 或 NON-UNIQUE。</p>
+<p>INTERNAL TABLE内の1行をLINE TYPEと呼び、各行の構造はすべて同じです。</p>
+<p>KEY: データベースの主キーに相当します。ソートの際に有用で、UNIQUEまたはNON-UNIQUEがあります。</p>
 <p>TABLE KIND：分为 STANDARD，SORTED，HASHED。</p>
-<h3>三种类型的内表的定义</h3>
+<h3>3種類の内部テーブルの定義</h3>
 <p>标准表：</p>
 <pre>DATA itab1 TYPE STANDARD TABLE OF scarr WITH NON-UNIQUE KEY carrid.</pre>
 <p>排序表：</p>
 <pre>DATA itab2 TYPE SORTED TABLE OF scarr WITH NON-UNIQUE KEY carrid.</pre>
 <p>哈希表：</p>
 <pre>DATA itab3 TYPE HASHED TABLE OF scarr WITH UNIQUE KEY carrid.</pre>
-<h3>一般定义方法（标准表）</h3>
-<p>根据数据库表定义标准表</p>
+<h3>一般的な定義方法（標準テーブル）</h3>
+<p>データベーステーブルに基づいて標準テーブルを定義します</p>
 <pre>DATA itab4 TYPE TABLE OF scarr.</pre>
-<p>根据自建的结构变量定义标准表（最常用）</p>
+<p>自前の構造変数に基づいて標準テーブルを定義します（最も一般的）。</p>
 <pre>DATA: BEGIN OF wa,
     carrid TYPE scarr-carrid,
     carrnamen TYPE scarr-carrname,
     END OF wa.
 DATA itab5 LIKE TABLE OF wa.</pre>
-<p>根据数据字典中的表类型定义标准表</p>
+<p>データディクショナリのテーブルタイプに基づいて標準テーブルを定義します。</p>
 <pre>DATA itab6 TYPE ztabtype00_1.</pre>
-<p>根据内表定义内表</p>
+<p>内部テーブルに基づいて内部テーブルを定義する</p>
 <pre>DATA itab7 LIKE itab6.</pre>
-<p>根据内表定义结构</p>
+<p>内部テーブルに基づいて構造を定義する</p>
 <pre>DATA wa1 LIKE LINE OF itab7.</pre>
-<p>3. 定义结构的方式</p>
-<p>根据数据字典中的表或者结构来定义程序的结构变量(或类型)</p>
+<p>3. 構造を定義する方法</p>
+<p>データディクショナリのテーブルまたは構造体に基づいて、プログラムの構造変数（または型）を定義します。</p>
 <pre>types str1 type spfli.
 data str2 type  sflight.</pre>
-<p>自定义程序中的结构变量(或类型)－最常见的</p>
+<p>プログラム内の構造変数（または型）を独自に定義します－最も一般的です。</p>
 <pre>data: begin of wa,
 carrid type spfli-carrid,
 com(10) type c,
 end of wa.</pre>
-<p>根据内表定义结构</p>
+<p>内部テーブルに基づいて構造を定義する</p>
 <pre>data wa like line of itab.</pre>
-<p><strong>注：</strong>根据数据库表定义的一定是结构</p>
-<p>同名字段的赋值（重要）</p>
+<p><strong>注：</strong>データベーステーブルから定義されるものは必ず構造です</p>
+<p>同名フィールドの代入（重要）</p>
 <pre>Move-corresponding A  to  B.</pre>
-<p>read 是读取内表的一条数据</p>
+<p>readは内部テーブルの1件のデータを読み取ります。</p>
 <pre>read table itab like table of wa.</pre>
-<p>读一内表的多条数据应用 loop</p>
+<p>内部テーブルの複数件のデータを読み取るにはloopを使用します。</p>
 <pre>loop at itab into wa.</pre>
-<hr/><h2>C/C++ 语言中的解释</h2>
+<hr/><h2>C/C++ 言語での説明</h2>
 <p><strong>结构体定义</strong></p>
-<p>结构体(struct)是由一系列具有相同类型或不同类型的数据构成的数据集合，也叫结构。</p>
+<p>構造体（struct）は、同じ型または異なる型を持つ一連のデータから構成されるデータ集合であり、構造とも呼ばれます。</p>
 <p><strong>结构体作用</strong></p>
-<p>结构体和其他类型基础数据类型一样，例如 int 类型，char 类型 只不过结构体可以做成你想要的数据类型。以方便日后的使用。</p><p>在实际项目中，结构体是大量存在的。研发人员常使用结构体来封装一些属性来组成新的类型。</p><p>结构体在函数中的作用不是简便，其最主要的作用就是封装。封装的好处就是可以再次利用。让使用者不必关心这个是什么，只要根据定义使用就可以了。</p><p>
-<strong>结构体的大小与内存对齐</strong>
-</p><p>结构体的大小不是结构体元素单纯相加就行的，因为我们现在主流的计算机使用的都是 32Bit 字长的 CPU，对这类型的 CPU 取 4 个字节的数要比取一个字节要高效，也更方便。所以在结构体中每个成员的首地址都是4的整数倍的话，取数据元素是就会相对更高效，这就是内存对齐的由来。</p><p>每个特定平台上的编译器都有自己的默认"对齐系数"(也叫对齐模数)。程序员可以通过预编译命令<span class="marked">#pragma pack(n)，n=1,2,4,8,1</span>6 来改变这一系数，其中的n就是你要指定的"对齐系数"。</p><p>
+<p>構造体は他の基本データ型（int型、char型など）と同じですが、構造体は必要なデータ型にカスタマイズできる点が異なります。将来の使用に便利です。</p><p>実際のプロジェクトでは、構造体は数多く存在します。開発者は構造体を使用して属性をカプセル化し、新しい型を構成することがよくあります。</p><p>構造体の関数における役割は簡素化ではなく、その最も重要な役割はカプセル化です。カプセル化の利点は再利用が可能になることです。利用者はそれが何であるかを気にする必要がなく、定義に従って使用するだけで済みます。</p><p>
+<strong>構造体のサイズとメモリのアライメント</strong>
+</p><p>構造体のサイズは、構造体の要素を単純に合計しただけでは決まりません。現在の主流コンピュータは32ビットのCPUを使用しており、このタイプのCPUでは4バイトの数値を取得する方が1バイトを取得するよりも効率的で便利だからです。したがって、構造体内の各メンバーの先頭アドレスが4の倍数であれば、データ要素を取得する際により効率的になります。これがメモリアライメントの由来です。</p><p>各プラットフォームのコンパイラには、独自のデフォルトの「アライメント係数」（アライメントモジュラスとも呼ばれます）があります。プログラマはプリコンパイルコマンドを使用して...<span class="marked">#pragma pack(n)，n=1,2,4,8,1</span>6でこの係数を変更します。ここでのnが指定する「アライメント係数」です。</p><p>
 <p><strong>规则：</strong></p>　　
-<ul><li>1、数据成员对齐规则：结构(struct)(或联合(union))的数据成员，第一个数据成员放在 offset 为 0 的地方，以后每个数据成员的对齐按照<span class="marked">#pragma pack</span>指定的数值和这个数据成员自身长度中，比较小的那个进行。</li><li>2、结构(或联合)的整体对齐规则：在数据成员完成各自对齐之后，结构(或联合)本身也要进行对齐，对齐将按照&lt; span class="marked"&gt;#pragma pack指定的数值和结构(或联合)最大数据成员长度中，比较小的那个进行。</li><li>3、结合1、2颗推断：当#pragma pack的n值等于或超过所有数据成员长度的时候，这个n值的大小将不产生任何效果。</li></ul>
-<h3>C++ 中的结构体</h3>
-<p>在 C 语言中，可以定义结构体类型，将多个相关的变量包装成为一个整体使用。在结构体中的变量，可以是相同、部分相同，或完全不同的数据类型。在 C 语言中，结构体不能包含函数。在面向对象的程序设计中，对象具有状态（属性）和行为，状态保存在成员变量中，行为通过成员方法（函数）来实现。C 语言中的结构体只能描述一个对象的状态，不能描述一个对象的行为。在 C++ 中，考虑到 C 语言到 C++ 语言过渡的连续性，对结构体进行了扩展，C++ 的结构体可以包含函数，这样，C++ 的结构体也具有类的功能，与class 不同的是，结构体包含的函数默认为 public，而不是 private。</p>
-<p>C++ 控制台输出例子：</p>　
+<ul><li>1. データメンバーのアライメント規則: 構造体（struct）（または共用体（union））のデータメンバーは、最初のデータメンバーをoffset 0の場所に配置し、以降の各データメンバーのアライメントは次の規則に従います。<span class="marked">#pragma pack</span>指定された値とこのデータメンバー自身の長さのうち、小さい方に従って行われます。</li><li>2. 構造体（または共用体）の全体アライメント規則: データメンバーがそれぞれのアライメントを完了した後、構造体（または共用体）自体もアライメントを行う必要があります。アライメントは&lt; span class="marked"&gt;#pragma packで指定された値と構造体（または共用体）の最大データメンバー長のうち、小さい方に従って行われます。</li><li>3. 1と2を組み合わせると推測できます: #pragma packのn値がすべてのデータメンバーの長さ以上の場合、このn値の大きさは効果を発揮しません。</li></ul>
+<h3>C++ における構造体</h3>
+<p>C言語では、構造体型を定義して、複数の関連する変数をひとつの全体としてまとめて使用できます。構造体内の変数は、同じデータ型、一部が同じデータ型、または完全に異なるデータ型にすることができます。C言語では、構造体は関数を含むことはできません。オブジェクト指向プログラミングでは、オブジェクトは状態（属性）と振る舞いを持ち、状態はメンバ変数に格納され、振る舞いはメンバメソッド（関数）によって実現されます。C言語の構造体はオブジェクトの状態のみを記述でき、オブジェクトの振る舞いを記述することはできません。C++では、C言語からC++言語への移行の連続性を考慮して、構造体が拡張されました。C++の構造体は関数を含むことができるため、C++の構造体もクラスの機能を持ちます。classと異なるのは、構造体に含まれる関数はデフォルトでpublicであり、privateではないことです。</p>
+<p>C++ コンソール出力の例：</p>　
 
 <div class="example">
 <h2 class="example">实例</h2>
@@ -202,10 +199,10 @@ end of wa.</pre>
 </span><span class="hl-brackets">}</span></div>
 </div>
 </div>
-<p><strong>C++中的结构体与类的区别</strong></p>
-<p>类与结构体在 C++ 中只有两点区别，除此这外无任何区别。</p>
-<ul><li>（1）class 中默认的成员访问权限是 private 的，而 struct 中则是 public 的。</li><li>（2）从 class 继承默认是 private 继承，而从 struct 继承默认是 public 继承。</li></ul>
-<p><strong>这两种定义有什么区别?</strong></p>
+<p><strong>C++における構造体とクラスの違い</strong></p>
+<p>クラスと構造体のC++における違いは2点だけで、これ以外には何の違いもありません。</p>
+<ul><li>（1）classではデフォルトのメンバーアクセス権限はprivateですが、structではpublicです。</li><li>（2）classからの継承はデフォルトでprivate継承ですが、structからの継承はデフォルトでpublic継承です。</li></ul>
+<p><strong>この2つの定義にはどのような違いがありますか？</strong></p>
 <pre>typedef struct student
 {
     int num;
@@ -217,22 +214,22 @@ struct student
     int num;
     struct student *next;
 };</pre>
-<p>第二个 struct student 是定义了一个 student 结构体，这个明白吧。</p>
-<p>第一个是用 typedef 把 struct student 这个结构体类型名字重新定义为 student，也就是说 struct student 和 student 表示同一个事物，都是一个类型的标识符，比如 typedef int zhengshu; 就是你把整型 int 重命名为 zhengshu，下面定义：int i; 和 zhengshu i; 两句就是等价的了。</p>
-<p>结构是由基本数据类型构成的、并用一个标识符来命名的各种变量的组合。结构中可以使用不同的数据类型。</p>
-<h3>结构说明和结构变量定义</h3>
-<p>在 Turbo C 中，结构也是一种数据类型，可以使用结构变量，因此，象其它类型的变量一样，在使用结构变量时要先对其定义。</p>
-<p>定义结构变量的一般格式为:</p>
+<p>2番目のstruct studentはstudent構造体を定義しています。これはわかりますね。</p>
+<p>1番目はtypedefを使用してstruct studentという構造体型名をstudentとして再定義しています。つまり、struct studentとstudentは同じものを表し、どちらも型の識別子です。例えば、typedef int zhengshu; はint型をzhengshuに改名したものです。次の定義: int i; と zhengshu i; の2つの文は等価です。</p>
+<p>構造体は基本データ型で構成され、1つの識別子で命名されたさまざまな変数の組み合わせです。構造体では異なるデータ型を使用できます。</p>
+<h3>構造体の宣言と構造体変数の定義</h3>
+<p>Turbo Cでは、構造体もデータ型であり、構造変数を使用できます。したがって、他の型の変数と同様に、構造変数を使用する際にはまず定義する必要があります。</p>
+<p>構造体変数を定義する一般的な書式は次のとおりです。</p>
 <pre>struct 结构名
 { 
     类型 变量名;
     类型 变量名;
 ...
 } 结构变量;</pre>
-<p>结构名是结构的标识符不是变量名。</p>
-<p>类型为第二节中所讲述的五种数据类型(整型、浮点型、字符型、指针型和无值型)。</p>
-<p>构成结构的每一个类型变量称为结构成员，它象数组的元素一样，但数组中元素是以下标来访问的，而结构是按变量名字来访问成员的。</p>
-<p>下面举一个例子来说明怎样定义结构变量。</p>
+<p>構造体名は構造体の識別子であり、変数名ではありません。</p>
+<p>型は第2節で説明した5つのデータ型（整数型、浮動小数点型、文字型、ポインタ型、無値型）です。</p>
+<p>構造体を構成する各型変数は構造体メンバーと呼ばれます。これは配列の要素に似ていますが、配列の要素は添え字でアクセスするのに対し、構造体では変数名でメンバーにアクセスします。</p>
+<p>次に、構造変数の定義方法を説明する例を示します。</p>
 <pre>struct string 
 { 
     char name[8]; 
@@ -241,7 +238,7 @@ struct student
     char depart[20]; 
     float wage1,wage2,wage3; 
 }person; </pre>
-<p>这个例子定义了一个结构名为 string 的结构变量 person，如果省略变量名 person，则变成对结构的说明。用已说明的结构名也可定义结构变量。这样定义时上例变成:</p>
+<p>この例では、構造体名がstringの構造変数personを定義しています。変数名personを省略すると、構造体の説明になります。説明済みの構造体名を使用して構造変数を定義することもできます。このように定義する場合、上記の例は次のようになります。</p>
 <pre>struct string 
 { 
     char name[8]; 
@@ -251,10 +248,10 @@ struct student
     float wage1,wage2,wage3; 
 }; 
 struct string person;</pre>
-<p>如果需要定义多个具有相同形式的结构变量时用这种方法比较方便，它先作结构说明，再用结构名来定义变量。</p>
+<p>同じ形式の複数の構造変数を定義する必要がある場合は、この方法が便利です。まず構造体の説明を行い、次に構造体名を使用して変数を定義します。</p>
 <p>例如:</p>
 <pre>struct string Tianyr, Liuqi, ...;</pre>
-<p>如果省略结构名，则称之为无名结构，这种情况常常出现在函数内部，用这种结构时前面的例子变成:</p>
+<p>構造体名を省略した場合は、無名構造体と呼ばれます。これは関数内部でよく見られます。この構造体を使用する場合、前述の例は次のようになります。</p>
 <pre>struct 
 { 
     char name[8]; 
@@ -263,12 +260,12 @@ struct string person;</pre>
     char depart[20]; 
     float wage1,wage2,wage3; 
 } Tianyr, Liuqi;</pre>
-<h3>结构变量的使用</h3>
-<p>结构是一个新的数据类型，因此结构变量也可以象其它类型的变量一样赋值、运算，不同的是结构变量以成员作为基本变量。</p>
-<p>结构成员的表示方式为:</p>
-<pre>结构变量.成员名</pre>
-<p>如果将结构变量.成员名看成一个整体，则这个整体的数据类型与结构中该成员的数据类型相同，这样就可象前面所讲的变量那样使用。</p>
-<p>下面这个例子定义了一个结构变量，其中每个成员都从键盘接收数据，然后对结构中的浮点数求和，并显示运算结果。请注意这个例子中不同结构成员的访问。</p>
+<h3>構造変数の使用</h3>
+<p>構造体は新しいデータ型であり、構造変数も他の型の変数と同様に代入や演算ができます。異なる点は、構造変数がメンバーを基本変数とすることです。</p>
+<p>構造体メンバーの表記方法は次のとおりです。</p>
+<pre>構造変数.メンバー名</pre>
+<p>構造変数.メンバー名を1つのまとまりと見なすと、このまとまりのデータ型は構造体内のそのメンバーのデータ型と同じです。したがって、前述の変数のように使用できます。</p>
+<p>次の例では、構造体変数を定義し、各メンバーがキーボードからデータを受け取り、構造体内の浮動小数点数を合計して、演算結果を表示します。この例における異なる構造体メンバーへのアクセス方法に注目してください。</p>
 <div class="example">
 <h2 class="example">实例</h2>
 <div class="example_code">
@@ -310,10 +307,10 @@ struct string person;</pre>
 </span><span class="hl-brackets">}</span></div>
 </div>
 </div>
-<h3>结构数组和结构指针</h3>
-<p>结构是一种新的数据类型， 同样可以有结构数组和结构指针。</p>
-<p><strong>1.结构数组</strong></p>
-<p>结构数组就是具有相同结构类型的变量集合。假如要定义一个班级40个同学的姓名、性别、年龄和住址，可以定义成一个结构数组。如下所示:</p>
+<h3>構造配列と構造ポインタ</h3>
+<p>構造体は新しいデータ型であり、構造体配列や構造体ポインタも同様に持つことができます。</p>
+<p><strong>1.構造配列</strong></p>
+<p>構造体配列とは、同じ構造体型を持つ変数の集合です。例えば、クラスの40人の生徒の名前、性別、年齢、住所を定義する場合、構造体配列として定義できます。次に示すとおりです。</p>
 <pre>struct
 { 
     char name[8]; 
@@ -321,7 +318,7 @@ struct string person;</pre>
     int age; 
     char addr[40]; 
 }student[40];</pre>
-<p>也可定义为:</p>
+<p>次のようにも定義できる：</p>
 <pre>struct string
 { 
     char name[8]; 
@@ -330,13 +327,13 @@ struct string person;</pre>
     char addr[40]; 
 }; 
 struct string student[40];</pre>
-<p>需要指出的是结构数组成员的访问是以数组元素为结构变量的, 其形式为:</p>
-<pre>结构数组元素.成员名 </pre>
+<p>構造体配列メンバーへのアクセスは、配列要素を構造変数として行うことに注意してください。その形式は次のとおりです。</p>
+<pre>構造体配列要素.メンバー名</pre>
 <p>例如:</p>
 <pre>student[0].name 
 student[30].age </pre>
-<p>实际上结构数组相当于一个二维构造, 第一维是结构数组元素, 每个元素是一个结构变量, 第二维是结构成员。</p>
-<p><strong>注意</strong>: 结构数组的成员也可以是数组变量。</p>
+<p>実際、構造体配列は2次元構造に相当します。第1次元は構造体配列の要素であり、各要素は構造変数です。第2次元は構造体メンバーです。</p>
+<p><strong>注意</strong>構造体配列のメンバーは配列変数にすることもできます。</p>
 <p>例如:</p>
 <pre>struct a 
 { 
@@ -344,9 +341,9 @@ student[30].age </pre>
     float f; 
     char s[20]; 
 }y[4];</pre>
-<p>为了访问结构a中结构变量<strong>y[2]</strong>的这个变量, 可写成<span class="marked">y[2].m[1][4]</span> </p>
-<p><strong>2.结构指针</strong></p>
-<p>结构指针是指向结构的指针。它由一个加在结构变量名前的* 操作符来定义, 例如用前面已说明的结构定义一个结构指针如下:</p>
+<p>構造体aの中の構造体変数にアクセスするには<strong>y[2]</strong>この変数は、次のように記述できます。<span class="marked">y[2].m[1][4]</span> </p>
+<p><strong>2.構造ポインタ</strong></p>
+<p>構造体ポインタは構造体を指すポインタです。構造変数名の前に付ける*演算子で定義されます。例えば、前述で説明した構造体を使用して構造体ポインタを定義すると次のようになります。</p>
 <pre>struct string
 { 
     char name[8]; 
@@ -354,39 +351,39 @@ student[30].age </pre>
     int age; 
     char addr[40]; 
 }*student;</pre>
-<p>也可省略结构指针名只作结构说明, 然后再用下面的语句定义结构指针。</p>
+<p>構造体ポインタ名を省略して構造体の説明のみを行い、その後以下の文で構造体ポインタを定義することもできます。</p>
 <pre>struct string *student; </pre>
-<p>使用结构指针对结构成员的访问，与结构变量对结构成员的访问在表达方式上有所不同。结构指针对结构成员的访问表示为:</p>
-<pre>结构指针名-&gt;结构成员 </pre>
-<p>其中<span class="marked">-&gt;</span>是两个符号<span class="marked">-</span> 和 <span class="marked">&gt;</span>的组合，好象一个箭头指向结构成员。例如要给上面定义的结构中 name 和 age 赋值，可以用下面语句:</p>
+<p>構造体ポインタを使用した構造体メンバーへのアクセスは、構造変数による構造体メンバーへのアクセスとは表現方法が異なります。構造体ポインタによる構造体メンバーへのアクセスは次のように表されます。</p>
+<pre>構造体ポインタ名-&gt;構造体メンバー</pre>
+<p>其中<span class="marked">-&gt;</span>是两个符号<span class="marked">-</span> 和 <span class="marked">&gt;</span>の組み合わせは、矢印が構造体メンバーを指しているように見えます。例えば、上記で定義した構造体のnameとageに値を代入するには、次の文を使用できます。</p>
 <pre>strcpy(student-&gt;name, Lu G.C); 
 student-&gt;age=18;</pre>
-<p>实际上，<strong>student-&gt;name</strong>就是<strong>(*student).name</strong>的缩写形式。</p>
-<p>需要指出的是结构指针是指向结构的一个指针，即结构中第一个成员的首地址，因此在使用之前应该对结构指针初始化，即分配整个结构长度的字节空间，这可用下面函数完成， 仍以上例来说明如下:</p>
+<p>实际上，<strong>student-&gt;name</strong>就是<strong>(*student).name</strong>の省略形。</p>
+<p>構造体ポインタは構造体を指すポインタ、つまり構造体の最初のメンバーの先頭アドレスであることに注意してください。したがって、使用前に構造体ポインタを初期化する必要があります。つまり、構造体全体の長さのバイト空間を割り当てます。これは次の関数で実行できます。前述の例で説明すると以下のようになります。</p>
 <pre>student=(struct string*)malloc(size of (struct string));</pre>
-<p><strong>size of (struct string)</strong>自动求取 string 结构的字节长度， malloc() 函数定义了一个大小为结构长度的内存区域，然后将其诈地址作为结构指针返回。</p>
+<p><strong>size of (struct string)</strong>string構造体のバイト長を自動的に取得します。malloc()関数は構造体の長さのサイズのメモリ領域を定義し、その先頭アドレスを構造体ポインタとして返します。</p>
 <p><strong>注意:</strong></p>
-<ul><li>1. 结构作为一种数据类型，因此定义的结构变量或结构指针变量同样有局部变量和全程变量，视定义的位置而定。</li><li>2. 结构变量名不是指向该结构的地址，这与数组名的含义不同，因此若需要求结构中第一个成员的首地址应该是<span class="marked">&amp;[结构变量名]</span>。</li><li>3. 结构的复杂形式：嵌套结构</li></ul>
-<p>嵌套结构是指在一个结构成员中可以包括其它一个结构，Turbo C 允许这种嵌套。</p>
-<p>例如: 下面是一个有嵌套的结构</p>
+<ul><li>1. 構造体はデータ型であるため、定義された構造変数や構造体ポインタ変数には、定義位置に応じてローカル変数とグローバル変数があります。</li><li>2. 構造変数名はその構造体を指すアドレスではありません。これは配列名の意味とは異なります。したがって、構造体内の最初のメンバーの先頭アドレスを求める必要がある場合は、次のようにすべきです。<span class="marked">&amp;[结构变量名]</span>。</li><li>3. 構造体の複雑な形式: ネストされた構造体</li></ul>
+<p>ネストされた構造体とは、1つの構造体メンバーの中に別の構造体を含めることができるものです。Turbo Cはこのネストを許可します。</p>
+<p>例: 次はネストされた構造体です。</p>
 <pre>struct string
 { 
     char name[8]; 
     int age; 
     struct addr address; 
 } student; </pre>
-<p>其中: addr 为另一个结构的结构名, 必须要先进行, 说明, 即</p>
+<p>ここで、addrは別の構造体の構造体名です。事前に説明（宣言）を行う必要があります。つまり、</p>
 <pre>struct addr
 { 
     char city[20]; 
     unsigned lon zipcode; 
     char tel[14]; 
 }</pre>
-<p>如果要给 student 结构中成员 address 结构中的 zipcode 赋值, 则可写成:</p>
+<p>student構造体のメンバーであるaddress構造体内のzipcodeに値を代入する場合は、次のように記述できます。</p>
 <pre>student.address.zipcode=200001; </pre>
-<p>每个结构成员名从最外层直到最内层逐个被列出,即嵌套式结构成员的表达方式是:</p>
-<pre>结构变量名.嵌套结构变量名.结构成员名 </pre>
-<p>其中嵌套结构可以有很多，结构成员名为最内层结构中不是结构的成员名。</p>
+<p>各構造体メンバー名は、最外層から最内層まで順に列挙されます。つまり、ネストされた構造体メンバーの表現方法は次のとおりです。</p>
+<pre>構造変数名.ネスト構造変数名.構造体メンバー名</pre>
+<p>ネストされた構造体は多数存在できます。構造体メンバー名は、最内層の構造体の中で構造体ではないメンバーの名前です。</p>
 <blockquote> <p>原文链接：https://www.cnblogs.com/yuxinJ/p/4688496.html</p></blockquote>
 </p></div>
 </div>
@@ -497,7 +494,7 @@ student-&gt;age=18;</pre>
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>点我分享笔记</h3>
+<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 &lt;p style="font-size:14px;"&gt;笔记需要是本篇文章的内容扩展！&lt;/p&gt;&lt;br&gt;
 	&lt;p style="font-size:12px;"&gt;&lt;a href="../tougao.html" target="_blank"&gt;文章投稿，可点击这里&lt;/a&gt;&lt;/p&gt;
 	&lt;p style="font-size:14px;"&gt;&lt;a href="./runoob-user-test-intro.html" target="_blank"&gt;注册邀请码获取方式&lt;/a&gt;&lt;/p&gt;
@@ -746,181 +743,6 @@ var aid = 20404;
 
 </div>
 -->
-<div class="sidebar-box cate-list" style="display:none;">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">热门文章</a>
-</div>
-<div class="membership">
-<ul class="membership">
-<li><a href="https://mp.weixin.qq.com/s/ZaP6YNgKTCHYy3r2WPBBaw" target="_blank" title="2024 年 04 月 JavaScript 框架排行榜">2024 年 04 月 JavaScript 框架排行榜</a></li>
-<li><a href="https://mp.weixin.qq.com/s/JBR2twC0t6krjjuxqvhsEQ" target="_blank" title="免费、开源、好用的 SQL 客户端合集">免费、开源、好用的 SQL 客户端合集</a></li>
-<li><a href="https://mp.weixin.qq.com/s/TwV3YQjA1glyaW7TiHvhlA" target="_blank" title="优雅的代码规范，提升代码质量">优雅的代码规范，提升代码质量</a></li>
-<li><a href="https://mp.weixin.qq.com/s/CnUJ-2OHPbBKlnVpjDzavA" target="_blank" title="命令行中的趣味世界，牛也能说话，有趣又好玩">命令行中的趣味世界，牛也能说话，有趣又好玩</a></li>
-<li><a href="https://mp.weixin.qq.com/s/7NKl-mD7N8CeSNQlbKDEWA" target="_blank" title="2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？">2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？</a></li>
-<li><a href="https://mp.weixin.qq.com/s/yWlSVDKobtDhThnhirVRpw" target="_blank" title="免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端">免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端</a></li>
-</ul>
-</div>
-</div>
-<div class="sidebar-box cate-list">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">教程列表</a>
-</div>
-<div class="cate-items">
-<a href="../ado.html">ADO 教程</a>
-<a href="../ai-agent.html">AI Agent 教程</a>
-<a href="../ai.html">AI 入门教程</a>
-<a href="../ai-math.html">AI 数学基础</a>
-<a href="../ajax.html">Ajax 教程</a>
-<a href="../android.html">Android 教程</a>
-<a href="../angularjs2.html">Angular2 教程</a>
-<a href="../angularjs.html">AngularJS 教程</a>
-<a href="../appml.html">AppML 教程</a>
-<a href="../asp.html">ASP 教程</a>
-<a href="../aspnet.html">ASP.NET 教程</a>
-<a href="../bootstrap.html">Bootstrap 教程</a>
-<a href="../bootstrap4.html">Bootstrap4 教程</a>
-<a href="../bootstrap5.html">Bootstrap5 教程</a>
-<a href="../cprogramming.html">C 教程</a>
-<a href="../c-dsa.html">C 语言数据结构与算法</a>
-<a href="../csharp.html">C# 教程</a>
-<a href="../cplusplus.html">C++ 教程</a>
-<a href="../chartjs.html">Chart.js 教程</a>
-<a href="../claude-code.html">Claude Code 教程</a>
-<a href="../cmake.html">CMake 教程</a>
-<a href="../codex.html">Codex 教程</a>
-<a href="../cssref.html">CSS 参考手册</a>
-<a href="../css.html">CSS 教程</a>
-<a href="../css3.html">CSS3 教程</a>
-<a href="../cursor.html">Cursor 教程</a>
-<a href="../dart.html">Dart 教程</a>
-<a href="../dash.html">Dash 教程</a>
-<a href="../deepseek-harness.html">DeepSeek Harness</a>
-<a href="../django.html">Django 教程</a>
-<a href="../docker.html">Docker 教程</a>
-<a href="../dtd.html">DTD 教程</a>
-<a href="../echarts.html">ECharts 教程</a>
-<a href="../eclipse.html">Eclipse 教程</a>
-<a href="../electron.html">Electron 教程</a>
-<a href="../fastapi.html">FastAPI 教程</a>
-<a href="../firebug.html">Firebug 教程</a>
-<a href="../flask.html">Flask 教程</a>
-<a href="../flutter.html">Flutter 教程</a>
-<a href="../font-awesome.html">Font Awesome 图标</a>
-<a href="../foundation.html">Foundation 教程</a>
-<a href="../git.html">Git 教程</a>
-<a href="../go.html">Go 语言教程</a>
-<a href="../googleapi.html">Google 地图 API 教程</a>
-<a href="../hermes-agent.html">Hermes Agent</a>
-<a href="../highcharts.html">Highcharts 教程</a>
-<a href="../htmldom.html">HTML DOM 教程</a>
-<a href="../tags.html">HTML 参考手册</a>
-<a href="../charsets.html">HTML 字符集</a>
-<a href="../html.html">HTML 教程</a>
-<a href="../http.html">HTTP 教程</a>
-<a href="../ionic.html">ionic 教程</a>
-<a href="../ios.html">iOS 教程</a>
-<a href="../java.html">Java 教程</a>
-<a href="../jsref.html">JavaScript 参考手册</a>
-<a href="../js.html">Javascript 教程</a>
-<a href="../jeasyui.html">jQuery EasyUI 教程</a>
-<a href="../jquerymobile.html">jQuery Mobile 教程</a>
-<a href="../jqueryui.html">jQuery UI 教程</a>
-<a href="../jquery.html">jQuery 教程</a>
-<a href="../json.html">JSON 教程</a>
-<a href="../jsp.html">JSP 教程</a>
-<a href="../julia.html">Julia 教程</a>
-<a href="../jupyter-notebook.html">Jupyter Notebook 教程</a>
-<a href="../kotlin.html">Kotlin 教程</a>
-<a href="../langchain.html">LangChain 教程</a>
-<a href="../latex.html">LaTeX 教程</a>
-<a href="../linux.html">Linux 教程</a>
-<a href="../lua.html">Lua 教程</a>
-<a href="../markdown.html">Markdown 教程</a>
-<a href="../matplotlib.html">Matplotlib 教程</a>
-<a href="../maven.html">Maven 教程</a>
-<a href="../memcached.html">Memcached 教程</a>
-<a href="../mongodb.html">MongoDB 教程</a>
-<a href="../mysql.html">MySQL 教程</a>
-<a href="../nextjs.html">Next.js 教程</a>
-<a href="../nlp.html">NLP 教程</a>
-<a href="../nodejs.html">Node.js 教程</a>
-<a href="../numpy.html">NumPy 教程</a>
-<a href="../obsidian.html">Obsidian 教程</a>
-<a href="../ollama.html">Ollama 教程</a>
-<a href="../opencode.html">OpenCode 教程</a>
-<a href="../opencv.html">OpenCV 教程</a>
-<a href="../pandas.html">Pandas 教程</a>
-<a href="../perl.html">Perl 教程</a>
-<a href="../php.html">PHP 教程</a>
-<a href="../pi-agent.html">Pi Agent</a>
-<a href="../pillow.html">Pillow 教程</a>
-<a href="../playwright.html">Playwright 教程</a>
-<a href="../postgresql.html">PostgreSQL 教程</a>
-<a href="../powershell.html">PowerShell</a>
-<a href="../pycharm.html">Pycharm 教程</a>
-<a href="../python3.html">Python 3 教程</a>
-<a href="../python.html">Python 基础教程</a>
-<a href="../python-design-pattern.html">Python 设计模式</a>
-<a href="../python-qt.html">Python 量化交易</a>
-<a href="../pytorch.html">PyTorch 教程</a>
-<a href="../r.html">R 教程</a>
-<a href="../rdf.html">RDF 教程</a>
-<a href="../react.html">React 教程</a>
-<a href="../redis.html">Redis 教程</a>
-<a href="../restfulapi.html">RESTful API</a>
-<a href="../rss.html">RSS 教程</a>
-<a href="../ruby.html">Ruby 教程</a>
-<a href="../rust.html">Rust 教程</a>
-<a href="../sass.html">Sass 教程</a>
-<a href="../scala.html">Scala 教程</a>
-<a href="../scipy.html">SciPy 教程</a>
-<a href="../selenium.html">Selenium 教程</a>
-<a href="../servlet.html">Servlet 教程</a>
-<a href="../skills.html">Skills 教程</a>
-<a href="../sklearn.html">Sklearn 教程</a>
-<a href="../soap.html">SOAP 教程</a>
-<a href="../sql.html">SQL 教程</a>
-<a href="../sqlite.html">SQLite 教程</a>
-<a href="../svg.html">SVG 教程</a>
-<a href="../svn.html">SVN 教程</a>
-<a href="../swagger.html">Swagger 教程</a>
-<a href="../swift.html">Swift 教程</a>
-<a href="../tailwindcss.html">Tailwind CSS 教程</a>
-<a href="../tcpip.html">TCP/IP 教程</a>
-<a href="../tensorflow.html">TensorFlow 教程</a>
-<a href="../typescript.html">TypeScript 教程</a>
-<a href="../uniapp.html">uni-app 教程</a>
-<a href="../vbscript.html">VBScript 教程</a>
-<a href="../vibe-coding.html">Vibe Coding 教程</a>
-<a href="../vscode.html">VSCode 教程</a>
-<a href="../vue2.html">Vue.js 教程</a>
-<a href="../vue3.html">Vue3 教程</a>
-<a href="../w3c.html">W3C 教程</a>
-<a href="../webservices.html">Web Service 教程</a>
-<a href="../wsdl.html">WSDL 教程</a>
-<a href="../xlink.html">XLink 教程</a>
-<a href="../dom.html">XML DOM 教程</a>
-<a href="../schema.html">XML Schema 教程</a>
-<a href="../xml.html">XML 教程</a>
-<a href="../xpath.html">XPath 教程</a>
-<a href="../xquery.html">XQuery 教程</a>
-<a href="../xslfo.html">XSLFO 教程</a>
-<a href="../xsl.html">XSLT 教程</a>
-<a href="../zig.html">Zig 教程</a>
-<a href="../data-structures.html">数据结构</a>
-<a href="../ml.html">机器学习</a>
-<a href="../regexp.html">正则表达式</a>
-<a href="../assembly.html">汇编语言</a>
-<a href="../quiz.html">测验</a>
-<a href="../browsers.html">浏览器</a>
-<a href="../quality.html">网站品质</a>
-<a href="../web.html">网站建设指南</a>
-<a href="../hosting.html">网站服务器教程</a>
-<a href="../np.html">网络协议</a>
-<a href="../computer-organization.html">计算机组成原理</a>
-<a href="../design-pattern.html">设计模式</a>
-</div>
-</div>
 </div>
 </div>
 </div>

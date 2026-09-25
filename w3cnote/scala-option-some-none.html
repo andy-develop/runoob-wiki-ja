@@ -60,9 +60,6 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div>
 <div class="row">
 <div class="col right-list">
-<button class="btn btn-responsive-nav btn-inverse" id="pull">
-<i class="fa fa-navicon"></i>
-</button>
 </div>
 <div class="col search search-desktop last">
 <div class="search-input">
@@ -85,13 +82,13 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="article-intro">
 <!-- ad start-->
 <!-- ad end-->
-<h3>避免 null 使用</h3>
-<p>大多数语言都有一个特殊的关键字或者对象来表示一个对象引用的是"无"，在 Java，它是 null。在 Java 里，null 是一个关键字，不是一个对象，所以对它调用任何方法都是非法的。但是这对语言设计者来说是一件令人疑惑的选择。为什么要在程序员希望返回一个对象的时候返回一个关键字呢？</p>
+<h3>null の使用を避ける</h3>
+<p>多くの言語には、オブジェクト参照が「無」であることを示す特別なキーワードまたはオブジェクトがある。Javaではそれはnullである。Javaではnullはキーワードであり、オブジェクトではないため、それに対してメソッドを呼び出すことはすべて非合法である。しかしこれは言語設計者にとって不可解な選択である。プログラマーがオブジェクトを返したいときに、なぜキーワードを返すのだろうか。</p>
 <h3>Scala 的 Option类型</h3>
-<p>为了让所有东西都是对象的目标更加一致，也为了遵循函数式编程的习惯，Scala 鼓励你在变量和函数返回值可能不会引用任何值的时候使用 Option 类型。在没有值的时候，使用 None，这是 Option 的一个子类。如果有值可以引用，就使用 Some 来包含这个值。Some 也是 Option 的子类。
-None 被声明为一个对象，而不是一个类，因为我们只需要它的一个实例。这样，它多少有点像 null 关键字，但它却是一个实实在在的，有方法的对象。</p>
+<p>すべてのものをオブジェクトにするという目標をより一貫させるため、また関数型プログラミングの習慣に従うためにも、Scala では変数や関数の戻り値が何も参照しない可能性がある場合に Option 型を使うことを推奨しています。値がない場合は None を使います。これは Option のサブクラスです。参照する値がある場合は、その値を含めるために Some を使います。Some も Option のサブクラスです。
+None はクラスではなくオブジェクトとして宣言されています。なぜなら、そのインスタンスは一つだけでよいからです。このように、None はどことなく null キーワードに似ていますが、実際のメソッドを持つ実在のオブジェクトです。</p>
 <h3>应用例子</h3>
-<p>Option 类型的值通常作为 Scala 集合类型（List, Map 等）操作的返回类型。比如 Map 的 get 方法：</p>
+<p>Option型の値は通常、Scalaのコレクション型（List、Mapなど）の操作の戻り値型として使われる。例えばMapのgetメソッド：</p>
 <pre>scala&gt; val capitals = Map("France"-&gt;"Paris", "Japan"-&gt;"Tokyo", "China"-&gt;"Beijing")
 capitals: scala.collection.immutable.Map[String,String] = Map(France -&gt; Paris, Japan -&gt; Tokyo, China -&gt; Beijing)
 
@@ -100,7 +97,7 @@ res0: Option[String] = Some(Paris)
 
 scala&gt; capitals get "North Pole"
 res1: Option[String] = None</pre>
-<p>Option 有两个子类别，Some 和 None。当程序回传 Some 的时候，代表这个函式成功地给了你一个 String，而你可以透过 get() 函数拿到那个 String，如果程序返回的是 None，则代表没有字符串可以给你。</p>在返回 None，也就是没有 String 给你的时候，如果你还硬要调用 get() 来取得 String 的话，Scala 一样是会抛出一个 NoSuchElementException 异常给你的。
+<p>OptionにはSomeとNoneという2つのサブクラスがある。プログラムがSomeを返すとき、その関数がStringを正常に渡したことを意味し、get()関数でそのStringを取得できる。プログラムがNoneを返す場合は、渡せる文字列がないことを意味する。</p>在返回 None，也就是没有 String 给你的时候，如果你还硬要调用 get() 来取得 String 的话，Scala 一样是会抛出一个 NoSuchElementException 异常给你的。
 我们也可以选用另外一个方法 getOrElse。这个方法在这个 Option 是 Some 的实例时返回对应的值，而在是 None 的实例时返回传入的参数。换句话说，传入 getOrElse 的参数实际上是默认返回值。<pre>scala&gt; capitals get "North Pole" get
 warning: there was one feature warning; re-run with -feature for details
 java.util.NoSuchElementException: None.get
@@ -117,20 +114,20 @@ res7: String = Oops
 
 scala&gt; capitals get "France" getOrElse "Oops"
 res8: String = Paris</pre>
-<p>通过模式匹配分离可选值，如果匹配的值是 Some 的话，将 Some 里的值抽出赋给 x 变量：</p>
+<p>パターンマッチングによってOptionの値を分離する。マッチした値がSomeの場合、Some内の値を取り出して変数xに代入する：</p>
 <pre>def showCapital(x: Option[String]) = x match {
     case Some(s) =&gt; s
     case None =&gt; "?"
 }</pre>
 <h3>提示</h3>
-<p>Scala 程序使用 Option 非常频繁，在 Java 中使用 null 来表示空值，代码中很多地方都要添加 null 关键字检测，不然很容易出现 NullPointException。因此 Java 程序需要关心那些变量可能是 null,而这些变量出现 null 的可能性很低，但一但出现，很难查出为什么出现 NullPointerException。
-Scala 的 Option 类型可以避免这种情况，因此 Scala 应用推荐使用 Option 类型来代表一些可选值。使用 Option 类型，读者一眼就可以看出这种类型的值可能为 None。</p>
-<p>实际上，多亏 Scala 的静态类型，你并不能错误地尝试在一个可能为 null 的值上调用方法。虽然在 Java 中这是个很容易犯的错误，它在 Scala 却通不过编译，这是因为 Java 中没有检查变量是否为 null 的编程作为变成 Scala 中的类型错误（不能将 Option[String] 当做 String 来使用）。所以，Option 的使用极强地鼓励了更加弹性的编程习惯。</p>
+<p>Scala プログラムは Option を非常に頻繁に使用します。Java では null を使って空の値を表すため、コードの多くの場所で null キーワードのチェックを追加する必要があり、そうしないと NullPointException が発生しやすくなります。そのため Java プログラムでは、どの変数が null になる可能性があるかを気にする必要があります。それらの変数が null になる可能性は低いのですが、ひとたび発生すると、なぜ NullPointerException が発生したのかを突き止めるのが難しくなります。
+Scala の Option 型はこのような状況を回避できます。そのため Scala アプリケーションでは、オプションの値を表すために Option 型を使うことが推奨されます。Option 型を使えば、読者はこの型の値が None である可能性があることをひと目で見抜けます。</p>
+<p>実際には、Scala の静的型付けのおかげで、null になる可能性がある値に対して誤ってメソッドを呼び出すことはできません。Java ではこれは非常に犯しやすいミスですが、Scala ではコンパイルを通りません。これは、Java では変数が null かどうかをチェックしないというプログラミング上の行為が、Scala では型エラーになるからです（Option[String] を String として使うことはできません）。したがって、Option を使うことは、より柔軟なプログラミング習慣を強く促します。</p>
 <h3>详解 Option[T]</h3>
-<p>在 Scala 里 Option[T] 实际上是一个容器，就像数组或是 List 一样，你可以把他看成是一个可能有零到一个元素的 List。</p>
-<p>当你的 Option 里面有东西的时候，这个 List 的长度是 1（也就是 Some），而当你的 Option 里没有东西的时候，它的长度是 0（也就是 None）。</p>
+<p>ScalaにおいてOption[T]は実際にはコンテナであり、配列やListと同じように、0個または1個の要素を持つ可能性のあるListと見なすことができる。</p>
+<p>Optionの中に何かある場合、このListの長さは1（つまりSome）であり、Optionに何もない場合、その長さは0（つまりNone）である。</p>
 <h3>for 循环</h3>
-<p>如果我们把 Option 当成一般的 List 来用，并且用一个 for 循环来走访这个 Option 的时候，如果 Option 是 None，那这个 for 循环里的程序代码自然不会执行，于是我们就达到了「不用检查 Option 是否为 None 这件事。</p>
+<p>Optionを通常のListとして扱い、forループでこのOptionを走査する場合、OptionがNoneなら、forループ内のコードは実行されない。これにより「OptionがNoneかどうかをチェックしなくて済む」ということを達成できる。</p>
 <pre>scala&gt; val map1 = Map("key1" -&gt; "value1")
 map1: scala.collection.immutable.Map[String,String] = Map(key1 -&gt; value1)
 
@@ -152,17 +149,17 @@ scala&gt; printContentLength(value1)
 
 scala&gt; printContentLength(value2)</pre>
 <h3>map 操作</h3>
-<p>在函数式编程中有一个核心的概念之一是转换，所以大部份支持函数式编程语言，都支持一种叫 map() 的动作，这个动作是可以帮你把某个容器的内容，套上一些动作之后，变成另一个新的容器。</p>
-<p>现在我们考虑如何用 Option 的 map 方法实现<strong>length: xxx</strong>的输出形式：</p>
-<p>先算出 Option 容器内字符串的长度</p>
-<p>然后在长度前面加上 "length: " 字样</p>
-<p>最后把容器走访一次，印出容器内的东西</p>
+<p>関数型プログラミングにおける中核的概念の1つは変換である。したがって、ほとんどの関数型プログラミング対応言語は、map()と呼ばれる操作をサポートしている。この操作は、あるコンテナの内容にいくつかの処理を適用した後、別の新しいコンテナに変換するのに役立つ。</p>
+<p>ここで、Optionのmapメソッドを使って実現する方法を考えてみよう。<strong>length: xxx</strong>の出力形式：</p>
+<p>まず、Optionコンテナ内の文字列の長さを計算する。</p>
+<p>次に、長さの前に "length: " という文字列を付ける。</p>
+<p>最後に、コンテナを走査して、コンテナ内の内容を出力する。</p>
 <pre>scala&gt; value1.map(_.length).map("length: " + _).foreach(println)
 length: 6
 
 scala&gt; value1.map("length: " + _.length).foreach(println)
 length: 6</pre>
-<p>透过这样「转换」的方法，我们一样可以达成想要的效果，而且同样不用去做「是否为 None」的判断。</p>
+<p>このような「変換」の方法によっても、同様に望ましい効果を達成でき、しかも「Noneかどうか」の判定を行う必要もない。</p>
 <blockquote><p>原文链接：https://www.jianshu.com/p/95896d06a94d</p></blockquote>
 </div>
 </div>
@@ -273,7 +270,7 @@ length: 6</pre>
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>点我分享笔记</h3>
+<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 &lt;p style="font-size:14px;"&gt;笔记需要是本篇文章的内容扩展！&lt;/p&gt;&lt;br&gt;
 	&lt;p style="font-size:12px;"&gt;&lt;a href="../tougao.html" target="_blank"&gt;文章投稿，可点击这里&lt;/a&gt;&lt;/p&gt;
 	&lt;p style="font-size:14px;"&gt;&lt;a href="./runoob-user-test-intro.html" target="_blank"&gt;注册邀请码获取方式&lt;/a&gt;&lt;/p&gt;
@@ -522,181 +519,6 @@ var aid = 20460;
 
 </div>
 -->
-<div class="sidebar-box cate-list" style="display:none;">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">热门文章</a>
-</div>
-<div class="membership">
-<ul class="membership">
-<li><a href="https://mp.weixin.qq.com/s/ZaP6YNgKTCHYy3r2WPBBaw" target="_blank" title="2024 年 04 月 JavaScript 框架排行榜">2024 年 04 月 JavaScript 框架排行榜</a></li>
-<li><a href="https://mp.weixin.qq.com/s/JBR2twC0t6krjjuxqvhsEQ" target="_blank" title="免费、开源、好用的 SQL 客户端合集">免费、开源、好用的 SQL 客户端合集</a></li>
-<li><a href="https://mp.weixin.qq.com/s/TwV3YQjA1glyaW7TiHvhlA" target="_blank" title="优雅的代码规范，提升代码质量">优雅的代码规范，提升代码质量</a></li>
-<li><a href="https://mp.weixin.qq.com/s/CnUJ-2OHPbBKlnVpjDzavA" target="_blank" title="命令行中的趣味世界，牛也能说话，有趣又好玩">命令行中的趣味世界，牛也能说话，有趣又好玩</a></li>
-<li><a href="https://mp.weixin.qq.com/s/7NKl-mD7N8CeSNQlbKDEWA" target="_blank" title="2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？">2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？</a></li>
-<li><a href="https://mp.weixin.qq.com/s/yWlSVDKobtDhThnhirVRpw" target="_blank" title="免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端">免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端</a></li>
-</ul>
-</div>
-</div>
-<div class="sidebar-box cate-list">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">教程列表</a>
-</div>
-<div class="cate-items">
-<a href="../ado.html">ADO 教程</a>
-<a href="../ai-agent.html">AI Agent 教程</a>
-<a href="../ai.html">AI 入门教程</a>
-<a href="../ai-math.html">AI 数学基础</a>
-<a href="../ajax.html">Ajax 教程</a>
-<a href="../android.html">Android 教程</a>
-<a href="../angularjs2.html">Angular2 教程</a>
-<a href="../angularjs.html">AngularJS 教程</a>
-<a href="../appml.html">AppML 教程</a>
-<a href="../asp.html">ASP 教程</a>
-<a href="../aspnet.html">ASP.NET 教程</a>
-<a href="../bootstrap.html">Bootstrap 教程</a>
-<a href="../bootstrap4.html">Bootstrap4 教程</a>
-<a href="../bootstrap5.html">Bootstrap5 教程</a>
-<a href="../cprogramming.html">C 教程</a>
-<a href="../c-dsa.html">C 语言数据结构与算法</a>
-<a href="../csharp.html">C# 教程</a>
-<a href="../cplusplus.html">C++ 教程</a>
-<a href="../chartjs.html">Chart.js 教程</a>
-<a href="../claude-code.html">Claude Code 教程</a>
-<a href="../cmake.html">CMake 教程</a>
-<a href="../codex.html">Codex 教程</a>
-<a href="../cssref.html">CSS 参考手册</a>
-<a href="../css.html">CSS 教程</a>
-<a href="../css3.html">CSS3 教程</a>
-<a href="../cursor.html">Cursor 教程</a>
-<a href="../dart.html">Dart 教程</a>
-<a href="../dash.html">Dash 教程</a>
-<a href="../deepseek-harness.html">DeepSeek Harness</a>
-<a href="../django.html">Django 教程</a>
-<a href="../docker.html">Docker 教程</a>
-<a href="../dtd.html">DTD 教程</a>
-<a href="../echarts.html">ECharts 教程</a>
-<a href="../eclipse.html">Eclipse 教程</a>
-<a href="../electron.html">Electron 教程</a>
-<a href="../fastapi.html">FastAPI 教程</a>
-<a href="../firebug.html">Firebug 教程</a>
-<a href="../flask.html">Flask 教程</a>
-<a href="../flutter.html">Flutter 教程</a>
-<a href="../font-awesome.html">Font Awesome 图标</a>
-<a href="../foundation.html">Foundation 教程</a>
-<a href="../git.html">Git 教程</a>
-<a href="../go.html">Go 语言教程</a>
-<a href="../googleapi.html">Google 地图 API 教程</a>
-<a href="../hermes-agent.html">Hermes Agent</a>
-<a href="../highcharts.html">Highcharts 教程</a>
-<a href="../htmldom.html">HTML DOM 教程</a>
-<a href="../tags.html">HTML 参考手册</a>
-<a href="../charsets.html">HTML 字符集</a>
-<a href="../html.html">HTML 教程</a>
-<a href="../http.html">HTTP 教程</a>
-<a href="../ionic.html">ionic 教程</a>
-<a href="../ios.html">iOS 教程</a>
-<a href="../java.html">Java 教程</a>
-<a href="../jsref.html">JavaScript 参考手册</a>
-<a href="../js.html">Javascript 教程</a>
-<a href="../jeasyui.html">jQuery EasyUI 教程</a>
-<a href="../jquerymobile.html">jQuery Mobile 教程</a>
-<a href="../jqueryui.html">jQuery UI 教程</a>
-<a href="../jquery.html">jQuery 教程</a>
-<a href="../json.html">JSON 教程</a>
-<a href="../jsp.html">JSP 教程</a>
-<a href="../julia.html">Julia 教程</a>
-<a href="../jupyter-notebook.html">Jupyter Notebook 教程</a>
-<a href="../kotlin.html">Kotlin 教程</a>
-<a href="../langchain.html">LangChain 教程</a>
-<a href="../latex.html">LaTeX 教程</a>
-<a href="../linux.html">Linux 教程</a>
-<a href="../lua.html">Lua 教程</a>
-<a href="../markdown.html">Markdown 教程</a>
-<a href="../matplotlib.html">Matplotlib 教程</a>
-<a href="../maven.html">Maven 教程</a>
-<a href="../memcached.html">Memcached 教程</a>
-<a href="../mongodb.html">MongoDB 教程</a>
-<a href="../mysql.html">MySQL 教程</a>
-<a href="../nextjs.html">Next.js 教程</a>
-<a href="../nlp.html">NLP 教程</a>
-<a href="../nodejs.html">Node.js 教程</a>
-<a href="../numpy.html">NumPy 教程</a>
-<a href="../obsidian.html">Obsidian 教程</a>
-<a href="../ollama.html">Ollama 教程</a>
-<a href="../opencode.html">OpenCode 教程</a>
-<a href="../opencv.html">OpenCV 教程</a>
-<a href="../pandas.html">Pandas 教程</a>
-<a href="../perl.html">Perl 教程</a>
-<a href="../php.html">PHP 教程</a>
-<a href="../pi-agent.html">Pi Agent</a>
-<a href="../pillow.html">Pillow 教程</a>
-<a href="../playwright.html">Playwright 教程</a>
-<a href="../postgresql.html">PostgreSQL 教程</a>
-<a href="../powershell.html">PowerShell</a>
-<a href="../pycharm.html">Pycharm 教程</a>
-<a href="../python3.html">Python 3 教程</a>
-<a href="../python.html">Python 基础教程</a>
-<a href="../python-design-pattern.html">Python 设计模式</a>
-<a href="../python-qt.html">Python 量化交易</a>
-<a href="../pytorch.html">PyTorch 教程</a>
-<a href="../r.html">R 教程</a>
-<a href="../rdf.html">RDF 教程</a>
-<a href="../react.html">React 教程</a>
-<a href="../redis.html">Redis 教程</a>
-<a href="../restfulapi.html">RESTful API</a>
-<a href="../rss.html">RSS 教程</a>
-<a href="../ruby.html">Ruby 教程</a>
-<a href="../rust.html">Rust 教程</a>
-<a href="../sass.html">Sass 教程</a>
-<a href="../scala.html">Scala 教程</a>
-<a href="../scipy.html">SciPy 教程</a>
-<a href="../selenium.html">Selenium 教程</a>
-<a href="../servlet.html">Servlet 教程</a>
-<a href="../skills.html">Skills 教程</a>
-<a href="../sklearn.html">Sklearn 教程</a>
-<a href="../soap.html">SOAP 教程</a>
-<a href="../sql.html">SQL 教程</a>
-<a href="../sqlite.html">SQLite 教程</a>
-<a href="../svg.html">SVG 教程</a>
-<a href="../svn.html">SVN 教程</a>
-<a href="../swagger.html">Swagger 教程</a>
-<a href="../swift.html">Swift 教程</a>
-<a href="../tailwindcss.html">Tailwind CSS 教程</a>
-<a href="../tcpip.html">TCP/IP 教程</a>
-<a href="../tensorflow.html">TensorFlow 教程</a>
-<a href="../typescript.html">TypeScript 教程</a>
-<a href="../uniapp.html">uni-app 教程</a>
-<a href="../vbscript.html">VBScript 教程</a>
-<a href="../vibe-coding.html">Vibe Coding 教程</a>
-<a href="../vscode.html">VSCode 教程</a>
-<a href="../vue2.html">Vue.js 教程</a>
-<a href="../vue3.html">Vue3 教程</a>
-<a href="../w3c.html">W3C 教程</a>
-<a href="../webservices.html">Web Service 教程</a>
-<a href="../wsdl.html">WSDL 教程</a>
-<a href="../xlink.html">XLink 教程</a>
-<a href="../dom.html">XML DOM 教程</a>
-<a href="../schema.html">XML Schema 教程</a>
-<a href="../xml.html">XML 教程</a>
-<a href="../xpath.html">XPath 教程</a>
-<a href="../xquery.html">XQuery 教程</a>
-<a href="../xslfo.html">XSLFO 教程</a>
-<a href="../xsl.html">XSLT 教程</a>
-<a href="../zig.html">Zig 教程</a>
-<a href="../data-structures.html">数据结构</a>
-<a href="../ml.html">机器学习</a>
-<a href="../regexp.html">正则表达式</a>
-<a href="../assembly.html">汇编语言</a>
-<a href="../quiz.html">测验</a>
-<a href="../browsers.html">浏览器</a>
-<a href="../quality.html">网站品质</a>
-<a href="../web.html">网站建设指南</a>
-<a href="../hosting.html">网站服务器教程</a>
-<a href="../np.html">网络协议</a>
-<a href="../computer-organization.html">计算机组成原理</a>
-<a href="../design-pattern.html">设计模式</a>
-</div>
-</div>
 </div>
 </div>
 </div>

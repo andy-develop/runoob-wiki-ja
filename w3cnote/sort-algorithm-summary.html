@@ -60,9 +60,6 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div>
 <div class="row">
 <div class="col right-list">
-<button class="btn btn-responsive-nav btn-inverse" id="pull">
-<i class="fa fa-navicon"></i>
-</button>
 </div>
 <div class="col search search-desktop last">
 <div class="search-input">
@@ -79,7 +76,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="col middle-column big-middle-column">
 <div class="article">
 <div class="article-heading">
-<h2>排序算法总结</h2> <h3><em>分类</em> <a href="../w3cnote_genre/code.html" title="编程技术">编程技术</a> </h3>
+<h2>ソートアルゴリズムまとめ</h2> <h3><em>分类</em> <a href="../w3cnote_genre/code.html" title="编程技术">编程技术</a> </h3>
 </div>
 <div class="article-body note-body">
 <div class="article-intro">
@@ -89,7 +86,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <thead>
 <tr>
 <th style="text-align:center">排序算法</th>
-<th style="text-align:center">平均时间复杂度</th>
+<th style="text-align:center">平均時間計算量</th>
 </tr>
 </thead>
 <tbody>
@@ -127,27 +124,27 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </tr>
 </tbody>
 </table>
-<h2>一.  冒泡排序(BubbleSort)</h2>
+<h2>一. バブルソート(BubbleSort)</h2>
 <hr/>
 <ul>
 <li>
-<p><strong>基本思想：</strong>两个数比较大小，较大的数下沉，较小的数冒起来。</p>
+<p><strong>基本思想：</strong>2つの数を比較して大小を比べ、大きい数は沈み、小さい数は浮かび上がる。</p>
 </li>
 <li>
 <p><strong>过程：</strong></p>
 <ul>
-<li>比较相邻的两个数据，如果第二个数小，就交换位置。</li>
-<li>从后向前两两比较，一直到比较最前两个数据。最终最小数被交换到起始的位置，这样第一个最小数的位置就排好了。</li>
-<li>继续重复上述过程，依次将第2.3...n-1个最小数排好位置。<br/>
+<li>隣り合う2つのデータを比較し、2番目の数が小さければ位置を交換する。</li>
+<li>を掘り出して、前の穴に埋める。</li>
+<li>上記の処理を繰り返し、第2、3、...、n-1番目の最小数を順に位置に配置する。<br/>
 <img decoding="async" src="../wp-content/uploads/2015/09/1240.html"/><br/><p>冒泡排序</p>
 </li>
 </ul>
 </li>
 <li>
-<p><strong>平均时间复杂度：</strong>O(n2)</p>
+<p><strong>平均時間計算量：</strong>O(n2)</p>
 </li>
 <li>
-<p><strong>java代码实现：</strong></p>
+<p><strong>javaコード実装：</strong></p>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
 <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">static</span> <span style="color: #000066; font-weight: bold;">void</span> BubbleSort<span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span> <span style="color: #009900;">[</span><span style="color: #009900;">]</span> arr<span style="color: #009900;">)</span><span style="color: #009900;">{</span><br/>
 <br/>
@@ -169,10 +166,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p><strong>优化：</strong></p>
 <ul>
 <li>
-<p><strong>针对问题：</strong><br/>数据的顺序排好之后，冒泡算法仍然会继续进行下一轮的比较，直到arr.length-1次，后面的比较没有意义的。</p>
+<p><strong>针对问题：</strong><br/>より大きいことが分かる。したがって、a[0…4]とa[6…9]の2つの部分区間に対して上記の手順を繰り返せばよい。</p>
 </li>
 <li>
-<p><strong>方案：</strong><br/>设置标志位flag，如果发生了交换flag设置为true；如果没有交换就设置为false。<br/>这样当一轮比较结束后如果flag仍为false，即：这一轮没有发生交换，说明数据的顺序已经排好，没有必要继续进行下去。</p>
+<p><strong>方案：</strong><br/>フラグflagを設定し、交換が発生したらflagをtrueに、交換がなければfalseに設定する。<br/>これにより、1ラウンドの比較が終わった後もflagがfalseのままなら、すなわちこのラウンドで交換が発生していないなら、データの順序は既に整っており、続行する必要はない。</p>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
 <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">static</span> <span style="color: #000066; font-weight: bold;">void</span> BubbleSort1<span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span> <span style="color: #009900;">[</span><span style="color: #009900;">]</span> arr<span style="color: #009900;">)</span><span style="color: #009900;">{</span><br/>
 <br/>
@@ -201,11 +198,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </ul>
 </li>
 </ul>
-<h2>二. 选择排序(SelctionSort)</h2>
+<h2>二. 選択ソート(SelctionSort)</h2>
 <hr/>
 <ul>
 <li>
-<p><strong>基本思想：</strong><br/>在长度为N的无序数组中，第一次遍历n-1个数，找到最小的数值与第一个元素交换；<br/>第二次遍历n-2个数，找到最小的数值与第二个元素交换；<br/>。。。<br/>第n-1次遍历，找到最小的数值与第n-1个元素交换，排序完成。</p>
+<p><strong>基本思想：</strong><br/>の穴を埋める数字を探せばよい。<br/>2回目の走査でn-2個の数を調べ、最小の値を見つけて2番目の要素と交換する。<br/>。。。<br/>n-1回目の走査で最小の値を見つけてn-1番目の要素と交換し、ソート完了となる。</p>
 </li>
 <li>
 <p><strong>过程：</strong><br/></p>
@@ -214,10 +211,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>选择排序</p>
 </li>
 <li>
-<p><strong>平均时间复杂度：</strong>O(n2)</p>
+<p><strong>平均時間計算量：</strong>O(n2)</p>
 </li>
 <li>
-<p><strong>java代码实现：</strong></p>
+<p><strong>javaコード実装：</strong></p>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
 <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">static</span> <span style="color: #000066; font-weight: bold;">void</span> select_sort<span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span> array<span style="color: #009900;">[</span><span style="color: #009900;">]</span>,<span style="color: #000066; font-weight: bold;">int</span> lenth<span style="color: #009900;">)</span><span style="color: #009900;">{</span><br/>
 <br/>
@@ -239,11 +236,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div></div>
 </li>
 </ul>
-<h2>三. 插入排序(Insertion Sort)</h2>
+<h2>三. 挿入ソート(Insertion Sort)</h2>
 <hr/>
 <ul>
 <li>
-<p><strong>基本思想：</strong><br/>在要排序的一组数中，假定前n-1个数已经排好序，现在将第n个数插到前面的有序数列中，使得这n个数也是排好顺序的。如此反复循环，直到全部排好顺序。</p>
+<p><strong>基本思想：</strong><br/>ソート対象の数のグループにおいて、先頭のn-1個の数は既にソート済みであると仮定し、n番目の数を前のソート済み数列に挿入して、このn個の数も順序よく並ぶようにする。すべてがソートされるまでこの繰り返しを行う。</p>
 </li>
 <li>
 <p><strong>过程：</strong></p>
@@ -253,10 +250,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <img decoding="async" src="../wp-content/uploads/2015/09/22402.html"/></p><p>相同的场景</p>
 </li>
 <li>
-<p><strong>平均时间复杂度：</strong>O(n2)</p>
+<p><strong>平均時間計算量：</strong>O(n2)</p>
 </li>
 <li>
-<p><strong>java代码实现：</strong></p>
+<p><strong>javaコード実装：</strong></p>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
 <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">static</span> <span style="color: #000066; font-weight: bold;">void</span>  insert_sort<span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span> array<span style="color: #009900;">[</span><span style="color: #009900;">]</span>,<span style="color: #000066; font-weight: bold;">int</span> lenth<span style="color: #009900;">)</span><span style="color: #009900;">{</span><br/>
 <br/>
@@ -277,14 +274,14 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div></div>
 </li>
 </ul>
-<h2>四. 希尔排序(Shell Sort)</h2>
+<h2>四. シェルソート(Shell Sort)</h2>
 <hr/>
 <ul>
 <li>
-<p><strong>前言：</strong><br/>数据序列1： 13-17-20-42-28  利用插入排序，13-17-20-28-42. Number of swap:1;<br/>数据序列2： 13-17-20-42-14  利用插入排序，13-14-17-20-42. Number of swap:3;<br/>如果数据序列基本有序，使用插入排序会更加高效。</p>
+<p><strong>前言：</strong><br/>数据序列1： 13-17-20-42-28  利用插入排序，13-17-20-28-42. Number of swap:1;<br/>数据序列2： 13-17-20-42-14  利用插入排序，13-14-17-20-42. Number of swap:3;<br/>データ列がほぼ整列している場合、挿入ソートを使用するとより効率的である。</p>
 </li>
 <li>
-<p><strong>基本思想：</strong><br/>在要排序的一组数中，根据某一增量分为若干子序列，并对子序列分别进行插入排序。<br/>然后逐渐将增量减小,并重复上述过程。直至增量为1,此时数据序列基本有序,最后进行插入排序。</p>
+<p><strong>基本思想：</strong><br/>ソート対象の数のグループにおいて、ある増分に従っていくつかの部分列に分割し、各部分列に対して挿入ソートをそれぞれ行う。<br/>その後、増分を徐々に小さくして上記の処理を繰り返す。増分が1になるまで続け、このときデータ列はほぼ整列しているので、最後に挿入ソートを行う。</p>
 </li>
 <li>
 <p><strong>过程：</strong></p>
@@ -292,10 +289,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <img decoding="async" src="../wp-content/uploads/2015/09/44404.html"/></p><p>希尔排序</p>
 </li>
 <li>
-<p><strong>平均时间复杂度：</strong></p>
+<p><strong>平均時間計算量：</strong></p>
 </li>
 <li>
-<p><strong>java代码实现：</strong></p>
+<p><strong>javaコード実装：</strong></p>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
 <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">static</span> <span style="color: #000066; font-weight: bold;">void</span> shell_sort<span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span> array<span style="color: #009900;">[</span><span style="color: #009900;">]</span>,<span style="color: #000066; font-weight: bold;">int</span> lenth<span style="color: #009900;">)</span><span style="color: #009900;">{</span><br/>
 <br/>
@@ -329,33 +326,33 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div></div>
 </li>
 </ul>
-<h2>五. 快速排序(Quicksort)</h2>
+<h2>五. クイックソート(Quicksort)</h2>
 <hr/>
 <ul>
 <li>
-<p><strong>基本思想：（分治）</strong></p>
+<p><strong>基本思想：（分割統治）</strong></p>
 <ul>
-<li>先从数列中取出一个数作为key值；</li>
-<li>将比这个数小的数全部放在它的左边，大于或等于它的数全部放在它的右边；</li>
-<li>对左右两个小数列重复第二步，直至各区间只有1个数。</li>
+<li>まず数列から1つの数を取り出してkey値とする。</li>
+<li>この数より小さい数はすべてその左に置き、この数以上の数はすべてその右に置く。</li>
+<li>左右の小さな数列に対して手順2を繰り返し、各区間が1つの数だけになるまで行う。</li>
 </ul>
 </li>
 <li>
 <p><strong>辅助理解：<a href="./quick-sort.html" rel="noopener noreferrer" target="_blank">挖坑填数</a></strong></p>
 <ul>
-<li>初始时 i = 0;   j = 9;   key=72<br/>由于已经将a[0]中的数保存到key中，可以理解成在数组a[0]上挖了个坑，可以将其它数据填充到这来。<br/>从j开始向前找一个比key小的数。当j=8，符合条件，<strong>a[0] = a[8] ; i++ ;</strong>将a[8]挖出再填到上一个坑a[0]中。<br/>这样一个坑a[0]就被搞定了，但又形成了一个新坑a[8]，这怎么办了？简单，再找数字来填a[8]这个坑。<br/>这次从i开始向后找一个大于key的数，当i=3，符合条件，<strong>a[8] = a[3] ; j-- ;</strong>将a[3]挖出再填到上一个坑中。<pre>数组：72 - 6 - 57 - 88 - 60 - 42 - 83 - 73 - 48 - 85
+<li>初始时 i = 0;   j = 9;   key=72<br/>既にa<br/>jから前へkeyより小さい数を探す。j=8のとき条件を満たす。<strong>a[0] = a[8] ; i++ ;</strong>a<br/>これで穴a<br/>今回はiから後ろへkeyより大きい数を探す。i=3のとき条件を満たす。<strong>a[8] = a[3] ; j-- ;</strong>a<pre>数组：72 - 6 - 57 - 88 - 60 - 42 - 83 - 73 - 48 - 85
  0   1   2    3    4    5    6    7    8    9</pre>
 </li>
-<li>此时  i = 3;   j = 7;   key=72<br/>再重复上面的步骤，先从后向前找，再从前向后找。<br/>从j开始向前找，当j=5，符合条件，将a[5]挖出填到上一个坑中，<strong>a[3] = a[5]; i++;</strong><br/>从i开始向后找，当i=5时，由于i==j退出。<br/>此时，i = j = 5，而a[5]刚好又是上次挖的坑，因此将key填入a[5]。<pre>数组：48 - 6 - 57 - 88 - 60 - 42 - 83 - 73 - 88 - 85
+<li>此时  i = 3;   j = 7;   key=72<br/>上記の手順を繰り返す。まず後ろから前へ探し、次に前から後ろへ探す。<br/>jから前へ探す。j=5のとき条件を満たし、a<strong>a[3] = a[5]; i++;</strong><br/>iから後ろへ探す。i=5のとき、i==jなので終了する。<br/>このときi=j=5であり、a<pre>数组：48 - 6 - 57 - 88 - 60 - 42 - 83 - 73 - 88 - 85
  0   1   2    3    4    5    6    7    8    9</pre>
 </li>
-<li>可以看出a[5]前面的数字都小于它，a[5]后面的数字都大于它。因此再对a[0…4]和a[6…9]这二个子区间重复上述步骤就可以了。<pre>&lt;数组：48 - 6 - 57 - 42 - 60 - 72 - 83 - 73 - 88 - 85
+<li>a<pre>&lt;数组：48 - 6 - 57 - 42 - 60 - 72 - 83 - 73 - 88 - 85
  0   1   2    3    4    5    6    7    8    9</pre>
 </li>
 </ul>
 </li>
 <li>
-<p><strong>平均时间复杂度：</strong>O(N*logN)</p>
+<p><strong>平均時間計算量：</strong>O(N*logN)</p>
 </li>
 <li>
 <p><strong>代码实现：</strong></p>
@@ -389,14 +386,14 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
      quickSort<span style="color: #009900;">(</span>a, i<span style="color: #339933;">+</span><span style="color: #cc66cc;">1</span>, r<span style="color: #009900;">)</span><span style="color: #339933;">;</span><span style="color: #666666; font-style: italic;">//递归调用</span><br/>
  <span style="color: #009900;">}</span><br/>
 </div></div>
-<p>key值的选取可以有多种形式，例如中间数或者随机数，分别会对算法的复杂度产生不同的影响。</p>
+<p>key値の選び方は複数あり、例えば中間値や乱数などがある。それぞれアルゴリズムの計算量に異なる影響を与える。</p>
 </li>
 </ul>
-<h2>六. 归并排序(Merge Sort)</h2>
+<h2>六. マージソート(Merge Sort)</h2>
 <hr/>
 <ul>
 <li>
-<p><strong>基本思想：</strong><a href="./implementation-of-merge-sort.html" rel="noopener noreferrer" target="_blank">参考</a><br/>归并排序是建立在归并操作上的一种有效的排序算法。该算法是采用分治法的一个非常典型的应用。<br/>首先考虑下如何将2个有序数列合并。这个非常简单，只要从比较2个数列的第一个数，谁小就先取谁，取了后就在对应数列中删除这个数。然后再进行比较，如果有数列为空，那直接将另一个数列的数据依次取出即可。</p>
+<p><strong>基本思想：</strong><a href="./implementation-of-merge-sort.html" rel="noopener noreferrer" target="_blank">参考</a><br/>マージソートはマージ操作に基づく効率的なソートアルゴリズムである。このアルゴリズムは分割統治法の非常に典型的な応用である。<br/>まず、2つのソート済み数列をマージする方法を考えよう。これは非常に簡単で、2つの数列の最初の数を比較し、小さい方を先に取り出し、取り出したら対応する数列からその数を削除する。その後再び比較を行い、もし一方の数列が空になったら、もう一方の数列のデータを順に取り出すだけでよい。</p>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
 <span style="color: #666666; font-style: italic;">//将有序数组a[]和b[]合并到c[]中</span><br/>
 <span style="color: #000066; font-weight: bold;">void</span> MemeryArray<span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span> a<span style="color: #009900;">[</span><span style="color: #009900;">]</span>, <span style="color: #000066; font-weight: bold;">int</span> n, <span style="color: #000066; font-weight: bold;">int</span> b<span style="color: #009900;">[</span><span style="color: #009900;">]</span>, <span style="color: #000066; font-weight: bold;">int</span> m, <span style="color: #000066; font-weight: bold;">int</span> c<span style="color: #009900;">[</span><span style="color: #009900;">]</span><span style="color: #009900;">)</span><br/>
@@ -419,7 +416,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
      c<span style="color: #009900;">[</span>k<span style="color: #339933;">++</span><span style="color: #009900;">]</span> <span style="color: #339933;">=</span> b<span style="color: #009900;">[</span>j<span style="color: #339933;">++</span><span style="color: #009900;">]</span><span style="color: #339933;">;</span><br/>
 <span style="color: #009900;">}</span><br/>
 </div></div>
-<p>解决了上面的合并有序数列问题，再来看归并排序，其的基本思路就是将数组分成2组A，B，如果这2组组内的数据都是有序的，那么就可以很方便的将这2组数据进行排序。如何让这2组组内数据有序了？<br/>可以将A，B组各自再分成2组。依次类推，当分出来的小组只有1个数据时，可以认为这个小组组内已经达到了有序，然后再合并相邻的2个小组就可以了。这样通过<strong>先递归的分解数列</strong>，<strong>再合并数列</strong>就完成了归并排序。</p>
+<p>上記のソート済み数列のマージ問題を解決したら、次にマージソートを見てみよう。その基本方針は、配列を2つのグループA、Bに分割し、この2つのグループ内のデータがどちらもソートされていれば、この2つのグループのデータを簡単にソートできるというものである。では、どうすればこの2つのグループ内のデータをソートできるのか？<br/>A、Bの各グループをそれぞれさらに2つのグループに分割する。同様に繰り返し、分割された小グループが1つのデータだけになったとき、その小グループ内はソート済みと見なせる。そして隣接する2つの小グループをマージすればよい。このようにして。<strong>まず再帰的に数列を分解する</strong>，<strong>再合并数列</strong>これでマージソートが完了します。</p>
 </li>
 <li>
 <p><strong>过程：</strong></p>
@@ -427,7 +424,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>归并排序</p>
 </li>
 <li>
-<p><strong>平均时间复杂度：</strong>O(NlogN)<br/>归并排序的效率是比较高的，设数列长为N，将数列分开成小数列一共要logN步，每步都是一个合并有序数列的过程，时间复杂度可以记为O(N)，故一共为O(N*logN)。</p>
+<p><strong>平均時間計算量：</strong>O(NlogN)<br/>マージソートの効率は比較的高い。数列の長さをNとすると、数列を小さな数列に分割するには合計logNステップかかる。各ステップはソート済み数列をマージする処理であり、時間計算量はO(N)と表せる。よって全体ではO(N*logN)となる。</p>
 </li>
 <li>
 <p><strong>代码实现：</strong></p>
@@ -479,7 +476,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div></div>
 </li>
 </ul>
-<h2>七. 堆排序(HeapSort)</h2>
+<h2>七. ヒープソート(HeapSort)</h2>
 <hr/>
 <ul>
 <li>
@@ -493,10 +490,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </ul>
 </li>
 <li>
-<p><strong>平均时间复杂度：</strong>O(NlogN)<br/>由于每次重新恢复堆的时间复杂度为O(logN)，共N - 1次重新恢复堆操作，再加上前面建立堆时N / 2次向下调整，每次调整时间复杂度也为O(logN)。二次操作时间相加还是O(N * logN)。</p>
+<p><strong>平均時間計算量：</strong>O(NlogN)<br/>ヒープを再構築するたびの時間計算量はO(logN)であり、再構築操作は全部でN-1回ある。さらに、ヒープ構築時のN/2回の下方調整があり、各調整の時間計算量もO(logN)である。2つの操作の時間を合計してもO(N*logN)である。</p>
 </li>
 <li>
-<p><strong>java代码实现：</strong></p>
+<p><strong>javaコード実装：</strong></p>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
 <span style="color: #666666; font-style: italic;">//构建最小堆</span><br/>
 <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">static</span> <span style="color: #000066; font-weight: bold;">void</span> MakeMinHeap<span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span> a<span style="color: #009900;">[</span><span style="color: #009900;">]</span>, <span style="color: #000066; font-weight: bold;">int</span> n<span style="color: #009900;">)</span><span style="color: #009900;">{</span><br/>
@@ -544,23 +541,23 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div></div>
 </li>
 </ul>
-<h2>八. 基数排序(RadixSort)</h2>
+<h2>八. 基数ソート(RadixSort)</h2>
 <hr/>
 <h5>BinSort</h5>
 <ul>
 <li>
-<p><strong>基本思想：</strong><br/>BinSort想法非常简单，首先创建数组A[MaxValue]；然后将每个数放到相应的位置上（例如17放在下标17的数组位置）；最后遍历数组，即为排序后的结果。</p>
+<p><strong>基本思想：</strong><br/>BinSortの考え方は非常に簡単で、まず配列A[MaxValue]を作成し、次に各数値を対応する位置に置く（例えば17はインデックス17の配列位置に置く）。最後に配列を走査すれば、それがソート後の結果となる。</p>
 </li>
 <li>
 <p><strong>图示：</strong><br/></p>
 <p><img class="attachment-full" decoding="async" src="../wp-content/uploads/2015/09/88808.html"/></p>
 <p>BinSort</p>
 <ul>
-<li><strong>问题：</strong>当序列中存在较大值时，BinSort 的排序方法会浪费大量的空间开销。</li>
+<li><strong>问题：</strong>シーケンス内に大きな値が存在する場合、BinSortのソート方法は大量の空間オーバーヘッドを浪費する。</li>
 </ul>
 <h5>RadixSort</h5>
 <ul>
-<li><strong>基本思想：</strong>基数排序是在BinSort的基础上，通过基数的限制来减少空间的开销。</li>
+<li><strong>基本思想：</strong>基数ソートはBinSortを基に、基数の制限によって空間オーバーヘッドを減らすものである。</li>
 <li><strong>过程：</strong>
 <p><img alt="10101001" class="attachment-full" decoding="async" height="260" loading="lazy" src="../wp-content/uploads/2015/09/101010010.html" width="730"/></p>
 <p>过程1</p>
@@ -568,10 +565,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>过程2</p>
 </li>
 </ul>
-<p>（1）首先确定基数为10，数组的长度也就是10.每个数34都会在这10个数中寻找自己的位置。<br/>（2）不同于BinSort会直接将数34放在数组的下标34处，基数排序是将34分开为3和4，第一轮排序根据最末位放在数组的下标4处，第二轮排序根据倒数第二位放在数组的下标3处，然后遍历数组即可。</p>
+<p>（1）まず基数を10と決める。配列の長さも10である。各数（例えば34）はこの10個の中から自分の位置を探すことになる。<br/>（2）BinSortが数34を直接配列のインデックス34に置くのとは異なり、基数ソートは34を3と4に分ける。1回目のソートでは最下位桁に従って配列のインデックス4に置き、2回目のソートでは右から2桁目に従って配列のインデックス3に置く。その後配列を走査すればよい。</p>
 </li>
 <li>
-<p><strong>java代码实现：</strong></p>
+<p><strong>javaコード実装：</strong></p>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
 <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">static</span> <span style="color: #000066; font-weight: bold;">void</span> RadixSort<span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span> A<span style="color: #009900;">[</span><span style="color: #009900;">]</span>,<span style="color: #000066; font-weight: bold;">int</span> temp<span style="color: #009900;">[</span><span style="color: #009900;">]</span>,<span style="color: #000066; font-weight: bold;">int</span> n,<span style="color: #000066; font-weight: bold;">int</span> k,<span style="color: #000066; font-weight: bold;">int</span> r,<span style="color: #000066; font-weight: bold;">int</span> cnt<span style="color: #009900;">[</span><span style="color: #009900;">]</span><span style="color: #009900;">)</span><span style="color: #009900;">{</span><br/>
 <br/>
@@ -725,7 +722,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div>
 <div id="postcomments">
 <ol class="commentlist">
-<li class="comment even thread-even depth-1" id="comment-57173"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   liaolan</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  lia***nhyy@foxmail.com</p></div><div class="upvotejs" data-commid="57173" id="runoobvote-id-57173"><a class="upvote"></a> <span class="count">32</span></div></div><div class="comt-main" id="div-comment-57173"><p>本文shell排序代码可能出现对于0索引位置无法排序的问题，建议加一点修改如下：</p>
+<li class="comment even thread-even depth-1" id="comment-57173"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   liaolan</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  lia***nhyy@foxmail.com</p></div><div class="upvotejs" data-commid="57173" id="runoobvote-id-57173"><a class="upvote"></a> <span class="count">32</span></div></div><div class="comt-main" id="div-comment-57173"><p>この記事のシェルソートコードは、インデックス0の位置をソートできない問題が発生する可能性がある。以下のように少し修正することをお勧めする。</p>
 <pre>.....
 int incre = arr.length;
 while(true){
@@ -748,12 +745,10 @@ while(true){
 }
 ......</pre><div class="comt-meta wrapper"><span class="comt-author"><a href=".." target="_blank">liaolan</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   liaolan</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  lia***nhyy@foxmail.com</p></div></span>6年前 (2020-09-19)</div></div></li><!-- #comment-## -->
 </ol>
-<div class="pagenav">
-</div>
 </div>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>点我分享笔记</h3>
+<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 &lt;p style="font-size:14px;"&gt;笔记需要是本篇文章的内容扩展！&lt;/p&gt;&lt;br&gt;
 	&lt;p style="font-size:12px;"&gt;&lt;a href="../tougao.html" target="_blank"&gt;文章投稿，可点击这里&lt;/a&gt;&lt;/p&gt;
 	&lt;p style="font-size:14px;"&gt;&lt;a href="./runoob-user-test-intro.html" target="_blank"&gt;注册邀请码获取方式&lt;/a&gt;&lt;/p&gt;
@@ -1002,181 +997,6 @@ var aid = 13536;
 
 </div>
 -->
-<div class="sidebar-box cate-list" style="display:none;">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">热门文章</a>
-</div>
-<div class="membership">
-<ul class="membership">
-<li><a href="https://mp.weixin.qq.com/s/ZaP6YNgKTCHYy3r2WPBBaw" target="_blank" title="2024 年 04 月 JavaScript 框架排行榜">2024 年 04 月 JavaScript 框架排行榜</a></li>
-<li><a href="https://mp.weixin.qq.com/s/JBR2twC0t6krjjuxqvhsEQ" target="_blank" title="免费、开源、好用的 SQL 客户端合集">免费、开源、好用的 SQL 客户端合集</a></li>
-<li><a href="https://mp.weixin.qq.com/s/TwV3YQjA1glyaW7TiHvhlA" target="_blank" title="优雅的代码规范，提升代码质量">优雅的代码规范，提升代码质量</a></li>
-<li><a href="https://mp.weixin.qq.com/s/CnUJ-2OHPbBKlnVpjDzavA" target="_blank" title="命令行中的趣味世界，牛也能说话，有趣又好玩">命令行中的趣味世界，牛也能说话，有趣又好玩</a></li>
-<li><a href="https://mp.weixin.qq.com/s/7NKl-mD7N8CeSNQlbKDEWA" target="_blank" title="2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？">2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？</a></li>
-<li><a href="https://mp.weixin.qq.com/s/yWlSVDKobtDhThnhirVRpw" target="_blank" title="免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端">免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端</a></li>
-</ul>
-</div>
-</div>
-<div class="sidebar-box cate-list">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">教程列表</a>
-</div>
-<div class="cate-items">
-<a href="../ado.html">ADO 教程</a>
-<a href="../ai-agent.html">AI Agent 教程</a>
-<a href="../ai.html">AI 入门教程</a>
-<a href="../ai-math.html">AI 数学基础</a>
-<a href="../ajax.html">Ajax 教程</a>
-<a href="../android.html">Android 教程</a>
-<a href="../angularjs2.html">Angular2 教程</a>
-<a href="../angularjs.html">AngularJS 教程</a>
-<a href="../appml.html">AppML 教程</a>
-<a href="../asp.html">ASP 教程</a>
-<a href="../aspnet.html">ASP.NET 教程</a>
-<a href="../bootstrap.html">Bootstrap 教程</a>
-<a href="../bootstrap4.html">Bootstrap4 教程</a>
-<a href="../bootstrap5.html">Bootstrap5 教程</a>
-<a href="../cprogramming.html">C 教程</a>
-<a href="../c-dsa.html">C 语言数据结构与算法</a>
-<a href="../csharp.html">C# 教程</a>
-<a href="../cplusplus.html">C++ 教程</a>
-<a href="../chartjs.html">Chart.js 教程</a>
-<a href="../claude-code.html">Claude Code 教程</a>
-<a href="../cmake.html">CMake 教程</a>
-<a href="../codex.html">Codex 教程</a>
-<a href="../cssref.html">CSS 参考手册</a>
-<a href="../css.html">CSS 教程</a>
-<a href="../css3.html">CSS3 教程</a>
-<a href="../cursor.html">Cursor 教程</a>
-<a href="../dart.html">Dart 教程</a>
-<a href="../dash.html">Dash 教程</a>
-<a href="../deepseek-harness.html">DeepSeek Harness</a>
-<a href="../django.html">Django 教程</a>
-<a href="../docker.html">Docker 教程</a>
-<a href="../dtd.html">DTD 教程</a>
-<a href="../echarts.html">ECharts 教程</a>
-<a href="../eclipse.html">Eclipse 教程</a>
-<a href="../electron.html">Electron 教程</a>
-<a href="../fastapi.html">FastAPI 教程</a>
-<a href="../firebug.html">Firebug 教程</a>
-<a href="../flask.html">Flask 教程</a>
-<a href="../flutter.html">Flutter 教程</a>
-<a href="../font-awesome.html">Font Awesome 图标</a>
-<a href="../foundation.html">Foundation 教程</a>
-<a href="../git.html">Git 教程</a>
-<a href="../go.html">Go 语言教程</a>
-<a href="../googleapi.html">Google 地图 API 教程</a>
-<a href="../hermes-agent.html">Hermes Agent</a>
-<a href="../highcharts.html">Highcharts 教程</a>
-<a href="../htmldom.html">HTML DOM 教程</a>
-<a href="../tags.html">HTML 参考手册</a>
-<a href="../charsets.html">HTML 字符集</a>
-<a href="../html.html">HTML 教程</a>
-<a href="../http.html">HTTP 教程</a>
-<a href="../ionic.html">ionic 教程</a>
-<a href="../ios.html">iOS 教程</a>
-<a href="../java.html">Java 教程</a>
-<a href="../jsref.html">JavaScript 参考手册</a>
-<a href="../js.html">Javascript 教程</a>
-<a href="../jeasyui.html">jQuery EasyUI 教程</a>
-<a href="../jquerymobile.html">jQuery Mobile 教程</a>
-<a href="../jqueryui.html">jQuery UI 教程</a>
-<a href="../jquery.html">jQuery 教程</a>
-<a href="../json.html">JSON 教程</a>
-<a href="../jsp.html">JSP 教程</a>
-<a href="../julia.html">Julia 教程</a>
-<a href="../jupyter-notebook.html">Jupyter Notebook 教程</a>
-<a href="../kotlin.html">Kotlin 教程</a>
-<a href="../langchain.html">LangChain 教程</a>
-<a href="../latex.html">LaTeX 教程</a>
-<a href="../linux.html">Linux 教程</a>
-<a href="../lua.html">Lua 教程</a>
-<a href="../markdown.html">Markdown 教程</a>
-<a href="../matplotlib.html">Matplotlib 教程</a>
-<a href="../maven.html">Maven 教程</a>
-<a href="../memcached.html">Memcached 教程</a>
-<a href="../mongodb.html">MongoDB 教程</a>
-<a href="../mysql.html">MySQL 教程</a>
-<a href="../nextjs.html">Next.js 教程</a>
-<a href="../nlp.html">NLP 教程</a>
-<a href="../nodejs.html">Node.js 教程</a>
-<a href="../numpy.html">NumPy 教程</a>
-<a href="../obsidian.html">Obsidian 教程</a>
-<a href="../ollama.html">Ollama 教程</a>
-<a href="../opencode.html">OpenCode 教程</a>
-<a href="../opencv.html">OpenCV 教程</a>
-<a href="../pandas.html">Pandas 教程</a>
-<a href="../perl.html">Perl 教程</a>
-<a href="../php.html">PHP 教程</a>
-<a href="../pi-agent.html">Pi Agent</a>
-<a href="../pillow.html">Pillow 教程</a>
-<a href="../playwright.html">Playwright 教程</a>
-<a href="../postgresql.html">PostgreSQL 教程</a>
-<a href="../powershell.html">PowerShell</a>
-<a href="../pycharm.html">Pycharm 教程</a>
-<a href="../python3.html">Python 3 教程</a>
-<a href="../python.html">Python 基础教程</a>
-<a href="../python-design-pattern.html">Python 设计模式</a>
-<a href="../python-qt.html">Python 量化交易</a>
-<a href="../pytorch.html">PyTorch 教程</a>
-<a href="../r.html">R 教程</a>
-<a href="../rdf.html">RDF 教程</a>
-<a href="../react.html">React 教程</a>
-<a href="../redis.html">Redis 教程</a>
-<a href="../restfulapi.html">RESTful API</a>
-<a href="../rss.html">RSS 教程</a>
-<a href="../ruby.html">Ruby 教程</a>
-<a href="../rust.html">Rust 教程</a>
-<a href="../sass.html">Sass 教程</a>
-<a href="../scala.html">Scala 教程</a>
-<a href="../scipy.html">SciPy 教程</a>
-<a href="../selenium.html">Selenium 教程</a>
-<a href="../servlet.html">Servlet 教程</a>
-<a href="../skills.html">Skills 教程</a>
-<a href="../sklearn.html">Sklearn 教程</a>
-<a href="../soap.html">SOAP 教程</a>
-<a href="../sql.html">SQL 教程</a>
-<a href="../sqlite.html">SQLite 教程</a>
-<a href="../svg.html">SVG 教程</a>
-<a href="../svn.html">SVN 教程</a>
-<a href="../swagger.html">Swagger 教程</a>
-<a href="../swift.html">Swift 教程</a>
-<a href="../tailwindcss.html">Tailwind CSS 教程</a>
-<a href="../tcpip.html">TCP/IP 教程</a>
-<a href="../tensorflow.html">TensorFlow 教程</a>
-<a href="../typescript.html">TypeScript 教程</a>
-<a href="../uniapp.html">uni-app 教程</a>
-<a href="../vbscript.html">VBScript 教程</a>
-<a href="../vibe-coding.html">Vibe Coding 教程</a>
-<a href="../vscode.html">VSCode 教程</a>
-<a href="../vue2.html">Vue.js 教程</a>
-<a href="../vue3.html">Vue3 教程</a>
-<a href="../w3c.html">W3C 教程</a>
-<a href="../webservices.html">Web Service 教程</a>
-<a href="../wsdl.html">WSDL 教程</a>
-<a href="../xlink.html">XLink 教程</a>
-<a href="../dom.html">XML DOM 教程</a>
-<a href="../schema.html">XML Schema 教程</a>
-<a href="../xml.html">XML 教程</a>
-<a href="../xpath.html">XPath 教程</a>
-<a href="../xquery.html">XQuery 教程</a>
-<a href="../xslfo.html">XSLFO 教程</a>
-<a href="../xsl.html">XSLT 教程</a>
-<a href="../zig.html">Zig 教程</a>
-<a href="../data-structures.html">数据结构</a>
-<a href="../ml.html">机器学习</a>
-<a href="../regexp.html">正则表达式</a>
-<a href="../assembly.html">汇编语言</a>
-<a href="../quiz.html">测验</a>
-<a href="../browsers.html">浏览器</a>
-<a href="../quality.html">网站品质</a>
-<a href="../web.html">网站建设指南</a>
-<a href="../hosting.html">网站服务器教程</a>
-<a href="../np.html">网络协议</a>
-<a href="../computer-organization.html">计算机组成原理</a>
-<a href="../design-pattern.html">设计模式</a>
-</div>
-</div>
 </div>
 </div>
 </div>

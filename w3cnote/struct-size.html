@@ -60,9 +60,6 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div>
 <div class="row">
 <div class="col right-list">
-<button class="btn btn-responsive-nav btn-inverse" id="pull">
-<i class="fa fa-navicon"></i>
-</button>
 </div>
 <div class="col search search-desktop last">
 <div class="search-input">
@@ -79,43 +76,43 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="col middle-column big-middle-column">
 <div class="article">
 <div class="article-heading">
-<h2>结构体大小的计算</h2> <h3><em>分类</em> <a href="../w3cnote_genre/code.html" title="编程技术">编程技术</a> </h3>
+<h2>構造体のサイズの計算</h2> <h3><em>分类</em> <a href="../w3cnote_genre/code.html" title="编程技术">编程技术</a> </h3>
 </div>
 <div class="article-body note-body">
 <div class="article-intro">
 <!-- ad start-->
 <!-- ad end-->
-<p>用最简单的方法，通俗易懂的方法计算结构体大小。</p>
-<p><strong>结构体计算要遵循字节对齐原则。</strong></p>
-<p>结构体默认的字节对齐一般满足三个准则：</p>
-<ul><li>1) 结构体变量的首地址能够被其最宽基本类型成员的大小所整除；</li><li>2) 结构体每个成员相对于结构体首地址的偏移量（offset）都是成员大小的整数倍，如有需要编译器会在成员之间加上填充字节（internal adding）；</li><li>3) 结构体的总大小为结构体最宽基本类型成员大小的整数倍，如有需要编译器会在最末一个成员之后加上填充字节（trailing padding）</li></ul>
-<blockquote><p><strong>其实暂且不管这三原则，我的方法只要记住第三个，就是结构体大小结果要为成员中最大字节的整数倍。</strong></p></blockquote>
-<p>先看下面定义的两个结构体：</p>
+<p>最も簡単な方法、わかりやすい方法で構造体のサイズを計算する。</p>
+<p><strong>構造体の計算はバイトアライメントの原則に従う必要がある。</strong></p>
+<p>構造体のデフォルトのバイトアライメントは一般的に次の3つの基準を満たす：</p>
+<ul><li>1) 構造体変数の先頭アドレスは、その最も幅の広い基本型メンバーのサイズで割り切れること；</li><li>2) 構造体の各メンバーの構造体先頭アドレスに対するオフセット（offset）は、すべてメンバーサイズの整数倍であること。必要に応じてコンパイラはメンバー間にパディングバイトを追加する（internal adding）；</li><li>3) 構造体の総サイズは、構造体の最も幅の広い基本型メンバーのサイズの整数倍であること。必要に応じてコンパイラは最後のメンバーの後にパディングバイトを追加する（trailing padding）</li></ul>
+<blockquote><p><strong>実はこれらの3つの原則はひとまず置いておいて、私の方法では3つ目だけ覚えておけばいい。つまり構造体のサイズの結果は、メンバーの中で最大のバイト数の整数倍でなければならないということだ。</strong></p></blockquote>
+<p>まず以下で定義された2つの構造体を見てください：</p>
 <pre>struct {   char a;   short b;   char c; }S1;
 
 struct {  char  a;  char  b;  short c; }S2;</pre>
-<p>分别用程序测试得出<strong>sizeof(S1)=6 , sizeof(S2)=4</strong>。</p>
-<p>注意： 为什么 仅仅改变了结构体成员的顺序，结果不一样？</p>
+<p>それぞれプログラムでテストして求めた<strong>sizeof(S1)=6 , sizeof(S2)=4</strong>。</p>
+<p>注意：なぜ構造体メンバーの順序を変えただけで、結果が異なるのでしょうか？</p>
 <p>解：</p>
-<ul><li>（1）首先找出成员变量中最大的字节，可见对于 S1 和 S2 最大是 short ，占 2 个字节；</li><li>（2）所以以后都已2个字节为准，也就是说最多只要2个字节，其他填充占位，注意下图一个格子表示一个字节；</li><li>（3）所以先画2个格子，以后看成员顺序，逐次增加，每次一2为增加基准</li></ul>对于 S1 来说，顺序是<span class="marked">char-&gt;short-&gt;char </span>:
+<ul><li>（1）まずメンバー変数の中で最大のバイト数を見つける。S1 と S2 の場合、最大は short で、2バイトを占める；</li><li>（2）したがって、以降は2バイトを基準とする。つまり、最大でも2バイト単位とし、他はパディングで埋める。下の図では1つのマスが1バイトを表すことに注意；</li><li>（3）そこでまず2つのマスを描き、以降はメンバーの順序を見ながら、毎回2を増加の基準として徐々に増やしていく。</li></ul>对于 S1 来说，顺序是<span class="marked">char-&gt;short-&gt;char </span>:
 <p><img decoding="async" src="../wp-content/uploads/2019/05/8DA2FF64-8FFA-4012-967D-5DB63FB284F5.jpg"/></p>
-<p>所以对于 S1 结构体大小为 2*3=6，至于为什么第二个 char，多的那个字节不丢到，就是遵循第三个原则，就是结构体大小结果要为成员中最大字节的整数倍。</p>
+<p>したがって、S1の構造体サイズは2*3=6です。なぜ2番目のcharの余分なバイトを捨てないのかというと、3つ目の原則に従うからです。つまり構造体サイズの結果は、メンバーの中で最大のバイト数の整数倍でなければならないということです。</p>
 <pre>S1=2*3=6</pre>
-<p>对于 S2 嘛，也画个图，但是顺序是<span class="marked">char-&gt;char-&gt;short</span>：</p>
+<p>S2 についても、同じように図を描くが、順序は<span class="marked">char-&gt;char-&gt;short</span>：</p>
 <p><img decoding="async" src="../wp-content/uploads/2019/05/E5BA4CAD-6CB1-4B4C-ABAE-8AAC0437D7DB.jpg"/></p>
 <pre>S2=2*2=4</pre>
-<p>按照这个方法再看这样的一个结构体：</p>
+<p>この方法に従って、次のような構造体をもう一度見てみよう：</p>
 <pre>struct stu1
 {
     int i;
     char c;
     int j;
 };</pre>
-<p>很明显，最大字节为 4 个。顺序 int  char int:</p>
+<p>明らかに、最大バイト数は4バイトである。順序は int char int：</p>
 <p><img decoding="async" src="../wp-content/uploads/2019/05/E5BA4CAD-6CB1-4B4C-ABAE-8AAC0437D7DB.jpg"/></p>
-<p>因为 int 占 4 个，而 char 已经占了一个，不够，所以那三个只能多余占位。</p>
+<p>int は4バイトを占め、char はすでに1バイト占めているので、足りず、その3バイトは余分なパディングとして埋めるしかない。</p>
 <pre>Stu1=3*4=12</pre>
-<p>那么换一下呢？</p>
+<p>では、変えてみるとどうなる？</p>
 <pre>struct stu2
 {
     int i;
@@ -123,7 +120,7 @@ struct {  char  a;  char  b;  short c; }S2;</pre>
     char  c；
 }；</pre>
 <pre>Stu2=3*4=12</pre>
-<p>再看一个：就是当结构体成员变量是另外一个结构体时，只要把结构体中成员为另一结构体作为整体相加就行。</p>
+<p>もう一つ見てみよう：構造体のメンバー変数が別の構造体である場合、その構造体の中の別構造体であるメンバーを全体として加算すればよい。</p>
 <pre>typedef struct A
 {
     char a1;
@@ -140,7 +137,7 @@ typedef struct B
     short int b1;
     A a;
 };</pre>
-<p>而对于 B，先不要管 A a，也就是先去掉 A a 成员结构体 B 算出其为 8，所以最后结果为 8+16=24；24 才是最后结果。</p>
+<p>一方Bについては、まずA aを考えないでください。つまりA aメンバーを取り除いて構造体Bを計算すると8になります。したがって最後の結果は8+16=24；24が最終結果です。</p>
 <blockquote><p>原文地址：https://www.cnblogs.com/lykbk/archive/2013/04/02/krtmbhrkhoirtj9468945.html</p></blockquote>
 </div>
 </div>
@@ -260,8 +257,8 @@ typedef struct B
 </div>
 <div id="postcomments">
 <ol class="commentlist">
-<li class="comment even thread-even depth-1" id="comment-63958"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>淞松松</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  105***7532@qq.com</p></div><div class="upvotejs" data-commid="63958" id="runoobvote-id-63958"><a class="upvote"></a> <span class="count">46</span></div></div><div class="comt-main" id="div-comment-63958"><p>第三条有误，"就是结构体大小结果要为<b>成员中最大字节的整数倍</b>。"</p><p>正确来说，若没有设定对齐字节数，则最大成员为对齐字节数。</p><p>若有设定对齐字节数，则对齐字节数为 ：min(最大成员，设定的对齐字节数)。</p><p>参考文章：<a href="https://zhuanlan.zhihu.com/p/30007037" rel="nofollow ugc">https://zhuanlan.zhihu.com/p/30007037</a></p><div class="comt-meta wrapper"><span class="comt-author"><a href=".." target="_blank">淞松松</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>淞松松</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  105***7532@qq.com</p></div></span>5年前 (2021-05-25)</div></div></li><!-- #comment-## -->
-<li class="comment byuser comment-author-tianqixin bypostauthor odd alt thread-odd thread-alt depth-1" id="comment-79926"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>拔刀相助的好汉</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  141***3926@qq.com</p></div><div class="upvotejs" data-commid="79926" id="runoobvote-id-79926"><a class="upvote"></a> <span class="count">26</span></div></div><div class="comt-main" id="div-comment-79926"><p>再看一个：就是当结构体成员变量是另外一个结构体时，只要把结构体中成员为另一结构体作为整体相加就行。</p>
+<li class="comment even thread-even depth-1" id="comment-63958"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>淞松松</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  105***7532@qq.com</p></div><div class="upvotejs" data-commid="63958" id="runoobvote-id-63958"><a class="upvote"></a> <span class="count">46</span></div></div><div class="comt-main" id="div-comment-63958"><p>3つ目の原則に誤りがあります。「構造体サイズの結果は～でなければならない」という部分が。<b>成员中最大字节的整数倍</b>。"</p><p>正確には、アライメントバイト数を設定していない場合、最大メンバーがアライメントバイト数となる。</p><p>アライメントバイト数を設定している場合、アライメントバイト数は：min(最大メンバー，設定したアライメントバイト数) となる。</p><p>参考文章：<a href="https://zhuanlan.zhihu.com/p/30007037" rel="nofollow ugc">https://zhuanlan.zhihu.com/p/30007037</a></p><div class="comt-meta wrapper"><span class="comt-author"><a href=".." target="_blank">淞松松</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>淞松松</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  105***7532@qq.com</p></div></span>5年前 (2021-05-25)</div></div></li><!-- #comment-## -->
+<li class="comment byuser comment-author-tianqixin bypostauthor odd alt thread-odd thread-alt depth-1" id="comment-79926"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>刀を抜いて人を助ける好漢</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  141***3926@qq.com</p></div><div class="upvotejs" data-commid="79926" id="runoobvote-id-79926"><a class="upvote"></a> <span class="count">26</span></div></div><div class="comt-main" id="div-comment-79926"><p>もう一つ見てみよう：構造体のメンバー変数が別の構造体である場合、その構造体の中の別構造体であるメンバーを全体として加算すればよい。</p>
 <pre>typedef struct A { 
     char a1; 
     short int a2; 
@@ -274,14 +271,12 @@ typedef struct B {
     short int b1; 
     A a; 
 };</pre>
-<p>而对于 B，先不要管 A a，也就是先去掉 A a 成员结构体 B 算出其为 8，所以最后结果为 8+16=24；24 才是最后结果。</p><p>此处纯粹误人子弟，理论是错的！</p><div class="comt-meta wrapper"><span class="comt-author"><a href=".." target="_blank">拔刀相助的好汉</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>拔刀相助的好汉</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  141***3926@qq.com</p></div></span>3年前 (2023-07-12)</div></div></li><!-- #comment-## -->
+<p>一方Bについては、まずA aを考えないでください。つまりA aメンバーを取り除いて構造体Bを計算すると8になります。したがって最後の結果は8+16=24；24が最終結果です。</p><p>この部分はまったく人を誤らせるだけで、理論が間違っている！</p><div class="comt-meta wrapper"><span class="comt-author"><a href=".." target="_blank">拔刀相助的好汉</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>刀を抜いて人を助ける好漢</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  141***3926@qq.com</p></div></span>3年前 (2023-07-12)</div></div></li><!-- #comment-## -->
 </ol>
-<div class="pagenav">
-</div>
 </div>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>点我分享笔记</h3>
+<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 &lt;p style="font-size:14px;"&gt;笔记需要是本篇文章的内容扩展！&lt;/p&gt;&lt;br&gt;
 	&lt;p style="font-size:12px;"&gt;&lt;a href="../tougao.html" target="_blank"&gt;文章投稿，可点击这里&lt;/a&gt;&lt;/p&gt;
 	&lt;p style="font-size:14px;"&gt;&lt;a href="./runoob-user-test-intro.html" target="_blank"&gt;注册邀请码获取方式&lt;/a&gt;&lt;/p&gt;
@@ -530,181 +525,6 @@ var aid = 21584;
 
 </div>
 -->
-<div class="sidebar-box cate-list" style="display:none;">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">热门文章</a>
-</div>
-<div class="membership">
-<ul class="membership">
-<li><a href="https://mp.weixin.qq.com/s/ZaP6YNgKTCHYy3r2WPBBaw" target="_blank" title="2024 年 04 月 JavaScript 框架排行榜">2024 年 04 月 JavaScript 框架排行榜</a></li>
-<li><a href="https://mp.weixin.qq.com/s/JBR2twC0t6krjjuxqvhsEQ" target="_blank" title="免费、开源、好用的 SQL 客户端合集">免费、开源、好用的 SQL 客户端合集</a></li>
-<li><a href="https://mp.weixin.qq.com/s/TwV3YQjA1glyaW7TiHvhlA" target="_blank" title="优雅的代码规范，提升代码质量">优雅的代码规范，提升代码质量</a></li>
-<li><a href="https://mp.weixin.qq.com/s/CnUJ-2OHPbBKlnVpjDzavA" target="_blank" title="命令行中的趣味世界，牛也能说话，有趣又好玩">命令行中的趣味世界，牛也能说话，有趣又好玩</a></li>
-<li><a href="https://mp.weixin.qq.com/s/7NKl-mD7N8CeSNQlbKDEWA" target="_blank" title="2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？">2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？</a></li>
-<li><a href="https://mp.weixin.qq.com/s/yWlSVDKobtDhThnhirVRpw" target="_blank" title="免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端">免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端</a></li>
-</ul>
-</div>
-</div>
-<div class="sidebar-box cate-list">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">教程列表</a>
-</div>
-<div class="cate-items">
-<a href="../ado.html">ADO 教程</a>
-<a href="../ai-agent.html">AI Agent 教程</a>
-<a href="../ai.html">AI 入门教程</a>
-<a href="../ai-math.html">AI 数学基础</a>
-<a href="../ajax.html">Ajax 教程</a>
-<a href="../android.html">Android 教程</a>
-<a href="../angularjs2.html">Angular2 教程</a>
-<a href="../angularjs.html">AngularJS 教程</a>
-<a href="../appml.html">AppML 教程</a>
-<a href="../asp.html">ASP 教程</a>
-<a href="../aspnet.html">ASP.NET 教程</a>
-<a href="../bootstrap.html">Bootstrap 教程</a>
-<a href="../bootstrap4.html">Bootstrap4 教程</a>
-<a href="../bootstrap5.html">Bootstrap5 教程</a>
-<a href="../cprogramming.html">C 教程</a>
-<a href="../c-dsa.html">C 语言数据结构与算法</a>
-<a href="../csharp.html">C# 教程</a>
-<a href="../cplusplus.html">C++ 教程</a>
-<a href="../chartjs.html">Chart.js 教程</a>
-<a href="../claude-code.html">Claude Code 教程</a>
-<a href="../cmake.html">CMake 教程</a>
-<a href="../codex.html">Codex 教程</a>
-<a href="../cssref.html">CSS 参考手册</a>
-<a href="../css.html">CSS 教程</a>
-<a href="../css3.html">CSS3 教程</a>
-<a href="../cursor.html">Cursor 教程</a>
-<a href="../dart.html">Dart 教程</a>
-<a href="../dash.html">Dash 教程</a>
-<a href="../deepseek-harness.html">DeepSeek Harness</a>
-<a href="../django.html">Django 教程</a>
-<a href="../docker.html">Docker 教程</a>
-<a href="../dtd.html">DTD 教程</a>
-<a href="../echarts.html">ECharts 教程</a>
-<a href="../eclipse.html">Eclipse 教程</a>
-<a href="../electron.html">Electron 教程</a>
-<a href="../fastapi.html">FastAPI 教程</a>
-<a href="../firebug.html">Firebug 教程</a>
-<a href="../flask.html">Flask 教程</a>
-<a href="../flutter.html">Flutter 教程</a>
-<a href="../font-awesome.html">Font Awesome 图标</a>
-<a href="../foundation.html">Foundation 教程</a>
-<a href="../git.html">Git 教程</a>
-<a href="../go.html">Go 语言教程</a>
-<a href="../googleapi.html">Google 地图 API 教程</a>
-<a href="../hermes-agent.html">Hermes Agent</a>
-<a href="../highcharts.html">Highcharts 教程</a>
-<a href="../htmldom.html">HTML DOM 教程</a>
-<a href="../tags.html">HTML 参考手册</a>
-<a href="../charsets.html">HTML 字符集</a>
-<a href="../html.html">HTML 教程</a>
-<a href="../http.html">HTTP 教程</a>
-<a href="../ionic.html">ionic 教程</a>
-<a href="../ios.html">iOS 教程</a>
-<a href="../java.html">Java 教程</a>
-<a href="../jsref.html">JavaScript 参考手册</a>
-<a href="../js.html">Javascript 教程</a>
-<a href="../jeasyui.html">jQuery EasyUI 教程</a>
-<a href="../jquerymobile.html">jQuery Mobile 教程</a>
-<a href="../jqueryui.html">jQuery UI 教程</a>
-<a href="../jquery.html">jQuery 教程</a>
-<a href="../json.html">JSON 教程</a>
-<a href="../jsp.html">JSP 教程</a>
-<a href="../julia.html">Julia 教程</a>
-<a href="../jupyter-notebook.html">Jupyter Notebook 教程</a>
-<a href="../kotlin.html">Kotlin 教程</a>
-<a href="../langchain.html">LangChain 教程</a>
-<a href="../latex.html">LaTeX 教程</a>
-<a href="../linux.html">Linux 教程</a>
-<a href="../lua.html">Lua 教程</a>
-<a href="../markdown.html">Markdown 教程</a>
-<a href="../matplotlib.html">Matplotlib 教程</a>
-<a href="../maven.html">Maven 教程</a>
-<a href="../memcached.html">Memcached 教程</a>
-<a href="../mongodb.html">MongoDB 教程</a>
-<a href="../mysql.html">MySQL 教程</a>
-<a href="../nextjs.html">Next.js 教程</a>
-<a href="../nlp.html">NLP 教程</a>
-<a href="../nodejs.html">Node.js 教程</a>
-<a href="../numpy.html">NumPy 教程</a>
-<a href="../obsidian.html">Obsidian 教程</a>
-<a href="../ollama.html">Ollama 教程</a>
-<a href="../opencode.html">OpenCode 教程</a>
-<a href="../opencv.html">OpenCV 教程</a>
-<a href="../pandas.html">Pandas 教程</a>
-<a href="../perl.html">Perl 教程</a>
-<a href="../php.html">PHP 教程</a>
-<a href="../pi-agent.html">Pi Agent</a>
-<a href="../pillow.html">Pillow 教程</a>
-<a href="../playwright.html">Playwright 教程</a>
-<a href="../postgresql.html">PostgreSQL 教程</a>
-<a href="../powershell.html">PowerShell</a>
-<a href="../pycharm.html">Pycharm 教程</a>
-<a href="../python3.html">Python 3 教程</a>
-<a href="../python.html">Python 基础教程</a>
-<a href="../python-design-pattern.html">Python 设计模式</a>
-<a href="../python-qt.html">Python 量化交易</a>
-<a href="../pytorch.html">PyTorch 教程</a>
-<a href="../r.html">R 教程</a>
-<a href="../rdf.html">RDF 教程</a>
-<a href="../react.html">React 教程</a>
-<a href="../redis.html">Redis 教程</a>
-<a href="../restfulapi.html">RESTful API</a>
-<a href="../rss.html">RSS 教程</a>
-<a href="../ruby.html">Ruby 教程</a>
-<a href="../rust.html">Rust 教程</a>
-<a href="../sass.html">Sass 教程</a>
-<a href="../scala.html">Scala 教程</a>
-<a href="../scipy.html">SciPy 教程</a>
-<a href="../selenium.html">Selenium 教程</a>
-<a href="../servlet.html">Servlet 教程</a>
-<a href="../skills.html">Skills 教程</a>
-<a href="../sklearn.html">Sklearn 教程</a>
-<a href="../soap.html">SOAP 教程</a>
-<a href="../sql.html">SQL 教程</a>
-<a href="../sqlite.html">SQLite 教程</a>
-<a href="../svg.html">SVG 教程</a>
-<a href="../svn.html">SVN 教程</a>
-<a href="../swagger.html">Swagger 教程</a>
-<a href="../swift.html">Swift 教程</a>
-<a href="../tailwindcss.html">Tailwind CSS 教程</a>
-<a href="../tcpip.html">TCP/IP 教程</a>
-<a href="../tensorflow.html">TensorFlow 教程</a>
-<a href="../typescript.html">TypeScript 教程</a>
-<a href="../uniapp.html">uni-app 教程</a>
-<a href="../vbscript.html">VBScript 教程</a>
-<a href="../vibe-coding.html">Vibe Coding 教程</a>
-<a href="../vscode.html">VSCode 教程</a>
-<a href="../vue2.html">Vue.js 教程</a>
-<a href="../vue3.html">Vue3 教程</a>
-<a href="../w3c.html">W3C 教程</a>
-<a href="../webservices.html">Web Service 教程</a>
-<a href="../wsdl.html">WSDL 教程</a>
-<a href="../xlink.html">XLink 教程</a>
-<a href="../dom.html">XML DOM 教程</a>
-<a href="../schema.html">XML Schema 教程</a>
-<a href="../xml.html">XML 教程</a>
-<a href="../xpath.html">XPath 教程</a>
-<a href="../xquery.html">XQuery 教程</a>
-<a href="../xslfo.html">XSLFO 教程</a>
-<a href="../xsl.html">XSLT 教程</a>
-<a href="../zig.html">Zig 教程</a>
-<a href="../data-structures.html">数据结构</a>
-<a href="../ml.html">机器学习</a>
-<a href="../regexp.html">正则表达式</a>
-<a href="../assembly.html">汇编语言</a>
-<a href="../quiz.html">测验</a>
-<a href="../browsers.html">浏览器</a>
-<a href="../quality.html">网站品质</a>
-<a href="../web.html">网站建设指南</a>
-<a href="../hosting.html">网站服务器教程</a>
-<a href="../np.html">网络协议</a>
-<a href="../computer-organization.html">计算机组成原理</a>
-<a href="../design-pattern.html">设计模式</a>
-</div>
-</div>
 </div>
 </div>
 </div>

@@ -60,9 +60,6 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div>
 <div class="row">
 <div class="col right-list">
-<button class="btn btn-responsive-nav btn-inverse" id="pull">
-<i class="fa fa-navicon"></i>
-</button>
 </div>
 <div class="col search search-desktop last">
 <div class="search-input">
@@ -79,33 +76,33 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="col middle-column big-middle-column">
 <div class="article">
 <div class="article-heading">
-<h2>JRE 与 JDK的区别</h2> <h3><em>分类</em> <a href="../w3cnote_genre/code.html" title="编程技术">编程技术</a> </h3>
+<h2>JRE と JDK の違い</h2> <h3><em>分类</em> <a href="../w3cnote_genre/code.html" title="编程技术">编程技术</a> </h3>
 </div>
 <div class="article-body note-body">
 <div class="article-intro">
 <!-- ad start-->
 <!-- ad end-->
 <h3>1. 定义</h3>
-<p><strong>JRE(Java Runtime Enviroment)</strong>是 Java 的运行环境。面向 Java 程序的使用者，而不是开发者。如果你仅下载并安装了 JRE，那么你的系统只能运行 Java 程序。JRE 是运行 Java 程序所必须环境的集合，包含 JVM 标准实现及 Java 核心类库。它包括 Java 虚拟机、Java 平台核心类和支持文件。它不包含开发工具(编译器、调试器等)。</p>
-<p>JDK(Java Development Kit) 又称 J2SDK(Java2 Software Development Kit)，是 Java 开发工具包，它提供了 Java 的开发环境(提供了编译器 javac 等工具，用于将 java 文件编译为 class 文件)和运行环境(提 供了 JVM 和 Runtime 辅助包，用于解析 class 文件使其得到运行)。如果你下载并安装了 JDK，那么你不仅可以开发 Java 程序，也同时拥有了运行 Java 程序的平台。JDK 是整个 Java 的核心，包括了 Java 运行环境(JRE)，一堆 Java 工具 tools.jar 和 Java 标准类库 (rt.jar)。</p>
+<p><strong>JRE(Java Runtime Enviroment)</strong>Javaの実行環境です。Javaプログラムの利用者向けであり、開発者向けではありません。JREだけをダウンロードしてインストールした場合、システムはJavaプログラムを実行できるだけです。JREはJavaプログラムを実行するために必要な環境の集合であり、JVM標準実装とJavaコアクラスライブラリを含みます。Java仮想マシン、Javaプラットフォームのコアクラス、サポートファイルを含みます。開発ツール（コンパイラ、デバッガなど）は含まれません。</p>
+<p>JDK（Java Development Kit）は、J2SDK（Java2 Software Development Kit）とも呼ばれ、Java開発キットです。Javaの開発環境（コンパイラjavacなどのツールを提供し、javaファイルをclassファイルにコンパイルする）と実行環境（JVMとRuntime補助パッケージを提供し、classファイルを解析して実行する）を提供します。JDKをダウンロードしてインストールすれば、Javaプログラムを開発できるだけでなく、Javaプログラムを実行するプラットフォームも同時に手に入ります。JDKはJava全体の中核であり、Java実行環境（JRE）、一連のJavaツールtools.jar、Java標準クラスライブラリ（rt.jar）を含みます。</p>
 <h3>2. 区别</h3>
-<p>JRE 主要包含：java 类库的 class 文件(都在 lib 目录下打包成了 jar)和虚拟机(jvm.dll)；JDK 主要包含：java 类库的 class文件(都在 lib 目录下打包成了 jar)并自带一个 JRE。那么为什么 JDK 要自带一个 JRE 呢？而且 jdk/jre/bin 下的 client 和 server 两个文件夹下都包含 jvm.dll(说明 JDK 自带的 JRE 有两个虚拟机)。</p>
-<p><strong>记得在环境变量 path 中设置 jdk/bin 路径吗？</strong>老师会告诉大家不设置的话 javac 和 java 是用不了的。确实 jdk/bin 目录下包含了所有的命令。可是有没有人想过我们用的 java 命令并不是 jdk/bin 目录下的而是 jre/bin 目录下的呢？不信可以做一个实验，大家可以把 jdk/bin 目录下的 java.exe 剪切到别的地方再运行 java 程序，发现了什么？一切 OK！(JRE 中没有 javac 命令，原因很简单，它不是开发环境)那么有人会问了？我明明没有设置 jre/bin 目录到环境变量中啊？试想一下如果 java 为了提供给大多数人使用，他们是不需要 jdk 做开发的，只需要 jre 能让 java 程序跑起来就可以了，那么每个客户还需要手动去设置环境变量多麻烦啊？所以安装jre的时候安装程序自动帮你把 jre 的 java.exe 添加到了系统变量中，验证的方法很简单，去 Windows/system32 下面去看看吧，发现了什么？有一个 java.exe。</p>
+<p>JREは主に、javaクラスライブラリのclassファイル（すべてlibディレクトリにjarとしてパッケージされている）と仮想マシン（jvm.dll）を含みます。JDKは主に、javaクラスライブラリのclassファイル（すべてlibディレクトリにjarとしてパッケージされている）を含み、さらにJREを1つ同梱しています。では、なぜJDKにJREが同梱されているのでしょうか？しかも、jdk/jre/bin配下のclientとserverの2つのフォルダの両方にjvm.dllが含まれています（JDK同梱のJREには2つの仮想マシンがあることを示しています）。</p>
+<p><strong>環境変数 path に jdk/bin のパスを設定するのを覚えていますか？</strong>先生方は、設定しないとjavacとjavaは使えないと教えるでしょう。確かにjdk/binディレクトリにはすべてのコマンドが含まれています。しかし、私たちが使っているjavaコマンドはjdk/binディレクトリではなく、jre/binディレクトリにあるのではないかと考えた人はいるでしょうか？信じられなければ実験してみてください。jdk/binディレクトリのjava.exeを別の場所に切り取ってからJavaプログラムを実行してみてください。何がわかりましたか？すべてOKです！（JREにはjavacコマンドがありません。理由は簡単で、開発環境ではないからです。）では、こう疑問に思う人もいるでしょう？私は明らかにjre/binディレクトリを環境変数に設定していないのに？考えてみてください。Javaが大多数の人々に提供するためには、彼らはJDKでの開発は必要なく、JREだけでJavaプログラムを動かせればよいのです。その場合、各顧客が手動で環境変数を設定するのは面倒ではないでしょうか？そこで、JREをインストールするときに、インストーラが自動的にJREのjava.exeをシステム変数に追加してくれます。検証方法は簡単で、Windows/system32を見てみてください。何があるでしょうか？java.exeがあります。</p>
 <h3>3. 难点</h3>
-<p>如果安装了 JDK，会发现你的电脑有两套 JRE，一套位于<strong> C:\Program Files\Java\jre6</strong>， 另外一套位于<strong>C:\Program Files\Java\jdk1.6.0_41\jre </strong>目录下。</p>
-<p>JRE 的地位就象一台 PC 机一样，我们写好的 Win32 应用程序需要操作系统帮我们运行，同样的，我们编写的 Java 程序也必须要 JRE 才能运行。所以当你装完 JDK 后，如果分别在硬盘上的两个不同地方安装了两套 JRE，那么你可以想象你的电脑有两台虚拟的 Java  PC 机，都具有运行 Java 程序的功能。所以我们可以说，只要你的电脑安装了 JRE，就可以正确运行 Java 应用程序。</p>
-<p><strong>1、为什么Sun要让JDK安装两套相同的JRE？</strong></p>
-<p>这是因为 JDK 里面有很多用 Java 所编写的开发工具，如 javac.exe、jar.exe 等，这些命令放置在 C:\Program Files\Java\jdk1.6.0_41\bin 目录里。</p>
-<p>因为他们是 java 编写的命令，所以要依靠 java 的 jar 包，这些 jar 包存放在<strong>C:\Program Files\Java\jdk1.6.0_41\lib</strong>目录里。</p><p>如果将 C:\Program Files\Java\jdk1.6.0_41\lib\ 目录里面的 tools.jar 改名为 tools1.jar，然后运行 javac.exe，显示如下结果：</p>
+<p>JDKをインストールすると、あなたのパソコンには2つのJREがあることに気づくでしょう。1つは次の場所にあります<strong> C:\Program Files\Java\jre6</strong>、もう1つのセットは次の場所にあります。<strong>C:\Program Files\Java\jdk1.6.0_41\jre </strong>目录下。</p>
+<p>JREの立場はPCのようなものです。私たちが書いたWin32アプリケーションはOSに実行してもらう必要があります。同様に、私たちが作成したJavaプログラムもJREがなければ実行できません。そのため、JDKをインストールした後、ハードディスクの異なる2か所に2つのJREをインストールした場合、コンピュータには2台の仮想Java PCがあり、どちらもJavaプログラムを実行する機能を持つと想像できます。したがって、コンピュータにJREがインストールされていれば、Javaアプリケーションを正しく実行できると言えます。</p>
+<p><strong>1、なぜSunはJDKに2つの同じJREをインストールさせるのでしょうか？</strong></p>
+<p>これは、JDKの中にJavaで書かれた開発ツールが多く含まれているからです。例えば、javac.exe、jar.exeなどです。これらのコマンドはC:\Program Files\Java\jdk1.6.0_41\binディレクトリに配置されています。</p>
+<p>それらはjavaで書かれたコマンドであるため、javaのjarパッケージに依存しています。これらのjarパッケージは次の場所に格納されています<strong>C:\Program Files\Java\jdk1.6.0_41\lib</strong>目录里。</p><p>C:\Program Files\Java\jdk1.6.0_41\lib\ディレクトリ内のtools.jarをtools1.jarにリネームして、javac.exeを実行すると、以下の結果が表示されます。</p>
 <pre>Exception in thread "main" java.lang.NoClassDefFoundError: com/sun/tools/javac /Main </pre>
 <p>但是输入:</p><pre>java -cp C:\Program Files\Java\jdk1.6.0_41\lib\tools1.jar com.sun.tools.javac.Mainx</pre>
-<p>会得到与 javac.exe 相同的结果。</p>
-<p>从这里我们可以证明 javac.exe 只是一个包装器（Wrapper），而制作的目的是为了让开发者免于输入太长的指命。</p>
-<p>而且我们可以发现 C:\Program Files\Java\jdk1.6.0_41\bin 目录下的程序都很小，不大于 29K，从这里我们可以得出一个结论。就是 JDK 里的工具几乎是用 Java 所编写，所以也是 Java 应用程序，因此要使用 JDK 所附的工具来开发 Java 程序，也必须要自行附一套 JRE 才行，所以位于C:\Program Files\Java\jdk1.6.0_41\jre 目录下的那套 JRE 就是用来运行一般 Java 程序用的。</p>
-<p><strong>2、如果一台电脑安装两套以上的 JRE，谁来决定呢？</strong></p>
-<p>这个重大任务就落在 java.exe 身上。java.exe 的工作就是找到合适的 JRE 来运行 Java 程序。 java.exe 依照底下的顺序来查找 JRE：自己的目录下有没有 JRE；父目录有没有 JRE；查询注册表：</p>
+<p>javac.exe と同じ結果が得られます。</p>
+<p>ここから、javac.exeは単なるラッパー（Wrapper）であり、開発者が長すぎるコマンドを入力しなくて済むように作られたものであることを証明できます。</p>
+<p>さらに、C:\Program Files\Java\jdk1.6.0_41\binディレクトリのプログラムはすべて小さく、29K以下であることがわかります。ここから結論を導き出せます。JDK内のツールはほぼすべてJavaで書かれているため、それらもJavaアプリケーションです。したがって、JDKに付属するツールを使ってJavaプログラムを開発するには、自分用にJREも1セット同梱する必要があります。C:\Program Files\Java\jdk1.6.0_41\jreディレクトリにあるJREは、一般的なJavaプログラムを実行するためのものです。</p>
+<p><strong>2、1台のパソコンに2つ以上のJREがインストールされている場合、どれが使われるかは誰が決めるのでしょうか？</strong></p>
+<p>この重大な任務は java.exe が担います。java.exe の役割は、Java プログラムを実行するために適切な JRE を見つけることです。java.exe は以下の順序で JRE を探します：自分のディレクトリに JRE があるか；親ディレクトリに JRE があるか；レジストリを照会する：</p>
 <pre>[HKEY_LOCAL_MACHINE\SOFTWARE\JavaSoft\Java Runtime Environment] </pre>
-<p>所以 java.exe 的运行结果与你的电脑里面哪个 JRE 被执行有很大的关系。</p>
+<p>したがって、java.exeの実行結果は、コンピュータ内のどのJREが実行されるかに大きく依存します。</p>
 <blockquote><p>文章出处：http://swiftlet.net/archives/639</p></blockquote>
 </div>
 </div>
@@ -161,181 +158,6 @@ var aid = 19836;
 
 </div>
 -->
-<div class="sidebar-box cate-list" style="display:none;">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">热门文章</a>
-</div>
-<div class="membership">
-<ul class="membership">
-<li><a href="https://mp.weixin.qq.com/s/ZaP6YNgKTCHYy3r2WPBBaw" target="_blank" title="2024 年 04 月 JavaScript 框架排行榜">2024 年 04 月 JavaScript 框架排行榜</a></li>
-<li><a href="https://mp.weixin.qq.com/s/JBR2twC0t6krjjuxqvhsEQ" target="_blank" title="免费、开源、好用的 SQL 客户端合集">免费、开源、好用的 SQL 客户端合集</a></li>
-<li><a href="https://mp.weixin.qq.com/s/TwV3YQjA1glyaW7TiHvhlA" target="_blank" title="优雅的代码规范，提升代码质量">优雅的代码规范，提升代码质量</a></li>
-<li><a href="https://mp.weixin.qq.com/s/CnUJ-2OHPbBKlnVpjDzavA" target="_blank" title="命令行中的趣味世界，牛也能说话，有趣又好玩">命令行中的趣味世界，牛也能说话，有趣又好玩</a></li>
-<li><a href="https://mp.weixin.qq.com/s/7NKl-mD7N8CeSNQlbKDEWA" target="_blank" title="2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？">2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？</a></li>
-<li><a href="https://mp.weixin.qq.com/s/yWlSVDKobtDhThnhirVRpw" target="_blank" title="免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端">免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端</a></li>
-</ul>
-</div>
-</div>
-<div class="sidebar-box cate-list">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">教程列表</a>
-</div>
-<div class="cate-items">
-<a href="../ado.html">ADO 教程</a>
-<a href="../ai-agent.html">AI Agent 教程</a>
-<a href="../ai.html">AI 入门教程</a>
-<a href="../ai-math.html">AI 数学基础</a>
-<a href="../ajax.html">Ajax 教程</a>
-<a href="../android.html">Android 教程</a>
-<a href="../angularjs2.html">Angular2 教程</a>
-<a href="../angularjs.html">AngularJS 教程</a>
-<a href="../appml.html">AppML 教程</a>
-<a href="../asp.html">ASP 教程</a>
-<a href="../aspnet.html">ASP.NET 教程</a>
-<a href="../bootstrap.html">Bootstrap 教程</a>
-<a href="../bootstrap4.html">Bootstrap4 教程</a>
-<a href="../bootstrap5.html">Bootstrap5 教程</a>
-<a href="../cprogramming.html">C 教程</a>
-<a href="../c-dsa.html">C 语言数据结构与算法</a>
-<a href="../csharp.html">C# 教程</a>
-<a href="../cplusplus.html">C++ 教程</a>
-<a href="../chartjs.html">Chart.js 教程</a>
-<a href="../claude-code.html">Claude Code 教程</a>
-<a href="../cmake.html">CMake 教程</a>
-<a href="../codex.html">Codex 教程</a>
-<a href="../cssref.html">CSS 参考手册</a>
-<a href="../css.html">CSS 教程</a>
-<a href="../css3.html">CSS3 教程</a>
-<a href="../cursor.html">Cursor 教程</a>
-<a href="../dart.html">Dart 教程</a>
-<a href="../dash.html">Dash 教程</a>
-<a href="../deepseek-harness.html">DeepSeek Harness</a>
-<a href="../django.html">Django 教程</a>
-<a href="../docker.html">Docker 教程</a>
-<a href="../dtd.html">DTD 教程</a>
-<a href="../echarts.html">ECharts 教程</a>
-<a href="../eclipse.html">Eclipse 教程</a>
-<a href="../electron.html">Electron 教程</a>
-<a href="../fastapi.html">FastAPI 教程</a>
-<a href="../firebug.html">Firebug 教程</a>
-<a href="../flask.html">Flask 教程</a>
-<a href="../flutter.html">Flutter 教程</a>
-<a href="../font-awesome.html">Font Awesome 图标</a>
-<a href="../foundation.html">Foundation 教程</a>
-<a href="../git.html">Git 教程</a>
-<a href="../go.html">Go 语言教程</a>
-<a href="../googleapi.html">Google 地图 API 教程</a>
-<a href="../hermes-agent.html">Hermes Agent</a>
-<a href="../highcharts.html">Highcharts 教程</a>
-<a href="../htmldom.html">HTML DOM 教程</a>
-<a href="../tags.html">HTML 参考手册</a>
-<a href="../charsets.html">HTML 字符集</a>
-<a href="../html.html">HTML 教程</a>
-<a href="../http.html">HTTP 教程</a>
-<a href="../ionic.html">ionic 教程</a>
-<a href="../ios.html">iOS 教程</a>
-<a href="../java.html">Java 教程</a>
-<a href="../jsref.html">JavaScript 参考手册</a>
-<a href="../js.html">Javascript 教程</a>
-<a href="../jeasyui.html">jQuery EasyUI 教程</a>
-<a href="../jquerymobile.html">jQuery Mobile 教程</a>
-<a href="../jqueryui.html">jQuery UI 教程</a>
-<a href="../jquery.html">jQuery 教程</a>
-<a href="../json.html">JSON 教程</a>
-<a href="../jsp.html">JSP 教程</a>
-<a href="../julia.html">Julia 教程</a>
-<a href="../jupyter-notebook.html">Jupyter Notebook 教程</a>
-<a href="../kotlin.html">Kotlin 教程</a>
-<a href="../langchain.html">LangChain 教程</a>
-<a href="../latex.html">LaTeX 教程</a>
-<a href="../linux.html">Linux 教程</a>
-<a href="../lua.html">Lua 教程</a>
-<a href="../markdown.html">Markdown 教程</a>
-<a href="../matplotlib.html">Matplotlib 教程</a>
-<a href="../maven.html">Maven 教程</a>
-<a href="../memcached.html">Memcached 教程</a>
-<a href="../mongodb.html">MongoDB 教程</a>
-<a href="../mysql.html">MySQL 教程</a>
-<a href="../nextjs.html">Next.js 教程</a>
-<a href="../nlp.html">NLP 教程</a>
-<a href="../nodejs.html">Node.js 教程</a>
-<a href="../numpy.html">NumPy 教程</a>
-<a href="../obsidian.html">Obsidian 教程</a>
-<a href="../ollama.html">Ollama 教程</a>
-<a href="../opencode.html">OpenCode 教程</a>
-<a href="../opencv.html">OpenCV 教程</a>
-<a href="../pandas.html">Pandas 教程</a>
-<a href="../perl.html">Perl 教程</a>
-<a href="../php.html">PHP 教程</a>
-<a href="../pi-agent.html">Pi Agent</a>
-<a href="../pillow.html">Pillow 教程</a>
-<a href="../playwright.html">Playwright 教程</a>
-<a href="../postgresql.html">PostgreSQL 教程</a>
-<a href="../powershell.html">PowerShell</a>
-<a href="../pycharm.html">Pycharm 教程</a>
-<a href="../python3.html">Python 3 教程</a>
-<a href="../python.html">Python 基础教程</a>
-<a href="../python-design-pattern.html">Python 设计模式</a>
-<a href="../python-qt.html">Python 量化交易</a>
-<a href="../pytorch.html">PyTorch 教程</a>
-<a href="../r.html">R 教程</a>
-<a href="../rdf.html">RDF 教程</a>
-<a href="../react.html">React 教程</a>
-<a href="../redis.html">Redis 教程</a>
-<a href="../restfulapi.html">RESTful API</a>
-<a href="../rss.html">RSS 教程</a>
-<a href="../ruby.html">Ruby 教程</a>
-<a href="../rust.html">Rust 教程</a>
-<a href="../sass.html">Sass 教程</a>
-<a href="../scala.html">Scala 教程</a>
-<a href="../scipy.html">SciPy 教程</a>
-<a href="../selenium.html">Selenium 教程</a>
-<a href="../servlet.html">Servlet 教程</a>
-<a href="../skills.html">Skills 教程</a>
-<a href="../sklearn.html">Sklearn 教程</a>
-<a href="../soap.html">SOAP 教程</a>
-<a href="../sql.html">SQL 教程</a>
-<a href="../sqlite.html">SQLite 教程</a>
-<a href="../svg.html">SVG 教程</a>
-<a href="../svn.html">SVN 教程</a>
-<a href="../swagger.html">Swagger 教程</a>
-<a href="../swift.html">Swift 教程</a>
-<a href="../tailwindcss.html">Tailwind CSS 教程</a>
-<a href="../tcpip.html">TCP/IP 教程</a>
-<a href="../tensorflow.html">TensorFlow 教程</a>
-<a href="../typescript.html">TypeScript 教程</a>
-<a href="../uniapp.html">uni-app 教程</a>
-<a href="../vbscript.html">VBScript 教程</a>
-<a href="../vibe-coding.html">Vibe Coding 教程</a>
-<a href="../vscode.html">VSCode 教程</a>
-<a href="../vue2.html">Vue.js 教程</a>
-<a href="../vue3.html">Vue3 教程</a>
-<a href="../w3c.html">W3C 教程</a>
-<a href="../webservices.html">Web Service 教程</a>
-<a href="../wsdl.html">WSDL 教程</a>
-<a href="../xlink.html">XLink 教程</a>
-<a href="../dom.html">XML DOM 教程</a>
-<a href="../schema.html">XML Schema 教程</a>
-<a href="../xml.html">XML 教程</a>
-<a href="../xpath.html">XPath 教程</a>
-<a href="../xquery.html">XQuery 教程</a>
-<a href="../xslfo.html">XSLFO 教程</a>
-<a href="../xsl.html">XSLT 教程</a>
-<a href="../zig.html">Zig 教程</a>
-<a href="../data-structures.html">数据结构</a>
-<a href="../ml.html">机器学习</a>
-<a href="../regexp.html">正则表达式</a>
-<a href="../assembly.html">汇编语言</a>
-<a href="../quiz.html">测验</a>
-<a href="../browsers.html">浏览器</a>
-<a href="../quality.html">网站品质</a>
-<a href="../web.html">网站建设指南</a>
-<a href="../hosting.html">网站服务器教程</a>
-<a href="../np.html">网络协议</a>
-<a href="../computer-organization.html">计算机组成原理</a>
-<a href="../design-pattern.html">设计模式</a>
-</div>
-</div>
 </div>
 </div>
 </div>

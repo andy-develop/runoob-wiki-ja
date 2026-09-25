@@ -60,9 +60,6 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div>
 <div class="row">
 <div class="col right-list">
-<button class="btn btn-responsive-nav btn-inverse" id="pull">
-<i class="fa fa-navicon"></i>
-</button>
 </div>
 <div class="col search search-desktop last">
 <div class="search-input">
@@ -79,7 +76,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="col middle-column big-middle-column">
 <div class="article">
 <div class="article-heading">
-<h2>SQL语法手册</h2> <h3><em>分类</em> <a href="../w3cnote_genre/code.html" title="编程技术">编程技术</a> </h3>
+<h2>SQL構文リファレンス</h2> <h3><em>分类</em> <a href="../w3cnote_genre/code.html" title="编程技术">编程技术</a> </h3>
 </div>
 <div class="article-body note-body">
 <div class="article-intro">
@@ -87,11 +84,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <!-- ad end-->
 <h2>Select</h2>
 <p><b>用途：</b></p>
-<p>从指定表中取出指定的列的数据。</p>
+<p>指定されたテーブルから指定された列のデータを取得します。</p>
 <p><b>语法：</b></p>
 <pre>SELECT column_name(s) FROM table_name</pre>
 <p><b>解释：</b></p>
-<p>从数据库中选取指定列，并允许从一或多个指定表中，选取一或多个指定列或指定行。SELECT 陈述式的完整语法相当复杂，但主要子句可摘要为：</p>
+<p>データベースから指定された列を選択し、1つまたは複数の指定されたテーブルから、1つまたは複数の指定された列または行を選択することができます。SELECT ステートメントの完全な構文はかなり複雑ですが、主要な句は次のように要約できます：</p>
 <pre>
 SELECT select_list 
 [ INTO new_table ] 
@@ -102,7 +99,7 @@ FROM table_source
 [ ORDER BY order_expression [ ASC | DESC ] ] 
 </pre>
 <p><b>实例：</b></p>
-<p>"Persons" 表中的数据有：</p>
+<p>「Persons」テーブルには次のデータがあります：</p>
 <table bgcolor="#eeeedd" border="1" cellpadding="0" cellspacing="0" style="width:100.0%;mso-cellspacing:0cm;background:#EEEEDD" width="100%">
 <tr>
 <td><b>LastName</b></td>
@@ -129,7 +126,7 @@ FROM table_source
 <td>Stavanger</td>
 </tr>
 </table>
-<p>选出字段名 "LastName"、"FirstName" 的数据：</p>
+<p>フィールド名「LastName」、「FirstName」のデータを選択します：</p>
 <pre>SELECT LastName,FirstName FROM Persons</pre>
 <p>返回结果：</p>
 <table bgcolor="#eeeedd" border="1" cellpadding="0" cellspacing="0" style="width:50.0%;mso-cellspacing:0cm;background:#EEEEDD" width="50%">
@@ -150,7 +147,7 @@ FROM table_source
 <td>Kari</td>
 </tr>
 </table>
-<p>选出所有字段的数据：</p>
+<p>すべてのフィールドのデータを選択する：</p>
 <pre>SELECT * FROM Persons</pre>
 <p>返回结果：</p>
 <table bgcolor="#eeeedd" border="1" cellpadding="0" cellspacing="0" style="width:100.0%;mso-cellspacing:0cm;background:#EEEEDD" width="100%">
@@ -181,18 +178,18 @@ FROM table_source
 </table>
 <h2>Where</h2>
 <p><b>用途：</b></p>
-<p>被用来规定一种选择查询的标准。</p>
+<p>選択クエリの基準を規定するために使用されます。</p>
 <p><b>语法：</b></p>
 <pre>SELECT column FROM table WHERE column condition value</pre>
-<p>下面的操作符能被使用在 WHERE 中：</p>
+<p>以下の演算子は WHERE で使用できます：</p>
 <p>=,&lt;&gt;,&gt;,&lt;,&gt;=,&lt;=,BETWEEN,LIKE</p>
-<p>注意：在某些 SQL 的版本中不等号 &lt; &gt; 能被写作为 != 。</p>
+<p>注意：一部の SQL のバージョンでは、不等号 &lt; &gt; は != と書くことができます。</p>
 <p><b>解释：</b></p>
-<p>SELECT 语句返回 WHERE 子句中条件为 true 的数据。</p>
+<p>SELECT ステートメントは、WHERE 句で条件が true であるデータを返します。</p>
 <p><b>实例：</b></p>
-<p>从 "Persons" 表中选出生活在 "Sandnes" 的人：</p>
+<p>「Persons」テーブルから「Sandnes」に住んでいる人を選択します：</p>
 <pre>SELECT * FROM Persons WHERE City='Sandnes'</pre>
-<p>"Persons" 表中的数据有：</p>
+<p>「Persons」テーブルには次のデータがあります：</p>
 <table bgcolor="#eeeedd" border="1" cellpadding="0" cellspacing="0" style="width:100.0%;mso-cellspacing:0cm;background:#EEEEDD" width="100%">
 <tr>
 <td><b>LastName</b></td>
@@ -263,12 +260,12 @@ FROM table_source
 </table>
 <h2>And &amp; Or</h2>
 <p><b>用途：</b></p>
-<p>在 WHERE 子句中 AND 和 OR 被用来连接两个或者更多的条件。</p>
+<p>WHERE 句では、AND と OR が2つ以上の条件を結合するために使用されます。</p>
 <p><b>解释：</b></p>
-<p>AND 在结合两个布尔表达式时，只有在两个表达式都为 TRUE 时才传回 TRUE。</p>
-<p>OR 在结合两个布尔表达式时，只要其中一个条件为 TRUE 时，OR 便传回 TRUE。</p>
+<p>AND は2つのブール式を結合するとき、両方の式が TRUE の場合にのみ TRUE を返します。</p>
+<p>OR は2つのブール式を結合するとき、いずれか一方の条件が TRUE であれば、TRUE を返します。</p>
 <p><b>实例：</b></p>
-<p>"Persons" 表中的原始数据：</p>
+<p>「Persons」テーブルの元のデータ：</p>
 <table bgcolor="#eeeedd" border="1" cellpadding="0" cellspacing="0" style="width:100.0%;mso-cellspacing:0cm;background:#EEEEDD" width="100%">
 <tr>
 <td><b>LastName</b></td>
@@ -295,7 +292,7 @@ FROM table_source
 <td>Sandnes</td>
 </tr>
 </table>
-<p>用 AND 运算子来查找 "Persons" 表中 FirstName 为 "Tove" 而且 LastName 为 "Svendson" 的数据：</p>
+<p>AND 演算子を使用して、「Persons」テーブルで FirstName が「Tove」かつ LastName が「Svendson」であるデータを検索します：</p>
 <pre>
 SELECT * FROM Persons
 WHERE FirstName='Tove'
@@ -316,7 +313,7 @@ AND LastName='Svendson'
 <td>Sandnes</td>
 </tr>
 </table>
-<p>用 OR 运算子来查找 "Persons" 表中 FirstName 为 "Tove" 或者 LastName 为 "Svendson" 的数据：</p>
+<p>OR 演算子を使用して、「Persons」テーブルで FirstName が「Tove」または LastName が「Svendson」であるデータを検索します：</p>
 <pre>
 SELECT * FROM Persons
 WHERE firstname='Tove'
@@ -343,7 +340,7 @@ OR lastname='Svendson'
 <td>Sandnes</td>
 </tr>
 </table>
-<p>你也能结合 AND 和 OR（使用括号形成复杂的表达式），如:</p>
+<p>AND と OR を組み合わせることもできます（括弧を使用して複雑な式を形成します）。例：</p>
 <pre>
 SELECT * FROM Persons WHERE
 (FirstName='Tove' OR FirstName='Stephen')
@@ -372,7 +369,7 @@ AND LastName='Svendson'
 </table>
 <h2>Between…And</h2>
 <p><b>用途：</b></p>
-<p>指定需返回数据的范围。</p>
+<p>返すデータの範囲を指定する。</p>
 <p><b>语法：</b></p>
 <pre>
 SELECT column_name FROM table_name
@@ -380,7 +377,7 @@ WHERE column_name
 BETWEEN value1 AND value2
 </pre>
 <p><b>实例：</b></p>
-<p>"Persons" 表中的原始数据：</p>
+<p>「Persons」テーブルの元のデータ：</p>
 <table bgcolor="#eeeedd" border="1" cellpadding="0" cellspacing="0" style="width:100.0%;mso-cellspacing:0cm;background:#EEEEDD" width="100%">
 <tr>
 <td><b>LastName</b></td>
@@ -445,7 +442,7 @@ BETWEEN 'Hansen' AND 'Pettersen'
 <td>Stavanger</td>
 </tr>
 </table>
-<p>为了显示指定范围之外的数据，也可以用 NOT 操作符：</p>
+<p>指定された範囲外のデータを表示するために、NOT 演算子を使用することもできます：</p>
 <pre>
 SELECT * FROM Persons WHERE LastName 
 NOT BETWEEN 'Hansen' AND 'Pettersen'
@@ -467,13 +464,13 @@ NOT BETWEEN 'Hansen' AND 'Pettersen'
 </table>
 <h2>Distinct</h2>
 <p><b>用途：</b></p>
-<p>DISTINCT 关键字被用作返回唯一的值。</p>
+<p>DISTINCT キーワードは、一意の値を返すために使用されます。</p>
 <p><b>语法：</b></p>
 <pre>SELECT DISTINCT column-name(s) FROM table-name</pre>
 <p><b>解释：</b></p>
-<p>当 column-name(s) 中存在重复的值时，返回结果仅留下一个。</p>
+<p>column-name(s) に重複する値が存在する場合、返される結果には1つだけ残す。</p>
 <p><b>实例：</b></p>
-<p>"Orders" 表中的原始数据：</p>
+<p>「Orders」テーブルの元のデータ：</p>
 <table bgcolor="#eeeedd" border="1" cellpadding="0" cellspacing="0" style="width:50.0%;mso-cellspacing:0cm;background:#EEEEDD" width="50%">
 <tr>
 <td><b>Company</b></td>
@@ -496,7 +493,7 @@ NOT BETWEEN 'Hansen' AND 'Pettersen'
 <td>6798</td>
 </tr>
 </table>
-<p>用 DISTINCT 关键字返回 Company 字段中唯一的值：</p>
+<p>DISTINCT キーワードを使用して、Company フィールドの一意の値を返します：</p>
 <pre>SELECT DISTINCT Company FROM Orders</pre>
 <p>返回结果：</p>
 <table bgcolor="#eeeedd" border="1" cellpadding="0" cellspacing="0" style="width:50.0%;mso-cellspacing:0cm;background:#EEEEDD" width="50%">
@@ -515,13 +512,13 @@ NOT BETWEEN 'Hansen' AND 'Pettersen'
 </table>
 <h2>Order by</h2>
 <p><b>用途：</b></p>
-<p>指定结果集的排序。</p>
+<p>結果セットの並べ替えを指定します。</p>
 <p><b>语法：</b></p>
 <pre>SELECT column-name(s) FROM table-name ORDER BY  { order_by_expression [ ASC | DESC ] } </pre>
 <p><b>解释：</b></p>
-<p>指定结果集的排序，可以按照 ASC（递增方式排序，从最低值到最高值）或者 DESC（递减方式排序，从最高值到最低值）的方式进行排序，默认的方式是 ASC。</p>
+<p>結果セットの並び順を指定する。ASC（昇順、最低値から最高値へ）または DESC（降順、最高値から最低値へ）で並べ替えることができ、デフォルトは ASC である。</p>
 <p><b>实例：</b></p>
-<p>"Orders" 表中的原始数据：</p>
+<p>「Orders」テーブルの元のデータ：</p>
 <table bgcolor="#eeeedd" border="1" cellpadding="0" cellspacing="0" style="width:50.0%;mso-cellspacing:0cm;background:#EEEEDD" width="50%">
 <tr>
 <td><b>Company</b></td>
@@ -544,7 +541,7 @@ NOT BETWEEN 'Hansen' AND 'Pettersen'
 <td>6798</td>
 </tr>
 </table>
-<p>按照 Company 字段的升序方式返回结果集：</p>
+<p>Company フィールドの昇順で結果セットを返します：</p>
 <pre>
 SELECT Company, OrderNumber FROM Orders
 ORDER BY Company
@@ -573,7 +570,7 @@ ORDER BY Company
 <td>2312</td>
 </tr>
 </table>
-<p>按照 Company 字段的降序方式返回结果集：</p>
+<p>Company フィールドの降順で結果セットを返します：</p>
 <pre>
 SELECT Company, OrderNumber FROM Orders
 ORDER BY Company DESC
@@ -603,11 +600,11 @@ ORDER BY Company DESC
 </table>
 <h2>Group by</h2>
 <p><b>用途：</b></p>
-<p>对结果集进行分组，常与汇总函数一起使用。</p>
+<p>結果セットをグループ化する。通常は集計関数と一緒に使用する。</p>
 <p><b>语法：</b></p>
 <pre>SELECT column,SUM(column) FROM table GROUP BY column</pre>
 <p><b>实例：</b></p>
-<p>"Sales" 表中的原始数据：</p>
+<p>「Sales」テーブルの元のデータ：</p>
 <table bgcolor="#eeeedd" border="1" cellpadding="0" cellspacing="0" style="width:100.0%;mso-cellspacing:0cm;background:#EEEEDD" width="100%">
 <tr>
 <td><b>Company</b></td>
@@ -626,7 +623,7 @@ ORDER BY Company DESC
 <td>7100</td>
 </tr>
 </table>
-<p>按照 Company 字段进行分组，求出每个 Company 的 Amout 的合计：</p>
+<p>Company フィールドでグループ化し、各 Company の Amout の合計を求めます：</p>
 <pre>
 SELECT Company,SUM(Amount) FROM Sales
 GROUP BY Company
@@ -648,7 +645,7 @@ GROUP BY Company
 </table>
 <h2>Having</h2>
 <p><b>用途：</b></p>
-<p>指定群组或汇总的搜寻条件。</p>
+<p>グループまたは集計の検索条件を指定する。</p>
 <p><b>语法：</b></p>
 <pre>
 SELECT column,SUM(column) FROM table
@@ -656,9 +653,9 @@ GROUP BY column
 HAVING SUM(column) condition value
 </pre>
 <p><b>解释：</b></p>
-<p>HAVING 通常与 GROUP BY 子句同时使用。不使用 GROUP BY 时，HAVING 则与 WHERE 子句功能相似。<b></b></p>
+<p>HAVING は通常 GROUP BY 句と同時に使用されます。GROUP BY を使用しない場合、HAVING は WHERE 句と機能が似ています。<b></b></p>
 <p><b>实例：</b></p>
-<p>"Sales" 表中的原始数据：</p>
+<p>「Sales」テーブルの元のデータ：</p>
 <table bgcolor="#eeeedd" border="1" cellpadding="0" cellspacing="0" style="width:100.0%;mso-cellspacing:0cm;background:#EEEEDD" width="100%">
 <tr>
 <td><b>Company</b></td>
@@ -677,7 +674,7 @@ HAVING SUM(column) condition value
 <td>7100</td>
 </tr>
 </table>
-<p>按照 Company 字段进行分组，求出每个 Company 的 Amout 的合计在 10000 以上的数据：</p>
+<p>Company フィールドでグループ化し、各 Company の Amout の合計が 10000 を超えるデータを求めます：</p>
 <pre>
 SELECT Company,SUM(Amount) FROM Sales
 GROUP BY Company HAVING SUM(Amount)&gt;10000
@@ -695,9 +692,9 @@ GROUP BY Company HAVING SUM(Amount)&gt;10000
 </table>
 <h2>Join</h2>
 <p><b>用途：</b></p>
-<p>当你要从两个或者以上的表中选取结果集时，你就会用到 JOIN。</p>
+<p>2つ以上のテーブルから結果セットを選択する場合は、JOIN を使用する。</p>
 <p><b>实例：</b></p>
-<p>"Employees" 表中的数据如下，（其中 ID 为主键）:</p>
+<p>"Employees" テーブルのデータは次のとおりです（ID は主キー）：</p>
 <table bgcolor="#eeeedd" border="1" cellpadding="0" cellspacing="0" style="width:50.0%;mso-cellspacing:0cm;background:#EEEEDD" width="50%">
 <tr>
 <td><b>ID</b></td>
@@ -720,7 +717,7 @@ GROUP BY Company HAVING SUM(Amount)&gt;10000
 <td>Pettersen, Kari</td>
 </tr>
 </table>
-<p>"Orders" 表中的数据如下：</p>
+<p>「Orders」テーブルのデータは次のとおりです：</p>
 <table bgcolor="#eeeedd" border="1" cellpadding="0" cellspacing="0" style="width:50.0%;mso-cellspacing:0cm;background:#EEEEDD" width="50%">
 <tr>
 <td><b>ID</b></td>
@@ -739,7 +736,7 @@ GROUP BY Company HAVING SUM(Amount)&gt;10000
 <td>Chair</td>
 </tr>
 </table>
-<p>用 Employees 的 ID 和 Orders 的 ID 相关联选取数据：</p>
+<p>Employees の ID と Orders の ID を関連付けてデータを選択します：</p>
 <pre>
 SELECT Employees.Name, Orders.Product
 FROM Employees, Orders
@@ -764,7 +761,7 @@ WHERE Employees.ID = Orders.ID
 <td>Chair</td>
 </tr>
 </table>
-<p>或者你也可以用 JOIN 关键字来完成上面的操作：</p>
+<p>または、JOIN キーワードを使用して上記の操作を実行することもできます：</p>
 <pre>
 SELECT Employees.Name, Orders.Product
 FROM Employees
@@ -779,7 +776,7 @@ INNER JOIN second_table
 ON first_table.keyfield = second_table.foreign_keyfield
 </pre>
 <p><b>解释：</b></p>
-<p>INNER JOIN 返回的结果集是两个表中所有相匹配的数据。</p>
+<p>INNER JOIN が返す結果セットは、2つのテーブルのすべての一致するデータである。</p>
 <p><b>LEFT JOIN</b>的语法：</p>
 <pre>
 SELECT field1, field2, field3
@@ -787,7 +784,7 @@ FROM first_table
 LEFT JOIN second_table
 ON first_table.keyfield = second_table.foreign_keyfield
 </pre>
-<p>用 "Employees" 表去左外联结 "Orders" 表去找出相关数据：</p>
+<p>「Employees」テーブルを「Orders」テーブルに左外部結合して、関連データを取得します：</p>
 <pre>
 SELECT Employees.Name, Orders.Product
 FROM Employees
@@ -822,7 +819,7 @@ ON Employees.ID = Orders.ID
 </tr>
 </table>
 <p><b>解释：</b></p>
-<p>LEFT JOIN 返回 "first_table" 中所有的行，尽管在 "second_table" 中没有相匹配的数据。</p>
+<p>LEFT JOIN は、"second_table" に一致するデータがない場合でも、"first_table" のすべての行を返します。</p>
 <p><b>RIGHT JOIN</b>的语法：</p>
 <pre>
 SELECT field1, field2, field3
@@ -830,7 +827,7 @@ FROM first_table
 RIGHT JOIN second_table
 ON first_table.keyfield = second_table.foreign_keyfield
 </pre>
-<p>用 "Employees" 表去右外联结 "Orders" 表去找出相关数据：</p>
+<p>「Employees」テーブルを「Orders」テーブルに右外部結合して、関連データを取得します：</p>
 <pre>
 SELECT Employees.Name, Orders.Product
 FROM Employees
@@ -859,17 +856,17 @@ ON Employees.ID = Orders.ID
 </tr>
 </table>
 <p><b>解释：</b></p>
-<p>RIGHT JOIN 返回 "second_table" 中所有的行，尽管在 "first_table" 中没有相匹配的数据。</p>
+<p>RIGHT JOIN は、"first_table" に一致するデータがない場合でも、"second_table" のすべての行を返します。</p>
 <h2>Alias</h2>
 <p><b>用途：</b></p>
-<p>可用在表、结果集或者列上，为它们取一个逻辑名称。</p>
+<p>テーブル、結果セット、または列に使用でき、論理名を付けることができる。</p>
 <p><b>语法：</b></p>
-<p>给列取别名：</p>
+<p>列に別名を付けます：</p>
 <pre>SELECT column AS column_alias FROM table</pre>
-<p>给表取别名：</p>
+<p>テーブルに別名を付けます：</p>
 <pre>SELECT column FROM table AS table_alias</pre>
 <p><b>实例：</b></p>
-<p>"Persons" 表中的原始数据：</p>
+<p>「Persons」テーブルの元のデータ：</p>
 <table bgcolor="#eeeedd" border="1" cellpadding="0" cellspacing="0" style="width:100.0%;mso-cellspacing:0cm;background:#EEEEDD" width="100%">
 <tr>
 <td><b>LastName</b></td>
@@ -896,7 +893,7 @@ ON Employees.ID = Orders.ID
 <td>Stavanger</td>
 </tr>
 </table>
-<p>运行下面的 SQL：</p>
+<p>次の SQL を実行します：</p>
 <pre>
 SELECT LastName AS Family, FirstName AS Name
 FROM Persons
@@ -920,13 +917,13 @@ FROM Persons
 <td>Kari</td>
 </tr>
 </table>
-<p>运行下面的 SQL：</p>
+<p>次の SQL を実行します：</p>
 <pre>
 SELECT LastName, FirstName
 FROM Persons AS Employees
 </pre>
 <p>返回结果：</p>
-<p>Employees 中的数据有：</p>
+<p>Employees 内のデータは次のとおりです：</p>
 <table bgcolor="#eeeedd" border="1" cellpadding="0" cellspacing="0" style="width:50.0%;mso-cellspacing:0cm;background:#EEEEDD" width="50%">
 <tr>
 <td><b>LastName</b></td>
@@ -947,20 +944,20 @@ FROM Persons AS Employees
 </table>
 <h2>Insert Into</h2>
 <p><b>用途：</b></p>
-<p>在表中插入新行。</p>
+<p>テーブルに新しい行を挿入します。</p>
 <p><b>语法：</b></p>
-<p>插入一行数据：</p>
+<p>1 行のデータを挿入します：</p>
 <pre>
 INSERT INTO table_name
 VALUES (value1, value2,....)
 </pre>
-<p>插入一行数据在指定的字段上：</p>
+<p>指定したフィールドに行データを挿入する：</p>
 <pre>
 INSERT INTO table_name (column1, column2,...)
 VALUES (value1, value2,....)
 </pre>
 <p><b>实例：</b></p>
-<p>"Persons" 表中的原始数据：</p>
+<p>「Persons」テーブルの元のデータ：</p>
 <table bgcolor="#eeeedd" border="1" cellpadding="0" cellspacing="0" style="width:100.0%;mso-cellspacing:0cm;background:#EEEEDD" width="100%">
 <tr>
 <td><b>LastName</b></td>
@@ -975,12 +972,12 @@ VALUES (value1, value2,....)
 <td>Stavanger</td>
 </tr>
 </table>
-<p>运行下面的 SQL 插入一行数据：</p>
+<p>次の SQL を実行して行データを挿入する：</p>
 <pre>
 INSERT INTO Persons 
 VALUES ('Hetland', 'Camilla', 'Hagabakka 24', 'Sandnes')
 </pre>
-<p>插入后 "Persons" 表中的数据为：</p>
+<p>挿入後、"Persons" テーブルのデータは次のとおりです：</p>
 <table bgcolor="#eeeedd" border="1" cellpadding="0" cellspacing="0" style="width:100.0%;mso-cellspacing:0cm;background:#EEEEDD" width="100%">
 <tr>
 <td><b>LastName</b></td>
@@ -1001,12 +998,12 @@ VALUES ('Hetland', 'Camilla', 'Hagabakka 24', 'Sandnes')
 <td>Sandnes</td>
 </tr>
 </table>
-<p>运行下面的 SQL 插入一行数据在指定的字段上：</p>
+<p>次の SQL を実行して、指定したフィールドに行データを挿入する：</p>
 <pre>
 INSERT INTO Persons (LastName, Address)
 VALUES ('Rasmussen', 'Storgt 67')
 </pre>
-<p>插入后 "Persons" 表中的数据为：</p>
+<p>挿入後、"Persons" テーブルのデータは次のとおりです：</p>
 <table bgcolor="#eeeedd" border="1" cellpadding="0" cellspacing="0" style="width:100.0%;mso-cellspacing:0cm;background:#EEEEDD" width="100%">
 <tr>
 <td><b>LastName</b></td>
@@ -1035,14 +1032,14 @@ VALUES ('Rasmussen', 'Storgt 67')
 </table>
 <h2>Update</h2>
 <p><b>用途：</b></p>
-<p>更新表中原有数据。</p>
+<p>テーブル内の既存のデータを更新します。</p>
 <p><b>语法：</b></p>
 <pre>
 UPDATE table_name SET column_name = new_value
 WHERE column_name = some_value
 </pre>
 <p><b>实例：</b></p>
-<p>"Person" 表中的原始数据：</p>
+<p>「Person」テーブルの元のデータ：</p>
 <table bgcolor="#eeeedd" border="1" cellpadding="0" cellspacing="0" style="width:100.0%;mso-cellspacing:0cm;background:#EEEEDD" width="100%">
 <tr>
 <td><b>LastName</b></td>
@@ -1063,12 +1060,12 @@ WHERE column_name = some_value
 <td> </td>
 </tr>
 </table>
-<p>运行下面的 SQL 将 Person 表中 LastName 字段为 "Rasmussen" 的 FirstName 更新为 "Nina"：</p>
+<p>次の SQL を実行して、Person テーブルの LastName フィールドが「Rasmussen」である行の FirstName を「Nina」に更新します：</p>
 <pre>
 UPDATE Person SET FirstName = 'Nina'
 WHERE LastName = 'Rasmussen'
 </pre>
-<p>更新后 "Person" 表中的数据为：</p>
+<p>更新後の「Person」テーブルのデータは次のとおりです：</p>
 <table bgcolor="#eeeedd" border="1" cellpadding="0" cellspacing="0" style="width:100.0%;mso-cellspacing:0cm;background:#EEEEDD" width="100%">
 <tr>
 <td><b>LastName</b></td>
@@ -1089,13 +1086,13 @@ WHERE LastName = 'Rasmussen'
 <td> </td>
 </tr>
 </table>
-<p>同样的，用 UPDATE 语句也可以同时更新多个字段：</p>
+<p>同様に、UPDATE 文を使用して複数のフィールドを同時に更新することもできる：</p>
 <pre>
 UPDATE Person
 SET Address = 'Stien 12', City = 'Stavanger'
 WHERE LastName = 'Rasmussen'
 </pre>
-<p>更新后 "Person" 表中的数据为：</p>
+<p>更新後の「Person」テーブルのデータは次のとおりです：</p>
 <table bgcolor="#eeeedd" border="1" cellpadding="0" cellspacing="0" style="width:100.0%;mso-cellspacing:0cm;background:#EEEEDD" width="100%">
 <tr>
 <td><b>LastName</b></td>
@@ -1118,11 +1115,11 @@ WHERE LastName = 'Rasmussen'
 </table>
 <h2>Delete</h2>
 <p><b>用途：</b></p>
-<p>删除表中的数据。</p>
+<p>テーブル内のデータを削除します。</p>
 <p><b>语法：</b></p>
 <pre>DELETE FROM table_name WHERE column_name = some_value</pre>
 <p><b>实例：</b></p>
-<p>"Person" 表中的原始数据：</p>
+<p>「Person」テーブルの元のデータ：</p>
 <table bgcolor="#eeeedd" border="1" cellpadding="0" cellspacing="0" style="width:100.0%;mso-cellspacing:0cm;background:#EEEEDD" width="100%">
 <tr>
 <td><b>LastName</b></td>
@@ -1143,9 +1140,9 @@ WHERE LastName = 'Rasmussen'
 <td>Stavanger</td>
 </tr>
 </table>
-<p>删除 Person 表中 LastName 为 "Rasmussen" 的数据：</p>
+<p>Person テーブルで LastName が「Rasmussen」であるデータを削除します：</p>
 <pre>DELETE FROM Person WHERE LastName = 'Rasmussen'</pre>
-<p>执行删除语句后 "Person" 表中的数据为：</p>
+<p>削除ステートメントを実行した後、"Person" テーブルのデータは次のとおりです：</p>
 <table bgcolor="#eeeedd" border="1" cellpadding="0" cellspacing="0" style="width:100.0%;mso-cellspacing:0cm;background:#EEEEDD" width="100%">
 <tr>
 <td><b>LastName</b></td>
@@ -1162,7 +1159,7 @@ WHERE LastName = 'Rasmussen'
 </table>
 <h2>创建表 Create Table</h2>
 <p><b>用途：</b></p>
-<p>建立新的表。</p>
+<p>新しいテーブルを作成します。</p>
 <p><b>语法：</b></p>
 <pre>CREATE TABLE table_name 
 (
@@ -1182,7 +1179,7 @@ Address varchar,
 Age int
 )
 </pre>
-<p>如果想指定字段的最大存储长度，你可以这样：</p>
+<p>フィールドの最大格納長を指定したい場合は、次のようにします：</p>
 <pre>
 CREATE TABLE Person 
 (
@@ -1192,7 +1189,7 @@ Address varchar(120),
 Age int(3) 
 )
 </pre>
-<p>下表中列出了 SQL 中的一些数据类型：</p>
+<p>以下の表に、SQL のデータ型の一部を示します：</p>
 <table bgcolor="#eeeedd" border="1" cellpadding="0" cellspacing="0" style="width:100.0%;mso-cellspacing:0cm;background:#EEEEDD" width="100%">
 <tr>
 <td><b>数据类型</b></td>
@@ -1203,29 +1200,29 @@ Age int(3)
 int(size)<br/>
 smallint(size)<br/>
 tinyint(size)</td>
-<td>只存储整数。数字的最大位数由括号内的 size 指定。</td>
+<td>整数のみを格納します。数値の最大桁数は括弧内の size で指定します。</td>
 </tr>
 <tr>
 <td>decimal(size,d)<br/>
 numeric(size,d)</td>
-<td>存储带有小数的数字。数字的最大位数由 "size" 指定。小数点右边的最大位数由 "d" 指定。</td>
+<td>小数を含む数値を格納します。数値の最大桁数は "size" で指定します。小数点の右側の最大桁数は "d" で指定します。</td>
 </tr>
 <tr>
 <td>char(size)</td>
-<td>存储一个固定长度的字符串（可以包含字母、数字和特殊字符）。字符串大小由括号内的 size 指定。</td>
+<td>固定長の文字列を格納します（文字、数字、特殊文字を含めることができます）。文字列のサイズは括弧内の size で指定します。</td>
 </tr>
 <tr>
 <td>varchar(size)</td>
-<td>存储一个可变长度的字符串（可以包含字母、数字和特殊字符）。字符串的最大长度由括号内的 size 指定。</td>
+<td>可変長の文字列を格納します（文字、数字、特殊文字を含めることができます）。文字列の最大長は括弧内の size で指定します。</td>
 </tr>
 <tr>
 <td>date(yyyymmdd)</td>
 <td>存储日期。</td>
 </tr>
 </table>
-<h2>修改表 Alter Table</h2>
+<h2>テーブルの変更 Alter Table</h2>
 <p><b>用途：</b></p>
-<p>在已经存在的表中增加或者移除字段。</p>
+<p>既存のテーブルにフィールドを追加または削除します。</p>
 <p><b>语法：</b></p>
 <pre>
 ALTER TABLE table_name 
@@ -1233,9 +1230,9 @@ ADD column_name datatype
 ALTER TABLE table_name 
 DROP COLUMN column_name
 </pre>
-<p>注意：某些数据库管理系统不允许移除表中的字段。</p>
+<p>注意：一部のデータベース管理システムでは、テーブル内のフィールドの削除が許可されていません。</p>
 <p><b>实例：</b></p>
-<p>"Person" 表中的原始数据：</p>
+<p>「Person」テーブルの元のデータ：</p>
 <table bgcolor="#eeeedd" border="1" cellpadding="0" cellspacing="0" style="width:100.0%;mso-cellspacing:0cm;background:#EEEEDD" width="100%">
 <tr>
 <td><b>LastName</b></td>
@@ -1248,9 +1245,9 @@ DROP COLUMN column_name
 <td>Storgt 20</td>
 </tr>
 </table>
-<p>在 Person 表中增加一个名为 City 的字段：</p>
+<p>Person テーブルに City という名前のフィールドを追加します：</p>
 <pre>ALTER TABLE Person ADD City varchar(30)</pre>
-<p>增加后表中数据如下：</p>
+<p>追加後のテーブル内のデータは以下のとおり：</p>
 <table bgcolor="#eeeedd" border="1" cellpadding="0" cellspacing="0" style="width:100.0%;mso-cellspacing:0cm;background:#EEEEDD" width="100%">
 <tr>
 <td><b>LastName</b></td>
@@ -1265,9 +1262,9 @@ DROP COLUMN column_name
 <td> </td>
 </tr>
 </table>
-<p>移除 Person 表中原有的 Address 字段：</p>
+<p>Person テーブルから既存の Address フィールドを削除します：</p>
 <pre>ALTER TABLE Person DROP COLUMN Address</pre>
-<p>移除后表中数据如下：</p>
+<p>削除後のテーブル内のデータは以下のとおり：</p>
 <table bgcolor="#eeeedd" border="1" cellpadding="0" cellspacing="0" style="width:100.0%;mso-cellspacing:0cm;background:#EEEEDD" width="100%">
 <tr>
 <td><b>LastName</b></td>
@@ -1280,29 +1277,29 @@ DROP COLUMN column_name
 <td> </td>
 </tr>
 </table>
-<h2>删除表 Drop Table</h2>
+<h2>テーブルの削除 Drop Table</h2>
 <p><b>用途：</b></p>
-<p>在数据库中移除一个数据表定义及该数据表中的所有资料、索引、触发程序、条件约束及权限指定。</p>
+<p>データベース内のデータテーブル定義と、そのデータテーブル内のすべてのデータ、インデックス、トリガー、制約、および権限指定を削除します。</p>
 <p><b>语法：</b></p>
 <pre>DROP TABLE table_name</pre>
-<h2>创建数据库 Create Database</h2>
+<h2>データベースの作成 Create Database</h2>
 <p><b>用途：</b></p>
-<p>建立新的数据库。</p>
+<p>新しいデータベースを作成します。</p>
 <p><b>语法：</b></p>
 <pre>CREATE DATABASE database_name</pre>
-<h2>删除数据库 Drop Database</h2>
+<h2>データベースの削除 Drop Database</h2>
 <p><b>用途：</b></p>
-<p>移除原有的数据库。</p>
+<p>既存のデータベースを削除します。</p>
 <p><b>语法：</b></p>
 <pre>DROP DATABASE database_name</pre>
 <h2>聚集函数</h2>
 <h3>count</h3>
 <p><b>用途：</b></p>
-<p>传回选取的结果集中行的数目。</p>
+<p>選択した結果セット内の行数を返します。</p>
 <p><b>语法：</b></p>
 <pre>SELECT COUNT(column_name) FROM table_name</pre>
 <p><b>实例：</b></p>
-<p>"Persons" 表中原始数据如下：</p>
+<p>"Persons" テーブルの元のデータは次のとおりです：</p>
 <table bgcolor="#eeeedd" border="1" cellpadding="0" cellspacing="0" style="width:100.0%;mso-cellspacing:0cm;background:#EEEEDD" width="100%">
 <tr>
 <td><b>Name</b></td>
@@ -1321,17 +1318,17 @@ DROP COLUMN column_name
 <td>19</td>
 </tr>
 </table>
-<p>选取记录总数：</p>
+<p>レコードの総数を取得します：</p>
 <pre>SELECT COUNT(Name) FROM Persons</pre>
 <p>执行结果：</p>
 <pre>3</pre>
 <h3>sum</h3>
 <p><b>用途：</b></p>
-<p>以表达式传回所有值的总和，或仅 DISTINCT 值。SUM 仅可用于数值行。已忽略 Null 值。</p>
+<p>式からすべての値の合計、または DISTINCT 値のみを返します。SUM は数値行にのみ使用できます。Null 値は無視されます。</p>
 <p><b>语法：</b></p>
 <pre>SELECT SUM(column_name) FROM table_name</pre>
 <p><b>实例：</b></p>
-<p>"Persons" 表中原始数据如下：</p>
+<p>"Persons" テーブルの元のデータは次のとおりです：</p>
 <table bgcolor="#eeeedd" border="1" cellpadding="0" cellspacing="0" style="width:100.0%;mso-cellspacing:0cm;background:#EEEEDD" width="100%">
 <tr>
 <td><b>Name</b></td>
@@ -1350,21 +1347,21 @@ DROP COLUMN column_name
 <td>19</td>
 </tr>
 </table>
-<p>选取 "Persons" 表中所有人的年龄总和：</p>
+<p>"Persons" テーブルの全員の年齢の合計を取得します：</p>
 <pre>SELECT SUM(Age) FROM Persons</pre>
 <p>执行结果：</p>
 <pre>98</pre>
-<p>选取 "Persons" 表中年龄超过 20 岁的人的年龄总和：</p>
+<p>"Persons" テーブルの年齢が20歳を超える人の年齢の合計を取得します：</p>
 <pre>SELECT SUM(Age) FROM Persons WHERE Age&gt;20</pre>
 <p>执行结果：</p>
 <pre>79</pre>
 <h3>avg</h3>
 <p><b>用途：</b></p>
-<p>传回选取的结果集中值的平均值。已忽略 Null 值。</p>
+<p>選択した結果セット内の値の平均値を返す。Null 値は無視される。</p>
 <p><b>语法：</b></p>
 <pre>SELECT AVG(column_name) FROM table_name</pre>
 <p><b>实例：</b></p>
-<p>"Persons" 表中原始数据如下：</p>
+<p>"Persons" テーブルの元のデータは次のとおりです：</p>
 <table bgcolor="#eeeedd" border="1" cellpadding="0" cellspacing="0" style="width:100.0%;mso-cellspacing:0cm;background:#EEEEDD" width="100%">
 <tr>
 <td><b>Name</b></td>
@@ -1383,21 +1380,21 @@ DROP COLUMN column_name
 <td>19</td>
 </tr>
 </table>
-<p>选取 "Persons" 表中所有人的平均年龄：</p>
+<p>"Persons" テーブルの全員の平均年齢を取得します：</p>
 <pre>SELECT AVG(Age) FROM Persons</pre>
 <p>执行结果：</p>
 <pre>32.67</pre>
-<p>选取 "Persons" 表中年龄超过 20 岁的人的平均年龄：</p>
+<p>"Persons" テーブルの年齢が20歳を超える人の平均年齢を取得します：</p>
 <pre>SELECT AVG(Age) FROM Persons WHERE Age&gt;20</pre>
 <p>执行结果：</p>
 <pre>39.5</pre>
 <h3>max</h3>
 <p><b>用途：</b></p>
-<p>传回选取的结果集中值的最大值。已忽略 Null 值。</p>
+<p>選択した結果セット内の値の最大値を返す。Null 値は無視される。</p>
 <p><b>语法：</b></p>
 <pre>SELECT MAX(column_name) FROM table_name</pre>
 <p><b>实例：</b></p>
-<p>"Persons" 表中原始数据如下：</p>
+<p>"Persons" テーブルの元のデータは次のとおりです：</p>
 <table bgcolor="#eeeedd" border="1" cellpadding="0" cellspacing="0" style="width:100.0%;mso-cellspacing:0cm;background:#EEEEDD" width="100%">
 <tr>
 <td><b>Name</b></td>
@@ -1416,17 +1413,17 @@ DROP COLUMN column_name
 <td>19</td>
 </tr>
 </table>
-<p>选取 "Persons" 表中的最大年龄：</p>
+<p>"Persons" テーブルの最大年齢を取得します：</p>
 <pre>SELECT MAX(Age) FROM Persons</pre>
 <p>执行结果：</p>
 <pre>45</pre>
 <h3>min</h3>
 <p><b>用途：</b></p>
-<p>传回选取的结果集中值的最小值。已忽略 Null 值。</p>
+<p>選択した結果セット内の値の最小値を返す。Null 値は無視される。</p>
 <p><b>语法：</b></p>
 <pre>SELECT MIN(column_name) FROM table_name</pre>
 <p><b>实例：</b></p>
-<p>"Persons" 表中原始数据如下：</p>
+<p>"Persons" テーブルの元のデータは次のとおりです：</p>
 <table bgcolor="#eeeedd" border="1" cellpadding="0" cellspacing="0" style="width:100.0%;mso-cellspacing:0cm;background:#EEEEDD" width="100%">
 <tr>
 <td><b>Name</b></td>
@@ -1445,14 +1442,14 @@ DROP COLUMN column_name
 <td>19</td>
 </tr>
 </table>
-<p>选取 "Persons" 表中的最小年龄：</p>
+<p>"Persons" テーブルの最小年齢を取得します：</p>
 <pre>SELECT MIN(Age) FROM Persons</pre>
 <p>执行结果：</p>
 <pre>19</pre>
 <h2>算术函数</h2>
 <h3>abs</h3>
 <p><b>用途：</b></p>
-<p>传回指定数值表达式（Numeric Expression）的绝对正值。</p>
+<p>指定された数値式（Numeric Expression）の絶対値を返します。</p>
 <p><b>语法：</b></p>
 <pre>ABS(numeric_expression )</pre>
 <p><b>实例：</b></p>
@@ -1461,7 +1458,7 @@ DROP COLUMN column_name
 <pre>1.0         0.0        1.0</pre>
 <h3>ceil</h3>
 <p><b>用途：</b></p>
-<p>传回大于等于给定数值表达式的最小整数。</p>
+<p>指定された数値式以上である最小の整数を返します。</p>
 <p><b>语法：</b></p>
 <pre>CEIL(numeric_expression )</pre>
 <p><b>实例：</b></p>
@@ -1470,7 +1467,7 @@ DROP COLUMN column_name
 <pre>124.00            -123.00</pre>
 <h3>floor</h3>
 <p><b>用途：</b></p>
-<p>传回小于或等于给定数值表达式的最大整数。</p>
+<p>指定された数値式以下である最大の整数を返します。</p>
 <p><b>语法：</b></p>
 <pre>FLOOR(numeric_expression )</pre>
 <p><b>实例：</b></p>
@@ -1479,7 +1476,7 @@ DROP COLUMN column_name
 <pre>123.00             -124.00</pre>
 <h3>cos</h3>
 <p><b>用途：</b></p>
-<p>在指定表达式中传回指定角度（以弪度为单位）的三角余弦值的数学函数。</p>
+<p>指定された式内で、指定された角度（ラジアン単位）の三角余弦の値を返す数学関数。</p>
 <p><b>语法：</b></p>
 <pre>COS(numeric_expression )</pre>
 <p><b>实例：</b></p>
@@ -1488,7 +1485,7 @@ DROP COLUMN column_name
 <pre>-0.599465</pre>
 <h3>cosh</h3>
 <p><b>用途：</b></p>
-<p>传回以弧度为单位的角度值，其余弦为指定的 float 表达式，也称为反余弦。</p>
+<p>余弦が指定された float 式であるラジアン単位の角度を返します。アークコサインとも呼ばれます。</p>
 <p><b>语法：</b></p>
 <pre>COSH(numeric_expression )</pre>
 <p><b>实例：</b></p>
@@ -1497,7 +1494,7 @@ DROP COLUMN column_name
 <pre>3.14159</pre>
 <h3>sin</h3>
 <p><b>用途：</b></p>
-<p>以近似的数值（float）表达式传回给定角度（弧度）的三角正弦函数。</p>
+<p>指定された角度（ラジアン）の三角正弦を近似数値（float）式で返す関数。</p>
 <p><b>语法：</b></p>
 <pre>SIN(numeric_expression )</pre>
 <p><b>实例：</b></p>
@@ -1506,7 +1503,7 @@ DROP COLUMN column_name
 <pre>0.929607</pre>
 <h3>sinh</h3>
 <p><b>用途：</b></p>
-<p>传回以弪度为单位的角度，其正弦为指定的 float 表达式，也称为反正弦。</p>
+<p>正弦が指定された float 式であるラジアン単位の角度を返します。アークサインとも呼ばれます。</p>
 <p><b>语法：</b></p>
 <pre>SINH(numeric_expression )</pre>
 <p><b>实例：</b></p>
@@ -1515,7 +1512,7 @@ DROP COLUMN column_name
 <pre>-1.5708</pre>
 <h3>tan</h3>
 <p><b>用途：</b></p>
-<p>传回输入表达式的正切函数。</p>
+<p>入力式のタンジェント関数を返す。</p>
 <p><b>语法：</b></p>
 <pre>TAN(numeric_expression )</pre>
 <p><b>实例：</b></p>
@@ -1524,7 +1521,7 @@ DROP COLUMN column_name
 <pre>1.6331778728383844E+16</pre>
 <h3>tanh</h3>
 <p><b>用途：</b></p>
-<p>传回以弪度为单位的角度，其正切为指定的 float 表达式，也称为反正切。</p>
+<p>正接が指定された float 式であるラジアン単位の角度を返します。アークタンジェントとも呼ばれます。</p>
 <p><b>语法：</b></p>
 <pre>TANH(numeric_expression )</pre>
 <p><b>实例：</b></p>
@@ -1533,7 +1530,7 @@ DROP COLUMN column_name
 <pre>-1.54858</pre>
 <h3>exp</h3>
 <p><b>用途：</b></p>
-<p>传回给定的 float 表达式的指数（Exponential）值。</p>
+<p>指定された float 式の指数（Exponential）値を返します。</p>
 <p><b>语法：</b></p>
 <pre>EXP(numeric_expression )</pre>
 <p><b>实例：</b></p>
@@ -1542,7 +1539,7 @@ DROP COLUMN column_name
 <pre>2.69498e+164 </pre>
 <h3>log</h3>
 <p><b>用途：</b></p>
-<p>传回给定的 float 表达式的自然对数。</p>
+<p>指定された float 式の自然対数を返します。</p>
 <p><b>语法：</b></p>
 <pre>LOG(numeric_expression )</pre>
 <p><b>实例：</b></p>
@@ -1551,7 +1548,7 @@ DROP COLUMN column_name
 <pre>1.64396 </pre>
 <h3>power</h3>
 <p><b>用途：</b></p>
-<p>传回给定表达式的指定乘幂的值。</p>
+<p>指定された式の指定されたべき乗の値を返します。</p>
 <p><b>语法：</b></p>
 <pre>POWER(numeric_expression,v )</pre>
 <p><b>实例：</b></p>
@@ -1560,7 +1557,7 @@ DROP COLUMN column_name
 <pre>64</pre>
 <h3>sign</h3>
 <p><b>用途：</b></p>
-<p>传回给定表达式的正（+1）、零（0）或负（-1）号。</p>
+<p>指定された式の正（+1）、ゼロ（0）、または負（-1）の符号を返します。</p>
 <p><b>语法：</b></p>
 <pre>SIGN(numeric_expression )</pre>
 <p><b>实例：</b></p>
@@ -1569,7 +1566,7 @@ DROP COLUMN column_name
 <pre>1             0          -1</pre>
 <h3>sqrt</h3>
 <p><b>用途：</b></p>
-<p>传回给定表达式的平方。</p>
+<p>指定された式の平方を返す。</p>
 <p><b>语法：</b></p>
 <pre>SQRT(numeric_expression )</pre>
 <p><b>实例：</b></p>
@@ -1577,7 +1574,7 @@ DROP COLUMN column_name
 <p>执行结果：</p>
 <pre>100</pre>
 <h2>更多教程</h2>
-<p>更详细教程可参考：<a href="../sql/sql-tutorial.html" title="SQL 教程">SQL 教程</a></p> </div>
+<p>より詳細なチュートリアルはこちらを参照してください：<a href="../sql/sql-tutorial.html" title="SQL 教程">SQL 教程</a></p> </div>
 </div>
 <div class="previous-next-links">
 <div class="previous-design-link">← <a href="./php-array-operation.html" rel="prev">PHP数组操作详解</a> </div>
@@ -1686,7 +1683,7 @@ DROP COLUMN column_name
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>点我分享笔记</h3>
+<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 &lt;p style="font-size:14px;"&gt;笔记需要是本篇文章的内容扩展！&lt;/p&gt;&lt;br&gt;
 	&lt;p style="font-size:12px;"&gt;&lt;a href="../tougao.html" target="_blank"&gt;文章投稿，可点击这里&lt;/a&gt;&lt;/p&gt;
 	&lt;p style="font-size:14px;"&gt;&lt;a href="./runoob-user-test-intro.html" target="_blank"&gt;注册邀请码获取方式&lt;/a&gt;&lt;/p&gt;
@@ -1935,181 +1932,6 @@ var aid = 12103;
 
 </div>
 -->
-<div class="sidebar-box cate-list" style="display:none;">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">热门文章</a>
-</div>
-<div class="membership">
-<ul class="membership">
-<li><a href="https://mp.weixin.qq.com/s/ZaP6YNgKTCHYy3r2WPBBaw" target="_blank" title="2024 年 04 月 JavaScript 框架排行榜">2024 年 04 月 JavaScript 框架排行榜</a></li>
-<li><a href="https://mp.weixin.qq.com/s/JBR2twC0t6krjjuxqvhsEQ" target="_blank" title="免费、开源、好用的 SQL 客户端合集">免费、开源、好用的 SQL 客户端合集</a></li>
-<li><a href="https://mp.weixin.qq.com/s/TwV3YQjA1glyaW7TiHvhlA" target="_blank" title="优雅的代码规范，提升代码质量">优雅的代码规范，提升代码质量</a></li>
-<li><a href="https://mp.weixin.qq.com/s/CnUJ-2OHPbBKlnVpjDzavA" target="_blank" title="命令行中的趣味世界，牛也能说话，有趣又好玩">命令行中的趣味世界，牛也能说话，有趣又好玩</a></li>
-<li><a href="https://mp.weixin.qq.com/s/7NKl-mD7N8CeSNQlbKDEWA" target="_blank" title="2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？">2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？</a></li>
-<li><a href="https://mp.weixin.qq.com/s/yWlSVDKobtDhThnhirVRpw" target="_blank" title="免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端">免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端</a></li>
-</ul>
-</div>
-</div>
-<div class="sidebar-box cate-list">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">教程列表</a>
-</div>
-<div class="cate-items">
-<a href="../ado.html">ADO 教程</a>
-<a href="../ai-agent.html">AI Agent 教程</a>
-<a href="../ai.html">AI 入门教程</a>
-<a href="../ai-math.html">AI 数学基础</a>
-<a href="../ajax.html">Ajax 教程</a>
-<a href="../android.html">Android 教程</a>
-<a href="../angularjs2.html">Angular2 教程</a>
-<a href="../angularjs.html">AngularJS 教程</a>
-<a href="../appml.html">AppML 教程</a>
-<a href="../asp.html">ASP 教程</a>
-<a href="../aspnet.html">ASP.NET 教程</a>
-<a href="../bootstrap.html">Bootstrap 教程</a>
-<a href="../bootstrap4.html">Bootstrap4 教程</a>
-<a href="../bootstrap5.html">Bootstrap5 教程</a>
-<a href="../cprogramming.html">C 教程</a>
-<a href="../c-dsa.html">C 语言数据结构与算法</a>
-<a href="../csharp.html">C# 教程</a>
-<a href="../cplusplus.html">C++ 教程</a>
-<a href="../chartjs.html">Chart.js 教程</a>
-<a href="../claude-code.html">Claude Code 教程</a>
-<a href="../cmake.html">CMake 教程</a>
-<a href="../codex.html">Codex 教程</a>
-<a href="../cssref.html">CSS 参考手册</a>
-<a href="../css.html">CSS 教程</a>
-<a href="../css3.html">CSS3 教程</a>
-<a href="../cursor.html">Cursor 教程</a>
-<a href="../dart.html">Dart 教程</a>
-<a href="../dash.html">Dash 教程</a>
-<a href="../deepseek-harness.html">DeepSeek Harness</a>
-<a href="../django.html">Django 教程</a>
-<a href="../docker.html">Docker 教程</a>
-<a href="../dtd.html">DTD 教程</a>
-<a href="../echarts.html">ECharts 教程</a>
-<a href="../eclipse.html">Eclipse 教程</a>
-<a href="../electron.html">Electron 教程</a>
-<a href="../fastapi.html">FastAPI 教程</a>
-<a href="../firebug.html">Firebug 教程</a>
-<a href="../flask.html">Flask 教程</a>
-<a href="../flutter.html">Flutter 教程</a>
-<a href="../font-awesome.html">Font Awesome 图标</a>
-<a href="../foundation.html">Foundation 教程</a>
-<a href="../git.html">Git 教程</a>
-<a href="../go.html">Go 语言教程</a>
-<a href="../googleapi.html">Google 地图 API 教程</a>
-<a href="../hermes-agent.html">Hermes Agent</a>
-<a href="../highcharts.html">Highcharts 教程</a>
-<a href="../htmldom.html">HTML DOM 教程</a>
-<a href="../tags.html">HTML 参考手册</a>
-<a href="../charsets.html">HTML 字符集</a>
-<a href="../html.html">HTML 教程</a>
-<a href="../http.html">HTTP 教程</a>
-<a href="../ionic.html">ionic 教程</a>
-<a href="../ios.html">iOS 教程</a>
-<a href="../java.html">Java 教程</a>
-<a href="../jsref.html">JavaScript 参考手册</a>
-<a href="../js.html">Javascript 教程</a>
-<a href="../jeasyui.html">jQuery EasyUI 教程</a>
-<a href="../jquerymobile.html">jQuery Mobile 教程</a>
-<a href="../jqueryui.html">jQuery UI 教程</a>
-<a href="../jquery.html">jQuery 教程</a>
-<a href="../json.html">JSON 教程</a>
-<a href="../jsp.html">JSP 教程</a>
-<a href="../julia.html">Julia 教程</a>
-<a href="../jupyter-notebook.html">Jupyter Notebook 教程</a>
-<a href="../kotlin.html">Kotlin 教程</a>
-<a href="../langchain.html">LangChain 教程</a>
-<a href="../latex.html">LaTeX 教程</a>
-<a href="../linux.html">Linux 教程</a>
-<a href="../lua.html">Lua 教程</a>
-<a href="../markdown.html">Markdown 教程</a>
-<a href="../matplotlib.html">Matplotlib 教程</a>
-<a href="../maven.html">Maven 教程</a>
-<a href="../memcached.html">Memcached 教程</a>
-<a href="../mongodb.html">MongoDB 教程</a>
-<a href="../mysql.html">MySQL 教程</a>
-<a href="../nextjs.html">Next.js 教程</a>
-<a href="../nlp.html">NLP 教程</a>
-<a href="../nodejs.html">Node.js 教程</a>
-<a href="../numpy.html">NumPy 教程</a>
-<a href="../obsidian.html">Obsidian 教程</a>
-<a href="../ollama.html">Ollama 教程</a>
-<a href="../opencode.html">OpenCode 教程</a>
-<a href="../opencv.html">OpenCV 教程</a>
-<a href="../pandas.html">Pandas 教程</a>
-<a href="../perl.html">Perl 教程</a>
-<a href="../php.html">PHP 教程</a>
-<a href="../pi-agent.html">Pi Agent</a>
-<a href="../pillow.html">Pillow 教程</a>
-<a href="../playwright.html">Playwright 教程</a>
-<a href="../postgresql.html">PostgreSQL 教程</a>
-<a href="../powershell.html">PowerShell</a>
-<a href="../pycharm.html">Pycharm 教程</a>
-<a href="../python3.html">Python 3 教程</a>
-<a href="../python.html">Python 基础教程</a>
-<a href="../python-design-pattern.html">Python 设计模式</a>
-<a href="../python-qt.html">Python 量化交易</a>
-<a href="../pytorch.html">PyTorch 教程</a>
-<a href="../r.html">R 教程</a>
-<a href="../rdf.html">RDF 教程</a>
-<a href="../react.html">React 教程</a>
-<a href="../redis.html">Redis 教程</a>
-<a href="../restfulapi.html">RESTful API</a>
-<a href="../rss.html">RSS 教程</a>
-<a href="../ruby.html">Ruby 教程</a>
-<a href="../rust.html">Rust 教程</a>
-<a href="../sass.html">Sass 教程</a>
-<a href="../scala.html">Scala 教程</a>
-<a href="../scipy.html">SciPy 教程</a>
-<a href="../selenium.html">Selenium 教程</a>
-<a href="../servlet.html">Servlet 教程</a>
-<a href="../skills.html">Skills 教程</a>
-<a href="../sklearn.html">Sklearn 教程</a>
-<a href="../soap.html">SOAP 教程</a>
-<a href="../sql.html">SQL 教程</a>
-<a href="../sqlite.html">SQLite 教程</a>
-<a href="../svg.html">SVG 教程</a>
-<a href="../svn.html">SVN 教程</a>
-<a href="../swagger.html">Swagger 教程</a>
-<a href="../swift.html">Swift 教程</a>
-<a href="../tailwindcss.html">Tailwind CSS 教程</a>
-<a href="../tcpip.html">TCP/IP 教程</a>
-<a href="../tensorflow.html">TensorFlow 教程</a>
-<a href="../typescript.html">TypeScript 教程</a>
-<a href="../uniapp.html">uni-app 教程</a>
-<a href="../vbscript.html">VBScript 教程</a>
-<a href="../vibe-coding.html">Vibe Coding 教程</a>
-<a href="../vscode.html">VSCode 教程</a>
-<a href="../vue2.html">Vue.js 教程</a>
-<a href="../vue3.html">Vue3 教程</a>
-<a href="../w3c.html">W3C 教程</a>
-<a href="../webservices.html">Web Service 教程</a>
-<a href="../wsdl.html">WSDL 教程</a>
-<a href="../xlink.html">XLink 教程</a>
-<a href="../dom.html">XML DOM 教程</a>
-<a href="../schema.html">XML Schema 教程</a>
-<a href="../xml.html">XML 教程</a>
-<a href="../xpath.html">XPath 教程</a>
-<a href="../xquery.html">XQuery 教程</a>
-<a href="../xslfo.html">XSLFO 教程</a>
-<a href="../xsl.html">XSLT 教程</a>
-<a href="../zig.html">Zig 教程</a>
-<a href="../data-structures.html">数据结构</a>
-<a href="../ml.html">机器学习</a>
-<a href="../regexp.html">正则表达式</a>
-<a href="../assembly.html">汇编语言</a>
-<a href="../quiz.html">测验</a>
-<a href="../browsers.html">浏览器</a>
-<a href="../quality.html">网站品质</a>
-<a href="../web.html">网站建设指南</a>
-<a href="../hosting.html">网站服务器教程</a>
-<a href="../np.html">网络协议</a>
-<a href="../computer-organization.html">计算机组成原理</a>
-<a href="../design-pattern.html">设计模式</a>
-</div>
-</div>
 </div>
 </div>
 </div>

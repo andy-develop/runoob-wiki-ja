@@ -60,9 +60,6 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div>
 <div class="row">
 <div class="col right-list">
-<button class="btn btn-responsive-nav btn-inverse" id="pull">
-<i class="fa fa-navicon"></i>
-</button>
 </div>
 <div class="col search search-desktop last">
 <div class="search-input">
@@ -79,220 +76,220 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="col middle-column big-middle-column">
 <div class="article">
 <div class="article-heading">
-<h2>常用 SQL Server 规范集锦</h2> <h3><em>分类</em> <a href="../w3cnote_genre/code.html" title="编程技术">编程技术</a> </h3>
+<h2>よく使用するSQL Server規範集</h2> <h3><em>分类</em> <a href="../w3cnote_genre/code.html" title="编程技术">编程技术</a> </h3>
 </div>
 <div class="article-body note-body">
 <div class="article-intro">
 <!-- ad start-->
 <!-- ad end-->
-<h2>常见的字段类型选择</h2>
-<p>1.字符类型建议采用varchar/nvarchar数据类型<br/>2.金额货币建议采用money数据类型<br/>3.科学计数建议采用numeric数据类型<br/>4.自增长标识建议采用bigint数据类型   (数据量一大，用int类型就装不下，那以后改造就麻烦了)<br/>5.时间类型建议采用为datetime数据类型<br/>6.禁止使用text、ntext、image老的数据类型<br/>7.禁止使用xml数据类型、varchar(max)、nvarchar(max)</p>
+<h2>一般的な列のデータ型選択</h2>
+<p>1.文字型はvarchar/nvarcharデータ型を採用することを推奨します。<br/>2.金額・通貨はmoneyデータ型を採用することを推奨します。<br/>3.科学計算はnumericデータ型を採用することを推奨します。<br/>4.自動増分IDはbigintデータ型を推奨します（データ量が多くなるとint型では収まりきらず、後々の改修が面倒になります）。<br/>5.時間型はdatetimeデータ型を推奨します。<br/>6.text、ntext、imageといった古いデータ型の使用は禁止します。<br/>7.xmlデータ型、varchar(max)、nvarchar(max)の使用禁止</p>
 <h2>约束与索引</h2>
-<p><strong>每张表必须有主键</strong></p>
+<p><strong>各テーブルには主キーが必要</strong></p>
 <ul>
-<li>每张表必须有主键，用于强制实体完整性</li>
-<li>单表只能有一个主键（不允许为空及重复数据）</li>
-<li>尽量使用单字段主键</li>
+<li>各テーブルには必ず主キーを設け、エンティティの整合性を強制します。</li>
+<li>単一テーブルの主キーは1つだけです（NULLおよび重複データは許可されません）。</li>
+<li>できるだけ単一列主キーを使用する</li>
 </ul>
-<p><strong>不允许使用外键</strong></p>
+<p><strong>外部キーの使用は禁止</strong></p>
 <ul>
-<li>外键增加了表结构变更及数据迁移的复杂性</li>
-<li>外键对插入，更新的性能有影响，需要检查主外键约束</li>
-<li>数据完整性由程序控制</li>
+<li>外部キーはテーブル構造の変更やデータ移行の複雑さを増します。</li>
+<li>外部キーは挿入、更新のパフォーマンスに影響を与えるため、主キー・外部キー制約を確認する必要がある。</li>
+<li>データ整合性はプログラム側で制御する。</li>
 </ul>
 <p><strong>NULL属性</strong></p>
-<p>新加的表，所有字段禁止NULL</p>
-<p>（<strong>新表为什么不允许NULL？</strong><br/>
-<strong>允许NULL值，会增加应用程序的复杂性。你必须得增加特定的逻辑代码，以防止出现各种意外的bug</strong><br/>
-<strong>三值逻辑，所有等号（"="）的查询都必须增加isnull的判断。</strong><br/>
+<p>新規作成するテーブルでは、すべてのフィールドでNULLを禁止します。</p>
+<p>（<strong>新しいテーブルでNULLを許可しないのはなぜか？</strong><br/>
+<strong>NULL値を許可するとアプリケーションの複雑さが増します。さまざまな予期しないバグを防ぐために、特定のロジックコードを追加する必要があります。</strong><br/>
+<strong>三値論理では、すべての等号（"="）を使用するクエリにisnullの判定を追加する必要があります。</strong><br/>
 <strong>Null=Null、Null!=Null、not(Null=Null)、not(Null!=Null)都为unknown，不为true</strong>）</p>
-<p>举例来说明一下：</p>
-<p>如果表里面的数据如图所示：</p>
+<p>例を挙げて説明します：</p>
+<p>テーブル内のデータが図のようにある場合：</p>
 <p><img alt="" decoding="async" src="../wp-content/uploads/2015/06/764796f7418b0a9e0fe74369bc94fb91.png"/></p>
-<p>你想来找查找除了name等于aa的所有数据，然后你就不经意间用了SELECT * FROM NULLTEST WHERE NAME&lt;&gt;'aa'</p>
-<p>结果发现与预期不一样，事实上它只查出了name=bb而没有查找出name=NULL的数据记录</p>
-<p>那我们如何查找除了name等于aa的所有数据，只能用ISNULL函数了</p>
+<p>nameが'aa'以外のすべてのデータを検索したいとき、うっかり SELECT * FROM NULLTEST WHERE NAME&lt;&gt;'aa' を使ってしまうことがあります。</p>
+<p>結果は期待と異なり、実際にはname=bbのレコードだけが検索され、name=NULLのデータレコードは検索されなかった。</p>
+<p>では、nameが'aa'以外のすべてのデータを検索するには、ISNULL関数を使うしかありません。</p>
 <p>SELECT * FROM NULLTEST WHERE ISNULL(NAME,1)&lt;&gt;'aa'</p>
-<p>但是大家可能不知道<strong>ISNULL会引起很严重的性能瓶颈</strong>,所以很多时候最好是在应用层面限制用户的输入，确保用户输入有效的数据再进行查询。</p>
-<p><strong>旧表新加字段，需要允许为NULL（避免全表数据更新 ，长期持锁导致阻塞）</strong>（这个主要是考虑之前表的改造问题）</p>
-<h2>索引设计准则</h2>
+<p>しかし、皆さんはご存じないかもしれません<strong>ISNULLは深刻なパフォーマンスボトルネックを引き起こします。</strong>そのため、多くの場合、アプリケーション層でユーザーの入力を制限し、ユーザーが有効なデータを入力してからクエリを実行するのが最善です。</p>
+<p><strong>既存テーブルに新しいフィールドを追加する場合、NULLを許可する必要がある（全テーブルのデータ更新を避け、長時間のロック保持によるブロッキングを防ぐ）。</strong>（これは主に既存テーブルの改修問題を考慮したものです）</p>
+<h2>インデックス設計の指針</h2>
 <ul>
-<li>应该对 WHERE 子句中经常使用的列创建索引</li>
-<li>应该对经常用于连接表的列创建索引</li>
-<li>应该对 ORDER BY 子句中经常使用的列创建索引</li>
-<li>不应该对小型的表（仅使用几个页的表）创建索引，这是因为完全表扫描操作可能比使用索引执行的查询快</li>
-<li>单表索引数不超过6个</li>
-<li>不要给选择性低的字段建单列索引</li>
-<li>充分利用唯一约束</li>
-<li>索引包含的字段不超过5个（包括include列）</li>
+<li>WHERE句で頻繁に使用される列にはインデックスを作成すべきです。</li>
+<li>テーブルの結合に頻繁に使用される列にはインデックスを作成すべきです。</li>
+<li>ORDER BY句で頻繁に使用される列にはインデックスを作成すべきです。</li>
+<li>小規模なテーブル（数ページしか使用しないテーブル）にはインデックスを作成すべきではありません。完全なテーブルスキャンの方がインデックスを使ったクエリより速い場合があるためです。</li>
+<li>1つのテーブルのインデックス数は6個を超えないこと。</li>
+<li>選択性の低いフィールドには単一列インデックスを作成しないでください。</li>
+<li>一意制約を十分に活用する</li>
+<li>インデックスに含まれるフィールドは5つ以内にしてください（インクルード列を含む）。</li>
 </ul>
-<h2>不要给选择性低的字段创建单列索引</h2>
+<h2>選択性の低いフィールドに単一列インデックスを作成しないでください。</h2>
 <ul>
-<li>SQL SERVER对索引字段的选择性有要求，如果选择性太低SQL SERVER会放弃使用</li>
-<li>不适合创建索引的字段：性别、0/1、TRUE/FALSE</li>
-<li>适合创建索引的字段：ORDERID、UID等</li>
+<li>SQL SERVERはインデックスフィールドの選択性に要件があります。選択性が低すぎるとSQL SERVERはインデックスの使用をやめます。</li>
+<li>インデックスの作成に適さないフィールド：性別、0/1、TRUE/FALSE</li>
+<li>インデックスの作成に適したフィールド：ORDERID、UIDなど</li>
 </ul>
-<h2>充分利用唯一索引</h2>
-<p>唯一索引给SQL Server提供了确保某一列绝对没有重复值的信息，当查询分析器通过唯一索引查找到一条记录则会立刻退出，不会继续查找索引</p>
-<p>表索引数不超过6个</p>
-<h2>表索引数不超过6个（这个规则只是携程DBA经过试验之后制定的。。。）</h2>
+<h2>一意インデックスを十分に活用する</h2>
+<p>一意インデックスは、SQL Serverにある列に完全に重複する値がないことを保証する情報を提供します。クエリアナライザーが一意インデックスで1件のレコードを見つけるとすぐに終了し、インデックスの検索を続行しません。</p>
+<p>テーブルのインデックス数は6つ以内</p>
+<h2>テーブルのインデックス数は6つ以内にしてください（このルールは、携程（Ctrip）のDBAが実験を行った後に制定したものです...）。</h2>
 <ul>
-<li>索引加快了查询速度，但是却会影响写入性能</li>
-<li>一个表的索引应该结合这个表相关的所有SQL综合创建，尽量合并</li>
-<li>组合索引的原则是，过滤性越好的字段越靠前</li>
-<li>索引过多不仅会增加编译时间，也会影响数据库选择最佳执行计划</li>
+<li>インデックスはクエリ速度を向上させますが、書き込みパフォーマンスに影響を与えます。</li>
+<li>テーブルのインデックスは、そのテーブルに関連するすべてのSQLを総合して作成し、できるだけ統合する。</li>
+<li>複合インデックスの原則は、フィルタリング性（選択性）が高いフィールドほど先頭に置くことです。</li>
+<li>インデックスが多すぎると、コンパイル時間が増えるだけでなく、データベースが最適な実行計画を選択するのにも影響します。</li>
 </ul>
 <h2>SQL查询</h2>
 <ul>
-<li>禁止在数据库做复杂运算</li>
-<li>禁止使用SELECT *</li>
-<li>禁止在索引列上使用函数或计算</li>
-<li>禁止使用游标</li>
-<li>禁止使用触发器</li>
-<li>禁止在查询里指定索引</li>
-<li>变量/参数/关联字段类型必须与字段类型一致</li>
+<li>データベースでの複雑な演算を禁止する。</li>
+<li>SELECT * の使用禁止</li>
+<li>インデックス列に対する関数や計算の使用を禁止する。</li>
+<li>カーソルの使用禁止</li>
+<li>トリガーの使用禁止</li>
+<li>クエリ内でインデックスを指定することを禁止する。</li>
+<li>変数・パラメータ・結合フィールドの型は、フィールドの型と一致させなければなりません。</li>
 <li>参数化查询</li>
-<li>限制JOIN个数</li>
-<li>限制SQL语句长度及IN子句个数</li>
-<li>尽量避免大事务操作</li>
-<li>关闭影响的行计数信息返回</li>
-<li>除非必要SELECT语句都必须加上NOLOCK</li>
-<li>使用UNION ALL替换UNION</li>
-<li>查询大量数据使用分页或TOP</li>
-<li>递归查询层级限制</li>
+<li>JOINの数を制限する</li>
+<li>SQL文の長さとIN句の個数を制限します。</li>
+<li>大規模なトランザクション操作をできるだけ避ける</li>
+<li>影響を受けた行数の情報返却を無効にする。</li>
+<li>特別な理由がない限り、すべてのSELECT文にNOLOCKを付ける必要があります。</li>
+<li>UNIONの代わりにUNION ALLを使用する</li>
+<li>大量のデータを照会する場合はページングまたはTOPを使用する。</li>
+<li>再帰クエリの階層制限</li>
 <li>NOT EXISTS替代NOT IN</li>
-<li>临时表与表变量</li>
-<li>使用本地变量选择中庸执行计划</li>
-<li>尽量避免使用OR运算符</li>
-<li>增加事务异常处理机制</li>
-<li>输出列使用二段式命名格式</li>
+<li>一時テーブルとテーブル変数</li>
+<li>ローカル変数を使用して中庸な実行計画を選択する。</li>
+<li>OR演算子の使用はできるだけ避ける。</li>
+<li>トランザクション例外処理機構を追加する。</li>
+<li>出力列には2段階命名形式を使用する。</li>
 </ul>
-<h2>禁止在数据库做复杂运算</h2>
+<h2>データベースでの複雑な演算を禁止する。</h2>
 <ul>
 <li>XML解析</li>
-<li>字符串相似性比较</li>
-<li>字符串搜索（Charindex）</li>
-<li>复杂运算在程序端完成</li>
+<li>文字列の類似性比較</li>
+<li>文字列検索（Charindex）</li>
+<li>複雑な演算はプログラム側で完了させる。</li>
 </ul>
-<h2>禁止使用SELECT *</h2>
+<h2>SELECT * の使用禁止</h2>
 <ul>
-<li>减少内存消耗和网络带宽</li>
-<li>给查询优化器有机会从索引读取所需要的列</li>
-<li>表结构变化时容易引起查询出错</li>
+<li>メモリ消費とネットワーク帯域幅を減らす。</li>
+<li>クエリオプティマイザーに、インデックスから必要な列を読み取る機会を与えます。</li>
+<li>テーブル構造が変更されると、クエリエラーが発生しやすくなる。</li>
 </ul>
-<h2>禁止在索引列上使用函数或计算</h2>
-<p>在where子句中,如果索引是函数的一部分,优化器将不再使用索引而使用全表扫描</p>
-<p>假设在字段Col1上建有一个索引，则下列场景将无法使用到索引：</p>
+<h2>インデックス列に対する関数や計算の使用を禁止する。</h2>
+<p>WHERE句でインデックスが関数の一部となっている場合、オプティマイザーはインデックスを使用せず、全テーブルスキャンを行います。</p>
+<p>フィールドCol1にインデックスがあると仮定すると、次のシナリオではインデックスを使用できません：</p>
 <p>ABS[Col1]=1</p>
 <p>[Col1]+1&gt;9</p>
-<p>再举例说明一下</p>
+<p>さらに例を挙げて説明します</p>
 <p><img alt="" decoding="async" src="../wp-content/uploads/2015/06/215fb5790a0c523a9f01928ee9138b37.png"/></p>
-<p>像上面这样的查询，将无法用到O_OrderProcess表上的PrintTime索引，所以我们应用使用如下所示的查询SQL</p>
+<p>上記のようなクエリでは、O_OrderProcessテーブルのPrintTimeインデックスを使用できないため、次のようなクエリSQLを使用すべきです。</p>
 <p><img alt="" decoding="async" src="../wp-content/uploads/2015/06/17d787e3699ed9a0f42556164e2e83dc.png"/></p>
-<h2>禁止在索引列上使用函数或计算</h2>
-<p>假设在字段Col1上建有一个索引，则下列场景将可以使用到索引：</p>
+<h2>インデックス列に対する関数や計算の使用を禁止する。</h2>
+<p>フィールドCol1にインデックスがあると仮定すると、次のシナリオではインデックスを使用できます：</p>
 <p>[Col1]=3.14</p>
 <p>[Col1]&gt;100</p>
 <p>[Col1] BETWEEN 0 AND 99</p>
 <p>[Col1] LIKE 'abc%'</p>
 <p>[Col1] IN(2,3,5,7)</p>
-<h2>LIKE查询的索引问题</h2>
-<p>1.[Col1] like “abc%”  –index seek  这个就用到了索引查询<br/>2.[Col1] like “%abc%”  –index scan  而这个就并未用到索引查询<br/>3.[Col1] like “%abc”  –index scan 这个也并未用到索引查询<br/>我想从上而三个例子中，大家应该明白，最好不要在LIKE条件前面用模糊匹配，否则就用不到索引查询。</p>
-<h2>禁止使用游标</h2>
-<p>关系数据库适合集合操作，也就是对由WHERE子句和选择列确定的结果集作集合操作，游标是提供的一个非集合操作的途径。一般情况下，游标实现的功能往往相当于客户端的一个循环实现的功能。</p>
-<p>游标是把结果集放在服务器内存，并通过循环一条一条处理记录，对数据库资源（特别是内存和锁资源）的消耗是非常大的。<br/>（再加上游标真心比较复杂，挺不好用的，尽量少用吧）</p>
-<h2>禁止使用触发器</h2>
-<p>触发器对应用不透明（应用层面都不知道会什么时候触发触发器，发生也也不知道，感觉莫名……）</p>
-<h2>禁止在查询里指定索引</h2>
-<p>With(index=XXX)（  在查询里我们指定索引一般都用With(index=XXX)   ）</p>
+<h2>LIKEクエリのインデックス問題。</h2>
+<p>1.[Col1] like “abc%”  –index seek  これはインデックス検索を利用している<br/>2.[Col1] like “%abc%”  –index scan  これはインデックス検索を利用していない<br/>3.[Col1] like “%abc”  –index scan これもインデックス検索を利用していない<br/>上記の3つの例から、LIKE条件の先頭で曖昧（ワイルドカード）一致を使用しない方がよいことはおわかりいただけると思います。使用するとインデックスクエリを利用できません。</p>
+<h2>カーソルの使用禁止</h2>
+<p>リレーショナルデータベースは集合操作に適している。つまりWHERE句と選択列によって決定される結果セットに対して集合操作を行う。カーソルは非集合操作の手段として提供されている。一般的に、カーソルで実装される機能は、クライアントのループで実装される機能に相当することが多い。</p>
+<p>カーソルは結果セットをサーバーのメモリに置き、ループで1件ずつレコードを処理するため、データベースリソース（特にメモリとロックリソース）の消費が非常に大きい。<br/>（しかもカーソルは本当に複雑で、使い勝手があまり良くないので、できるだけ使用を避けましょう）</p>
+<h2>トリガーの使用禁止</h2>
+<p>トリガーはアプリケーションにとって透過的ではありません（アプリケーション層ではトリガーがいつ発火するのか分からず、発生しても分からないため、不可解に感じられます……）。</p>
+<h2>クエリ内でインデックスを指定することを禁止する。</h2>
+<p>With(index=XXX)（クエリ内でインデックスを指定する場合、通常はWith(index=XXX)を使用します）</p>
 <ul>
-<li>随着数据的变化查询语句指定的索引性能可能并不最佳</li>
-<li>索引对应用应是透明的，如指定的索引被删除将会导致查询报错，不利于排障</li>
-<li>新建的索引无法被应用立即使用，必须通过发布代码才能生效</li>
+<li>データの変化に伴い、クエリ文で指定されたインデックスのパフォーマンスが最適でない可能性があります。</li>
+<li>インデックスはアプリケーションに対して透過的であるべきです。指定したインデックスが削除されるとクエリエラーが発生し、障害対応に不利です。</li>
+<li>新しく作成したインデックスはアプリケーションですぐに使用できず、コードをリリースして初めて有効になります。</li>
 </ul>
 <h2>变量/参数/关联字段类型必须与字段类型一致（这是我之前不太关注的）</h2>
-<p>避免类型转换额外消耗的CPU，引起的大表scan尤为严重</p>
+<p>型変換による余分なCPU消費を避けてください。大規模テーブルのスキャンでは特に深刻です。</p>
 <p><img alt="" decoding="async" src="../wp-content/uploads/2015/06/a46fb7e52c3107f55b1bfd1c36a53247.png"/></p>
 <p><img alt="" decoding="async" src="../wp-content/uploads/2015/06/ff9467e29f94f87b3ce197c1424f8e36.png"/></p>
-<p>看了上面这两个图，我想我不用解释说明，大家都应该已经清楚了吧。</p>
-<p>如果数据库字段类型为VARCHAR，在应用里面最好类型指定为AnsiString并明确指定其长度</p>
-<p>如果数据库字段类型为CHAR，在应用里面最好类型指定为AnsiStringFixedLength并明确指定其长度</p>
-<p>如果数据库字段类型为NVARCHAR，在应用里面最好类型指定为String并明确指定其长度</p>
+<p>上記の2つの図を見れば、説明しなくても皆さんおわかりいただけると思います。</p>
+<p>データベースのフィールド型がVARCHARの場合、アプリケーションでは型をAnsiStringとし、その長さを明確に指定するのが最善です。</p>
+<p>データベースのフィールド型がCHARの場合、アプリケーションでは型をAnsiStringFixedLengthとし、その長さを明確に指定するのが最善です。</p>
+<p>データベースのフィールド型がNVARCHARの場合、アプリケーションでは型をStringとし、その長さを明確に指定するのが最善です。</p>
 <h2>参数化查询</h2>
-<p>以下方式可以对查询SQL进行参数化：<br/>
+<p>以下の方法でクエリSQLをパラメータ化できます：<br/>
 sp_executesql<br/>
 Prepared Queries<br/>
 Stored procedures</p>
-<p>用图来说明一下，哈哈。</p>
+<p>図で説明すると、はは。</p>
 <p><img alt="" decoding="async" src="../wp-content/uploads/2015/06/7144da91cfd453fca23ba652074acb1a.png"/></p>
 <p><img alt="" decoding="async" src="../wp-content/uploads/2015/06/b183a02f6d1b3b30b1a7c65a4d26cb90.png"/></p>
-<h2>限制JOIN个数</h2>
+<h2>JOINの数を制限する</h2>
 <ul>
-<li>单个SQL语句的表JOIN个数不能超过5个</li>
-<li>过多的JOIN个数会导致查询分析器走错执行计划</li>
-<li>过多JOIN在编译执行计划时消耗很大</li>
+<li>単一のSQL文におけるテーブルのJOIN数は5つ以内にしてください。</li>
+<li>JOIN数が多すぎると、クエリアナライザーが誤った実行計画を選択する原因になります。</li>
+<li>JOINが多すぎると、実行計画のコンパイル時に大きなコストがかかります。</li>
 </ul>
-<h2>限制IN子句中条件个数</h2>
-<p>在 IN 子句中包括数量非常多的值（数以千计）可能会消耗资源并返回错误 8623 或 8632，要求IN子句中条件个数限制在100个以内</p>
-<h2>尽量避免大事务操作</h2>
+<h2>IN句内の条件数を制限する。</h2>
+<p>IN句に非常に多くの値（数千単位）を含めるとリソースを消費し、エラー8623または8632が返される可能性があります。IN句の条件数は100以内に制限してください。</p>
+<h2>大規模なトランザクション操作をできるだけ避ける</h2>
 <ul>
-<li>只在数据需要更新时开始事务，减少资源锁持有时间</li>
-<li>增加事务异常捕获预处理机制</li>
-<li>禁止使用数据库上的分布式事务</li>
+<li>データ更新が必要な場合にのみトランザクションを開始し、リソースロックの保持時間を短縮する。</li>
+<li>トランザクション例外キャッチの前処理機構を追加する。</li>
+<li>データベース上の分散トランザクションの使用を禁止する。</li>
 </ul>
-<p>用图来说明一下</p>
+<p>図を使って説明します</p>
 <p><img alt="" decoding="async" src="../wp-content/uploads/2015/06/fd37ab47480e131d108c559c88f7b8f9.png"/></p>
-<p>也就是说我们不应该在1000行数据都更新完成之后再commit tran,你想想你在更新这一千行数据的时候是不是独占资源导致其它事务无法处理。</p>
-<h2>关闭影响的行计数信息返回</h2>
-<p>在SQL语句中显示设置Set Nocount On，取消影响的行计数信息返回，减少网络流量</p>
-<p>除非必要SELECT语句都必须加上NOLOCK</p>
-<h2>除非必要，尽量让所有的select语句都必须加上NOLOCK</h2>
-<p>指定允许脏读。不发布共享锁来阻止其他事务修改当前事务读取的数据，其他事务设  置的排他锁不会阻碍当前事务读取锁定数据。允许脏读可能产生较多的并发操作，但其代价是读取以后会被其他事务回滚的数据修改。这可能会使您的事务出错，向用户显示从未提交过的数据，或者导致用户两次看到记录（或根本看不到记录）</p>
-<p>使用UNION ALL替换UNION</p>
-<h2>使用UNION ALL替换UNION</h2>
-<p>UNION会对SQL结果集去重排序，增加CPU、内存等消耗</p>
-<h2>查询大量数据使用分页或TOP</h2>
-<p>合理限制记录返回数，避免IO、网络带宽出现瓶颈</p>
-<h2>递归查询层次限制</h2>
-<p>使用 MAXRECURSION 来防止不合理的递归 CTE 进入无限循环</p>
-<h2>临时表与表变量</h2>
+<p>つまり、1000行のデータをすべて更新完了した後にcommit tranすべきではない。この1000行を更新している間、リソースを独占して他のトランザクションを処理できなくなることを考えてみてほしい。</p>
+<h2>影響を受けた行数の情報返却を無効にする。</h2>
+<p>SQL文でSet Nocount Onを明示的に設定し、影響を受けた行数の情報返却をキャンセルして、ネットワークトラフィックを削減します。</p>
+<p>特別な理由がない限り、すべてのSELECT文にNOLOCKを付ける必要があります。</p>
+<h2>特別な理由がない限り、できる限りすべてのSELECT文にNOLOCKを付けます。</h2>
+<p>ダーティリードを許可します。他のトランザクションが現在のトランザクションで読み取ったデータを変更するのを防ぐ共有ロックを発行しません。他のトランザクションが設定した排他ロックは、現在のトランザクションがロックされたデータを読み取るのを妨げません。ダーティリードを許可すると同時実行操作が多くなる可能性がありますが、その代償として、後で他のトランザクションによってロールバックされるデータ変更を読み取ることになります。これによりトランザクションでエラーが発生し、コミットされていないデータがユーザーに表示されたり、ユーザーがレコードを2回見たり（または全く見られなかったり）する可能性があります。</p>
+<p>UNIONの代わりにUNION ALLを使用する</p>
+<h2>UNIONの代わりにUNION ALLを使用する</h2>
+<p>UNIONはSQLの結果セットに対して重複排除と並べ替えを行うため、CPUやメモリなどの消費が増加する。</p>
+<h2>大量のデータを照会する場合はページングまたはTOPを使用する。</h2>
+<p>返されるレコード数を適切に制限し、IOやネットワーク帯域のボトルネックを回避します。</p>
+<h2>再帰クエリの階層制限</h2>
+<p>MAXRECURSIONを使用して、不適切な再帰CTEが無限ループに入るのを防ぎます。</p>
+<h2>一時テーブルとテーブル変数</h2>
 <p><img alt="" decoding="async" src="../wp-content/uploads/2015/06/814e901878dbb3cdb10b190c31b94d21.png"/></p>
-<h2>使用本地变量选择中庸执行计划</h2>
-<p>在存储过程或查询中，访问了一张数据分布很不平均的表格，这样往往会让存储过程或查询使用了次优甚至于较差的执行计划上，造成High CPU及大量IO Read等问题，使用本地变量防止走错执行计划。</p>
-<p>采用本地变量的方式，SQL在编译的时候是不知道这个本地变量的值，这时候SQL会根据表格里数据的一般分布，"猜测"一个返回值。不管用户在调用存储过程或语句的时候代入的变量值是多少，生成的计划都是一样的。这样的计划一般会比较中庸一些，不一定是最优的计划，但一般也不会是最差的计划</p>
-<p>如果查询中本地变量使用了不等式运算符，查询分析器使用了一个简单的 30% 的算式来预估<br/>
+<h2>ローカル変数を使用して中庸な実行計画を選択する。</h2>
+<p>ストアドプロシージャやクエリで、データ分布が非常に偏ったテーブルにアクセスすると、ストアドプロシージャやクエリが次善またはさらに悪い実行計画を使用することが多く、High CPUや大量のIO Readなどの問題を引き起こします。ローカル変数を使用して、誤った実行計画を防ぎます。</p>
+<p>ローカル変数を使用する方法では、SQLはコンパイル時にこのローカル変数の値を知りません。その場合、SQLはテーブル内のデータの一般的な分布に基づいて戻り値を「推測」します。ユーザーがストアドプロシージャや文を呼び出すときに代入する変数の値が何であっても、生成されるプランは同じです。このようなプランは一般的に中庸であり、最適なプランとは限りませんが、通常は最悪のプランでもありません。</p>
+<p>クエリ内のローカル変数が不等号演算子を使用している場合、クエリアナライザーは単純な30%の計算式で見積もります。<br/>
 Estimated Rows =(Total Rows * 30)/100</p>
-<p>如果查询中本地变量使用了等式运算符，则查询分析器使用：精确度 * 表记录总数来预估<br/>
+<p>クエリ内のローカル変数が等号演算子を使用している場合、クエリアナライザーは「精度 * テーブルの総レコード数」を使用して見積もります。<br/>
 Estimated Rows = Density * Total Rows</p>
-<h2>尽量避免使用OR运算符</h2>
-<p>对于OR运算符，通常会使用全表扫描，考虑分解成多个查询用UNION/UNION ALL来实现，这里要确认查询能走到索引并返回较少的结果集</p>
-<h2>增加事务异常处理机制</h2>
-<p>应用程序做好意外处理，及时做Rollback。<br/>设置连接属性 “set xact_abort on”</p>
-<h2>输出列使用二段式命名格式</h2>
-<p>二段式命名格式：表名.字段名</p>
-<p>有JOIN关系的TSQL，字段必须指明字段是属于哪个表的，否则未来表结构变更后，有可能发生Ambiguous column name的程序兼容错误</p>
+<h2>OR演算子の使用はできるだけ避ける。</h2>
+<p>OR演算子の場合、通常は全表スキャンが使用される。複数のクエリに分解してUNION/UNION ALLで実現することを検討する。ここでは、クエリがインデックスを使用でき、より少ない結果セットを返すことを確認する必要がある。</p>
+<h2>トランザクション例外処理機構を追加する。</h2>
+<p>アプリケーションは予期しない例外に備え、遅滞なくRollbackを行ってください。<br/>接続プロパティ「set xact_abort on」を設定する</p>
+<h2>出力列には2段階命名形式を使用する。</h2>
+<p>2段階命名形式：テーブル名.フィールド名。</p>
+<p>JOIN関係を含むTSQLでは、フィールドがどのテーブルに属するかを明示しなければなりません。そうしないと、将来のテーブル構造変更後にAmbiguous column nameというプログラム互換性エラーが発生する可能性があります。</p>
 <h2>架构设计</h2>
 <ul>
 <li>读写分离</li>
 <li>schema解耦</li>
-<li>数据生命周期</li>
+<li>データライフサイクル</li>
 </ul>
 <h2>读写分离</h2>
 <ul>
-<li>设计之初就考虑读写分离，哪怕读写同一个库，有利于快速扩容</li>
-<li>按照读特征把读分为实时读和可延迟读分别对应到写库和读库</li>
-<li>读写分离应该考虑在读不可用情况下自动切换到写端</li>
+<li>設計の初期段階で読み取りと書き込みの分離を検討します。たとえ読み取りと書き込みが同じデータベースであっても、迅速なスケールアウトに役立ちます。</li>
+<li>読み取りの特性に応じて、読み取りをリアルタイム読み取りと遅延可能読み取りに分け、それぞれ書き込みDBと読み取りDBに対応させます。</li>
+<li>読み書き分離では、読み取りが利用できない場合に自動的に書き込み側へ切り替えることを考慮すべきである。</li>
 </ul>
 <h2>Schema解耦</h2>
-<p>禁止跨库JOIN</p>
-<h2>数据生命周期</h2>
-<p>根据数据的使用频繁度，对大表定期分库归档</p>
+<p>クロスデータベースJOINの禁止</p>
+<h2>データライフサイクル</h2>
+<p>データの使用頻度に応じて、大規模テーブルを定期的にデータベースを分けてアーカイブします。</p>
 <p>主库/归档库物理分离</p>
-<h2>日志类型的表应分区或分表</h2>
-<p>对于大的表格要进行分区，分区操作将表和索引分在多个分区，通过分区切换能够快速实现新旧分区替换，加快数据清理速度，大幅减少IO资源消耗</p>
-<h2>频繁写入的表，需要分区或分表</h2>
-<p>自增长与Latch Lock</p>
-<p>闩锁是sql Server自己内部申请和控制，用户没有办法来干预，用来保证内存里面数据结构的一致性，锁级别是页级锁</p>
+<h2>ログタイプのテーブルはパーティション分割またはテーブル分割を行うべきである。</h2>
+<p>大きなテーブルはパーティション分割を行うべきである。パーティション操作によりテーブルとインデックスを複数のパーティションに分け、パーティションスイッチによって新旧パーティションの置き換えを迅速に実現し、データクレンジングの速度を速め、IOリソースの消費を大幅に削減できる。</p>
+<h2>頻繁に書き込まれるテーブルは、パーティション分割またはテーブル分割が必要である。</h2>
+<p>自動増分とLatch Lock</p>
+<p>ラッチはSQL Server自身が内部的に取得・制御するもので、ユーザーが介入する方法はありません。メモリ内のデータ構造の一貫性を保証するために使用され、ロックレベルはページレベルロックです。</p>
 <p>来源：http://www.codeceo.com/article/sql-server-tips.html</p> </div>
 </div>
 <div class="previous-next-links">
@@ -402,7 +399,7 @@ Estimated Rows = Density * Total Rows</p>
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>点我分享笔记</h3>
+<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 &lt;p style="font-size:14px;"&gt;笔记需要是本篇文章的内容扩展！&lt;/p&gt;&lt;br&gt;
 	&lt;p style="font-size:12px;"&gt;&lt;a href="../tougao.html" target="_blank"&gt;文章投稿，可点击这里&lt;/a&gt;&lt;/p&gt;
 	&lt;p style="font-size:14px;"&gt;&lt;a href="./runoob-user-test-intro.html" target="_blank"&gt;注册邀请码获取方式&lt;/a&gt;&lt;/p&gt;
@@ -651,181 +648,6 @@ var aid = 12411;
 
 </div>
 -->
-<div class="sidebar-box cate-list" style="display:none;">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">热门文章</a>
-</div>
-<div class="membership">
-<ul class="membership">
-<li><a href="https://mp.weixin.qq.com/s/ZaP6YNgKTCHYy3r2WPBBaw" target="_blank" title="2024 年 04 月 JavaScript 框架排行榜">2024 年 04 月 JavaScript 框架排行榜</a></li>
-<li><a href="https://mp.weixin.qq.com/s/JBR2twC0t6krjjuxqvhsEQ" target="_blank" title="免费、开源、好用的 SQL 客户端合集">免费、开源、好用的 SQL 客户端合集</a></li>
-<li><a href="https://mp.weixin.qq.com/s/TwV3YQjA1glyaW7TiHvhlA" target="_blank" title="优雅的代码规范，提升代码质量">优雅的代码规范，提升代码质量</a></li>
-<li><a href="https://mp.weixin.qq.com/s/CnUJ-2OHPbBKlnVpjDzavA" target="_blank" title="命令行中的趣味世界，牛也能说话，有趣又好玩">命令行中的趣味世界，牛也能说话，有趣又好玩</a></li>
-<li><a href="https://mp.weixin.qq.com/s/7NKl-mD7N8CeSNQlbKDEWA" target="_blank" title="2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？">2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？</a></li>
-<li><a href="https://mp.weixin.qq.com/s/yWlSVDKobtDhThnhirVRpw" target="_blank" title="免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端">免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端</a></li>
-</ul>
-</div>
-</div>
-<div class="sidebar-box cate-list">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">教程列表</a>
-</div>
-<div class="cate-items">
-<a href="../ado.html">ADO 教程</a>
-<a href="../ai-agent.html">AI Agent 教程</a>
-<a href="../ai.html">AI 入门教程</a>
-<a href="../ai-math.html">AI 数学基础</a>
-<a href="../ajax.html">Ajax 教程</a>
-<a href="../android.html">Android 教程</a>
-<a href="../angularjs2.html">Angular2 教程</a>
-<a href="../angularjs.html">AngularJS 教程</a>
-<a href="../appml.html">AppML 教程</a>
-<a href="../asp.html">ASP 教程</a>
-<a href="../aspnet.html">ASP.NET 教程</a>
-<a href="../bootstrap.html">Bootstrap 教程</a>
-<a href="../bootstrap4.html">Bootstrap4 教程</a>
-<a href="../bootstrap5.html">Bootstrap5 教程</a>
-<a href="../cprogramming.html">C 教程</a>
-<a href="../c-dsa.html">C 语言数据结构与算法</a>
-<a href="../csharp.html">C# 教程</a>
-<a href="../cplusplus.html">C++ 教程</a>
-<a href="../chartjs.html">Chart.js 教程</a>
-<a href="../claude-code.html">Claude Code 教程</a>
-<a href="../cmake.html">CMake 教程</a>
-<a href="../codex.html">Codex 教程</a>
-<a href="../cssref.html">CSS 参考手册</a>
-<a href="../css.html">CSS 教程</a>
-<a href="../css3.html">CSS3 教程</a>
-<a href="../cursor.html">Cursor 教程</a>
-<a href="../dart.html">Dart 教程</a>
-<a href="../dash.html">Dash 教程</a>
-<a href="../deepseek-harness.html">DeepSeek Harness</a>
-<a href="../django.html">Django 教程</a>
-<a href="../docker.html">Docker 教程</a>
-<a href="../dtd.html">DTD 教程</a>
-<a href="../echarts.html">ECharts 教程</a>
-<a href="../eclipse.html">Eclipse 教程</a>
-<a href="../electron.html">Electron 教程</a>
-<a href="../fastapi.html">FastAPI 教程</a>
-<a href="../firebug.html">Firebug 教程</a>
-<a href="../flask.html">Flask 教程</a>
-<a href="../flutter.html">Flutter 教程</a>
-<a href="../font-awesome.html">Font Awesome 图标</a>
-<a href="../foundation.html">Foundation 教程</a>
-<a href="../git.html">Git 教程</a>
-<a href="../go.html">Go 语言教程</a>
-<a href="../googleapi.html">Google 地图 API 教程</a>
-<a href="../hermes-agent.html">Hermes Agent</a>
-<a href="../highcharts.html">Highcharts 教程</a>
-<a href="../htmldom.html">HTML DOM 教程</a>
-<a href="../tags.html">HTML 参考手册</a>
-<a href="../charsets.html">HTML 字符集</a>
-<a href="../html.html">HTML 教程</a>
-<a href="../http.html">HTTP 教程</a>
-<a href="../ionic.html">ionic 教程</a>
-<a href="../ios.html">iOS 教程</a>
-<a href="../java.html">Java 教程</a>
-<a href="../jsref.html">JavaScript 参考手册</a>
-<a href="../js.html">Javascript 教程</a>
-<a href="../jeasyui.html">jQuery EasyUI 教程</a>
-<a href="../jquerymobile.html">jQuery Mobile 教程</a>
-<a href="../jqueryui.html">jQuery UI 教程</a>
-<a href="../jquery.html">jQuery 教程</a>
-<a href="../json.html">JSON 教程</a>
-<a href="../jsp.html">JSP 教程</a>
-<a href="../julia.html">Julia 教程</a>
-<a href="../jupyter-notebook.html">Jupyter Notebook 教程</a>
-<a href="../kotlin.html">Kotlin 教程</a>
-<a href="../langchain.html">LangChain 教程</a>
-<a href="../latex.html">LaTeX 教程</a>
-<a href="../linux.html">Linux 教程</a>
-<a href="../lua.html">Lua 教程</a>
-<a href="../markdown.html">Markdown 教程</a>
-<a href="../matplotlib.html">Matplotlib 教程</a>
-<a href="../maven.html">Maven 教程</a>
-<a href="../memcached.html">Memcached 教程</a>
-<a href="../mongodb.html">MongoDB 教程</a>
-<a href="../mysql.html">MySQL 教程</a>
-<a href="../nextjs.html">Next.js 教程</a>
-<a href="../nlp.html">NLP 教程</a>
-<a href="../nodejs.html">Node.js 教程</a>
-<a href="../numpy.html">NumPy 教程</a>
-<a href="../obsidian.html">Obsidian 教程</a>
-<a href="../ollama.html">Ollama 教程</a>
-<a href="../opencode.html">OpenCode 教程</a>
-<a href="../opencv.html">OpenCV 教程</a>
-<a href="../pandas.html">Pandas 教程</a>
-<a href="../perl.html">Perl 教程</a>
-<a href="../php.html">PHP 教程</a>
-<a href="../pi-agent.html">Pi Agent</a>
-<a href="../pillow.html">Pillow 教程</a>
-<a href="../playwright.html">Playwright 教程</a>
-<a href="../postgresql.html">PostgreSQL 教程</a>
-<a href="../powershell.html">PowerShell</a>
-<a href="../pycharm.html">Pycharm 教程</a>
-<a href="../python3.html">Python 3 教程</a>
-<a href="../python.html">Python 基础教程</a>
-<a href="../python-design-pattern.html">Python 设计模式</a>
-<a href="../python-qt.html">Python 量化交易</a>
-<a href="../pytorch.html">PyTorch 教程</a>
-<a href="../r.html">R 教程</a>
-<a href="../rdf.html">RDF 教程</a>
-<a href="../react.html">React 教程</a>
-<a href="../redis.html">Redis 教程</a>
-<a href="../restfulapi.html">RESTful API</a>
-<a href="../rss.html">RSS 教程</a>
-<a href="../ruby.html">Ruby 教程</a>
-<a href="../rust.html">Rust 教程</a>
-<a href="../sass.html">Sass 教程</a>
-<a href="../scala.html">Scala 教程</a>
-<a href="../scipy.html">SciPy 教程</a>
-<a href="../selenium.html">Selenium 教程</a>
-<a href="../servlet.html">Servlet 教程</a>
-<a href="../skills.html">Skills 教程</a>
-<a href="../sklearn.html">Sklearn 教程</a>
-<a href="../soap.html">SOAP 教程</a>
-<a href="../sql.html">SQL 教程</a>
-<a href="../sqlite.html">SQLite 教程</a>
-<a href="../svg.html">SVG 教程</a>
-<a href="../svn.html">SVN 教程</a>
-<a href="../swagger.html">Swagger 教程</a>
-<a href="../swift.html">Swift 教程</a>
-<a href="../tailwindcss.html">Tailwind CSS 教程</a>
-<a href="../tcpip.html">TCP/IP 教程</a>
-<a href="../tensorflow.html">TensorFlow 教程</a>
-<a href="../typescript.html">TypeScript 教程</a>
-<a href="../uniapp.html">uni-app 教程</a>
-<a href="../vbscript.html">VBScript 教程</a>
-<a href="../vibe-coding.html">Vibe Coding 教程</a>
-<a href="../vscode.html">VSCode 教程</a>
-<a href="../vue2.html">Vue.js 教程</a>
-<a href="../vue3.html">Vue3 教程</a>
-<a href="../w3c.html">W3C 教程</a>
-<a href="../webservices.html">Web Service 教程</a>
-<a href="../wsdl.html">WSDL 教程</a>
-<a href="../xlink.html">XLink 教程</a>
-<a href="../dom.html">XML DOM 教程</a>
-<a href="../schema.html">XML Schema 教程</a>
-<a href="../xml.html">XML 教程</a>
-<a href="../xpath.html">XPath 教程</a>
-<a href="../xquery.html">XQuery 教程</a>
-<a href="../xslfo.html">XSLFO 教程</a>
-<a href="../xsl.html">XSLT 教程</a>
-<a href="../zig.html">Zig 教程</a>
-<a href="../data-structures.html">数据结构</a>
-<a href="../ml.html">机器学习</a>
-<a href="../regexp.html">正则表达式</a>
-<a href="../assembly.html">汇编语言</a>
-<a href="../quiz.html">测验</a>
-<a href="../browsers.html">浏览器</a>
-<a href="../quality.html">网站品质</a>
-<a href="../web.html">网站建设指南</a>
-<a href="../hosting.html">网站服务器教程</a>
-<a href="../np.html">网络协议</a>
-<a href="../computer-organization.html">计算机组成原理</a>
-<a href="../design-pattern.html">设计模式</a>
-</div>
-</div>
 </div>
 </div>
 </div>

@@ -60,9 +60,6 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div>
 <div class="row">
 <div class="col right-list">
-<button class="btn btn-responsive-nav btn-inverse" id="pull">
-<i class="fa fa-navicon"></i>
-</button>
 </div>
 <div class="col search search-desktop last">
 <div class="search-input">
@@ -79,20 +76,20 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="col middle-column big-middle-column">
 <div class="article">
 <div class="article-heading">
-<h2>策略模式 VS 状态模式</h2> <h3><em>分类</em> <a href="../w3cnote_genre/index.html" title=""></a> </h3>
+<h2>ストラテジーパターン VS ステートパターン</h2> <h3><em>分类</em> <a href="../w3cnote_genre/index.html" title=""></a> </h3>
 </div>
 <div class="article-body note-body">
 <div class="article-intro">
 <!-- ad start-->
 <!-- ad end-->
-<p>在行为类设计模式中，状态模式和策略模式是亲兄弟，两者非常相似，我们先看看两者的通用类图，把两者放在一起比较一下，如图所示：</p>
+<p>振る舞い系デザインパターンにおいて、ステートパターンとストラテジーパターンは実の兄弟のようなもので、非常に似ています。まず両者の一般的なクラス図を見て、並べて比較してみましょう。図の通りです。</p>
 <p><img decoding="async" src="../wp-content/uploads/2019/08/7462071-65db8284f6c254f6.png"/></p>
-<p>二者是不是很像，光看这个 UML 我们看不出什么端倪来，接下来我们结合例子，来对比一下二者之间的区别。下面的例子是《Head First 设计模式》中的例子。</p>
+<p>両者はとても似ていますよね。このUMLを見ただけでは、何も違いは見えてきません。次に、例を交えて両者の違いを比較してみましょう。以下の例は『Head First デザインパターン』の例です。</p>
 <hr/>
 <h2>策略模式</h2>
-<p>策略模式定义了算法族，分别封装起来，让他们之间可以互相替换，此模式让算法的变化独立于使用算法的客户。</p>
-<p>某公司开发了一个鸭子游戏，里面会出现各种特点的鸭子：绿头鸭，红头鸭，橡皮鸭……用程序如何实现这些鸭子？
-看到这个场景问题，很容易想到，先定义一个所有鸭子的超类Duck，把公共方法和属性封装进去。例如，鸭子都会游泳，鸭子都有各自的外貌：</p>
+<p>ストラテジーパターンはアルゴリズム群を定義し、それぞれをカプセル化して、互いに置き換え可能にします。このパターンにより、アルゴリズムの変化がアルゴリズムを利用するクライアントから独立します。</p>
+<p>ある会社がアヒルゲームを開発しました。そこにはさまざまな特徴を持つアヒルが登場します：マガモ、アカガモ、ゴムアヒル……プログラムでこれらのアヒルをどう実装するでしょうか？  
+このシナリオの問題を見ると、まずすべてのアヒルのスーパークラスDuckを定義し、共通のメソッドと属性をカプセル化することを思いつきやすいです。例えば、アヒルはみな泳げる、アヒルはそれぞれ見た目が異なる、などです。</p>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
 <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">abstract</span> <span style="color: #000000; font-weight: bold;">class</span> Duck <span style="color: #009900;">{</span><br/>
     <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000066; font-weight: bold;">void</span> swim<span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #009900;">{</span><br/>
@@ -107,28 +104,28 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     <span style="color: #009900;">}</span><br/>
 <span style="color: #009900;">}</span><br/>
 </div></div>
-<p>但是很快，我们发现这个超类的定义有问题。不是所有鸭子都会飞，不是所有鸭子都是呱呱叫（假设橡皮鸭是吱吱叫）。只要继承了这个超类，那所有的鸭子都会飞了，所有的鸭子都是呱呱叫了。</p>
+<p>しかし、すぐにこのスーパークラスの定義には問題があることに気づきます。すべてのアヒルが飛べるわけではなく、すべてのアヒルが「ガーガー」と鳴くわけでもありません（ゴムアヒルは「キューキュー」と鳴くと仮定します）。このスーパークラスを継承するだけで、すべてのアヒルが飛べて、すべてのアヒルが「ガーガー」と鳴くことになってしまいます。</p>
 <p>怎么办呢？</p>
 <p><strong>Solution 1</strong></p>
-<p>第一个想到的解决方法是：子类进行方法覆盖。很简单，不会飞的子类覆盖fly方法，重写不就行了？</p>
-<p>但是，弊端很明显，所有不会飞的子类岂不都是要覆盖，假设50种鸭子都不会飞，那重写的工作量和维护量得有多大？</p>
+<p>最初に思いつく解決方法は、サブクラスでメソッドをオーバーライドすることです。簡単です。飛べないサブクラスでflyメソッドをオーバーライドして書き換えればいいのではないでしょうか？</p>
+<p>しかし、欠点は明らかです。飛べないすべてのサブクラスでオーバーライドしなければならないことになります。仮に50種類のアヒルがすべて飛べないとしたら、書き換えの作業量とメンテナンス量はどれほどになるでしょうか？</p>
 <p><strong>Solution 2</strong></p>
-<p>好的，所以我们想到第二个方法：继续设计子抽象类，例如会飞不会叫的抽象子类FlyNoQuackDuck,会叫不会非的抽象子类QuackNoFlyDuck，不会叫不会飞的抽象子类NoQuackNoFlyDuck，又会飞又会叫的抽象子类FlyAndQuackDuck……</p>
-<p>写着写着我们发现这种方法也不行，太不灵活，而且改变的部分越多，这种抽象子类得定义的越多。</p>
+<p>では、2つ目の方法を考えましょう：さらにサブ抽象クラスを設計する方法です。例えば、飛べるが鳴かない抽象サブクラスFlyNoQuackDuck、鳴くが飛べない抽象サブクラスQuackNoFlyDuck、鳴かず飛べない抽象サブクラスNoQuackNoFlyDuck、飛べるし鳴ける抽象サブクラスFlyAndQuackDuck……などです。</p>
+<p>書き進めていくうちに、この方法もダメだと気づきます。柔軟性に欠け、変化する部分が増えれば増えるほど、このような抽象サブクラスを定義しなければならなくなります。</p>
 <p><strong>Solution 3</strong></p>
-<p>那什么方法才好呢？我们思考，之所以出现上面的问题，是因为我们习惯性的总想用继承来实现改变的部分，实际我们可以将改变的部分抽离出来，用组合来实现。</p>
-<p>这里用到了三个设计原则：</p>
-<ul><li>找出应用中可能需要变化之处，把他们独立出来。</li><li>针对接口编程，而不是针对实现</li><li>多用组合，少用继承</li></ul>
-<p>运用第一个设计原则，我们将改变的方法fly()和quack()独立出来，封装成两个行为类接口。然后根据不同的需求，设计出实现接口的不同行为类。</p>
+<p>では、どのような方法が良いのでしょうか？考えてみると、上記の問題が生じたのは、変化する部分を実装するために習慣的に継承を使おうとするからです。実際には、変化する部分を切り離して、コンポジション（合成）を用いて実装することができます。</p>
+<p>ここでは3つの設計原則が使われている：</p>
+<ul><li>アプリケーション内で変化する可能性のある箇所を見つけ出し、それらを独立させます。</li><li>実装ではなく、インターフェースに対してプログラミングする</li><li>継承よりも合成を多用する</li></ul>
+<p>最初のデザイン原則を適用して、変化するメソッドfly()とquack()を独立させ、2つの振る舞いクラスインターフェースとしてカプセル化します。そして、さまざまな要件に応じて、インターフェースを実装した異なる振る舞いクラスを設計します。</p>
 <p><img decoding="async" src="../wp-content/uploads/2019/08/7462071-487bc7fc9302bd8f.png"/></p>
-<p>运用第二个和第三个设计原则，我们在Duck类中组合两个成员变量的接口，在子类中动态的赋值。</p>
+<p>2つ目と3つ目のデザイン原則を適用して、Duckクラスに2つのメンバ変数のインターフェースをコンポジションし、サブクラスで動的に値を代入します。</p>
 <p><img decoding="async" src="../wp-content/uploads/2019/08/7462071-402132cb4ef02d75.png"/></p>
-<p>整体的"类图"如下：</p>
+<p>全体の「クラス図」は次のとおりです：</p>
 <p><img decoding="async" src="../wp-content/uploads/2019/08/7462071-412141c53ef6c30f.png"/></p>
 <h3>总结</h3>
-<p>这种解决方法很完美的解决了我们的问题，运用"策略模式"的思想，将变化的部分抽离出来，组合进类中，根据不同的子类，可以"set"不同的行为子类进行，实现动态改变行为。</p>
+<p>この解決方法は私たちの問題を完璧に解決します。「ストラテジーパターン」の考え方を適用し、変化する部分を切り離してクラスに組み込み、異なるサブクラスに応じて異なる振る舞いサブクラスを「set」することで、振る舞いを動的に変えることを実現します。</p>
 <h3>代码实现</h3>
-<p>两个行为接口类</p>
+<p>二つの行動インターフェースクラス</p>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
 <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">interface</span> FlyBehavior <span style="color: #009900;">{</span><br/>
     <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000066; font-weight: bold;">void</span> fly<span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
@@ -138,7 +135,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000066; font-weight: bold;">void</span> quack<span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <span style="color: #009900;">}</span><br/>
 </div></div>
-<p>实现飞行接口的不同行为类</p>
+<p>飛行インターフェースを実装するさまざまな動作クラス</p>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
 <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">class</span> FlyNoWay <span style="color: #000000; font-weight: bold;">implements</span> FlyBehavior<span style="color: #009900;">{</span><br/>
     <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000066; font-weight: bold;">void</span> fly<span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #009900;">{</span><br/>
@@ -159,7 +156,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     <span style="color: #009900;">}</span><br/>
 <span style="color: #009900;">}</span><br/>
 </div></div>
-<p>实现鸭叫的不同行为类</p>
+<p>アヒルの鳴き声を実装するさまざまな動作クラス</p>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
 <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">class</span> Quack <span style="color: #000000; font-weight: bold;">implements</span> QuackBehavior<span style="color: #009900;">{</span><br/>
     <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000066; font-weight: bold;">void</span> quack<span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #009900;">{</span><br/>
@@ -181,7 +178,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     <span style="color: #009900;">}</span><br/>
 <span style="color: #009900;">}</span><br/>
 </div></div>
-<p>组合了实现接口的超类</p>
+<p>インターフェースを実装した動作クラスを組み込んだスーパークラス</p>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
 <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">abstract</span> <span style="color: #000000; font-weight: bold;">class</span> Duck <span style="color: #009900;">{</span><br/>
     <span style="color: #000000; font-weight: bold;">protected</span> FlyBehavior flyBehavior<span style="color: #339933;">;</span><br/>
@@ -214,7 +211,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     <span style="color: #009900;">}</span><br/>
 <span style="color: #009900;">}</span><br/>
 </div></div>
-<p>不同的鸭子类</p>
+<p>異なるアヒルクラス</p>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
 <span style="color: #008000; font-style: italic; font-weight: bold;">/**<br/>* 绿头鸭<br/>
  */</span><br/>
@@ -271,16 +268,16 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: #009900;">}</span><br/>
 </div></div>
 <hr/><h2>状态模式</h2>
-<p>状态模式允许对象在内部状态改变时改变它的行为，对象看起来好像修改了它的类</p>
-<p>状态模式策略模式很相似，也是将类的"状态"封装了起来，在执行动作时进行自动的转换，从而实现，类在不同状态下的同一动作显示出不同结果。它与策略模式的区别在于，这种转换是"自动"，"无意识"的。</p>
-<p>状态模式的类图如下</p>
+<p>ステートパターンは、オブジェクトが内部状態の変化に応じてその振る舞いを変えることを可能にします。オブジェクトはまるで自分のクラスを変更したかのように見えます。</p>
+<p>ステートパターンはストラテジーパターンと非常に似ており、クラスの「状態」をカプセル化し、動作の実行時に自動的に遷移することで、クラスが異なる状態にあるときに同じ動作が異なる結果を示すようにします。ストラテジーパターンとの違いは、この遷移が「自動」であり、「意識されない」ことです。</p>
+<p>状態パターンのクラス図は以下の通りです</p>
 <p><img decoding="async" src="../wp-content/uploads/2019/08/7462071-7a1433a162712a08.png"/></p>
-<p>状态模式的类图与策略模式一模一样，区别在于它们的意图。策略模式会控制对象使用什么策略，而状态模式会自动改变状态。看完下面的案例应该就清楚了。</p>
-<p>现在有一个糖果机的需求摆在你面前，需要用Java实现。</p>
-<p>我们分析一下，糖果机的功能可以分为下图所示的四个动作和四个状态：</p>
+<p>ステートパターンのクラス図はストラテジーパターンとまったく同じです。違いはそれらの意図にあります。ストラテジーパターンはオブジェクトがどの戦略を使用するかを制御するのに対し、ステートパターンは状態を自動的に変更します。以下のケースを見れば明確になるはずです。</p>
+<p>今、あなたの前にキャンディーマシンの要件があります。Javaで実装する必要があります。</p>
+<p>分析してみましょう。キャンディーマシンの機能は、下の図に示すように4つのアクションと4つの状態に分けることができます。</p>
 <p><img decoding="async" src="../wp-content/uploads/2019/08/7462071-5e0a36529bf03ecd.png"/></p>
-<p>在不同状态下，同样的动作结果不一样。例如，在"投了25分钱"的状态下"转动曲柄"，会售出糖果；而在"没有25分钱"的状态下"转动曲柄"会提示请先投币。</p>
-<p>简单思考后，我们写出如下的糖果机实现代码</p>
+<p>状態が異なれば、同じ動作でも結果は異なります。例えば、「25セントを投入した」状態で「クランクを回す」と、キャンディが販売されます。一方、「25セントが入っていない」状態で「クランクを回す」と、先にコインを投入するよう促す表示が出ます。</p>
+<p>簡単に考えた後、以下のようなキャンディーマシン実装コードを書きます。</p>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
 <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">class</span> NoPatternGumballMachine<span style="color: #009900;">{</span><br/>
     <span style="color: #666666; font-style: italic;">/*<br/>* 四个状态<br/>
@@ -392,17 +389,17 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <br/>
 <span style="color: #009900;">}</span><br/>
 </div></div>
-<p>从代码里面可以看出，糖果机根据此刻不同的状态，而使对应的动作呈现不同的结果。这份代码已经可以满足我们的基本需求，但稍微思考一下，你会觉得这种实现代码似乎，功能太复杂了，扩展性很差，没有面向对象的风格。</p>
-<p>假设由于新需求，要增加一种状态，那每个动作方法我们都需要修改，都要重新增加一条else语句。而如果需求变更，某个状态下的动作需要修改，我们也要同时改动四个方法。这样的工作将是繁琐而头大的。</p>
-<p>怎么办? 六大设计原则之一</p>
-<p>找出应用中可能需要变化之处，把他们独立出来。</p>
-<p>在糖果机中，状态就是一直在变化的部分，不同的状态动作不一样。我们完全可以将其抽离出来</p>
+<p>コードからわかるように、キャンディマシンはその時々の状態に応じて、対応する動作が異なる結果を示します。このコードは基本的な要件を満たしてはいますが、少し考えてみると、この実装コードは機能が複雑すぎて、拡張性が低く、オブジェクト指向のスタイルではないと感じるでしょう。</p>
+<p>新しい要件により状態を1つ追加する必要があると仮定しましょう。その場合、すべてのアクションメソッドを修正し、else文を1つずつ追加する必要があります。また、要件が変更されて特定の状態でのアクションを修正する必要がある場合も、4つのメソッドを同時に変更しなければなりません。このような作業は煩雑で頭の痛いものになります。</p>
+<p>どうすればよいのか？ 六大設計原則の一つ</p>
+<p>アプリケーション内で変化する可能性のある箇所を見つけ出し、それらを独立させます。</p>
+<p>キャンディーマシンにおいて、状態こそが常に変化する部分であり、状態によってアクションは異なります。これを切り離すことがまさに可能です。</p>
 <p><img decoding="async" src="../wp-content/uploads/2019/08/7462071-19cddaa5a83a4e5f.png"/></p>
-<p><strong>新的设计想法如下：</strong></p>
-<p>首先，我们定义一个State接口，在这个接口内，糖果机的每个动作都有一个对应的方法</p>
-<p>然后为机器的每个状态实现状态类，这些类将负责在对应的状态下进行机器的行为</p>
-<p>最后，我们要摆脱旧的条件代码，取而代之的方式是，将动作委托到状态类</p>
-<p>定义一个State接口</p>
+<p><strong>新しい設計アイデアは以下の通りです：</strong></p>
+<p>まず、Stateインターフェースを定義します。このインターフェース内では、キャンディーマシンの各アクションに対応するメソッドがあります。</p>
+<p>次に、マシンの各状態に対して状態クラスを実装します。これらのクラスは、対応する状態でマシンの行動を実行する責任を持ちます。</p>
+<p>最後に、古い条件分岐コードを排除し、その代わりに、アクションを状態クラスに委譲します。</p>
+<p>Stateインターフェースを定義する</p>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
 <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">abstract</span> <span style="color: #000000; font-weight: bold;">class</span> State <span style="color: #009900;">{</span><br/>
     <span style="color: #008000; font-style: italic; font-weight: bold;">/**<br/>* 投币<br/>
@@ -428,7 +425,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     <span style="color: #009900;">}</span><br/>
 <span style="color: #009900;">}</span><br/>
 </div></div>
-<p>为机器的每个状态实现状态类</p>
+<p>マシンの各状態に対して状態クラスを実装する</p>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
 <span style="color: #008000; font-style: italic; font-weight: bold;">/**<br/>* 没有硬币的状态<br/>
  */</span><br/>
@@ -570,7 +567,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <br/>
 <span style="color: #009900;">}</span><br/>
 </div></div>
-<p>将糖果机的动作委托到状态类</p>
+<p>キャンディマシンの動作を状態クラスに委譲する</p>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
 <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">class</span> GumballMachine <span style="color: #000000; font-weight: bold;">extends</span> State<span style="color: #009900;">{</span><br/>
     <span style="color: #000000; font-weight: bold;">public</span> State noQuarterState <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> NoQuarterState<span style="color: #009900;">(</span><span style="color: #000000; font-weight: bold;">this</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
@@ -622,9 +619,9 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <br/>
 <span style="color: #009900;">}</span><br/>
 </div></div>
-<p>可以发现，这种设计下，糖果机根本不需要清楚状态的改变，它只用调用状态的方法就行。状态的改变是在状态内部发生的。这就是"状态模式"。</p>
-<p>如果此时再增加一种状态，糖果机不需要做任何改变，我们只需要再增加一个状态类，然后在相关的状态类方法里面增加转换的过程即可。</p>
-<p>不理解？这还有一篇关于状态模式的文章:<a href="https://dzone.com/articles/state-pattern-simplified" rel="noopener noreferrer" target="_blank">https://dzone.com/articles/state-pattern-simplified</a></p>
+<p>この設計では、キャンディーマシンは状態の変化を把握する必要がまったくなく、状態のメソッドを呼び出すだけでよいことがわかります。状態の変化は状態内部で発生します。これが「ステートパターン」です。</p>
+<p>もしここでさらに状態を追加する場合、キャンディマシンは何も変更する必要はありません。状態クラスをもう1つ追加し、関連する状態クラスのメソッド内に遷移の処理を追加するだけでよいのです。</p>
+<p>理解できない？ここにステートパターンに関する記事もあります：<a href="https://dzone.com/articles/state-pattern-simplified" rel="noopener noreferrer" target="_blank">https://dzone.com/articles/state-pattern-simplified</a></p>
 <blockquote>
 <p>原文链接：https://blog.csdn.net/z55887/article/details/73198039</p>
 <p>原文链接：https://blog.csdn.net/z55887/article/details/60608898</p></blockquote>
@@ -737,7 +734,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>点我分享笔记</h3>
+<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 &lt;p style="font-size:14px;"&gt;笔记需要是本篇文章的内容扩展！&lt;/p&gt;&lt;br&gt;
 	&lt;p style="font-size:12px;"&gt;&lt;a href="../tougao.html" target="_blank"&gt;文章投稿，可点击这里&lt;/a&gt;&lt;/p&gt;
 	&lt;p style="font-size:14px;"&gt;&lt;a href="./runoob-user-test-intro.html" target="_blank"&gt;注册邀请码获取方式&lt;/a&gt;&lt;/p&gt;
@@ -986,181 +983,6 @@ var aid = 21815;
 
 </div>
 -->
-<div class="sidebar-box cate-list" style="display:none;">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">热门文章</a>
-</div>
-<div class="membership">
-<ul class="membership">
-<li><a href="https://mp.weixin.qq.com/s/ZaP6YNgKTCHYy3r2WPBBaw" target="_blank" title="2024 年 04 月 JavaScript 框架排行榜">2024 年 04 月 JavaScript 框架排行榜</a></li>
-<li><a href="https://mp.weixin.qq.com/s/JBR2twC0t6krjjuxqvhsEQ" target="_blank" title="免费、开源、好用的 SQL 客户端合集">免费、开源、好用的 SQL 客户端合集</a></li>
-<li><a href="https://mp.weixin.qq.com/s/TwV3YQjA1glyaW7TiHvhlA" target="_blank" title="优雅的代码规范，提升代码质量">优雅的代码规范，提升代码质量</a></li>
-<li><a href="https://mp.weixin.qq.com/s/CnUJ-2OHPbBKlnVpjDzavA" target="_blank" title="命令行中的趣味世界，牛也能说话，有趣又好玩">命令行中的趣味世界，牛也能说话，有趣又好玩</a></li>
-<li><a href="https://mp.weixin.qq.com/s/7NKl-mD7N8CeSNQlbKDEWA" target="_blank" title="2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？">2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？</a></li>
-<li><a href="https://mp.weixin.qq.com/s/yWlSVDKobtDhThnhirVRpw" target="_blank" title="免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端">免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端</a></li>
-</ul>
-</div>
-</div>
-<div class="sidebar-box cate-list">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">教程列表</a>
-</div>
-<div class="cate-items">
-<a href="../ado.html">ADO 教程</a>
-<a href="../ai-agent.html">AI Agent 教程</a>
-<a href="../ai.html">AI 入门教程</a>
-<a href="../ai-math.html">AI 数学基础</a>
-<a href="../ajax.html">Ajax 教程</a>
-<a href="../android.html">Android 教程</a>
-<a href="../angularjs2.html">Angular2 教程</a>
-<a href="../angularjs.html">AngularJS 教程</a>
-<a href="../appml.html">AppML 教程</a>
-<a href="../asp.html">ASP 教程</a>
-<a href="../aspnet.html">ASP.NET 教程</a>
-<a href="../bootstrap.html">Bootstrap 教程</a>
-<a href="../bootstrap4.html">Bootstrap4 教程</a>
-<a href="../bootstrap5.html">Bootstrap5 教程</a>
-<a href="../cprogramming.html">C 教程</a>
-<a href="../c-dsa.html">C 语言数据结构与算法</a>
-<a href="../csharp.html">C# 教程</a>
-<a href="../cplusplus.html">C++ 教程</a>
-<a href="../chartjs.html">Chart.js 教程</a>
-<a href="../claude-code.html">Claude Code 教程</a>
-<a href="../cmake.html">CMake 教程</a>
-<a href="../codex.html">Codex 教程</a>
-<a href="../cssref.html">CSS 参考手册</a>
-<a href="../css.html">CSS 教程</a>
-<a href="../css3.html">CSS3 教程</a>
-<a href="../cursor.html">Cursor 教程</a>
-<a href="../dart.html">Dart 教程</a>
-<a href="../dash.html">Dash 教程</a>
-<a href="../deepseek-harness.html">DeepSeek Harness</a>
-<a href="../django.html">Django 教程</a>
-<a href="../docker.html">Docker 教程</a>
-<a href="../dtd.html">DTD 教程</a>
-<a href="../echarts.html">ECharts 教程</a>
-<a href="../eclipse.html">Eclipse 教程</a>
-<a href="../electron.html">Electron 教程</a>
-<a href="../fastapi.html">FastAPI 教程</a>
-<a href="../firebug.html">Firebug 教程</a>
-<a href="../flask.html">Flask 教程</a>
-<a href="../flutter.html">Flutter 教程</a>
-<a href="../font-awesome.html">Font Awesome 图标</a>
-<a href="../foundation.html">Foundation 教程</a>
-<a href="../git.html">Git 教程</a>
-<a href="../go.html">Go 语言教程</a>
-<a href="../googleapi.html">Google 地图 API 教程</a>
-<a href="../hermes-agent.html">Hermes Agent</a>
-<a href="../highcharts.html">Highcharts 教程</a>
-<a href="../htmldom.html">HTML DOM 教程</a>
-<a href="../tags.html">HTML 参考手册</a>
-<a href="../charsets.html">HTML 字符集</a>
-<a href="../html.html">HTML 教程</a>
-<a href="../http.html">HTTP 教程</a>
-<a href="../ionic.html">ionic 教程</a>
-<a href="../ios.html">iOS 教程</a>
-<a href="../java.html">Java 教程</a>
-<a href="../jsref.html">JavaScript 参考手册</a>
-<a href="../js.html">Javascript 教程</a>
-<a href="../jeasyui.html">jQuery EasyUI 教程</a>
-<a href="../jquerymobile.html">jQuery Mobile 教程</a>
-<a href="../jqueryui.html">jQuery UI 教程</a>
-<a href="../jquery.html">jQuery 教程</a>
-<a href="../json.html">JSON 教程</a>
-<a href="../jsp.html">JSP 教程</a>
-<a href="../julia.html">Julia 教程</a>
-<a href="../jupyter-notebook.html">Jupyter Notebook 教程</a>
-<a href="../kotlin.html">Kotlin 教程</a>
-<a href="../langchain.html">LangChain 教程</a>
-<a href="../latex.html">LaTeX 教程</a>
-<a href="../linux.html">Linux 教程</a>
-<a href="../lua.html">Lua 教程</a>
-<a href="../markdown.html">Markdown 教程</a>
-<a href="../matplotlib.html">Matplotlib 教程</a>
-<a href="../maven.html">Maven 教程</a>
-<a href="../memcached.html">Memcached 教程</a>
-<a href="../mongodb.html">MongoDB 教程</a>
-<a href="../mysql.html">MySQL 教程</a>
-<a href="../nextjs.html">Next.js 教程</a>
-<a href="../nlp.html">NLP 教程</a>
-<a href="../nodejs.html">Node.js 教程</a>
-<a href="../numpy.html">NumPy 教程</a>
-<a href="../obsidian.html">Obsidian 教程</a>
-<a href="../ollama.html">Ollama 教程</a>
-<a href="../opencode.html">OpenCode 教程</a>
-<a href="../opencv.html">OpenCV 教程</a>
-<a href="../pandas.html">Pandas 教程</a>
-<a href="../perl.html">Perl 教程</a>
-<a href="../php.html">PHP 教程</a>
-<a href="../pi-agent.html">Pi Agent</a>
-<a href="../pillow.html">Pillow 教程</a>
-<a href="../playwright.html">Playwright 教程</a>
-<a href="../postgresql.html">PostgreSQL 教程</a>
-<a href="../powershell.html">PowerShell</a>
-<a href="../pycharm.html">Pycharm 教程</a>
-<a href="../python3.html">Python 3 教程</a>
-<a href="../python.html">Python 基础教程</a>
-<a href="../python-design-pattern.html">Python 设计模式</a>
-<a href="../python-qt.html">Python 量化交易</a>
-<a href="../pytorch.html">PyTorch 教程</a>
-<a href="../r.html">R 教程</a>
-<a href="../rdf.html">RDF 教程</a>
-<a href="../react.html">React 教程</a>
-<a href="../redis.html">Redis 教程</a>
-<a href="../restfulapi.html">RESTful API</a>
-<a href="../rss.html">RSS 教程</a>
-<a href="../ruby.html">Ruby 教程</a>
-<a href="../rust.html">Rust 教程</a>
-<a href="../sass.html">Sass 教程</a>
-<a href="../scala.html">Scala 教程</a>
-<a href="../scipy.html">SciPy 教程</a>
-<a href="../selenium.html">Selenium 教程</a>
-<a href="../servlet.html">Servlet 教程</a>
-<a href="../skills.html">Skills 教程</a>
-<a href="../sklearn.html">Sklearn 教程</a>
-<a href="../soap.html">SOAP 教程</a>
-<a href="../sql.html">SQL 教程</a>
-<a href="../sqlite.html">SQLite 教程</a>
-<a href="../svg.html">SVG 教程</a>
-<a href="../svn.html">SVN 教程</a>
-<a href="../swagger.html">Swagger 教程</a>
-<a href="../swift.html">Swift 教程</a>
-<a href="../tailwindcss.html">Tailwind CSS 教程</a>
-<a href="../tcpip.html">TCP/IP 教程</a>
-<a href="../tensorflow.html">TensorFlow 教程</a>
-<a href="../typescript.html">TypeScript 教程</a>
-<a href="../uniapp.html">uni-app 教程</a>
-<a href="../vbscript.html">VBScript 教程</a>
-<a href="../vibe-coding.html">Vibe Coding 教程</a>
-<a href="../vscode.html">VSCode 教程</a>
-<a href="../vue2.html">Vue.js 教程</a>
-<a href="../vue3.html">Vue3 教程</a>
-<a href="../w3c.html">W3C 教程</a>
-<a href="../webservices.html">Web Service 教程</a>
-<a href="../wsdl.html">WSDL 教程</a>
-<a href="../xlink.html">XLink 教程</a>
-<a href="../dom.html">XML DOM 教程</a>
-<a href="../schema.html">XML Schema 教程</a>
-<a href="../xml.html">XML 教程</a>
-<a href="../xpath.html">XPath 教程</a>
-<a href="../xquery.html">XQuery 教程</a>
-<a href="../xslfo.html">XSLFO 教程</a>
-<a href="../xsl.html">XSLT 教程</a>
-<a href="../zig.html">Zig 教程</a>
-<a href="../data-structures.html">数据结构</a>
-<a href="../ml.html">机器学习</a>
-<a href="../regexp.html">正则表达式</a>
-<a href="../assembly.html">汇编语言</a>
-<a href="../quiz.html">测验</a>
-<a href="../browsers.html">浏览器</a>
-<a href="../quality.html">网站品质</a>
-<a href="../web.html">网站建设指南</a>
-<a href="../hosting.html">网站服务器教程</a>
-<a href="../np.html">网络协议</a>
-<a href="../computer-organization.html">计算机组成原理</a>
-<a href="../design-pattern.html">设计模式</a>
-</div>
-</div>
 </div>
 </div>
 </div>

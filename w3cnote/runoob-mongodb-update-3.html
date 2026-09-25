@@ -60,9 +60,6 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div>
 <div class="row">
 <div class="col right-list">
-<button class="btn btn-responsive-nav btn-inverse" id="pull">
-<i class="fa fa-navicon"></i>
-</button>
 </div>
 <div class="col search search-desktop last">
 <div class="search-input">
@@ -79,20 +76,20 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="col middle-column big-middle-column">
 <div class="article">
 <div class="article-heading">
-<h2>菜鸟教程 MongoDB 教程已更新至3.0</h2> <h3><em>分类</em> <a href="../w3cnote_genre/code.html" title="编程技术">编程技术</a> </h3>
+<h2>菜鸟教程 MongoDB チュートリアルは3.0に更新されました</h2> <h3><em>分类</em> <a href="../w3cnote_genre/code.html" title="编程技术">编程技术</a> </h3>
 </div>
 <div class="article-body note-body">
 <div class="article-intro">
 <!-- ad start-->
 <!-- ad end-->
-<p>Mongo DB 是目前在IT行业非常流行的一种非关系型数据库(NoSql),其灵活的数据存储方式备受当前IT从业人员的青睐。</p>
-<p>菜鸟教程也紧追其步伐，已经教程内容更新至 3.0 版本。教程的的实例在 3.0版本中测试通过。</p><p>以下内容为 3.0 版本的新增特性：</p>
-<h3>插件式存储引擎API</h3>
-<p>MongoDB3.0引入了插件式存储引擎API，为第三方的存储引擎厂商加入MongoDB提供了方便，这一变化无疑参考了MySQL的设计理念。目前除了早期的MMAP存储引擎外，WiredTiger和RocksDB均已完成了对MongoDB的支持，前者更是在被MongoDB公司收购后更是直接引入到了MongoDB3.0版本中。插件式存储引擎API的引入为MongoDB丰富自己武器库以处理更多不同类型的业务提供了无限可能，内存存储引擎、事务存储引擎甚至Hadoop在未来都有可能接入进来。</p><p>
+<p>MongoDB は現在IT業界で非常に人気のある非リレーショナルデータベース(NoSql)であり、その柔軟なデータ保存方式は現在のIT従事者に高い評価を受けています。</p>
+<p>菜鸟教程もその歩調に追従し、チュートリアルの内容は3.0バージョンまで更新されています。チュートリアルのサンプルは3.0バージョンでテストに合格しています。</p><p>以下は3.0バージョンの新機能です：</p>
+<h3>プラグイン式ストレージエンジンAPI</h3>
+<p>MongoDB 3.0はプラグイン式ストレージエンジンAPIを導入し、第三者のストレージエンジンベンダーがMongoDBに参入するのを容易にしました。この変更は間違いなくMySQLの設計理念を参考にしています。現在、初期のMMAPストレージエンジンの他に、WiredTigerとRocksDBはいずれもMongoDBのサポートを完了しており、前者はMongoDB社に買収された後、そのままMongoDB 3.0バージョンに導入されました。プラグイン式ストレージエンジンAPIの導入は、MongoDBがより多くの異なるタイプの業務を処理するための武器庫を充実させる無限の可能性を提供し、メモリストレージエンジン、トランザクションストレージエンジン、さらにはHadoopも将来的に接続される可能性があります。</p><p>
 <img class="attachment-medium" decoding="async" src="../wp-content/uploads/2015/09/mongodb1.jpg"/>
 </p><p>
 <img class="attachment-medium" decoding="async" src="../wp-content/uploads/2015/09/mongodb2.jpg"/>
-</p><h3>WiredTiger存储引擎</h3><p>如果说插件式存储引擎API为MongoDB3.0打造了一个武器库，那么WiredTiger绝对是武器库中第一枚也是最重要的一枚重磅炸弹。因为MMAP存储引擎自身的天然缺陷（耗费磁盘空间和内存空间且难以清理，库级别锁），MongoDB为数据库运维人员带来了极大痛苦，甚至一部分人已经开始转向TokuMX，尽管后者目前也不甚稳定。意识到这一问题的MongoDB，做出了有钱任性的决定，直接收购存储引擎厂商WiredTiger，将WiredTiger存储引擎集成进3.0版本（仅在64位版本中提供）。那么这款走到聚光灯下的存储引擎究竟具备哪些值得期待的特性呢？</p><p>1、文档级别并发控制</p><p>WiredTiger通过MVCC实现文档级别的并发控制，即文档级别锁。这就允许多个客户端请求同时更新一个集合内存的多个文档，再也不需要在排队等待库级别的写锁。这在提升数据库读写性能的同时，大大提高了系统的并发处理能力。关于这一点的效果从监控工具mongostat就可以直接体现出来，旧版本的监控指标会有lockeddb这一项（该项指标过高是mongo使用人员的一大痛点啊），而新版的mongostat已经看不到了。</p><p>
+</p><h3>WiredTigerストレージエンジン</h3><p>プラグイン式ストレージエンジンAPIがMongoDB 3.0に武器庫を整えたとすれば、WiredTigerは間違いなく武器庫の中で最初の、そして最も重要な爆弾です。MMAPストレージエンジン自身の天然の欠点（ディスク領域とメモリ領域を消費し、クリーンアップが困難で、データベースレベルロック）のため、MongoDBはデータベース運用担当者に大きな苦痛をもたらし、一部の人々はすでにTokuMXへ乗り換え始めていました。後者も現時点ではあまり安定していませんが。この問題を認識したMongoDBは、資金力にものを言わせた決断を行い、ストレージエンジンベンダーWiredTigerを直接買収し、WiredTigerストレージエンジンを3.0バージョンに統合しました（64ビット版のみで提供）。では、この脚光を浴びるストレージエンジンには、一体どのような期待に値する特徴があるのでしょうか？</p><p>1、ドキュメントレベルの並行制御</p><p>WiredTigerはMVCCによりドキュメントレベルの並行制御、すなわちドキュメントレベルのロックを実現しています。これにより、複数のクライアントリクエストが同時に1つのコレクション内の複数のドキュメントを更新でき、データベースレベルの書き込みロックを待つために並んで待つ必要はもうありません。これはデータベースの読み書き性能を向上させると同時に、システムの並行処理能力を大幅に高めます。この点の効果は監視ツールmongostatに直接現れています。旧バージョンの監視指標にはlockeddbという項目がありました（この項目の値が高いことはmongoユーザーにとって大きな悩みの種でした）が、新版のmongostatではもう見られません。</p><p>
 <img class="attachment-medium" decoding="async" src="../wp-content/uploads/2015/09/mongodb3.jpg"/>
 </p><p>MongoDB 2.4.12版本</p><pre>
 $/home/mongodb/mongodb-linux-x86_64-2.4.12/bin/mongostat –port55060
@@ -106,11 +103,11 @@ insert query update delete getmore command % dirty % used flushesvsize res qr|qw
 *0 *0 *0 *0 0 1|0 0.0 42.2 0 30.6G 30.4G 0|0 0|0 79b 16k 113:02:38
 *0 *0 *0 *0 0 1|0 0.0 42.2 0 30.6G 30.4G 0|0 0|0 79b 16k 113:02:39
 *0 *0 *0 *0 0 1|0 0.0 42.2 0 30.6G 30.4G 0|0 0|0 79b 16k 113:02:40</pre>
-<p>2、磁盘数据压缩</p><p>WiredTiger支持对所有集合和索引进行Block压缩和前缀压缩（如果数据库启用了journal，journal文件一样会压缩），已支持的压缩选项包括：不压缩、Snappy压缩和Zlib压缩。这为广大Mongo使用者们带来了又一福音，因为很多Mongo数据库都是因为MMAP存储引擎消耗了过多的磁盘空间而不得已进行扩容。其中Snappy压缩为数据库的默认压缩方式，用户可以根据业务需求选择适合的压缩方式。理论上来说，Snappy压缩速度快，压缩率OK，而Zlib压缩率高，CPU消耗多且速度稍慢。当然，只要选择使用压缩，Mongo肯定会占用更多的CPU使用率，但是考虑到Mongo本身并不是十分耗CPU，所以启用压缩完全是值得的。</p><p>
+<p>2、ディスクデータ圧縮</p><p>WiredTigerはすべてのコレクションとインデックスに対してBlock圧縮とプレフィックス圧縮をサポートしています（データベースがjournalを有効にしている場合、journalファイルも同様に圧縮されます）。サポートされている圧縮オプションには、無圧縮、Snappy圧縮、Zlib圧縮があります。これは多くのMongoユーザーにとってまた一つの福音です。なぜなら多くのMongoデータベースがMMAPストレージエンジンによるディスク領域の過剰消費のため、やむを得ず増設を行っていたからです。Snappy圧縮はデータベースのデフォルトの圧縮方式であり、ユーザーは業務ニーズに応じて適切な圧縮方式を選択できます。理論的には、Snappy圧縮は速度が速く、圧縮率はまずまずで、Zlib圧縮は圧縮率が高く、CPU消費が多く速度がやや遅いです。もちろん、圧縮を使用するだけでMongoはより多くのCPU使用率を消費しますが、Mongo自体がそれほどCPUを消費しないことを考慮すると、圧縮を有効にすることは十分に価値があります。</p><p>
 <img class="attachment-medium" decoding="async" src="../wp-content/uploads/2015/09/mongodb4.jpg"/>
 </p><p>
 <img class="attachment-medium" decoding="async" src="../wp-content/uploads/2015/09/mongodb5.jpg"/>
-</p><p>此外，WiredTiger存储方式上也有很大改进。旧版本Mongo在数据库级别分配文件，数据库中的所有集合和索引都混合存储在数据库文件中，所以即使删掉了某个集合或者索引，占用的磁盘空间也很难及时自动回收。WiredTiger在集合和索引级别分配文件，数据库中的所有集合和索引均存储在单独的文件中，集合或者索引删除后，对应的存储文件随即删除。当然，因为存储方式不同，低版本的数据库无法直接升级到WiredTiger存储引擎，只能通过导出导入数据的方式来实现。</p><p>MongoDB 2.4.12版本</p><p>
+</p><p>さらに、WiredTigerのストレージ方式にも大きな改善があります。旧バージョンのMongoはデータベースレベルでファイルを割り当てており、データベース内のすべてのコレクションとインデックスがデータベースファイルに混在して保存されているため、あるコレクションやインデックスを削除しても、占有していたディスク領域はすぐには自動回収されにくいという問題がありました。WiredTigerはコレクションとインデックスのレベルでファイルを割り当てており、データベース内のすべてのコレクションとインデックスは個別のファイルに保存されます。コレクションやインデックスを削除すると、対応するストレージファイルも即座に削除されます。もちろん、ストレージ方式が異なるため、低バージョンのデータベースは直接WiredTigerストレージエンジンにアップグレードできず、エクスポート・インポート方式でのみ実現可能です。</p><p>MongoDB 2.4.12版本</p><p>
 <pre>[mongodb@mongo-data-emergency-001.m6.momo.com mongodb_2_4_12]$ll
 drwxrwxr-x 3 mongodb mongodb 4096 2月 25 19:03local
 -rwxrwxr-x 1 mongodb mongodb 6 2月 25 19:04mongod.lock
@@ -152,11 +149,11 @@ drwxrwxr-x 2 mongodb mongodb 4096 3月 21 13:41ycsb
 -rw-rw-r– 1 mongodb mongodb 262598656 2月 2818:53 index-5–1318477584648278106.wt
 -rw-rw-r– 1 mongodb mongodb 827392 3月 2113:40 index-7–1318477584648278106.wt
 -rw-rw-r– 1 mongodb mongodb 1085440 3月 2113:41 index-8–1318477584648278106.wt</pre>
-<p>3、可配置内存使用上限</p><p>WiredTiger支持内存使用容量配置，用户通过storage.wiredTiger.engineConfig.cacheSizeGB参数即可控制MongoDB所能使用的最大内存，该参数默认值为物理内存大小的一半。这也为广大Mongo使用者们带来了又一福音，MMAP存储引擎消耗内存是出了名的，只要数据量够大，简直就是有多少用多少。</p><h3>MMAPv1存储引擎提升</h3>
-<p>MongoDB3.0出了引入WiredTiger外，对于原有的存储引擎MMAP也进行了一定的完善，该存储引擎依然是3.0版的默认存储引擎。遗憾的是改进后的MMAP存储引擎依旧在数据库级别分配文件，数据库中的所有集合和索引都混合存储在数据库文件中，所以磁盘空间无法及时自动回收的问题如故。</p><p>1、锁粒度由库级别锁提升为集合级别锁</p><p>这在一定程度上也能够提升数据库的并发处理能力。</p><p>2、文档空间分配方式改变</p><p>在MMAP存储引擎中，文档按照写入顺序排列存储。如果文档更新后长度变长且原有存储位置后面没有足够的空间放下增长部分的数据，那么文档就要移动到文件中的其他位置。这种因更新导致的文档位置移动会严重降低写性能，因为一旦文档发生移动，集合中的所有索引都要同步修改文档新的存储位置。</p><p>MMAP存储引擎为了减少这种情况的发生提供了两种文档空间分配方式：基于paddingFactor（填充因子）的自适应分配方式和基于usePowerOf2Sizes的预分配方式，其中前者为默认方式。第一种方式会基于每个集合中文档更新历史计算文档更新的平均增长长度，然后在新文档插入或旧文档移动时填充一部分空间，如当前集合paddingFactor的值为1.5，那么一个大小为200字节的文档插入时就会自动在文档后填充100个字节的空间。第二种方式则不考虑更新历史，直接为文档分配2的N次方大小的存储空间，如一个大小同样为200字节的文档插入时直接分配256个字节的空间。</p><p>MongoDB3.0版本中的MMAPv1抛弃了基于paddingFactor的自适应分配方式，因为这种方式看起来很智能，但是因为一个集合中的文档的大小不一，所以经过填充后的空间大小也不一样。如果集合上的更新操作很多，那么因为记录移动后导致的空闲空间会因为大小不一而难以重用。目前基于usePowerOf2Sizes的预分配方式成为默认的文档空间分配方式，这种分配方式因为分配和回收的空间大小都是2的N次方（当大小超过2MB时则变为2MB的倍数增长），因此更容易维护和利用。如果某个集合上只有insert或者in-placeupdate，那么用户可以通过为该集合设置noPadding标志位，关闭空间预分配。</p><p>
+<p>3、設定可能なメモリ使用上限</p><p>WiredTigerはメモリ使用容量の設定をサポートしており、ユーザーはstorage.wiredTiger.engineConfig.cacheSizeGBパラメータを通じてMongoDBが使用できる最大メモリを制御できます。このパラメータのデフォルト値は物理メモリサイズの半分です。これも多くのMongoユーザーにとってまた一つの福音です。MMAPストレージエンジンがメモリを消費することで有名であり、データ量が十分に大きければ、まるで使えるだけ使うという感じでした。</p><h3>MMAPv1ストレージエンジンの改善</h3>
+<p>MongoDB 3.0はWiredTigerを導入したことに加え、従来のストレージエンジンMMAPに対しても一定の改良を行いました。このストレージエンジンは依然として3.0版のデフォルトストレージエンジンです。残念ながら、改良されたMMAPストレージエンジンは依然としてデータベースレベルでファイルを割り当てており、データベース内のすべてのコレクションとインデックスがデータベースファイルに混在して保存されるため、ディスク領域がすぐに自動回収されない問題は以前のままです。</p><p>1. ロック粒度がデータベースレベルロックからコレクションレベルロックに向上</p><p>これにより、ある程度データベースの並行処理能力も向上します。</p><p>2、ドキュメント空間割り当て方式の変更</p><p>MMAPストレージエンジンでは、ドキュメントは書き込み順に並べて格納されます。ドキュメントの更新後に長さが長くなり、元の格納位置の後ろに増加分のデータを置くための十分な領域がない場合、ドキュメントはファイル内の他の位置に移動する必要があります。この更新によるドキュメント位置の移動は、書き込み性能を著しく低下させます。なぜなら、ドキュメントが移動すると、コレクション内のすべてのインデックスがドキュメントの新しい格納位置を同期して更新する必要があるからです。</p><p>MMAPストレージエンジンは、このような状況の発生を減らすために、次の2つのドキュメント空間割り当て方式を提供しています。paddingFactor（パディングファクター）に基づく適応的割り当て方式と、usePowerOf2Sizesに基づく事前割り当て方式です。前者がデフォルト方式です。最初の方式は、各コレクションのドキュメント更新履歴に基づいてドキュメント更新の平均増加長さを計算し、新しいドキュメントの挿入時または古いドキュメントの移動時に一部の領域を埋めます。例えば、現在のコレクションのpaddingFactorの値が1.5の場合、サイズが200バイトのドキュメントを挿入するとき、自動的にドキュメントの後ろに100バイト分の領域を埋めます。2番目の方式は更新履歴を考慮せず、ドキュメントに直接2のN乗サイズの格納領域を割り当てます。例えば、同じくサイズが200バイトのドキュメントを挿入する場合、直接256バイトの領域を割り当てます。</p><p>MongoDB 3.0バージョンのMMAPv1は、paddingFactorに基づく適応的割り当て方式を廃止しました。この方式は一見スマートに見えますが、コレクション内のドキュメントのサイズがさまざまであるため、パディング後の空間サイズもさまざまになります。コレクションに対する更新操作が多い場合、レコード移動によって生じた空き領域はサイズが異なるため再利用が困難になります。現在では、usePowerOf2Sizesに基づく事前割り当て方式がデフォルトのドキュメント空間割り当て方式となっています。この割り当て方式は、割り当ておよび回収される空間サイズが2のN乗（サイズが2MBを超えると2MBの倍数に増加）になるため、維持と利用が容易です。あるコレクションでinsertまたはin-place updateのみが行われる場合、ユーザーはそのコレクションにnoPaddingフラグを設定することで、空間の事前割り当てを無効にできます。</p><p>
 <img class="attachment-medium" decoding="async" src="../wp-content/uploads/2015/09/mongodb6.jpg"/>
-</p><h3>复制集改进</h3><p>1、复制集成员增长</p><p>MongoDB3.0的复制集成员的最大个数由之前的12个增长为50个，但能够投票的最大成员个数依然为7个，而相应的getLastError中的 w:"majority" 项也仅代表投票节点的大多数。</p><p>2、Primary节点StepDown处理方式变化</p><p>在复制集中通过replSetStepDown命令可以使得当前的Primary节点退位，重新选举新的Primay节点。MongoDB3.0在StepDown的处理方式上做了如下修改：1）在Primary退位之前，会首先中断某些耗时较长的用户操作如创建索引、写操作、Mapreduce任务等；2）为了防止数据回滚，Primary节点在退位之前会等待一个可被选举的Secondary节点同步到最新数据，而旧版本中Primary节点只要有Secondary节点的数据同步到10秒以内就退位；3）同时replSetStepDown命令新增了一个secondaryCatchUpPeriodSecs参数，用户可以指定Primary节点等待有Secondary节点的数据同步到该参数指定的秒数内就退位。</p><h3>分片集群改进</h3><p>1、新增工具函数 sh.removeTagRange()</p><p>旧版本中只有sh.addTagRange()，如果要删除tagRange只能手工到config.tags集合中删除。</p><p>2、提供更可预测的Read Preference处理</p><p>新版本中mongos实例在执行读操作时不再将连接固定在复制集成员上，而是对每个读操作都会重新评估ReadPreference。这样当Read Preference修改时，其行为更容易预测。</p><p>3、为chunk迁移提供writeConcern设置</p><p>新版本针对均衡器为moveChunk和cleanupOrphaned这两个涉及到chunk迁移的命令提供了writeConcern参数。</p><p>4、增加均衡器状态显示</p><p>新版本中通过sh.status()可以看到均衡器的状态信息。</p>
-<h3>其他改动</h3><p>1、优化explan函数</p><p>新版本explain函数可以支持count，find，group，aggregate，update，remove等操作的查询计划显示，结果更全面更精细。</p><p>2、重写mongodb工具</p><p>新版本所有mongodb自带工具均使用Go语言重写，特别是在mongodump和mongorestore添加了并行机制，这样可以大大加快数据的导出和导入。</p><p>3、日志输出控制</p><p>新版本中将日志分为不同的模块，其中包括ACCESS、COMMAND、CONTROL、GEO、INDEX、NETWORK、QUERY、REPL、SHARDING、STORAGE、JOURNAL和WRITE等。用户可以动态调整每个模块的日志级别，这无疑更有利于系统问题诊断。</p><p>4、 索引构建优化</p><p>后台索引建立过程中，不能进行删库删表删索引操作，且后台索引建立过程不会因此自动中断。另外，使用createIndexes命令可以同时建立多个索引，并且只扫描一遍数据，提升了建索引的效率。</p><h3>总结</h3><p>以上仅列出了MongoDB 3.0的一些主要特性和修改，如果希望了解更多可以查看MongoDB 3.0的Release-Notes。总体来看，MongoDB3.0提供了较多令人惊喜的新特性，也使人们更加看好其未来的发展。</p>
+</p><h3>复制集改进</h3><p>1、レプリカセットメンバーの増加</p><p>MongoDB 3.0のレプリカセットメンバーの最大数は、以前の12個から50個に増加しましたが、投票できるメンバーの最大数は依然として7個です。それに伴い、getLastError の w:"majority" 項目も、投票ノードの過半数を意味するだけです。</p><p>2、PrimaryノードのStepDown処理方法の変更</p><p>レプリカセット内でreplSetStepDownコマンドにより、現在のPrimaryノードを退位させ、新しいPrimaryノードを再選出できます。MongoDB 3.0はStepDownの処理方法に以下の変更を加えました。1）Primaryノードが退位する前に、まずインデックス作成、書き込み操作、Mapreduceタスクなどの時間のかかるユーザー操作を中断します。2）データのロールバックを防ぐため、Primaryノードは退位前に、選出可能なSecondaryノードが最新データに同期するのを待ちます。旧バージョンでは、PrimaryノードはいずれかのSecondaryノードのデータ同期が10秒以内であれば退位していました。3）同時にreplSetStepDownコマンドに新しいパラメータsecondaryCatchUpPeriodSecsが追加され、ユーザーはPrimaryノードが、指定した秒数以内にデータが同期されたSecondaryノードを待ってから退位するように指定できます。</p><h3>シャーディングクラスタの改善</h3><p>1、新しいツール関数 sh.removeTagRange() の追加</p><p>旧バージョンではsh.addTagRange()のみが存在し、tagRangeを削除するには手動でconfig.tagsコレクションにアクセスして削除する必要がありました。</p><p>2、より予測可能なRead Preference処理の提供</p><p>新バージョンでは、mongosインスタンスは読み取り操作を実行する際、接続をレプリカセットメンバーに固定しなくなり、各読み取り操作ごとにReadPreferenceを再評価します。これにより、Read Preferenceを変更したとき、その動作がより予測しやすくなります。</p><p>3、chunkマイグレーションにwriteConcern設定を提供</p><p>新バージョンでは、バランサーを対象として、moveChunkとcleanupOrphanedというchunk移行に関連する2つのコマンドにwriteConcernパラメータを提供しています。</p><p>4、バランサーの状態表示の追加</p><p>新バージョンではsh.status()を通じてバランサーの状態情報を確認できます。</p>
+<h3>其他改动</h3><p>1、explan関数の最適化</p><p>新バージョンのexplain関数は、count、find、group、aggregate、update、removeなどの操作のクエリプラン表示をサポートし、結果はより包括的でより詳細になります。</p><p>2、mongodbツールの書き直し</p><p>新バージョンでは、mongodbに付属するすべてのツールがGo言語で書き直されており、特にmongodumpとmongorestoreには並列メカニズムが追加されているため、データのエクスポートとインポートを大幅に高速化できます。</p><p>3、ログ出力制御</p><p>新バージョンではログが異なるモジュールに分割されており、ACCESS、COMMAND、CONTROL、GEO、INDEX、NETWORK、QUERY、REPL、SHARDING、STORAGE、JOURNAL、WRITEなどが含まれます。ユーザーは各モジュールのログレベルを動的に調整できるため、システム問題の診断に間違いなく有利です。</p><p>4、インデックス構築の最適化</p><p>バックグラウンドインデックス構築中は、データベース削除・テーブル削除・インデックス削除の操作を実行できず、またバックグラウンドインデックス構築プロセスはこれによって自動的に中断されることもありません。さらに、createIndexesコマンドを使用すると複数のインデックスを同時に作成でき、データを1回だけスキャンするため、インデックス構築の効率が向上します。</p><h3>总结</h3><p>以上はMongoDB 3.0の主要な機能と変更点の一部のみを列挙したものであり、さらに詳しく知りたい場合はMongoDB 3.0のRelease-Notesを参照してください。全体的に見ると、MongoDB 3.0は多くの驚くべき新機能を提供しており、人々はその将来の発展に一層期待を寄せています。</p>
 <h2>教程地址</h2>
 <p><strong>教程地址：</strong><a href="../mongodb/mongodb-tutorial.html">http://www.runoob.com/mongodb/mongodb-tutorial.html</a></p> </p》mongo></p></div>
 </div>
@@ -267,7 +264,7 @@ drwxrwxr-x 2 mongodb mongodb 4096 3月 21 13:41ycsb
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>点我分享笔记</h3>
+<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 &lt;p style="font-size:14px;"&gt;笔记需要是本篇文章的内容扩展！&lt;/p&gt;&lt;br&gt;
 	&lt;p style="font-size:12px;"&gt;&lt;a href="../tougao.html" target="_blank"&gt;文章投稿，可点击这里&lt;/a&gt;&lt;/p&gt;
 	&lt;p style="font-size:14px;"&gt;&lt;a href="./runoob-user-test-intro.html" target="_blank"&gt;注册邀请码获取方式&lt;/a&gt;&lt;/p&gt;
@@ -516,181 +513,6 @@ var aid = 13945;
 
 </div>
 -->
-<div class="sidebar-box cate-list" style="display:none;">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">热门文章</a>
-</div>
-<div class="membership">
-<ul class="membership">
-<li><a href="https://mp.weixin.qq.com/s/ZaP6YNgKTCHYy3r2WPBBaw" target="_blank" title="2024 年 04 月 JavaScript 框架排行榜">2024 年 04 月 JavaScript 框架排行榜</a></li>
-<li><a href="https://mp.weixin.qq.com/s/JBR2twC0t6krjjuxqvhsEQ" target="_blank" title="免费、开源、好用的 SQL 客户端合集">免费、开源、好用的 SQL 客户端合集</a></li>
-<li><a href="https://mp.weixin.qq.com/s/TwV3YQjA1glyaW7TiHvhlA" target="_blank" title="优雅的代码规范，提升代码质量">优雅的代码规范，提升代码质量</a></li>
-<li><a href="https://mp.weixin.qq.com/s/CnUJ-2OHPbBKlnVpjDzavA" target="_blank" title="命令行中的趣味世界，牛也能说话，有趣又好玩">命令行中的趣味世界，牛也能说话，有趣又好玩</a></li>
-<li><a href="https://mp.weixin.qq.com/s/7NKl-mD7N8CeSNQlbKDEWA" target="_blank" title="2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？">2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？</a></li>
-<li><a href="https://mp.weixin.qq.com/s/yWlSVDKobtDhThnhirVRpw" target="_blank" title="免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端">免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端</a></li>
-</ul>
-</div>
-</div>
-<div class="sidebar-box cate-list">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">教程列表</a>
-</div>
-<div class="cate-items">
-<a href="../ado.html">ADO 教程</a>
-<a href="../ai-agent.html">AI Agent 教程</a>
-<a href="../ai.html">AI 入门教程</a>
-<a href="../ai-math.html">AI 数学基础</a>
-<a href="../ajax.html">Ajax 教程</a>
-<a href="../android.html">Android 教程</a>
-<a href="../angularjs2.html">Angular2 教程</a>
-<a href="../angularjs.html">AngularJS 教程</a>
-<a href="../appml.html">AppML 教程</a>
-<a href="../asp.html">ASP 教程</a>
-<a href="../aspnet.html">ASP.NET 教程</a>
-<a href="../bootstrap.html">Bootstrap 教程</a>
-<a href="../bootstrap4.html">Bootstrap4 教程</a>
-<a href="../bootstrap5.html">Bootstrap5 教程</a>
-<a href="../cprogramming.html">C 教程</a>
-<a href="../c-dsa.html">C 语言数据结构与算法</a>
-<a href="../csharp.html">C# 教程</a>
-<a href="../cplusplus.html">C++ 教程</a>
-<a href="../chartjs.html">Chart.js 教程</a>
-<a href="../claude-code.html">Claude Code 教程</a>
-<a href="../cmake.html">CMake 教程</a>
-<a href="../codex.html">Codex 教程</a>
-<a href="../cssref.html">CSS 参考手册</a>
-<a href="../css.html">CSS 教程</a>
-<a href="../css3.html">CSS3 教程</a>
-<a href="../cursor.html">Cursor 教程</a>
-<a href="../dart.html">Dart 教程</a>
-<a href="../dash.html">Dash 教程</a>
-<a href="../deepseek-harness.html">DeepSeek Harness</a>
-<a href="../django.html">Django 教程</a>
-<a href="../docker.html">Docker 教程</a>
-<a href="../dtd.html">DTD 教程</a>
-<a href="../echarts.html">ECharts 教程</a>
-<a href="../eclipse.html">Eclipse 教程</a>
-<a href="../electron.html">Electron 教程</a>
-<a href="../fastapi.html">FastAPI 教程</a>
-<a href="../firebug.html">Firebug 教程</a>
-<a href="../flask.html">Flask 教程</a>
-<a href="../flutter.html">Flutter 教程</a>
-<a href="../font-awesome.html">Font Awesome 图标</a>
-<a href="../foundation.html">Foundation 教程</a>
-<a href="../git.html">Git 教程</a>
-<a href="../go.html">Go 语言教程</a>
-<a href="../googleapi.html">Google 地图 API 教程</a>
-<a href="../hermes-agent.html">Hermes Agent</a>
-<a href="../highcharts.html">Highcharts 教程</a>
-<a href="../htmldom.html">HTML DOM 教程</a>
-<a href="../tags.html">HTML 参考手册</a>
-<a href="../charsets.html">HTML 字符集</a>
-<a href="../html.html">HTML 教程</a>
-<a href="../http.html">HTTP 教程</a>
-<a href="../ionic.html">ionic 教程</a>
-<a href="../ios.html">iOS 教程</a>
-<a href="../java.html">Java 教程</a>
-<a href="../jsref.html">JavaScript 参考手册</a>
-<a href="../js.html">Javascript 教程</a>
-<a href="../jeasyui.html">jQuery EasyUI 教程</a>
-<a href="../jquerymobile.html">jQuery Mobile 教程</a>
-<a href="../jqueryui.html">jQuery UI 教程</a>
-<a href="../jquery.html">jQuery 教程</a>
-<a href="../json.html">JSON 教程</a>
-<a href="../jsp.html">JSP 教程</a>
-<a href="../julia.html">Julia 教程</a>
-<a href="../jupyter-notebook.html">Jupyter Notebook 教程</a>
-<a href="../kotlin.html">Kotlin 教程</a>
-<a href="../langchain.html">LangChain 教程</a>
-<a href="../latex.html">LaTeX 教程</a>
-<a href="../linux.html">Linux 教程</a>
-<a href="../lua.html">Lua 教程</a>
-<a href="../markdown.html">Markdown 教程</a>
-<a href="../matplotlib.html">Matplotlib 教程</a>
-<a href="../maven.html">Maven 教程</a>
-<a href="../memcached.html">Memcached 教程</a>
-<a href="../mongodb.html">MongoDB 教程</a>
-<a href="../mysql.html">MySQL 教程</a>
-<a href="../nextjs.html">Next.js 教程</a>
-<a href="../nlp.html">NLP 教程</a>
-<a href="../nodejs.html">Node.js 教程</a>
-<a href="../numpy.html">NumPy 教程</a>
-<a href="../obsidian.html">Obsidian 教程</a>
-<a href="../ollama.html">Ollama 教程</a>
-<a href="../opencode.html">OpenCode 教程</a>
-<a href="../opencv.html">OpenCV 教程</a>
-<a href="../pandas.html">Pandas 教程</a>
-<a href="../perl.html">Perl 教程</a>
-<a href="../php.html">PHP 教程</a>
-<a href="../pi-agent.html">Pi Agent</a>
-<a href="../pillow.html">Pillow 教程</a>
-<a href="../playwright.html">Playwright 教程</a>
-<a href="../postgresql.html">PostgreSQL 教程</a>
-<a href="../powershell.html">PowerShell</a>
-<a href="../pycharm.html">Pycharm 教程</a>
-<a href="../python3.html">Python 3 教程</a>
-<a href="../python.html">Python 基础教程</a>
-<a href="../python-design-pattern.html">Python 设计模式</a>
-<a href="../python-qt.html">Python 量化交易</a>
-<a href="../pytorch.html">PyTorch 教程</a>
-<a href="../r.html">R 教程</a>
-<a href="../rdf.html">RDF 教程</a>
-<a href="../react.html">React 教程</a>
-<a href="../redis.html">Redis 教程</a>
-<a href="../restfulapi.html">RESTful API</a>
-<a href="../rss.html">RSS 教程</a>
-<a href="../ruby.html">Ruby 教程</a>
-<a href="../rust.html">Rust 教程</a>
-<a href="../sass.html">Sass 教程</a>
-<a href="../scala.html">Scala 教程</a>
-<a href="../scipy.html">SciPy 教程</a>
-<a href="../selenium.html">Selenium 教程</a>
-<a href="../servlet.html">Servlet 教程</a>
-<a href="../skills.html">Skills 教程</a>
-<a href="../sklearn.html">Sklearn 教程</a>
-<a href="../soap.html">SOAP 教程</a>
-<a href="../sql.html">SQL 教程</a>
-<a href="../sqlite.html">SQLite 教程</a>
-<a href="../svg.html">SVG 教程</a>
-<a href="../svn.html">SVN 教程</a>
-<a href="../swagger.html">Swagger 教程</a>
-<a href="../swift.html">Swift 教程</a>
-<a href="../tailwindcss.html">Tailwind CSS 教程</a>
-<a href="../tcpip.html">TCP/IP 教程</a>
-<a href="../tensorflow.html">TensorFlow 教程</a>
-<a href="../typescript.html">TypeScript 教程</a>
-<a href="../uniapp.html">uni-app 教程</a>
-<a href="../vbscript.html">VBScript 教程</a>
-<a href="../vibe-coding.html">Vibe Coding 教程</a>
-<a href="../vscode.html">VSCode 教程</a>
-<a href="../vue2.html">Vue.js 教程</a>
-<a href="../vue3.html">Vue3 教程</a>
-<a href="../w3c.html">W3C 教程</a>
-<a href="../webservices.html">Web Service 教程</a>
-<a href="../wsdl.html">WSDL 教程</a>
-<a href="../xlink.html">XLink 教程</a>
-<a href="../dom.html">XML DOM 教程</a>
-<a href="../schema.html">XML Schema 教程</a>
-<a href="../xml.html">XML 教程</a>
-<a href="../xpath.html">XPath 教程</a>
-<a href="../xquery.html">XQuery 教程</a>
-<a href="../xslfo.html">XSLFO 教程</a>
-<a href="../xsl.html">XSLT 教程</a>
-<a href="../zig.html">Zig 教程</a>
-<a href="../data-structures.html">数据结构</a>
-<a href="../ml.html">机器学习</a>
-<a href="../regexp.html">正则表达式</a>
-<a href="../assembly.html">汇编语言</a>
-<a href="../quiz.html">测验</a>
-<a href="../browsers.html">浏览器</a>
-<a href="../quality.html">网站品质</a>
-<a href="../web.html">网站建设指南</a>
-<a href="../hosting.html">网站服务器教程</a>
-<a href="../np.html">网络协议</a>
-<a href="../computer-organization.html">计算机组成原理</a>
-<a href="../design-pattern.html">设计模式</a>
-</div>
-</div>
 </div>
 </div>
 </div>

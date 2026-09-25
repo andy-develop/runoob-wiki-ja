@@ -60,9 +60,6 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div>
 <div class="row">
 <div class="col right-list">
-<button class="btn btn-responsive-nav btn-inverse" id="pull">
-<i class="fa fa-navicon"></i>
-</button>
 </div>
 <div class="col search search-desktop last">
 <div class="search-input">
@@ -79,86 +76,85 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="col middle-column big-middle-column">
 <div class="article">
 <div class="article-heading">
-<h2>正则表达式的先行断言(lookahead)和后行断言(lookbehind)</h2> <h3><em>分类</em> <a href="../w3cnote_genre/code.html" title="编程技术">编程技术</a> </h3>
+<h2>正規表現の先読み断言（lookahead）と後読み断言（lookbehind）</h2> <h3><em>分类</em> <a href="../w3cnote_genre/code.html" title="编程技术">编程技术</a> </h3>
 </div>
 <div class="article-body note-body">
 <div class="article-intro">
 <!-- ad start-->
 <!-- ad end-->
-<p>正则表达式中的零宽断言是一种特殊的结构，它在匹配的时候不会消耗字符，只是对匹配位置进行条件判断。这对于一些复杂的模式匹配非常有用，因为它允许你在匹配位置前面或后面添加条件，从而更精确地控制匹配。</p>
-<p>正则表达式的先行断言和后行断言一共有 4 种形式：</p>
+<p>正規表現におけるゼロ幅断言は特殊な構造で、マッチング時に文字を消費せず、マッチ位置に対して条件判断を行うだけです。これは複雑なパターンマッチングに非常に有用です。マッチ位置の前後に条件を追加できるため、マッチングをより精密に制御できます。</p>
+<p>正規表現の先読み断言と後読み断言には、全部で4つの形式があります：</p>
 <ul><li>
 <span class="marked">(?=pattern)</span>零宽正向先行断言(zero-width positive lookahead assertion)</li><li>
 <span class="marked">(?!pattern)</span>零宽负向先行断言(zero-width negative lookahead assertion)</li><li>
 <span class="marked">(?&lt;=pattern)</span>零宽正向后行断言(zero-width positive lookbehind assertion)</li><li>
 <span class="marked">(?&lt;!pattern)</span>零宽负向后行断言(zero-width negative lookbehind assertion)</li></ul>
-<p>这里面的<strong>pattern</strong>是一个正则表达式。</p>
-<p>如同<span class="marked">^</span>代表开头，<span class="marked">$</span>代表结尾，<span class="marked">\b</span>代表单词边界一样，先行断言和后行断言也有类似的作用，它们只匹配某些位置，在匹配过程中，不占用字符，所以被称为<strong>"零宽"</strong>。所谓位置，是指字符串中(每行)第一个字符的左边、最后一个字符的右边以及相邻字符的中间（假设文字方向是头左尾右）。</p>
+<p>这里面的<strong>pattern</strong>は正規表現です。</p>
+<p>如同<span class="marked">^</span>代表开头，<span class="marked">$</span>代表结尾，<span class="marked">\b</span>単語境界と同じように、先読み断言と後読み断言も似た働きをし、特定の位置にのみマッチします。マッチングの過程で文字を消費しないため、ゼロ幅断言と呼ばれます。<strong>"零宽"</strong>ここでいう位置とは、文字列中の（各行の）最初の文字の左側、最後の文字の右側、および隣接する文字の間（文字の方向が左から右であると仮定）を指します。</p>
 <p><strong>概念说明：</strong></p>
 <ul>
-<li>零宽（Zero-width）： 只匹配位置，零宽意味着断言在匹配时不会"消耗"字符串，它只是对位置进行条件判断，不包括匹配位置之前或之后的字符在匹配结果中。</li>
-<li>先行（Lookahead）： 表示断言发生在匹配位置之前。</li>
-<li>后行（Lookbehind）： 表示断言发生在匹配位置之后。</li>
-<li>正向（Positive）： 匹配括号中的表达式，即断言所作的条件判断是肯定的，即只有当条件成立时，匹配才成功。</li>
-<li>负向（Negative）： 不匹配括号中的表达式，即​断言所作的条件判断是否定的，即只有当条件不成立时，匹配才成功。</li></ul>
-<p>下面分别举例来说明这 4 种断言的含义。</p>
-<h3>(?=pattern) 正向先行断言</h3>
-<p>代表字符串中的一个位置，紧接该位置之后的字符序列能够匹配 pattern。</p>
-<p>例如对<strong>"a regular expression"</strong>这个字符串，要想匹配 regular 中的 re，但不能匹配 expression 中的 re，可以用<span class="marked">re(?=gular)</span>，该表达式限定了 re 右边的位置，这个位置之后是 gular，但并不消耗 gular 这些字符。<p><br/>
-<p><img decoding="async" src="../wp-content/uploads/2020/09/B7F44A41-BC1A-4088-8ED4-7CB0F3984991.jpg"/></p></p>将表达式改为<span class="marked">re(?=gular).</span>，将会匹配 reg，元字符<span class="marked">.</span>匹配了<strong>g</strong>，括号这一砣匹配了<strong>e</strong> 和 <strong>g</strong>之间的位置。</p>
+<li>ゼロ幅（Zero-width）：位置のみにマッチします。ゼロ幅とは、アサーションがマッチする際に文字列を「消費」しないことを意味し、単に位置に対して条件判断を行うだけです。マッチ位置の前後の文字はマッチ結果に含まれません。</li>
+<li>先読み（Lookahead）： 断言がマッチ位置より前で行われることを示します。</li>
+<li>後読み（Lookbehind）： 断言がマッチ位置より後で行われることを示します。</li>
+<li>肯定（Positive）： 括弧内の式にマッチすること、つまり断言が行う条件判断が肯定的であることを示し、条件が成立した場合にのみマッチが成功します。</li>
+<li>否定（Negative）： 括弧内の式にマッチしないこと、つまり断言が行う条件判断が否定的であることを示し、条件が成立しない場合にのみマッチが成功します。</li></ul>
+<p>以下、それぞれ例を挙げて、この4つの断言の意味を説明します。</p>
+<h3>(?=pattern) 正の先読みアサーション</h3>
+<p>文字列中のある位置を表し、その位置の直後にある文字列が pattern にマッチできることを示します。</p>
+<p>例如对<strong>"a regular expression"</strong>この文字列で、regular の中の re にはマッチさせたいが、expression の中の re にはマッチさせたくない場合は、次を使います：<span class="marked">re(?=gular)</span>この式は re の右側の位置を限定し、この位置の後が gular であることを要求しますが、gular の文字を消費しません。<p><br/>
+<p><img decoding="async" src="../wp-content/uploads/2020/09/B7F44A41-BC1A-4088-8ED4-7CB0F3984991.jpg"/></p></p>式を変更します<span class="marked">re(?=gular).</span>、reg にマッチし、メタ文字<span class="marked">.</span>匹配了<strong>g</strong>、括弧のこの塊がマッチしました。<strong>e</strong> 和 <strong>g</strong>の間の位置。</p>
 <br/>
 <p><img decoding="async" src="../wp-content/uploads/2020/09/BD357AC2-7BFC-4FDE-A1B2-2FCE1B17E641.jpg"/></p>
-<h3>(?!pattern) 负向先行断言</h3>
-<p>代表字符串中的一个位置，紧接该位置之后的字符序列不能匹配 pattern。</p>
-<p>例如对<strong>"regex represents regular expression"</strong>这个字符串，要想匹配除 regex 和 regular 之外的 re，可以用<span class="marked">re(?!g)</span>，该表达式限定了<strong>re</strong>右边的位置，这个位置后面不是字符<strong>g</strong>。</p><p>负向和正向的区别，就在于该位置之后的字符能否匹配括号中的表达式。</p>
+<h3>(?!pattern) 負の先読みアサーション</h3>
+<p>文字列中のある位置を表し、その位置の直後にある文字列が pattern にマッチできないことを示します。</p>
+<p>例如对<strong>"regex represents regular expression"</strong>この文字列で、regex と regular 以外の re にマッチさせたい場合は、次を使います：<span class="marked">re(?!g)</span>、この式は限定しています。<strong>re</strong>右側の位置で、この位置の後は文字 g ではありません。<strong>g</strong>。</p><p>否定と肯定の違いは、その位置の後の文字が括弧内の式にマッチできるかどうかにあります。</p>
 <p><img decoding="async" src="../wp-content/uploads/2020/09/92C72B08-2122-408E-97A2-6274417A3C16.jpg"/></p>
-<h3>(?&lt;=pattern) 正向后行断言</h3>
-<p>代表字符串中的一个位置，紧接该位置之前的字符序列能够匹配 pattern。</p><p>例如对<strong>regex represents regular expression</strong>这个字符串，有 4 个单词，要想匹配单词内部的 re，但不匹配单词开头的 re，可以用<span class="marked">(?&lt;=\w)re</span>，单词内部的 re，在 re 前面应该是一个单词字符。</p><p>之所以叫后行断言，是因为正则表达式引擎在匹配字符串和表达式时，是从前向后逐个扫描字符串中的字符，并判断是否与表达式符合，当在表达式中遇到该断言时，正则表达式引擎需要往字符串前端检测已扫描过的字符，相对于扫描方向是向后的。</p>
+<h3>(?&lt;=pattern) 正の後読みアサーション</h3>
+<p>文字列中のある位置を表し、その位置の直前にある文字列が pattern にマッチできることを示します。</p><p>例如对<strong>regex represents regular expression</strong>この文字列には4つの単語があります。単語内部の re にはマッチさせたいが、単語の先頭にある re にはマッチさせたくない場合は、次を使います：<span class="marked">(?&lt;=\w)re</span>単語内部の re では、re の前は単語文字であるはずです。</p><p>後読み断言と呼ばれるのは、正規表現エンジンが文字列と式をマッチングする際、文字列の先頭から末尾に向かって文字をスキャンし、式と一致するかを判断するからです。式中でこの断言に遭遇した場合、正規表現エンジンは文字列の前方、つまりスキャン済みの文字を確認する必要があり、スキャン方向に対して後ろ向きになるためです。</p>
 <p><img decoding="async" src="../wp-content/uploads/2020/09/94F6A0A8-CB0F-4EE6-A537-0FA309EF64AE.jpg"/></p>
-<h3>(?&lt;!pattern) 负向后行断言</h3>
-<p>代表字符串中的一个位置，紧接该位置之前的字符序列不能匹配 pattern。</p>
-<p>例如对<strong>"regex represents regular expression"</strong>这个字符串，要想匹配单词开头的 re，可以用<span class="marked">(?&lt;!\w)re</span>。单词开头的<strong>re</strong>，在本例中，也就是指不在单词内部的<strong>re</strong>，即<strong>re</strong>前面不是单词字符。当然也可以用<span class="marked">\bre</span>来匹配。</p>
+<h3>(?&lt;!pattern) 負の後読みアサーション</h3>
+<p>文字列中のある位置を表し、その位置の直前にある文字列が pattern にマッチできないことを示します。</p>
+<p>例如对<strong>"regex represents regular expression"</strong>この文字列で、単語の先頭にある re にマッチさせたい場合は、次を使います：<span class="marked">(?&lt;!\w)re</span>。単語の先頭の<strong>re</strong>この例では、つまり単語内部にない<strong>re</strong>，即<strong>re</strong>その前が単語文字ではない。もちろん使うこともできます。<span class="marked">\bre</span>来匹配。</p>
 <p><img decoding="async" src="../wp-content/uploads/2020/09/5226CEE8-0B90-4E89-9EE2-DFD7E45DA6B2.jpg" width="60%"/></p>
-<p>对于这 4 个断言的理解，可以从两个方面入手：</p>
+<p>これら4つの断言を理解するには、2つの観点から考えることができます：</p>
 <ul><li>
 <p>
-<strong>1、关于先行(lookahead)和后行(lookbehind)：</strong>正则表达式引擎在执行字符串和表达式匹配时，会从头到尾（从前到后）连续扫描字符串中的字符，设想有一个扫描指针指向字符边界处并随匹配过程移动。先行断言，是当扫描指针位于某处时，引擎会尝试匹配指针还未扫过的字符，先于指针到达该字符，故称为先行。后行断言，引擎会尝试匹配指针已扫过的字符，后于指针到达该字符，故称为后行。</p>
+<strong>1、先読み(lookahead)と後読み(lookbehind)について：</strong>正規表現エンジンは文字列と式のマッチングを実行する際、先頭から末尾（前から後ろ）へと連続的に文字列内の文字をスキャンします。スキャンポインタが文字の境界を指し、マッチングの進行に伴って移動すると想像してください。先読みアサーションは、スキャンポインタがどこかにあるとき、エンジンがポインタがまだスキャンしていない文字へのマッチを試みるものです。ポインタがその文字に到達するより先に行うため、先読みと呼ばれます。後読みアサーションは、エンジンがポインタがすでにスキャンした文字へのマッチを試みるものです。ポインタがその文字に到達した後に行うため、後読みと呼ばれます。</p>
 </li><li>
-<p><strong>2、关于正向(positive)和负向(negative)：</strong>正向就表示匹配括号中的表达式，负向表示不匹配。</p>
+<p><strong>2、正(positive)と負(negative)について：</strong>肯定は括弧内の式にマッチすることを表し、否定はマッチしないことを表します。</p>
 </li></ul>
-<p>对这 4 个断言形式的记忆：</p><ul><li>
-<p><strong>1、先行和后行：</strong>后行断言<span class="marked">(?&lt;=pattern)、(?&lt;!pattern)</span>中，有个小于号，同时也是箭头，对于自左至右的文本方向，这个箭头是指向后的，这也比较符合我们的习惯。把小于号去掉，就是先行断言。</p></li><li>
-<p><strong>2、正向和负向：</strong>不等于<span class="marked">(!=)</span>、逻辑非<strong>(!)</strong>都是用<span class="marked">!</span>号来表示，所以有<span class="marked">!</span>号的形式表示不匹配、负向；将<span class="marked">!</span>号换成<span class="marked">=</span>号，就表示匹配、正向。</p>
+<p>これら4つのアサーション形式の覚え方：</p><ul><li>
+<p><strong>1、先読みと後読み：</strong>后行断言<span class="marked">(?&lt;=pattern)、(?&lt;!pattern)</span>後読み断言には、小なり記号があり、それは同時に矢印でもあります。左から右へのテキスト方向では、この矢印は後ろを指しており、これも我々の感覚に合っています。小なり記号を取り除けば、先読み断言になります。</p></li><li>
+<p><strong>2、正と負：</strong>不等于<span class="marked">(!=)</span>、逻辑非<strong>(!)</strong>都是用<span class="marked">!</span>記号で表すので、次のものがあります<span class="marked">!</span>記号の形式はマッチしないこと（負）を表します；また<span class="marked">!</span>号换成<span class="marked">=</span>その記号であれば、マッチすること（正）を表します。</p>
 </li></ul>
-<p>我们经常用正则表达式来检测一个字符串中包含某个子串，要表示一个字符串中不包含某个字符或某些字符也很容易，用<span class="marked">[^...]</span>形式就可以了。要表示一个字符串中不包含某个子串（由字符序列构成）呢？</p>
-<p>用 <span class="marked">[^...]</span>这种形式就不行了，这时就要用到（负向）先行断言或后行断言、或同时使用。</p>
-<p>例如判断一句话中包含<strong>this</strong>，但不包含<strong>that</strong>。</p>
-<p>包含<strong>this</strong>比较好办，一句话中不包含<strong>that</strong>，可以认为这句话中每个字符的前面都不是<strong>that</strong>或每个字符的后面都不是<strong>that</strong>。正则表达式如下：</p>
+<p>私たちはよく正規表現を使って文字列が特定の部分文字列を含むかを検証します。文字列が特定の文字または複数の文字を含まないことを表すのも簡単で、次を使います：<span class="marked">[^...]</span>形式で十分です。では、文字列が特定の部分文字列（文字列から構成される）を含まないことを表すにはどうすればよいでしょうか？</p>
+<p>用 <span class="marked">[^...]</span>この形式では不十分で、この場合は（否定）先読み断言または後読み断言、あるいはその両方を使う必要があります。</p>
+<p>例えば、ある文が〜を含むかどうかを判断するには<strong>this</strong>，但不包含<strong>that</strong>。</p>
+<p>包含<strong>this</strong>比較的簡単です。ある文が〜を含まないことは<strong>that</strong>この文の各文字の前はすべて...ではないと考えることができます。<strong>that</strong>または各文字の後ろがいずれも〜ではないこと<strong>that</strong>。正規表現は次のとおりです：</p>
 <pre>
 ^((?&lt;!that).)*this((?&lt;!that).)*$
 或 
 ^(.(?!that))*this(.(?!that))*$
 </pre>
-<p>对于<strong>this is runoob test</strong>这句话，两个表达式都能够匹配成功，而<strong>this and that is runoob test</strong>都匹配失败。</p>
+<p>对于<strong>this is runoob test</strong>この文では、2つの式はどちらもマッチに成功しますが、<strong>this and that is runoob test</strong>すべてマッチに失敗します。</p>
 <p><img decoding="async" src="../wp-content/uploads/2020/09/0F108023-F4EF-409A-A63C-18334D4A0F3B.jpg"/></p>
 <p><img decoding="async" src="../wp-content/uploads/2020/09/DA61F6F1-4247-4E52-9EB8-198E3A90393D.jpg"/></p>
-<p>在一般情况下，这两个表达式基本上都能够满足要求了。考虑极端情况，如一句话以<strong>that</strong>开头、以<strong>that</strong>结尾、<strong>that</strong> 和 <strong>this</strong>连在一起时，上述表达式就可能不胜任了。
-如<strong>runoob thatthis is the case</strong>或者<strong>this is the case, not that</strong>等。</p>
-<p>只要灵活运用这几个断言，就很容易解决：</p>
+<p>一般的な場合、これらの2つの式でほぼ要件を満たせます。極端な場合を考えると、例えば文が...で終わる場合、<strong>that</strong>开头、以<strong>that</strong>结尾、<strong>that</strong> 和 <strong>this</strong>が連続している場合、上記の式では対応できない可能性があります。例えば<strong>runoob thatthis is the case</strong>或者<strong>this is the case, not that</strong>等。</p>
+<p>これらの断言を柔軟に活用すれば、簡単に解決できます：</p>
 <pre>^(.(?&lt;!that))*this(.(?&lt;!that))*$
 ^(.(?&lt;!that))*this((?!that).)*$
 ^((?!that).)*this(.(?&lt;!that))*$
-^((?!that).)*this((?!that).)*$</pre><p>这 4 个正则表达式测试上述的几句话，结果都能够满足要求。</p>
-<p>上述 4 种断言，括号里的 pattern 本身是一个正则表达式。但对 2 种后行断言有所限制，在 Perl 和 Python 中，这个表达式必须是定长(fixed length)的，即不能使用<span class="marked">*、+、?</span>等元字符，如<span class="marked">(?&lt;=abc)</span>没有问题，但<span class="marked">(?&lt;=a*bc)</span>是不被支持的，特别是当表达式中含有|连接的分支时，各个分支的长度必须相同。之所以不支持变长表达式，是因为当引擎检查后行断言时，无法确定要回溯多少步。Java 支持<span class="marked">?、{m}、{n,m}</span>等符号，但同样不支持<span class="marked">*、+</span>字符。Javascript 干脆不支持后行断言，不过一般来说，这不是太大的问题。</p>
-<p>先行断言和后行断言某种程度上就好比使用<strong>if</strong>语句对匹配的字符前后做判断验证。</p>
-<h3>以下列出 ?=、?&lt;=、?!、?&lt;!= 的使用</h3>
-<p><span class="marked">exp1(?=exp2)</span>：查找 exp2 前面的 exp1。</p>
+^((?!that).)*this((?!that).)*$</pre><p>これら4つの正規表現で上記のいくつかの文をテストしたところ、結果はすべて要件を満たします。</p>
+<p>上記の4つの断言では、括弧内の pattern 自体が正規表現です。ただし、2つの後読み断言には制限があり、Perl と Python では、この式は固定長（fixed length）でなければなりません。つまり、次が使用できません：<span class="marked">*、+、?</span>などのメタ文字、例えば<span class="marked">(?&lt;=abc)</span>問題ありませんが、<span class="marked">(?&lt;=a*bc)</span>はサポートされていません。特に式に | で接続された分岐が含まれる場合、各分岐の長さは同じである必要があります。変長の式がサポートされないのは、エンジンが後読み断言を調べる際に、何歩遡ればよいかを決定できないためです。Java は...をサポートしています。<span class="marked">?、{m}、{n,m}</span>などの記号ですが、同様にサポートされていません。<span class="marked">*、+</span>文字。JavaScript は後読み断言をまったくサポートしていませんが、一般的にはそれほど大きな問題ではありません。</p>
+<p>先読み断言と後読み断言は、ある意味で...を使用するのに似ています。<strong>if</strong>if 文を使用して、マッチした文字の前後を判断・検証することに似ています。</p>
+<h3>以下に ?=、?&lt;=、?!、?&lt;!= の使用を列挙します。</h3>
+<p><span class="marked">exp1(?=exp2)</span>：exp2 の前にある exp1 を検索します。</p>
 <p><img decoding="async" src="../wp-content/uploads/2014/03/reg-111.jpg"/></p>
-<p><span class="marked">(?&lt;=exp2)exp1</span>：查找 exp2 后面的 exp1。</p>
+<p><span class="marked">(?&lt;=exp2)exp1</span>：exp2 の後にある exp1 を検索します。</p>
 <p><img decoding="async" src="../wp-content/uploads/2014/03/reg-222.jpg"/></p>
-<p><span class="marked">exp1(?!exp2)</span>：查找后面不是 exp2 的 exp1。</p>
+<p><span class="marked">exp1(?!exp2)</span>：後ろが exp2 ではない exp1 を検索します。</p>
 <p><img decoding="async" src="../wp-content/uploads/2014/03/reg-333.jpg"/></p>
-<p><span class="marked">(?&lt;!=exp2)exp1</span>：查找前面不是 exp2 的 exp1。</p>
+<p><span class="marked">(?&lt;!=exp2)exp1</span>：前が exp2 ではない exp1 を検索します。</p>
 <p><img decoding="async" src="../wp-content/uploads/2014/03/reg-444.jpg"/></p>
 <blockquote>
 <p>参考链接：https://blog.51cto.com/cnn237111/749047</p></blockquote>
@@ -271,7 +267,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>点我分享笔记</h3>
+<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 &lt;p style="font-size:14px;"&gt;笔记需要是本篇文章的内容扩展！&lt;/p&gt;&lt;br&gt;
 	&lt;p style="font-size:12px;"&gt;&lt;a href="../tougao.html" target="_blank"&gt;文章投稿，可点击这里&lt;/a&gt;&lt;/p&gt;
 	&lt;p style="font-size:14px;"&gt;&lt;a href="./runoob-user-test-intro.html" target="_blank"&gt;注册邀请码获取方式&lt;/a&gt;&lt;/p&gt;
@@ -520,181 +516,6 @@ var aid = 22958;
 
 </div>
 -->
-<div class="sidebar-box cate-list" style="display:none;">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">热门文章</a>
-</div>
-<div class="membership">
-<ul class="membership">
-<li><a href="https://mp.weixin.qq.com/s/ZaP6YNgKTCHYy3r2WPBBaw" target="_blank" title="2024 年 04 月 JavaScript 框架排行榜">2024 年 04 月 JavaScript 框架排行榜</a></li>
-<li><a href="https://mp.weixin.qq.com/s/JBR2twC0t6krjjuxqvhsEQ" target="_blank" title="免费、开源、好用的 SQL 客户端合集">免费、开源、好用的 SQL 客户端合集</a></li>
-<li><a href="https://mp.weixin.qq.com/s/TwV3YQjA1glyaW7TiHvhlA" target="_blank" title="优雅的代码规范，提升代码质量">优雅的代码规范，提升代码质量</a></li>
-<li><a href="https://mp.weixin.qq.com/s/CnUJ-2OHPbBKlnVpjDzavA" target="_blank" title="命令行中的趣味世界，牛也能说话，有趣又好玩">命令行中的趣味世界，牛也能说话，有趣又好玩</a></li>
-<li><a href="https://mp.weixin.qq.com/s/7NKl-mD7N8CeSNQlbKDEWA" target="_blank" title="2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？">2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？</a></li>
-<li><a href="https://mp.weixin.qq.com/s/yWlSVDKobtDhThnhirVRpw" target="_blank" title="免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端">免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端</a></li>
-</ul>
-</div>
-</div>
-<div class="sidebar-box cate-list">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">教程列表</a>
-</div>
-<div class="cate-items">
-<a href="../ado.html">ADO 教程</a>
-<a href="../ai-agent.html">AI Agent 教程</a>
-<a href="../ai.html">AI 入门教程</a>
-<a href="../ai-math.html">AI 数学基础</a>
-<a href="../ajax.html">Ajax 教程</a>
-<a href="../android.html">Android 教程</a>
-<a href="../angularjs2.html">Angular2 教程</a>
-<a href="../angularjs.html">AngularJS 教程</a>
-<a href="../appml.html">AppML 教程</a>
-<a href="../asp.html">ASP 教程</a>
-<a href="../aspnet.html">ASP.NET 教程</a>
-<a href="../bootstrap.html">Bootstrap 教程</a>
-<a href="../bootstrap4.html">Bootstrap4 教程</a>
-<a href="../bootstrap5.html">Bootstrap5 教程</a>
-<a href="../cprogramming.html">C 教程</a>
-<a href="../c-dsa.html">C 语言数据结构与算法</a>
-<a href="../csharp.html">C# 教程</a>
-<a href="../cplusplus.html">C++ 教程</a>
-<a href="../chartjs.html">Chart.js 教程</a>
-<a href="../claude-code.html">Claude Code 教程</a>
-<a href="../cmake.html">CMake 教程</a>
-<a href="../codex.html">Codex 教程</a>
-<a href="../cssref.html">CSS 参考手册</a>
-<a href="../css.html">CSS 教程</a>
-<a href="../css3.html">CSS3 教程</a>
-<a href="../cursor.html">Cursor 教程</a>
-<a href="../dart.html">Dart 教程</a>
-<a href="../dash.html">Dash 教程</a>
-<a href="../deepseek-harness.html">DeepSeek Harness</a>
-<a href="../django.html">Django 教程</a>
-<a href="../docker.html">Docker 教程</a>
-<a href="../dtd.html">DTD 教程</a>
-<a href="../echarts.html">ECharts 教程</a>
-<a href="../eclipse.html">Eclipse 教程</a>
-<a href="../electron.html">Electron 教程</a>
-<a href="../fastapi.html">FastAPI 教程</a>
-<a href="../firebug.html">Firebug 教程</a>
-<a href="../flask.html">Flask 教程</a>
-<a href="../flutter.html">Flutter 教程</a>
-<a href="../font-awesome.html">Font Awesome 图标</a>
-<a href="../foundation.html">Foundation 教程</a>
-<a href="../git.html">Git 教程</a>
-<a href="../go.html">Go 语言教程</a>
-<a href="../googleapi.html">Google 地图 API 教程</a>
-<a href="../hermes-agent.html">Hermes Agent</a>
-<a href="../highcharts.html">Highcharts 教程</a>
-<a href="../htmldom.html">HTML DOM 教程</a>
-<a href="../tags.html">HTML 参考手册</a>
-<a href="../charsets.html">HTML 字符集</a>
-<a href="../html.html">HTML 教程</a>
-<a href="../http.html">HTTP 教程</a>
-<a href="../ionic.html">ionic 教程</a>
-<a href="../ios.html">iOS 教程</a>
-<a href="../java.html">Java 教程</a>
-<a href="../jsref.html">JavaScript 参考手册</a>
-<a href="../js.html">Javascript 教程</a>
-<a href="../jeasyui.html">jQuery EasyUI 教程</a>
-<a href="../jquerymobile.html">jQuery Mobile 教程</a>
-<a href="../jqueryui.html">jQuery UI 教程</a>
-<a href="../jquery.html">jQuery 教程</a>
-<a href="../json.html">JSON 教程</a>
-<a href="../jsp.html">JSP 教程</a>
-<a href="../julia.html">Julia 教程</a>
-<a href="../jupyter-notebook.html">Jupyter Notebook 教程</a>
-<a href="../kotlin.html">Kotlin 教程</a>
-<a href="../langchain.html">LangChain 教程</a>
-<a href="../latex.html">LaTeX 教程</a>
-<a href="../linux.html">Linux 教程</a>
-<a href="../lua.html">Lua 教程</a>
-<a href="../markdown.html">Markdown 教程</a>
-<a href="../matplotlib.html">Matplotlib 教程</a>
-<a href="../maven.html">Maven 教程</a>
-<a href="../memcached.html">Memcached 教程</a>
-<a href="../mongodb.html">MongoDB 教程</a>
-<a href="../mysql.html">MySQL 教程</a>
-<a href="../nextjs.html">Next.js 教程</a>
-<a href="../nlp.html">NLP 教程</a>
-<a href="../nodejs.html">Node.js 教程</a>
-<a href="../numpy.html">NumPy 教程</a>
-<a href="../obsidian.html">Obsidian 教程</a>
-<a href="../ollama.html">Ollama 教程</a>
-<a href="../opencode.html">OpenCode 教程</a>
-<a href="../opencv.html">OpenCV 教程</a>
-<a href="../pandas.html">Pandas 教程</a>
-<a href="../perl.html">Perl 教程</a>
-<a href="../php.html">PHP 教程</a>
-<a href="../pi-agent.html">Pi Agent</a>
-<a href="../pillow.html">Pillow 教程</a>
-<a href="../playwright.html">Playwright 教程</a>
-<a href="../postgresql.html">PostgreSQL 教程</a>
-<a href="../powershell.html">PowerShell</a>
-<a href="../pycharm.html">Pycharm 教程</a>
-<a href="../python3.html">Python 3 教程</a>
-<a href="../python.html">Python 基础教程</a>
-<a href="../python-design-pattern.html">Python 设计模式</a>
-<a href="../python-qt.html">Python 量化交易</a>
-<a href="../pytorch.html">PyTorch 教程</a>
-<a href="../r.html">R 教程</a>
-<a href="../rdf.html">RDF 教程</a>
-<a href="../react.html">React 教程</a>
-<a href="../redis.html">Redis 教程</a>
-<a href="../restfulapi.html">RESTful API</a>
-<a href="../rss.html">RSS 教程</a>
-<a href="../ruby.html">Ruby 教程</a>
-<a href="../rust.html">Rust 教程</a>
-<a href="../sass.html">Sass 教程</a>
-<a href="../scala.html">Scala 教程</a>
-<a href="../scipy.html">SciPy 教程</a>
-<a href="../selenium.html">Selenium 教程</a>
-<a href="../servlet.html">Servlet 教程</a>
-<a href="../skills.html">Skills 教程</a>
-<a href="../sklearn.html">Sklearn 教程</a>
-<a href="../soap.html">SOAP 教程</a>
-<a href="../sql.html">SQL 教程</a>
-<a href="../sqlite.html">SQLite 教程</a>
-<a href="../svg.html">SVG 教程</a>
-<a href="../svn.html">SVN 教程</a>
-<a href="../swagger.html">Swagger 教程</a>
-<a href="../swift.html">Swift 教程</a>
-<a href="../tailwindcss.html">Tailwind CSS 教程</a>
-<a href="../tcpip.html">TCP/IP 教程</a>
-<a href="../tensorflow.html">TensorFlow 教程</a>
-<a href="../typescript.html">TypeScript 教程</a>
-<a href="../uniapp.html">uni-app 教程</a>
-<a href="../vbscript.html">VBScript 教程</a>
-<a href="../vibe-coding.html">Vibe Coding 教程</a>
-<a href="../vscode.html">VSCode 教程</a>
-<a href="../vue2.html">Vue.js 教程</a>
-<a href="../vue3.html">Vue3 教程</a>
-<a href="../w3c.html">W3C 教程</a>
-<a href="../webservices.html">Web Service 教程</a>
-<a href="../wsdl.html">WSDL 教程</a>
-<a href="../xlink.html">XLink 教程</a>
-<a href="../dom.html">XML DOM 教程</a>
-<a href="../schema.html">XML Schema 教程</a>
-<a href="../xml.html">XML 教程</a>
-<a href="../xpath.html">XPath 教程</a>
-<a href="../xquery.html">XQuery 教程</a>
-<a href="../xslfo.html">XSLFO 教程</a>
-<a href="../xsl.html">XSLT 教程</a>
-<a href="../zig.html">Zig 教程</a>
-<a href="../data-structures.html">数据结构</a>
-<a href="../ml.html">机器学习</a>
-<a href="../regexp.html">正则表达式</a>
-<a href="../assembly.html">汇编语言</a>
-<a href="../quiz.html">测验</a>
-<a href="../browsers.html">浏览器</a>
-<a href="../quality.html">网站品质</a>
-<a href="../web.html">网站建设指南</a>
-<a href="../hosting.html">网站服务器教程</a>
-<a href="../np.html">网络协议</a>
-<a href="../computer-organization.html">计算机组成原理</a>
-<a href="../design-pattern.html">设计模式</a>
-</div>
-</div>
 </div>
 </div>
 </div>

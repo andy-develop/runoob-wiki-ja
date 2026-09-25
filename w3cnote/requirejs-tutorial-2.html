@@ -60,9 +60,6 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div>
 <div class="row">
 <div class="col right-list">
-<button class="btn btn-responsive-nav btn-inverse" id="pull">
-<i class="fa fa-navicon"></i>
-</button>
 </div>
 <div class="col search search-desktop last">
 <div class="search-input">
@@ -79,21 +76,21 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="col middle-column big-middle-column">
 <div class="article">
 <div class="article-heading">
-<h2>JS模块化工具requirejs教程(二)：基本知识</h2> <h3><em>分类</em> <a href="../w3cnote_genre/code.html" title="编程技术">编程技术</a> </h3>
+<h2>JSモジュール化ツールrequirejsチュートリアル(二)：基本知識</h2> <h3><em>分类</em> <a href="../w3cnote_genre/code.html" title="编程技术">编程技术</a> </h3>
 </div>
 <div class="article-body note-body">
 <div class="article-intro">
 <!-- ad start-->
 <!-- ad end-->
 <img decoding="async" src="../wp-content/uploads/2014/06/13841564386721.jpg"/>
-<p>前一篇：<a href="./requirejs-tutorial-1.html">JS模块化工具requirejs教程(一)：初识requirejs</a>我们以非常简单的方式引入了requirejs，这一篇将讲述一下requirejs中的一些基本知识，包括API使用方式等。</p>
+<p>前一篇：<a href="./requirejs-tutorial-1.html">JS模块化工具requirejs教程(一)：初识requirejs</a>私たちは非常に簡単な方法でrequirejsを導入しましたが、この記事ではrequirejsの基本的な知識について、APIの使用方法などを含めて解説します。</p>
 <h3>基本API</h3>
-<p>require会定义三个变量：define,require,requirejs，其中require === requirejs，一般使用require更简短</p>
+<p>requireはdefine、require、requirejsという3つの変数を定義します。そのうちrequire === requirejsであり、一般的にはrequireを使用する方がより簡潔です。</p>
 <ul>
-<li>define 从名字就可以看出这个api是用来定义一个模块</li>
-<li>require 加载依赖模块，并执行加载完后的回调函数</li>
+<li>define 名前からもわかるように、このAPIはモジュールを定義するためのものです。</li>
+<li>require 依存モジュールを読み込み、読み込み完了後のコールバック関数を実行します。</li>
 </ul>
-<p>前一篇中的a.js：</p>
+<p>前回の記事のa.js：</p>
 <pre>
 define(function(){
     function fun1(){
@@ -103,18 +100,18 @@ define(function(){
     fun1();
 })
 </pre>
-<p>通过define函数定义了一个模块，然后再页面中使用：</p>
+<p>define関数でモジュールを定義し、ページ内で使用します：</p>
 <pre>
 require(["js/a"]);
 </pre>
-<p>来加载该模块(<em>注意require中的依赖是一个数组，即使只有一个依赖，你也必须使用数组来定义</em>)，require API的第二个参数是callback，一个function，是用来处理加载完毕后的逻辑，如：</p>
+<p>このモジュールを読み込む(<em>require内の依存関係は配列であることに注意してください。たとえ依存が1つだけでも、必ず配列を使って定義しなければなりません。</em>)、require APIの2番目のパラメータはcallback、つまりfunctionであり、読み込み完了後のロジックを処理するために使われます。例：</p>
 <pre>
 require(["js/a"],function(){
     alert("load finished");
 })
 </pre>
 <h3>加载文件</h3>
-<p>之前的例子中加载模块都是本地js，但是大部分情况下网页需要加载的JS可能来自本地服务器、其他网站或CDN，这样就不能通过这种方式来加载了，我们以加载一个jquery库为例：</p>
+<p>以前の例ではモジュールを読み込む際にすべてローカルJSを使用していましたが、ほとんどの場合、ウェブページで読み込むJSはローカルサーバー、他のウェブサイト、またはCDNから来ることがあります。そのため、この方法では読み込めません。例としてjQueryライブラリを読み込む場合を示します：</p>
 <pre>
 require.config({
     paths : {
@@ -127,7 +124,7 @@ require(["jquery","js/a"],function($){
     })
 })
 </pre>
-<p>这边涉及了<code>require.config</code>，<code>require.config</code>是用来配置模块加载位置，简单点说就是给模块起一个更短更好记的名字，比如将百度的jquery库地址标记为<code>jquery</code>，这样在require时只需要写<code>["jquery"]</code>就可以加载该js，本地的js我们也可以这样配置：</p>
+<p>这边涉及了<code>require.config</code>，<code>require.config</code>モジュールの読み込み位置を設定するためのもので、簡単に言うとモジュールに対してより短く覚えやすい名前を付けることです。たとえば、百度のjQueryライブラリのアドレスを次のように指定します。<code>jquery</code>これにより、require時には単に<code>["jquery"]</code>と書くだけでそのJSを読み込めます。ローカルのJSも同様に設定できます：</p>
 <pre>
 require.config({
     paths : {
@@ -141,7 +138,7 @@ require(["jquery","a"],function($){
     })
 })
 </pre>
-<p>通过paths的配置会使我们的模块名字更精炼，paths还有一个重要的功能，就是可以配置多个路径，如果远程cdn库没有加载成功，可以加载本地的库，如：</p>
+<p>pathsの設定により、モジュール名がより簡潔になります。pathsにはもう1つ重要な機能があり、複数のパスを設定できます。リモートのCDNライブラリが読み込みに失敗した場合に、ローカルのライブラリを読み込むことができます。例：</p>
 <pre>
 require.config({
     paths : {
@@ -155,10 +152,10 @@ require(["jquery","a"],function($){
     })
 })
 </pre>
-<p>这样配置后，当百度的jquery没有加载成功后，会加载本地js目录下的jquery</p>
+<p>このように設定した後、百度のjqueryが正常に読み込まれなかった場合、ローカルのjsディレクトリにあるjqueryが読み込まれます。</p>
 <ol class="task-list">
-<li>在使用requirejs时，加载模块时不用写<code>.js</code>后缀的，当然也是不能写后缀</li>
-<li>上面例子中的callback函数中发现有<code>$</code>参数，这个就是依赖的<code>jquery</code>模块的输出变量，如果你依赖多个模块，可以依次写入多个参数来使用：</li>
+<li>requirejsを使用する際、モジュールを読み込むときに<code>.js</code>拡張子付きのものも、もちろん拡張子を書くことはできません。</li>
+<li>上記の例のcallback関数の中に<code>$</code>パラメータ、これは依存するものです。<code>jquery</code>モジュールの出力変数があります。複数のモジュールに依存する場合は、複数のパラメータを順番に書いて使用できます：</li>
 </ol>
 <pre>
 require(["jquery","underscore"],function($, _){
@@ -167,9 +164,9 @@ require(["jquery","underscore"],function($, _){
     })
 })
 </pre>
-<p>如果某个模块不输出变量值，则没有，所以尽量将输出的模块写在前面，防止位置错乱引发误解</p>
+<p>あるモジュールが変数値を出力しない場合は、その引数はありません。そのため、出力するモジュールをできるだけ前に書き、位置のずれによる誤解を防ぐようにしてください。</p>
 <h3>全局配置</h3>
-<p>上面的例子中重复出现了<code>require.config</code>配置，如果每个页面中都加入配置，必然显得十分不雅，requirejs提供了一种叫"主数据"的功能，我们首先创建一个main.js：</p>
+<p>上記の例では繰り返し出現しています。<code>require.config</code>設定を各ページに毎回記述すると、どうしても見苦しくなります。requirejsは「メインデータ」と呼ばれる機能を提供しています。まずmain.jsを作成します：</p>
 <pre>
 require.config({
     paths : {
@@ -178,19 +175,19 @@ require.config({
     }
 })
 </pre>
-<p>然后再页面中使用下面的方式来使用requirejs：</p>
+<p>その後、ページ内で以下の方法でrequirejsを使用します：</p>
 <pre>
 &lt;script data-main="js/main" src="js/require.js.html"&gt;&lt;/script&gt;
 </pre>
-<p>解释一下，加载 requirejs 脚本的 script 标签加入了<code>data-main</code>属性，这个属性指定的 js 将在加载完 require.js 后处理，我们把<code>require.config</code>的配置加入到<code>data-main</code>后，就可以使每一个页面都使用这个配置，然后页面中就可以直接使用<code>require</code>来加载所有的短模块名</p>
-<p><code>data-main</code>还有一个重要的功能，当script标签指定data-main属性时，require会默认的将data-main指定的js为根路径，是什么意思呢？如上面的<code>data-main="js/main"</code>设定后，我们在使用<code>require(['jquery'])</code>后(不配置jquery的paths)，require会自动加载js/jquery.js这个文件，而不是jquery.js，相当于默认配置了：</p>
+<p>説明すると、requirejsスクリプトを読み込むscriptタグに<code>data-main</code>属性が追加されています。この属性で指定されたjsは、require.jsを読み込んだ後に処理されます。これを<code>require.config</code>の設定を追加する<code>data-main</code>にすると、すべてのページでこの設定を使用でき、ページ内で直接<code>require</code>すべての短いモジュール名をロードするために。</p>
+<p><code>data-main</code>を使用できます。もう1つの重要な機能として、scriptタグにdata-main属性を指定した場合、requireはデフォルトでdata-mainで指定されたjsをルートパスとみなします。どういう意味でしょうか。上記の<code>data-main="js/main"</code>設定後、私たちは使用します。<code>require(['jquery'])</code>の後（jqueryのpathsを設定しない場合）、requireは自動的にjs/jquery.jsというファイルを読み込みます。jquery.jsではなく、デフォルトで次のように設定されているのと同じです：</p>
 <pre>
 require.config({
     baseUrl : "js"
 })
 </pre>
 <h3>第三方模块</h3>
-<p>通过<code>require</code>加载的模块一般都需要符合AMD规范即使用<code>define</code>来申明模块，但是部分时候需要加载非AMD规范的js，这时候就需要用到另一个功能：shim，shim解释起来也比较难理解，shim直接翻译为"垫"，其实也是有这层意思的，目前我主要用在两个地方<br/>1. 非AMD模块输出，将非标准的AMD模块"垫"成可用的模块，例如：在老版本的jquery中，是没有继承AMD规范的，所以不能直接require["jquery"],这时候就需要shim，比如我要是用underscore类库，但是他并没有实现AMD规范，那我们可以这样配置</p>
+<p>通过<code>require</code>読み込むモジュールは通常AMD規格に準拠する必要があり、つまり<code>define</code>を使ってモジュールを宣言します。しかし、非AMD規格のjsを読み込む必要がある場合もあります。そのときに必要なのがもう1つの機能、shimです。shimは説明するのが少し難しいですが、shimを直訳すると「垫（クッション）」となり、実際にそのような意味合いがあります。現在、主に2つの場面で使用しています。<br/>1. 非AMDモジュールの出力。非標準のAMDモジュールを「垫（クッション）」して利用可能なモジュールにします。例：古いバージョンのjqueryではAMD規格を継承していないため、直接require["jquery"]とすることはできません。そのような場合にshimが必要です。たとえば、underscoreクラスライブラリを使用したいが、underscoreがAMD規格を実装していない場合、次のように設定できます。</p>
 <pre>
 require.config({
     shim: {
@@ -200,14 +197,14 @@ require.config({
     }
 })
 </pre>
-<p>这样配置后，我们就可以在其他模块中引用underscore模块：</p>
+<p>このように設定すると、他のモジュールでunderscoreモジュールを参照できるようになります：</p>
 <pre>
 require(["underscore"], function(_){
     _.each([1,2,3], alert);
 })
 </pre>
 <ol class="task-list">
-<li>插件形式的非AMD模块，我们经常会用到jquery插件，而且这些插件基本都不符合AMD规范，比如jquery.form插件，这时候就需要将form插件"垫"到jquery中：</li>
+<li>2. プラグイン形式の非AMDモジュール。jqueryプラグインを使用することはよくありますが、これらのプラグインはほとんどAMD規格に準拠していません。たとえばjquery.formプラグインなどです。この場合、formプラグインをjqueryに「垫（クッション）」する必要があります：</li>
 </ol>
 <pre>
 require.config({
@@ -220,7 +217,7 @@ require.config({
         }
     }
 })
-</pre><p>也可以简写为：</p>
+</pre><p>次のように略記することもできます：</p>
 <pre>
 require.config({
     shim: {
@@ -231,7 +228,7 @@ require.config({
     }
 })
 </pre>
-<p>这样配置之后我们就可以使用加载插件后的jquery了</p>
+<p>このように設定すると、プラグインを読み込んだ後のjqueryを使用できます。</p>
 <pre>
 require.config(["jquery", "jquery.form"], function($){
     $(function(){
@@ -239,7 +236,7 @@ require.config(["jquery", "jquery.form"], function($){
     })
 })
 </pre>
-<p>好了，requirejs的基本配置大致就是这么多，还有一些扩展的功能会在之后的篇幅中提到</p>
+<p>さて、requirejsの基本設定はおおよそこのようなものです。さらに拡張機能については、今後の記事で説明します。</p>
 <p>文章来源：https://github.com/liuxey/blog/issues/2</p> </div>
 </div>
 <div class="previous-next-links">
@@ -349,7 +346,7 @@ require.config(["jquery", "jquery.form"], function($){
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>点我分享笔记</h3>
+<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 &lt;p style="font-size:14px;"&gt;笔记需要是本篇文章的内容扩展！&lt;/p&gt;&lt;br&gt;
 	&lt;p style="font-size:12px;"&gt;&lt;a href="../tougao.html" target="_blank"&gt;文章投稿，可点击这里&lt;/a&gt;&lt;/p&gt;
 	&lt;p style="font-size:14px;"&gt;&lt;a href="./runoob-user-test-intro.html" target="_blank"&gt;注册邀请码获取方式&lt;/a&gt;&lt;/p&gt;
@@ -598,181 +595,6 @@ var aid = 7850;
 
 </div>
 -->
-<div class="sidebar-box cate-list" style="display:none;">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">热门文章</a>
-</div>
-<div class="membership">
-<ul class="membership">
-<li><a href="https://mp.weixin.qq.com/s/ZaP6YNgKTCHYy3r2WPBBaw" target="_blank" title="2024 年 04 月 JavaScript 框架排行榜">2024 年 04 月 JavaScript 框架排行榜</a></li>
-<li><a href="https://mp.weixin.qq.com/s/JBR2twC0t6krjjuxqvhsEQ" target="_blank" title="免费、开源、好用的 SQL 客户端合集">免费、开源、好用的 SQL 客户端合集</a></li>
-<li><a href="https://mp.weixin.qq.com/s/TwV3YQjA1glyaW7TiHvhlA" target="_blank" title="优雅的代码规范，提升代码质量">优雅的代码规范，提升代码质量</a></li>
-<li><a href="https://mp.weixin.qq.com/s/CnUJ-2OHPbBKlnVpjDzavA" target="_blank" title="命令行中的趣味世界，牛也能说话，有趣又好玩">命令行中的趣味世界，牛也能说话，有趣又好玩</a></li>
-<li><a href="https://mp.weixin.qq.com/s/7NKl-mD7N8CeSNQlbKDEWA" target="_blank" title="2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？">2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？</a></li>
-<li><a href="https://mp.weixin.qq.com/s/yWlSVDKobtDhThnhirVRpw" target="_blank" title="免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端">免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端</a></li>
-</ul>
-</div>
-</div>
-<div class="sidebar-box cate-list">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">教程列表</a>
-</div>
-<div class="cate-items">
-<a href="../ado.html">ADO 教程</a>
-<a href="../ai-agent.html">AI Agent 教程</a>
-<a href="../ai.html">AI 入门教程</a>
-<a href="../ai-math.html">AI 数学基础</a>
-<a href="../ajax.html">Ajax 教程</a>
-<a href="../android.html">Android 教程</a>
-<a href="../angularjs2.html">Angular2 教程</a>
-<a href="../angularjs.html">AngularJS 教程</a>
-<a href="../appml.html">AppML 教程</a>
-<a href="../asp.html">ASP 教程</a>
-<a href="../aspnet.html">ASP.NET 教程</a>
-<a href="../bootstrap.html">Bootstrap 教程</a>
-<a href="../bootstrap4.html">Bootstrap4 教程</a>
-<a href="../bootstrap5.html">Bootstrap5 教程</a>
-<a href="../cprogramming.html">C 教程</a>
-<a href="../c-dsa.html">C 语言数据结构与算法</a>
-<a href="../csharp.html">C# 教程</a>
-<a href="../cplusplus.html">C++ 教程</a>
-<a href="../chartjs.html">Chart.js 教程</a>
-<a href="../claude-code.html">Claude Code 教程</a>
-<a href="../cmake.html">CMake 教程</a>
-<a href="../codex.html">Codex 教程</a>
-<a href="../cssref.html">CSS 参考手册</a>
-<a href="../css.html">CSS 教程</a>
-<a href="../css3.html">CSS3 教程</a>
-<a href="../cursor.html">Cursor 教程</a>
-<a href="../dart.html">Dart 教程</a>
-<a href="../dash.html">Dash 教程</a>
-<a href="../deepseek-harness.html">DeepSeek Harness</a>
-<a href="../django.html">Django 教程</a>
-<a href="../docker.html">Docker 教程</a>
-<a href="../dtd.html">DTD 教程</a>
-<a href="../echarts.html">ECharts 教程</a>
-<a href="../eclipse.html">Eclipse 教程</a>
-<a href="../electron.html">Electron 教程</a>
-<a href="../fastapi.html">FastAPI 教程</a>
-<a href="../firebug.html">Firebug 教程</a>
-<a href="../flask.html">Flask 教程</a>
-<a href="../flutter.html">Flutter 教程</a>
-<a href="../font-awesome.html">Font Awesome 图标</a>
-<a href="../foundation.html">Foundation 教程</a>
-<a href="../git.html">Git 教程</a>
-<a href="../go.html">Go 语言教程</a>
-<a href="../googleapi.html">Google 地图 API 教程</a>
-<a href="../hermes-agent.html">Hermes Agent</a>
-<a href="../highcharts.html">Highcharts 教程</a>
-<a href="../htmldom.html">HTML DOM 教程</a>
-<a href="../tags.html">HTML 参考手册</a>
-<a href="../charsets.html">HTML 字符集</a>
-<a href="../html.html">HTML 教程</a>
-<a href="../http.html">HTTP 教程</a>
-<a href="../ionic.html">ionic 教程</a>
-<a href="../ios.html">iOS 教程</a>
-<a href="../java.html">Java 教程</a>
-<a href="../jsref.html">JavaScript 参考手册</a>
-<a href="../js.html">Javascript 教程</a>
-<a href="../jeasyui.html">jQuery EasyUI 教程</a>
-<a href="../jquerymobile.html">jQuery Mobile 教程</a>
-<a href="../jqueryui.html">jQuery UI 教程</a>
-<a href="../jquery.html">jQuery 教程</a>
-<a href="../json.html">JSON 教程</a>
-<a href="../jsp.html">JSP 教程</a>
-<a href="../julia.html">Julia 教程</a>
-<a href="../jupyter-notebook.html">Jupyter Notebook 教程</a>
-<a href="../kotlin.html">Kotlin 教程</a>
-<a href="../langchain.html">LangChain 教程</a>
-<a href="../latex.html">LaTeX 教程</a>
-<a href="../linux.html">Linux 教程</a>
-<a href="../lua.html">Lua 教程</a>
-<a href="../markdown.html">Markdown 教程</a>
-<a href="../matplotlib.html">Matplotlib 教程</a>
-<a href="../maven.html">Maven 教程</a>
-<a href="../memcached.html">Memcached 教程</a>
-<a href="../mongodb.html">MongoDB 教程</a>
-<a href="../mysql.html">MySQL 教程</a>
-<a href="../nextjs.html">Next.js 教程</a>
-<a href="../nlp.html">NLP 教程</a>
-<a href="../nodejs.html">Node.js 教程</a>
-<a href="../numpy.html">NumPy 教程</a>
-<a href="../obsidian.html">Obsidian 教程</a>
-<a href="../ollama.html">Ollama 教程</a>
-<a href="../opencode.html">OpenCode 教程</a>
-<a href="../opencv.html">OpenCV 教程</a>
-<a href="../pandas.html">Pandas 教程</a>
-<a href="../perl.html">Perl 教程</a>
-<a href="../php.html">PHP 教程</a>
-<a href="../pi-agent.html">Pi Agent</a>
-<a href="../pillow.html">Pillow 教程</a>
-<a href="../playwright.html">Playwright 教程</a>
-<a href="../postgresql.html">PostgreSQL 教程</a>
-<a href="../powershell.html">PowerShell</a>
-<a href="../pycharm.html">Pycharm 教程</a>
-<a href="../python3.html">Python 3 教程</a>
-<a href="../python.html">Python 基础教程</a>
-<a href="../python-design-pattern.html">Python 设计模式</a>
-<a href="../python-qt.html">Python 量化交易</a>
-<a href="../pytorch.html">PyTorch 教程</a>
-<a href="../r.html">R 教程</a>
-<a href="../rdf.html">RDF 教程</a>
-<a href="../react.html">React 教程</a>
-<a href="../redis.html">Redis 教程</a>
-<a href="../restfulapi.html">RESTful API</a>
-<a href="../rss.html">RSS 教程</a>
-<a href="../ruby.html">Ruby 教程</a>
-<a href="../rust.html">Rust 教程</a>
-<a href="../sass.html">Sass 教程</a>
-<a href="../scala.html">Scala 教程</a>
-<a href="../scipy.html">SciPy 教程</a>
-<a href="../selenium.html">Selenium 教程</a>
-<a href="../servlet.html">Servlet 教程</a>
-<a href="../skills.html">Skills 教程</a>
-<a href="../sklearn.html">Sklearn 教程</a>
-<a href="../soap.html">SOAP 教程</a>
-<a href="../sql.html">SQL 教程</a>
-<a href="../sqlite.html">SQLite 教程</a>
-<a href="../svg.html">SVG 教程</a>
-<a href="../svn.html">SVN 教程</a>
-<a href="../swagger.html">Swagger 教程</a>
-<a href="../swift.html">Swift 教程</a>
-<a href="../tailwindcss.html">Tailwind CSS 教程</a>
-<a href="../tcpip.html">TCP/IP 教程</a>
-<a href="../tensorflow.html">TensorFlow 教程</a>
-<a href="../typescript.html">TypeScript 教程</a>
-<a href="../uniapp.html">uni-app 教程</a>
-<a href="../vbscript.html">VBScript 教程</a>
-<a href="../vibe-coding.html">Vibe Coding 教程</a>
-<a href="../vscode.html">VSCode 教程</a>
-<a href="../vue2.html">Vue.js 教程</a>
-<a href="../vue3.html">Vue3 教程</a>
-<a href="../w3c.html">W3C 教程</a>
-<a href="../webservices.html">Web Service 教程</a>
-<a href="../wsdl.html">WSDL 教程</a>
-<a href="../xlink.html">XLink 教程</a>
-<a href="../dom.html">XML DOM 教程</a>
-<a href="../schema.html">XML Schema 教程</a>
-<a href="../xml.html">XML 教程</a>
-<a href="../xpath.html">XPath 教程</a>
-<a href="../xquery.html">XQuery 教程</a>
-<a href="../xslfo.html">XSLFO 教程</a>
-<a href="../xsl.html">XSLT 教程</a>
-<a href="../zig.html">Zig 教程</a>
-<a href="../data-structures.html">数据结构</a>
-<a href="../ml.html">机器学习</a>
-<a href="../regexp.html">正则表达式</a>
-<a href="../assembly.html">汇编语言</a>
-<a href="../quiz.html">测验</a>
-<a href="../browsers.html">浏览器</a>
-<a href="../quality.html">网站品质</a>
-<a href="../web.html">网站建设指南</a>
-<a href="../hosting.html">网站服务器教程</a>
-<a href="../np.html">网络协议</a>
-<a href="../computer-organization.html">计算机组成原理</a>
-<a href="../design-pattern.html">设计模式</a>
-</div>
-</div>
 </div>
 </div>
 </div>

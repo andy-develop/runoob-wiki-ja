@@ -60,9 +60,6 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div>
 <div class="row">
 <div class="col right-list">
-<button class="btn btn-responsive-nav btn-inverse" id="pull">
-<i class="fa fa-navicon"></i>
-</button>
 </div>
 <div class="col search search-desktop last">
 <div class="search-input">
@@ -79,19 +76,19 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="col middle-column big-middle-column">
 <div class="article">
 <div class="article-heading">
-<h2>1.2 选择排序</h2> <h3><em>分类</em> <a href="../w3cnote_genre/algorithm.html" title="算法">算法</a> </h3>
+<h2>1.2 選択ソート</h2> <h3><em>分类</em> <a href="../w3cnote_genre/algorithm.html" title="算法">算法</a> </h3>
 </div>
 <div class="article-body note-body">
 <div class="article-intro">
 <!-- ad start-->
 <!-- ad end-->
-<p>选择排序（Selection Sort）是一种简单直观的排序算法，无论什么数据进去都是 O(n²) 的时间复杂度。所以用到它的时候，数据规模越小越好。唯一的好处可能就是不占用额外的内存空间了吧。</p>
-<p>选择排序基本思想是每次从待排序的数据中选择最小（或最大）的元素，放到已排序序列的末尾，直到全部数据排序完成。</p>
-<h3>1. 算法步骤</h3><ol><li><p><strong>初始化</strong>：将列表分为已排序部分和未排序部分。初始时，已排序部分为空，未排序部分为整个列表。</p></li><li><p><strong>查找最小值</strong>：在未排序部分中查找最小的元素。</p></li><li><p><strong>交换位置</strong>：将找到的最小元素与未排序部分的第一个元素交换位置。</p></li><li><p><strong>更新范围</strong>：将未排序部分的起始位置向后移动一位，扩大已排序部分的范围。</p></li><li><p><strong>重复步骤</strong>：重复上述步骤，直到未排序部分为空，列表完全有序。</p></li></ol>
-<h3>2. 动图演示</h3>
+<p>選択ソート（Selection Sort）は、シンプルで直感的なソートアルゴリズムであり、どのようなデータであっても時間計算量は O(n²) です。そのため、これを使用する場合は、データ規模が小さいほど良いです。唯一の利点は、余分なメモリ空間を消費しないことかもしれません。</p>
+<p>選択ソートの基本的な考え方は、毎回ソート待ちのデータから最小（または最大）の要素を選択し、ソート済みシーケンスの末尾に配置して、すべてのデータのソートが完了するまで繰り返すことです。</p>
+<h3>1. アルゴリズムの手順</h3><ol><li><p><strong>初始化</strong>：リストをソート済み部分と未ソート部分に分けます。初期状態では、ソート済み部分は空で、未ソート部分はリスト全体です。</p></li><li><p><strong>查找最小值</strong>：未ソート部分で最小の要素を探します。</p></li><li><p><strong>交换位置</strong>：見つけた最小要素を未ソート部分の最初の要素と交換します。</p></li><li><p><strong>更新范围</strong>：未ソート部分の開始位置を1つ後ろに移動し、ソート済み部分の範囲を拡大します。</p></li><li><p><strong>重复步骤</strong>：未ソート部分が空になり、リストが完全にソートされるまで、上記の手順を繰り返します。</p></li></ol>
+<h3>2. アニメーションによるデモ</h3>
 <p><img decoding="async" src="../wp-content/uploads/2019/03/selectionSort.gif"/></p>
-<p>假设有一个待排序的列表 [64, 25, 12, 22, 11]，选择排序的过程如下：</p>
-<ol><li><p><strong>第一轮</strong>：</p><ul><li><p>未排序部分：<code>[64, 25, 12, 22, 11]</code>。</p></li><li><p>找到最小值<code>11</code>，将其与第一个元素<code>64</code>交换。</p></li><li><p>列表变为<code>[11, 25, 12, 22, 64]</code>。</p></li><li><p>已排序部分：<code>[11]</code>，未排序部分：<code>[25, 12, 22, 64]</code>。</p></li></ul></li><li><p><strong>第二轮</strong>：</p><ul><li><p>未排序部分：<code>[25, 12, 22, 64]</code>。</p></li><li><p>找到最小值<code>12</code>，将其与第一个元素<code>25</code>交换。</p></li><li><p>列表变为<code>[11, 12, 25, 22, 64]</code>。</p></li><li><p>已排序部分：<code>[11, 12]</code>，未排序部分：<code>[25, 22, 64]</code>。</p></li></ul></li><li><p><strong>第三轮</strong>：</p><ul><li><p>未排序部分：<code>[25, 22, 64]</code>。</p></li><li><p>找到最小值<code>22</code>，将其与第一个元素<code>25</code>交换。</p></li><li><p>列表变为<code>[11, 12, 22, 25, 64]</code>。</p></li><li><p>已排序部分：<code>[11, 12, 22]</code>，未排序部分：<code>[25, 64]</code>。</p></li></ul></li><li><p><strong>第四轮</strong>：</p><ul><li><p>未排序部分：<code>[25, 64]</code>。</p></li><li><p>找到最小值<code>25</code>，它已经在正确的位置，无需交换。</p></li><li><p>列表保持不变：<code>[11, 12, 22, 25, 64]</code>。</p></li><li><p>已排序部分：<code>[11, 12, 22, 25]</code>，未排序部分：<code>[64]</code>。</p></li></ul></li><li><p><strong>第五轮</strong>：</p><ul><li><p>未排序部分：<code>[64]</code>。</p></li><li><p>只有一个元素，无需操作。</p></li><li><p>列表完全有序：<code>[11, 12, 22, 25, 64]</code>。</p></li></ul></li></ol>
+<p>ソート待ちのリスト [64, 25, 12, 22, 11] があるとします。選択ソートのプロセスは次のとおりです：</p>
+<ol><li><p><strong>第一轮</strong>：</p><ul><li><p>未ソート部分：<code>[64, 25, 12, 22, 11]</code>。</p></li><li><p>找到最小值<code>11</code>、それを最初の要素と<code>64</code>交换。</p></li><li><p>列表变为<code>[11, 25, 12, 22, 64]</code>。</p></li><li><p>ソート済み部分：<code>[11]</code>、未ソート部分：<code>[25, 12, 22, 64]</code>。</p></li></ul></li><li><p><strong>第二轮</strong>：</p><ul><li><p>未ソート部分：<code>[25, 12, 22, 64]</code>。</p></li><li><p>找到最小值<code>12</code>、それを最初の要素と<code>25</code>交换。</p></li><li><p>列表变为<code>[11, 12, 25, 22, 64]</code>。</p></li><li><p>ソート済み部分：<code>[11, 12]</code>、未ソート部分：<code>[25, 22, 64]</code>。</p></li></ul></li><li><p><strong>第三轮</strong>：</p><ul><li><p>未ソート部分：<code>[25, 22, 64]</code>。</p></li><li><p>找到最小值<code>22</code>、それを最初の要素と<code>25</code>交换。</p></li><li><p>列表变为<code>[11, 12, 22, 25, 64]</code>。</p></li><li><p>ソート済み部分：<code>[11, 12, 22]</code>、未ソート部分：<code>[25, 64]</code>。</p></li></ul></li><li><p><strong>第四轮</strong>：</p><ul><li><p>未ソート部分：<code>[25, 64]</code>。</p></li><li><p>找到最小值<code>25</code>、それはすでに正しい位置にあるため、交換は不要です。</p></li><li><p>リストは変更されない：<code>[11, 12, 22, 25, 64]</code>。</p></li><li><p>ソート済み部分：<code>[11, 12, 22, 25]</code>、未ソート部分：<code>[64]</code>。</p></li></ul></li><li><p><strong>第五轮</strong>：</p><ul><li><p>未ソート部分：<code>[64]</code>。</p></li><li><p>要素が1つだけなので、操作は不要です。</p></li><li><p>リストは完全にソート済み：<code>[11, 12, 22, 25, 64]</code>。</p></li></ul></li></ol>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
 <span style="color: Green;font-weight:bold;">def</span> selection_sort<span style="color: Olive;">(</span>arr<span style="color: Olive;">)</span>:<br/>
     n <span style="color: Gray;">=</span> <span style="color: Teal;">len</span><span style="color: Olive;">(</span>arr<span style="color: Olive;">)</span><br/>
@@ -113,10 +110,10 @@ sorted_arr <span style="color: Gray;">=</span> selection_sort<span style="color:
 </div></div> <h3>时间复杂度</h3>
 <ul>
 <li>
-<p><strong>最坏情况</strong>：O(n²)，无论输入数据是否有序，都需要进行 n(n-1)/2 次比较。</p>
+<p><strong>最坏情况</strong>：O(n²)、入力データが整列されているかどうかに関わらず、n(n-1)/2 回の比較が必要です。</p>
 </li>
 <li>
-<p><strong>最好情况</strong>：O(n²)，即使列表已经有序，仍需进行相同数量的比较。</p>
+<p><strong>最好情况</strong>：O(n²)、リストがすでに整列されていても、同じ回数の比較が必要です。</p>
 </li>
 <li>
 <p><strong>平均情况</strong>：O(n²)。</p>
@@ -126,7 +123,7 @@ sorted_arr <span style="color: Gray;">=</span> selection_sort<span style="color:
 <h3>空间复杂度</h3>
 <ul>
 <li>
-<p>O(1)，选择排序是原地排序算法，不需要额外的存储空间。</p>
+<p>O(1)、選択ソートはインプレースソートアルゴリズムであり、追加のストレージスペースは不要です。</p>
 </li>
 </ul>
 <hr/>
@@ -136,13 +133,13 @@ sorted_arr <span style="color: Gray;">=</span> selection_sort<span style="color:
 <p><strong>优点</strong>：</p>
 <ul>
 <li>
-<p>实现简单，代码易于理解。</p>
+<p>実装が簡単で、コードが理解しやすい。</p>
 </li>
 <li>
-<p>原地排序，不需要额外的存储空间。</p>
+<p>インプレースソートであり、追加のストレージスペースは不要です。</p>
 </li>
 <li>
-<p>对于小规模数据集，性能尚可接受。</p>
+<p>小規模なデータセットに対しては、性能はまだ許容範囲です。</p>
 </li>
 </ul>
 </li>
@@ -150,10 +147,10 @@ sorted_arr <span style="color: Gray;">=</span> selection_sort<span style="color:
 <p><strong>缺点</strong>：</p>
 <ul>
 <li>
-<p>时间复杂度较高，不适合大规模数据集。</p>
+<p>時間計算量が高く、大規模なデータセットには適していません。</p>
 </li>
 <li>
-<p>不稳定排序算法（如果存在相同元素，可能会改变它们的相对顺序）。</p>
+<p>不安定なソートアルゴリズムです（同じ要素が存在する場合、それらの相対的な順序が変わる可能性があります）。</p>
 </li>
 </ul>
 </li>
@@ -162,14 +159,14 @@ sorted_arr <span style="color: Gray;">=</span> selection_sort<span style="color:
 <h3>适用场景</h3>
 <ul>
 <li>
-<p>数据量较小且对性能要求不高的场景。</p>
+<p>データ量が小さく、性能要件が高くないシナリオ。</p>
 </li>
 <li>
-<p>需要简单实现的场景。</p>
+<p>シンプルな実装が必要な場面。</p>
 </li>
 </ul>
 <hr/><h2>代码实现</h2>
-<h3>JavaScript 代码实现</h3>
+<h3>JavaScript コード実装</h3>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
 <span style="color: #000066; font-weight: bold;">function</span> selectionSort<span style="color: #009900;">(</span>arr<span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
     <span style="color: #000066; font-weight: bold;">var</span> len <span style="color: #339933;">=</span> arr.<span style="color: #660066;">length</span><span style="color: #339933;">;</span><br/>
@@ -188,7 +185,7 @@ sorted_arr <span style="color: Gray;">=</span> selection_sort<span style="color:
     <span style="color: #000066; font-weight: bold;">return</span> arr<span style="color: #339933;">;</span><br/>
 <span style="color: #009900;">}</span><br/>
 </div></div>
-<h3>Python 代码实现</h3>
+<h3>Python コード実装</h3>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
 <span style="color: Green;font-weight:bold;">def</span> selectionSort<span style="color: Olive;">(</span>arr<span style="color: Olive;">)</span>:<br/>
     <span style="color: Green;font-weight:bold;">for</span> i <span style="color: Green;font-weight:bold;">in</span> <span style="color: Teal;">range</span><span style="color: Olive;">(</span><span style="color: Teal;">len</span><span style="color: Olive;">(</span>arr<span style="color: Olive;">)</span> - <span style="color: Maroon;">1</span><span style="color: Olive;">)</span>:<br/>
@@ -202,7 +199,7 @@ sorted_arr <span style="color: Gray;">=</span> selection_sort<span style="color:
             arr<span style="color: Olive;">[</span>i<span style="color: Olive;">]</span><span style="color: Gray;">,</span> arr<span style="color: Olive;">[</span>minIndex<span style="color: Olive;">]</span> <span style="color: Gray;">=</span> arr<span style="color: Olive;">[</span>minIndex<span style="color: Olive;">]</span><span style="color: Gray;">,</span> arr<span style="color: Olive;">[</span>i<span style="color: Olive;">]</span><br/>
     <span style="color: Green;font-weight:bold;">return</span> arr<br/>
 </div></div>
-<h3>Go 代码实现</h3>
+<h3>Go コード実装</h3>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
 <span style="color: #993333;">func</span> selectionSort<span style="color: #339933;">(</span>arr <span style="color: #339933;">[]</span><span style="color: #993333;">int</span><span style="color: #339933;">)</span> <span style="color: #339933;">[]</span><span style="color: #993333;">int</span> <span style="color: #339933;">{</span><br/>
         length <span style="color: #339933;">:=</span> <span style="color: #000066;">len</span><span style="color: #339933;">(</span>arr<span style="color: #339933;">)</span><br/>
@@ -218,7 +215,7 @@ sorted_arr <span style="color: Gray;">=</span> selection_sort<span style="color:
         <span style="color: #b1b100; font-weight: bold;">return</span> arr<br/>
 <span style="color: #339933;">}</span><br/>
 </div></div>
-<h3>Java 代码实现</h3>
+<h3>Java コード実装</h3>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
 <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">class</span> SelectionSort <span style="color: #000000; font-weight: bold;">implements</span> IArraySort <span style="color: #009900;">{</span><br/>
 <br/>
@@ -250,7 +247,7 @@ sorted_arr <span style="color: Gray;">=</span> selection_sort<span style="color:
     <span style="color: #009900;">}</span><br/>
 <span style="color: #009900;">}</span><br/>
 </div></div>
-<h3>PHP 代码实现</h3>
+<h3>PHP コード実装</h3>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
 <span style="color: #000000; ">function</span> selectionSort<span style="color: #164;">(</span><span style="color: #05a;">$arr</span><span style="color: #164;">)</span><br/>
 <span style="color: #164;">{</span><br/>
@@ -488,7 +485,7 @@ func selectionSort<span style="color: #002200;">(</span>_ list<span style="color
         return array; 
     }
 }</pre><div class="comt-meta wrapper"><span class="comt-author"><a href=".." target="_blank">SNK2345</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   SNK2345</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  239***2161@qq.com</p></div></span>6年前 (2020-10-13)</div></div></li><!-- #comment-## -->
-<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-73183"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   kezhuoquan</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  kez***quan@163.com</p></div><div class="upvotejs" data-commid="73183" id="runoobvote-id-73183"><a class="upvote"></a> <span class="count">36</span></div></div><div class="comt-main" id="div-comment-73183"><p>rust 版本的实现：</p>
+<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-73183"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   kezhuoquan</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  kez***quan@163.com</p></div><div class="upvotejs" data-commid="73183" id="runoobvote-id-73183"><a class="upvote"></a> <span class="count">36</span></div></div><div class="comt-main" id="div-comment-73183"><p>rust 版の実装：</p>
 <pre>fn selection_sort&lt;T:Ord + Debug&gt;(array: &amp;mut [T]) {
     for i in 0..array.len() {
         let mut temp = i;
@@ -502,12 +499,10 @@ func selectionSort<span style="color: #002200;">(</span>_ list<span style="color
 }</pre>
 <div class="comt-meta wrapper"><span class="comt-author"><a href=".." target="_blank">kezhuoquan</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   kezhuoquan</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  kez***quan@163.com</p></div></span>4年前 (2022-06-08)</div></div></li><!-- #comment-## -->
 </ol>
-<div class="pagenav">
-</div>
 </div>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>点我分享笔记</h3>
+<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてメモを共有</h3>
 &lt;p style="font-size:14px;"&gt;笔记需要是本篇文章的内容扩展！&lt;/p&gt;&lt;br&gt;
 	&lt;p style="font-size:12px;"&gt;&lt;a href="../tougao.html" target="_blank"&gt;文章投稿，可点击这里&lt;/a&gt;&lt;/p&gt;
 	&lt;p style="font-size:14px;"&gt;&lt;a href="./runoob-user-test-intro.html" target="_blank"&gt;注册邀请码获取方式&lt;/a&gt;&lt;/p&gt;
@@ -775,24 +770,7 @@ jQuery(document).ready(function ($){
 	$("#leftcolumn").html(left_list);
 });
 	</script>
-<div class="sidebar-box cate-list">
-<div class="sidebar-box recommend-here list-link">
-<a href="#">算法系列</a> </div>
-<ul class="membership">
-<li><a data-id="21423" href="./ten-sorting-algorithm.html" target="_top" title="1.0 十大经典排序算法">1.0 十大经典排序算法</a></li>
-<li><a data-id="21425" href="./bubble-sort.html" target="_top" title="1.1 冒泡排序">1.1 冒泡排序</a></li>
-<li>
-	1.2 选择排序	</li>
-<li><a data-id="21429" href="./insertion-sort.html" target="_top" title="1.3 插入排序">1.3 插入排序</a></li>
-<li><a data-id="21431" href="./shell-sort.html" target="_top" title="1.4 希尔排序">1.4 希尔排序</a></li>
-<li><a data-id="21433" href="./merge-sort.html" target="_top" title="1.5 归并排序">1.5 归并排序</a></li>
-<li><a data-id="21435" href="./quick-sort-2.html" target="_top" title="1.6 快速排序">1.6 快速排序</a></li>
-<li><a data-id="21437" href="./heap-sort.html" target="_top" title="1.7 堆排序">1.7 堆排序</a></li>
-<li><a data-id="21440" href="./counting-sort.html" target="_top" title="1.8 计数排序">1.8 计数排序</a></li>
-<li><a data-id="21442" href="./bucket-sort.html" target="_top" title="1.9 桶排序">1.9 桶排序</a></li>
-<li><a data-id="21445" href="./radix-sort.html" target="_top" title="1.10 基数排序">1.10 基数排序</a></li>
-<li><a data-id="27419" href="./sort-practice.html" target="_top" title="1.11 算法代码练习">1.11 算法代码练习</a></li>
-</ul></div> </div>
+</div>
 </div>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

@@ -60,9 +60,6 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div>
 <div class="row">
 <div class="col right-list">
-<button class="btn btn-responsive-nav btn-inverse" id="pull">
-<i class="fa fa-navicon"></i>
-</button>
 </div>
 <div class="col search search-desktop last">
 <div class="search-input">
@@ -79,15 +76,15 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="col middle-column big-middle-column">
 <div class="article">
 <div class="article-heading">
-<h2>Linux 常用命令学习</h2> <h3><em>分类</em> <a href="../w3cnote_genre/code.html" title="编程技术">编程技术</a> </h3>
+<h2>Linux よく使うコマンド学習</h2> <h3><em>分类</em> <a href="../w3cnote_genre/code.html" title="编程技术">编程技术</a> </h3>
 </div>
 <div class="article-body note-body">
 <div class="article-intro">
 <!-- ad start-->
 <!-- ad end-->
 <h3>1、ls命令</h3>
-<p>就是 list 的缩写，通过 ls 命令不仅可以查看 linux 文件夹包含的文件，而且可以查看文件权限(包括目录、文件夹、文件权限)查看目录信息等等。</p>
-<p><strong>常用参数搭配：</strong></p>
+<p>list の略語です。ls コマンドを使用すると、Linux フォルダに含まれるファイルを確認できるだけでなく、ファイルの権限（ディレクトリ、フォルダ、ファイルの権限を含む）を確認でき、ディレクトリ情報などを確認できます。</p>
+<p><strong>よく使うパラメータの組み合わせ：</strong></p>
 <pre>ls -a 列出目录所有文件，包含以.开始的隐藏文件
 ls -A 列出除.及..的其它文件
 ls -r 反序排列
@@ -96,96 +93,96 @@ ls -S 以文件大小排序
 ls -h 以易读大小显示
 ls -l 除了文件名之外，还将文件的权限、所有者、文件大小等信息详细列出来</pre>
 <p><strong>实例：</strong></p>
-<p>(1) 按易读方式按时间反序排序，并显示文件详细信息</p>
+<p>(1) 読みやすい形式で時間の降順に並べ替え、ファイルの詳細情報を表示する</p>
 <pre>ls -lhrt</pre>
-<p>(2) 按大小反序显示文件详细信息</p>
+<p>(2) サイズの降順でファイルの詳細情報を表示する</p>
 <pre>ls -lrS</pre>
-<p>(3)列出当前目录中所有以"t"开头的目录的详细内容</p>
+<p>（3）現在のディレクトリ内の「t」で始まるすべてのディレクトリの詳細を一覧表示します</p>
 <pre>ls -l t*</pre>
-<p>(4) 列出文件绝对路径（不包含隐藏文件）</p>
+<p>(4) ファイルの絶対パスを一覧表示する（隠しファイルを含まない）</p>
 <pre>ls | sed "s:^:`pwd`/:"</pre>
-<p>(5) 列出文件绝对路径（包含隐藏文件）</p>
+<p>(5) ファイルの絶対パスを一覧表示する（隠しファイルを含む）</p>
 <pre>find $pwd -maxdepth 1 | xargs ls -ld</pre>
 <h3>2、cd 命令</h3>
 <p>cd(changeDirectory) 命令语法：</p>
 <pre>cd [目录名]</pre>
-<p>说明：切换当前目录至 dirName。</p>
+<p>説明：カレントディレクトリを dirName に切り替えます。</p>
 <p><strong>实例：</strong></p>
-<p>（1）进入要目录</p>
+<p>（1）対象のディレクトリに入る</p>
 <pre>cd /</pre>
-<p>（2）进入 "home" 目录</p>
+<p>（2）"home" ディレクトリに入る</p>
 <pre>cd ~</pre>
-<p>（3）进入上一次工作路径</p>
+<p>（3）前回の作業パスに入ります</p>
 <pre>cd -</pre>
-<p>（4）把上个命令的参数作为cd参数使用。</p>
+<p>（4）直前のコマンドの引数をcdの引数として使用する。</p>
 <pre>cd !$</pre>
 <h3>3、pwd 命令</h3>
-<p>pwd 命令用于查看当前工作目录路径。</p>
+<p>pwd コマンドは、現在の作業ディレクトリのパスを表示するために使用されます。</p>
 <p><strong>实例：</strong></p>
-<p>（1）查看当前路径</p>
+<p>（1）現在のパスを確認する</p>
 <pre>pwd</pre>
-<p>（2）查看软链接的实际路径</p>
+<p>（2）シンボリックリンクの実際のパスを表示します</p>
 <pre>pwd -P</pre>
 <p>4、mkdir 命令</p>mkdir 命令用于创建文件夹。<p>可用选项：</p>
 <ul><li>
-<strong>-m</strong>: 对新建目录设置存取权限，也可以用 chmod 命令设置;</li><li>
-<strong>-p</strong>: 可以是一个路径名称。此时若路径中的某些目录尚不存在,加上此选项后，系统将自动建立好那些尚不在的目录，即一次可以建立多个目录。</li></ul>
+<strong>-m</strong>: 新しく作成したディレクトリにアクセス権限を設定します。chmod コマンドでも設定できます。</li><li>
+<strong>-p</strong>: パス名を指定できます。このとき、パス内の一部のディレクトリがまだ存在しない場合、このオプションを追加すると、システムが自動的に存在しないディレクトリを作成します。つまり、一度に複数のディレクトリを作成できます。</li></ul>
 <p><strong>实例：</strong></p>
-<p>（1）当前工作目录下创建名为  t的文件夹</p>
+<p>（1）現在の作業ディレクトリに「t」という名前のフォルダを作成します</p>
 <pre>mkdir t</pre>
-<p>（2）在 tmp 目录下创建路径为 test/t1/t 的目录，若不存在，则创建：</p>
+<p>（2）tmp ディレクトリ配下にパス test/t1/t のディレクトリを作成します。存在しない場合は作成します。</p>
 <pre>mkdir -p /tmp/test/t1/t</pre>
 <h3>5、rm 命令</h3>
-<p>删除一个目录中的一个或多个文件或目录，如果没有使用 -r 选项，则 rm 不会删除目录。如果使用 rm 来删除文件，通常仍可以将该文件恢复原状。</p>
+<p>ディレクトリ内の1つまたは複数のファイルやディレクトリを削除します。-r オプションを使用しない場合、rm はディレクトリを削除しません。rm でファイルを削除した場合でも、通常はそのファイルを元の状態に復元できます。</p>
 <pre>rm [选项] 文件…</pre>
 <p><strong>实例：</strong></p>
-<p>（1）删除任何 .log 文件，删除前逐一询问确认：</p>
+<p>（1）すべての.logファイルを削除する。削除前に一つずつ確認を求める：</p>
 <pre>rm -i *.log</pre>
-<p>（2）删除 test 子目录及子目录中所有档案删除，并且不用一一确认：</p>
+<p>（2）test サブディレクトリとその中のすべてのファイルを削除し、一つ一つ確認しない場合：</p>
 <pre>rm -rf test</pre>
-<p>（3）删除以 -f 开头的文件</p>
+<p>（3）-f で始まるファイルを削除する</p>
 <pre>rm -- -f*</pre>
 <h3>6、rmdir 命令</h3>
-<p>从一个目录中删除一个或多个子目录项，删除某目录时也必须具有对其父目录的写权限。</p>
-<p><strong>注意</strong>：不能删除非空目录</p>
+<p>ディレクトリから1つまたは複数のサブディレクトリ項目を削除します。ディレクトリを削除するには、その親ディレクトリに対する書き込み権限も必要です。</p>
+<p><strong>注意</strong>：空でないディレクトリは削除できない</p>
 <p><strong>实例：</strong></p>
-<p>（1）当 parent 子目录被删除后使它也成为空目录的话，则顺便一并删除：</p>
+<p>（1）parent サブディレクトリが削除された後、それが空のディレクトリになった場合は、ついでに一緒に削除します：</p>
 <pre>rmdir -p parent/child/child11</pre>
 <h3>7、mv 命令</h3>
-<p>移动文件或修改文件名，根据第二参数类型（如目录，则移动文件；如为文件则重命令该文件）。</p>
-<p>当第二个参数为目录时，第一个参数可以是多个以空格分隔的文件或目录，然后移动第一个参数指定的多个文件到第二个参数指定的目录中。</p>
+<p>ファイルを移動したり、ファイル名を変更したりします。2番目のパラメータのタイプに応じて（ディレクトリの場合はファイルを移動し、ファイルの場合はそのファイルの名前を変更します）。</p>
+<p>2番目のパラメータがディレクトリの場合、1番目のパラメータはスペースで区切られた複数のファイルまたはディレクトリを指定でき、1番目のパラメータで指定した複数のファイルを2番目のパラメータで指定したディレクトリに移動します。</p>
 <p><strong>实例：</strong></p>
-<p>（1）将文件 test.log 重命名为 test1.txt</p>
+<p>（1）ファイル test.log を test1.txt に名前変更する</p>
 <pre>mv test.log test1.txt</pre>
-<p>（2）将文件 log1.txt,log2.txt,log3.txt 移动到根的 test3 目录中</p>
+<p>（2）ファイル log1.txt、log2.txt、log3.txt をルートの test3 ディレクトリに移動する</p>
 <pre>mv llog1.txt log2.txt log3.txt /test3</pre>
-<p>（3）将文件 file1 改名为 file2，如果 file2 已经存在，则询问是否覆盖</p>
+<p>（3）ファイル file1 を file2 に名前を変更する。file2 が既に存在する場合は、上書きするか確認する</p>
 <pre>mv -i log1.txt log2.txt</pre>
-<p>（4）移动当前文件夹下的所有文件到上一级目录</p>
+<p>（4）現在のフォルダ内のすべてのファイルを親ディレクトリに移動します</p>
 <pre>mv * ../</pre>
 <h3>8、cp 命令</h3>
-<p>将源文件复制至目标文件，或将多个源文件复制至目标目录。</p>
-<p>注意：命令行复制，如果目标文件已经存在会提示是否覆盖，而在 shell 脚本中，如果不加 -i 参数，则不会提示，而是直接覆盖！</p>
+<p>ソースファイルをターゲットファイルにコピーするか、複数のソースファイルをターゲットディレクトリにコピーします。</p>
+<p>注意：コマンドラインでのコピーでは、ターゲットファイルが既に存在する場合、上書きするかどうかが確認されます。しかし、shell スクリプトでは、-i パラメータを付けない場合、確認なしで直接上書きされます！</p>
 <pre>-i 提示
 -r 复制目录及目录内所有项目
 -a 复制的文件与原文件时间一样</pre>
 <p><strong>实例：</strong></p>
-<p>（1）复制 a.txt 到 test 目录下，保持原文件时间，如果原文件存在提示是否覆盖。</p>
+<p>（1）a.txt を test ディレクトリにコピーし、元のファイルのタイムスタンプを保持します。元のファイルが存在する場合は上書きするかどうか確認します。</p>
 <pre>cp -ai a.txt test</pre>
-<p>（2）为 a.txt 建立一个链接（快捷方式）</p>
+<p>（2）a.txt へのリンク（ショートカット）を作成する</p>
 <pre>cp -s a.txt link_a.txt</pre>
 <h3>9、cat 命令</h3>
-<p>cat 主要有三大功能：</p>
-<p>1.一次显示整个文件:</p><pre>cat filename</pre>
-<p>2.从键盘创建一个文件:</p><pre>cat &gt; filename</pre><p>只能创建新文件，不能编辑已有文件。</p>
-<p>3.将几个文件合并为一个文件:</p><pre>cat file1 file2 &gt; file</pre>
-<ul><li>-b 对非空输出行号</li><li>-n 输出所有行号</li></ul>
+<p>cat には主に3つの大きな機能がある：</p>
+<p>1. ファイル全体を一度に表示します：</p><pre>cat filename</pre>
+<p>2. キーボードからファイルを作成します：</p><pre>cat &gt; filename</pre><p>新しいファイルのみ作成でき、既存のファイルは編集できない。</p>
+<p>3.いくつかのファイルを1つのファイルに結合する:</p><pre>cat file1 file2 &gt; file</pre>
+<ul><li>-b 空でない出力行に行番号を付けます</li><li>-n すべての行番号を出力する</li></ul>
 <p><strong>实例：</strong></p>
-<p>（1）把 log2012.log 的文件内容加上行号后输入 log2013.log 这个文件里</p>
+<p>（1）log2012.log のファイル内容に行番号を付けて log2013.log というファイルに出力する</p>
 <pre>cat -n log2012.log log2013.log</pre>
-<p>（2）把 log2012.log 和 log2013.log 的文件内容加上行号（空白行不加）之后将内容附加到 log.log 里</p>
+<p>（2）log2012.log と log2013.log のファイル内容に行番号を付け（空白行には付けない）、その後 log.log に内容を追記する</p>
 <pre>cat -b log2012.log log2013.log log.log</pre>
-<p>（3）使用 here doc 生成新文件</p>
+<p>（3）here doc を使用して新しいファイルを生成する</p>
 <pre>cat &gt;log.txt &lt;&lt;EOF
 &gt;Hello
 &gt;World
@@ -196,13 +193,13 @@ cat log.txt
 Hello
 World
 PWD=/opt/soft/test</pre>
-<p>（4）反向列示</p>
+<p>（4）逆順に表示する</p>
 <pre>tac log.txt
 PWD=/opt/soft/test
 World
 Hello</pre>
 <h3>10、more 命令</h3>
-<p>功能类似于 cat, more 会以一页一页的显示方便使用者逐页阅读，而最基本的指令就是按空白键（space）就往下一页显示，按 b 键就会往回（back）一页显示。</p>
+<p>機能は cat に似ています。more は1ページずつ表示し、ユーザーがページごとに読みやすくします。最も基本的な操作は、スペースキー（space）を押すと次のページが表示され、b キーを押すと前のページ（back）に戻ります。</p>
 <p><strong>命令参数：</strong></p>
 <pre>+n      从笫 n 行开始显示
 -n       定义屏幕大小为n行
@@ -213,7 +210,7 @@ Hello</pre>
 -p       通过清除窗口而不是滚屏来对文件进行换页，与-c选项相似
 -s       把连续的多个空行显示为一行
 -u       把文件内容中的下画线去掉</pre>
-<p><strong>常用操作命令：</strong></p>
+<p><strong>よく使う操作コマンド：</strong></p>
 <pre>Enter    向下 n 行，需要定义。默认为 1 行
 Ctrl+F   向下滚动一屏
 空格键  向下滚动一屏
@@ -224,14 +221,14 @@ V      调用vi编辑器
 !命令   调用Shell，并执行命令
 q       退出more</pre>
 <p><strong>实例：</strong></p>
-<p>（1）显示文件中从第3行起的内容</p>
+<p>（1）ファイルの3行目以降の内容を表示する</p>
 <pre>more +3 text.txt</pre>
-<p>（2）在所列出文件目录详细信息，借助管道使每次显示 5 行</p>
+<p>（2）ファイルとディレクトリの詳細情報を一覧表示し、パイプを使用して毎回5行ずつ表示します</p>
 <pre>ls -l | more -5</pre>
-<p>按空格显示下 5 行。</p>
+<p>スペースキーを押すと次の5行が表示されます。</p>
 <h3>11、less 命令</h3>
-<p>less 与 more 类似，但使用 less 可以随意浏览文件，而 more 仅能向前移动，却不能向后移动，而且 less 在查看之前不会加载整个文件。</p>
-<p><strong>常用命令参数：</strong></p>
+<p>less は more に似ているが、less を使用するとファイルを自由に閲覧できる。一方 more は前方にしか移動できず、後方には移動できない。また less は表示前にファイル全体を読み込まない。</p>
+<p><strong>よく使うコマンドのパラメータ：</strong></p>
 <pre>-i  忽略搜索时的大小写
 -N  显示每行的行号
 -o  &lt;文件名&gt; 将less 输出的内容在指定文件中保存起来
@@ -252,37 +249,37 @@ y  向前滚动一行
 [pagedown]： 向下翻动一页
 [pageup]：   向上翻动一页</pre>
 <p><strong>实例：</strong></p>
-<p>（1）ps 查看进程信息并通过 less 分页显示</p>
+<p>（1）ps でプロセス情報を確認し、less でページ分割して表示する</p>
 <pre>ps -aux | less -N</pre>
-<p>（2）查看多个文件</p>
+<p>（2）複数のファイルを確認する</p>
 <pre>less 1.log 2.log</pre>
-<p>可以使用 n 查看下一个，使用 p 查看前一个。</p>
+<p>n を使用して次を表示し、p を使用して前を表示できる。</p>
 <h3>12、head 命令</h3>
-<p>head 用来显示档案的开头至标准输出中，默认 head 命令打印其相应文件的开头 10 行。</p>
+<p>head はファイルの先頭を標準出力に表示するために使う。デフォルトでは head コマンドは対応するファイルの先頭10行を出力する。</p>
 <p><strong>常用参数：</strong></p>
 <pre>-n&lt;行数&gt; 显示的行数（行数为复数表示从最后向前数）</pre>
 <p><strong>实例：</strong></p>
-<p>（1）显示 1.log 文件中前 20 行</p>
+<p>（1）1.log ファイルの最初の20行を表示する</p>
 <pre>head 1.log -n 20</pre>
-<p>（2）显示 1.log 文件前 20 字节</p>
+<p>（2）1.log ファイルの最初の20バイトを表示する</p>
 <pre>head -c 20 log2014.log</pre>
-<p>（3）显示  t.log最后 10 行</p>
+<p>（3）t.log の最後の10行を表示する</p>
 <pre>head -n -10 t.log</pre>
 <h3>13、tail 命令</h3>
-<p>用于显示指定文件末尾内容，不指定文件时，作为输入信息进行处理。常用查看日志文件。</p>
+<p>指定したファイルの末尾の内容を表示するために使う。ファイルを指定しない場合は、入力情報として処理する。ログファイルを確認するときによく使われる。</p>
 <p><strong>常用参数：</strong></p>
 <pre>-f 循环读取（常用于查看递增的日志文件）
 -n&lt;行数&gt; 显示行数（从后向前）</pre>
-<p>（1）循环读取逐渐增加的文件内容</p>
-<pre>ping 127.0.0.1 &gt; ping.log &amp;</pre><p>后台运行：可使用 jobs -l 查看，也可使用  fg 将其移到前台运行。</p>
-<pre>tail -f ping.log</pre><p>（查看日志）</p>
+<p>（1）徐々に増加するファイル内容をループで読み取る</p>
+<pre>ping 127.0.0.1 &gt; ping.log &amp;</pre><p>バックグラウンド実行：jobs -l で確認でき、fg を使用してフォアグラウンドに移動して実行することもできます。</p>
+<pre>tail -f ping.log</pre><p>（ログを確認する）</p>
 <h3>14、which 命令</h3>
-<p>在 linux 要查找某个文件，但不知道放在哪里了，可以使用下面的一些命令来搜索：</p>
+<p>Linux で特定のファイルを検索したいが、どこにあるかわからない場合は、以下のコマンドを使用して検索できます：</p>
 <pre>which     查看可执行文件的位置。
 whereis 查看文件的位置。
 locate  配合数据库查看文件位置。
 find        实际搜寻硬盘查询文件名称。</pre>
-<p>which 是在 PATH 就是指定的路径中，搜索某个系统命令的位置，并返回第一个搜索结果。使用 which 命令，就可以看到某个系统命令是否存在，以及执行的到底是哪一个位置的命令。</p>
+<p>which は、PATH で指定されたパス内でシステムコマンドの位置を検索し、最初の検索結果を返します。which コマンドを使用すると、システムコマンドが存在するかどうか、および実際にどの位置のコマンドが実行されるかを確認できます。</p>
 <p><strong>常用参数：</strong></p>
 <pre>-n 　指定文件名长度，指定的长度必须大于或等于所有文件中最长的文件名。</pre>
 <p><strong>实例：</strong></p>
@@ -855,7 +852,7 @@ free -m</pre>
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>点我分享笔记</h3>
+<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 &lt;p style="font-size:14px;"&gt;ノートはこの記事の内容を拡張したものである必要があります！&lt;/p&gt;&lt;br&gt;
 	&lt;p style="font-size:12px;"&gt;&lt;a href="../tougao.html" target="_blank"&gt;記事投稿は、ここをクリックしてください&lt;/a&gt;&lt;/p&gt;
 	&lt;p style="font-size:14px;"&gt;&lt;a href="./runoob-user-test-intro.html" target="_blank"&gt;登録招待コードの取得方法&lt;/a&gt;&lt;/p&gt;
@@ -1104,181 +1101,6 @@ var aid = 21124;
 
 </div>
 -->
-<div class="sidebar-box cate-list" style="display:none;">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">热门文章</a>
-</div>
-<div class="membership">
-<ul class="membership">
-<li><a href="https://mp.weixin.qq.com/s/ZaP6YNgKTCHYy3r2WPBBaw" target="_blank" title="2024 年 04 月 JavaScript 框架排行榜">2024 年 04 月 JavaScript 框架排行榜</a></li>
-<li><a href="https://mp.weixin.qq.com/s/JBR2twC0t6krjjuxqvhsEQ" target="_blank" title="免费、开源、好用的 SQL 客户端合集">免费、开源、好用的 SQL 客户端合集</a></li>
-<li><a href="https://mp.weixin.qq.com/s/TwV3YQjA1glyaW7TiHvhlA" target="_blank" title="优雅的代码规范，提升代码质量">优雅的代码规范，提升代码质量</a></li>
-<li><a href="https://mp.weixin.qq.com/s/CnUJ-2OHPbBKlnVpjDzavA" target="_blank" title="命令行中的趣味世界，牛也能说话，有趣又好玩">命令行中的趣味世界，牛也能说话，有趣又好玩</a></li>
-<li><a href="https://mp.weixin.qq.com/s/7NKl-mD7N8CeSNQlbKDEWA" target="_blank" title="2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？">2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？</a></li>
-<li><a href="https://mp.weixin.qq.com/s/yWlSVDKobtDhThnhirVRpw" target="_blank" title="免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端">免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端</a></li>
-</ul>
-</div>
-</div>
-<div class="sidebar-box cate-list">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">教程列表</a>
-</div>
-<div class="cate-items">
-<a href="../ado.html">ADO 教程</a>
-<a href="../ai-agent.html">AI Agent 教程</a>
-<a href="../ai.html">AI 入门教程</a>
-<a href="../ai-math.html">AI 数学基础</a>
-<a href="../ajax.html">Ajax 教程</a>
-<a href="../android.html">Android 教程</a>
-<a href="../angularjs2.html">Angular2 教程</a>
-<a href="../angularjs.html">AngularJS 教程</a>
-<a href="../appml.html">AppML 教程</a>
-<a href="../asp.html">ASP 教程</a>
-<a href="../aspnet.html">ASP.NET 教程</a>
-<a href="../bootstrap.html">Bootstrap 教程</a>
-<a href="../bootstrap4.html">Bootstrap4 教程</a>
-<a href="../bootstrap5.html">Bootstrap5 教程</a>
-<a href="../cprogramming.html">C 教程</a>
-<a href="../c-dsa.html">C 语言数据结构与算法</a>
-<a href="../csharp.html">C# 教程</a>
-<a href="../cplusplus.html">C++ 教程</a>
-<a href="../chartjs.html">Chart.js 教程</a>
-<a href="../claude-code.html">Claude Code 教程</a>
-<a href="../cmake.html">CMake 教程</a>
-<a href="../codex.html">Codex 教程</a>
-<a href="../cssref.html">CSS 参考手册</a>
-<a href="../css.html">CSS 教程</a>
-<a href="../css3.html">CSS3 教程</a>
-<a href="../cursor.html">Cursor 教程</a>
-<a href="../dart.html">Dart 教程</a>
-<a href="../dash.html">Dash 教程</a>
-<a href="../deepseek-harness.html">DeepSeek Harness</a>
-<a href="../django.html">Django 教程</a>
-<a href="../docker.html">Docker 教程</a>
-<a href="../dtd.html">DTD 教程</a>
-<a href="../echarts.html">ECharts 教程</a>
-<a href="../eclipse.html">Eclipse 教程</a>
-<a href="../electron.html">Electron 教程</a>
-<a href="../fastapi.html">FastAPI 教程</a>
-<a href="../firebug.html">Firebug 教程</a>
-<a href="../flask.html">Flask 教程</a>
-<a href="../flutter.html">Flutter 教程</a>
-<a href="../font-awesome.html">Font Awesome 图标</a>
-<a href="../foundation.html">Foundation 教程</a>
-<a href="../git.html">Git 教程</a>
-<a href="../go.html">Go 语言教程</a>
-<a href="../googleapi.html">Google 地图 API 教程</a>
-<a href="../hermes-agent.html">Hermes Agent</a>
-<a href="../highcharts.html">Highcharts 教程</a>
-<a href="../htmldom.html">HTML DOM 教程</a>
-<a href="../tags.html">HTML 参考手册</a>
-<a href="../charsets.html">HTML 字符集</a>
-<a href="../html.html">HTML 教程</a>
-<a href="../http.html">HTTP 教程</a>
-<a href="../ionic.html">ionic 教程</a>
-<a href="../ios.html">iOS 教程</a>
-<a href="../java.html">Java 教程</a>
-<a href="../jsref.html">JavaScript 参考手册</a>
-<a href="../js.html">Javascript 教程</a>
-<a href="../jeasyui.html">jQuery EasyUI 教程</a>
-<a href="../jquerymobile.html">jQuery Mobile 教程</a>
-<a href="../jqueryui.html">jQuery UI 教程</a>
-<a href="../jquery.html">jQuery 教程</a>
-<a href="../json.html">JSON 教程</a>
-<a href="../jsp.html">JSP 教程</a>
-<a href="../julia.html">Julia 教程</a>
-<a href="../jupyter-notebook.html">Jupyter Notebook 教程</a>
-<a href="../kotlin.html">Kotlin 教程</a>
-<a href="../langchain.html">LangChain 教程</a>
-<a href="../latex.html">LaTeX 教程</a>
-<a href="../linux.html">Linux 教程</a>
-<a href="../lua.html">Lua 教程</a>
-<a href="../markdown.html">Markdown 教程</a>
-<a href="../matplotlib.html">Matplotlib 教程</a>
-<a href="../maven.html">Maven 教程</a>
-<a href="../memcached.html">Memcached 教程</a>
-<a href="../mongodb.html">MongoDB 教程</a>
-<a href="../mysql.html">MySQL 教程</a>
-<a href="../nextjs.html">Next.js 教程</a>
-<a href="../nlp.html">NLP 教程</a>
-<a href="../nodejs.html">Node.js 教程</a>
-<a href="../numpy.html">NumPy 教程</a>
-<a href="../obsidian.html">Obsidian 教程</a>
-<a href="../ollama.html">Ollama 教程</a>
-<a href="../opencode.html">OpenCode 教程</a>
-<a href="../opencv.html">OpenCV 教程</a>
-<a href="../pandas.html">Pandas 教程</a>
-<a href="../perl.html">Perl 教程</a>
-<a href="../php.html">PHP 教程</a>
-<a href="../pi-agent.html">Pi Agent</a>
-<a href="../pillow.html">Pillow 教程</a>
-<a href="../playwright.html">Playwright 教程</a>
-<a href="../postgresql.html">PostgreSQL 教程</a>
-<a href="../powershell.html">PowerShell</a>
-<a href="../pycharm.html">Pycharm 教程</a>
-<a href="../python3.html">Python 3 教程</a>
-<a href="../python.html">Python 基础教程</a>
-<a href="../python-design-pattern.html">Python 设计模式</a>
-<a href="../python-qt.html">Python 量化交易</a>
-<a href="../pytorch.html">PyTorch 教程</a>
-<a href="../r.html">R 教程</a>
-<a href="../rdf.html">RDF 教程</a>
-<a href="../react.html">React 教程</a>
-<a href="../redis.html">Redis 教程</a>
-<a href="../restfulapi.html">RESTful API</a>
-<a href="../rss.html">RSS 教程</a>
-<a href="../ruby.html">Ruby 教程</a>
-<a href="../rust.html">Rust 教程</a>
-<a href="../sass.html">Sass 教程</a>
-<a href="../scala.html">Scala 教程</a>
-<a href="../scipy.html">SciPy 教程</a>
-<a href="../selenium.html">Selenium 教程</a>
-<a href="../servlet.html">Servlet 教程</a>
-<a href="../skills.html">Skills 教程</a>
-<a href="../sklearn.html">Sklearn 教程</a>
-<a href="../soap.html">SOAP 教程</a>
-<a href="../sql.html">SQL 教程</a>
-<a href="../sqlite.html">SQLite 教程</a>
-<a href="../svg.html">SVG 教程</a>
-<a href="../svn.html">SVN 教程</a>
-<a href="../swagger.html">Swagger 教程</a>
-<a href="../swift.html">Swift 教程</a>
-<a href="../tailwindcss.html">Tailwind CSS 教程</a>
-<a href="../tcpip.html">TCP/IP 教程</a>
-<a href="../tensorflow.html">TensorFlow 教程</a>
-<a href="../typescript.html">TypeScript 教程</a>
-<a href="../uniapp.html">uni-app 教程</a>
-<a href="../vbscript.html">VBScript 教程</a>
-<a href="../vibe-coding.html">Vibe Coding 教程</a>
-<a href="../vscode.html">VSCode 教程</a>
-<a href="../vue2.html">Vue.js 教程</a>
-<a href="../vue3.html">Vue3 教程</a>
-<a href="../w3c.html">W3C 教程</a>
-<a href="../webservices.html">Web Service 教程</a>
-<a href="../wsdl.html">WSDL 教程</a>
-<a href="../xlink.html">XLink 教程</a>
-<a href="../dom.html">XML DOM 教程</a>
-<a href="../schema.html">XML Schema 教程</a>
-<a href="../xml.html">XML 教程</a>
-<a href="../xpath.html">XPath 教程</a>
-<a href="../xquery.html">XQuery 教程</a>
-<a href="../xslfo.html">XSLFO 教程</a>
-<a href="../xsl.html">XSLT 教程</a>
-<a href="../zig.html">Zig 教程</a>
-<a href="../data-structures.html">数据结构</a>
-<a href="../ml.html">机器学习</a>
-<a href="../regexp.html">正则表达式</a>
-<a href="../assembly.html">汇编语言</a>
-<a href="../quiz.html">测验</a>
-<a href="../browsers.html">浏览器</a>
-<a href="../quality.html">网站品质</a>
-<a href="../web.html">网站建设指南</a>
-<a href="../hosting.html">网站服务器教程</a>
-<a href="../np.html">网络协议</a>
-<a href="../computer-organization.html">计算机组成原理</a>
-<a href="../design-pattern.html">设计模式</a>
-</div>
-</div>
 </div>
 </div>
 </div>

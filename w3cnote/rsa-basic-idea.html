@@ -60,9 +60,6 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div>
 <div class="row">
 <div class="col right-list">
-<button class="btn btn-responsive-nav btn-inverse" id="pull">
-<i class="fa fa-navicon"></i>
-</button>
 </div>
 <div class="col search search-desktop last">
 <div class="search-input">
@@ -79,22 +76,22 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="col middle-column big-middle-column">
 <div class="article">
 <div class="article-heading">
-<h2>RSA 基本思路如下</h2> <h3><em>分类</em> <a href="../w3cnote_genre/code.html" title="编程技术">编程技术</a> </h3>
+<h2>RSAの基本的な考え方は以下のとおりです。</h2> <h3><em>分类</em> <a href="../w3cnote_genre/code.html" title="编程技术">编程技术</a> </h3>
 </div>
 <div class="article-body note-body">
 <div class="article-intro">
 <!-- ad start-->
 <!-- ad end-->
-<h3>1.公钥与私钥的生成：</h3>
+<h3>1.公開鍵と秘密鍵の生成：</h3>
 <ul>
-<li>(1) 随机挑选两个大质数 p 和 q，构造n = p*q;</li>
-<li>(2)计算欧拉函数φ(n) = (p-1) * (q-1);</li>
-<li>(3)随机挑选e，使得gcd(e, φ(n)) = 1，即 e 与 φ(n) 互素,gcd指的是求最大公约数;</li>
-<li>(4)计算d，使得 e*d ≡ 1 (mod φ(n))，即d 是e 的乘法逆元。</li>
+<li>(1) ランダムに2つの大きな素数pとqを選び、n = p*qを構成する;</li>
+<li>(2)オイラー関数φ(n) = (p-1) * (q-1) を計算する;</li>
+<li>(3) e をランダムに選び、gcd(e, φ(n)) = 1 となるようにする。すなわち、e と φ(n) は互いに素である。gcd は最大公約数を求めることを指す。</li>
+<li>(4) e*d ≡ 1 (mod φ(n)) となるように d を計算する。すなわち、d は e の乗法逆元である。</li>
 </ul>
-<h3>2.加密过程：</h3>
+<h3>2. 暗号化プロセス：</h3>
 <ul>
-<li><p>(1)待加密信息（明文）为 m，m &lt; n；（因为要做模运算，若m大于n，则后面的运算不会成立，因此当信息比n要大时，应该分块加密）;</p></li>
+<li><p>(1) 暗号化する情報（平文）はmであり、m &lt; n；（モジュロ演算を行うため、mがnより大きい場合、後の演算は成立しない。したがって、情報がnより大きい場合は、ブロックに分けて暗号化すべきである）</p></li>
 <li><p>(2))密文 c 的生成是 $$ c = m^e mod (n) $$</p></li>
 </ul>
 <h3 id="toc_3">3.解密</h3>
@@ -106,18 +103,18 @@ $$</p>
 <h3>3.解密</h3>
 <pre>
 $$ c^d mod (n) = (m^e)^d mod (n) = m^(d*e) mod (n) ; $$</pre>
-<h3>为什么能解密？</h3>
+<h3>なぜ復号できるのか？</h3>
 <blockquote>
-<p>要用到欧拉定理（其实是费马小定理的推广）</p>
+<p>オイラーの定理を使用する必要がある（実際にはフェルマーの小定理の一般化である）</p>
 <p>a^φ(n) ≡ 1 (mod n)，</p>
-<p>再推广：a^(φ(n)<em>k) ≡ 1 (mod n)，</em></p>
+<p>さらに一般化：a^(φ(n)<em>k) ≡ 1 (mod n)，</em></p>
 <p><em>得到 a^(φ(n)</em>k+1) ≡ a (mod n)</p>
 </blockquote>
 <h4>注意到 e<em>d ≡ 1 mod φ(N)，即：e</em>d = 1 + k*φ(N)。</h4>
 <h4>因此，$$
 M^(d<em>e) mod N = M^1 + k</em>φ(N) mod N = M
 $$
-<h3>4.代码如下</h3>
+<h3>4. コードは以下の通りです。</h3>
 <div class="example">
 <h2 class="example">实例</h2>
 <div class="example_code">
@@ -168,11 +165,11 @@ $$
 </span><span class="hl-brackets">(</span><span class="hl-identifier">d</span><span class="hl-code">,</span><span class="hl-identifier">n</span><span class="hl-brackets">)</span><span class="hl-code"> = </span><span class="hl-identifier">keyGeneration</span><span class="hl-brackets">(</span><span class="hl-identifier">p_v</span><span class="hl-code">,</span><span class="hl-identifier">q_v</span><span class="hl-code">,</span><span class="hl-identifier">e_v</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-comment">#生成 d和n</span><span class="hl-code">
 </span><span class="hl-identifier">m</span><span class="hl-code"> = </span><span class="hl-builtin">pow</span><span class="hl-brackets">(</span><span class="hl-identifier">c_v</span><span class="hl-code">,</span><span class="hl-identifier">d</span><span class="hl-code">,</span><span class="hl-identifier">n</span><span class="hl-brackets">)</span><span class="hl-code">
 </span><span class="hl-identifier">print</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">得到的明文m是:</span><span class="hl-quotes">"</span><span class="hl-code">+</span><span class="hl-builtin">str</span><span class="hl-brackets">(</span><span class="hl-identifier">m</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span></div>
-</div></div><h4>当输入p值：18443，q值：49891，e值19，</h4>
+</div></div><h4>p 値：18443，q 値：49891，e 値：19 を入力すると、</h4>
 <h4>密文c值：</h4><pre>70479679275221115227470416418414022368270835483295235263072905459788476483295235459788476663551792475206804459788476428313374475206804459788476425392137704796792458265677341524652483295235534149509425392137428313374425392137341524652458265677263072905483295235828509797341524652425392137475206804428313374483295235475206804459788476306220148</pre>
-<h4>得到的结果就会显示</h4>
+<h4>得られた結果が表示されます。</h4>
 <blockquote>
-<p>得到的明文m是: 88455713</p>
+<p>得られた平文mは: 88455713</p>
 </blockquote> </h4></div>
 </div>
 <div class="previous-next-links">
@@ -227,181 +224,6 @@ var aid = 19136;
 
 </div>
 -->
-<div class="sidebar-box cate-list" style="display:none;">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">热门文章</a>
-</div>
-<div class="membership">
-<ul class="membership">
-<li><a href="https://mp.weixin.qq.com/s/ZaP6YNgKTCHYy3r2WPBBaw" target="_blank" title="2024 年 04 月 JavaScript 框架排行榜">2024 年 04 月 JavaScript 框架排行榜</a></li>
-<li><a href="https://mp.weixin.qq.com/s/JBR2twC0t6krjjuxqvhsEQ" target="_blank" title="免费、开源、好用的 SQL 客户端合集">免费、开源、好用的 SQL 客户端合集</a></li>
-<li><a href="https://mp.weixin.qq.com/s/TwV3YQjA1glyaW7TiHvhlA" target="_blank" title="优雅的代码规范，提升代码质量">优雅的代码规范，提升代码质量</a></li>
-<li><a href="https://mp.weixin.qq.com/s/CnUJ-2OHPbBKlnVpjDzavA" target="_blank" title="命令行中的趣味世界，牛也能说话，有趣又好玩">命令行中的趣味世界，牛也能说话，有趣又好玩</a></li>
-<li><a href="https://mp.weixin.qq.com/s/7NKl-mD7N8CeSNQlbKDEWA" target="_blank" title="2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？">2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？</a></li>
-<li><a href="https://mp.weixin.qq.com/s/yWlSVDKobtDhThnhirVRpw" target="_blank" title="免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端">免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端</a></li>
-</ul>
-</div>
-</div>
-<div class="sidebar-box cate-list">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">教程列表</a>
-</div>
-<div class="cate-items">
-<a href="../ado.html">ADO 教程</a>
-<a href="../ai-agent.html">AI Agent 教程</a>
-<a href="../ai.html">AI 入门教程</a>
-<a href="../ai-math.html">AI 数学基础</a>
-<a href="../ajax.html">Ajax 教程</a>
-<a href="../android.html">Android 教程</a>
-<a href="../angularjs2.html">Angular2 教程</a>
-<a href="../angularjs.html">AngularJS 教程</a>
-<a href="../appml.html">AppML 教程</a>
-<a href="../asp.html">ASP 教程</a>
-<a href="../aspnet.html">ASP.NET 教程</a>
-<a href="../bootstrap.html">Bootstrap 教程</a>
-<a href="../bootstrap4.html">Bootstrap4 教程</a>
-<a href="../bootstrap5.html">Bootstrap5 教程</a>
-<a href="../cprogramming.html">C 教程</a>
-<a href="../c-dsa.html">C 语言数据结构与算法</a>
-<a href="../csharp.html">C# 教程</a>
-<a href="../cplusplus.html">C++ 教程</a>
-<a href="../chartjs.html">Chart.js 教程</a>
-<a href="../claude-code.html">Claude Code 教程</a>
-<a href="../cmake.html">CMake 教程</a>
-<a href="../codex.html">Codex 教程</a>
-<a href="../cssref.html">CSS 参考手册</a>
-<a href="../css.html">CSS 教程</a>
-<a href="../css3.html">CSS3 教程</a>
-<a href="../cursor.html">Cursor 教程</a>
-<a href="../dart.html">Dart 教程</a>
-<a href="../dash.html">Dash 教程</a>
-<a href="../deepseek-harness.html">DeepSeek Harness</a>
-<a href="../django.html">Django 教程</a>
-<a href="../docker.html">Docker 教程</a>
-<a href="../dtd.html">DTD 教程</a>
-<a href="../echarts.html">ECharts 教程</a>
-<a href="../eclipse.html">Eclipse 教程</a>
-<a href="../electron.html">Electron 教程</a>
-<a href="../fastapi.html">FastAPI 教程</a>
-<a href="../firebug.html">Firebug 教程</a>
-<a href="../flask.html">Flask 教程</a>
-<a href="../flutter.html">Flutter 教程</a>
-<a href="../font-awesome.html">Font Awesome 图标</a>
-<a href="../foundation.html">Foundation 教程</a>
-<a href="../git.html">Git 教程</a>
-<a href="../go.html">Go 语言教程</a>
-<a href="../googleapi.html">Google 地图 API 教程</a>
-<a href="../hermes-agent.html">Hermes Agent</a>
-<a href="../highcharts.html">Highcharts 教程</a>
-<a href="../htmldom.html">HTML DOM 教程</a>
-<a href="../tags.html">HTML 参考手册</a>
-<a href="../charsets.html">HTML 字符集</a>
-<a href="../html.html">HTML 教程</a>
-<a href="../http.html">HTTP 教程</a>
-<a href="../ionic.html">ionic 教程</a>
-<a href="../ios.html">iOS 教程</a>
-<a href="../java.html">Java 教程</a>
-<a href="../jsref.html">JavaScript 参考手册</a>
-<a href="../js.html">Javascript 教程</a>
-<a href="../jeasyui.html">jQuery EasyUI 教程</a>
-<a href="../jquerymobile.html">jQuery Mobile 教程</a>
-<a href="../jqueryui.html">jQuery UI 教程</a>
-<a href="../jquery.html">jQuery 教程</a>
-<a href="../json.html">JSON 教程</a>
-<a href="../jsp.html">JSP 教程</a>
-<a href="../julia.html">Julia 教程</a>
-<a href="../jupyter-notebook.html">Jupyter Notebook 教程</a>
-<a href="../kotlin.html">Kotlin 教程</a>
-<a href="../langchain.html">LangChain 教程</a>
-<a href="../latex.html">LaTeX 教程</a>
-<a href="../linux.html">Linux 教程</a>
-<a href="../lua.html">Lua 教程</a>
-<a href="../markdown.html">Markdown 教程</a>
-<a href="../matplotlib.html">Matplotlib 教程</a>
-<a href="../maven.html">Maven 教程</a>
-<a href="../memcached.html">Memcached 教程</a>
-<a href="../mongodb.html">MongoDB 教程</a>
-<a href="../mysql.html">MySQL 教程</a>
-<a href="../nextjs.html">Next.js 教程</a>
-<a href="../nlp.html">NLP 教程</a>
-<a href="../nodejs.html">Node.js 教程</a>
-<a href="../numpy.html">NumPy 教程</a>
-<a href="../obsidian.html">Obsidian 教程</a>
-<a href="../ollama.html">Ollama 教程</a>
-<a href="../opencode.html">OpenCode 教程</a>
-<a href="../opencv.html">OpenCV 教程</a>
-<a href="../pandas.html">Pandas 教程</a>
-<a href="../perl.html">Perl 教程</a>
-<a href="../php.html">PHP 教程</a>
-<a href="../pi-agent.html">Pi Agent</a>
-<a href="../pillow.html">Pillow 教程</a>
-<a href="../playwright.html">Playwright 教程</a>
-<a href="../postgresql.html">PostgreSQL 教程</a>
-<a href="../powershell.html">PowerShell</a>
-<a href="../pycharm.html">Pycharm 教程</a>
-<a href="../python3.html">Python 3 教程</a>
-<a href="../python.html">Python 基础教程</a>
-<a href="../python-design-pattern.html">Python 设计模式</a>
-<a href="../python-qt.html">Python 量化交易</a>
-<a href="../pytorch.html">PyTorch 教程</a>
-<a href="../r.html">R 教程</a>
-<a href="../rdf.html">RDF 教程</a>
-<a href="../react.html">React 教程</a>
-<a href="../redis.html">Redis 教程</a>
-<a href="../restfulapi.html">RESTful API</a>
-<a href="../rss.html">RSS 教程</a>
-<a href="../ruby.html">Ruby 教程</a>
-<a href="../rust.html">Rust 教程</a>
-<a href="../sass.html">Sass 教程</a>
-<a href="../scala.html">Scala 教程</a>
-<a href="../scipy.html">SciPy 教程</a>
-<a href="../selenium.html">Selenium 教程</a>
-<a href="../servlet.html">Servlet 教程</a>
-<a href="../skills.html">Skills 教程</a>
-<a href="../sklearn.html">Sklearn 教程</a>
-<a href="../soap.html">SOAP 教程</a>
-<a href="../sql.html">SQL 教程</a>
-<a href="../sqlite.html">SQLite 教程</a>
-<a href="../svg.html">SVG 教程</a>
-<a href="../svn.html">SVN 教程</a>
-<a href="../swagger.html">Swagger 教程</a>
-<a href="../swift.html">Swift 教程</a>
-<a href="../tailwindcss.html">Tailwind CSS 教程</a>
-<a href="../tcpip.html">TCP/IP 教程</a>
-<a href="../tensorflow.html">TensorFlow 教程</a>
-<a href="../typescript.html">TypeScript 教程</a>
-<a href="../uniapp.html">uni-app 教程</a>
-<a href="../vbscript.html">VBScript 教程</a>
-<a href="../vibe-coding.html">Vibe Coding 教程</a>
-<a href="../vscode.html">VSCode 教程</a>
-<a href="../vue2.html">Vue.js 教程</a>
-<a href="../vue3.html">Vue3 教程</a>
-<a href="../w3c.html">W3C 教程</a>
-<a href="../webservices.html">Web Service 教程</a>
-<a href="../wsdl.html">WSDL 教程</a>
-<a href="../xlink.html">XLink 教程</a>
-<a href="../dom.html">XML DOM 教程</a>
-<a href="../schema.html">XML Schema 教程</a>
-<a href="../xml.html">XML 教程</a>
-<a href="../xpath.html">XPath 教程</a>
-<a href="../xquery.html">XQuery 教程</a>
-<a href="../xslfo.html">XSLFO 教程</a>
-<a href="../xsl.html">XSLT 教程</a>
-<a href="../zig.html">Zig 教程</a>
-<a href="../data-structures.html">数据结构</a>
-<a href="../ml.html">机器学习</a>
-<a href="../regexp.html">正则表达式</a>
-<a href="../assembly.html">汇编语言</a>
-<a href="../quiz.html">测验</a>
-<a href="../browsers.html">浏览器</a>
-<a href="../quality.html">网站品质</a>
-<a href="../web.html">网站建设指南</a>
-<a href="../hosting.html">网站服务器教程</a>
-<a href="../np.html">网络协议</a>
-<a href="../computer-organization.html">计算机组成原理</a>
-<a href="../design-pattern.html">设计模式</a>
-</div>
-</div>
 </div>
 </div>
 </div>

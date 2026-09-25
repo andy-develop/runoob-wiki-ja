@@ -12,12 +12,10 @@
 <body>
 <div class="scrollblock block-title">
 <h1>git - 簡明ガイド</h1>
-<p>助你入门 git 的简明指南，木有高深内容 ;)</p>
+<p>git入門を手助けする簡潔なガイド。難しい内容はありません ;)</p>
 <p class="meta">
             作者：<a href="http://www.twitter.com/rogerdudler">罗杰·杜德勒</a>
-<br/>感谢：<a href="http://www.twitter.com/tfnico">@tfnico</a>, <a href="http://www.twitter.com/fhd">@fhd</a> 和 <a href="http://www.namics.com">Namics</a><br/>
-            
-            如有纰漏，请在 <a href="https://github.com/rogerdudler/git-guide/issues">github</a> 提报问题
+<br/>感谢：<a href="http://www.twitter.com/tfnico">@tfnico</a>, <a href="http://www.twitter.com/fhd">@fhd</a> 和 <a href="http://www.namics.com">Namics</a><br/>もし誤りや漏れがあれば、で<a href="https://github.com/rogerdudler/git-guide/issues">github</a> 提报问题
         </p>
 <img alt="" src="img/arrow.png"/>
 </div>
@@ -38,110 +36,76 @@
 <a name="create"></a>
 <div class="scrollblock block-create">
 <h2>新しいリポジトリの作成</h2>
-<p>
-            创建新文件夹，打开，然后执行 <br/>
-<code>git init</code><br/>
-            以创建新的 git 仓库。
-        </p>
+<p>新しいフォルダを作成し、開いて、実行してください。<br/>
+<code>git init</code><br/>新しいgitリポジトリを作成するために。</p>
 </div>
 <a name="checkout"></a>
 <div class="scrollblock block-checkout">
 <h2>リポジトリのチェックアウト</h2>
-<p>
-            执行如下命令以创建一个本地仓库的克隆版本：<br/>
-<code>git clone /path/to/repository</code> <br/>
-            如果是远端服务器上的仓库，你的命令会是这个样子：<br/>
+<p>ローカルリポジトリのクローンを作成するには、次のコマンドを実行します：<br/>
+<code>git clone /path/to/repository</code> <br/>リモートサーバー上のリポジトリの場合、コマンドは次のようになります：<br/>
 <code>git clone username@host:/path/to/repository</code>
 </p>
 </div>
 <a name="trees"></a>
 <div class="scrollblock block-trees">
 <h2>ワークフロー</h2>
-<p>
-            你的本地仓库由 git 维护的三棵“树”组成。第一个是你的 <code>工作目录</code>，它持有实际文件；第二个是 <code>暂存区（Index）</code>，它像个缓存区域，临时保存你的改动；最后是 <code>HEAD</code>，它指向你最后一次提交的结果。
-        </p>
+<p>あなたのローカルリポジトリは、git が管理する3つの「ツリー」で構成されています。1つ目はあなたの<code>作業ディレクトリ</code>、それは実際のファイルを保持します；二つ目は<code>暂存区（Index）</code>、これはキャッシュエリアのようなもので、変更を一時的に保存します。最後は<code>HEAD</code>、それは最後のコミットの結果を指します。</p>
 <img alt="" src="img/trees.png"/>
 </div>
 <a name="add"></a>
 <div class="scrollblock block-add">
 <h2>追加とコミット</h2>
-<p>
-		    你可以提出更改（把它们添加到暂存区），使用如下命令：<br/>
+<p>変更を提案するには（ステージングエリアに追加）、次のコマンドを使用します：<br/>
 <code>git add &lt;filename&gt;</code><br/>
-<code>git add *</code><br/>
-            这是 git 基本工作流程的第一步；使用如下命令以实际提交改动：<br/>
-<code>git commit -m "代码提交信息"</code><br/>
-            现在，你的改动已经提交到了 <b>HEAD</b>，但是还没到你的远端仓库。
-        </p>
+<code>git add *</code><br/>これは git の基本ワークフローの最初のステップです。実際に変更をコミットするには、次のコマンドを使用します：<br/>
+<code>git commit -m "代码提交信息"</code><br/>これで、あなたの変更はコミットされました。<b>HEAD</b>、しかしまだあなたのリモートリポジトリには届いていません。</p>
 </div>
 <a name="push"></a>
 <div class="scrollblock block-remote">
 <h2>変更をプッシュ</h2>
-<p>
-            你的改动现在已经在本地仓库的 <b>HEAD</b> 中了。执行如下命令以将这些改动提交到远端仓库：<br/>
+<p>あなたの変更は現在ローカルリポジトリの<b>HEAD</b>完了です。これらの変更をリモートリポジトリにプッシュするには、次のコマンドを実行します：<br/>
 <code>git push origin master</code><br/>
-            可以把 <i>master</i> 换成你想要推送的任何分支。
-            <br/><br/>
-            如果你还没有克隆现有仓库，并欲将你的仓库连接到某个远程服务器，你可以使用如下命令添加：<br/>
-<code>git remote add origin &lt;server&gt;</code><br/>
-            如此你就能够将你的改动推送到所添加的服务器上去了。<br/>
+            可以把 <i>master</i>プッシュしたい任意のブランチに置き換えてください。<br/><br/>既存のリポジトリをクローンしておらず、自分のリポジトリをリモートサーバーに接続したい場合は、次のコマンドで追加できます：<br/>
+<code>git remote add origin &lt;server&gt;</code><br/>これで、追加したサーバーに変更をプッシュできるようになります。<br/>
 </p>
 </div>
 <a name="branching"></a>
 <div class="scrollblock block-branching">
 <h2>ブランチ</h2>
-<p>
-    		分支是用来将特性开发绝缘开来的。在你创建仓库的时候，<i>master</i> 是“默认的”分支。在其他分支上进行开发，完成后再将它们合并到主分支上。
-		</p>
+<p>ブランチは、機能開発を分離するために使用されます。リポジトリを作成すると、<i>master</i>が「デフォルト」のブランチです。他のブランチで開発を行い、完了したらそれらをメインブランチにマージします。</p>
 <img alt="" src="img/branches.png"/>
-<p>
-            创建一个叫做“feature_x”的分支，并切换过去：<br/>
-<code>git checkout -b feature_x</code><br/>
-            切换回主分支：<br/>
-<code>git checkout master</code><br/>
-            再把新建的分支删掉：<br/>
-<code>git branch -d feature_x</code><br/>
-			除非你将分支推送到远端仓库，不然该分支就是 <i>不为他人所见的</i>：<br/>
+<p>“feature_x”という名前のブランチを作成し、そこに切り替えます：<br/>
+<code>git checkout -b feature_x</code><br/>メインブランチに切り替え：<br/>
+<code>git checkout master</code><br/>そして、新しく作成したブランチを削除します：<br/>
+<code>git branch -d feature_x</code><br/>リモートリポジトリにブランチをプッシュしない限り、そのブランチは<i>不为他人所见的</i>：<br/>
 <code>git push origin &lt;branch&gt;</code>
 </p>
 </div>
 <a name="update"></a>
 <div class="scrollblock block-merging">
 <h2>更新とマージ</h2>
-<p>
-            要更新你的本地仓库至最新改动，执行：<br/>
-<code>git pull</code><br/>
-            以在你的工作目录中 <i>获取（fetch）</i> 并 <i>合并（merge）</i> 远端的改动。<br/>
-            要合并其他分支到你的当前分支（例如 master），执行：<br/>
-<code>git merge &lt;branch&gt;</code><br/>
-            在这两种情况下，git 都会尝试去自动合并改动。遗憾的是，这可能并非每次都成功，并可能出现<i>冲突（conflicts）</i>。
-            这时候就需要你修改这些文件来手动合并这些<i>冲突（conflicts）</i>。改完之后，你需要执行如下命令以将它们标记为合并成功：<br/>
-<code>git add &lt;filename&gt;</code><br/>
-            在合并改动之前，你可以使用如下命令预览差异：<br/>
+<p>ローカルリポジトリを最新の変更に更新するには、次のコマンドを実行します：<br/>
+<code>git pull</code><br/>作業ディレクトリ内で<i>获取（fetch）</i> 并 <i>合并（merge）</i>リモートの変更。<br/>他のブランチを現在のブランチ（例: master）にマージするには、次のコマンドを実行します：<br/>
+<code>git merge &lt;branch&gt;</code><br/>どちらの場合も、git は変更を自動的にマージしようとします。残念ながら、これは毎回成功するとは限らず、問題が発生する可能性があります。<i>冲突（conflicts）</i>。この場合は、これらのファイルを修正して、これらの<i>冲突（conflicts）</i>衝突（conflicts）。修正後、次のコマンドを実行して、それらをマージ成功としてマークする必要があります：<br/>
+<code>git add &lt;filename&gt;</code><br/>変更をマージする前に、次のコマンドで差分をプレビューできます：<br/>
 <code>git diff &lt;source_branch&gt; &lt;target_branch&gt;</code>
 </p>
 </div>
 <a name="tagging"></a>
 <div class="scrollblock block-tagging">
 <h2>タグ</h2>
-<p>
-            为软件发布创建标签是推荐的。这个概念早已存在，在 SVN 中也有。你可以执行如下命令创建一个叫做 <i>1.0.0</i> 的标签：<br/>
+<p>ソフトウェアのリリースにはタグを作成することが推奨されます。この概念は以前から存在し、SVN にもあります。次のコマンドを実行すると、という名前のタグを作成できます：<i>1.0.0</i> 的标签：<br/>
 <code>git tag 1.0.0 1b2e1d63ff</code><br/>
-<i>1b2e1d63ff</i> 是你想要标记的提交 ID 的前 10 位字符。可以使用下列命令获取提交 ID：<br/>
-<code>git log</code><br/>
-            你也可以使用少一点的提交 ID 前几位，只要它的指向具有唯一性。
-        </p>
+<i>1b2e1d63ff</i>は、タグ付けしたいコミットIDの最初の10文字です。コミットIDは次のコマンドで取得できます：<br/>
+<code>git log</code><br/>コミットIDの先頭数桁だけを使用することもできます。一意に指し示す限り有効です。</p>
 </div>
 <a name="checkout-replace"></a>
 <div class="scrollblock block-checkout-replace">
 <h2>ローカルの変更を置き換える</h2>
-<p>
-            假如你操作失误（当然，这最好永远不要发生），你可以使用如下命令替换掉本地改动：<br/>
-<code>git checkout -- &lt;filename&gt;</code><br/>
-			此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。已添加到暂存区的改动以及新文件都不会受到影响。
-		</p>
-<p>
-            假如你想丢弃你在本地的所有改动与提交，可以到服务器上获取最新的版本历史，并将你本地主分支指向它：<br/>
+<p>もし操作を誤った場合（もちろん、そんなことは決して起こらないのが望ましいですが）、次のコマンドでローカルの変更を置き換えることができます：<br/>
+<code>git checkout -- &lt;filename&gt;</code><br/>このコマンドは、HEAD の最新の内容で、作業ディレクトリ内のファイルを置き換えます。ステージングエリアに追加された変更や新しいファイルは影響を受けません。</p>
+<p>ローカルのすべての変更とコミットを破棄したい場合は、サーバーから最新のバージョン履歴を取得し、ローカルのメインブランチをそれにポイントさせます：<br/>
 <code>git fetch origin</code><br/>
 <code>git reset --hard origin/master</code>
 </p>
@@ -149,14 +113,10 @@
 <a name="hints"></a>
 <div class="scrollblock block-hints">
 <h2>便利なヒント</h2>
-<p>
-			内建的图形化 git：<br/>
-<code>gitk</code><br/>
-            彩色的 git 输出：<br/>
-<code>git config color.ui true</code><br/>
-            显示历史记录时，每个提交的信息只显示一行：<br/>
-<code>git config format.pretty oneline</code><br/>
-            交互式添加文件到暂存区：<br/>
+<p>組み込みのグラフィカルgit：<br/>
+<code>gitk</code><br/>色付きのgit出力：<br/>
+<code>git config color.ui true</code><br/>履歴を表示するとき、各コミットの情報を1行だけ表示します：<br/>
+<code>git config format.pretty oneline</code><br/>ファイルを対話的にステージングエリアに追加します：<br/>
 <code>git add -i</code>
 </p>
 </div>
@@ -195,7 +155,6 @@ var _hmt = _hmt || [];
 })();
 </script>
 </div>
-<div id="site-navbar" style="position: absolute; top: -4px; left: -3px; border: 0; z-index: 2000;padding:0;margin:0;"><a href="http://www.runoob.com" style="background:none;" title="菜鸟教程"><img src="../../images/return-back.png" style="padding:0;margin:0;border:0; -webkit-box-shadow: none;-moz-box-shadow: none;box-shadow: none;"/></a></div>
 <script src="../../../lang-switcher.js"></script>
 </body>
 </html>

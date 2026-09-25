@@ -60,9 +60,6 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div>
 <div class="row">
 <div class="col right-list">
-<button class="btn btn-responsive-nav btn-inverse" id="pull">
-<i class="fa fa-navicon"></i>
-</button>
 </div>
 <div class="col search search-desktop last">
 <div class="search-input">
@@ -79,18 +76,18 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="col middle-column big-middle-column">
 <div class="article">
 <div class="article-heading">
-<h2>编程中的“末行效应”</h2> <h3><em>分类</em> <a href="../w3cnote_genre/code.html" title="编程技术">编程技术</a> </h3>
+<h2>プログラミングにおける「最終行効果」</h2> <h3><em>分类</em> <a href="../w3cnote_genre/code.html" title="编程技术">编程技术</a> </h3>
 </div>
 <div class="article-body note-body">
 <div class="article-intro">
 <!-- ad start-->
 <!-- ad end-->
-<p>我叫Andrey Karpov，我研究过数百个因"拷贝-粘贴"导致的错误。可以肯定的是，程序员常常会在一大段代码的最后一段里犯错。好像还没有任何编程书讨论过这种现象，因此我决定自己写点什么。我称之为"末行效应"。</p>
+<p>私はAndrey Karpovです。コピー＆ペーストが原因のエラーを何百件も調査してきました。確かに言えるのは、プログラマーは大きなコードの最後の部分でよくミスをするということです。この現象について論じたプログラミングの本はまだないようなので、自分で何か書くことにしました。私はこれを「最終行効果」と呼んでいます。</p>
 <p><img alt="copy-paste" class="alignnone size-full wp-image-10322" decoding="async" fetchpriority="high" height="222" sizes="(max-width: 350px) 100vw, 350px" src="../wp-content/uploads/2014/11/copy-paste.png" srcset="http://www.runoob.com/wp-content/uploads/2014/11/copy-paste.png 350w, http://www.runoob.com/wp-content/uploads/2014/11/copy-paste-300x190.png 300w" width="350"/></p>
 <h2>末行效应</h2>
-<p>编程的时候，程序员常常需要写一系列相似的结构。逐行敲键盘输入无聊且低效。这就是为什么他们会使用"拷贝-粘贴"大法：一段代码被拷贝粘贴几次，然后修改。谁都知道这样做的坏处：你很容易在粘贴后忘记修改某些内容最后滋生出问题。不幸的是，常常找不到比这更好的方法。</p>
-<p>那么我发现了什么规律呢？我发现错误常常发生在最后的一块粘贴代码里。</p>
-<p>下面是一个简短的例子：</p>
+<p>プログラミング中、プログラマーはよく一連の類似した構造を書く必要があります。一行ずつキーボードで入力するのは退屈で非効率的です。だからこそ「コピー＆ペースト」技を使うのです。コードを数回コピーして貼り付け、それから修正します。このやり方の欠点は誰もが知っています。貼り付け後に修正を忘れやすく、最終的に問題を引き起こします。残念ながら、これより良い方法はなかなか見つかりません。</p>
+<p>では、私がどんな法則を発見したのか？エラーはたいてい最後に貼り付けたコードブロックで発生することに気づきました。</p>
+<p>以下は簡単な例です：</p>
 <pre class="language-js">
 inline Vector3int32&amp; operator+=(const Vector3int32&amp; other) {
   x += other.x;
@@ -99,32 +96,32 @@ inline Vector3int32&amp; operator+=(const Vector3int32&amp; other) {
   return *this;
 }
 </pre>
-<p>注意这一行：”z += other.y;”。程序员忘记把'y'替换成'z'了。</p>
-<p>也许你以为这是个假设的例子，然后它其实来自一个真实的应用程序。接下来，我会让你相信这是高频常见的一种错误。程序员们经常在一连串相似操作的结尾犯这种错误。</p>
-<p>我听说攀岩者常常在最后的几十米中滑落下来。并不是因为他们累了，而正是由于他们对即将到达的终点过于兴奋，他们想象着成功后的喜悦，变得疏忽大意，最后失足。我猜想程序员们也是这样的。</p>
-<p>接下来看一组数据。</p>
-<p>研究了数据库后，我分离出了84个代码段由"拷贝-粘贴"大法生成。其中41段中错误发生在中间的某些粘贴块。比如：</p>
+<p>この行に注目してください: “z += other.y;”。プログラマーは 'y' を 'z' に置き換えるのを忘れています。</p>
+<p>これは仮定の例だと思うかもしれませんが、実際には実在のアプリケーションから来ています。これから、これが頻繁に見られる一般的なエラーであることをお見せしましょう。プログラマーはよく一連の類似操作の終わりにこの種のミスを犯します。</p>
+<p>ロッククライマーは最後の数十メートルで滑落することがよくあると聞きました。彼らが疲れているからではなく、まさにゴールが近づいて興奮し、成功の喜びを想像して注意力が散漫になり、最後に足を滑らせるのです。プログラマーも同じではないかと私は推測しています。</p>
+<p>次に、一組のデータを見てみましょう。</p>
+<p>データベースを調査した後、コピー＆ペースト技によって生成された84個のコード断片を抽出しました。そのうち41個では、エラーは途中の何らかの貼り付けブロックで発生していました。例えば：</p>
 <pre class="language-js">
 strncmp(argv[argidx], "CAT=", 4) &amp;&amp;
 strncmp(argv[argidx], "DECOY=", 6) &amp;&amp;
 strncmp(argv[argidx], "THREADS=", 6) &amp;&amp;
 strncmp(argv[argidx], "MINPROB=", 8)) {
 </pre>
-<p>"THREADS="字符串的长度是8个字符，而非6。</p>
-<p>另外的43段代码中，错误发生在最后的粘贴块。</p>
-<p>当然，43比41大不了多少。但是请注意，一段程序中，可能有很多类似的代码块，因此错误可能发生在第一，第二，第五甚至第十块中。因此在其他代码块中我们有一个相对均匀的分布，而最后一块却存在一个峰值。</p>
-<p>平均而言，相似代码块总数为5。</p>
-<p>于是前面4个代码块中均匀分布了41处错误，平均每块代码有10个错误。</p>
-<p>然而最后一块代码中有43个错误！</p>
-<p>下面的分布概图凸显出这个现象：</p>
+<p>"THREADS=" という文字列の長さは8文字であり、6ではありません。</p>
+<p>残りの43個のコード断片では、エラーは最後の貼り付けブロックで発生していました。</p>
+<p>もちろん、43は41よりわずかに多いだけです。しかし注意してください。1つのプログラムには多数の類似コードブロックが存在する可能性があり、エラーは1番目、2番目、5番目、さらには10番目のブロックでも発生し得ます。したがって、他のコードブロックでは比較的均一な分布が見られるのに、最後のブロックだけにピークがあります。</p>
+<p>平均すると、類似コードブロックの総数は5です。</p>
+<p>すると、最初の4つのコードブロックに41個のエラーが均等に分布しており、平均して各ブロックに約10個のエラーがあります。</p>
+<p>しかし最後のコードブロックには43個のエラーがあります！</p>
+<p>以下の分布の概要図がこの現象を浮き彫りにしています：</p>
 <p><img alt="copy-paste-1" class="alignnone size-full wp-image-10323" decoding="async" height="204" sizes="(max-width: 395px) 100vw, 395px" src="../wp-content/uploads/2014/11/copy-paste-1.png" srcset="http://www.runoob.com/wp-content/uploads/2014/11/copy-paste-1.png 395w, http://www.runoob.com/wp-content/uploads/2014/11/copy-paste-1-300x154.png 300w" width="395"/></p>
-<p class="wp-caption-text">五块类似代码段中的错误分布概图</p>
-<p>因此我们可以总结出一个规律：</p>
-<p>在最末的粘贴代码块中出错的概率是其他代码块的4倍。</p>
-<p>这个规律可能并没有普适性。它只是个有趣的发现，其实际效用在于：提醒在你写最后一块的时候保持警觉。</p>
+<p class="wp-caption-text">5つの類似コード断片におけるエラー分布の概要図</p>
+<p>したがって、私たちは以下のような法則をまとめることができます：</p>
+<p>最後の貼り付けコードブロックでエラーが発生する確率は、他のコードブロックの4倍です。</p>
+<p>この法則は普遍性を持たないかもしれません。これは単なる興味深い発見であり、実際の効用は最後のブロックを書くときに警戒を怠らないよう注意を促すことにあります。</p>
 <h2>实例：</h2>
-<p>下面我要证明这并不是我的胡思乱想而是有真实的趋势的。请看下面的实例。</p>
-<p>当然，我不会列出所有例子，仅列举简单而有代表性的。</p>
+<p>以下で、これは私の妄想ではなく、実際の傾向があることを証明します。以下の実例をご覧ください。</p>
+<p>もちろん、すべての例を挙げるつもりはありません。単純で代表的なものだけを挙げます。</p>
 <h3>Source Engine SDK</h3>
 <pre class="language-js">
 inline void Init( float ix=0, float iy=0,
@@ -136,7 +133,7 @@ inline void Init( float ix=0, float iy=0,
   SetZ( iw );
 }
 </pre>
-<p>最后一行应该是SetW()。</p>
+<p>の値をチェックし忘れました。</p>
 <h3>Chromium</h3>
 <pre class="language-js">
 if (access &amp; FILE_WRITE_ATTRIBUTES)
@@ -149,7 +146,7 @@ if (access &amp; FILE_WRITE_EA)
   output.append(ASCIIToUTF16("\tFILE_WRITE_EA\n"));
 break;
 </pre>
-<p>最后两行相同。</p>
+<p>最後の2行は同じです。</p>
 <h3>ReactOS</h3>
 <pre class="language-js">
 if (*ScanString == L'\"' ||
@@ -173,7 +170,7 @@ CWaterPoly* CWaterManagerSA::CreateQuad (....)
   ....
 }
 </pre>
-<p>最后一行冗余代码来自于惯性粘贴。数组的大小是3。</p>
+<p>最後の行の冗長なコードは、惰性による貼り付けから来ています。配列のサイズは3です。</p>
 <h3>Source Engine SDK</h3>
 <pre class="language-js">
 intens.x=OrSIMD(AndSIMD(BackgroundColor.x,no_hit_mask),
@@ -183,7 +180,7 @@ intens.y=OrSIMD(AndSIMD(BackgroundColor.y,no_hit_mask),
 intens.z=OrSIMD(AndSIMD(BackgroundColor.y,no_hit_mask),
                 AndNotSIMD(no_hit_mask,intens.z));
 </pre>
-<p>程序员忘记把最后一行的中的"BackgroundColor.y"改成"BackgroundColor.z"。</p>
+<p>プログラマーは最後の行の「BackgroundColor.y」を「BackgroundColor.z」に変更し忘れました。</p>
 <h3>Trans-Proteomic Pipeline</h3>
 <pre class="language-js">
 void setPepMaxProb(....)
@@ -206,7 +203,7 @@ void setPepMaxProb(....)
   ....
 }
 </pre>
-<p>程序员忘记把最后一个判断中的"prob &gt; max6"改为"prob &gt; max7"。</p>
+<p>プログラマーは最後の条件文の "prob &gt; max6" を "prob &gt; max7" に変更するのを忘れています。</p>
 <h3>SeqAn</h3>
 <pre class="language-js">
 inline typename Value&lt;Pipe&gt;::Type const &amp; operator*() {
@@ -226,7 +223,7 @@ for( int i = 0; i &lt; 2; i++ )
   fsliders[i] = joystate.rglVSlider[i];
 }
 </pre>
-<p>最后一行应该用rglFSlider。</p>
+<p>最後の行はrglFSliderを使うべきです。</p>
 <h3>Qt</h3>
 <pre class="language-js">
 if (repetition == QStringLiteral("repeat") ||
@@ -244,7 +241,7 @@ if (repetition == QStringLiteral("repeat") ||
   //TODO: exception: SYNTAX_ERR
 }
 </pre>
-<p>最后一块少了'patternRepeatX'。正确的代码应该是：</p>
+<p>最後のブロックでは 'patternRepeatX' が欠落しています。正しいコードは次のようになるはずです：</p>
 <pre class="language-js">
 pattern-&gt;patternRepeatX = false;
 pattern-&gt;patternRepeatY = false;
@@ -256,7 +253,7 @@ const int jstride = sizeof(tmp[0][0]) / sizeof(tmp[0][0][0]);
 const int mistride = sizeof(mag[0]) / sizeof(mag[0][0]);
 const int mjstride = sizeof(mag[0][0]) / sizeof(mag[0][0]);
 </pre>
-<p>'mjstride'永远等于1。最后一行应该是：</p>
+<p>'mjstride' は常に1に等しいです。最後の行は次のようになるはずです：</p>
 <pre class="language-js">const int mjstride = sizeof(mag[0][0]) / sizeof(mag[0][0][0]);
 </pre>
 <h3>Mozilla Firefox</h3>
@@ -269,14 +266,14 @@ if (protocol.EqualsIgnoreCase("http") ||
     protocol.EqualsIgnoreCase("javascript") ||
     protocol.EqualsIgnoreCase("ftp")) {          &lt;&lt;&lt;---
 </pre>
-<p>最后的"ftp"很可疑，它之前已经被比较过了。</p>
+<p>最後の "ftp" は疑わしいです。それは以前にすでに比較されています。</p>
 <h3>Quake-III-Arena</h3>
 <pre class="language-js">
 if (fabs(dir[0]) &gt; test-&gt;radius ||
     fabs(dir[1]) &gt; test-&gt;radius ||
     fabs(dir[1]) &gt; test-&gt;radius)
 </pre>
-<p>dir[2]的值忘记检查了。</p>
+<p>dir</p>
 <h3>Clang</h3>
 <pre class="language-js">
 return (ContainerBegLine &lt;= ContaineeBegLine &amp;&amp;
@@ -288,7 +285,7 @@ return (ContainerBegLine &lt;= ContaineeBegLine &amp;&amp;
          SM.getExpansionColumnNumber(ContainerREnd) &gt;=
          SM.getExpansionColumnNumber(ContainerREnd)));
 </pre>
-<p>最后一块，"SM.getExpansionColumnNumber(ContainerREnd)"表达式在跟自己比较大小。</p>
+<p>最後のブロック、"SM.getExpansionColumnNumber(ContainerREnd)"式は自分自身と比較しています。</p>
 <h3>MongoDB</h3>
 <pre class="language-js">
 bool operator==(const MemberCfg&amp; r) const {
@@ -301,7 +298,7 @@ bool operator==(const MemberCfg&amp; r) const {
          buildIndexes == buildIndexes;
 }
 </pre>
-<p>程序员把最后一行的"r"忘记了。</p>
+<p>プログラマーは最後の行の "r" を忘れています。</p>
 <h3>Unreal Engine 4</h3>
 <pre class="language-js">
 static bool PositionIsInside(....)
@@ -313,7 +310,7 @@ static bool PositionIsInside(....)
     Position.Y &gt;= Control.Center.Y - BoxSize.Y * 0.5f;
 }
 </pre>
-<p>最后一行中，程序员忘记了两个地方。首先，"&gt;="应改为"&lt;="，其次，减号应改为加号。</p>
+<p>最後の行で、プログラマーは2か所を忘れています。まず、"&gt;=" は "&lt;=" に変更すべきで、次に、マイナス記号はプラス記号に変更すべきです。</p>
 <h3>Qt</h3>
 <pre class="language-js">
 qreal x = ctx-&gt;callData-&gt;args[0].toNumber();
@@ -323,7 +320,7 @@ qreal h = ctx-&gt;callData-&gt;args[3].toNumber();
 if (!qIsFinite(x) || !qIsFinite(y) ||
     !qIsFinite(w) || !qIsFinite(w))
 </pre>
-<p>最后一个qlsFinite中，传入参数应该是'h'。</p>
+<p>最後の qlsFinite では、渡すパラメータは 'h' であるべきです。</p>
 <h3>OpenSSL</h3>
 <pre class="language-js">
 if (!strncmp(vstart, "ASCII", 5))
@@ -335,12 +332,12 @@ else if (!strncmp(vstart, "HEX", 3))
 else if (!strncmp(vstart, "BITLIST", 3))
   arg-&gt;format = ASN1_GEN_FORMAT_BITLIST;
 </pre>
-<p>字符串"BITLIST"长度为7，而非3。</p>
-<p>就此打住吧。我举的例子已经够说明问题了吧？</p>
+<p>文字列 "BITLIST" の長さは7であり、3ではありません。</p>
+<p>この辺でやめておきましょう。挙げた例で十分に問題を説明できたと思いますよね？</p>
 <h2>结论</h2>
-<p>本文告诉你"拷贝-粘贴"大法在最后一个粘贴代码块中出错的概率很可能是其他块的4倍。</p>
-<p>这跟人类的心理学有关，与技术水平无关。文中说明了即便是像Clang或者Qt项目中的编程高手也会犯这种错误。</p>
-<p>我希望这个现象的发现对于程序员们有所帮助，也许可以促使他们去研究我们的bug数据库。相信如此有助于在这些错误中发现新的规律并总结出新的编程建议。</p>
+<p>この記事では、コピー＆ペースト技では最後の貼り付けコードブロックでエラーが発生する確率が他のブロックの4倍になる可能性が高いことをお伝えしています。</p>
+<p>これは人間の心理学に関係しており、技術レベルの問題ではありません。この記事では、ClangやQtプロジェクトの達人プログラマーでさえもこの種のミスを犯すことを示しています。</p>
+<p>この現象の発見がプログラマーの皆さんにとって役立ち、おそらく彼らが私たちのバグデータベースを研究するきっかけになることを願っています。これにより、これらのエラーから新しい法則を発見し、新しいプログラミング上のアドバイスをまとめることに役立つと信じています。</p>
 <p>本文转载自：http://www.vaikan.com/the-last-line-effect/</p>
 </div>
 </div>
@@ -451,7 +448,7 @@ else if (!strncmp(vstart, "BITLIST", 3))
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>点我分享笔记</h3>
+<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有。</h3>
 &lt;p style="font-size:14px;"&gt;笔记需要是本篇文章的内容扩展！&lt;/p&gt;&lt;br&gt;
 	&lt;p style="font-size:12px;"&gt;&lt;a href="../tougao.html" target="_blank"&gt;文章投稿，可点击这里&lt;/a&gt;&lt;/p&gt;
 	&lt;p style="font-size:14px;"&gt;&lt;a href="./runoob-user-test-intro.html" target="_blank"&gt;注册邀请码获取方式&lt;/a&gt;&lt;/p&gt;
@@ -700,181 +697,6 @@ var aid = 10321;
 
 </div>
 -->
-<div class="sidebar-box cate-list" style="display:none;">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">热门文章</a>
-</div>
-<div class="membership">
-<ul class="membership">
-<li><a href="https://mp.weixin.qq.com/s/ZaP6YNgKTCHYy3r2WPBBaw" target="_blank" title="2024 年 04 月 JavaScript 框架排行榜">2024 年 04 月 JavaScript 框架排行榜</a></li>
-<li><a href="https://mp.weixin.qq.com/s/JBR2twC0t6krjjuxqvhsEQ" target="_blank" title="免费、开源、好用的 SQL 客户端合集">免费、开源、好用的 SQL 客户端合集</a></li>
-<li><a href="https://mp.weixin.qq.com/s/TwV3YQjA1glyaW7TiHvhlA" target="_blank" title="优雅的代码规范，提升代码质量">优雅的代码规范，提升代码质量</a></li>
-<li><a href="https://mp.weixin.qq.com/s/CnUJ-2OHPbBKlnVpjDzavA" target="_blank" title="命令行中的趣味世界，牛也能说话，有趣又好玩">命令行中的趣味世界，牛也能说话，有趣又好玩</a></li>
-<li><a href="https://mp.weixin.qq.com/s/7NKl-mD7N8CeSNQlbKDEWA" target="_blank" title="2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？">2024 年 05 月编程语言排行榜，Fortran 进入前 10 名，发生了什么？</a></li>
-<li><a href="https://mp.weixin.qq.com/s/yWlSVDKobtDhThnhirVRpw" target="_blank" title="免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端">免费开源的 IDE、数据库管理工具、SSH客户端和FTP客户端</a></li>
-</ul>
-</div>
-</div>
-<div class="sidebar-box cate-list">
-<div class="sidebar-box recommend-here list-link">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;">教程列表</a>
-</div>
-<div class="cate-items">
-<a href="../ado.html">ADO 教程</a>
-<a href="../ai-agent.html">AI Agent 教程</a>
-<a href="../ai.html">AI 入门教程</a>
-<a href="../ai-math.html">AI 数学基础</a>
-<a href="../ajax.html">Ajax 教程</a>
-<a href="../android.html">Android 教程</a>
-<a href="../angularjs2.html">Angular2 教程</a>
-<a href="../angularjs.html">AngularJS 教程</a>
-<a href="../appml.html">AppML 教程</a>
-<a href="../asp.html">ASP 教程</a>
-<a href="../aspnet.html">ASP.NET 教程</a>
-<a href="../bootstrap.html">Bootstrap 教程</a>
-<a href="../bootstrap4.html">Bootstrap4 教程</a>
-<a href="../bootstrap5.html">Bootstrap5 教程</a>
-<a href="../cprogramming.html">C 教程</a>
-<a href="../c-dsa.html">C 语言数据结构与算法</a>
-<a href="../csharp.html">C# 教程</a>
-<a href="../cplusplus.html">C++ 教程</a>
-<a href="../chartjs.html">Chart.js 教程</a>
-<a href="../claude-code.html">Claude Code 教程</a>
-<a href="../cmake.html">CMake 教程</a>
-<a href="../codex.html">Codex 教程</a>
-<a href="../cssref.html">CSS 参考手册</a>
-<a href="../css.html">CSS 教程</a>
-<a href="../css3.html">CSS3 教程</a>
-<a href="../cursor.html">Cursor 教程</a>
-<a href="../dart.html">Dart 教程</a>
-<a href="../dash.html">Dash 教程</a>
-<a href="../deepseek-harness.html">DeepSeek Harness</a>
-<a href="../django.html">Django 教程</a>
-<a href="../docker.html">Docker 教程</a>
-<a href="../dtd.html">DTD 教程</a>
-<a href="../echarts.html">ECharts 教程</a>
-<a href="../eclipse.html">Eclipse 教程</a>
-<a href="../electron.html">Electron 教程</a>
-<a href="../fastapi.html">FastAPI 教程</a>
-<a href="../firebug.html">Firebug 教程</a>
-<a href="../flask.html">Flask 教程</a>
-<a href="../flutter.html">Flutter 教程</a>
-<a href="../font-awesome.html">Font Awesome 图标</a>
-<a href="../foundation.html">Foundation 教程</a>
-<a href="../git.html">Git 教程</a>
-<a href="../go.html">Go 语言教程</a>
-<a href="../googleapi.html">Google 地图 API 教程</a>
-<a href="../hermes-agent.html">Hermes Agent</a>
-<a href="../highcharts.html">Highcharts 教程</a>
-<a href="../htmldom.html">HTML DOM 教程</a>
-<a href="../tags.html">HTML 参考手册</a>
-<a href="../charsets.html">HTML 字符集</a>
-<a href="../html.html">HTML 教程</a>
-<a href="../http.html">HTTP 教程</a>
-<a href="../ionic.html">ionic 教程</a>
-<a href="../ios.html">iOS 教程</a>
-<a href="../java.html">Java 教程</a>
-<a href="../jsref.html">JavaScript 参考手册</a>
-<a href="../js.html">Javascript 教程</a>
-<a href="../jeasyui.html">jQuery EasyUI 教程</a>
-<a href="../jquerymobile.html">jQuery Mobile 教程</a>
-<a href="../jqueryui.html">jQuery UI 教程</a>
-<a href="../jquery.html">jQuery 教程</a>
-<a href="../json.html">JSON 教程</a>
-<a href="../jsp.html">JSP 教程</a>
-<a href="../julia.html">Julia 教程</a>
-<a href="../jupyter-notebook.html">Jupyter Notebook 教程</a>
-<a href="../kotlin.html">Kotlin 教程</a>
-<a href="../langchain.html">LangChain 教程</a>
-<a href="../latex.html">LaTeX 教程</a>
-<a href="../linux.html">Linux 教程</a>
-<a href="../lua.html">Lua 教程</a>
-<a href="../markdown.html">Markdown 教程</a>
-<a href="../matplotlib.html">Matplotlib 教程</a>
-<a href="../maven.html">Maven 教程</a>
-<a href="../memcached.html">Memcached 教程</a>
-<a href="../mongodb.html">MongoDB 教程</a>
-<a href="../mysql.html">MySQL 教程</a>
-<a href="../nextjs.html">Next.js 教程</a>
-<a href="../nlp.html">NLP 教程</a>
-<a href="../nodejs.html">Node.js 教程</a>
-<a href="../numpy.html">NumPy 教程</a>
-<a href="../obsidian.html">Obsidian 教程</a>
-<a href="../ollama.html">Ollama 教程</a>
-<a href="../opencode.html">OpenCode 教程</a>
-<a href="../opencv.html">OpenCV 教程</a>
-<a href="../pandas.html">Pandas 教程</a>
-<a href="../perl.html">Perl 教程</a>
-<a href="../php.html">PHP 教程</a>
-<a href="../pi-agent.html">Pi Agent</a>
-<a href="../pillow.html">Pillow 教程</a>
-<a href="../playwright.html">Playwright 教程</a>
-<a href="../postgresql.html">PostgreSQL 教程</a>
-<a href="../powershell.html">PowerShell</a>
-<a href="../pycharm.html">Pycharm 教程</a>
-<a href="../python3.html">Python 3 教程</a>
-<a href="../python.html">Python 基础教程</a>
-<a href="../python-design-pattern.html">Python 设计模式</a>
-<a href="../python-qt.html">Python 量化交易</a>
-<a href="../pytorch.html">PyTorch 教程</a>
-<a href="../r.html">R 教程</a>
-<a href="../rdf.html">RDF 教程</a>
-<a href="../react.html">React 教程</a>
-<a href="../redis.html">Redis 教程</a>
-<a href="../restfulapi.html">RESTful API</a>
-<a href="../rss.html">RSS 教程</a>
-<a href="../ruby.html">Ruby 教程</a>
-<a href="../rust.html">Rust 教程</a>
-<a href="../sass.html">Sass 教程</a>
-<a href="../scala.html">Scala 教程</a>
-<a href="../scipy.html">SciPy 教程</a>
-<a href="../selenium.html">Selenium 教程</a>
-<a href="../servlet.html">Servlet 教程</a>
-<a href="../skills.html">Skills 教程</a>
-<a href="../sklearn.html">Sklearn 教程</a>
-<a href="../soap.html">SOAP 教程</a>
-<a href="../sql.html">SQL 教程</a>
-<a href="../sqlite.html">SQLite 教程</a>
-<a href="../svg.html">SVG 教程</a>
-<a href="../svn.html">SVN 教程</a>
-<a href="../swagger.html">Swagger 教程</a>
-<a href="../swift.html">Swift 教程</a>
-<a href="../tailwindcss.html">Tailwind CSS 教程</a>
-<a href="../tcpip.html">TCP/IP 教程</a>
-<a href="../tensorflow.html">TensorFlow 教程</a>
-<a href="../typescript.html">TypeScript 教程</a>
-<a href="../uniapp.html">uni-app 教程</a>
-<a href="../vbscript.html">VBScript 教程</a>
-<a href="../vibe-coding.html">Vibe Coding 教程</a>
-<a href="../vscode.html">VSCode 教程</a>
-<a href="../vue2.html">Vue.js 教程</a>
-<a href="../vue3.html">Vue3 教程</a>
-<a href="../w3c.html">W3C 教程</a>
-<a href="../webservices.html">Web Service 教程</a>
-<a href="../wsdl.html">WSDL 教程</a>
-<a href="../xlink.html">XLink 教程</a>
-<a href="../dom.html">XML DOM 教程</a>
-<a href="../schema.html">XML Schema 教程</a>
-<a href="../xml.html">XML 教程</a>
-<a href="../xpath.html">XPath 教程</a>
-<a href="../xquery.html">XQuery 教程</a>
-<a href="../xslfo.html">XSLFO 教程</a>
-<a href="../xsl.html">XSLT 教程</a>
-<a href="../zig.html">Zig 教程</a>
-<a href="../data-structures.html">数据结构</a>
-<a href="../ml.html">机器学习</a>
-<a href="../regexp.html">正则表达式</a>
-<a href="../assembly.html">汇编语言</a>
-<a href="../quiz.html">测验</a>
-<a href="../browsers.html">浏览器</a>
-<a href="../quality.html">网站品质</a>
-<a href="../web.html">网站建设指南</a>
-<a href="../hosting.html">网站服务器教程</a>
-<a href="../np.html">网络协议</a>
-<a href="../computer-organization.html">计算机组成原理</a>
-<a href="../design-pattern.html">设计模式</a>
-</div>
-</div>
 </div>
 </div>
 </div>
