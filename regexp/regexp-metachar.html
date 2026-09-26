@@ -55,17 +55,16 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="container logo-search">
 <div class="col search row-search-mobile">
 <form action="../search.html" method="get">
-<input autocomplete="off" class="placeholder" name="q" placeholder="搜索……"/>
+<input autocomplete="off" class="placeholder" name="q" placeholder="検索……"/>
 </form>
 </div>
 <div class="row">
 <div class="col right-list">
-
 </div>
 <div class="col search search-desktop last">
 <div class="search-input">
 <form action="../search.html" method="get">
-<input autocomplete="off" class="placeholder" id="s" name="s" placeholder="搜索……" style="height:44px;"/>
+<input autocomplete="off" class="placeholder" id="s" name="s" placeholder="検索……" style="height:44px;"/>
 </form>
 </div>
 </div>
@@ -138,7 +137,6 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 }
 </style>
 <!-- 导航栏 -->
-
 <!-- 二级导航 -->
 <!--  内容  -->
 <div class="container main">
@@ -148,9 +146,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="left-column">
 <div class="tab" style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
 <i aria-hidden="true" class="fa fa-list"></i>
-<span>正则表达式</span>
+<span>正規表現</span>
 </div>
-
 </div>
 </div> <div class="col middle-column">
 <div class="article">
@@ -775,7 +772,6 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>説明<strong>?=</strong>、<strong>?!</strong>、<strong>?&lt;=</strong> <strong>?&lt;!</strong>の「Positive/Negative lookahead/lookbehind assert」の現行の翻訳「正先行断言」「正向肯定预查」などは、理解しにくい、あるいは不正確、さらには誤りです。lookaround は「前後を見る」という意味であり、「先読み」ではなく、前後の式に作用することを意味します。つまり、lookahead（前方を見ることであって「先行」ではない）と lookbehind（後方を見ることであって「後発」ではない）の総称です。assert は「判断」を意味し、「断言」ではありません。Positive と Negative は「肯定」と「否定」を指し、「正」と「負」ではありません。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">anonym</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   anonym</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  ano***@anonym.com</p></div></span>7年前 (2019-08-27)</div></div></li><!-- #comment-## -->
 <li class="comment even thread-even depth-1" id="comment-51268"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>久狼君</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  108***3455@qq.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="http://真的很抱歉，又发现一处小错误，复查了两步，最终定稿了。" rel="nofollow" target="_blank">参照アドレス</a></p></div><div class="upvotejs" data-commid="51268" id="runoobvote-id-51268"><a class="upvote"></a> <span class="count">74</span></div></div><div class="comt-main" id="div-comment-51268"><p>上のお二人の内容と自分の実験を合わせてまとめると、以下で使う各結果はすべてこのサイトの API で実行したものです。<b>以下の結論の正確性については責任を持てます。</b></p><p>前の構文の説明で、次のような一文がありました。<strong>非キャプチャメタ文字 ?:、?= または ?! を使うことで、キャプチャを書き換え、関連するマッチの保存を無視できます。</strong></p><p>この<strong>キャプチャの書き換え</strong>がキーワードです</p><p>したがって、この種の正規表現は 2 つのステップに分かれます。</p><p><b>1. 第一ステップ：マッチ</b></p><p>まず、正方向/逆方向や肯定/否定は気にせず、正規表現がマッチして初めて第二ステップがあります。元の文字列が「<strong>abcdefgh"</strong></p><pre>/.(?=cde)../</pre><p>元の文字列の中に cde が含まれ、かつ cde の前にドット（改行などを除く任意の 1 文字）があり、そして、c から始まって後ろに 2 文字ある文字列が存在するか？</p><p><strong><strong>上記の式によると、<strong>abcdefgh"</strong></strong>中で bcde にマッチできます。</strong></p><p><b>2. 第二ステップ：キャプチャの書き換え</b></p><p>次に、正方向/逆方向と肯定/否定に応じて書き換えます。ここでは肯定の場合の 2 つのケースだけを説明します。</p><p>まず、bcde にマッチしたことを覚えておいてください。</p><pre>/.(?=cde)../</pre><p>- これは正方向と呼ばれます。したがって、式 cde の前にマッチした文字 b は変わりません。式の後ろを見て何を書き換えるかを決めるだけでよく、ドットが 2 つなので、c から前から後ろへ 2 文字読み、つまり cd を中間の括弧のマッチ結果（元は cde）に書き換えます。したがって、最終結果は bcd です。ここでは /.(?=cde)cd/ を使っても同じ結果になります。</p><p>- 後ろが 4 つのドットの場合、c から前から後ろへ 4 文字読むと、つまり cdef なので、最終結果は bcdef です。ここでは /.(?=cde)cdef/ を使っても同じ結果になります。</p><p>ただし、覚えておいてください。後ろもcからマッチングを始める必要があります。マッチしなければ、ここではnullが返されます。例えば、/.(?=cde)f/ や /.(?=cde)d/ はどちらもnullを返します。</p><p><b></b></p><p><b>(?&lt;=) について</b></p><p>1. 同じく2つのステップに分けます。最初のステップは上記と同じです。</p><p><code>/....(?&lt;=cde)../</code></p><p>これは後方（逆向き）の<b>検索です。</b>つまり、cdeを含み、cdeの後ろに2文字あり、eから前に4文字分を探して見つかる文字列です。</p><p><b>"abcdefgh" では bcdefg にマッチしました。</b></p><p>2. 2番目のステップ</p><p>cdeの後ろの2つのドットに対応する2文字は変わりません。つまりfgは変わりません。前にドットが1つあり、さらに後方（逆向き）なので、cdeの後ろから前に4文字を読み取ります。つまり、<b>bcde</b>それを中間の括弧マッチの結果（元はcde）に書き換えます。したがって最終結果は次のようになります。<b>bcdefg</b>。</p><p>同様に、前が2つのドットの場合 /..(?&lt;=cde)../ は、eから前に2文字を読み取るので、結果はdefgになります。</p><p>二つを挙げて四つを類推すれば、この構文は難しくないと信じます。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">久狼君</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>久狼君</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  108***3455@qq.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="http://真的很抱歉，又发现一处小错误，复查了两步，最终定稿了。" rel="nofollow" target="_blank">参考アドレス</a></p></div></span>7年前 (2020-03-05)</div></div></li><!-- #comment-## -->
 </ol>
-
 </div>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
@@ -996,9 +992,7 @@ function kFormatter(num) {
     display: inline;
 }
 </style>
-
 <br/>
-
 </div></div>
 </div>
 <script>
