@@ -1,9 +1,9 @@
 /*!
- * jQuery Quiz 插件（包含样式自动注入）
- * 用法: $('#quiz-container').quiz({ data: quizData });
+ * jQuery クイズプラグイン（スタイル自動注入付き）
+ * 使い方: $('#quiz-container').quiz({ data: quizData });
  */
 (function ($) {
-    // 插件样式（自动注入到页面）
+    // プラグインのスタイル（ページへ自動注入）
     var quizStyle = `
 .runoob-quiz-container {
     margin: 0 auto;
@@ -168,7 +168,7 @@
 }
 `;
 
-    // 只注入一次样式
+    // スタイルは一度だけ注入する
     if (!document.getElementById('runoob-quiz-style')) {
         var styleTag = document.createElement('style');
         styleTag.id = 'runoob-quiz-style';
@@ -205,8 +205,8 @@
             var $nextBtn = $container.closest('.runoob-quiz-content').find('#next-btn');
             $prevBtn.toggleClass('runoob-quiz-hidden', currentQuestionIndex === 0);
             $nextBtn.html(currentQuestionIndex === quizData.questions.length - 1 ?
-                '提交 <i class="fa fa-check"></i>' :
-                '下一题 <i class="fa fa-arrow-right"></i>');
+                '送信 <i class="fa fa-check"></i>' :
+                '次の問題 <i class="fa fa-arrow-right"></i>');
 
             var optionsHtml = '';
             for (var i = 0; i < question.options.length; i++) {
@@ -240,7 +240,7 @@
                 `;
             }
 
-            // 解析内容
+            // 解説の内容
             var showExplanation = typeof userAnswers[currentQuestionIndex] !== 'undefined';
             var explanationClass = showExplanation ? "runoob-quiz-explanation show" : "runoob-quiz-explanation";
             var explanationText = "";
@@ -256,7 +256,7 @@
                 <div class="runoob-quiz-fade-in">
                     <div class="runoob-quiz-question-header">
                         <span class="runoob-quiz-question-number">
-                            第 ${currentQuestionIndex + 1} 题 / 共 ${quizData.questions.length} 题
+                            問題 ${currentQuestionIndex + 1} / ${quizData.questions.length}
                         </span>
                     </div>
                     <h2 class="runoob-quiz-question-text">${question.q}</h2>
@@ -265,7 +265,7 @@
                     </div>
                     <div class="${explanationClass}" id="explanation">
                         <h3 class="explanation-title">
-                            <i class="fa fa-info-circle"></i> 解析
+                            <i class="fa fa-info-circle"></i> 解説
                         </h3>
                         <p class="explanation-text">${explanationText}</p>
                     </div>
@@ -302,13 +302,13 @@
             var percentage = (score / quizData.questions.length) * 100;
             var message = "";
             if (percentage >= 80) {
-                message = "非常棒！你真的很了解这些知识。";
+                message = "素晴らしい！この知識を本当に理解しています。";
             } else if (percentage >= 60) {
-                message = "不错！你在这个领域有扎实的基础。";
+                message = "良いですね！この分野で確かな基礎を持っています。";
             } else if (percentage >= 40) {
-                message = "还可以！再多学习一点会更好。";
+                message = "まずまずです！もう少し学ぶとさらに良くなります。";
             } else {
-                message = "继续努力！复习一下内容再试试吧。";
+                message = "頑張りましょう！内容を復習してもう一度試してください。";
             }
             $resultContainer.find('#result-message').text(message);
 
@@ -319,7 +319,7 @@
 
         $container.closest('.runoob-quiz-content').find('#next-btn').off('click').on('click', function () {
             if (typeof userAnswers[currentQuestionIndex] === 'undefined') {
-                alert("请先选择一个答案再继续。");
+                alert("先に答えを選択してから続行してください。");
                 return;
             }
             if (currentQuestionIndex < quizData.questions.length - 1) {
