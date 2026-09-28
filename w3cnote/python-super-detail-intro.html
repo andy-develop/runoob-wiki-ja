@@ -196,7 +196,7 @@ self is &lt;__main__.D object at 0x10ce10e48&gt; @A.add
 <p><strong>MRO</strong>とは<span class="marked">type(obj)</span>のMROを指し、MRO内のそのクラスは<span class="marked">a_type</span>、同時に<span class="marked">isinstance(obj, a_type) == True</span> 。</p>
 <p>このように呼び出すとき:</p>
 <pre>super(type1, type2)</pre>
-<p>MROは<span class="marked">type2</span> 的 <strong>MRO</strong>, <strong>MRO</strong>内のそのクラスは<span class="marked">type1</span>、同時に<span class="marked">issubclass(type2, type1) == True</span> 。</p>
+<p>MROは<span class="marked">type2</span>の<strong>MRO</strong>, <strong>MRO</strong>内のそのクラスは<span class="marked">type1</span>、同時に<span class="marked">issubclass(type2, type1) == True</span> 。</p>
 <p>では、<span class="marked">super()</span>は実際に何をするのでしょうか？簡単に言うと、<strong>MRO</strong>と、<strong>MRO</strong>内のクラスを提供します。<span class="marked">C</span> ， <span class="marked">super()</span>は、<strong>MRO</strong> 中 <span class="marked">C</span>の後のクラスからメソッドを探すオブジェクトを返します。</p>
 <p>つまり、検索方法は通常のメソッドのようにすべての<strong>MRO</strong>クラスから探すのではなく、<strong>MRO</strong>の tail から探します。</p>
 <p>例を挙げると、<strong>MRO</strong>:</p><pre>[A, B, C, D, E, object]</pre><p>以下の呼び出し:</p><pre>super(C, A).foo()</pre><p><span class="marked">super</span>は<span class="marked">C</span>の後からのみ検索します。つまり、<span class="marked">D</span> 或 <span class="marked">E</span> 或 <span class="marked">object</span>内でのみ<span class="marked">foo</span>メソッドを検索します。</p>
@@ -211,7 +211,7 @@ self is &lt;__main__.D object at 0x10ce10e48&gt; @C.add
 self is &lt;__main__.D object at 0x10ce10e48&gt; @A.add
 19</pre><p>になるのか、少しはわかったのではないでしょうか ;)</p>
 <p>以下で具体的に分析してみましょう:</p><ul><li><p>
-<span class="marked">D</span> 的 <strong>MRO</strong>は:<span class="marked">[D, B, C, A, object]</span> 。 <strong>注記:</strong>を使用して<span class="marked">D.mro()</span>(Python 2では<span class="marked">D.__mro__</span>) 確認できます<span class="marked">D</span> 的 <strong>MRO</strong>情報）</p></li><li>
+<span class="marked">D</span>の<strong>MRO</strong>は:<span class="marked">[D, B, C, A, object]</span> 。 <strong>注記:</strong>を使用して<span class="marked">D.mro()</span>(Python 2では<span class="marked">D.__mro__</span>) 確認できます<span class="marked">D</span>の<strong>MRO</strong>情報）</p></li><li>
 <p>詳細なコード分析は以下のとおりです:</p>
 <pre>class A:
     def __init__(self):

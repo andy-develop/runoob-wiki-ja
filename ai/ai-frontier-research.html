@@ -275,7 +275,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
                              <span style="color: Green;font-weight:bold;">for</span> _ <span style="color: Green;font-weight:bold;">in</span> <span style="color: Teal;">range</span><span style="color: Olive;">(</span>num_experts<span style="color: Olive;">)</span><span style="color: Olive;">]</span><br/>
 <br/>
     <span style="color: Green;font-weight:bold;">def</span> compute_scores<span style="color: Olive;">(</span><span style="color: Teal;">self</span><span style="color: Gray;">,</span> x: List<span style="color: Olive;">[</span><span style="color: Teal;">float</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> List<span style="color: Olive;">[</span><span style="color: Teal;">float</span><span style="color: Olive;">]</span>:<br/>
-        <span style="color: #a11;">"""各エキスパートの現在の入力に対するスコアを計算する"""</span><br/>
+        <span style="color: #a11;">各エキスパートの現在の入力に対するスコアを計算する</span><br/>
         scores <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: Olive;">]</span><br/>
         <span style="color: Green;font-weight:bold;">for</span> expert_weights <span style="color: Green;font-weight:bold;">in</span> <span style="color: Teal;">self</span>.<span style="color: #05a;">gate_weights</span>:<br/>
             score <span style="color: Gray;">=</span> <span style="color: Teal;">sum</span><span style="color: Olive;">(</span>x<span style="color: Olive;">[</span>i<span style="color: Olive;">]</span> * expert_weights<span style="color: Olive;">[</span>i<span style="color: Olive;">]</span> <span style="color: Green;font-weight:bold;">for</span> i <span style="color: Green;font-weight:bold;">in</span> <span style="color: Teal;">range</span><span style="color: Olive;">(</span><span style="color: Teal;">len</span><span style="color: Olive;">(</span>x<span style="color: Olive;">)</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
@@ -375,7 +375,7 @@ output3 <span style="color: Gray;">=</span> moe.<span style="color: #05a;">forwa
 <h2>長期コンテキスト技術</h2>
 <p>初期のGPT-3のコンテキストウィンドウはわずか2Kトークン（約1500漢字）でしたが、今日の主流モデルは8K、32K、128K、さらには1Mトークンに達しています。</p>
 <p>長コンテキストは単に「ウィンドウを伸ばす」だけではありません——一連の技術的な課題を解決する必要があります。</p>
-<h3>長期コンテキストの核心的課題</h3>
+<h3>長期コンテキストの核心のな課題</h3>
 <p>最も直接的な問題は<span class="tag1">計算複雑度</span>。</p>
 <p>Transformerの自己注意機構の複雑度はO(n²)です——コンテキスト長が2倍になると、計算量は4倍になります。</p>
 <p>ウィンドウを2Kから128Kに引き伸ばすと、計算量は4096倍になります——これは計算上実行不可能です。</p>
@@ -421,7 +421,7 @@ output3 <span style="color: Gray;">=</span> moe.<span style="color: #05a;">forwa
 <hr/>
 <h2>推論時計算拡張</h2>
 <p>従来の大規模モデルの学習と推論は分離されている——学習時には大量の計算を行い、推論時には固定のフォワード計算を使用する。</p>
-<p>推論時の計算拡張の考え方は：<span class="marked">让模型在推理时也能"思考"更多步</span>追加の計算と引き換えに、より良い結果を得る。</p>
+<p>推論時の計算拡張の考え方は：<span class="marked">モデルが推論時にもっと多くの「思考」ステップを実行できるようにする</span>追加の計算と引き換えに、より良い結果を得る。</p>
 <h3>o1 / DeepSeek-R1 の考え方</h3>
 <p>2024年、OpenAI の o1 と DeepSeek の DeepSeek-R1 は、この方向における重要なブレークスルーを代表するものだ。</p>
 <p>これらのモデルの中核は次の通りだ：<span class="marked">モデルにまず「推論の思考連鎖（Chain of Thought）」を実行させてから、最終的な答えを出す</span>。</p>
@@ -481,7 +481,7 @@ output3 <span style="color: Gray;">=</span> moe.<span style="color: #05a;">forwa
 <p>動画理解は、この一年で急速に進展している分野だ。</p>
 <p>初期の手法は、動画を独立したフレームに分割し、各フレームを個別にエンコードするものだった——これでは時間的な連続性が失われる。</p>
 <p>新しいアプローチには以下が含まれる：</p>
-<p><span class="tag1">時系列アテンション</span>——モデルに空間的な内容だけでなく、時間的な変化も追跡させる。</p>
+<p><span class="tag1">時系列アテンション</span>モデルに空間のな内容だけでなく、時間のな変化も追跡させる。</p>
 <p><span class="tag1">均一サンプリング</span>——長い動画の中でキーフレームを均一にサンプリングし、全体をカバーしつつ計算量を抑える。</p>
 <p><span class="tag1">動画のトークン化</span>——動画を一種の「言語」と見なし、テキストと同様の方法で処理する。</p>
 <p>現在のモデルはすでに次のことを実現できる：複雑なビデオチュートリアルの理解、スポーツ試合の重要な場面の分析、さらには動画から操作スキルを学ぶこと。</p>
@@ -725,11 +725,11 @@ output3 <span style="color: Gray;">=</span> moe.<span style="color: #05a;">forwa
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必須です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必須です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1018,7 +1018,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

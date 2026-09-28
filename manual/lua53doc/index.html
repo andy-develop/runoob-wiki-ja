@@ -41,28 +41,21 @@ tt, kbd, code {
 ·
 <a href="contents.html">参考手册</a>
 ·
-<a href="glossary.html">中英术语对照表</a>
+<a href="glossary.html">中英用語対照表</a>
 <h2><a name="about">关于 Lua</a></h2>
 <p>Lua は、強力で高速、軽量な組み込みスクリプト言語です。ブラジルのリオデジャネイロにあるポンティフィカル・カトリック大学の<a href="http://www.puc-rio.br/">PUC-Rio</a>
-<a href="http://www.lua.org/authors.html">团队</a>開発。Lua は<a href="#license">自由软件</a>、世界中の無数の製品やプロジェクトで広く使用されています。<p>
-Lua 的
-<a href="http://www.lua.org/">官方网站</a>上でLuaに関する完全な情報が提供されており、以下を含みます。<a href="http://www.lua.org/about.html">综合概要</a>
-和最新的
-<a href="http://www.lua.org/docs.html">文档</a>、注意が必要です。<a href="http://www.lua.org/manual/5.3/">参考手册</a> 可能和
-<a href="contents.html">这里的版本</a> 有所不同。
+<a href="http://www.lua.org/authors.html">团队</a>開発。Lua は<a href="#license">自由软件</a>、世界中の無数の製品やプロジェクトで広く使用されています。<p>Lua の<a href="http://www.lua.org/">官方网站</a>上でLuaに関する完全な情報が提供されており、以下を含みます。<a href="http://www.lua.org/about.html">综合概要</a>と最新の<a href="http://www.lua.org/docs.html">文档</a>、注意が必要です。<a href="http://www.lua.org/manual/5.3/">参考手册</a>可能なと<a href="contents.html">ここのバージョン</a> 有所不同。
 
 <h2><a name="install">安装 Lua</a></h2>
 <p>
 Lua 以
-<a href="http://www.lua.org/ftp/">源代码</a>の形式でリリースされており、使用する前にビルドする必要があります。Luaのビルドは非常に簡単です。Luaは純粋なANSI Cで実装されているため、ANSI Cコンパイラを備えたすべてのプラットフォームで直接コンパイルできます。また、LuaはC++形式でも直接コンパイルできます。以下はUnix系プラットフォームでのビルド手順です。さらに<a href="#other">其它系统构建介绍</a>
-与
-<a href="#customization">配置选项</a> 以作参考。
+<a href="http://www.lua.org/ftp/">源代码</a>の形式でリリースされており、使用する前にビルドする必要があります。Luaのビルドは非常に簡単です。Luaは純粋なANSI Cで実装されているため、ANSI Cコンパイラを備えたすべてのプラットフォームで直接コンパイルできます。また、LuaはC++形式でも直接コンパイルできます。以下はUnix系プラットフォームでのビルド手順です。さらに<a href="#other">其它系统构建介绍</a>と<a href="#customization">配置选项</a> 以作参考。
 
 <p>もしLuaを自分でコンパイルする時間や興味がない場合は、<a href="http://lua-users.org/wiki/LuaBinaries">LuaBinaries</a>コンパイル済みのバイナリファイルを入手できます。<a href="http://luadist.org/">LuaDist</a>ここからLuaのマルチプラットフォーム版（バッテリー同梱）を入手できます。<h3>Lua の構築</h3>
 <p>ほとんどのUnix系プラットフォームでは、"<kbd>make</kbd>" に適切なプラットフォーム名を加えるだけです。手順は以下のとおりです：<ol>
 <li>コンソールウィンドウを開き、<tt>lua-5.3.0</tt>ディレクトリ。ディレクトリ内の<tt>Makefile</tt>ファイルにはビルドとインストールの手順が含まれています。<p>
 <li>
-  运行 "<kbd>make</kbd>" を実行し、あなたのプラットフォームがリストに含まれているか確認してください。現在サポートされているプラットフォームは次のとおりです：<p>
+  运行 "<kbd>make</kbd>を実行し、あなたのプラットフォームがリストに含まれているか確認してください。現在サポートされているプラットフォームは次のとおりです：<p>
 <p class="display">
    aix bsd c89 freebsd generic linux macosx mingw posix solaris
 </p>
@@ -73,7 +66,7 @@ Lua 以
 "<kbd>make linux MYLIBS=-ltermcap</kbd>" 。
 
 <h3>Lua のインストール</h3>
-<p>ビルドが完了したら、Luaをシステムのデフォルトの場所にインストールしたいと思うかもしれません。その場合は、"<kbd>make install</kbd>" を実行します。システムのデフォルト位置とインストール方法は、次の場所に定義されています。<tt>Makefile</tt>中。この処理には関連する権限が必要な場合があります。<p>
+<p>ビルドが完了したら、Luaをシステムのデフォルトの場所にインストールしたいと思うかもしれません。その場合は、<kbd>make install</kbd>" を実行します。システムのデフォルト位置とインストール方法は、次の場所に定義されています。<tt>Makefile</tt>中。この処理には関連する権限が必要な場合があります。<p>
   运行 "<kbd>make xxx install</kbd>" でビルドとインストールを一度に行うことができます。xxxはあなたのプラットフォーム名を指します。<p>Lua をローカルにインストールしたい場合は、次のコマンドを実行してください: "<kbd>make local</kbd>」を実行すると、〜が作成されます<tt>install</tt> 目录，内有
   <tt>bin</tt>, <tt>include</tt>, <tt>lib</tt>, <tt>man</tt>, <tt>share</tt>"、サブディレクトリに次のファイルをインストールします。
 
@@ -96,14 +89,13 @@ Lua 以
 <dd>
     lua.1 luac.1
 </dd></dt></dd></dt></dd></dt></dd></dt></dl>
-<p>これらは開発時に必要なディレクトリです。単に Lua プログラムを実行したいだけなら、必要なのは<tt>bin</tt> 和 <tt>man</tt> 下的文件。
-  <tt>include</tt> 和 <tt>lib</tt>下のファイルは、LuaをCまたはC++プログラムに埋め込むために使用されます。<h3><a name="customization">定制</a></h3>
+<p>これらは開発時に必要なディレクトリです。単に Lua プログラムを実行したいだけなら、必要なのは<tt>bin</tt>と<tt>man</tt>下のファイル。<tt>include</tt>と<tt>lib</tt>下のファイルは、LuaをCまたはC++プログラムに埋め込むために使用されます。<h3><a name="customization">定制</a></h3>
 <p>カスタマイズには3つの種類があり、ファイルを編集することで実現できます：<ul>
 <li>Luaをどのようにインストールするか、どこにインストールするか — 編集<tt>Makefile</tt>。
     <li>Luaのビルド方法 — 編集<tt>src/Makefile</tt>。
     <li>Luaの機能 — 編集<tt>src/luaconf.h</tt>。
 </li></li></li></ul>
-<p>実際、Makefile を編集する必要はありません。make 時にコマンドラインで関連する変数を指定すればよいのです。もちろん、Makefile を編集して保存しておけば、カスタマイズの記録として残せます。<p>一方、Luaのいくつかの機能をカスタマイズする必要がある場合は、Luaをビルド・インストールする前に編集します。<tt>src/luaconf.h</tt>。編集したファイルは一貫性を保証しなければなりません。つまり、1つの場所にだけインストールし、コンパイルしたLuaを使用するすべてのプログラムがその唯一のコピーを使用するようにします。専門家はLuaのソースコードを編集することで、さらに多くのことをカスタマイズできます。<h3><a name="other">在其它系统上构建 Lua</a></h3>
+<p>実際、Makefile を編集する必要はありません。make 時にコマンドラインで関連する変数を指定すればよいのです。もちろん、Makefile を編集して保存しておけば、カスタマイズの記録として残せます。<p>一方、Luaのいくつかの機能をカスタマイズする必要がある場合は、Luaをビルド・インストールする前に編集します。<tt>src/luaconf.h</tt>。編集したファイルは一貫性を保証しなければなりません。つまり、1つの場所にだけインストールし、コンパイルしたLuaを使用するすべてのプログラムがその唯一のコピーを使用するようにします。専門家はLuaのソースコードを編集することで、さらに多くのことをカスタマイズできます。<h3><a name="other">他のシステム上で Lua をビルドする</a></h3>
 <p>通常の Unix ツールを使用しない場合、Lua のビルド手順は使用するコンパイラに依存します。ライブラリ、インタプリタ、コンパイラなどをビルドするためのプロジェクトを複数作成する必要があります。関連するプロジェクトに次のソースファイルを追加してください：<dl class="display">
 <dt>
 库:
@@ -122,10 +114,8 @@ lmathlib.c loslib.c lstrlib.c ltablib.c lutf8lib.c loadlib.c linit.c
 <dd>
   library, luac.c
 </dd></dt></dd></dt></dd></dt></dl>
-<p>Luaをライブラリとしてプログラムで使用するには、コンパイラでライブラリを作成し使用する方法を知っている必要があります。たとえば、動的にロードされるCライブラリとしてLuaを使用する場合、動的ライブラリを作成し、Lua API関数を動的ライブラリ内で可視にする方法を理解する必要があります —<em>不要</em>Luaライブラリを各動的ライブラリにリンクします。Unixでは、Luaライブラリをホストプログラムに静的にリンクし、動的リンク用にシンボルをエクスポートすることをお勧めします。<tt>src/Makefile</tt>このようにしてLuaインタプリタを処理します。Windowsでは、LuaライブラリをDLLとしてコンパイルすることをお勧めします。いずれにしても、コンパイラのluacは静的リンクされるべきです。<p>上記のように、Luaをビルドする前に編集できます。<tt>src/luaconf.h</tt>いくつかの機能をカスタマイズするためです。<h2><a name="changes">自 Lua 5.2 以来的变更</a></h2>
-<p>ここでは、Lua 5.3で導入された主な変更を列挙します。<a href="contents.html">参考手册</a>
-中列出了
-<a href="manual.html#8">不兼容的地方</a>。
+<p>Luaをライブラリとしてプログラムで使用するには、コンパイラでライブラリを作成し使用する方法を知っている必要があります。たとえば、動的にロードされるCライブラリとしてLuaを使用する場合、動的ライブラリを作成し、Lua API関数を動的ライブラリ内で可視にする方法を理解する必要があります —<em>不要</em>Luaライブラリを各動的ライブラリにリンクします。Unixでは、Luaライブラリをホストプログラムに静的にリンクし、動的リンク用にシンボルをエクスポートすることをお勧めします。<tt>src/Makefile</tt>このようにしてLuaインタプリタを処理します。Windowsでは、LuaライブラリをDLLとしてコンパイルすることをお勧めします。いずれにしても、コンパイラのluacは静的リンクされるべきです。<p>上記のように、Luaをビルドする前に編集できます。<tt>src/luaconf.h</tt>いくつかの機能をカスタマイズするためです。<h2><a name="changes">Lua 5.2 以降の変更</a></h2>
+<p>ここでは、Lua 5.3で導入された主な変更を列挙します。<a href="contents.html">参考手册</a>中にリストされている<a href="manual.html#8">互換性のない箇所</a>。
 
 <h3>主な変更点</h3>
 <ul>

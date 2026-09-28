@@ -165,12 +165,12 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="article-intro" id="content">
 <h1>ルーティングシステム</h1>
 <p>前の章で、タスク管理ロジックはPiniaを通じて永続化を実現しました。次に、アプリケーションに魂を注入する必要があります——<strong>ルーティングシステム</strong>。</p>
-<p>エンタープライズ級開発において、ルーティングはページを切り替えるだけでなく、以下の重任も担っています：<strong>セキュリティ（権限制御）</strong>和<strong>ユーザー体験（動的タイトル）</strong>という重任です。</p>
+<p>エンタープライズ級開発において、ルーティングはページを切り替えるだけでなく、以下の重任も担っています：<strong>セキュリティ（権限制御）</strong>と<strong>ユーザー体験（動的タイトル）</strong>という重任です。</p>
 <hr/>
 <h2>インストールと基本設定</h2>
 <p>まずVue Routerをインストールします：</p>
 <pre>npm install vue-router</pre>
-<p>在 <code>src</code>ディレクトリの下にrouterディレクトリを作成し、 ファイルを作成します。<code>router/index.js</code>ファイル。</p>
+<p>に<code>src</code>ディレクトリの下にrouterディレクトリを作成し、 ファイルを作成します。<code>router/index.js</code>ファイル。</p>
 <p><img decoding="async" src="../wp-content/uploads/2026/01/4472e1e9-8bf2-4eac-a637-7aa428c7f7fb.png"/></p>
 <p>2つのページを定義します：ワークベンチ（Dashboard）とログインページ（Login）。</p>
 <div class="example"><h2 class="example">インスタンス</h2> <div class="example_code">
@@ -203,7 +203,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <br/>
 <span style="color: #FF0000;">export</span> <span style="color: #000066; font-weight: bold;">default</span> router<br/>
 </div></div>
-<p>在 <code>src</code>の下に作成<code>views</code>フォルダを作成し、ページを割り当てます。</p>
+<p>に<code>src</code>の下に作成<code>views</code>フォルダを作成し、ページを割り当てます。</p>
 <ul>
 <li><strong><code>src/App.vue</code></strong>：ルートコンテナ。 とグローバルアニメーションのみを配置します。<code>&lt;router-view /&gt;</code>とグローバルアニメーション。</li>
 <li><strong><code>src/views/Dashboard.vue</code></strong>：元のTaskHubコア機能（タスクリスト、入力ボックスなど）。</li>
@@ -363,7 +363,7 @@ router.<span style="color: #660066;">beforeEach</span><span style="color: #00990
 <span style="color: #009900;">}</span><span style="color: #009900;">)</span><br/>
 <span style="color: #FF0000;">export</span> <span style="color: #000066; font-weight: bold;">default</span> router<br/>
 </div></div>
-<h3>在 <code>main.js</code>で最後のピースを完成させる</h3>
+<h3>に<code>main.js</code>で最後のピースを完成させる</h3>
 <p>あなたの が<code>main.js</code>ルートを導入してマウントしていることを確認してください：</p>
 <div class="example"><h2 class="example">インスタンス</h2> <div class="example_code">
 <span style="color: #FF0000;">import</span> <span style="color: #009900;">{</span> createApp <span style="color: #009900;">}</span> from <span style="color: #3366CC;">'vue'</span><br/>
@@ -389,8 +389,8 @@ app.<span style="color: #660066;">mount</span><span style="color: #009900;">(</s
 <h3>知識ポイントの解説</h3>
 <ol>
 <li><strong>なぜ<code>App.vue</code>空になったのですか？</strong><br/>シングルページアプリケーション（SPA）では、<code>App.vue</code>はアプリケーション全体のシェルです。URLの変化に応じて、その中に異なるページ（DashboardまたはLogin）を動的に挿入できるように、空にしています。</li>
-<li><strong><code>useRouter</code>の実践</strong>：<br/>在 <code>Dashboard.vue</code>では、 を通じて<code>router.push('/login')</code>ログアウト機能を実装しました。注意：<code>push</code>はブラウザの履歴に新しいレコードを追加するため、ブラウザの戻るボタンをクリックすると戻ることができます。</li>
-<li><strong>Tailwind v4のレイアウト継承</strong>：<br/>私たちは の<code>App.vue</code>のグローバルコンテナに を追加したため、<code>bg-slate-50</code> 和 <code>min-h-screen</code>すべての子ページ（Dashboard、Login）はデフォルトでこの薄い灰色の背景を継承し、視覚的な統一性が保証されます。</li>
+<li><strong><code>useRouter</code>の実践</strong>：<br/>に<code>Dashboard.vue</code>では、 を通じて<code>router.push('/login')</code>ログアウト機能を実装しました。注意：<code>push</code>はブラウザの履歴に新しいレコードを追加するため、ブラウザの戻るボタンをクリックすると戻ることができます。</li>
+<li><strong>Tailwind v4のレイアウト継承</strong>：<br/>私たちは の<code>App.vue</code>のグローバルコンテナに を追加したため、<code>bg-slate-50</code>と<code>min-h-screen</code>すべての子ページ（Dashboard、Login）はデフォルトでこの薄い灰色の背景を継承し、視覚的な統一性が保証されます。</li>
 </ol>
 その他の拡張
 </div>
@@ -510,11 +510,11 @@ app.<span style="color: #660066;">mount</span><span style="color: #009900;">(</s
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -803,7 +803,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

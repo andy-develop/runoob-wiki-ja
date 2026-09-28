@@ -254,8 +254,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 			C++ 参照			</a>
 <a data-p="par" href="../cplusplus/cpp-date-time.html" target="_top" title="C++ 日付 &amp; 時刻">
 			C++ 日付 &amp; 時刻			</a>
-<a data-p="par" href="../cplusplus/cpp-basic-input-output.html" target="_top" title="C++ 基本的な入出力">
-			C++ 基本的な入出力			</a>
+<a data-p="par" href="../cplusplus/cpp-basic-input-output.html" target="_top" title="C++ 基本的な入出力">C++ 基本的な入出力</a>
 <a data-p="par" href="../cplusplus/cpp-struct.html" target="_top" title="C++ 構造体(struct)">
 			C++ 構造体(struct)			</a>
 <a href="../cplusplus/cpp-vector.html" target="_top" title="C++ vector コンテナ">C++ vector コンテナ</a>
@@ -278,8 +277,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 			C++ ファイルとストリーム			</a>
 <a data-p="par" href="../cplusplus/cpp-exceptions-handling.html" target="_top" title="C++ 例外処理">
 			C++ 例外処理			</a>
-<a data-p="par" href="../cplusplus/cpp-dynamic-memory.html" target="_top" title="C++ 動的メモリ">
-			C++ 動的メモリ			</a>
+<a data-p="par" href="../cplusplus/cpp-dynamic-memory.html" target="_top" title="C++ 動的メモリ">C++ 動的メモリ</a>
 <a data-p="par" href="../cplusplus/cpp-namespaces.html" target="_top" title="C++ 名前空間">
 			C++ 名前空間			</a>
 <a data-p="par" href="../cplusplus/cpp-templates.html" target="_top" title="C++ テンプレート">
@@ -471,7 +469,7 @@ Final value of shared_resource: 20000</pre>
 <span style="color: #060;">#include &lt;thread&gt;</span><br/>
 <span style="color: #060;">#include &lt;mutex&gt;</span><br/>
 <br/>
-std<span style="color: #008080;">::</span><span style="color: #007788;">recursive_mutex</span> rmtx<span style="color: #008080;">;</span> <span style="color: #666666;">// 创建一个递归 mutex 对象</span><br/>
+std<span style="color: #008080;">::</span><span style="color: #007788;">recursive_mutex</span> rmtx<span style="color: #008080;">;</span> <span style="color: #666666;">// 再帰 mutex オブジェクトを作成する</span><br/>
 <span style="color: #05a;">int</span> shared_resource <span style="color: #000080;">=</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span> <span style="color: #666666;">// 共享资源</span><br/>
 <br/>
 <span style="color: #666666;">// 递归函数</span><br/>
@@ -509,7 +507,7 @@ Incremented shared_resource to 8 (count = 0)
 Final value of shared_resource: 8
 </pre>
 <p><strong>コード解説：</strong></p>
-<ol><li><p><strong>作成<code>std::recursive_mutex</code>オブジェクト</strong>：<code>std::recursive_mutex rmtx;</code>は再帰ミューテックスであり、同じスレッドが複数回ロックを取得できるようにします。</p></li><li><p><strong>共有リソース</strong>：<code>int shared_resource = 0;</code>複数のスレッドが共同でアクセスするリソースです。</p></li><li><p><strong>再帰関数<code>recursive_increment</code></strong>：</p><ul><li>使用<code>std::lock_guard&lt;std::recursive_mutex&gt;</code> 对 <code>rmtx</code>ロックします。再帰ミューテックスを使用しているため、同じスレッドが複数回ロックを取得できます。</li><li>によって<code>++shared_resource</code>共有リソースの値を増加させます。</li><li>関数自体が再帰呼び出しを行い、再帰関数が複数回ロックする状況で安全に動作する方法を示しています。</li></ul></li><li><p><strong>スレッドの作成と実行</strong>：</p><ul><li><code>std::thread t1(recursive_increment, 3);</code> 和 <code>std::thread t2(recursive_increment, 3);</code>2つのスレッドをそれぞれ作成し、両方とも を実行します。<code>recursive_increment(3)</code>。</li><li><code>t1.join()</code> 和 <code>t2.join()</code>2つのスレッドの実行完了を待ちます。</li></ul></li></ol>
+<ol><li><p><strong>作成<code>std::recursive_mutex</code>オブジェクト</strong>：<code>std::recursive_mutex rmtx;</code>は再帰ミューテックスであり、同じスレッドが複数回ロックを取得できるようにします。</p></li><li><p><strong>共有リソース</strong>：<code>int shared_resource = 0;</code>複数のスレッドが共同でアクセスするリソースです。</p></li><li><p><strong>再帰関数<code>recursive_increment</code></strong>：</p><ul><li>使用<code>std::lock_guard&lt;std::recursive_mutex&gt;</code>に対して<code>rmtx</code>ロックします。再帰ミューテックスを使用しているため、同じスレッドが複数回ロックを取得できます。</li><li>によって<code>++shared_resource</code>共有リソースの値を増加させます。</li><li>関数自体が再帰呼び出しを行い、再帰関数が複数回ロックする状況で安全に動作する方法を示しています。</li></ul></li><li><p><strong>スレッドの作成と実行</strong>：</p><ul><li><code>std::thread t1(recursive_increment, 3);</code>と<code>std::thread t2(recursive_increment, 3);</code>2つのスレッドをそれぞれ作成し、両方とも を実行します。<code>recursive_increment(3)</code>。</li><li><code>t1.join()</code>と<code>t2.join()</code>2つのスレッドの実行完了を待ちます。</li></ul></li></ol>
 <h2>注意事項</h2>
 <ul>
 <li>デッドロックを避けるため、ミューテックスをロックするたびに必ずロック解除を行うようにしてください。</li>
@@ -625,7 +623,7 @@ std<span style="color: #008080;">::</span><span style="color: #007788;">unique_l
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 std<span style="color: #008080;">::</span><span style="color: #007788;">mutex</span> mtx<span style="color: #008080;">;</span><br/>
 std<span style="color: #008080;">::</span><span style="color: #007788;">unique_lock</span><span style="color: #000080;">&lt;</span>std<span style="color: #008080;">::</span><span style="color: #007788;">mutex</span><span style="color: #000080;">&gt;</span> lock<span style="color: #008000;">(</span>mtx, std<span style="color: #008080;">::</span><span style="color: #007788;">defer_lock</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
-<span style="color: #666666;">// 可以在之后的某个时刻调用 lock.lock()</span><br/>
+<span style="color: #666666;">// 後で lock.lock() を呼び出すことができます</span><br/>
 </div></div>
 <h3>9. std::try_to_lock_t</h3>
 <p>フラグ型であり、ブロックせずにロックを試みるために使用します。</p>
@@ -756,11 +754,11 @@ std<span style="color: #008080;">::</span><span style="color: #007788;">unique_l
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1060,7 +1058,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

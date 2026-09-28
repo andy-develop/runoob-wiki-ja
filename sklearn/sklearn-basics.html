@@ -167,7 +167,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <hr/>
 <h2>1、データ表現：データセットと特徴</h2><p>データセットは、Scikit-learn における最も基本的な概念の1つです。</p>
 <p>機械学習の中核となるタスクはデータからパターンを学習することであり、データの表現方法は非常に重要です。</p>
-<h3>データセット（Dataset）</h3><p>scikit-learn では、データは通常、次の2つの主要なオブジェクトで表現されます：<span class="marked">特徴行列</span> 和 <span class="marked">ターゲットベクトル</span>。</p>
+<h3>データセット（Dataset）</h3><p>scikit-learn では、データは通常、次の2つの主要なオブジェクトで表現されます：<span class="marked">特徴行列</span>と<span class="marked">ターゲットベクトル</span>。</p>
 <p><strong>特徴行列（Feature Matrix）：</strong>各行は1つのデータサンプルを表し、各列は1つの特徴（入力変数）を表します。これは2次元の配列または行列であり、通常は NumPy 配列や pandas DataFrame を使用して格納されます。</p>
 <p>3つのサンプルがあり、各サンプルには2つの特徴があるとします。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
@@ -187,13 +187,13 @@ y = np.array([0, 1, 0])  # 0 类别和 1 类别</pre>
 X_train<span style="color: Gray;">,</span> X_test<span style="color: Gray;">,</span> y_train<span style="color: Gray;">,</span> y_test <span style="color: Gray;">=</span> train_test_split<span style="color: Olive;">(</span>X<span style="color: Gray;">,</span> y<span style="color: Gray;">,</span> test_size<span style="color: Gray;">=</span><span style="color: Maroon;">0.3</span><span style="color: Gray;">,</span> random_state<span style="color: Gray;">=</span><span style="color: Maroon;">42</span><span style="color: Olive;">)</span><br/>
 </div></div>
 <ul>
-<li>上記のコードは、<code class="">train_test_split</code>関数を呼び出し、結果を4つの変数に代入します：<code class="">X_train</code>、<code class="">X_test</code>、<code class="">y_train</code> 和 <code class="">y_test</code>。</li>
-<li><code class="">X</code> 和 <code class="">y</code>は、<code class="">train_test_split</code>関数に渡される引数で、それぞれ特徴データセットとターゲット変数（ラベル）を表します。通常、<code class="">X</code>は2次元配列で、<code class="">y</code>は1次元配列です。</li>
+<li>上記のコードは、<code class="">train_test_split</code>関数を呼び出し、結果を4つの変数に代入します：<code class="">X_train</code>、<code class="">X_test</code>、<code class="">y_train</code>と<code class="">y_test</code>。</li>
+<li><code class="">X</code>と<code class="">y</code>は、<code class="">train_test_split</code>関数に渡される引数で、それぞれ特徴データセットとターゲット変数（ラベル）を表します。通常、<code class="">X</code>は2次元配列で、<code class="">y</code>は1次元配列です。</li>
 <li><code class="">test_size=0.3</code>パラメータは、テストセットのサイズが元のデータセットの30%であることを指定します。つまり、データの70%がトレーニングセットとして使用され、残りの30%がテストセットとして使用されることを意味します。</li>
 <li><code class="">random_state=42</code>パラメータは乱数シードであり、データセットを分割するたびに同じ結果が得られるようにします。これは実験やモデルの検証において、結果の再現性を保証するため非常に有用です。</li>
 </ul>
 <hr/><h2>2、モデルとアルゴリズム</h2><h3>教師あり学習と教師なし学習</h3>
-<p>scikit-learn では、機械学習モデルはおおまかに2つのカテゴリに分類されます：<span class="marked">教師あり学習</span> 和 <span class="marked">教師なし学習</span>。</p>
+<p>scikit-learn では、機械学習モデルはおおまかに2つのカテゴリに分類されます：<span class="marked">教師あり学習</span>と<span class="marked">教師なし学習</span>。</p>
 <p>
 <strong>教師あり学習（Supervised Learning）：</strong>教師あり学習では、モデルはトレーニング時にラベル付きデータを使用して学習します。これらのラベルは、モデルに予測させたい結果です。</p><p>一般的な教師あり学習タスクには、分類と回帰があります。</p>
 <ul><li><strong>分類（Classification）</strong>：データポイントをあらかじめ定義されたクラスに割り当てます。例えば、メールがスパムか非スパムかを判定します。</li><li><strong>回帰（Regression）</strong>：連続値の出力を予測します。例えば、住宅価格や気温などを予測します。</li></ul>
@@ -204,7 +204,7 @@ clf <span style="color: Gray;">=</span> DecisionTreeClassifier<span style="color
 clf.<span style="color: #05a;">fit</span><span style="color: Olive;">(</span>X_train<span style="color: Gray;">,</span> y_train<span style="color: Olive;">)</span><br/>
 y_pred <span style="color: Gray;">=</span> clf.<span style="color: #05a;">predict</span><span style="color: Olive;">(</span>X_test<span style="color: Olive;">)</span><br/>
 </div></div><p>
-<strong>教師なし学習（Unsupervised Learning）：</strong>教師なし学習とは、ラベル付きデータがなく、モデルが入力データ自体の特徴のみから学習することです。</p><p>一般的な教師なし学習タスクには、クラスタリングと次元削減があります。</p><ul><li><strong>クラスタリング（Clustering）</strong>：データをグループ分けし、同じグループ内のデータが類似性を持つようにします。一般的なクラスタリングアルゴリズムには、<strong>K-Means</strong>、<strong>DBSCAN</strong>などがあります。</li><li><strong>次元削減（Dimensionality Reduction）</strong>：データ内の特徴量の数を減らすもので、通常はデータ圧縮や可視化に使用されます。一般的な次元削減手法には、<strong>PCA</strong>（主成分分析）や<strong>t-SNE</strong>（t分布確率近傍埋め込み）などがあります。</li></ul>
+<strong>教師なし学習（Unsupervised Learning）：</strong>教師なし学習とは、ラベル付きデータがなく、モデルが入力データ自体の特徴のみから学習することです。</p><p>一般的な教師なし学習タスクには、クラスタリングと次元削減があります。</p><ul><li><strong>クラスタリング（Clustering）</strong>：データをグループ分けし、同じグループ内のデータが類似性を持つようにします。一般的なクラスタリングアルゴリズムには、<strong>K-Means</strong>、<strong>DBSCAN</strong>などがあります。</li><li><strong>次元削減（Dimensionality Reduction）</strong>：データ内の特徴量の数を減らすもので、通常はデータ圧縮や可可視化に使用されます。一般的な次元削減手法には、<strong>PCA</strong>（主成分分析）や<strong>t-SNE</strong>（t分布確率近傍埋め込み）などがあります。</li></ul>
 <p>K-Means クラスタリングを使用する：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: Green;font-weight:bold;">from</span> sklearn.<span style="color: #05a;">cluster</span> <span style="color: Green;font-weight:bold;">import</span> KMeans<br/>
@@ -386,11 +386,11 @@ random_search.<span style="color: #05a;">fit</span><span style="color: Olive;">(
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -679,7 +679,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

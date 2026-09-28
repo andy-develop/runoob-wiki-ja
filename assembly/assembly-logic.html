@@ -178,7 +178,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     <span style="color: #0000FF; font-weight: bold;">global</span> _start<br/>
 <br/>
 _start<span style="color: #339933;">:</span><br/>
-    <span style="color: #666666; font-style: italic;">; 基本按位与</span><br/>
+    <span style="color: #666666; font-style: italic;">; 基本的なビットごとのAND</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0x0F0F</span>             <span style="color: #666666; font-style: italic;">; 0000 1111 0000 1111</span><br/>
     <span style="color: #00007F; font-weight: bold;">and</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0x00FF</span>             <span style="color: #666666; font-style: italic;">; 0000 0000 1111 1111</span><br/>
     <span style="color: #666666; font-style: italic;">; 结果：eax = 0x000F         ; 0000 0000 0000 1111</span><br/>
@@ -188,19 +188,19 @@ _start<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">and</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0x0F</span>               <span style="color: #666666; font-style: italic;">; 0000 1111</span><br/>
     <span style="color: #666666; font-style: italic;">; eax = 0x0B                ; 0000 1011</span><br/>
 <br/>
-    <span style="color: #666666; font-style: italic;">; 常用技巧2：判断奇偶性（和 1 做 AND）</span><br/>
+    <span style="color: #666666; font-style: italic;">; 常套手段2：偶数/奇数の判定（1 と AND を取る）</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">42</span>                 <span style="color: #666666; font-style: italic;">; 偶数</span><br/>
     <span style="color: #00007F; font-weight: bold;">and</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span>                  <span style="color: #666666; font-style: italic;">; eax = 0（偶数）</span><br/>
-    <span style="color: #666666; font-style: italic;">; 42 的二进制末尾是 0，42 &amp; 1 = 0</span><br/>
+    <span style="color: #666666; font-style: italic;">; 42の2進数の末尾は0、42 &amp; 1 = 0</span><br/>
 <br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">43</span>                 <span style="color: #666666; font-style: italic;">; 奇数</span><br/>
     <span style="color: #00007F; font-weight: bold;">and</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span>                  <span style="color: #666666; font-style: italic;">; eax = 1（奇数）</span><br/>
-    <span style="color: #666666; font-style: italic;">; 43 的二进制末尾是 1，43 &amp; 1 = 1</span><br/>
+    <span style="color: #666666; font-style: italic;">; 43の2進数の末尾は1、43 &amp; 1 = 1</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 常用技巧3：将寄存器清零</span><br/>
     <span style="color: #00007F; font-weight: bold;">xor</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">eax</span>                <span style="color: #666666; font-style: italic;">; 等同于 mov eax, 0，但更快更短</span><br/>
 <br/>
-    <span style="color: #666666; font-style: italic;">; AND 会设置标志位：CF=0, OF=0, ZF 和 SF 根据结果</span><br/>
+    <span style="color: #666666; font-style: italic;">; AND はフラグを設定します：CF=0, OF=0, ZF と SF は結果に応じて</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
     <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
@@ -219,7 +219,7 @@ _start<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">or</span>  <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0x00FF</span>             <span style="color: #666666; font-style: italic;">; 0000 0000 1111 1111</span><br/>
     <span style="color: #666666; font-style: italic;">; eax = 0x0FFF              ; 0000 1111 1111 1111</span><br/>
 <br/>
-    <span style="color: #666666; font-style: italic;">; 设置某个位（把第 3 位设为 1）</span><br/>
+    <span style="color: #666666; font-style: italic;">; 特定のビットを設定する（第3ビットを1に設定する）</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>                  <span style="color: #666666; font-style: italic;">; 0000 0000</span><br/>
     <span style="color: #00007F; font-weight: bold;">or</span>  <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0x08</span>               <span style="color: #666666; font-style: italic;">; 0000 1000</span><br/>
     <span style="color: #666666; font-style: italic;">; eax = 0x8                 ; 0000 1000</span><br/>
@@ -242,7 +242,7 @@ _start<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">not</span> <span style="color: #46AA03; font-weight: bold;">eax</span>                     <span style="color: #666666; font-style: italic;">; 1111 0000 1111 0000 ...</span><br/>
     <span style="color: #666666; font-style: italic;">; eax = 0xF0F0F0F0</span><br/>
 <br/>
-    <span style="color: #666666; font-style: italic;">; NOT 不影响任何标志位（与 AND/OR/XOR 不同）</span><br/>
+    <span style="color: #666666; font-style: italic;">; NOT はどのフラグにも影響しない（AND/OR/XOR とは異なる）</span><br/>
 </div>
 </div>
 <hr/>
@@ -274,14 +274,14 @@ _start<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">xor</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">ebx</span>                <span style="color: #666666; font-style: italic;">; eax = 100 xor 200</span><br/>
     <span style="color: #00007F; font-weight: bold;">xor</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">eax</span>                <span style="color: #666666; font-style: italic;">; ebx = 200 xor (100 xor 200) = 100</span><br/>
     <span style="color: #00007F; font-weight: bold;">xor</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">ebx</span>                <span style="color: #666666; font-style: italic;">; eax = (100 xor 200) xor 100 = 200</span><br/>
-    <span style="color: #666666; font-style: italic;">; 现在 eax = 200, ebx = 100（交换完成！）</span><br/>
+    <span style="color: #666666; font-style: italic;">; 現在 eax = 200、ebx = 100（交換完了！）</span><br/>
 <br/>
-    <span style="color: #666666; font-style: italic;">; 经典技巧3：简单的加密/解密</span><br/>
+    <span style="color: #666666; font-style: italic;">; 定番テクニック3：簡単な暗号化/復号化</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">al</span><span style="color: #339933;">,</span> <span style="color: #7F007F;">'A'</span>                 <span style="color: #666666; font-style: italic;">; 原始字符 'A' = 0x41</span><br/>
     <span style="color: #00007F; font-weight: bold;">xor</span> <span style="color: #46AA03; font-weight: bold;">al</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0x55</span>                <span style="color: #666666; font-style: italic;">; 加密：al = 'A' xor 0x55</span><br/>
-    <span style="color: #666666; font-style: italic;">; al 现在是某个乱码值</span><br/>
+    <span style="color: #666666; font-style: italic;">; al は現在、何らかのガベージ値</span><br/>
     <span style="color: #00007F; font-weight: bold;">xor</span> <span style="color: #46AA03; font-weight: bold;">al</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0x55</span>                <span style="color: #666666; font-style: italic;">; 解密：再 xor 0x55 恢复</span><br/>
-    <span style="color: #666666; font-style: italic;">; al = 'A' 回来了！</span><br/>
+    <span style="color: #666666; font-style: italic;">; al = 'A' が戻ってきた！</span><br/>
 <br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
@@ -309,26 +309,26 @@ _start<span style="color: #339933;">:</span><br/>
     <span style="color: #0000FF; font-weight: bold;">global</span> _start<br/>
 <br/>
 _start<span style="color: #339933;">:</span><br/>
-    <span style="color: #666666; font-style: italic;">; SHL：逻辑左移 = 乘以 2 的幂</span><br/>
+    <span style="color: #666666; font-style: italic;">; SHL：論理左シフト = 2 の累乗を掛ける</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">10</span>                 <span style="color: #666666; font-style: italic;">; eax = 10 (1010)</span><br/>
     <span style="color: #00007F; font-weight: bold;">shl</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span>                  <span style="color: #666666; font-style: italic;">; eax = 20 (10100)，即 10×2</span><br/>
     <span style="color: #00007F; font-weight: bold;">shl</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">2</span>                  <span style="color: #666666; font-style: italic;">; eax = 80 (1010000)，即 20×4</span><br/>
 <br/>
-    <span style="color: #666666; font-style: italic;">; SHR：逻辑右移 = 无符号除以 2 的幂</span><br/>
+    <span style="color: #666666; font-style: italic;">; SHR：論理右シフト = 符号なし整数を2のべき乗で割る</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">80</span>                 <span style="color: #666666; font-style: italic;">; eax = 80</span><br/>
     <span style="color: #00007F; font-weight: bold;">shr</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">3</span>                  <span style="color: #666666; font-style: italic;">; eax = 10，即 80÷8</span><br/>
 <br/>
-    <span style="color: #666666; font-style: italic;">; SAR：算术右移 = 有符号除以 2 的幂（保留符号位）</span><br/>
+    <span style="color: #666666; font-style: italic;">; SAR：算術右シフト = 符号付き整数を2のべき乗で除算（符号ビット保持）</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #339933;">-</span><span style="color: #FF0000;">16</span>                <span style="color: #666666; font-style: italic;">; eax = -16 (0xFFFFFFF0)</span><br/>
     <span style="color: #00007F; font-weight: bold;">sar</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">2</span>                  <span style="color: #666666; font-style: italic;">; eax = -4 (0xFFFFFFFC)，即 -16÷4</span><br/>
-    <span style="color: #666666; font-style: italic;">; SAR 对比 SHR：</span><br/>
-    <span style="color: #666666; font-style: italic;">; 如果 eax = 0xFFFFFFF0 (-16)，SHR 会得到 0x3FFFFFFC (很大的正数)</span><br/>
-    <span style="color: #666666; font-style: italic;">; 而 SAR 会得到 0xFFFFFFFC (-4)，保留了符号位</span><br/>
+    <span style="color: #666666; font-style: italic;">; SAR と SHR の比較：</span><br/>
+    <span style="color: #666666; font-style: italic;">; eax = 0xFFFFFFF0 (-16) の場合、SHR は 0x3FFFFFFC になります (非常に大きな正数)</span><br/>
+    <span style="color: #666666; font-style: italic;">; 一方、SAR は 0xFFFFFFFC (-4) となり、符号ビットを保持します</span><br/>
 <br/>
-    <span style="color: #666666; font-style: italic;">; 移出的最后一位会进入 CF 标志位</span><br/>
+    <span style="color: #666666; font-style: italic;">; シフトアウトされた最後のビットはCFフラグに入る</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">5</span>                  <span style="color: #666666; font-style: italic;">; 0101</span><br/>
-    <span style="color: #00007F; font-weight: bold;">shr</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span>                  <span style="color: #666666; font-style: italic;">; eax = 2, CF = 1（末尾的1被移出）</span><br/>
-    <span style="color: #00007F; font-weight: bold;">jc</span> carry_was_set            <span style="color: #666666; font-style: italic;">; 如果 CF=1，说明原数是奇数</span><br/>
+    <span style="color: #00007F; font-weight: bold;">shr</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span>                  <span style="color: #666666; font-style: italic;">; eax = 2, CF = 1（末尾の1がシフトアウトされた）</span><br/>
+    <span style="color: #00007F; font-weight: bold;">jc</span> carry_was_set            <span style="color: #666666; font-style: italic;">; CF=1 なら、元の数は奇数</span><br/>
 <br/>
 carry_was_set<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
@@ -355,18 +355,18 @@ carry_was_set<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">al</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0x85</span>                <span style="color: #666666; font-style: italic;">; 1000 0101</span><br/>
     <span style="color: #00007F; font-weight: bold;">rol</span> <span style="color: #46AA03; font-weight: bold;">al</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span>                   <span style="color: #666666; font-style: italic;">; 左移 1 位：0000 1011</span><br/>
     <span style="color: #666666; font-style: italic;">; CF = 1（最高位移出到 CF）</span><br/>
-    <span style="color: #666666; font-style: italic;">; 同时 CF 原本的 1 被移入最低位，形成循环</span><br/>
+    <span style="color: #666666; font-style: italic;">; 同時にCFの元の1が最下位ビットに移され、循環を形成する</span><br/>
 <br/>
-    <span style="color: #666666; font-style: italic;">; ROL 实际效果：向左移 1 位，最高位同时进入 CF 和最低位</span><br/>
+    <span style="color: #666666; font-style: italic;">; ROL の実際の効果: 左に 1 ビットシフトし、最上位ビットは同時に CF と最下位ビットに入る</span><br/>
     <span style="color: #666666; font-style: italic;">; 1000 0101 -&gt; ROL 1 -&gt; 0000 1011</span><br/>
 <br/>
-    <span style="color: #666666; font-style: italic;">; RCL：带进位循环左移（CF 参与循环）</span><br/>
+    <span style="color: #666666; font-style: italic;">; RCL: キャリーフラグ付き循環左シフト（CF が循環に参加）</span><br/>
     <span style="color: #00007F; font-weight: bold;">clc</span>                         <span style="color: #666666; font-style: italic;">; 清除 CF = 0</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">al</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0x85</span>                <span style="color: #666666; font-style: italic;">; 1000 0101</span><br/>
-    <span style="color: #00007F; font-weight: bold;">rcl</span> <span style="color: #46AA03; font-weight: bold;">al</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span>                   <span style="color: #666666; font-style: italic;">; CF 参与：CF bit7...bit0 -&gt; CF</span><br/>
+    <span style="color: #00007F; font-weight: bold;">rcl</span> <span style="color: #46AA03; font-weight: bold;">al</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span>                   <span style="color: #666666; font-style: italic;">; CF の関と：CF bit7...bit0 -&gt; CF</span><br/>
     <span style="color: #666666; font-style: italic;">; 结果：0000 1010, CF = 1</span><br/>
 <br/>
-    <span style="color: #666666; font-style: italic;">; 循环移位在加密算法和位操作中常用</span><br/>
+    <span style="color: #666666; font-style: italic;">; 循環シフトは暗号アルゴリズムとビット演算でよく使われる</span><br/>
 </div>
 </div>
 <hr/>
@@ -379,11 +379,11 @@ carry_was_set<span style="color: #339933;">:</span><br/>
 <span style="color: #666666; font-style: italic;">; 使用逻辑运算实现位标志系统</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
-    flags <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #FF0000;">0</span>                  <span style="color: #666666; font-style: italic;">; 8 个标志位，初始全为 0</span><br/>
-    <span style="color: #666666; font-style: italic;">; bit0: 是否激活</span><br/>
-    <span style="color: #666666; font-style: italic;">; bit1: 是否可见</span><br/>
-    <span style="color: #666666; font-style: italic;">; bit2: 是否需要保存</span><br/>
-    <span style="color: #666666; font-style: italic;">; bit3: 是否已修改</span><br/>
+    flags <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #FF0000;">0</span>                  <span style="color: #666666; font-style: italic;">; 8 個のフラグビット、初期値はすべて 0</span><br/>
+    <span style="color: #666666; font-style: italic;">; bit0: 有効かどうか</span><br/>
+    <span style="color: #666666; font-style: italic;">; bit1: 可視かどうか</span><br/>
+    <span style="color: #666666; font-style: italic;">; bit2: 保存する必要があるかどうか</span><br/>
+    <span style="color: #666666; font-style: italic;">; bit3: 変更済みかどうか</span><br/>
 <br/>
     FLAG_ACTIVE <span style="color: #0000FF; font-weight: bold;">equ</span> <span style="color: #FF0000;">1</span>           <span style="color: #666666; font-style: italic;">; 0000 0001</span><br/>
     FLAG_VISIBLE <span style="color: #0000FF; font-weight: bold;">equ</span> <span style="color: #FF0000;">2</span>          <span style="color: #666666; font-style: italic;">; 0000 0010</span><br/>
@@ -402,8 +402,8 @@ _start<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #009900; font-weight: bold;">[</span>flags<span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">al</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 检查标志位：AND + TEST</span><br/>
-    <span style="color: #00007F; font-weight: bold;">test</span> <span style="color: #0000FF; font-weight: bold;">byte</span> <span style="color: #009900; font-weight: bold;">[</span>flags<span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> FLAG_ACTIVE    <span style="color: #666666; font-style: italic;">; 测试 bit0 是否为 1</span><br/>
-    <span style="color: #00007F; font-weight: bold;">jnz</span> is_active                     <span style="color: #666666; font-style: italic;">; ZF=0 表示该位是 1</span><br/>
+    <span style="color: #00007F; font-weight: bold;">test</span> <span style="color: #0000FF; font-weight: bold;">byte</span> <span style="color: #009900; font-weight: bold;">[</span>flags<span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> FLAG_ACTIVE    <span style="color: #666666; font-style: italic;">; bit0 が 1 かどうかをテスト</span><br/>
+    <span style="color: #00007F; font-weight: bold;">jnz</span> is_active                     <span style="color: #666666; font-style: italic;">; ZF=0 はそのビットが1であることを示す</span><br/>
 <br/>
 is_active<span style="color: #339933;">:</span><br/>
     <span style="color: #666666; font-style: italic;">; 清除标志位：AND + NOT</span><br/>
@@ -415,7 +415,7 @@ is_active<span style="color: #339933;">:</span><br/>
     <span style="color: #666666; font-style: italic;">; 切换标志位：XOR</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">al</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>flags<span style="color: #009900; font-weight: bold;">]</span><br/>
     <span style="color: #00007F; font-weight: bold;">xor</span> <span style="color: #46AA03; font-weight: bold;">al</span><span style="color: #339933;">,</span> FLAG_MODIFIED       <span style="color: #666666; font-style: italic;">; 切换 bit3</span><br/>
-    <span style="color: #666666; font-style: italic;">; 如果原来是 0 变成 1，原来是 1 变成 0</span><br/>
+    <span style="color: #666666; font-style: italic;">; 元が0なら1になり、元が1なら0になる</span><br/>
 <br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
@@ -541,11 +541,11 @@ is_active<span style="color: #339933;">:</span><br/>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -834,7 +834,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

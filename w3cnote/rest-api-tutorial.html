@@ -109,8 +109,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <tbody><tr>
 <td>GET</td>
 <td>获取资源</td>
-<td>是</td>
-<td>是</td>
+<td>である</td>
+<td>である</td>
 </tr>
 <tr>
 <td>POST</td>
@@ -121,7 +121,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <tr>
 <td>PUT</td>
 <td>リソース全体を更新する</td>
-<td>是</td>
+<td>である</td>
 <td>否</td>
 </tr>
 <tr>
@@ -133,7 +133,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <tr>
 <td>DELETE</td>
 <td>删除资源</td>
-<td>是</td>
+<td>である</td>
 <td>否</td>
 </tr>
 </tbody></table>
@@ -331,9 +331,9 @@ curl <span style="color: #660033;">-X</span> POST https:<span style="color: #000
 </ul>
 <p><strong>示例</strong>：</p>
 <ul>
-<li><p>✅ 好的设计: /users, /products, /orders</p></li>
+<li><p>✅ 良い設計: /users, /products, /orders</p></li>
 <li>
-<p>❌ 不好的设计: /getUsers, /addProduct, /all-orders</p></li></ul>
+<p>❌ 良くない設計: /getUsers, /addProduct, /all-orders</p></li></ul>
 <p><strong>扩展建议</strong>：</p>
 <ul>
 <li>リソース間の関係を反映するために、リソースに階層的な命名を使用します：<code>/companies/{companyId}/departments/{departmentId}/employees</code></li>
@@ -382,7 +382,7 @@ DELETE /users/123   # 删除用户
 <ul>
 <li>より詳細なステータスコードを使用してAPIの表現力を高めます：<ul>
 <li>429 Too Many Requests：リクエスト頻度の制限超過</li>
-<li>405 Method Not Allowed：不支持的HTTP方法</li>
+<li>405 Method Not Allowed：サポートされていないHTTPメソッド</li>
 <li>415 Unsupported Media Type：サポートされていないコンテンツタイプ</li>
 <li>422 Unprocessable Entity：语义错误</li>
 </ul>
@@ -394,7 +394,7 @@ DELETE /users/123   # 删除用户
 <h3>4. 効果的なページネーションを実装する</h3>
 <p><strong>基本实现</strong>：</p>
 <ul>
-<li>使用<code>limit</code>和<code>offset</code>或<code>page</code>和<code>size</code>参数</li>
+<li>使用<code>limit</code>と<code>offset</code>或<code>page</code>と<code>size</code>参数</li>
 <li>レスポンスにページネーションメタデータを含める</li>
 </ul>
 <p><strong>示例</strong>：</p>
@@ -426,7 +426,7 @@ GET /products?page=3&amp;size=20
 <ul>
 <li>クエリパラメータを使ってフィルタリングする：<code>?status=active</code></li>
 <li>使用<code>sort</code>パラメータでソートする：<code>?sort=created_at</code></li>
-<li>支持多字段排序和升/降序：<code>?sort=price:asc,rating:desc</code></li>
+<li>複数フィールドのソートと昇順/降順をサポート：<code>?sort=price:asc,rating:desc</code></li>
 </ul>
 <p><strong>示例</strong>：</p>
 <pre>
@@ -599,7 +599,7 @@ X-RateLimit-Reset: 1623760800
 <h3>12. キャッシュを適切に使用する</h3>
 <p><strong>基本实现</strong>：</p>
 <ul>
-<li>使用ETags和If-None-Match头</li>
+<li>ETags と If-None-Match ヘッダーを使用する</li>
 <li>適切なCache-Controlディレクティブを設定する</li>
 </ul>
 <p><strong>示例</strong>：</p>
@@ -624,7 +624,7 @@ ETag: "33a64df551425fcc55e4d42a148795d9f25f89d4"
 <p><strong>基本实现</strong>：</p>
 <ul>
 <li>gzipおよびBrotli圧縮をサポートする</li>
-<li>使用Accept-Encoding和Content-Encoding头</li>
+<li>Accept-EncodingヘッダーとContent-Encodingヘッダーを使用する</li>
 </ul>
 <p><strong>扩展建议</strong>：</p>
 <ul>
@@ -891,11 +891,11 @@ Response: {"status": "completed", "result": "/reports/xyz-789"}
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=".." class="runoob-pop">登录</a>！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href="..">登录</a>！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

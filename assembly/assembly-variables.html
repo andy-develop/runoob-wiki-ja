@@ -185,18 +185,18 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2 class="example">实例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;">; 文件路径：variables_data.asm</span><br/>
-<span style="color: #666666; font-style: italic;">; 演示 .data 段中各种变量的定义</span><br/>
+<span style="color: #666666; font-style: italic;">; .data セグメント内の各種変数の定義を示す</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
     <span style="color: #666666; font-style: italic;">; 字节变量</span><br/>
-    status <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #FF0000;">1</span>                 <span style="color: #666666; font-style: italic;">; 1 字节，值为 1</span><br/>
+    status <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #FF0000;">1</span>                 <span style="color: #666666; font-style: italic;">; 1バイト、値は1</span><br/>
     grade <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'A'</span>                <span style="color: #666666; font-style: italic;">; 1 字节，字符 'A' = 0x41</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 字变量（2 字节）</span><br/>
-    year <span style="color: #0000FF; font-weight: bold;">dw</span> <span style="color: #FF0000;">2026</span>                <span style="color: #666666; font-style: italic;">; 2 字节，值为 2026</span><br/>
+    year <span style="color: #0000FF; font-weight: bold;">dw</span> <span style="color: #FF0000;">2026</span>                <span style="color: #666666; font-style: italic;">; 2バイト、値は2026</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 双字变量（4 字节）</span><br/>
-    salary <span style="color: #0000FF; font-weight: bold;">dd</span> <span style="color: #FF0000;">50000</span>             <span style="color: #666666; font-style: italic;">; 4 字节，值为 50000</span><br/>
+    salary <span style="color: #0000FF; font-weight: bold;">dd</span> <span style="color: #FF0000;">50000</span>             <span style="color: #666666; font-style: italic;">; 4 バイト、値は 50000</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 多字节序列</span><br/>
     msg <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'Hello, runoob!'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>  <span style="color: #666666; font-style: italic;">; 字符串以 0 结尾（C 风格）</span><br/>
@@ -205,7 +205,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     <span style="color: #666666; font-style: italic;">; 重复值</span><br/>
     stars <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #FF0000;">10</span> dup<span style="color: #009900; font-weight: bold;">(</span><span style="color: #7F007F;">'*'</span><span style="color: #009900; font-weight: bold;">)</span>        <span style="color: #666666; font-style: italic;">; 10 个星号字符</span><br/>
 <br/>
-    <span style="color: #666666; font-style: italic;">; 带名称的多个变量</span><br/>
+    <span style="color: #666666; font-style: italic;">; 名前付きの複数の変数</span><br/>
     x <span style="color: #0000FF; font-weight: bold;">dd</span> <span style="color: #FF0000;">10</span><br/>
     y <span style="color: #0000FF; font-weight: bold;">dd</span> <span style="color: #FF0000;">20</span><br/>
     z <span style="color: #0000FF; font-weight: bold;">dd</span> <span style="color: #FF0000;">30</span><br/>
@@ -246,9 +246,9 @@ _start<span style="color: #339933;">:</span><br/>
 <span style="color: #666666; font-style: italic;">; 演示 .bss 段中预留空间</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.bss</span><br/>
-    input_buf <span style="color: #0000FF; font-weight: bold;">resb</span> <span style="color: #FF0000;">128</span>          <span style="color: #666666; font-style: italic;">; 预留 128 字节的输入缓冲区</span><br/>
+    input_buf <span style="color: #0000FF; font-weight: bold;">resb</span> <span style="color: #FF0000;">128</span>          <span style="color: #666666; font-style: italic;">; 128 バイトの入力バッファを予約する</span><br/>
     numbers <span style="color: #0000FF; font-weight: bold;">resd</span> <span style="color: #FF0000;">100</span>            <span style="color: #666666; font-style: italic;">; 预留 100 个双字（400 字节）</span><br/>
-    temp <span style="color: #0000FF; font-weight: bold;">resb</span> <span style="color: #FF0000;">1</span>                 <span style="color: #666666; font-style: italic;">; 预留 1 字节的临时变量</span><br/>
+    temp <span style="color: #0000FF; font-weight: bold;">resb</span> <span style="color: #FF0000;">1</span>                 <span style="color: #666666; font-style: italic;">; 1バイトの一時変数を予約する</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
     prompt <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'Enter a number: '</span><br/>
@@ -265,10 +265,10 @@ _start<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> prompt_len<br/>
     <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
 <br/>
-    <span style="color: #666666; font-style: italic;">; 读取输入到 .bss 段的缓冲区</span><br/>
+    <span style="color: #666666; font-style: italic;">; 入力を .bss セクションのバッファに読み込む</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">3</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
-    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> input_buf           <span style="color: #666666; font-style: italic;">; 使用 .bss 段预留的空间</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> input_buf           <span style="color: #666666; font-style: italic;">; .bss セクションに予約された領域を使用</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">128</span><br/>
     <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
 <br/>
@@ -325,7 +325,7 @@ _start<span style="color: #339933;">:</span><br/>
 <h2 class="example">实例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;">; 文件路径：var_operations.asm</span><br/>
-<span style="color: #666666; font-style: italic;">; 演示变量操作的三步模式</span><br/>
+<span style="color: #666666; font-style: italic;">; 変数操作の3ステップパターンを実演する</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
     a <span style="color: #0000FF; font-weight: bold;">dd</span> <span style="color: #FF0000;">100</span><br/>
@@ -377,12 +377,12 @@ _start<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #0000FF; font-weight: bold;">dword</span> <span style="color: #009900; font-weight: bold;">[</span>var<span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">999999</span>     <span style="color: #666666; font-style: italic;">; 写入 4 字节</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 当目标大小明确时（由寄存器决定），可以省略</span><br/>
-    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">al</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>var<span style="color: #009900; font-weight: bold;">]</span>               <span style="color: #666666; font-style: italic;">; al 是 1 字节，自动按 byte 读取</span><br/>
-    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>var<span style="color: #009900; font-weight: bold;">]</span>               <span style="color: #666666; font-style: italic;">; ax 是 2 字节，自动按 word 读取</span><br/>
-    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>var<span style="color: #009900; font-weight: bold;">]</span>              <span style="color: #666666; font-style: italic;">; eax 是 4 字节，自动按 dword 读取</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">al</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>var<span style="color: #009900; font-weight: bold;">]</span>               <span style="color: #666666; font-style: italic;">; al は1バイトなので、自動的にバイトとして読み取られる</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>var<span style="color: #009900; font-weight: bold;">]</span>               <span style="color: #666666; font-style: italic;">; ax は 2 バイトなので、自動的に word として読み取られる</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>var<span style="color: #009900; font-weight: bold;">]</span>              <span style="color: #666666; font-style: italic;">; eax は 4 バイトのため、自動的に dword として読み取られる</span><br/>
 <br/>
-    <span style="color: #666666; font-style: italic;">; 但下面这行会报错（大小不明确）：</span><br/>
-    <span style="color: #666666; font-style: italic;">; mov [var], 1              ; 错误！1 可以是字节/字/双字</span><br/>
+    <span style="color: #666666; font-style: italic;">; ただし次の行はエラーになる（サイズが不明確）：</span><br/>
+    <span style="color: #666666; font-style: italic;">; mov [var], 1              ; エラー！1 はバイト/ワード/ダブルワードのいずれかです</span><br/>
     <span style="color: #666666; font-style: italic;">; 必须写成：</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #0000FF; font-weight: bold;">dword</span> <span style="color: #009900; font-weight: bold;">[</span>var<span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span>          <span style="color: #666666; font-style: italic;">; 明确指定 4 字节</span><br/>
 <br/>
@@ -509,11 +509,11 @@ _start<span style="color: #339933;">:</span><br/>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -802,7 +802,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

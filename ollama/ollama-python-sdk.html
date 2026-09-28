@@ -302,13 +302,13 @@ from ollama import ChatResponse</pre>
 response: ChatResponse <span style="color: Gray;">=</span> chat<span style="color: Olive;">(</span>model<span style="color: Gray;">=</span><span style="color: #a11;">'qwen3.5'</span><span style="color: Gray;">,</span> messages<span style="color: Gray;">=</span><span style="color: Olive;">[</span><br/>
   <span style="color: Olive;">{</span><br/>
     <span style="color: #a11;">'role'</span>: <span style="color: #a11;">'user'</span><span style="color: Gray;">,</span><br/>
-    <span style="color: #a11;">'content'</span>: <span style="color: #a11;">'你是谁？'</span><span style="color: Gray;">,</span><br/>
+    <span style="color: #a11;">'content'</span>: <span style="color: #a11;">'あなたは誰ですか？'</span><span style="color: Gray;">,</span><br/>
   <span style="color: Olive;">}</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
 <span style="color: #a50"># 打印响应内容</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>response<span style="color: Olive;">[</span><span style="color: #a11;">'message'</span><span style="color: Olive;">]</span><span style="color: Olive;">[</span><span style="color: #a11;">'content'</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 或者直接访问响应对象的字段</span><br/>
+<span style="color: #a50"># または、レスポンスオブジェクトのフィールドに直接アクセスする</span><br/>
 <span style="color: #a50">#print(response.message.content)</span><br/>
 </div></div><p>上記のコードを実行すると、出力結果は次のようになります：</p>
 <pre>
@@ -319,7 +319,7 @@ response: ChatResponse <span style="color: Gray;">=</span> chat<span style="colo
 <br/>
 stream <span style="color: Gray;">=</span> chat<span style="color: Olive;">(</span><br/>
     model<span style="color: Gray;">=</span><span style="color: #a11;">'qwen3.5'</span><span style="color: Gray;">,</span><br/>
-    messages<span style="color: Gray;">=</span><span style="color: Olive;">[</span><span style="color: Olive;">{</span><span style="color: #a11;">'role'</span>: <span style="color: #a11;">'user'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'content'</span>: <span style="color: #a11;">'你是谁？'</span><span style="color: Olive;">}</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
+    messages<span style="color: Gray;">=</span><span style="color: Olive;">[</span><span style="color: Olive;">{</span><span style="color: #a11;">'role'</span>: <span style="color: #a11;">'user'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'content'</span>: <span style="color: #a11;">'あなたは誰ですか？'</span><span style="color: Olive;">}</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
     stream<span style="color: Gray;">=</span><span style="color: Teal;">True</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
@@ -342,7 +342,7 @@ client <span style="color: Gray;">=</span> Client<span style="color: Olive;">(</
 response <span style="color: Gray;">=</span> client.<span style="color: #05a;">chat</span><span style="color: Olive;">(</span>model<span style="color: Gray;">=</span><span style="color: #a11;">'qwen3.5'</span><span style="color: Gray;">,</span> messages<span style="color: Gray;">=</span><span style="color: Olive;">[</span><br/>
     <span style="color: Olive;">{</span><br/>
         <span style="color: #a11;">'role'</span>: <span style="color: #a11;">'user'</span><span style="color: Gray;">,</span><br/>
-        <span style="color: #a11;">'content'</span>: <span style="color: #a11;">'你是谁?'</span><span style="color: Gray;">,</span><br/>
+        <span style="color: #a11;">'content'</span>: <span style="color: #a11;">'あなたは誰?'</span><span style="color: Gray;">,</span><br/>
     <span style="color: Olive;">}</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>response<span style="color: Olive;">[</span><span style="color: #a11;">'message'</span><span style="color: Olive;">]</span><span style="color: Olive;">[</span><span style="color: #a11;">'content'</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
@@ -353,7 +353,7 @@ response <span style="color: Gray;">=</span> client.<span style="color: #05a;">c
 <span style="color: Green;font-weight:bold;">from</span> ollama <span style="color: Green;font-weight:bold;">import</span> AsyncClient<br/>
 <br/>
 async <span style="color: Green;font-weight:bold;">def</span> chat<span style="color: Olive;">(</span><span style="color: Olive;">)</span>:<br/>
-    message <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: #a11;">'role'</span>: <span style="color: #a11;">'user'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'content'</span>: <span style="color: #a11;">'你是谁?'</span><span style="color: Olive;">}</span><br/>
+    message <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: #a11;">'role'</span>: <span style="color: #a11;">'user'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'content'</span>: <span style="color: #a11;">'あなたは誰?'</span><span style="color: Olive;">}</span><br/>
     response <span style="color: Gray;">=</span> await AsyncClient<span style="color: Olive;">(</span><span style="color: Olive;">)</span>.<span style="color: #05a;">chat</span><span style="color: Olive;">(</span>model<span style="color: Gray;">=</span><span style="color: #a11;">'qwen3.5'</span><span style="color: Gray;">,</span> messages<span style="color: Gray;">=</span><span style="color: Olive;">[</span>message<span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>response<span style="color: Olive;">[</span><span style="color: #a11;">'message'</span><span style="color: Olive;">]</span><span style="color: Olive;">[</span><span style="color: #a11;">'content'</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
 <br/>
@@ -846,7 +846,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

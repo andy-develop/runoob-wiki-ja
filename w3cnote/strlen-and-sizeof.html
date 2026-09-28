@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>利用 strlen 和 sizeof 求取字符串长度注意事项 | 菜鸟教程</title>
+<title>strlen と sizeof で文字列の長さを取得する際の注意事項 | 菜鸟教程</title>
 <script>
 window.RUNOOB_CONFIG = {
   darkCssUrl: "https://www.runoob.com/wp-content/themes/runoob/dark-mode.css?v=1.125"
@@ -82,7 +82,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="article-intro">
 <!-- ad start-->
 <!-- ad end-->
-<p>首先，<strong>strlen</strong>是函数，<strong>sizeof</strong>は演算子であり、二者が得る結果の型は<strong>size_t</strong>，即<span class="marked">unsigned int</span>型。大部分のコンパイラはコンパイル時に<strong>sizeof</strong>計算済みであり、<strong>strlen</strong>の結果は実行時に計算して初めて求められる。</p>
+<p>首先，<strong>strlen</strong>関数であり、<strong>sizeof</strong>は演算子であり、二者が得る結果の型は<strong>size_t</strong>，即<span class="marked">unsigned int</span>型。大部分のコンパイラはコンパイル時に<strong>sizeof</strong>計算済みであり、<strong>strlen</strong>の結果は実行時に計算して初めて求められる。</p>
 <p>次のステートメントについて：</p>
 <pre>char *str1 = "asdfgh";
 char str2[] = "asdfgh";
@@ -93,7 +93,7 @@ char str4[] = "as\0df";</pre>
 sizeof(str2) = 7;  strlen(str2) = 6;
 sizeof(str3) = 8;  strlen(str3) = 3;
 sizeof(str4) = 6;  strlen(str4) = 2;</pre>
-<p>str1は文字ポインタ変数であり、sizeof が取得するのはそのポインタが占めるアドレス空間で、32ビットOSでは4バイトに相当するので、結果は4です。strlen が返すのはその文字列の長さで、遭遇する<span class="marked">\0</span>结束，<span class="marked">\0</span>それ自体は数えないため、結果は6です。</p>str2 是字符数组，大小由字符串常量 "asdfgh" 确定，sizeof 获得该数组所占内存空间大小，包括字符串结尾的<span class="marked">\0</span>，所以结果为 7；strlen 同理返回 6。<p>str3 も文字配列ですが、サイズは8と確定しているため、sizeof の結果は8です。strlen はカウントする<span class="marked">\0</span>前にあるすべての文字の個数、すなわち 3；</p>
+<p>str1は文字ポインタ変数であり、sizeof が取得するのはそのポインタが占めるアドレス空間で、32ビットOSでは4バイトに相当するので、結果は4です。strlen が返すのはその文字列の長さで、遭遇する<span class="marked">\0</span>结束，<span class="marked">\0</span>それ自体は数えないため、結果は6です。</p>str2は文字配列であり、そのサイズは文字列定数"asdfgh"によって決まり、sizeofはその配列が占めるメモリ空間のサイズを取得し、文字列の末尾の<span class="marked">\0</span>したがって結果は7；strlenも同様に6を返します。<p>str3 も文字配列ですが、サイズは8と確定しているため、sizeof の結果は8です。strlen はカウントする<span class="marked">\0</span>前にあるすべての文字の個数、すなわち 3；</p>
 <p>str4 は定数文字配列であり、sizeof は文字総数すなわち 6 を得る；strlen は...まで計算する<span class="marked">\0</span>終了するため、2を返します。</p>
 <p>要するに、sizeof は変数のサイズを計算し、strlen は文字列の長さを計算する。前者は文字に影響されない<span class="marked">\0</span>影響し、後者は<span class="marked">\0</span>を長さ判定の基準とする。</p>
 <blockquote><p>原文地址：https://blog.csdn.net/shudaxia123/article/details/47753505</p></blockquote>
@@ -207,11 +207,11 @@ sizeof(str4) = 6;  strlen(str4) = 2;</pre>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=".." class="runoob-pop">登录</a>！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href="..">登录</a>！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

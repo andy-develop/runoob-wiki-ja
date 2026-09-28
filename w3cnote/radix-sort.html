@@ -103,12 +103,12 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     output <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: Maroon;">0</span><span style="color: Olive;">]</span> * n  <span style="color: #a50"># 初始化输出数组</span><br/>
     count <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: Maroon;">0</span><span style="color: Olive;">]</span> * <span style="color: Maroon;">10</span>  <span style="color: #a50"># 初始化计数数组</span><br/>
 <br/>
-    <span style="color: #a50"># 统计每个数字的出现次数</span><br/>
+    <span style="color: #a50"># 各数字の出現回数を集計する</span><br/>
     <span style="color: Green;font-weight:bold;">for</span> num <span style="color: Green;font-weight:bold;">in</span> arr:<br/>
         index <span style="color: Gray;">=</span> <span style="color: Olive;">(</span>num // exp<span style="color: Olive;">)</span> % <span style="color: Maroon;">10</span><br/>
         count<span style="color: Olive;">[</span>index<span style="color: Olive;">]</span> +<span style="color: Gray;">=</span> <span style="color: Maroon;">1</span><br/>
 <br/>
-    <span style="color: #a50"># 累加计数数组，得到每个数字的最终位置</span><br/>
+    <span style="color: #a50"># 累積カウント配列で、各数値の最終位置を取得する</span><br/>
     <span style="color: Green;font-weight:bold;">for</span> i <span style="color: Green;font-weight:bold;">in</span> <span style="color: Teal;">range</span><span style="color: Olive;">(</span><span style="color: Maroon;">1</span><span style="color: Gray;">,</span> <span style="color: Maroon;">10</span><span style="color: Olive;">)</span>:<br/>
         count<span style="color: Olive;">[</span>i<span style="color: Olive;">]</span> +<span style="color: Gray;">=</span> count<span style="color: Olive;">[</span>i - <span style="color: Maroon;">1</span><span style="color: Olive;">]</span><br/>
 <br/>
@@ -125,11 +125,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         arr<span style="color: Olive;">[</span>i<span style="color: Olive;">]</span> <span style="color: Gray;">=</span> output<span style="color: Olive;">[</span>i<span style="color: Olive;">]</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">def</span> radix_sort<span style="color: Olive;">(</span>arr<span style="color: Olive;">)</span>:<br/>
-    <span style="color: #a50"># 找到最大数字的位数</span><br/>
+    <span style="color: #a50"># 最大数字の桁数を求める</span><br/>
     max_num <span style="color: Gray;">=</span> <span style="color: Teal;">max</span><span style="color: Olive;">(</span>arr<span style="color: Olive;">)</span><br/>
-    exp <span style="color: Gray;">=</span> <span style="color: Maroon;">1</span>  <span style="color: #a50"># 从个位数开始</span><br/>
+    exp <span style="color: Gray;">=</span> <span style="color: Maroon;">1</span>  <span style="color: #a50"># 一の位から始める</span><br/>
     <span style="color: Green;font-weight:bold;">while</span> max_num // exp <span style="color: Gray;">&gt;</span> <span style="color: Maroon;">0</span>:<br/>
-        counting_sort<span style="color: Olive;">(</span>arr<span style="color: Gray;">,</span> exp<span style="color: Olive;">)</span>  <span style="color: #a50"># 对当前位数进行计数排序</span><br/>
+        counting_sort<span style="color: Olive;">(</span>arr<span style="color: Gray;">,</span> exp<span style="color: Olive;">)</span>  <span style="color: #a50"># 現在の桁に対して計数ソートを行う</span><br/>
         exp *<span style="color: Gray;">=</span> <span style="color: Maroon;">10</span>  <span style="color: #a50"># 移动到下一位</span><br/>
     <span style="color: Green;font-weight:bold;">return</span> arr<br/>
 <br/>
@@ -228,13 +228,13 @@ sorted_arr <span style="color: Gray;">=</span> radix_sort<span style="color: Oli
 </div></div>
 <h3>Java</h3>
 <div class="example"><h2 class="example">サンプル</h2> <div class="example_code">
-<span style="color: #008000; font-style: italic; font-weight: bold;">/**<br/>* 基数排序<br/>* 考虑负数的情况还可以参考： https://code.i-harness.com/zh-CN/q/e98fa9<br/>
+<span style="color: #008000; font-style: italic; font-weight: bold;">/**<br/>* 基数排序<br/>* 負の数の場合については、こちらも参照できます： https://code.i-harness.com/zh-CN/q/e98fa9<br/>
  */</span><br/>
 <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">class</span> RadixSort <span style="color: #000000; font-weight: bold;">implements</span> IArraySort <span style="color: #009900;">{</span><br/>
 <br/>
     @Override<br/>
     <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000066; font-weight: bold;">int</span><span style="color: #009900;">[</span><span style="color: #009900;">]</span> sort<span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span><span style="color: #009900;">[</span><span style="color: #009900;">]</span> sourceArray<span style="color: #009900;">)</span> <span style="color: #000000; font-weight: bold;">throws</span> <span style="color: #003399;">Exception</span> <span style="color: #009900;">{</span><br/>
-        <span style="color: #666666; font-style: italic;">// 对 arr 进行拷贝，不改变参数内容</span><br/>
+        <span style="color: #666666; font-style: italic;">// arr をコピーし、引数の内容を変更しない</span><br/>
         <span style="color: #000066; font-weight: bold;">int</span><span style="color: #009900;">[</span><span style="color: #009900;">]</span> arr <span style="color: #339933;">=</span> <span style="color: #003399;">Arrays</span>.<span style="color: #006633;">copyOf</span><span style="color: #009900;">(</span>sourceArray, sourceArray.<span style="color: #006633;">length</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
         <span style="color: #000066; font-weight: bold;">int</span> maxDigit <span style="color: #339933;">=</span> getMaxDigit<span style="color: #009900;">(</span>arr<span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
@@ -274,7 +274,7 @@ sorted_arr <span style="color: Gray;">=</span> radix_sort<span style="color: Oli
         <span style="color: #000066; font-weight: bold;">int</span> dev <span style="color: #339933;">=</span> <span style="color: #CC66CC;">1</span><span style="color: #339933;">;</span><br/>
 <br/>
         <span style="color: #000000; font-weight: bold;">for</span> <span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span> i <span style="color: #339933;">=</span> <span style="color: #CC66CC;">0</span><span style="color: #339933;">;</span> i <span style="color: #339933;">&lt;</span> maxDigit<span style="color: #339933;">;</span> i<span style="color: #339933;">++</span>, dev <span style="color: #339933;">*=</span> <span style="color: #CC66CC;">10</span>, mod <span style="color: #339933;">*=</span> <span style="color: #CC66CC;">10</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
-            <span style="color: #666666; font-style: italic;">// 考虑负数的情况，这里扩展一倍队列数，其中 [0-9]对应负数，[10-19]对应正数 (bucket + 10)</span><br/>
+            <span style="color: #666666; font-style: italic;">// 負の数を考慮する場合、ここではキューの数を2倍に拡張し、[0-9]は負の数、[10-19]は正の数に対応します (bucket + 10)</span><br/>
             <span style="color: #000066; font-weight: bold;">int</span><span style="color: #009900;">[</span><span style="color: #009900;">]</span><span style="color: #009900;">[</span><span style="color: #009900;">]</span> counter <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> <span style="color: #000066; font-weight: bold;">int</span><span style="color: #009900;">[</span>mod <span style="color: #339933;">*</span> <span style="color: #CC66CC;">2</span><span style="color: #009900;">]</span><span style="color: #009900;">[</span><span style="color: #CC66CC;">0</span><span style="color: #009900;">]</span><span style="color: #339933;">;</span><br/>
 <br/>
             <span style="color: #000000; font-weight: bold;">for</span> <span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span> j <span style="color: #339933;">=</span> <span style="color: #CC66CC;">0</span><span style="color: #339933;">;</span> j <span style="color: #339933;">&lt;</span> arr.<span style="color: #006633;">length</span><span style="color: #339933;">;</span> j<span style="color: #339933;">++</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
@@ -342,10 +342,10 @@ sorted_arr <span style="color: Gray;">=</span> radix_sort<span style="color: Oli
 </div></div>
 <h3>C++</h3>
 <div class="example"><h2 class="example">サンプル</h2> <div class="example_code">
-<span style="color: #05a;">int</span> maxbit<span style="color: #008000;">(</span><span style="color: #05a;">int</span> data<span style="color: #008000;">[</span><span style="color: #008000;">]</span>, <span style="color: #05a;">int</span> n<span style="color: #008000;">)</span> <span style="color: #666666;">//辅助函数，求数据的最大位数</span><br/>
+<span style="color: #05a;">int</span> maxbit<span style="color: #008000;">(</span><span style="color: #05a;">int</span> data<span style="color: #008000;">[</span><span style="color: #008000;">]</span>, <span style="color: #05a;">int</span> n<span style="color: #008000;">)</span> <span style="color: #666666;">//補助関数、データの最大桁数を求める</span><br/>
 <span style="color: #008000;">{</span><br/>
     <span style="color: #05a;">int</span> maxData <span style="color: #000080;">=</span> data<span style="color: #008000;">[</span><span style="color: #0000DD;">0</span><span style="color: #008000;">]</span><span style="color: #008080;">;</span>              <span style="color: #666666;">///&lt; 最大数</span><br/>
-    <span style="color: #666666;">/// 先求出最大数，再求其位数，这样有原先依次每个数判断其位数，稍微优化点。</span><br/>
+    <span style="color: #666666;">/// まず最大数を求め、その桁数を取得する。各数を順番に桁数判定していた元の方法より、少し最適化されている。</span><br/>
     <span style="color: #05a;">for</span> <span style="color: #008000;">(</span><span style="color: #05a;">int</span> i <span style="color: #000080;">=</span> <span style="color: #0000DD;">1</span><span style="color: #008080;">;</span> i <span style="color: #000080;">&lt;</span> n<span style="color: #008080;">;</span> <span style="color: #000040;">++</span>i<span style="color: #008000;">)</span><br/>
     <span style="color: #008000;">{</span><br/>
         <span style="color: #05a;">if</span> <span style="color: #008000;">(</span>maxData <span style="color: #000080;">&lt;</span> data<span style="color: #008000;">[</span>i<span style="color: #008000;">]</span><span style="color: #008000;">)</span><br/>
@@ -360,7 +360,7 @@ sorted_arr <span style="color: Gray;">=</span> radix_sort<span style="color: Oli
         <span style="color: #000040;">++</span>d<span style="color: #008080;">;</span><br/>
     <span style="color: #008000;">}</span><br/>
     <span style="color: #05a;">return</span> d<span style="color: #008080;">;</span><br/>
-<span style="color: #696969;; font-style: italic;">/*    int d = 1; //保存最大的位数<br/>
+<span style="color: #696969;; font-style: italic;">/*    int d = 1; //最大の桁数を保存する<br/>
     int p = 10;<br/>
     for(int i = 0; i &lt; n; ++i)<br/>
     {<br/>
@@ -385,18 +385,18 @@ sorted_arr <span style="color: Gray;">=</span> radix_sort<span style="color: Oli
             count<span style="color: #008000;">[</span>j<span style="color: #008000;">]</span> <span style="color: #000080;">=</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span> <span style="color: #666666;">//每次分配前清空计数器</span><br/>
         <span style="color: #05a;">for</span><span style="color: #008000;">(</span>j <span style="color: #000080;">=</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span> j <span style="color: #000080;">&lt;</span> n<span style="color: #008080;">;</span> j<span style="color: #000040;">++</span><span style="color: #008000;">)</span><br/>
         <span style="color: #008000;">{</span><br/>
-            k <span style="color: #000080;">=</span> <span style="color: #008000;">(</span>data<span style="color: #008000;">[</span>j<span style="color: #008000;">]</span> <span style="color: #000040;">/</span> radix<span style="color: #008000;">)</span> <span style="color: #000040;">%</span> <span style="color: #0000DD;">10</span><span style="color: #008080;">;</span> <span style="color: #666666;">//统计每个桶中的记录数</span><br/>
+            k <span style="color: #000080;">=</span> <span style="color: #008000;">(</span>data<span style="color: #008000;">[</span>j<span style="color: #008000;">]</span> <span style="color: #000040;">/</span> radix<span style="color: #008000;">)</span> <span style="color: #000040;">%</span> <span style="color: #0000DD;">10</span><span style="color: #008080;">;</span> <span style="color: #666666;">//各バケット内のレコード数を集計する</span><br/>
             count<span style="color: #008000;">[</span>k<span style="color: #008000;">]</span><span style="color: #000040;">++</span><span style="color: #008080;">;</span><br/>
         <span style="color: #008000;">}</span><br/>
         <span style="color: #05a;">for</span><span style="color: #008000;">(</span>j <span style="color: #000080;">=</span> <span style="color: #0000DD;">1</span><span style="color: #008080;">;</span> j <span style="color: #000080;">&lt;</span> <span style="color: #0000DD;">10</span><span style="color: #008080;">;</span> j<span style="color: #000040;">++</span><span style="color: #008000;">)</span><br/>
-            count<span style="color: #008000;">[</span>j<span style="color: #008000;">]</span> <span style="color: #000080;">=</span> count<span style="color: #008000;">[</span>j <span style="color: #000040;">-</span> <span style="color: #0000DD;">1</span><span style="color: #008000;">]</span> <span style="color: #000040;">+</span> count<span style="color: #008000;">[</span>j<span style="color: #008000;">]</span><span style="color: #008080;">;</span> <span style="color: #666666;">//将tmp中的位置依次分配给每个桶</span><br/>
+            count<span style="color: #008000;">[</span>j<span style="color: #008000;">]</span> <span style="color: #000080;">=</span> count<span style="color: #008000;">[</span>j <span style="color: #000040;">-</span> <span style="color: #0000DD;">1</span><span style="color: #008000;">]</span> <span style="color: #000040;">+</span> count<span style="color: #008000;">[</span>j<span style="color: #008000;">]</span><span style="color: #008080;">;</span> <span style="color: #666666;">// tmp内の位置を各バケットに順番に割り当てる</span><br/>
         <span style="color: #05a;">for</span><span style="color: #008000;">(</span>j <span style="color: #000080;">=</span> n <span style="color: #000040;">-</span> <span style="color: #0000DD;">1</span><span style="color: #008080;">;</span> j <span style="color: #000080;">&gt;=</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span> j<span style="color: #000040;">--</span><span style="color: #008000;">)</span> <span style="color: #666666;">//将所有桶中记录依次收集到tmp中</span><br/>
         <span style="color: #008000;">{</span><br/>
             k <span style="color: #000080;">=</span> <span style="color: #008000;">(</span>data<span style="color: #008000;">[</span>j<span style="color: #008000;">]</span> <span style="color: #000040;">/</span> radix<span style="color: #008000;">)</span> <span style="color: #000040;">%</span> <span style="color: #0000DD;">10</span><span style="color: #008080;">;</span><br/>
             tmp<span style="color: #008000;">[</span>count<span style="color: #008000;">[</span>k<span style="color: #008000;">]</span> <span style="color: #000040;">-</span> <span style="color: #0000DD;">1</span><span style="color: #008000;">]</span> <span style="color: #000080;">=</span> data<span style="color: #008000;">[</span>j<span style="color: #008000;">]</span><span style="color: #008080;">;</span><br/>
             count<span style="color: #008000;">[</span>k<span style="color: #008000;">]</span><span style="color: #000040;">--</span><span style="color: #008080;">;</span><br/>
         <span style="color: #008000;">}</span><br/>
-        <span style="color: #05a;">for</span><span style="color: #008000;">(</span>j <span style="color: #000080;">=</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span> j <span style="color: #000080;">&lt;</span> n<span style="color: #008080;">;</span> j<span style="color: #000040;">++</span><span style="color: #008000;">)</span> <span style="color: #666666;">//将临时数组的内容复制到data中</span><br/>
+        <span style="color: #05a;">for</span><span style="color: #008000;">(</span>j <span style="color: #000080;">=</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span> j <span style="color: #000080;">&lt;</span> n<span style="color: #008080;">;</span> j<span style="color: #000040;">++</span><span style="color: #008000;">)</span> <span style="color: #666666;">// 一時配列の内容を data にコピーする</span><br/>
             data<span style="color: #008000;">[</span>j<span style="color: #008000;">]</span> <span style="color: #000080;">=</span> tmp<span style="color: #008000;">[</span>j<span style="color: #008000;">]</span><span style="color: #008080;">;</span><br/>
         radix <span style="color: #000080;">=</span> radix <span style="color: #000040;">*</span> <span style="color: #0000DD;">10</span><span style="color: #008080;">;</span><br/>
     <span style="color: #008000;">}</span><br/>
@@ -512,9 +512,9 @@ sorted_arr <span style="color: Gray;">=</span> radix_sort<span style="color: Oli
         <span style="color: Green; font-weight: bold;">end</span><br/>
         <br/>
         <span style="color: Green; font-weight: bold;">for</span> j <span style="color: #Gray;">=</span> <span style="color: Maroon;">2</span><span style="color: #Gray;">,</span> <span style="color: Maroon;">10</span> <span style="color: Green; font-weight: bold;">do</span><br/>
-            bucket<span style="color: Olive;">[</span>j<span style="color: Olive;">]</span> <span style="color: #Gray;">=</span> bucket<span style="color: Olive;">[</span>j <span style="color: #Gray;">-</span> <span style="color: Maroon;">1</span><span style="color: Olive;">]</span> <span style="color: #Gray;">+</span> bucket<span style="color: Olive;">[</span>j<span style="color: Olive;">]</span><span style="color: #Gray;">;</span>  <span style="color: #a50; font-style: italic;">-- 每个桶的数量 = 以前桶数量和 + 自个数量</span><br/>
+            bucket<span style="color: Olive;">[</span>j<span style="color: Olive;">]</span> <span style="color: #Gray;">=</span> bucket<span style="color: Olive;">[</span>j <span style="color: #Gray;">-</span> <span style="color: Maroon;">1</span><span style="color: Olive;">]</span> <span style="color: #Gray;">+</span> bucket<span style="color: Olive;">[</span>j<span style="color: Olive;">]</span><span style="color: #Gray;">;</span>  <span style="color: #a50; font-style: italic;">-- 各バケットの数量 = 以前のバケット数量の合計 + 自身の数量</span><br/>
         <span style="color: Green; font-weight: bold;">end</span> <br/>
-        <span style="color: #a50; font-style: italic;">-- 按照桶的位置，排序--这个是桶式排序，必须使用倒序，因为排序方法是从小到大，顺序下来，会出现大的在小的上面清空。</span><br/>
+        <span style="color: #a50; font-style: italic;">-- バケットの位置に従ってソートします。これはバケットソートです。逆順を使用する必要があります。ソート方法は小さいものから大きいものへであるため、順に処理すると、大きいものが小さいものの上に残ってクリアされないことになります。</span><br/>
         <span style="color: Green; font-weight: bold;">for</span> k <span style="color: #Gray;">=</span> <span style="color: #Gray;">#</span>tt<span style="color: #Gray;">,</span> <span style="color: Maroon;">1</span><span style="color: #Gray;">,</span> <span style="color: #Gray;">-</span><span style="color: Maroon;">1</span> <span style="color: Green; font-weight: bold;">do</span><br/>
             <span style="color: Green; font-weight: bold;">local</span> remainder <span style="color: #Gray;">=</span> <span style="color: #05a;">math.floor</span><span style="color: Olive;">(</span><span style="color: Olive;">(</span>tt<span style="color: Olive;">[</span>k<span style="color: Olive;">]</span> <span style="color: #Gray;">/</span> radix<span style="color: Olive;">)</span><span style="color: Olive;">)</span> <span style="color: #Gray;">%</span> <span style="color: Maroon;">10</span> <span style="color: #Gray;">+</span> <span style="color: Maroon;">1</span><span style="color: #Gray;">;</span><br/>
             temp<span style="color: Olive;">[</span>bucket<span style="color: Olive;">[</span>remainder<span style="color: Olive;">]</span><span style="color: Olive;">]</span> <span style="color: #Gray;">=</span> tt<span style="color: Olive;">[</span>k<span style="color: Olive;">]</span><span style="color: #Gray;">;</span><br/>
@@ -720,7 +720,7 @@ static void RadixSort(List&lt;int&gt; list)
         dev *= 10
         mod *= 10
     return data</pre>
-<div class="comt-meta wrapper"><span class="comt-author"><a href=".." target="_blank">奋斗的昌老师</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>奮闘する昌先生</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  153***7761@qq.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="https://blog.csdn.net/aninstein/article/details/112210927" rel="nofollow" target="_blank">参考URL</a></p></div></span>6年前 (2021-01-05)</div></div></li><!-- #comment-## -->
+<div class="comt-meta wrapper"><span class="comt-author"><a href=".." target="_blank">奮闘する昌先生</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>奮闘する昌先生</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  153***7761@qq.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="https://blog.csdn.net/aninstein/article/details/112210927" rel="nofollow" target="_blank">参考URL</a></p></div></span>6年前 (2021-01-05)</div></div></li><!-- #comment-## -->
 <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-68288"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>秋月</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  luj***hneyiu1990@126.com</p></div><div class="upvotejs" data-commid="68288" id="runoobvote-id-68288"><a class="upvote"></a> <span class="count">3</span></div></div><div class="comt-main" id="div-comment-68288"><p>Go版も補足します：</p>
 <pre>// 基数排序
 func RadixSort(arr []int) {
@@ -886,11 +886,11 @@ public class RadixSort  {
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记は本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に必ず<a href=".." class="runoob-pop">ログイン</a>してください！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">笔记は本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に必ず<a class="runoob-pop" href="..">ログイン</a>してください！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

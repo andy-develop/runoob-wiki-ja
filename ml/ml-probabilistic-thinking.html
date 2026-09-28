@@ -219,19 +219,19 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example">
 <h2 class="example">実例</h2>
 <div class="example_code">
-<span style="color: #a50"># 一个简化的思想示例：计算后验概率（非完整代码）</span><br/>
-<span style="color: #a50"># 假设我们已从数据中统计出以下概率（似然和先验）</span><br/>P_单词_给定_垃圾<span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: #a11;">"免费"</span>: <span style="color: Maroon;">0.8</span><span style="color: Gray;">,</span> <span style="color: #a11;">"会议"</span>: <span style="color: Maroon;">0.1</span><span style="color: Olive;">}</span>  <span style="color: #a50"># 在垃圾邮件中，"免费"出现的概率</span><br/>P_单词_给定_正常<span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: #a11;">"免费"</span>: <span style="color: Maroon;">0.1</span><span style="color: Gray;">,</span> <span style="color: #a11;">"会议"</span>: <span style="color: Maroon;">0.9</span><span style="color: Olive;">}</span>  <span style="color: #a50"># 在正常邮件中，"会议"出现的概率</span><br/>P_垃圾<span style="color: Gray;">=</span> <span style="color: Maroon;">0.3</span>  <span style="color: #a50"># 先验概率：任意邮件是垃圾邮件的概率</span><br/>P_正常<span style="color: Gray;">=</span> <span style="color: Maroon;">0.7</span>  <span style="color: #a50"># 先验概率：任意邮件是正常的概率</span><br/>
+<span style="color: #a50"># 簡略化した考え方の例：事後確率の計算（不完全なコード）</span><br/>
+<span style="color: #a50"># データから以下の確率（尤度と事前確率）をすでに統計のに算出したと仮定します</span><br/>P_单词_给定_垃圾<span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: #a11;">"免费"</span>: <span style="color: Maroon;">0.8</span><span style="color: Gray;">,</span> <span style="color: #a11;">"会议"</span>: <span style="color: Maroon;">0.1</span><span style="color: Olive;">}</span>  <span style="color: #a50"># スパムメールにおいて、「無料」が出現する確率</span><br/>P_单词_给定_正常<span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: #a11;">"免费"</span>: <span style="color: Maroon;">0.1</span><span style="color: Gray;">,</span> <span style="color: #a11;">"会议"</span>: <span style="color: Maroon;">0.9</span><span style="color: Olive;">}</span>  <span style="color: #a50"># 正常メールにおいて、「会議」が出現する確率</span><br/>P_垃圾<span style="color: Gray;">=</span> <span style="color: Maroon;">0.3</span>  <span style="color: #a50"># 事前確率：任意のメールがスパムメールである確率</span><br/>P_正常<span style="color: Gray;">=</span> <span style="color: Maroon;">0.7</span>  <span style="color: #a50"># 事前確率：任意のメールが正常である確率</span><br/>
 <br/>
-<span style="color: #a50"># 对于一封包含"免费"和"会议"的邮件，计算它是垃圾邮件的后验概率（简化计算）</span><br/>
-<span style="color: #a50"># 根据贝叶斯公式（忽略证据分母，因为比较时抵消）</span><br/>score_垃圾<span style="color: Gray;">=</span>P_单词_给定_垃圾<span style="color: Olive;">[</span><span style="color: #a11;">"免费"</span><span style="color: Olive;">]</span>* P_单词_给定_垃圾<span style="color: Olive;">[</span><span style="color: #a11;">"会议"</span><span style="color: Olive;">]</span>* P_垃圾<br/>score_正常<span style="color: Gray;">=</span>P_单词_给定_正常<span style="color: Olive;">[</span><span style="color: #a11;">"免费"</span><span style="color: Olive;">]</span>* P_单词_给定_正常<span style="color: Olive;">[</span><span style="color: #a11;">"会议"</span><span style="color: Olive;">]</span>* P_正常<br/>
+<span style="color: #a50"># 「無料」と「会議」を含むメールについて、スパムメールである事後確率を計算する（簡易計算）</span><br/>
+<span style="color: #a50"># ベイズの公式に従うと（比較の際に打ち消されるため、エビデンスの分母は無視する）</span><br/>score_垃圾<span style="color: Gray;">=</span>P_单词_给定_垃圾<span style="color: Olive;">[</span><span style="color: #a11;">"免费"</span><span style="color: Olive;">]</span>* P_单词_给定_垃圾<span style="color: Olive;">[</span><span style="color: #a11;">"会议"</span><span style="color: Olive;">]</span>* P_垃圾<br/>score_正常<span style="color: Gray;">=</span>P_单词_给定_正常<span style="color: Olive;">[</span><span style="color: #a11;">"免费"</span><span style="color: Olive;">]</span>* P_单词_给定_正常<span style="color: Olive;">[</span><span style="color: #a11;">"会议"</span><span style="color: Olive;">]</span>* P_正常<br/>
 <br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"属于垃圾邮件的得分: {score_垃圾:.4f}"</span><span style="color: Olive;">)</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"属于正常邮件的得分: {score_正常:.4f}"</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"スパムメールに属するスコア: {score_垃圾:.4f}"</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">正常メールに属するスコア: {score_正常:.4f}</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">if</span>score_垃圾<span style="color: Gray;">&gt;</span>score_正常:<br/>
-    <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"预测：这是一封垃圾邮件。"</span><span style="color: Olive;">)</span><br/>
+    <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"予測：これはスパムメールです。"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">else</span>:<br/>
-    <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"预测：这是一封正常邮件。"</span><span style="color: Olive;">)</span><br/>
+    <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"予測：これは通常のメールです。"</span><span style="color: Olive;">)</span><br/>
 </div>
 </div>
 <h3>役割2：モデルの推論と学習 —— 最も可能性の高い説明を探す</h3>
@@ -322,7 +322,7 @@ P_disease_given_positive <span style="color: Gray;">=</span> <span style="color:
 <p><strong>さらに深く学びたい場合</strong>：</p>
 <ul>
 <li><strong>理論面</strong>：学ぶ<strong>確率グラフィカルモデル</strong>。グラフ構造を用いて変数間の複雑な確率的依存関係をエレガントに表現します。</li>
-<li><strong>アルゴリズム面</strong>：探求する<strong>変分推論</strong>和<strong>マルコフ連鎖モンテカルロ</strong>法。これらは複雑なベイズモデルを解くための強力なツールです。</li>
+<li><strong>アルゴリズム面</strong>：探求する<strong>変分推論</strong>と<strong>マルコフ連鎖モンテカルロ</strong>法。これらは複雑なベイズモデルを解くための強力なツールです。</li>
 <li><strong>応用面</strong>：研究する<strong>ベイズ最適化</strong>（ハイパーパラメータ調整に使用）、<strong>ガウス過程</strong>（回帰と最適化に使用）、および<strong>深層生成モデル</strong>（変分オートエンコーダー VAE、拡散モデルなど）。</li>
 </ul>
 その他の拡張
@@ -443,11 +443,11 @@ P_disease_given_positive <span style="color: Gray;">=</span> <span style="color:
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -736,7 +736,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

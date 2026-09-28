@@ -318,7 +318,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h3>日付/時刻関数</h3>
 <table class="reference"><thead><tr><th>関数</th><th>戻り値の型</th><th>説明</th><th>例</th><th>結果</th></tr></thead><tbody><tr><td>
 <tt class="LITERAL"><code class="FUNCTION">age(<tt class="TYPE">timestamp</tt>, <tt class="TYPE">timestamp</tt>)</code></tt>
-</td><td><tt class="TYPE">interval</tt></td><td>引数を減算した後の<span class="QUOTE">「記号化」された</span>結果。日だけでなく、年と月を使用します</td><td><tt class="LITERAL">age(timestamp '2001-04-10', timestamp '1957-06-13')</tt></td><td><tt class="LITERAL">43 years 9 mons 27 days</tt></td></tr><tr><td><tt class="LITERAL"><code class="FUNCTION">age(<tt class="TYPE">timestamp</tt>)</code></tt></td><td><tt class="TYPE">interval</tt></td><td>从<code class="FUNCTION">current_date</code>引数を減算した結果（真夜中時点）</td><td><tt class="LITERAL">age(timestamp '1957-06-13')</tt></td><td><tt class="LITERAL">43 years 8 mons 3 days</tt></td></tr><tr><td>
+</td><td><tt class="TYPE">interval</tt></td><td>引数を減算した後の<span class="QUOTE">「記号化」された</span>結果。日だけでなく、年と月を使用します</td><td><tt class="LITERAL">age(timestamp '2001-04-10', timestamp '1957-06-13')</tt></td><td><tt class="LITERAL">43 years 9 mons 27 days</tt></td></tr><tr><td><tt class="LITERAL"><code class="FUNCTION">age(<tt class="TYPE">timestamp</tt>)</code></tt></td><td><tt class="TYPE">interval</tt></td><td>から<code class="FUNCTION">current_date</code>引数を減算した結果（真夜中時点）</td><td><tt class="LITERAL">age(timestamp '1957-06-13')</tt></td><td><tt class="LITERAL">43 years 8 mons 3 days</tt></td></tr><tr><td>
 <tt class="LITERAL"><code class="FUNCTION">clock_timestamp()</code></tt>
 </td><td><tt class="TYPE">timestamp with time zone</tt></td><td>実時計の現在のタイムスタンプ（ステートメント実行時に変化）</td><td> </td><td> </td></tr><tr><td>
 <tt class="LITERAL"><code class="FUNCTION">current_date</code></tt>
@@ -344,7 +344,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <tt class="LITERAL"><code class="FUNCTION">justify_hours(<tt class="TYPE">interval</tt>)</code></tt>
 </td><td><tt class="TYPE">interval</tt></td><td>24時間の期間を日として表すように時間間隔を調整</td><td><tt class="LITERAL">justify_hours(interval '27 hours')</tt></td><td><tt class="LITERAL">1 day 03:00:00</tt></td></tr><tr><td>
 <tt class="LITERAL"><code class="FUNCTION">justify_interval(<tt class="TYPE">interval</tt>)</code></tt>
-</td><td><tt class="TYPE">interval</tt></td><td>使用して<code class="FUNCTION">justify_days</code>和<code class="FUNCTION">justify_hours</code>時間間隔を調整すると同時に正負の符号も調整</td><td><tt class="LITERAL">justify_interval(interval '1 mon -1 hour')</tt></td><td><tt class="LITERAL">29 days 23:00:00</tt></td></tr><tr><td>
+</td><td><tt class="TYPE">interval</tt></td><td>使用して<code class="FUNCTION">justify_days</code>と<code class="FUNCTION">justify_hours</code>時間間隔を調整すると同時に正負の符号も調整</td><td><tt class="LITERAL">justify_interval(interval '1 mon -1 hour')</tt></td><td><tt class="LITERAL">29 days 23:00:00</tt></td></tr><tr><td>
 <tt class="LITERAL"><code class="FUNCTION">localtime</code></tt>
 </td><td><tt class="TYPE">time</tt></td><td>当日の時刻；</td><td> </td><td> </td></tr><tr><td>
 <tt class="LITERAL"><code class="FUNCTION">localtimestamp</code></tt>
@@ -396,7 +396,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <tt class="LITERAL"><code class="FUNCTION">statement_timestamp()</code></tt>
 </td><td><tt class="TYPE">timestamp with time zone</tt></td><td>実時計の現在のタイムスタンプ；</td><td> </td><td> </td></tr><tr><td>
 <tt class="LITERAL"><code class="FUNCTION">timeofday()</code></tt>
-</td><td><tt class="TYPE">text</tt></td><td>与<code class="FUNCTION">clock_timestamp</code>同じですが、結果は<tt class="TYPE">text</tt>文字列です；</td><td> </td><td> </td></tr><tr><td>
+</td><td><tt class="TYPE">text</tt></td><td>と<code class="FUNCTION">clock_timestamp</code>同じですが、結果は<tt class="TYPE">text</tt>文字列です；</td><td> </td><td> </td></tr><tr><td>
 <tt class="LITERAL"><code class="FUNCTION">transaction_timestamp()</code></tt>
 </td><td><tt class="TYPE">timestamp with time zone</tt></td><td>現在のトランザクション開始時のタイムスタンプ；</td><td> </td><td> </td></tr></tbody></table> その他の拡張
 </div>
@@ -517,11 +517,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>する必要があります！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>する必要があります！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -821,7 +821,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

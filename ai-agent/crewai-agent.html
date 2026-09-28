@@ -760,14 +760,14 @@ writer <span style="color: Gray;">=</span> Agent<span style="color: Olive;">(</s
 research_task <span style="color: Gray;">=</span> Task<span style="color: Olive;">(</span><br/>
     description<span style="color: Gray;">=</span><span style="color: Olive;">(</span><br/>
         <span style="color: #a11;">"「Python を使用した自動化データクリーニング」というテーマについて深く調査します。<span style="color: #000099; font-weight: bold;">\n</span>"</span><br/>
-        <span style="color: #a11;">"pandas と numpy ライブラリの最新の使い方（2023年以降）、一般的なダーティデータの問題（欠損値、重複値、形式の不整合など）、および効率的なクリーニング手順に重点を置きます。<span style="color: #000099; font-weight: bold;">\n</span>"</span><br/>
-        <span style="color: #a11;">"各ステップを説明する具体的なコードスニペットを提供してください。"</span><br/>
+        <span style="color: #a11;">pandas と numpy ライブラリの最新の使い方（2023年以降）、一般的なダーティデータの問題（欠損値、重複値、形式の不整合など）、および効率のなクリーニング手順に重点を置きます。<span style="color: #000099; font-weight: bold;">\n</span>"</span><br/>
+        <span style="color: #a11;">各ステップを説明する具体的なコードスニペットを提供してください。</span><br/>
     <span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
     agent<span style="color: Gray;">=</span>researcher<span style="color: Gray;">,</span> <span style="color: #a50"># このタスクはリサーチャーに任せる</span><br/>
     expected_output<span style="color: Gray;">=</span><span style="color: Olive;">(</span><br/>
         <span style="color: #a11;">"以下の形式の完全な調査レポート：<span style="color: #000099; font-weight: bold;">\n</span>"</span><br/>
         <span style="color: #a11;">"1. テーマの概要<span style="color: #000099; font-weight: bold;">\n</span>"</span><br/>
-        <span style="color: #a11;">"2. 一般的なデータ問題の分類（少なくとも3種類）<span style="color: #000099; font-weight: bold;">\n</span>"</span><br/>
+        <span style="color: #a11;">"2. 一般的なデータ問題の分類（少なくとも3種類）""<span style="color: #000099; font-weight: bold;">\n</span>"</span><br/>
         <span style="color: #a11;">"3. 各問題カテゴリに対する pandas/numpy の解決策（コードスニペット付き）<span style="color: #000099; font-weight: bold;">\n</span>"</span><br/>
         <span style="color: #a11;">"4. 完全なエンドツーエンドのクリーニング手順の例<span style="color: #000099; font-weight: bold;">\n</span>"</span><br/>
         <span style="color: #a11;">"5. まとめと提案"</span><br/>
@@ -779,7 +779,7 @@ write_task <span style="color: Gray;">=</span> Task<span style="color: Olive;">(
     description<span style="color: Gray;">=</span><span style="color: Olive;">(</span><br/>
         <span style="color: #a11;">"リサーチャーが提供した調査レポートを活用して、初心者向けの技術ブログ記事を作成します。<span style="color: #000099; font-weight: bold;">\n</span>"</span><br/>
         <span style="color: #a11;">"記事のタイトルは「Python データクリーニング入門：pandas でダーティデータに別れを告げる」です。<span style="color: #000099; font-weight: bold;">\n</span>"</span><br/>
-        <span style="color: #a11;">"記事の要件：わかりやすい言葉で、論理を段階的に進め、リサーチャーが提供したすべての主要なコードスニペットを含め、詳細なコメントを追加すること。<span style="color: #000099; font-weight: bold;">\n</span>"</span><br/>
+        <span style="color: #a11;">記事の要件：わかりやすい言葉で、論理を段階のに進め、リサーチャーが提供したすべての主要なコードスニペットを含め、詳細なコメントを追加すること。<span style="color: #000099; font-weight: bold;">\n</span>"</span><br/>
         <span style="color: #a11;">"最後に、シミュレーションデータセットをクリーニングする全プロセスを示す、完全で実行可能な例を提供してください。"</span><br/>
     <span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
     agent<span style="color: Gray;">=</span>writer<span style="color: Gray;">,</span> <span style="color: #a50"># このタスクはライターに任せる</span><br/>
@@ -795,7 +795,7 @@ write_task <span style="color: Gray;">=</span> Task<span style="color: Olive;">(
 </div>
 <p><strong>注意</strong> <code>write_task</code>内の<code>context=[research_task]</code>、これによりタスク間の依存関係が確立され、ライターはリサーチャーがタスクを完了するのを待ってから作業を開始する必要があります。</p>
 <h3>ステップ3：チームを編成してプロセスを設定する (Crew &amp; Process)</h3>
-<p>次に、<code>Agent</code> 和 <code>Task</code>を組み立てて<code>Crew</code>、彼らの作業を定義します<code>Process</code>。</p>
+<p>次に、<code>Agent</code>と<code>Task</code>を組み立てて<code>Crew</code>、彼らの作業を定義します<code>Process</code>。</p>
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
@@ -826,11 +826,11 @@ result <span style="color: Gray;">=</span> blog_crew.<span style="color: #05a;">
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>result<span style="color: Olive;">)</span><br/>
 </div>
 </div>
-<p>あなたの Python スクリプトを実行します（<code>python my_first_crew.py</code>）。先ほど設定した<code>verbose=True</code> 和 <code>verbose=2</code>により、ターミナルで各 Agent の思考プロセスとタスク実行ログが表示され、最後に生成されたブログ記事が表示されます。</p>
+<p>あなたの Python スクリプトを実行します（<code>python my_first_crew.py</code>）。先ほど設定した<code>verbose=True</code>と<code>verbose=2</code>により、ターミナルで各 Agent の思考プロセスとタスク実行ログが表示され、最後に生成されたブログ記事が表示されます。</p>
 <hr/>
 <h2>応用テクニック：Agent にツール (Tools) を装備する</h2>
 <p>crewAI では、<code>Agent</code>外部（ツール）を呼び出せます<code>Tool</code>、例えばウェブ検索、データベース照会、計算の実行など。</p>
-<p>以下の例では、リサーチャーに<strong>ウェブ検索</strong>和<strong>計算</strong>ツール：</p>
+<p>以下の例では、リサーチャーに<strong>ウェブ検索</strong>と<strong>計算</strong>ツール：</p>
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
@@ -838,7 +838,7 @@ result <span style="color: Gray;">=</span> blog_crew.<span style="color: #05a;">
 <br/>
 <span style="color: #a50"># ツールを初期化する</span><br/>
 <span style="color: #a50"># 注意：SerperDevTool には別途 API Key が必要です。https://serper.dev/ で登録して取得してください。</span><br/>
-search_tool <span style="color: Gray;">=</span> SerperDevTool<span style="color: Olive;">(</span>serper_api_key<span style="color: Gray;">=</span><span style="color: #a11;">"你的-serper-api-key"</span><span style="color: Olive;">)</span><br/>
+search_tool <span style="color: Gray;">=</span> SerperDevTool<span style="color: Olive;">(</span>serper_api_key<span style="color: Gray;">=</span><span style="color: #a11;">"あなたの-serper-api-key"</span><span style="color: Olive;">)</span><br/>
 calc_tool <span style="color: Gray;">=</span> CalculatorTool<span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># ツールを装備したリサーチャーを作成する</span><br/>
@@ -858,7 +858,7 @@ analysis_task <span style="color: Gray;">=</span> Task<span style="color: Olive;
         <span style="color: #a11;">"両者の成長率を計算し、考えられる原因を分析してください。"</span><br/>
     <span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
     agent<span style="color: Gray;">=</span>advanced_researcher<span style="color: Gray;">,</span><br/>
-    expected_output<span style="color: Gray;">=</span><span style="color: #a11;">"具体的なデータ、計算プロセス、原因分析を含む簡潔なレポート。"</span><br/>
+    expected_output<span style="color: Gray;">=</span><span style="color: #a11;">具体的なデータ、計算プロセス、原因分析を含む簡潔なレポート。</span><br/>
 <span style="color: Olive;">)</span><br/>
 </div>
 </div>
@@ -980,11 +980,11 @@ analysis_task <span style="color: Gray;">=</span> Task<span style="color: Olive;
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてメモを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>する必要があります！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>する必要があります！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1273,7 +1273,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

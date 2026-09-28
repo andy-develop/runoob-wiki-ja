@@ -159,7 +159,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="article">
 <div class="previous-next-links">
 <div class="previous-design-link"><i aria-hidden="true" class="fa fa-arrow-left" style="font-size:16px;"></i> <a href="../zig/zig-operators.html" rel="prev">Zig 运算符</a> </div>
-<div class="next-design-link"><a href="../zig/zig-array-slice.html" rel="next">Zig 数组和切片</a> <i aria-hidden="true" class="fa fa-arrow-right" style="font-size:16px;"></i></div>
+<div class="next-design-link"><a href="../zig/zig-array-slice.html" rel="next">Zig の配列とスライス</a> <i aria-hidden="true" class="fa fa-arrow-right" style="font-size:16px;"></i></div>
 </div>
 <div class="article-body">
 <div class="article-intro" id="content">
@@ -237,12 +237,12 @@ fn factorial<span style="color: #008000;">(</span>n<span style="color: #008080;"
 <span style="color: #05a;">const</span> std <span style="color: #000080;">=</span> @import<span style="color: #008000;">(</span><span style="color: #a11;">"std"</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <br/>
 pub fn main<span style="color: #008000;">(</span><span style="color: #008000;">)</span> <span style="color: #05a;">void</span> <span style="color: #008000;">{</span><br/>
-    printValue<span style="color: #008000;">(</span>i32, <span style="color: #0000DD;">5</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span> <span style="color: #666666;">// 显式指定类型为 i32</span><br/>
-    printValue<span style="color: #008000;">(</span><span style="color: #008000;">[</span><span style="color: #008000;">]</span><span style="color: #05a;">const</span> u8, <span style="color: #a11;">"Hello"</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span> <span style="color: #666666;">// 显式指定类型为 []const u8</span><br/>
+    printValue<span style="color: #008000;">(</span>i32, <span style="color: #0000DD;">5</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span> <span style="color: #666666;">// 型を i32 と明示的に指定する</span><br/>
+    printValue<span style="color: #008000;">(</span><span style="color: #008000;">[</span><span style="color: #008000;">]</span><span style="color: #05a;">const</span> u8, <span style="color: #a11;">"Hello"</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span> <span style="color: #666666;">// 型を明示的に []const u8 と指定する</span><br/>
 <span style="color: #008000;">}</span><br/>
 <br/>
 fn printValue<span style="color: #008000;">(</span>comptime T<span style="color: #008080;">:</span> type, value<span style="color: #008080;">:</span> T<span style="color: #008000;">)</span> <span style="color: #05a;">void</span> <span style="color: #008000;">{</span><br/>
-    std.<span style="color: #007788;">debug</span>.<span style="color: #007788;">print</span><span style="color: #008000;">(</span><span style="color: #a11;">"{any}<span style="color: #000099; font-weight: bold;">\n</span>"</span>, .<span style="color: #008000;">{</span>value<span style="color: #008000;">}</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span> <span style="color: #666666;">// 使用 {any} 来处理不同类型的值</span><br/>
+    std.<span style="color: #007788;">debug</span>.<span style="color: #007788;">print</span><span style="color: #008000;">(</span><span style="color: #a11;">"{any}<span style="color: #000099; font-weight: bold;">\n</span>"</span>, .<span style="color: #008000;">{</span>value<span style="color: #008000;">}</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span> <span style="color: #666666;">// {any} を使用して異なる型の値を処理する</span><br/>
 <span style="color: #008000;">}</span><br/>
 </div></div>
 <p>この例では、printValue関数は任意の型の引数を受け取り、引数の型に応じて出力します。</p>
@@ -259,7 +259,7 @@ fn printValue<span style="color: #008000;">(</span>comptime T<span style="color:
 <span style="color: #008000;">}</span><br/>
 <br/>
 pub fn main<span style="color: #008000;">(</span><span style="color: #008000;">)</span> <span style="color: #05a;">void</span> <span style="color: #008000;">{</span><br/>
-    <span style="color: #05a;">const</span> result <span style="color: #000080;">=</span> square<span style="color: #008000;">(</span><span style="color: #0000DD;">5</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span> <span style="color: #666666;">// 在调用点插入内联函数代码</span><br/>
+    <span style="color: #05a;">const</span> result <span style="color: #000080;">=</span> square<span style="color: #008000;">(</span><span style="color: #0000DD;">5</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span> <span style="color: #666666;">// 呼び出し箇所にインライン関数コードを挿入</span><br/>
     std.<span style="color: #007788;">debug</span>.<span style="color: #007788;">print</span><span style="color: #008000;">(</span><span style="color: #a11;">"Square of 5 is {}<span style="color: #000099; font-weight: bold;">\n</span>"</span>, .<span style="color: #008000;">{</span>result<span style="color: #008000;">}</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <span style="color: #008000;">}</span><br/>
 </div></div>
@@ -276,7 +276,7 @@ pub fn main<span style="color: #008000;">(</span><span style="color: #008000;">)
 </div>
 <div class="previous-next-links">
 <div class="previous-design-link"><i aria-hidden="true" class="fa fa-arrow-left" style="font-size:16px;"></i> <a href="../zig/zig-operators.html" rel="prev">Zig 运算符</a> </div>
-<div class="next-design-link"><a href="../zig/zig-array-slice.html" rel="next">Zig 数组和切片</a> <i aria-hidden="true" class="fa fa-arrow-right" style="font-size:16px;"></i></div>
+<div class="next-design-link"><a href="../zig/zig-array-slice.html" rel="next">Zig の配列とスライス</a> <i aria-hidden="true" class="fa fa-arrow-right" style="font-size:16px;"></i></div>
 </div>
 
 笔记列表
@@ -384,11 +384,11 @@ pub fn main<span style="color: #008000;">(</span><span style="color: #008000;">)
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -677,7 +677,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

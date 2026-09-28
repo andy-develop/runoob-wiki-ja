@@ -210,7 +210,7 @@ a1 = σ(z1) = 1 / (1 + exp(-z1))
     <span style="color: #a11;">"""Sigmoid激活函数"""</span><br/>
     <span style="color: Green;font-weight:bold;">return</span> <span style="color: Maroon;">1</span> / <span style="color: Olive;">(</span><span style="color: Maroon;">1</span> + np.<span style="color: #05a;">exp</span><span style="color: Olive;">(</span>-x<span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 初始化网络参数（通常随机初始化，这里为演示指定值）</span><br/>
+<span style="color: #a50"># ネットワークパラメータの初期化（通常はランダムに初期化しますが、ここではデモ用に値を指定します）</span><br/>
 w1<span style="color: Gray;">,</span> b1 <span style="color: Gray;">=</span> <span style="color: Maroon;">2.0</span><span style="color: Gray;">,</span> -<span style="color: Maroon;">1.0</span>  <span style="color: #a50"># 隐藏层参数</span><br/>
 w2<span style="color: Gray;">,</span> b2 <span style="color: Gray;">=</span> <span style="color: Maroon;">1.5</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0.5</span>   <span style="color: #a50"># 输出层参数</span><br/>
 <br/>
@@ -223,10 +223,10 @@ w2<span style="color: Gray;">,</span> b2 <span style="color: Gray;">=</span> <sp
     <span style="color: #a50"># 输出层计算</span><br/>
     y_pred <span style="color: Gray;">=</span> w2 * a1 + b2  <span style="color: #a50"># 线性输出</span><br/>
     <br/>
-    <span style="color: #a50"># 返回中间结果和最终预测，便于后续理解</span><br/>
+    <span style="color: #a50"># 中間結果と最終予測を返し、後で理解しやすくする</span><br/>
     <span style="color: Green;font-weight:bold;">return</span> <span style="color: Olive;">{</span><span style="color: #a11;">'z1'</span>: z1<span style="color: Gray;">,</span> <span style="color: #a11;">'a1'</span>: a1<span style="color: Gray;">,</span> <span style="color: #a11;">'y_pred'</span>: y_pred<span style="color: Olive;">}</span><br/>
 <br/>
-<span style="color: #a50"># 假设房屋面积为 3（单位：百平方米）</span><br/>
+<span style="color: #a50"># 住宅面積が3（単位：百平方メートル）であると仮定する</span><br/>
 x_input <span style="color: Gray;">=</span> <span style="color: Maroon;">3.0</span><br/>
 result <span style="color: Gray;">=</span> forward_pass<span style="color: Olive;">(</span>x_input<span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"输入 x = {x_input}"</span><span style="color: Olive;">)</span><br/>
@@ -280,7 +280,7 @@ result <span style="color: Gray;">=</span> forward_pass<span style="color: Olive
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #a50"># 接续前向传播的代码和结果</span><br/>
+<span style="color: #a50"># 順伝播を続けるコードと結果</span><br/>
 y_true <span style="color: Gray;">=</span> <span style="color: Maroon;">2.5</span><br/>
 y_pred <span style="color: Gray;">=</span> result<span style="color: Olive;">[</span><span style="color: #a11;">'y_pred'</span><span style="color: Olive;">]</span><br/>
 a1 <span style="color: Gray;">=</span> result<span style="color: Olive;">[</span><span style="color: #a11;">'a1'</span><span style="color: Olive;">]</span><br/>
@@ -292,11 +292,11 @@ x <span style="color: Gray;">=</span> x_input<br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"初始损失 Loss = {(y_true - y_pred)**2:.4f}"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>"--- 开始反向传播计算梯度 ---"</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 1. 计算损失对y_pred的梯度</span><br/>
+<span style="color: #a50"># 1. y_predに対する損失の勾配を計算する</span><br/>
 dL_dy_pred <span style="color: Gray;">=</span> -<span style="color: Maroon;">2</span> * <span style="color: Olive;">(</span>y_true - y_pred<span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"梯度 ∂L/∂y_pred = -2*(y_true - y_pred) = {dL_dy_pred:.4f}"</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 2. 计算输出层参数 w2, b2 的梯度</span><br/>
+<span style="color: #a50"># 2. 出力層のパラメータ w2, b2 の勾配を計算する</span><br/>
 dL_dw2 <span style="color: Gray;">=</span> dL_dy_pred * a1<br/>
 dL_db2 <span style="color: Gray;">=</span> dL_dy_pred * <span style="color: Maroon;">1</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"勾配 ∂L/∂w2 = (∂L/∂y_pred) * a1 = {dL_dw2:.4f}"</span><span style="color: Olive;">)</span><br/>
@@ -385,11 +385,11 @@ b2: 0.5000 -&gt; 0.6020
 更新后的损失 New Loss = 0.0940
 损失变化: -0.1662 (负值表示损失减小)
 </pre>
-<p>素晴らしい！一度の<strong>順伝播 -&gt; 損失の計算 -&gt; 逆伝播 -&gt; 勾配降下法による更新</strong>という完全なサイクルを経て、私たちの予測値は<code>y_pred</code> 从 <code>1.99</code>より真の値に近づき<code>2.5</code>、損失も<code>0.260</code>減少しました<code>0.094</code>。このサイクルを何千回、何万回と繰り返すことで（大量のデータに対して）、ニューラルネットワークは有効なパラメータを学習し、正確な予測を行うことができます。</p>
+<p>素晴らしい！一度の<strong>順伝播 -&gt; 損失の計算 -&gt; 逆伝播 -&gt; 勾配降下法による更新</strong>という完全なサイクルを経て、私たちの予測値は<code>y_pred</code>から<code>1.99</code>より真の値に近づき<code>2.5</code>、損失も<code>0.260</code>減少しました<code>0.094</code>。このサイクルを何千回、何万回と繰り返すことで（大量のデータに対して）、ニューラルネットワークは有効なパラメータを学習し、正確な予測を行うことができます。</p>
 <hr/>
 <h2>実践演習：理解を深める</h2>
 <p>さあ、学んだ知識を定着させるために、実際に手を動かす時です。</p>
-<p><strong>演習 1：ネットワークを拡張する</strong>上記のコードを変更して、隠れ層ニューロンを2個に増やします。初期化する必要があるのは、<code>w1</code>形状が<code>(2,)</code>の配列（2つの重み）、<code>b1</code> 为 <code>(2,)</code>の配列です。それに応じて、順伝播と逆伝播の計算を調整してください。ネットワークの能力の変化を観察しましょう。</p>
+<p><strong>演習 1：ネットワークを拡張する</strong>上記のコードを変更して、隠れ層ニューロンを2個に増やします。初期化する必要があるのは、<code>w1</code>形状が<code>(2,)</code>の配列（2つの重み）、<code>b1</code>ために<code>(2,)</code>の配列です。それに応じて、順伝播と逆伝播の計算を調整してください。ネットワークの能力の変化を観察しましょう。</p>
 <p><strong>演習 2：活性化関数を変更する</strong>Sigmoid活性化関数をReLU関数に置き換えます（<code>f(x) = max(0, x)</code>）。ReLUの導関数を再導出して実装する必要があります（<code>f'(x) = 1 if x&gt;0 else 0</code>）。異なる活性化関数を使用した場合のトレーニングプロセスの違いを比較してください。</p>
 <p><strong>演習 3：トレーニングループを実装する</strong>完全なトレーニングループを記述し、何らかの単純なデータセット（例えば、自分で構築した<code>y = 2x + 1 + 噪声</code>データ）上で、小さなネットワークを訓練してそれに適合させます。エポック数を設定し、各反復の後に損失を出力し、損失がトレーニングとともに継続して減少するかどうかを観察してください。</p>
 <p><strong>演習 4：学習率の影響を理解する</strong>演習3に基づいて、さまざまな<code>learning_rate</code>学習率（例：0.01, 0.1, 0.5, 1.0）を試してみてください。学習率が大きすぎる場合や小さすぎる場合の損失曲線の変化（振動するか、発散するか、収束が遅いか）を観察し、学習率がステップ幅として重要であることを深く理解してください。</p>
@@ -397,9 +397,9 @@ b2: 0.5000 -&gt; 0.6020
 <h2>まとめ</h2>
 <p>順伝播と逆伝播は、ニューラルネットワーク学習の中核となるダイナミクスです：</p>
 <ol>
-<li><strong>順伝播は</strong>是<strong>推論経路であり、</strong>現在のパラメータを使用して入力を出力にマッピングし、現在のパフォーマンスのスコア（損失）を計算します。</li>
-<li><strong>逆伝播は</strong>是<strong>学習アルゴリズムであり、</strong>連鎖律を利用して、ネットワーク内の各パラメータに対する損失関数の勾配を効率的に計算し、パラメータ最適化の方向を示します。</li>
-<li><strong>勾配降下法は</strong>是<strong>最適化戦略であり、</strong>逆伝播によって提供された勾配に基づき、学習率をステップ幅としてパラメータを実際に更新し、ネットワークのパフォーマンスを段階的に改善します。</li>
+<li><strong>順伝播は</strong>である<strong>推論経路であり、</strong>現在のパラメータを使用して入力を出力にマッピングし、現在のパフォーマンスのスコア（損失）を計算します。</li>
+<li><strong>逆伝播は</strong>である<strong>学習アルゴリズムであり、</strong>連鎖律を利用して、ネットワーク内の各パラメータに対する損失関数の勾配を効率的に計算し、パラメータ最適化の方向を示します。</li>
+<li><strong>勾配降下法は</strong>である<strong>最適化戦略であり、</strong>逆伝播によって提供された勾配に基づき、学習率をステップ幅としてパラメータを実際に更新し、ネットワークのパフォーマンスを段階的に改善します。</li>
 </ol>
 その他の拡張
 </div>
@@ -519,11 +519,11 @@ b2: 0.5000 -&gt; 0.6020
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -812,7 +812,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

@@ -159,8 +159,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div> <div class="col middle-column">
 <div class="article">
 <div class="previous-next-links">
-<div class="previous-design-link"><i aria-hidden="true" class="fa fa-arrow-left" style="font-size:16px;"></i> <a href="../ai-math/learning-rate-comparison.html" rel="prev">可视化不同学习率的影响  
-→ 異なる学習率の影響の可視化</a> </div>
+<div class="previous-design-link"><i aria-hidden="true" class="fa fa-arrow-left" style="font-size:16px;"></i> <a href="../ai-math/learning-rate-comparison.html" rel="prev">異なる学習率の影響の可視化</a> </div>
 <div class="next-design-link"><a href="../ai-math/bayesian-coin.html" rel="next">抛硬币模拟贝叶斯更新  
 → コイントスによるベイズ更新のシミュレーション</a> <i aria-hidden="true" class="fa fa-arrow-right" style="font-size:16px;"></i></div>
 </div>
@@ -180,25 +179,21 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>构造复合函数，手动逐层计算局部梯度并相乘，再用 sympy 验证。  
 → 複合関数を構築し、手動で層ごとに局所勾配を計算して乗算し、sympyで検証します。</p>
 <p>学完本案例你将理解：  
-→ このケースを学び終えると、以下のことが理解できます：<span class="marked">反向传播的核心就是链式法则——每一层只算自己的局部梯度，最终梯度是各层梯度的乘积。  
-→ 逆伝播の核心は連鎖律です——各層は自分自身の局所勾配だけを計算し、最終的な勾配は各層の勾配の積になります。</span></p>
+→ このケースを学び終えると、以下のことが理解できます：<span class="marked">逆伝播の核心は連鎖律です——各層は自分自身の局所勾配だけを計算し、最終のな勾配は各層の勾配の積になります。</span></p>
 <hr/>
 <h2>生活引入  
 → 生活からの導入</h2>
 <div class="life-example">
-<p><i class="fa fa-link" style="color:#FF9800;"></i> <strong>多米诺骨牌的生产线  
-→ ドミノの生産ライン</strong></p>
-<p>一个工厂有三道工序：原料 → 半成品 A → 半成品 B → 成品。你想知道「原料多用 1 公斤，最终成品多几个？」  
-→ ある工場には3つの工程があります：原材料 → 半製品A → 半製品B → 完成品。「原材料を1kg多く使うと、最終的な完成品はいくつ増えるか」を知りたいとします。</p>
-<p>你不需要从头推导整个流程的公式。每道工序只算自己的「局部比例」：半成品 A 增产 1 个 → 半成品 B 多几个？半成品 B 多 1 个 → 成品多几个？三个比例相乘就是答案。  
-→ プロセス全体の公式を最初から導出する必要はありません。各工程は自分自身の「局所的な比率」だけを計算します：半製品Aが1個増える → 半製品Bはいくつ増える？半製品Bが1個増える → 完成品はいくつ増える？3つの比率を掛け合わせると答えになります。</p>
-<p>这就是  
+<p><i class="fa fa-link" style="color:#FF9800;"></i> <strong>ドミノの生産ライン</strong></p>
+<p>ある工場には3つの工程があります：原材料 → 半製品A → 半製品B → 完成品。「原材料を1kg多く使うと、最終のな完成品はいくつ増えるか」を知りたいとします。</p>
+<p>プロセス全体の公式を最初から導出する必要はありません。各工程は自分自身の「局所的な比率」だけを計算します：半製品Aが1個増える → 半製品Bはいくつ増える？半製品Bが1個増える → 完成品はいくつ増える？3つの比率を掛け合わせると答えになります。</p>
+<p>これが  
 → これが<span class="marked">链式法则  
-→ 連鎖律</span>——每层只关心自己，最终影响 = 各层影响的乘积。  
-→ ——各層は自分自身だけに注目し、最終的な影響 = 各層の影響の積です。</p>
+→ 連鎖律</span>——各層は自分自身だけに注目し、最終のな影響 = 各層の影響の積です。
+→ ——各層は自分自身だけに注目し、最終のな影響 = 各層の影響の積です。</p>
 </div>
 <hr/>
-<h2>直观理解  
+<h2>直感的な理解  
 → 直感的な理解</h2>
 <p>构造一个三层复合函数：  
 → 3層の複合関数を構築します：</p>
@@ -288,19 +283,14 @@ RUNOOB 三层梯度传递：
   第3层: 6.5000 x 第2层: -2.9838 x 第1层: 3.0000 = -58.1841
 </pre>
 <hr/>
-<h2>AI 中的应用场景  
-→ AIにおける応用シーン</h2>
+<h2>AIにおける応用シーン</h2>
 <table class="reference">
 <tr><th>场景  
-→ シーン</th><th>与链式法则的关系  
-→ 連鎖律との関係</th></tr>
-<tr><td>逆伝播</td><td>神经网络每层只计算自己的局部梯度，然后传给上一层  
-→ ニューラルネットワークの各層は自分自身の局所勾配だけを計算し、それを前の層に渡します</td></tr>
-<tr><td>PyTorch autograd</td><td>自动追踪每个操作构建计算图，反向时自动应用链式法则  
-→ 各操作を自動的に追跡して計算グラフを構築し、逆方向の際に自動的に連鎖律を適用します</td></tr>
+→ シーン</th><th>連鎖律との関係</th></tr>
+<tr><td>逆伝播</td><td>ニューラルネットワークの各層は自分自身の局所勾配だけを計算し、それを前の層に渡します</td></tr>
+<tr><td>PyTorch autograd</td><td>各操作を自動的に追跡して計算グラフを構築し、逆方向の際に自動的に連鎖律を適用します</td></tr>
 <tr><td>梯度检查  
-→ 勾配チェック</td><td>手动实现反向传播后，用数值梯度验证——就是本案的方法一 vs 方法二  
-→ 手動で逆伝播を実装した後、数値勾配で検証します——これは本ケースの方法1 vs 方法2です</td></tr>
+→ 勾配チェック</td><td>手動で逆伝播を実装した後、数値勾配で検証します——これは本ケースの方法1 vs 方法2です</td></tr>
 </table>
 <script>
 $(function() { renderMathInElement(document.body, { delimiters: [{ left: "\\(", right: "\\)", display: false }, { left: "\\[", right: "\\]", display: true }] }); });
@@ -316,8 +306,7 @@ $(function() { renderMathInElement(document.body, { delimiters: [{ left: "\\(", 
 </div>
 </div>
 <div class="previous-next-links">
-<div class="previous-design-link"><i aria-hidden="true" class="fa fa-arrow-left" style="font-size:16px;"></i> <a href="../ai-math/learning-rate-comparison.html" rel="prev">可视化不同学习率的影响  
-→ 異なる学習率の影響の可視化</a> </div>
+<div class="previous-design-link"><i aria-hidden="true" class="fa fa-arrow-left" style="font-size:16px;"></i> <a href="../ai-math/learning-rate-comparison.html" rel="prev">異なる学習率の影響の可視化</a> </div>
 <div class="next-design-link"><a href="../ai-math/bayesian-coin.html" rel="next">抛硬币模拟贝叶斯更新  
 → コイントスによるベイズ更新のシミュレーション</a> <i aria-hidden="true" class="fa fa-arrow-right" style="font-size:16px;"></i></div>
 </div>
@@ -429,16 +418,16 @@ $(function() { renderMathInElement(document.body, { delimiters: [{ left: "\\(", 
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>点我分享笔记  
 → クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>  
-→ <p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>  
+→ <p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -735,7 +724,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

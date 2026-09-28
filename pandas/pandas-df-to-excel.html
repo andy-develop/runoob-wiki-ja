@@ -306,7 +306,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="article-intro" id="content">
 <h1>Pandas df.to_excel() 関数</h1>
 <p><a href="../pandas/pandas-general-functions.html"><img alt="Python 常用函数" class="navup" decoding="async" src="../images/up.gif"/>Pandas よく使う関数</a></p><hr/>
-<p><code>to_excel()</code>DataFrame のメソッドであり、データを Excel 形式のファイルにエクスポートするために使用されます。対応する<code>.xlsx</code> 和 <code>.xls</code>形式です。</p>
+<p><code>to_excel()</code>DataFrame のメソッドであり、データを Excel 形式のファイルにエクスポートするために使用されます。対応する<code>.xlsx</code>と<code>.xls</code>形式です。</p>
 <p>Excelは企業のオフィスで最もよく使われるデータ分析ツールであり、<code>to_excel()</code>pandas DataFrame を形式が整ったExcelファイルにエクスポートできます。複数のワークシート、セル書式設定、数式の挿入などの高度な機能をサポートしており、データレポートやデータ分析結果の出力に非常に適しています。</p>
 <hr/>
 <h2>基本構文とパラメータ</h2>
@@ -470,7 +470,7 @@ float_format='%.2f'    0    20000
 <p><strong>コードの解説:</strong></p>
 <ul>
 <li><code>pd.ExcelWriter</code>は、複数のワークシートを書き込むためのコンテキストマネージャーです。</li>
-<li>在 <code>with</code>ブロック内では、複数回呼び出すことができ、<code>to_excel()</code>毎回異なるワークシート名を指定します。</li>
+<li>に<code>with</code>ブロック内では、複数回呼び出すことができ、<code>to_excel()</code>毎回異なるワークシート名を指定します。</li>
 <li>この方法により、関連データを同じExcelファイルに整理できます。</li>
 </ul>
 <h3>例3：形式と位置をカスタマイズ</h3>
@@ -499,7 +499,7 @@ df.<span style="color: #05a;">to_excel</span><span style="color: Olive;">(</span
 <br/>
 <span style="color: #a50"># 例3c: 一部の列をエクスポート</span><br/>
 df.<span style="color: #05a;">to_excel</span><span style="color: Olive;">(</span><span style="color: #a11;">'output_cols.xlsx'</span><span style="color: Gray;">,</span> index<span style="color: Gray;">=</span><span style="color: Teal;">False</span><span style="color: Gray;">,</span> columns<span style="color: Gray;">=</span><span style="color: Olive;">[</span><span style="color: #a11;">'name'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'score'</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"已导出（只包含 name 和 score 列）"</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">エクスポート済み（name と score 列のみを含む）</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 例3d: データの開始位置を指定</span><br/>
 <span style="color: #a50"># startrow と startcol は、セル内のデータの開始位置を制御します</span><br/>
@@ -515,7 +515,7 @@ df.<span style="color: #05a;">to_excel</span><span style="color: Olive;">(</span
 <br/>
 <span style="color: #a50"># 例3e: インデックスと列名をエクスポートしない</span><br/>
 df.<span style="color: #05a;">to_excel</span><span style="color: Olive;">(</span><span style="color: #a11;">'output_no_header.xlsx'</span><span style="color: Gray;">,</span> index<span style="color: Gray;">=</span><span style="color: Teal;">False</span><span style="color: Gray;">,</span> header<span style="color: Gray;">=</span><span style="color: Teal;">False</span><span style="color: Olive;">)</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"已导出（不包含索引和列名）"</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"エクスポート済み（インデックスと列名を含まない）"</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 生成されたファイルの内容を確認</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"n各文件内容:"</span><span style="color: Olive;">)</span><br/>
@@ -551,7 +551,7 @@ df.<span style="color: #05a;">to_excel</span><span style="color: Olive;">(</span
 <li><code>na_rep</code>パラメータは、欠損値の文字列表現をカスタマイズします。</li>
 <li><code>float_format</code>パラメータは Python のフォーマット文字列を使用します。例えば<code>'%.2f'</code>小数点以下2桁を保持します。</li>
 <li><code>columns</code>パラメータは指定した列のみをエクスポートします。</li>
-<li><code>startrow</code> 和 <code>startcol</code>Excel内のデータの開始セル位置を制御できます。</li>
+<li><code>startrow</code>と<code>startcol</code>Excel内のデータの開始セル位置を制御できます。</li>
 </ul>
 <h3>例4：xlsxwriterエンジンで書式を設定</h3>
 <p>xlsxwriterエンジンは、より豊富な書式設定機能を提供します。</p>
@@ -599,7 +599,7 @@ df <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFrame</
     <span style="color: Green;font-weight:bold;">for</span> col_num<span style="color: Gray;">,</span> column_name <span style="color: Green;font-weight:bold;">in</span> <span style="color: Teal;">enumerate</span><span style="color: Olive;">(</span>df.<span style="color: #05a;">columns</span>.<span style="color: #05a;">values</span><span style="color: Olive;">)</span>:<br/>
         worksheet.<span style="color: #05a;">write</span><span style="color: Olive;">(</span><span style="color: Maroon;">0</span><span style="color: Gray;">,</span> col_num<span style="color: Gray;">,</span> column_name<span style="color: Gray;">,</span> header_format<span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"已导出带格式的 Excel 文件: formatted.xlsx"</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"書式付きExcelファイルをエクスポートしました: formatted.xlsx"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"格式包括：表头加粗、蓝色背景、白字、居中、边框、列宽设置"</span><span style="color: Olive;">)</span><br/>
 </div>
 </div>
@@ -628,7 +628,7 @@ df <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFrame</
 <li>を使用する場合、<code>xlsxwriter</code>エンジンのインストールが必要です：<code>pip install xlsxwriter</code>。</li>
 <li>デフォルトではインデックスがエクスポートされます。不要な場合は設定できます。<code>index=False</code>。</li>
 <li>複数のワークシートをエクスポートする場合は、<code>pd.ExcelWriter</code>コンテキストマネージャーを使用します。</li>
-<li><code>startrow</code> 和 <code>startcol</code>0から数え始めます。つまり startrow=0 は1行目を意味します。</li>
+<li><code>startrow</code>と<code>startcol</code>0から数え始めます。つまり startrow=0 は1行目を意味します。</li>
 </ul>
 <hr/>
 <h2>まとめ</h2>
@@ -754,11 +754,11 @@ df <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFrame</
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1058,7 +1058,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

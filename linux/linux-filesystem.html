@@ -276,7 +276,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="article-body">
 <div class="article-intro" id="content">
 <h1>Linux ディスク管理</h1>
-<p>Linux ディスク管理の良し悪しは、システム全体のパフォーマンスに直接関わります。</p><p>Linux ディスク管理でよく使われる3つのコマンドは次のとおりです。<span class="marked">df</span>、<span class="marked">du</span> 和 <span class="marked">fdisk</span>。</p>
+<p>Linux ディスク管理の良し悪しは、システム全体のパフォーマンスに直接関わります。</p><p>Linux ディスク管理でよく使われる3つのコマンドは次のとおりです。<span class="marked">df</span>、<span class="marked">du</span>と<span class="marked">fdisk</span>。</p>
 <ul><li>
 <strong>df</strong>（英語の正式名称：disk free）：ファイルシステム全体のディスク使用量を表示します</li><li>
 <strong>du</strong>（英語の正式名称：disk used）：ディスク容量の使用量を確認します</li><li>
@@ -722,7 +722,7 @@ Change: 2018-04-09 17:16:36.000000000 +0800
 <p>ディスクの順次読み取りは、あるヘッドから別のヘッドへ切り替えること（ヘッドを移動させる必要はありません）で行われ、あるシリンダから別のシリンダへ切り替えるのではありません。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">鲁智深</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>鲁智深</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  235***9303@qq.com</p></div></span>7年前 (2019-07-03)</div></div></li><!-- #comment-## -->
 <li class="comment even thread-even depth-1" id="comment-45126"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   tang</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  264***6683@qq.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="https://blog.csdn.net/qq_39521554/article/details/79501714" rel="nofollow" target="_blank">参考URL</a></p></div><div class="upvotejs" data-commid="45126" id="runoobvote-id-45126"><a class="upvote"></a> <span class="count">381</span></div></div><div class="comt-main" id="div-comment-45126"><p>著者の説明はとても良いのですが、具体的な操作の面では少し問題があり（具体的ではありません）、マウントの説明も十分ではありませんでした。仮想マシン上のLinuxにマウントする場合、まずハードディスクを追加し、次にハードディスクをフォーマットし、ハードディスク上にパーティションを作成し、ディレクトリを作成してから、ようやくマウントします。</p><p>マウントについての分かりやすい解説記事を見つけました：</p>
 <p>マウントの役割について長い間よく理解できていませんでしたが、今日教科書を読んでいるときに mount というコマンドを見かけ、その用途は非常に分かりにくいけれども非常に強力だと気づきました。しかし教科書の説明は明確ではなかったため、インターネットでいくつかの優れた解説をまとめました。読んだ後、疑問がすっかり解けました。</p>
-<ul><li>1. まずWindowsについて一言：mount（マウント）とは、ディスクパーティションにドライブレター（C, D, E, ...）を提供することです。例えば、USBメモリを挿入するとシステムが自動的にI:ドライブを割り当てますが、これがまさにマウントです。USBメモリを取り出すときに「安全な取り出し」を実行しますが、これがまさにアンマウント（unmount）です。</li><li>2. Linuxでは、WindowsのようにC, D, Eという複数のドライブはありません。Linuxにはルートディレクトリ / が1つだけあります。システムをインストールする際、Linuxに割り当てたすべてのパーティションは / の下のどこか（例：/home など）に配置されます。</li><li>3. 質問者は新しいハードディスクを挿入し、新しいディスクパーティション sdb1 を作成しました。これはまだ / に属していません。</li><li>4. 一部のグラフィカルデスクトップシステムではその場所を見つけ、中のファイルを閲覧・管理できますが、コマンドラインではそのディレクトリにどうアクセスすればよいのかわかりません。例えば、cd や ls を使用できません。また、プログラミング時にディレクトリを指定して操作することもできません。</li><li>5. そこで質問者は mount /dev/sdb1 ~/Share/ を使用し、新しいハードディスクのパーティション sdb1 を作業ディレクトリの ~/Share/ フォルダにマウントしました。以降、この ~/Share/ フォルダにアクセスすることは、この2台目のハードディスクの sdb1 パーティションにアクセスすることと同じです。/Share/ に対する操作はすべて、sdb1 内のファイルに対する操作と同じになります。</li><li>6. したがって、Linuxにおけるmount（マウント）の役割は、デバイス（通常はストレージデバイス）を既存のディレクトリに接続することです。このディレクトリにアクセスすることは、そのストレージデバイスにアクセスすることと同じです。</li><li>7. Linuxオペレーティングシステムはすべてのデバイスをファイルと見なし、コンピュータ全体のリソースを1つの大きなファイルディレクトリとして統合しています。ストレージデバイス内のファイルにアクセスするには、ファイルが存在するパーティションを既存のディレクトリにマウントし、そのディレクトリにアクセスすることでストレージデバイスにアクセスする必要があります。マウントとは、デバイスをあるディレクトリの下に配置し、システムにそのデバイス内のファイルの管理方法を認識させ、そのストレージデバイスの読み書き特性などを把握させるプロセスです。</li><li>8. /dev/sdb1 があるのだから、直接それを操作すればいいのではないでしょうか？これはそのディレクトリではないのでしょうか？</li><li>9. これはそのディレクトリではありません。/dev はディレクトリですが、/dev/sdb1 はディレクトリではありません。ls /dev/sdb1 が実行できないことでわかります。/dev/sdb1 はポインタのようなもので、このパーティションの生データブロックを指しています。マウント前は、システムはこのデータブロックのどの部分がファイルを表し、どのように操作すればよいのかを認識していません。</li><li>10. CDを挿入すると、システムは実際には mount /dev/cdrom /media/cdrom を自動的に実行しています。そのため、/media/cdrom 内でCDの内容を直接管理できます。</li></ul><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">tang</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   tang</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  264***6683@qq.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="https://blog.csdn.net/qq_39521554/article/details/79501714" rel="nofollow" target="_blank">参考URL</a></p></div></span>7年前 (2019-07-28)</div></div></li><!-- #comment-## -->
+<ul><li>まずWindowsについて一言：mount（マウント）とは、ディスクパーティションにドライブレター（C, D, E, ...）を提供することです。例えば、USBメモリを挿入するとシステムが自動的にI:ドライブを割り当てますが、これがまさにマウントです。USBメモリを取り出すときに「安全な取り出し」を実行しますが、これがまさにアンマウント（unmount）です。</li><li>2. Linuxでは、WindowsのようにC, D, Eという複数のドライブはありません。Linuxにはルートディレクトリ / が1つだけあります。システムをインストールする際、Linuxに割り当てたすべてのパーティションは / の下のどこか（例：/home など）に配置されます。</li><li>3. 質問者は新しいハードディスクを挿入し、新しいディスクパーティション sdb1 を作成しました。これはまだ / に属していません。</li><li>4. 一部のグラフィカルデスクトップシステムではその場所を見つけ、中のファイルを閲覧・管理できますが、コマンドラインではそのディレクトリにどうアクセスすればよいのかわかりません。例えば、cd や ls を使用できません。また、プログラミング時にディレクトリを指定して操作することもできません。</li><li>5. そこで質問者は mount /dev/sdb1 ~/Share/ を使用し、新しいハードディスクのパーティション sdb1 を作業ディレクトリの ~/Share/ フォルダにマウントしました。以降、この ~/Share/ フォルダにアクセスすることは、この2台目のハードディスクの sdb1 パーティションにアクセスすることと同じです。/Share/ に対する操作はすべて、sdb1 内のファイルに対する操作と同じになります。</li><li>6. したがって、Linuxにおけるmount（マウント）の役割は、デバイス（通常はストレージデバイス）を既存のディレクトリに接続することです。このディレクトリにアクセスすることは、そのストレージデバイスにアクセスすることと同じです。</li><li>7. Linuxオペレーティングシステムはすべてのデバイスをファイルと見なし、コンピュータ全体のリソースを1つの大きなファイルディレクトリとして統合しています。ストレージデバイス内のファイルにアクセスするには、ファイルが存在するパーティションを既存のディレクトリにマウントし、そのディレクトリにアクセスすることでストレージデバイスにアクセスする必要があります。マウントとは、デバイスをあるディレクトリの下に配置し、システムにそのデバイス内のファイルの管理方法を認識させ、そのストレージデバイスの読み書き特性などを把握させるプロセスです。</li><li>8. /dev/sdb1 があるのだから、直接それを操作すればいいのではないでしょうか？これはそのディレクトリではないのでしょうか？</li><li>9. これはそのディレクトリではありません。/dev はディレクトリですが、/dev/sdb1 はディレクトリではありません。ls /dev/sdb1 が実行できないことでわかります。/dev/sdb1 はポインタのようなもので、このパーティションの生データブロックを指しています。マウント前は、システムはこのデータブロックのどの部分がファイルを表し、どのように操作すればよいのかを認識していません。</li><li>10. CDを挿入すると、システムは実際には mount /dev/cdrom /media/cdrom を自動的に実行しています。そのため、/media/cdrom 内でCDの内容を直接管理できます。</li></ul><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">tang</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   tang</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  264***6683@qq.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="https://blog.csdn.net/qq_39521554/article/details/79501714" rel="nofollow" target="_blank">参考URL</a></p></div></span>7年前 (2019-07-28)</div></div></li><!-- #comment-## -->
 </ol>
 <div class="pagenav">
 </div>
@@ -730,11 +730,11 @@ Change: 2018-04-09 17:16:36.000000000 +0800
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に必ず<a href=";.html" class="runoob-pop">ログイン</a>してください！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に必ず<a class="runoob-pop" href=";.html">ログイン</a>してください！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1034,7 +1034,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

@@ -237,7 +237,7 @@ svg {
 <p>大規模言語モデルを、次のように想像できます：<strong>非常に勤勉で記憶力に優れた学生</strong>：</p>
 <ul>
 <li><p><strong>学習段階（トレーニング）</strong>：インターネット上にあるほぼすべての公開テキスト（書籍、記事、Webページ、コードなど）を読み込みます（データ量は数兆語レベルに達します）。この過程で、それは暗記しているのではなく、非常に複雑な言語規則の体系を学習しているのです。</p></li>
-<li><p><strong>応用段階（推論）</strong>：あなたが質問や指示を与えると、学習した規則を活用して、一文字ずつ論理的で文脈に合った回答を生成します。</p></li>
+<li><p><strong>応用段階（推論）</strong>：あなたが質問や指示をとえると、学習した規則を活用して、一文字ずつ論理ので文脈に合った回答を生成します。</p></li>
 </ul>
 <p>その「大きさ」は主に次の2つの側面に現れています：</p>
 <ul>
@@ -571,7 +571,7 @@ svg {
 <li><strong>生成と反復</strong>：モデルはすべての単語の理解に基づいて確率分布を計算し、次に最も出現しそうな単語を予測します。その単語を選択して出力した後、それを新しい入力としてプロセス全体を繰り返し、完全な回答を生成するまで続けます。</li>
 </ol>
 <p><img decoding="async" src="../wp-content/uploads/2026/02/llm-runoob-transf-scaled.png"/></p>
-<p>自己注意機構はTransformerの最も重要な革新です。文「苹果的手机它的电池很大」を例にとると、モデルが<span class="marked">它</span>という単語を処理するとき、自己注意機構はモデルに<span class="marked">它</span>与<span class="marked">「苹果」と</span>和<span class="marked">「手机」が</span>強く関連していると判断するのを助けます。下図はこの過程における注意重みの分布を示しています：</p>
+<p>自己注意機構はTransformerの最も重要な革新です。文「苹果的手机它的电池很大」を例にとると、モデルが<span class="marked">它</span>という単語を処理するとき、自己注意機構はモデルに<span class="marked">它</span>と<span class="marked">「苹果」と</span>と<span class="marked">「手机」が</span>強く関連していると判断するのを助けます。下図はこの過程における注意重みの分布を示しています：</p>
 <svg role="img" viewbox="0 0 680 190" width="100%">
 <title>自己注意機構の模式図</title>
 <desc>クエリ語「它」の文中の他の単語に対する注意重みを示しています。弧が太いほど注意力が強いことを表します：「它」は「苹果」と「手机」に対して高い注意重みを持ち、「电池」と「很大」に対する重みは低くなっています。</desc>
@@ -798,7 +798,7 @@ client <span style="color: Gray;">=</span> OpenAI<span style="color: Olive;">(</
     completion <span style="color: Gray;">=</span> client.<span style="color: #05a;">chat</span>.<span style="color: #05a;">completions</span>.<span style="color: #05a;">create</span><span style="color: Olive;">(</span><br/>
         model<span style="color: Gray;">=</span><span style="color: #a11;">"qwen-plus"</span><span style="color: Gray;">,</span>  <span style="color: #a50"># ここではqwen-plusを例としています。必要に応じてモデル名を変更できます。モデルリスト：https://help.aliyun.com/zh/model-studio/getting-started/models</span><br/>
         messages<span style="color: Gray;">=</span><span style="color: Olive;">[</span><span style="color: Olive;">{</span><span style="color: #a11;">'role'</span>: <span style="color: #a11;">'system'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'content'</span>: <span style="color: #a11;">'You are a helpful assistant.'</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span><br/>
-                  <span style="color: Olive;">{</span><span style="color: #a11;">'role'</span>: <span style="color: #a11;">'user'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'content'</span>: <span style="color: #a11;">'你是谁？'</span><span style="color: Olive;">}</span><span style="color: Olive;">]</span><br/>
+                  <span style="color: Olive;">{</span><span style="color: #a11;">'role'</span>: <span style="color: #a11;">'user'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'content'</span>: <span style="color: #a11;">'あなたは誰ですか？'</span><span style="color: Olive;">}</span><span style="color: Olive;">]</span><br/>
         <span style="color: Olive;">)</span><br/>
     <span style="color: #a50"># JSONデータ</span><br/>
     <span style="color: #a50">#print(completion.model_dump_json())</span><br/>
@@ -822,7 +822,7 @@ client <span style="color: Gray;">=</span> OpenAI<span style="color: Olive;">(</
         model<span style="color: Gray;">=</span><span style="color: #a11;">"qwen-plus"</span><span style="color: Gray;">,</span><br/>
         messages<span style="color: Gray;">=</span><span style="color: Olive;">[</span><br/>
             <span style="color: Olive;">{</span><span style="color: #a11;">'role'</span>: <span style="color: #a11;">'system'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'content'</span>: <span style="color: #a11;">'You are a helpful assistant.'</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span><br/>
-            <span style="color: Olive;">{</span><span style="color: #a11;">'role'</span>: <span style="color: #a11;">'user'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'content'</span>: <span style="color: #a11;">'你是谁？'</span><span style="color: Olive;">}</span><br/>
+            <span style="color: Olive;">{</span><span style="color: #a11;">'role'</span>: <span style="color: #a11;">'user'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'content'</span>: <span style="color: #a11;">'あなたは誰ですか？'</span><span style="color: Olive;">}</span><br/>
         <span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
         stream<span style="color: Gray;">=</span><span style="color: Teal;">True</span><span style="color: Gray;">,</span><br/>
         stream_options<span style="color: Gray;">=</span><span style="color: Olive;">{</span><span style="color: #a11;">"include_usage"</span>: <span style="color: Teal;">True</span><span style="color: Olive;">}</span><br/>
@@ -1040,11 +1040,11 @@ client <span style="color: Gray;">=</span> OpenAI<span style="color: Olive;">(</
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1333,7 +1333,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

@@ -92,16 +92,16 @@ loadScripts(document, 'script');</script>
 extends <a href="Object.html" title="class in java.lang">Object</a>
 implements <a href="../io/Serializable.html" title="interface in java.io">Serializable</a>, <a href="Comparable.html" title="interface in java.lang">Comparable</a>&lt;<a href="StringBuilder.html" title="class in java.lang">StringBuilder</a>&gt;, <a href="CharSequence.html" title="interface in java.lang">CharSequence</a></pre>
 <div class="block">
-<span>一个可变的字符序列。</span>
-<span>此类提供与<code>StringBuffer</code>兼容的API，但不保证同步。</span>
-<span>此类设计用作<code>StringBuffer</code>替代品，用于单个线程使用字符串缓冲区的位置（通常情况下）。</span>
-<span>在可能的情况下，建议使用此类优先于<code>StringBuffer</code>因为在大多数实现中它会更快。</span>
-<p> <span><code>StringBuilder</code>上的主要操作是<code>append</code>和<code>insert</code>方法，它们被重载以便接受任何类型的数据。</span> <span>每个都有效地将给定的数据转换为字符串，然后将该字符串的字符追加或插入到字符串构建器中。</span> <span><code>append</code>方法始终在构建器的末尾添加这些字符;</span> <span><code>insert</code>方法在指定点添加字符。</span> </p>
-<p> <span>例如，如果<code>z</code>引用其当前内容为“ <code>start</code> ”的字符串构建器对象，则方法调用<code>z.append("le")</code>将导致字符串构建器包含“ <code>startle</code> ”，而<code>z.insert(4, "le")</code>将更改字符串构建器以包含“ <code>starlet</code> ”。</span> </p>
-<p> <span>一般情况下，如果某人是指的一个实例<code>StringBuilder</code> ，然后<code>sb.append(x)</code>具有相同的效果<code>sb.insert(sb.length(), x)</code> 。</span> </p>
-<p> <span>每个字符串构建器都有容量。</span> <span>只要字符串生成器中包含的字符序列的长度不超过容量，就不必分配新的内部缓冲区。</span> <span>如果内部缓冲区溢出，它会自动变大。</span> </p>
-<p> <span><code>StringBuilder</code>实例不适合多线程使用。</span> <span>如果需要这样的同步，则建议使用<a href="StringBuffer.html" title="java.lang中的类"><code>StringBuffer</code></a> 。</span> </p>
-<p> <span>除非另有说明，否则将<code>null</code>参数传递给<code>null</code>中的构造函数或方法将导致抛出<a href="NullPointerException.html" title="java.lang中的类"><code>NullPointerException</code></a> 。</span> </p>
+<span>可変の文字シーケンス。</span>
+<span>このクラスは提供する<code>StringBuffer</code>互換性のある API ですが、同期は保証されません。</span>
+<span>此类设计用作<code>StringBuffer</code>単一のスレッドが文字列バッファを使用する状況（通常）での代替品。</span>
+<span>可能な場合は、このクラスを優先して使用することをお勧めします。<code>StringBuffer</code>ほとんどの実装では、その方が速いからです。</span>
+<p> <span><code>StringBuilder</code>上の主要な操作は<code>append</code>と<code>insert</code>メソッドは、任意の型のデータを受け入れるようにオーバーロードされています。</span> <span>それぞれが、指定されたデータを効果のに文字列に変換し、その文字列の文字を文字列ビルダーに追加または挿入します。</span> <span><code>append</code>メソッドは常にビルダーの末尾にこれらの文字を追加します;</span> <span><code>insert</code>指定された位置に文字を追加するメソッド。</span> </p>
+<p> <span>例如，如果<code>z</code>その現在の内容を「<code>start</code>”の文字列ビルダーオブジェクトの場合、メソッド呼び出しは<code>z.append("le")</code>将导致字符串构建器包含“ <code>startle</code> ”，而<code>z.insert(4, "le")</code>将更改字符串构建器以包含“ <code>starlet</code> ”。</span> </p>
+<p> <span>一般のに、何らかのインスタンスを指す場合は<code>StringBuilder</code> ，然后<code>sb.append(x)</code>同じ効果を持つ<code>sb.insert(sb.length(), x)</code> 。</span> </p>
+<p> <span>每个字符串构建器都有容量。</span> <span>文字列ジェネレータに含まれる文字シーケンスの長さが容量を超えない限り、新しい内部バッファを割り当てる必要はありません。</span> <span>如果内部缓冲区溢出，它会自动变大。</span> </p>
+<p> <span><code>StringBuilder</code>实例不适合多线程使用。</span> <span>このような同期が必要な場合は、使用することをお勧めします<a href="StringBuffer.html" title="java.lang中的类"><code>StringBuffer</code></a> 。</span> </p>
+<p> <span>除非另有说明，否则将<code>null</code>参数传递给<code>null</code>中のコンストラクタまたはメソッドは、例外のスローを引き起こします。<a href="NullPointerException.html" title="java.lang中的类"><code>NullPointerException</code></a> 。</span> </p>
 </div>
 <dl>
 <dt>
@@ -109,12 +109,12 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 </dt>
 <dd>
 <span><code>StringBuilder</code>实现<code>Comparable</code>但不覆盖<a href="Object.html#equals(java.lang.Object)"><code>equals</code></a> 。</span>
-<span>因此， <code>StringBuilder</code>的自然顺序与equals不一致。</span>
-<span>如果<code>StringBuilder</code>对象用作<code>StringBuilder</code>中的键或<code>SortedMap</code>元素， <code>SortedSet</code> 。</span>
+<span>因此， <code>StringBuilder</code>自然順序はequalsと一致しません。</span>
+<span>如果<code>StringBuilder</code>オブジェクトとして使用<code>StringBuilder</code>のキーまたは<code>SortedMap</code>元素， <code>SortedSet</code> 。</span>
 <span>见<a href="Comparable.html" title="java.lang中的接口"><code>Comparable</code></a> ， <a href="../util/SortedMap.html" title="java.util中的接口"><code>SortedMap</code></a> ，或<a href="../util/SortedSet.html" title="java.util中的接口"><code>SortedSet</code></a>获取更多信息。</span>
 </dd>
 <dt>
-<span class="simpleTagLabel">从以下版本开始：</span>
+<span class="simpleTagLabel">以下のバージョンから：</span>
 </dt>
 <dd>
           1.5 
@@ -149,32 +149,24 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E()">StringBuilder</a></span>()</code></th>
 <td class="colLast">
-<div class="block">
-                构造一个字符串构建器，其中不包含任何字符，初始容量为16个字符。 
-              </div> </td>
+<div class="block">文字を含まない文字列ビルダーを構築し、初期容量は16文字です。</div> </td>
 </tr>
 <tr class="rowColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(int)">StringBuilder</a></span>​(int capacity)</code></th>
 <td class="colLast">
 <div class="block">
                 构造一个字符串构建器，其中没有字符，并且具有 
-               <code>capacity</code>参数指定的初始容量。 
-              </div> </td>
+               <code>capacity</code>パラメータで指定された初期容量。</div> </td>
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.CharSequence)">StringBuilder</a></span>​(<a href="CharSequence.html" title="interface in java.lang">CharSequence</a> seq)</code></th>
 <td class="colLast">
-<div class="block">
-                构造一个字符串构建器，其中包含与指定的 
-               <code>CharSequence</code>相同的字符。 
-              </div> </td>
+<div class="block">指定されたものと同じ文字を含む文字列ビルダーを構築します。<code>CharSequence</code>同じ文字。</div> </td>
 </tr>
 <tr class="rowColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String)">StringBuilder</a></span>​(<a href="String.html" title="class in java.lang">String</a> str)</code></th>
 <td class="colLast">
-<div class="block">
-                构造一个初始化为指定字符串内容的字符串构建器。 
-              </div> </td>
+<div class="block">指定された文字列の内容で初期化された文字列ビルダーを構築します。</div> </td>
 </tr>
 </tbody>
 </table> </li>
@@ -193,7 +185,7 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 </span></caption>
 <tbody>
 <tr>
-<th class="colFirst" scope="col">变量和类型</th>
+<th class="colFirst" scope="col">変数と型</th>
 <th class="colSecond" scope="col">方法</th>
 <th class="colLast" scope="col">描述</th>
 </tr>
@@ -203,8 +195,7 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <td class="colLast">
 <div class="block">
                 将 
-               <code>boolean</code>参数的字符串表示形式追加到序列中。 
-              </div> </td>
+               <code>boolean</code>引数の文字列表現をシーケンスに追加します。</div> </td>
 </tr>
 <tr class="rowColor" id="i1">
 <td class="colFirst"><code><a href="StringBuilder.html" title="class in java.lang">StringBuilder</a></code></td>
@@ -212,8 +203,7 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <td class="colLast">
 <div class="block">
                 将 
-               <code>char</code>参数的字符串表示形式追加到此序列。 
-              </div> </td>
+               <code>char</code>引数の文字列表現をこのシーケンスに追加します。</div> </td>
 </tr>
 <tr class="altColor" id="i2">
 <td class="colFirst"><code><a href="StringBuilder.html" title="class in java.lang">StringBuilder</a></code></td>
@@ -221,8 +211,7 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <td class="colLast">
 <div class="block">
                 将 
-               <code>char</code>数组参数的字符串表示形式追加到此序列。 
-              </div> </td>
+               <code>char</code>配列引数の文字列表現をこのシーケンスに追加します。</div> </td>
 </tr>
 <tr class="rowColor" id="i3">
 <td class="colFirst"><code><a href="StringBuilder.html" title="class in java.lang">StringBuilder</a></code></td>
@@ -230,8 +219,7 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <td class="colLast">
 <div class="block">
                 将 
-               <code>char</code>数组参数的子数组的字符串表示形式追加到此序列。 
-              </div> </td>
+               <code>char</code>配列引数の部分配列の文字列表現をこのシーケンスに追加します。</div> </td>
 </tr>
 <tr class="altColor" id="i4">
 <td class="colFirst"><code><a href="StringBuilder.html" title="class in java.lang">StringBuilder</a></code></td>
@@ -239,8 +227,7 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <td class="colLast">
 <div class="block">
                 将 
-               <code>double</code>参数的字符串表示形式追加到此序列。 
-              </div> </td>
+               <code>double</code>引数の文字列表現をこのシーケンスに追加します。</div> </td>
 </tr>
 <tr class="rowColor" id="i5">
 <td class="colFirst"><code><a href="StringBuilder.html" title="class in java.lang">StringBuilder</a></code></td>
@@ -248,8 +235,7 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <td class="colLast">
 <div class="block">
                 将 
-               <code>float</code>参数的字符串表示形式追加到此序列。 
-              </div> </td>
+               <code>float</code>引数の文字列表現をこのシーケンスに追加します。</div> </td>
 </tr>
 <tr class="altColor" id="i6">
 <td class="colFirst"><code><a href="StringBuilder.html" title="class in java.lang">StringBuilder</a></code></td>
@@ -257,8 +243,7 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <td class="colLast">
 <div class="block">
                 将 
-               <code>int</code>参数的字符串表示形式追加到此序列。 
-              </div> </td>
+               <code>int</code>引数の文字列表現をこのシーケンスに追加します。</div> </td>
 </tr>
 <tr class="rowColor" id="i7">
 <td class="colFirst"><code><a href="StringBuilder.html" title="class in java.lang">StringBuilder</a></code></td>
@@ -266,25 +251,20 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <td class="colLast">
 <div class="block">
                 将 
-               <code>long</code>参数的字符串表示形式追加到此序列。 
-              </div> </td>
+               <code>long</code>引数の文字列表現をこのシーケンスに追加します。</div> </td>
 </tr>
 <tr class="altColor" id="i8">
 <td class="colFirst"><code><a href="StringBuilder.html" title="class in java.lang">StringBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#append(java.lang.CharSequence)">append</a></span>​(<a href="CharSequence.html" title="interface in java.lang">CharSequence</a> s)</code></th>
 <td class="colLast">
-<div class="block">
-                将指定的字符序列追加到此 
-               <code>Appendable</code> 。 
+<div class="block">指定された文字シーケンスをこの<code>Appendable</code> 。 
               </div> </td>
 </tr>
 <tr class="rowColor" id="i9">
 <td class="colFirst"><code><a href="StringBuilder.html" title="class in java.lang">StringBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#append(java.lang.CharSequence,int,int)">append</a></span>​(<a href="CharSequence.html" title="interface in java.lang">CharSequence</a> s, int start, int end)</code></th>
 <td class="colLast">
-<div class="block">
-                将指定的 
-               <code>CharSequence</code>序列追加到此序列。 
+<div class="block">指定された〜を<code>CharSequence</code>序列追加到此序列。 
               </div> </td>
 </tr>
 <tr class="altColor" id="i10">
@@ -293,24 +273,19 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <td class="colLast">
 <div class="block">
                 追加 
-               <code>Object</code>参数的字符串表示形式。 
-              </div> </td>
+               <code>Object</code>引数の文字列表現。</div> </td>
 </tr>
 <tr class="rowColor" id="i11">
 <td class="colFirst"><code><a href="StringBuilder.html" title="class in java.lang">StringBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#append(java.lang.String)">append</a></span>​(<a href="String.html" title="class in java.lang">String</a> str)</code></th>
 <td class="colLast">
-<div class="block">
-                将指定的字符串追加到此字符序列。 
-              </div> </td>
+<div class="block">指定された文字列をこの文字シーケンスに追加します。</div> </td>
 </tr>
 <tr class="altColor" id="i12">
 <td class="colFirst"><code><a href="StringBuilder.html" title="class in java.lang">StringBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#append(java.lang.StringBuffer)">append</a></span>​(<a href="StringBuffer.html" title="class in java.lang">StringBuffer</a> sb)</code></th>
 <td class="colLast">
-<div class="block">
-                将指定的 
-               <code>StringBuffer</code>追加到此序列。 
+<div class="block">指定された〜を<code>StringBuffer</code>追加到此序列。 
               </div> </td>
 </tr>
 <tr class="rowColor" id="i13">
@@ -319,8 +294,7 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <td class="colLast">
 <div class="block">
                 将 
-               <code>codePoint</code>参数的字符串表示形式追加到此序列。 
-              </div> </td>
+               <code>codePoint</code>引数の文字列表現をこのシーケンスに追加します。</div> </td>
 </tr>
 <tr class="altColor" id="i14">
 <td class="colFirst"><code>int</code></td>
@@ -334,9 +308,7 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <td class="colFirst"><code>char</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#charAt(int)">charAt</a></span>​(int index)</code></th>
 <td class="colLast">
-<div class="block">
-                返回指定索引处的此序列中的 
-               <code>char</code>值。 
+<div class="block">指定されたインデックスにある、このシーケンス内の...を返します。<code>char</code>值。 
               </div> </td>
 </tr>
 <tr class="altColor" id="i16">
@@ -345,41 +317,32 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <td class="colLast">
 <div class="block">
                 返回 
-               <code>int</code>的流，对此序列中的 
-               <code>char</code>值进行零扩展。 
+               <code>int</code>のストリームは、このシーケンス内の<code>char</code>值进行零扩展。 
               </div> </td>
 </tr>
 <tr class="rowColor" id="i17">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#codePointAt(int)">codePointAt</a></span>​(int index)</code></th>
 <td class="colLast">
-<div class="block">
-                返回指定索引处的字符（Unicode代码点）。 
-              </div> </td>
+<div class="block">指定されたインデックスの文字（Unicodeコードポイント）を返します。</div> </td>
 </tr>
 <tr class="altColor" id="i18">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#codePointBefore(int)">codePointBefore</a></span>​(int index)</code></th>
 <td class="colLast">
-<div class="block">
-                返回指定索引之前的字符（Unicode代码点）。 
-              </div> </td>
+<div class="block">指定されたインデックスの前の文字（Unicodeコードポイント）を返します。</div> </td>
 </tr>
 <tr class="rowColor" id="i19">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#codePointCount(int,int)">codePointCount</a></span>​(int beginIndex, int endIndex)</code></th>
 <td class="colLast">
-<div class="block">
-                返回此序列的指定文本范围内的Unicode代码点数。 
-              </div> </td>
+<div class="block">このシーケンスの指定されたテキスト範囲内のUnicodeコードポイント数を返します。</div> </td>
 </tr>
 <tr class="altColor" id="i20">
 <td class="colFirst"><code><a href="../util/stream/IntStream.html" title="interface in java.util.stream">IntStream</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#codePoints()">codePoints</a></span>()</code></th>
 <td class="colLast">
-<div class="block">
-                返回此序列中的代码点值流。 
-              </div> </td>
+<div class="block">このシーケンス内のコードポイント値のストリームを返します。</div> </td>
 </tr>
 <tr class="rowColor" id="i21">
 <td class="colFirst"><code>int</code></td>
@@ -394,51 +357,39 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <td class="colFirst"><code><a href="StringBuilder.html" title="class in java.lang">StringBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#delete(int,int)">delete</a></span>​(int start, int end)</code></th>
 <td class="colLast">
-<div class="block">
-                删除此序列的子字符串中的字符。 
-              </div> </td>
+<div class="block">このシーケンスの部分文字列内の文字を削除します。</div> </td>
 </tr>
 <tr class="rowColor" id="i23">
 <td class="colFirst"><code><a href="StringBuilder.html" title="class in java.lang">StringBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#deleteCharAt(int)">deleteCharAt</a></span>​(int index)</code></th>
 <td class="colLast">
-<div class="block">
-                按此顺序删除指定位置的 
-               <code>char</code> 。 
+<div class="block">この順序で指定された位置の文字を削除する<code>char</code> 。 
               </div> </td>
 </tr>
 <tr class="altColor" id="i24">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#ensureCapacity(int)">ensureCapacity</a></span>​(int minimumCapacity)</code></th>
 <td class="colLast">
-<div class="block">
-                确保容量至少等于指定的最小值。 
-              </div> </td>
+<div class="block">容量が指定された最小値以上であることを保証します。</div> </td>
 </tr>
 <tr class="rowColor" id="i25">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getChars(int,int,char%5B%5D,int)">getChars</a></span>​(int srcBegin, int srcEnd, char[] dst, int dstBegin)</code></th>
 <td class="colLast">
-<div class="block">
-                将字符从此序列复制到目标字符数组 
-               <code>dst</code> 。 
+<div class="block">文字をこのシーケンスからターゲット文字配列にコピーします。<code>dst</code> 。 
               </div> </td>
 </tr>
 <tr class="altColor" id="i26">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#indexOf(java.lang.String)">indexOf</a></span>​(<a href="String.html" title="class in java.lang">String</a> str)</code></th>
 <td class="colLast">
-<div class="block">
-                返回指定子字符串第一次出现的字符串中的索引。 
-              </div> </td>
+<div class="block">指定された部分文字列が最初に出現する文字列内のインデックスを返します。</div> </td>
 </tr>
 <tr class="rowColor" id="i27">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#indexOf(java.lang.String,int)">indexOf</a></span>​(<a href="String.html" title="class in java.lang">String</a> str, int fromIndex)</code></th>
 <td class="colLast">
-<div class="block">
-                从指定的索引处开始，返回指定子字符串第一次出现的字符串中的索引。 
-              </div> </td>
+<div class="block">指定されたインデックスから開始して、指定された部分文字列が最初に出現する文字列内のインデックスを返します。</div> </td>
 </tr>
 <tr class="altColor" id="i28">
 <td class="colFirst"><code><a href="StringBuilder.html" title="class in java.lang">StringBuilder</a></code></td>
@@ -446,8 +397,7 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <td class="colLast">
 <div class="block">
                 将 
-               <code>boolean</code>参数的字符串表示形式插入此序列中。 
-              </div> </td>
+               <code>boolean</code>引数の文字列表現をこのシーケンスに挿入します。</div> </td>
 </tr>
 <tr class="rowColor" id="i29">
 <td class="colFirst"><code><a href="StringBuilder.html" title="class in java.lang">StringBuilder</a></code></td>
@@ -455,8 +405,7 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <td class="colLast">
 <div class="block">
                 将 
-               <code>char</code>参数的字符串表示形式插入此序列中。 
-              </div> </td>
+               <code>char</code>引数の文字列表現をこのシーケンスに挿入します。</div> </td>
 </tr>
 <tr class="altColor" id="i30">
 <td class="colFirst"><code><a href="StringBuilder.html" title="class in java.lang">StringBuilder</a></code></td>
@@ -464,8 +413,7 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <td class="colLast">
 <div class="block">
                 将 
-               <code>char</code>数组参数的字符串表示形式插入此序列中。 
-              </div> </td>
+               <code>char</code>配列引数の文字列表現をこのシーケンスに挿入します。</div> </td>
 </tr>
 <tr class="rowColor" id="i31">
 <td class="colFirst"><code><a href="StringBuilder.html" title="class in java.lang">StringBuilder</a></code></td>
@@ -473,8 +421,7 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <td class="colLast">
 <div class="block">
                 将 
-               <code>str</code>数组参数的子数组的字符串表示形式插入此序列中。 
-              </div> </td>
+               <code>str</code>配列引数の部分配列の文字列表現をこのシーケンスに挿入します。</div> </td>
 </tr>
 <tr class="altColor" id="i32">
 <td class="colFirst"><code><a href="StringBuilder.html" title="class in java.lang">StringBuilder</a></code></td>
@@ -482,8 +429,7 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <td class="colLast">
 <div class="block">
                 将 
-               <code>double</code>参数的字符串表示形式插入此序列中。 
-              </div> </td>
+               <code>double</code>引数の文字列表現をこのシーケンスに挿入します。</div> </td>
 </tr>
 <tr class="rowColor" id="i33">
 <td class="colFirst"><code><a href="StringBuilder.html" title="class in java.lang">StringBuilder</a></code></td>
@@ -491,8 +437,7 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <td class="colLast">
 <div class="block">
                 将 
-               <code>float</code>参数的字符串表示形式插入此序列中。 
-              </div> </td>
+               <code>float</code>引数の文字列表現をこのシーケンスに挿入します。</div> </td>
 </tr>
 <tr class="altColor" id="i34">
 <td class="colFirst"><code><a href="StringBuilder.html" title="class in java.lang">StringBuilder</a></code></td>
@@ -500,8 +445,7 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <td class="colLast">
 <div class="block">
                 将第二个 
-               <code>int</code>参数的字符串表示形式插入此序列中。 
-              </div> </td>
+               <code>int</code>引数の文字列表現をこのシーケンスに挿入します。</div> </td>
 </tr>
 <tr class="rowColor" id="i35">
 <td class="colFirst"><code><a href="StringBuilder.html" title="class in java.lang">StringBuilder</a></code></td>
@@ -509,25 +453,20 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <td class="colLast">
 <div class="block">
                 将 
-               <code>long</code>参数的字符串表示形式插入此序列中。 
-              </div> </td>
+               <code>long</code>引数の文字列表現をこのシーケンスに挿入します。</div> </td>
 </tr>
 <tr class="altColor" id="i36">
 <td class="colFirst"><code><a href="StringBuilder.html" title="class in java.lang">StringBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#insert(int,java.lang.CharSequence)">insert</a></span>​(int dstOffset, <a href="CharSequence.html" title="interface in java.lang">CharSequence</a> s)</code></th>
 <td class="colLast">
-<div class="block">
-                将指定的 
-               <code>CharSequence</code>插入此序列。 
+<div class="block">指定された〜を<code>CharSequence</code>插入此序列。 
               </div> </td>
 </tr>
 <tr class="rowColor" id="i37">
 <td class="colFirst"><code><a href="StringBuilder.html" title="class in java.lang">StringBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#insert(int,java.lang.CharSequence,int,int)">insert</a></span>​(int dstOffset, <a href="CharSequence.html" title="interface in java.lang">CharSequence</a> s, int start, int end)</code></th>
 <td class="colLast">
-<div class="block">
-                将指定的 
-               <code>CharSequence</code>序列插入此序列。 
+<div class="block">指定された〜を<code>CharSequence</code>序列插入此序列。 
               </div> </td>
 </tr>
 <tr class="altColor" id="i38">
@@ -536,8 +475,7 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <td class="colLast">
 <div class="block">
                 将 
-               <code>Object</code>参数的字符串表示形式插入此字符序列中。 
-              </div> </td>
+               <code>Object</code>引数の文字列表現をこの文字シーケンスに挿入します。</div> </td>
 </tr>
 <tr class="rowColor" id="i39">
 <td class="colFirst"><code><a href="StringBuilder.html" title="class in java.lang">StringBuilder</a></code></td>
@@ -551,17 +489,13 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#lastIndexOf(java.lang.String)">lastIndexOf</a></span>​(<a href="String.html" title="class in java.lang">String</a> str)</code></th>
 <td class="colLast">
-<div class="block">
-                返回指定子字符串最后一次出现的字符串中的索引。 
-              </div> </td>
+<div class="block">指定された部分文字列が最後に出現する文字列内のインデックスを返します。</div> </td>
 </tr>
 <tr class="rowColor" id="i41">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#lastIndexOf(java.lang.String,int)">lastIndexOf</a></span>​(<a href="String.html" title="class in java.lang">String</a> str, int fromIndex)</code></th>
 <td class="colLast">
-<div class="block">
-                返回指定子字符串最后一次出现的字符串中的索引，从指定索引开始向后搜索。 
-              </div> </td>
+<div class="block">指定された部分文字列が最後に出現する文字列内のインデックスを、指定されたインデックスから後方に検索して返します。</div> </td>
 </tr>
 <tr class="altColor" id="i42">
 <td class="colFirst"><code>int</code></td>
@@ -575,9 +509,7 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#offsetByCodePoints(int,int)">offsetByCodePoints</a></span>​(int index, int codePointOffset)</code></th>
 <td class="colLast">
-<div class="block">
-                返回此序列中的索引，该索引从给定的 
-               <code>index</code>偏移 
+<div class="block">指定された位置からこのシーケンス内のインデックスを返します。<code>index</code>偏移 
                <code>codePointOffset</code>代码点。 
               </div> </td>
 </tr>
@@ -585,69 +517,50 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <td class="colFirst"><code><a href="StringBuilder.html" title="class in java.lang">StringBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#replace(int,int,java.lang.String)">replace</a></span>​(int start, int end, <a href="String.html" title="class in java.lang">String</a> str)</code></th>
 <td class="colLast">
-<div class="block">
-                使用指定的 
-               <code>String</code>的字符替换此序列的子字符串中的字符。 
-              </div> </td>
+<div class="block">指定されたものを使って<code>String</code>の文字をこのシーケンスの部分文字列内の文字に置き換えます。</div> </td>
 </tr>
 <tr class="rowColor" id="i45">
 <td class="colFirst"><code><a href="StringBuilder.html" title="class in java.lang">StringBuilder</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#reverse()">reverse</a></span>()</code></th>
 <td class="colLast">
-<div class="block">
-                导致此字符序列被序列的反向替换。 
-              </div> </td>
+<div class="block">この文字シーケンスがシーケンスの逆順に置き換えられます。</div> </td>
 </tr>
 <tr class="altColor" id="i46">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setCharAt(int,char)">setCharAt</a></span>​(int index, char ch)</code></th>
 <td class="colLast">
-<div class="block">
-                指定索引处的字符设置为 
-               <code>ch</code> 。 
+<div class="block">指定されたインデックスの文字を設定する<code>ch</code> 。 
               </div> </td>
 </tr>
 <tr class="rowColor" id="i47">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setLength(int)">setLength</a></span>​(int newLength)</code></th>
 <td class="colLast">
-<div class="block">
-                设置字符序列的长度。 
-              </div> </td>
+<div class="block">文字シーケンスの長さを設定します。</div> </td>
 </tr>
 <tr class="altColor" id="i48">
 <td class="colFirst"><code><a href="CharSequence.html" title="interface in java.lang">CharSequence</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#subSequence(int,int)">subSequence</a></span>​(int start, int end)</code></th>
 <td class="colLast">
-<div class="block">
-                返回一个新的字符序列，它是该序列的子序列。 
-              </div> </td>
+<div class="block">このシーケンスの部分シーケンスである新しい文字シーケンスを返します。</div> </td>
 </tr>
 <tr class="rowColor" id="i49">
 <td class="colFirst"><code><a href="String.html" title="class in java.lang">String</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#substring(int)">substring</a></span>​(int start)</code></th>
 <td class="colLast">
-<div class="block">
-                返回一个新的 
-               <code>String</code> ，其中包含此字符序列中当前包含的字符的子序列。 
-              </div> </td>
+<div class="block">新しい...を返す<code>String</code>、この文字シーケンスに現在含まれている文字の部分シーケンスを含むもの。</div> </td>
 </tr>
 <tr class="altColor" id="i50">
 <td class="colFirst"><code><a href="String.html" title="class in java.lang">String</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#substring(int,int)">substring</a></span>​(int start, int end)</code></th>
 <td class="colLast">
-<div class="block">
-                返回一个新的 
-               <code>String</code> ，其中包含当前包含在此序列中的字符的子序列。 
-              </div> </td>
+<div class="block">新しい...を返す<code>String</code>、このシーケンスに現在含まれている文字の部分シーケンスを含みます。</div> </td>
 </tr>
 <tr class="rowColor" id="i51">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#trimToSize()">trimToSize</a></span>()</code></th>
 <td class="colLast">
-<div class="block">
-                尝试减少用于字符序列的存储空间。 
-              </div> </td>
+<div class="block">文字シーケンス用の記憶容量を削減しようとします。</div> </td>
 </tr>
 </tbody>
 </table>
@@ -674,17 +587,12 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <!-- --> </a>
 <ul class="blockList">
 <li class="blockList"> <h4>StringBuilder</h4> <pre>public StringBuilder()</pre>
-<div class="block">
-              构造一个字符串构建器，其中不包含任何字符，初始容量为16个字符。 
-            </div> </li>
+<div class="block">文字を含まない文字列ビルダーを構築し、初期容量は16文字です。</div> </li>
 </ul> <a id="&lt;init&gt;(int)">
 <!-- --> </a>
 <ul class="blockList">
 <li class="blockList"> <h4>StringBuilder</h4> <pre>public StringBuilder​(int capacity)</pre>
-<div class="block">
-              构造一个不包含字符的字符串构建器以及 
-             <code>capacity</code>参数指定的初始容量。 
-            </div>
+<div class="block">文字を含まない文字列ビルダーを構築します。および<code>capacity</code>パラメータで指定された初期容量。</div>
 <dl>
 <dt>
 <span class="paramLabel">参数</span>
@@ -705,8 +613,8 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <ul class="blockList">
 <li class="blockList"> <h4>StringBuilder</h4> <pre>public StringBuilder​(<a href="String.html" title="class in java.lang">String</a> str)</pre>
 <div class="block">
-<span>构造一个初始化为指定字符串内容的字符串构建器。</span>
-<span>字符串生成器的初始容量为<code>16</code>加上字符串参数的长度。</span>
+<span>指定された文字列の内容で初期化された文字列ビルダーを構築します。</span>
+<span>文字列ビルダーの初期容量は<code>16</code>文字列引数の長さを加える。</span>
 </div>
 <dl>
 <dt>
@@ -720,8 +628,8 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <ul class="blockListLast">
 <li class="blockList"> <h4>StringBuilder</h4> <pre>public StringBuilder​(<a href="CharSequence.html" title="interface in java.lang">CharSequence</a> seq)</pre>
 <div class="block">
-<span>构造一个字符串构建器，其中包含与指定的<code>CharSequence</code>相同的字符。</span>
-<span>字符串生成器的初始容量为<code>16</code>加上<code>CharSequence</code>参数的长度。</span>
+<span>指定されたものと同じ文字を含む文字列ビルダーを構築します。<code>CharSequence</code>同じ文字。</span>
+<span>文字列ビルダーの初期容量は<code>16</code>加上<code>CharSequence</code>引数の長さ。</span>
 </div>
 <dl>
 <dt>
@@ -743,16 +651,15 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <li class="blockList"> <h4>compareTo</h4> <pre class="methodSignature">public int compareTo​(<a href="StringBuilder.html" title="class in java.lang">StringBuilder</a> another)</pre>
 <div class="block">
 <span><code>StringBuilder</code>字典顺序比较两个<code>StringBuilder</code>实例。</span>
-<span>该方法遵循<a href="CharSequence.html#compare(java.lang.CharSequence,java.lang.CharSequence)">CharSequence.compare(this, another)</a>方法中定义的词典比较的相同规则。</span>
-<p> <span>有关细粒度，区域设置敏感的字符串比较，请参阅<a href="../text/Collator.html" title="java.text中的类"><code>Collator</code></a> 。</span> </p>
+<span>该方法遵循<a href="CharSequence.html#compare(java.lang.CharSequence,java.lang.CharSequence)">CharSequence.compare(this, another)</a>メソッド内で定義されている辞書式比較と同じ規則。</span>
+<p> <span>細かい粒度の、ロケールに依存する文字列比較については、参照してください。<a href="../text/Collator.html" title="java.text中的类"><code>Collator</code></a> 。</span> </p>
 </div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Comparable.html#compareTo(T)">compareTo</a></code>在接口 
-              <code><a href="Comparable.html" title="interface in java.lang">Comparable</a>&lt;<a href="StringBuilder.html" title="class in java.lang">StringBuilder</a>&gt;</code>
+<code><a href="Comparable.html#compareTo(T)">compareTo</a></code>インターフェースで<code><a href="Comparable.html" title="interface in java.lang">Comparable</a>&lt;<a href="StringBuilder.html" title="class in java.lang">StringBuilder</a>&gt;</code>
 </dd>
 <dt>
 <span class="paramLabel">参数</span>
@@ -764,12 +671,12 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <span class="returnLabel">结果</span>
 </dt>
 <dd>
-<span>值<code>0</code>如果此<code>StringBuilder</code>包含与参数<code>StringBuilder</code>相同的字符序列;</span>
+<span>值<code>0</code>如果此<code>StringBuilder</code>パラメータとを含む<code>StringBuilder</code>同じ文字シーケンス;</span>
 <span>如果此<code>StringBuilder</code>字典顺序小于<code>StringBuilder</code>参数， <code>StringBuilder</code>负整数;</span>
 <span>如果此<code>StringBuilder</code>字典顺序大于<code>StringBuilder</code>参数， <code>StringBuilder</code>正整数。</span>
 </dd>
 <dt>
-<span class="simpleTagLabel">从以下版本开始：</span>
+<span class="simpleTagLabel">以下のバージョンから：</span>
 </dt>
 <dd>
                11 
@@ -780,8 +687,8 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <ul class="blockList">
 <li class="blockList"> <h4>append</h4> <pre class="methodSignature">public <a href="StringBuilder.html" title="class in java.lang">StringBuilder</a> append​(<a href="Object.html" title="class in java.lang">Object</a> obj)</pre>
 <div class="block">
-<span>追加<code>Object</code>参数的字符串表示形式。</span>
-<p> <span>整体效果与方法<a href="String.html#valueOf(java.lang.Object)"><code>String.valueOf(Object)</code></a>将参数转换为字符串<a href="String.html#valueOf(java.lang.Object)">完全相同</a> ，然后该字符串的字符为<a href="#append(java.lang.String)"><code>appended</code></a> 。</span> </p>
+<span>追加<code>Object</code>引数の文字列表現。</span>
+<p> <span>全体の効果はメソッドと<a href="String.html#valueOf(java.lang.Object)"><code>String.valueOf(Object)</code></a>引数を文字列に変換します<a href="String.html#valueOf(java.lang.Object)">完全相同</a>、その後、この文字列の文字は<a href="#append(java.lang.String)"><code>appended</code></a> 。</span> </p>
 </div>
 <dl>
 <dt>
@@ -801,9 +708,9 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <ul class="blockList">
 <li class="blockList"> <h4>append</h4> <pre class="methodSignature">public <a href="StringBuilder.html" title="class in java.lang">StringBuilder</a> append​(<a href="String.html" title="class in java.lang">String</a> str)</pre>
 <div class="block">
-<span>将指定的字符串追加到此字符序列。</span>
-<p> <span>按顺序附加<code>String</code>参数的字符，按参数的长度增加此序列的长度。</span> <span>如果<code>str</code>是<code>null</code> ，则附加四个字符<code>"null"</code> 。</span> </p>
-<p> <span>设<i>n</i>是执行<code>append</code>方法之前的该字符序列的长度。</span> <span>如果<i>k</i>小于<i>n</i> ，则新字符序列中索引<i>k</i>处的字符等于旧字符序列中索引<i>k</i>处的字符;</span> <span>否则，它等于参数<code>str</code>中索引<i>kn</i>处的字符。</span> </p>
+<span>指定された文字列をこの文字シーケンスに追加します。</span>
+<p> <span>按顺序附加<code>String</code>引数の文字が追加され、このシーケンスの長さは引数の長さだけ増加します。</span> <span>如果<code>str</code>である<code>null</code> ，则附加四个字符<code>"null"</code> 。</span> </p>
+<p> <span>设<i>n</i>実行する<code>append</code>メソッドの前のその文字シーケンスの長さ。</span> <span>如果<i>k</i>小于<i>n</i> ，则新字符序列中索引<i>k</i>位置にある文字は、古い文字シーケンス内のインデックス位置の文字と等しい。<i>k</i>にある文字;</span> <span>否则，它等于参数<code>str</code>中索引<i>kn</i>にある文字。</span> </p>
 </div>
 <dl>
 <dt>
@@ -821,9 +728,9 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <ul class="blockList">
 <li class="blockList"> <h4>append</h4> <pre class="methodSignature">public <a href="StringBuilder.html" title="class in java.lang">StringBuilder</a> append​(<a href="StringBuffer.html" title="class in java.lang">StringBuffer</a> sb)</pre>
 <div class="block">
-<span>将指定的<code>StringBuffer</code>追加到此序列。</span>
-<p> <span><code>StringBuffer</code>参数的字符按顺序附加到此序列，通过参数的长度增加此序列的长度。</span> <span>如果<code>sb</code>是<code>null</code> ，则将四个字符<code>"null"</code>附加到该序列。</span> </p>
-<p> <span>设<i>n</i>是执行<code>append</code>方法之前的该字符序列的长度。</span> <span>如果<i>k</i>小于<i>n</i> ，则新字符序列中索引<i>k</i>处的字符等于旧字符序列中索引<i>k</i>处的字符;</span> <span>否则，它等于参数<code>sb</code>中索引<i>kn</i>处的字符。</span> </p>
+<span>指定された〜を<code>StringBuffer</code>追加到此序列。</span>
+<p> <span><code>StringBuffer</code>パラメータの文字は順番にこのシーケンスに追加され、このシーケンスの長さはパラメータの長さだけ増加します。</span> <span>如果<code>sb</code>である<code>null</code> ，则将四个字符<code>"null"</code>附加到该序列。</span> </p>
+<p> <span>设<i>n</i>実行する<code>append</code>メソッドの前のその文字シーケンスの長さ。</span> <span>如果<i>k</i>小于<i>n</i> ，则新字符序列中索引<i>k</i>位置にある文字は、古い文字シーケンス内のインデックス位置の文字と等しい。<i>k</i>にある文字;</span> <span>否则，它等于参数<code>sb</code>中索引<i>kn</i>にある文字。</span> </p>
 </div>
 <dl>
 <dt>
@@ -842,26 +749,25 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <ul class="blockList">
 <li class="blockList"> <h4>append</h4> <pre class="methodSignature">public <a href="StringBuilder.html" title="class in java.lang">StringBuilder</a> append​(<a href="CharSequence.html" title="interface in java.lang">CharSequence</a> s)</pre>
 <div class="block">
-<span class="descfrmTypeLabel">从界面复制的说明： <code><a href="Appendable.html#append(java.lang.CharSequence)">Appendable</a></code></span>
+<span class="descfrmTypeLabel">インターフェースからコピーされた説明：<code><a href="Appendable.html#append(java.lang.CharSequence)">Appendable</a></code></span>
 </div>
 <div class="block">
-<span>将指定的字符序列追加到此<code>Appendable</code> 。</span>
-<p> <span>根据哪个类实现字符序列<code>csq</code> ，可能不会附加整个序列。</span> <span>例如，如果<code>csq</code>是<a href="../nio/CharBuffer.html" title="java.nio中的类"><code>CharBuffer</code>，</a>则追加的子序列由缓冲区的位置和限制定义。</span> </p>
+<span>指定された文字シーケンスをこの<code>Appendable</code> 。</span>
+<p> <span>根据哪个类实现字符序列<code>csq</code> ，可能不会附加整个序列。</span> <span>例如，如果<code>csq</code>である<a href="../nio/CharBuffer.html" title="java.nio中的类"><code>CharBuffer</code>，</a>追加されるサブシーケンスは、バッファの位置と制限によって定義されます。</span> </p>
 </div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Appendable.html#append(java.lang.CharSequence)">append</a></code>在接口 
-              <code><a href="Appendable.html" title="interface in java.lang">Appendable</a></code>
+<code><a href="Appendable.html#append(java.lang.CharSequence)">append</a></code>インターフェースで<code><a href="Appendable.html" title="interface in java.lang">Appendable</a></code>
 </dd>
 <dt>
 <span class="paramLabel">参数</span>
 </dt>
 <dd>
-<span><code>s</code> - 要追加的字符序列。</span>
-<span>如果<code>csq</code>是<code>null</code> ，则四个字符<code>"null"</code>将附加到此Appendable。</span>
+<span><code>s</code>- 追加する文字シーケンス。</span>
+<span>如果<code>csq</code>である<code>null</code> ，则四个字符<code>"null"</code>将附加到此Appendable。</span>
 </dd>
 <dt>
 <span class="returnLabel">结果</span>
@@ -878,18 +784,17 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
                             int start,
                             int end)</pre>
 <div class="block">
-<span>将指定的<code>CharSequence</code>序列追加到此序列。</span>
-<p> <span>从索引<code>start</code>开始的参数<code>s</code>字符按顺序附加到该序列的内容，直到（独占）索引<code>end</code> 。</span> <span>该序列的长度增加了值<code>end - start</code> 。</span> </p>
-<p> <span>设<i>n</i>是执行<code>append</code>方法之前的该字符序列的长度。</span> <span>然后，如果<i>k</i>小于<i>n</i> ，则该字符序列中索引<i>k处</i>的字符变为等于该序列中索引<i>k</i>处的字符;</span> <span>否则，它等于参数<code>s</code>中索引<i>k + start-n</i>处的<code>s</code> 。</span> </p>
-<p> <span>如果<code>s</code>是<code>null</code> ，则此方法会附加字符，就好像s参数是包含四个字符<code>"null"</code>的序列<code>"null"</code> 。</span> </p>
+<span>指定された〜を<code>CharSequence</code>序列追加到此序列。</span>
+<p> <span>インデックスから<code>start</code>開始のパラメータ<code>s</code>文字は、このシーケンスの内容に順に追加され、インデックス（排他の）に達します。<code>end</code> 。</span> <span>このシーケンスの長さは、値の分だけ増加します<code>end - start</code> 。</span> </p>
+<p> <span>设<i>n</i>実行する<code>append</code>メソッドの前のその文字シーケンスの長さ。</span> <span>然后，如果<i>k</i>小于<i>n</i> ，则该字符序列中索引<i>k处</i>の文字は、このシーケンス内のインデックスと等しくなります。<i>k</i>にある文字;</span> <span>否则，它等于参数<code>s</code>中索引<i>k + start-n</i>場所の<code>s</code> 。</span> </p>
+<p> <span>如果<code>s</code>である<code>null</code>その場合、このメソッドは、sパラメータが4つの文字を含むかのように文字を追加します。<code>"null"</code>のシーケンス<code>"null"</code> 。</span> </p>
 </div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Appendable.html#append(java.lang.CharSequence,int,int)">append</a></code>在接口 
-              <code><a href="Appendable.html" title="interface in java.lang">Appendable</a></code>
+<code><a href="Appendable.html#append(java.lang.CharSequence,int,int)">append</a></code>インターフェースで<code><a href="Appendable.html" title="interface in java.lang">Appendable</a></code>
 </dd>
 <dt>
 <span class="paramLabel">参数</span>
@@ -909,8 +814,7 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 </dt>
 <dd>
 <code><a href="IndexOutOfBoundsException.html" title="class in java.lang">IndexOutOfBoundsException</a></code> - 如果 
-              <code>start</code>为负数，或 
-              <code>start</code>大于 
+              <code>start</code>負の数、または<code>start</code>大于 
               <code>end</code>或 
               <code>end</code>大于 
               <code>s.length()</code>
@@ -921,9 +825,9 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <ul class="blockList">
 <li class="blockList"> <h4>append</h4> <pre class="methodSignature">public <a href="StringBuilder.html" title="class in java.lang">StringBuilder</a> append​(char[] str)</pre>
 <div class="block">
-<span>将<code>char</code>数组参数的字符串表示形式追加到此序列。</span>
-<p> <span>数组参数的字符按顺序附加到此序列的内容中。</span> <span>该序列的长度增加了参数的长度。</span> </p>
-<p> <span>整体效果就像通过方法<a href="String.html#valueOf(char%5B%5D)"><code>String.valueOf(char[])</code></a>将参数转换为字符串<a href="String.html#valueOf(char%5B%5D)">一样</a> ，并且该字符串的字符随后是该字符序列的<a href="#append(java.lang.String)"><code>appended</code></a> 。</span> </p>
+<span>将<code>char</code>配列引数の文字列表現をこのシーケンスに追加します。</span>
+<p> <span>配列引数の文字は、このシーケンスの内容に順番に追加されます。</span> <span>このシーケンスの長さは、引数の長さだけ増加します。</span> </p>
+<p> <span>整体效果就像通过方法<a href="String.html#valueOf(char%5B%5D)"><code>String.valueOf(char[])</code></a>引数を文字列に変換します<a href="String.html#valueOf(char%5B%5D)">一样</a>、かつこの文字列の文字は、その後その文字シーケンスの<a href="#append(java.lang.String)"><code>appended</code></a> 。</span> </p>
 </div>
 <dl>
 <dt>
@@ -943,9 +847,9 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
                             int offset,
                             int len)</pre>
 <div class="block">
-<span>将<code>char</code>数组参数的子数组的字符串表示形式追加到此序列。</span>
-<p> <span>从索引<code>offset</code>开始的<code>char</code>阵列<code>str</code>字符按顺序附加到该序列的内容。</span> <span>此序列的长度增加值<code>len</code> 。</span> </p>
-<p> <span>整体效果就像通过方法<a href="String.html#valueOf(char%5B%5D,int,int)"><code>String.valueOf(char[],int,int)</code></a>将参数转换为字符串<a href="String.html#valueOf(char%5B%5D,int,int)">一样</a> ，并且该字符串的字符对于此字符序列<a href="#append(java.lang.String)">则为<code>appended</code></a> 。</span> </p>
+<span>将<code>char</code>配列引数の部分配列の文字列表現をこのシーケンスに追加します。</span>
+<p> <span>インデックスから<code>offset</code>始まる<code>char</code>阵列<code>str</code>文字は順番にこのシーケンスの内容に追加されます。</span> <span>このシーケンスの長さは、値だけ増加します<code>len</code> 。</span> </p>
+<p> <span>整体效果就像通过方法<a href="String.html#valueOf(char%5B%5D,int,int)"><code>String.valueOf(char[],int,int)</code></a>引数を文字列に変換します<a href="String.html#valueOf(char%5B%5D,int,int)">一样</a>、およびこの文字シーケンスに対するその文字列の文字<a href="#append(java.lang.String)">ならば<code>appended</code></a> 。</span> </p>
 </div>
 <dl>
 <dt>
@@ -954,11 +858,9 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <dd>
 <code>str</code>- 追加する文字。</dd>
 <dd>
-<code>offset</code>- 追加する最初の<code>char</code>的索引。 
-             </dd>
+<code>offset</code>- 追加する最初の<code>char</code>のインデックス。</dd>
 <dd>
-<code>len</code>- 追加する<code>char</code>的数量。 
-             </dd>
+<code>len</code>- 追加する<code>char</code>の数量。</dd>
 <dt>
 <span class="returnLabel">结果</span>
 </dt>
@@ -967,8 +869,7 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <span class="throwsLabel">异常</span>
 </dt>
 <dd>
-<code><a href="IndexOutOfBoundsException.html" title="class in java.lang">IndexOutOfBoundsException</a></code> - 如果是 
-              <code>offset &lt; 0</code>或 
+<code><a href="IndexOutOfBoundsException.html" title="class in java.lang">IndexOutOfBoundsException</a></code>- の場合は<code>offset &lt; 0</code>或 
               <code>len &lt; 0</code>或 
               <code>offset+len &gt; str.length</code>
 </dd>
@@ -978,8 +879,8 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <ul class="blockList">
 <li class="blockList"> <h4>append</h4> <pre class="methodSignature">public <a href="StringBuilder.html" title="class in java.lang">StringBuilder</a> append​(boolean b)</pre>
 <div class="block">
-<span>将<code>boolean</code>参数的字符串表示形式追加到序列中。</span>
-<p> <span>整体效果就像通过方法<a href="String.html#valueOf(boolean)"><code>String.valueOf(boolean)</code></a>将参数转换为字符串<a href="String.html#valueOf(boolean)">一样</a> ，并且该字符串的字符随后是该字符序列的<a href="#append(java.lang.String)"><code>appended</code></a> 。</span> </p>
+<span>将<code>boolean</code>引数の文字列表現をシーケンスに追加します。</span>
+<p> <span>整体效果就像通过方法<a href="String.html#valueOf(boolean)"><code>String.valueOf(boolean)</code></a>引数を文字列に変換します<a href="String.html#valueOf(boolean)">一样</a>、かつこの文字列の文字は、その後その文字シーケンスの<a href="#append(java.lang.String)"><code>appended</code></a> 。</span> </p>
 </div>
 <dl>
 <dt>
@@ -999,17 +900,16 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <ul class="blockList">
 <li class="blockList"> <h4>append</h4> <pre class="methodSignature">public <a href="StringBuilder.html" title="class in java.lang">StringBuilder</a> append​(char c)</pre>
 <div class="block">
-<span>将<code>char</code>参数的字符串表示形式追加到此序列。</span>
-<p> <span>该参数附加到此序列的内容中。</span> <span>该序列的长度增加<code>1</code> 。</span> </p>
-<p> <span>整体效果就像通过方法<a href="String.html#valueOf(char)"><code>String.valueOf(char)</code></a>将参数转换为字符串<a href="String.html#valueOf(char)">一样</a> ，并且该字符串中的字符随后是该字符序列的<a href="#append(java.lang.String)"><code>appended</code></a> 。</span> </p>
+<span>将<code>char</code>引数の文字列表現をこのシーケンスに追加します。</span>
+<p> <span>この引数はこのシーケンスの内容に追加されます。</span> <span>そのシーケンスの長さが増加します<code>1</code> 。</span> </p>
+<p> <span>整体效果就像通过方法<a href="String.html#valueOf(char)"><code>String.valueOf(char)</code></a>引数を文字列に変換します<a href="String.html#valueOf(char)">一样</a>、そしてその文字列内の文字は、続いてその文字シーケンスの<a href="#append(java.lang.String)"><code>appended</code></a> 。</span> </p>
 </div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Appendable.html#append(char)">append</a></code>在接口 
-              <code><a href="Appendable.html" title="interface in java.lang">Appendable</a></code>
+<code><a href="Appendable.html#append(char)">append</a></code>インターフェースで<code><a href="Appendable.html" title="interface in java.lang">Appendable</a></code>
 </dd>
 <dt>
 <span class="paramLabel">参数</span>
@@ -1028,8 +928,8 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <ul class="blockList">
 <li class="blockList"> <h4>append</h4> <pre class="methodSignature">public <a href="StringBuilder.html" title="class in java.lang">StringBuilder</a> append​(int i)</pre>
 <div class="block">
-<span>将<code>int</code>参数的字符串表示形式追加到此序列。</span>
-<p> <span>整体效果与方法<a href="String.html#valueOf(int)"><code>String.valueOf(int)</code></a>将参数转换为字符串<a href="String.html#valueOf(int)">完全相同</a> ，然后该字符串的字符为<a href="#append(java.lang.String)"><code>appended</code></a> 。</span> </p>
+<span>将<code>int</code>引数の文字列表現をこのシーケンスに追加します。</span>
+<p> <span>全体の効果はメソッドと<a href="String.html#valueOf(int)"><code>String.valueOf(int)</code></a>引数を文字列に変換します<a href="String.html#valueOf(int)">完全相同</a>、その後、この文字列の文字は<a href="#append(java.lang.String)"><code>appended</code></a> 。</span> </p>
 </div>
 <dl>
 <dt>
@@ -1049,8 +949,8 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <ul class="blockList">
 <li class="blockList"> <h4>append</h4> <pre class="methodSignature">public <a href="StringBuilder.html" title="class in java.lang">StringBuilder</a> append​(long lng)</pre>
 <div class="block">
-<span>将<code>long</code>参数的字符串表示形式追加到此序列。</span>
-<p> <span>整体效果与方法<a href="String.html#valueOf(long)"><code>String.valueOf(long)</code></a>将参数转换为字符串<a href="String.html#valueOf(long)">完全相同</a> ，然后该字符串的字符为<a href="#append(java.lang.String)"><code>appended</code></a> 。</span> </p>
+<span>将<code>long</code>引数の文字列表現をこのシーケンスに追加します。</span>
+<p> <span>全体の効果はメソッドと<a href="String.html#valueOf(long)"><code>String.valueOf(long)</code></a>引数を文字列に変換します<a href="String.html#valueOf(long)">完全相同</a>、その後、この文字列の文字は<a href="#append(java.lang.String)"><code>appended</code></a> 。</span> </p>
 </div>
 <dl>
 <dt>
@@ -1070,8 +970,8 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <ul class="blockList">
 <li class="blockList"> <h4>append</h4> <pre class="methodSignature">public <a href="StringBuilder.html" title="class in java.lang">StringBuilder</a> append​(float f)</pre>
 <div class="block">
-<span>将<code>float</code>参数的字符串表示形式追加到此序列。</span>
-<p> <span>整体效果就像通过方法<a href="String.html#valueOf(float)"><code>String.valueOf(float)</code></a>将参数转换为字符串<a href="String.html#valueOf(float)">一样</a> ，并且该字符串的字符随后是该字符序列的<a href="#append(java.lang.String)"><code>appended</code></a> 。</span> </p>
+<span>将<code>float</code>引数の文字列表現をこのシーケンスに追加します。</span>
+<p> <span>整体效果就像通过方法<a href="String.html#valueOf(float)"><code>String.valueOf(float)</code></a>引数を文字列に変換します<a href="String.html#valueOf(float)">一样</a>、かつこの文字列の文字は、その後その文字シーケンスの<a href="#append(java.lang.String)"><code>appended</code></a> 。</span> </p>
 </div>
 <dl>
 <dt>
@@ -1091,8 +991,8 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <ul class="blockList">
 <li class="blockList"> <h4>append</h4> <pre class="methodSignature">public <a href="StringBuilder.html" title="class in java.lang">StringBuilder</a> append​(double d)</pre>
 <div class="block">
-<span>将<code>double</code>参数的字符串表示形式追加到此序列。</span>
-<p> <span>整体效果就像通过方法<a href="String.html#valueOf(double)"><code>String.valueOf(double)</code></a>将参数转换为字符串<a href="String.html#valueOf(double)">一样</a> ，并且该字符串的字符随后是该字符序列的<a href="#append(java.lang.String)"><code>appended</code></a> 。</span> </p>
+<span>将<code>double</code>引数の文字列表現をこのシーケンスに追加します。</span>
+<p> <span>整体效果就像通过方法<a href="String.html#valueOf(double)"><code>String.valueOf(double)</code></a>引数を文字列に変換します<a href="String.html#valueOf(double)">一样</a>、かつこの文字列の文字は、その後その文字シーケンスの<a href="#append(java.lang.String)"><code>appended</code></a> 。</span> </p>
 </div>
 <dl>
 <dt>
@@ -1112,9 +1012,9 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <ul class="blockList">
 <li class="blockList"> <h4>appendCodePoint</h4> <pre class="methodSignature">public <a href="StringBuilder.html" title="class in java.lang">StringBuilder</a> appendCodePoint​(int codePoint)</pre>
 <div class="block">
-<span>将<code>codePoint</code>参数的字符串表示形式追加到此序列。</span>
-<p> <span>该参数附加到此序列的内容中。</span> <span>该序列的长度增加<a href="Character.html#charCount(int)"><code>Character.charCount(codePoint)</code></a> 。</span> </p>
-<p> <span>整体效果就像通过方法<a href="Character.html#toChars(int)"><code>Character.toChars(int)</code></a>将参数转换为<code>char</code>数组一样，并且该数组中的字符<a href="#append(char%5B%5D)">则为<code>appended</code></a> 。</span> </p>
+<span>将<code>codePoint</code>引数の文字列表現をこのシーケンスに追加します。</span>
+<p> <span>この引数はこのシーケンスの内容に追加されます。</span> <span>そのシーケンスの長さが増加します<a href="Character.html#charCount(int)"><code>Character.charCount(codePoint)</code></a> 。</span> </p>
+<p> <span>整体效果就像通过方法<a href="Character.html#toChars(int)"><code>Character.toChars(int)</code></a>引数を変換する<code>char</code>配列と同じであり、その配列内の文字は<a href="#append(char%5B%5D)">ならば<code>appended</code></a> 。</span> </p>
 </div>
 <dl>
 <dt>
@@ -1127,7 +1027,7 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 </dt>
 <dd>このオブジェクトへの参照。</dd>
 <dt>
-<span class="simpleTagLabel">从以下版本开始：</span>
+<span class="simpleTagLabel">以下のバージョンから：</span>
 </dt>
 <dd>
                1.5 
@@ -1139,8 +1039,8 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <li class="blockList"> <h4>delete</h4> <pre class="methodSignature">public <a href="StringBuilder.html" title="class in java.lang">StringBuilder</a> delete​(int start,
                             int end)</pre>
 <div class="block">
-<span>删除此序列的子字符串中的字符。</span>
-<span>子字符串从指定的<code>start</code>开始，并且如果不存在这样的字符，则扩展到索引<code>end - 1</code>处的字符或序列的末尾。</span>
+<span>このシーケンスの部分文字列内の文字を削除します。</span>
+<span>指定されたインデックスからの部分文字列<code>start</code>開始し、そのような文字が存在しない場合は、インデックスまで拡張されます。<code>end - 1</code>の位置の文字、またはシーケンスの末尾。</span>
 <span>如果<code>start</code>等于<code>end</code> ，则不进行任何更改。</span>
 </div>
 <dl>
@@ -1154,9 +1054,7 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <dt>
 <span class="returnLabel">结果</span>
 </dt>
-<dd>
-               这个对象。 
-             </dd>
+<dd>このオブジェクト。</dd>
 <dt>
 <span class="throwsLabel">异常</span>
 </dt>
@@ -1171,9 +1069,9 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <ul class="blockList">
 <li class="blockList"> <h4>deleteCharAt</h4> <pre class="methodSignature">public <a href="StringBuilder.html" title="class in java.lang">StringBuilder</a> deleteCharAt​(int index)</pre>
 <div class="block">
-<span>按此顺序删除指定位置的<code>char</code> 。</span>
+<span>この順序で指定された位置の文字を削除する<code>char</code> 。</span>
 <span>该序列由一个<code>char</code>缩短。</span>
-<p> <span>注意：如果给定索引处的字符是补充字符，则此方法不会删除整个字符。</span> <span>如果需要正确处理补充字符，请通过调用<code>Character.charCount(thisSequence.codePointAt(index))</code>确定要删除的<code>char</code> s的数量，其中<code>thisSequence</code>是此序列。</span> </p>
+<p> <span>注意：指定されたインデックスにある文字が補助文字の場合、このメソッドは文字全体を削除しません。</span> <span>如果需要正确处理补充字符，请通过调用<code>Character.charCount(thisSequence.codePointAt(index))</code>削除するものを決定する<code>char</code>sの数。ここで<code>thisSequence</code>このシーケンスです。</span> </p>
 </div>
 <dl>
 <dt>
@@ -1185,9 +1083,7 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <dt>
 <span class="returnLabel">结果</span>
 </dt>
-<dd>
-               这个对象。 
-             </dd>
+<dd>このオブジェクト。</dd>
 <dt>
 <span class="throwsLabel">异常</span>
 </dt>
@@ -1203,10 +1099,10 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
                              int end,
                              <a href="String.html" title="class in java.lang">String</a> str)</pre>
 <div class="block">
-<span>使用指定的<code>String</code>的字符替换此序列的子字符串中的字符。</span>
-<span>子字符串从指定的<code>start</code>开始，如果不存在这样的字符，则扩展到索引<code>end - 1</code>处的字符或序列的末尾。</span>
-<span>首先删除子字符串中的字符，然后在<code>String</code>插入指定的<code>start</code> 。</span>
-<span>（如果需要，将延长此序列以容纳指定的字符串。）</span>
+<span>指定されたものを使って<code>String</code>の文字をこのシーケンスの部分文字列内の文字に置き換えます。</span>
+<span>指定されたインデックスからの部分文字列<code>start</code>開始し、そのような文字が存在しない場合、インデックスまで拡張されます。<code>end - 1</code>の位置の文字、またはシーケンスの末尾。</span>
+<span>最初に部分文字列内の文字を削除し、その後<code>String</code>指定されたものを挿入する<code>start</code> 。</span>
+<span>（必要に応じて、指定された文字列を収容するためにこのシーケンスが拡張されます。）</span>
 </div>
 <dl>
 <dt>
@@ -1221,9 +1117,7 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <dt>
 <span class="returnLabel">结果</span>
 </dt>
-<dd>
-               这个对象。 
-             </dd>
+<dd>このオブジェクト。</dd>
 <dt>
 <span class="throwsLabel">异常</span>
 </dt>
@@ -1241,10 +1135,10 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
                             int offset,
                             int len)</pre>
 <div class="block">
-<span>将<code>str</code>数组参数的子数组的字符串表示形式插入此序列中。</span>
-<span>子阵列从指定的<code>offset</code>开始，并扩展<code>len</code> <code>char</code> s。</span>
-<span>子阵列的字符在<code>index</code>指示的位置处插入该序列中。</span>
-<span>该序列的长度增加<code>len</code> <code>char</code> s。</span>
+<span>将<code>str</code>配列引数の部分配列の文字列表現をこのシーケンスに挿入します。</span>
+<span>指定されたものからの部分配列<code>offset</code>开始，并扩展<code>len</code> <code>char</code> s。</span>
+<span>部分配列の文字は、その位置における<code>index</code>指定された位置でこのシーケンスに挿入します。</span>
+<span>そのシーケンスの長さが増加します<code>len</code> <code>char</code> s。</span>
 </div>
 <dl>
 <dt>
@@ -1257,17 +1151,13 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
               <code>char</code>阵列。 
              </dd>
 <dd>
-<code>offset</code>挿入するサブ配列内の最初の<code>char</code>的索引。 
-             </dd>
+<code>offset</code>挿入するサブ配列内の最初の<code>char</code>のインデックス。</dd>
 <dd>
-<code>len</code>挿入するサブ配列内の<code>char</code> s的数量。 
-             </dd>
+<code>len</code>挿入するサブ配列内の<code>char</code>sの数。</dd>
 <dt>
 <span class="returnLabel">结果</span>
 </dt>
-<dd>
-               这个对象 
-             </dd>
+<dd>このオブジェクト</dd>
 <dt>
 <span class="throwsLabel">异常</span>
 </dt>
@@ -1285,9 +1175,9 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <li class="blockList"> <h4>insert</h4> <pre class="methodSignature">public <a href="StringBuilder.html" title="class in java.lang">StringBuilder</a> insert​(int offset,
                             <a href="Object.html" title="class in java.lang">Object</a> obj)</pre>
 <div class="block">
-<span>将<code>Object</code>参数的字符串表示形式插入此字符序列中。</span>
-<p> <span>整体效果与第二个参数通过方法<a href="String.html#valueOf(java.lang.Object)"><code>String.valueOf(Object)</code></a>转换为字符串<a href="String.html#valueOf(java.lang.Object)">完全相同</a> ，并且该字符串的字符在指定的偏移处的字符序列中为<a href="#insert(int,java.lang.String)"><code>inserted</code></a> 。</span> </p>
-<p> <span><code>offset</code>参数必须大于或等于<code>0</code> ，且小于或等于此序列的<a href="CharSequence.html#length()">length</a> 。</span> </p>
+<span>将<code>Object</code>引数の文字列表現をこの文字シーケンスに挿入します。</span>
+<p> <span>全体のな効果は、メソッドを介した第2引数と<a href="String.html#valueOf(java.lang.Object)"><code>String.valueOf(Object)</code></a>文字列に変換する<a href="String.html#valueOf(java.lang.Object)">完全相同</a>また、この文字列の文字は、指定されたオフセットの文字シーケンス内にあります。<a href="#insert(int,java.lang.String)"><code>inserted</code></a> 。</span> </p>
+<p> <span><code>offset</code>参数必须大于或等于<code>0</code>、かつこのシーケンスの長さ以下である<a href="CharSequence.html#length()">length</a> 。</span> </p>
 </div>
 <dl>
 <dt>
@@ -1316,14 +1206,14 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
                             <a href="String.html" title="class in java.lang">String</a> str)</pre>
 <div class="block">
 <span>将字符串插入此字符序列。</span>
-<p> <span><code>String</code>参数的字符按顺序插入到指定偏移量的此序列中，向上移动最初位于该位置上方的任何字符，并将该序列的长度增加参数的长度。</span> <span>如果<code>str</code>是<code>null</code> ，则将四个字符<code>"null"</code>插入到该序列中。</span> </p>
-<p> <span>新字符序列中索引<i>k</i>处的字符等于：</span> </p>
+<p> <span><code>String</code>パラメータの文字は、指定されたオフセットでこのシーケンスに順番に挿入され、元々その位置より上にあった文字を上に移動させ、シーケンスの長さはパラメータの長さだけ増加します。</span> <span>如果<code>str</code>である<code>null</code> ，则将四个字符<code>"null"</code>插入到该序列中。</span> </p>
+<p> <span>新字符序列中索引<i>k</i>位置の文字が等しい：</span> </p>
 <ul>
-<li> <span>如果<i>k</i>小于<code>offset</code> ，则旧字符序列中索引<i>k</i>处的字符</span> </li>
-<li> <span>参数<code>str</code>中索引为<i>k</i> <code>-offset</code>的字符，如果<i>k</i>不小于<code>offset</code>但小于<code>offset+str.length()</code></span> </li>
-<li> <span>旧字符序列中索引为<i>k</i> <code>-str.length()</code>的字符，如果<i>k</i>不小于<code>offset+str.length()</code></span> </li>
+<li> <span>如果<i>k</i>小于<code>offset</code> ，则旧字符序列中索引<i>k</i>の位置の文字</span> </li>
+<li> <span>参数<code>str</code>中のインデックスは<i>k</i> <code>-offset</code>の文字、もし<i>k</i>不小于<code>offset</code>但小于<code>offset+str.length()</code></span> </li>
+<li> <span>旧文字シーケンス内のインデックスは<i>k</i> <code>-str.length()</code>の文字、もし<i>k</i>不小于<code>offset+str.length()</code></span> </li>
 </ul>
-<p> <span><code>offset</code>参数必须大于或等于<code>0</code> ，且小于或等于此序列的<a href="CharSequence.html#length()">length</a> 。</span> </p>
+<p> <span><code>offset</code>参数必须大于或等于<code>0</code>、かつこのシーケンスの長さ以下である<a href="CharSequence.html#length()">length</a> 。</span> </p>
 </div>
 <dl>
 <dt>
@@ -1349,10 +1239,10 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <li class="blockList"> <h4>insert</h4> <pre class="methodSignature">public <a href="StringBuilder.html" title="class in java.lang">StringBuilder</a> insert​(int offset,
                             char[] str)</pre>
 <div class="block">
-<span>将<code>char</code>数组参数的字符串表示形式插入此序列中。</span>
-<p> <span>数组参数的字符在<code>offset</code>指示的位置插入该序列的内容中。</span> <span>该序列的长度增加了参数的长度。</span> </p>
-<p> <span>整体效果就像第二个参数通过方法<a href="String.html#valueOf(char%5B%5D)"><code>String.valueOf(char[])</code></a>转换为字符串<a href="String.html#valueOf(char%5B%5D)">一样</a> ，并且该字符串的字符在指定的偏移量处为该字符序列的<a href="#insert(int,java.lang.String)"><code>inserted</code></a> 。</span> </p>
-<p> <span><code>offset</code>参数必须大于或等于<code>0</code> ，且小于或等于此序列的<a href="CharSequence.html#length()">length</a> 。</span> </p>
+<span>将<code>char</code>配列引数の文字列表現をこのシーケンスに挿入します。</span>
+<p> <span>配列引数の文字は<code>offset</code>指定された位置でこのシーケンスの内容に挿入します。</span> <span>このシーケンスの長さは、引数の長さだけ増加します。</span> </p>
+<p> <span>整体效果就像第二个参数通过方法<a href="String.html#valueOf(char%5B%5D)"><code>String.valueOf(char[])</code></a>文字列に変換する<a href="String.html#valueOf(char%5B%5D)">一样</a>、そしてこの文字列の文字は、指定されたオフセット位置でその文字シーケンスの<a href="#insert(int,java.lang.String)"><code>inserted</code></a> 。</span> </p>
+<p> <span><code>offset</code>参数必须大于或等于<code>0</code>、かつこのシーケンスの長さ以下である<a href="CharSequence.html#length()">length</a> 。</span> </p>
 </div>
 <dl>
 <dt>
@@ -1378,10 +1268,10 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <li class="blockList"> <h4>insert</h4> <pre class="methodSignature">public <a href="StringBuilder.html" title="class in java.lang">StringBuilder</a> insert​(int dstOffset,
                             <a href="CharSequence.html" title="interface in java.lang">CharSequence</a> s)</pre>
 <div class="block">
-<span>将指定的<code>CharSequence</code>插入此序列。</span>
-<p> <span><code>CharSequence</code>参数的字符按顺序插入到指定偏移量的此序列中，向上移动最初位于该位置上方的任何字符，并将该序列的长度增加参数s的长度。</span> </p>
-<p> <span>此方法的结果与调用此对象的<a href="#insert(int,java.lang.CharSequence,int,int)"><code>insert</code></a> （dstOffset，s，0，s.length（））方法<a href="#insert(int,java.lang.CharSequence,int,int)">完全相同</a> 。</span> </p>
-<p> <span>如果<code>s</code>是<code>null</code> ，则将四个字符<code>"null"</code>插入此序列中。</span> </p>
+<span>指定された〜を<code>CharSequence</code>插入此序列。</span>
+<p> <span><code>CharSequence</code>パラメータの文字は、このシーケンスの指定されたオフセット位置に順番に挿入され、元々その位置より上にあった文字は上に移動し、このシーケンスの長さはパラメータsの長さだけ増加します。</span> </p>
+<p> <span>このメソッドの結果は、このオブジェクトの...を呼び出すことと<a href="#insert(int,java.lang.CharSequence,int,int)"><code>insert</code></a> （dstOffset，s，0，s.length（））方法<a href="#insert(int,java.lang.CharSequence,int,int)">完全相同</a> 。</span> </p>
+<p> <span>如果<code>s</code>である<code>null</code> ，则将四个字符<code>"null"</code>插入此序列中。</span> </p>
 </div>
 <dl>
 <dt>
@@ -1409,18 +1299,18 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
                             int start,
                             int end)</pre>
 <div class="block">
-<span>将指定的<code>CharSequence</code>序列插入此序列。</span>
-<p> <span>参数的子序列<code>s</code>通过指定<code>start</code>和<code>end</code>被插入，以便成在指定的目的地偏移该序列中，该位置上述最初向上运动的任何字符。</span> <span>该序列的长度增加了<code>end - start</code> 。</span> </p>
-<p> <span>此序列中索引<i>k</i>处的字符变为等于：</span> </p>
+<span>指定された〜を<code>CharSequence</code>序列插入此序列。</span>
+<p> <span>引数の部分シーケンス<code>s</code>通过指定<code>start</code>と<code>end</code>挿入され、指定された宛先オフセットでシーケンス内のその位置に最初にあった任意の文字が上方向に移動するようにします。</span> <span>このシーケンスの長さは増加しました。<code>end - start</code> 。</span> </p>
+<p> <span>此序列中索引<i>k</i>位置の文字は次の値と等しくなります：</span> </p>
 <ul>
-<li> <span>如果<i>k</i>小于<code>dstOffset</code> ，则该序列中索引<i>k</i>处的字符</span> </li>
-<li> <span>参数<code>s</code>中索引为<i>k</i> <code>+start-dstOffset</code>的字符，如果<i>k</i>大于或等于<code>dstOffset</code>但小于<code>dstOffset+end-start</code></span> </li>
-<li> <span>如果<i>k</i>大于或等于<code>dstOffset+end-start</code> ，则此序列中索引为<i>k</i> <code>-(end-start)</code>的字符</span> </li>
+<li> <span>如果<i>k</i>小于<code>dstOffset</code> ，则该序列中索引<i>k</i>の位置の文字</span> </li>
+<li> <span>参数<code>s</code>中のインデックスは<i>k</i> <code>+start-dstOffset</code>の文字、もし<i>k</i>大于或等于<code>dstOffset</code>但小于<code>dstOffset+end-start</code></span> </li>
+<li> <span>如果<i>k</i>大于或等于<code>dstOffset+end-start</code>、このシーケンス内のインデックスは<i>k</i> <code>-(end-start)</code>の文字</span> </li>
 </ul>
-<p> <span><code>dstOffset</code>参数必须大于或等于<code>0</code> ，并且小于或等于此序列的<a href="CharSequence.html#length()">length</a> 。</span> </p>
-<p> <span>start参数必须是非负的，且不大于<code>end</code> 。</span> </p>
-<p> <span>结束参数必须大于或等于<code>start</code> ，并且小于或等于s的长度。</span> </p>
-<p> <span>如果<code>s</code>是<code>null</code> ，则此方法插入字符，就好像s参数是包含四个字符<code>"null"</code>的序列<code>"null"</code> 。</span> </p>
+<p> <span><code>dstOffset</code>参数必须大于或等于<code>0</code>、かつこのシーケンス以下<a href="CharSequence.html#length()">length</a> 。</span> </p>
+<p> <span>start パラメータは非負で、かつ ... 以下でなければなりません。<code>end</code> 。</span> </p>
+<p> <span>结束参数必须大于或等于<code>start</code>、かつsの長さ以下です。</span> </p>
+<p> <span>如果<code>s</code>である<code>null</code>、この場合、このメソッドは、sパラメータが4つの文字を含む文字列であるかのように文字を挿入します。<code>"null"</code>のシーケンス<code>"null"</code> 。</span> </p>
 </div>
 <dl>
 <dt>
@@ -1445,8 +1335,7 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <code><a href="IndexOutOfBoundsException.html" title="class in java.lang">IndexOutOfBoundsException</a></code> - 如果 
               <code>dstOffset</code>負の場合、または...より大きい<code>this.length()</code> ，或 
               <code>start</code>或 
-              <code>end</code>为负数，或 
-              <code>start</code>大于 
+              <code>end</code>負の数、または<code>start</code>大于 
               <code>end</code>或 
               <code>end</code>大于 
               <code>s.length()</code>
@@ -1458,9 +1347,9 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <li class="blockList"> <h4>insert</h4> <pre class="methodSignature">public <a href="StringBuilder.html" title="class in java.lang">StringBuilder</a> insert​(int offset,
                             boolean b)</pre>
 <div class="block">
-<span>将<code>boolean</code>参数的字符串表示形式插入此序列中。</span>
-<p> <span>整体效果与第二个参数通过方法<a href="String.html#valueOf(boolean)"><code>String.valueOf(boolean)</code></a>转换为字符串<a href="String.html#valueOf(boolean)">完全相同</a> ，并且该字符串的字符在指定的偏移量处进入此字符序列，然后是<a href="#insert(int,java.lang.String)"><code>inserted</code></a> 。</span> </p>
-<p> <span><code>offset</code>参数必须大于或等于<code>0</code> ，且小于或等于此序列的<a href="CharSequence.html#length()">length</a> 。</span> </p>
+<span>将<code>boolean</code>引数の文字列表現をこのシーケンスに挿入します。</span>
+<p> <span>全体のな効果は、メソッドを介した第2引数と<a href="String.html#valueOf(boolean)"><code>String.valueOf(boolean)</code></a>文字列に変換する<a href="String.html#valueOf(boolean)">完全相同</a>、指定されたオフセットでその文字列の文字がこの文字シーケンスに挿入され、その後<a href="#insert(int,java.lang.String)"><code>inserted</code></a> 。</span> </p>
+<p> <span><code>offset</code>参数必须大于或等于<code>0</code>、かつこのシーケンスの長さ以下である<a href="CharSequence.html#length()">length</a> 。</span> </p>
 </div>
 <dl>
 <dt>
@@ -1488,9 +1377,9 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <li class="blockList"> <h4>insert</h4> <pre class="methodSignature">public <a href="StringBuilder.html" title="class in java.lang">StringBuilder</a> insert​(int offset,
                             char c)</pre>
 <div class="block">
-<span>将<code>char</code>参数的字符串表示形式插入此序列中。</span>
-<p> <span>整体效果与通过方法<a href="String.html#valueOf(char)"><code>String.valueOf(char)</code></a>将第二个参数转换为字符串<a href="String.html#valueOf(char)">完全相同</a> ，并且该字符串中的字符在指定的偏移处进入该字符序列，然后是<a href="#insert(int,java.lang.String)"><code>inserted</code></a> 。</span> </p>
-<p> <span><code>offset</code>参数必须大于或等于<code>0</code> ，且小于或等于此序列的<a href="CharSequence.html#length()">length</a> 。</span> </p>
+<span>将<code>char</code>引数の文字列表現をこのシーケンスに挿入します。</span>
+<p> <span>全体のな効果は、メソッドを介した場合と<a href="String.html#valueOf(char)"><code>String.valueOf(char)</code></a>第2引数を文字列に変換します<a href="String.html#valueOf(char)">完全相同</a>、また、この文字列内の文字は指定されたオフセット位置でこの文字シーケンスに入り、その後は<a href="#insert(int,java.lang.String)"><code>inserted</code></a> 。</span> </p>
+<p> <span><code>offset</code>参数必须大于或等于<code>0</code>、かつこのシーケンスの長さ以下である<a href="CharSequence.html#length()">length</a> 。</span> </p>
 </div>
 <dl>
 <dt>
@@ -1518,9 +1407,9 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <li class="blockList"> <h4>insert</h4> <pre class="methodSignature">public <a href="StringBuilder.html" title="class in java.lang">StringBuilder</a> insert​(int offset,
                             int i)</pre>
 <div class="block">
-<span>将第二个<code>int</code>参数的字符串表示形式插入此序列中。</span>
-<p> <span>整体效果就像第二个参数通过方法<a href="String.html#valueOf(int)"><code>String.valueOf(int)</code></a>转换为字符串<a href="String.html#valueOf(int)">一样</a> ，并且该字符串的字符在指定的偏移量处的字符序列中为<a href="#insert(int,java.lang.String)"><code>inserted</code></a> 。</span> </p>
-<p> <span><code>offset</code>参数必须大于或等于<code>0</code> ，并且小于或等于此序列的<a href="CharSequence.html#length()">length</a> 。</span> </p>
+<span>将第二个<code>int</code>引数の文字列表現をこのシーケンスに挿入します。</span>
+<p> <span>整体效果就像第二个参数通过方法<a href="String.html#valueOf(int)"><code>String.valueOf(int)</code></a>文字列に変換する<a href="String.html#valueOf(int)">一样</a>、そしてこの文字列の文字は、指定されたオフセット位置にある文字シーケンス内で<a href="#insert(int,java.lang.String)"><code>inserted</code></a> 。</span> </p>
+<p> <span><code>offset</code>参数必须大于或等于<code>0</code>、かつこのシーケンス以下<a href="CharSequence.html#length()">length</a> 。</span> </p>
 </div>
 <dl>
 <dt>
@@ -1548,9 +1437,9 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <li class="blockList"> <h4>insert</h4> <pre class="methodSignature">public <a href="StringBuilder.html" title="class in java.lang">StringBuilder</a> insert​(int offset,
                             long l)</pre>
 <div class="block">
-<span>将<code>long</code>参数的字符串表示形式插入此序列中。</span>
-<p> <span>总的效果是完全一样，如果第二个参数是由方法转换成一个字符串<a href="String.html#valueOf(long)"><code>String.valueOf(long)</code></a> ，以及字符串的字符然后<a href="#insert(int,java.lang.String)"><code>inserted</code></a>成在所指示的偏移该字符序列。</span> </p>
-<p> <span><code>offset</code>参数必须大于或等于<code>0</code> ，并且小于或等于此序列的<a href="CharSequence.html#length()">length</a> 。</span> </p>
+<span>将<code>long</code>引数の文字列表現をこのシーケンスに挿入します。</span>
+<p> <span>全体の効果は、2番目の引数がメソッドによって文字列に変換された場合とまったく同じです<a href="String.html#valueOf(long)"><code>String.valueOf(long)</code></a>、そして文字列の文字は<a href="#insert(int,java.lang.String)"><code>inserted</code></a>指示されたオフセットにその文字シーケンスを挿入します。</span> </p>
+<p> <span><code>offset</code>参数必须大于或等于<code>0</code>、かつこのシーケンス以下<a href="CharSequence.html#length()">length</a> 。</span> </p>
 </div>
 <dl>
 <dt>
@@ -1578,9 +1467,9 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <li class="blockList"> <h4>insert</h4> <pre class="methodSignature">public <a href="StringBuilder.html" title="class in java.lang">StringBuilder</a> insert​(int offset,
                             float f)</pre>
 <div class="block">
-<span>将<code>float</code>参数的字符串表示形式插入此序列中。</span>
-<p> <span>整体效果与通过方法<a href="String.html#valueOf(float)"><code>String.valueOf(float)</code></a>将第二个参数转换为字符串<a href="String.html#valueOf(float)">完全相同</a> ，并且该字符串的字符在指定的偏移处的字符序列中为<a href="#insert(int,java.lang.String)"><code>inserted</code></a> 。</span> </p>
-<p> <span><code>offset</code>参数必须大于或等于<code>0</code> ，且小于或等于此序列的<a href="CharSequence.html#length()">length</a> 。</span> </p>
+<span>将<code>float</code>引数の文字列表現をこのシーケンスに挿入します。</span>
+<p> <span>全体のな効果は、メソッドを介した場合と<a href="String.html#valueOf(float)"><code>String.valueOf(float)</code></a>第2引数を文字列に変換します<a href="String.html#valueOf(float)">完全相同</a>また、この文字列の文字は、指定されたオフセットの文字シーケンス内にあります。<a href="#insert(int,java.lang.String)"><code>inserted</code></a> 。</span> </p>
+<p> <span><code>offset</code>参数必须大于或等于<code>0</code>、かつこのシーケンスの長さ以下である<a href="CharSequence.html#length()">length</a> 。</span> </p>
 </div>
 <dl>
 <dt>
@@ -1608,9 +1497,9 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <li class="blockList"> <h4>insert</h4> <pre class="methodSignature">public <a href="StringBuilder.html" title="class in java.lang">StringBuilder</a> insert​(int offset,
                             double d)</pre>
 <div class="block">
-<span>将<code>double</code>参数的字符串表示形式插入此序列中。</span>
-<p> <span>整体效果与通过方法<a href="String.html#valueOf(double)"><code>String.valueOf(double)</code></a>将第二个参数转换为字符串<a href="String.html#valueOf(double)">完全相同</a> ，并且该字符串的字符在指定的偏移处的字符序列中为<a href="#insert(int,java.lang.String)"><code>inserted</code></a> 。</span> </p>
-<p> <span><code>offset</code>参数必须大于或等于<code>0</code> ，并且小于或等于此序列的<a href="CharSequence.html#length()">length</a> 。</span> </p>
+<span>将<code>double</code>引数の文字列表現をこのシーケンスに挿入します。</span>
+<p> <span>全体のな効果は、メソッドを介した場合と<a href="String.html#valueOf(double)"><code>String.valueOf(double)</code></a>第2引数を文字列に変換します<a href="String.html#valueOf(double)">完全相同</a>また、この文字列の文字は、指定されたオフセットの文字シーケンス内にあります。<a href="#insert(int,java.lang.String)"><code>inserted</code></a> 。</span> </p>
+<p> <span><code>offset</code>参数必须大于或等于<code>0</code>、かつこのシーケンス以下<a href="CharSequence.html#length()">length</a> 。</span> </p>
 </div>
 <dl>
 <dt>
@@ -1637,10 +1526,10 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <ul class="blockList">
 <li class="blockList"> <h4>indexOf</h4> <pre class="methodSignature">public int indexOf​(<a href="String.html" title="class in java.lang">String</a> str)</pre>
 <div class="block">
-<span>返回指定子字符串第一次出现的字符串中的索引。</span>
-<p> <span>返回的索引是最小值<code>k</code> ，其中：</span> </p>
+<span>指定された部分文字列が最初に出現する文字列内のインデックスを返します。</span>
+<p> <span>返されるインデックスは最小値です<code>k</code> ，其中：</span> </p>
 <pre>  <span><code> this.toString().startsWith(str, k) </code></span> </pre>
-<span>如果没有这样的价值<code>k</code>存在，那么<code>-1</code>返回。</span>
+<span>そのような値がない場合<code>k</code>存在するならば、<code>-1</code>返回。</span>
 </div>
 <dl>
 <dt>
@@ -1660,10 +1549,10 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <li class="blockList"> <h4>indexOf</h4> <pre class="methodSignature">public int indexOf​(<a href="String.html" title="class in java.lang">String</a> str,
                    int fromIndex)</pre>
 <div class="block">
-<span>从指定的索引处开始，返回指定子字符串第一次出现的字符串中的索引。</span>
-<p> <span>返回的索引是最小值<code>k</code> ，其中：</span> </p>
+<span>指定されたインデックスから開始して、指定された部分文字列が最初に出現する文字列内のインデックスを返します。</span>
+<p> <span>返されるインデックスは最小値です<code>k</code> ，其中：</span> </p>
 <pre>  <span><code> k &gt;= Math.min(fromIndex, this.length()) &amp;&amp; this.toString().startsWith(str, k) </code></span> </pre>
-<span>如果没有这样的价值<code>k</code>存在，那么<code>-1</code>返回。</span>
+<span>そのような値がない場合<code>k</code>存在するならば、<code>-1</code>返回。</span>
 </div>
 <dl>
 <dt>
@@ -1684,11 +1573,11 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <ul class="blockList">
 <li class="blockList"> <h4>lastIndexOf</h4> <pre class="methodSignature">public int lastIndexOf​(<a href="String.html" title="class in java.lang">String</a> str)</pre>
 <div class="block">
-<span>返回指定子字符串最后一次出现的字符串中的索引。</span>
-<span>最后一次出现空字符串“”被认为发生在索引值<code>this.length()</code> 。</span>
-<p> <span>返回的索引是最大值<code>k</code> ，其中：</span> </p>
+<span>指定された部分文字列が最後に出現する文字列内のインデックスを返します。</span>
+<span>空文字列“”の最後の出現は、インデックス値において発生するとみなされます。<code>this.length()</code> 。</span>
+<p> <span>返されるインデックスは最大値です<code>k</code> ，其中：</span> </p>
 <pre>  <span><code> this.toString().startsWith(str, k) </code></span> </pre>
-<span>如果没有这样的价值<code>k</code>存在，那么<code>-1</code>返回。</span>
+<span>そのような値がない場合<code>k</code>存在するならば、<code>-1</code>返回。</span>
 </div>
 <dl>
 <dt>
@@ -1708,10 +1597,10 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <li class="blockList"> <h4>lastIndexOf</h4> <pre class="methodSignature">public int lastIndexOf​(<a href="String.html" title="class in java.lang">String</a> str,
                        int fromIndex)</pre>
 <div class="block">
-<span>返回指定子字符串最后一次出现的字符串中的索引，从指定索引开始向后搜索。</span>
-<p> <span>返回的索引是最大值<code>k</code> ，其中：</span> </p>
+<span>指定された部分文字列が最後に出現する文字列内のインデックスを、指定されたインデックスから後方に検索して返します。</span>
+<p> <span>返されるインデックスは最大値です<code>k</code> ，其中：</span> </p>
 <pre>  <span><code> k &lt;= Math.min(fromIndex, this.length()) &amp;&amp; this.toString().startsWith(str, k) </code></span> </pre>
-<span>如果没有这样的价值<code>k</code>存在，那么<code>-1</code>返回。</span>
+<span>そのような値がない場合<code>k</code>存在するならば、<code>-1</code>返回。</span>
 </div>
 <dl>
 <dt>
@@ -1732,12 +1621,12 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <ul class="blockList">
 <li class="blockList"> <h4>reverse</h4> <pre class="methodSignature">public <a href="StringBuilder.html" title="class in java.lang">StringBuilder</a> reverse()</pre>
 <div class="block">
-<span>导致此字符序列被序列的反向替换。</span>
-<span>如果序列中包含任何代理对，则将这些代理对视为反向操作的单个字符。</span>
-<span>因此，高低代理人的顺序永远不会逆转。</span>
-<span>设<i>n</i>是执行<code>reverse</code>方法之前的该字符序列的字符长度（不是<code>char</code>值中的长度）。</span>
-<span>然后，新字符序列中索引<i>k</i>处的字符等于旧字符序列中索引<i>nk-1</i>处的字符。</span>
-<p> <span>请注意，反向操作可能导致产生代理对，这些代理对在操作之前是不成对的低代理和高代理。</span> <span>例如，反转“\ uDC00 \ uD800”会生成“\ uD800 \ uDC00”，这是一个有效的代理项对。</span> </p>
+<span>この文字シーケンスがシーケンスの逆順に置き換えられます。</span>
+<span>シーケンスにサロゲートペアが含まれている場合、逆方向の操作ではそれらのサロゲートペアは単一の文字として扱われます。</span>
+<span>したがって、上位サロゲートと下位サロゲートの順序が逆転することはありません。</span>
+<span>设<i>n</i>実行する<code>reverse</code>メソッドの前のこの文字シーケンスの文字長（ではなく<code>char</code>値の長さ）。</span>
+<span>然后，新字符序列中索引<i>k</i>位置にある文字は、古い文字シーケンス内のインデックス位置の文字と等しい。<i>nk-1</i>にある文字。</span>
+<p> <span>逆の操作では、操作前はペアになっていない低サロゲートと高サロゲートからなるサロゲートペアが生成される可能性があることに注意してください。</span> <span>例えば、“\ uDC00 \ uD800”を反転すると“\ uD800 \ uDC00”が生成され、これは有効なサロゲートペアです。</span> </p>
 </div>
 <dl>
 <dt>
@@ -1757,8 +1646,7 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="CharSequence.html#length()">length</a></code>在接口 
-              <code><a href="CharSequence.html" title="interface in java.lang">CharSequence</a></code>
+<code><a href="CharSequence.html#length()">length</a></code>インターフェースで<code><a href="CharSequence.html" title="interface in java.lang">CharSequence</a></code>
 </dd>
 <dt>
 <span class="returnLabel">结果</span>
@@ -1771,30 +1659,28 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <li class="blockList"> <h4>capacity</h4> <pre class="methodSignature">public int capacity()</pre>
 <div class="block">
 <span>返回当前容量。</span>
-<span>容量是新插入字符可用的存储量，超出该容量将进行分配。</span>
+<span>容量は、新しく挿入された文字が使用できるストレージ量であり、この容量を超えると割り当てが行われます。</span>
 </div>
 <dl>
 <dt>
 <span class="returnLabel">结果</span>
 </dt>
-<dd>
-               目前的能力 
-             </dd>
+<dd>現在の容量</dd>
 </dl> </li>
 </ul> <a id="ensureCapacity(int)">
 <!-- --> </a>
 <ul class="blockList">
 <li class="blockList"> <h4>ensureCapacity</h4> <pre class="methodSignature">public void ensureCapacity​(int minimumCapacity)</pre>
 <div class="block">
-<span>确保容量至少等于指定的最小值。</span>
-<span>如果当前容量小于参数，则分配具有更大容量的新内部阵列。</span>
-<span>新容量是更大的：</span>
+<span>容量が指定された最小値以上であることを保証します。</span>
+<span>現在の容量が引数より小さい場合、より大きな容量を持つ新しい内部配列が割り当てられます。</span>
+<span>新しい容量はより大きい：</span>
 <ul>
 <li> <span><code>minimumCapacity</code>参数。</span> </li>
-<li> <span>旧容量的两倍，加上<code>2</code> 。</span> </li>
+<li> <span>旧容量の2倍に、加えて<code>2</code> 。</span> </li>
 </ul>
-<span>如果<code>minimumCapacity</code>参数为非正数，则此方法不执行任何操作，只返回。</span>
-<span>请注意，对此对象的后续操作可以将实际容量降低到此处请求的容量以下。</span>
+<span>如果<code>minimumCapacity</code>パラメータが非正数の場合、このメソッドは何も実行せず、単に返します。</span>
+<span>このオブジェクトに対する後続の操作により、実際の容量がここで要求された容量よりも低くなる可能性があることに注意してください。</span>
 </div>
 <dl>
 <dt>
@@ -1808,21 +1694,21 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <ul class="blockList">
 <li class="blockList"> <h4>trimToSize</h4> <pre class="methodSignature">public void trimToSize()</pre>
 <div class="block">
-<span>尝试减少用于字符序列的存储空间。</span>
-<span>如果缓冲区大于保持其当前字符序列所需的缓冲区，则可以调整其大小以使空间效率更高。</span>
-<span>调用此方法可能（但不是必须）影响后续调用<a href="#capacity()"><code>capacity()</code></a>方法返回的值。</span>
+<span>文字シーケンス用の記憶容量を削減しようとします。</span>
+<span>バッファが現在の文字シーケンスを保持するために必要なサイズより大きい場合、スペース効率を高めるためにサイズを調整できます。</span>
+<span>このメソッドを呼び出すと、後続の呼び出しに影響をとえる可能性があります（ただし必須ではありません）。<a href="#capacity()"><code>capacity()</code></a>メソッドが返す値。</span>
 </div> </li>
 </ul> <a id="setLength(int)">
 <!-- --> </a>
 <ul class="blockList">
 <li class="blockList"> <h4>setLength</h4> <pre class="methodSignature">public void setLength​(int newLength)</pre>
 <div class="block">
-<span>设置字符序列的长度。</span>
-<span>序列更改为新的字符序列，其长度由参数指定。</span>
-<span>对于小于每非负索引<i>k</i> <code>newLength</code> ，在新的字符序列的索引<i>k</i>处的字符是相同的在旧序列索引<i>k</i>如果<i>k</i>小于原字符序列的长度的字符;</span>
-<span>否则，它是空字符<code>'\u0000'</code> 。</span>
-<span>换句话说，如果<code>newLength</code>参数小于当前长度，则长度将更改为指定的长度。</span>
-<p> <span>如果<code>newLength</code>参数大于或等于当前长度，则会附加足够的空字符（ <code>'\u0000'</code> ），以使length成为<code>newLength</code>参数。</span> </p>
+<span>文字シーケンスの長さを設定します。</span>
+<span>このシーケンスは、引数で指定された長さの新しい文字シーケンスに変更されます。</span>
+<span>非負の各インデックス未満の場合<i>k</i> <code>newLength</code>、新しい文字シーケンスのインデックスで<i>k</i>その位置の文字は、古いシーケンスのインデックスの文字と同じです。<i>k</i>如果<i>k</i>元の文字シーケンスの長さより短い文字;</span>
+<span>そうでなければ、それはヌル文字です。<code>'\u0000'</code> 。</span>
+<span>换句话说，如果<code>newLength</code>パラメータが現在の長さ未満の場合、長さは指定された長さに変更されます。</span>
+<p> <span>如果<code>newLength</code>パラメータが現在の長さ以上の場合は、十分な数のヌル文字が追加されます（<code>'\u0000'</code>）、lengthが...となるように<code>newLength</code>参数。</span> </p>
 <p> <span><code>newLength</code>参数必须大于或等于<code>0</code> 。</span> </p>
 </div>
 <dl>
@@ -1844,26 +1730,24 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <ul class="blockList">
 <li class="blockList"> <h4>charAt</h4> <pre class="methodSignature">public char charAt​(int index)</pre>
 <div class="block">
-<span>返回指定索引处的此序列中的<code>char</code>值。</span>
+<span>指定されたインデックスにある、このシーケンス内の...を返します。<code>char</code>值。</span>
 <span>第一个<code>char</code>值位于索引<code>0</code> ，下一个位于索引<code>1</code> ，依此类推，如数组索引中所示。</span>
-<p> <span>index参数必须大于或等于<code>0</code> ，并且小于此序列的长度。</span> </p>
-<p> <span>如果索引指定的<code>char</code>值为<a href="Character.html#unicode">surrogate</a> ，则返回代理值。</span> </p>
+<p> <span>index参数必须大于或等于<code>0</code>、かつこのシーケンスの長さ未満。</span> </p>
+<p> <span>指定されたインデックスの場合<code>char</code>値は<a href="Character.html#unicode">surrogate</a> ，则返回代理值。</span> </p>
 </div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="CharSequence.html#charAt(int)">charAt</a></code>在接口 
-              <code><a href="CharSequence.html" title="interface in java.lang">CharSequence</a></code>
+<code><a href="CharSequence.html#charAt(int)">charAt</a></code>インターフェースで<code><a href="CharSequence.html" title="interface in java.lang">CharSequence</a></code>
 </dd>
 <dt>
 <span class="paramLabel">参数</span>
 </dt>
 <dd>
 <code>index</code> - 所需 
-              <code>char</code>值的索引。 
-             </dd>
+              <code>char</code>値のインデックス。</dd>
 <dt>
 <span class="returnLabel">结果</span>
 </dt>
@@ -1882,9 +1766,9 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <ul class="blockList">
 <li class="blockList"> <h4>codePointAt</h4> <pre class="methodSignature">public int codePointAt​(int index)</pre>
 <div class="block">
-<span>返回指定索引处的字符（Unicode代码点）。</span>
-<span>索引引用<code>char</code>值（Unicode代码单位），范围从<code>0</code>到<a href="CharSequence.html#length()"><code>CharSequence.length()</code></a> <code>- 1</code> 。</span>
-<p> <span>如果在给定索引处指定的<code>char</code>值处于高代理范围内，则以下索引小于此序列的长度，并且以下索引处的<code>char</code>值处于低代理范围，然后是补充代码点对应于此代理项对返回。</span> <span>否则，返回给定索引处的<code>char</code>值。</span> </p>
+<span>指定されたインデックスの文字（Unicodeコードポイント）を返します。</span>
+<span>索引引用<code>char</code>値（Unicodeコード単位）、範囲は<code>0</code>到<a href="CharSequence.html#length()"><code>CharSequence.length()</code></a> <code>- 1</code> 。</span>
+<p> <span>もし与えられたインデックスにある指定された<code>char</code>値が上位サロゲート範囲にある場合、次のインデックスはこのシーケンスの長さ未満であり、次のインデックスの文字は<code>char</code>値が低サロゲート範囲にある場合、そのサロゲートペアに対応する補助コードポイントが返されます。</span> <span>そうでなければ、与えられたインデックスの<code>char</code>值。</span> </p>
 </div>
 <dl>
 <dt>
@@ -1892,8 +1776,7 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 </dt>
 <dd>
 <code>index</code> - 
-              <code>char</code>值的索引 
-             </dd>
+              <code>char</code>値のインデックス</dd>
 <dt>
 <span class="returnLabel">结果</span>
 </dt>
@@ -1911,9 +1794,9 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <ul class="blockList">
 <li class="blockList"> <h4>codePointBefore</h4> <pre class="methodSignature">public int codePointBefore​(int index)</pre>
 <div class="block">
-<span>返回指定索引之前的字符（Unicode代码点）。</span>
-<span>索引引用<code>char</code>值（Unicode代码单位），范围从<code>1</code>到<a href="CharSequence.html#length()"><code>CharSequence.length()</code></a> 。</span>
-<p> <span>如果<code>char</code>在值<code>(index - 1)</code>处于低代理项范围， <code>(index - 2)</code>不为负，并且<code>char</code>在值<code>(index - 2)</code>处于高代理项范围，则返回代理对的补充代码点值。</span> <span>如果<code>char</code>在值<code>index - 1</code>是未配对的低代理或一个高代理，则返回所述替代值。</span> </p>
+<span>指定されたインデックスの前の文字（Unicodeコードポイント）を返します。</span>
+<span>索引引用<code>char</code>値（Unicodeコード単位）、範囲は<code>1</code>到<a href="CharSequence.html#length()"><code>CharSequence.length()</code></a> 。</span>
+<p> <span>如果<code>char</code>値で<code>(index - 1)</code>处于低代理项范围， <code>(index - 2)</code>負ではなく、かつ<code>char</code>値で<code>(index - 2)</code>高サロゲート範囲にある場合、サロゲートペアの補助コードポイント値を返します。</span> <span>如果<code>char</code>値で<code>index - 1</code>ペアにならない低サロゲートまたは高サロゲートである場合、そのサロゲート値を返します。</span> </p>
 </div>
 <dl>
 <dt>
@@ -1938,18 +1821,17 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <li class="blockList"> <h4>codePointCount</h4> <pre class="methodSignature">public int codePointCount​(int beginIndex,
                           int endIndex)</pre>
 <div class="block">
-<span>返回此序列的指定文本范围内的Unicode代码点数。</span>
-<span>文本范围开始在指定的<code>beginIndex</code> ，并延伸到<code>char</code>在索引<code>endIndex - 1</code> 。</span>
-<span>因此，文本范围的长度（在<code>char</code> s中）是<code>endIndex-beginIndex</code> 。</span>
-<span>此序列中的未配对代理计为每个代码点。</span>
+<span>このシーケンスの指定されたテキスト範囲内のUnicodeコードポイント数を返します。</span>
+<span>テキスト範囲は、指定された<code>beginIndex</code> ，并延伸到<code>char</code>インデックスで<code>endIndex - 1</code> 。</span>
+<span>したがって、テキスト範囲の長さ（において<code>char</code>s中）は<code>endIndex-beginIndex</code> 。</span>
+<span>このシーケンス内のペアになっていないサロゲートは、各コードポイントとして数えられます。</span>
 </div>
 <dl>
 <dt>
 <span class="paramLabel">参数</span>
 </dt>
 <dd>
-<code>beginIndex</code>テキスト範囲の最初の<code>char</code>的索引。 
-             </dd>
+<code>beginIndex</code>テキスト範囲の最初の<code>char</code>のインデックス。</dd>
 <dd>
 <code>endIndex</code>- テキスト範囲の最後<code>char</code>の後のインデックス。</dd>
 <dt>
@@ -1971,8 +1853,8 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <li class="blockList"> <h4>offsetByCodePoints</h4> <pre class="methodSignature">public int offsetByCodePoints​(int index,
                               int codePointOffset)</pre>
 <div class="block">
-<span>返回此序列中的索引，该索引从给定的<code>index</code>偏移<code>codePointOffset</code>代码点。</span>
-<span><code>index</code>和<code>codePointOffset</code>给出的文本范围内的未配对代理计为每个代码点。</span>
+<span>指定された位置からこのシーケンス内のインデックスを返します。<code>index</code>偏移<code>codePointOffset</code>代码点。</span>
+<span><code>index</code>と<code>codePointOffset</code>指定されたテキスト範囲内のペアになっていないサロゲートは、各コードポイントとして数えられます。</span>
 </div>
 <dl>
 <dt>
@@ -1991,13 +1873,8 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 </dt>
 <dd>
 <code><a href="IndexOutOfBoundsException.html" title="class in java.lang">IndexOutOfBoundsException</a></code> - 如果 
-              <code>index</code>負であるか、このシーケンスの長さより大きい場合、または<code>codePointOffset</code>为正且从 
-              <code>index</code>开始的子 
-              <code>index</code>具有少于 
-              <code>codePointOffset</code>コードポイント、またはもし<code>codePointOffset</code>为负且 
-              <code>index</code>之前的子 
-              <code>index</code>小于绝对值 
-              <code>codePointOffset</code>代码点。 
+              <code>index</code>負であるか、このシーケンスの長さより大きい場合、または<code>codePointOffset</code>が正でかつ〜から<code>index</code>始まる部分文字列<code>index</code>具有少于 
+              <code>codePointOffset</code>コードポイント、またはもし<code>codePointOffset</code>負であり、<code>index</code>前の部分文字列<code>index</code>絶対値より小さい<code>codePointOffset</code>代码点。 
              </dd>
 </dl> </li>
 </ul> <a id="getChars(int,int,char[],int)">
@@ -2008,11 +1885,11 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
                      char[] dst,
                      int dstBegin)</pre>
 <div class="block">
-<span>将字符从该序列复制到目标字符数组<code>dst</code> 。</span>
-<span>要复制的第一个字符是索引<code>srcBegin</code> ;</span>
-<span>要复制的最后一个字符位于索引<code>srcEnd-1</code> 。</span>
-<span>要复制的字符总数为<code>srcEnd-srcBegin</code> 。</span>
-<span>字符被复制到<code>dst</code>的子<code>dst</code>从索引<code>dstBegin</code>开始并以索引结束：</span>
+<span>文字をこのシーケンスからターゲット文字配列にコピーします。<code>dst</code> 。</span>
+<span>コピーされる最初の文字はインデックス<code>srcBegin</code> ;</span>
+<span>コピーされる最後の文字はインデックスにあります。<code>srcEnd-1</code> 。</span>
+<span>コピーする文字の総数は<code>srcEnd-srcBegin</code> 。</span>
+<span>文字がコピーされる<code>dst</code>の子<code>dst</code>インデックスから<code>dstBegin</code>开始并以索引结束：</span>
 <pre>  <span><code> dstbegin + (srcEnd-srcBegin) - 1 </code></span> </pre>
 </div>
 <dl>
@@ -2035,8 +1912,8 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <dd>
 <span><code><a href="IndexOutOfBoundsException.html" title="class in java.lang">IndexOutOfBoundsException</a></code> - 如果满足以下任何条件：</span>
 <ul>
-<li> <span><code>srcBegin</code>是否定的</span> </li>
-<li> <span><code>dstBegin</code>是否定的</span> </li>
+<li> <span><code>srcBegin</code>否定のである</span> </li>
+<li> <span><code>dstBegin</code>否定のである</span> </li>
 <li> <span><code>srcBegin</code>参数大于<code>srcEnd</code>参数。</span> </li>
 <li> <span><code>srcEnd</code>大于<code>this.length()</code> 。</span> </li>
 <li> <span><code>dstBegin+srcEnd-srcBegin</code>大于<code>dst.length</code></span> </li>
@@ -2049,9 +1926,9 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <li class="blockList"> <h4>setCharAt</h4> <pre class="methodSignature">public void setCharAt​(int index,
                       char ch)</pre>
 <div class="block">
-<span>指定索引处的字符设置为<code>ch</code> 。</span>
-<span>该序列被改变以表示与旧字符序列相同的新字符序列，除了它包含位于<code>ch</code>的字符<code>index</code> 。</span>
-<p> <span>index参数必须大于或等于<code>0</code> ，并且小于此序列的长度。</span> </p>
+<span>指定されたインデックスの文字を設定する<code>ch</code> 。</span>
+<span>このシーケンスは、古い文字シーケンスと同じ新しい文字シーケンスを表すように変更されます。ただし、それが含む文字は...に位置します。<code>ch</code>の文字<code>index</code> 。</span>
+<p> <span>index参数必须大于或等于<code>0</code>、かつこのシーケンスの長さ未満。</span> </p>
 </div>
 <dl>
 <dt>
@@ -2074,8 +1951,8 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <ul class="blockList">
 <li class="blockList"> <h4>substring</h4> <pre class="methodSignature">public <a href="String.html" title="class in java.lang">String</a> substring​(int start)</pre>
 <div class="block">
-<span>返回一个新的<code>String</code> ，其中包含此字符序列中当前包含的字符的子序列。</span>
-<span>子字符串从指定的索引开始并延伸到此序列的末尾。</span>
+<span>新しい...を返す<code>String</code>、この文字シーケンスに現在含まれている文字の部分シーケンスを含むもの。</span>
+<span>部分文字列は、指定されたインデックスから始まり、このシーケンスの末尾まで続きます。</span>
 </div>
 <dl>
 <dt>
@@ -2100,10 +1977,10 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <li class="blockList"> <h4>subSequence</h4> <pre class="methodSignature">public <a href="CharSequence.html" title="interface in java.lang">CharSequence</a> subSequence​(int start,
                                 int end)</pre>
 <div class="block">
-<span>返回一个新的字符序列，它是该序列的子序列。</span>
-<p> <span>调用此方法的形式</span> </p>
+<span>このシーケンスの部分シーケンスである新しい文字シーケンスを返します。</span>
+<p> <span>このメソッドを呼び出す形式</span> </p>
 <pre>  <span><code> sb.subSequence(begin,&amp;nbsp;end)</code></span> </pre>
-<span>行为与调用完全相同</span>
+<span>動作は呼び出しと完全に同じです</span>
 <pre>  <span><code> sb.substring(begin,&amp;nbsp;end)</code></span> </pre>
 <span>提供此方法以便此类可以实现<a href="CharSequence.html" title="java.lang中的接口"><code>CharSequence</code></a>接口。</span>
 </div>
@@ -2112,8 +1989,7 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="CharSequence.html#subSequence(int,int)">subSequence</a></code>在接口 
-              <code><a href="CharSequence.html" title="interface in java.lang">CharSequence</a></code>
+<code><a href="CharSequence.html#subSequence(int,int)">subSequence</a></code>インターフェースで<code><a href="CharSequence.html" title="interface in java.lang">CharSequence</a></code>
 </dd>
 <dt>
 <span class="paramLabel">参数</span>
@@ -2144,8 +2020,8 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <li class="blockList"> <h4>substring</h4> <pre class="methodSignature">public <a href="String.html" title="class in java.lang">String</a> substring​(int start,
                         int end)</pre>
 <div class="block">
-<span>返回一个新的<code>String</code> ，其中包含当前包含在此序列中的字符的子序列。</span>
-<span>子字符串从指定的<code>start</code>开始，并扩展到索引<code>end - 1</code>处的字符。</span>
+<span>新しい...を返す<code>String</code>、このシーケンスに現在含まれている文字の部分シーケンスを含みます。</span>
+<span>指定されたインデックスからの部分文字列<code>start</code>开始，并扩展到索引<code>end - 1</code>にある文字。</span>
 </div>
 <dl>
 <dt>
@@ -2175,24 +2051,23 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <ul class="blockList">
 <li class="blockList"> <h4>chars</h4> <pre class="methodSignature">public <a href="../util/stream/IntStream.html" title="interface in java.util.stream">IntStream</a> chars()</pre>
 <div class="block">
-<span>返回<code>int</code>的流，对此序列中的<code>char</code>值进行零扩展。</span>
-<span>任何映射到<a href="../../../java.base/java/lang/Character.html#unicode">surrogate code point的字符</a>都是未解释的。</span>
-<p> <span>当终端流操作开始时，流绑定到该序列（具体地，对于可变序列，流的<a href="../util/Spliterator.html#binding">分裂器</a>是<a href="../util/Spliterator.html#binding"><em>late-binding</em></a> ）。</span> <span>如果在该操作期间修改了序列，则结果是未定义的。</span> </p>
+<span>返回<code>int</code>のストリームは、このシーケンス内の<code>char</code>值进行零扩展。</span>
+<span>任何映射到<a href="../../../java.base/java/lang/Character.html#unicode">サロゲートコードポイントの文字</a>はすべて未解釈です。</span>
+<p> <span>終端ストリーム操作が開始されると、ストリームはそのシーケンスにバインドされます（具体的には、可変シーケンスの場合、ストリームの<a href="../util/Spliterator.html#binding">分裂器</a>である<a href="../util/Spliterator.html#binding"><em>late-binding</em></a> ）。</span> <span>その操作の間にシーケンスが変更された場合は、結果は未定義です。</span> </p>
 </div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="CharSequence.html#chars()">chars</a></code>在接口 
-              <code><a href="CharSequence.html" title="interface in java.lang">CharSequence</a></code>
+<code><a href="CharSequence.html#chars()">chars</a></code>インターフェースで<code><a href="CharSequence.html" title="interface in java.lang">CharSequence</a></code>
 </dd>
 <dt>
 <span class="returnLabel">结果</span>
 </dt>
 <dd>このシーケンスからのchar値のIntStream</dd>
 <dt>
-<span class="simpleTagLabel">从以下版本开始：</span>
+<span class="simpleTagLabel">以下のバージョンから：</span>
 </dt>
 <dd>
                9 
@@ -2203,25 +2078,24 @@ implements <a href="../io/Serializable.html" title="interface in java.io">Serial
 <ul class="blockListLast">
 <li class="blockList"> <h4>codePoints</h4> <pre class="methodSignature">public <a href="../util/stream/IntStream.html" title="interface in java.util.stream">IntStream</a> codePoints()</pre>
 <div class="block">
-<span>返回此序列中的代码点值流。</span>
-<span>序列中遇到的任何代理对被组合，就像<a href="Character.html#toCodePoint(char,char)">Character.toCodePoint一样</a> ，结果传递给流。</span>
-<span>任何其他代码单元（包括普通BMP字符，未配对代理和未定义代码单元）将零扩展为<code>int</code>值，然后传递给流。</span>
-<p> <span>当终端流操作开始时，流绑定到该序列（具体地，对于可变序列，流的<a href="../util/Spliterator.html#binding">分裂器</a>是<a href="../util/Spliterator.html#binding"><em>late-binding</em></a> ）。</span> <span>如果在该操作期间修改了序列，则结果是未定义的。</span> </p>
+<span>このシーケンス内のコードポイント値のストリームを返します。</span>
+<span>シーケンス内で遭遇した任意のサロゲートペアは、あたかも結合され<a href="Character.html#toCodePoint(char,char)">Character.toCodePoint一样</a> ，结果传递给流。</span>
+<span>その他のコードユニット（通常のBMP文字、対になっていないサロゲート、未定義のコードユニットを含む）はゼロ拡張されます。<code>int</code>值，然后传递给流。</span>
+<p> <span>終端ストリーム操作が開始されると、ストリームはそのシーケンスにバインドされます（具体的には、可変シーケンスの場合、ストリームの<a href="../util/Spliterator.html#binding">分裂器</a>である<a href="../util/Spliterator.html#binding"><em>late-binding</em></a> ）。</span> <span>その操作の間にシーケンスが変更された場合は、結果は未定義です。</span> </p>
 </div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="CharSequence.html#codePoints()">codePoints</a></code>在接口 
-              <code><a href="CharSequence.html" title="interface in java.lang">CharSequence</a></code>
+<code><a href="CharSequence.html#codePoints()">codePoints</a></code>インターフェースで<code><a href="CharSequence.html" title="interface in java.lang">CharSequence</a></code>
 </dd>
 <dt>
 <span class="returnLabel">结果</span>
 </dt>
 <dd>UnicodeコードのIntStreamはこのシーケンスを指す</dd>
 <dt>
-<span class="simpleTagLabel">从以下版本开始：</span>
+<span class="simpleTagLabel">以下のバージョンから：</span>
 </dt>
 <dd>
                9 

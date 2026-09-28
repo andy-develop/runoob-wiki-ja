@@ -173,7 +173,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>このプロセスを理解すれば、以下の質問に正しく答えられるようになります：</p>
 <ul>
 <li><span class="marked">g</span>オブジェクトのデータはいつ利用可能になり、いつクリーンアップされるのか？</li>
-<li><span class="marked">before_request</span> 和 <span class="marked">after_request</span>の実行順序は？</li>
+<li><span class="marked">before_request</span>と<span class="marked">after_request</span>の実行順序は？</li>
 <li>例外発生時にはどの処理ステップを順に経るのか？</li>
 <li>なぜビュー関数の外で を使用すると<span class="marked">request</span>エラーになるのか？</li>
 </ul>
@@ -397,7 +397,7 @@ app.<span style="color: #05a;">secret_key</span> <span style="color: Gray;">=</s
 <ol>
 <li>すべての ... を呼び出し<span class="marked">teardown_request</span>登録済み関数（リクエストの成功・失敗にかかわらず実行されます）</li>
 <li>すべての ... を呼び出し<span class="marked">teardown_appcontext</span>登録済み関数</li>
-<li>... を送信<span class="marked">request_tearing_down</span> 和 <span class="marked">appcontext_tearing_down</span>シグナル</li>
+<li>... を送信<span class="marked">request_tearing_down</span>と<span class="marked">appcontext_tearing_down</span>シグナル</li>
 <li>... を解放<span class="marked">g</span>オブジェクトに保存されているすべてのデータ</li>
 </ol>
 <div class="example">
@@ -504,7 +504,7 @@ app <span style="color: Gray;">=</span> Flask<span style="color: Olive;">(</span
 <span style="color: #a50"># シグナルに接続——リクエスト完了時に記録</span><br/>
 <span style="color: Gray;">@</span>signals.<span style="color: #05a;">request_finished</span>.<span style="color: #05a;">connect_via</span><span style="color: Olive;">(</span>app<span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">def</span> log_request_end<span style="color: Olive;">(</span>sender<span style="color: Gray;">,</span> response<span style="color: Gray;">,</span> **extra<span style="color: Olive;">)</span>:<br/>
-    <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"リクエスト終了、レスポンスステータスコード: {response.status_code}"</span><span style="color: Olive;">)</span><br/>
+    <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">リクエスト終了、レスポンスステータスコード: {response.status_code}</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># シグナルに接続——例外をキャッチ</span><br/>
 <span style="color: Gray;">@</span>signals.<span style="color: #05a;">got_request_exception</span>.<span style="color: #05a;">connect_via</span><span style="color: Olive;">(</span>app<span style="color: Olive;">)</span><br/>
@@ -671,11 +671,11 @@ app <span style="color: Gray;">=</span> Flask<span style="color: Olive;">(</span
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノート共有前には<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノート共有前には<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -964,7 +964,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

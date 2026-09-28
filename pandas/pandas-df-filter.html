@@ -306,7 +306,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="article-intro" id="content">
 <h1>Pandas df.filter() 関数</h1>
 <p><a href="../pandas/pandas-general-functions.html"><img alt="Pandas 常用函数" class="navup" decoding="async" src="../images/up.gif"/>Pandas よく使う関数</a></p><hr/>
-<p><code>filter()</code>これは、Pandas において列（行ではなく）をフィルタリングするための関数です。列名、ラベルパターン、または正規表現に基づいて特定の列を選択できます。とは<code>loc[]</code> 和 <code>iloc[]</code>異なり、<code>filter()</code>列の選択専用に設計されており、大量の列を持つデータセットを扱う場合に非常に役立ちます。</p>
+<p><code>filter()</code>これは、Pandas において列（行ではなく）をフィルタリングするための関数です。列名、ラベルパターン、または正規表現に基づいて特定の列を選択できます。とは<code>loc[]</code>と<code>iloc[]</code>異なり、<code>filter()</code>列の選択専用に設計されており、大量の列を持つデータセットを扱う場合に非常に役立ちます。</p>
 <p>データ分析では、特定の列のみに注目したい場合があります。たとえば、数値列のみを選択する、特定の接頭辞で始まる列を選択する、特定のキーワードを含む列を選択するなどです。<code>filter()</code>まさにこれらのシナリオのために設計されています。</p>
 <hr/>
 <h2>基本構文とパラメータ</h2>
@@ -388,7 +388,7 @@ df <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFrame</
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 使用 items 参数选择特定列</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"选择 name 和 age 列:"</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">name 列と age 列を選択：</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df.<span style="color: Teal;">filter</span><span style="color: Olive;">(</span>items<span style="color: Gray;">=</span><span style="color: Olive;">[</span><span style="color: #a11;">'name'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'age'</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
@@ -436,7 +436,7 @@ df <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFrame</
 <div class="example_code">
 <span style="color: Green;font-weight:bold;">import</span> pandas <span style="color: Green;font-weight:bold;">as</span> pd<br/>
 <br/>
-<span style="color: #a50"># 创建列名包含规律的 DataFrame</span><br/>
+<span style="color: #a50"># 規則性のある列名を持つ DataFrame を作成</span><br/>
 data <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><br/>
     <span style="color: #a11;">'name'</span>: <span style="color: Olive;">[</span><span style="color: #a11;">'Alice'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'Bob'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'Charlie'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'David'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'Eve'</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
     <span style="color: #a11;">'age_2020'</span>: <span style="color: Olive;">[</span><span style="color: Maroon;">18</span><span style="color: Gray;">,</span> <span style="color: Maroon;">19</span><span style="color: Gray;">,</span> <span style="color: Maroon;">17</span><span style="color: Gray;">,</span> <span style="color: Maroon;">18</span><span style="color: Gray;">,</span> <span style="color: Maroon;">20</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
@@ -453,18 +453,18 @@ df <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFrame</
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df<span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 选择所有包含 "age" 的列</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"包含 'age' 的列:"</span><span style="color: Olive;">)</span><br/>
+<span style="color: #a50"># "age" を含むすべての列を選択</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">'age' を含む列:</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df.<span style="color: Teal;">filter</span><span style="color: Olive;">(</span>like<span style="color: Gray;">=</span><span style="color: #a11;">'age'</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 选择所有包含 "score" 的列</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"包含 'score' 的列:"</span><span style="color: Olive;">)</span><br/>
+<span style="color: #a50"># "score" を含むすべての列を選択</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"'score' を含む列:"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df.<span style="color: Teal;">filter</span><span style="color: Olive;">(</span>like<span style="color: Gray;">=</span><span style="color: #a11;">'score'</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 选择所有包含 "2021" 的列</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"包含 '2021' 的列:"</span><span style="color: Olive;">)</span><br/>
+<span style="color: #a50"># 「2021」を含むすべての列を選択</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"'2021' を含む列:"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df.<span style="color: Teal;">filter</span><span style="color: Olive;">(</span>like<span style="color: Gray;">=</span><span style="color: #a11;">'2021'</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 </div>
 </div>
@@ -515,7 +515,7 @@ df <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFrame</
 <div class="example_code">
 <span style="color: Green;font-weight:bold;">import</span> pandas <span style="color: Green;font-weight:bold;">as</span> pd<br/>
 <br/>
-<span style="color: #a50"># 创建复杂的列名</span><br/>
+<span style="color: #a50"># 複雑な列名を作成</span><br/>
 data <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><br/>
     <span style="color: #a11;">'id'</span>: <span style="color: Olive;">[</span><span style="color: Maroon;">1</span><span style="color: Gray;">,</span> <span style="color: Maroon;">2</span><span style="color: Gray;">,</span> <span style="color: Maroon;">3</span><span style="color: Gray;">,</span> <span style="color: Maroon;">4</span><span style="color: Gray;">,</span> <span style="color: Maroon;">5</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
     <span style="color: #a11;">'name'</span>: <span style="color: Olive;">[</span><span style="color: #a11;">'Alice'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'Bob'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'Charlie'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'David'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'Eve'</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
@@ -528,27 +528,27 @@ data <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><br
 <span style="color: Olive;">}</span><br/>
 df <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFrame</span><span style="color: Olive;">(</span>data<span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"原始 DataFrame 的列:"</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">元の DataFrame の列：</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df.<span style="color: #05a;">columns</span>.<span style="color: #05a;">tolist</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 选择以 "score_" 开头的列</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"以 'score_' 开头的列:"</span><span style="color: Olive;">)</span><br/>
+<span style="color: #a50"># "score_" で始まる列を選択</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">'score_' で始まる列：</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df.<span style="color: Teal;">filter</span><span style="color: Olive;">(</span>regex<span style="color: Gray;">=</span><span style="color: #a11;">'^score_'</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 选择包含数字的列名</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"包含数字的列名:"</span><span style="color: Olive;">)</span><br/>
+<span style="color: #a50"># 数字を含む列名を選択</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"数字を含む列名:"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df.<span style="color: Teal;">filter</span><span style="color: Olive;">(</span>regex<span style="color: Gray;">=</span><span style="color: #a11;">'<span style="color: #000099; font-weight: bold;">\d</span>'</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span>  <span style="color: #a50"># d 匹配数字</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 选择同时包含 "age" 和 "202" 的列</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"包含 'age' 和 '202' 的列:"</span><span style="color: Olive;">)</span><br/>
+<span style="color: #a50"># "age" と "202" を両方含む列を選択</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"'age' と '202' を含む列:"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df.<span style="color: Teal;">filter</span><span style="color: Olive;">(</span>regex<span style="color: Gray;">=</span><span style="color: #a11;">'age.*202|202.*age'</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 选择以字母开头，不包含下划线的列</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"以字母开头且不含下划线的列:"</span><span style="color: Olive;">)</span><br/>
+<span style="color: #a50"># アルファベットで始まり、アンダースコアを含まない列を選択</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"文字で始まり、アンダースコアを含まない列:"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df.<span style="color: Teal;">filter</span><span style="color: Olive;">(</span>regex<span style="color: Gray;">=</span><span style="color: #a11;">'^[a-zA-Z]+$'</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 </div>
 </div>
@@ -610,17 +610,17 @@ data <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><br
 <span style="color: Olive;">}</span><br/>
 df <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFrame</span><span style="color: Olive;">(</span>data<span style="color: Gray;">,</span> index<span style="color: Gray;">=</span><span style="color: Olive;">[</span><span style="color: #a11;">'row1'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'row2'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'row3'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'row4'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'row5'</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"带命名索引的 DataFrame:"</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"名前付きインデックスの DataFrame:"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df<span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 使用 axis='index' 筛选行（使用 like）</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"索引包含 'row' 的行:"</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"インデックスに 'row' を含む行:"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df.<span style="color: Teal;">filter</span><span style="color: Olive;">(</span>like<span style="color: Gray;">=</span><span style="color: #a11;">'row'</span><span style="color: Gray;">,</span> axis<span style="color: Gray;">=</span><span style="color: #a11;">'index'</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 使用 items 筛选特定索引的行</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"索引为 'row1' 和 'row3' 的行:"</span><span style="color: Olive;">)</span><br/>
+<span style="color: #a50"># items を使用して特定のインデックスの行を抽出</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">インデックスが 'row1' と 'row3' の行:</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df.<span style="color: Teal;">filter</span><span style="color: Olive;">(</span>items<span style="color: Gray;">=</span><span style="color: Olive;">[</span><span style="color: #a11;">'row1'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'row3'</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span> axis<span style="color: Gray;">=</span><span style="color: #a11;">'index'</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
@@ -679,24 +679,24 @@ df <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFrame</
     <span style="color: #a11;">'AA'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'BB'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'CC'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'DD'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'EE'</span><br/>
 <span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"原始 DataFrame 的列:"</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">元の DataFrame の列：</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df.<span style="color: #05a;">columns</span>.<span style="color: #05a;">tolist</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 筛选单字母列并进行计算</span><br/>
 single_letter_cols <span style="color: Gray;">=</span> df.<span style="color: Teal;">filter</span><span style="color: Olive;">(</span>regex<span style="color: Gray;">=</span><span style="color: #a11;">'^[A-E]$'</span><span style="color: Olive;">)</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"单字母列（A-E）的均值:"</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"単一文字の列（A-E）の平均:"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>single_letter_cols.<span style="color: #05a;">mean</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 筛选双字母列并进行计算</span><br/>
 double_letter_cols <span style="color: Gray;">=</span> df.<span style="color: Teal;">filter</span><span style="color: Olive;">(</span>regex<span style="color: Gray;">=</span><span style="color: #a11;">'^[A-E]{2}$'</span><span style="color: Olive;">)</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"双字母列（AA-EE）的均值:"</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"2文字の列（AA-EE）の平均:"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>double_letter_cols.<span style="color: #05a;">mean</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 先筛选列，再选择行</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"双字母列的前 3 行:"</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"二文字の列の先頭3行:"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df.<span style="color: Teal;">filter</span><span style="color: Olive;">(</span>regex<span style="color: Gray;">=</span><span style="color: #a11;">'^[A-E]{2}$'</span><span style="color: Olive;">)</span>.<span style="color: #05a;">head</span><span style="color: Olive;">(</span><span style="color: Maroon;">3</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 </div>
 </div>
@@ -867,11 +867,11 @@ dtype: float64
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1171,7 +1171,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

@@ -206,11 +206,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2 class="example">実例</h2>
 <div class="example_code">
 <span style="color: #006600; font-style: italic;">// 文件路径：scratch-plugin/src/my-plugin.ts</span><br/>
-<span style="color: #006600; font-style: italic;">// 声明本插件需要 tools 与 llm 两个服务，二者就绪前 apply 不会执行</span><br/>
+<span style="color: #006600; font-style: italic;">// 本プラグインは tools と llm の2つのサービスを必要とすることを宣言する。両方が準備完了になるまで apply は実行されません。</span><br/>
 <span style="color: #FF0000;">export</span> <span style="color: #000066; font-weight: bold;">const</span> inject <span style="color: #339933;">=</span> <span style="color: #009900;">[</span><span style="color: #3366CC;">'tools'</span><span style="color: #339933;">,</span> <span style="color: #3366CC;">'llm'</span><span style="color: #009900;">]</span><br/>
 <br/>
 <span style="color: #FF0000;">export</span> <span style="color: #000066; font-weight: bold;">function</span> apply<span style="color: #009900;">(</span>ctx<span style="color: #339933;">:</span> Context<span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
-  <span style="color: #006600; font-style: italic;">// 走到这里时，ctx.tools 和 ctx.llm 一定已经就绪</span><br/>
+  <span style="color: #006600; font-style: italic;">// ここに来た時点では、ctx.tools と ctx.llm は必ず準備ができている</span><br/>
   <span style="color: #006600; font-style: italic;">// 可以放心地注册工具、读取模型配置</span><br/>
 <span style="color: #009900;">}</span><br/>
 </div>
@@ -248,14 +248,14 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2 class="example">実例</h2>
 <div class="example_code">
 <span style="color: #006600; font-style: italic;">// 文件路径：scratch-plugin/src/lifecycle-log.ts</span><br/>
-<span style="color: #006600; font-style: italic;">// 用 console.log 打印生命周期事件，观察 apply 与 effect 的先后</span><br/>
+<span style="color: #006600; font-style: italic;">// console.log でライフサイクルイベントを出力し、apply と effect の順序を観察する</span><br/>
 <span style="color: #FF0000;">export</span> <span style="color: #000066; font-weight: bold;">function</span> apply<span style="color: #009900;">(</span>ctx<span style="color: #339933;">:</span> Context<span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
-  <span style="color: #006600; font-style: italic;">// apply 被调用：插件从 LOADING 进入 ACTIVE</span><br/>
+  <span style="color: #006600; font-style: italic;">// apply が呼び出される：プラグインは LOADING から ACTIVE へ移行する</span><br/>
   console.<span style="color: #660066;">log</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'runoob plugin loading'</span><span style="color: #009900;">)</span><br/>
 <br/>
-  <span style="color: #006600; font-style: italic;">// 注册一个效果：返回的清理函数在卸载时执行</span><br/>
+  <span style="color: #006600; font-style: italic;">// エフェクトを登録：返されたクリーンアップ関数はアンマウント時に実行される</span><br/>
   ctx.<span style="color: #660066;">effect</span><span style="color: #009900;">(</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
-    <span style="color: #006600; font-style: italic;">// 效果注册完成（apply 仍在执行中）</span><br/>
+    <span style="color: #006600; font-style: italic;">// エフェクト登録完了（apply はまだ実行中）</span><br/>
     console.<span style="color: #660066;">log</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'runoob effect registered'</span><span style="color: #009900;">)</span><br/>
     <span style="color: #006600; font-style: italic;">// 返回 disposer：插件卸载时调用</span><br/>
     <span style="color: #000066; font-weight: bold;">return</span> <span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> console.<span style="color: #660066;">log</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'runoob effect cleaned up'</span><span style="color: #009900;">)</span><br/>
@@ -399,11 +399,11 @@ runoob effect cleaned up
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -692,7 +692,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

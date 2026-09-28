@@ -95,17 +95,17 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <!-- ad start-->
 <!-- ad end-->
 <h2>この節の導入：</h2>
-<blockquote><p>第9章ではAndroidにおけるマルチメディア開発を紹介します。マルチメディア開発というよりは、マルチメディア関連APIの使用法と言ったほうが適切です。実際の開発で私たちがマルチメディアに関連して行うことといえば、写真撮影、録音、音楽再生、動画再生などです...</p><p>まあ、そういうものだけですよね。例えば音楽再生では、MediaPlayerを呼び出し、音楽ファイルを見つけて、playメソッドを呼び出して再生するだけです...もちろん、本当のマルチメディア開発はまた別の領域で、音声・動画のエンコード/デコードは、私たちのような初心者にはまだ眺めることしかできません。これらのAPIの呼び出し方を知っていれば十分です！そうそう、Androidマルチメディアフレームワークの基本的な知識も説明しておきましょう：</p><p>Androidでは、既定のマルチメディアフレームワークは<strong>OpenCore</strong>。OpenCoreの利点は、クロスプラットフォームの移植性を両立していること、そして多くの検証を経ているため比較的安定していることです。しかし欠点は、あまりにも大規模で複雑であり、かなりの時間をメンテナンスに費やす必要があることです。またAndroid 2.0以降、Googleはより簡潔なアーキテクチャを導入しました。<strong>Stagefright</strong>もちろん、OpenCoreを完全に放棄したわけではなく、主にOMXレイヤーを作成し、OpenCoreのomx-component部分のみを参照しました。本来は徐々にOpenCOREを置き換える流れでしたが、しかし今年の8月にStagefrightの脆弱性が発見されました。この脆弱性により、特別に細工されたMMSメッセージを送信することでリモートコード実行が可能になります。</p><p>この脆弱性はAndroid 2.2以降のバージョンに影響を与えますが、4.1以降のバージョンへの影響は比較的小さいです。<img alt="" decoding="async" src="../wp-content/uploads/2015/10/85404849.jpg"/><strong>よくわからないけどすごい</strong>（何を言っているのかさっぱり分からない）、まあ、いいでしょう、豆知識の説明は以上です...これらのことは知っておくだけで十分です！</p><p>そうそう、このマルチメディアフレームワークはAndroidアーキテクチャの第3層（<strong>Libraries</strong>）の<strong>Media Framework</strong>！</p><p>
+<blockquote><p>第9章ではAndroidにおけるマルチメディア開発を紹介します。マルチメディア開発というよりは、マルチメディア関連APIの使用法と言ったほうが適切です。実際の開発で私たちがマルチメディアに関連して行うことといえば、写真撮影、録音、音楽再生、動画再生などです...</p><p>まあ、そういうものだけですよね。例えば音楽再生では、MediaPlayerを呼び出し、音楽ファイルを見つけて、playメソッドを呼び出して再生するだけです...もちろん、本当のマルチメディア開発はまた別の領域で、音声・動画のエンコード/デコードは、私たちのような初心者にはまだ眺めることしかできません。これらのAPIの呼び出し方を知っていれば十分です！そうそう、Androidマルチメディアフレームワークの基本的な知識も説明しておきましょう：</p><p>Androidでは、既定のマルチメディアフレームワークは<strong>OpenCore</strong>。OpenCoreの利点は、クロスプラットフォームの移植性を両立していること、そして多くの検証を経ているため比較の安全定していることです。しかし欠点は、あまりにも大規模で複雑であり、かなりの時間をメンテナンスに費やす必要があることです。またAndroid 2.0以降、Googleはより簡潔なアーキテクチャを導入しました。<strong>Stagefright</strong>もちろん、OpenCoreを完全に放棄したわけではなく、主にOMXレイヤーを作成し、OpenCoreのomx-component部分のみを参照しました。本来は徐々にOpenCOREを置き換える流れでしたが、しかし今年の8月にStagefrightの脆弱性が発見されました。この脆弱性により、特別に細工されたMMSメッセージを送信することでリモートコード実行が可能になります。</p><p>この脆弱性はAndroid 2.2以降のバージョンに影響を与えますが、4.1以降のバージョンへの影響は比較的小さいです。<img alt="" decoding="async" src="../wp-content/uploads/2015/10/85404849.jpg"/><strong>よくわからないけどすごい</strong>（何を言っているのかさっぱり分からない）、まあ、いいでしょう、豆知識の説明は以上です...これらのことは知っておくだけで十分です！</p><p>そうそう、このマルチメディアフレームワークはAndroidアーキテクチャの第3層（<strong>Libraries</strong>）の<strong>Media Framework</strong>！</p><p>
 <a href="http://androiddoc.qiniudn.com/guide/appendix/media-formats.html">Supported Media Formats</a></p><p>また、Androidのこのマルチメディアフレームワークがどのような種類の音声・動画データをサポートしているかを知りたい場合は、公式ドキュメントを参照してください：<a href="http://androiddoc.qiniudn.com/guide/topics/media/index.html">Media and Camera</a>ここを直接クリックできます</p>
 <p><img alt="" decoding="async" src="../wp-content/uploads/2015/10/300358.jpg"/></p>
 <p>その後、以下のドキュメントを確認してください：<strong>SoundPool</strong>まあ、前置きが多すぎましたね。今日の主役は<strong>CPU</strong>
-<strong>です。タイトルの通り、SoundPoolは通常、密集した、短くて急な効果音を再生するために使用されます。例えば、特技効果音のDuang~などです。ゲームでの使用が多いです。また、自分のアプリにこの効果音を追加することもできます。例えば、KuGou音楽を起動したときに「ハロー、KuGou」と再生されます。実はこのアイデアはなかなか良いもので、間接的にユーザーに現在のプレイヤーの音量を知らせることができます。そうしないと、ユーザーが音楽を再生した瞬間に突然「小苹果」が流れて、近くのおばさんたちが踊り出してしまうのは困りますよね。音楽プレイヤーだけでなく、通常のアプリにも追加できます。例えば、プッシュ通知や新しいチャットメッセージを受信したときに通知音を再生します。例えば、超级课程表の新しいバージョンでは、これを追加して、プッシュ通知を受信すると短い「表表」という音を再生します！SoundPoolオブジェクトは、APKからリソースをインポートしたり、ファイルシステムからファイルをロードしたりできるサンプルコレクションと見なせます。これはMediaPlayerサービスを利用して、オーディオを生の16ビットPCMストリームにデコードします。この機能により、アプリケーションはストリーム圧縮を行える一方、オーディオ再生時の解凍による</strong>負荷と遅延。<strong>サウンドエフェクトプール</strong>の概念で複数の<strong>再生ストリーム</strong>を管理します。ストリームの最大数を超えると、SoundPoolは優先度に基づいて以前に再生されたストリームを自動的に停止します。また、SoundPoolはサウンドの品質、音量、再生レートなどのパラメータを自分で設定することもサポートしています。さて、話はこれくらいにして、本節の内容を始めましょう：<a href="http://androiddoc.qiniudn.com/reference/android/media/SoundPool.html">SoundPool</a></p></blockquote>
+<strong>です。タイトルの通り、SoundPoolは通常、密集した、短くて急な効果音を再生するために使用されます。例えば、特技効果音のDuang~などです。ゲームでの使用が多いです。また、自分のアプリにこの効果音を追加することもできます。例えば、KuGou音楽を起動したときに「ハロー、KuGou」と再生されます。実はこのアイデアはなかなか良いもので、間接のにユーザーに現在のプレイヤーの音量を知らせることができます。そうしないと、ユーザーが音楽を再生した瞬間に突然「小苹果」が流れて、近くのおばさんたちが踊り出してしまうのは困りますよね。音楽プレイヤーだけでなく、通常のアプリにも追加できます。例えば、プッシュ通知や新しいチャットメッセージを受信したときに通知音を再生します。例えば、超级课程表の新しいバージョンでは、これを追加して、プッシュ通知を受信すると短い「表表」という音を再生します！SoundPoolオブジェクトは、APKからリソースをインポートしたり、ファイルシステムからファイルをロードしたりできるサンプルコレクションと見なせます。これはMediaPlayerサービスを利用して、オーディオを生の16ビットPCMストリームにデコードします。この機能により、アプリケーションはストリーム圧縮を行える一方、オーディオ再生時の解凍による</strong>負荷と遅延。<strong>サウンドエフェクトプール</strong>の概念で複数の<strong>再生ストリーム</strong>を管理します。ストリームの最大数を超えると、SoundPoolは優先度に基づいて以前に再生されたストリームを自動的に停止します。また、SoundPoolはサウンドの品質、音量、再生レートなどのパラメータを自分で設定することもサポートしています。さて、話はこれくらいにして、本節の内容を始めましょう：<a href="http://androiddoc.qiniudn.com/reference/android/media/SoundPool.html">SoundPool</a></p></blockquote>
 <hr/>
 <h2>1.関連メソッドの紹介：</h2>
 <hr/>
 <h3>1) コンストラクタメソッド：</h3>
 <blockquote><p><strong>SoundPool</strong>1) コンストラクタメソッド：</p><ul><li>(int maxStreams, int streamType, int srcQuality) 引数は順に次のとおりです。</li><li>① いくつの音をサポートするかを指定します。SoundPoolオブジェクト内で同時に存在できる最大ストリーム数です。<strong>STREAM_VOICE_CALL</strong>, <strong>STREAM_SYSTEM</strong>,
-<strong>STREAM_RING</strong>,<strong>STREAM_MUSIC</strong> 和 <strong>STREAM_ALARM</strong>② サウンドタイプを指定します。ストリームタイプは4つのタイプに分類できます。AudioManagerで定義されています。</li><li>③ サウンド品質（サンプリングレート変換品質）を指定します。通常は直接0に設定します！</li></ul></blockquote>
+<strong>STREAM_RING</strong>,<strong>STREAM_MUSIC</strong>と<strong>STREAM_ALARM</strong>② サウンドタイプを指定します。ストリームタイプは4つのタイプに分類できます。AudioManagerで定義されています。</li><li>③ サウンド品質（サンプリングレート変換品質）を指定します。通常は直接0に設定します！</li></ul></blockquote>
 <p>低いバージョンでは上記のコンストラクタメソッドを使用できますが、API 21（Android 5.0）以降ではこのコンストラクタメソッドは非推奨になりました！代わりにSoundPool.Builderというものを使います。SoundPoolをインスタンス化するには次のように呼び出すだけです：</p>
 <pre>
 SoundPool.Builder spb = new SoundPool.Builder();
@@ -347,11 +347,11 @@ mSoundPool.setOnLoadCompleteListener(new SoundPool.OnLoadCompleteListener() {
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前には必ず<a href=".." class="runoob-pop">ログイン</a>！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前には必ず<a class="runoob-pop" href="..">ログイン</a>！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

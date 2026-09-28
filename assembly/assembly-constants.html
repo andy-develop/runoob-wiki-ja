@@ -189,13 +189,13 @@ CR <span style="color: #0000FF; font-weight: bold;">equ</span> <span style="colo
 NULL <span style="color: #0000FF; font-weight: bold;">equ</span> <span style="color: #FF0000;">0</span>                       <span style="color: #666666; font-style: italic;">; 空字符</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;">; 表达式常量</span><br/>
-ARRAY_SIZE <span style="color: #0000FF; font-weight: bold;">equ</span> <span style="color: #FF0000;">100</span> <span style="color: #339933;">*</span> <span style="color: #FF0000;">4</span>           <span style="color: #666666; font-style: italic;">; 100 个双字的字节数</span><br/>
+ARRAY_SIZE <span style="color: #0000FF; font-weight: bold;">equ</span> <span style="color: #FF0000;">100</span> <span style="color: #339933;">*</span> <span style="color: #FF0000;">4</span>           <span style="color: #666666; font-style: italic;">; 100個のダブルワードのバイト数</span><br/>
 BUFFER_SIZE <span style="color: #0000FF; font-weight: bold;">equ</span> MAX_SIZE <span style="color: #339933;">*</span> <span style="color: #FF0000;">2</span>     <span style="color: #666666; font-style: italic;">; 引用另一个常量</span><br/>
 TOTAL <span style="color: #0000FF; font-weight: bold;">equ</span> <span style="color: #FF0000;">10</span> <span style="color: #339933;">+</span> <span style="color: #FF0000;">20</span> <span style="color: #339933;">+</span> <span style="color: #FF0000;">30</span>           <span style="color: #666666; font-style: italic;">; 计算结果</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
     <span style="color: #666666; font-style: italic;">; 使用常量</span><br/>
-    buffer <span style="color: #0000FF; font-weight: bold;">db</span> MAX_SIZE dup<span style="color: #009900; font-weight: bold;">(</span><span style="color: #FF0000;">0</span><span style="color: #009900; font-weight: bold;">)</span>    <span style="color: #666666; font-style: italic;">; 定义 MAX_SIZE 字节的缓冲区</span><br/>
+    buffer <span style="color: #0000FF; font-weight: bold;">db</span> MAX_SIZE dup<span style="color: #009900; font-weight: bold;">(</span><span style="color: #FF0000;">0</span><span style="color: #009900; font-weight: bold;">)</span>    <span style="color: #666666; font-style: italic;">; MAX_SIZE バイトのバッファを定義する</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.text</span><br/>
     <span style="color: #0000FF; font-weight: bold;">global</span> _start<br/>
@@ -217,31 +217,31 @@ _start<span style="color: #339933;">:</span><br/>
 <div class="example">
 <h2 class="example">实例</h2>
 <div class="example_code">
-<span style="color: #666666; font-style: italic;">; %define 常量定义与重定义示例</span><br/>
+<span style="color: #666666; font-style: italic;">; %define 定数定義と再定義の例</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">%define</span> VERSION <span style="color: #FF0000;">1</span>                <span style="color: #666666; font-style: italic;">; 定义版本号</span><br/>
 <span style="color: #0000FF; font-weight: bold;">%define</span> APP_NAME <span style="color: #7F007F;">'runoob'</span>        <span style="color: #666666; font-style: italic;">; 定义应用名称</span><br/>
 <br/>
-<span style="color: #666666; font-style: italic;">; 使用 %define 定义的常量</span><br/>
+<span style="color: #666666; font-style: italic;">; %define を使用して定義した定数</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> VERSION             <span style="color: #666666; font-style: italic;">; eax = 1</span><br/>
 <br/>
-<span style="color: #666666; font-style: italic;">; 可以重新定义（EQU 不允许这样做）</span><br/>
+<span style="color: #666666; font-style: italic;">; 再定義が可能（EQU では許可されていません）</span><br/>
 <span style="color: #0000FF; font-weight: bold;">%define</span> VERSION <span style="color: #FF0000;">2</span>                <span style="color: #666666; font-style: italic;">; 版本升级</span><br/>
-    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> VERSION             <span style="color: #666666; font-style: italic;">; 现在 eax = 2</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> VERSION             <span style="color: #666666; font-style: italic;">; 現在 eax = 2</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;">; %undef 取消定义</span><br/>
 <span style="color: #0000FF; font-weight: bold;">%undef</span> VERSION                   <span style="color: #666666; font-style: italic;">; VERSION 不再有效</span><br/>
 <span style="color: #666666; font-style: italic;">; mov eax, VERSION               ; 错误：VERSION 未定义</span><br/>
 <br/>
-<span style="color: #666666; font-style: italic;">; %define 可以定义多行（带括号的宏）</span><br/>
+<span style="color: #666666; font-style: italic;">; %define は複数行（括弧付きマクロ）を定義できる</span><br/>
 <span style="color: #0000FF; font-weight: bold;">%define</span> sum<span style="color: #009900; font-weight: bold;">(</span>a<span style="color: #339933;">,</span> b<span style="color: #009900; font-weight: bold;">)</span> <span style="color: #009900; font-weight: bold;">(</span>a <span style="color: #339933;">+</span> b<span style="color: #009900; font-weight: bold;">)</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> sum<span style="color: #009900; font-weight: bold;">(</span><span style="color: #FF0000;">10</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">20</span><span style="color: #009900; font-weight: bold;">)</span>         <span style="color: #666666; font-style: italic;">; mov eax, (10+20) -&gt; eax = 30</span><br/>
 </div>
 </div>
 <table class="reference">
 <tr><th>特性</th><th>EQU</th><th>%define</th></tr>
-<tr><td>再定義は可能か</td><td>否</td><td>是</td></tr>
-<tr><td>可取消定义</td><td>否</td><td>是（%undef）</td></tr>
+<tr><td>再定義は可能か</td><td>否</td><td>である</td></tr>
+<tr><td>可取消定义</td><td>否</td><td>である（%undef）</td></tr>
 <tr><td>支持参数</td><td>否</td><td>はい（マクロ関数）</td></tr>
 <tr><td>使用场景</td><td>真の定数（不変値）</td><td>可変の設定、マクロ置換</td></tr>
 </table>
@@ -253,7 +253,7 @@ _start<span style="color: #339933;">:</span><br/>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;">; %assign 编译时可变常量</span><br/>
 <br/>
-<span style="color: #0000FF; font-weight: bold;">%assign</span> counter <span style="color: #FF0000;">0</span>                <span style="color: #666666; font-style: italic;">; 初始为 0</span><br/>
+<span style="color: #0000FF; font-weight: bold;">%assign</span> counter <span style="color: #FF0000;">0</span>                <span style="color: #666666; font-style: italic;">; 初期値は 0</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
     <span style="color: #666666; font-style: italic;">; 配合 %rep 重复块使用</span><br/>
@@ -301,8 +301,8 @@ EXIT_FAILURE <span style="color: #0000FF; font-weight: bold;">equ</span> <span s
     <span style="color: #0000FF; font-weight: bold;">global</span> _start<br/>
 <br/>
 _start<span style="color: #339933;">:</span><br/>
-    <span style="color: #666666; font-style: italic;">; 使用常量名代替数字，代码意图一目了然</span><br/>
-    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> SYS_WRITE           <span style="color: #666666; font-style: italic;">; 清晰：这是写操作</span><br/>
+    <span style="color: #666666; font-style: italic;">; 数値の代わりに定数名を使用することで、コードの意図が一目瞭然です</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> SYS_WRITE           <span style="color: #666666; font-style: italic;">; 明確：これは書き込み操作</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> STDOUT              <span style="color: #666666; font-style: italic;">; 清晰：输出到屏幕</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> msg<br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> msg_len<br/>
@@ -320,7 +320,7 @@ _start<span style="color: #339933;">:</span><br/>
 <div class="example">
 <h2 class="example">实例</h2>
 <div class="example_code">
-<span style="color: #666666; font-style: italic;">; 字符串常量的定义方式</span><br/>
+<span style="color: #666666; font-style: italic;">; 文字列定数の定義方法</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
     <span style="color: #666666; font-style: italic;">; 直接定义（可用 EQU 表示长度）</span><br/>
@@ -328,10 +328,10 @@ _start<span style="color: #339933;">:</span><br/>
     s1_len <span style="color: #0000FF; font-weight: bold;">equ</span> <span style="color: #0000FF; font-weight: bold;">$</span> <span style="color: #339933;">-</span> s1<br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 带转义字符</span><br/>
-    s2 <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'Line1'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0xA</span><span style="color: #339933;">,</span> <span style="color: #7F007F;">'Line2'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>   <span style="color: #666666; font-style: italic;">; 0xA 是换行符</span><br/>
+    s2 <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'Line1'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0xA</span><span style="color: #339933;">,</span> <span style="color: #7F007F;">'Line2'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>   <span style="color: #666666; font-style: italic;">; 0xA は改行文字</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 使用反引号支持 C 风格转义</span><br/>
-    s3 <span style="color: #0000FF; font-weight: bold;">db</span> `hello\nworld\n`<span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>         <span style="color: #666666; font-style: italic;">; \n 自动替换为 0xA</span><br/>
+    s3 <span style="color: #0000FF; font-weight: bold;">db</span> `hello\nworld\n`<span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>         <span style="color: #666666; font-style: italic;">; \n は 0xA に自動的に置き換えられる</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 多行字符串</span><br/>
     s4 <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'first line'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0xA</span><br/>
@@ -458,11 +458,11 @@ _start<span style="color: #339933;">:</span><br/>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてメモを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -751,7 +751,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

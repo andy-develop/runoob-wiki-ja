@@ -353,7 +353,7 @@ println<span style="">!</span><span style="">(</span><span style="color: #a11;">
 </div></div><p>このプログラムは正しくありません。s に対して多重の可変参照を行っているためです。</p><p>Rust が可変参照に対してこのような設計をしているのは、主に並行状態でのデータアクセス衝突を考慮したものであり、コンパイル段階でこのような事態の発生を防いでいます。</p><p>データアクセス衝突が発生する必要条件の一つは、データが少なくとも一つの使用者によって書き込まれ、同時に少なくとも一つの他の使用者によって読み書きされることです。そのため、ある値が可変参照されている間は、再度いかなる参照も許可されません。</p>
 <h3>ダングリング参照（Dangling References）</h3><p>これは名前を変えただけの概念です。ポインタの概念を持つプログラミング言語に当てはめると、実際にアクセス可能なデータを指していないポインタを指します（注意：必ずしもヌルポインタとは限らず、既に解放されたリソースの場合もあります）。それらは吊るす物体を失ったロープのようなものなので、「垂れ下がり参照」と呼ばれます。</p>
 <p>「垂れ下がり参照」は Rust 言語では許可されておらず、もしあればコンパイラがそれを検出します。</p>
-<p>以下は垂れ下がり参照の典型的なケースです：</p>
+<p>以下はダングリング参照の典型的なケースです：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #708;">fn</span> main<span style="">(</span><span style="">)</span> <span style="">{</span><br/>
     <span style="color: #708;">let</span> reference_to_nothing <span style="">=</span> dangle<span style="">(</span><span style="">)</span><span style="">;</span><br/>
@@ -492,18 +492,18 @@ println<span style="">!</span><span style="">(</span><span style="color: #a11;">
 </div>
 <div id="postcomments">
 <ol class="commentlist">
-<li class="comment even thread-even depth-1" id="comment-56870"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   surfsky</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  sur***y@sina.com</p></div><div class="upvotejs" data-commid="56870" id="runoobvote-id-56870"><a class="upvote"></a> <span class="count">219</span></div></div><div class="comt-main" id="div-comment-56870"><p>Rust が他の高級言語と異なる重要な特徴は、そのメモリ管理における次の2つの特徴にあります：</p><p>（1）変数がスコープを超えると自動的に解放されます。単純な値型のスタックメモリ（int、struct など）はスコープを超えると自動的に解放されます。このロジックは各言語で実装されています。一方、new で作成されたヒープメモリは、C/C++ では手動で解放する必要があり、Java や .NET ではガベージコレクションによる解放を委任するか、手動で dispose 文を書いて解放する必要があります。しかし、ガベージコレクションはリアルタイムではないため、パフォーマンスに影響を与えます。また、解放文を書き忘れる怠惰な人も必ずいます。Rust はスタックメモリとヒープメモリを同等に扱い、スコープを超えたらすべて自動的に解放します。この Rust の特徴は、パフォーマンスを両立させながら、コード量とメモリリークの危険性を効果的に減らします。</p><p>（2）「所有権」：あるメモリ領域は最後の変数名によってのみ所有され、前に宣言された変数はすべて無効になります。これにより、複数の変数によって解放される問題を効果的に防ぎます。また、この操作はコンパイル時にチェックできるため、この戦略によってコンパイル時にヌルポインタの問題を効果的に回避できます。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">surfsky</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   surfsky</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  sur***y@sina.com</p></div></span>6年前 (2020-09-08)</div></div></li><!-- #comment-## -->
+<li class="comment even thread-even depth-1" id="comment-56870"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   surfsky</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  sur***y@sina.com</p></div><div class="upvotejs" data-commid="56870" id="runoobvote-id-56870"><a class="upvote"></a> <span class="count">219</span></div></div><div class="comt-main" id="div-comment-56870"><p>Rust が他の高級言語と異なる重要な特徴は、そのメモリ管理における次の2つの特徴にあります：</p><p>（1）変数がスコープを超えると自動的に解放されます。単純な値型のスタックメモリ（int、struct など）はスコープを超えると自動的に解放されます。このロジックは各言語で実装されています。一方、new で作成されたヒープメモリは、C/C++ では手動で解放する必要があり、Java や .NET ではガベージコレクションによる解放を委任するか、手動で dispose 文を書いて解放する必要があります。しかし、ガベージコレクションはリアルタイムではないため、パフォーマンスに影響をとえます。また、解放文を書き忘れる怠惰な人も必ずいます。Rust はスタックメモリとヒープメモリを同等に扱い、スコープを超えたらすべて自動的に解放します。この Rust の特徴は、パフォーマンスを両立させながら、コード量とメモリリークの危険性を効果のに減らします。</p><p>（2）「所有権」：あるメモリ領域は最後の変数名によってのみ所有され、前に宣言された変数はすべて無効になります。これにより、複数の変数によって解放される問題を効果的に防ぎます。また、この操作はコンパイル時にチェックできるため、この戦略によってコンパイル時にヌルポインタの問題を効果的に回避できます。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">surfsky</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   surfsky</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  sur***y@sina.com</p></div></span>6年前 (2020-09-08)</div></div></li><!-- #comment-## -->
 <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-58565"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   pior</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  pio***ina.com</p></div><div class="upvotejs" data-commid="58565" id="runoobvote-id-58565"><a class="upvote"></a> <span class="count">151</span></div></div><div class="comt-main" id="div-comment-58565"><p>この部分の所有権に関する設定は一見奇妙に見えますが、本質的には言語レベルで同じ可変データに対して複数の変数が参照することを禁止しています。一度パラメータとして渡されると、所有権の移動（Move）または借用（Borrow）が発生します。別の変数に代入すると、自動的に所有権を放棄したことになります。これにより、並行シナリオでのデータ共有の競合を根本的に防ぎます。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">pior</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   pior</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  pio***ina.com</p></div></span>6年前 (2020-11-12)</div></div></li><!-- #comment-## -->
 </ol>
 </div>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -792,7 +792,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

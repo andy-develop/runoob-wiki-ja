@@ -235,7 +235,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <a href="../ml/ml-data-visualizations.html" target="_top">データ可視化</a>
 <a href="../ml/ml-training-and-test-set-splitting.html" target="_top">トレーニングセットとテストセットの分割</a>
 <a href="../ml/ml-foundations-of-statistics.html" target="_top"> 統計学の基礎</a>
-<a href="../ml/ml-probabilistic-thinking.html" target="_top"> 確率的思考</a>
+<a href="../ml/ml-probabilistic-thinking.html" target="_top">確率的思考</a>
 <a href="../ml/ml-loss-function-and-gradient.html" target="_top">損失関数と勾配</a>
 <a href="../ml/ml-overfitting-underfitting-bias-and-variance.html" target="_top">過学習、未学習、バイアスと分散</a>
 <br/>
@@ -279,8 +279,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 			順伝播と逆伝播			</a>
 <a data-p="par" href="../ml/ml-deep-learning-traditional-machine-learning.html" target="_top" title="深層学習 vs 従来の機械学習">
 			深層学習 vs 従来の機械学習			</a>
-<a data-p="par" href="../ml/ml-common-network-types.html" target="_top" title="一般的なネットワークの種類">
-			一般的なネットワークの種類			</a>
+<a data-p="par" href="../ml/ml-common-network-types.html" target="_top" title="一般的なネットワークの種類">一般的なネットワークの種類</a>
 <br/><h2 class="left"><span class="left_h2">モデル最適化とエンジニアリング</span></h2> <a data-p="par" href="../ml/ml-cross-validation.html" target="_top" title="交差検証">
 			交差検証			</a>
 <a data-p="par" href="../ml/ml-model-optimization-regularization.html" target="_top" title="正則化">
@@ -351,7 +350,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     <br/>
     <span style="color: #a50"># 身高数据（连续型）</span><br/>
     heights <span style="color: Gray;">=</span> np.<span style="color: #05a;">random</span>.<span style="color: #05a;">normal</span><span style="color: Olive;">(</span><span style="color: Maroon;">170</span><span style="color: Gray;">,</span> <span style="color: Maroon;">10</span><span style="color: Gray;">,</span> n_samples<span style="color: Olive;">)</span>  <span style="color: #a50"># 均值170，标准差10</span><br/>
-    weights <span style="color: Gray;">=</span> heights * <span style="color: Maroon;">0.7</span> + np.<span style="color: #05a;">random</span>.<span style="color: #05a;">normal</span><span style="color: Olive;">(</span><span style="color: Maroon;">0</span><span style="color: Gray;">,</span> <span style="color: Maroon;">5</span><span style="color: Gray;">,</span> n_samples<span style="color: Olive;">)</span>  <span style="color: #a50"># 体重与身高相关</span><br/>
+    weights <span style="color: Gray;">=</span> heights * <span style="color: Maroon;">0.7</span> + np.<span style="color: #05a;">random</span>.<span style="color: #05a;">normal</span><span style="color: Olive;">(</span><span style="color: Maroon;">0</span><span style="color: Gray;">,</span> <span style="color: Maroon;">5</span><span style="color: Gray;">,</span> n_samples<span style="color: Olive;">)</span>  <span style="color: #a50"># 体重と身長の相関</span><br/>
     temperatures <span style="color: Gray;">=</span> np.<span style="color: #05a;">random</span>.<span style="color: #05a;">normal</span><span style="color: Olive;">(</span><span style="color: Maroon;">36.5</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0.5</span><span style="color: Gray;">,</span> n_samples<span style="color: Olive;">)</span>  <span style="color: #a50"># 体温</span><br/>
     <br/>
     <span style="color: #a50"># 创建数据框</span><br/>
@@ -539,7 +538,7 @@ discrete_df <span style="color: Gray;">=</span> discrete_data_example<span style
         <span style="color: Green;font-weight:bold;">elif</span> method <span style="color: Gray;">==</span> <span style="color: #a11;">'robust'</span>:<br/>
             scaler <span style="color: Gray;">=</span> RobustScaler<span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
         <span style="color: Green;font-weight:bold;">else</span>:<br/>
-            <span style="color: Green;font-weight:bold;">raise</span> <span style="color: Teal;">ValueError</span><span style="color: Olive;">(</span><span style="color: #a11;">"方法必须是 'minmax', 'standard', 或 'robust'"</span><span style="color: Olive;">)</span><br/>
+            <span style="color: Green;font-weight:bold;">raise</span> <span style="color: Teal;">ValueError</span><span style="color: Olive;">(</span><span style="color: #a11;">"メソッドは 'minmax'、'standard'、または 'robust' でなければなりません。"</span><span style="color: Olive;">)</span><br/>
         <br/>
         processed_data<span style="color: Olive;">[</span>numeric_columns<span style="color: Olive;">]</span> <span style="color: Gray;">=</span> scaler.<span style="color: #05a;">fit_transform</span><span style="color: Olive;">(</span>processed_data<span style="color: Olive;">[</span>numeric_columns<span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
         <span style="color: Teal;">self</span>.<span style="color: #05a;">scalers</span><span style="color: Olive;">[</span>method<span style="color: Olive;">]</span> <span style="color: Gray;">=</span> scaler<br/>
@@ -577,7 +576,7 @@ outliers <span style="color: Gray;">=</span> processor.<span style="color: #05a;
 <br/>
 <span style="color: #a50"># 数据标准化</span><br/>
 normalized_data <span style="color: Gray;">=</span> processor.<span style="color: #05a;">normalize_data</span><span style="color: Olive;">(</span>continuous_df<span style="color: Gray;">,</span> method<span style="color: Gray;">=</span><span style="color: #a11;">'standard'</span><span style="color: Olive;">)</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>标准化后的数据示例："</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>標準化されたデータの例：</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>normalized_data.<span style="color: #05a;">head</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 </div></div>
 <hr/>
@@ -660,9 +659,9 @@ structured_text_df <span style="color: Gray;">=</span> structured_text_example<s
     <br/>
     <span style="color: #a50"># 创建非结构化文本数据</span><br/>
     unstructured_texts <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><br/>
-        <span style="color: #a11;">"""<br/>人工智能技术正在快速发展，深度学习、机器学习、自然语言处理等领域取得了重大突破。<br/>这些技术在医疗、金融、教育、交通等多个行业都有广泛应用，为社会发展带来了新的机遇。<br/>未来，随着计算能力的提升和算法的改进，人工智能将在更多领域发挥重要作用。<br/>
+        <span style="color: #a11;">"""<br/>人工知能技術は急速に発展しており、深層学習、機械学習、自然言語処理などの分野で大きな進歩が遂げられています。<br/>これらの技術は、医療、金融、教育、交通などの多くの業界で広く応用されており、社会の発展に新たな機会をもたらしています。<br/>将来、計算能力の向上とアルゴリズムの改善に伴い、人工知能はより多くの分野で重要な役割を果たすでしょう。<br/>
         """</span><span style="color: Gray;">,</span><br/>
-        <span style="color: #a11;">"""<br/>今天天气真好，阳光明媚，微风徐徐。我决定去公园散步，享受这美好的时光。<br/>公园里有很多花，红的、黄的、紫的，五颜六色，非常美丽。小鸟在树上歌唱，<br/>蝴蝶在花丛中飞舞，一切都显得那么和谐自然。<br/>
+        <span style="color: #a11;">"""<br/>今日は天気がとても良く、日差しが明るく、そよ風が吹いています。私は公園を散歩して、この素晴らしい時間を楽しむことにしました。<br/>公園にはたくさんの花があります。赤い花、黄色い花、紫の花など、色とりどりでとても美しいです。小鳥が木の上で歌っています。<br/>蝶が花々の間を舞い、すべてがとても調和ので自然に見える。<br/>
         """</span><span style="color: Gray;">,</span><br/>
         <span style="color: #a11;">"""<br/>株式市場は今日は力強い動きを見せ、上海総合指数は2.3%上昇、深セン成分指数は1.8%上昇した。<br/>ハイテク株が上昇をけん引し、多くの銘柄がストップ高となった。アナリストは、これは主に最近発表された好材料の政策によるものとみている。<br/>投資家の信頼感が高まり、市場の売買は活発化し、出来高は明らかに膨らんだ。<br/>
         """</span><span style="color: Gray;">,</span><br/>
@@ -713,7 +712,7 @@ unstructured_text_df <span style="color: Gray;">=</span> unstructured_text_examp
         <span style="color: #a11;">"""中国語の分かち書き"""</span><br/>
         words <span style="color: Gray;">=</span> jieba.<span style="color: #05a;">lcut</span><span style="color: Olive;">(</span>text<span style="color: Olive;">)</span><br/>
         <span style="color: #a50"># ストップワードを削除（簡易版）</span><br/>
-        stop_words <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: #a11;">'的'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'了'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'在'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'是'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'我'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'有'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'和'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'就'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'不'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'人'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'都'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'一'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'一个'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'上'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'也'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'很'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'到'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'说'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'要'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'去'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'你'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'会'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'着'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'没有'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'看'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'好'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'自己'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'这'</span><span style="color: Olive;">}</span><br/>
+        stop_words <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: #a11;">'の'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'た'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'に'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'だ'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'我'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'有'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'と'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'就'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'不'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'人'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'都'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'一'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'一个'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'上'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'也'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'很'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'到'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'说'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'要'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'去'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'你'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'会'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'ている'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'没有'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'看'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'好'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'自己'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'これ'</span><span style="color: Olive;">}</span><br/>
         words <span style="color: Gray;">=</span> <span style="color: Olive;">[</span>word <span style="color: Green;font-weight:bold;">for</span> word <span style="color: Green;font-weight:bold;">in</span> words <span style="color: Green;font-weight:bold;">if</span> word <span style="color: Green;font-weight:bold;">not</span> <span style="color: Green;font-weight:bold;">in</span> stop_words <span style="color: Green;font-weight:bold;">and</span> <span style="color: Teal;">len</span><span style="color: Olive;">(</span>word<span style="color: Olive;">)</span> <span style="color: Gray;">&gt;</span> <span style="color: Maroon;">1</span><span style="color: Olive;">]</span><br/>
         <span style="color: Green;font-weight:bold;">return</span> words<br/>
     <br/>
@@ -1356,7 +1355,7 @@ importance_scores <span style="color: Gray;">=</span> cat_processor.<span style=
         <br/>
         <span style="color: #a50"># テキスト特徴</span><br/>
         text_features <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><br/>
-            f<span style="color: #a11;">"これは {i} 番目のサンプルのテキスト説明で、基本的な情報と特徴を含んでいます。"</span> <br/>
+            f<span style="color: #a11;">これは {i} 番目のサンプルのテキスト説明で、基本的な情報と特徴を含んでいます。</span> <br/>
             <span style="color: Green;font-weight:bold;">for</span> i <span style="color: Green;font-weight:bold;">in</span> <span style="color: Teal;">range</span><span style="color: Olive;">(</span>n_samples<span style="color: Olive;">)</span><br/>
         <span style="color: Olive;">]</span><br/>
         <br/>
@@ -1579,11 +1578,11 @@ fused_features <span style="color: Gray;">=</span> multimodal_processor.<span st
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记は本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">笔记は本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1883,7 +1882,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

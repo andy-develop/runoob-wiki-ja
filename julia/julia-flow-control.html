@@ -167,11 +167,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>フロー制御文は、プログラムによって1つ以上の条件文を設定して実現します。条件が true のときは指定されたプログラムコードを実行し、条件が false のときは他の指定されたコードを実行します。</p>
 <p>Julia は多数のフロー制御文を提供しています：</p>
 <ul><li><p>
-<strong>複合式</strong>：<span class="marked">begin</span> 和 <span class="marked">;</span>。</p></li><li><p>
-<strong>条件式：</strong><span class="marked">if-elseif-else</span> 和 <span class="marked">?:</span>(三項演算子)。</p></li><li><p>
+<strong>複合式</strong>：<span class="marked">begin</span>と<span class="marked">;</span>。</p></li><li><p>
+<strong>条件式：</strong><span class="marked">if-elseif-else</span>と<span class="marked">?:</span>(三項演算子)。</p></li><li><p>
 <strong>短絡評価：</strong>論理演算子<span class="marked">&amp;&amp;</span>(AND) と<span class="marked">||</span>(OR)、およびチェーン比較。</p></li><li><p>
-<strong>ループ文：</strong>ループ：<span class="marked">while</span> 和 <span class="marked">for</span>。</p></li><li><p>
-<strong>例外処理：</strong><span class="marked">try-catch</span>、<span class="marked">error</span> 和 <span class="marked">throw</span>。</p></li><li>
+<strong>ループ文：</strong>ループ：<span class="marked">while</span>と<span class="marked">for</span>。</p></li><li><p>
+<strong>例外処理：</strong><span class="marked">try-catch</span>、<span class="marked">error</span>と<span class="marked">throw</span>。</p></li><li>
 <p><strong>Task（コルーチン）：</strong><span class="marked">yieldto</span>。</p></li></ul>
 <hr/>
 <h2>複合式</h2><p>
@@ -253,8 +253,8 @@ x is equal to y<br/>
 <p>三項演算子<span class="marked">?:</span>if-elseif-else 構文に似ています:</p>
 
 a ? b : c
-<p>在 <span class="marked">?</span>前の式 a は条件式であり、条件 a が true の場合、三項演算子は : の前の式 b を評価します。条件 a が false の場合、: の後の式 c を実行します。</p>
-<p><strong>注意：</strong><span class="marked">?</span> 和 <span class="marked">:</span>その周囲のスペースは必須です。a?b:c のような式は有効な三項式ではありません（ただし ? と : の後の改行は許可されています）。</p>
+<p>に<span class="marked">?</span>前の式 a は条件式であり、条件 a が true の場合、三項演算子は : の前の式 b を評価します。条件 a が false の場合、: の後の式 c を実行します。</p>
+<p><strong>注意：</strong><span class="marked">?</span>と<span class="marked">:</span>その周囲のスペースは必須です。a?b:c のような式は有効な三項式ではありません（ただし ? と : の後の改行は許可されています）。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 julia<span style="color: #6BAB5B;">&gt;</span> x = <span style="color: black;">1</span><span style="color: #6BAB5B;">;</span> y = <span style="color: black;">2</span><span style="color: #6BAB5B;">;</span><br/>
 <br/>
@@ -297,8 +297,8 @@ no<br/>
 <span style="color: #C93D39;">"no"</span><br/>
 </div></div>
 <hr/>
-<h2>短絡評価</h2><p>Julia の<span class="marked">&amp;&amp;</span> 和 <span class="marked">||</span>演算子はそれぞれ論理<strong>"AND"</strong> 和 <strong>"OR"</strong>操作に対応します。</p>
-<ul><li>式<code>a &amp;&amp; b</code>において、部分式<code>b</code>の場合にのみ<code>a</code> 为 <code>true</code>実行されます。a が false の場合は直接 false を返します。</li><li>式<code>a || b</code>において、部分式<code>b</code>の場合にのみ<code>a</code> 为 <code>false</code>実行されます。a が true の場合は直接 a を返します。</li></ul>
+<h2>短絡評価</h2><p>Julia の<span class="marked">&amp;&amp;</span>と<span class="marked">||</span>演算子はそれぞれ論理<strong>"AND"</strong>と<strong>"OR"</strong>操作に対応します。</p>
+<ul><li>式<code>a &amp;&amp; b</code>において、部分式<code>b</code>の場合にのみ<code>a</code>ために<code>true</code>実行されます。a が false の場合は直接 false を返します。</li><li>式<code>a || b</code>において、部分式<code>b</code>の場合にのみ<code>a</code>ために<code>false</code>実行されます。a が true の場合は直接 a を返します。</li></ul>
 <div class="example"><h2 class="example">&amp;&amp; の例</h2> <div class="example_code">
 julia<span style="color: #6BAB5B;">&gt;</span> isodd<span style="color: #3B972E;">(</span><span style="color: black;">3</span><span style="color: #3B972E;">)</span> <span style="color: #6BAB5B;">&amp;&amp;</span> @warn<span style="color: #3B972E;">(</span><span style="color: #C93D39;">"An odd Number!"</span><span style="color: #3B972E;">)</span><br/>
 ┌ Warning: An odd <span style="color: #0000A8;font-weight:bold;">Number</span><span style="color: #6BAB5B;">!</span><br/>
@@ -360,7 +360,7 @@ julia<span style="color: #6BAB5B;">&gt;</span> f<span style="color: #3B972E;">(<
 </div></div>
 <hr/>
 <h2>ループ文</h2>
-<p>ループ文は<span class="marked">while</span> 和 <span class="marked">for</span>2つのキーワードを使用して実装されます。</p>
+<p>ループ文は<span class="marked">while</span>と<span class="marked">for</span>2つのキーワードを使用して実装されます。</p>
 <p>以下は<strong>while</strong>ループの例です：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 julia<span style="color: #6BAB5B;">&gt;</span> i = <span style="color: black;">1</span><span style="color: #6BAB5B;">;</span><br/>
@@ -782,11 +782,11 @@ julia<span style="color: #6BAB5B;">&gt;</span> Base.<span style="color: black;">
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1075,7 +1075,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

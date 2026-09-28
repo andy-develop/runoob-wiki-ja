@@ -212,7 +212,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <tbody>
 <tr><td>Python</td><td>3.10 ~ 3.12</td><td>公式サポート範囲。3.13は当面サポートされていません</td></tr>
 <tr><td>pip</td><td>最新版</td><td>まず<code>pip install --upgrade pip</code></td></tr>
-<tr><td>Alibaba Cloud百炼 APIキー</td><td>—</td><td>在 <a href="https://bailian.console.aliyun.com/cn-beijing?userCode=i5mn5r7m&amp;tab=model#/api-key" target="_blank">bailian.console.aliyun.com/</a>申請</td></tr>
+<tr><td>Alibaba Cloud百炼 APIキー</td><td>—</td><td>に<a href="https://bailian.console.aliyun.com/cn-beijing?userCode=i5mn5r7m&amp;tab=model#/api-key" target="_blank">bailian.console.aliyun.com/</a>申請</td></tr>
 <tr><td>ディスク容量</td><td>≥ 2GB</td><td>インデックス生成物（Parquetファイル、ベクトルストア）は多くの容量を占有します。</td></tr>
 </tbody>
 </table>
@@ -299,7 +299,7 @@ ULA 由洛克希德·马丁和波音合资成立，长期承担美国军方卫�
 <p><img decoding="async" src="../wp-content/uploads/2026/06/runoob_1781352153283.png"/></p>
 <hr/>
 <h2>qwen-plusとEmbeddingモデルを設定する</h2>
-<p>これはこのチュートリアル全体で最も重要なステップです。変更する必要があるのは<code>.env</code> 和 <code>settings.yaml</code>2つのファイルです。</p>
+<p>これはこのチュートリアル全体で最も重要なステップです。変更する必要があるのは<code>.env</code>と<code>settings.yaml</code>2つのファイルです。</p>
 <h3>ステップ1：APIキーを設定する</h3>
 <p>開きます：<code>.env</code>ファイルにあなたのAPIキーを入力してください：</p>
 <div class="example">
@@ -571,7 +571,7 @@ graphrag prompt-tune --config settings.yaml --root . --language Chinese
 <tbody>
 <tr><td><code>graphrag init</code></td><td>ワークスペースを初期化して、...を生成します<code>.env</code>、<code>settings.yaml</code>、<code>input/</code></td></tr>
 <tr><td><code>graphrag init --force</code></td><td>強制的に再初期化（バージョンアップ後に使用）。既存の設定を上書きします。</td></tr>
-<tr><td><code>graphrag index</code></td><td>对 <code>input/</code>ディレクトリのドキュメントに対して完全なインデックス処理を実行します</td></tr>
+<tr><td><code>graphrag index</code></td><td>に対して<code>input/</code>ディレクトリのドキュメントに対して完全なインデックス処理を実行します</td></tr>
 <tr><td><code>graphrag index --resume</code></td><td>前回の中断箇所からインデックスを再開（LLM呼び出しはキャッシュされ、Tokenを重複して消費しません）</td></tr>
 <tr><td><code>graphrag index --update</code></td><td>増分インデックス。新しく追加されたドキュメントのみを処理します。</td></tr>
 <tr><td><code>graphrag query "问题"</code></td><td>Global Searchクエリ（デフォルトモード）</td></tr>
@@ -631,7 +631,7 @@ graphrag index --resume
 <h3>JSON解析エラーが発生した場合の対処法は？</h3>
 <p>エンティティ抽出段階では、モデルに厳密にJSON形式で返すよう要求します。もし...が発生した場合<code>JSONDecodeError</code>、以下の方法を試すことができます：</p>
 <ul>
-<li>在 <code>call_args</code>に追加します<code>response_format: {type: json_object}</code>（モデルがこのパラメータをサポートしている必要があります）</li>
+<li>に<code>call_args</code>に追加します<code>response_format: {type: json_object}</code>（モデルがこのパラメータをサポートしている必要があります）</li>
 <li>将 <code>temperature</code>0に設定します</li>
 <li>将 <code>max_gleanings</code>0に設定します（追加質問を減らし、エラー発生確率を下げます）</li>
 <li>実行します<code>graphrag prompt-tune</code>Promptを再チューニングして、モデルに出力形式をよりよく認識させます</li>
@@ -652,7 +652,7 @@ graphrag index --resume
 <ul>
 <li>将 <code>chunking.size</code>適切に大きく設定します（テキストブロックが少ないほどLLM呼び出しが少なくなります）</li>
 <li>将 <code>extract_graph.max_gleanings</code>0または1に設定します</li>
-<li>在 <code>entity_types</code>には、ビジネスに最も関連するエンティティタイプのみを保持します</li>
+<li>に<code>entity_types</code>には、ビジネスに最も関連するエンティティタイプのみを保持します</li>
 <li>インデックス段階ではより安価なモデルを使用し、クエリ段階では必要に応じてより高性能なモデルに切り替えます</li>
 </ul>
 <blockquote><p>GraphRAGは「非対称モデル構成」戦略を提供します：<code>completion_models</code>に複数のモデルを定義し、インデックス段階ではコストの低いモデルを使用し、クエリ段階では重要なクエリに対してより高性能なモデルを使用することで、コストと品質のバランスを取ります。</p></blockquote>
@@ -797,11 +797,11 @@ graphrag index --resume
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1090,7 +1090,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

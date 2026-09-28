@@ -159,41 +159,32 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div> <div class="col middle-column">
 <div class="article">
 <div class="previous-next-links">
-<div class="previous-design-link"><i aria-hidden="true" class="fa fa-arrow-left" style="font-size:16px;"></i> <a href="../django/django-blog-filter-search.html" rel="prev">分类筛选与关键词搜索
-→ カテゴリ絞り込みとキーワード検索</a> </div>
-<div class="next-design-link"><a href="../django/django-blog-forms-favorites.html" rel="next">表单与收藏功能
-→ フォームとお気に入り機能</a> <i aria-hidden="true" class="fa fa-arrow-right" style="font-size:16px;"></i></div>
+<div class="previous-design-link"><i aria-hidden="true" class="fa fa-arrow-left" style="font-size:16px;"></i> <a href="../django/django-blog-filter-search.html" rel="prev">カテゴリ絞り込みとキーワード検索</a> </div>
+<div class="next-design-link"><a href="../django/django-blog-forms-favorites.html" rel="next">フォームとお気に入り機能</a> <i aria-hidden="true" class="fa fa-arrow-right" style="font-size:16px;"></i></div>
 </div>
 <div class="article-body">
 <div class="article-intro" id="content">
 <h1>用户系统 — 注册、登录、登出
 → ユーザーシステム — 登録、ログイン、ログアウト</h1>
-<p>本章你将学会使用 Django 内置的认证系统，实现用户注册、登录和登出功能。
-→ この章では、Django 組み込みの認証システムを使って、ユーザー登録・ログイン・ログアウト機能を実装します。</p>
+<p>この章では、Django 組み込みの認証システムを使って、ユーザー登録・ログイン・ログアウト機能を実装します。</p>
 <hr/>
 <h2>Django 内置 auth 系统
 → Django 組み込み auth システム</h2>
-<p>Django 自带一套完整的用户认证模块：
-→ Django には完全なユーザー認証モジュールが標準で用意されています：</p>
+<p>Django には完全なユーザー認証モジュールが標準で用意されています：</p>
 <ul>
 <li>内置
 → 組み込み<code>User</code>模型（用户名、密码、邮箱等）
 → モデル（ユーザー名、パスワード、メールアドレスなど）</li>
 <li>内置登录/登出视图（无需自己写逻辑）
 → 組み込みのログイン/ログアウトビュー（自分でロジックを書く必要なし）</li>
-<li>内置的权限和组管理
-→ 組み込みの権限とグループ管理</li>
-<li>表单验证和安全防护（CSRF、XSS）
-→ フォーム検証とセキュリティ対策（CSRF、XSS）</li>
+<li>組み込みの権限とグループ管理</li>
+<li>フォーム検証とセキュリティ対策（CSRF、XSS）</li>
 </ul>
-<p>这个模块是
-→ このモジュールは<code>django.contrib.auth</code>，在创建项目时已经默认注册到了 INSTALLED_APPS。
-→ プロジェクト作成時にデフォルトで INSTALLED_APPS に登録されています。</p>
+<p>このモジュールは<code>django.contrib.auth</code>プロジェクト作成時にデフォルトで INSTALLED_APPS に登録されています。</p>
 <hr/>
 <h2>注册页面
 → 登録ページ</h2>
-<p>Django 内置了登录/登出视图，但没有内置注册视图，需要我们自己写。
-→ Django にはログイン/ログアウトビューは組み込まれていますが、登録ビューは組み込まれていないため、自分で作成する必要があります。</p>
+<p>Django にはログイン/ログアウトビューは組み込まれていますが、登録ビューは組み込まれていないため、自分で作成する必要があります。</p>
 <h3>第一步：创建注册表单
 → ステップ1：登録フォームを作成する</h3>
 <div class="example">
@@ -212,8 +203,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         label<span style="color: Gray;">=</span><span style="color: #a11;">'邮箱'
 → 'メールアドレス'</span><span style="color: Gray;">,</span><br/>
         required<span style="color: Gray;">=</span><span style="color: Teal;">True</span><span style="color: Gray;">,</span><br/>
-        help_text<span style="color: Gray;">=</span><span style="color: #a11;">'请输入有效的邮箱地址。'
-→ '有効なメールアドレスを入力してください。'</span><br/>
+        help_text<span style="color: Gray;">=</span><span style="color: #a11;">有効なメールアドレスを入力してください。</span><br/>
     <span style="color: Olive;">)</span><br/>
 <br/>
     <span style="color: Green;font-weight:bold;">class</span> Meta:<br/>
@@ -246,7 +236,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         <span style="color: Green;font-weight:bold;">return</span> redirect<span style="color: Olive;">(</span><span style="color: #a11;">'index'</span><span style="color: Olive;">)</span><br/>
 <br/>
     <span style="color: Green;font-weight:bold;">if</span> request.<span style="color: #05a;">method</span> <span style="color: Gray;">==</span> <span style="color: #a11;">'POST'</span>:<br/>
-        <span style="color: #a50"># 用户提交了注册表单
+        <span style="color: #a50"># ユーザーが登録フォームを送信した
 → # ユーザーが登録フォームを送信した</span><br/>
         form <span style="color: Gray;">=</span> RegisterForm<span style="color: Olive;">(</span>request.<span style="color: #05a;">POST</span><span style="color: Olive;">)</span><br/>
         <span style="color: Green;font-weight:bold;">if</span> form.<span style="color: #05a;">is_valid</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span>:<br/>
@@ -269,14 +259,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     <span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
 </div>
 </div>
-<blockquote><p>Django 的
-→ Django の<code>messages</code>框架用于在请求之间传递一次性消息（如「注册成功」）。在模板中渲染 messages 区域，用户就能看到操作反馈。它和 session 配合使用，消息显示一次后自动消失。
-→ フレームワークは、リクエスト間で一度きりのメッセージ（「登録成功」など）を渡すために使用されます。テンプレートで messages 領域を描画すると、ユーザーは操作フィードバックを確認できます。これはセッションと連携して動作し、メッセージは一度表示されると自動的に消えます。</p></blockquote>
+<blockquote><p>Django の
+→ Django の<code>messages</code>フレームワークは、リクエスト間で一度きりのメッセージ（「登録成功」など）を渡すために使用されます。テンプレートで messages 領域を描画すると、ユーザーは操作フィードバックを確認できます。これはセッションと連携して動作し、メッセージは一度表示されると自動的に消えます。</p></blockquote>
 <hr/>
-<h2>登录与登出
-→ ログインとログアウト</h2>
-<p>Django 内置了登录和登出视图，只需在路由中引入即可。
-→ Django にはログインビューとログアウトビューが組み込まれているので、ルーティングで導入するだけで済みます。</p>
+<h2>ログインとログアウト</h2>
+<p>Django にはログインビューとログアウトビューが組み込まれているので、ルーティングで導入するだけで済みます。</p>
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
@@ -307,8 +294,7 @@ urlpatterns <span style="color: Gray;">=</span> <span style="color: Olive;">[</s
 <span style="color: Olive;">]</span><br/>
 </div>
 </div>
-<p>在 settings.py 中配置登录登出的跳转地址：
-→ settings.py でログイン・ログアウトのリダイレクト先を設定します：</p>
+<p>settings.py でログイン・ログアウトのリダイレクト先を設定します：</p>
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
@@ -396,17 +382,14 @@ LOGOUT_REDIRECT_URL <span style="color: Gray;">=</span> <span style="color: #a11
 {% endblock %}<br/>
 </div>
 </div>
-<blockquote><p><code>{% csrf_token %}</code>是 Django 的安全机制，防止跨站请求伪造攻击。任何 POST 表单必须包含它，否则 Django 会拒绝请求（403 错误）。这个标签会生成一个隐藏的 input，包含随机的 CSRF token。
-→ は Django のセキュリティ機構であり、クロスサイトリクエストフォージェリ攻撃を防ぎます。すべての POST フォームにはこれを含める必要があります。そうしないと Django はリクエストを拒否します（403 エラー）。このタグは、ランダムな CSRF トークンを含む隠し input を生成します。</p></blockquote>
+<blockquote><p><code>{% csrf_token %}</code>これは Django のセキュリティ機構であり、クロスサイトリクエストフォージェリ攻撃を防ぎます。すべての POST フォームにはこれを含める必要があります。そうしないと Django はリクエストを拒否します（403 エラー）。このタグは、ランダムな CSRF トークンを含む隠し input を生成します。</p></blockquote>
 <hr/>
-<h2>在导航栏显示登录状态
-→ ナビゲーションバーにログイン状態を表示する</h2>
-<p>更新 base.html 的导航栏，根据登录状态显示不同内容。
-→ base.html のナビゲーションバーを更新し、ログイン状態に応じて異なる内容を表示します。</p>
+<h2>ナビゲーションバーにログイン状態を表示する</h2>
+<p>base.html のナビゲーションバーを更新し、ログイン状態に応じて異なる内容を表示します。</p>
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #808080; font-style: italic;">&lt;!-- 修改 blog/templates/blog/base.html 的导航栏部分 --&gt;
+<span style="color: #808080; font-style: italic;">&lt;!-- blog/templates/blog/base.html のナビゲーションバー部分を変更 --&gt;
 → &lt;!-- blog/templates/blog/base.html のナビゲーションバー部分を変更 --&gt;</span><br/>
 <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">header</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"navbar"</span>&gt;</span><br/>
     <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">a</span> <span style="color: #00c;">href</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"/"</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"logo"</span>&gt;</span>RUNOOB 博客
@@ -415,13 +398,11 @@ LOGOUT_REDIRECT_URL <span style="color: Gray;">=</span> <span style="color: #a11
         <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">a</span> <span style="color: #00c;">href</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"/"</span>&gt;</span>首页
 → ホーム<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">a</span>&gt;</span><br/>
 <br/>
-        {% if user.is_authenticated %}<br/>{# 已登录：显示用户名和登出按钮（user 是 Django 自动注入的） #}
-→ {# ログイン済み：ユーザー名とログアウトボタンを表示（user は Django によって自動的に注入されます） #}<br/>
+        {% if user.is_authenticated %}<br/>{# ログイン済み：ユーザー名とログアウトボタンを表示します（user は Django によって自動的に注入されます） #}<br/>
             <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">span</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"user-name"</span>&gt;</span>{{ user.username }}<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">span</span>&gt;</span><br/>
             <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">a</span> <span style="color: #00c;">href</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"{% url 'logout' %}"</span>&gt;</span>登出
 → ログアウト<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">a</span>&gt;</span><br/>
-        {% else %}<br/>{# 未登录：显示登录和注册链接 #}
-→ {# 未ログイン：ログインと登録リンクを表示 #}<br/>
+        {% else %}<br/>{# 未ログイン：ログインと登録リンクを表示 #}<br/>
             <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">a</span> <span style="color: #00c;">href</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"{% url 'login' %}"</span>&gt;</span>登录
 → ログイン<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">a</span>&gt;</span><br/>
             <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">a</span> <span style="color: #00c;">href</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"{% url 'register' %}"</span>&gt;</span>注册
@@ -431,17 +412,14 @@ LOGOUT_REDIRECT_URL <span style="color: Gray;">=</span> <span style="color: #a11
 <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">header</span>&gt;</span><br/>
 </div>
 </div>
-<blockquote><p>Django 的模板上下文处理器会自动将
-→ Django のテンプレートコンテキストプロセッサは自動的に<code>{{ user }}</code>注入到每个模板中，无需在 views.py 中手动传递。你可以通过
-→ を各テンプレートに注入します。views.py で手動で渡す必要はありません。あなたは<code>user.is_authenticated</code>判断用户是否登录。
-→ ユーザーがログインしているかどうかを判断します。</p></blockquote>
+<blockquote><p>Django のテンプレートコンテキストプロセッサは自動的に<code>{{ user }}</code>各テンプレートに注入され、views.py で手動で渡す必要はありません。～を通じて行うことができます。<code>user.is_authenticated</code>ユーザーがログインしているかどうかを判断します。</p></blockquote>
 <hr/>
 <h2>登录页面样式
 → ログインページのスタイル</h2>
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #808080; font-style: italic;">/* 在 base.html 的 style 中追加 */
+<span style="color: #808080; font-style: italic;">/* base.html の style 内に追加 */
 → /* base.html の style 内に追加 */</span><br/>
 <span style="color: #6666FF;">.auth-form</span> <span style="color: #00AA00;">{</span><br/>
     <span style="color: #000000; font-weight: bold;">max-width</span><span style="color: #00AA00;">:</span> <span style="color: #933;">400px</span><span style="color: #00AA00;">;</span><br/>
@@ -507,10 +485,9 @@ LOGOUT_REDIRECT_URL <span style="color: Gray;">=</span> <span style="color: #a11
 <hr/>
 <h2>本章小结
 → 本章のまとめ</h2>
-<p>本章你接入了 Django 内置认证系统：继承了 UserCreationForm 创建注册表单、使用 LoginView/LogoutView 实现登录登出、用 csrf_token 保护 POST 请求、在模板中使用 user.is_authenticated 判断登录状态。
+<p>本章你接入た Django 内置认证系统：继承た UserCreationForm 创建注册表单、使用 LoginView/LogoutView 实现登录登出、用 csrf_token 保护 POST 请求、に模板中使用 user.is_authenticated 判断登录状态。
 → この章では、Django 組み込みの認証システムを導入しました。UserCreationForm を継承して登録フォームを作成し、LoginView/LogoutView を使用してログイン・ログアウトを実装し、csrf_token で POST リクエストを保護し、テンプレート内で user.is_authenticated を使用してログイン状態を判定しました。</p>
-<p>现在博客有了完整的用户注册、登录、登出流程。
-→ これでブログに完全なユーザー登録・ログイン・ログアウトのフローが備わりました。</p>
+<p>これでブログに完全なユーザー登録・ログイン・ログアウトのフローが備わりました。</p>
 其他扩展
 → その他の拡張
 </div>
@@ -522,10 +499,8 @@ LOGOUT_REDIRECT_URL <span style="color: Gray;">=</span> <span style="color: #a11
 </div>
 </div>
 <div class="previous-next-links">
-<div class="previous-design-link"><i aria-hidden="true" class="fa fa-arrow-left" style="font-size:16px;"></i> <a href="../django/django-blog-filter-search.html" rel="prev">分类筛选与关键词搜索
-→ カテゴリ絞り込みとキーワード検索</a> </div>
-<div class="next-design-link"><a href="../django/django-blog-forms-favorites.html" rel="next">表单与收藏功能
-→ フォームとお気に入り機能</a> <i aria-hidden="true" class="fa fa-arrow-right" style="font-size:16px;"></i></div>
+<div class="previous-design-link"><i aria-hidden="true" class="fa fa-arrow-left" style="font-size:16px;"></i> <a href="../django/django-blog-filter-search.html" rel="prev">カテゴリ絞り込みとキーワード検索</a> </div>
+<div class="next-design-link"><a href="../django/django-blog-forms-favorites.html" rel="next">フォームとお気に入り機能</a> <i aria-hidden="true" class="fa fa-arrow-right" style="font-size:16px;"></i></div>
 </div>
 
 笔记列表
@@ -635,16 +610,16 @@ LOGOUT_REDIRECT_URL <span style="color: Gray;">=</span> <span style="color: #a11
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>点我分享笔记
 → クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-→ <p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に必ず<a href=";.html" class="runoob-pop">ログイン</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+→ <p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に必ず<a class="runoob-pop" href=";.html">ログイン</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -941,7 +916,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

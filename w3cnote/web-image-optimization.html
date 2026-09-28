@@ -247,7 +247,7 @@ AddOutputFilterByType DEFLATE image/svg+xml
 <p>SVGファイルに対してGZip圧縮を有効にします（もちろん、先にdeflateモジュールをロードして適切に設定する必要があります。GZipの設定はこの記事の範囲を超えているため、この部分は各自でGoogle検索してください）</p>
 <h2>GIFとAPNGの最適化</h2><p>GIFには多くの利点があります。色数が少ない場合に画像サイズを大幅に削減でき、また比較的汎用的にアニメーションを表示できる唯一の画像形式でもあります。GIF形式の最適化原理については詳しくありませんが、実務では既存の圧縮ツールを直接使用しています。後述の<a href="http://blog.cabbit.me/web-image-optimization/#auto">自動最適化</a>章のGruntでは、Grunt Taskによる自動最適化の方法を紹介します。</p><p>APNGについては、現在ブラウザのサポートがまだ十分ではありませんが、HTML5をサポートする環境では、成熟したオープンソースツールがあります。<a href="https://github.com/davidmz/apng-canvas">apng-canvas</a>APNGのサポートに使用できます。</p><p>
 <img alt="apng" class="attachment-full" decoding="async" height="268" loading="lazy" src="../wp-content/uploads/2014/12/apng.gif" width="884"/>
-</p><p>テンセントISUXチームには、以下のツールを紹介する記事があります。<a href="https://github.com/iSparta/iSparta">iSparta</a>ツール：<a href="http://isux.tencent.com/introduction-of-apng.html">http://isux.tencent.com/introduction-of-apng.html</a>これは現在、APNGファイルをバッチ処理できるほぼ唯一のツールです。興味のある方はその記事で詳しく知ることができます。</p><h2 id="auto">自動最適化</h2><p>これまでさまざまな形式の画像を最適化する方法とツールについて多く述べてきました。画像の最適化には多くの反復作業が必要であり、エンジニアとしては明らかにこれを我慢できません。そのため、画像を自動最適化する多くのツールも生まれています。ここでは主にCDN、Grunt/Gulp、Google PageSpeedの3つの方法を紹介します。</p><h3>自動最適化：CDN</h3><p>CDNを使用して画像を自動最適化します。海外のCDNプロバイダーではこの種のサービスをほとんど見かけませんが、国内の2大新興CDNである<a href="http://www.qiniu.com/">七牛</a>和<a href="https://www.upyun.com/index.html">又拍</a>はこの分野で多くの取り組みを行っています。その仕組みは、CDNに画像をリクエストする際のURLパラメータに画像処理のパラメータ（形式、幅、高さなど）を含めると、CDNサーバーがリクエストに応じて必要な画像を生成し、ユーザーのブラウザに送信するというものです。</p><p>七牛クラウドストレージの<a href="http://developer.qiniu.com/docs/v6/api/reference/fop/image/">画像処理インターフェース</a>は非常に豊富で、画像の基本操作の大部分をカバーしています。例えば：</p><ul>
+</p><p>テンセントISUXチームには、以下のツールを紹介する記事があります。<a href="https://github.com/iSparta/iSparta">iSparta</a>ツール：<a href="http://isux.tencent.com/introduction-of-apng.html">http://isux.tencent.com/introduction-of-apng.html</a>これは現在、APNGファイルをバッチ処理できるほぼ唯一のツールです。興味のある方はその記事で詳しく知ることができます。</p><h2 id="auto">自動最適化</h2><p>これまでさまざまな形式の画像を最適化する方法とツールについて多く述べてきました。画像の最適化には多くの反復作業が必要であり、エンジニアとしては明らかにこれを我慢できません。そのため、画像を自動最適化する多くのツールも生まれています。ここでは主にCDN、Grunt/Gulp、Google PageSpeedの3つの方法を紹介します。</p><h3>自動最適化：CDN</h3><p>CDNを使用して画像を自動最適化します。海外のCDNプロバイダーではこの種のサービスをほとんど見かけませんが、国内の2大新興CDNである<a href="http://www.qiniu.com/">七牛</a>と<a href="https://www.upyun.com/index.html">又拍</a>はこの分野で多くの取り組みを行っています。その仕組みは、CDNに画像をリクエストする際のURLパラメータに画像処理のパラメータ（形式、幅、高さなど）を含めると、CDNサーバーがリクエストに応じて必要な画像を生成し、ユーザーのブラウザに送信するというものです。</p><p>七牛クラウドストレージの<a href="http://developer.qiniu.com/docs/v6/api/reference/fop/image/">画像処理インターフェース</a>は非常に豊富で、画像の基本操作の大部分をカバーしています。例えば：</p><ul>
 <li>画像トリミング。複数のトリミング方式（長辺、短辺、フィル、ストレッチなど）をサポートしています。</li>
 <li>画像形式の変換。JPG、GIF、PNG、WebPなどをサポートし、異なる画像圧縮率をサポートしています。</li>
 <li>画像処理。画像ウォーターマーク、ガウスぼかし、重心処理などをサポートしています。</li>
@@ -415,11 +415,11 @@ module.exports = function (grunt) {
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=".." class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href="..">ログイン</a>が必要です！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

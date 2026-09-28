@@ -240,14 +240,14 @@ df <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFrame</
 <span style="color: #a50"># "班级"列でグループ化し、各クラスの平均成績を計算</span><br/>
 avg_by_class <span style="color: Gray;">=</span> df.<span style="color: #05a;">groupby</span><span style="color: Olive;">(</span><span style="color: #a11;">'班级'</span><span style="color: Olive;">)</span>.<span style="color: #05a;">mean</span><span style="color: Olive;">(</span>numeric_only<span style="color: Gray;">=</span><span style="color: Teal;">True</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"每个班级的平均成绩："</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">各クラスの平均点：</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>avg_by_class<span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 特定の列だけの平均値も計算できます</span><br/>
 math_avg_by_class <span style="color: Gray;">=</span> df.<span style="color: #05a;">groupby</span><span style="color: Olive;">(</span><span style="color: #a11;">'班级'</span><span style="color: Olive;">)</span><span style="color: Olive;">[</span><span style="color: #a11;">'数学'</span><span style="color: Olive;">]</span>.<span style="color: #05a;">mean</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"每个班级的数学平均成绩："</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">各クラスの数学の平均点：</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>math_avg_by_class<span style="color: Olive;">)</span><br/>
 </div>
 </div>
@@ -304,13 +304,13 @@ df <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFrame</
 <span style="color: #a50"># 「地区」と「产品」でグループ化し、平均売上高と利益を計算</span><br/>
 avg_grouped <span style="color: Gray;">=</span> df.<span style="color: #05a;">groupby</span><span style="color: Olive;">(</span><span style="color: Olive;">[</span><span style="color: #a11;">'地区'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'产品'</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span> as_index<span style="color: Gray;">=</span><span style="color: Teal;">False</span><span style="color: Olive;">)</span>.<span style="color: #05a;">mean</span><span style="color: Olive;">(</span>numeric_only<span style="color: Gray;">=</span><span style="color: Teal;">True</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"按地区和产品分组后的平均销售额和利润："</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">地域と製品でグループ化した後の平均売上高と利益：</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>avg_grouped<span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># マルチインデックス形式を保持</span><br/>
 avg_indexed <span style="color: Gray;">=</span> df.<span style="color: #05a;">groupby</span><span style="color: Olive;">(</span><span style="color: Olive;">[</span><span style="color: #a11;">'地区'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'产品'</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span>.<span style="color: #05a;">mean</span><span style="color: Olive;">(</span>numeric_only<span style="color: Gray;">=</span><span style="color: Teal;">True</span><span style="color: Olive;">)</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"多级索引形式的结果："</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">多層インデックス形式の結果：</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>avg_indexed<span style="color: Olive;">)</span><br/>
 </div>
 </div>
@@ -376,7 +376,7 @@ avg_with_nan <span style="color: Gray;">=</span> df.<span style="color: #05a;">g
 <br/>
 <span style="color: #a50"># NaN 値を 0 として含めて計算したい場合は、先に埋める必要があります</span><br/>
 avg_filled <span style="color: Gray;">=</span> df.<span style="color: #05a;">groupby</span><span style="color: Olive;">(</span><span style="color: #a11;">'部门'</span><span style="color: Olive;">)</span><span style="color: Olive;">[</span><span style="color: #a11;">'工资'</span><span style="color: Olive;">]</span>.<span style="color: #05a;">apply</span><span style="color: Olive;">(</span><span style="color: Green;font-weight:bold;">lambda</span> x: x.<span style="color: #05a;">fillna</span><span style="color: Olive;">(</span><span style="color: Maroon;">0</span><span style="color: Olive;">)</span>.<span style="color: #05a;">mean</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"将NaN视为0后的平均工资："</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"NaNを0とみなした後の平均給与："</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>avg_filled<span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
@@ -440,16 +440,16 @@ df <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFrame</
 df<span style="color: Olive;">[</span><span style="color: #a11;">'班级数学平均分'</span><span style="color: Olive;">]</span> <span style="color: Gray;">=</span> df.<span style="color: #05a;">groupby</span><span style="color: Olive;">(</span><span style="color: #a11;">'班级'</span><span style="color: Olive;">)</span><span style="color: Olive;">[</span><span style="color: #a11;">'数学'</span><span style="color: Olive;">]</span>.<span style="color: #05a;">transform</span><span style="color: Olive;">(</span><span style="color: #a11;">'mean'</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 各生徒の成績とクラス平均点の差を計算</span><br/>
-df<span style="color: Olive;">[</span><span style="color: #a11;">'与平均分差值'</span><span style="color: Olive;">]</span> <span style="color: Gray;">=</span> df<span style="color: Olive;">[</span><span style="color: #a11;">'数学'</span><span style="color: Olive;">]</span> - df<span style="color: Olive;">[</span><span style="color: #a11;">'班级数学平均分'</span><span style="color: Olive;">]</span><br/>
+df<span style="color: Olive;">[</span><span style="color: #a11;">'平均との差'</span><span style="color: Olive;">]</span> <span style="color: Gray;">=</span> df<span style="color: Olive;">[</span><span style="color: #a11;">'数学'</span><span style="color: Olive;">]</span> - df<span style="color: Olive;">[</span><span style="color: #a11;">'班级数学平均分'</span><span style="color: Olive;">]</span><br/>
 <br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"添加班级平均分和差值后的数据："</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"クラス平均点と差分を追加した後のデータ："</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df<span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 各生徒の数学の成績がクラス合計点に占める割合を計算</span><br/>
 df<span style="color: Olive;">[</span><span style="color: #a11;">'班级内百分比'</span><span style="color: Olive;">]</span> <span style="color: Gray;">=</span> <span style="color: Olive;">(</span>df<span style="color: Olive;">[</span><span style="color: #a11;">'数学'</span><span style="color: Olive;">]</span> / df<span style="color: Olive;">[</span><span style="color: #a11;">'班级数学平均分'</span><span style="color: Olive;">]</span> * <span style="color: Maroon;">100</span><span style="color: Olive;">)</span>.<span style="color: Teal;">round</span><span style="color: Olive;">(</span><span style="color: Maroon;">2</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"添加百分比后的数据："</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">パーセンテージを追加した後のデータ：</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df<span style="color: Olive;">)</span><br/>
 </div>
 </div>
@@ -605,11 +605,11 @@ df<span style="color: Olive;">[</span><span style="color: #a11;">'班级内百�
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてメモを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -898,7 +898,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

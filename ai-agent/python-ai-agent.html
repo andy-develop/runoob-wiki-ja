@@ -214,15 +214,15 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     <span style="color: Green;font-weight:bold;">def</span> generate<span style="color: Olive;">(</span><span style="color: Teal;">self</span><span style="color: Gray;">,</span> prompt: <span style="color: Teal;">str</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
         <span style="color: #a11;">"""<br/>ここでは、非常にシンプルなルール式の模擬応答器を示します。<br/>実際に使用する場合：OpenAI/その他のモデルを呼び出すコードに置き換え、model のテキストを返してください。<br/>
         """</span><br/>
-        <span style="color: #a50"># 极简解析示例：识别是否需要判断"下雨"</span><br/>
-        <span style="color: Green;font-weight:bold;">if</span> <span style="color: #a11;">"是否下雨"</span> <span style="color: Green;font-weight:bold;">in</span> prompt <span style="color: Green;font-weight:bold;">or</span> <span style="color: #a11;">"下雨"</span> <span style="color: Green;font-weight:bold;">in</span> prompt:<br/>
+        <span style="color: #a50"># シンプルな解析例：「雨が降る」の判定が必要かどうかを識別する</span><br/>
+        <span style="color: Green;font-weight:bold;">if</span> <span style="color: #a11;">"雨が降るかどうか"</span> <span style="color: Green;font-weight:bold;">in</span> prompt <span style="color: Green;font-weight:bold;">or</span> <span style="color: #a11;">"下雨"</span> <span style="color: Green;font-weight:bold;">in</span> prompt:<br/>
             <span style="color: Green;font-weight:bold;">return</span> <span style="color: #a11;">"请先查询天气；如果有雨，请生成提醒并发送给目标联系人。"</span><br/>
         <span style="color: Green;font-weight:bold;">if</span> <span style="color: #a11;">"生成提醒"</span> <span style="color: Green;font-weight:bold;">in</span> prompt:<br/>
             <span style="color: Green;font-weight:bold;">return</span> <span style="color: #a11;">"请提醒小王：明天北京有雨，请带伞。"</span><br/>
-        <span style="color: Green;font-weight:bold;">return</span> <span style="color: #a11;">"我理解了。"</span><br/>
+        <span style="color: Green;font-weight:bold;">return</span> <span style="color: #a11;">"理解しました。"</span><br/>
 <br/>
 <span style="color: #a50"># -----------------------------</span><br/>
-<span style="color: #a50"># 工具注册与模拟工具</span><br/>
+<span style="color: #a50"># ツール登録とシミュレーションツール</span><br/>
 <span style="color: #a50"># -----------------------------</span><br/>
 <span style="color: Green;font-weight:bold;">class</span> ToolRegistry:<br/>
     <span style="color: Green;font-weight:bold;">def</span> <span style="color: Navy;">__init__</span><span style="color: Olive;">(</span><span style="color: Teal;">self</span><span style="color: Olive;">)</span>:<br/>
@@ -250,7 +250,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <br/>
 <span style="color: #a50"># 模拟工具：简单搜索（示意）</span><br/>
 <span style="color: Green;font-weight:bold;">def</span> mock_search<span style="color: Olive;">(</span>query: <span style="color: Teal;">str</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
-    <span style="color: Green;font-weight:bold;">return</span> f<span style="color: #a11;">"模拟搜索结果：关于 `{query}` 的信息摘要。"</span><br/>
+    <span style="color: Green;font-weight:bold;">return</span> f<span style="color: #a11;">"模擬検索結果：`{query}` に関する情報の要約。"</span><br/>
 <br/>
 <span style="color: #a50"># -----------------------------</span><br/>
 <span style="color: #a50"># Planner / Executor</span><br/>
@@ -286,9 +286,9 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
             <span style="color: #a50"># 简单规则决策</span><br/>
             <span style="color: Green;font-weight:bold;">if</span> weather.<span style="color: #05a;">get</span><span style="color: Olive;">(</span><span style="color: #a11;">"cond"</span><span style="color: Olive;">)</span> <span style="color: Gray;">==</span> <span style="color: #a11;">"雨"</span>:<br/>
                 <span style="color: #a50"># 让 LLM 生成提醒文本（示例）</span><br/>
-                prompt <span style="color: Gray;">=</span> f<span style="color: #a11;">"基于天气信息：{weather}，生成一条发给{params['contact_name']}的提醒。"</span><br/>
+                prompt <span style="color: Gray;">=</span> f<span style="color: #a11;">天気情報：{weather}に基づいて、{params['contact_name']}に送るリマインダーを生成します。</span><br/>
                 reminder <span style="color: Gray;">=</span> <span style="color: Teal;">self</span>.<span style="color: #05a;">llm</span>.<span style="color: #05a;">generate</span><span style="color: Olive;">(</span>prompt<span style="color: Olive;">)</span><br/>
-                <span style="color: #a50"># 从长期记忆中获取联系方式</span><br/>
+                <span style="color: #a50"># 長期記憶から連絡先を取得する</span><br/>
                 contact <span style="color: Gray;">=</span> <span style="color: Teal;">self</span>.<span style="color: #05a;">memory</span>.<span style="color: #05a;">get_long</span><span style="color: Olive;">(</span>params<span style="color: Olive;">[</span><span style="color: #a11;">"contact_name"</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span> <span style="color: Green;font-weight:bold;">or</span> <span style="color: #a11;">"13800000000"</span><br/>
                 ok <span style="color: Gray;">=</span> <span style="color: Teal;">self</span>.<span style="color: #05a;">tools</span>.<span style="color: #05a;">call</span><span style="color: Olive;">(</span><span style="color: #a11;">"send_message"</span><span style="color: Gray;">,</span> contact<span style="color: Gray;">,</span> reminder<span style="color: Olive;">)</span><br/>
                 <span style="color: Green;font-weight:bold;">return</span> <span style="color: Olive;">{</span><span style="color: #a11;">"notified"</span>: ok<span style="color: Gray;">,</span> <span style="color: #a11;">"message"</span>: reminder<span style="color: Olive;">}</span><br/>
@@ -312,7 +312,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         <span style="color: Teal;">self</span>.<span style="color: #05a;">tools</span>.<span style="color: #05a;">register</span><span style="color: Olive;">(</span><span style="color: #a11;">"weather"</span><span style="color: Gray;">,</span> mock_weather_api<span style="color: Olive;">)</span><br/>
         <span style="color: Teal;">self</span>.<span style="color: #05a;">tools</span>.<span style="color: #05a;">register</span><span style="color: Olive;">(</span><span style="color: #a11;">"send_message"</span><span style="color: Gray;">,</span> mock_send_message<span style="color: Olive;">)</span><br/>
         <span style="color: Teal;">self</span>.<span style="color: #05a;">tools</span>.<span style="color: #05a;">register</span><span style="color: Olive;">(</span><span style="color: #a11;">"search"</span><span style="color: Gray;">,</span> mock_search<span style="color: Olive;">)</span><br/>
-        <span style="color: #a50"># 假设长期记忆里存了小王的联系方式</span><br/>
+        <span style="color: #a50"># 長期記憶に小王の連絡先が保存されていると仮定する</span><br/>
         <span style="color: Teal;">self</span>.<span style="color: #05a;">memory</span>.<span style="color: #05a;">set_long</span><span style="color: Olive;">(</span><span style="color: #a11;">"小王"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"13911112222"</span><span style="color: Olive;">)</span><br/>
 <br/>
     <span style="color: Green;font-weight:bold;">def</span> handle<span style="color: Olive;">(</span><span style="color: Teal;">self</span><span style="color: Gray;">,</span> user_prompt: <span style="color: Teal;">str</span><span style="color: Olive;">)</span>:<br/>
@@ -333,7 +333,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: #a50"># -----------------------------</span><br/>
 <span style="color: Green;font-weight:bold;">if</span> __name__ <span style="color: Gray;">==</span> <span style="color: #a11;">"__main__"</span>:<br/>
     agent <span style="color: Gray;">=</span> SimpleAgent<span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
-    task <span style="color: Gray;">=</span> <span style="color: #a11;">"查一下明天北京的天气，如果下雨，帮我写个提醒并发给小王。"</span><br/>
+    task <span style="color: Gray;">=</span> <span style="color: #a11;">"明日の北京の天気を調べて、もし雨が降ったら、リマインダーを書いて小王に送ってください。"</span><br/>
     out <span style="color: Gray;">=</span> agent.<span style="color: #05a;">handle</span><span style="color: Olive;">(</span>task<span style="color: Olive;">)</span><br/>
     <span style="color: Green;font-weight:bold;">import</span> json<br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>json.<span style="color: #05a;">dumps</span><span style="color: Olive;">(</span>out<span style="color: Gray;">,</span> ensure_ascii<span style="color: Gray;">=</span><span style="color: Teal;">False</span><span style="color: Gray;">,</span> indent<span style="color: Gray;">=</span><span style="color: Maroon;">2</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
@@ -343,7 +343,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <li><strong>LLM 抽象</strong>：<code>LLMInterface.generate()</code>は置き換え可能なポイントです。ここを OpenAI、Claude、またはローカル LLM に接続するコードに変更すれば OK です。</li>
 <li><strong>プランナー（Planner）</strong>：自然言語の目標を順序付けられたステップに分解します。入門者はルールやテンプレートを使い、上級者は LLM にステップを出力させてアクションへ解析できます。</li>
 <li><strong>ツール層（Tools）</strong>：各ツールは独立した関数で、一元的に<code>ToolRegistry</code>登録されます。実際のプロジェクトでは、HTTP リクエスト、SDK 呼び出し、データベースの読み書きなどが該当します。</li>
-<li><strong>メモリ（Memory）</strong>：短期/長期を区別します。短期は現在のタスクの中間結果に、長期は連絡先や好みなどに使用します。</li>
+<li><strong>メモリ（Memory）</strong>短期/長期を区別します。短期は現在のタスクの中間結果に、長期は連絡先や好みなどに使用します。</li>
 <li><strong>実行器（Executor）</strong>：ステップをツール呼び出しにマッピングし、戻り値、失敗、リトライのロジックを処理します。</li>
 </ol>
 <hr/>
@@ -366,7 +366,7 @@ pip3 install openai</pre><p>以下のコードで実行が成功するかテス�
 <span style="color: Green;font-weight:bold;">from</span> openai <span style="color: Green;font-weight:bold;">import</span> OpenAI<br/>
 <br/>
 <br/>
-DEEPSEEK_API_KEY <span style="color: Gray;">=</span> <span style="color: #a11;">"sk-xxxxxxx"</span>  <span style="color: #a50"># 这里设置你申请的 key</span><br/>
+DEEPSEEK_API_KEY <span style="color: Gray;">=</span> <span style="color: #a11;">"sk-xxxxxxx"</span>  <span style="color: #a50"># ここに申請したキーを設定する</span><br/>
 DEEPSEEK_API_URL <span style="color: Gray;">=</span> <span style="color: #a11;">"https://api.deepseek.com/v1"</span><br/>
 <br/>
 client <span style="color: Gray;">=</span> OpenAI<span style="color: Olive;">(</span><br/>
@@ -395,7 +395,7 @@ Hello! How can I assist you today?</pre>
 <span style="color: Green;font-weight:bold;">import</span> <span style="color: #05a;">os</span><br/>
 <br/>
 <br/>
-DEEPSEEK_API_KEY <span style="color: Gray;">=</span> <span style="color: #a11;">"sk-xxxxxxx"</span>  <span style="color: #a50"># 这里设置你申请的 key</span><br/>
+DEEPSEEK_API_KEY <span style="color: Gray;">=</span> <span style="color: #a11;">"sk-xxxxxxx"</span>  <span style="color: #a50"># ここに申請したキーを設定する</span><br/>
 DEEPSEEK_API_URL <span style="color: Gray;">=</span> <span style="color: #a11;">"https://api.deepseek.com/v1"</span><br/>
 <br/>
 client <span style="color: Gray;">=</span> OpenAI<span style="color: Olive;">(</span><br/>
@@ -403,13 +403,13 @@ client <span style="color: Gray;">=</span> OpenAI<span style="color: Olive;">(</
     base_url <span style="color: Gray;">=</span> DEEPSEEK_API_URL<span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">class</span> AgentBrain:<br/>
-    <span style="color: #a11;">"""Agent 的大脑，负责思考与决策"""</span><br/>
+    <span style="color: #a11;">Agentの頭脳、思考と意思決定を担当する</span><br/>
     <br/>
     <span style="color: Green;font-weight:bold;">def</span> <span style="color: Navy;">__init__</span><span style="color: Olive;">(</span><span style="color: Teal;">self</span><span style="color: Gray;">,</span> model<span style="color: Gray;">=</span><span style="color: #a11;">"deepseek-v4-flash"</span><span style="color: Olive;">)</span>:<br/>
         <span style="color: Teal;">self</span>.<span style="color: #05a;">model</span> <span style="color: Gray;">=</span> model<br/>
     <br/>
     <span style="color: Green;font-weight:bold;">def</span> think<span style="color: Olive;">(</span><span style="color: Teal;">self</span><span style="color: Gray;">,</span> prompt<span style="color: Olive;">)</span>:<br/>
-        <span style="color: #a11;">"""核心思考函数：接收提示，返回模型的思考结果"""</span><br/>
+        <span style="color: #a11;">"""コア思考関数：プロンプトを受け取り、モデルの思考結果を返す"""</span><br/>
         <span style="color: Green;font-weight:bold;">try</span>:<br/>
             <span style="color: #a50"># 使用客户端调用 Chat Completions API（v1.x 版本写法）</span><br/>
             response <span style="color: Gray;">=</span> client.<span style="color: #05a;">chat</span>.<span style="color: #05a;">completions</span>.<span style="color: #05a;">create</span><span style="color: Olive;">(</span><br/>
@@ -418,13 +418,13 @@ client <span style="color: Gray;">=</span> OpenAI<span style="color: Olive;">(</
                 temperature<span style="color: Gray;">=</span><span style="color: Maroon;">0.5</span><span style="color: Gray;">,</span>  <span style="color: #a50"># 控制创造性，越低越专注</span><br/>
                 max_tokens<span style="color: Gray;">=</span><span style="color: Maroon;">500</span>    <span style="color: #a50"># 控制回复长度</span><br/>
             <span style="color: Olive;">)</span><br/>
-            <span style="color: #a50"># 提取模型返回的文本内容（v1.x 版本属性路径变更）</span><br/>
+            <span style="color: #a50"># モデルが返したテキスト内容を抽出する（v1.x バージョンの属性パス変更）</span><br/>
             reasoning <span style="color: Gray;">=</span> response.<span style="color: #05a;">choices</span><span style="color: Olive;">[</span><span style="color: Maroon;">0</span><span style="color: Olive;">]</span>.<span style="color: #05a;">message</span>.<span style="color: #05a;">content</span><br/>
             <span style="color: Green;font-weight:bold;">return</span> reasoning.<span style="color: #05a;">strip</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
         <span style="color: Green;font-weight:bold;">except</span> <span style="color: Teal;">Exception</span> <span style="color: Green;font-weight:bold;">as</span> e:<br/>
             <span style="color: Green;font-weight:bold;">return</span> f<span style="color: #a11;">"思考过程出错: {e}"</span><br/>
 <br/>
-<span style="color: #a50"># 简单测试一下大脑是否工作</span><br/>
+<span style="color: #a50"># 簡単に脳が動作するかテストする</span><br/>
 <span style="color: Green;font-weight:bold;">if</span> __name__ <span style="color: Gray;">==</span> <span style="color: #a11;">"__main__"</span>:<br/>
     brain <span style="color: Gray;">=</span> AgentBrain<span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
     test_prompt <span style="color: Gray;">=</span> <span style="color: #a11;">"你好，请简单介绍一下你自己。"</span><br/>
@@ -485,7 +485,7 @@ client <span style="color: Gray;">=</span> OpenAI<span style="color: Olive;">(</
     <span style="color: Green;font-weight:bold;">def</span> get_current_time<span style="color: Olive;">(</span><span style="color: Olive;">)</span>:<br/>
         <span style="color: #a11;">"""現在時刻を取得するツール"""</span><br/>
         now <span style="color: Gray;">=</span> <span style="color: #05a;">datetime</span>.<span style="color: #05a;">datetime</span>.<span style="color: #05a;">now</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
-        <span style="color: Green;font-weight:bold;">return</span> f<span style="color: #a11;">"[システム時刻] 現在：{now.strftime('%Y-%m-%d %H:%M:%S')}"</span><br/>
+        <span style="color: Green;font-weight:bold;">return</span> f<span style="color: #a11;">[システム時刻] 現在：{now.strftime('%Y-%m-%d %H:%M:%S')}</span><br/>
     <br/>
     <span style="color: Gray;">@</span><span style="color: Teal;">staticmethod</span><br/>
     <span style="color: Green;font-weight:bold;">def</span> calculate<span style="color: Olive;">(</span>expression<span style="color: Olive;">)</span>:<br/>
@@ -686,7 +686,7 @@ client <span style="color: Gray;">=</span> OpenAI<span style="color: Olive;">(</
 <li><p><strong>演習3：新しいツールを追加する</strong></p>
 <ul>
 <li><strong>目標</strong>：Agent が ToDo を処理できるようにする。</li>
-<li><strong>ヒント</strong>：<code>AgentTools</code>クラスに追加<code>todo_list = []</code>と2つの新しいメソッド：<code>add_todo(item)</code> 和 <code>show_todos()</code>。ツールの説明で脳にこの新しいツールの存在を伝え、更新します<code>_use_tool</code>方法でそれを呼び出します。</li>
+<li><strong>ヒント</strong>：<code>AgentTools</code>クラスに追加<code>todo_list = []</code>と2つの新しいメソッド：<code>add_todo(item)</code>と<code>show_todos()</code>。ツールの説明で脳にこの新しいツールの存在を伝え、更新します<code>_use_tool</code>方法でそれを呼び出します。</li>
 </ul>
 </li>
 </ol>
@@ -820,11 +820,11 @@ client <span style="color: Gray;">=</span> OpenAI<span style="color: Olive;">(</
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1113,7 +1113,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

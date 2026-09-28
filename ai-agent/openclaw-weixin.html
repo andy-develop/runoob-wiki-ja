@@ -256,16 +256,16 @@ openclaw plugins install "@tencent-weixin/openclaw-weixin"</pre>
   <span style="color: #006600; font-style: italic;">//  console.log("  详见 https://docs.openclaw.ai/install");</span><br/>
   <span style="color: #006600; font-style: italic;">//  process.exit(1);</span><br/>
   <span style="color: #006600; font-style: italic;">//}</span><br/>
-  log<span style="color: #009900;">(</span><span style="color: #3366CC;">"已找到本地安装的 openclaw"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+  log<span style="color: #009900;">(</span><span style="color: #3366CC;">"ローカルにインストールされた openclaw が見つかりました"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
   <span style="color: #006600; font-style: italic;">// 2. Install plugin via openclaw</span><br/>
-  log<span style="color: #009900;">(</span><span style="color: #3366CC;">"正在安装插件..."</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+  log<span style="color: #009900;">(</span><span style="color: #3366CC;">"プラグインをインストール中..."</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
   <span style="color: #000066; font-weight: bold;">try</span> <span style="color: #009900;">{</span><br/>
     <span style="color: #000066; font-weight: bold;">const</span> installOut <span style="color: #339933;">=</span> run<span style="color: #009900;">(</span>`openclaw plugins install <span style="color: #3366CC;">"${PLUGIN_SPEC}"</span>`<span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
     <span style="color: #000066; font-weight: bold;">if</span> <span style="color: #009900;">(</span>installOut<span style="color: #009900;">)</span> log<span style="color: #009900;">(</span>installOut<span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
   <span style="color: #009900;">}</span> <span style="color: #000066; font-weight: bold;">catch</span> <span style="color: #009900;">(</span>installErr<span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
     <span style="color: #000066; font-weight: bold;">if</span> <span style="color: #009900;">(</span>installErr.<span style="color: #660066;">stderr</span> <span style="color: #339933;">&amp;&amp;</span> installErr.<span style="color: #660066;">stderr</span>.<span style="color: #660066;">includes</span><span style="color: #009900;">(</span><span style="color: #3366CC;">"already exists"</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
-      log<span style="color: #009900;">(</span><span style="color: #3366CC;">"检测到本地已安装，正在更新..."</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+      log<span style="color: #009900;">(</span><span style="color: #3366CC;">"ローカルにインストール済みを検出、更新中..."</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
       <span style="color: #000066; font-weight: bold;">try</span> <span style="color: #009900;">{</span><br/>
         <span style="color: #000066; font-weight: bold;">const</span> updateOut <span style="color: #339933;">=</span> run<span style="color: #009900;">(</span>`openclaw plugins update <span style="color: #3366CC;">"${CHANNEL_ID}"</span>`<span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
         <span style="color: #000066; font-weight: bold;">if</span> <span style="color: #009900;">(</span>updateOut<span style="color: #009900;">)</span> log<span style="color: #009900;">(</span>updateOut<span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
@@ -294,7 +294,7 @@ openclaw plugins install "@tencent-weixin/openclaw-weixin"</pre>
   <span style="color: #009900;">}</span><br/>
 <br/>
   <span style="color: #006600; font-style: italic;">// 4. Restart gateway so it picks up the new account</span><br/>
-  log<span style="color: #009900;">(</span><span style="color: #3366CC;">"正在重启 OpenClaw Gateway..."</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+  log<span style="color: #009900;">(</span><span style="color: #3366CC;">OpenClaw Gateway を再起動しています...</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
   <span style="color: #000066; font-weight: bold;">try</span> <span style="color: #009900;">{</span><br/>
     run<span style="color: #009900;">(</span>`openclaw gateway restart`<span style="color: #339933;">,</span> <span style="color: #009900;">{</span> silent<span style="color: #339933;">:</span> <span style="color: #003366; font-weight: bold;">false</span> <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
   <span style="color: #009900;">}</span> <span style="color: #000066; font-weight: bold;">catch</span> <span style="color: #009900;">{</span><br/>
@@ -513,11 +513,11 @@ SOFTWARE.</pre>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に必ず<a href=";.html" class="runoob-pop">ログイン</a>してください！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に必ず<a class="runoob-pop" href=";.html">ログイン</a>してください！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -806,7 +806,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

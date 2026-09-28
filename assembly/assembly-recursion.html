@@ -167,7 +167,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>再帰（Recursion）は関数が自身を呼び出す技術です。アセンブリで再帰を実装するにはスタックフレームを適切に管理する必要があり、各呼び出しには独立した引数とローカル変数のコピーがあります。</p>
 <hr/>
 <h2>再帰の原理とスタックフレーム</h2>
-<p>再帰の核心は<span class="marked">每次调用创建新的栈帧</span>、現在の状態をスタックに保存する。</p>
+<p>再帰の核心は<span class="marked">呼び出しのたびに新しいスタックフレームを作成</span>、現在の状態をスタックに保存する。</p>
 <p>再帰呼び出しのたびに、引数、戻り先アドレス、ローカル変数がスタックにプッシュされる。再帰が終了すると、スタックフレームが階層ごとにポップされ、各階層は子呼び出しの結果を受け取り、計算を完了する。</p>
 <table class="reference">
 <tr><th>递归要素</th><th>说明</th><th>汇编实现</th></tr>
@@ -216,7 +216,7 @@ _start<span style="color: #339933;">:</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 简单输出数字（仅用于个位数演示）</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>result<span style="color: #009900; font-weight: bold;">]</span><br/>
-    <span style="color: #666666; font-style: italic;">; 这里简化处理</span><br/>
+    <span style="color: #666666; font-style: italic;">; ここでは簡略化処理</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">eax</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
     <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
@@ -237,7 +237,7 @@ factorial<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">jmp</span> factorial_end<br/>
 <br/>
 recurse<span style="color: #339933;">:</span><br/>
-    <span style="color: #666666; font-style: italic;">; 保存当前 n 的值（寄存器会被递归调用破坏）</span><br/>
+    <span style="color: #666666; font-style: italic;">; 現在の n の値を保存（レジスタは再帰呼び出しによって破壊される）</span><br/>
     <span style="color: #00007F; font-weight: bold;">push</span> <span style="color: #46AA03; font-weight: bold;">eax</span>                     <span style="color: #666666; font-style: italic;">; 保存 n</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 递归调用 factorial(n-1)</span><br/>
@@ -251,7 +251,7 @@ recurse<span style="color: #339933;">:</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; eax = n * factorial(n-1)</span><br/>
     <span style="color: #00007F; font-weight: bold;">mul</span> <span style="color: #46AA03; font-weight: bold;">ebx</span>                      <span style="color: #666666; font-style: italic;">; edx:eax = eax * ebx</span><br/>
-    <span style="color: #666666; font-style: italic;">; 对于较小的 n，edx 为 0，结果全在 eax 中</span><br/>
+    <span style="color: #666666; font-style: italic;">; 小さい n の場合、edx は 0 で、結果はすべて eax にあります。</span><br/>
 <br/>
 factorial_end<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">pop</span> <span style="color: #46AA03; font-weight: bold;">ebp</span>                      <span style="color: #666666; font-style: italic;">; 恢复旧栈帧</span><br/>
@@ -279,7 +279,7 @@ factorial(5)
 <h2 class="example">实例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;">; 文件路径：fibonacci.asm</span><br/>
-<span style="color: #666666; font-style: italic;">; 递归计算斐波那契数列：fib(n) = fib(n-1) + fib(n-2)</span><br/>
+<span style="color: #666666; font-style: italic;">; 再帰のにフィボナッチ数列を計算: fib(n) = fib(n-1) + fib(n-2)</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
     n <span style="color: #0000FF; font-weight: bold;">dd</span> <span style="color: #FF0000;">10</span>                      <span style="color: #666666; font-style: italic;">; 计算 fib(10)</span><br/>
@@ -315,7 +315,7 @@ fibonacci<span style="color: #339933;">:</span><br/>
 <br/>
 fib_recurse<span style="color: #339933;">:</span><br/>
     <span style="color: #666666; font-style: italic;">; ★ 注意：递归有两个分支，需要仔细管理栈</span><br/>
-    <span style="color: #00007F; font-weight: bold;">push</span> <span style="color: #46AA03; font-weight: bold;">ebx</span>                     <span style="color: #666666; font-style: italic;">; 保存 ebx（将被用于保存中间结果）</span><br/>
+    <span style="color: #00007F; font-weight: bold;">push</span> <span style="color: #46AA03; font-weight: bold;">ebx</span>                     <span style="color: #666666; font-style: italic;">; ebx を保存する（中間結果の保存に使用される）</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 计算 fib(n-1)</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46AA03; font-weight: bold;">ebp</span> <span style="color: #339933;">+</span> <span style="color: #FF0000;">8</span><span style="color: #009900; font-weight: bold;">]</span><br/>
@@ -360,7 +360,7 @@ fib_end<span style="color: #339933;">:</span><br/>
 <br/>
 _start<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>n<span style="color: #009900; font-weight: bold;">]</span>                 <span style="color: #666666; font-style: italic;">; ecx = n</span><br/>
-    <span style="color: #00007F; font-weight: bold;">dec</span> <span style="color: #46AA03; font-weight: bold;">ecx</span>                      <span style="color: #666666; font-style: italic;">; 循环 n-1 次（从第 2 项开始）</span><br/>
+    <span style="color: #00007F; font-weight: bold;">dec</span> <span style="color: #46AA03; font-weight: bold;">ecx</span>                      <span style="color: #666666; font-style: italic;">; n-1 回ループする（第2項から開始）</span><br/>
 <br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>                   <span style="color: #666666; font-style: italic;">; fib(0) = 0</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span>                   <span style="color: #666666; font-style: italic;">; fib(1) = 1</span><br/>
@@ -369,13 +369,13 @@ _start<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">jle</span> fib_done                 <span style="color: #666666; font-style: italic;">; n &lt;= 1，直接返回</span><br/>
 <br/>
 fib_loop<span style="color: #339933;">:</span><br/>
-    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">ebx</span>                 <span style="color: #666666; font-style: italic;">; 保存旧的 fib(n-1)</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">ebx</span>                 <span style="color: #666666; font-style: italic;">; 古い fib(n-1) を保存</span><br/>
     <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">eax</span>                 <span style="color: #666666; font-style: italic;">; ebx = fib(n-1) + fib(n-2)</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">edx</span>                 <span style="color: #666666; font-style: italic;">; 更新 fib(n-2)</span><br/>
     <span style="color: #00007F; font-weight: bold;">loop</span> fib_loop<br/>
 <br/>
 fib_done<span style="color: #339933;">:</span><br/>
-    <span style="color: #666666; font-style: italic;">; 对于 n=10，最后 ebx = 55</span><br/>
+    <span style="color: #666666; font-style: italic;">; n=10 の場合、最終のに ebx = 55</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">ebx</span>                 <span style="color: #666666; font-style: italic;">; 返回值 = fib(n)</span><br/>
     <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
@@ -510,11 +510,11 @@ fib_done<span style="color: #339933;">:</span><br/>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -803,7 +803,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

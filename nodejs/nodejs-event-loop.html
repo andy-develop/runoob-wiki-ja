@@ -168,8 +168,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>イベントループにより、Node.js はコードをノンブロッキングで実行し、複数の接続を処理し、非同期 I/O 操作を実行できます。</p>
 <p>イベントループにより、Node.js はスレッドをブロックすることなく大量の同時 I/O 操作を処理できます。これは Node.js が同時リクエストを効率的に処理するための鍵です。</p>
 <p><img decoding="async" src="../wp-content/uploads/2014/03/1_SvTxMIEudVv8YRW_ELRamw.png"/></p>
-<h3>イベントループの段階</h3><p>イベントループは複数の段階に分かれており、各段階が特定のタスクを処理します。主要な段階は次のとおりです：</p><ul><li><strong>Timers</strong>：実行<code>setTimeout()</code> 和 <code>setInterval()</code>のコールバック。</li><li><strong>I/O Callbacks</strong>：遅延された I/O コールバックを処理する。</li><li><strong>Idle, prepare</strong>：内部で使用され、あまり一般的ではない。</li><li><strong>Poll</strong>：新しい I/O イベントを取得し、I/O 関連のコールバックを実行する。</li><li><strong>Check</strong>：実行<code>setImmediate()</code>コールバック。</li><li><strong>Close Callbacks</strong>：クローズコールバックを処理します。例えば<code>socket.on('close', ...)</code>。</li></ul>
-<h3>イベントループの流れ</h3><ul><li><strong>タスクがイベントループキューに入る</strong>。</li><li>イベントループは段階の順序に沿って処理を行い、各段階には独自のコールバックキューがあります。</li><li>イベントループは<code>poll</code>段階で新しいイベントの到着を待ち、イベントがない場合は他の段階のコールバックを確認します。</li><li>もし<code>setImmediate()</code> 和 <code>setTimeout()</code>が両方存在する場合、<code>setImmediate()</code> 在 <code>check</code>段階が先に実行され、<code>setTimeout()</code> 在 <code>timers</code>段階が実行されます。</li></ul>
+<h3>イベントループの段階</h3><p>イベントループは複数の段階に分かれており、各段階が特定のタスクを処理します。主要な段階は次のとおりです：</p><ul><li><strong>Timers</strong>：実行<code>setTimeout()</code>と<code>setInterval()</code>のコールバック。</li><li><strong>I/O Callbacks</strong>：遅延された I/O コールバックを処理する。</li><li><strong>Idle, prepare</strong>：内部で使用され、あまり一般的ではない。</li><li><strong>Poll</strong>：新しい I/O イベントを取得し、I/O 関連のコールバックを実行する。</li><li><strong>Check</strong>：実行<code>setImmediate()</code>コールバック。</li><li><strong>Close Callbacks</strong>：クローズコールバックを処理します。例えば<code>socket.on('close', ...)</code>。</li></ul>
+<h3>イベントループの流れ</h3><ul><li><strong>タスクがイベントループキューに入る</strong>。</li><li>イベントループは段階の順序に沿って処理を行い、各段階には独自のコールバックキューがあります。</li><li>イベントループは<code>poll</code>段階で新しいイベントの到着を待ち、イベントがない場合は他の段階のコールバックを確認します。</li><li>もし<code>setImmediate()</code>と<code>setTimeout()</code>が両方存在する場合、<code>setImmediate()</code>に<code>check</code>段階が先に実行され、<code>setTimeout()</code>に<code>timers</code>段階が実行されます。</li></ul>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 setTimeout<span style="color: #009900;">(</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
   console.<span style="color: #660066;">log</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'Timeout callback'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
@@ -181,7 +181,7 @@ setImmediate<span style="color: #009900;">(</span><span style="color: #009900;">
 <br/>
 console.<span style="color: #660066;">log</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'Main thread execution'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 </div></div><p>出力順序：</p>
-<ul><li><code>Main thread execution</code>先に出力されます。</li><li><code>setImmediate()</code> 和 <code>setTimeout()</code>の実行順序は現在のイベントループの状態に依存し、一般的に<code>setImmediate()</code>が先に実行されます。</li></ul>
+<ul><li><code>Main thread execution</code>先に出力されます。</li><li><code>setImmediate()</code>と<code>setTimeout()</code>の実行順序は現在のイベントループの状態に依存し、一般的に<code>setImmediate()</code>が先に実行されます。</li></ul>
 <h3>マクロタスクとマイクロタスク</h3><ul><li><strong>マクロタスク</strong>：<code>setTimeout</code>、<code>setInterval</code>、<code>setImmediate</code>、I/O 操作など。</li><li><strong>マイクロタスク</strong>：<code>process.nextTick</code>、<code>Promise.then</code>。</li></ul>
 <p><strong>実行順序：</strong>マイクロタスクはマクロタスクよりも優先度が高く、現在の段階のコールバック終了後にすぐに実行されます。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
@@ -445,7 +445,7 @@ Error: ENOENT, open 'input.txt'
 <p>例を挙げると、CPU を私たち一人ひとりに例えます。食事の時間になり、多くの料理（CPU 内のプロセス）を注文できます：宮保鶏丁、魚香肉絲、酸辣土豆丝。各料理が具体的に何を含むか（CPU の各プロセス内のスレッド）：宮保鶏丁（詳細：キュウリ、ニンジン、鶏肉、ピーナッツ）。その詳細が宮保鶏丁という料理を構成し、食べると空腹になりません。すると仕事ができます。CPU のプロセス内のスレッドも同様です。スレッドが自身の内容を完了し、結果をプロセスに返し、プロセスが CPU に返すとき、CPU は日常の要求を処理できます。</p>
 <ul><li>シングルプロセス・シングルスレッド：苦瓜の炒め物一皿で、中には苦瓜だけが入っています。</li><li>シングルプロセス・マルチスレッド：宮保鶏丁一皿で、中にはキュウリ、ニンジン、鶏肉、ピーナッツが入っています。</li></ul><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">岳小弟</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>岳小弟</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  shu***zizuo2018@126.com</p></div></span>9年前 (2018-01-05)</div></div></li><!-- #comment-## -->
 <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-23603"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   lu</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  bai***tar@gmail.com</p></div><div class="upvotejs" data-commid="23603" id="runoobvote-id-23603"><a class="upvote"></a> <span class="count">40</span></div></div><div class="comt-main" id="div-comment-23603"><p data-commid="26845" data-title="Node.js  eventEmitter.on 与 eventEmitter.emit"><strong>まずイベントについて説明します</strong></p>
-<p>イベントとは、必要なのは<strong>eventEmitter.on</strong>イベントをバインドするために、を通じて<strong>eventEmitter.emit</strong>このイベントをトリガーすることです。次に言うのは、イベントの<strong>受信</strong> 和 <strong>発生</strong>は分かれています。例えば、出前店では絶えず多くの注文を受け付けることができ、受け付けた後で料理人に作るよう伝えます。できあがった出前は各ユーザーに配送します。シングルスレッドの場合は、1つの注文を受け取り、完成した後に次の出前注文を受け取るだけなので、明らかに効率が非常に低いです。</p>
+<p>イベントとは、必要なのは<strong>eventEmitter.on</strong>イベントをバインドするために、を通じて<strong>eventEmitter.emit</strong>このイベントをトリガーすることです。次に言うのは、イベントの<strong>受信</strong>と<strong>発生</strong>は分かれています。例えば、出前店では絶えず多くの注文を受け付けることができ、受け付けた後で料理人に作るよう伝えます。できあがった出前は各ユーザーに配送します。シングルスレッドの場合は、1つの注文を受け取り、完成した後に次の出前注文を受け取るだけなので、明らかに効率が非常に低いです。</p>
 <p>イベントは絶えず受け付け、絶えず発生させることができるのも、効率を上げるためです。</p><div class="comt-meta wrapper"><span class="comt-author"><a href="../note/23603.html" target="_blank">lu</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   lu</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  bai***tar@gmail.com</p></div></span>9年前 (2018-01-28)</div></div></li><!-- #comment-## -->
 <li class="comment even thread-even depth-1" id="comment-26845"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>Java開発の古参初心者</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  sam***@foxmail.com</p></div><div class="upvotejs" data-commid="26845" id="runoobvote-id-26845"><a class="upvote"></a> <span class="count">32</span></div></div><div class="comt-main" id="div-comment-26845"><p>1、eventEmitter.emit はイベント（イベントリクエスト）をトリガーし、eventEmitter.on はイベントを処理するハンドラー（イベント処理）をバインドします。イベントのリクエストと処理は分離されているため、非同期です。</p>
 <p>2、以下の2つの例を一緒に書いて実行すると：</p>
@@ -506,11 +506,11 @@ eventEmitter.on('connection', connectHandler);//注册一个connection事件，c
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>する必要があります！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>する必要があります！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -799,7 +799,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

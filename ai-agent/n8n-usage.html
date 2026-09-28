@@ -450,7 +450,7 @@ URL：https://hacker-news.firebaseio.com/v0/topstories.json
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #006600; font-style: italic;">// 取前 5 个故事 ID，返回为独立的 JSON 对象</span><br/>
+<span style="color: #006600; font-style: italic;">// 最初の5つのストーリーIDを取得し、独立したJSONオブジェクトとして返す</span><br/>
 <span style="color: #000066; font-weight: bold;">const</span> topIds <span style="color: #339933;">=</span> $input.<span style="color: #660066;">first</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span>.<span style="color: #660066;">json</span>.<span style="color: #660066;">slice</span><span style="color: #009900;">(</span><span style="color: #CC0000;">0</span><span style="color: #339933;">,</span> <span style="color: #CC0000;">5</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <span style="color: #000066; font-weight: bold;">return</span> topIds.<span style="color: #660066;">map</span><span style="color: #009900;">(</span>id <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">(</span><span style="color: #009900;">{</span> json<span style="color: #339933;">:</span> <span style="color: #009900;">{</span> id <span style="color: #009900;">}</span> <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 </div>
@@ -469,13 +469,13 @@ URL：https://hacker-news.firebaseio.com/v0/item/{{ $json.id }}.json
 <div class="example_code">
 <span style="color: #000066; font-weight: bold;">const</span> items <span style="color: #339933;">=</span> $input.<span style="color: #660066;">all</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
-<span style="color: #006600; font-style: italic;">// 遍历所有文章，格式化为 Slack 消息格式</span><br/>
+<span style="color: #006600; font-style: italic;">// すべての記事を走査し、Slack メッセージ形式にフォーマットする</span><br/>
 <span style="color: #000066; font-weight: bold;">const</span> formatted <span style="color: #339933;">=</span> items.<span style="color: #660066;">map</span><span style="color: #009900;">(</span>item <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
   <span style="color: #000066; font-weight: bold;">const</span> <span style="color: #009900;">{</span> title<span style="color: #339933;">,</span> url<span style="color: #339933;">,</span> score<span style="color: #339933;">,</span> by <span style="color: #009900;">}</span> <span style="color: #339933;">=</span> item.<span style="color: #660066;">json</span><span style="color: #339933;">;</span><br/>
   <span style="color: #000066; font-weight: bold;">return</span> `• <span style="color: #339933;">*</span>$<span style="color: #009900;">{</span>title<span style="color: #009900;">}</span><span style="color: #339933;">*</span>\n  分数<span style="color: #339933;">:</span> $<span style="color: #009900;">{</span>score<span style="color: #009900;">}</span> <span style="color: #339933;">|</span>作者<span style="color: #339933;">:</span> $<span style="color: #009900;">{</span>by<span style="color: #009900;">}</span>\n  $<span style="color: #009900;">{</span>url <span style="color: #339933;">||</span> <span style="color: #3366CC;">'(无链接)'</span><span style="color: #009900;">}</span>`<span style="color: #339933;">;</span><br/>
 <span style="color: #009900;">}</span><span style="color: #009900;">)</span>.<span style="color: #660066;">join</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'<span style="color: #000099; font-weight: bold;">\n</span><span style="color: #000099; font-weight: bold;">\n</span>'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
-<span style="color: #006600; font-style: italic;">// 返回组装好的消息</span><br/>
+<span style="color: #006600; font-style: italic;">// 組み立てたメッセージを返す</span><br/>
 <span style="color: #000066; font-weight: bold;">return</span> <span style="color: #009900;">[</span><span style="color: #009900;">{</span> json<span style="color: #339933;">:</span> <span style="color: #009900;">{</span> message<span style="color: #339933;">:</span> `<span style="color: #339933;">*</span>Hacker News 今日热门<span style="color: #339933;">*</span>\n\n$<span style="color: #009900;">{</span>formatted<span style="color: #009900;">}</span>` <span style="color: #009900;">}</span> <span style="color: #009900;">}</span><span style="color: #009900;">]</span><span style="color: #339933;">;</span><br/>
 </div>
 </div>
@@ -524,9 +524,9 @@ Body: {
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #006600; font-style: italic;">// 处理来自上游的所有条目</span><br/>
+<span style="color: #006600; font-style: italic;">// 上流からのすべての項目を処理する</span><br/>
 <span style="color: #000066; font-weight: bold;">for</span> <span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">const</span> item of $input.<span style="color: #660066;">all</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
-  <span style="color: #006600; font-style: italic;">// 为每条数据添加处理时间戳</span><br/>
+  <span style="color: #006600; font-style: italic;">// 各データに処理タイムスタンプを追加</span><br/>
   item.<span style="color: #660066;">json</span>.<span style="color: #660066;">processedAt</span> <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">new</span> <span style="">Date</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span>.<span style="color: #660066;">toISOString</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <span style="color: #009900;">}</span><br/>
 <span style="color: #000066; font-weight: bold;">return</span> $input.<span style="color: #660066;">all</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
@@ -1327,11 +1327,11 @@ MY_API_BASE_URL=https://api.example.com
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1620,7 +1620,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

@@ -216,7 +216,7 @@ Size of int: 4
 </pre>
 <h2 class="tutheader">参照型（Reference types）</h2>
 <p>参照型には、変数に格納された実際のデータは含まれませんが、変数への参照が含まれます。</p>
-<p>言い換えれば、それらはメモリ位置を指します。複数の変数を使用する場合、参照型は1つのメモリ位置を指すことができます。メモリ位置のデータが1つの変数によって変更されると、他の変数も自動的にこの値の変更を反映します。<b>組み込みの</b>参照型は次のとおりです：<b>object</b>、<b>dynamic</b> 和 <b>string</b>。</p>
+<p>言い換えれば、それらはメモリ位置を指します。複数の変数を使用する場合、参照型は1つのメモリ位置を指すことができます。メモリ位置のデータが1つの変数によって変更されると、他の変数も自動的にこの値の変更を反映します。<b>組み込みの</b>参照型は次のとおりです：<b>object</b>、<b>dynamic</b>と<b>string</b>。</p>
 <h3>オブジェクト（Object）型</h3>
 <p><b>オブジェクト（Object）型</b>は、C# 共通型システム（Common Type System - CTS）におけるすべてのデータ型の最終的な基底クラスです。Object は System.Object クラスの別名です。したがって、オブジェクト（Object）型には、他の任意の型（値型、参照型、定義済み型、ユーザー定義型）の値を割り当てることができます。ただし、値を割り当てる前に、型変換を行う必要があります。</p>
 <p>値型がオブジェクト型に変換される場合、これは<b>ボックス化</b>と呼ばれます。一方、オブジェクト型が値型に変換される場合、これは<b>ボックス化解除</b>。</p>
@@ -436,7 +436,7 @@ namespace RectangleApplication
 <ul><li>1. 値型から新しい型を派生させることはできませんが、構造体はインターフェースを実装できます。</li><li>を「d」に変更すると、「ヒープ」内の 0X55 メモリ空間に保存されている値が変更されます。a2 のアドレスは a1 のアドレスと同じなので、出力結果は a b d になります。</li><li>3. すべての値型には、その型の既定値を初期化する暗黙的なデフォルトコンストラクターがあります。</li></ul><div class="comt-meta wrapper"><span class="comt-author"><a href="../note/24566.html" target="_blank">コード初心者</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>コード初心者</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  dre***w@qq.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="https://docs.microsoft.com/zh-cn/dotnet/csharp/language-reference/keywords/value-types" rel="nofollow" target="_blank">参考アドレス</a></p></div></span>9年前 (2018-03-05)</div></div></li><!-- #comment-## -->
 <li class="comment even thread-even depth-1" id="comment-24903"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>祈祷</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  117***7443@qq.com</p></div><div class="upvotejs" data-commid="24903" id="runoobvote-id-24903"><a class="upvote"></a> <span class="count">185</span></div></div><div class="comt-main" id="div-comment-24903"><p>すべての値型には、自分の値を保存する独立したメモリ領域があり、それを呼び出すときはその値を呼び出します。一方、参照型はメモリ内のアドレスを呼び出します。例えば、参照型 a1=10 を定義すると、メモリには 10 が保存されます。a1 を a2 に代入すると、両者は同じメモリ空間を参照するため、a2 の値は a1 の値として保存されます。a2 を 20 に変更すると、a1 と a2 は同じものを参照しているので、a1 も 20 になります。これが参照型です。値型は、a1 を a2 に代入すると、a2 のために新しい領域を確保して a1 の値を保存します。a2 を 20 に変更すると、a2 の領域に 20 が保存され、a1 とは関係ありません。</p>
 <div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">祈祷</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>祈祷</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  117***7443@qq.com</p></div></span>9年前 (2018-03-12)</div></div></li><!-- #comment-## -->
-<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-26697"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   Exception</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  Exc***ion@qq.cn</p></div><div class="upvotejs" data-commid="26697" id="runoobvote-id-26697"><a class="upvote"></a> <span class="count">324</span></div></div><div class="comt-main" id="div-comment-26697"><p>倉庫のようなものです。倉庫には棚があり、棚には番号が付いています：<strong>A1,A2,A3....................</strong>、これらの番号は参照型と見なすことができます。今、一批の商品が到着しました。その中には、<strong>「じゃがいも、きゅうり、トマト」</strong>、これらが値型です。もし<span class="marked">A1=じゃがいも</span>、その場合はじゃがいもを<strong>A1</strong>中へ運ぶ必要があります。これをボックス化と呼びます。ボックス化には人件費と工数（つまりCPUとメモリ）がかかります。同様に、ボックス化解除は対応する番号の商品を運び出すことで、これにも人件費と工数がかかります。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">Exception</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   Exception</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  Exc***ion@qq.cn</p></div></span>8年前 (2018-04-26)</div></div></li><!-- #comment-## -->
+<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-26697"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   Exception</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  Exc***ion@qq.cn</p></div><div class="upvotejs" data-commid="26697" id="runoobvote-id-26697"><a class="upvote"></a> <span class="count">324</span></div></div><div class="comt-main" id="div-comment-26697"><p>倉庫のようなものです。倉庫には棚があり、棚には番号が付いています：<strong>A1,A2,A3....................</strong>、これらの番号は参照型と見なすことができます。今、一群の商品が到着しました。その中には、<strong>「じゃがいも、きゅうり、トマト」</strong>、これらが値型です。もし<span class="marked">A1=じゃがいも</span>、その場合はじゃがいもを<strong>A1</strong>中へ運ぶ必要があります。これをボックス化と呼びます。ボックス化には人件費と工数（つまりCPUとメモリ）がかかります。同様に、ボックス化解除は対応する番号の商品を運び出すことで、これにも人件費と工数がかかります。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">Exception</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   Exception</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  Exc***ion@qq.cn</p></div></span>8年前 (2018-04-26)</div></div></li><!-- #comment-## -->
 <li class="comment even thread-even depth-1" id="comment-27677"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>王风</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  185***439@qq.com</p></div><div class="upvotejs" data-commid="27677" id="runoobvote-id-27677"><a class="upvote"></a> <span class="count">363</span></div></div><div class="comt-main" id="div-comment-27677"><p data-title="C# 中关于值类型、引用类型以及“栈”跟“堆”的关系"><strong>値型、参照型、および「スタック」と「ヒープ」の関係について</strong></p>
 <p>値型：値型を宣言するとき、「スタック」にメモリ空間を確保して対応する値を格納します。値型の値が変更された場合は、そのメモリ空間に保存されている値を直接変更します。例：</p>
 <pre>int n1 = 5;
@@ -475,11 +475,11 @@ Console.WriteLine(a+" "+b);  //123 456</pre>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>する必要があります！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>する必要があります！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -768,7 +768,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

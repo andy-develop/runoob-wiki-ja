@@ -182,7 +182,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </ul><p>Piniaのフラットな構造により、コンポーネントは任意のStoreに直接接続でき、必要なものを自由に取得できます。ツリー状のモジュールやネームスペースのパスを経由しないため、状態の流れはシンプルかつ直接的で、結合度が低くなります。</p>
 <p><img decoding="async" src="../wp-content/uploads/2025/11/1_vh9Jp418c5YuIwopbolAJw.webp"/></p>
 <hr/>
-<h2>安装与配置</h2>
+<h2>インストールと設定</h2>
 <p>Viteでプロジェクトを作成：</p>
 <pre>npm create vite@latest vue-pinia-demo --template vue
 cd vue-pinia-demo
@@ -199,7 +199,7 @@ yarn add pinia</pre>
 <li>getters：派生データを計算</li>
 <li>actions：ロジックを実行し、stateを変更</li></ul>
 <h3>配置 Pinia</h3>
-<p>在 src/main.js 或 src/main.ts 中配置 Pinia：</p>
+<p>src/main.js または src/main.ts で Pinia を設定します：</p>
 <div class="example">
 <h2 class="example">实例</h2>
 <div class="example_code">
@@ -230,16 +230,16 @@ app.<span style="color: #660066;">mount</span><span style="color: #009900;">(</s
 <span style="color: #FF0000;">import</span> <span style="color: #009900;">{</span> defineStore <span style="color: #009900;">}</span> from <span style="color: #3366CC;">'pinia'</span><br/>
 <br/>
 <span style="color: #006600; font-style: italic;">// 使用 defineStore 定义 store</span><br/>
-<span style="color: #006600; font-style: italic;">// 第一个参数是 store 的唯一 ID</span><br/>
-<span style="color: #006600; font-style: italic;">// 第二个参数是 store 的配置选项</span><br/>
+<span style="color: #006600; font-style: italic;">// 最初の引数は store の一意の ID です</span><br/>
+<span style="color: #006600; font-style: italic;">// 2 番目のパラメータは store の設定オプションです</span><br/>
 <span style="color: #FF0000;">export</span> <span style="color: #000066; font-weight: bold;">const</span> useCounterStore <span style="color: #339933;">=</span> defineStore<span style="color: #009900;">(</span><span style="color: #3366CC;">'counter'</span><span style="color: #339933;">,</span> <span style="color: #009900;">{</span><br/>
-  <span style="color: #006600; font-style: italic;">// state: 定义 store 的状态数据</span><br/>
+  <span style="color: #006600; font-style: italic;">// state: store の状態データを定義する</span><br/>
   state<span style="color: #339933;">:</span> <span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">(</span><span style="color: #009900;">{</span><br/>
     count<span style="color: #339933;">:</span> <span style="color: #CC0000;">0</span><span style="color: #339933;">,</span><br/>
-    name<span style="color: #339933;">:</span> <span style="color: #3366CC;">'我的计数器'</span><br/>
+    name<span style="color: #339933;">:</span> <span style="color: #3366CC;">'マイカウンター'</span><br/>
   <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">,</span><br/>
 <br/>
-  <span style="color: #006600; font-style: italic;">// getters: 定义基于 state 的计算属性</span><br/>
+  <span style="color: #006600; font-style: italic;">// getters: state に基づく算出プロパティを定義します</span><br/>
   getters<span style="color: #339933;">:</span> <span style="color: #009900;">{</span><br/>
     doubleCount<span style="color: #339933;">:</span> <span style="color: #009900;">(</span>state<span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> state.<span style="color: #660066;">count</span> <span style="color: #339933;">*</span> <span style="color: #CC0000;">2</span><span style="color: #339933;">,</span><br/>
     <span style="color: #006600; font-style: italic;">// 使用 this 访问其他 getter</span><br/>
@@ -248,7 +248,7 @@ app.<span style="color: #660066;">mount</span><span style="color: #009900;">(</s
     <span style="color: #009900;">}</span><br/>
   <span style="color: #009900;">}</span><span style="color: #339933;">,</span><br/>
 <br/>
-  <span style="color: #006600; font-style: italic;">// actions: 定义修改 state 的方法</span><br/>
+  <span style="color: #006600; font-style: italic;">// actions: state を変更するメソッドを定義します</span><br/>
   actions<span style="color: #339933;">:</span> <span style="color: #009900;">{</span><br/>
     increment<span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
       <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">count</span><span style="color: #339933;">++</span><br/>
@@ -321,9 +321,9 @@ app.<span style="color: #660066;">mount</span><span style="color: #009900;">(</s
 <br/>
 <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">script</span> setup&gt;</span><br/>
 import { useCounterStore } from '../stores/useCounter'<br/>
-<br/>// 在 setup 中使用 store<br/>
+<br/>// setup で store を使用する<br/>
 const store = useCounterStore()<br/>
-<br/>// 重置状态的方法<br/>
+<br/>// 状態をリセットする方法<br/>
 function reset() {<br/>store.$reset() // $reset 方法可以重置 state 到初始值<br/>
 }<br/>
 <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">script</span>&gt;</span><br/>
@@ -426,7 +426,7 @@ const { count, name } = storeToRefs(store)<br/>
     addItem<span style="color: #009900;">(</span>product<span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
       <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">items</span>.<span style="color: #660066;">push</span><span style="color: #009900;">(</span>product<span style="color: #009900;">)</span><br/>
       <br/>
-      <span style="color: #006600; font-style: italic;">// 调用其他 store 的 action</span><br/>
+      <span style="color: #006600; font-style: italic;">// 他の store の action を呼び出す</span><br/>
       <span style="color: #000066; font-weight: bold;">const</span> userStore <span style="color: #339933;">=</span> useUserStore<span style="color: #009900;">(</span><span style="color: #009900;">)</span><br/>
       <span style="color: #000066; font-weight: bold;">if</span> <span style="color: #009900;">(</span>userStore.<span style="color: #660066;">isLoggedIn</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
         <span style="color: #006600; font-style: italic;">// 同步到用户购物车</span><br/>
@@ -458,7 +458,7 @@ const { count, name } = storeToRefs(store)<br/>
     getProductById<span style="color: #339933;">:</span> <span style="color: #009900;">(</span>state<span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">(</span>id<span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
       <span style="color: #000066; font-weight: bold;">return</span> state.<span style="color: #660066;">products</span>.<span style="color: #660066;">find</span><span style="color: #009900;">(</span>product <span style="color: #339933;">=&gt;</span> product.<span style="color: #660066;">id</span> <span style="color: #339933;">===</span> id<span style="color: #009900;">)</span><br/>
     <span style="color: #009900;">}</span><span style="color: #339933;">,</span><br/>
-    <span style="color: #006600; font-style: italic;">// 获取有库存的商品</span><br/>
+    <span style="color: #006600; font-style: italic;">// に庫のある商品を取得</span><br/>
     availableProducts<span style="color: #339933;">:</span> <span style="color: #009900;">(</span>state<span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
       <span style="color: #000066; font-weight: bold;">return</span> state.<span style="color: #660066;">products</span>.<span style="color: #660066;">filter</span><span style="color: #009900;">(</span>product <span style="color: #339933;">=&gt;</span> product.<span style="color: #660066;">stock</span> <span style="color: #339933;">&gt;</span> <span style="color: #CC0000;">0</span><span style="color: #009900;">)</span><br/>
     <span style="color: #009900;">}</span><br/>
@@ -507,7 +507,7 @@ const { count, name } = storeToRefs(store)<br/>
       <span style="color: #009900;">}</span><br/>
     <span style="color: #009900;">}</span><span style="color: #339933;">,</span><br/>
 <br/>
-    <span style="color: #006600; font-style: italic;">// 从购物车移除商品</span><br/>
+    <span style="color: #006600; font-style: italic;">// カートから商品を削除</span><br/>
     removeFromCart<span style="color: #009900;">(</span>productId<span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
       <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">items</span> <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #660066;">items</span>.<span style="color: #660066;">filter</span><span style="color: #009900;">(</span>item <span style="color: #339933;">=&gt;</span> item.<span style="color: #660066;">productId</span> <span style="color: #339933;">!==</span> productId<span style="color: #009900;">)</span><br/>
     <span style="color: #009900;">}</span><span style="color: #339933;">,</span><br/>
@@ -536,7 +536,7 @@ const { count, name } = storeToRefs(store)<br/>
     <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">h3</span>&gt;</span>购物车 ({{ cart.totalItems }} 件商品)<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">h3</span>&gt;</span><br/>
     <br/>
     <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> v-if<span style="color: #66CC66;">=</span><span style="color: #a11;">"cart.items.length === 0"</span>&gt;</span><br/>
-      <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">p</span>&gt;</span>购物车为空<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">p</span>&gt;</span><br/>
+      <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">p</span>&gt;</span>カートが空です<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">p</span>&gt;</span><br/>
     <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
     <br/>
     <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> v-else&gt;</span><br/>
@@ -568,7 +568,7 @@ const products = useProductStore()<br/>
 const cartItems = computed(() =&gt; {<br/>
   return cart.items.map(item =&gt; ({<br/>
     product: products.getProductById(item.productId),<br/>
-    quantity: item.quantity<br/>})).filter(item =&gt; item.product) // 过滤掉不存在的商品<br/>
+    quantity: item.quantity<br/>})).filter(item =&gt; item.product) // 存在しない商品をフィルタリングする<br/>
 })<br/>
 <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">script</span>&gt;</span><br/>
 </div>
@@ -579,11 +579,11 @@ const cartItems = computed(() =&gt; {<br/>
 <div class="example">
 <h2 class="example">实例</h2>
 <div class="example_code">
-<span style="color: #006600; font-style: italic;">// 好的命名</span><br/>
+<span style="color: #006600; font-style: italic;">// 良い命名</span><br/>
 <span style="color: #FF0000;">export</span> <span style="color: #000066; font-weight: bold;">const</span> useUserStore <span style="color: #339933;">=</span> defineStore<span style="color: #009900;">(</span><span style="color: #3366CC;">'user'</span><span style="color: #339933;">,</span> <span style="color: #009900;">{</span> <span style="color: #006600; font-style: italic;">/* ... */</span> <span style="color: #009900;">}</span><span style="color: #009900;">)</span><br/>
 <span style="color: #FF0000;">export</span> <span style="color: #000066; font-weight: bold;">const</span> useProductStore <span style="color: #339933;">=</span> defineStore<span style="color: #009900;">(</span><span style="color: #3366CC;">'products'</span><span style="color: #339933;">,</span> <span style="color: #009900;">{</span> <span style="color: #006600; font-style: italic;">/* ... */</span> <span style="color: #009900;">}</span><span style="color: #009900;">)</span><br/>
 <br/>
-<span style="color: #006600; font-style: italic;">// 避免的命名</span><br/>
+<span style="color: #006600; font-style: italic;">// 避けるべき命名</span><br/>
 <span style="color: #FF0000;">export</span> <span style="color: #000066; font-weight: bold;">const</span> userStore <span style="color: #339933;">=</span> defineStore<span style="color: #009900;">(</span><span style="color: #3366CC;">'user'</span><span style="color: #339933;">,</span> <span style="color: #009900;">{</span> <span style="color: #006600; font-style: italic;">/* ... */</span> <span style="color: #009900;">}</span><span style="color: #009900;">)</span> <span style="color: #006600; font-style: italic;">// 缺少 use 前缀</span><br/>
 </div>
 </div>
@@ -866,11 +866,11 @@ pinia.<span style="color: #660066;">use</span><span style="color: #009900;">(</s
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に必ず<a href=";.html" class="runoob-pop">ログイン</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に必ず<a class="runoob-pop" href=";.html">ログイン</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1159,7 +1159,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

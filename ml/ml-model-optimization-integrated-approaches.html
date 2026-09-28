@@ -235,7 +235,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <a href="../ml/ml-data-visualizations.html" target="_top">データ可視化</a>
 <a href="../ml/ml-training-and-test-set-splitting.html" target="_top">トレーニングセットとテストセットの分割</a>
 <a href="../ml/ml-foundations-of-statistics.html" target="_top"> 統計学の基礎</a>
-<a href="../ml/ml-probabilistic-thinking.html" target="_top"> 確率的思考</a>
+<a href="../ml/ml-probabilistic-thinking.html" target="_top">確率的思考</a>
 <a href="../ml/ml-loss-function-and-gradient.html" target="_top">損失関数と勾配</a>
 <a href="../ml/ml-overfitting-underfitting-bias-and-variance.html" target="_top">過学習、未学習、バイアスと分散</a>
 <br/>
@@ -279,8 +279,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 			順伝播と逆伝播			</a>
 <a data-p="par" href="../ml/ml-deep-learning-traditional-machine-learning.html" target="_top" title="深層学習 vs 従来の機械学習">
 			深層学習 vs 従来の機械学習			</a>
-<a data-p="par" href="../ml/ml-common-network-types.html" target="_top" title="一般的なネットワークの種類">
-			一般的なネットワークの種類			</a>
+<a data-p="par" href="../ml/ml-common-network-types.html" target="_top" title="一般的なネットワークの種類">一般的なネットワークの種類</a>
 <br/><h2 class="left"><span class="left_h2">モデル最適化とエンジニアリング</span></h2> <a data-p="par" href="../ml/ml-cross-validation.html" target="_top" title="交差検証">
 			交差検証			</a>
 <a data-p="par" href="../ml/ml-model-optimization-regularization.html" target="_top" title="正則化">
@@ -331,7 +330,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2>アンサンブル学習の基本思想と利点</h2>
 <p>具体的な手法に入る前に、まずアンサンブル学習がなぜ有効なのか、そしてどのような利点をもたらすのかを理解する必要があります。</p>
 <h3>核心思想：誤差の低減</h3>
-<p>モデルの予測誤差は通常、3つの部分に分解できます：<strong>バイアス</strong>、<strong>バリアンス</strong>和<strong>削減不可能な誤差</strong>。</p>
+<p>モデルの予測誤差は通常、3つの部分に分解できます：<strong>バイアス</strong>、<strong>バリアンス</strong>と<strong>削減不可能な誤差</strong>。</p>
 <ul>
 <li><strong>バイアス</strong>：モデルの問題の本質に対する仮定の誤りによって生じる系統的誤差です。高いバイアスはモデルが<span class="marked">未学習（アンダーフィッティング）</span>、データ内の基本的な関係を捉えることができないことを意味します。</li>
 <li><strong>バリアンス</strong>：モデルのトレーニングデータの微小な変動に対する敏感さの度合いです。高いバリアンスはモデルが<span class="marked">過学習（オーバーフィッティング）</span>、トレーニングデータ内のノイズに過度に注目していることを意味します。</li>
@@ -348,7 +347,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p><img decoding="async" src="../wp-content/uploads/2025/12/0f596086-2e79-4219-9456-b3c76530d4fd.png"/></p>
 <hr/>
 <h2>主流のアンサンブル法の詳解</h2>
-<p>ベース学習器の生成方法と組み合わせ戦略に基づいて、アンサンブル法は主に3つのカテゴリに分類されます：<strong>Bagging</strong>、<strong>Boosting</strong> 和 <strong>Stacking</strong>。</p>
+<p>ベース学習器の生成方法と組み合わせ戦略に基づいて、アンサンブル法は主に3つのカテゴリに分類されます：<strong>Bagging</strong>、<strong>Boosting</strong>と<strong>Stacking</strong>。</p>
 <h3>Bagging：並列の道、安定最優先</h3>
 <p><strong>Bagging</strong>その核心的な考え方は、<strong>Bootstrap Aggregating</strong>。</p>
 <ol>
@@ -498,7 +497,7 @@ y_pred_gb <span style="color: Gray;">=</span> gb_clf.<span style="color: #05a;">
 <p><strong>問題に応じて選択する</strong>：</p><ul>
 <li>ベースモデル（深い決定木など）が<strong>過学習が深刻な場合（高分散）</strong>、優先的に試すのは<strong>Bagging</strong>（ランダムフォレスト）。</li>
 <li>ベースモデルが<strong>未学習（高バイアス）の場合</strong>、または極めて高い予測精度を追求する場合、優先的に試すのは<strong>Boosting</strong>（XGBoost、LightGBMなど）。</li>
-<li>在<strong>機械学習コンペティション</strong>または精度に究極の要求がある場面で、計算リソースが十分な場合は、検討できるのは<strong>Stacking</strong> 或 <strong>Blending</strong>。</li>
+<li>に<strong>機械学習コンペティション</strong>または精度に究極の要求がある場面で、計算リソースが十分な場合は、検討できるのは<strong>Stacking</strong> 或 <strong>Blending</strong>。</li>
 </ul>
 <p><strong>最新の最適化ライブラリの活用</strong>：実践では、高度に最適化されたライブラリを直接使用する。これらは最先端のアンサンブルアルゴリズムを実装している：</p><ul>
 <li><strong>Scikit-learn</strong>：提供しているのは<code>RandomForest</code>, <code>GradientBoosting</code>などの優れた実装で、入門や迅速なプロトタイプ開発に適している。</li>
@@ -510,7 +509,7 @@ y_pred_gb <span style="color: Gray;">=</span> gb_clf.<span style="color: #05a;">
 <li><code>n_estimators</code>：基本学習器の数（多ければ多いほど良いが、計算コストは増加する）。</li>
 <li><code>learning_rate</code>(Boosting)：学習率。各ステップの貢献度を制御する。通常は<code>n_estimators</code>トレードオフ（学習率が小さいとより多くの木が必要）。</li>
 <li><code>max_depth</code>(ツリー手法)：モデルの複雑さと過学習を制御する鍵。</li>
-<li>使用する<strong>交差検証</strong>和<strong>グリッドサーチ/ランダムサーチ</strong>を用いて体系的にハイパーパラメータを調整する。</li>
+<li>使用する<strong>交差検証</strong>と<strong>グリッドサーチ/ランダムサーチ</strong>を用いて体系的にハイパーパラメータを調整する。</li>
 </ul>
 その他の拡張
 </div>
@@ -631,11 +630,11 @@ y_pred_gb <span style="color: Gray;">=</span> gb_clf.<span style="color: #05a;">
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -935,7 +934,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

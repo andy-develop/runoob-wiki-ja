@@ -166,7 +166,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p><strong>优化：</strong></p>
 <ul>
 <li>
-<p><strong>针对问题：</strong><br/>より大きいことが分かる。したがって、a[0…4]とa[6…9]の2つの部分区間に対して上記の手順を繰り返せばよい。</p>
+<p><strong>問題に対して：</strong><br/>より大きいことが分かる。したがって、a[0…4]とa[6…9]の2つの部分区間に対して上記の手順を繰り返せばよい。</p>
 </li>
 <li>
 <p><strong>方案：</strong><br/>フラグflagを設定し、交換が発生したらflagをtrueに、交換がなければfalseに設定する。<br/>これにより、1ラウンドの比較が終わった後もflagがfalseのままなら、すなわちこのラウンドで交換が発生していないなら、データの順序は既に整っており、続行する必要はない。</p>
@@ -174,22 +174,22 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">static</span> <span style="color: #000066; font-weight: bold;">void</span> BubbleSort1<span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span> <span style="color: #009900;">[</span><span style="color: #009900;">]</span> arr<span style="color: #009900;">)</span><span style="color: #009900;">{</span><br/>
 <br/>
    <span style="color: #000066; font-weight: bold;">int</span> temp<span style="color: #339933;">;</span><span style="color: #666666; font-style: italic;">//临时变量</span><br/>
-   <span style="color: #000066; font-weight: bold;">boolean</span> flag<span style="color: #339933;">;</span><span style="color: #666666; font-style: italic;">//是否交换的标志</span><br/>
+   <span style="color: #000066; font-weight: bold;">boolean</span> flag<span style="color: #339933;">;</span><span style="color: #666666; font-style: italic;">//交換するかどうかのフラグ</span><br/>
    <span style="color: #000000; font-weight: bold;">for</span><span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span> i<span style="color: #339933;">=</span><span style="color: #CC66CC;">0</span><span style="color: #339933;">;</span> i<span style="color: #339933;">&lt;</span>arr.<span style="color: #006633;">length</span><span style="color: #339933;">-</span><span style="color: #CC66CC;">1</span><span style="color: #339933;">;</span> i<span style="color: #339933;">++</span><span style="color: #009900;">)</span><span style="color: #009900;">{</span>   <span style="color: #666666; font-style: italic;">//表示趟数，一共 arr.length-1 次</span><br/>
 <br/>
-       <span style="color: #666666; font-style: italic;">// 每次遍历标志位都要先置为false，才能判断后面的元素是否发生了交换</span><br/>
+       <span style="color: #666666; font-style: italic;">// 走査のたびに、まずフラグをfalseに設定してから、後続の要素が交換されたかどうかを判断する。</span><br/>
        flag <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">false</span><span style="color: #339933;">;</span><br/>
        <br/>
-       <span style="color: #000000; font-weight: bold;">for</span><span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span> j<span style="color: #339933;">=</span>arr.<span style="color: #006633;">length</span><span style="color: #339933;">-</span><span style="color: #CC66CC;">1</span><span style="color: #339933;">;</span> j<span style="color: #339933;">&gt;</span>i<span style="color: #339933;">;</span> j<span style="color: #339933;">--</span><span style="color: #009900;">)</span><span style="color: #009900;">{</span> <span style="color: #666666; font-style: italic;">//选出该趟排序的最大值往后移动</span><br/>
+       <span style="color: #000000; font-weight: bold;">for</span><span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span> j<span style="color: #339933;">=</span>arr.<span style="color: #006633;">length</span><span style="color: #339933;">-</span><span style="color: #CC66CC;">1</span><span style="color: #339933;">;</span> j<span style="color: #339933;">&gt;</span>i<span style="color: #339933;">;</span> j<span style="color: #339933;">--</span><span style="color: #009900;">)</span><span style="color: #009900;">{</span> <span style="color: #666666; font-style: italic;">// このソートのパスの最大値を選んで後ろへ移動する</span><br/>
 <br/>
            <span style="color: #000000; font-weight: bold;">if</span><span style="color: #009900;">(</span>arr<span style="color: #009900;">[</span>j<span style="color: #009900;">]</span> <span style="color: #339933;">&lt;</span> arr<span style="color: #009900;">[</span>j<span style="color: #339933;">-</span><span style="color: #CC66CC;">1</span><span style="color: #009900;">]</span><span style="color: #009900;">)</span><span style="color: #009900;">{</span><br/>
                temp <span style="color: #339933;">=</span> arr<span style="color: #009900;">[</span>j<span style="color: #009900;">]</span><span style="color: #339933;">;</span><br/>
                arr<span style="color: #009900;">[</span>j<span style="color: #009900;">]</span> <span style="color: #339933;">=</span> arr<span style="color: #009900;">[</span>j<span style="color: #339933;">-</span><span style="color: #CC66CC;">1</span><span style="color: #009900;">]</span><span style="color: #339933;">;</span><br/>
                arr<span style="color: #009900;">[</span>j<span style="color: #339933;">-</span><span style="color: #CC66CC;">1</span><span style="color: #009900;">]</span> <span style="color: #339933;">=</span> temp<span style="color: #339933;">;</span><br/>
-               flag <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">true</span><span style="color: #339933;">;</span>    <span style="color: #666666; font-style: italic;">//只要有发生了交换，flag就置为true</span><br/>
+               flag <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">true</span><span style="color: #339933;">;</span>    <span style="color: #666666; font-style: italic;">//交換が発生した場合は、flagをtrueに設定する</span><br/>
            <span style="color: #009900;">}</span><br/>
        <span style="color: #009900;">}</span><br/>
-       <span style="color: #666666; font-style: italic;">// 判断标志位是否为false，如果为false，说明后面的元素已经有序，就直接return</span><br/>
+       <span style="color: #666666; font-style: italic;">// フラグが false かどうかを判定します。false の場合、後続の要素は既にソートされているので、そのまま return します。</span><br/>
        <span style="color: #000000; font-weight: bold;">if</span><span style="color: #009900;">(</span><span style="color: #339933;">!</span>flag<span style="color: #009900;">)</span> <span style="color: #000000; font-weight: bold;">break</span><span style="color: #339933;">;</span><br/>
    <span style="color: #009900;">}</span><br/>
 <span style="color: #009900;">}</span><br/>
@@ -247,7 +247,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>
 <img decoding="async" src="../wp-content/uploads/2015/09/33403.html"/></p><p>插入排序</p>
 <p>
-<img decoding="async" src="../wp-content/uploads/2015/09/22402.html"/></p><p>相同的场景</p>
+<img decoding="async" src="../wp-content/uploads/2015/09/22402.html"/></p><p>同じシナリオ</p>
 </li>
 <li>
 <p><strong>平均時間計算量：</strong>O(n2)</p>
@@ -302,7 +302,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
    <span style="color: #000000; font-weight: bold;">while</span><span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">true</span><span style="color: #009900;">)</span><span style="color: #009900;">{</span><br/>
        incre <span style="color: #339933;">=</span> incre<span style="color: #339933;">/</span><span style="color: #CC66CC;">2</span><span style="color: #339933;">;</span><br/>
 <br/>
-       <span style="color: #000000; font-weight: bold;">for</span><span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span> k <span style="color: #339933;">=</span> <span style="color: #CC66CC;">0</span><span style="color: #339933;">;</span>k<span style="color: #339933;">&lt;</span>incre<span style="color: #339933;">;</span>k<span style="color: #339933;">++</span><span style="color: #009900;">)</span><span style="color: #009900;">{</span>    <span style="color: #666666; font-style: italic;">//根据增量分为若干子序列</span><br/>
+       <span style="color: #000000; font-weight: bold;">for</span><span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span> k <span style="color: #339933;">=</span> <span style="color: #CC66CC;">0</span><span style="color: #339933;">;</span>k<span style="color: #339933;">&lt;</span>incre<span style="color: #339933;">;</span>k<span style="color: #339933;">++</span><span style="color: #009900;">)</span><span style="color: #009900;">{</span>    <span style="color: #666666; font-style: italic;">// 増分に基づいていくつかの部分列に分割する</span><br/>
 <br/>
            <span style="color: #000000; font-weight: bold;">for</span><span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span> i<span style="color: #339933;">=</span>k<span style="color: #339933;">+</span>incre<span style="color: #339933;">;</span>i<span style="color: #339933;">&lt;</span>lenth<span style="color: #339933;">;</span>i<span style="color: #339933;">+=</span>incre<span style="color: #009900;">)</span><span style="color: #009900;">{</span><br/>
 <br/>
@@ -361,18 +361,18 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
      <span style="color: #000000; font-weight: bold;">if</span><span style="color: #009900;">(</span>l<span style="color: #339933;">&gt;=</span>r<span style="color: #009900;">)</span><br/>
        <span style="color: #000000; font-weight: bold;">return</span><span style="color: #339933;">;</span><br/>
 <br/>
-     <span style="color: #000066; font-weight: bold;">int</span> i <span style="color: #339933;">=</span> l<span style="color: #339933;">;</span> <span style="color: #000066; font-weight: bold;">int</span> j <span style="color: #339933;">=</span> r<span style="color: #339933;">;</span> <span style="color: #000066; font-weight: bold;">int</span> key <span style="color: #339933;">=</span> a<span style="color: #009900;">[</span>l<span style="color: #009900;">]</span><span style="color: #339933;">;</span><span style="color: #666666; font-style: italic;">//选择第一个数为key</span><br/>
+     <span style="color: #000066; font-weight: bold;">int</span> i <span style="color: #339933;">=</span> l<span style="color: #339933;">;</span> <span style="color: #000066; font-weight: bold;">int</span> j <span style="color: #339933;">=</span> r<span style="color: #339933;">;</span> <span style="color: #000066; font-weight: bold;">int</span> key <span style="color: #339933;">=</span> a<span style="color: #009900;">[</span>l<span style="color: #009900;">]</span><span style="color: #339933;">;</span><span style="color: #666666; font-style: italic;">//最初の数をkeyとして選択</span><br/>
 <br/>
      <span style="color: #000000; font-weight: bold;">while</span><span style="color: #009900;">(</span>i<span style="color: #339933;">&lt;</span>j<span style="color: #009900;">)</span><span style="color: #009900;">{</span><br/>
 <br/>
-         <span style="color: #000000; font-weight: bold;">while</span><span style="color: #009900;">(</span>i<span style="color: #339933;">&lt;</span>j <span style="color: #339933;">&amp;&amp;</span> a<span style="color: #009900;">[</span>j<span style="color: #009900;">]</span><span style="color: #339933;">&gt;=</span>key<span style="color: #009900;">)</span><span style="color: #666666; font-style: italic;">//从右向左找第一个小于key的值</span><br/>
+         <span style="color: #000000; font-weight: bold;">while</span><span style="color: #009900;">(</span>i<span style="color: #339933;">&lt;</span>j <span style="color: #339933;">&amp;&amp;</span> a<span style="color: #009900;">[</span>j<span style="color: #009900;">]</span><span style="color: #339933;">&gt;=</span>key<span style="color: #009900;">)</span><span style="color: #666666; font-style: italic;">//右から左へ進み、keyより小さい最初の値を見つける</span><br/>
              j<span style="color: #339933;">--;</span><br/>
          <span style="color: #000000; font-weight: bold;">if</span><span style="color: #009900;">(</span>i<span style="color: #339933;">&lt;</span>j<span style="color: #009900;">)</span><span style="color: #009900;">{</span><br/>
              a<span style="color: #009900;">[</span>i<span style="color: #009900;">]</span> <span style="color: #339933;">=</span> a<span style="color: #009900;">[</span>j<span style="color: #009900;">]</span><span style="color: #339933;">;</span><br/>
              i<span style="color: #339933;">++;</span><br/>
          <span style="color: #009900;">}</span><br/>
 <br/>
-         <span style="color: #000000; font-weight: bold;">while</span><span style="color: #009900;">(</span>i<span style="color: #339933;">&lt;</span>j <span style="color: #339933;">&amp;&amp;</span> a<span style="color: #009900;">[</span>i<span style="color: #009900;">]</span><span style="color: #339933;">&lt;</span>key<span style="color: #009900;">)</span><span style="color: #666666; font-style: italic;">//从左向右找第一个大于key的值</span><br/>
+         <span style="color: #000000; font-weight: bold;">while</span><span style="color: #009900;">(</span>i<span style="color: #339933;">&lt;</span>j <span style="color: #339933;">&amp;&amp;</span> a<span style="color: #009900;">[</span>i<span style="color: #009900;">]</span><span style="color: #339933;">&lt;</span>key<span style="color: #009900;">)</span><span style="color: #666666; font-style: italic;">//左から右へ進み、keyより大きい最初の値を見つける</span><br/>
              i<span style="color: #339933;">++;</span><br/>
 <br/>
          <span style="color: #000000; font-weight: bold;">if</span><span style="color: #009900;">(</span>i<span style="color: #339933;">&lt;</span>j<span style="color: #009900;">)</span><span style="color: #009900;">{</span><br/>
@@ -395,7 +395,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <li>
 <p><strong>基本思想：</strong><a href="./implementation-of-merge-sort.html" rel="noopener noreferrer" target="_blank">参考</a><br/>マージソートはマージ操作に基づく効率的なソートアルゴリズムである。このアルゴリズムは分割統治法の非常に典型的な応用である。<br/>まず、2つのソート済み数列をマージする方法を考えよう。これは非常に簡単で、2つの数列の最初の数を比較し、小さい方を先に取り出し、取り出したら対応する数列からその数を削除する。その後再び比較を行い、もし一方の数列が空になったら、もう一方の数列のデータを順に取り出すだけでよい。</p>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
-<span style="color: #666666; font-style: italic;">//将有序数组a[]和b[]合并到c[]中</span><br/>
+<span style="color: #666666; font-style: italic;">//ソート済み配列a[]とb[]をc[]にマージする</span><br/>
 <span style="color: #000066; font-weight: bold;">void</span> MemeryArray<span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span> a<span style="color: #009900;">[</span><span style="color: #009900;">]</span>, <span style="color: #000066; font-weight: bold;">int</span> n, <span style="color: #000066; font-weight: bold;">int</span> b<span style="color: #009900;">[</span><span style="color: #009900;">]</span>, <span style="color: #000066; font-weight: bold;">int</span> m, <span style="color: #000066; font-weight: bold;">int</span> c<span style="color: #009900;">[</span><span style="color: #009900;">]</span><span style="color: #009900;">)</span><br/>
 <span style="color: #009900;">{</span><br/>
  <span style="color: #000066; font-weight: bold;">int</span> i, j, k<span style="color: #339933;">;</span><br/>
@@ -501,14 +501,14 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
      MinHeapFixdown<span style="color: #009900;">(</span>a,i,n<span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
  <span style="color: #009900;">}</span><br/>
 <span style="color: #009900;">}</span><br/>
-<span style="color: #666666; font-style: italic;">//从i节点开始调整,n为节点总数 从0开始计算 i节点的子节点为 2*i+1, 2*i+2</span><br/>
+<span style="color: #666666; font-style: italic;">// iノードから調整を開始、nはノード総数 0から計算 iノードの子ノードは 2*i+1, 2*i+2</span><br/>
 <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">static</span> <span style="color: #000066; font-weight: bold;">void</span> MinHeapFixdown<span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span> a<span style="color: #009900;">[</span><span style="color: #009900;">]</span>,<span style="color: #000066; font-weight: bold;">int</span> i,<span style="color: #000066; font-weight: bold;">int</span> n<span style="color: #009900;">)</span><span style="color: #009900;">{</span><br/>
 <br/>
    <span style="color: #000066; font-weight: bold;">int</span> j <span style="color: #339933;">=</span> <span style="color: #CC66CC;">2</span><span style="color: #339933;">*</span>i<span style="color: #339933;">+</span><span style="color: #CC66CC;">1</span><span style="color: #339933;">;</span> <span style="color: #666666; font-style: italic;">//子节点</span><br/>
    <span style="color: #000066; font-weight: bold;">int</span> temp <span style="color: #339933;">=</span> <span style="color: #CC66CC;">0</span><span style="color: #339933;">;</span><br/>
 <br/>
    <span style="color: #000000; font-weight: bold;">while</span><span style="color: #009900;">(</span>j<span style="color: #339933;">&lt;</span>n<span style="color: #009900;">)</span><span style="color: #009900;">{</span><br/>
-       <span style="color: #666666; font-style: italic;">//在左右子节点中寻找最小的</span><br/>
+       <span style="color: #666666; font-style: italic;">//左右の子ノードの中で最小のものを探す</span><br/>
        <span style="color: #000000; font-weight: bold;">if</span><span style="color: #009900;">(</span>j<span style="color: #339933;">+</span><span style="color: #CC66CC;">1</span><span style="color: #339933;">&lt;</span>n <span style="color: #339933;">&amp;&amp;</span> a<span style="color: #009900;">[</span>j<span style="color: #339933;">+</span><span style="color: #CC66CC;">1</span><span style="color: #009900;">]</span><span style="color: #339933;">&lt;</span>a<span style="color: #009900;">[</span>j<span style="color: #009900;">]</span><span style="color: #009900;">)</span><span style="color: #009900;">{</span>   <br/>
            j<span style="color: #339933;">++;</span><br/>
        <span style="color: #009900;">}</span><br/>
@@ -574,10 +574,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <br/>
    <span style="color: #666666; font-style: italic;">//A:原数组</span><br/>
    <span style="color: #666666; font-style: italic;">//temp:临时数组</span><br/>
-   <span style="color: #666666; font-style: italic;">//n:序列的数字个数</span><br/>
-   <span style="color: #666666; font-style: italic;">//k:最大的位数2</span><br/>
+   <span style="color: #666666; font-style: italic;">//n: 数列の要素数</span><br/>
+   <span style="color: #666666; font-style: italic;">//k:最大の桁数2</span><br/>
    <span style="color: #666666; font-style: italic;">//r:基数10</span><br/>
-   <span style="color: #666666; font-style: italic;">//cnt:存储bin[i]的个数</span><br/>
+   <span style="color: #666666; font-style: italic;">//cnt: bin[i]の個数を格納する</span><br/>
 <br/>
    <span style="color: #000000; font-weight: bold;">for</span><span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span> i<span style="color: #339933;">=</span><span style="color: #CC66CC;">0</span> , rtok<span style="color: #339933;">=</span><span style="color: #CC66CC;">1</span><span style="color: #339933;">;</span> i<span style="color: #339933;">&lt;</span>k <span style="color: #339933;">;</span> i<span style="color: #339933;">++</span> ,rtok <span style="color: #339933;">=</span> rtok<span style="color: #339933;">*</span>r<span style="color: #009900;">)</span><span style="color: #009900;">{</span><br/>
 <br/>
@@ -585,11 +585,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
        <span style="color: #000000; font-weight: bold;">for</span><span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span> j<span style="color: #339933;">=</span><span style="color: #CC66CC;">0</span><span style="color: #339933;">;</span>j<span style="color: #339933;">&lt;</span>r<span style="color: #339933;">;</span>j<span style="color: #339933;">++</span><span style="color: #009900;">)</span><span style="color: #009900;">{</span><br/>
            cnt<span style="color: #009900;">[</span>j<span style="color: #009900;">]</span> <span style="color: #339933;">=</span> <span style="color: #CC66CC;">0</span><span style="color: #339933;">;</span><br/>
        <span style="color: #009900;">}</span><br/>
-       <span style="color: #666666; font-style: italic;">//计算每个箱子的数字个数</span><br/>
+       <span style="color: #666666; font-style: italic;">// 各箱の数字の個数を計算する</span><br/>
        <span style="color: #000000; font-weight: bold;">for</span><span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span> j<span style="color: #339933;">=</span><span style="color: #CC66CC;">0</span><span style="color: #339933;">;</span>j<span style="color: #339933;">&lt;</span>n<span style="color: #339933;">;</span>j<span style="color: #339933;">++</span><span style="color: #009900;">)</span><span style="color: #009900;">{</span><br/>
            cnt<span style="color: #009900;">[</span><span style="color: #009900;">(</span>A<span style="color: #009900;">[</span>j<span style="color: #009900;">]</span><span style="color: #339933;">/</span>rtok<span style="color: #009900;">)</span><span style="color: #339933;">%</span>r<span style="color: #009900;">]</span><span style="color: #339933;">++;</span><br/>
        <span style="color: #009900;">}</span><br/>
-       <span style="color: #666666; font-style: italic;">//cnt[j]的个数修改为前j个箱子一共有几个数字</span><br/>
+       <span style="color: #666666; font-style: italic;">//cnt[j]の個数を、前j個の箱の中の数字の総数に変更する</span><br/>
        <span style="color: #000000; font-weight: bold;">for</span><span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span> j<span style="color: #339933;">=</span><span style="color: #CC66CC;">1</span><span style="color: #339933;">;</span>j<span style="color: #339933;">&lt;</span>r<span style="color: #339933;">;</span>j<span style="color: #339933;">++</span><span style="color: #009900;">)</span><span style="color: #009900;">{</span><br/>
            cnt<span style="color: #009900;">[</span>j<span style="color: #009900;">]</span> <span style="color: #339933;">=</span> cnt<span style="color: #009900;">[</span>j<span style="color: #339933;">-</span><span style="color: #CC66CC;">1</span><span style="color: #009900;">]</span> <span style="color: #339933;">+</span> cnt<span style="color: #009900;">[</span>j<span style="color: #009900;">]</span><span style="color: #339933;">;</span><br/>
        <span style="color: #009900;">}</span><br/>
@@ -607,8 +607,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </ul> </div>
 </div>
 <div class="previous-next-links">
-<div class="previous-design-link">← <a href="./solving-the-double-tap-issue-on-ios-devices.html" rel="prev">解决 iOS 设备上链接要点击两次才跳转的问题</a> </div>
-<div class="next-design-link"><a href="./runoob-docker.html" rel="next">菜鸟教程+Docker全线支持在线编译运行</a> →</div>
+<div class="previous-design-link">← <a href="./solving-the-double-tap-issue-on-ios-devices.html" rel="prev">iOS デバイスでリンクを2回タップしないと遷移しない問題を解決する</a> </div>
+<div class="next-design-link"><a href="./runoob-docker.html" rel="next">菜鸟教程+Dockerはオンラインでのコンパイルと実行を全面のにサポート</a> →</div>
 </div>
 <style>
 .wrapper {
@@ -749,11 +749,11 @@ while(true){
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=".." class="runoob-pop">登录</a>！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href="..">登录</a>！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

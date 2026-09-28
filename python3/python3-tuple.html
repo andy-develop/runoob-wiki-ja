@@ -446,7 +446,7 @@ Traceback (most recent call last):
 NameError: name 'tup' is not defined
 </pre>
 <hr/><h2>タプル演算子</h2>
-<p>文字列と同様に、タプル間では<span class="marked">+</span>、<span class="marked">+=</span>和 <span class="marked">*</span>+ 記号を使用して演算できます。つまり、タプルを結合したり複製したりでき、演算後は新しいタプルが生成されます。</p>
+<p>文字列と同様に、タプル間では<span class="marked">+</span>、<span class="marked">+=</span>と<span class="marked">*</span>+ 記号を使用して演算できます。つまり、タプルを結合したり複製したりでき、演算後は新しいタプルが生成されます。</p>
 <table class="reference">
 <tbody><tr>
 <th style="width:33%">Python 式</th><th style="width:33%">結果</th><th style="width:33%">説明</th></tr>
@@ -718,7 +718,7 @@ Traceback <span style="color: Olive;">(</span>most recent call last<span style="
 &gt;&gt;&gt; t
 ('a', 'b', ['X', 'Y'])</pre>
 <p>この tuple は定義時に3つの要素、すなわち 'a'、'b'、そして1つの list を持っています。tuple はいったん定義したら不変ではないのですか？ どうして後で変わったのですか？</p>
-<p>落ち着いて、まず定義時の tuple に含まれる3つの要素を見てみましょう。list の要素 'A' と 'B' を 'X' と 'Y' に変更すると、tuple は次のようになります：表面的には tuple の要素が変わったように見えますが、実際に変わったのは tuple の要素ではなく、list の要素です。tuple が最初に指していた list は別の list に変更されていません。つまり、tuple のいわゆる「不変」とは、tuple の各要素の指す先が永遠に変わらないことを意味します。すなわち、'a' を指していたら 'b' を指すように変更できず、list を指していたら他のオブジェクトを指すように変更できません。ただし、指している list 自体は可変です！「指す先が変わらない」ことを理解したら、内容も変わらない tuple を作成するにはどうすればよいでしょうか？ そのためには、tuple の各要素自体も変更できないことを保証する必要があります。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">heisenbug601</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   heisenbug601</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  601***902@qq.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="http://www.jb51.net/article/47986.htm" rel="nofollow" target="_blank">参考アドレス</a></p></div></span>9年前 (2017-11-04)</div></div></li><!-- #comment-## -->
+<p>落ち着いて、まず定義時の tuple に含まれる3つの要素を見てみましょう。list の要素 'A' と 'B' を 'X' と 'Y' に変更すると、tuple は次のようになります：表面のには tuple の要素が変わったように見えますが、実際に変わったのは tuple の要素ではなく、list の要素です。tuple が最初に指していた list は別の list に変更されていません。つまり、tuple のいわゆる「不変」とは、tuple の各要素の指す先が永遠に変わらないことを意味します。すなわち、'a' を指していたら 'b' を指すように変更できず、list を指していたら他のオブジェクトを指すように変更できません。ただし、指している list 自体は可変です！「指す先が変わらない」ことを理解したら、内容も変わらない tuple を作成するにはどうすればよいでしょうか？ そのためには、tuple の各要素自体も変更できないことを保証する必要があります。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">heisenbug601</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   heisenbug601</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  601***902@qq.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="http://www.jb51.net/article/47986.htm" rel="nofollow" target="_blank">参考アドレス</a></p></div></span>9年前 (2017-11-04)</div></div></li><!-- #comment-## -->
 <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-22147"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   run</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  hdr***11@gmail.com</p></div><div class="upvotejs" data-commid="22147" id="runoobvote-id-22147"><a class="upvote"></a> <span class="count">152</span></div></div><div class="comt-main" id="div-comment-22147"><p>tuple の要素が不変であることには特別な場合があります。要素が可変オブジェクトである場合です。オブジェクトの内部属性は変更可能です！ tuple の不変の制限は、ある次元だけにあります：要素の参照です。正しく理解すると、tuple の要素が保持する内容（数値やメモリアドレス）は変更できませんが、アドレスが指すオブジェクト自体は変更できます。</p>
 <pre>&gt;&gt;&gt; a = (1,[3,2])
 &gt;&gt;&gt; a[1][0] = 1
@@ -990,11 +990,11 @@ a,b=b,a,1</pre><p>実行するとエラーになります：<strong>too many val
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、クリックできます</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に必ず<a href=";.html" class="runoob-pop">ログイン</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、クリックできます</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に必ず<a class="runoob-pop" href=";.html">ログイン</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1294,7 +1294,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

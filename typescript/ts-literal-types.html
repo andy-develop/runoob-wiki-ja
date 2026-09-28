@@ -232,7 +232,7 @@ SVG 図解：リテラル型
 <p>TypeScript では、string や number などのデフォルトの型は広範すぎます。</p>
 <p>時には、より精密な型制御が必要です。例えば、変数が特定の値のみを取れるようにする場合です。</p>
 <p>リテラル型はまさにこのような問題を解決するために生まれました。</p>
-<blockquote><p><strong>概念の説明：</strong>リテラル型は汎用型（string、number）の具体的な値です。例えば<code>"up"</code> 是 <code>string</code>のサブタイプであり、代入できるのは特定の文字列のみです。</p></blockquote>
+<blockquote><p><strong>概念の説明：</strong>リテラル型は汎用型（string、number）の具体的な値です。例えば<code>"up"</code>である<code>string</code>のサブタイプであり、代入できるのは特定の文字列のみです。</p></blockquote>
 <hr/>
 <h2>文字列リテラル型</h2>
 <p>文字列リテラル型は、変数の値を特定の文字列に制限します。</p>
@@ -413,7 +413,7 @@ console.<span style="color: #660066;">log</span><span style="color: #009900;">(<
 console.<span style="color: #660066;">log</span><span style="color: #009900;">(</span><span style="color: #3366CC;">"ハンドラー: "</span> <span style="color: #339933;">+</span> handler<span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
 <span style="color: #006600; font-style: italic;">// 错误：不符合模板格式</span><br/>
-<span style="color: #006600; font-style: italic;">// var e: EventName = "click"; // 编译错误：不是以 "on" 开头</span><br/>
+<span style="color: #006600; font-style: italic;">// var e: EventName = "click"; // コンパイルエラー："on" で始まっていません</span><br/>
 </div>
 </div>
 <p><strong>运行结果：</strong></p>
@@ -428,36 +428,36 @@ console.<span style="color: #660066;">log</span><span style="color: #009900;">(<
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #006600; font-style: italic;">// 定义 Redux 风格的 Action 类型</span><br/>
-<span style="color: #006600; font-style: italic;">// 使用联合类型定义不同类型的 Action</span><br/>
+<span style="color: #006600; font-style: italic;">// Redux スタイルの Action 型を定義する</span><br/>
+<span style="color: #006600; font-style: italic;">// ユニオン型を使用して異なるタイプのActionを定義する</span><br/>
 type Action <span style="color: #339933;">=</span><br/>
-    <span style="color: #006600; font-style: italic;">// 增加类型的 Action，包含数字类型的 payload</span><br/>
+    <span style="color: #006600; font-style: italic;">// インクリメントタイプの Action、数値型の payload を含む</span><br/>
     <span style="color: #339933;">|</span> <span style="color: #009900;">{</span> type<span style="color: #339933;">:</span> <span style="color: #3366CC;">"increment"</span><span style="color: #339933;">;</span> payload<span style="color: #339933;">:</span> number <span style="color: #009900;">}</span><br/>
-    <span style="color: #006600; font-style: italic;">// 减少类型的 Action，包含数字类型的 payload</span><br/>
+    <span style="color: #006600; font-style: italic;">// デクリメントタイプの Action、数値型の payload を含む</span><br/>
     <span style="color: #339933;">|</span> <span style="color: #009900;">{</span> type<span style="color: #339933;">:</span> <span style="color: #3366CC;">"decrement"</span><span style="color: #339933;">;</span> payload<span style="color: #339933;">:</span> number <span style="color: #009900;">}</span><br/>
-    <span style="color: #006600; font-style: italic;">// 重置类型的 Action，没有 payload</span><br/>
+    <span style="color: #006600; font-style: italic;">// リセット型の Action、ペイロードなし</span><br/>
     <span style="color: #339933;">|</span> <span style="color: #009900;">{</span> type<span style="color: #339933;">:</span> <span style="color: #3366CC;">"reset"</span> <span style="color: #009900;">}</span><span style="color: #339933;">;</span><br/>
 <br/>
-<span style="color: #006600; font-style: italic;">// 使用 action 的 reducer 函数</span><br/>
+<span style="color: #006600; font-style: italic;">// action を使用する reducer 関数</span><br/>
 <span style="color: #000066; font-weight: bold;">function</span> reducer<span style="color: #009900;">(</span>action<span style="color: #339933;">:</span> Action<span style="color: #009900;">)</span><span style="color: #339933;">:</span> <span style="color: #000066; font-weight: bold;">void</span> <span style="color: #009900;">{</span><br/>
-    <span style="color: #006600; font-style: italic;">// TypeScript 会根据 action.type 的值自动推断 action 的具体类型</span><br/>
+    <span style="color: #006600; font-style: italic;">// TypeScript は action.type の値に基づいて action の具体的な型を自動的に推論します。</span><br/>
     <span style="color: #000066; font-weight: bold;">switch</span> <span style="color: #009900;">(</span>action.<span style="color: #660066;">type</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
         <span style="color: #000066; font-weight: bold;">case</span> <span style="color: #3366CC;">"increment"</span><span style="color: #339933;">:</span><br/>
-            <span style="color: #006600; font-style: italic;">// 在这个分支中，action 被推断为 { type: "increment"; payload: number }</span><br/>
+            <span style="color: #006600; font-style: italic;">// この分岐では、action は { type: "increment"; payload: number } と推論されます。</span><br/>
             console.<span style="color: #660066;">log</span><span style="color: #009900;">(</span><span style="color: #3366CC;">"增加: "</span> <span style="color: #339933;">+</span> action.<span style="color: #660066;">payload</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
             <span style="color: #000066; font-weight: bold;">break</span><span style="color: #339933;">;</span><br/>
         <span style="color: #000066; font-weight: bold;">case</span> <span style="color: #3366CC;">"decrement"</span><span style="color: #339933;">:</span><br/>
-            <span style="color: #006600; font-style: italic;">// 在这个分支中，action 被推断为 { type: "decrement"; payload: number }</span><br/>
+            <span style="color: #006600; font-style: italic;">// この分岐では、action は { type: "decrement"; payload: number } と推論されます。</span><br/>
             console.<span style="color: #660066;">log</span><span style="color: #009900;">(</span><span style="color: #3366CC;">"减少: "</span> <span style="color: #339933;">+</span> action.<span style="color: #660066;">payload</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
             <span style="color: #000066; font-weight: bold;">break</span><span style="color: #339933;">;</span><br/>
         <span style="color: #000066; font-weight: bold;">case</span> <span style="color: #3366CC;">"reset"</span><span style="color: #339933;">:</span><br/>
-            <span style="color: #006600; font-style: italic;">// 在这个分支中，action 被推断为 { type: "reset" }</span><br/>
+            <span style="color: #006600; font-style: italic;">// この分岐では、action は { type: "reset" } と推論されます。</span><br/>
             console.<span style="color: #660066;">log</span><span style="color: #009900;">(</span><span style="color: #3366CC;">"重置"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
             <span style="color: #000066; font-weight: bold;">break</span><span style="color: #339933;">;</span><br/>
     <span style="color: #009900;">}</span><br/>
 <span style="color: #009900;">}</span><br/>
 <br/>
-<span style="color: #006600; font-style: italic;">// 派发不同类型的 Action</span><br/>
+<span style="color: #006600; font-style: italic;">// 異なるタイプの Action をディスパッチする</span><br/>
 reducer<span style="color: #009900;">(</span><span style="color: #009900;">{</span> type<span style="color: #339933;">:</span> <span style="color: #3366CC;">"increment"</span><span style="color: #339933;">,</span> payload<span style="color: #339933;">:</span> <span style="color: #CC0000;">5</span> <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 reducer<span style="color: #009900;">(</span><span style="color: #009900;">{</span> type<span style="color: #339933;">:</span> <span style="color: #3366CC;">"reset"</span> <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 </div>
@@ -606,11 +606,11 @@ reducer<span style="color: #009900;">(</span><span style="color: #009900;">{</sp
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -899,7 +899,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

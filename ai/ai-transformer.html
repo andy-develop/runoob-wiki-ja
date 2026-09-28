@@ -187,24 +187,24 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <br/>
 <br/>
 <span style="color: Green;font-weight:bold;">class</span> SimpleRNN:<br/>
-    <span style="color: #a11;">"""简化的 RNN 实现，用于演示原理"""</span><br/>
+    <span style="color: #a11;">"""簡略化された RNN 実装。原理を説明するためのもの"""</span><br/>
 <br/>
     <span style="color: Green;font-weight:bold;">def</span> <span style="color: Navy;">__init__</span><span style="color: Olive;">(</span><span style="color: Teal;">self</span><span style="color: Gray;">,</span> input_size: <span style="color: Teal;">int</span><span style="color: Gray;">,</span> hidden_size: <span style="color: Teal;">int</span><span style="color: Olive;">)</span>:<br/>
         <span style="color: #a11;">"""初始化 RNN 参数"""</span><br/>
         <span style="color: Green;font-weight:bold;">import</span> <span style="color: #05a;">random</span><br/>
         <span style="color: #05a;">random</span>.<span style="color: #05a;">seed</span><span style="color: Olive;">(</span><span style="color: Maroon;">42</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 设置随机种子保证可复现</span><br/>
 <br/>
-        <span style="color: #a50"># 输入到隐藏层的权重</span><br/>
+        <span style="color: #a50"># 入力層から隠れ層への重み</span><br/>
         <span style="color: Teal;">self</span>.<span style="color: #05a;">Wx</span> <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: Olive;">[</span><span style="color: #05a;">random</span>.<span style="color: #05a;">uniform</span><span style="color: Olive;">(</span>-<span style="color: Maroon;">0.1</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0.1</span><span style="color: Olive;">)</span> <span style="color: Green;font-weight:bold;">for</span> _ <span style="color: Green;font-weight:bold;">in</span> <span style="color: Teal;">range</span><span style="color: Olive;">(</span>hidden_size<span style="color: Olive;">)</span><span style="color: Olive;">]</span><br/>
                    <span style="color: Green;font-weight:bold;">for</span> _ <span style="color: Green;font-weight:bold;">in</span> <span style="color: Teal;">range</span><span style="color: Olive;">(</span>input_size<span style="color: Olive;">)</span><span style="color: Olive;">]</span><br/>
-        <span style="color: #a50"># 隐藏层到隐藏层的权重</span><br/>
+        <span style="color: #a50"># 隠れ層から隠れ層への重み</span><br/>
         <span style="color: Teal;">self</span>.<span style="color: #05a;">Wh</span> <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: Olive;">[</span><span style="color: #05a;">random</span>.<span style="color: #05a;">uniform</span><span style="color: Olive;">(</span>-<span style="color: Maroon;">0.1</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0.1</span><span style="color: Olive;">)</span> <span style="color: Green;font-weight:bold;">for</span> _ <span style="color: Green;font-weight:bold;">in</span> <span style="color: Teal;">range</span><span style="color: Olive;">(</span>hidden_size<span style="color: Olive;">)</span><span style="color: Olive;">]</span><br/>
                    <span style="color: Green;font-weight:bold;">for</span> _ <span style="color: Green;font-weight:bold;">in</span> <span style="color: Teal;">range</span><span style="color: Olive;">(</span>hidden_size<span style="color: Olive;">)</span><span style="color: Olive;">]</span><br/>
         <span style="color: #a50"># 偏置</span><br/>
         <span style="color: Teal;">self</span>.<span style="color: #05a;">b</span> <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: Maroon;">0.0</span> <span style="color: Green;font-weight:bold;">for</span> _ <span style="color: Green;font-weight:bold;">in</span> <span style="color: Teal;">range</span><span style="color: Olive;">(</span>hidden_size<span style="color: Olive;">)</span><span style="color: Olive;">]</span><br/>
 <br/>
     <span style="color: Green;font-weight:bold;">def</span> step<span style="color: Olive;">(</span><span style="color: Teal;">self</span><span style="color: Gray;">,</span> x: <span style="color: Teal;">list</span><span style="color: Gray;">,</span> h_prev: <span style="color: Teal;">list</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">list</span>:<br/>
-        <span style="color: #a11;">"""单步 RNN：输入 x 和前一时刻隐藏状态 h_prev，输出新的隐藏状态"""</span><br/>
+        <span style="color: #a11;">"""単一ステップ RNN：x と前の時刻の隠れ状態 h_prev を入力し、新しい隠れ状態を出力する"""</span><br/>
         hidden_size <span style="color: Gray;">=</span> <span style="color: Teal;">len</span><span style="color: Olive;">(</span>h_prev<span style="color: Olive;">)</span><br/>
         h_new <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: Maroon;">0.0</span> <span style="color: Green;font-weight:bold;">for</span> _ <span style="color: Green;font-weight:bold;">in</span> <span style="color: Teal;">range</span><span style="color: Olive;">(</span>hidden_size<span style="color: Olive;">)</span><span style="color: Olive;">]</span><br/>
 <br/>
@@ -232,13 +232,13 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         <span style="color: Green;font-weight:bold;">return</span> hidden_states<br/>
 <br/>
 <br/>
-<span style="color: #a50"># 测试：用简单的向量序列演示</span><br/>
+<span style="color: #a50"># テスト：単純なベクトル系列でデモする</span><br/>
 input_size <span style="color: Gray;">=</span> <span style="color: Maroon;">4</span><br/>
 hidden_size <span style="color: Gray;">=</span> <span style="color: Maroon;">3</span><br/>
 <br/>
 rnn <span style="color: Gray;">=</span> SimpleRNN<span style="color: Olive;">(</span>input_size<span style="color: Gray;">,</span> hidden_size<span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 假设输入序列是 4 个词，每个词用 4 维向量表示</span><br/>
+<span style="color: #a50"># 入力シーケンスは4つの単語であり、各単語は4次元ベクトルで表されるとする</span><br/>
 sequence <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><br/>
     <span style="color: Olive;">[</span><span style="color: Maroon;">1.0</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0.0</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0.0</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0.0</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span>  <span style="color: #a50"># 词 1</span><br/>
     <span style="color: Olive;">[</span><span style="color: Maroon;">0.0</span><span style="color: Gray;">,</span> <span style="color: Maroon;">1.0</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0.0</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0.0</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span>  <span style="color: #a50"># 词 2</span><br/>
@@ -320,7 +320,7 @@ Attention(Q, K, V) = softmax( Q·Kᵀ / √dₖ ) · V
 <br/>
 <br/>
 <span style="color: Green;font-weight:bold;">def</span> softmax<span style="color: Olive;">(</span>x: <span style="color: Teal;">list</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">list</span>:<br/>
-    <span style="color: #a11;">"""计算 Softmax：把一组数变成概率分布，总和为 1"""</span><br/>
+    <span style="color: #a11;">Softmax の計算：数値の集合を確率分布に変換し、合計を 1 にする</span><br/>
     <span style="color: #a50"># 减去最大值防止数值溢出</span><br/>
     max_val <span style="color: Gray;">=</span> <span style="color: Teal;">max</span><span style="color: Olive;">(</span>x<span style="color: Olive;">)</span><br/>
     exp_x <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: #05a;">math</span>.<span style="color: #05a;">exp</span><span style="color: Olive;">(</span>v - max_val<span style="color: Olive;">)</span> <span style="color: Green;font-weight:bold;">for</span> v <span style="color: Green;font-weight:bold;">in</span> x<span style="color: Olive;">]</span><br/>
@@ -329,7 +329,7 @@ Attention(Q, K, V) = softmax( Q·Kᵀ / √dₖ ) · V
 <br/>
 <br/>
 <span style="color: Green;font-weight:bold;">def</span> matrix_multiply<span style="color: Olive;">(</span>A: <span style="color: Teal;">list</span><span style="color: Gray;">,</span> B: <span style="color: Teal;">list</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">list</span>:<br/>
-    <span style="color: #a11;">"""矩阵乘法：A 是 m×n，B 是 n×p，输出 m×p"""</span><br/>
+    <span style="color: #a11;">行列乗算：A は m×n、B は n×p、出力は m×p</span><br/>
     m <span style="color: Gray;">=</span> <span style="color: Teal;">len</span><span style="color: Olive;">(</span>A<span style="color: Olive;">)</span><br/>
     n <span style="color: Gray;">=</span> <span style="color: Teal;">len</span><span style="color: Olive;">(</span>B<span style="color: Olive;">)</span><br/>
     p <span style="color: Gray;">=</span> <span style="color: Teal;">len</span><span style="color: Olive;">(</span>B<span style="color: Olive;">[</span><span style="color: Maroon;">0</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
@@ -1327,11 +1327,11 @@ x → LayerNorm → Masked Multi-Head Attention → 残差连接 →
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1620,7 +1620,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

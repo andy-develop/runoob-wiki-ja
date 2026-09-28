@@ -651,7 +651,7 @@ int m;
 m = n+2; // 这个表达式里 n 是 rvalues
 </pre><p>2、rvaluesは決してlvaluesに変換できません</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">寒欣児</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>寒欣児</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  113***2465@qq.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="http://blog.csdn.net/hengshan/article/details/7768575" rel="nofollow" target="_blank">参考アドレス</a></p></div></span>10年前 (2017-03-14)</div></div></li><!-- #comment-## -->
 <li class="comment even thread-even depth-1" id="comment-12976"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>末烽丶訪</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  101***7220@qq.com</p></div><div class="upvotejs" data-commid="12976" id="runoobvote-id-12976"><a class="upvote"></a> <span class="count">168</span></div></div><div class="comt-main" id="div-comment-12976"><p><strong>変数のメモリ・アドレッシング（システムに関連）</strong></p>
-<p>(1)メモリ・アドレッシングは大きい方から小さい方へ進み、優先的にメモリアドレスが比較的大きいバイトを変数に割り当てます。そのため、変数が先に定義されるほど、メモリアドレスは大きくなります。
+<p>メモリ・アドレッシングは大きい方から小さい方へ進み、優先のにメモリアドレスが比較的大きいバイトを変数に割り当てます。そのため、変数が先に定義されるほど、メモリアドレスは大きくなります。
 下のコードのように、最初に変数 a を定義し、次に変数 b を定義すると、a のアドレスは 0x7fff5fbff828、b の値は 0x7fff5fbff824 と出力されます。a のアドレスは b のアドレスより4バイト大きいです。</p>
 <p>(2)変数アドレスの取得方法：&amp; 変数名。</p>
 <p>(3)アドレスの出力方法：%p。</p>
@@ -750,7 +750,7 @@ int main(void)
 <li class="comment byuser comment-author-tianqixin odd alt thread-odd thread-alt depth-1" id="comment-36013"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   Rdd</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  153***s34s34@qq.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="https://blog.csdn.net/yangquanhui1991/article/details/51786380" rel="nofollow" target="_blank">参考アドレス</a></p></div><div class="upvotejs" data-commid="36013" id="runoobvote-id-36013"><a class="upvote"></a> <span class="count">260</span></div></div><div class="comt-main" id="div-comment-36013"><p><strong data-title="">グローバル変数とローカル変数のメモリ上の違い</strong></p>
 <p>グローバル変数はメモリのグローバル記憶域に保存され、静的ストレージユニットを占有します。ローカル変数はスタックに保存され、所属する関数が呼び出されたときにのみ動的に変数のストレージユニットが割り当てられます。</p>
 <p>C言語はコンパイル後にメモリを次のいくつかの領域に分けます：</p>
-<ul><li>（1）スタック（stack）：コンパイラによって管理され、自動的に割り当て・解放されます。関数呼び出しの過程における各種パラメータ、ローカル変数、戻り値、および関数の戻りアドレスを格納します。操作方法はデータ構造におけるスタックに似ています。</li><li>（2）ヒープ（heap）：プログラムが動的に領域を申請・割り当て・解放するために使用されます。C言語のmallocとfree、C++のnewとdeleteはすべてヒープ上で行われます。通常、プログラマが申請した領域は使用終了後に解放すべきですが、プログラマが解放しない場合、プログラム終了時にシステムが自動的に回収します。注意：ここでの「ヒープ」はデータ構造における「ヒープ」ではありません。</li><li>（3）グローバル（静的）記憶域：DATAセグメントとBSSセグメントに分かれます。DATAセグメント（グローバル初期化領域）は初期化済みのグローバル変数と静的変数を格納します。BSSセグメント（グローバル未初期化領域）は未初期化のグローバル変数と静的変数を格納します。プログラムの実行終了時に自動的に解放されます。そのうちBSSセグメントはプログラム実行前にシステムによって自動的に0にクリアされるため、未初期化のグローバル変数と静的変数はプログラム実行前の時点で既に0になっています。</li><li>（4）文字列定数領域：定数文字列を格納します。プログラム終了後にシステムによって解放されます。</li><li>（5）プログラムコード領域：プログラムのバイナリコードを格納します。</li></ul>
+<ul><li>（1）スタック（stack）：コンパイラによって管理され、自動的に割り当て・解放されます。関数呼び出しの過程における各種パラメータ、ローカル変数、戻り値、および関数の戻りアドレスを格納します。操作方法はデータ構造におけるスタックに似ています。</li><li>（2）ヒープ（heap）：プログラムが動的に領域を申請・割当て・解放するために使用されます。C言語のmallocとfree、C++のnewとdeleteはすべてヒープ上で行われます。通常、プログラマが申請した領域は使用終了後に解放すべきですが、プログラマが解放しない場合、プログラム終了時にシステムが自動的に回収します。注意：ここでの「ヒープ」はデータ構造における「ヒープ」ではありません。</li><li>（3）グローバル（静的）記憶域：DATAセグメントとBSSセグメントに分かれます。DATAセグメント（グローバル初期化領域）は初期化済みのグローバル変数と静的変数を格納します。BSSセグメント（グローバル未初期化領域）は未初期化のグローバル変数と静的変数を格納します。プログラムの実行終了時に自動的に解放されます。そのうちBSSセグメントはプログラム実行前にシステムによって自動的に0にクリアされるため、未初期化のグローバル変数と静的変数はプログラム実行前の時点で既に0になっています。</li><li>（4）文字列定数領域：定数文字列を格納します。プログラム終了後にシステムによって解放されます。</li><li>（5）プログラムコード領域：プログラムのバイナリコードを格納します。</li></ul>
 <p>明らかに、C言語のグローバル変数とローカル変数はメモリ上で違いがあります。C言語のグローバル変数には外部変数と静的変数が含まれ、いずれもグローバル記憶域に保存され、永続的なストレージユニットを占有します。ローカル変数、すなわち自動変数はスタックに保存され、所属する関数が呼び出されたときにのみシステムがスタック上に一時的なストレージユニットを動的に割り当てます。</p>
 <p>興味のある読者は、以下のプログラムを実行して、実行結果を分析してみてください。</p>
 <pre>#include &lt;stdio.h&gt;
@@ -817,11 +817,11 @@ arr={2,3}; // 错误的赋值，arr是不可修改左值（不是因为其转换
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1121,7 +1121,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

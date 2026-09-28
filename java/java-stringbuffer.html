@@ -490,18 +490,18 @@ RunooJava!
 <p><strong>Java における StringBuilder と StringBuffer はどのようなシナリオに適していますか？</strong></p>
 <p data-title="Java StringBuilder 和 StringBuffer 适用的场景">最も簡単な答えは、StringBuffer には基本的に適用シーンがないということです。本当にスレッドセーフが必要なシナリオに遭遇しない限り、すべての場合において StringBuilder を選択すべきです。もし遭遇したなら、必ずここにコメントで知らせてください。</p>
 <p>そして、一点補足します。スレッドセーフについてですが、仮に本当にそのようなシナリオに遭遇したとしても、残念ながら、おそらく 99.99....99% の場合、StringBuffer を選択する必要はありません。StringBuffer のスレッドセーフは、JVM が例外をスローせずにスムーズに実行を継続することを保証するだけであり、論理の正しさや呼び出し順序の正しさを保証するものではないからです。ほとんどの場合、私たちが必要とするのはスレッドセーフだけではなく、ロックです。</p>
-<p>最後に、なぜ StringBuffer が存在するのでしょうか。本当に価値がないのなら、なぜ JDK がこのクラスを提供するのでしょうか。答えは非常に簡単です。最初は StringBuilder が存在しなかったからです。Sun の人々は、どのような愚かな考えからか、StringBuffer をスレッドセーフにすると決めました。そして約10年後、人々はこれがなんと愚かな決定であったかをようやく認識し、この10年間にその愚かな決定が「Java の実行速度が遅い」という噂にどれほどの力を与えたかを認識しました。そこで、JDK 1.5 のときに、ついに非スレッドセーフな StringBuffer 実装を提供し、それを StringBuilder と名付けました。ちなみに、javac もおそらくこのバージョンから、プラス記号で連結されるすべての文字列演算を暗黙的に StringBuilder に書き換えるようになりました。つまり、JDK 1.5 以降、プラス記号で文字列を連結してもパフォーマンスの損失はまったくありません。</p>
+<p>最後に、なぜ StringBuffer が存在するのでしょうか。本当に価値がないのなら、なぜ JDK がこのクラスを提供するのでしょうか。答えは非常に簡単です。最初は StringBuilder が存在しなかったからです。Sun の人々は、どのような愚かな考えからか、StringBuffer をスレッドセーフにすると決めました。そして約10年後、人々はこれがなんと愚かな決定であったかをようやく認識し、この10年間にその愚かな決定が「Java の実行速度が遅い」という噂にどれほどの力をとえたかを認識しました。そこで、JDK 1.5 のときに、ついに非スレッドセーフな StringBuffer 実装を提供し、それを StringBuilder と名付けました。ちなみに、javac もおそらくこのバージョンから、プラス記号で連結されるすべての文字列演算を暗黙的に StringBuilder に書き換えるようになりました。つまり、JDK 1.5 以降、プラス記号で文字列を連結してもパフォーマンスの損失はまったくありません。</p>
 <p>多くのコメントで指摘されているように、私が上で述べた「プラス記号で文字列を連結してもパフォーマンスの損失はまったくない」という表現は厳密ではありません。厳密に言うと、ループがない場合、1行でプラス記号を使って文字列を連結するのはパフォーマンスの損失がありません。Java コンパイラは暗黙的に StringBuilder に置き換えます。しかし、ループがある場合、コンパイラは十分に賢い置き換えができないため、やはり不要なパフォーマンス損失が発生します。したがって、ループで文字列を連結するときは、素直に StringBuilder を使いましょう。</p><div class="comt-meta wrapper"><span class="comt-author"><a href="../note/27066.html" target="_blank">未之奋豆</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>未之奋豆</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  429***663@qq.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="https://www.zhihu.com/question/20101840" rel="nofollow" target="_blank">参考URL</a></p></div></span>8年前 (2018-05-07)</div></div></li><!-- #comment-## -->
 </ol>
 </div>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はここをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に必ず<a href=";.html" class="runoob-pop">ログイン</a>してください！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はここをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に必ず<a class="runoob-pop" href=";.html">ログイン</a>してください！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -790,7 +790,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

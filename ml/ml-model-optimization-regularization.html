@@ -166,11 +166,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h1>正則化</h1>
 <p>想像してみてください。私たちが自転車の乗り方を学んでいるところを。最初は、非常に緊張し、両手でハンドルをしっかり握り、体が硬直し、すべての動作の詳細を覚えようとするかもしれません。この細部に注意しすぎて、すべての微小な動きを完璧に制御しようとする状態は、機械学習では<strong>過学習</strong>。</p>
 <p>私たちのモデル（初心者のあなたのようなもの）は複雑すぎて、トレーニングデータのすべてのサンプルを、ノイズやランダムな変動まで含めて完璧に記憶してしまい、その結果、新しい未見のデータ（例えば実際に路上で自転車に乗る場合）に直面したとき、パフォーマンスが非常に悪く、汎化能力に欠けます。</p>
-<p><strong>正則化</strong>はこの問題を解決するために生まれた中核技術であり、その核心的な考え方は次のとおりです：<strong>モデルの学習への熱意を冷まし、細部にこだわりすぎないようにして、新しい環境での適応能力を高めること</strong>。簡単に言えば、正則化は、モデル学習の目的関数（損失関数）に追加のペナルティ項を加えることで、モデルの複雑さを制限し、トレーニングデータの特定のパターンに過度に依存するのを防ぎます。</p>
+<p><strong>正則化</strong>はこの問題を解決するために生まれた中核技術であり、その核心的な考え方は次のとおりです：<strong>モデルの学習への熱意を冷まし、細部にこだわりすぎないようにして、新しい環境での適応能力を高めること</strong>簡単に言えば、正則化は、モデル学習の目的関数（損失関数）に追加のペナルティ項を加えることで、モデルの複雑さを制限し、トレーニングデータの特定のパターンに過度に依存するのを防ぎます。</p>
 <p>本記事では、正則化の原理、一般的な手法、および実践的なエンジニアリング応用について深く理解していきます。</p>
 <hr/>
 <h2>基本概念：バイアスとバリアンスのトレードオフ</h2>
-<p>正則化を深く理解する前に、機械学習モデルの誤差の2つの主要な原因を理解する必要があります：<strong>バイアス</strong> 和 <strong>バリアンス</strong>。これにより、正則化が一体何を調整しているのかを理解するのに役立ちます。</p>
+<p>正則化を深く理解する前に、機械学習モデルの誤差の2つの主要な原因を理解する必要があります：<strong>バイアス</strong>と<strong>バリアンス</strong>。これにより、正則化が一体何を調整しているのかを理解するのに役立ちます。</p>
 <p><img decoding="async" src="../wp-content/uploads/2025/12/d6383384-2ab0-4eb7-8f35-9f329d6f3fe6.png"/></p>
 <ul>
 <li><strong>バイアス</strong>が測っているのは、モデル自体の<strong>系統的誤差</strong>。高バイアスは、モデルが単純すぎて、トレーニングデータの基本的なパターンさえも学習できていない（未学習）ことを意味します。</li>
@@ -337,7 +337,7 @@ elastic_model.<span style="color: #05a;">fit</span><span style="color: Olive;">(
 <li>順伝播と逆伝播は、残ったニューロンでのみ行われます。</li>
 <li>テストまたは予測時には、すべてのニューロンを使用しますが、ニューロンの出力には<code>(1-p)</code>期待値を一致させるために、p（保持確率）を掛けます。</li>
 </ul>
-<p><strong>核心となる考え</strong>： ニューロン間の複雑な共同適応が生じるのを防ぎ、ネットワークにより<strong>ロバスト</strong>和<strong>分散</strong>の特徴表現を学習させます。これはチームのようなもので、特定の主要メンバーだけに依存するのではなく、各人が独立して働く能力を持つ必要があります。そうすれば、誰かが欠席してもチームは正常に機能できます。</p>
+<p><strong>核心となる考え</strong>： ニューロン間の複雑な共同適応が生じるのを防ぎ、ネットワークにより<strong>ロバスト</strong>と<strong>分散</strong>の特徴表現を学習させます。これはチームのようなもので、特定の主要メンバーだけに依存するのではなく、各人が独立して働く能力を持つ必要があります。そうすれば、誰かが欠席してもチームは正常に機能できます。</p>
 <p><strong>コード例 (TensorFlow/Keras を使用)</strong>：</p>
 <div class="example">
 <h2 class="example">例</h2>
@@ -573,11 +573,11 @@ plt.<span style="color: #05a;">show</span><span style="color: Olive;">(</span><s
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に必ず<a href=";.html" class="runoob-pop">ログイン</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に必ず<a class="runoob-pop" href=";.html">ログイン</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -866,7 +866,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

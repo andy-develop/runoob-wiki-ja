@@ -365,7 +365,7 @@ int mbtowc(wchar_t *wc, const char *mbstr, size_t n);
     <span style="color: #000066;">setlocale</span><span style="color: #000;">(</span>LC_CTYPE<span style="color: #339933;">,</span> <span style="color: #a11;">""</span><span style="color: #000;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">// マルチバイト文字列</span><br/>
-    <span style="color: #993333;">const</span> <span style="color: #993333;">char</span> <span style="color: #339933;">*</span>str <span style="color: #339933;">=</span> <span style="color: #a11;">"这里是 runoob.com"</span><span style="color: #339933;">;</span><br/>
+    <span style="color: #993333;">const</span> <span style="color: #993333;">char</span> <span style="color: #339933;">*</span>str <span style="color: #339933;">=</span> <span style="color: #a11;">"ここは runoob.com"</span><span style="color: #339933;">;</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">// ワイド文字配列。変換後の結果を格納</span><br/>
     <span style="color: #993333;">wchar_t</span> mb<span style="color: #000;">[</span><span style="color: #164;">100</span><span style="color: #000;">]</span><span style="color: #339933;">;</span><br/>
@@ -415,7 +415,7 @@ int mbtowc(wchar_t *wc, const char *mbstr, size_t n);
     <span style="color: #708;">for</span> <span style="color: #000;">(</span><span style="color: #993333;">size_t</span> i <span style="color: #339933;">=</span> <span style="color: #164;">0</span><span style="color: #339933;">;</span> mbstr<span style="color: #000;">[</span>i<span style="color: #000;">]</span> <span style="color: #339933;">!=</span> <span style="color: #a11;">'<span style="color: #006699; font-weight: bold;">\0</span>'</span><span style="color: #339933;">;</span> i<span style="color: #339933;">++</span><span style="color: #000;">)</span> <span style="color: #000;">{</span><br/>
         <span style="color: #993333;">int</span> len <span style="color: #339933;">=</span> mbtowc<span style="color: #000;">(</span><span style="color: #339933;">&amp;</span>wc<span style="color: #339933;">,</span> <span style="color: #339933;">&amp;</span>mbstr<span style="color: #000;">[</span>i<span style="color: #000;">]</span><span style="color: #339933;">,</span> <span style="color: #164;">1</span><span style="color: #000;">)</span><span style="color: #339933;">;</span><br/>
         <span style="color: #708;">if</span> <span style="color: #000;">(</span>len <span style="color: #339933;">&gt;</span> <span style="color: #164;">0</span><span style="color: #000;">)</span> <span style="color: #000;">{</span><br/>
-            <span style="color: #000066;">wprintf</span><span style="color: #000;">(</span>L<span style="color: #a11;">"转换后的宽字符: %lc<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">,</span> wc<span style="color: #000;">)</span><span style="color: #339933;">;</span><br/>
+            <span style="color: #000066;">wprintf</span><span style="color: #000;">(</span>L<span style="color: #a11;">"変換後のワイド文字: %lc<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">,</span> wc<span style="color: #000;">)</span><span style="color: #339933;">;</span><br/>
             i <span style="color: #339933;">+=</span> len <span style="color: #339933;">-</span> <span style="color: #164;">1</span><span style="color: #339933;">;</span>  <span style="color: #666666; font-style: italic;">// 現在のマルチバイト文字のバイト数をスキップ</span><br/>
         <span style="color: #000;">}</span> <span style="color: #708;">else</span> <span style="color: #708;">if</span> <span style="color: #000;">(</span>len <span style="color: #339933;">==</span> <span style="color: #164;">0</span><span style="color: #000;">)</span> <span style="color: #000;">{</span><br/>
             <span style="color: #000000; font-weight: bold;">break</span><span style="color: #339933;">;</span><br/>
@@ -547,11 +547,11 @@ int mbtowc(wchar_t *wc, const char *mbstr, size_t n);
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>する必要があります！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>する必要があります！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -851,7 +851,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

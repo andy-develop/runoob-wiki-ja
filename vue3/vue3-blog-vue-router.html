@@ -201,14 +201,14 @@ $ npm install vue-router@4
   <span style="color: #009900;">{</span><br/>
     path<span style="color: #339933;">:</span> <span style="color: #3366CC;">'/'</span><span style="color: #339933;">,</span>                <span style="color: #006600; font-style: italic;">// URL 路径</span><br/>
     name<span style="color: #339933;">:</span> <span style="color: #3366CC;">'home'</span><span style="color: #339933;">,</span>             <span style="color: #006600; font-style: italic;">// 路由名称（可选，编程式导航时用）</span><br/>
-    component<span style="color: #339933;">:</span> HomeView       <span style="color: #006600; font-style: italic;">// 对应的页面组件</span><br/>
+    component<span style="color: #339933;">:</span> HomeView       <span style="color: #006600; font-style: italic;">// 対応するページコンポーネント</span><br/>
   <span style="color: #009900;">}</span><span style="color: #339933;">,</span><br/>
   <span style="color: #009900;">{</span><br/>
-    <span style="color: #006600; font-style: italic;">// 动态路由：:id 是占位符，匹配任意值</span><br/>
-    <span style="color: #006600; font-style: italic;">// /post/1、/post/2、/post/hello 都会匹配到这条</span><br/>
+    <span style="color: #006600; font-style: italic;">// 動的ルート：:id はプレースホルダーで、任意の値にマッチします</span><br/>
+    <span style="color: #006600; font-style: italic;">// /post/1、/post/2、/post/hello はすべてこのルートに一致します</span><br/>
     path<span style="color: #339933;">:</span> <span style="color: #3366CC;">'/post/:id'</span><span style="color: #339933;">,</span><br/>
     name<span style="color: #339933;">:</span> <span style="color: #3366CC;">'post'</span><span style="color: #339933;">,</span><br/>
-    <span style="color: #006600; font-style: italic;">// 懒加载：访问时才加载，打包时会拆分出独立的 JS 文件</span><br/>
+    <span style="color: #006600; font-style: italic;">// 遅延読み込み：アクセス時に読み込まれ、ビルド時に独立したJSファイルとして分割される</span><br/>
     component<span style="color: #339933;">:</span> <span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #FF0000;">import</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'../views/PostView.vue'</span><span style="color: #009900;">)</span><br/>
   <span style="color: #009900;">}</span><br/>
 <span style="color: #009900;">]</span><br/>
@@ -233,7 +233,7 @@ import NavBar from './components/NavBar.vue'<br/>
 <br/>
 &lt;template&gt;<br/>
   &lt;NavBar /&gt;<br/>
-  &lt;main&gt;<br/>&lt;!-- RouterView 是魔法位置：当前路由匹配到的组件会在这里渲染 --&gt;<br/>
+  &lt;main&gt;<br/>&lt;!-- RouterView は魔法の位置です：現在のルートにマッチしたコンポーネントはここでレンダリングされます --&gt;<br/>
     &lt;RouterView /&gt;<br/>
   &lt;/main&gt;<br/>
 &lt;/template&gt;<br/>
@@ -250,7 +250,7 @@ import NavBar from './components/NavBar.vue'<br/>
 <div class="example_code">
 <span style="color: #170;">&lt;template&gt;</span><br/>
   <span style="color: #808080; font-style: italic;">首页</span><br/>
-  <span style="color: #170;">&lt;RouterLink to<span style="color: #66CC66;">=</span><span style="color: #a11;">"/"</span>&gt;</span>&lt;!-- 命名路由写法（更推荐：路径变了也只改一处） --&gt;<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span>RouterLink&gt;</span><br/>
+  <span style="color: #170;">&lt;RouterLink to<span style="color: #66CC66;">=</span><span style="color: #a11;">"/"</span>&gt;</span>&lt;!-- 名前付きルートの書き方（推奨：パスが変わっても1箇所変更するだけ） --&gt;<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span>RouterLink&gt;</span><br/>
 <br/>
   <span style="color: #808080; font-style: italic;">阅读文章 {{ article.id }}</span><br/>
   <span style="color: #170;">&lt;RouterLink :to<span style="color: #66CC66;">=</span><span style="color: #a11;">"{ name: 'post', params: { id: article.id } }"</span>&gt;</span><br/>&lt;!-- 传统 a 标签会导致页面刷新，不要用 --&gt;<br/>
@@ -268,17 +268,17 @@ import NavBar from './components/NavBar.vue'<br/>
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #808080; font-style: italic;">// useRoute 返回当前路由对象</span><br/>
+<span style="color: #808080; font-style: italic;">// useRoute は現在のルートオブジェクトを返す</span><br/>
 <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">script</span> setup&gt;</span><br/>
 import { useRoute } from 'vue-router'<br/>
-<br/>// route.params 包含 URL 中的参数<br/>
+<br/>// route.params には URL 内のパラメータが含まれています<br/>
 const route = useRoute()<br/>
-<br/>// 例如 URL 为 /post/3，则 route.params.id === '3'<br/>console.log('文章 ID：', route.params.id)<br/>文章详情页<br/>
+<br/>// 例えば URL が /post/3 の場合、route.params.id === '3'<br/>console.log('文章 ID：', route.params.id)<br/>文章详情页<br/>
 <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">script</span>&gt;</span><br/>
 <br/>
 <span style="color: #170;">&lt;template&gt;</span><br/>
   <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
-    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">h1</span>&gt;</span>&lt;!-- 注意：params 中的值都是字符串 --&gt;<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">h1</span>&gt;</span><br/>
+    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">h1</span>&gt;</span>&lt;!-- 注意：params の値はすべて文字列です --&gt;<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">h1</span>&gt;</span><br/>
     <span style="color: #808080; font-style: italic;">当前文章 ID：{{ route.params.id }}</span><br/>
     <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">p</span>&gt;</span>の値は常に文字列です。たとえ URL が<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">p</span>&gt;</span><br/>
   <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
@@ -295,7 +295,7 @@ const route = useRoute()<br/>
 <div class="example_code">
 <span style="color: #808080; font-style: italic;">id: Number,       // 新增：文章 ID，用于跳转</span><br/>
 <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">script</span> setup&gt;</span><br/>
-defineProps({<br/>&lt;!-- 整个卡片被 RouterLink 包裹，点击任意位置都能跳转 --&gt;<br/>
+defineProps({<br/>&lt;!-- カード全体が RouterLink で包まれており、どこをクリックしても遷移できます --&gt;<br/>
   title: String,<br/>
   summary: String,<br/>
   date: String,<br/>
@@ -357,31 +357,31 @@ const id = Number(route.params.id)<br/>
 <br/>title: 'Vue3 入门完全指南',<br/>
 const articles = ref([<br/>
   {<br/>
-    id: 1,<br/>summary: '从零开始学习 Vue3 组合式 API',<br/>为什么学 Vue3？<br/>
+    id: 1,<br/>summary: 'ゼロから Vue3 コンポジション API を学ぶ',<br/>なぜVue3を学ぶのか？<br/>
     category: 'Vue',<br/>
     date: '2024-05-10',<br/>
     content: `<br/>
-      <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">h2</span>&gt;</span>Vue3 是目前最流行的前端框架之一，它易学、灵活、性能出色。<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">h2</span>&gt;</span><br/>
-      <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">p</span>&gt;</span>组合式 API 的优势<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">p</span>&gt;</span><br/>
-      <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">h2</span>&gt;</span>相比 Vue2 的选项式 API，组合式 API 让逻辑复用变得简单，代码组织更加灵活。<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">h2</span>&gt;</span><br/>
-      <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">p</span>&gt;</span>ref 与 reactive<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">p</span>&gt;</span><br/>
-      <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">h2</span>&gt;</span>ref 适合基本类型数据，reactive 适合对象和数组。但实际开发中推荐统一使用 ref。<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">h2</span>&gt;</span><br/>
+      <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">h2</span>&gt;</span>Vue3 は現在最も人気のあるフロントエンドフレームワークの一つで、学びやすく、柔軟で、性能に優れています。<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">h2</span>&gt;</span><br/>
+      <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">p</span>&gt;</span>コンポジション API の利点<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">p</span>&gt;</span><br/>
+      <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">h2</span>&gt;</span>Vue2 のオプション API と比較して、コンポジション API はロジックの再利用を簡単にし、コード構成をより柔軟にします。<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">h2</span>&gt;</span><br/>
+      <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">p</span>&gt;</span>ref と reactive<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">p</span>&gt;</span><br/>
+      <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">h2</span>&gt;</span>ref は基本型データに適しており、reactive はオブジェクトや配列に適しています。ただし、実際の開発では ref を統一して使用することを推奨します。<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">h2</span>&gt;</span><br/>
       <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">p</span>&gt;</span>title: 'JS 异步编程详解',<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">p</span>&gt;</span><br/>
     `<br/>
   },<br/>
   {<br/>
-    id: 2,<br/>summary: '搞懂 Promise 和 async/await',<br/>什么是异步？<br/>
+    id: 2,<br/>summary: 'Promise と async/await を理解する',<br/>非同期とは何ですか？<br/>
     category: 'JavaScript',<br/>
     date: '2024-05-08',<br/>
     content: `<br/>
-      <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">h2</span>&gt;</span>JS 是单线程的，异步操作可以让主线程不阻塞，同时处理网络请求、定时器等任务。<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">h2</span>&gt;</span><br/>
-      <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">p</span>&gt;</span>Promise 的核心概念<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">p</span>&gt;</span><br/>
+      <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">h2</span>&gt;</span>JSはシングルスレッドであり、非同期操作によりメインスレッドをブロックせず、ネットワークリクエストやタイマーなどのタスクを同時に処理できます。<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">h2</span>&gt;</span><br/>
+      <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">p</span>&gt;</span>Promise の核心概念<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">p</span>&gt;</span><br/>
       <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">h2</span>&gt;</span>Promise 有三种状态：pending（进行中）、fulfilled（已成功）、rejected（已失败）。<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">h2</span>&gt;</span><br/>
       <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">p</span>&gt;</span>// 根据 ID 查找文章<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">p</span>&gt;</span><br/>
     `<br/>
   }<br/>
 ])<br/>
-<br/>&lt;!-- 文章不存在 --&gt;<br/>
+<br/>&lt;!-- 記事は存在しません --&gt;<br/>
 const article = computed(() =&gt; {<br/>
   return articles.value.find(a =&gt; a.id === id)<br/>
 })<br/>
@@ -389,11 +389,11 @@ const article = computed(() =&gt; {<br/>
 <br/>
 <span style="color: #170;">&lt;template&gt;</span><br/>
   <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"post-view"</span>&gt;</span><br/>
-    <span style="color: #808080; font-style: italic;">文章不存在</span><br/>
+    <span style="color: #808080; font-style: italic;">記事が存在しません</span><br/>
     <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> v-if<span style="color: #66CC66;">=</span><span style="color: #a11;">"!article"</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"not-found"</span>&gt;</span><br/>
-      <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">h2</span>&gt;</span>找不到 ID 为 {{ id }} 的文章<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">h2</span>&gt;</span><br/>
+      <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">h2</span>&gt;</span>ID が {{ id }} の記事が見つかりません<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">h2</span>&gt;</span><br/>
       <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">p</span>&gt;</span>返回首页<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">p</span>&gt;</span><br/>
-      <span style="color: #170;">&lt;RouterLink to<span style="color: #66CC66;">=</span><span style="color: #a11;">"/"</span>&gt;</span>&lt;!-- 文章存在，展示完整内容 --&gt;<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span>RouterLink&gt;</span><br/>
+      <span style="color: #170;">&lt;RouterLink to<span style="color: #66CC66;">=</span><span style="color: #a11;">"/"</span>&gt;</span>&lt;!-- 記事が存在する場合は、完全な内容を表示 --&gt;<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span>RouterLink&gt;</span><br/>
     <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
 <br/>
     <span style="color: #808080; font-style: italic;">&lt;!-- v-html 渲染 HTML 字符串 --&gt;</span><br/>
@@ -590,11 +590,11 @@ time {<br/>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必須です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必須です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -883,7 +883,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

@@ -88,7 +88,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <!-- ad start-->
 <!-- ad end-->
 <h2>この節のイントロダクション：</h2>
-<blockquote><p>今回も引き続き、Androidシステムサービスの中のLayoutInflater(レイアウトサービス)を紹介します。レイアウトと言えば、皆さんが最初に思い浮かべるのは、レイアウトのXMLを書き終えて、ActivityのsetContentView()を呼び出してレイアウトを読み込み、それを画面に表示する、ということではないでしょうか~ 実はこの内部では、やはりこのLayoutInflaterが使われており、Androidに内蔵されているPullパーサーでレイアウトを解析しています。一般的に、Androidでレイアウトを動的に読み込んだりコントロールを追加したりする際に多く使われます。この節では、実際の開発におけるいくつかの使い方を学んでいきましょう~</p><p>
+<blockquote><p>今回も引き続き、Androidシステムサービスの中のLayoutInflater(レイアウトサービス)を紹介します。レイアウトと言えば、皆さんが最初に思い浮かべるのは、レイアウトのXMLを書き終えて、ActivityのsetContentView()を呼び出してレイアウトを読み込み、それを画面に表示する、ということではないでしょうか~ 実はこの内部では、やはりこのLayoutInflaterが使われており、Androidに内蔵されているPullパーサーでレイアウトを解析しています。一般のに、Androidでレイアウトを動的に読み込んだりコントロールを追加したりする際に多く使われます。この節では、実際の開発におけるいくつかの使い方を学んでいきましょう~</p><p>
 <strong>公式APIドキュメント</strong>：<a href="http://androiddoc.qiniudn.com/reference/android/view/LayoutInflater.html">LayoutInflater</a></p></blockquote>
 <hr/>
 <h2>1. LayoutInflaterの関連紹介</h2>
@@ -106,18 +106,13 @@ LayoutInflater inflater3 = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SER
 <p>PS: 後の2つは実際には内部で最初の方法を使用しています~</p>
 <p><strong>② レイアウトを読み込む方法</strong>：</p>
 <blockquote><p>public View <strong>inflate</strong>(int resource, ViewGroup root, boolean attachToRoot)
-このメソッドの3つのパラメータは順に以下の通りです：</p><p>① 読み込むレイアウトに対応するリソースID</p><p>② そのレイアウトの外側にさらに親レイアウトをネストするためのものです。不要な場合はnullを書けばOKです!</p><p>③ 読み込むレイアウトファイルの最外層にrootレイアウトを被せるかどうか。このパラメータを設定しない場合、
-rootがnullでなければ、デフォルトでtrueになります。
-rootがnullの場合、attachToRootは効果がありません!
-rootがnullでなくattachToRootがtrueの場合、読み込んだレイアウトファイルの最外層にrootレイアウトがネストされます;
-falseの場合、rootは効果を失います!
-簡単に理解すると：<strong>読み込んだレイアウトにrootの外側コンテナを追加するかどうか、ということです~!</strong></p></blockquote>
+このメソッドの3つのパラメータは順に以下の通りです：</p><p>① 読み込むレイアウトに対応するリソースID</p><p>② そのレイアウトの外側にさらに親レイアウトをネストするためのものです。不要な場合はnullを書けばOKです!</p><p>③ 読み込むレイアウトファイルの最外層にrootレイアウトをされるせるかどうか。このパラメータを設定しない場合、rootがnullでなければ、デフォルトでtrueになります。rootがnullの場合、attachToRootは効果がありません! rootがnullでなくattachToRootがtrueの場合、読み込んだレイアウトファイルの最外層にrootレイアウトがネストされます; falseの場合、rootは効果を失います! 簡単に理解すると：<strong>読み込んだレイアウトにrootの外側コンテナを追加するかどうか、ということです~!</strong></p></blockquote>
 <hr/>
 <p><strong>③ LayoutInflater.LayoutParamsを使用して関連する属性を設定する</strong>:</p>
 <blockquote><p>例えばRelativeLayoutでは、addRuleメソッドでルールを追加することもできます。位置を設定する際に、親コンテナを基準にするのか、子コントロールを基準にするのか、あるいはmarginなどを設定するのか、それはあなた次第です~</p></blockquote>
 <hr/>
 <h2>2. 純粋なJavaコードでレイアウトを読み込む</h2>
-<blockquote><p>私たちはXMLを使って必要なレイアウトを生成することにすっかり慣れていますが、特定の状況では、Javaコードを使ってレイアウトにコントロールやレイアウトを動的に追加する必要があります!</p><p>しかし、Androidのページレイアウトを完全にJavaコードで記述することはお勧めしません。まず第一にコード量が多くなり、多くなると混乱しやすく、ビジネスの分離にも不利です。xmlでレイアウトを作成し、Javaコードで内部のコントロールを修正することをお勧めします。もちろん、Javaで動的にコントロールを追加する必要がある場合もあります!</p></blockquote>
+<blockquote><p>私たちはXMLを使って必要なレイアウトを生成することにすっかり慣れていますが、特定の状況では、Javaコードを使ってレイアウトにコントロールやレイアウトを動的に追加する必要があります!</p><p>しかし、Androidのページレイアウトを完全にJavaコードで記述することはお勧めしません。まず第一にコード量が多くなり、多くなると混乱しやすく、ビジネスの分離にも不利です。xmlでレイアウトを作成し、Javaコードで内部のコントロールを修正することをお勧めします。もちろん、Javaで動的にコントロールを追加する必要がある場合もあります！</p></blockquote>
 <h3><strong>純粋なJavaコードでレイアウトを読み込むフロー</strong>：</h3>
 <hr/>
 <p><strong>——Step 1</strong>：</p>
@@ -185,7 +180,7 @@ public class MainActivity extends Activity {
 <hr/>
 <h2>3. JavaコードでコントロールまたはXMLレイアウトを動的に追加する</h2>
 <blockquote><p>2つ目では、純粋なJavaコードでレイアウトを読み込む方法を説明しましたが、実際にはあまり使われず、より多くの場合はViewコントロールを動的に追加したり、XMLレイアウトを動的に読み込んだりします!</p></blockquote>
-<h3><strong>1) JavaコードでViewを動的に追加する</strong></h3>
+<h3><strong>JavaコードでViewを動的に追加する</strong></h3>
 <p>コンポーネントを動的に追加する書き方は2つあります。違いは、先に<strong>setContentView(R.layout.activity_main)</strong>; が必要かどうかです。</p>
 <p>以下に、2つの異なる書き方でButtonを追加する例を示します：<strong>activity_main.xml</strong>：</p>
 <pre>
@@ -508,11 +503,11 @@ public View inflate(XmlPullParser parser, ViewGroup root, boolean attachToRoot) 
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=".." class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリック</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href="..">ログイン</a>が必要です！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

@@ -313,7 +313,7 @@ let todos<span style="color: #339933;">:</span> string<span style="color: #00990
     label<span style="color: #339933;">:</span> <span style="color: #3366CC;">"やること"</span><span style="color: #339933;">,</span><br/>
     description<span style="color: #339933;">:</span> <span style="color: #3366CC;">"プロジェクトのやることリストを管理"</span><span style="color: #339933;">,</span><br/>
     <span style="color: #006600; font-style: italic;">// 簡潔な説明。システムプロンプトの Available tools 領域に表示される</span><br/>
-    promptSnippet<span style="color: #339933;">:</span> <span style="color: #3366CC;">"プロジェクトのやること管理：list 一覧、add 追加、done 完了"</span><span style="color: #339933;">,</span><br/>
+    promptSnippet<span style="color: #339933;">:</span> <span style="color: #3366CC;">プロジェクトのやること管理：list 一覧、add 追加、done 完了</span><span style="color: #339933;">,</span><br/>
     <span style="color: #006600; font-style: italic;">// 使用ガイド。システムプロンプトの Guidelines 領域に追加される</span><br/>
     promptGuidelines<span style="color: #339933;">:</span> <span style="color: #009900;">[</span><br/>
       <span style="color: #3366CC;">"todo ツールを使用してタスクを計画し、やることファイルを直接編集しないでください"</span><span style="color: #339933;">,</span><br/>
@@ -418,7 +418,7 @@ tool_call: todo
 <pre>
 待办已新增：写周报（共 1 项）
 </pre>
-<p>AI はこの結果を受け取ると、自然言語でユーザーに確認します。例：「「週報を書く」をやることリストに追加しました。現在合計1件です」。</p>
+<p>AI はこの結果を受け取ると、自然言語でユーザーに確認します。例：「「週報を書く」をやることリストに追加しました。現在合計1件です」</p>
 <p>toolResult の details から状態を再構築する以外に、再起動をまたぐ永続化にはもう一つの方法があります：<span class="marked">pi.appendEntry()</span>。</p>
 <p>カスタムエントリをセッションファイルに直接書き込み、<span class="marked">pi.registerEntryRenderer()</span>と組み合わせると、会話履歴にレンダリングすることもできます。</p>
 <p>カスタムエントリは LLM コンテキストに入らないため、トークンを消費しません。</p>
@@ -428,14 +428,14 @@ tool_call: todo
 <p>registerTool の設定オブジェクトには以下のフィールドが含まれ、その中でも name、parameters、execute が中心です。</p>
 <table class="reference">
 <tr><th>フィールド</th><th>型</th><th>必須</th><th>説明</th></tr>
-<tr><td>name</td><td>string</td><td>是</td><td>ツールの一意の識別子。AI はこの名前で呼び出します</td></tr>
-<tr><td>label</td><td>string</td><td>是</td><td>ツールの表示名</td></tr>
-<tr><td>description</td><td>string</td><td>是</td><td>ツールの機能説明。AI はこれに基づいて使用するタイミングを判断します</td></tr>
-<tr><td>parameters</td><td>TypeBox Schema</td><td>是</td><td>ツールパラメータの型定義</td></tr>
+<tr><td>name</td><td>string</td><td>である</td><td>ツールの一意の識別子。AI はこの名前で呼び出します</td></tr>
+<tr><td>label</td><td>string</td><td>である</td><td>ツールの表示名</td></tr>
+<tr><td>description</td><td>string</td><td>である</td><td>ツールの機能説明。AI はこれに基づいて使用するタイミングを判断します</td></tr>
+<tr><td>parameters</td><td>TypeBox Schema</td><td>である</td><td>ツールパラメータの型定義</td></tr>
 <tr><td>promptSnippet</td><td>string</td><td>否</td><td>Available tools 領域の1行の概要</td></tr>
 <tr><td>promptGuidelines</td><td>string[]</td><td>否</td><td>システムプロンプトの Guidelines 領域に追加されるガイド</td></tr>
 <tr><td>prepareArguments</td><td>function</td><td>否</td><td>Schema 検証の前にパラメータを変換し、旧形式との互換性を実現します</td></tr>
-<tr><td>execute</td><td>async function</td><td>是</td><td>ツールの実際の実行ロジック</td></tr>
+<tr><td>execute</td><td>async function</td><td>である</td><td>ツールの実際の実行ロジック</td></tr>
 </table>
 <blockquote><p>promptGuidelines の各ガイドは必ず<span class="marked">ツール名を明示しなければなりません</span>。</p><p>「このツールを使用するとき…」ではなく、「my_tool を使用するとき…」と書いてください。AI は「この」だけではどのツールを指しているのか判断できないためです。</p></blockquote>
 <hr/>
@@ -748,11 +748,11 @@ $ pi -e ./tool-override.ts
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1052,7 +1052,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

@@ -414,7 +414,7 @@ count is 5
 <p><strong>メモリ空間の割り当ての観点から見ると：</strong></p>
 <p>1、グローバル変数、静的ローカル変数、静的グローバル変数はすべて静的記憶域に空間が割り当てられますが、ローカル変数はスタックに空間が割り当てられます。</p>
 <p>2、グローバル変数自体が静的記憶方式であり、静的グローバル変数ももちろん静的記憶方式です。この2つは記憶方式において違いはありません。この2つの違いは、非静的グローバル変数のスコープがソースプログラム全体であることです。ソースプログラムが複数のソースファイルで構成される場合、非静的グローバル変数は各ソースファイルで有効です。一方、静的グローバル変数はそのスコープが制限され、つまりその変数を定義したソースファイル内でのみ有効であり、同じソースプログラムの他のソースファイルでは使用できません。静的グローバル変数のスコープは1つのソースファイル内に限られるため、そのソースファイル内の関数のみが共用でき、他のソースファイルでエラーを引き起こすことを防げます。</p>
-<ul><li>1)静的変数はプログラムの静的データ記憶域（グローバルに可視）に置かれるため、次回の呼び出し時にも元の代入値を保持できます。この点が、スタック変数やヒープ変数との違いです。</li><li>2)static を使用すると、変数は自身のスコープ内でのみ可視であることをコンパイラに伝えます。この点が、グローバル変数との違いです。</li></ul>
+<ul><li>静的変数はプログラムの静的データ記憶域（グローバルに可視）に置かれるため、次回の呼び出し時にも元の代入値を保持できます。この点が、スタック変数やヒープ変数との違いです。</li><li>2)static を使用すると、変数は自身のスコープ内でのみ可視であることをコンパイラに伝えます。この点が、グローバル変数との違いです。</li></ul>
 <p>以上の分析からわかるように、ローカル変数を静的変数に変更すると、その記憶方式、つまり生存期間が変わります。グローバル変数を静的変数に変更すると、そのスコープが変わり、使用範囲が制限されます。したがって、static という指定子は場所によって異なる役割を果たします。注意が必要です。</p>
 <p><strong>Tips:</strong></p>
 <ul><li>A.グローバル変数が単一のCファイル内でのみアクセスされる場合は、この変数を静的グローバル変数に変更して、モジュール間の結合度を下げることができます；</li><li>B.グローバル変数が単一の関数からのみアクセスされる場合は、この変数をその関数の静的ローカル変数に変更して、モジュール間の結合度を下げることができます；</li><li>C.動的グローバル変数、静的グローバル変数、静的ローカル変数にアクセスする関数を設計および使用する場合は、再入可能性の問題を考慮する必要があります。なぜなら、それらはすべて静的データ記憶域に配置され、グローバルに可視だからです；</li><li>D.再入可能な関数が必要な場合は、関数内でstatic変数を使用することを必ず避けなければなりません（そのような関数は「内部メモリ」機能を持つ関数と呼ばれます）</li><li>E.関数内でstatic変数を使用しなければならない状況：たとえば、ある関数の戻り値がポインタ型の場合、staticなローカル変数のアドレスを戻り値としなければなりません。auto型の場合は、誤ったポインタが返されます。</li></ul>
@@ -546,11 +546,11 @@ static_var equal: 2</pre>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に必ず<a href=";.html" class="runoob-pop">ログイン</a>してください！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に必ず<a class="runoob-pop" href=";.html">ログイン</a>してください！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -839,7 +839,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

@@ -4,8 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Python 两个内置函数: locals 和 globals | 菜鸟教程
-→ Pythonの2つの組み込み関数: localsとglobals | 菜鸟教程</title>
+<title>Pythonの2つの組み込み関数: localsとglobals | 菜鸟教程</title>
 <script>
 window.RUNOOB_CONFIG = {
   darkCssUrl: "https://www.runoob.com/wp-content/themes/runoob/dark-mode.css?v=1.125"
@@ -77,8 +76,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="col middle-column big-middle-column">
 <div class="article">
 <div class="article-heading">
-<h2>Python 两个内置函数: locals 和 globals
-→ Pythonの2つの組み込み関数: localsとglobals</h2> <h3><em>分类
+<h2>Pythonの2つの組み込み関数: localsとglobals</h2> <h3><em>分类
 → カテゴリ</em> <a href="../w3cnote_genre/code.html" title="编程技术">编程技术
 → プログラミング技術</a> </h3>
 </div>
@@ -86,29 +84,19 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="article-intro">
 <!-- ad start-->
 <!-- ad end-->
-<p>这两个函数主要提供，基于字典的访问局部和全局变量的方式。
-→ これらの2つの関数は主に、辞書ベースでローカル変数とグローバル変数にアクセスする方法を提供します。</p>
-<p>在理解这两个函数时，首先来理解一下 Python 中的名字空间概念。Python 使用叫做名字空间的东西来记录变量的轨迹。名字空间只是一个字典，它的键字就是变量名，字典的值就是那些变量的值。
-→ これらの2つの関数を理解するには、まずPythonの名前空間の概念を理解しましょう。Pythonは名前空間と呼ばれるものを使って変数の軌跡を記録します。名前空間は単なる辞書であり、そのキーは変数名、辞書の値はそれらの変数の値です。</p>
-<p>实际上，名字空间可以像 Python 的字典一样进行访问。
-→ 実際には、名前空間はPythonの辞書のようにアクセスすることができます。</p>
-<p>每个函数都有着自已的名字空间，叫做局部名字空间，它记录了函数的变量，包括函数的参数和局部定义的变量。每个模块拥有它自已的名字空间，叫做全局名字空间，它记录了模块的变量，包括函数、类、其它导入的模块、模块级的变量和常量。还有就是内置名字空间，任何模块均可访问它，它存放着内置的函数和异常。
+<p>これらの2つの関数は主に、辞書ベースでローカル変数とグローバル変数にアクセスする方法を提供します。</p>
+<p>これら2つの関数を理解するには、まずPythonの名前空間の概念を理解しましょう。Pythonは名前空間と呼ばれるものを使って変数の軌跡を記録します。名前空間は単なる辞書であり、そのキーは変数名、辞書の値はそれらの変数の値です。</p>
+<p>実際には、名前空間はPythonの辞書のようにアクセスすることができます。</p>
+<p>每个函数都有着自已の名字空间，叫做局部名字空间，它记录た函数の变量，包括函数の参数と局部定義された变量。每个模块拥有它自已の名字空间，叫做全局名字空间，它记录た模块の变量，包括函数、类、其它导入の模块、模块级の变量と常量。还有つまり内置名字空间，任何模块均可访问它，它存放着内置の函数と异常。
 → すべての関数には独自の名前空間があり、ローカル名前空間と呼ばれ、関数の変数（関数のパラメータとローカルに定義された変数を含む）を記録します。各モジュールは独自の名前空間を持ち、グローバル名前空間と呼ばれ、モジュールの変数（関数、クラス、その他のインポートされたモジュール、モジュールレベルの変数と定数を含む）を記録します。さらに、組み込み名前空間があり、どのモジュールからもアクセスでき、組み込み関数と例外が格納されています。</p>
-<p>当一行代码要使用变量 x 的值时，Python 会到所有可用的名字空间去查找变量，按照如下顺序：
-→ コードのある行が変数xの値を使用するとき、Pythonは利用可能なすべての名前空間で変数を検索し、次の順序で探します：</p>
+<p>コードのある行が変数 x の値を使用するとき、Python は利用可能なすべての名前空間で変数を検索し、次の順序で探します：</p>
 <ul><li>
 <strong>1、局部名字空间
-→ 1. ローカル名前空間</strong>- 特指当前函数或类的方法。如果函数定义了一个局部变量 x，Python将使用这个变量，然后停止搜索。
-→ - 現在の関数またはクラスのメソッドを指します。関数がローカル変数xを定義している場合、Pythonはこの変数を使用し、検索を停止します。</li><li><strong>2、全局名字空间
-→ 2. グローバル名前空間</strong>- 特指当前的模块。如果模块定义了一个名为 x 的变量，函数或类，Python将使用这个变量然后停止搜索。
-→ - 現在のモジュールを指します。モジュールがxという名前の変数、関数、またはクラスを定義している場合、Pythonはこの変数を使用して検索を停止します。</li><li><strong>3、内置名字空间
-→ 3. 組み込み名前空間</strong>- 对每个模块都是全局的。作为最后的尝试，Python 将假设 x 是内置函数或变量。
-→ - すべてのモジュールに対してグローバルです。最後の試みとして、Pythonはxが組み込み関数または変数であると仮定します。</li></ul>
-<p>如果 Python 在这些名字空间找不到 x，它将放弃查找并引发一个 NameError 的异常，同时传递
-→ Pythonがこれらの名前空間でxを見つけられない場合、検索を放棄してNameError例外を発生させ、同時に次の情報を渡します。<strong>There is no variable named 'x'</strong>这样一条信息。
-→ このようなメッセージです。</p>
-<p>局部变量函数 locals 例子（locals 返回一个名字/值对的字典）：
-→ ローカル変数関数localsの例（localsは名前と値のペアの辞書を返します）：</p>
+→ 1. ローカル名前空間</strong>現在の関数またはクラスのメソッドを指します。関数がローカル変数xを定義している場合、Pythonはこの変数を使用し、検索を停止します。</li><li><strong>2、全局名字空间
+→ 2. グローバル名前空間</strong>現在のモジュールを指します。モジュールがxという名前の変数、関数、またはクラスを定義している場合、Pythonはこの変数を使用して検索を停止します。</li><li><strong>3、内置名字空间
+→ 3. 組み込み名前空間</strong>- すべてのモジュールに対してグローバルです。最後の試みとして、Pythonはxが組み込み関数または変数であると仮定します。</li></ul>
+<p>Pythonがこれらの名前空間でxを見つけられない場合、検索を放棄してNameError例外を発生させ、同時に次の情報を渡します。<strong>There is no variable named 'x'</strong>このようなメッセージです。</p>
+<p>ローカル変数関数 locals の例（locals は名前と値のペアの辞書を返します）：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: Green;font-weight:bold;">def</span> foo<span style="color: Olive;">(</span>arg<span style="color: Gray;">,</span> a<span style="color: Olive;">)</span>:<br/>
     x <span style="color: Gray;">=</span> <span style="color: Maroon;">1</span><br/>
@@ -117,23 +105,17 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         j <span style="color: Gray;">=</span> <span style="color: Maroon;">1</span><br/>
         k <span style="color: Gray;">=</span> i<br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: Teal;">locals</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
-<span style="color: #a50">#调用函数的打印结果
-→ #関数を呼び出したときの出力結果</span><br/>
+<span style="color: #a50">#関数を呼び出したときの出力結果</span><br/>
 foo<span style="color: Olive;">(</span><span style="color: Maroon;">1</span><span style="color: Gray;">,</span><span style="color: Maroon;">2</span><span style="color: Olive;">)</span><br/>
 <span style="color: #a50">#{'k': 9, 'j': 1, 'i': 9, 'y': 'xxxxxx', 'x': 1, 'a': 2, 'arg': 1}</span><br/>
 </div></div>
-<p><strong>from module import</strong> 和 <strong>import module</strong>之间的不同。使用 import module，模块自身被导入，但是它保持着自已的名字空间，这就是为什么你需要使用模块名来访问它的函数或属性（module.function）的原因。但是使用 from module import，实际上是从另一个模块中将指定的函数和属性导入到你自己的名字空间，这就是为什么你可以直接访问它们却不需要引用它们所来源的模块的原因。
+<p><strong>from module import</strong>と<strong>import module</strong>の間の不同。使用 import module，模块自身される导入、しかし它保持着自已の名字空间，このつまりなぜ你需要使用模块名来访问它の函数或属性（module.function）の原因。しかし使用 from module import，实际上であるから另一个模块中指定された〜を函数と属性导入到你自分の名字空间，このつまりなぜ你可以直接访问それら却不需要引用それら所来源の模块の原因。
 → import moduleとfrom module importの間の違い。import moduleを使用すると、モジュール自体がインポートされますが、モジュールは自身の名前空間を保持します。そのため、モジュール名を使用してその関数や属性（module.function）にアクセスする必要があります。一方、from module importを使用すると、実際には別のモジュールから指定した関数や属性を自分の名前空間にインポートします。そのため、それらの出所となるモジュールを参照することなく直接アクセスできます。</p>
-<p>locals 是只读的，globals 不是。
-→ localsは読み取り専用ですが、globalsはそうではありません。</p>
-<p>locals 不可修改，globals 可以修改，原因是：
-→ localsは変更できませんが、globalsは変更できます。理由は次のとおりです：</p>
+<p>localsは読み取り専用ですが、globalsはそうではありません。</p>
+<p>localsは変更できませんが、globalsは変更できます。理由は次のとおりです：</p>
 <ul><li>
-<strong>locals()</strong>实际上没有返回局部名字空间，它返回的是一个拷贝。所以对它进行修改，修改的是拷贝，而对实际的局部名字空间中的变量值并无影响。
-→ 実際にはローカル名前空間を返すのではなく、そのコピーを返します。そのため、それを変更しても、変更されるのはコピーであり、実際のローカル名前空間内の変数の値には影響しません。</li><li>globals() 返回的是实际的全局名字空间，而不是一个拷贝与 locals 的行为完全相反。
-→ globals()はコピーではなく実際のグローバル名前空間を返します。これはlocalsの動作とまったく逆です。</li></ul>
-<p>所以对 globals 所返回的 dictionary 的任何的改动都会直接影响到全局变量的取值。
-→ したがって、globalsが返す辞書への変更は、グローバル変数の値に直接影響します。</p>
+<strong>locals()</strong>実際にはローカル名前空間を返すのではなく、そのコピーを返します。そのため、それを変更しても、変更されるのはコピーであり、実際のローカル名前空間内の変数の値には影響しません。</li><li>globals()はコピーではなく実際のグローバル名前空間を返します。これはlocalsの動作とまったく逆です。</li></ul>
+<p>したがって、globalsが返す辞書への変更は、グローバル変数の値に直接影響します。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #a50">#!/usr/bin/env python     </span><br/>
 <br/>
@@ -143,21 +125,18 @@ z <span style="color: Gray;">=</span> <span style="color: Maroon;">7</span> <spa
     x <span style="color: Gray;">=</span> <span style="color: Maroon;">1</span>   <br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span> <span style="color: Teal;">locals</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span> <span style="color: Olive;">)</span>  <br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">'x='</span><span style="color: Gray;">,</span>x<span style="color: Olive;">)</span><br/>
-    <span style="color: Teal;">locals</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">[</span><span style="color: #a11;">'x'</span><span style="color: Olive;">]</span> <span style="color: Gray;">=</span> <span style="color: Maroon;">2</span> <span style="color: #a50">#修改的是局部名字空间的拷贝，而实际的局部名字空间中的变量值并无影响。
-→ #変更されるのはローカル名前空間のコピーであり、実際のローカル名前空間の変数の値には影響しません。</span><br/>
+    <span style="color: Teal;">locals</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">[</span><span style="color: #a11;">'x'</span><span style="color: Olive;">]</span> <span style="color: Gray;">=</span> <span style="color: Maroon;">2</span> <span style="color: #a50">#変更されるのはローカル名前空間のコピーであり、実際のローカル名前空間の変数の値には影響しません。</span><br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span> <span style="color: Teal;">locals</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span> <span style="color: Olive;">)</span><br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span> <span style="color: #a11;">"x="</span><span style="color: Gray;">,</span>x <span style="color: Olive;">)</span><br/>
   <br/>
 foo<span style="color: Olive;">(</span><span style="color: Maroon;">3</span><span style="color: Olive;">)</span>   <br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span> <span style="color: Teal;">globals</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span> <span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span> <span style="color: #a11;">'z='</span><span style="color: Gray;">,</span>z <span style="color: Olive;">)</span><br/>
-<span style="color: Teal;">globals</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">[</span><span style="color: #a11;">"z"</span><span style="color: Olive;">]</span> <span style="color: Gray;">=</span> <span style="color: Maroon;">8</span> <span style="color: #a50">#globals（）返回的是实际的全局名字空间，修改变量z的值
-→ #globals()は実際のグローバル名前空間を返すため、変数zの値を変更します</span><br/>
+<span style="color: Teal;">globals</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">[</span><span style="color: #a11;">"z"</span><span style="color: Olive;">]</span> <span style="color: Gray;">=</span> <span style="color: Maroon;">8</span> <span style="color: #a50">#globals()は実際のグローバル名前空間を返すため、変数zの値を変更します</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span> <span style="color: Teal;">globals</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span> <span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span> <span style="color: #a11;">"z="</span><span style="color: Gray;">,</span>z <span style="color: Olive;">)</span><br/>
 </div></div>
-<p>输出结果为：
-→ 出力結果は次のとおりです：</p>
+<p>出力結果は次のとおりです：</p>
 <pre>{'x': 1, 'arg': 3}
 x= 1
 {'x': 1, 'arg': 3}
@@ -175,8 +154,7 @@ z= 8</pre>
 </div>
 </div>
 <div class="previous-next-links">
-<div class="previous-design-link">← <a href="./python-negative-storage.html" rel="prev">Python 对于负数的存储方式和 c++/c/java 不一样（二进制中 1 的个数）
-→ Pythonの負の数の格納方法はc++/c/javaとは異なります（2進数における1の個数）</a> </div>
+<div class="previous-design-link">← <a href="./python-negative-storage.html" rel="prev">Python の負の数の格納方法は c++/c/java とは異なります（2進数における1の個数）</a> </div>
 <div class="next-design-link"><a href="./lets-encrypt-https.html" rel="next">Let’s Encrypt 生成通配符 HTTPS 证书
 → Let’s EncryptでワイルドカードHTTPS証明書を生成する</a> →</div>
 </div>
@@ -285,16 +263,16 @@ z= 8</pre>
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>点我分享笔记
 → クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=".." class="runoob-pop">登录</a>！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-→ <p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの入手方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=".." class="runoob-pop">ログイン</a>する必要があります！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの入手方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href="..">登录</a>！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+→ <p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの入手方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href="..">ログイン</a>する必要があります！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの入手方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

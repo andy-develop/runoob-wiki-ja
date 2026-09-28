@@ -168,7 +168,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p><strong>ソート</strong>とは、一連のデータ（例えば配列やリスト）を特定の順序（昇順または降順）に従って並べ替えるプロセスのことである。</p><p>ソートの基準は通常、データ要素のある<strong>キーコード</strong>、例えば数値の大小、文字列の辞書順などである。</p>
 <p>ソートはコンピュータサイエンスにおいて最も基本的かつ中核的なアルゴリズム問題の一つである。連絡先の整理、試験結果の分析、データベースのクエリ最適化など、ソートアルゴリズムは至る所で使われている。</p><p>異なるソートアルゴリズムを理解することは、実際の問題を解決するのに役立つだけでなく、アルゴリズムの設計と分析の考え方を深く理解するための絶好の道でもある。</p>
 <h3>ソートアルゴリズムの分類</h3>
-<p>ソートアルゴリズムは複数の観点から分類できる。最も一般的な分類方法は、その<strong>時間計算量</strong>和<strong>空間計算量</strong>。</p>
+<p>ソートアルゴリズムは複数の観点から分類できる。最も一般的な分類方法は、その<strong>時間計算量</strong>と<strong>空間計算量</strong>。</p>
 <table class="reference">
 <thead>
 <tr>
@@ -310,7 +310,7 @@ test_data <span style="color: Gray;">=</span> <span style="color: Olive;">[</spa
 <ul>
 <li><strong>時間計算量</strong>：データの順序に関係なく完全な比較が必要なため、常に O(n²) である。</li>
 <li><strong>空間計算量</strong>：O(1) であり、インプレースソート。</li>
-<li><strong>安定性</strong>：<strong>不安定</strong>。例えばシーケンス<code>[5, 8, 5, 2, 9]</code>、最初のラウンドで最初の<code>5</code> 和 <code>2</code>を交換し、2つの<code>5</code>の元の順序を壊す。</li>
+<li><strong>安定性</strong>：<strong>不安定</strong>。例えばシーケンス<code>[5, 8, 5, 2, 9]</code>、最初のラウンドで最初の<code>5</code>と<code>2</code>を交換し、2つの<code>5</code>の元の順序を壊す。</li>
 </ul>
 <h3>挿入ソート</h3>
 <p><strong>核心となる考え方</strong>：ソート済みシーケンスを構築し、未ソートのデータについて、ソート済みシーケンスを後ろから前に向かって走査し、適切な位置を見つけて挿入する。これはトランプを整理するのと同じようなものである。</p>
@@ -423,7 +423,7 @@ test_data <span style="color: Gray;">=</span> <span style="color: Olive;">[</spa
 <p><strong>アルゴリズムの手順</strong>：</p>
 <ol>
 <li><strong>分割</strong>：現在の区間を2つに分けます。つまり分割点を求めます<code>mid = (low + high)/2</code>。</li>
-<li><strong>解決</strong>：2つの部分区間に対して再帰的に<code>arr[low...mid]</code> 和 <code>arr[mid+1...high]</code>マージソートを行います。再帰の終了条件は、部分区間の長さが1になることです（1つの要素は自然に整列していると見なします）。</li>
+<li><strong>解決</strong>：2つの部分区間に対して再帰的に<code>arr[low...mid]</code>と<code>arr[mid+1...high]</code>マージソートを行います。再帰の終了条件は、部分区間の長さが1になることです（1つの要素は自然に整列していると見なします）。</li>
 <li><strong>マージ（統合）</strong>：整列済みの2つの部分区間を1つの整列した区間にマージします。</li>
 </ol>
 <p><strong>コード実装</strong>：</p>
@@ -524,7 +524,7 @@ test_data <span style="color: Gray;">=</span> <span style="color: Olive;">[</spa
     <span style="color: #a50"># 右の子ノードが存在し、現在の最大値より大きい場合</span><br/>
     <span style="color: Green;font-weight:bold;">if</span> right <span style="color: Gray;">&lt;</span> n <span style="color: Green;font-weight:bold;">and</span> arr<span style="color: Olive;">[</span>right<span style="color: Olive;">]</span> <span style="color: Gray;">&gt;</span> arr<span style="color: Olive;">[</span>largest<span style="color: Olive;">]</span>:<br/>
         largest <span style="color: Gray;">=</span> right<br/>
-    <span style="color: #a50"># 最大値がルートでない場合、交換し、壊れた部分ヒープを再帰的に調整</span><br/>
+    <span style="color: #a50">最大値がルートでない場合、交換し、壊れた部分ヒープを再帰のに調整</span><br/>
     <span style="color: Green;font-weight:bold;">if</span> largest <span style="color: Gray;">!=</span> i:<br/>
         arr<span style="color: Olive;">[</span>i<span style="color: Olive;">]</span><span style="color: Gray;">,</span> arr<span style="color: Olive;">[</span>largest<span style="color: Olive;">]</span> <span style="color: Gray;">=</span> arr<span style="color: Olive;">[</span>largest<span style="color: Olive;">]</span><span style="color: Gray;">,</span> arr<span style="color: Olive;">[</span>i<span style="color: Olive;">]</span><br/>
         heapify<span style="color: Olive;">(</span>arr<span style="color: Gray;">,</span> n<span style="color: Gray;">,</span> largest<span style="color: Olive;">)</span><br/>
@@ -768,11 +768,11 @@ test_data <span style="color: Gray;">=</span> <span style="color: Olive;">[</spa
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1061,7 +1061,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

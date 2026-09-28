@@ -198,11 +198,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     <span style="color: #0000FF; font-weight: bold;">global</span> _start<br/>
 <br/>
 _start<span style="color: #339933;">:</span><br/>
-    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span>                  <span style="color: #666666; font-style: italic;">; 这些指令都存放在代码段中</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span>                  <span style="color: #666666; font-style: italic;">; これらの命令はすべてコードセグメントに格納される</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
     <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
 <br/>
-<span style="color: #666666; font-style: italic;">; 以下是一个辅助函数，也存放在代码段</span><br/>
+<span style="color: #666666; font-style: italic;">; 以下は補助関数で、コードセグメントにも格納されている</span><br/>
 my_function<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">42</span><br/>
     <span style="color: #00007F; font-weight: bold;">ret</span><br/>
@@ -210,7 +210,7 @@ my_function<span style="color: #339933;">:</span><br/>
 </div>
 <hr/>
 <h2>データセグメント（.data）</h2>
-<p>データセグメントはプログラム内の<span class="marked">已初始化的全局变量</span>。</p>
+<p>データセグメントはプログラム内の<span class="marked">初期化済みのグローバル変数</span>。</p>
 <p>データセグメントは読み書き可能で、プログラム実行中にその内容を変更できる。</p>
 <div class="example">
 <h2 class="example">实例</h2>
@@ -219,18 +219,18 @@ my_function<span style="color: #339933;">:</span><br/>
 <span style="color: #666666; font-style: italic;">; 演示数据段使用</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
-    <span style="color: #666666; font-style: italic;">; 定义各种类型的已初始化变量</span><br/>
+    <span style="color: #666666; font-style: italic;">; 各種型の初期化済み変数を定義</span><br/>
     msg <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'Hello, runoob!'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>     <span style="color: #666666; font-style: italic;">; 字符串变量（字节序列）</span><br/>
     count <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #FF0000;">100</span>                    <span style="color: #666666; font-style: italic;">; 字节变量，初始值 100</span><br/>
-    pi <span style="color: #0000FF; font-weight: bold;">dd</span> <span style="color: #FF0000;">314159</span>                    <span style="color: #666666; font-style: italic;">; 双字变量，存放 π 的近似值 × 100000</span><br/>
+    pi <span style="color: #0000FF; font-weight: bold;">dd</span> <span style="color: #FF0000;">314159</span>                    <span style="color: #666666; font-style: italic;">; ダブルワード変数。π の近似値 × 100000 を格納する</span><br/>
     array <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #FF0000;">1</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">2</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">3</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">4</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">5</span>         <span style="color: #666666; font-style: italic;">; 字节数组</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.text</span><br/>
     <span style="color: #0000FF; font-weight: bold;">global</span> _start<br/>
 <br/>
 _start<span style="color: #339933;">:</span><br/>
-    <span style="color: #666666; font-style: italic;">; 读取数据段中的变量</span><br/>
-    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">al</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>count<span style="color: #009900; font-weight: bold;">]</span>                <span style="color: #666666; font-style: italic;">; 将 count 的值（100）加载到 al 寄存器</span><br/>
+    <span style="color: #666666; font-style: italic;">; データセグメント内の変数を読み取る</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">al</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>count<span style="color: #009900; font-weight: bold;">]</span>                <span style="color: #666666; font-style: italic;">; count の値（100）を al レジスタにロードする</span><br/>
     <span style="color: #666666; font-style: italic;">; ...</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
@@ -239,7 +239,7 @@ _start<span style="color: #339933;">:</span><br/>
 </div>
 <hr/>
 <h2>BSS 段（.bss）</h2>
-<p>BSS（Block Started by Symbol）段存放<span class="marked">未初始化的全局变量</span>。</p>
+<p>BSS（Block Started by Symbol）段存放<span class="marked">未初期化のグローバル変数</span>。</p>
 <p>データセグメントとは異なり、BSSセグメントは実行可能ファイル内で実際のスペースを占有しません。プログラムのロード時にのみ、オペレーティングシステムによってメモリが割り当てられ、ゼロクリアされます。</p>
 <div class="example">
 <h2 class="example">实例</h2>
@@ -248,7 +248,7 @@ _start<span style="color: #339933;">:</span><br/>
 <span style="color: #666666; font-style: italic;">; 演示 BSS 段使用</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.bss</span><br/>
-    buffer <span style="color: #0000FF; font-weight: bold;">resb</span> <span style="color: #FF0000;">256</span>                 <span style="color: #666666; font-style: italic;">; 预留 256 字节的缓冲区（未初始化）</span><br/>
+    buffer <span style="color: #0000FF; font-weight: bold;">resb</span> <span style="color: #FF0000;">256</span>                 <span style="color: #666666; font-style: italic;">; 256バイトのバッファを予約（未初期化）</span><br/>
     num_array <span style="color: #0000FF; font-weight: bold;">resd</span> <span style="color: #FF0000;">100</span>              <span style="color: #666666; font-style: italic;">; 预留 100 个双字（400 字节）</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
@@ -258,7 +258,7 @@ _start<span style="color: #339933;">:</span><br/>
     <span style="color: #0000FF; font-weight: bold;">global</span> _start<br/>
 <br/>
 _start<span style="color: #339933;">:</span><br/>
-    <span style="color: #666666; font-style: italic;">; 使用 BSS 段的缓冲区</span><br/>
+    <span style="color: #666666; font-style: italic;">; BSSセグメントのバッファを使用する</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #0000FF; font-weight: bold;">byte</span> <span style="color: #009900; font-weight: bold;">[</span>buffer<span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #7F007F;">'A'</span>          <span style="color: #666666; font-style: italic;">; 向缓冲区写入字符 'A'</span><br/>
     <span style="color: #666666; font-style: italic;">; ...</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
@@ -269,7 +269,7 @@ _start<span style="color: #339933;">:</span><br/>
 <blockquote><p>未初期化データを.dataセグメントではなくBSSセグメントに置くことで、実行可能ファイルのサイズを削減できます。例えば、10KBの未初期化バッファはBSSセグメントではファイルサイズを占有しませんが、.dataセグメントに置くとファイルが10KB大きくなります。</p></blockquote>
 <hr/>
 <h2>段寄存器</h2>
-<p>x86アーキテクチャには6つのセグメントレジスタがあり、現在使用中のセグメントを追跡するために使用されます：</p>
+<p>x86アーキテクチャには6つのセグメントレジスタがあり、現在使用中のセグメントを追跡するために使用されます</p>
 <table class="reference">
 <tr><th>段寄存器</th><th>英文全称</th><th>用途</th></tr>
 <tr><td>CS</td><td>Code Segment</td><td>コードセグメントを指し、現在実行中の命令が存在するセグメントのベースアドレスを格納します。</td></tr>
@@ -434,11 +434,11 @@ _start<span style="color: #339933;">:</span><br/>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -727,7 +727,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

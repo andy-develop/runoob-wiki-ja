@@ -93,7 +93,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>振幅ルックアップテーブルは、各位相に対応するバイナリデジタル振幅値を格納します。各クロックサイクルにおいて、ルックアップテーブルは位相アキュムレータが出力する位相アドレス情報をアドレッシングし、対応するバイナリ振幅デジタル離散値を出力します。ルックアップテーブルのアドレスが<strong><em>M</em></strong>ビット、出力データが<strong><em>N</em></strong>ビットの場合、ルックアップテーブルの容量サイズは<img decoding="async" src="../wp-content/uploads/2020/10/mHuZv2REp4ZSscYO.png"/>。容易にわかるように、出力信号の位相分解能は次のとおりです。</p>
 <p><img decoding="async" src="../wp-content/uploads/2020/10/u6VUBptgAYsnEfsz.png"/></p>
 <p>DACコンバータは、デジタル信号をアナログ信号に変換します。実際には、DAC の出力信号は連続的ではなく、各ビットのコードの重みに応じて、入力された各ビットのデジタル量を加算し、その分解能を単位としてアナログ出力を行います。実際に出力される信号は階段状のアナログ信号であるため、平滑化処理を行う必要があり、通常はフィルタを使用してろ波します。</p><p>ローパスフィルタは、DACコンバータが出力するアナログ信号に階段状の欠陥があるため、平滑化処理を行い、大部分のスプリアス信号を除去して、出力信号をより理想的なアナログ信号にします。</p>
-<p>DDS が動作するとき、周波数制御ワード<strong><em>K</em></strong> 与 <strong><em>M</em></strong>ビット幅の位相アキュムレータに加算され、得られた結果が位相値となります。各クロックサイクルにおいて、バイナリ形式でROMルックアップテーブルに送られ、位相情報をデジタル化された正弦波振幅値に変換し、さらにデジタル・アナログ変換によって階段状のアナログ信号に変換します。信号がシステムフィルタを通過して大部分のスプリアス信号が除去されると、比較的純粋な正弦波を得ることができます。</p>
+<p>DDS が動作するとき、周波数制御ワード<strong><em>K</em></strong>と<strong><em>M</em></strong>ビット幅の位相アキュムレータに加算され、得られた結果が位相値となります。各クロックサイクルにおいて、バイナリ形式でROMルックアップテーブルに送られ、位相情報をデジタル化された正弦波振幅値に変換し、さらにデジタル・アナログ変換によって階段状のアナログ信号に変換します。信号がシステムフィルタを通過して大部分のスプリアス信号が除去されると、比較的純粋な正弦波を得ることができます。</p>
 <p>周波数の分解の観点から言うと、ROMルックアップテーブルは入力周波数を<img decoding="async" src="../wp-content/uploads/2020/10/HFSJHPLQNTYMq9FG.png"/>分解して<img decoding="async" src="../wp-content/uploads/2020/10/VvqaxosD86lXSV2Y.png"/>複数の部分に分け、出力周波数は<img decoding="async" src="../wp-content/uploads/2020/10/RfEC3ntul1mqenQj.png"/>が占める部分の数は、まさにステップ周波数制御ワードです。<strong><em>K</em></strong>。したがって、DDS出力周波数は次のように表せます。</p>
 <p><img alt="" decoding="async" src="../wp-content/uploads/2020/10/ixFOiN3Ey7H1EaJh.png"/></p>
 <p>位相の観点から言うと、時間<img alt="" decoding="async" src="../wp-content/uploads/2020/10/EdPLOV7Iu42Q3JlK.png"/>内に周波数制御ワードによって<strong><em>K</em></strong>制御される出力位相の増分は次のとおりです。</p>
@@ -520,11 +520,11 @@ hold on <span style="color: #5D478B;">;</span><br/>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=".." class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href="..">ログイン</a>が必要です！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

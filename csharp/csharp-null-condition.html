@@ -165,7 +165,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="article-intro" id="content">
 <h1>C#のNull条件演算子</h1><p><a href="csharp-decision.html">C# 判断</a></p>
 <p>C#プログラミングにおいて、処理<code>null</code>null チェックは一般的ですが、エラーを起こしやすいタスクです。</p>
-<p>传统的<code>null</code>チェックコードは冗長で面倒なことが多く、C# 6.0 で導入された<strong>Null条件演算子</strong>（<code><span class="marked">?.</span></code> 和 <code><span class="marked">?[]</span></code>）このプロセスを大幅に簡素化します。</p>
+<p>伝統のな<code>null</code>チェックコードは冗長で面倒なことが多く、C# 6.0 で導入された<strong>Null条件演算子</strong>（<code><span class="marked">?.</span></code>と<code><span class="marked">?[]</span></code>）このプロセスを大幅に簡素化します。</p>
 <p>Null 条件演算子は C# 6.0 で導入されたシンタックスシュガーであり、開発者がオブジェクトのメンバーや要素にアクセスする前に、そのオブジェクトが null であるかどうかを先にチェックすることを可能にします。<code>null</code>。オブジェクトが<code>null</code>、式全体の結果は<code>null</code>、例外はスローされません<code>NullReferenceException</code>。</p>
 <h3>基本语法</h3>
 <ul>
@@ -201,7 +201,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example">
 <h2 class="example">实例</h2>
 <div class="example_code">
-<span style="color: #696969; font-style: italic;">// 传统方式 - 繁琐的 null 检查</span><br/>
+<span style="color: #696969; font-style: italic;">// 従来の方法 - 煩雑な null チェック</span><br/>
 <span style="color: #6666CC; font-weight: bold;">string</span> name <span style="color: #008000;">=</span> <span style="color: #05a; font-weight: bold;">null</span><span style="color: #008000;">;</span><br/>
 <span style="color: #05a; font-weight: bold;">if</span> <span style="color: #008000;">(</span>person <span style="color: #008000;">!=</span> <span style="color: #05a; font-weight: bold;">null</span><span style="color: #008000;">)</span><br/>
 <span style="color: #008000;">{</span><br/>
@@ -372,7 +372,7 @@ Console.WriteLine(cityName);  // 输出: 北京</pre>
 <br/>
     <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666CC; font-weight: bold;">void</span> SayHello<span style="color: #008000;">(</span><span style="color: #008000;">)</span><br/>
     <span style="color: #008000;">{</span><br/>
-        Console<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span>$<span style="color: #a11;">"你好，我是 {Name}"</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
+        Console<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span>$<span style="color: #a11;">"こんにちは、私は{Name}です"</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
     <span style="color: #008000;">}</span><br/>
 <span style="color: #008000;">}</span><br/>
 <br/>
@@ -406,7 +406,7 @@ Console.WriteLine(cityName);  // 输出: 北京</pre>
 <h2 class="example">实例</h2>
 <div class="example_code">
 Person person <span style="color: #008000;">=</span> <span style="color: #05a; font-weight: bold;">null</span><span style="color: #008000;">;</span><br/>
-<span style="color: #6666CC; font-weight: bold;">string</span> displayName <span style="color: #008000;">=</span> person<span style="color: #008000;">?.</span><span style="color: #05a;">Name</span> <span style="color: #008000;">??</span> <span style="color: #008000;">(</span>person <span style="color: #008000;">!=</span> <span style="color: #05a; font-weight: bold;">null</span> <span style="color: #008000;">?</span> <span style="color: #a11;">"匿名用户"</span> <span style="color: #008000;">:</span> <span style="color: #a11;">"用户不存在"</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
+<span style="color: #6666CC; font-weight: bold;">string</span> displayName <span style="color: #008000;">=</span> person<span style="color: #008000;">?.</span><span style="color: #05a;">Name</span> <span style="color: #008000;">??</span> <span style="color: #008000;">(</span>person <span style="color: #008000;">!=</span> <span style="color: #05a; font-weight: bold;">null</span> <span style="color: #008000;">?</span> <span style="color: #a11;">"匿名用户"</span> <span style="color: #008000;">:</span> <span style="color: #a11;">"ユーザーが存在しません"</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
 </div>
 </div>
 <h3>3. LINQクエリでの使用</h3>
@@ -420,7 +420,7 @@ List<span style="color: #008000;">&lt;</span>Person<span style="color: #008000;"
     <span style="color: #05a; font-weight: bold;">null</span><br/>
 <span style="color: #008000;">}</span><span style="color: #008000;">;</span><br/>
 <br/>
-<span style="color: #696969; font-style: italic;">// 安全地访问可能为 null 的属性</span><br/>
+<span style="color: #696969; font-style: italic;">// null の可能性があるプロパティに安全にアクセスする</span><br/>
 <span style="color: #05a; font-weight: bold;">var</span> cities <span style="color: #008000;">=</span> people<br/>
     <span style="color: #008000;">.</span><span style="color: #05a; font-weight: bold;">Where</span><span style="color: #008000;">(</span>p <span style="color: #008000;">=&gt;</span> p<span style="color: #008000;">?.</span><span style="color: #05a;">Address</span><span style="color: #008000;">?.</span><span style="color: #05a;">City</span> <span style="color: #008000;">!=</span> <span style="color: #05a; font-weight: bold;">null</span><span style="color: #008000;">)</span><br/>
     <span style="color: #008000;">.</span><span style="color: #05a; font-weight: bold;">Select</span><span style="color: #008000;">(</span>p <span style="color: #008000;">=&gt;</span> p<span style="color: #008000;">.</span><span style="color: #05a;">Address</span><span style="color: #008000;">.</span><span style="color: #05a;">City</span><span style="color: #008000;">)</span><br/>
@@ -433,7 +433,7 @@ List<span style="color: #008000;">&lt;</span>Person<span style="color: #008000;"
 <div class="example">
 <h2 class="example">实例</h2>
 <div class="example_code">
-<span style="color: #696969; font-style: italic;">// 在 WPF 或 ASP.NET 中安全地绑定数据</span><br/>
+<span style="color: #696969; font-style: italic;">// WPF または ASP.NET でデータを安全にバインドする</span><br/>
 <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666CC; font-weight: bold;">string</span> DisplayAddress <span style="color: #008000;">=&gt;</span> $<span style="color: #a11;">"{Person?.Address?.City ?? "</span>未知城市<span style="color: #a11;">"} - {Person?.Address?.Street ?? "</span>未知街道<span style="color: #a11;">"}"</span><span style="color: #008000;">;</span><br/>
 <br/>
 <span style="color: #696969; font-style: italic;">// 安全地调用方法</span><br/>
@@ -499,11 +499,11 @@ AppConfig config <span style="color: #008000;">=</span> LoadConfiguration<span s
 <div class="example_code">
 Person person <span style="color: #008000;">=</span> <span style="color: #008000;">new</span> Person <span style="color: #008000;">{</span> Name <span style="color: #008000;">=</span> <span style="color: #a11;">"张三"</span> <span style="color: #008000;">}</span><span style="color: #008000;">;</span><br/>
 <br/>
-<span style="color: #696969; font-style: italic;">// 对于值类型，返回 Nullable&lt;T&gt;</span><br/>
-<span style="color: #6666CC; font-weight: bold;">int</span><span style="color: #008000;">?</span> nameLength <span style="color: #008000;">=</span> person<span style="color: #008000;">?.</span><span style="color: #05a;">Name</span><span style="color: #008000;">?.</span><span style="color: #05a;">Length</span><span style="color: #008000;">;</span>  <span style="color: #696969; font-style: italic;">// 类型是 int?</span><br/>
+<span style="color: #696969; font-style: italic;">// 値型の場合は、Nullable&lt;T&gt; を返す</span><br/>
+<span style="color: #6666CC; font-weight: bold;">int</span><span style="color: #008000;">?</span> nameLength <span style="color: #008000;">=</span> person<span style="color: #008000;">?.</span><span style="color: #05a;">Name</span><span style="color: #008000;">?.</span><span style="color: #05a;">Length</span><span style="color: #008000;">;</span>  <span style="color: #696969; font-style: italic;">// 型は int?</span><br/>
 <br/>
-<span style="color: #696969; font-style: italic;">// 对于引用类型，返回类型本身</span><br/>
-<span style="color: #6666CC; font-weight: bold;">string</span> name <span style="color: #008000;">=</span> person<span style="color: #008000;">?.</span><span style="color: #05a;">Name</span><span style="color: #008000;">;</span>  <span style="color: #696969; font-style: italic;">// 类型是 string</span><br/>
+<span style="color: #696969; font-style: italic;">// 参照型の場合、型自体を返します</span><br/>
+<span style="color: #6666CC; font-weight: bold;">string</span> name <span style="color: #008000;">=</span> person<span style="color: #008000;">?.</span><span style="color: #05a;">Name</span><span style="color: #008000;">;</span>  <span style="color: #696969; font-style: italic;">// 型は string</span><br/>
 </div>
 </div>
 <h3>2. 過度な使用を避ける</h3>
@@ -525,7 +525,7 @@ Person person <span style="color: #008000;">=</span> <span style="color: #008000
 <div class="example">
 <h2 class="example">实例</h2>
 <div class="example_code">
-<span style="color: #696969; font-style: italic;">// 这两种方式性能相当</span><br/>
+<span style="color: #696969; font-style: italic;">// この2つの方法の性能は同等です</span><br/>
 <span style="color: #696969; font-style: italic;">// 方式 1: 传统检查</span><br/>
 <span style="color: #05a; font-weight: bold;">if</span> <span style="color: #008000;">(</span>person <span style="color: #008000;">!=</span> <span style="color: #05a; font-weight: bold;">null</span> <span style="color: #008000;">&amp;&amp;</span> person<span style="color: #008000;">.</span><span style="color: #05a;">Address</span> <span style="color: #008000;">!=</span> <span style="color: #05a; font-weight: bold;">null</span><span style="color: #008000;">)</span><br/>
 <span style="color: #008000;">{</span><br/>
@@ -582,7 +582,7 @@ Person person <span style="color: #008000;">=</span> <span style="color: #008000
     <span style="color: #05a; font-weight: bold;">return</span> <span style="color: #a11;">"无邮箱信息"</span><span style="color: #008000;">;</span><br/>
 <span style="color: #008000;">}</span><br/>
 <br/>
-<span style="color: #696969; font-style: italic;">// 你的重构代码</span><br/>
+<span style="color: #696969; font-style: italic;">// あなたのリファクタリングコード</span><br/>
 <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666CC; font-weight: bold;">string</span> GetUserEmail<span style="color: #008000;">(</span>User user<span style="color: #008000;">)</span><br/>
 <span style="color: #008000;">{</span><br/>
     <span style="color: #05a; font-weight: bold;">return</span> user<span style="color: #008000;">?.</span><span style="color: #05a;">Profile</span><span style="color: #008000;">?.</span><span style="color: #05a;">ContactInfo</span><span style="color: #008000;">?.</span><span style="color: #05a;">Email</span> <span style="color: #008000;">??</span> <span style="color: #a11;">"无邮箱信息"</span><span style="color: #008000;">;</span><br/>
@@ -616,7 +616,7 @@ Person person <span style="color: #008000;">=</span> <span style="color: #008000
     <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666CC; font-weight: bold;">string</span> Name <span style="color: #008000;">{</span> <span style="color: #05a; font-weight: bold;">get</span><span style="color: #008000;">;</span> <span style="color: #05a; font-weight: bold;">set</span><span style="color: #008000;">;</span> <span style="color: #008000;">}</span><br/>
 <span style="color: #008000;">}</span><br/>
 <br/>
-<span style="color: #696969; font-style: italic;">// 编写一个方法，安全地获取订单中第一个商品的名字</span><br/>
+<span style="color: #696969; font-style: italic;">// 注文の最初の商品の名前を安全に取得するメソッドを作成する</span><br/>
 <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666CC; font-weight: bold;">string</span> GetFirstProductName<span style="color: #008000;">(</span>Order order<span style="color: #008000;">)</span><br/>
 <span style="color: #008000;">{</span><br/>
     <span style="color: #05a; font-weight: bold;">return</span> order<span style="color: #008000;">?.</span><span style="color: #05a;">Items</span><span style="color: #008000;">?.</span><span style="color: #05a;">FirstOrDefault</span><span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008000;">?.</span><span style="color: #05a;">Product</span><span style="color: #008000;">?.</span><span style="color: #05a;">Name</span> <span style="color: #008000;">??</span> <span style="color: #a11;">"无商品信息"</span><span style="color: #008000;">;</span><br/>
@@ -627,7 +627,7 @@ Person person <span style="color: #008000;">=</span> <span style="color: #008000
 <div class="example">
 <h2 class="example">实例</h2>
 <div class="example_code">
-<span style="color: #696969; font-style: italic;">// 创建一个完整的示例，演示 Null 条件运算符在实际项目中的应用</span><br/>
+<span style="color: #696969; font-style: italic;">// 実際のプロジェクトにおける Null 条件演算子の応用を示す、完全な例を作成します。</span><br/>
 <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666CC; font-weight: bold;">class</span> ShoppingCart<br/>
 <span style="color: #008000;">{</span><br/>
     <span style="color: #05a; font-weight: bold;">public</span> List<span style="color: #008000;">&lt;</span>CartItem<span style="color: #008000;">&gt;</span> Items <span style="color: #008000;">{</span> <span style="color: #05a; font-weight: bold;">get</span><span style="color: #008000;">;</span> <span style="color: #05a; font-weight: bold;">set</span><span style="color: #008000;">;</span> <span style="color: #008000;">}</span><br/>
@@ -763,11 +763,11 @@ Person person <span style="color: #008000;">=</span> <span style="color: #008000
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1056,7 +1056,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

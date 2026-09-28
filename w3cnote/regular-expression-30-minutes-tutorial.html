@@ -86,7 +86,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <ol>
 <li><a href="../index.html">本文目标</a></li>
 <li><a href="../index.html">如何使用本教程</a></li>
-<li><a href="../index.html">正则表达式到底是什么东西？</a></li>
+<li><a href="../index.html">正規表現とは一体何ですか？</a></li>
 <li><a href="../index.html">入门</a></li>
 <li><a href="../index.html">测试正则表达式</a></li>
 <li><a href="../index.html">元字符</a></li>
@@ -100,7 +100,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <li><a href="../index.html">零宽断言</a></li>
 <li><a href="../index.html">负向零宽断言</a></li>
 <li><a href="../index.html">注释</a></li>
-<li><a href="../index.html">贪婪与懒惰</a></li>
+<li><a href="../index.html">貪欲と怠惰</a></li>
 <li><a href="../index.html">处理选项</a></li>
 <li><a href="../index.html">平衡组/递归匹配</a></li>
 <li><a href="../index.html">还有些什么东西没提到</a></li>
@@ -113,39 +113,39 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>入門チュートリアルとしての役割に加えて、この記事は日常業務で使える正規表現の構文リファレンスマニュアルにもなろうとしています。筆者自身の経験から言うと、この目標はかなり達成できています——ほら、私自身もすべてを覚えているわけではありませんよね？</p>
 <hr/><h2 id="introduction">正規表現とはそもそも何なのか？</h2>
 <p>文字列を扱うプログラムやウェブページを書くとき、複雑な規則に合致する文字列を検索する必要がよくあります。<span class="name">正则表达式</span>正規表現はこれらの規則を記述するためのツールです。言い換えれば、正規表現とはテキストの規則を記録したコードです。</p>
-<p>おそらくWindows/DOSでファイル検索に使ったことがあるでしょう。<span class="name">通配符(wildcard)</span>，也就是<span class="code">*</span>和<span class="code">?</span>。あるディレクトリ内のすべてのWord文書を検索したいなら、あなたは検索することになるでしょう。<span style="color: red;">*.doc</span>。在这里，<span class="code">*</span>それは任意の文字列として解釈されます。ワイルドカードと同様に、正規表現もテキストマッチングのためのツールですが、ワイルドカードよりも、より正確に自分のニーズを記述できます——もちろん、その代償としてより複雑ですが——たとえば、検索に使う正規表現を書くことができます。<span class="desc">所有以0开头，后面跟着2-3个数字，然后是一个连字号"-"，最后是7或8位数字的字符串</span>(像<span class="string">010-12345678</span>或<span class="string">0376-7654321</span>)。</p>
+<p>おそらくWindows/DOSでファイル検索に使ったことがあるでしょう。<span class="name">通配符(wildcard)</span>、すなわち<span class="code">*</span>と<span class="code">?</span>。あるディレクトリ内のすべてのWord文書を検索したいなら、あなたは検索することになるでしょう。<span style="color: red;">*.doc</span>。ここでは、<span class="code">*</span>それは任意の文字列として解釈されます。ワイルドカードと同様に、正規表現もテキストマッチングのためのツールですが、ワイルドカードよりも、より正確に自分のニーズを記述できます——もちろん、その代償としてより複雑ですが——たとえば、検索に使う正規表現を書くことができます。<span class="desc">0で始まり、その後に2〜3桁の数字が続き、次にハイフン「-」、最後に7桁または8桁の数字が続くすべての文字列</span>(像<span class="string">010-12345678</span>或<span class="string">0376-7654321</span>)。</p>
 <blockquote><p class="note"><span class="name">注：字符</span>これは、コンピュータソフトウェアがテキストを処理する際の最も基本的な単位であり、文字、数字、句読点、空白、改行文字、漢字などです。<span class="name">字符串</span>は0個以上の文字の並びです。<span class="name">文本</span>つまり、テキスト、文字列です。ある文字列が<span class="name">匹配</span>ある正規表現にマッチするとは、通常、その文字列の一部（または複数の部分がそれぞれ）が式の条件を満たすことを指します。</p></blockquote>
 <hr/><h2 id="getstarted">入门</h2>
 <p>正規表現を学ぶ最善の方法は、例から始めることです。例を理解したら、自分で例を変更したり実験したりしてみましょう。以下に、多くの簡単な例とその詳しい説明を示します。</p>
 <p>あなたが英語の小説の中で「hi」を検索するとします。<span class="desc">hi</span>、正規表現を使うことができます。<span class="regex">hi</span>。</p>
-<p>これはほぼ最も単純な正規表現で、次のような文字列を正確にマッチさせることができます：<span class="desc">由两个字符组成，前一个字符是h，后一个是i</span>。通常、正規表現を処理するツールには大文字と小文字を無視するオプションがあります。このオプションを選択すると、次のものにマッチします：<span class="string">hi</span>,<span class="string">HI</span>,<span class="string">Hi</span>,<span class="string">hI</span>これら4つのケースのいずれかです。</p>
-<p>残念ながら、多くの単語には「hi」という連続する文字が含まれています。<span class="string">hi</span>この2つの連続する文字、例えば「this」の中の「hi」のようなものです。<span class="string">him</span>,<span class="string">history</span>,<span class="string">high</span>等等。用<span class="regex">hi</span>で検索すると、ここにある「hi」も見つかってしまいます。<span class="string">hi</span>も見つかってしまいます。もし「hi」だけを検索したいなら、<span class="desc">精确地查找hi这个单词</span>ならば、私たちは「\bhi\b」を使用すべきです。<span class="regex">\bhi\b</span>。</p>
-<p><span class="part">\b</span>は正規表現で定義された特別なコードです（まあ、それをこう呼ぶ人もいます<span class="name">元字符，metacharacter</span>），代表着<span class="desc">单词的开头或结尾，也就是单词的分界处</span>。通常、英語の単語はスペース、句読点、または改行で区切られますが、<span class="code">\b</span>これらの単語区切り文字のどれにもマッチしません。それは<strong>1つの位置のみにマッチする</strong>。</p>
+<p>これはほぼ最も単純な正規表現で、次のような文字列を正確にマッチさせることができます：<span class="desc">2つの文字から構成され、最初の文字はh、2番目の文字はiです。</span>。通常、正規表現を処理するツールには大文字と小文字を無視するオプションがあります。このオプションを選択すると、次のものにマッチします：<span class="string">hi</span>,<span class="string">HI</span>,<span class="string">Hi</span>,<span class="string">hI</span>これら4つのケースのいずれかです。</p>
+<p>残念ながら、多くの単語には「hi」という連続する文字が含まれています。<span class="string">hi</span>この2つの連続する文字、例えば「this」の中の「hi」のようなものです。<span class="string">him</span>,<span class="string">history</span>,<span class="string">high</span>等等。用<span class="regex">hi</span>で検索すると、ここにある「hi」も見つかってしまいます。<span class="string">hi</span>も見つかってしまいます。もし「hi」だけを検索したいなら、<span class="desc">hi という単語を正確に検索する</span>ならば、私たちは「\bhi\b」を使用すべきです。<span class="regex">\bhi\b</span>。</p>
+<p><span class="part">\b</span>は正規表現で定義された特別なコードです（まあ、それをこう呼ぶ人もいます<span class="name">元字符，metacharacter</span>）、...を表しています<span class="desc">単語の先頭または末尾、つまり単語の境界位置</span>。通常、英語の単語はスペース、句読点、または改行で区切られますが、<span class="code">\b</span>これらの単語区切り文字のどれにもマッチしません。それは<strong>1つの位置のみにマッチする</strong>。</p>
 <blockquote><p class="note">注：より正確な言い方をすれば、単語の境界です。<span class="code">\b</span>次のような位置にマッチします：その前の文字と後ろの文字が両方とも単語文字であるわけではない位置（一方が単語文字で、もう一方が単語文字でないか、存在しない）<span class="code">\w</span>。</p></blockquote>
-<p>あなたが探しているものが<span class="desc">hi后面不远处跟着一个Lucy</span>，你应该用<span class="regex">\bhi\b.*\bLucy\b</span>。</p>
-<p>这里，<span class="part">.</span>は別のメタ文字で、単語の先頭または末尾にマッチします。<span class="desc">除了换行符以外的任意字符</span>。<span class="part">*</span>同じくメタ文字ですが、それが表すのは文字でも位置でもなく、数量です——つまり*を指定します。<span class="desc">前边的内容可以连续重复使用任意次以使整个表达式得到匹配</span>。因此，<span class="part">.*</span>つながっているということは<span class="desc">任意数量的不包含换行的字符</span>。现在<span class="regex">\bhi\b.*\bLucy\b</span>の意味は明白です：<span class="desc">先是一个单词hi,然后是任意个任意字符(但不能是换行)，最后是Lucy这个单词</span>。</p>
+<p>あなたが探しているものが<span class="desc">hiのすぐ後ろにLucyが続く</span>，你应该用<span class="regex">\bhi\b.*\bLucy\b</span>。</p>
+<p>ここで、<span class="part">.</span>は別のメタ文字で、単語の先頭または末尾にマッチします。<span class="desc">改行以外の任意の文字</span>。<span class="part">*</span>同じくメタ文字ですが、それが表すのは文字でも位置でもなく、数量です——つまり*を指定します。<span class="desc">前の内容は、式全体がマッチするように、任意の回数だけ連続して繰り返し使用できます。</span>。因此，<span class="part">.*</span>つながっているということは<span class="desc">改行を含まない任意の数の文字</span>。現在<span class="regex">\bhi\b.*\bLucy\b</span>の意味は明白です：<span class="desc">最初に単語hi、次に任意の文字（ただし改行は不可）、最後に単語Lucy</span>。</p>
 <blockquote><p class="note">注：改行文字は'\n'で、ASCIIコード10（16進数0x0A）の文字です。</p></blockquote>
 <p>他のメタ文字を同時に使うと、より強力な正規表現を構築できます。たとえば次の例です：</p>
-<p><span class="regex">0\d\d-\d\d\d\d\d\d\d\d</span>次のような文字列にマッチ：<span class="desc">以0开头，然后是两个数字，然后是一个连字号"-"，最后是8个数字</span>（つまり中国の電話番号です。もちろん、この例は市外局番が3桁の場合のみマッチします）。</p>
-<p>这里的<span class="part">\d</span>は新しいメタ文字で、単語の境界以外の位置にマッチします。<span class="desc">一位数字(0，或1，或2，或……)</span>。<span class="part">-</span>はメタ文字ではなく、それ自体だけにマッチします——ハイフン（またはマイナス、または中横線、または何と呼んでも構いません）。</p>
-<p>あの厄介な繰り返しを避けるために、この式を次のように書くこともできます：<span class="regex">0\d{2}-\d{8}</span>。这里<span class="part">\d</span>后面的<span class="part">{2}</span>(<span class="part">{8}</span>)の意味は前の<span class="part">\d</span><span class="desc">必须连续重复匹配2次(8次)</span>。</p>
+<p><span class="regex">0\d\d-\d\d\d\d\d\d\d\d</span>次のような文字列にマッチ：<span class="desc">0 で始まり、次に 2 つの数字、次にハイフン「-」、最後は 8 つの数字</span>（つまり中国の電話番号です。もちろん、この例は市外局番が3桁の場合のみマッチします）。</p>
+<p>ここの<span class="part">\d</span>は新しいメタ文字で、単語の境界以外の位置にマッチします。<span class="desc">一位数字(0，或1，或2，或……)</span>。<span class="part">-</span>はメタ文字ではなく、それ自体だけにマッチします——ハイフン（またはマイナス、または中横線、または何と呼んでも構いません）。</p>
+<p>あの厄介な繰り返しを避けるために、この式を次のように書くこともできます：<span class="regex">0\d{2}-\d{8}</span>。ここ<span class="part">\d</span>後ろの<span class="part">{2}</span>(<span class="part">{8}</span>)の意味は前の<span class="part">\d</span><span class="desc">必须连续重复匹配2次(8次)</span>。</p>
 <hr/><h2 id="testing">正規表現をテストする</h2>
 <p>正規表現が読み書きしにくいと感じないなら、あなたは天才か、あるいは地球人ではないでしょう。正規表現の構文は頭が痛くなるほど厄介で、よく使う人にとっても同じです。読み書きが難しく間違いやすいので、正規表現をテストするツールを見つけることは非常に重要です。</p>
 <p>環境によって正規表現の詳細は異なります。ここでは利用可能な2つのテストツールを紹介します：</p>
 <ul>
 <li><a href="http://www.regexbuddy.com/" target="_blank">RegexBuddy</a></li>
-<li><a href="../front-end/854.html" target="_blank">Javascript正则表达式在线测试工具</a></li>
+<li><a href="../front-end/854.html" target="_blank">JavaScript正規表現オンラインテストツール</a></li>
 </ul>
 <hr/><h2 id="metacode">元字符</h2>
-<p>もういくつか有用なメタ文字を知っていますね。たとえば<span class="code">\b</span>,<span class="code">.</span>,<span class="code">*</span>，还有<span class="code">\d</span>。正規表現にはさらに多くのメタ文字があります。たとえば<span class="code">\s</span>匹配<span class="desc">任意的空白符，包括空格，制表符(Tab)，换行符，中文全角空格等</span>。<span class="code">\w</span>匹配<span class="desc">字母或数字或下划线或汉字等</span>。</p>
-<p class="note important">注：对中文/汉字的特殊处理是由.Net提供的正则表达式引擎支持的，其它环境下的具体情况请查看相关文档。</p>
+<p>もういくつか有用なメタ文字を知っていますね。たとえば<span class="code">\b</span>,<span class="code">.</span>,<span class="code">*</span>，还有<span class="code">\d</span>。正規表現にはさらに多くのメタ文字があります。たとえば<span class="code">\s</span>匹配<span class="desc">任意の空白文字、スペース、タブ（Tab）、改行、中国語の全角スペースなど</span>。<span class="code">\w</span>匹配<span class="desc">字母或数字或下划线或汉字等</span>。</p>
+<p class="note important">注：中国語/漢字に対する特別な処理は、.Netが提供する正規表現エンジンによってサポートされています。その他の環境での具体的な状況については、関連ドキュメントを参照してください。</p>
 <p>次に、さらに多くの例を見てみましょう：</p>
-<p><span class="regex">\ba\w*\b</span>匹配<span class="desc">以字母<span class="part">a</span>开头的单词——先是某个单词开始处(<span class="part">\b</span>)，然后是字母<span class="part">a</span>,然后是任意数量的字母或数字(<span class="part">\w*</span>)，最后是单词结束处(<span class="part">\b</span>)</span>。</p>
+<p><span class="regex">\ba\w*\b</span>匹配<span class="desc">以字母<span class="part">a</span>先頭の単語——まず、ある単語の開始位置(<span class="part">\b</span>)、次に文字<span class="part">a</span>,その後に任意の数の英字または数字(<span class="part">\w*</span>)、最後は単語の終了位置(<span class="part">\b</span>)</span>。</p>
 <p class="note">注：では、正規表現における「単語」の意味を説明しましょう：それは、1つ以上の連続した<span class="code">\w</span>。そうです、英語を学ぶときに暗記する何千何万もの同名のものとは、実はあまり関係ありません :)</p>
-<p><span class="regex">\d+</span>匹配<span class="desc">1个或更多连续的数字</span>。这里的<span class="part">+</span>是和<span class="code">*</span>類似のメタ文字ですが、異なる点は「\b」が単語の境界にマッチするのに対し、<span class="code">*</span>匹配<span class="desc">重复任意次(可能是0次)</span>，而<span class="code">+</span>则匹配<span class="desc">重复1次或更多次</span>。</p>
-<p><span class="regex">\b\w{6}\b</span>匹配<span class="desc">刚好6个字符的单词</span>。</p>
+<p><span class="regex">\d+</span>匹配<span class="desc">1個以上の連続した数字</span>。ここでの<span class="part">+</span>は、そして<span class="code">*</span>類似のメタ文字ですが、異なる点は「\b」が単語の境界にマッチするのに対し、<span class="code">*</span>匹配<span class="desc">任意の回数繰り返す（0回の場合もある）</span>，而<span class="code">+</span>则匹配<span class="desc">重复1次或更多次</span>。</p>
+<p><span class="regex">\b\w{6}\b</span>匹配<span class="desc">ちょうど6文字の単語</span>。</p>
 <table class="reference">
-<caption>表1.常用的元字符</caption>
+<caption>表1. よく使うメタ文字</caption>
 <thead>
 <tr>
 <th scope="col">代码</th>
@@ -155,7 +155,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <tbody>
 <tr>
 <td><span class="code">.</span></td>
-<td><span class="desc">匹配除换行符以外的任意字符</span></td>
+<td><span class="desc">改行以外の任意の文字にマッチ</span></td>
 </tr>
 <tr>
 <td><span class="code">\w</span></td>
@@ -163,7 +163,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </tr>
 <tr>
 <td><span class="code">\s</span></td>
-<td><span class="desc">匹配任意的空白符</span></td>
+<td><span class="desc">任意の空白文字にマッチする</span></td>
 </tr>
 <tr>
 <td><span class="code">\d</span></td>
@@ -171,30 +171,30 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </tr>
 <tr>
 <td><span class="code">\b</span></td>
-<td><span class="desc">匹配单词的开始或结束</span></td>
+<td><span class="desc">単語の先頭または末尾にマッチ</span></td>
 </tr>
 <tr>
 <td><span class="code">^</span></td>
-<td><span class="desc">匹配字符串的开始</span></td>
+<td><span class="desc">文字列の先頭にマッチする</span></td>
 </tr>
 <tr>
 <td><span class="code">$</span></td>
-<td><span class="desc">匹配字符串的结束</span></td>
+<td><span class="desc">文字列の末尾にマッチする</span></td>
 </tr>
 </tbody>
 </table>
-<p class="note">注：正規表現エンジンは通常、「指定された文字列が正規表現にマッチするかどうかをテストする」メソッドを提供します。例：JavaScriptのRegExp.test()メソッドや.NETのRegex.IsMatch()メソッド。ここでのマッチは、文字列の中に式の規則に適合する部分があるかどうかを指します。もし...を使用しないなら<span class="code">^</span>和<span class="code">$</span>的话，对于<span class="regex">\d{5,12}</span>に関して言えば、そのような方法を使用すると、保証できるのは文字列の中に<span class="desc">包含5到12连续位数字</span>、ではなく、文字列全体が5〜12桁の数字であることではありません。</p>
+<p class="note">注：正規表現エンジンは通常、「指定された文字列が正規表現にマッチするかどうかをテストする」メソッドを提供します。例：JavaScriptのRegExp.test()メソッドや.NETのRegex.IsMatch()メソッド。ここでのマッチは、文字列の中に式の規則に適合する部分があるかどうかを指します。もし...を使用しないなら<span class="code">^</span>と<span class="code">$</span>ならば、...に対して<span class="regex">\d{5,12}</span>に関して言えば、そのような方法を使用すると、保証できるのは文字列の中に<span class="desc">包含5到12连续位数字</span>、ではなく、文字列全体が5〜12桁の数字であることではありません。</p>
 <p>元字符<span class="code">^</span>（数字6と同じキーにある記号）と<span class="code">$</span>はどちらも1つの位置にマッチします。これは「\b」と似ていますが、ただ<span class="code">\b</span>有点类似。<span class="code">^</span>は、検索に使う文字列の先頭にマッチし、<span class="code">$</span>は末尾にマッチします。この2つのコードは入力内容を検証するときに非常に便利です。例えば、あるWebサイトで入力するQQ番号が5〜12桁の数字でなければならない場合、次のように使用できます：<span class="regex">^\d{5,12}$</span>。</p>
-<p>这里的<span class="part">{5,12}</span>前に紹介した<span class="part">{2}</span>は似ていますが、ただ「\B」は単語の境界ではない位置にマッチします。<span class="part">{2}</span>匹配<span class="desc">只能不多不少重复2次</span>，<span class="part">{5,12}</span>则是<span class="desc">重复的次数不能少于5次，不能多于12次</span>、そうでなければマッチしません。</p>
-<p>因为使用了<span class="part">^</span>和<span class="part">$</span>、したがって入力された文字列全体は、マッチのために使われます。<span class="part">\d{5,12}</span>でマッチさせる、つまり入力全体がこのパターンに完全に一致する必要があります。<span class="desc">必须是5到12个数字</span>、したがって、入力されたQQ番号がこの正規表現にマッチすれば、要件を満たすことになります。</p>
-<p>大文字と小文字を無視するオプションと同様に、一部の正規表現処理ツールには複数行を処理するオプションもあります。このオプションを選択すると、<span class="code">^</span>和<span class="code">$</span>の意味は〜になる<span class="desc">匹配行的开始处和结束处</span>。</p>
+<p>ここの<span class="part">{5,12}</span>前に紹介した<span class="part">{2}</span>は似ていますが、ただ「\B」は単語の境界ではない位置にマッチします。<span class="part">{2}</span>匹配<span class="desc">只能不多不少重复2次</span>，<span class="part">{5,12}</span>である<span class="desc">繰り返しの回数は5回以上、12回以下でなければならない</span>、そうでなければマッチしません。</p>
+<p>使用したため<span class="part">^</span>と<span class="part">$</span>、したがって入力された文字列全体は、マッチのために使われます。<span class="part">\d{5,12}</span>でマッチさせる、つまり入力全体がこのパターンに完全に一致する必要があります。<span class="desc">5〜12桁の数字でなければならない</span>、したがって、入力されたQQ番号がこの正規表現にマッチすれば、要件を満たすことになります。</p>
+<p>大文字と小文字を無視するオプションと同様に、一部の正規表現処理ツールには複数行を処理するオプションもあります。このオプションを選択すると、<span class="code">^</span>と<span class="code">$</span>の意味は〜になる<span class="desc">行の開始位置と終了位置にマッチする</span>。</p>
 <hr/><h2 id="escape">字符转义</h2>
-<p>メタ文字そのものを検索したい場合、たとえば次のものを検索するとき<span class="desc">.</span>,或者<span class="desc">*</span>、問題が発生します：それらを指定することができません。なぜなら、それらは別の意味に解釈されるからです。この場合は、...を使用する必要があります。<span class="code">\</span>これらの文字の特別な意味を取り消すためです。したがって、...を使用すべきです。<span class="regex">\.</span>和<span class="regex">\*</span>。もちろん、検索するには<span class="desc">\</span>自体も、〜を使う必要があります<span class="regex">\\</span>.</p>
+<p>メタ文字そのものを検索したい場合、たとえば次のものを検索するとき<span class="desc">.</span>,或者<span class="desc">*</span>、問題が発生します：それらを指定することができません。なぜなら、それらは別の意味に解釈されるからです。この場合は、...を使用する必要があります。<span class="code">\</span>これらの文字の特別な意味を取り消すためです。したがって、...を使用すべきです。<span class="regex">\.</span>と<span class="regex">\*</span>。もちろん、検索するには<span class="desc">\</span>自体も、〜を使う必要があります<span class="regex">\\</span>.</p>
 <p>例如：<span class="regex">deerchao\.net</span>匹配<span class="desc">deerchao.net</span>，<span class="regex">C:\\Windows</span>匹配<span class="desc">C:\Windows</span>。</p>
 <hr/><h2 id="repeat">重复</h2>
 <p>あなたはすでに前の〜を見ている<span class="code">*</span>,<span class="code">+</span>,<span class="code">{2}</span>,<span class="code">{5,12}</span>これらの繰り返しマッチングの方法です。以下は、正規表現におけるすべての量指定子（数量を指定するコード、例：*、{5,12}など）です：</p>
 <table class="reference">
-<caption>表2.常用的限定符</caption>
+<caption>表2. よく使う量指定子</caption>
 <thead>
 <tr>
 <th scope="col">代码/语法</th>
@@ -230,29 +230,29 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </table>
 <p>以下は繰り返しを使用したいくつかの例です：</p>
 <p><span class="regex">Windows\d+</span>匹配<span class="desc">Windows后面跟1个或更多数字</span></p>
-<p><span class="regex">^\w+</span>匹配<span class="desc">一行的第一个单词(或整个字符串的第一个单词，具体匹配哪个意思得看选项设置)</span></p>
+<p><span class="regex">^\w+</span>匹配<span class="desc">行の最初の単語（または文字列全体の最初の単語。具体的にどちらの意味でマッチするかはオプション設定による）</span></p>
 <hr/><h2 id="charclass">字符类</h2>
 <p>数字、文字または数字、空白を検索するのは簡単です。なぜなら、これらの文字集合に対応するメタ文字がすでにあるからです。しかし、定義済みのメタ文字がない文字集合（例えば母音のa,e,i,o,u）をマッチさせたい場合はどうすればいいでしょうか？</p>
 <p>とても簡単です。角括弧の中にそれらを列挙するだけでよいのです。例えば<span class="regex">[aeiou]</span>就匹配<span class="desc">任何一个英文元音字母</span>，<span class="regex">[.?!]</span>匹配<span class="desc">标点符号(.或?或!)</span>。</p>
 <p>文字を簡単に指定することもできます。<span class="name">范围</span>，像<span class="regex">[0-9]</span>が表す意味は<span class="regex">\d</span>と完全に一致します：<span class="desc">一位数字</span>；同理<span class="regex">[a-z0-9A-Z_]</span>〜と完全に同等です<span class="code">\w</span>（英語だけを考える場合）。</p>
 <p>次はより複雑な式です：<span class="regex">\(?0\d{2}[) -]?\d{8}</span>。</p>
 <p class="note">注意：「(」と「)」もメタ文字です。後の<a href="../index.html">分组节</a>で言及されるので、ここでは「\d」を使用する必要があります。<a href="../index.html">转义</a>。</p>
-<p>この式は次のものにマッチできます<span class="desc">几种格式的电话号码</span>，像<span class="string">(010)88886666</span>，或<span class="string">022-22334455</span>，或<span class="string">02912345678</span>など。これを少し分析してみましょう：まず最初はエスケープ文字です<span class="part">\(</span>、それは0回または1回出現できます（「?」）、<span class="part">?</span>)、その次は<span class="part">0</span>、その後に2つの数字（「\d{2}」）、<span class="part">\d{2}</span>)，然后是<span class="part">)</span>或<span class="part">-</span>或<span class="part">空格</span>のうちの1つで、それが1回または0回出現します(<span class="part">?</span>）、最後に8つの数字（「\d{8}」）です。<span class="part">\d{8}</span>)。</p>
+<p>この式は次のものにマッチできます<span class="desc">いくつかの形式の電話番号</span>，像<span class="string">(010)88886666</span>，或<span class="string">022-22334455</span>，或<span class="string">02912345678</span>など。これを少し分析してみましょう：まず最初はエスケープ文字です<span class="part">\(</span>、それは0回または1回出現できます（「?」）、<span class="part">?</span>)、その次は<span class="part">0</span>、その後に2つの数字（「\d{2}」）、<span class="part">\d{2}</span>）、次に<span class="part">)</span>或<span class="part">-</span>或<span class="part">空格</span>のうちの1つで、それが1回または0回出現します(<span class="part">?</span>）、最後に8つの数字（「\d{8}」）です。<span class="part">\d{8}</span>)。</p>
 <hr/><h2 id="alternative">分枝条件</h2>
 <p>残念ながら、さっきの式は次のようなものにもマッチします<span class="string">010)12345678</span>或<span class="string">(022-87654321</span>という「正しくない」形式です。この問題を解決するには、...を使う必要があります。<span class="name">分枝条件</span>。正規表現の中の<span class="name">分枝条件</span>は、いくつかの規則があり、そのうちのいずれか1つを満たせばマッチとみなすことを指します。具体的な方法は、...を使用することです。<span class="code">|</span>異なる規則を区切ります。理解できない？大丈夫、例を見てください：</p>
-<p><span class="regex">0\d{2}-\d{8}|0\d{3}-\d{7}</span>この式は〜できる<span class="desc">匹配两种以连字号分隔的电话号码：一种是三位区号，8位本地号(如010-12345678)，一种是4位区号，7位本地号(0376-2233445)</span>。</p>
-<p><span class="regex">\(?0\d{2}\)?[- ]?\d{8}|0\d{2}[- ]?\d{8}</span>这个表达式<span class="desc">匹配3位区号的电话号码，其中区号可以用小括号括起来，也可以不用，区号与本地号间可以用连字号或空格间隔，也可以没有间隔</span>。分岐条件を使用して、この式を市外局番4桁にも対応するように拡張してみてください。</p>
+<p><span class="regex">0\d{2}-\d{8}|0\d{3}-\d{7}</span>この式は〜できる<span class="desc">ハイフンで区切られた2種類の電話番号にマッチする：1つは3桁の市外局番と8桁の市内番号（例：010-12345678）、もう1つは4桁の市外局番と7桁の市内番号（0376-2233445）です。</span>。</p>
+<p><span class="regex">\(?0\d{2}\)?[- ]?\d{8}|0\d{2}[- ]?\d{8}</span>この式<span class="desc">3桁の市外局番の電話番号に一致します。市外局番は丸括弧で囲んでも囲まなくてもよく、市外局番と市内番号の間はハイフンまたはスペースで区切っても、区切りなしでも構いません。</span>。分岐条件を使用して、この式を市外局番4桁にも対応するように拡張してみてください。</p>
 <p><span class="regex">\d{5}-\d{4}|\d{5}</span>この式はアメリカの郵便番号にマッチするためのものです。アメリカの郵便番号の規則は、5桁の数字、またはハイフンで区切られた9桁の数字です。この例を示すのは、ある問題を説明できるからです：<strong>分岐条件を使用するときは、各条件の順序に注意してください</strong>。もしそれを〜に変更すると<span class="regex">\d{5}|\d{5}-\d{4}</span>の場合、5桁の郵便番号（および9桁の郵便番号の最初の5桁）だけにマッチします。理由は、分岐条件をマッチングする際、各条件が左から右にテストされ、ある分岐を満たすと、他の条件は考慮されないからです。</p>
 <hr/><h2 id="grouping">分组</h2>
 <p>単一の文字を繰り返す方法はすでに述べました（文字の直後に量指定子を付けるだけです）。しかし、複数の文字を繰り返したい場合はどうすればいいでしょうか？小括弧を使用して...を指定できます。<span class="name">子表达式</span>(也叫做<span class="name">分组</span>)、その後、この部分式の繰り返し回数を指定できます。また、部分式に対して他の操作を行うこともできます（後で紹介します）。</p>
-<p><span class="regex">(\d{1,3}\.){3}\d{1,3}</span>是一个<span class="desc">简单的IP地址匹配</span>式です。この式を理解するには、次の順序で分析してください：<span class="part">\d{1,3}</span>匹配<span class="desc">1到3位的数字</span>，<span class="part">(\d{1,3}\.){3}</span>匹配<span class="desc">三位数字加上一个英文句号(这个整体也就是这个<span class="name">分组</span>)重复3次</span>、最後にさらに〜を追加<span class="desc">一个一到三位的数字</span>(<span class="part">\d{1,3}</span>)。</p>
+<p><span class="regex">(\d{1,3}\.){3}\d{1,3}</span>は一つの<span class="desc">簡単なIPアドレスマッチング</span>式です。この式を理解するには、次の順序で分析してください：<span class="part">\d{1,3}</span>匹配<span class="desc">1〜3桁の数字</span>，<span class="part">(\d{1,3}\.){3}</span>匹配<span class="desc">3桁の数字に英文のピリオドを加えたもの（この全体はつまりこの<span class="name">分组</span>)重复3次</span>、最後にさらに〜を追加<span class="desc">1桁から3桁までの数字</span>(<span class="part">\d{1,3}</span>)。</p>
 <p class="note">注：IPアドレスの各数字は255を超えてはいけません。よく「01.02.03.04のように先頭に0が付いた数字は正しいIPアドレスですか？」と聞かれます。答えは：はい、IPアドレスの数字には前ゼロ（leading zeroes）を含めることができます。</p>
 <p>残念ながら、これも「800-123-4567」にマッチします。<span class="string">256.300.888.999</span>このような存在し得ないIPアドレス。もし算術比較を使用できれば、この問題を簡単に解決できるかもしれませんが、正規表現には数学に関する機能は一切ありません。したがって、長々としたグループ化、選択、文字クラスを使って正しいIPアドレスを記述するしかありません：<span class="regex">((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)</span>。</p>
 <p>この式を理解する鍵は、グループ化と後方参照を理解することです。<span class="part">2[0-4]\d|25[0-5]|[01]?\d\d?</span>、ここでは詳しく説明しません。自分でその意味を分析できるはずです。</p>
 <hr/><h2 id="negation">反义</h2>
 <p>時には、簡単に定義できる文字クラスに属さない文字を検索する必要があります。例えば、数字以外なら任意の文字でよい場合です。この場合は...を使う必要があります。<span class="name">反义</span>：</p>
 <table class="reference">
-<caption>表3.常用的反义代码</caption>
+<caption>表3.よく使われる否定コード</caption>
 <thead>
 <tr>
 <th scope="col">代码/语法</th>
@@ -262,32 +262,32 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <tbody>
 <tr>
 <td><span class="code">\W</span></td>
-<td><span class="desc">匹配任意不是字母，数字，下划线，汉字的字符</span></td>
+<td><span class="desc">英字、数字、アンダースコア、漢字以外の任意の文字にマッチする</span></td>
 </tr>
 <tr>
 <td><span class="code">\S</span></td>
-<td><span class="desc">匹配任意不是空白符的字符</span></td>
+<td><span class="desc">空白文字以外の任意の文字にマッチ</span></td>
 </tr>
 <tr>
 <td><span class="code">\D</span></td>
-<td><span class="desc">匹配任意非数字的字符</span></td>
+<td><span class="desc">数字以外の任意の文字にマッチ</span></td>
 </tr>
 <tr>
 <td><span class="code">\B</span></td>
-<td><span class="desc">匹配不是单词开头或结束的位置</span></td>
+<td><span class="desc">単語の先頭でも末尾でもない位置にマッチする</span></td>
 </tr>
 <tr>
 <td><span class="code">[^x]</span></td>
-<td><span class="desc">匹配除了x以外的任意字符</span></td>
+<td><span class="desc">x以外の任意の文字にマッチ</span></td>
 </tr>
 <tr>
 <td><span class="code">[^aeiou]</span></td>
-<td><span class="desc">匹配除了aeiou这几个字母以外的任意字符</span></td>
+<td><span class="desc">aeiouの文字以外の任意の文字にマッチする</span></td>
 </tr>
 </tbody>
 </table>
-<p>例子：<span class="regex">\S+</span>匹配<span class="desc">不包含空白符的字符串</span>。</p>
-<p><span class="regex">&lt;a[^&gt;]+&gt;</span>匹配<span class="desc">用尖括号括起来的以a开头的字符串</span>。</p>
+<p>例子：<span class="regex">\S+</span>匹配<span class="desc">空白文字を含まない文字列</span>。</p>
+<p><span class="regex">&lt;a[^&gt;]+&gt;</span>匹配<span class="desc">山括弧で囲まれた、aで始まる文字列</span>。</p>
 <hr/><h2 id="backreference">后向引用</h2>
 <p>小括弧で部分式を指定すると、<strong>このサブ式にマッチするテキスト。</strong>（つまり、このグループがキャプチャした内容）は、式または他のプログラムでさらに処理することができます。デフォルトでは、各グループは自動的に...を保持します。<span class="name">组号</span>、その規則は：左から右へ、グループの左括弧を基準として、最初に現れるグループのグループ番号が1、2番目が2、以下同様です。</p>
 <p>ええと……実は、グループ番号の割り当ては、さっき言ったほど単純ではありません：</p>
@@ -296,8 +296,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <li>実際には、グループ番号の割り当てプロセスでは、左から右へ2回スキャンします：1回目は名前のないグループだけに割り当て、2回目は名前付きグループだけに割り当てます——したがって、すべての名前付きグループのグループ番号は、名前のないグループの番号よりも大きくなります。</li>
 <li>你可以使用<span class="code">(?:exp)</span>のような構文を使用して、あるグループからグループ番号割り当てへの参加権を剥奪します</li>
 </ul>
-<p><span class="name">后向引用</span>は前にマッチしたグループのテキストを繰り返し検索するために使用します。例えば、「\1」は最初のグループと同じテキストにマッチします。<span class="part">\1</span>代表<span class="desc">分组1匹配的文本</span>。理解しにくいですか？例を見てみましょう：</p>
-<p><span class="regex">\b(\w+)\b\s+\1\b</span>マッチに使用できます<span class="desc">重复的单词</span>，像<span class="string">go go</span>, 或者<span class="string">kitty kitty</span>。この式はまず〜です<span class="desc">一个单词</span>，也就是<span class="desc">单词开始处和结束处之间的多于一个的字母或数字</span>(<span class="part">\b(\w+)\b</span>）、この単語は番号1のグループにキャプチャされ、次に<span class="desc">1个或几个空白符</span>(<span class="part">\s+</span>)，最后是<span class="desc">分组1中捕获的内容（也就是前面匹配的那个单词）</span>(<span class="part">\1</span>)。</p>
+<p><span class="name">后向引用</span>は前にマッチしたグループのテキストを繰り返し検索するために使用します。例えば、「\1」は最初のグループと同じテキストにマッチします。<span class="part">\1</span>代表<span class="desc">グループ1がマッチしたテキスト</span>。理解しにくいですか？例を見てみましょう：</p>
+<p><span class="regex">\b(\w+)\b\s+\1\b</span>マッチに使用できます<span class="desc">繰り返される単語</span>，像<span class="string">go go</span>, 或者<span class="string">kitty kitty</span>。この式はまず〜です<span class="desc">一个单词</span>、すなわち<span class="desc">単語の開始位置と終了位置の間にある複数の文字または数字</span>(<span class="part">\b(\w+)\b</span>）、この単語は番号1のグループにキャプチャされ、次に<span class="desc">1个或几个空白符</span>(<span class="part">\s+</span>）、最後に<span class="desc">グループ1でキャプチャされた内容（つまり、前にマッチした単語）</span>(<span class="part">\1</span>)。</p>
 <p>サブ式のグループ番号を自分で指定することもできます。<span class="name">组名</span>。部分式のグループ名を指定するには、次のような構文を使用します：<span class="code">(?&lt;Word&gt;\w+)</span>(または山括弧を〜に置き換える<span class="code">'</span>也行：<span class="code">(?'Word'\w+)</span>)、これで〜が<span class="part">\w+</span>のグループ名として指定される<span class="part">Word</span>。このグループを後方参照するには、<span class="name">捕获</span>の内容には、次を使用できます。<span class="code">\k&lt;Word&gt;</span>、したがって前の例は次のように書くこともできます：<span class="regex">\b(?&lt;Word&gt;\w+)\b\s+\k&lt;Word&gt;\b</span>。</p>
 <p>小括弧を使用する際には、他にも特定の用途のための構文がたくさんあります。以下に最もよく使われるものをいくつか挙げます：</p>
 <table class="reference">
@@ -311,54 +311,54 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <tr>
 <th rowspan="3">捕获</th>
 <td><span class="code">(exp)</span></td>
-<td><span class="desc">匹配exp,并捕获文本到自动命名的组里</span></td>
+<td><span class="desc">exp にマッチし、テキストを自動命名されたグループにキャプチャする</span></td>
 </tr>
 <tr>
 <td><span class="code">(?&lt;name&gt;exp)</span></td>
-<td><span class="desc">匹配exp,并捕获文本到名称为name的组里，也可以写成(?'name'exp)</span></td>
+<td><span class="desc">exp にマッチし、テキストを name という名前のグループにキャプチャします。(?'name'exp) と書くこともできます。</span></td>
 </tr>
 <tr>
 <td><span class="code">(?:exp)</span></td>
-<td><span class="desc">匹配exp,不捕获匹配的文本，也不给此分组分配组号</span></td>
+<td><span class="desc">exp にマッチし、マッチしたテキストをキャプチャせず、このグループにグループ番号を割り当てない</span></td>
 </tr>
 <tr>
 <th rowspan="4">零宽断言</th>
 <td><span class="code">(?=exp)</span></td>
-<td><span class="desc">匹配exp前面的位置</span></td>
+<td><span class="desc">expの前の位置にマッチ</span></td>
 </tr>
 <tr>
 <td><span class="code">(?&lt;=exp)</span></td>
-<td><span class="desc">匹配exp后面的位置</span></td>
+<td><span class="desc">expの後の位置にマッチ</span></td>
 </tr>
 <tr>
 <td><span class="code">(?!exp)</span></td>
-<td><span class="desc">匹配后面跟的不是exp的位置</span></td>
+<td><span class="desc">後ろにexpが続かない位置にマッチする</span></td>
 </tr>
 <tr>
 <td><span class="code">(?&lt;!exp)</span></td>
-<td><span class="desc">匹配前面不是exp的位置</span></td>
+<td><span class="desc">直前がexpでない位置にマッチ</span></td>
 </tr>
 <tr>
 <th rowspan="1">注释</th>
 <td><span class="code">(?#comment)</span></td>
-<td><span class="desc">这种类型的分组不对正则表达式的处理产生任何影响，用于提供注释让人阅读</span></td>
+<td><span class="desc">このタイプのグループ化は正規表現の処理に何の影響もとえず、人が読むためのコメントを提供するために使われます。</span></td>
 </tr>
 </tbody>
 </table>
-<p>最初の2つの構文についてはすでに説明しました。3つ目は<span class="code">(?:exp)</span>正規表現の処理方法を変えるわけではなく、単にそのようなグループがマッチする内容のことです。<span class="desc">不会像前两种那样被捕获到某个组里面，也不会拥有组号</span>。「なぜ私はこんなことをしたいのか？」——良い質問ですね。あなたはどう思いますか？</p>
+<p>最初の2つの構文についてはすでに説明しました。3つ目は<span class="code">(?:exp)</span>正規表現の処理方法を変えるわけではなく、単にそのようなグループがマッチする内容のことです。<span class="desc">前の2つのようにグループ内にキャプチャされることはなく、グループ番号も持たない</span>。「なぜ私はこんなことをしたいのか？」——良い質問ですね。あなたはどう思いますか？</p>
 <hr/><h2 id="lookaround">零宽断言</h2>
 <p>次の4つは、あるコンテンツ（ただしそのコンテンツ自体は含まない）の前または後にあるものを検索するために使われます。つまり、それらは...<span class="code">\b</span>,<span class="code">^</span>,<span class="code">$</span>のように、特定の条件（すなわち断言）を満たすべき位置を指定するために使われます。そのため、それらは...とも呼ばれます。<span class="name">零宽断言</span>。やはり例を使って説明するのが良いでしょう：</p>
 <p class="note">注：断言は、真であるべき事実を宣言するために使われます。正規表現では、断言が真である場合にのみマッチングが続行されます。</p>
-<p><span class="code">(?=exp)</span>也叫<span class="name">零宽度正预测先行断言</span>，它<span class="desc">断言自身出现的位置的后面能匹配表达式exp</span>。比如<span class="regex">\b\w+(?=ing\b)</span>，匹配<span class="desc">以ing结尾的单词的前面部分(除了ing以外的部分)</span>，如查找<span class="string">I'm singing while you're dancing.</span>時、それは〜にマッチします<span class="desc">sing</span>和<span class="desc">danc</span>。</p>
-<p><span class="code">(?&lt;=exp)</span>也叫<span class="name">零宽度正回顾后发断言</span>，它<span class="desc">断言自身出现的位置的前面能匹配表达式exp</span>。比如<span class="regex">(?&lt;=\bre)\w+\b</span>会匹配<span class="desc">以re开头的单词的后半部分(除了re以外的部分)</span>、例えば検索するとき<span class="string">reading a book</span>时，它匹配<span class="desc">ading</span>。</p>
-<p>長い数字の3桁ごとにカンマを付けたい場合（もちろん右側からです）、次のようにして、前と内側にカンマを追加する必要がある部分を検索できます：<span class="regex">((?&lt;=\d)\d{3})+\b</span>，用它对<span class="string">1234567890</span>検索すると結果は<span class="desc">234567890</span>。</p>
-<p>次の例は、これら2つの断言を同時に使用しています：<span class="regex">(?&lt;=\s)\d+(?=\s)</span>匹配<span class="desc">以空白符间隔的数字(再次强调，不包括这些空白符)</span>。</p>
+<p><span class="code">(?=exp)</span>也叫<span class="name">零宽度正预测先行断言</span>，它<span class="desc">自分自身が出現する位置の後ろで、式expがマッチすることを断言する</span>。比如<span class="regex">\b\w+(?=ing\b)</span>，匹配<span class="desc">ingで終わる単語の前の部分(ing以外の部分)</span>，如查找<span class="string">I'm singing while you're dancing.</span>時、それは〜にマッチします<span class="desc">sing</span>と<span class="desc">danc</span>。</p>
+<p><span class="code">(?&lt;=exp)</span>也叫<span class="name">零宽度正回顾后发断言</span>，它<span class="desc">自分自身が出現する位置の前で、式expがマッチすることを断言する</span>。比如<span class="regex">(?&lt;=\bre)\w+\b</span>会匹配<span class="desc">reで始まる単語の後半部分（re以外の部分）</span>、例えば検索するとき<span class="string">reading a book</span>时，它匹配<span class="desc">ading</span>。</p>
+<p>長い数字の3桁ごとにカンマを付けたい場合（もちろん右側からです）、次のようにして、前と内側にカンマを追加する必要がある部分を検索できます：<span class="regex">((?&lt;=\d)\d{3})+\b</span>、それを使って<span class="string">1234567890</span>検索すると結果は<span class="desc">234567890</span>。</p>
+<p>次の例は、これら2つの断言を同時に使用しています：<span class="regex">(?&lt;=\s)\d+(?=\s)</span>匹配<span class="desc">空白文字で区切られた数字（繰り返しますが、これらの空白文字は含みません）</span>。</p>
 <hr/><h2 id="negativelookaround">否定先読み</h2>
 <p>前述のように、どうやって単語を検索するか。<strong>特定の文字ではない、または特定の文字クラスに含まれない</strong>の文字の方法（否定）。しかし、単に...したい場合は<strong>ある文字が出現しないことを確認したいが、それをマッチさせたくない</strong>場合はどうすればよいでしょうか？例えば、文字qが含まれていて、そのqの後に文字uが続かない単語を検索したい場合、次のように試せます：</p>
-<p><span class="regex">\b\w*q[^u]\w*\b</span>匹配<span class="desc">包含<strong>の後に文字uが続かない文字q。</strong>的单词</span>。しかし、もっとテストをしてみると（または十分に鋭い観察力があれば直接気づくでしょう）、qが単語の末尾に現れる場合、例えば...<strong>Iraq</strong>,<strong>Benq</strong>、この式はエラーになります。なぜなら...<span class="part">[^u]</span>は常に1文字にマッチするため、qが単語の最後の文字である場合、後続の...<span class="part">[^u]</span>はqの後の単語区切り文字（スペース、ピリオド、その他何か）にマッチします。後続の...<span class="part">\w*\b</span>は次の単語にマッチするため、「q」が含まれる単語を検索できます。<span class="regex">\b\w*q[^u]\w*\b</span>全体にマッチできます<span class="string">Iraq fighting</span>。<span class="name">负向零宽断言</span>はこのような問題を解決できます。なぜなら、それは単に位置にマッチするだけで、...<strong>消费</strong>いかなる文字にもマッチしないからです。さて、この問題は次のように解決できます：<span class="regex">\b\w*q(?!u)\w*\b</span>。</p>
-<p><span class="name">零宽度负预测先行断言</span><span class="code">(?!exp)</span>，<span class="desc">断言此位置的后面不能匹配表达式exp</span>。例如：<span class="regex">\d{3}(?!\d)</span>匹配<span class="desc">三位数字，而且这三位数字的后面不能是数字</span>；<span class="regex">\b((?!abc)\w)+\b</span>匹配<span class="desc">不包含连续字符串abc的单词</span>。</p>
-<p>同様に、否定の先読みを使用できます。<span class="code">(?&lt;!exp)</span>,<span class="name">零宽度负回顾后发断言</span>来<span class="desc">断言此位置的前面不能匹配表达式exp</span>：<span class="regex">(?&lt;![a-z])\d{7}</span>匹配<span class="desc">前面不是小写字母的七位数字</span>。</p>
-<p>より複雑な例：<span class="regex">(?&lt;=&lt;(\w+)&gt;).*(?=&lt;\/\1&gt;)</span>匹配<span class="desc">不包含属性的简单HTML标签内里的内容</span>。<span class="code">(?&lt;=&lt;(\w+)&gt;)</span>このような〜を指定した<span class="name">前缀</span>：<span class="desc">被尖括号括起来的单词</span>（例えば&lt;b&gt;など）、その次に<span class="part">.*</span>（任意の文字列）、最後に<span class="name">后缀</span><span class="part">(?=&lt;\/\1&gt;)</span>。接尾辞の中の〜に注意<span class="part">\/</span>、前述の文字エスケープを使用しています；<span class="part">\1</span>は後方参照であり、参照しているのは最初のグループの内容です。<span class="desc">捕获的第一组</span>，前面的<span class="part">(\w+)</span>マッチする内容。これにより、接頭辞が実際に&lt;b&gt;であれば、接尾辞は&lt;/b&gt;になります。式全体がマッチするのは&lt;b&gt;と&lt;/b&gt;の間の内容です（繰り返しになりますが、接頭辞と接尾辞自体は含みません）。</p>
+<p><span class="regex">\b\w*q[^u]\w*\b</span>匹配<span class="desc">包含<strong>の後に文字uが続かない文字q。</strong>の単語</span>。しかし、もっとテストをしてみると（または十分に鋭い観察力があれば直接気づくでしょう）、qが単語の末尾に現れる場合、例えば...<strong>Iraq</strong>,<strong>Benq</strong>、この式はエラーになります。なぜなら...<span class="part">[^u]</span>は常に1文字にマッチするため、qが単語の最後の文字である場合、後続の...<span class="part">[^u]</span>はqの後の単語区切り文字（スペース、ピリオド、その他何か）にマッチします。後続の...<span class="part">\w*\b</span>は次の単語にマッチするため、「q」が含まれる単語を検索できます。<span class="regex">\b\w*q[^u]\w*\b</span>全体にマッチできます<span class="string">Iraq fighting</span>。<span class="name">负向零宽断言</span>はこのような問題を解決できます。なぜなら、それは単に位置にマッチするだけで、...<strong>消费</strong>いかなる文字にもマッチしないからです。さて、この問題は次のように解決できます：<span class="regex">\b\w*q(?!u)\w*\b</span>。</p>
+<p><span class="name">零宽度负预测先行断言</span><span class="code">(?!exp)</span>，<span class="desc">この位置の後方が式expにマッチしないことを断言する</span>。例如：<span class="regex">\d{3}(?!\d)</span>匹配<span class="desc">3桁の数字であり、かつその3桁の数字の後ろは数字であってはなりません。</span>；<span class="regex">\b((?!abc)\w)+\b</span>匹配<span class="desc">連続文字列abcを含まない単語</span>。</p>
+<p>同様に、否定の先読みを使用できます。<span class="code">(?&lt;!exp)</span>,<span class="name">零宽度负回顾后发断言</span>来<span class="desc">この位置の前方が式expにマッチしないことを断言する</span>：<span class="regex">(?&lt;![a-z])\d{7}</span>匹配<span class="desc">前に小文字が付いていない7桁の数字</span>。</p>
+<p>より複雑な例：<span class="regex">(?&lt;=&lt;(\w+)&gt;).*(?=&lt;\/\1&gt;)</span>匹配<span class="desc">属性を含まない単純なHTMLタグの内側のコンテンツ</span>。<span class="code">(?&lt;=&lt;(\w+)&gt;)</span>このような〜を指定した<span class="name">前缀</span>：<span class="desc">山括弧で囲まれた単語</span>（例えば&lt;b&gt;など）、その次に<span class="part">.*</span>（任意の文字列）、最後に<span class="name">后缀</span><span class="part">(?=&lt;\/\1&gt;)</span>。接尾辞の中の〜に注意<span class="part">\/</span>、前述の文字エスケープを使用しています；<span class="part">\1</span>は後方参照であり、参照しているのは最初のグループの内容です。<span class="desc">最初のキャプチャグループ</span>、前の<span class="part">(\w+)</span>マッチする内容。これにより、接頭辞が実際に&lt;b&gt;であれば、接尾辞は&lt;/b&gt;になります。式全体がマッチするのは&lt;b&gt;と&lt;/b&gt;の間の内容です（繰り返しになりますが、接頭辞と接尾辞自体は含みません）。</p>
 <p class="note">注：式を詳しく分析してください。<span class="regex">(?&lt;=&lt;(\w+)&gt;).*(?=&lt;\/\1&gt;)</span>、この表現はゼロ幅断言の真の用途を最もよく示しています。</p>
 <hr/><h2 id="commenting">注释</h2>
 <p>小括弧のもう1つの用途は、構文「(?:...)」を使用してグループ化のみを行い、キャプチャしないことです。<span class="code">(?#comment)</span>コメントを含める。例：<span class="regex">2[0-4]\d(?#200-249)|25[0-5](?#250-255)|[01]?\d\d?(?#0-199)</span>。</p>
@@ -372,10 +372,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
       &lt;\/\1&gt;  # 查找尖括号括起来的内容：前面是一个"/"，后面是先前捕获的标签
       )       # 后缀结束
 </pre>
-<hr/><h2 id="greedyandlazy">贪婪与懒惰</h2>
-<p>正規表現が繰り返しを受け付ける量指定子を含む場合、通常の動作は（式全体がマッチすることを前提として）マッチすることです<strong>尽可能多</strong>の文字。この式を例にとると：<span class="regex">a.*b</span>、それは〜にマッチします<span class="desc">最长的以a开始，以b结束的字符串</span>。それで検索すると<span class="string">aabab</span>の場合、文字列全体にマッチします。<span class="desc">aabab</span>。这被称为<span class="name">贪婪</span>匹配。</p>
-<p>時には、私たちはもっと控えめな（非貪欲な）マッチングを必要とします。<span class="name">懒惰</span>マッチ、つまり可能な限り短い文字列にマッチします。<strong>尽可能少</strong>の文字。前述の量指定子はすべて、その後に疑問符を追加するだけで怠惰マッチングモードに変換できます。<span class="code">?</span>。这样<span class="regex">.*?</span>就意味着<span class="desc">匹配任意数量的重复，但是在能使整个匹配成功的前提下使用最少的重复</span>。では、怠惰版の例を見てみましょう：</p>
-<p><span class="regex">a.*?b</span>匹配<span class="desc">最短的，以a开始，以b结束的字符串</span>。それを適用すると<span class="string">aabab</span>なら、それはマッチします<span class="desc">aab（第一到第三个字符）</span>和<span class="desc">ab（第四到第五个字符）</span>。</p>
+<hr/><h2 id="greedyandlazy">貪欲と怠惰</h2>
+<p>正規表現が繰り返しを受け付ける量指定子を含む場合、通常の動作は（式全体がマッチすることを前提として）マッチすることです<strong>尽可能多</strong>の文字。この式を例にとると：<span class="regex">a.*b</span>、それは〜にマッチします<span class="desc">aで始まりbで終わる最も長い文字列</span>。それで検索すると<span class="string">aabab</span>の場合、文字列全体にマッチします。<span class="desc">aabab</span>。これは...と呼ばれます<span class="name">贪婪</span>匹配。</p>
+<p>時には、私たちはもっと控えめな（非貪欲な）マッチングを必要とします。<span class="name">懒惰</span>マッチ、つまり可能な限り短い文字列にマッチします。<strong>尽可能少</strong>の文字。前述の量指定子はすべて、その後に疑問符を追加するだけで怠惰マッチングモードに変換できます。<span class="code">?</span>。このように<span class="regex">.*?</span>を意味します<span class="desc">任意の回数の繰り返しにマッチしますが、全体のマッチが成功する限り、最小限の繰り返しを使用します</span>。では、怠惰版の例を見てみましょう：</p>
+<p><span class="regex">a.*?b</span>匹配<span class="desc">aで始まりbで終わる最短の文字列</span>。それを適用すると<span class="string">aabab</span>なら、それはマッチします<span class="desc">aab（第一到第三个字符）</span>と<span class="desc">ab（第四到第五个字符）</span>。</p>
 <p class="note">注：なぜ最初のマッチがaab（1番目から3番目の文字）であり、ab（2番目から3番目の文字）ではないのでしょうか？簡単に言うと、正規表現には怠惰／貪欲のルールよりも優先順位が高い別のルールがあるからです：最初に始まるマッチが最優先です——The match that begins earliest wins.</p>
 <table class="reference">
 <caption>表5.懒惰限定符</caption>
@@ -411,7 +411,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <hr/><h2 id="regexoptions">处理选项</h2>
 <p>上記では、大文字小文字の無視、複数行の処理などのいくつかのオプションを紹介しました。これらのオプションは正規表現の処理方法を変えるために使用できます。以下は、.Netでよく使用される正規表現オプションです：</p>
 <table class="reference">
-<caption>表6.常用的处理选项</caption>
+<caption>表6.よく使われる処理オプション</caption>
 <thead>
 <tr>
 <th scope="col">名称</th>
@@ -425,7 +425,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </tr>
 <tr>
 <td>Multiline（複数行モード）</td>
-<td>更改<span class="code">^</span>和<span class="code">$</span>の意味を変更し、それぞれ任意の行の行頭と行末でマッチさせ、文字列全体の先頭と末尾だけでなくマッチさせます。（このモードでは、<span class="code">$</span>の正確な意味は：\nの前の位置および文字列の終了前の位置にマッチすることです。）</td>
+<td>更改<span class="code">^</span>と<span class="code">$</span>の意味を変更し、それぞれ任意の行の行頭と行末でマッチさせ、文字列全体の先頭と末尾だけでなくマッチさせます。（このモードでは、<span class="code">$</span>の正確な意味は：\nの前の位置および文字列の終了前の位置にマッチすることです。）</td>
 </tr>
 <tr>
 <td>Singleline（単一行モード）</td>
@@ -442,11 +442,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </tbody>
 </table>
 <p>よく尋ねられる質問：複数行モードと単一行モードは、同時にどちらか一方しか使えないのでしょうか？答えは：いいえ、違います。この2つのオプションは、名前が似ている（そのために混乱を招く）以外には、互いに何の関係もありません。</p>
-<p class="note">注：C#では、<a href="http://msdn2.microsoft.com/zh-cn/library/h5845fdz.aspx" target="_blank" title="MSDN 相关文档">Regex(String, RegexOptions)构造函数</a>来设置正则表达式的处理选项。如：Regex regex = new Regex(@"\ba\w{6}\b", RegexOptions.IgnoreCase);</p>
+<p class="note">注：C#では、<a href="http://msdn2.microsoft.com/zh-cn/library/h5845fdz.aspx" target="_blank" title="MSDN 相关文档">Regex(String, RegexOptions)构造函数</a>正規表現の処理オプションを設定します。例：Regex regex = new Regex(@"\ba\w{6}\b", RegexOptions.IgnoreCase);</p>
 <hr/><h2 id="balancedgroup">平衡组/递归匹配</h2>
 <p class="important note">注：ここで紹介する平衡グループ構文は、.Net Frameworkでサポートされています。他の言語／ライブラリはこの機能をサポートしていない場合や、サポートしていても異なる構文を使用する必要がある場合があります。</p>
-<p>時には次のような〜にマッチさせる必要があります<span class="desc">( 100 * ( 50 + 15 ) )这样的可嵌套的层次性结构</span>、この場合は単に「RegexOptions.IgnoreCase」を使用します。<span class="code">\(.+\)</span>は、最も左の左括弧と最も右の右括弧の間の内容にのみマッチします（ここでは貪欲モードについて議論していますが、怠惰モードにも以下の問題があります）。元の文字列内の左括弧と右括弧の出現回数が等しくない場合、例えば...<span class="string">( 5 / ( 3 + 2 ) ) )</span>、マッチ結果でも両者の数は等しくなりません。このような文字列の中で、最長の、対応する括弧の間の内容にマッチさせる方法はあるでしょうか？</p>
-<p>为了避免<span class="code">(</span>和<span class="code">\(</span>あなたの頭を完全に混乱させないように、丸括弧の代わりに山括弧を使いましょう。さて、問題は次のようになります：どのようにして...<span class="string">xx &lt;aa &lt;bbb&gt; &lt;bbb&gt; aa&gt; yy</span>このような文字列内で、最も長くペアになった山括弧の内側の内容をキャプチャするか？</p>
+<p>時には次のような〜にマッチさせる必要があります<span class="desc">( 100 * ( 50 + 15 ) )のようなネスト可能な階層構造</span>、この場合は単に「RegexOptions.IgnoreCase」を使用します。<span class="code">\(.+\)</span>は、最も左の左括弧と最も右の右括弧の間の内容にのみマッチします（ここでは貪欲モードについて議論していますが、怠惰モードにも以下の問題があります）。元の文字列内の左括弧と右括弧の出現回数が等しくない場合、例えば...<span class="string">( 5 / ( 3 + 2 ) ) )</span>、マッチ結果でも両者の数は等しくなりません。このような文字列の中で、最長の、対応する括弧の間の内容にマッチさせる方法はあるでしょうか？</p>
+<p>避けるために<span class="code">(</span>と<span class="code">\(</span>あなたの頭を完全に混乱させないように、丸括弧の代わりに山括弧を使いましょう。さて、問題は次のようになります：どのようにして...<span class="string">xx &lt;aa &lt;bbb&gt; &lt;bbb&gt; aa&gt; yy</span>このような文字列内で、最も長くペアになった山括弧の内側の内容をキャプチャするか？</p>
 <p>ここでは以下の構文構造を使用する必要があります：</p>
 <ul>
 <li><span class="code">(?'group')</span>キャプチャした内容をgroupと名付け、...にプッシュします。<span class="name">堆栈(Stack)</span></li>
@@ -473,11 +473,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 
 &gt;                         #最外层的右括号
 </pre>
-<p>平衡グループの最も一般的な応用の1つはHTMLのマッチングです。次の例は...にマッチできます。<span class="desc">嵌套的&lt;div&gt;标签</span>：<span class="regex">&lt;div[^&gt;]*&gt;[^&lt;&gt;]*(((?'Open'&lt;div[^&gt;]*&gt;)[^&lt;&gt;]*)+((?'-Open'&lt;/div&gt;)[^&lt;&gt;]*)+)*(?(Open)(?!))&lt;/div&gt;</span>.</p>
+<p>平衡グループの最も一般的な応用の1つはHTMLのマッチングです。次の例は...にマッチできます。<span class="desc">ネストされた&lt;div&gt;タグ</span>：<span class="regex">&lt;div[^&gt;]*&gt;[^&lt;&gt;]*(((?'Open'&lt;div[^&gt;]*&gt;)[^&lt;&gt;]*)+((?'-Open'&lt;/div&gt;)[^&lt;&gt;]*)+)*(?(Open)(?!))&lt;/div&gt;</span>.</p>
 <hr/><h2 id="more">まだ言及されていないものは何か。</h2>
 <p>上記では正規表現を構築するための多くの要素を説明しましたが、まだ言及されていないものがたくさんあります。以下は、言及されていない要素のリストで、構文と簡単な説明を含みます。</p>
 <table class="reference">
-<caption>表7.尚未详细讨论的语法</caption>
+<caption>表7. まだ詳細に説明していない構文</caption>
 <thead>
 <tr>
 <th scope="col">代码/语法</th>
@@ -487,11 +487,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <tbody>
 <tr>
 <td><span class="code">\a</span></td>
-<td><span class="desc">报警字符(打印它的效果是电脑嘀一声)</span></td>
+<td><span class="desc">警告文字（印刷するとコンピューターがビープ音を鳴らす効果）</span></td>
 </tr>
 <tr>
 <td><span class="code">\b</span></td>
-<td><span class="desc">通常是单词分界位置，但如果在字符类里使用代表退格</span></td>
+<td><span class="desc">通常は単語の境界位置だが、文字クラス内で使用する場合はバックスペースを表す。</span></td>
 </tr>
 <tr>
 <td><span class="code">\t</span></td>
@@ -519,15 +519,15 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </tr>
 <tr>
 <td><span class="code">\0nn</span></td>
-<td><span class="desc">ASCII代码中八进制代码为nn的字符</span></td>
+<td><span class="desc">ASCIIコードにおいて8進数コードがnnである文字</span></td>
 </tr>
 <tr>
 <td><span class="code">\xnn</span></td>
-<td><span class="desc">ASCII代码中十六进制代码为nn的字符</span></td>
+<td><span class="desc">ASCIIコードにおいて、16進コードがnnである文字</span></td>
 </tr>
 <tr>
 <td><span class="code">\unnnn</span></td>
-<td><span class="desc">Unicode代码中十六进制代码为nnnn的字符</span></td>
+<td><span class="desc">Unicodeコードにおける16進コードnnnnの文字</span></td>
 </tr>
 <tr>
 <td><span class="code">\cN</span></td>
@@ -535,23 +535,23 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </tr>
 <tr>
 <td><span class="code">\A</span></td>
-<td><span class="desc">字符串开头(类似^，但不受处理多行选项的影响)</span></td>
+<td><span class="desc">文字列の先頭（^に似ているが、複数行オプションの影響を受けない）</span></td>
 </tr>
 <tr>
 <td><span class="code">\Z</span></td>
-<td><span class="desc">字符串结尾或行尾(不受处理多行选项的影响)</span></td>
+<td><span class="desc">文字列末尾または行末（複数行オプションの処理の影響を受けない）</span></td>
 </tr>
 <tr>
 <td><span class="code">\z</span></td>
-<td><span class="desc">字符串结尾(类似$，但不受处理多行选项的影响)</span></td>
+<td><span class="desc">文字列末尾（$に似ているが、複数行オプションの影響を受けない）</span></td>
 </tr>
 <tr>
 <td><span class="code">\G</span></td>
-<td><span class="desc">当前搜索的开头</span></td>
+<td><span class="desc">現在の検索の先頭</span></td>
 </tr>
 <tr>
 <td><span class="code">\p{name}</span></td>
-<td><span class="desc">Unicode中命名为name的字符类，例如\p{IsGreek}</span></td>
+<td><span class="desc">Unicodeでnameという名前の文字クラス、例えば\p{IsGreek}</span></td>
 </tr>
 <tr>
 <td><span class="code">(?&gt;exp)</span></td>
@@ -563,27 +563,27 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </tr>
 <tr>
 <td><span class="code">(?im-nsx:exp)</span></td>
-<td><span class="desc">在子表达式exp中改变处理选项</span></td>
+<td><span class="desc">部分式exp内の処理オプションを変更する</span></td>
 </tr>
 <tr>
 <td><span class="code">(?im-nsx)</span></td>
-<td><span class="desc">为表达式后面的部分改变处理选项</span></td>
+<td><span class="desc">式の後ろの部分の処理オプションを変更する</span></td>
 </tr>
 <tr>
 <td><span class="code">(?(exp)yes|no)</span></td>
-<td><span class="desc">把exp当作零宽正向先行断言，如果在这个位置能匹配，使用yes作为此组的表达式；否则使用no</span></td>
+<td><span class="desc">expをゼロ幅の肯定先読みアサーションと見なし、この位置でマッチできる場合はyesをこのグループの式として使用し、それ以外の場合はnoを使用する。</span></td>
 </tr>
 <tr>
 <td><span class="code">(?(exp)yes)</span></td>
-<td><span class="desc">同上，只是使用空表达式作为no</span></td>
+<td><span class="desc">同上。ただし、noとして空の式を使用します</span></td>
 </tr>
 <tr>
 <td><span class="code">(?(name)yes|no)</span></td>
-<td><span class="desc">如果命名为name的组捕获到了内容，使用yes作为表达式；否则使用no</span></td>
+<td><span class="desc">nameという名前のグループが内容をキャプチャした場合は、式としてyesを使用します。それ以外の場合はnoを使用します。</span></td>
 </tr>
 <tr>
 <td><span class="code">(?(name)yes)</span></td>
-<td><span class="desc">同上，只是使用空表达式作为no</span></td>
+<td><span class="desc">同上。ただし、noとして空の式を使用します</span></td>
 </tr>
 </tbody>
 </table>
@@ -593,8 +593,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div>
 </div>
 <div class="previous-next-links">
-<div class="previous-design-link">← <a href="./code-comment.html" rel="prev">代码注释中的5要与3不要</a> </div>
-<div class="next-design-link"><a href="./go-for-java-programmers.html" rel="next">为 Java 程序员准备的 Go 语言入门 PPT</a> →</div>
+<div class="previous-design-link">← <a href="./code-comment.html" rel="prev">コードコメント中の5つの「やるべきこと」と3つの「やってはいけないこと」</a> </div>
+<div class="next-design-link"><a href="./go-for-java-programmers.html" rel="next">Java プログラマー向けの Go 言語入門 PPT</a> →</div>
 </div>
 <style>
 .wrapper {
@@ -700,11 +700,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=".." class="runoob-pop">登录</a>！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href="..">登录</a>！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

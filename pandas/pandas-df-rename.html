@@ -197,14 +197,14 @@ DataFrame.rename(mapper=None, index=None, columns=None, axis=None, inplace=False
 <td>index</td>
 <td>dict または function</td>
 <td>オプション</td>
-<td>行インデックスのリネームルールを直接指定します。優先されます。<code>mapper</code> 和 <code>axis</code>。</td>
+<td>行インデックスのリネームルールを直接指定します。優先されます。<code>mapper</code>と<code>axis</code>。</td>
 <td>None</td>
 </tr>
 <tr>
 <td>columns</td>
 <td>dict または function</td>
 <td>オプション</td>
-<td>列名のリネームルールを直接指定します。優先されます。<code>mapper</code> 和 <code>axis</code>。</td>
+<td>列名のリネームルールを直接指定します。優先されます。<code>mapper</code>と<code>axis</code>。</td>
 <td>None</td>
 </tr>
 <tr>
@@ -264,7 +264,7 @@ df_renamed <span style="color: Gray;">=</span> df.<span style="color: #05a;">ren
     <span style="color: #a11;">'salary'</span>: <span style="color: #a11;">'薪资'</span><br/>
 <span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"重命名列名后的数据："</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">列名を変更した後のデータ：</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df_renamed<span style="color: Olive;">)</span><br/>
 </div>
 </div>
@@ -312,7 +312,7 @@ df_renamed <span style="color: Gray;">=</span> df.<span style="color: #05a;">ren
     <span style="color: Maroon;">2</span>: <span style="color: #a11;">'第三行'</span><br/>
 <span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"重命名行索引后的数据："</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"行インデックスをリネームした後のデータ："</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df_renamed<span style="color: Olive;">)</span><br/>
 </div>
 </div>
@@ -355,7 +355,7 @@ df <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFrame</
 <span style="color: #a50"># 列名と行インデックスを同時にリネームする</span><br/>
 df_renamed <span style="color: Gray;">=</span> df.<span style="color: #05a;">rename</span><span style="color: Olive;">(</span>columns<span style="color: Gray;">=</span><span style="color: Olive;">{</span><span style="color: #a11;">'A'</span>: <span style="color: #a11;">'列A'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'B'</span>: <span style="color: #a11;">'列B'</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span> index<span style="color: Gray;">=</span><span style="color: Olive;">{</span><span style="color: #a11;">'x'</span>: <span style="color: #a11;">'行X'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'y'</span>: <span style="color: #a11;">'行Y'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'z'</span>: <span style="color: #a11;">'行Z'</span><span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"重命名后的数据："</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"リネーム後のデータ："</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df_renamed<span style="color: Olive;">)</span><br/>
 </div>
 </div>
@@ -374,7 +374,7 @@ z  3  6
 </pre>
 <p><strong>コードの解説:</strong></p>
 <ul>
-<li>同時に使用できます。<code>columns</code> 和 <code>index</code>パラメータ。</li>
+<li>同時に使用できます。<code>columns</code>と<code>index</code>パラメータ。</li>
 <li>これはデータのインポートと標準化のときに非常に便利です。</li>
 <h3>例4：関数を使用してリネームする</h3>
 <p><code>rename()</code>関数をパラメータとして受け取り、列名やインデックスを一括変換できます。</p>
@@ -458,7 +458,7 @@ df <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFrame</
 <span style="color: #a50"># inplace=True を使用して元の場所で変更する</span><br/>
 df.<span style="color: #05a;">rename</span><span style="color: Olive;">(</span>columns<span style="color: Gray;">=</span><span style="color: Olive;">{</span><span style="color: #a11;">'name'</span>: <span style="color: #a11;">'姓名'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'age'</span>: <span style="color: #a11;">'年龄'</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span> inplace<span style="color: Gray;">=</span><span style="color: Teal;">True</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"使用 inplace=True 修改后的数据："</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"inplace=True を使用して変更したデータ："</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df<span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"修改后数据 id: {id(df)}"</span><span style="color: Olive;">)</span><br/>
 </div>
@@ -501,7 +501,7 @@ df <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFrame</
 <span style="color: #a50"># 存在しない列のリネームを試みる（errors='ignore'（デフォルト）を使用）</span><br/>
 df_renamed <span style="color: Gray;">=</span> df.<span style="color: #05a;">rename</span><span style="color: Olive;">(</span>columns<span style="color: Gray;">=</span><span style="color: Olive;">{</span><span style="color: #a11;">'C'</span>: <span style="color: #a11;">'C_new'</span><span style="color: Olive;">}</span><span style="color: Olive;">)</span>  <span style="color: #a50"># C 列は存在しない</span><br/>
 <br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"重命名不存在的列（C），使用默认行为："</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"存在しない列（C）の名前を変更し、デフォルトの動作を使用："</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df_renamed<span style="color: Olive;">)</span>  <span style="color: #a50"># 何も変更されない</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"="</span> * <span style="color: Maroon;">50</span><span style="color: Olive;">)</span><br/>
 <br/>
@@ -586,7 +586,7 @@ row3     3     6
 <h2>注意事項</h2>
 <ul>
 <li><code>rename()</code>デフォルトでは元のDataFrameは変更されません。その場で変更したい場合は、<code>inplace=True</code>パラメータを使用します。</li>
-<li>優先して使用する<code>columns</code> 和 <code>index</code>パラメータではなく<code>mapper</code> 和 <code>axis</code>、前者の方が明確で分かりやすいからです。</li>
+<li>優先して使用する<code>columns</code>と<code>index</code>パラメータではなく<code>mapper</code>と<code>axis</code>、前者の方が明確で分かりやすいからです。</li>
 <li>関数を使用して名前を変更する場合は、関数が文字列型を返すことを確認してください。そうしないとエラーが発生する可能性があります。</li>
 <li>大規模なデータセットを処理する場合は、<code>inplace=True</code>使用するとメモリを節約できます。</li>
 <li>名前を変更する前に、現在の列名を確認することをお勧めします。次を使用して<code>df.columns</code>確認できます。</li>
@@ -711,11 +711,11 @@ row3     3     6
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてメモを共有</h3>
-<p style="font-size:14px;">メモは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> メモを共有する前に必ず<a href=";.html" class="runoob-pop">ログイン</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">メモは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> メモを共有する前に必ず<a class="runoob-pop" href=";.html">ログイン</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1004,7 +1004,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

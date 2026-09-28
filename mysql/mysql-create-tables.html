@@ -192,7 +192,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>例の解説：</p>
 <ul><li><code>id</code>: ユーザーID、整数型、自動増加、主キーとして。</li><li><code>username</code>: ユーザー名、可変長文字列、NULL を許可しない。</li><li><code>email</code>: ユーザーメール、可変長文字列、NULL を許可しない。</li><li><code>birthdate</code>: ユーザーの誕生日、日付型。</li><li><code>is_active</code>: ユーザーがアクティブ化されているかどうか、ブール型、デフォルト値は true。</li></ul>
 <p>上記は単純な例であり、INT、VARCHAR、DATE、BOOLEAN などの一般的なデータ型を使用しています。実際のニーズに応じてさまざまなデータ型を選択できます。AUTO_INCREMENT キーワードは自動増加列を作成するために使用され、PRIMARY KEY は主キーを定義するために使用されます。</p>
-<p>テーブル作成時にストレージエンジン、文字セット、照合順序などを指定したい場合は、次を使用できます。<strong>CHARACTER SET</strong> 和 <strong>COLLATE</strong>句：</p>
+<p>テーブル作成時にストレージエンジン、文字セット、照合順序などを指定したい場合は、次を使用できます。<strong>CHARACTER SET</strong>と<strong>COLLATE</strong>句：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #993333; font-weight: bold;">CREATE</span> <span style="color: #993333; font-weight: bold;">TABLE</span> mytable <span style="color: #66CC66;">(</span><br/>
     id <span style="color: #993333; font-weight: bold;">INT</span> <span style="color: #993333; font-weight: bold;">PRIMARY</span> <span style="color: #993333; font-weight: bold;">KEY</span><span style="color: #66CC66;">,</span><br/>
@@ -436,7 +436,7 @@ mysqli_query(connection,query,resultmode);
 <div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">江湖人称二舅</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>江湖では「二舅」と呼ばれている。</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  499***887@qq.com</p></div></span>9年前 (2017-07-31)</div></div></li><!-- #comment-## -->
 <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-49649"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   heaven</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  223***5460@qq.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="https://www.cnblogs.com/liaokaichang/p/7879010.html" rel="nofollow" target="_blank">参考URL</a></p></div><div class="upvotejs" data-commid="49649" id="runoobvote-id-49649"><a class="upvote"></a> <span class="count">157</span></div></div><div class="comt-main" id="div-comment-49649"><h3 data-title="">MySQL のフィールド属性はできるだけ NOT NULL に設定すべきです</h3>
 <p>NULL 値を使用する特別な理由がない限り、常にフィールドを NOT NULL に保つべきです。これは少し議論があるように見えますが、以下をお読みください。</p>
-<p><strong>1、</strong>まず、空値<span class="marked">""</span>  和  <span class="marked">NULL</span>の概念を明確にしましょう：</p>
+<p><strong>1、</strong>まず、空値<span class="marked">""</span>と<span class="marked">NULL</span>の概念を明確にしましょう：</p>
 <ul><li>1）空値はスペースを占有しません。</li><li>2）MySQL の NULL は実際にはスペースを占有します。</li></ul>
 <p>いわゆる NULL とは、何もないことであり、<strong>\0</strong>さえもない、<strong>\0</strong>文字列では終端文字ですが、物理メモリではスペースを占有し、1バイトに相当します。しかし NULL は、その1バイトさえも持ちません。</p>
 <p><strong>2、</strong>次に、データベースでは厳密に区別されます。任意の数と NULL との演算はすべて NULL になります。値が NULL に等しいかどうかを判断するには、単に = を使用するのではなく、IS NULL キーワードを使用する必要があります。</p>
@@ -458,11 +458,11 @@ mysqli_query(connection,query,resultmode);
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">メモはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> メモを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">メモはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> メモを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -751,7 +751,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

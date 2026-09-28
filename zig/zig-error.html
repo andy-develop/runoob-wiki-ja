@@ -158,14 +158,14 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div> <div class="col middle-column">
 <div class="article">
 <div class="previous-next-links">
-<div class="previous-design-link"><i aria-hidden="true" class="fa fa-arrow-left" style="font-size:16px;"></i> <a href="../zig/zig-struct-enum.html" rel="prev">Zig 结构体和枚举</a> </div>
+<div class="previous-design-link"><i aria-hidden="true" class="fa fa-arrow-left" style="font-size:16px;"></i> <a href="../zig/zig-struct-enum.html" rel="prev">Zig の構造体と列挙型</a> </div>
 <div class="next-design-link"><a href="../zig/zig-memory-management.html" rel="next">Zig 内存管理</a> <i aria-hidden="true" class="fa fa-arrow-right" style="font-size:16px;"></i></div>
 </div>
 <div class="article-body">
 <div class="article-intro" id="content">
 <h1>zig エラー処理</h1><p>Zigにおいてエラー処理は一般的なタスクであり、特にシステムレベルプログラミングを行う際に重要です。</p>
 <p>Zigは柔軟かつ明示的なエラー処理メカニズムを提供し、開発者がエラーを明確に管理・処理できるようにします。</p>
-<p>Zigは明示的なエラー処理メカニズムを使用し、それによって<span class="marked">!</span>符号和<span class="marked">try</span>文を使用してエラーを処理します。</p><p>エラー処理はZigでは例外のように暗黙的ではなく、コード内に明示的に表現されるため、エラーの処理がより透過的で制御可能になります。</p>
+<p>Zigは明示的なエラー処理メカニズムを使用し、それによって<span class="marked">!</span>符号のと<span class="marked">try</span>文を使用してエラーを処理します。</p><p>エラー処理はZigでは例外のように暗黙的ではなく、コード内に明示的に表現されるため、エラーの処理がより透過的で制御可能になります。</p>
 <p>以下は基本的なエラー処理の戦略とテクニックです：</p>
 <ul>
 <li>
@@ -194,7 +194,7 @@ pub fn mightFail<span style="color: #008000;">(</span><span style="color: #00800
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
 <span style="color: #05a;">const</span> std <span style="color: #000080;">=</span> @import<span style="color: #008000;">(</span><span style="color: #a11;">"std"</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <br/>
-<span style="color: #666666;">// 定义可能失败的函数</span><br/>
+<span style="color: #666666;">// 失敗する可能性がある関数を定義する</span><br/>
 pub fn mightFail<span style="color: #008000;">(</span><span style="color: #008000;">)</span> <span style="color: #000040;">!</span><span style="color: #05a;">void</span> <span style="color: #008000;">{</span><br/>
     <span style="color: #05a;">return</span> error.<span style="color: #007788;">SomeError</span><span style="color: #008080;">;</span> <span style="color: #666666;">// 返回一个示例错误</span><br/>
 <span style="color: #008000;">}</span><br/>
@@ -217,7 +217,7 @@ pub fn mightFail<span style="color: #008000;">(</span><span style="color: #00800
 <span style="color: #008000;">}</span><br/>
 <br/>
 pub fn main<span style="color: #008000;">(</span><span style="color: #008000;">)</span> <span style="color: #05a;">void</span> <span style="color: #008000;">{</span><br/>
-    <span style="color: #666666;">// 直接处理错误，避免未使用的变量</span><br/>
+    <span style="color: #666666;">// エラーを直接処理し、未使用の変数を避ける</span><br/>
     _ <span style="color: #000080;">=</span> mightFail<span style="color: #008000;">(</span><span style="color: #008000;">)</span> <span style="color: #05a;">catch</span> <span style="color: #000040;">|</span>err<span style="color: #000040;">|</span> <span style="color: #008000;">{</span><br/>
         std.<span style="color: #007788;">debug</span>.<span style="color: #007788;">print</span><span style="color: #008000;">(</span><span style="color: #a11;">"Error occurred: {}<span style="color: #000099; font-weight: bold;">\n</span>"</span>, .<span style="color: #008000;">{</span>err<span style="color: #008000;">}</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
         <span style="color: #05a;">return</span><span style="color: #008080;">;</span> <span style="color: #666666;">// 处理错误后退出</span><br/>
@@ -264,7 +264,7 @@ pub fn someFunction<span style="color: #008000;">(</span><span style="color: #00
 <br/>
     <span style="color: #666666;">// Function logic</span><br/>
     std.<span style="color: #007788;">debug</span>.<span style="color: #007788;">print</span><span style="color: #008000;">(</span><span style="color: #a11;">"Function logic<span style="color: #000099; font-weight: bold;">\n</span>"</span>, .<span style="color: #008000;">{</span><span style="color: #008000;">}</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
-    <span style="color: #666666;">// 可以在这里发生错误，defer 代码依然会执行</span><br/>
+    <span style="color: #666666;">// ここでエラーが発生する可能性がありますが、defer コードは引き続き実行されます。</span><br/>
 <span style="color: #008000;">}</span><br/>
 <br/>
 pub fn main<span style="color: #008000;">(</span><span style="color: #008000;">)</span> <span style="color: #05a;">void</span> <span style="color: #008000;">{</span><br/>
@@ -282,7 +282,7 @@ Cleanup code executed</pre> 其他扩展
 </div>
 </div>
 <div class="previous-next-links">
-<div class="previous-design-link"><i aria-hidden="true" class="fa fa-arrow-left" style="font-size:16px;"></i> <a href="../zig/zig-struct-enum.html" rel="prev">Zig 结构体和枚举</a> </div>
+<div class="previous-design-link"><i aria-hidden="true" class="fa fa-arrow-left" style="font-size:16px;"></i> <a href="../zig/zig-struct-enum.html" rel="prev">Zig の構造体と列挙型</a> </div>
 <div class="next-design-link"><a href="../zig/zig-memory-management.html" rel="next">Zig 内存管理</a> <i aria-hidden="true" class="fa fa-arrow-right" style="font-size:16px;"></i></div>
 </div>
 
@@ -391,11 +391,11 @@ Cleanup code executed</pre> 其他扩展
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -684,7 +684,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

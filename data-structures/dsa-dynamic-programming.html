@@ -196,17 +196,17 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     <span style="color: Green;font-weight:bold;">return</span> climb_stairs_recursive<span style="color: Olive;">(</span>n - <span style="color: Maroon;">1</span><span style="color: Olive;">)</span> + climb_stairs_recursive<span style="color: Olive;">(</span>n - <span style="color: Maroon;">2</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 测试</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"爬到第 5 级台阶的方法数（递归）: {climb_stairs_recursive(5)}"</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 输出: 8</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"5 段目までの階段の登り方の数（再帰）: {climb_stairs_recursive(5)}"</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 输出: 8</span><br/>
 </div>
 </div>
-<p><strong>欠点の分析</strong>：この再帰には大量の重複計算が存在します。例えば、<code>f(5)</code>を計算するには<code>f(4)</code> 和 <code>f(3)</code>が必要で、<code>f(4)</code>を計算するには<code>f(3)</code> 和 <code>f(2)</code>も必要です。ここでの<code>f(3)</code>は2回計算されてしまいます。<code>n</code>が大きくなると、時間計算量は指数関数的な<code>O(2^n)</code>となり、効率が非常に低くなります。</p>
+<p><strong>欠点の分析</strong>：この再帰には大量の重複計算が存在します。例えば、<code>f(5)</code>を計算するには<code>f(4)</code>と<code>f(3)</code>が必要で、<code>f(4)</code>を計算するには<code>f(3)</code>と<code>f(2)</code>も必要です。ここでの<code>f(3)</code>は2回計算されてしまいます。<code>n</code>が大きくなると、時間計算量は指数関数的な<code>O(2^n)</code>となり、効率が非常に低くなります。</p>
 <h3>方法2：メモ化を備えた再帰（トップダウン）</h3>
 <p>配列（「メモ」）を使って計算済みの結果を保存し、重複計算を避けることができます。</p>
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: Green;font-weight:bold;">def</span> climb_stairs_memo<span style="color: Olive;">(</span>n: <span style="color: Teal;">int</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">int</span>:<br/>
-    <span style="color: #a11;">"""带备忘录的递归（自顶向下）"""</span><br/>
+    <span style="color: #a11;">"""メモ化再帰（トップダウン）"""</span><br/>
     <span style="color: #a50"># 初始化备忘录，-1 表示未计算</span><br/>
     memo <span style="color: Gray;">=</span> <span style="color: Olive;">[</span>-<span style="color: Maroon;">1</span><span style="color: Olive;">]</span> * <span style="color: Olive;">(</span>n + <span style="color: Maroon;">1</span><span style="color: Olive;">)</span><br/>
     <br/>
@@ -225,7 +225,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     <br/>
     <span style="color: Green;font-weight:bold;">return</span> helper<span style="color: Olive;">(</span>n<span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"爬到第 5 级台阶的方法数（备忘录）: {climb_stairs_memo(5)}"</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 输出: 8</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">5段目までの登り方の数（メモ化）: {climb_stairs_memo(5)}</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 输出: 8</span><br/>
 </div>
 </div>
 <p>この方法の時間計算量は<code>O(n)</code>まで低下します。各部分問題は1回だけ計算されるためです。空間計算量は<code>O(n)</code>です。これはすでに一種の動的計画法の考え方であり、<strong>「トップダウン」</strong> 或 <strong>「メモ化探索」</strong>。</p>
@@ -238,7 +238,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     <span style="color: #a11;">"""动态规划（自底向上）"""</span><br/>
     <span style="color: Green;font-weight:bold;">if</span> n <span style="color: Gray;">&lt;=</span> <span style="color: Maroon;">2</span>:<br/>
         <span style="color: Green;font-weight:bold;">return</span> n<br/>
-    <span style="color: #a50"># 1. 定义状态数组：dp[i] 表示爬到第 i 级台阶的方法数</span><br/>
+    <span style="color: #a50"># 1. 状態配列を定義する：dp[i] は第 i 段の階段に登る方法の数を表す</span><br/>
     dp <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: Maroon;">0</span><span style="color: Olive;">]</span> * <span style="color: Olive;">(</span>n + <span style="color: Maroon;">1</span><span style="color: Olive;">)</span><br/>
     <span style="color: #a50"># 2. 确定初始条件</span><br/>
     dp<span style="color: Olive;">[</span><span style="color: Maroon;">1</span><span style="color: Olive;">]</span> <span style="color: Gray;">=</span> <span style="color: Maroon;">1</span><br/>
@@ -249,7 +249,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     <span style="color: #a50"># 4. 返回最终结果</span><br/>
     <span style="color: Green;font-weight:bold;">return</span> dp<span style="color: Olive;">[</span>n<span style="color: Olive;">]</span><br/>
 <br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"爬到第 5 级台阶的方法数（DP）: {climb_stairs_dp(5)}"</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 输出: 8</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">5段目に登る方法の数（DP）: {climb_stairs_dp(5)}</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 输出: 8</span><br/>
 </div>
 </div>
 <h3>方法4：空間最適化（ローリング配列）</h3>
@@ -261,16 +261,16 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     <span style="color: #a11;">"""动态规划（空间优化版）"""</span><br/>
     <span style="color: Green;font-weight:bold;">if</span> n <span style="color: Gray;">&lt;=</span> <span style="color: Maroon;">2</span>:<br/>
         <span style="color: Green;font-weight:bold;">return</span> n<br/>
-    <span style="color: #a50"># 只用两个变量代表 dp[i-1] 和 dp[i-2]</span><br/>
-    prev<span style="color: Gray;">,</span> curr <span style="color: Gray;">=</span> <span style="color: Maroon;">1</span><span style="color: Gray;">,</span> <span style="color: Maroon;">2</span>  <span style="color: #a50"># 对应 dp</span><br/>
+    <span style="color: #a50"># 2つの変数だけを使って dp[i-1] と dp[i-2] を表す</span><br/>
+    prev<span style="color: Gray;">,</span> curr <span style="color: Gray;">=</span> <span style="color: Maroon;">1</span><span style="color: Gray;">,</span> <span style="color: Maroon;">2</span>  <span style="color: #a50"># dp に対応</span><br/>
     <span style="color: Green;font-weight:bold;">for</span> i <span style="color: Green;font-weight:bold;">in</span> <span style="color: Teal;">range</span><span style="color: Olive;">(</span><span style="color: Maroon;">3</span><span style="color: Gray;">,</span> n + <span style="color: Maroon;">1</span><span style="color: Olive;">)</span>:<br/>
-        <span style="color: #a50"># 计算新的当前值</span><br/>
+        <span style="color: #a50"># 计算新しい当前值</span><br/>
         new_curr <span style="color: Gray;">=</span> prev + curr<br/>
-        <span style="color: #a50"># 滚动更新变量，为下一轮循环做准备</span><br/>
+        <span style="color: #a50"># 変数をローリング更新し、次のループに備える</span><br/>
         prev<span style="color: Gray;">,</span> curr <span style="color: Gray;">=</span> curr<span style="color: Gray;">,</span> new_curr<br/>
     <span style="color: Green;font-weight:bold;">return</span> curr<br/>
 <br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"爬到第 5 级台阶的方法数（优化DP）: {climb_stairs_optimized(5)}"</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 输出: 8</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">5 段目まで登る方法の数（最適化DP）: {climb_stairs_optimized(5)}</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 输出: 8</span><br/>
 </div>
 </div>
 <p>最適化後、空間計算量は<code>O(n)</code>に低下しました。<code>O(1)</code>。</p>
@@ -305,7 +305,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: Green;font-weight:bold;">def</span> fibonacci<span style="color: Olive;">(</span>n: <span style="color: Teal;">int</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">int</span>:<br/>
-    <span style="color: #a11;">"""动态规划求斐波那契数"""</span><br/>
+    <span style="color: #a11;">"""動的計画法でフィボナッチ数を求める"""</span><br/>
     <span style="color: Green;font-weight:bold;">if</span> n <span style="color: Gray;">&lt;</span> <span style="color: Maroon;">2</span>:<br/>
         <span style="color: Green;font-weight:bold;">return</span> n<br/>
     <span style="color: #a50"># 空间优化写法</span><br/>
@@ -316,7 +316,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <br/>
 <span style="color: #a50"># 测试数据</span><br/>
 test_n <span style="color: Gray;">=</span> <span style="color: Maroon;">10</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"斐波那契数列第 {test_n} 项是: {fibonacci(test_n)}"</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 输出: 55</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">フィボナッチ数列の第 {test_n} 項は: {fibonacci(test_n)}</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 输出: 55</span><br/>
 </div>
 </div>
 <hr/>
@@ -326,7 +326,7 @@ test_n <span style="color: Gray;">=</span> <span style="color: Maroon;">10</span
 <h3>問題分析とDP設計</h3>
 <ol>
 <li><strong>状態を定義する</strong>：<code>dp[i]</code>合計金額をちょうど作るための<code>i</code>最小コイン数を表す。</li>
-<li><strong>状態遷移方程式</strong>：金額<code>i</code>に対して、それぞれの額面のコインを走査できます。<code>coin</code>。もし<code>coin &lt;= i</code>ならば、金額<code>i</code>を作る1つの可能な方法は、まず金額<code>i - coin</code>を作り、それから1枚の<code>coin</code>額面のコインを加えます。すべての可能性の中の最小値を求めます。したがって、方程式は次のように書けます：<code>dp[i] = min(dp[i], dp[i - coin] + 1)</code>、すべての条件を満たす<code>coin &lt;= i</code> 的 <code>coin</code>。</li>
+<li><strong>状態遷移方程式</strong>：金額<code>i</code>に対して、それぞれの額面のコインを走査できます。<code>coin</code>。もし<code>coin &lt;= i</code>ならば、金額<code>i</code>を作る1つの可能な方法は、まず金額<code>i - coin</code>を作り、それから1枚の<code>coin</code>額面のコインを加えます。すべての可能性の中の最小値を求めます。したがって、方程式は次のように書けます：<code>dp[i] = min(dp[i], dp[i - coin] + 1)</code>、すべての条件を満たす<code>coin &lt;= i</code>の<code>coin</code>。</li>
 <li><strong>初期条件</strong>：<code>dp[0] = 0</code>、金額0を作るには0枚のコインが必要です。その他の<code>dp[i]</code>は非常に大きな数（例：<code>amount + 1</code> 或 <code>float('inf')</code>）に初期化され、一時的に作れないことを表します。</li>
 <li><strong>計算順序</strong>：ボトムアップで、<code>i=1</code>まで計算します<code>i=amount</code>。</li>
 </ol>
@@ -386,7 +386,7 @@ amount <span style="color: Gray;">=</span> <span style="color: Maroon;">11</span
 <p><strong>ヒント</strong>：</p>
 <ul>
 <li>定義します<code>dp[i]</code>を「先頭から<code>i</code>番目の数字で終わる最長増加部分列の長さ」とする。</li>
-<li>それぞれの<code>i</code>について、走査する必要があります。<code>j</code> 从 <code>0</code> 到 <code>i-1</code>もし<code>nums[i] &gt; nums[j]</code>ならば、<code>dp[i] = max(dp[i], dp[j] + 1)</code>。</li>
+<li>それぞれの<code>i</code>について、走査する必要があります。<code>j</code>から<code>0</code> 到 <code>i-1</code>もし<code>nums[i] &gt; nums[j]</code>ならば、<code>dp[i] = max(dp[i], dp[j] + 1)</code>。</li>
 <li>初期状態では、それぞれの<code>dp[i]</code>は少なくとも1です（自身のみを含む）。</li>
 </ul>
 その他の拡張
@@ -507,11 +507,11 @@ amount <span style="color: Gray;">=</span> <span style="color: Maroon;">11</span
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -800,7 +800,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

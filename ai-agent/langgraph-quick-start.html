@@ -479,7 +479,7 @@ print(f"LangGraph 版本: {langgraph.__version__}")</pre>
     <span style="color: Green;font-weight:bold;">return</span> <span style="color: Olive;">{</span><span style="color: #a11;">"message"</span>: f<span style="color: #a11;">"你好！{state['message']}"</span><span style="color: Olive;">}</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">def</span> process_node<span style="color: Olive;">(</span>state: SimpleState<span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">dict</span>:<br/>
-    <span style="color: #a11;">"""处理节点：标记为已处理"""</span><br/>
+    <span style="color: #a11;">処理ノード：処理済みとしてマーク</span><br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"[process_node] 处理消息: {state['message']}"</span><span style="color: Olive;">)</span><br/>
     <span style="color: Green;font-weight:bold;">return</span> <span style="color: Olive;">{</span><span style="color: #a11;">"processed"</span>: <span style="color: Teal;">True</span><span style="color: Olive;">}</span><br/>
 <br/>
@@ -601,10 +601,10 @@ llm <span style="color: Gray;">=</span> ChatOpenAI<span style="color: Olive;">(<
 <span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">def</span> llm_node<span style="color: Olive;">(</span>state: <span style="color: Teal;">dict</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">dict</span>:<br/>
-    <span style="color: #a11;">"""调用 LLM 的节点"""</span><br/>
-    system_prompt <span style="color: Gray;">=</span> SystemMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"你是一个有帮助的助手。"</span><span style="color: Olive;">)</span><br/>
+    <span style="color: #a11;">"""LLM を呼び出すノード"""</span><br/>
+    system_prompt <span style="color: Gray;">=</span> SystemMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは役に立つアシスタントです。"</span><span style="color: Olive;">)</span><br/>
     <br/>
-    <span style="color: #a50"># 将系统提示与对话历史合并</span><br/>
+    <span style="color: #a50"># システムプロンプトと会話履歴を結合する</span><br/>
     messages <span style="color: Gray;">=</span> <span style="color: Olive;">[</span>system_prompt<span style="color: Olive;">]</span> + state<span style="color: Olive;">[</span><span style="color: #a11;">"messages"</span><span style="color: Olive;">]</span><br/>
     <br/>
     <span style="color: #a50"># 调用 LLM</span><br/>
@@ -776,7 +776,7 @@ llm <span style="color: Gray;">=</span> ChatOpenAI<span style="color: Olive;">(<
 <br/>
 <span style="color: #a50"># 路由函数</span><br/>
 <span style="color: Green;font-weight:bold;">def</span> classify_intent<span style="color: Olive;">(</span>state: MessagesState<span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
-    <span style="color: #a11;">"""根据用户意图路由到不同的 Agent"""</span><br/>
+    <span style="color: #a11;">"""ユーザーの意図に基づいて異なるAgentにルーティングする"""</span><br/>
     last_message <span style="color: Gray;">=</span> state<span style="color: Olive;">[</span><span style="color: #a11;">"messages"</span><span style="color: Olive;">]</span><span style="color: Olive;">[</span>-<span style="color: Maroon;">1</span><span style="color: Olive;">]</span><br/>
     content <span style="color: Gray;">=</span> last_message.<span style="color: #05a;">content</span>.<span style="color: #05a;">lower</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
     <br/>
@@ -797,7 +797,7 @@ llm <span style="color: Gray;">=</span> ChatOpenAI<span style="color: Olive;">(<
 <span style="color: Green;font-weight:bold;">def</span> weather_node<span style="color: Olive;">(</span>state: MessagesState<span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">dict</span>:<br/>
     <span style="color: #a11;">"""天气 Agent"""</span><br/>
     response <span style="color: Gray;">=</span> llm.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: Olive;">[</span><br/>
-        SystemMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"你是一个天气助手，友好地回答天气相关问题。如果没有实时数据，可以给出一般性建议。"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
+        SystemMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは天気アシスタントです。天気に関する質問に友好のに答えてください。リアルタイムデータがない場合は、一般的なアドバイスを提供しても構いません。"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
         *state<span style="color: Olive;">[</span><span style="color: #a11;">"messages"</span><span style="color: Olive;">]</span><br/>
     <span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
     <span style="color: Green;font-weight:bold;">return</span> <span style="color: Olive;">{</span><span style="color: #a11;">"messages"</span>: <span style="color: Olive;">[</span>response<span style="color: Olive;">]</span><span style="color: Olive;">}</span><br/>
@@ -805,7 +805,7 @@ llm <span style="color: Gray;">=</span> ChatOpenAI<span style="color: Olive;">(<
 <span style="color: Green;font-weight:bold;">def</span> code_node<span style="color: Olive;">(</span>state: MessagesState<span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">dict</span>:<br/>
     <span style="color: #a11;">"""代码 Agent"""</span><br/>
     response <span style="color: Gray;">=</span> llm.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: Olive;">[</span><br/>
-        SystemMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"你是一个编程助手，擅长解答代码问题并给出清晰的代码示例。"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
+        SystemMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">あなたはプログラミングアシスタントであり、コード問題の解答と明確なコード例の提供を得意としています。</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
         *state<span style="color: Olive;">[</span><span style="color: #a11;">"messages"</span><span style="color: Olive;">]</span><br/>
     <span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
     <span style="color: Green;font-weight:bold;">return</span> <span style="color: Olive;">{</span><span style="color: #a11;">"messages"</span>: <span style="color: Olive;">[</span>response<span style="color: Olive;">]</span><span style="color: Olive;">}</span><br/>
@@ -813,14 +813,14 @@ llm <span style="color: Gray;">=</span> ChatOpenAI<span style="color: Olive;">(<
 <span style="color: Green;font-weight:bold;">def</span> general_node<span style="color: Olive;">(</span>state: MessagesState<span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">dict</span>:<br/>
     <span style="color: #a11;">"""通用 Agent"""</span><br/>
     response <span style="color: Gray;">=</span> llm.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: Olive;">[</span><br/>
-        SystemMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"你是一个友善的 AI 助手，可以回答各种问题。"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
+        SystemMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは親切なAIアシスタントで、さまざまな質問に答えることができます。"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
         *state<span style="color: Olive;">[</span><span style="color: #a11;">"messages"</span><span style="color: Olive;">]</span><br/>
     <span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
     <span style="color: Green;font-weight:bold;">return</span> <span style="color: Olive;">{</span><span style="color: #a11;">"messages"</span>: <span style="color: Olive;">[</span>response<span style="color: Olive;">]</span><span style="color: Olive;">}</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">def</span> farewell_node<span style="color: Olive;">(</span>state: MessagesState<span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">dict</span>:<br/>
     <span style="color: #a11;">"""告别节点"""</span><br/>
-    <span style="color: Green;font-weight:bold;">return</span> <span style="color: Olive;">{</span><span style="color: #a11;">"messages"</span>: <span style="color: Olive;">[</span><span style="color: Olive;">{</span><span style="color: #a11;">"role"</span>: <span style="color: #a11;">"assistant"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"content"</span>: <span style="color: #a11;">"再见！期待下次与你交流。"</span><span style="color: Olive;">}</span><span style="color: Olive;">]</span><span style="color: Olive;">}</span><br/>
+    <span style="color: Green;font-weight:bold;">return</span> <span style="color: Olive;">{</span><span style="color: #a11;">"messages"</span>: <span style="color: Olive;">[</span><span style="color: Olive;">{</span><span style="color: #a11;">"role"</span>: <span style="color: #a11;">"assistant"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"content"</span>: <span style="color: #a11;">さようなら！また次回お話しできることを楽しみにしています。</span><span style="color: Olive;">}</span><span style="color: Olive;">]</span><span style="color: Olive;">}</span><br/>
 <br/>
 <span style="color: #a50"># 构建图</span><br/>
 builder <span style="color: Gray;">=</span> StateGraph<span style="color: Olive;">(</span>MessagesState<span style="color: Olive;">)</span><br/>
@@ -914,11 +914,11 @@ llm <span style="color: Gray;">=</span> ChatOpenAI<span style="color: Olive;">(<
     temperature<span style="color: Gray;">=</span><span style="color: Maroon;">0.7</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
-SYSTEM_PROMPT <span style="color: Gray;">=</span> <span style="color: #a11;">"""你是一个友善、专业的 AI 助手。<br/>你的回答应该：<br/>- 简洁清晰<br/>- 使用中文回复<br/>- 在不确定时主动询问用户<br/>
+SYSTEM_PROMPT <span style="color: Gray;">=</span> <span style="color: #a11;">「あなたは親切で専門のなAIアシスタントです。」<br/>あなたの回答は：<br/>- 简洁清晰<br/>- 使用中文回复<br/>- 不確かな場合は、ユーザーに積極的に質問する<br/>
 """</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">def</span> chatbot_node<span style="color: Olive;">(</span>state: MessagesState<span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">dict</span>:<br/>
-    <span style="color: #a11;">"""核心对话节点"""</span><br/>
+    <span style="color: #a11;">```コア対話ノード```</span><br/>
     system <span style="color: Gray;">=</span> SystemMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span>SYSTEM_PROMPT<span style="color: Olive;">)</span><br/>
     messages <span style="color: Gray;">=</span> <span style="color: Olive;">[</span>system<span style="color: Olive;">]</span> + state<span style="color: Olive;">[</span><span style="color: #a11;">"messages"</span><span style="color: Olive;">]</span><br/>
     response <span style="color: Gray;">=</span> llm.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span>messages<span style="color: Olive;">)</span><br/>
@@ -932,16 +932,16 @@ builder.<span style="color: #05a;">add_edge</span><span style="color: Olive;">(<
 <br/>
 graph <span style="color: Gray;">=</span> builder.<span style="color: Teal;">compile</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 多轮对话函数</span><br/>
+<span style="color: #a50"># マルチターン対話関数</span><br/>
 <span style="color: Green;font-weight:bold;">def</span> chat<span style="color: Olive;">(</span>conversation_history: <span style="color: Teal;">list</span><span style="color: Gray;">,</span> user_input: <span style="color: Teal;">str</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">tuple</span><span style="color: Olive;">[</span><span style="color: Teal;">str</span><span style="color: Gray;">,</span> <span style="color: Teal;">list</span><span style="color: Olive;">]</span>:<br/>
-    <span style="color: #a11;">"""处理单轮对话，返回 AI 响应和更新后的历史"""</span><br/>
+    <span style="color: #a11;">シングルターン対話を処理し、AI応答と更新された履歴を返します</span><br/>
     conversation_history.<span style="color: #05a;">append</span><span style="color: Olive;">(</span>HumanMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span>user_input<span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
     result <span style="color: Gray;">=</span> graph.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: Olive;">{</span><span style="color: #a11;">"messages"</span>: conversation_history<span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
     conversation_history <span style="color: Gray;">=</span> result<span style="color: Olive;">[</span><span style="color: #a11;">"messages"</span><span style="color: Olive;">]</span><br/>
     ai_response <span style="color: Gray;">=</span> conversation_history<span style="color: Olive;">[</span>-<span style="color: Maroon;">1</span><span style="color: Olive;">]</span>.<span style="color: #05a;">content</span><br/>
     <span style="color: Green;font-weight:bold;">return</span> ai_response<span style="color: Gray;">,</span> conversation_history<br/>
 <br/>
-<span style="color: #a50"># 多轮对话示例</span><br/>
+<span style="color: #a50"># マルチターン対話の例</span><br/>
 history <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: Olive;">]</span><br/>
 <span style="color: Green;font-weight:bold;">while</span> <span style="color: Teal;">True</span>:<br/>
     user_input <span style="color: Gray;">=</span> <span style="color: Teal;">input</span><span style="color: Olive;">(</span><span style="color: #a11;">"你: "</span><span style="color: Olive;">)</span><br/>
@@ -1000,7 +1000,7 @@ Tool ノード
 <text fill="#E8F0F8" font-size="10" text-anchor="middle" x="540" y="145">ツールの実行</text>
 矢印 条件判断 -&gt; Tool (はい)
 <path d="M435 130 L480 130" fill="none" marker-end="url(#arrowGreenReact)" stroke="#557DA6" stroke-width="2"></path>
-<text fill="#557DA6" font-size="10" x="455" y="120">是</text>
+<text fill="#557DA6" font-size="10" x="455" y="120">である</text>
 ループ矢印 Tool -&gt; Agent
 <path d="M540 160 L540 200 L215 200 L215 160" fill="none" marker-end="url(#arrowReact)" stroke="#6B8FC7" stroke-width="2"></path>
 <text fill="#6B8FC7" font-size="10" text-anchor="middle" x="375" y="220">結果を返して推論を続行</text>
@@ -1120,7 +1120,7 @@ load_dotenv<span style="color: Olive;">(</span><span style="color: Olive;">)</sp
 <span style="color: Gray;">@</span>tool<br/>
 <span style="color: Green;font-weight:bold;">def</span> search_web<span style="color: Olive;">(</span>query: <span style="color: Teal;">str</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
     <span style="color: #a11;">"""搜索网络获取最新信息。"""</span><br/>
-    <span style="color: Green;font-weight:bold;">return</span> f<span style="color: #a11;">"关于 '{query}' 的搜索结果：这是模拟的搜索结果..."</span><br/>
+    <span style="color: Green;font-weight:bold;">return</span> f<span style="color: #a11;">'{query}' の検索結果：これはシミュレーションされた検索結果です...</span><br/>
 <br/>
 <span style="color: Gray;">@</span>tool<br/>
 <span style="color: Green;font-weight:bold;">def</span> calculate<span style="color: Olive;">(</span>expression: <span style="color: Teal;">str</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
@@ -1147,7 +1147,7 @@ load_dotenv<span style="color: Olive;">(</span><span style="color: Olive;">)</sp
             operand <span style="color: Gray;">=</span> safe_eval<span style="color: Olive;">(</span>node.<span style="color: #05a;">operand</span><span style="color: Olive;">)</span><br/>
             <span style="color: Green;font-weight:bold;">return</span> ops<span style="color: Olive;">[</span><span style="color: Teal;">type</span><span style="color: Olive;">(</span>node.<span style="color: #05a;">op</span><span style="color: Olive;">)</span><span style="color: Olive;">]</span><span style="color: Olive;">(</span>operand<span style="color: Olive;">)</span><br/>
         <span style="color: Green;font-weight:bold;">else</span>:<br/>
-            <span style="color: Green;font-weight:bold;">raise</span> <span style="color: Teal;">ValueError</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"不支持的表达式类型: {type(node)}"</span><span style="color: Olive;">)</span><br/>
+            <span style="color: Green;font-weight:bold;">raise</span> <span style="color: Teal;">ValueError</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"サポートされていない式の型: {type(node)}"</span><span style="color: Olive;">)</span><br/>
     <br/>
     <span style="color: Green;font-weight:bold;">try</span>:<br/>
         tree <span style="color: Gray;">=</span> ast.<span style="color: #05a;">parse</span><span style="color: Olive;">(</span>expression<span style="color: Gray;">,</span> mode<span style="color: Gray;">=</span><span style="color: #a11;">'eval'</span><span style="color: Olive;">)</span><br/>
@@ -1158,7 +1158,7 @@ load_dotenv<span style="color: Olive;">(</span><span style="color: Olive;">)</sp
 <br/>
 <span style="color: Gray;">@</span>tool<br/>
 <span style="color: Green;font-weight:bold;">def</span> get_weather<span style="color: Olive;">(</span>city: <span style="color: Teal;">str</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
-    <span style="color: #a11;">"""获取指定城市的天气信息。"""</span><br/>
+    <span style="color: #a11;">"""指定された都市の天気情報を取得します。"""</span><br/>
     <span style="color: Green;font-weight:bold;">return</span> f<span style="color: #a11;">"{city} 今日天气：晴，温度 22C，湿度 60%"</span><br/>
 <br/>
 tools <span style="color: Gray;">=</span> <span style="color: Olive;">[</span>search_web<span style="color: Gray;">,</span> calculate<span style="color: Gray;">,</span> get_weather<span style="color: Olive;">]</span><br/>
@@ -1227,7 +1227,7 @@ for chunk in graph.stream(
             else:
                 print(f"  -&gt; 输出: {msg.content[:200] if msg.content else '(无内容)'}")</pre>
 <div class="tip-box">
-<strong>ヒント：</strong><code>ToolNode</code> 和 <code>tools_condition</code>は LangGraph の組み込みコンポーネントです。<code>ToolNode</code>LLM が返したツール呼び出しを自動的に解析し、対応するツール関数を実行します。<code>tools_condition</code>はルーティング関数であり、LLM の出力にツール呼び出しリクエストが含まれているかチェックし、含まれていれば "tools" を返し、それ以外は END を返します。</div>
+<strong>ヒント：</strong><code>ToolNode</code>と<code>tools_condition</code>は LangGraph の組み込みコンポーネントです。<code>ToolNode</code>LLM が返したツール呼び出しを自動的に解析し、対応するツール関数を実行します。<code>tools_condition</code>はルーティング関数であり、LLM の出力にツール呼び出しリクエストが含まれているかチェックし、含まれていれば "tools" を返し、それ以外は END を返します。</div>
 <hr/>
 <h2>Human-in-the-Loop（人間とAIの協働）</h2>
 <p>LangGraph はワークフロー実行中に一時停止して、人間の承認や入力を待つことをネイティブにサポートしています。これは人間の確認が必要な機密操作に非常に役立ちます。</p>
@@ -1494,7 +1494,7 @@ llm <span style="color: Gray;">=</span> ChatOpenAI<span style="color: Olive;">(<
 <span style="color: #a50"># 主管 Agent がフローを決定</span><br/>
 <span style="color: Green;font-weight:bold;">def</span> supervisor_node<span style="color: Olive;">(</span>state: MessagesState<span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">dict</span>:<br/>
     <span style="color: #a11;">"""主管：各専門 Agent の作業を調整"""</span><br/>
-    system <span style="color: Gray;">=</span> SystemMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"""あなたはワークフローのスーパーバイザーです。<br/>タスクの進行状況に応じて、次にどの Agent が処理すべきかを決定してください。<br/>会話履歴を分析し、次のいずれかのみを返してください：RESEARCH、WRITING、REVIEW、FINISH<br/>- RESEARCH：さらに情報を収集する必要がある<br/>- WRITING：情報が十分であり、執筆を開始できる<br/>- REVIEW：執筆が完了し、レビューが必要<br/>- FINISH：タスクが完了した<br/>
+    system <span style="color: Gray;">=</span> SystemMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"""あなたはワークフローのスーパーバイザーです。<br/>タスクの進行状況に応じて、次にどの Agent が処理すべきかを決定してください。<br/>会話履歴を分析し、次のいずれかのみを返してください：RESEARCH、WRITING、REVIEW、FINISH<br/>- RESEARCH：さらに情報を収集する必要がある<br/>- WRITING：情報が十分であり、執筆を開始できる<br/>REVIEW：執筆が完了し、レビューが必要<br/>- FINISH：タスクが完了した<br/>
 """</span><span style="color: Olive;">)</span><br/>
     response <span style="color: Gray;">=</span> llm.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: Olive;">[</span>system<span style="color: Olive;">]</span> + state<span style="color: Olive;">[</span><span style="color: #a11;">"messages"</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
     <span style="color: Green;font-weight:bold;">return</span> <span style="color: Olive;">{</span><span style="color: #a11;">"messages"</span>: <span style="color: Olive;">[</span>response<span style="color: Olive;">]</span><span style="color: Olive;">}</span><br/>
@@ -1533,7 +1533,7 @@ result <span style="color: Gray;">=</span> graph.<span style="color: #05a;">invo
     <span style="color: #a11;">"messages"</span>: <span style="color: Olive;">[</span>HumanMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"Python デコレータについての短い紹介記事を書いてください"</span><span style="color: Olive;">)</span><span style="color: Olive;">]</span><br/>
 <span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"=== マルチエージェント協調が完了しました ==="</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">=== マルチエージェント協調が完了しました ===</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">for</span> i<span style="color: Gray;">,</span> msg <span style="color: Green;font-weight:bold;">in</span> <span style="color: Teal;">enumerate</span><span style="color: Olive;">(</span>result<span style="color: Olive;">[</span><span style="color: #a11;">"messages"</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span>:<br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>[{i+1}] {msg.type}: {msg.content[:150]}..."</span><span style="color: Olive;">)</span><br/>
 </div>
@@ -1875,11 +1875,11 @@ for event in graph.stream(initial_state, stream_mode="updates"):
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -2168,7 +2168,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

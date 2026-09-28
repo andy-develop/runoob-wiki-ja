@@ -146,7 +146,7 @@ new Thread(new Runnable(){
 <strong>②</strong>サービスとのバインドを解除する場合は、unbindService()を呼び出すだけで済みます。このときonUnbindとonDestroyメソッドが呼び出されます！これはクライアントが1つの場合です。複数のクライアントが同じServiceにバインドしている場合は、次のようになります。あるクライアントがserviceとのやり取りを完了した後、unbindService()メソッドを呼び出してバインドを解除します。すべてのクライアントがserviceとのバインドを解除すると、システムはserviceを破棄します。（serviceがstartService()メソッドによって起動されている場合を除く）<br/>
 <strong>③</strong>また、上記の状況とは異なり、bindServiceモードのServiceは呼び出し元と相互に関連付けられています。「1本のロープに繋がれたバッタ」、つまり運命を共にするものと理解できます。bindService後、呼び出し元が破棄されると、Serviceも即座に終了します！<br/>BindServiceを使用してServiceを呼び出すときに呼び出されるContextのbindServiceの解析<strong>bindService</strong>(Intent Service,ServiceConnection conn,int flags)<br/>
 <strong>service</strong>: このintentで起動するServiceを指定します<br/>
-<strong>conn</strong>: ServiceConnectionオブジェクト。訪問者とService間の接続状況を監視します。接続が成功すると、このオブジェクト内のonServiceConnected(ComponentName, IBinder)メソッドがコールバックされます。Serviceが存在するホストが異常終了やその他の理由で終了し、Serviceと訪問者間の接続が切断された場合に呼び出されます。<strong>onServiceDisconnected</strong>(ComponentName)メソッド。能動的に<strong>unBindService()</strong>メソッドで切断しても上記のメソッドは呼び出されません。<br/>
+<strong>conn</strong>ServiceConnectionオブジェクト。訪問者とService間の接続状況を監視します。接続が成功すると、このオブジェクト内のonServiceConnected(ComponentName, IBinder)メソッドがコールバックされます。Serviceが存在するホストが異常終了やその他の理由で終了し、Serviceと訪問者間の接続が切断された場合に呼び出されます。<strong>onServiceDisconnected</strong>(ComponentName)メソッド。能動的に<strong>unBindService()</strong>メソッドで切断しても上記のメソッドは呼び出されません。<br/>
 <strong>flags</strong>:<strong>バインド時にServiceを自動的に作成するかどうかを指定します</strong>（Serviceがまだ作成されていない場合）、パラメータは0（自動作成しない）、BIND_AUTO_CREATE（自動作成）にできます。</p></blockquote>
 <hr/>
 <h3>4) StartServiceでServiceを起動してからbindServiceでバインドする</h3>
@@ -526,11 +526,11 @@ public class MainActivity extends Activity {
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=".." class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href="..">ログイン</a>が必要です！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

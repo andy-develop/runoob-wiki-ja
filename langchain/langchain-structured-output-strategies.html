@@ -200,7 +200,7 @@ model <span style="color: Gray;">=</span> init_chat_model<span style="color: Oli
 agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;">(</span><br/>
     model<span style="color: Gray;">=</span>model<span style="color: Gray;">,</span><br/>
     response_format<span style="color: Gray;">=</span>ToolStrategy<span style="color: Olive;">(</span>schema<span style="color: Gray;">=</span>WeatherReport<span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"你是天气助手，根据用户描述生成结构化天气报告。"</span><span style="color: Gray;">,</span><br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは天気アシスタントです。ユーザーの説明に基づいて構造化された天気レポートを生成します。"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: Olive;">{</span><br/>
@@ -213,7 +213,7 @@ report <span style="color: Gray;">=</span> result<span style="color: Olive;">[</
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"状况: {report.condition}"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"湿度: {report.humidity}%"</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 查看执行过程——可以发现多了一条工具调用的消息</span><br/>
+<span style="color: #a50"># 実行プロセスを確認する——ツール呼び出しのメッセージが1つ増えていることがわかる</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>消息总数: {len(result['messages'])}"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">for</span> msg <span style="color: Green;font-weight:bold;">in</span> result<span style="color: Olive;">[</span><span style="color: #a11;">"messages"</span><span style="color: Olive;">]</span>:<br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"  [{msg.type}]"</span><span style="color: Gray;">,</span> end<span style="color: Gray;">=</span><span style="color: #a11;">""</span><span style="color: Olive;">)</span><br/>
@@ -252,7 +252,7 @@ strategy_with_retry <span style="color: Gray;">=</span> ToolStrategy<span style=
     handle_errors<span style="color: Gray;">=</span><span style="color: Teal;">True</span><span style="color: Gray;">,</span>  <span style="color: #a50"># 默认 False</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># handle_errors 也可以是一个自定义错误消息模板</span><br/>
+<span style="color: #a50"># handle_errors はカスタムエラーメッセージテンプレートにすることもできます。</span><br/>
 strategy_custom_error <span style="color: Gray;">=</span> ToolStrategy<span style="color: Olive;">(</span><br/>
     schema<span style="color: Gray;">=</span>WeatherReport<span style="color: Gray;">,</span><br/>
     handle_errors<span style="color: Gray;">=</span><span style="color: #a11;">"格式有误，请按 {error} 修正后重新输出"</span><span style="color: Gray;">,</span><br/>
@@ -285,11 +285,11 @@ model <span style="color: Gray;">=</span> init_chat_model<span style="color: Oli
 agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;">(</span><br/>
     model<span style="color: Gray;">=</span>model<span style="color: Gray;">,</span><br/>
     response_format<span style="color: Gray;">=</span>ProviderStrategy<span style="color: Olive;">(</span>schema<span style="color: Gray;">=</span>CourseInfo<span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"你是菜鸟教程 RUNOOB 的课程助手。"</span><span style="color: Gray;">,</span><br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">「あなたは菜鸟教程（RUNOOB）のコースアシスタントです。」</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: Olive;">{</span><br/>
-    <span style="color: #a11;">"messages"</span>: <span style="color: Olive;">[</span>HumanMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"Python3 基础教程是入门级的免费课程"</span><span style="color: Olive;">)</span><span style="color: Olive;">]</span><br/>
+    <span style="color: #a11;">"messages"</span>: <span style="color: Olive;">[</span>HumanMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">Python3の基本チュートリアルは初心者向けの無料コースです。</span><span style="color: Olive;">)</span><span style="color: Olive;">]</span><br/>
 <span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
 <br/>
 course <span style="color: Gray;">=</span> result<span style="color: Olive;">[</span><span style="color: #a11;">"structured_response"</span><span style="color: Olive;">]</span><br/>
@@ -334,12 +334,12 @@ model <span style="color: Gray;">=</span> init_chat_model<span style="color: Oli
 agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;">(</span><br/>
     model<span style="color: Gray;">=</span>model<span style="color: Gray;">,</span><br/>
     response_format<span style="color: Gray;">=</span>Analysis<span style="color: Gray;">,</span>  <span style="color: #a50"># 直接传模型，自动选择策略</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"你是课程评估专家，评估用户描述的课程。"</span><span style="color: Gray;">,</span><br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたはコース評価の専門家であり、ユーザーが説明したコースを評価します。"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: Olive;">{</span><br/>
     <span style="color: #a11;">"messages"</span>: <span style="color: Olive;">[</span>HumanMessage<span style="color: Olive;">(</span><br/>
-        content<span style="color: Gray;">=</span><span style="color: #a11;">"菜鸟教程 RUNOOB 的 Python 课程：内容系统全面，"</span><br/>
+        content<span style="color: Gray;">=</span><span style="color: #a11;">RUNOOB の Python コース：内容は体系のかつ包括の、</span><br/>
                 <span style="color: #a11;">"实例丰富，而且完全免费。但视频教程较少，"</span><br/>
                 <span style="color: #a11;">"高级内容覆盖不够。"</span><br/>
     <span style="color: Olive;">)</span><span style="color: Olive;">]</span><br/>
@@ -486,11 +486,11 @@ analysis <span style="color: Gray;">=</span> result<span style="color: Olive;">[
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -779,7 +779,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

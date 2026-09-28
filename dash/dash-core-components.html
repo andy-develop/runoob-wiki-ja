@@ -224,14 +224,12 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 			Dash コアコンポーネント			</a>
 <a data-p="par" href="../dash/dash-html-component.html" target="_top" title="Dash よく使うHTMLコンポーネント">
 			Dash よく使うHTMLコンポーネント			</a>
-<a data-p="par" href="../dash/dash-dcc-component.html" target="_top" title="Dash 一般的なインタラクティブコンポーネント">
-			Dash 一般的なインタラクティブコンポーネント			</a>
+<a data-p="par" href="../dash/dash-dcc-component.html" target="_top" title="Dash 一般的なインタラクティブコンポーネント">Dash 一般的なインタラクティブコンポーネント</a>
 <a data-p="par" href="../dash/dash-callback.html" target="_top" title="Dash コールバック関数">
 			Dash コールバック関数			</a>
 <a data-p="par" href="../dash/dash-dataviews-plotly.html" target="_top" title="Dash データ可視化と Plotly 統合">
 			Dash Plotly			</a>
-<a data-p="par" href="../dash/dash-dynamically-update-charts.html" target="_top" title="Dash チャートの動的更新">
-			Dash チャートの動的更新			</a>
+<a data-p="par" href="../dash/dash-dynamically-update-charts.html" target="_top" title="Dash チャートの動的更新">Dash チャートの動的更新</a>
 <a data-p="par" href="../dash/dash-tabs.html" target="_top" title="Dash マルチページレイアウト">
 			Dash マルチページレイアウト			</a>
 <a data-p="par" href="../dash/dash-css.html" target="_top" title="Dash スタイルデザイン">
@@ -249,12 +247,12 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="article-intro" id="content">
 <h1>Dash コアコンポーネント</h1>
 <p>Dash のコアコンポーネントはアプリケーションを構築するための基盤であり、ユーザーインターフェースを作成してデータとやり取りすることを可能にします。</p>
-<p>Dash は<code>dash.html</code> 和 <code>dash.dcc</code>モジュールにより、ユーザーインターフェースを簡単に作成し、データと対話できます。</p>
+<p>Dash は<code>dash.html</code>と<code>dash.dcc</code>モジュールにより、ユーザーインターフェースを簡単に作成し、データと対話できます。</p>
 <blockquote><p>Dash 2.0 以降、dash_html_components と dash_core_components は dash メインパッケージに統合されました。</p>
 <p>現在は、古い dash_html_components や dash_core_components を使用するのではなく、直接 dash から html と dcc をインポートすることが推奨されます。</p></blockquote>
 <hr/>
 <h2>Dash コアコンポーネント概要</h2>
-<p>Dash のコアコンポーネントは大きく2つのカテゴリに分けられます：<code>dash.html</code> 和 <code>dash.dcc</code>。<code>dash.html</code>HTML タグの Python ラッパーを提供し、<code>dash.dcc</code>一方、スライダー、ドロップダウンメニュー、グラフなどのより高機能なインタラクティブコンポーネントを提供します。</p>
+<p>Dash のコアコンポーネントは大きく2つのカテゴリに分けられます：<code>dash.html</code>と<code>dash.dcc</code>。<code>dash.html</code>HTML タグの Python ラッパーを提供し、<code>dash.dcc</code>一方、スライダー、ドロップダウンメニュー、グラフなどのより高機能なインタラクティブコンポーネントを提供します。</p>
 <h3>1. <code>dash.html</code>コンポーネント</h3>
 <p><code>dash.html</code>モジュールは HTML タグに対応する Python クラスを提供します。これらのクラスを使用すると、Python の方法で HTML コードを記述できます。例えば、<code>dash.html.Div</code>は HTML の<code>&lt;div&gt;</code>タグに、<code>dash.html.H1</code>は<code>&lt;h1&gt;</code>タグに対応します。</p>
 <div class="example">
@@ -267,10 +265,10 @@ app <span style="color: Gray;">=</span> dash.<span style="color: #05a;">Dash</sp
 <br/>
 app.<span style="color: #05a;">layout</span> <span style="color: Gray;">=</span> html.<span style="color: #05a;">Div</span><span style="color: Olive;">(</span><span style="color: Olive;">[</span><br/>
     html.<span style="color: #05a;">H1</span><span style="color: Olive;">(</span><span style="color: #a11;">'欢迎来到 Dash 世界'</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
-    html.<span style="color: #05a;">P</span><span style="color: Olive;">(</span><span style="color: #a11;">'这是一个简单的段落。'</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
+    html.<span style="color: #05a;">P</span><span style="color: Olive;">(</span><span style="color: #a11;">これは簡単な段落です。</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
     html.<span style="color: #05a;">Div</span><span style="color: Olive;">(</span><span style="color: Olive;">[</span><br/>
-        html.<span style="color: #05a;">Span</span><span style="color: Olive;">(</span><span style="color: #a11;">'这是 Span 1'</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
-        html.<span style="color: #05a;">Span</span><span style="color: Olive;">(</span><span style="color: #a11;">'这是 Span 2'</span><span style="color: Olive;">)</span><br/>
+        html.<span style="color: #05a;">Span</span><span style="color: Olive;">(</span><span style="color: #a11;">これは Span 1 です</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
+        html.<span style="color: #05a;">Span</span><span style="color: Olive;">(</span><span style="color: #a11;">これは Span 2 です</span><span style="color: Olive;">)</span><br/>
     <span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
 <span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
 <br/>
@@ -323,7 +321,7 @@ app.<span style="color: #05a;">layout</span> <span style="color: Gray;">=</span>
 </div>
 <p>この例では、棒グラフとドロップダウンメニューを含むレイアウトを作成しました。<code>dcc.Graph</code>コンポーネントはデータ可視化グラフの表示に使用され、<code>dcc.Dropdown</code>一方、コンポーネントはユーザーがドロップダウンメニューからオプションを選択できるようにします。</p>
 <h2>コアコンポーネントの属性</h2>
-<p>すべての Dash コンポーネントには、外観と動作を制御するための属性がいくつかあります。例えば、<code>dash.html.Div</code> 的 <code>children</code>属性はその子要素を指定するために使用され、<code>dash.dcc.Graph</code> 的 <code>figure</code>属性はグラフのデータとレイアウトを指定するために使用されます。</p>
+<p>すべての Dash コンポーネントには、外観と動作を制御するための属性がいくつかあります。例えば、<code>dash.html.Div</code>の<code>children</code>属性はその子要素を指定するために使用され、<code>dash.dcc.Graph</code>の<code>figure</code>属性はグラフのデータとレイアウトを指定するために使用されます。</p>
 <h3>よく使われる属性</h3>
 <ul>
 <li><strong>children</strong>: コンポーネントの子要素を指定するために使用します。ほとんどのコンポーネントがこの属性を持っています。</li>
@@ -342,8 +340,8 @@ app <span style="color: Gray;">=</span> dash.<span style="color: #05a;">Dash</sp
 <br/>
 app.<span style="color: #05a;">layout</span> <span style="color: Gray;">=</span> html.<span style="color: #05a;">Div</span><span style="color: Olive;">(</span><br/>
     children<span style="color: Gray;">=</span><span style="color: Olive;">[</span><br/>
-        html.<span style="color: #05a;">H1</span><span style="color: Olive;">(</span><span style="color: #a11;">'这是一个标题'</span><span style="color: Gray;">,</span> style<span style="color: Gray;">=</span><span style="color: Olive;">{</span><span style="color: #a11;">'color'</span>: <span style="color: #a11;">'blue'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'fontSize'</span>: <span style="color: Maroon;">40</span><span style="color: Olive;">}</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
-        html.<span style="color: #05a;">P</span><span style="color: Olive;">(</span><span style="color: #a11;">'这是一个段落'</span><span style="color: Gray;">,</span> className<span style="color: Gray;">=</span><span style="color: #a11;">'my-class'</span><span style="color: Olive;">)</span><br/>
+        html.<span style="color: #05a;">H1</span><span style="color: Olive;">(</span><span style="color: #a11;">'これは見出しです'</span><span style="color: Gray;">,</span> style<span style="color: Gray;">=</span><span style="color: Olive;">{</span><span style="color: #a11;">'color'</span>: <span style="color: #a11;">'blue'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'fontSize'</span>: <span style="color: Maroon;">40</span><span style="color: Olive;">}</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
+        html.<span style="color: #05a;">P</span><span style="color: Olive;">(</span><span style="color: #a11;">'これは段落です'</span><span style="color: Gray;">,</span> className<span style="color: Gray;">=</span><span style="color: #a11;">'my-class'</span><span style="color: Olive;">)</span><br/>
     <span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
     style<span style="color: Gray;">=</span><span style="color: Olive;">{</span><span style="color: #a11;">'backgroundColor'</span>: <span style="color: #a11;">'#f0f0f0'</span><span style="color: Olive;">}</span><br/>
 <span style="color: Olive;">)</span><br/>
@@ -473,11 +471,11 @@ app.<span style="color: #05a;">layout</span> <span style="color: Gray;">=</span>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -777,7 +775,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

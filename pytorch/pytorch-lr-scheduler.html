@@ -245,7 +245,7 @@ optimizer <span style="color: Gray;">=</span> optim.<span style="color: #05a;">S
 scheduler <span style="color: Gray;">=</span> optim.<span style="color: #05a;">lr_scheduler</span>.<span style="color: #05a;">StepLR</span><span style="color: Olive;">(</span><br/>
     optimizer<span style="color: Gray;">,</span><br/>
     step_size<span style="color: Gray;">=</span><span style="color: Maroon;">30</span><span style="color: Gray;">,</span>   <span style="color: #a50"># 每 30 个 epoch 衰减一次</span><br/>
-    gamma<span style="color: Gray;">=</span><span style="color: Maroon;">0.1</span>       <span style="color: #a50"># 每次乘以 0.1（即缩小为原来的 1/10）</span><br/>
+    gamma<span style="color: Gray;">=</span><span style="color: Maroon;">0.1</span>       <span style="color: #a50"># 毎回 0.1 を掛ける（つまり元の 1/10 に縮小される）</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># LR 变化：</span><br/>
@@ -266,7 +266,7 @@ scheduler <span style="color: Gray;">=</span> optim.<span style="color: #05a;">l
 optimizer <span style="color: Gray;">=</span> optim.<span style="color: #05a;">SGD</span><span style="color: Olive;">(</span>model.<span style="color: #05a;">parameters</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span> lr<span style="color: Gray;">=</span><span style="color: Maroon;">0.1</span><span style="color: Olive;">)</span><br/>
 scheduler <span style="color: Gray;">=</span> optim.<span style="color: #05a;">lr_scheduler</span>.<span style="color: #05a;">MultiStepLR</span><span style="color: Olive;">(</span><br/>
     optimizer<span style="color: Gray;">,</span><br/>
-    milestones<span style="color: Gray;">=</span><span style="color: Olive;">[</span><span style="color: Maroon;">30</span><span style="color: Gray;">,</span> <span style="color: Maroon;">60</span><span style="color: Gray;">,</span> <span style="color: Maroon;">80</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span>   <span style="color: #a50"># 在第 30、60、80 epoch 衰减</span><br/>
+    milestones<span style="color: Gray;">=</span><span style="color: Olive;">[</span><span style="color: Maroon;">30</span><span style="color: Gray;">,</span> <span style="color: Maroon;">60</span><span style="color: Gray;">,</span> <span style="color: Maroon;">80</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span>   <span style="color: #a50"># 30、60、80 epoch で減衰</span><br/>
     gamma<span style="color: Gray;">=</span><span style="color: Maroon;">0.1</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
@@ -314,8 +314,8 @@ scheduler <span style="color: Gray;">=</span> optim.<span style="color: #05a;">l
     optimizer<span style="color: Gray;">,</span><br/>
     mode<span style="color: Gray;">=</span><span style="color: #a11;">'min'</span><span style="color: Gray;">,</span>       <span style="color: #a50"># 'min': 监控值越小越好（loss）；'max': 越大越好（accuracy）</span><br/>
     factor<span style="color: Gray;">=</span><span style="color: Maroon;">0.1</span><span style="color: Gray;">,</span>       <span style="color: #a50"># 触发时 lr = lr × factor</span><br/>
-    patience<span style="color: Gray;">=</span><span style="color: Maroon;">10</span><span style="color: Gray;">,</span>      <span style="color: #a50"># 允许指标停滞的 epoch 数，超过则衰减</span><br/>
-    threshold<span style="color: Gray;">=</span><span style="color: Maroon;">1e-4</span><span style="color: Gray;">,</span>   <span style="color: #a50"># 改善幅度小于该值视为未改善</span><br/>
+    patience<span style="color: Gray;">=</span><span style="color: Maroon;">10</span><span style="color: Gray;">,</span>      <span style="color: #a50"># 指標の停滞を許容するエポック数。超過した場合は減衰する。</span><br/>
+    threshold<span style="color: Gray;">=</span><span style="color: Maroon;">1e-4</span><span style="color: Gray;">,</span>   <span style="color: #a50"># 改善幅がこの値未満の場合は未改善とみなす</span><br/>
     min_lr<span style="color: Gray;">=</span><span style="color: Maroon;">1e-6</span><span style="color: Gray;">,</span>      <span style="color: #a50"># 学习率下限，不会低于此值</span><br/>
     verbose<span style="color: Gray;">=</span><span style="color: Teal;">True</span>      <span style="color: #a50"># 打印衰减信息</span><br/>
 <span style="color: Olive;">)</span><br/>
@@ -324,7 +324,7 @@ scheduler <span style="color: Gray;">=</span> optim.<span style="color: #05a;">l
     train_loss <span style="color: Gray;">=</span> train<span style="color: Olive;">(</span>model<span style="color: Gray;">,</span> optimizer<span style="color: Olive;">)</span><br/>
     val_loss   <span style="color: Gray;">=</span> evaluate<span style="color: Olive;">(</span>model<span style="color: Olive;">)</span><br/>
 <br/>
-    <span style="color: #a50"># 与其他调度器不同，这里传入监控指标</span><br/>
+    <span style="color: #a50"># 他のスケジューラとは異なり、ここでは監視指標を渡す</span><br/>
     scheduler.<span style="color: #05a;">step</span><span style="color: Olive;">(</span>val_loss<span style="color: Olive;">)</span><br/>
 </div>
 </div>
@@ -355,11 +355,11 @@ scheduler.<span style="color: #05a;">step</span><span style="color: Olive;">(</s
 optimizer <span style="color: Gray;">=</span> optim.<span style="color: #05a;">SGD</span><span style="color: Olive;">(</span>model.<span style="color: #05a;">parameters</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span> lr<span style="color: Gray;">=</span><span style="color: Maroon;">0.1</span><span style="color: Olive;">)</span><br/>
 scheduler <span style="color: Gray;">=</span> optim.<span style="color: #05a;">lr_scheduler</span>.<span style="color: #05a;">CosineAnnealingLR</span><span style="color: Olive;">(</span><br/>
     optimizer<span style="color: Gray;">,</span><br/>
-    T_max<span style="color: Gray;">=</span><span style="color: Maroon;">100</span><span style="color: Gray;">,</span>     <span style="color: #a50"># 半个周期的长度（通常设为总 epoch 数）</span><br/>
+    T_max<span style="color: Gray;">=</span><span style="color: Maroon;">100</span><span style="color: Gray;">,</span>     <span style="color: #a50"># 半周期の長さ（通常は総エポック数に設定）</span><br/>
     eta_min<span style="color: Gray;">=</span><span style="color: Maroon;">1e-6</span>   <span style="color: #a50"># 学习率最小值（默认 0）</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># LR 变化轨迹（T_max=10 时的示意）：</span><br/>
+<span style="color: #a50"># LR 変化軌跡（T_max=10 の場合の図）：</span><br/>
 <span style="color: #a50"># 0.1 -&gt; 0.095 -&gt; 0.079 -&gt; 0.055 -&gt; 0.026 -&gt; 0.001</span><br/>
 <span style="color: #a50">#              （余弦曲线平滑下降）</span><br/>
 </div>
@@ -375,12 +375,12 @@ scheduler <span style="color: Gray;">=</span> optim.<span style="color: #05a;">l
 optimizer <span style="color: Gray;">=</span> optim.<span style="color: #05a;">SGD</span><span style="color: Olive;">(</span>model.<span style="color: #05a;">parameters</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span> lr<span style="color: Gray;">=</span><span style="color: Maroon;">0.1</span><span style="color: Olive;">)</span><br/>
 scheduler <span style="color: Gray;">=</span> optim.<span style="color: #05a;">lr_scheduler</span>.<span style="color: #05a;">CosineAnnealingWarmRestarts</span><span style="color: Olive;">(</span><br/>
     optimizer<span style="color: Gray;">,</span><br/>
-    T_0<span style="color: Gray;">=</span><span style="color: Maroon;">10</span><span style="color: Gray;">,</span>       <span style="color: #a50"># 第一个周期的长度（epoch 数）</span><br/>
-    T_mult<span style="color: Gray;">=</span><span style="color: Maroon;">2</span><span style="color: Gray;">,</span>     <span style="color: #a50"># 每次重启后周期长度的倍数（1=等长，2=逐渐加长）</span><br/>
+    T_0<span style="color: Gray;">=</span><span style="color: Maroon;">10</span><span style="color: Gray;">,</span>       <span style="color: #a50"># 最初の周期の長さ（エポック数）</span><br/>
+    T_mult<span style="color: Gray;">=</span><span style="color: Maroon;">2</span><span style="color: Gray;">,</span>     <span style="color: #a50"># 再起動ごとの周期長の倍数（1=等長、2=徐々に長く）</span><br/>
     eta_min<span style="color: Gray;">=</span><span style="color: Maroon;">1e-6</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># T_mult=2 时的周期长度：10 -&gt; 20 -&gt; 40 -&gt; 80 ...</span><br/>
+<span style="color: #a50"># T_mult=2 のときの周期長：10 -&gt; 20 -&gt; 40 -&gt; 80 ...</span><br/>
 <span style="color: #a50"># LR 变化（T_0=10, T_mult=1）：</span><br/>
 <span style="color: #a50"># 0.1 -&gt; ... -&gt; 0 -&gt; 0.1 -&gt; ... -&gt; 0 -&gt; 0.1（每 10 个 epoch 重启一次）</span><br/>
 </div>
@@ -458,7 +458,7 @@ scheduler <span style="color: Gray;">=</span> optim.<span style="color: #05a;">l
 <hr/>
 <h2>5. 循環スケジューラ</h2>
 <h3>5.1 CyclicLR 循環学習率</h3>
-<p>学習率は<code>base_lr</code> 和 <code>max_lr</code>の間で<strong>周期的に循環します</strong>、モデルがより広いパラメータ空間を探索し、鞍点から抜け出すのに役立ちます。</p>
+<p>学習率は<code>base_lr</code>と<code>max_lr</code>の間で<strong>周期的に循環します</strong>、モデルがより広いパラメータ空間を探索し、鞍点から抜け出すのに役立ちます。</p>
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
@@ -947,11 +947,11 @@ MultiStepLR<span style="color: Olive;">(</span>milestones<span style="color: Gra
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1240,7 +1240,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

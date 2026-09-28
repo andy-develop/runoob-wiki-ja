@@ -241,13 +241,13 @@ p.oblique {font-style:oblique;}</div>
 <p>文字のサイズを管理できるかどうかは、Webデザインにおいて非常に重要です。ただし、フォントサイズを調整して段落を見出しのように見せたり、見出しを段落のように見せたりすることはできません。</p>
 <p>必ず正しいHTMLタグを使用してください。&lt;h1&gt; - &lt;h6&gt;は見出し、&lt;p&gt;は段落を表します：</p>
 <p>フォントサイズの値は、絶対サイズまたは相対サイズにできます。</p>
-<p>绝对大小：</p>
+<p>絶対サイズ：</p>
 <ul>
 <li>指定されたサイズのテキストを設定します</li>
 <li>すべてのブラウザでユーザーがテキストサイズを変更できないようにする</li>
 <li>出力の物理的なサイズが決まっている場合、絶対サイズは便利です。</li>
 </ul>
-<p>相对大小：</p>
+<p>相対サイズ：</p>
 <ul>
 <li>周囲の要素に対してサイズを設定します</li>
 <li>ユーザーがブラウザでテキストサイズを変更できるようにする</li>
@@ -300,8 +300,8 @@ p {font-size:0.875em;}</div>
 <img alt="Examples" decoding="async" height="46px" src="../images/tryitimg.gif" width="40"/><h2>更多实例</h2>
 </div>
 <p><a href="../try/try.php.html" target="_blank">设置字体加粗</a><br/>この例は、フォントの太字を設定する方法を示しています。</p>
-<p><a href="../try/try.php.html" target="_blank">可以设置字体的转变</a><br/>この例では、フォントのバリアントの設定方法を示しています。</p>
-<p><a href="../try/try.php.html" target="_blank">在一个声明中的所有字体属性</a><br/>この例は、ショートハンドプロパティを使用して、1つの宣言内でフォントプロパティを設定する方法を示しています。</p>
+<p><a href="../try/try.php.html" target="_blank">フォントの変化を設定できます</a><br/>この例では、フォントのバリアントの設定方法を示しています。</p>
+<p><a href="../try/try.php.html" target="_blank">単一の宣言内のすべてのフォントプロパティ</a><br/>この例は、ショートハンドプロパティを使用して、1つの宣言内でフォントプロパティを設定する方法を示しています。</p>
 <hr/>
 <h2>すべてのCSSフォントプロパティ</h2>
 <table class="reference notranslate">
@@ -473,7 +473,7 @@ p {font-size:0.875em;}</div>
 &lt;div style="font-style: oblique 20deg;"&gt;This is a sentence.&lt;/div&gt;
 &lt;div style="font-style: oblique 30deg;"&gt;This is a sentence.&lt;/div&gt;
 &lt;div style="font-style: oblique 40deg;"&gt;This is a sentence.&lt;/div&gt;</pre><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">吞吞吞吴</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>吞吞吞吴</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  wxq***567567@126.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-style" rel="nofollow" target="_blank">参考地址</a></p></div></span>4年前 (2022-06-14)</div></div></li><!-- #comment-## -->
-<li class="comment byuser comment-author-tianqixin even thread-even depth-1" id="comment-89097"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   zhiyv</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  360***7609@qq.com</p></div><div class="upvotejs" data-commid="89097" id="runoobvote-id-89097"><a class="upvote"></a> <span class="count">2</span></div></div><div class="comt-main" id="div-comment-89097"><p>为了确保<code>font</code>ショートハンドプロパティが正しく解析されるには、以下のルールに注意する必要があります：</p>1. 字体族必须放在最后<p>在 <code>font</code>省略構文では：</p>
+<li class="comment byuser comment-author-tianqixin even thread-even depth-1" id="comment-89097"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   zhiyv</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  360***7609@qq.com</p></div><div class="upvotejs" data-commid="89097" id="runoobvote-id-89097"><a class="upvote"></a> <span class="count">2</span></div></div><div class="comt-main" id="div-comment-89097"><p>確保するために<code>font</code>ショートハンドプロパティが正しく解析されるには、以下のルールに注意する必要があります：</p>1. フォントファミリーは最後に置かなければなりません<p>に<code>font</code>省略構文では：</p>
 <ul>
 <li><strong>最後はフォントファミリ（font-family）でなければなりません</strong></li>
 <li><strong>フォントサイズ（font-size）はフォントファミリの前に置く必要があります</strong></li>
@@ -483,11 +483,11 @@ p {font-size:0.875em;}</div>
 <p>つまり全体の構造は次のようになります：</p>
 <pre>font: [其他字体属性] font-size [/line-height] font-family;</pre>2. 同类属性不能重复声明<p>一部のキーワードは本質的に同じ種類のプロパティに属するため：</p>
 <ul>
-<li><code>bold</code> 与 <code>font-weight</code>的数值（如<code>700</code>）<strong>効果は同じで、互換性がありますが、同時に指定することはできません。</strong></li>
-<li><code>italic</code> 与 <code>oblique</code> <strong>どちらも font-style に属し、同時に指定することはできません。</strong></li>
+<li><code>bold</code>と<code>font-weight</code>の数値（例えば<code>700</code>）<strong>効果は同じで、互換性がありますが、同時に指定することはできません。</strong></li>
+<li><code>italic</code>と<code>oblique</code> <strong>どちらも font-style に属し、同時に指定することはできません。</strong></li>
 </ul>
-<a></a>3. 合法但较少见的示例<pre>font: bold small-caps oblique 100%/1.5em Georgia, serif;</pre>
-<p>上述写法是<strong>完全合法的</strong>、その意味は次の通りです：</p>
+<a></a>3. 有効だが、あまり一般のではない例<pre>font: bold small-caps oblique 100%/1.5em Georgia, serif;</pre>
+<p>上記の書き方は<strong>完全に有効な</strong>、その意味は次の通りです：</p>
 <ul>
 <li><code>bold</code>→ 粗体</li>
 <li><code>small-caps</code>→ スモールキャップス</li>
@@ -502,11 +502,11 @@ p {font-size:0.875em;}</div>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有する</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -795,7 +795,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

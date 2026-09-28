@@ -283,7 +283,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>Go 言語は組み込みのエラーインターフェースを通じて、非常にシンプルなエラー処理メカニズムを提供します。</p>
 <p>Go 言語のエラー処理は、従来の例外処理メカニズムではなく、エラーを明示的に返す方式を採用しています。この設計によりコードロジックがより明確になり、開発者がコンパイル時または実行時にエラーを明確に処理しやすくなります。</p>
 <p>
-<strong>Go のエラー処理は、主に以下のメカニズムを中心に展開されます：</strong></p><ol><li><strong><code>error</code>インターフェース</strong>：標準的なエラー表現。</li><li><strong>明示的な戻り値</strong>：関数の戻り値を通じてエラーを返します。</li><li><strong>カスタムエラー</strong>：標準ライブラリまたはカスタムの方法でエラーを作成できます。</li><li><strong><code>panic</code> 和 <code>recover</code></strong>：回復不能な重大なエラーを処理します。</li></ol>
+<strong>Go のエラー処理は、主に以下のメカニズムを中心に展開されます：</strong></p><ol><li><strong><code>error</code>インターフェース</strong>：標準的なエラー表現。</li><li><strong>明示的な戻り値</strong>：関数の戻り値を通じてエラーを返します。</li><li><strong>カスタムエラー</strong>：標準ライブラリまたはカスタムの方法でエラーを作成できます。</li><li><strong><code>panic</code>と<code>recover</code></strong>：回復不能な重大なエラーを処理します。</li></ol>
 <hr/><h2>error インターフェース</h2><p>Go 標準ライブラリは、エラーの抽象を表す error インターフェースを定義しています。</p>
 <p>error 型はインターフェース型であり、その定義は次のとおりです：</p>
 <pre>
@@ -452,7 +452,7 @@ errorMsg is:
 
 </pre>
 <hr/>
-<h2>errors.Is と errors.As の使用</h2><p>Go 1.13 以降、<code>errors</code>errors パッケージは以下を導入しました：<code>errors.Is</code> 和 <code>errors.As</code>エラーチェーンを処理するために使用されます：</p>
+<h2>errors.Is と errors.As の使用</h2><p>Go 1.13 以降、<code>errors</code>errors パッケージは以下を導入しました：<code>errors.Is</code>と<code>errors.As</code>エラーチェーンを処理するために使用されます：</p>
 <h3><strong><code>errors.Is</code></strong></h3><p>特定のエラーであるか、そのエラーによってラップされたものであるかをチェックします。</p>
 <div class="example"><h2 class="example">実例</h2> <div class="example_code">
 <span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
@@ -667,7 +667,7 @@ Program continued after panic</pre>
 <p><strong>概念</strong></p>
 <p>panic と recover は Go の2つの組み込み関数です。これらの組み込み関数は Go のランタイムエラーを処理するために使用されます。panic は能動的にエラーを投げるために使用され、recover は panic によって投げられたエラーをキャプチャするために使用されます。</p>
 <p><img src="../wp-content/uploads/2019/01/99459110.jpg"/></p>
-<ul><li>発生<code>panic</code>2つのケースがあります。1つはプログラムが能動的に呼び出す場合、もう1つはプログラムでランタイムエラーが発生し、ランタイムが検出して終了する場合です。</li><li>発生<code>panic</code>後、プログラムは呼び出し元の<code>panic</code>関数の位置、または発生した<code>panic</code>場所から即座に戻り、上層に向かって関数の<code>defer</code>文を順に実行し、その後、関数呼び出しスタックを順に出力します。そして<code>recover</code>によってキャプチャされるか、最外層の関数まで実行されます。</li><li><code>panic</code>関数の通常フローで投げるだけでなく、<code>defer</code>defer ロジック内でも再度 panic を呼び出したり、<code>panic</code>panic を投げたりできます。<code>panic</code>。<code>defer</code>defer 内の panic は、<code>panic</code>後続の recover によって<code>defer</code>キャプチャされます。</li><li><code>recover</code>panic をキャプチャするために使用され、<code>panic</code>、<code>panic</code>それが上層へ伝播し続けるのを防ぎます。<code>recover()</code>和<code>defer</code>一緒に使用されますが、<code>defer</code>後続の関数本体内で直接呼び出された場合のみ、panic をキャプチャして<code>panic</code>異常を終了させることができます。そうでなければ nil を返し、<code>nil</code>、異常は外へ伝播し続けます。</li></ul>
+<ul><li>発生<code>panic</code>2つのケースがあります。1つはプログラムが能動的に呼び出す場合、もう1つはプログラムでランタイムエラーが発生し、ランタイムが検出して終了する場合です。</li><li>発生<code>panic</code>後、プログラムは呼び出し元の<code>panic</code>関数の位置、または発生した<code>panic</code>場所から即座に戻り、上層に向かって関数の<code>defer</code>文を順に実行し、その後、関数呼び出しスタックを順に出力します。そして<code>recover</code>によってキャプチャされるか、最外層の関数まで実行されます。</li><li><code>panic</code>関数の通常フローで投げるだけでなく、<code>defer</code>defer ロジック内でも再度 panic を呼び出したり、<code>panic</code>panic を投げたりできます。<code>panic</code>。<code>defer</code>defer 内の panic は、<code>panic</code>後続の recover によって<code>defer</code>キャプチャされます。</li><li><code>recover</code>panic をキャプチャするために使用され、<code>panic</code>、<code>panic</code>それが上層へ伝播し続けるのを防ぎます。<code>recover()</code>と<code>defer</code>一緒に使用されますが、<code>defer</code>後続の関数本体内で直接呼び出された場合のみ、panic をキャプチャして<code>panic</code>異常を終了させることができます。そうでなければ nil を返し、<code>nil</code>、異常は外へ伝播し続けます。</li></ul>
 <p>例1</p>
 <pre>//以下捕获失败
 defer recover()
@@ -891,11 +891,11 @@ func Divide(varDividee int, varDivider int) (result int, errorMsg string){
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">メモは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> メモを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">メモは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> メモを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1195,7 +1195,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

@@ -208,8 +208,8 @@ struct Books
    <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #05a; font-weight: bold;">static</span> <span style="color: #6666CC; font-weight: bold;">void</span> Main<span style="color: #008000;">(</span><span style="color: #6666CC; font-weight: bold;">string</span><span style="color: #008000;">[</span><span style="color: #008000;">]</span> args<span style="color: #008000;">)</span><br/>
    <span style="color: #008000;">{</span><br/>
 <br/>
-      Books Book1<span style="color: #008000;">;</span>        <span style="color: #696969; font-style: italic;">/* 声明 Book1，类型为 Books */</span><br/>
-      Books Book2<span style="color: #008000;">;</span>        <span style="color: #696969; font-style: italic;">/* 声明 Book2，类型为 Books */</span><br/>
+      Books Book1<span style="color: #008000;">;</span>        <span style="color: #696969; font-style: italic;">/* Book1 を宣言、型は Books */</span><br/>
+      Books Book2<span style="color: #008000;">;</span>        <span style="color: #696969; font-style: italic;">/* Book2 を宣言、型は Books */</span><br/>
 <br/>
       <span style="color: #696969; font-style: italic;">/* book 1 详述 */</span><br/>
       Book1<span style="color: #008000;">.</span><span style="color: #05a;">title</span> <span style="color: #008000;">=</span> <span style="color: #a11;">"C Programming"</span><span style="color: #008000;">;</span><br/>
@@ -283,12 +283,12 @@ Book 2 book_id : 6495700
 <li><strong>構造体は引数なしのコンストラクターを持つことはできません：</strong>構造体はパラメーターなしのコンストラクターを含むことができません。</li>
 <li><strong>クラスは引数なしのコンストラクターを持つことができます：</strong>クラスはパラメーターなしのコンストラクターを含むことができ、コンストラクターが提供されない場合、システムがデフォルトのパラメーターなしコンストラクターを提供します。</li>
 </ul>
-<p><strong>赋值行为：</strong></p>
+<p><strong>代入の動作：</strong></p>
 <ul><li>クラス型の変数は、代入時に参照を格納するため、2つの変数が同じオブジェクトを指します。</li><li>構造体変数は代入時に構造体全体をコピーするため、各変数はそれぞれ独立したコピーを持ちます。</li></ul>
 <p><strong>传递方式：</strong></p>
 <ul><li>クラス型のオブジェクトは、メソッド呼び出し時に参照渡しされます。つまり、メソッド内でオブジェクトに加えられた変更は、元のオブジェクトに影響します。</li><li>構造体オブジェクトは通常、値渡しされます。つまり、渡されるのは構造体のコピーであり、元の構造体オブジェクト自体ではありません。したがって、メソッド内で構造体に加えられた変更は、元のオブジェクトに影響しません。</li></ul>
 <p><strong>可空性：</strong></p> <ul>
-<li><strong>構造体は値型であり、直接~に設定することはできません。<strong>null</strong>：</strong>因为<span class="marked">null</span>は参照型のデフォルト値であり、値型のデフォルト値ではありません。構造体変数の欠落または無効な状態を表す必要がある場合は、~を使用できます。<span class="marked">Nullable&lt;T&gt;</span>或称为<span class="marked">T?</span>のnull許容型。</li>
+<li><strong>構造体は値型であり、直接~に設定することはできません。<strong>null</strong>：</strong>なぜなら<span class="marked">null</span>は参照型のデフォルト値であり、値型のデフォルト値ではありません。構造体変数の欠落または無効な状態を表す必要がある場合は、~を使用できます。<span class="marked">Nullable&lt;T&gt;</span>または呼ばれる<span class="marked">T?</span>のnull許容型。</li>
 <li><strong>クラスはデフォルトでnullにできます：</strong>クラスのインスタンスはデフォルトでnullにできます<code>null</code>，それらは参照型であるためです。</li>
 </ul>
 <p><strong>パフォーマンスとメモリ割り当て：</strong></p>
@@ -306,12 +306,12 @@ Book 2 book_id : 6495700
     <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666CC; font-weight: bold;">int</span> X<span style="color: #008000;">;</span><br/>
     <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666CC; font-weight: bold;">int</span> Y<span style="color: #008000;">;</span><br/>
 <br/>
-    <span style="color: #696969; font-style: italic;">// 结构不能有无参数的构造函数</span><br/>
+    <span style="color: #696969; font-style: italic;">// 構造体はパラメーターなしのコンストラクターを持つことはできません</span><br/>
     <span style="color: #696969; font-style: italic;">// public MyStruct()</span><br/>
     <span style="color: #696969; font-style: italic;">// {</span><br/>
     <span style="color: #696969; font-style: italic;">// }</span><br/>
 <br/>
-    <span style="color: #696969; font-style: italic;">// 有参数的构造函数</span><br/>
+    <span style="color: #696969; font-style: italic;">// パラメータ付きコンストラクタ</span><br/>
     <span style="color: #05a; font-weight: bold;">public</span> MyStruct<span style="color: #008000;">(</span><span style="color: #6666CC; font-weight: bold;">int</span> x, <span style="color: #6666CC; font-weight: bold;">int</span> y<span style="color: #008000;">)</span><br/>
     <span style="color: #008000;">{</span><br/>
         X <span style="color: #008000;">=</span> x<span style="color: #008000;">;</span><br/>
@@ -330,12 +330,12 @@ Book 2 book_id : 6495700
     <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666CC; font-weight: bold;">int</span> X<span style="color: #008000;">;</span><br/>
     <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666CC; font-weight: bold;">int</span> Y<span style="color: #008000;">;</span><br/>
 <br/>
-    <span style="color: #696969; font-style: italic;">// 类可以有无参数的构造函数</span><br/>
+    <span style="color: #696969; font-style: italic;">// クラスは引数なしのコンストラクタを持つことができる</span><br/>
     <span style="color: #05a; font-weight: bold;">public</span> MyClass<span style="color: #008000;">(</span><span style="color: #008000;">)</span><br/>
     <span style="color: #008000;">{</span><br/>
     <span style="color: #008000;">}</span><br/>
 <br/>
-    <span style="color: #696969; font-style: italic;">// 有参数的构造函数</span><br/>
+    <span style="color: #696969; font-style: italic;">// パラメータ付きコンストラクタ</span><br/>
     <span style="color: #05a; font-weight: bold;">public</span> MyClass<span style="color: #008000;">(</span><span style="color: #6666CC; font-weight: bold;">int</span> x, <span style="color: #6666CC; font-weight: bold;">int</span> y<span style="color: #008000;">)</span><br/>
     <span style="color: #008000;">{</span><br/>
         X <span style="color: #008000;">=</span> x<span style="color: #008000;">;</span><br/>
@@ -352,13 +352,13 @@ Book 2 book_id : 6495700
 <span style="color: #008000;">{</span><br/>
     <span style="color: #05a; font-weight: bold;">static</span> <span style="color: #6666CC; font-weight: bold;">void</span> Main<span style="color: #008000;">(</span><span style="color: #008000;">)</span><br/>
     <span style="color: #008000;">{</span><br/>
-        <span style="color: #696969; font-style: italic;">// 结构是值类型，分配在栈上</span><br/>
+        <span style="color: #696969; font-style: italic;">// 構造体は値型であり、スタック上に割り当てられる</span><br/>
         MyStruct structInstance1 <span style="color: #008000;">=</span> <span style="color: #008000;">new</span> MyStruct<span style="color: #008000;">(</span><span style="color: Maroon;">1</span>, <span style="color: Maroon;">2</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
         MyStruct structInstance2 <span style="color: #008000;">=</span> structInstance1<span style="color: #008000;">;</span> <span style="color: #696969; font-style: italic;">// 复制整个结构</span><br/>
 <br/>
-        <span style="color: #696969; font-style: italic;">// 类是引用类型，分配在堆上</span><br/>
+        <span style="color: #696969; font-style: italic;">// クラスは参照型であり、ヒープ上に割り当てられる</span><br/>
         MyClass classInstance1 <span style="color: #008000;">=</span> <span style="color: #008000;">new</span> MyClass<span style="color: #008000;">(</span><span style="color: Maroon;">3</span>, <span style="color: Maroon;">4</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
-        MyClass classInstance2 <span style="color: #008000;">=</span> classInstance1<span style="color: #008000;">;</span> <span style="color: #696969; font-style: italic;">// 复制引用，指向同一个对象</span><br/>
+        MyClass classInstance2 <span style="color: #008000;">=</span> classInstance1<span style="color: #008000;">;</span> <span style="color: #696969; font-style: italic;">// 参照をコピーし、同じオブジェクトを指す</span><br/>
 <br/>
         <span style="color: #696969; font-style: italic;">// 修改结构实例不影响其他实例</span><br/>
         structInstance1<span style="color: #008000;">.</span><span style="color: #05a;">X</span> <span style="color: #008000;">=</span> <span style="color: Maroon;">5</span><span style="color: #008000;">;</span><br/>
@@ -405,8 +405,8 @@ Book 2 book_id : 6495700
    <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #05a; font-weight: bold;">static</span> <span style="color: #6666CC; font-weight: bold;">void</span> Main<span style="color: #008000;">(</span><span style="color: #6666CC; font-weight: bold;">string</span><span style="color: #008000;">[</span><span style="color: #008000;">]</span> args<span style="color: #008000;">)</span><br/>
    <span style="color: #008000;">{</span><br/>
 <br/>
-      Books Book1 <span style="color: #008000;">=</span> <span style="color: #008000;">new</span> Books<span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span> <span style="color: #696969; font-style: italic;">/* 声明 Book1，类型为 Books */</span><br/>
-      Books Book2 <span style="color: #008000;">=</span> <span style="color: #008000;">new</span> Books<span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span> <span style="color: #696969; font-style: italic;">/* 声明 Book2，类型为 Books */</span><br/>
+      Books Book1 <span style="color: #008000;">=</span> <span style="color: #008000;">new</span> Books<span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span> <span style="color: #696969; font-style: italic;">/* Book1 を宣言、型は Books */</span><br/>
+      Books Book2 <span style="color: #008000;">=</span> <span style="color: #008000;">new</span> Books<span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span> <span style="color: #696969; font-style: italic;">/* Book2 を宣言、型は Books */</span><br/>
 <br/>
       <span style="color: #696969; font-style: italic;">/* book 1 详述 */</span><br/>
       Book1<span style="color: #008000;">.</span><span style="color: #05a;">setValues</span><span style="color: #008000;">(</span><span style="color: #a11;">"C Programming"</span>,<br/>
@@ -591,11 +591,11 @@ Book_id : 6495700
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてメモを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -884,7 +884,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

@@ -1404,7 +1404,7 @@ collector <span style="color: Gray;">=</span> MetricsCollector<span style="color
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"-"</span> * <span style="color: Maroon;">50</span><span style="color: Olive;">)</span><br/>
 <br/>
     <span style="color: Green;font-weight:bold;">if</span> p_value <span style="color: Gray;">&lt;</span> alpha:<br/>
-        <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"&amp;#x2705; 結果は統計的に有意（p &lt; {alpha}）"</span><span style="color: Olive;">)</span><br/>
+        <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">&amp;#x2705; 結果は統計のに有意（p &lt; {alpha}）</span><span style="color: Olive;">)</span><br/>
         <span style="color: Green;font-weight:bold;">if</span> relative_lift <span style="color: Gray;">&gt;</span> <span style="color: Maroon;">0</span>:<br/>
             <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"   実験群の方が優れています！"</span><span style="color: Olive;">)</span><br/>
         <span style="color: Green;font-weight:bold;">else</span>:<br/>
@@ -1540,7 +1540,7 @@ mlflow.<span style="color: #05a;">set_experiment</span><span style="color: Olive
             registered_model_name<span style="color: Gray;">=</span>f<span style="color: #a11;">"{model_name.replace('/', '-')}-demo"</span><br/>
         <span style="color: Olive;">)</span><br/>
 <br/>
-        <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"実験完了！run_id: {run_id}"</span><span style="color: Olive;">)</span><br/>
+        <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">実験完了！run_id: {run_id}</span><span style="color: Olive;">)</span><br/>
         <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"最終精度: {final_accuracy:.4f}"</span><span style="color: Olive;">)</span><br/>
 <br/>
         <span style="color: Green;font-weight:bold;">return</span> run_id<span style="color: Gray;">,</span> final_accuracy<br/>
@@ -1628,7 +1628,7 @@ client <span style="color: Gray;">=</span> MlflowClient<span style="color: Olive
 <br/>
 <br/>
 <span style="color: Green;font-weight:bold;">def</span> get_production_model<span style="color: Olive;">(</span>model_name: <span style="color: Teal;">str</span><span style="color: Olive;">)</span>:<br/>
-    <span style="color: #a11;">"""現在のProductionモデルを取得する"""</span><br/>
+    <span style="color: #a11;">現在のProductionモデルを取得する</span><br/>
     versions <span style="color: Gray;">=</span> client.<span style="color: #05a;">get_latest_versions</span><span style="color: Olive;">(</span>model_name<span style="color: Gray;">,</span> stages<span style="color: Gray;">=</span><span style="color: Olive;">[</span><span style="color: #a11;">"Production"</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
     <span style="color: Green;font-weight:bold;">if</span> versions:<br/>
         <span style="color: Green;font-weight:bold;">return</span> versions<span style="color: Olive;">[</span><span style="color: Maroon;">0</span><span style="color: Olive;">]</span><br/>
@@ -1662,7 +1662,7 @@ client <span style="color: Gray;">=</span> MlflowClient<span style="color: Olive
     <span style="color: #a50">#     description="本番環境モデル：2024年最適化版"</span><br/>
     <span style="color: #a50"># )</span><br/>
 <br/>
-    <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>現在の本番モデルを取得："</span><span style="color: Olive;">)</span><br/>
+    <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>現在の本番モデルを取得：”</span><span style="color: Olive;">)</span><br/>
     prod_model <span style="color: Gray;">=</span> get_production_model<span style="color: Olive;">(</span>model_name<span style="color: Olive;">)</span><br/>
     <span style="color: Green;font-weight:bold;">if</span> prod_model:<br/>
         <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"  モデル名: {prod_model.name}"</span><span style="color: Olive;">)</span><br/>
@@ -2334,7 +2334,7 @@ groups</span>:<span style="color: green;"><br/>
         <span style="color: Green;font-weight:bold;">return</span> <span style="color: #a11;">"申し訳ございません。サービスが一時的に混雑しています。これは簡略化された応答です。"</span><br/>
 <br/>
     <span style="color: Green;font-weight:bold;">def</span> _call_static_fallback<span style="color: Olive;">(</span><span style="color: Teal;">self</span><span style="color: Gray;">,</span> query: <span style="color: Teal;">str</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
-        <span style="color: #a11;">"""静的フォールバック応答（最後の防衛ライン）"""</span><br/>
+        <span style="color: #a11;">静的フォールバック応答（最後の防衛ライン）</span><br/>
         <span style="color: Green;font-weight:bold;">return</span> <span style="color: Olive;">(</span><br/>
             <span style="color: #a11;">"大変申し訳ございませんが、現在サービスに問題が発生しています。<span style="color: #000099; font-weight: bold;">\n</span>"</span><br/>
             <span style="color: #a11;">"しばらくしてからもう一度お試しください。緊急の問題は support@runoob.com までご連絡ください。"</span><br/>
@@ -2420,7 +2420,7 @@ groups</span>:<span style="color: green;"><br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"  2. メインサービス失敗 → 小モデル/キャッシュを使用"</span><span style="color: Olive;">)</span><br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"  3. 連続失敗 → サーキットブレーカーを開き、雪崩を防止"</span><span style="color: Olive;">)</span><br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"  4. サーキットブレーカー作動中 → フォールバック応答を迅速に返す"</span><span style="color: Olive;">)</span><br/>
-    <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"  5. 最後の防衛ライン → 静的応答"</span><span style="color: Olive;">)</span><br/>
+    <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">5. 最後の防衛ライン → 静的応答</span><span style="color: Olive;">)</span><br/>
 </div>
 </div>
 <h3>カナリアリリースとロールバック</h3>
@@ -2544,11 +2544,11 @@ groups</span>:<span style="color: green;"><br/>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -2837,7 +2837,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

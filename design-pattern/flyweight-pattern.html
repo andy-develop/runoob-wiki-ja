@@ -352,7 +352,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <ul><li><p><strong>フライウェイトファクトリ（Flyweight Factory）:</strong></p><ul><li>フライウェイトオブジェクトの生成と管理を担当し、通常は作成済みのフライウェイトオブジェクトを保存・再利用するためのプール（キャッシュ）を含みます。</li></ul></li><li><p><strong>具体的なフライウェイト（Concrete Flyweight）:</strong></p><ul><li>抽象フライウェイトインターフェースを実装し、内部状態と外部状態を含みます。内部状態は共有可能であり、外部状態はクライアントによって渡されます。</li></ul></li><li><p><strong>抽象フライウェイト（Flyweight）:</strong></p><ul><li>具体的なフライウェイトと非共有フライウェイトのインターフェースを定義し、通常は外部状態を設定するメソッドを含みます。</li></ul></li><li><p><strong>クライアント（Client）:</strong></p><ul><li>フライウェイトファクトリを使用してフライウェイトオブジェクトを取得し、外部状態を設定してフライウェイトオブジェクトを操作します。クライアントは通常、フライウェイトオブジェクトの具体的な実装を気にする必要はありません。</li></ul></li></ul>
 <h2 class="tutheader">実装</h2>
 <p>作成するのは<i>Shape</i>インターフェースと、それを実装した<i>Shape</i>インターフェースの具象クラス<i>Circle</i>。次のステップは、ファクトリクラスを定義することです<i>ShapeFactory</i>。</p>
-<p><i>ShapeFactory</i>を持っています<i>Circle</i> 的 <i>HashMap</i>、そのキー名は<i>Circle</i>オブジェクトの色です。<i>ShapeFactory</i>その...を確認します<i>HashMap</i>内のcircleオブジェクトを見つけた場合<i>Circle</i>そのオブジェクトを返し、それ以外の場合は、後で使用するためにhashmapに保存される新しいオブジェクトを作成して、クライアントに返します。</p>
+<p><i>ShapeFactory</i>を持っています<i>Circle</i>の<i>HashMap</i>、そのキー名は<i>Circle</i>オブジェクトの色です。<i>ShapeFactory</i>その...を確認します<i>HashMap</i>内のcircleオブジェクトを見つけた場合<i>Circle</i>そのオブジェクトを返し、それ以外の場合は、後で使用するためにhashmapに保存される新しいオブジェクトを作成して、クライアントに返します。</p>
 <p><i>FlyWeightPatternDemo</i>クラスは使用します<i>ShapeFactory</i>を取得するために<i>Shape</i>オブジェクト。それは...に<i>ShapeFactory</i>情報を渡します（<i>red / green / blue/ black / white</i>）、必要なオブジェクトの色を取得するためです。</p>
 <img alt="享元模式的 UML 图" decoding="async" src="../wp-content/uploads/2014/08/20201015-fiyweight.svg"/>
 <h3>ステップ 1</h3>
@@ -601,7 +601,7 @@ Circle: Draw() [Color : Blue, x : 95, y :82, radius :100
 </div>
 <div id="postcomments" style="display:none;">
 <ol class="commentlist">
-<li class="comment even thread-even depth-1" id="comment-37478"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   yjb</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  151***64310@163.com</p></div><div class="upvotejs" data-commid="37478" id="runoobvote-id-37478"><a class="upvote"></a> <span class="count">73</span></div></div><div class="comt-main" id="div-comment-37478"><p>フライウェイトパターンは、言い換えればオブジェクトの共有です。一部のオブジェクトを繰り返し作成する必要があり、最終的に単一の結果だけを得る必要がある場合に使用します。このパターンは、以前に作成された既存のオブジェクトを利用し、何らかのルールに基づいて、現在必要なオブジェクトが元のオブジェクトを変更して目的の効果を得られるかどうかを判断します。上記のチュートリアルの例のように、異なる効果を持つ20個の円を作成しますが、同じ色の円は一度だけ作成すればよく、同じ色の場合は元のオブジェクトを参照して座標値を変更するだけで済みます。このパターンでは、同じ色の円は位置が異なっていても、そのアドレスはすべて同じです。したがって、このパターンは単一の結果を重視する場合に適しています。</p><p>簡単な例を挙げると、ゲームにはさまざまな英雄キャラクターがいます。同じタイプのキャラクターにも異なる属性の英雄がいます。例えば、アサシンタイプの英雄はたくさんいます。このパターンで設計する場合、英雄が属するタイプを利用して元の同じタイプの英雄インスタンスを参照し、その対応する属性を変更することで、最終的に欲しい最新の英雄を得ることができます。例えば、最初のアサシン英雄を作成し、次に2番目のアサシン英雄を設計する必要があるとします。最初の英雄の属性を変更して2番目のアサシン英雄を得ると、最新のアサシン英雄は誕生しましたが、最初のアサシン英雄の属性も2番目と同じに変わってしまいます。このような場合は明らかに問題です。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">yjb</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   yjb</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  151***64310@163.com</p></div></span>8年前 (2018-11-27)</div></div></li><!-- #comment-## -->
+<li class="comment even thread-even depth-1" id="comment-37478"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   yjb</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  151***64310@163.com</p></div><div class="upvotejs" data-commid="37478" id="runoobvote-id-37478"><a class="upvote"></a> <span class="count">73</span></div></div><div class="comt-main" id="div-comment-37478"><p>フライウェイトパターンは、言い換えればオブジェクトの共有です。一部のオブジェクトを繰り返し作成する必要があり、最終のに単一の結果だけを得る必要がある場合に使用します。このパターンは、以前に作成された既存のオブジェクトを利用し、何らかのルールに基づいて、現在必要なオブジェクトが元のオブジェクトを変更して目的の効果を得られるかどうかを判断します。上記のチュートリアルの例のように、異なる効果を持つ20個の円を作成しますが、同じ色の円は一度だけ作成すればよく、同じ色の場合は元のオブジェクトを参照して座標値を変更するだけで済みます。このパターンでは、同じ色の円は位置が異なっていても、そのアドレスはすべて同じです。したがって、このパターンは単一の結果を重視する場合に適しています。</p><p>簡単な例を挙げると、ゲームにはさまざまな英雄キャラクターがいます。同じタイプのキャラクターにも異なる属性の英雄がいます。例えば、アサシンタイプの英雄はたくさんいます。このパターンで設計する場合、英雄が属するタイプを利用して元の同じタイプの英雄インスタンスを参照し、その対応する属性を変更することで、最終のに欲しい最新の英雄を得ることができます。例えば、最初のアサシン英雄を作成し、次に2番目のアサシン英雄を設計する必要があるとします。最初の英雄の属性を変更して2番目のアサシン英雄を得ると、最新のアサシン英雄は誕生しましたが、最初のアサシン英雄の属性も2番目と同じに変わってしまいます。このような場合は明らかに問題です。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">yjb</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   yjb</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  151***64310@163.com</p></div></span>8年前 (2018-11-27)</div></div></li><!-- #comment-## -->
 <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-51411"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   Siskin.xu</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  sis***@sohu.com</p></div><div class="upvotejs" data-commid="51411" id="runoobvote-id-51411"><a class="upvote"></a> <span class="count">2</span></div></div><div class="comt-main" id="div-comment-51411"><p>Python方式：</p>
 <pre># Flyweight Pattern with Python Code
 from abc import abstractmethod,ABCMeta
@@ -816,11 +816,11 @@ int main() {
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1120,7 +1120,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

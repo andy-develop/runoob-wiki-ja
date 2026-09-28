@@ -474,7 +474,7 @@ $ command &gt; /dev/null 2&gt;&amp;1
 </pre>
 <blockquote>
 <p><b>注意：</b>0 は標準入力（STDIN）、1 は標準出力（STDOUT）、2 は標準エラー出力（STDERR）です。</p>
-<p>ここの<strong>2</strong> 和 <strong>&gt;</strong>の間にスペースを入れてはいけません。<strong>2&gt;</strong>が一体化している場合のみエラー出力を表します。</p>
+<p>ここの<strong>2</strong>と<strong>&gt;</strong>の間にスペースを入れてはいけません。<strong>2&gt;</strong>が一体化している場合のみエラー出力を表します。</p>
 </blockquote> その他の拡張
 </div>
 </div>
@@ -613,7 +613,7 @@ $ command &gt;&gt; file 2&gt;&amp;1
 2 =&gt; stderr
 0 =&gt; stdin
 </pre>
-<p>言い換えると<span class="marked">2&gt;1</span>は、<span class="marked">stderr</span>現在のパスにあるファイル名<span class="marked">1</span>的<span class="marked">regular file</span>にリダイレクトすることを表し、<span class="marked">2&gt;&amp;1</span>は、<span class="marked">stderr</span>リダイレクトする<span class="marked">ファイルディスクリプタ</span>为<span class="marked">1</span>のファイル（すなわち<span class="marked">/dev/stdout</span>）にリダイレクトします。このファイルは<span class="marked">stdout</span>在<span class="marked">file system</span>におけるマッピングです</p>
+<p>言い換えると<span class="marked">2&gt;1</span>は、<span class="marked">stderr</span>現在のパスにあるファイル名<span class="marked">1</span>の<span class="marked">regular file</span>にリダイレクトすることを表し、<span class="marked">2&gt;&amp;1</span>は、<span class="marked">stderr</span>リダイレクトする<span class="marked">ファイルディスクリプタ</span>ために<span class="marked">1</span>のファイル（すなわち<span class="marked">/dev/stdout</span>）にリダイレクトします。このファイルは<span class="marked">stdout</span>に<span class="marked">file system</span>におけるマッピングです</p>
 <p>而<span class="marked">&amp;&gt;file</span>は特別な用法であり、... と書くこともできます<span class="marked">&gt;&amp;file</span>。両者の意味は完全に同じで、どちらも ... に相当します</p>
 <pre>
 &gt;file 2&gt;&amp;1
@@ -644,7 +644,7 @@ xxx &gt; list 2&gt;&amp;1
 <p>stdout、つまり list ファイルにリダイレクトされたため、画面にはエラーメッセージは表示されず、list ファイルに出力されました。</p>
 <p>
 <strong>cat list</strong>その中に find: unknown predicate `-names' が含まれているのを確認できます。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">Jinke2017</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   Jinke2017</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  hjk***jddbd@qq.com</p></div></span>8年前 (2018-09-21)</div></div></li><!-- #comment-## -->
-<li class="comment even thread-even depth-1" id="comment-37440"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>闪亮的马路</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  152***71596@126.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="http://blog.sina.com.cn/s/blog_4b9eab320101f1j6.html" rel="nofollow" target="_blank">参考URL</a></p></div><div class="upvotejs" data-commid="37440" id="runoobvote-id-37440"><a class="upvote"></a> <span class="count">33</span></div></div><div class="comt-main" id="div-comment-37440"><p>FreeBSD または csh で直接使用すると<span class="marked">command &gt; file 2&gt;&amp;1</span>次のエラーが発生します：<strong>Ambiguous output redirect</strong>。</p><p>エラーの原因は、FreeBSD がデフォルトで csh を使用しているためです。csh で標準出力とエラー出力を同時に1つのファイルにリダイレクトしたい場合は、次のコマンドを使用する必要があります。<span class="marked">command &gt;&amp; file</span>。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">闪亮的马路</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>闪亮的马路</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  152***71596@126.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="http://blog.sina.com.cn/s/blog_4b9eab320101f1j6.html" rel="nofollow" target="_blank">参考URL</a></p></div></span>8年前 (2018-11-26)</div></div></li><!-- #comment-## -->
+<li class="comment even thread-even depth-1" id="comment-37440"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>輝く道路</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  152***71596@126.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="http://blog.sina.com.cn/s/blog_4b9eab320101f1j6.html" rel="nofollow" target="_blank">参考URL</a></p></div><div class="upvotejs" data-commid="37440" id="runoobvote-id-37440"><a class="upvote"></a> <span class="count">33</span></div></div><div class="comt-main" id="div-comment-37440"><p>FreeBSD または csh で直接使用すると<span class="marked">command &gt; file 2&gt;&amp;1</span>次のエラーが発生します：<strong>Ambiguous output redirect</strong>。</p><p>エラーの原因は、FreeBSD がデフォルトで csh を使用しているためです。csh で標準出力とエラー出力を同時に1つのファイルにリダイレクトしたい場合は、次のコマンドを使用する必要があります。<span class="marked">command &gt;&amp; file</span>。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">輝く道路</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>輝く道路</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  152***71596@126.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="http://blog.sina.com.cn/s/blog_4b9eab320101f1j6.html" rel="nofollow" target="_blank">参考URL</a></p></div></span>8年前 (2018-11-26)</div></div></li><!-- #comment-## -->
 </ol>
 <div class="pagenav">
 </div>
@@ -652,11 +652,11 @@ xxx &gt; list 2&gt;&amp;1
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -956,7 +956,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

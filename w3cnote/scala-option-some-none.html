@@ -84,9 +84,9 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <!-- ad end-->
 <h3>null の使用を避ける</h3>
 <p>多くの言語には、オブジェクト参照が「無」であることを示す特別なキーワードまたはオブジェクトがある。Javaではそれはnullである。Javaではnullはキーワードであり、オブジェクトではないため、それに対してメソッドを呼び出すことはすべて非合法である。しかしこれは言語設計者にとって不可解な選択である。プログラマーがオブジェクトを返したいときに、なぜキーワードを返すのだろうか。</p>
-<h3>Scala 的 Option类型</h3>
+<h3>Scala の Option型</h3>
 <p>すべてのものをオブジェクトにするという目標をより一貫させるため、また関数型プログラミングの習慣に従うためにも、Scala では変数や関数の戻り値が何も参照しない可能性がある場合に Option 型を使うことを推奨しています。値がない場合は None を使います。これは Option のサブクラスです。参照する値がある場合は、その値を含めるために Some を使います。Some も Option のサブクラスです。
-None はクラスではなくオブジェクトとして宣言されています。なぜなら、そのインスタンスは一つだけでよいからです。このように、None はどことなく null キーワードに似ていますが、実際のメソッドを持つ実在のオブジェクトです。</p>
+None はクラスではなくオブジェクトとして宣言されています。なぜなら、そのインスタンスは一つだけでよいからです。このように、None はどことなく null キーワードに似ていますが、実際のメソッドを持つ実にのオブジェクトです。</p>
 <h3>应用例子</h3>
 <p>Option型の値は通常、Scalaのコレクション型（List、Mapなど）の操作の戻り値型として使われる。例えばMapのgetメソッド：</p>
 <pre>scala&gt; val capitals = Map("France"-&gt;"Paris", "Japan"-&gt;"Tokyo", "China"-&gt;"Beijing")
@@ -97,8 +97,8 @@ res0: Option[String] = Some(Paris)
 
 scala&gt; capitals get "North Pole"
 res1: Option[String] = None</pre>
-<p>OptionにはSomeとNoneという2つのサブクラスがある。プログラムがSomeを返すとき、その関数がStringを正常に渡したことを意味し、get()関数でそのStringを取得できる。プログラムがNoneを返す場合は、渡せる文字列がないことを意味する。</p>在返回 None，也就是没有 String 给你的时候，如果你还硬要调用 get() 来取得 String 的话，Scala 一样是会抛出一个 NoSuchElementException 异常给你的。
-我们也可以选用另外一个方法 getOrElse。这个方法在这个 Option 是 Some 的实例时返回对应的值，而在是 None 的实例时返回传入的参数。换句话说，传入 getOrElse 的参数实际上是默认返回值。<pre>scala&gt; capitals get "North Pole" get
+<p>OptionにはSomeとNoneという2つのサブクラスがある。プログラムがSomeを返すとき、その関数がStringを正常に渡したことを意味し、get()関数でそのStringを取得できる。プログラムがNoneを返す場合は、渡せる文字列がないことを意味する。</p>None、つまりStringが返されない場合に、それでも無理にget()を呼び出してStringを取得しようとすると、Scalaは同様にNoSuchElementException例外をスローします。
+また、別のメソッドgetOrElseを選ぶこともできます。このメソッドは、このOptionがSomeのインスタンスである場合は対応する値を返し、Noneのインスタンスである場合は渡された引数を返します。言い換えると、getOrElseに渡す引数は実際にはデフォルトの戻り値です。<pre>scala&gt; capitals get "North Pole" get
 warning: there was one feature warning; re-run with -feature for details
 java.util.NoSuchElementException: None.get
   at scala.None$.get(Option.scala:347)
@@ -165,7 +165,7 @@ length: 6</pre>
 </div>
 <div class="previous-next-links">
 <div class="previous-design-link">← <a href="./viewport-deep-understanding.html" rel="prev">viewport 深入理解</a> </div>
-<div class="next-design-link"><a href="./react-click-event-bind.html" rel="next">React 点击事件的 bind(this) 传参问题</a> →</div>
+<div class="next-design-link"><a href="./react-click-event-bind.html" rel="next">Reactのクリックイベントのbind(this)への引数渡し問題</a> →</div>
 </div>
 <style>
 .wrapper {
@@ -271,11 +271,11 @@ length: 6</pre>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=".." class="runoob-pop">登录</a>！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href="..">登录</a>！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

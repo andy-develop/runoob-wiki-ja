@@ -224,14 +224,12 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 			Dash コアコンポーネント			</a>
 <a data-p="par" href="../dash/dash-html-component.html" target="_top" title="Dash よく使うHTMLコンポーネント">
 			Dash よく使うHTMLコンポーネント			</a>
-<a data-p="par" href="../dash/dash-dcc-component.html" target="_top" title="Dash 一般的なインタラクティブコンポーネント">
-			Dash 一般的なインタラクティブコンポーネント			</a>
+<a data-p="par" href="../dash/dash-dcc-component.html" target="_top" title="Dash 一般的なインタラクティブコンポーネント">Dash 一般的なインタラクティブコンポーネント</a>
 <a data-p="par" href="../dash/dash-callback.html" target="_top" title="Dash コールバック関数">
 			Dash コールバック関数			</a>
 <a data-p="par" href="../dash/dash-dataviews-plotly.html" target="_top" title="Dash データ可視化と Plotly 統合">
 			Dash Plotly			</a>
-<a data-p="par" href="../dash/dash-dynamically-update-charts.html" target="_top" title="Dash チャートの動的更新">
-			Dash チャートの動的更新			</a>
+<a data-p="par" href="../dash/dash-dynamically-update-charts.html" target="_top" title="Dash チャートの動的更新">Dash チャートの動的更新</a>
 <a data-p="par" href="../dash/dash-tabs.html" target="_top" title="Dash マルチページレイアウト">
 			Dash マルチページレイアウト			</a>
 <a data-p="par" href="../dash/dash-css.html" target="_top" title="Dash スタイルデザイン">
@@ -253,7 +251,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>シングルページアプリケーションでは、すべてのコンテンツが1つのページ内で動的に読み込まれ更新され、ユーザーはリンクやボタンをクリックして異なるビューを切り替えます。このアーキテクチャの利点は、ユーザー体験がスムーズで、ページの読み込み速度が速いことですが、欠点はアプリケーションの規模が大きくなるにつれて、コード構造が複雑になる可能性があることです。</p>
 <p>マルチページアプリケーションは、複数の独立したページでコンテンツを整理し、各ページが独自のURLとレイアウトを持ちます。このアーキテクチャの利点は、コード構造が明確で保守が容易なことですが、欠点はページ切り替え時に一定の読み込み遅延が発生することです。</p><hr/>
 <h2>Dash マルチページレイアウトの実装</h2><p>Dash でマルチページレイアウトを実装するには、dcc.Location と dcc.Link コンポーネントを使用できます。</p><p>dcc.Location は現在のページのURLを追跡するために使用され、dcc.Link はページ間のナビゲーションに使用されます。コールバック関数を組み合わせることで、URLに応じて異なるページコンテンツを動的に読み込むことができます。</p>
-<ul><li><p>使用する<code>dcc.Location</code> 和 <code>dcc.Link</code>マルチページレイアウトを実装できます。</p></li><li><p>コールバック関数によって<code>pathname</code>ページコンテンツを動的に読み込みます。</p></li><li><p>モジュール化レイアウトとURLパラメータを組み合わせることで、より複雑なマルチページアプリケーションを構築できます。</p></li></ul>
+<ul><li><p>使用する<code>dcc.Location</code>と<code>dcc.Link</code>マルチページレイアウトを実装できます。</p></li><li><p>コールバック関数によって<code>pathname</code>ページコンテンツを動的に読み込みます。</p></li><li><p>モジュール化レイアウトとURLパラメータを組み合わせることで、より複雑なマルチページアプリケーションを構築できます。</p></li></ul>
 <h3>マルチページレイアウトの基本構造</h3><p>マルチページレイアウトの核となる考え方は、URLのパス（pathname）に応じて異なるページコンテンツを動的に読み込むことです。</p><p>以下はマルチページレイアウトを実装するための基本的な手順です：</p>
 <p><strong>ページレイアウトの定義</strong>：</p>
 <ul>
@@ -304,7 +302,7 @@ app.<span style="color: #05a;">layout</span> <span style="color: Gray;">=</span>
 </div>
 <p>上記のコードでは、<code>dcc.Location</code>コンポーネントの<code>id</code>が<code>url</code>，<code>refresh</code>パラメータが<code>False</code>に設定されており、URLが変更されてもページをリフレッシュしないことを示します。<code>html.Div(id='page-content')</code>は、異なるページのコンテンツを表示するためのプレースホルダーです。</p>
 <h3>ページレイアウトの定義</h3>
-<p>次に、異なるページのレイアウトを定義する必要があります。各ページのレイアウトは、独立した関数または変数にすることができます。例えば、2つのページのレイアウトを定義できます：<code>index_page</code> 和 <code>page1</code>。</p>
+<p>次に、異なるページのレイアウトを定義する必要があります。各ページのレイアウトは、独立した関数または変数にすることができます。例えば、2つのページのレイアウトを定義できます：<code>index_page</code>と<code>page1</code>。</p>
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
@@ -334,7 +332,7 @@ page1 <span style="color: Gray;">=</span> html.<span style="color: #05a;">Div</s
         <span style="color: Green;font-weight:bold;">return</span> index_page<br/>
 </div>
 </div>
-<p>上記のコードでは、<code>display_page</code>関数は<code>pathname</code>を入力として受け取り、<code>pathname</code>の値に応じて対応するページレイアウトを返します。もし<code>pathname</code> 是 <code>/page1</code>の場合、<code>page1</code>のレイアウトを返します。それ以外の場合は<code>index_page</code>のレイアウトを返します。</p>
+<p>上記のコードでは、<code>display_page</code>関数は<code>pathname</code>を入力として受け取り、<code>pathname</code>の値に応じて対応するページレイアウトを返します。もし<code>pathname</code>である<code>/page1</code>の場合、<code>page1</code>のレイアウトを返します。それ以外の場合は<code>index_page</code>のレイアウトを返します。</p>
 <h3>完全な例</h3>
 <p>以下は、ホームページ、「について」ページ、404ページを含む完全なDashマルチページレイアウトの例です。</p>
 <div class="example">
@@ -596,11 +594,11 @@ from pages.about import layout as about_layout</pre><hr/>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -900,7 +898,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

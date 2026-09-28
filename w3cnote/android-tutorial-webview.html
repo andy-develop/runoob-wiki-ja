@@ -366,7 +366,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 }
 </pre>
-<p><strong>質疑応答</strong>：</p><p>注意深い方ならお気づきでしょう。最初に読み込んだページに戻った後、戻るキーを何度押しても現在のAPPが終了せず、最終的には手動でbackキーをクリックしてfinishメソッドを呼び出してやっと現在のActivityを閉じることができました。これはなぜでしょうか？百度一下はすでに最初のページなのに？</p>
+<p><strong>質疑応答</strong>：</p><p>注意深い方ならお気づきでしょう。最初に読み込んだページに戻った後、戻るキーを何度押しても現在のAPPが終了せず、最終のには手動でbackキーをクリックしてfinishメソッドを呼び出してやっと現在のActivityを閉じることができました。これはなぜでしょうか？Baidu（百度）はすでに最初のページなのに？</p>
 <blockquote><p>答：実はこの原因は、URLのリダイレクトの問題によるものです。実際に百度にアクセスするとき：</p><p>私たちがロードしたのはwww.baidu.comですが、百度はリダイレクトを行い、モバイル版の百度一下ページにジャンプします。つまり実際のフローは：www.baidu.com -&gt; モバイル版百度一下 -&gt; 他のリンクを開く、となります！</p><p>上記のshouldOverrideUrlLoading()メソッドがこのように書かれていることがわかります：</p><p>
 <strong>view.loadUrl(url);return true;</strong>ユーザーが一度戻るキーをクリックすると、webviewはgoback()メソッドを一度呼び出します。上記の3つをA、B、Cの3つのサイトとします。Cで戻るをクリックすると、C -&gt; Bは問題ありません。次にB -&gt; Aとクリックすると、問題が発生します。BはAに来たにもかかわらず、リダイレクトのために再びBにジャンプしてしまい、このような繰り返しになります...これが、戻るキーをクリックしてもWebViewが終了しない理由です。解決方法：手の速さで、webviewがWebページを読み込み終える前に戻るキーを連打するのです。手が速くなければなりません、ハハ！冗談です。この問題を解決するには、shouldOverrideUrlLoadingの中身を削除して、次のように書くだけです：<strong>return false</strong>return false; を書くだけです！リダイレクトだと思わないなら、自分でURLを変更して試してみてください〜</p></blockquote>
 <hr/>
@@ -526,7 +526,7 @@ settings.setTextSize(TextSize.LARGER)；</pre>
 <p>Androidには5つの選択可能なフォントサイズが用意されています：SMALLEST(50%), SMALLER(75%), NORMAL(100%), LARGER(150%), LARGEST(200%)。</p>
 <hr/>
 <h3>要件5：WebViewのCookieデータを取得する</h3>
-<p>Cookieは実際にはユーザーの一意な識別子を表す単なる文字列であることはご存知のとおりです。一般的なシナリオは次のとおりです：ユーザーがアカウントとパスワードを入力してログインをクリックすると、ユーザーはこのCookieを使用してサーバーが提供する関連サービスにアクセスします。Cookieの取得はonPageFinsihedメソッド内に記述できます。簡単には次のように書けます：</p>
+<p>{'translated_text': '{'translated_text': 'Cookieは実際にはユーザーの一意な識別子を表す単なる文字列であることはご存知のとおりです。一般的なシナリオは次のとおりです：ユーザーがアカウントとパスワードを入力してログインをクリックすると、ユーザーはこのCookieを使用してサーバーが提供する関連サービスにアクセスします。Cookieの取得はonPageFinsihedメソッド内に記述できます。簡単には次のように書けます：'}'}</p>
 <pre>
 @Override
 public void onPageFinished(WebView view, String url) {             
@@ -663,11 +663,11 @@ WebViewDemo2：<a href="../try/download/WebViewDemo2.zip">WebViewDemo2.zip を�
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリック</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=".." class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリック</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href="..">ログイン</a>が必要です！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

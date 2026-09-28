@@ -102,7 +102,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <hr/>
 <h2>親クラスがある場合の初期化</h2>
 <p><strong>仮定:<span class="marked">Dog extends Animal</span></strong></p>
-<p>1. 最初の手順を実行し、Dog.classファイルを見つけます。次にロードプロセス中に、このクラスには基底クラスがある（extendsキーワードによる）ことがわかるため、先にAnimalクラスの一と二の手順を実行して、その静的変数とメソッドをロードします。ロードが終了したら、子クラスDogの静的変数とメソッドをロードします。</p>
+<p>最初の手順を実行し、Dog.classファイルを見つけます。次にロードプロセス中に、このクラスには基底クラスがある（extendsキーワードによる）ことがわかるため、先にAnimalクラスの一と二の手順を実行して、その静的変数とメソッドをロードします。ロードが終了したら、子クラスDogの静的変数とメソッドをロードします。</p>
 <p>Animalクラスにも親クラスがある場合は同様に繰り返します。最終的な基底クラスをルート基底クラスと呼びます。</p>
 <p><strong>注意：</strong>子クラスのstatic初期化が親クラスの静的リソースに依存する可能性があるため、先に親クラスの静的リソースをロードする必要があります。</p>
 <p>2. 次にDogオブジェクトをnewします。まずDogオブジェクトに記憶領域を割り当てます -&gt; Dogのコンストラクタに移動します -&gt; デフォルトの属性を作成します。ここで、そのコンストラクタの最初の行には暗黙のsuper()、つまり親クラスのコンストラクタがあり、この時点で親クラスAnimalのコンストラクタにジャンプします。</p>Javaはコンストラクタの補完を自動で行います。Dogの実際の暗黙的なコンストラクタは次のとおりです:<pre>Dog() { 
@@ -160,7 +160,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </span><span class="hl-comment">/*</span><span class="hl-comment">3. 子クラスの静的オブジェクトと静的メソッドを初期化します。もちろんmain関数も静的メソッドです</span><span class="hl-comment">*/</span><span class="hl-code">
 </span><span class="hl-reserved">private</span><span class="hl-code"> </span><span class="hl-types">static</span><span class="hl-code"> </span><span class="hl-types">int</span><span class="hl-code"> </span><span class="hl-identifier">x2</span><span class="hl-code"> = </span><span class="hl-identifier">print</span><span class="hl-brackets">(</span><span class="hl-quotes">"</span><span class="hl-string">static Dog.x2 initialized</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
  
-</span><span class="hl-comment">/*</span><span class="hl-comment">1. 静的mainを実行するには、まずDog.classファイルをロードする必要があります。ロードプロセス中に親クラスAnimalがあることがわかるため、
+</span><span class="hl-comment">/*</span><span class="hl-comment">静的mainを実行するには、まずDog.classファイルをロードする必要があります。ロードプロセス中に親クラスAnimalがあることがわかるため、
     *Animal.classファイルもロードする必要があります。ルート基底クラスが見つかるまで続けます。ここではAnimalです</span><span class="hl-comment">*/</span><span class="hl-code">
 </span><span class="hl-reserved">public</span><span class="hl-code"> </span><span class="hl-types">static</span><span class="hl-code"> </span><span class="hl-types">void</span><span class="hl-code"> </span><span class="hl-identifier">main</span><span class="hl-brackets">(</span><span class="hl-identifier">String</span><span class="hl-brackets">[</span><span class="hl-brackets">]</span><span class="hl-code"> </span><span class="hl-identifier">args</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
 </span><span class="hl-comment">/*</span><span class="hl-comment">4. 前述の手順が完了したらmainメソッドを実行し、文を出力します</span><span class="hl-comment">*/</span><span class="hl-code">
@@ -293,11 +293,11 @@ Main Left</pre>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックできます</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=".." class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックできます</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href="..">ログイン</a>が必要です！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

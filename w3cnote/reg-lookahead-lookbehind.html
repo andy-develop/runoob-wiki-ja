@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>正则表达式的先行断言(lookahead)和后行断言(lookbehind) | 菜鸟教程</title>
+<title>正規表現の先読み(lookahead)と後読み(lookbehind) | 初心者向けチュートリアル</title>
 <script>
 window.RUNOOB_CONFIG = {
   darkCssUrl: "https://www.runoob.com/wp-content/themes/runoob/dark-mode.css?v=1.125"
@@ -89,7 +89,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span class="marked">(?!pattern)</span>零宽负向先行断言(zero-width negative lookahead assertion)</li><li>
 <span class="marked">(?&lt;=pattern)</span>零宽正向后行断言(zero-width positive lookbehind assertion)</li><li>
 <span class="marked">(?&lt;!pattern)</span>零宽负向后行断言(zero-width negative lookbehind assertion)</li></ul>
-<p>这里面的<strong>pattern</strong>は正規表現です。</p>
+<p>この中の<strong>pattern</strong>は正規表現です。</p>
 <p>如同<span class="marked">^</span>代表开头，<span class="marked">$</span>代表结尾，<span class="marked">\b</span>単語境界と同じように、先読み断言と後読み断言も似た働きをし、特定の位置にのみマッチします。マッチングの過程で文字を消費しないため、ゼロ幅断言と呼ばれます。<strong>"零宽"</strong>ここでいう位置とは、文字列中の（各行の）最初の文字の左側、最後の文字の右側、および隣接する文字の間（文字の方向が左から右であると仮定）を指します。</p>
 <p><strong>概念说明：</strong></p>
 <ul>
@@ -101,20 +101,20 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>以下、それぞれ例を挙げて、この4つの断言の意味を説明します。</p>
 <h3>(?=pattern) 正の先読みアサーション</h3>
 <p>文字列中のある位置を表し、その位置の直後にある文字列が pattern にマッチできることを示します。</p>
-<p>例如对<strong>"a regular expression"</strong>この文字列で、regular の中の re にはマッチさせたいが、expression の中の re にはマッチさせたくない場合は、次を使います：<span class="marked">re(?=gular)</span>この式は re の右側の位置を限定し、この位置の後が gular であることを要求しますが、gular の文字を消費しません。<p><br/>
-<p><img decoding="async" src="../wp-content/uploads/2020/09/B7F44A41-BC1A-4088-8ED4-7CB0F3984991.jpg"/></p></p>式を変更します<span class="marked">re(?=gular).</span>、reg にマッチし、メタ文字<span class="marked">.</span>匹配了<strong>g</strong>、括弧のこの塊がマッチしました。<strong>e</strong> 和 <strong>g</strong>の間の位置。</p>
+<p>例えば<strong>"a regular expression"</strong>この文字列で、regular の中の re にはマッチさせたいが、expression の中の re にはマッチさせたくない場合は、次を使います：<span class="marked">re(?=gular)</span>この式は re の右側の位置を限定し、この位置の後が gular であることを要求しますが、gular の文字を消費しません。<p><br/>
+<p><img decoding="async" src="../wp-content/uploads/2020/09/B7F44A41-BC1A-4088-8ED4-7CB0F3984991.jpg"/></p></p>式を変更します<span class="marked">re(?=gular).</span>、reg にマッチし、メタ文字<span class="marked">.</span>マッチした<strong>g</strong>、括弧のこの塊がマッチしました。<strong>e</strong>と<strong>g</strong>の間の位置。</p>
 <br/>
 <p><img decoding="async" src="../wp-content/uploads/2020/09/BD357AC2-7BFC-4FDE-A1B2-2FCE1B17E641.jpg"/></p>
 <h3>(?!pattern) 負の先読みアサーション</h3>
 <p>文字列中のある位置を表し、その位置の直後にある文字列が pattern にマッチできないことを示します。</p>
-<p>例如对<strong>"regex represents regular expression"</strong>この文字列で、regex と regular 以外の re にマッチさせたい場合は、次を使います：<span class="marked">re(?!g)</span>、この式は限定しています。<strong>re</strong>右側の位置で、この位置の後は文字 g ではありません。<strong>g</strong>。</p><p>否定と肯定の違いは、その位置の後の文字が括弧内の式にマッチできるかどうかにあります。</p>
+<p>例えば<strong>"regex represents regular expression"</strong>この文字列で、regex と regular 以外の re にマッチさせたい場合は、次を使います：<span class="marked">re(?!g)</span>、この式は限定しています。<strong>re</strong>右側の位置で、この位置の後は文字 g ではありません。<strong>g</strong>。</p><p>否定と肯定の違いは、その位置の後の文字が括弧内の式にマッチできるかどうかにあります。</p>
 <p><img decoding="async" src="../wp-content/uploads/2020/09/92C72B08-2122-408E-97A2-6274417A3C16.jpg"/></p>
 <h3>(?&lt;=pattern) 正の後読みアサーション</h3>
-<p>文字列中のある位置を表し、その位置の直前にある文字列が pattern にマッチできることを示します。</p><p>例如对<strong>regex represents regular expression</strong>この文字列には4つの単語があります。単語内部の re にはマッチさせたいが、単語の先頭にある re にはマッチさせたくない場合は、次を使います：<span class="marked">(?&lt;=\w)re</span>単語内部の re では、re の前は単語文字であるはずです。</p><p>後読み断言と呼ばれるのは、正規表現エンジンが文字列と式をマッチングする際、文字列の先頭から末尾に向かって文字をスキャンし、式と一致するかを判断するからです。式中でこの断言に遭遇した場合、正規表現エンジンは文字列の前方、つまりスキャン済みの文字を確認する必要があり、スキャン方向に対して後ろ向きになるためです。</p>
+<p>文字列中のある位置を表し、その位置の直前にある文字列が pattern にマッチできることを示します。</p><p>例えば<strong>regex represents regular expression</strong>この文字列には4つの単語があります。単語内部の re にはマッチさせたいが、単語の先頭にある re にはマッチさせたくない場合は、次を使います：<span class="marked">(?&lt;=\w)re</span>単語内部の re では、re の前は単語文字であるはずです。</p><p>後読み断言と呼ばれるのは、正規表現エンジンが文字列と式をマッチングする際、文字列の先頭から末尾に向かって文字をスキャンし、式と一致するかを判断するからです。式中でこの断言に遭遇した場合、正規表現エンジンは文字列の前方、つまりスキャン済みの文字を確認する必要があり、スキャン方向に対して後ろ向きになるためです。</p>
 <p><img decoding="async" src="../wp-content/uploads/2020/09/94F6A0A8-CB0F-4EE6-A537-0FA309EF64AE.jpg"/></p>
 <h3>(?&lt;!pattern) 負の後読みアサーション</h3>
 <p>文字列中のある位置を表し、その位置の直前にある文字列が pattern にマッチできないことを示します。</p>
-<p>例如对<strong>"regex represents regular expression"</strong>この文字列で、単語の先頭にある re にマッチさせたい場合は、次を使います：<span class="marked">(?&lt;!\w)re</span>。単語の先頭の<strong>re</strong>この例では、つまり単語内部にない<strong>re</strong>，即<strong>re</strong>その前が単語文字ではない。もちろん使うこともできます。<span class="marked">\bre</span>来匹配。</p>
+<p>例えば<strong>"regex represents regular expression"</strong>この文字列で、単語の先頭にある re にマッチさせたい場合は、次を使います：<span class="marked">(?&lt;!\w)re</span>。単語の先頭の<strong>re</strong>この例では、つまり単語内部にない<strong>re</strong>，即<strong>re</strong>その前が単語文字ではない。もちろん使うこともできます。<span class="marked">\bre</span>来匹配。</p>
 <p><img decoding="async" src="../wp-content/uploads/2020/09/5226CEE8-0B90-4E89-9EE2-DFD7E45DA6B2.jpg" width="60%"/></p>
 <p>これら4つの断言を理解するには、2つの観点から考えることができます：</p>
 <ul><li>
@@ -125,7 +125,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </li></ul>
 <p>これら4つのアサーション形式の覚え方：</p><ul><li>
 <p><strong>1、先読みと後読み：</strong>后行断言<span class="marked">(?&lt;=pattern)、(?&lt;!pattern)</span>後読み断言には、小なり記号があり、それは同時に矢印でもあります。左から右へのテキスト方向では、この矢印は後ろを指しており、これも我々の感覚に合っています。小なり記号を取り除けば、先読み断言になります。</p></li><li>
-<p><strong>2、正と負：</strong>不等于<span class="marked">(!=)</span>、逻辑非<strong>(!)</strong>都是用<span class="marked">!</span>記号で表すので、次のものがあります<span class="marked">!</span>記号の形式はマッチしないこと（負）を表します；また<span class="marked">!</span>号换成<span class="marked">=</span>その記号であれば、マッチすること（正）を表します。</p>
+<p><strong>2、正と負：</strong>不等于<span class="marked">(!=)</span>、逻辑非<strong>(!)</strong>すべて使う<span class="marked">!</span>記号で表すので、次のものがあります<span class="marked">!</span>記号の形式はマッチしないこと（負）を表します；また<span class="marked">!</span>号换成<span class="marked">=</span>その記号であれば、マッチすること（正）を表します。</p>
 </li></ul>
 <p>私たちはよく正規表現を使って文字列が特定の部分文字列を含むかを検証します。文字列が特定の文字または複数の文字を含まないことを表すのも簡単で、次を使います：<span class="marked">[^...]</span>形式で十分です。では、文字列が特定の部分文字列（文字列から構成される）を含まないことを表すにはどうすればよいでしょうか？</p>
 <p>用 <span class="marked">[^...]</span>この形式では不十分で、この場合は（否定）先読み断言または後読み断言、あるいはその両方を使う必要があります。</p>
@@ -136,10 +136,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 或 
 ^(.(?!that))*this(.(?!that))*$
 </pre>
-<p>对于<strong>this is runoob test</strong>この文では、2つの式はどちらもマッチに成功しますが、<strong>this and that is runoob test</strong>すべてマッチに失敗します。</p>
+<p>に対して<strong>this is runoob test</strong>この文では、2つの式はどちらもマッチに成功しますが、<strong>this and that is runoob test</strong>すべてマッチに失敗します。</p>
 <p><img decoding="async" src="../wp-content/uploads/2020/09/0F108023-F4EF-409A-A63C-18334D4A0F3B.jpg"/></p>
 <p><img decoding="async" src="../wp-content/uploads/2020/09/DA61F6F1-4247-4E52-9EB8-198E3A90393D.jpg"/></p>
-<p>一般的な場合、これらの2つの式でほぼ要件を満たせます。極端な場合を考えると、例えば文が...で終わる場合、<strong>that</strong>开头、以<strong>that</strong>结尾、<strong>that</strong> 和 <strong>this</strong>が連続している場合、上記の式では対応できない可能性があります。例えば<strong>runoob thatthis is the case</strong>或者<strong>this is the case, not that</strong>等。</p>
+<p>一般的な場合、これらの2つの式でほぼ要件を満たせます。極端な場合を考えると、例えば文が...で終わる場合、<strong>that</strong>开头、以<strong>that</strong>结尾、<strong>that</strong>と<strong>this</strong>が連続している場合、上記の式では対応できない可能性があります。例えば<strong>runoob thatthis is the case</strong>或者<strong>this is the case, not that</strong>等。</p>
 <p>これらの断言を柔軟に活用すれば、簡単に解決できます：</p>
 <pre>^(.(?&lt;!that))*this(.(?&lt;!that))*$
 ^(.(?&lt;!that))*this((?!that).)*$
@@ -268,11 +268,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=".." class="runoob-pop">登录</a>！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href="..">登录</a>！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

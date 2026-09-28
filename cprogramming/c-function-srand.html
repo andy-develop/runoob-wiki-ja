@@ -511,7 +511,7 @@ void srand(unsigned int seed)
 <p>プロトタイプ:</p>
 <pre>void srand(unsigned seed);</pre>
 <p><strong>使用法:</strong>これは乱数シードを初期化し、シードを提供します。このシードは乱数に対応します。同じシードを使用すると、後の rand() 関数は同じ乱数を生成します。例: srand(1); は 1 を使ってシードを直接初期化します。しかし、乱数が毎回繰り返されるのを防ぐために、よくシステム時間を使用して初期化します。つまり、time 関数を使ってシステム時間を取得します。time 関数の戻り値は 1970年1月1日 00:00:00 GMT から現在までの経過秒数です。そして time_t 型のデータを (unsigned) 型に変換して srand 関数に渡します。すなわち: srand((unsigned) time(&amp;t)); もう一つのよく使う方法は、time_t 型の変数 t を定義する必要がなく、直接 srand((unsigned) time(NULL)); とすることです。パラメータを介して取得したデータがプログラムでは通常必要ないからです。</p>
-<p><strong>さらに説明すると：</strong>コンピュータは本当の乱数を生成することはできません。あらかじめ作成された規則性のない数字の並びがコンピュータ内に保存されています。これらの数字をいくつかの等しい N 個の部分に分割し、各部分に番号を付けます。srand() 関数でこの番号を取得し、その後 rand() が順番にこれらの数字を取得します。srand() の引数の値が固定されている場合、rand() が取得する数値も固定されるため、通常は srand の引数に time(NULL) を使用します。システムの時間は常に変化するので、rand() が取得する数値も常に変化し、実質的に乱数となります。ユーザーや第三者が乱数シードを設定しない限り、デフォルトでは乱数シードはシステムクロックから取得されます。プログラム内で乱数系列を生成したい場合は、乱数を生成する前に最大でも一度だけ乱数シードを設定する必要があります。</p><p><strong>すなわち：</strong>主プログラムの開始時に srand((unsigned)time(NULL)); を呼び出すだけで、後は直接 rand を使えばよいです。for ループなどの中に srand((unsigned)time(NULL)); を置かないでください。</p>
+<p><strong>さらに説明すると：</strong>コンピュータは本当の乱数を生成することはできません。あらかじめ作成された規則性のない数字の並びがコンピュータ内に保存されています。これらの数字をいくつかの等しい N 個の部分に分割し、各部分に番号を付けます。srand() 関数でこの番号を取得し、その後 rand() が順番にこれらの数字を取得します。srand() の引数の値が固定されている場合、rand() が取得する数値も固定されるため、通常は srand の引数に time(NULL) を使用します。システムの時間は常に変化するので、rand() が取得する数値も常に変化し、実質のに乱数となります。ユーザーや第三者が乱数シードを設定しない限り、デフォルトでは乱数シードはシステムクロックから取得されます。プログラム内で乱数系列を生成したい場合は、乱数を生成する前に最大でも一度だけ乱数シードを設定する必要があります。</p><p><strong>すなわち：</strong>主プログラムの開始時に srand((unsigned)time(NULL)); を呼び出すだけで、後は直接 rand を使えばよいです。for ループなどの中に srand((unsigned)time(NULL)); を置かないでください。</p>
 <pre>void test_rand(void)
     {
     unsigned long n;
@@ -529,11 +529,11 @@ void srand(unsigned int seed)
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>する必要があります！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>する必要があります！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -833,7 +833,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

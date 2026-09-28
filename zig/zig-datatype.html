@@ -159,13 +159,13 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="article">
 <div class="previous-next-links">
 <div class="previous-design-link"><i aria-hidden="true" class="fa fa-arrow-left" style="font-size:16px;"></i> <a href="../zig/zig-comments.html" rel="prev">Zig 注释</a> </div>
-<div class="next-design-link"><a href="../zig/zig-var-const.html" rel="next">Zig 变量和常量</a> <i aria-hidden="true" class="fa fa-arrow-right" style="font-size:16px;"></i></div>
+<div class="next-design-link"><a href="../zig/zig-var-const.html" rel="next">Zig の変数と定数</a> <i aria-hidden="true" class="fa fa-arrow-right" style="font-size:16px;"></i></div>
 </div>
 <div class="article-body">
 <div class="article-intro" id="content">
 <h1>Zigデータ型</h1><p>Zigは、整数、浮動小数点数、ブール値、文字、配列、スライス、構造体、列挙型、共用体、ポインターなど、多様なデータ型をサポートしています。</p>
 <p>以下の表は、Zigにおける各データ型の説明です。</p>
-<table class="reference"><thead><tr><th>データ型のカテゴリ</th><th>データ型の例</th><th>描述</th></tr></thead><tbody><tr><td>整数类型</td><td><code>i8</code>, <code>i16</code>, <code>i32</code>, <code>i64</code>, <code>isize</code></td><td>符号付き整数型、<code>isize</code>プラットフォーム依存のサイズです。</td></tr><tr><td>无符号整数</td><td><code>u8</code>, <code>u16</code>, <code>u32</code>, <code>u64</code>, <code>usize</code></td><td>符号なし整数型、<code>usize</code>プラットフォーム依存のサイズです。</td></tr><tr><td>浮点数</td><td><code>f16</code>, <code>f32</code>, <code>f64</code>, <code>f128</code></td><td>IEEE浮動小数点型。</td></tr><tr><td>布尔类型</td><td><code>bool</code></td><td>ブール型、値は<code>true</code>或<code>false</code>。</td></tr><tr><td>字符类型</td><td><code>char</code></td><td>Unicodeスカラー値。</td></tr><tr><td>复合类型</td><td><code>array</code>, <code>vector</code></td><td>固定サイズ配列と可変サイズ配列。</td></tr><tr><td>指针类型</td><td><code>*T</code>, <code>*const T</code>, <code>*mut T</code></td><td>指向<code>T</code>型の値を指すポインタ、<code>*const</code>为只读，<code>*mut</code>为可变。</td></tr><tr><td>引用类型</td><td><code>&amp;T</code>, <code>&amp;const T</code>, <code>&amp;mut T</code></td><td>对<code>T</code>型の値への参照、<code>&amp;const</code>为只读，<code>&amp;mut</code>为可变。</td></tr><tr><td>元组类型</td><td><code>(T1, T2, ...)</code></td><td>固定された個数と型の値を含む順序付けられた集合。</td></tr><tr><td>可选类型</td><td><code>?T</code></td><td>可以是<code>null</code>或者<code>T</code>类型值。</td></tr><tr><td>エラー集合型</td><td><code>error{...}</code></td><td>エラー値を含む列挙型。</td></tr><tr><td>函数类型</td><td><code>fn(T1, T2, ...) -&gt; R</code></td><td>引数を受け取り結果を返す関数型。</td></tr><tr><td>结构体类型</td><td><code>struct { ... }</code></td><td>複数のフィールドを含む複合データ型。</td></tr><tr><td>枚举类型</td><td><code>enum { ... }</code></td><td>固定数の名前付き値の集合。</td></tr><tr><td>联合体类型</td><td><code>union { ... }</code></td><td>異なる複数の型の値を格納できる型ですが、同時に格納できるのは1つの値だけです。</td></tr><tr><td>别名类型</td><td><code>alias T = U</code></td><td><code>T</code>是<code>U</code>的别名。</td></tr></tbody></table>
+<table class="reference"><thead><tr><th>データ型のカテゴリ</th><th>データ型の例</th><th>描述</th></tr></thead><tbody><tr><td>整数类型</td><td><code>i8</code>, <code>i16</code>, <code>i32</code>, <code>i64</code>, <code>isize</code></td><td>符号付き整数型、<code>isize</code>プラットフォーム依存のサイズです。</td></tr><tr><td>无符号整数</td><td><code>u8</code>, <code>u16</code>, <code>u32</code>, <code>u64</code>, <code>usize</code></td><td>符号なし整数型、<code>usize</code>プラットフォーム依存のサイズです。</td></tr><tr><td>浮点数</td><td><code>f16</code>, <code>f32</code>, <code>f64</code>, <code>f128</code></td><td>IEEE浮動小数点型。</td></tr><tr><td>布尔类型</td><td><code>bool</code></td><td>ブール型、値は<code>true</code>或<code>false</code>。</td></tr><tr><td>字符类型</td><td><code>char</code></td><td>Unicodeスカラー値。</td></tr><tr><td>复合类型</td><td><code>array</code>, <code>vector</code></td><td>固定サイズ配列と可変サイズ配列。</td></tr><tr><td>指针类型</td><td><code>*T</code>, <code>*const T</code>, <code>*mut T</code></td><td>指向<code>T</code>型の値を指すポインタ、<code>*const</code>読み取り専用で、<code>*mut</code>可変です。</td></tr><tr><td>引用类型</td><td><code>&amp;T</code>, <code>&amp;const T</code>, <code>&amp;mut T</code></td><td>に対して<code>T</code>型の値への参照、<code>&amp;const</code>読み取り専用で、<code>&amp;mut</code>可変です。</td></tr><tr><td>元组类型</td><td><code>(T1, T2, ...)</code></td><td>固定された個数と型の値を含む順序付けられた集合。</td></tr><tr><td>可选类型</td><td><code>?T</code></td><td>であり得る<code>null</code>或者<code>T</code>类型值。</td></tr><tr><td>エラー集合型</td><td><code>error{...}</code></td><td>エラー値を含む列挙型。</td></tr><tr><td>函数类型</td><td><code>fn(T1, T2, ...) -&gt; R</code></td><td>引数を受け取り結果を返す関数型。</td></tr><tr><td>结构体类型</td><td><code>struct { ... }</code></td><td>複数のフィールドを含む複合データ型。</td></tr><tr><td>枚举类型</td><td><code>enum { ... }</code></td><td>固定数の名前付き値の集合。</td></tr><tr><td>联合体类型</td><td><code>union { ... }</code></td><td>異なる複数の型の値を格納できる型ですが、同時に格納できるのは1つの値だけです。</td></tr><tr><td>别名类型</td><td><code>alias T = U</code></td><td><code>T</code>である<code>U</code>の別名。</td></tr></tbody></table>
 <h3>1、整数型</h3>
 <p>Zigは、符号付きおよび符号なし整数を含む複数の整数型を提供しており、サイズは8ビットから64ビットまでさまざまです。</p>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
@@ -278,7 +278,7 @@ pub fn main<span style="color: #008000;">(</span><span style="color: #008000;">)
 <br/>
 pub fn main<span style="color: #008000;">(</span><span style="color: #008000;">)</span> <span style="color: #05a;">void</span> <span style="color: #008000;">{</span><br/>
     var a<span style="color: #008080;">:</span> i32 <span style="color: #000080;">=</span> <span style="color: #0000DD;">10</span><span style="color: #008080;">;</span><br/>
-    <span style="color: #05a;">const</span> p<span style="color: #008080;">:</span> <span style="color: #000040;">*</span>i32 <span style="color: #000080;">=</span> <span style="color: #000040;">&amp;</span>a<span style="color: #008080;">;</span> <span style="color: #666666;">// 指向 a 的指针</span><br/>
+    <span style="color: #05a;">const</span> p<span style="color: #008080;">:</span> <span style="color: #000040;">*</span>i32 <span style="color: #000080;">=</span> <span style="color: #000040;">&amp;</span>a<span style="color: #008080;">;</span> <span style="color: #666666;">// a へのポインタ</span><br/>
 <br/>
     std.<span style="color: #007788;">debug</span>.<span style="color: #007788;">print</span><span style="color: #008000;">(</span><span style="color: #a11;">"Value: {}, Pointer: {}<span style="color: #000099; font-weight: bold;">\n</span>"</span>, .<span style="color: #008000;">{</span>a, p.<span style="color: #000040;">*</span><span style="color: #008000;">}</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <span style="color: #008000;">}</span><br/>
@@ -292,7 +292,7 @@ pub fn main<span style="color: #008000;">(</span><span style="color: #008000;">)
 </div>
 <div class="previous-next-links">
 <div class="previous-design-link"><i aria-hidden="true" class="fa fa-arrow-left" style="font-size:16px;"></i> <a href="../zig/zig-comments.html" rel="prev">Zig 注释</a> </div>
-<div class="next-design-link"><a href="../zig/zig-var-const.html" rel="next">Zig 变量和常量</a> <i aria-hidden="true" class="fa fa-arrow-right" style="font-size:16px;"></i></div>
+<div class="next-design-link"><a href="../zig/zig-var-const.html" rel="next">Zig の変数と定数</a> <i aria-hidden="true" class="fa fa-arrow-right" style="font-size:16px;"></i></div>
 </div>
 
 笔记列表
@@ -400,11 +400,11 @@ pub fn main<span style="color: #008000;">(</span><span style="color: #008000;">)
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -693,7 +693,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

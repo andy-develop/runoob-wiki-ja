@@ -424,11 +424,11 @@ async <span style="color: Green;font-weight:bold;">def</span> main<span style="c
 <span style="color: Green;font-weight:bold;">import</span> requests<br/>
 <br/>
 <span style="color: Green;font-weight:bold;">def</span> fetch_url<span style="color: Olive;">(</span>url<span style="color: Olive;">)</span>:<br/>
-    <span style="color: #a11;">"""模拟一个耗时的网络请求（同步版本）"""</span><br/>
+    <span style="color: #a11;">"""時間のかかるネットワークリクエストをシミュレートする（同期版）"""</span><br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"开始获取: {url}"</span><span style="color: Olive;">)</span><br/>
     <span style="color: #05a;">time</span>.<span style="color: #05a;">sleep</span><span style="color: Olive;">(</span><span style="color: Maroon;">2</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 模拟 2 秒网络延迟</span><br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"完成获取: {url}"</span><span style="color: Olive;">)</span><br/>
-    <span style="color: Green;font-weight:bold;">return</span> f<span style="color: #a11;">"来自 {url} 的数据"</span><br/>
+    <span style="color: Green;font-weight:bold;">return</span> f<span style="color: #a11;">"{url} からのデータ"</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">def</span> main_sync<span style="color: Olive;">(</span><span style="color: Olive;">)</span>:<br/>
     urls <span style="color: Gray;">=</span> <span style="color: Olive;">[</span>'https://example.<span style="color: #05a;">com</span>/<span style="color: Maroon;">1</span>'<span style="color: Gray;">,</span> 'https://example.<span style="color: #05a;">com</span>/<span style="color: Maroon;">2</span>'<span style="color: Gray;">,</span> 'https://example.<span style="color: #05a;">com</span>/<span style="color: Maroon;">3</span>'<span style="color: Olive;">]</span><br/>
@@ -468,21 +468,21 @@ async <span style="color: Green;font-weight:bold;">def</span> main<span style="c
 <span style="color: Green;font-weight:bold;">import</span> <span style="color: #05a;">time</span><br/>
 <br/>
 async <span style="color: Green;font-weight:bold;">def</span> fetch_url_async<span style="color: Olive;">(</span>session<span style="color: Gray;">,</span> url<span style="color: Olive;">)</span>:<br/>
-    <span style="color: #a11;">"""模拟一个耗时的网络请求（异步版本）"""</span><br/>
+    <span style="color: #a11;">"""時間のかかるネットワークリクエストをシミュレートする（非同期版）"""</span><br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"开始异步获取: {url}"</span><span style="color: Olive;">)</span><br/>
-    <span style="color: #a50"># 注意：这里我们使用 aiohttp 的异步 get 方法，并用 await 等待</span><br/>
+    <span style="color: #a50"># 注意：ここでは aiohttp の非同期 get メソッドを使用し、await で待機します。</span><br/>
     async <span style="color: Green;font-weight:bold;">with</span> session.<span style="color: #05a;">get</span><span style="color: Olive;">(</span>url<span style="color: Olive;">)</span> <span style="color: Green;font-weight:bold;">as</span> response:<br/>
         <span style="color: #a50"># 模拟处理响应也需要时间</span><br/>
         await asyncio.<span style="color: #05a;">sleep</span><span style="color: Olive;">(</span><span style="color: Maroon;">2</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 使用 asyncio.sleep 模拟 I/O 等待，它不会阻塞线程</span><br/>
         text <span style="color: Gray;">=</span> await response.<span style="color: #05a;">text</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
         <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"完成异步获取: {url}"</span><span style="color: Olive;">)</span><br/>
-        <span style="color: Green;font-weight:bold;">return</span> f<span style="color: #a11;">"来自 {url} 的数据 (长度: {len(text)})"</span><br/>
+        <span style="color: Green;font-weight:bold;">return</span> f<span style="color: #a11;">"{url} からのデータ（長さ：{len(text)}）"</span><br/>
 <br/>
 async <span style="color: Green;font-weight:bold;">def</span> main_async<span style="color: Olive;">(</span><span style="color: Olive;">)</span>:<br/>
     urls <span style="color: Gray;">=</span> <span style="color: Olive;">[</span>'https://httpbin.<span style="color: #05a;">org</span>/get'<span style="color: Gray;">,</span> 'https://httpbin.<span style="color: #05a;">org</span>/delay/<span style="color: Maroon;">1</span>'<span style="color: Gray;">,</span> 'https://httpbin.<span style="color: #05a;">org</span>/headers'<span style="color: Olive;">]</span><br/>
     <br/>
     async <span style="color: Green;font-weight:bold;">with</span> aiohttp.<span style="color: #05a;">ClientSession</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span> <span style="color: Green;font-weight:bold;">as</span> session:  <span style="color: #a50"># 创建异步 HTTP 会话</span><br/>
-        <span style="color: #a50"># 为每个 URL 创建一个任务（Task）</span><br/>
+        <span style="color: #a50"># URLごとにタスク（Task）を作成する</span><br/>
         tasks <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: Olive;">]</span><br/>
         <span style="color: Green;font-weight:bold;">for</span> url <span style="color: Green;font-weight:bold;">in</span> urls:<br/>
             <span style="color: #a50"># create_task 会将协程加入事件循环，立即开始调度</span><br/>
@@ -491,15 +491,15 @@ async <span style="color: Green;font-weight:bold;">def</span> main_async<span st
         <br/>
         <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"所有任务已创建，开始并发执行..."</span><span style="color: Olive;">)</span><br/>
         <br/>
-        <span style="color: #a50"># 使用 asyncio.gather 并发运行所有任务，并等待它们全部完成</span><br/>
-        <span style="color: #a50"># gather 返回一个结果列表，顺序与传入的任务顺序一致</span><br/>
+        <span style="color: #a50"># asyncio.gather を使用してすべてのタスクを並行実行し、それらがすべて完了するのを待ちます</span><br/>
+        <span style="color: #a50"># gather は結果のリストを返します。順序は渡されたタスクの順序と一致します。</span><br/>
         results <span style="color: Gray;">=</span> await asyncio.<span style="color: #05a;">gather</span><span style="color: Olive;">(</span>*tasks<span style="color: Olive;">)</span><br/>
         <br/>
         <span style="color: Green;font-weight:bold;">return</span> results<br/>
 <br/>
 <span style="color: Green;font-weight:bold;">if</span> __name__ <span style="color: Gray;">==</span> <span style="color: #a11;">"__main__"</span>:<br/>
     start <span style="color: Gray;">=</span> <span style="color: #05a;">time</span>.<span style="color: #05a;">time</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
-    <span style="color: #a50"># asyncio.run() 是启动事件循环并运行顶层协程的简便方法</span><br/>
+    <span style="color: #a50"># asyncio.run() はイベントループを起動し、トップレベルのコルーチンを実行する簡単な方法です</span><br/>
     final_results <span style="color: Gray;">=</span> asyncio.<span style="color: #05a;">run</span><span style="color: Olive;">(</span>main_async<span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
     end <span style="color: Gray;">=</span> <span style="color: #05a;">time</span>.<span style="color: #05a;">time</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
     <br/>
@@ -525,8 +525,8 @@ async <span style="color: Green;font-weight:bold;">def</span> main_async<span st
 </pre>
 <p><strong>コード解説</strong>：</p>
 <ul>
-<li><code>async def</code>：コルーチン関数を定義しています。<code>fetch_url_async</code> 和 <code>main_async</code>。</li>
-<li><code>await</code>：`fetch` 内<code>fetch_url_async</code>では、私たちは<code>await session.get()</code> 和 <code>await response.text()</code>、これはイベントループに「このネットワークリクエストは時間がかかるので、他の準備ができたタスクを先に実行して」と伝えています。</li>
+<li><code>async def</code>：コルーチン関数を定義しています。<code>fetch_url_async</code>と<code>main_async</code>。</li>
+<li><code>await</code>：`fetch` 内<code>fetch_url_async</code>では、私たちは<code>await session.get()</code>と<code>await response.text()</code>、これはイベントループに「このネットワークリクエストは時間がかかるので、他の準備ができたタスクを先に実行して」と伝えています。</li>
 <li><code>asyncio.create_task()</code>：`fetch(url)` を<code>fetch_url_async</code>コルーチンとしてラップし、<code>Task</code>、イベントループによってスケジュールされ、並行処理を実現します。</li>
 <li><code>asyncio.gather(*tasks)</code>：非常に実用的な関数で、渡されたすべてのコルーチン/タスクを並行実行し、それらがすべて完了するのを待って、最終的にすべての結果を収集します。</li>
 <li><code>asyncio.run(main_async())</code>：Python 3.7+ で推奨される方法で、イベントループの作成、コルーチンの実行、ループのクローズを担当します。</li>
@@ -854,7 +854,7 @@ asyncio.<span style="color: #05a;">run</span><span style="color: Olive;">(</span
 </tr>
 </tbody>
 </table>
-<h3>例</h3><p>1. 基本的なコルーチンの例</p>
+<h3>例</h3><p>基本的なコルーチンの例</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: Green;font-weight:bold;">import</span> asyncio<br/>
 <br/>
@@ -1035,11 +1035,11 @@ async <span style="color: Green;font-weight:bold;">def</span> main<span style="c
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1339,7 +1339,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

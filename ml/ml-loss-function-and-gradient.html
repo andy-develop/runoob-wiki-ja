@@ -164,7 +164,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="article-body">
 <div class="article-intro" id="content">
 <h1>損失関数と勾配</h1>
-<p>この章では、きわめて重要な2つの中核的概念を一緒に探っていきます。<strong>損失関数</strong> 和 <strong>勾配</strong>それらは機械学習アルゴリズムが<span class="marked">学習</span>和<span class="marked">改善</span>の基盤です。</p>
+<p>この章では、きわめて重要な2つの中核的概念を一緒に探っていきます。<strong>損失関数</strong>と<strong>勾配</strong>それらは機械学習アルゴリズムが<span class="marked">学習</span>と<span class="marked">改善</span>の基盤です。</p>
 <p>想像してみてください。あなたがバスケットシュートを練習しているとします。毎回投げた後、ボールが入ったか、左にそれたか、右にそれたかを観察します。この観察結果と完璧なゴールとの差が、あなたの<span class="marked">損失</span>そして次にもっと正確に投げるために、あなたは今回のずれの方向と大きさに基づいて姿勢や力を調整します。この<strong>調整の方向と大きさ</strong>は、<span class="marked">勾配</span>。</p>
 <p>機械学習では、モデルとはその<span class="marked">学習者</span>であり、損失関数はその<span class="marked">誤り度合い</span>を測定し、勾配はそれに<strong>どのように改善すべきか</strong>を伝えます。これらを理解すれば、機械学習がどのように機能するのかという中核的なロジックを掴んだことになります。</p>
 <hr/>
@@ -210,7 +210,7 @@ mse_sklearn <span style="color: Gray;">=</span> mean_squared_error<span style="c
 </div>
 </div>
 <h4><strong>交差エントロピー損失</strong>- 分類問題に適しています（カテゴリを予測、例：画像が猫か犬か）</h4>
-<p>交差エントロピーが測るのは、<strong>モデルが予測する確率分布</strong>与<strong>と真の確率分布</strong>の間の差異です。二値分類では、真の分布は通常<code>[1, 0]</code>（カテゴリA）または<code>[0, 1]</code>（カテゴリB）です。</p>
+<p>交差エントロピーが測るのは、<strong>モデルが予測する確率分布</strong>と<strong>と真の確率分布</strong>の間の差異です。二値分類では、真の分布は通常<code>[1, 0]</code>（カテゴリA）または<code>[0, 1]</code>（カテゴリB）です。</p>
 <p><strong>二値分類の公式（対数損失）</strong>：
 <code>Log Loss = - (1/n) * Σ [真实值ᵢ * log(预测概率ᵢ) + (1 - 真实值ᵢ) * log(1 - 预测概率ᵢ)]</code></p>
 <p><strong>直感的な理解</strong>：真のラベルが1の場合、モデルが予測する確率も1に近いことを望みます。もしモデルが非常に低い確率（たとえば0.1）を予測した場合、<code>log(0.1)</code>は非常に大きな負の数になり、前の負号を掛けることで損失値が非常に大きくなり、ペナルティが重いことを示します。</p>
@@ -237,7 +237,7 @@ ce_loss <span style="color: Gray;">=</span> log_loss<span style="color: Olive;">
 <h3>2.1 勾配とは？</h3>
 <p>機械学習では、モデルは通常、多くの<strong>パラメータ</strong>（または<strong>重み</strong>）から構成されます。ここで<strong>損失関数 L</strong>を、これらすべてのパラメータの関数とみなすことができます：<code>L(w1, w2, ..., wn)</code>。</p>
 <ul>
-<li><strong>勾配</strong>とは、損失関数の<strong>各パラメータ</strong>的<strong>に関する偏微分</strong>から構成されるベクトルです。</li>
+<li><strong>勾配</strong>とは、損失関数の<strong>各パラメータ</strong>の<strong>に関する偏微分</strong>から構成されるベクトルです。</li>
 <li><strong>数学的な表現</strong>：<code>∇L = [∂L/∂w1, ∂L/∂w2, ..., ∂L/∂wn]</code></li>
 <li><strong>核心的な意味</strong>：<ol>
 <li><strong>方向</strong>：勾配ベクトルが指す方向は、損失関数がその点で<strong>最も速く上昇する</strong>方向です。</li>
@@ -259,7 +259,7 @@ ce_loss <span style="color: Gray;">=</span> log_loss<span style="color: Olive;">
 <ul>
 <li><strong>勾配の計算</strong>：<code>∇L = dL/dw = 2w</code></li>
 <li><strong>パラメータ更新の公式</strong>：<code>w_new = w_old - η * (2 * w_old)</code><ul>
-<li><code>η</code> 是<strong>学習率</strong>は、各ステップの大きさを制御します。</li>
+<li><code>η</code>である<strong>学習率</strong>は、各ステップの大きさを制御します。</li>
 </ul>
 </li>
 </ul>
@@ -482,11 +482,11 @@ plt.<span style="color: #05a;">show</span><span style="color: Olive;">(</span><s
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -775,7 +775,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

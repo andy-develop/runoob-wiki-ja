@@ -513,7 +513,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <br/>
         program <span style="color: Gray;">=</span> disk.<span style="color: #05a;">load_program</span><span style="color: Olive;">(</span>program_name<span style="color: Olive;">)</span><br/>
         <span style="color: Green;font-weight:bold;">if</span> program <span style="color: Green;font-weight:bold;">is</span> <span style="color: Teal;">None</span>:<br/>
-            <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"  [DMA] エラー: プログラムが存在しないため、転送を中止"</span><span style="color: Olive;">)</span><br/>
+            <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">[DMA] エラー: プログラムが存在しないため、転送を中止</span><span style="color: Olive;">)</span><br/>
             <span style="color: Teal;">self</span>.<span style="color: #05a;">bus</span>.<span style="color: #05a;">control_bus</span> <span style="color: Gray;">=</span> <span style="color: #a11;">'IDLE'</span><br/>
             <span style="color: Green;font-weight:bold;">return</span> <span style="color: Maroon;">0</span><br/>
 <br/>
@@ -529,7 +529,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <br/>
         <span style="color: #a50"># DMA がバスを解放し、完了割り込みを送信</span><br/>
         <span style="color: Teal;">self</span>.<span style="color: #05a;">bus</span>.<span style="color: #05a;">control_bus</span> <span style="color: Gray;">=</span> <span style="color: #a11;">'DMA_ACK'</span><br/>
-        <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"  [DMA] 転送完了！合計 {len(program)} 命令、{self.total_bytes} 回のバス転送"</span><span style="color: Olive;">)</span><br/>
+        <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">[DMA] 転送完了！合計 {len(program)} 命令、{self.total_bytes} 回のバス転送</span><span style="color: Olive;">)</span><br/>
         <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"  [DMA] バス制御権を解放 (制御バス ← IDLE)"</span><span style="color: Olive;">)</span><br/>
 <br/>
         <span style="color: #a50"># 割り込みで CPU に通知</span><br/>
@@ -618,7 +618,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         <span style="color: Teal;">self</span>.<span style="color: #05a;">instructions_executed</span> <span style="color: Gray;">=</span> <span style="color: Maroon;">0</span><br/>
         <span style="color: Teal;">self</span>.<span style="color: #05a;">clock_cycles</span> <span style="color: Gray;">=</span> <span style="color: Maroon;">0</span><br/>
 <br/>
-        <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"  コンポーネント準備完了: ハードディスク, メモリ(64KB), キャッシュ(8行L1), 4つの汎用レジスタ"</span><span style="color: Olive;">)</span><br/>
+        <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">コンポーネント準備完了: ハードディスク, メモリ(64KB), キャッシュ(8行L1), 4つの汎用レジスタ</span><span style="color: Olive;">)</span><br/>
         <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"  コンポーネント準備完了: ALU, システムバス, DMAコントローラ"</span><span style="color: Olive;">)</span><br/>
         <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
@@ -768,7 +768,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <br/>
         <span style="color: Green;font-weight:bold;">elif</span> opcode <span style="color: Gray;">==</span> <span style="color: #a11;">'HALT'</span>:<br/>
             <span style="color: #a50"># HALT: 停止</span><br/>
-            <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"  操作: 停止命令、プログラム終了"</span><span style="color: Olive;">)</span><br/>
+            <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">操作: 停止命令、プログラム終了</span><span style="color: Olive;">)</span><br/>
             <span style="color: Green;font-weight:bold;">return</span> <span style="color: #a11;">'HALT'</span><br/>
 <br/>
         <span style="color: Green;font-weight:bold;">else</span>:<br/>
@@ -916,7 +916,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
         <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"{'=' * 65}"</span><span style="color: Olive;">)</span><br/>
-        <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"  レポート終了。RUNOOB FullComputer シミュレータをご利用いただきありがとうございます！"</span><span style="color: Olive;">)</span><br/>
+        <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">レポート終了。RUNOOB FullComputer シミュレータをご利用いただきありがとうございます！</span><span style="color: Olive;">)</span><br/>
         <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"{'=' * 65}"</span><span style="color: Olive;">)</span><br/>
 <br/>
 <br/>
@@ -979,7 +979,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2>実行レポートの読み解き</h2>
 <p>上記のコードを実行すると、FullComputer は詳細な実行レポートを出力します。その中の主要な指標を解読しましょう：</p>
 <h3>キャッシュヒット率</h3>
-<p>レポートに表示されるキャッシュヒット率は、プログラムの<span class="marked">時間的局所性</span>和<span class="marked">空間的局所性</span>。私たちのデモプログラムは非常に小さく、DMA が最初の4命令をプリフェッチするため、ヒット率は高くなります。実際の大規模プログラムでは、キャッシュヒット率は通常90%以上です——これこそがキャッシュが存在する意味です。</p>
+<p>レポートに表示されるキャッシュヒット率は、プログラムの<span class="marked">時間的局所性</span>と<span class="marked">空間的局所性</span>。私たちのデモプログラムは非常に小さく、DMA が最初の4命令をプリフェッチするため、ヒット率は高くなります。実際の大規模プログラムでは、キャッシュヒット率は通常90%以上です——これこそがキャッシュが存在する意味です。</p>
 <h3>CPI（命令あたりのクロックサイクル数）</h3>
 <p>私たちの簡素化されたシミュレーションでは、各命令は固定で4クロックサイクル（フェッチ-デコード-実行-ライトバック）かかり、CPI は約4です。現代のCPUはパイプラインテクノロジーにより、CPI を1に近づけることができます——つまり各クロックサイクルで1命令を完了します。</p>
 <h3>バス転送回数</h3>
@@ -1765,11 +1765,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -2069,7 +2069,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

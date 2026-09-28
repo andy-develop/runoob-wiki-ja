@@ -181,7 +181,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </ul>
 <h2 class="tutheader">查看元数据</h2>
 <p>前述の章で既に述べたように、リフレクションを使用して属性（attribute）情報を確認できます。</p>
-<p><b>System.Reflection</b>类的<b>MemberInfo</b>クラスに関連する属性（attribute）を検出するには、オブジェクトを初期化する必要があります。これを行うには、対象クラスのオブジェクトを次のように定義します。</p>
+<p><b>System.Reflection</b>クラスの<b>MemberInfo</b>クラスに関連する属性（attribute）を検出するには、オブジェクトを初期化する必要があります。これを行うには、対象クラスのオブジェクトを次のように定義します。</p>
 <pre>
 System.Reflection.MemberInfo info = typeof(MyClass);
 </pre>
@@ -194,7 +194,7 @@ System.Reflection.MemberInfo info = typeof(MyClass);
 <span style="color: #008000;">{</span><br/>
    <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #05a; font-weight: bold;">readonly</span> <span style="color: #6666CC; font-weight: bold;">string</span> Url<span style="color: #008000;">;</span><br/>
 <br/>
-   <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666CC; font-weight: bold;">string</span> Topic  <span style="color: #696969; font-style: italic;">// Topic 是一个命名（named）参数</span><br/>
+   <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666CC; font-weight: bold;">string</span> Topic  <span style="color: #696969; font-style: italic;">// Topic は名前付き（named）パラメータ</span><br/>
    <span style="color: #008000;">{</span><br/>
       <span style="color: #05a; font-weight: bold;">get</span><br/>
       <span style="color: #008000;">{</span><br/>
@@ -207,7 +207,7 @@ System.Reflection.MemberInfo info = typeof(MyClass);
       <span style="color: #008000;">}</span><br/>
    <span style="color: #008000;">}</span><br/>
 <br/>
-   <span style="color: #05a; font-weight: bold;">public</span> HelpAttribute<span style="color: #008000;">(</span><span style="color: #6666CC; font-weight: bold;">string</span> url<span style="color: #008000;">)</span>  <span style="color: #696969; font-style: italic;">// url 是一个定位（positional）参数</span><br/>
+   <span style="color: #05a; font-weight: bold;">public</span> HelpAttribute<span style="color: #008000;">(</span><span style="color: #6666CC; font-weight: bold;">string</span> url<span style="color: #008000;">)</span>  <span style="color: #696969; font-style: italic;">// url は位置（positional）引数です</span><br/>
    <span style="color: #008000;">{</span><br/>
       <span style="color: #05a; font-weight: bold;">this</span><span style="color: #008000;">.</span><span style="color: #05a;">Url</span> <span style="color: #008000;">=</span> url<span style="color: #008000;">;</span><br/>
    <span style="color: #008000;">}</span><br/>
@@ -248,7 +248,7 @@ HelpAttribute
 <span style="color: #05a; font-weight: bold;">using</span> <span style="color: #696969;">System.Reflection</span><span style="color: #008000;">;</span><br/>
 <span style="color: #05a; font-weight: bold;">namespace</span> BugFixApplication<br/>
 <span style="color: #008000;">{</span><br/>
-   <span style="color: #696969; font-style: italic;">// 一个自定义特性 BugFix 被赋给类及其成员</span><br/>
+   <span style="color: #696969; font-style: italic;">// カスタム属性 BugFix がクラスとそのメンバーに付とされます</span><br/>
    <span style="color: #008000;">[</span>AttributeUsage<span style="color: #008000;">(</span>AttributeTargets<span style="color: #008000;">.</span><span style="color: #6666CC; font-weight: bold;">Class</span> <span style="color: #008000;">|</span><br/>
    AttributeTargets<span style="color: #008000;">.</span><span style="color: #05a;">Constructor</span> <span style="color: #008000;">|</span><br/>
    AttributeTargets<span style="color: #008000;">.</span><span style="color: #05a;">Field</span> <span style="color: #008000;">|</span><br/>
@@ -339,7 +339,7 @@ HelpAttribute
          Rectangle r <span style="color: #008000;">=</span> <span style="color: #008000;">new</span> Rectangle<span style="color: #008000;">(</span><span style="color: Maroon;">4.5</span>, <span style="color: Maroon;">7.5</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
          r<span style="color: #008000;">.</span><span style="color: #05a;">Display</span><span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
          Type type <span style="color: #008000;">=</span> <span style="color: #008000;">typeof</span><span style="color: #008000;">(</span>Rectangle<span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
-         <span style="color: #696969; font-style: italic;">// 遍历 Rectangle 类的特性</span><br/>
+         <span style="color: #696969; font-style: italic;">// Rectangle クラスのプロパティを反復処理する</span><br/>
          <span style="color: #05a; font-weight: bold;">foreach</span> <span style="color: #008000;">(</span><span style="color: #6666CC; font-weight: bold;">Object</span> attributes <span style="color: #05a; font-weight: bold;">in</span> type<span style="color: #008000;">.</span><span style="color: #05a;">GetCustomAttributes</span><span style="color: #008000;">(</span><span style="color: #05a; font-weight: bold;">false</span><span style="color: #008000;">)</span><span style="color: #008000;">)</span><br/>
          <span style="color: #008000;">{</span><br/>
             DeBugInfo dbi <span style="color: #008000;">=</span> <span style="color: #008000;">(</span>DeBugInfo<span style="color: #008000;">)</span>attributes<span style="color: #008000;">;</span><br/>
@@ -538,7 +538,7 @@ foreach (MethodInfo m in type.GetMethods())
         }
     }
 }</pre>
-<p><strong>解决：</strong>将 (DeBugInfo)a 修改为 DeBugInfo dbi = a as DeBugInfo;</p>
+<p><strong>解决：</strong>「(DeBugInfo)a」を「DeBugInfo dbi = a as DeBugInfo;」に変更します。</p>
 <p>
 <strong>原因：</strong></p>
 <p>前者は強制型変換であり、異なる型の2つの値を上位または下位に変換するためエラーになります。後者は、object でオブジェクトを宣言するもので、ボックス化とボックス化解除の概念を使用しています。つまり、object はすべての型の親クラスと見なせるため、object で宣言されたオブジェクトは任意の型の値に変換できます。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">lily</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   lily</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  523***627@qq.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="https://blog.csdn.net/weixin_34038652/article/details/93840335" rel="nofollow" target="_blank">参考地址</a></p></div></span>6年前 (2020-05-23)</div></div></li><!-- #comment-## -->
@@ -699,17 +699,17 @@ namespace BugFixApplication
 }</pre>
 <p><strong>DeBugInfo dbi = (DeBugInfo)a</strong>この文がエラーになるのは、メソッド内の属性を走査したときに、～を走査してしまったからです。<strong>bool Equals(object obj)</strong>方法。</p>
 <p>このメソッドは Object 内のもので、override を使用して書き換えることができます。これらのメソッドの定義を確認すると、object 内のこれらのメソッドにはすべて～<strong>[__DynamicallyInvokable]</strong>特性。</p>
-<p>だから、ここでエラーが発生するのは<strong>__DynamicallyInvokable</strong> 和 <strong>DeBugInfo</strong>それらの間には継承関係がないためキャストできません。as キーワードを使用すると、変換が失敗した場合に dbi が null に設定されます。非nullチェックを外して試してみると、プログラムは依然としてエラーを報告します。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">fgrain</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   fgrain</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  281***9143@qq.com</p></div></span>5年前 (2022-01-14)</div></div></li><!-- #comment-## -->
+<p>だから、ここでエラーが発生するのは<strong>__DynamicallyInvokable</strong>と<strong>DeBugInfo</strong>それらの間には継承関係がないためキャストできません。as キーワードを使用すると、変換が失敗した場合に dbi が null に設定されます。非nullチェックを外して試してみると、プログラムは依然としてエラーを報告します。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">fgrain</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   fgrain</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  281***9143@qq.com</p></div></span>5年前 (2022-01-14)</div></div></li><!-- #comment-## -->
 </ol>
 </div>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -998,7 +998,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

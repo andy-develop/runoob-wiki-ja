@@ -91,7 +91,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2>1、変数に初めて値を代入する際は必ず使用する<code>var</code>キーワード</h2>
 <p>変数を宣言せずに直接代入すると、デフォルトで新しいグローバル変数になります。グローバル変数の使用はできるだけ避けるべきです。</p>
 <h2>2、使用する<code>===</code>の代わりに<code>==</code></h2>
-<p><code>==</code>和<code>!=</code>演算子は必要に応じてデータ型を自動変換します。しかし<code>===</code>和<code>!==</code>はそうではなく、値とデータ型の両方を比較します。そのため、より<code>==</code>和<code>!=</code>速いです。</p>
+<p><code>==</code>と<code>!=</code>演算子は必要に応じてデータ型を自動変換します。しかし<code>===</code>と<code>!==</code>はそうではなく、値とデータ型の両方を比較します。そのため、より<code>==</code>と<code>!=</code>速いです。</p>
 <pre>
 [10] === 10    // is false
 [10]  == 10    // is true
@@ -113,7 +113,7 @@ function Person(firstName, lastName){
 }
 var Saad = new Person("Saad", "Mousliki");
 </pre>
-<h2>6、注意して使用する<code>typeof</code>、<code>instanceof</code>和<code>contructor</code></h2>
+<h2>6、注意して使用する<code>typeof</code>、<code>instanceof</code>と<code>contructor</code></h2>
 <ul>
 <li><code>typeof</code>：JavaScriptの単項演算子で、変数のプリミティブ型を文字列として返します。注意：<code>typeof null</code>も返します<code>object</code>、ほとんどのオブジェクト型（配列Array、日付Dateなど）も返します<code>object</code></li>
 <li><code>contructor</code>：内部プロトタイププロパティ。コードで書き換えることができます</li>
@@ -273,7 +273,7 @@ num = num.toFixed(4);  // num will be equal to 2.4432
 9007199254740992 + 2 // is equal to 9007199254740994
 </pre>
 <p>なぜでしょうか？0.1 + 0.2 は 0.30000000000000004 になるからです。JavaScriptの数値はすべてIEEE 754標準に従って構築されており、内部では64ビット浮動小数点数として表現されています。詳細は<a href="http://www.2ality.com/2012/04/number-encoding.html" rel="external" target="_blank">JavaScriptにおける数値のエンコード方法</a>.</p>
-<p>を使用することで<code>toFixed()</code>和<code>toPrecision()</code>この問題を解決できます。</p>
+<p>を使用することで<code>toFixed()</code>と<code>toPrecision()</code>この問題を解決できます。</p>
 <h2>26、for-inループでオブジェクトのプロパティを調べる</h2>
 <p>次のような使い方で、反復処理の際にオブジェクトのプロトタイププロパティに入るのを防ぐことができます。</p>
 <pre>
@@ -346,10 +346,10 @@ for (var i = 0, len = arrayNumbers.length; i &lt; len; i++) {
     sum += arrayNumbers[i];  
 }
 </pre>
-<p>もう一つの利点は、<code>i</code>和<code>len</code>2つの変数は<code>for</code>ループの最初の宣言にあり、両方は一度だけ初期化されるため、次の書き方よりも速い：</p>
+<p>もう一つの利点は、<code>i</code>と<code>len</code>2つの変数は<code>for</code>ループの最初の宣言にあり、両方は一度だけ初期化されるため、次の書き方よりも速い：</p>
 <pre>for (var i = 0; i &lt; arrayNumbers.length; i++)</pre>
-<h2>35、～に渡す<code>setInterval()</code>和<code>setTimeout()</code>ときは、文字列ではなく関数を使用する</h2>
-<p>もし渡すものが<code>setTimeout()</code>和<code>setInterval()</code>文字列の場合、彼らは次のような方法で変換されます<code>eval</code>方法で変換されるため、確実に遅くなります。したがって、使用しないでください：</p>
+<h2>35、～に渡す<code>setInterval()</code>と<code>setTimeout()</code>ときは、文字列ではなく関数を使用する</h2>
+<p>もし渡すものが<code>setTimeout()</code>と<code>setInterval()</code>文字列の場合、彼らは次のような方法で変換されます<code>eval</code>方法で変換されるため、確実に遅くなります。したがって、使用しないでください：</p>
 <pre>setInterval('doSomethingPeriodically()', 1000);  
 setTimeout('doSomethingAfterFiveSeconds()', 5000);</pre>
 <p>代わりに次を使用：</p>
@@ -591,11 +591,11 @@ A[A.length] = v;
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=".." class="runoob-pop">ログイン</a>！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href="..">ログイン</a>！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

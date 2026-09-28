@@ -165,16 +165,16 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="article-intro" id="content">
 <h1>C <span class="color_h1">错误处理 -&gt; エラー処理</span></h1>
 <div class="tutintro">
-<p>C 语言不提供对错误处理的直接支持，但是作为一种系统编程语言，它以返回值的形式允许您访问底层数据。在发生错误时，大多数的 C 或 UNIX 函数调用返回 1 或 NULL，同时会设置一个错误代码 -&gt; C言語はエラー処理に対する直接のサポートを提供していませんが、システムプログラミング言語として、戻り値の形で基盤となるデータにアクセスすることを可能にします。エラーが発生した場合、ほとんどのCまたはUNIX関数呼び出しは1またはNULLを返し、同時にエラーコードを設定します。<b>errno</b>，该错误代码是全局变量，表示在函数调用期间发生了错误。您可以在 errno.h 头文件中找到各种各样的错误代码。 -&gt; このエラーコードはグローバル変数であり、関数呼び出し中にエラーが発生したことを示します。errno.h ヘッダーファイルには様々なエラーコードがあります。</p>
-<p>所以，C 程序员可以通过检查返回值，然后根据返回值决定采取哪种适当的动作。开发人员应该在程序初始化时，把 errno 设置为 0，这是一种良好的编程习惯。0 值表示程序中没有错误。 -&gt; したがって、Cプログラマーは戻り値を確認し、その戻り値に基づいて適切な動作を決定することができます。開発者はプログラムの初期化時に errno を 0 に設定するべきです。これは良いプログラミング習慣です。0 の値はプログラムにエラーがないことを示します。</p>
+<p>C言語はエラー処理に対する直接のサポートを提供していませんが、システムプログラミング言語として、戻り値の形で基盤となるデータにアクセスすることを可能にします。エラーが発生した場合、ほとんどのCまたはUNIX関数呼び出しは1またはNULLを返し、同時にエラーコードを設定します。<b>errno</b>、このエラーコードはグローバル変数であり、関数呼び出し中にエラーが発生したことを示します。errno.h ヘッダーファイルには様々なエラーコードがあります。</p>
+<p>したがって、Cプログラマーは戻り値を確認し、その戻り値に基づいて適切な動作を決定することができます。開発者はプログラムの初期化時に errno を 0 に設定するべきです。これは良いプログラミング習慣です。0 の値はプログラムにエラーがないことを示します。</p>
 </div>
-<h2 class="tutheader">errno、perror() 和 strerror() -&gt; errno、perror() と strerror()</h2>
-<p>C 语言提供了 -&gt; C言語は提供します<b>perror()</b> 和 <b>strerror()</b>函数来显示与 -&gt; 関数を使用して、関連する<b>errno</b>相关的文本消息。 -&gt; テキストメッセージを表示します。</p>
+<h2 class="tutheader">errno、perror() と strerror()</h2>
+<p>C言語は提供します -&gt; C言語は提供します<b>perror()</b>と<b>strerror()</b>関数を使用して、関連する<b>errno</b>関連するテキストメッセージ。 -&gt; テキストメッセージを表示します。</p>
 <ul class="list">
-<li><b>perror()</b>函数显示您传给它的字符串，后跟一个冒号、一个空格和当前 errno 值的文本表示形式。 -&gt; この関数は、渡した文字列の後にコロン、スペース、現在の errno 値のテキスト表現を続けて表示します。</li>
-<li><b>strerror()</b>函数，返回一个指针，指针指向当前 errno 值的文本表示形式。 -&gt; この関数は、現在の errno 値のテキスト表現を指すポインタを返します。</li>
+<li><b>perror()</b>この関数は、渡した文字列の後にコロン、スペース、現在の errno 値のテキスト表現を続けて表示します。</li>
+<li><b>strerror()</b>この関数は、現在の errno 値のテキスト表現を指すポインタを返します。</li>
 </ul>
-<p>让我们来模拟一种错误情况，尝试打开一个不存在的文件。您可以使用多种方式来输出错误消息，在这里我们使用函数来演示用法。另外有一点需要注意，您应该使用 -&gt; それでは、存在しないファイルを開こうとするエラー状況をシミュレートしてみましょう。エラーメッセージを出力するには複数の方法がありますが、ここでは関数を使用して使い方を示します。もう一点注意すべき点として、すべてのエラーを出力するには<b>stderr</b>文件流来输出所有的错误。 -&gt; ファイルストリームを使用する必要があります。</p>
+<p>それでは、存在しないファイルを開こうとするエラー状況をシミュレートしてみましょう。エラーメッセージを出力するには複数の方法がありますが、ここでは関数を使用して使い方を示します。もう一点注意すべき点として、あなたは -&gt; を使用すべきです。それでは、存在しないファイルを開こうとするエラー状況をシミュレートしてみましょう。エラーメッセージを出力するには複数の方法がありますが、ここでは関数を使用して使い方を示します。もう一点注意すべき点として、すべてのエラーを出力するには<b>stderr</b>ファイルストリームを使用してすべてのエラーを出力します。 -&gt; ファイルストリームを使用する必要があります。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code"><div class="hl-main"><span class="hl-prepro">#include</span><span class="hl-prepro"> </span><span class="hl-quotes">&lt;</span><span class="hl-string">stdio.h</span><span class="hl-quotes">&gt;</span><span class="hl-prepro"></span><span class="hl-code">
 </span><span class="hl-prepro">#include</span><span class="hl-prepro"> </span><span class="hl-quotes">&lt;</span><span class="hl-string">errno.h</span><span class="hl-quotes">&gt;</span><span class="hl-prepro"></span><span class="hl-code">
 </span><span class="hl-prepro">#include</span><span class="hl-prepro"> </span><span class="hl-quotes">&lt;</span><span class="hl-string">string.h</span><span class="hl-quotes">&gt;</span><span class="hl-prepro"></span><span class="hl-code">
@@ -198,15 +198,15 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
    </span><span class="hl-brackets">}</span><span class="hl-code">
 </span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-code">;
 </span><span class="hl-brackets">}</span></div></div></div>
-<p>当上面的代码被编译和执行时，它会产生下列结果： -&gt; 上記のコードをコンパイルして実行すると、次の結果が得られます：</p>
+<p>上記のコードをコンパイルして実行すると、次の結果が得られます：</p>
 <pre>
 错误号: 2
 通过 perror 输出错误: No such file or directory
 打开文件错误: No such file or directory
 </pre>
-<h2 class="tutheader">被零除的错误 -&gt; ゼロ除算のエラー</h2>
-<p>在进行除法运算时，如果不检查除数是否为零，则会导致一个运行时错误。 -&gt; 除算を行う際に、除数がゼロであるかどうかをチェックしないと、ランタイムエラーが発生します。</p>
-<p>为了避免这种情况发生，下面的代码在进行除法运算前会先检查除数是否为零： -&gt; このような事態を避けるために、以下のコードでは除算を行う前に除数がゼロであるかどうかをチェックします。</p>
+<h2 class="tutheader">ゼロ除算のエラー -&gt; ゼロ除算のエラー</h2>
+<p>除算を行う際に、除数がゼロであるかどうかをチェックしないと、ランタイムエラーが発生します。</p>
+<p>このような事態を避けるために、以下のコードでは除算を行う前に除数がゼロであるかどうかをチェックします。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code"><div class="hl-main"><span class="hl-prepro">#include</span><span class="hl-prepro"> </span><span class="hl-quotes">&lt;</span><span class="hl-string">stdio.h</span><span class="hl-quotes">&gt;</span><span class="hl-prepro"></span><span class="hl-code">
 </span><span class="hl-prepro">#include</span><span class="hl-prepro"> </span><span class="hl-quotes">&lt;</span><span class="hl-string">stdlib.h</span><span class="hl-quotes">&gt;</span><span class="hl-prepro"></span><span class="hl-code">
 </span><span class="hl-types">int</span><span class="hl-code"> </span><span class="hl-identifier">main</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">
@@ -216,21 +216,21 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
    </span><span class="hl-types">int</span><span class="hl-code"> </span><span class="hl-identifier">quotient</span><span class="hl-code">;
  
    </span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-identifier">divisor</span><span class="hl-code"> == </span><span class="hl-number">0</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
-</span><span class="hl-identifier">fprintf</span><span class="hl-brackets">(</span><span class="hl-identifier">stderr</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">除数为 0 退出运行... -&gt; 除数が 0 のため終了します...</span><span class="hl-special">\</span><span class="hl-string">n</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">fprintf</span><span class="hl-brackets">(</span><span class="hl-identifier">stderr</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">除数が 0 の場合、実行を終了します... -&gt; 除数が 0 のため終了します...</span><span class="hl-special">\</span><span class="hl-string">n</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
       </span><span class="hl-identifier">exit</span><span class="hl-brackets">(</span><span class="hl-code">-</span><span class="hl-number">1</span><span class="hl-brackets">)</span><span class="hl-code">;
    </span><span class="hl-brackets">}</span><span class="hl-code">
 </span><span class="hl-identifier">quotient</span><span class="hl-code"> = </span><span class="hl-identifier">dividend</span><span class="hl-code"> / </span><span class="hl-identifier">divisor</span><span class="hl-code">;
-   </span><span class="hl-identifier">fprintf</span><span class="hl-brackets">(</span><span class="hl-identifier">stderr</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">quotient 变量的值为 : %d -&gt; quotient 変数の値: %d</span><span class="hl-special">\</span><span class="hl-string">n</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-identifier">quotient</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+   </span><span class="hl-identifier">fprintf</span><span class="hl-brackets">(</span><span class="hl-identifier">stderr</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">quotient 変数の値: %d -&gt; quotient 変数の値: %d</span><span class="hl-special">\</span><span class="hl-string">n</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-identifier">quotient</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
  
    </span><span class="hl-identifier">exit</span><span class="hl-brackets">(</span><span class="hl-number">0</span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-brackets">}</span></div></div></div>
-<p>当上面的代码被编译和执行时，它会产生下列结果： -&gt; 上記のコードをコンパイルして実行すると、次の結果が得られます：</p>
+<p>上記のコードをコンパイルして実行すると、次の結果が得られます：</p>
 <pre>
 除数为 0 退出运行...
 </pre>
-<h2 class="tutheader">程序退出状态 -&gt; プログラムの終了ステータス</h2>
-<p>通常情况下，程序成功执行完一个操作正常退出的时候会带有值 EXIT_SUCCESS。在这里，EXIT_SUCCESS 是宏，它被定义为 0。 -&gt; 通常、プログラムは操作を正常に完了して終了するとき、値 EXIT_SUCCESS を持ちます。ここで、EXIT_SUCCESS はマクロであり、0 と定義されています。</p>
-<p>如果程序中存在一种错误情况，当您退出程序时，会带有状态值 EXIT_FAILURE，被定义为 -1。所以，上面的程序可以写成： -&gt; プログラムにエラー状態が存在する場合、プログラムを終了するときのステータス値は EXIT_FAILURE となり、-1 と定義されています。したがって、上記のプログラムは次のように書けます：</p>
+<h2 class="tutheader">プログラムの終了ステータス</h2>
+<p>通常、プログラムが操作を正常に完了して終了するとき、値 EXIT_SUCCESS を持ちます。ここで、EXIT_SUCCESS はマクロであり、0 と定義されています。</p>
+<p>プログラムにエラー状態が存在する場合、プログラムを終了するときにステータス値 EXIT_FAILURE が返され、-1 と定義されています。したがって、上記のプログラムは次のように書けます：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code"><div class="hl-main"><span class="hl-prepro">#include</span><span class="hl-prepro"> </span><span class="hl-quotes">&lt;</span><span class="hl-string">stdio.h</span><span class="hl-quotes">&gt;</span><span class="hl-prepro"></span><span class="hl-code">
 </span><span class="hl-prepro">#include</span><span class="hl-prepro"> </span><span class="hl-quotes">&lt;</span><span class="hl-string">stdlib.h</span><span class="hl-quotes">&gt;</span><span class="hl-prepro"></span><span class="hl-code">
 </span><span class="hl-types">int</span><span class="hl-code"> </span><span class="hl-identifier">main</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">
@@ -240,15 +240,15 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
    </span><span class="hl-types">int</span><span class="hl-code"> </span><span class="hl-identifier">quotient</span><span class="hl-code">;
  
    </span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-identifier">divisor</span><span class="hl-code"> == </span><span class="hl-number">0</span><span class="hl-brackets">)</span><span class="hl-brackets">{</span><span class="hl-code">
-</span><span class="hl-identifier">fprintf</span><span class="hl-brackets">(</span><span class="hl-identifier">stderr</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">除数为 0 退出运行... -&gt; 除数が 0 のため終了します...</span><span class="hl-special">\</span><span class="hl-string">n</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">fprintf</span><span class="hl-brackets">(</span><span class="hl-identifier">stderr</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">除数が 0 の場合、実行を終了します... -&gt; 除数が 0 のため終了します...</span><span class="hl-special">\</span><span class="hl-string">n</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
       </span><span class="hl-identifier">exit</span><span class="hl-brackets">(</span><span class="hl-identifier">EXIT_FAILURE</span><span class="hl-brackets">)</span><span class="hl-code">;
    </span><span class="hl-brackets">}</span><span class="hl-code">
 </span><span class="hl-identifier">quotient</span><span class="hl-code"> = </span><span class="hl-identifier">dividend</span><span class="hl-code"> / </span><span class="hl-identifier">divisor</span><span class="hl-code">;
-   </span><span class="hl-identifier">fprintf</span><span class="hl-brackets">(</span><span class="hl-identifier">stderr</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">quotient 变量的值为: %d -&gt; quotient 変数の値: %d</span><span class="hl-special">\</span><span class="hl-string">n</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-identifier">quotient</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+   </span><span class="hl-identifier">fprintf</span><span class="hl-brackets">(</span><span class="hl-identifier">stderr</span><span class="hl-code">, </span><span class="hl-quotes">"</span><span class="hl-string">quotient 変数の値: %d -&gt; quotient 変数の値: %d</span><span class="hl-special">\</span><span class="hl-string">n</span><span class="hl-quotes">"</span><span class="hl-code">, </span><span class="hl-identifier">quotient</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
  
    </span><span class="hl-identifier">exit</span><span class="hl-brackets">(</span><span class="hl-identifier">EXIT_SUCCESS</span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-brackets">}</span></div></div></div>
-<p>当上面的代码被编译和执行时，它会产生下列结果： -&gt; 上記のコードをコンパイルして実行すると、次の結果が得られます：</p>
+<p>上記のコードをコンパイルして実行すると、次の結果が得られます：</p>
 <pre>
 quotient 变量的值为 : 4
 </pre> 其他扩展 -&gt; その他の拡張
@@ -369,16 +369,16 @@ quotient 变量的值为 : 4
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>点我分享笔记 -&gt; クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
--> <p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>する必要があります！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+-&gt; <p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>する必要があります！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -667,7 +667,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

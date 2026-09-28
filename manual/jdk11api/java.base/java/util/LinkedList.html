@@ -138,18 +138,18 @@ loadScripts(document, 'script');</script>
 extends <a href="AbstractSequentialList.html" title="class in java.util">AbstractSequentialList</a>&lt;E&gt;
 implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;, <a href="Deque.html" title="interface in java.util">Deque</a>&lt;E&gt;, <a href="../lang/Cloneable.html" title="interface in java.lang">Cloneable</a>, <a href="../io/Serializable.html" title="interface in java.io">Serializable</a></pre>
 <div class="block">
-<span>双链表实现了<code>List</code>和<code>Deque</code>接口。</span>
+<span>双方向リストは実装している<code>List</code>と<code>Deque</code>接口。</span>
 <span>实现所有可选列表操作，并允许所有元素（包括<code>null</code> ）。</span>
-<p> <span>对于双向链表，所有操作都可以预期。</span> <span>索引到列表中的操作将从开头或结尾遍历列表，以较接近指定索引为准。</span> </p>
-<p> <span><strong>この実装は同期されていないことに注意してください。</strong></span> <span>如果多个线程同时访问链表，并且至少有一个线程在结构上修改了列表，则<i>必须</i>在外部进行同步。</span> <span>（结构修改是添加或删除一个或多个元素的任何操作;仅设置元素的值不是结构修改。）这通常通过同步自然封装列表的某个对象来完成。</span> <span>如果不存在此类对象，则应使用<a href="Collections.html#synchronizedList(java.util.List)"><code>Collections.synchronizedList</code></a>方法“包装”该列表。</span> <span>这最好在创建时完成，以防止意外地不同步访问列表：</span> </p>
+<p> <span>双方向リンクリストでは、すべての操作が予測可能です。</span> <span>リストへのインデックス操作は、指定されたインデックスにより近い方の先頭または末尾からリストを走査します。</span> </p>
+<p> <span><strong>この実装は同期されていないことに注意してください。</strong></span> <span>複数のスレッドが同時にリンクリストにアクセスし、少なくとも1つのスレッドがリストを構造のに変更した場合、<i>必须</i>外部で同期します。</span> <span>（構造変更とは、1つ以上の要素を追加または削除する操作です。要素の値を設定するだけでは構造変更ではありません。）これは通常、リストを自然にカプセル化する何らかのオブジェクトを同期することによって行われます。</span> <span>そのようなオブジェクトが存在しない場合は、使用する必要があります<a href="Collections.html#synchronizedList(java.util.List)"><code>Collections.synchronizedList</code></a>方法“包装”该列表。</span> <span>これは、作成時に行うのが最善で、リストへの誤った同期されていないアクセスを防ぎます：</span> </p>
 <pre>  <span>List list = Collections.synchronizedList(new LinkedList(...));</span> </pre>
-<p> <span>此类的<code>iterator</code>和<code>listIterator</code>方法返回的迭代器是<i>快速失败的</i> ：如果在创建迭代器之后的任何时候对列表进行结构修改，除了通过Iterator自己的<code>remove</code>或<code>add</code>方法之外，迭代器将抛出<a href="ConcurrentModificationException.html" title="java.util中的类"><code>ConcurrentModificationException</code></a> 。</span> <span>因此，在并发修改的情况下，迭代器快速而干净地失败，而不是在未来的未确定时间冒任意，非确定性行为的风险。</span> </p>
-<p> <span>请注意，迭代器的快速失败行为无法得到保证，因为一般来说，在存在不同步的并发修改时，不可能做出任何硬性保证。</span> <span>失败快速迭代器以尽力而为的方式抛出<code>ConcurrentModificationException</code> 。</span> <span>因此，编写依赖于此异常的程序以确保其正确性是错误的： <i>迭代器的快速失败行为应该仅用于检测错误。</i></span> </p>
-<p> <span>此类是<a href="../../../java.base/java/util/package-summary.html#CollectionsFramework">Java Collections Framework</a>的成员。</span> </p>
+<p> <span>このクラスの<code>iterator</code>と<code>listIterator</code>メソッドが返すイテレータは<i>フェイルファストの</i>：反復子の作成後、任意の時点でリストが構造のに変更された場合、Iterator自身のメソッドを介する場合を除き<code>remove</code>或<code>add</code>方法之外，迭代器将抛出<a href="ConcurrentModificationException.html" title="java.util中的类"><code>ConcurrentModificationException</code></a> 。</span> <span>したがって、並行変更の場合、イテレータは将来の不確定な時点で任意の非決定のな動作のリスクを冒すのではなく、迅速かつクリーンに失敗します。</span> </p>
+<p> <span>イテレータのフェイルファスト動作は保証されないことに注意してください。一般のに、同期されていない並行変更が存在する場合、厳格な保証をすることは不可能です。</span> <span>フェイルファストイテレータはベストエフォート方式でスローされます。<code>ConcurrentModificationException</code> 。</span> <span>したがって、この例外に依存してその正しさを保証するプログラムを作成することは誤りです：<i>イテレータのフェイルファスト動作は、エラーを検出するためだけに使用すべきです。</i></span> </p>
+<p> <span>このクラスは<a href="../../../java.base/java/util/package-summary.html#CollectionsFramework">Java Collections Framework</a>のメンバー。</span> </p>
 </div>
 <dl>
 <dt>
-<span class="simpleTagLabel">从以下版本开始：</span>
+<span class="simpleTagLabel">以下のバージョンから：</span>
 </dt>
 <dd>
           1.2 
@@ -202,9 +202,7 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <tr class="rowColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.util.Collection)">LinkedList</a></span>​(<a href="Collection.html" title="interface in java.util">Collection</a>&lt;? extends <a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt; c)</code></th>
 <td class="colLast">
-<div class="block">
-                按照集合的迭代器返回的顺序构造一个包含指定集合元素的列表。 
-              </div> </td>
+<div class="block">コレクションのイテレータが返す順序で、指定されたコレクションの要素を含むリストを構築します。</div> </td>
 </tr>
 </tbody>
 </table> </li>
@@ -223,7 +221,7 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 </span></caption>
 <tbody>
 <tr>
-<th class="colFirst" scope="col">变量和类型</th>
+<th class="colFirst" scope="col">変数と型</th>
 <th class="colSecond" scope="col">方法</th>
 <th class="colLast" scope="col">描述</th>
 </tr>
@@ -231,57 +229,43 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#add(int,E)">add</a></span>​(int index, <a href="LinkedList.html" title="type parameter in LinkedList">E</a> element)</code></th>
 <td class="colLast">
-<div class="block">
-                将指定元素插入此列表中的指定位置。 
-              </div> </td>
+<div class="block">指定された要素をこのリストの指定された位置に挿入します。</div> </td>
 </tr>
 <tr class="rowColor" id="i1">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#add(E)">add</a></span>​(<a href="LinkedList.html" title="type parameter in LinkedList">E</a> e)</code></th>
 <td class="colLast">
-<div class="block">
-                将指定的元素追加到此列表的末尾。 
-              </div> </td>
+<div class="block">指定された要素をこのリストの末尾に追加します。</div> </td>
 </tr>
 <tr class="altColor" id="i2">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addAll(int,java.util.Collection)">addAll</a></span>​(int index, <a href="Collection.html" title="interface in java.util">Collection</a>&lt;? extends <a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt; c)</code></th>
 <td class="colLast">
-<div class="block">
-                从指定位置开始，将指定集合中的所有元素插入此列表。 
-              </div> </td>
+<div class="block">指定された位置から、指定されたコレクション内のすべての要素をこのリストに挿入します。</div> </td>
 </tr>
 <tr class="rowColor" id="i3">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addAll(java.util.Collection)">addAll</a></span>​(<a href="Collection.html" title="interface in java.util">Collection</a>&lt;? extends <a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt; c)</code></th>
 <td class="colLast">
-<div class="block">
-                将指定集合中的所有元素按指定集合的迭代器返回的顺序附加到此列表的末尾。 
-              </div> </td>
+<div class="block">指定されたコレクション内のすべての要素を、そのコレクションのイテレータが返す順序で、このリストの末尾に追加します。</div> </td>
 </tr>
 <tr class="altColor" id="i4">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addFirst(E)">addFirst</a></span>​(<a href="LinkedList.html" title="type parameter in LinkedList">E</a> e)</code></th>
 <td class="colLast">
-<div class="block">
-                在此列表的开头插入指定的元素。 
-              </div> </td>
+<div class="block">このリストの先頭に指定された要素を挿入します。</div> </td>
 </tr>
 <tr class="rowColor" id="i5">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addLast(E)">addLast</a></span>​(<a href="LinkedList.html" title="type parameter in LinkedList">E</a> e)</code></th>
 <td class="colLast">
-<div class="block">
-                将指定的元素追加到此列表的末尾。 
-              </div> </td>
+<div class="block">指定された要素をこのリストの末尾に追加します。</div> </td>
 </tr>
 <tr class="altColor" id="i6">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#clear()">clear</a></span>()</code></th>
 <td class="colLast">
-<div class="block">
-                从此列表中删除所有元素。 
-              </div> </td>
+<div class="block">このリストからすべての要素を削除します。</div> </td>
 </tr>
 <tr class="rowColor" id="i7">
 <td class="colFirst"><code><a href="../lang/Object.html" title="class in java.lang">Object</a></code></td>
@@ -289,269 +273,208 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <td class="colLast">
 <div class="block">
                 返回此 
-               <code>LinkedList</code>的浅表副本。 
-              </div> </td>
+               <code>LinkedList</code>の浅いコピー。</div> </td>
 </tr>
 <tr class="altColor" id="i8">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#contains(java.lang.Object)">contains</a></span>​(<a href="../lang/Object.html" title="class in java.lang">Object</a> o)</code></th>
 <td class="colLast">
-<div class="block">
-                如果此列表包含指定的元素，则返回 
-               <code>true</code> 。 
+<div class="block">このリストが指定された要素を含む場合は、返します<code>true</code> 。 
               </div> </td>
 </tr>
 <tr class="rowColor" id="i9">
 <td class="colFirst"><code><a href="Iterator.html" title="interface in java.util">Iterator</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#descendingIterator()">descendingIterator</a></span>()</code></th>
 <td class="colLast">
-<div class="block">
-                以相反的顺序返回此双端队列中元素的迭代器。 
-              </div> </td>
+<div class="block">この両端キュー内の要素を逆順で返すイテレータを返します。</div> </td>
 </tr>
 <tr class="altColor" id="i10">
 <td class="colFirst"><code><a href="LinkedList.html" title="type parameter in LinkedList">E</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#element()">element</a></span>()</code></th>
 <td class="colLast">
-<div class="block">
-                检索但不删除此列表的头部（第一个元素）。 
-              </div> </td>
+<div class="block">このリストの先頭（最初の要素）を取得しますが、削除はしません。</div> </td>
 </tr>
 <tr class="rowColor" id="i11">
 <td class="colFirst"><code><a href="LinkedList.html" title="type parameter in LinkedList">E</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#get(int)">get</a></span>​(int index)</code></th>
 <td class="colLast">
-<div class="block">
-                返回此列表中指定位置的元素。 
-              </div> </td>
+<div class="block">このリストの指定された位置にある要素を返します。</div> </td>
 </tr>
 <tr class="altColor" id="i12">
 <td class="colFirst"><code><a href="LinkedList.html" title="type parameter in LinkedList">E</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getFirst()">getFirst</a></span>()</code></th>
 <td class="colLast">
-<div class="block">
-                返回此列表中的第一个元素。 
-              </div> </td>
+<div class="block">このリストの最初の要素を返します。</div> </td>
 </tr>
 <tr class="rowColor" id="i13">
 <td class="colFirst"><code><a href="LinkedList.html" title="type parameter in LinkedList">E</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getLast()">getLast</a></span>()</code></th>
 <td class="colLast">
-<div class="block">
-                返回此列表中的最后一个元素。 
-              </div> </td>
+<div class="block">このリストの最後の要素を返します。</div> </td>
 </tr>
 <tr class="altColor" id="i14">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#indexOf(java.lang.Object)">indexOf</a></span>​(<a href="../lang/Object.html" title="class in java.lang">Object</a> o)</code></th>
 <td class="colLast">
-<div class="block">
-                返回此列表中第一次出现的指定元素的索引，如果此列表不包含该元素，则返回-1。 
-              </div> </td>
+<div class="block">このリスト内で指定された要素が最初に出現するインデックスを返します。このリストにその要素が含まれていない場合は、-1を返します。</div> </td>
 </tr>
 <tr class="rowColor" id="i15">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#lastIndexOf(java.lang.Object)">lastIndexOf</a></span>​(<a href="../lang/Object.html" title="class in java.lang">Object</a> o)</code></th>
 <td class="colLast">
-<div class="block">
-                返回此列表中指定元素最后一次出现的索引，如果此列表不包含该元素，则返回-1。 
-              </div> </td>
+<div class="block">このリスト内で指定された要素が最後に出現するインデックスを返します。このリストにその要素が含まれていない場合は、-1を返します。</div> </td>
 </tr>
 <tr class="altColor" id="i16">
 <td class="colFirst"><code><a href="ListIterator.html" title="interface in java.util">ListIterator</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#listIterator(int)">listIterator</a></span>​(int index)</code></th>
 <td class="colLast">
-<div class="block">
-                从列表中的指定位置开始，返回此列表中元素的列表迭代器（按正确顺序）。 
-              </div> </td>
+<div class="block">リスト内の指定された位置から開始して、このリスト内の要素のリスト反復子を（正しい順序で）返します。</div> </td>
 </tr>
 <tr class="rowColor" id="i17">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#offer(E)">offer</a></span>​(<a href="LinkedList.html" title="type parameter in LinkedList">E</a> e)</code></th>
 <td class="colLast">
-<div class="block">
-                将指定的元素添加为此列表的尾部（最后一个元素）。 
-              </div> </td>
+<div class="block">指定された要素をこのリストの末尾（最後の要素）に追加します。</div> </td>
 </tr>
 <tr class="altColor" id="i18">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#offerFirst(E)">offerFirst</a></span>​(<a href="LinkedList.html" title="type parameter in LinkedList">E</a> e)</code></th>
 <td class="colLast">
-<div class="block">
-                在此列表的前面插入指定的元素。 
-              </div> </td>
+<div class="block">このリストの前に指定された要素を挿入します。</div> </td>
 </tr>
 <tr class="rowColor" id="i19">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#offerLast(E)">offerLast</a></span>​(<a href="LinkedList.html" title="type parameter in LinkedList">E</a> e)</code></th>
 <td class="colLast">
-<div class="block">
-                在此列表的末尾插入指定的元素。 
-              </div> </td>
+<div class="block">このリストの末尾に指定された要素を挿入します。</div> </td>
 </tr>
 <tr class="altColor" id="i20">
 <td class="colFirst"><code><a href="LinkedList.html" title="type parameter in LinkedList">E</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#peek()">peek</a></span>()</code></th>
 <td class="colLast">
-<div class="block">
-                检索但不删除此列表的头部（第一个元素）。 
-              </div> </td>
+<div class="block">このリストの先頭（最初の要素）を取得しますが、削除はしません。</div> </td>
 </tr>
 <tr class="rowColor" id="i21">
 <td class="colFirst"><code><a href="LinkedList.html" title="type parameter in LinkedList">E</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#peekFirst()">peekFirst</a></span>()</code></th>
 <td class="colLast">
-<div class="block">
-                检索但不删除此列表的第一个元素，如果此列表为空，则返回 
-               <code>null</code> 。 
+<div class="block">このリストの最初の要素を取得しますが、削除はしません。このリストが空の場合は null を返します。<code>null</code> 。 
               </div> </td>
 </tr>
 <tr class="altColor" id="i22">
 <td class="colFirst"><code><a href="LinkedList.html" title="type parameter in LinkedList">E</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#peekLast()">peekLast</a></span>()</code></th>
 <td class="colLast">
-<div class="block">
-                检索但不删除此列表的最后一个元素，如果此列表为空，则返回 
-               <code>null</code> 。 
+<div class="block">このリストの最後の要素を取得しますが、削除はしません。このリストが空の場合は、nullを返します。<code>null</code> 。 
               </div> </td>
 </tr>
 <tr class="rowColor" id="i23">
 <td class="colFirst"><code><a href="LinkedList.html" title="type parameter in LinkedList">E</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#poll()">poll</a></span>()</code></th>
 <td class="colLast">
-<div class="block">
-                检索并删除此列表的头部（第一个元素）。 
-              </div> </td>
+<div class="block">このリストの先頭（最初の要素）を検索して削除します</div> </td>
 </tr>
 <tr class="altColor" id="i24">
 <td class="colFirst"><code><a href="LinkedList.html" title="type parameter in LinkedList">E</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#pollFirst()">pollFirst</a></span>()</code></th>
 <td class="colLast">
-<div class="block">
-                检索并删除此列表的第一个元素，如果此列表为空，则返回 
-               <code>null</code> 。 
+<div class="block">このリストの最初の要素を取得して削除します。このリストが空の場合は、返します。<code>null</code> 。 
               </div> </td>
 </tr>
 <tr class="rowColor" id="i25">
 <td class="colFirst"><code><a href="LinkedList.html" title="type parameter in LinkedList">E</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#pollLast()">pollLast</a></span>()</code></th>
 <td class="colLast">
-<div class="block">
-                检索并删除此列表的最后一个元素，如果此列表为空，则返回 
-               <code>null</code> 。 
+<div class="block">このリストの最後の要素を取得して削除します。このリストが空の場合は null を返します。<code>null</code> 。 
               </div> </td>
 </tr>
 <tr class="altColor" id="i26">
 <td class="colFirst"><code><a href="LinkedList.html" title="type parameter in LinkedList">E</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#pop()">pop</a></span>()</code></th>
 <td class="colLast">
-<div class="block">
-                弹出此列表所代表的堆栈中的元素。 
-              </div> </td>
+<div class="block">このリストが表すスタックから要素をポップします。</div> </td>
 </tr>
 <tr class="rowColor" id="i27">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#push(E)">push</a></span>​(<a href="LinkedList.html" title="type parameter in LinkedList">E</a> e)</code></th>
 <td class="colLast">
-<div class="block">
-                将元素推送到此列表所表示的堆栈上。 
-              </div> </td>
+<div class="block">このリストが表すスタックに要素をプッシュします。</div> </td>
 </tr>
 <tr class="altColor" id="i28">
 <td class="colFirst"><code><a href="LinkedList.html" title="type parameter in LinkedList">E</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#remove()">remove</a></span>()</code></th>
 <td class="colLast">
-<div class="block">
-                检索并删除此列表的头部（第一个元素）。 
-              </div> </td>
+<div class="block">このリストの先頭（最初の要素）を検索して削除します</div> </td>
 </tr>
 <tr class="rowColor" id="i29">
 <td class="colFirst"><code><a href="LinkedList.html" title="type parameter in LinkedList">E</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#remove(int)">remove</a></span>​(int index)</code></th>
 <td class="colLast">
-<div class="block">
-                删除此列表中指定位置的元素。 
-              </div> </td>
+<div class="block">このリストの指定された位置にある要素を削除します。</div> </td>
 </tr>
 <tr class="altColor" id="i30">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#remove(java.lang.Object)">remove</a></span>​(<a href="../lang/Object.html" title="class in java.lang">Object</a> o)</code></th>
 <td class="colLast">
-<div class="block">
-                从该列表中删除指定元素的第一个匹配项（如果存在）。 
-              </div> </td>
+<div class="block">このリストから、指定された要素の最初の一致項目を（存在する場合）削除します。</div> </td>
 </tr>
 <tr class="rowColor" id="i31">
 <td class="colFirst"><code><a href="LinkedList.html" title="type parameter in LinkedList">E</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removeFirst()">removeFirst</a></span>()</code></th>
 <td class="colLast">
-<div class="block">
-                从此列表中删除并返回第一个元素。 
-              </div> </td>
+<div class="block">このリストから最初の要素を削除して返します。</div> </td>
 </tr>
 <tr class="altColor" id="i32">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removeFirstOccurrence(java.lang.Object)">removeFirstOccurrence</a></span>​(<a href="../lang/Object.html" title="class in java.lang">Object</a> o)</code></th>
 <td class="colLast">
-<div class="block">
-                删除此列表中第一次出现的指定元素（从头到尾遍历列表时）。 
-              </div> </td>
+<div class="block">このリスト内で最初に出現する指定された要素を削除します（リストを先頭から末尾まで走査する場合）。</div> </td>
 </tr>
 <tr class="rowColor" id="i33">
 <td class="colFirst"><code><a href="LinkedList.html" title="type parameter in LinkedList">E</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removeLast()">removeLast</a></span>()</code></th>
 <td class="colLast">
-<div class="block">
-                从此列表中删除并返回最后一个元素。 
-              </div> </td>
+<div class="block">このリストから最後の要素を削除して返します。</div> </td>
 </tr>
 <tr class="altColor" id="i34">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removeLastOccurrence(java.lang.Object)">removeLastOccurrence</a></span>​(<a href="../lang/Object.html" title="class in java.lang">Object</a> o)</code></th>
 <td class="colLast">
-<div class="block">
-                删除此列表中最后一次出现的指定元素（从头到尾遍历列表时）。 
-              </div> </td>
+<div class="block">このリスト内で最後に出現する指定された要素を削除します（リストを先頭から末尾まで走査する場合）。</div> </td>
 </tr>
 <tr class="rowColor" id="i35">
 <td class="colFirst"><code><a href="LinkedList.html" title="type parameter in LinkedList">E</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#set(int,E)">set</a></span>​(int index, <a href="LinkedList.html" title="type parameter in LinkedList">E</a> element)</code></th>
 <td class="colLast">
-<div class="block">
-                用指定的元素替换此列表中指定位置的元素。 
-              </div> </td>
+<div class="block">このリストの指定された位置にある要素を、指定された要素で置き換えます。</div> </td>
 </tr>
 <tr class="altColor" id="i36">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#size()">size</a></span>()</code></th>
 <td class="colLast">
-<div class="block">
-                返回此列表中的元素数。 
-              </div> </td>
+<div class="block">このリストの要素数を返します。</div> </td>
 </tr>
 <tr class="rowColor" id="i37">
 <td class="colFirst"><code><a href="Spliterator.html" title="interface in java.util">Spliterator</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#spliterator()">spliterator</a></span>()</code></th>
 <td class="colLast">
 <div class="block">
-<span>在此列表中的元素上创建<em><a href="Spliterator.html#binding">late-binding</a></em>和<em>故障快速</em> <a href="Spliterator.html" title="java.util中的接口"><code>Spliterator</code></a> 。</span>
+<span>このリスト内の要素上に作成<em><a href="Spliterator.html#binding">late-binding</a></em>と<em>故障快速</em> <a href="Spliterator.html" title="java.util中的接口"><code>Spliterator</code></a> 。</span>
 </div> </td>
 </tr>
 <tr class="altColor" id="i38">
 <td class="colFirst"><code><a href="../lang/Object.html" title="class in java.lang">Object</a>[]</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toArray()">toArray</a></span>()</code></th>
 <td class="colLast">
-<div class="block">
-                以适当的顺序（从第一个元素到最后一个元素）返回包含此列表中所有元素的数组。 
-              </div> </td>
+<div class="block">適切な順序（最初の要素から最後の要素まで）で、このリスト内のすべての要素を含む配列を返します。</div> </td>
 </tr>
 <tr class="rowColor" id="i39">
 <td class="colFirst"><code>&lt;T&gt; T[]</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toArray(T%5B%5D)">toArray</a></span>​(T[] a)</code></th>
 <td class="colLast">
 <div class="block">
-<span>以适当的顺序返回包含此列表中所有元素的数组（从第一个元素到最后一个元素）;</span>
-<span>返回数组的运行时类型是指定数组的运行时类型。</span>
+<span>適切な順序でこのリスト内のすべての要素を含む配列を返します（最初の要素から最後の要素まで）;</span>
+<span>返される配列の実行時型は、指定された配列の実行時型です。</span>
 </div> </td>
 </tr>
 </tbody>
@@ -610,9 +533,7 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <!-- --> </a>
 <ul class="blockListLast">
 <li class="blockList"> <h4>LinkedList</h4> <pre>public LinkedList​(<a href="Collection.html" title="interface in java.util">Collection</a>&lt;? extends <a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt; c)</pre>
-<div class="block">
-              按照集合的迭代器返回的顺序构造一个包含指定集合元素的列表。 
-            </div>
+<div class="block">コレクションのイテレータが返す順序で、指定されたコレクションの要素を含むリストを構築します。</div>
 <dl>
 <dt>
 <span class="paramLabel">参数</span>
@@ -637,16 +558,13 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <!-- --> </a>
 <ul class="blockList">
 <li class="blockList"> <h4>getFirst</h4> <pre class="methodSignature">public <a href="LinkedList.html" title="type parameter in LinkedList">E</a> getFirst()</pre>
-<div class="block">
-              返回此列表中的第一个元素。 
-            </div>
+<div class="block">このリストの最初の要素を返します。</div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Deque.html#getFirst()">getFirst</a></code>在界面 
-              <code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Deque.html#getFirst()">getFirst</a></code>インターフェースで<code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="returnLabel">结果</span>
@@ -662,16 +580,13 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <!-- --> </a>
 <ul class="blockList">
 <li class="blockList"> <h4>getLast</h4> <pre class="methodSignature">public <a href="LinkedList.html" title="type parameter in LinkedList">E</a> getLast()</pre>
-<div class="block">
-              返回此列表中的最后一个元素。 
-            </div>
+<div class="block">このリストの最後の要素を返します。</div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Deque.html#getLast()">getLast</a></code>在界面 
-              <code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Deque.html#getLast()">getLast</a></code>インターフェースで<code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="returnLabel">结果</span>
@@ -687,9 +602,7 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <!-- --> </a>
 <ul class="blockList">
 <li class="blockList"> <h4>removeFirst</h4> <pre class="methodSignature">public <a href="LinkedList.html" title="type parameter in LinkedList">E</a> removeFirst()</pre>
-<div class="block">
-              从此列表中删除并返回第一个元素。 
-            </div>
+<div class="block">このリストから最初の要素を削除して返します。</div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
@@ -712,16 +625,13 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <!-- --> </a>
 <ul class="blockList">
 <li class="blockList"> <h4>removeLast</h4> <pre class="methodSignature">public <a href="LinkedList.html" title="type parameter in LinkedList">E</a> removeLast()</pre>
-<div class="block">
-              从此列表中删除并返回最后一个元素。 
-            </div>
+<div class="block">このリストから最後の要素を削除して返します。</div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Deque.html#removeLast()">removeLast</a></code>在界面 
-              <code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Deque.html#removeLast()">removeLast</a></code>インターフェースで<code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="returnLabel">结果</span>
@@ -738,9 +648,7 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <!-- --> </a>
 <ul class="blockList">
 <li class="blockList"> <h4>addFirst</h4> <pre class="methodSignature">public void addFirst​(<a href="LinkedList.html" title="type parameter in LinkedList">E</a> e)</pre>
-<div class="block">
-              在此列表的开头插入指定的元素。 
-            </div>
+<div class="block">このリストの先頭に指定された要素を挿入します。</div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
@@ -761,7 +669,7 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <ul class="blockList">
 <li class="blockList"> <h4>addLast</h4> <pre class="methodSignature">public void addLast​(<a href="LinkedList.html" title="type parameter in LinkedList">E</a> e)</pre>
 <div class="block">
-<span>将指定的元素追加到此列表的末尾。</span>
+<span>指定された要素をこのリストの末尾に追加します。</span>
 <p> <span>此方法相当于<a href="#add(E)"><code>add(E)</code></a> 。</span> </p>
 </div>
 <dl>
@@ -783,7 +691,7 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <ul class="blockList">
 <li class="blockList"> <h4>contains</h4> <pre class="methodSignature">public boolean contains​(<a href="../lang/Object.html" title="class in java.lang">Object</a> o)</pre>
 <div class="block">
-<span>如果此列表包含指定的元素，则返回<code>true</code> 。</span>
+<span>このリストが指定された要素を含む場合は、返します<code>true</code> 。</span>
 <span>更正式地说，返回<code>true</code>当且仅当此列表包含至少一个元素<code>e</code> ，使得<code>Objects.equals(o, e)</code> 。</span>
 </div>
 <dl>
@@ -798,15 +706,13 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Deque.html#contains(java.lang.Object)">contains</a></code>在界面 
-              <code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Deque.html#contains(java.lang.Object)">contains</a></code>インターフェースで<code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="List.html#contains(java.lang.Object)">contains</a></code>在界面 
-              <code><a href="List.html" title="interface in java.util">List</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="List.html#contains(java.lang.Object)">contains</a></code>インターフェースで<code><a href="List.html" title="interface in java.util">List</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">重写：</span>
@@ -830,30 +736,25 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <!-- --> </a>
 <ul class="blockList">
 <li class="blockList"> <h4>size</h4> <pre class="methodSignature">public int size()</pre>
-<div class="block">
-              返回此列表中的元素数。 
-            </div>
+<div class="block">このリストの要素数を返します。</div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Collection.html#size()">size</a></code>在界面 
-              <code><a href="Collection.html" title="interface in java.util">Collection</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Collection.html#size()">size</a></code>インターフェースで<code><a href="Collection.html" title="interface in java.util">Collection</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Deque.html#size()">size</a></code>在界面 
-              <code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Deque.html#size()">size</a></code>インターフェースで<code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="List.html#size()">size</a></code>在界面 
-              <code><a href="List.html" title="interface in java.util">List</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="List.html#size()">size</a></code>インターフェースで<code><a href="List.html" title="interface in java.util">List</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="returnLabel">结果</span>
@@ -866,7 +767,7 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <ul class="blockList">
 <li class="blockList"> <h4>add</h4> <pre class="methodSignature">public boolean add​(<a href="LinkedList.html" title="type parameter in LinkedList">E</a> e)</pre>
 <div class="block">
-<span>将指定的元素追加到此列表的末尾。</span>
+<span>指定された要素をこのリストの末尾に追加します。</span>
 <p> <span>此方法相当于<a href="#addLast(E)"><code>addLast(E)</code></a> 。</span> </p>
 </div>
 <dl>
@@ -881,29 +782,25 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Deque.html#add(E)">add</a></code>在界面 
-              <code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Deque.html#add(E)">add</a></code>インターフェースで<code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="List.html#add(E)">add</a></code>在界面 
-              <code><a href="List.html" title="interface in java.util">List</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="List.html#add(E)">add</a></code>インターフェースで<code><a href="List.html" title="interface in java.util">List</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Queue.html#add(E)">add</a></code>在界面 
-              <code><a href="Queue.html" title="interface in java.util">Queue</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Queue.html#add(E)">add</a></code>インターフェースで<code><a href="Queue.html" title="interface in java.util">Queue</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">重写：</span>
 </dt>
 <dd>
-<code><a href="AbstractList.html#add(E)">add</a></code>在类 
-              <code><a href="AbstractList.html" title="class in java.util">AbstractList</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="AbstractList.html#add(E)">add</a></code>クラス内<code><a href="AbstractList.html" title="class in java.util">AbstractList</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="paramLabel">参数</span>
@@ -923,39 +820,35 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <ul class="blockList">
 <li class="blockList"> <h4>remove</h4> <pre class="methodSignature">public boolean remove​(<a href="../lang/Object.html" title="class in java.lang">Object</a> o)</pre>
 <div class="block">
-<span>从该列表中删除指定元素的第一个匹配项（如果存在）。</span>
+<span>このリストから、指定された要素の最初の一致項目を（存在する場合）削除します。</span>
 <span>如果此列表不包含该元素，则不会更改。</span>
-<span>更正式地，删除具有最低索引<code>i</code>的元素，使得<code>Objects.equals(o, get(i))</code> （如果存在这样的元素）。</span>
-<span>如果此列表包含指定的元素，则返回<code>true</code> （或等效地，如果此列表因调用而更改）。</span>
+<span>更正式地，删除具有最低索引<code>i</code>の要素により、<code>Objects.equals(o, get(i))</code>（そのような要素が存在する場合）。</span>
+<span>このリストが指定された要素を含む場合は、返します<code>true</code> （或等效地，如果此列表因调用而更改）。</span>
 </div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Collection.html#remove(java.lang.Object)">remove</a></code>在界面 
-              <code><a href="Collection.html" title="interface in java.util">Collection</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Collection.html#remove(java.lang.Object)">remove</a></code>インターフェースで<code><a href="Collection.html" title="interface in java.util">Collection</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Deque.html#remove(java.lang.Object)">remove</a></code>在界面 
-              <code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Deque.html#remove(java.lang.Object)">remove</a></code>インターフェースで<code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="List.html#remove(java.lang.Object)">remove</a></code>在界面 
-              <code><a href="List.html" title="interface in java.util">List</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="List.html#remove(java.lang.Object)">remove</a></code>インターフェースで<code><a href="List.html" title="interface in java.util">List</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">重写：</span>
 </dt>
 <dd>
-<code><a href="AbstractCollection.html#remove(java.lang.Object)">remove</a></code>在类 
-              <code><a href="AbstractCollection.html" title="class in java.util">AbstractCollection</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="AbstractCollection.html#remove(java.lang.Object)">remove</a></code>クラス内<code><a href="AbstractCollection.html" title="class in java.util">AbstractCollection</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="paramLabel">参数</span>
@@ -973,38 +866,34 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <ul class="blockList">
 <li class="blockList"> <h4>addAll</h4> <pre class="methodSignature">public boolean addAll​(<a href="Collection.html" title="interface in java.util">Collection</a>&lt;? extends <a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt; c)</pre>
 <div class="block">
-<span>将指定集合中的所有元素按指定集合的迭代器返回的顺序附加到此列表的末尾。</span>
-<span>如果在操作正在进行时修改了指定的集合，则此操作的行为是不确定的。</span>
-<span>（请注意，如果指定的集合是此列表，则会发生这种情况，并且它是非空的。）</span>
+<span>指定されたコレクション内のすべての要素を、そのコレクションのイテレータが返す順序で、このリストの末尾に追加します。</span>
+<span>操作の進行中に指定されたコレクションが変更された場合、この操作の動作は未定義です。</span>
+<span>（指定されたコレクションがこのリストであり、空でない場合、これが発生することに注意してください。）</span>
 </div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Collection.html#addAll(java.util.Collection)">addAll</a></code>在界面 
-              <code><a href="Collection.html" title="interface in java.util">Collection</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Collection.html#addAll(java.util.Collection)">addAll</a></code>インターフェースで<code><a href="Collection.html" title="interface in java.util">Collection</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Deque.html#addAll(java.util.Collection)">addAll</a></code>在界面 
-              <code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Deque.html#addAll(java.util.Collection)">addAll</a></code>インターフェースで<code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="List.html#addAll(java.util.Collection)">addAll</a></code>在界面 
-              <code><a href="List.html" title="interface in java.util">List</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="List.html#addAll(java.util.Collection)">addAll</a></code>インターフェースで<code><a href="List.html" title="interface in java.util">List</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">重写：</span>
 </dt>
 <dd>
-<code><a href="AbstractCollection.html#addAll(java.util.Collection)">addAll</a></code>在类 
-              <code><a href="AbstractCollection.html" title="class in java.util">AbstractCollection</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="AbstractCollection.html#addAll(java.util.Collection)">addAll</a></code>クラス内<code><a href="AbstractCollection.html" title="class in java.util">AbstractCollection</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="paramLabel">参数</span>
@@ -1034,9 +923,9 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <li class="blockList"> <h4>addAll</h4> <pre class="methodSignature">public boolean addAll​(int index,
                       <a href="Collection.html" title="interface in java.util">Collection</a>&lt;? extends <a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt; c)</pre>
 <div class="block">
-<span>从指定位置开始，将指定集合中的所有元素插入此列表。</span>
-<span>将当前位置的元素（如果有）和任何后续元素向右移动（增加其索引）。</span>
-<span>新元素将按照指定集合的迭代器返回的顺序出现在列表中。</span>
+<span>指定された位置から、指定されたコレクション内のすべての要素をこのリストに挿入します。</span>
+<span>現在位置の要素（存在する場合）および後続の任意の要素を右に移動します（インデックスを増やします）。</span>
+<span>新しい要素は、指定されたコレクションのイテレータが返す順序でリストに現れます。</span>
 </div>
 <dl>
 <dt>
@@ -1050,8 +939,7 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <span class="overrideSpecifyLabel">重写：</span>
 </dt>
 <dd>
-<code><a href="AbstractSequentialList.html#addAll(int,java.util.Collection)">addAll</a></code>在类 
-              <code><a href="AbstractSequentialList.html" title="class in java.util">AbstractSequentialList</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="AbstractSequentialList.html#addAll(int,java.util.Collection)">addAll</a></code>クラス内<code><a href="AbstractSequentialList.html" title="class in java.util">AbstractSequentialList</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="paramLabel">参数</span>
@@ -1079,23 +967,21 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <ul class="blockList">
 <li class="blockList"> <h4>clear</h4> <pre class="methodSignature">public void clear()</pre>
 <div class="block">
-<span>从此列表中删除所有元素。</span>
-<span>此调用返回后，列表将为空。</span>
+<span>このリストからすべての要素を削除します。</span>
+<span>この呼び出しが返ると、リストは空になります。</span>
 </div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Collection.html#clear()">clear</a></code>在界面 
-              <code><a href="Collection.html" title="interface in java.util">Collection</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Collection.html#clear()">clear</a></code>インターフェースで<code><a href="Collection.html" title="interface in java.util">Collection</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="List.html#clear()">clear</a></code>在界面 
-              <code><a href="List.html" title="interface in java.util">List</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="List.html#clear()">clear</a></code>インターフェースで<code><a href="List.html" title="interface in java.util">List</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">重写：</span>
@@ -1109,9 +995,7 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <!-- --> </a>
 <ul class="blockList">
 <li class="blockList"> <h4>get</h4> <pre class="methodSignature">public <a href="LinkedList.html" title="type parameter in LinkedList">E</a> get​(int index)</pre>
-<div class="block">
-              返回此列表中指定位置的元素。 
-            </div>
+<div class="block">このリストの指定された位置にある要素を返します。</div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
@@ -1149,9 +1033,7 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <ul class="blockList">
 <li class="blockList"> <h4>set</h4> <pre class="methodSignature">public <a href="LinkedList.html" title="type parameter in LinkedList">E</a> set​(int index,
              <a href="LinkedList.html" title="type parameter in LinkedList">E</a> element)</pre>
-<div class="block">
-              用指定的元素替换此列表中指定位置的元素。 
-            </div>
+<div class="block">このリストの指定された位置にある要素を、指定された要素で置き換えます。</div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
@@ -1164,8 +1046,7 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <span class="overrideSpecifyLabel">重写：</span>
 </dt>
 <dd>
-<code><a href="AbstractSequentialList.html#set(int,E)">set</a></code>在类 
-              <code><a href="AbstractSequentialList.html" title="class in java.util">AbstractSequentialList</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="AbstractSequentialList.html#set(int,E)">set</a></code>クラス内<code><a href="AbstractSequentialList.html" title="class in java.util">AbstractSequentialList</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="paramLabel">参数</span>
@@ -1192,16 +1073,15 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <li class="blockList"> <h4>add</h4> <pre class="methodSignature">public void add​(int index,
                 <a href="LinkedList.html" title="type parameter in LinkedList">E</a> element)</pre>
 <div class="block">
-<span>将指定元素插入此列表中的指定位置。</span>
-<span>将当前位置的元素（如果有）和任何后续元素向右移动（将其添加到索引中）。</span>
+<span>指定された要素をこのリストの指定された位置に挿入します。</span>
+<span>その位置にある要素（存在する場合）および後続の要素を右にシフトします（それらのインデックスに1を加えます）。</span>
 </div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="List.html#add(int,E)">add</a></code>在界面 
-              <code><a href="List.html" title="interface in java.util">List</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="List.html#add(int,E)">add</a></code>インターフェースで<code><a href="List.html" title="interface in java.util">List</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">重写：</span>
@@ -1229,24 +1109,22 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <ul class="blockList">
 <li class="blockList"> <h4>remove</h4> <pre class="methodSignature">public <a href="LinkedList.html" title="type parameter in LinkedList">E</a> remove​(int index)</pre>
 <div class="block">
-<span>删除此列表中指定位置的元素。</span>
-<span>将任何后续元素向左移位（从索引中减去一个元素）。</span>
-<span>返回从列表中删除的元素。</span>
+<span>このリストの指定された位置にある要素を削除します。</span>
+<span>後続の要素を左にシフトします（インデックスから1を減算します）。</span>
+<span>リストから削除された要素を返します。</span>
 </div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="List.html#remove(int)">remove</a></code>在界面 
-              <code><a href="List.html" title="interface in java.util">List</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="List.html#remove(int)">remove</a></code>インターフェースで<code><a href="List.html" title="interface in java.util">List</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">重写：</span>
 </dt>
 <dd>
-<code><a href="AbstractSequentialList.html#remove(int)">remove</a></code>在类 
-              <code><a href="AbstractSequentialList.html" title="class in java.util">AbstractSequentialList</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="AbstractSequentialList.html#remove(int)">remove</a></code>クラス内<code><a href="AbstractSequentialList.html" title="class in java.util">AbstractSequentialList</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="paramLabel">参数</span>
@@ -1269,23 +1147,21 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <ul class="blockList">
 <li class="blockList"> <h4>indexOf</h4> <pre class="methodSignature">public int indexOf​(<a href="../lang/Object.html" title="class in java.lang">Object</a> o)</pre>
 <div class="block">
-<span>返回此列表中第一次出现的指定元素的索引，如果此列表不包含该元素，则返回-1。</span>
-<span>更正式地，返回最低索引<code>i</code>如<code>Objects.equals(o, get(i))</code> ，如果没有这样的索引则返回-1。</span>
+<span>このリスト内で指定された要素が最初に出現するインデックスを返します。このリストにその要素が含まれていない場合は、-1を返します。</span>
+<span>更正式地，返回最低索引<code>i</code>如<code>Objects.equals(o, get(i))</code>、そのようなインデックスがない場合は -1 を返します。</span>
 </div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="List.html#indexOf(java.lang.Object)">indexOf</a></code>在界面 
-              <code><a href="List.html" title="interface in java.util">List</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="List.html#indexOf(java.lang.Object)">indexOf</a></code>インターフェースで<code><a href="List.html" title="interface in java.util">List</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">重写：</span>
 </dt>
 <dd>
-<code><a href="AbstractList.html#indexOf(java.lang.Object)">indexOf</a></code>在类 
-              <code><a href="AbstractList.html" title="class in java.util">AbstractList</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="AbstractList.html#indexOf(java.lang.Object)">indexOf</a></code>クラス内<code><a href="AbstractList.html" title="class in java.util">AbstractList</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="paramLabel">参数</span>
@@ -1302,23 +1178,21 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <ul class="blockList">
 <li class="blockList"> <h4>lastIndexOf</h4> <pre class="methodSignature">public int lastIndexOf​(<a href="../lang/Object.html" title="class in java.lang">Object</a> o)</pre>
 <div class="block">
-<span>返回此列表中指定元素最后一次出现的索引，如果此列表不包含该元素，则返回-1。</span>
-<span>更正式的是，返回最高指数<code>i</code>如<code>Objects.equals(o, get(i))</code> ，如果没有这样的指数则返回-1。</span>
+<span>このリスト内で指定された要素が最後に出現するインデックスを返します。このリストにその要素が含まれていない場合は、-1を返します。</span>
+<span>より正式には、最大のインデックスを返します。<code>i</code>如<code>Objects.equals(o, get(i))</code>、そのようなインデックスがない場合は -1 を返します。</span>
 </div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="List.html#lastIndexOf(java.lang.Object)">lastIndexOf</a></code>在界面 
-              <code><a href="List.html" title="interface in java.util">List</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="List.html#lastIndexOf(java.lang.Object)">lastIndexOf</a></code>インターフェースで<code><a href="List.html" title="interface in java.util">List</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">重写：</span>
 </dt>
 <dd>
-<code><a href="AbstractList.html#lastIndexOf(java.lang.Object)">lastIndexOf</a></code>在类 
-              <code><a href="AbstractList.html" title="class in java.util">AbstractList</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="AbstractList.html#lastIndexOf(java.lang.Object)">lastIndexOf</a></code>クラス内<code><a href="AbstractList.html" title="class in java.util">AbstractList</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="paramLabel">参数</span>
@@ -1334,23 +1208,19 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <!-- --> </a>
 <ul class="blockList">
 <li class="blockList"> <h4>peek</h4> <pre class="methodSignature">public <a href="LinkedList.html" title="type parameter in LinkedList">E</a> peek()</pre>
-<div class="block">
-              检索但不删除此列表的头部（第一个元素）。 
-            </div>
+<div class="block">このリストの先頭（最初の要素）を取得しますが、削除はしません。</div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Deque.html#peek()">peek</a></code>在界面 
-              <code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Deque.html#peek()">peek</a></code>インターフェースで<code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Queue.html#peek()">peek</a></code>在界面 
-              <code><a href="Queue.html" title="interface in java.util">Queue</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Queue.html#peek()">peek</a></code>インターフェースで<code><a href="Queue.html" title="interface in java.util">Queue</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="returnLabel">结果</span>
@@ -1358,7 +1228,7 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <dd>このリストの先頭。このリストが空の場合、<code>null</code>
 </dd>
 <dt>
-<span class="simpleTagLabel">从以下版本开始：</span>
+<span class="simpleTagLabel">以下のバージョンから：</span>
 </dt>
 <dd>
                1.5 
@@ -1368,23 +1238,19 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <!-- --> </a>
 <ul class="blockList">
 <li class="blockList"> <h4>element</h4> <pre class="methodSignature">public <a href="LinkedList.html" title="type parameter in LinkedList">E</a> element()</pre>
-<div class="block">
-              检索但不删除此列表的头部（第一个元素）。 
-            </div>
+<div class="block">このリストの先頭（最初の要素）を取得しますが、削除はしません。</div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Deque.html#element()">element</a></code>在界面 
-              <code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Deque.html#element()">element</a></code>インターフェースで<code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Queue.html#element()">element</a></code>在界面 
-              <code><a href="Queue.html" title="interface in java.util">Queue</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Queue.html#element()">element</a></code>インターフェースで<code><a href="Queue.html" title="interface in java.util">Queue</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="returnLabel">结果</span>
@@ -1396,7 +1262,7 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <dd>
 <code><a href="NoSuchElementException.html" title="class in java.util">NoSuchElementException</a></code>- このリストが空の場合</dd>
 <dt>
-<span class="simpleTagLabel">从以下版本开始：</span>
+<span class="simpleTagLabel">以下のバージョンから：</span>
 </dt>
 <dd>
                1.5 
@@ -1406,16 +1272,13 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <!-- --> </a>
 <ul class="blockList">
 <li class="blockList"> <h4>poll</h4> <pre class="methodSignature">public <a href="LinkedList.html" title="type parameter in LinkedList">E</a> poll()</pre>
-<div class="block">
-              检索并删除此列表的头部（第一个元素）。 
-            </div>
+<div class="block">このリストの先頭（最初の要素）を検索して削除します</div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Deque.html#poll()">poll</a></code>在界面 
-              <code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Deque.html#poll()">poll</a></code>インターフェースで<code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
@@ -1430,7 +1293,7 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <dd>このリストの先頭。このリストが空の場合、<code>null</code>
 </dd>
 <dt>
-<span class="simpleTagLabel">从以下版本开始：</span>
+<span class="simpleTagLabel">以下のバージョンから：</span>
 </dt>
 <dd>
                1.5 
@@ -1440,23 +1303,19 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <!-- --> </a>
 <ul class="blockList">
 <li class="blockList"> <h4>remove</h4> <pre class="methodSignature">public <a href="LinkedList.html" title="type parameter in LinkedList">E</a> remove()</pre>
-<div class="block">
-              检索并删除此列表的头部（第一个元素）。 
-            </div>
+<div class="block">このリストの先頭（最初の要素）を検索して削除します</div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Deque.html#remove()">remove</a></code>在界面 
-              <code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Deque.html#remove()">remove</a></code>インターフェースで<code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Queue.html#remove()">remove</a></code>在界面 
-              <code><a href="Queue.html" title="interface in java.util">Queue</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Queue.html#remove()">remove</a></code>インターフェースで<code><a href="Queue.html" title="interface in java.util">Queue</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="returnLabel">结果</span>
@@ -1468,7 +1327,7 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <dd>
 <code><a href="NoSuchElementException.html" title="class in java.util">NoSuchElementException</a></code>- このリストが空の場合</dd>
 <dt>
-<span class="simpleTagLabel">从以下版本开始：</span>
+<span class="simpleTagLabel">以下のバージョンから：</span>
 </dt>
 <dd>
                1.5 
@@ -1479,23 +1338,19 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <!-- --> </a>
 <ul class="blockList">
 <li class="blockList"> <h4>offer</h4> <pre class="methodSignature">public boolean offer​(<a href="LinkedList.html" title="type parameter in LinkedList">E</a> e)</pre>
-<div class="block">
-              将指定的元素添加为此列表的尾部（最后一个元素）。 
-            </div>
+<div class="block">指定された要素をこのリストの末尾（最後の要素）に追加します。</div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Deque.html#offer(E)">offer</a></code>在界面 
-              <code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Deque.html#offer(E)">offer</a></code>インターフェースで<code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Queue.html#offer(E)">offer</a></code>在界面 
-              <code><a href="Queue.html" title="interface in java.util">Queue</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Queue.html#offer(E)">offer</a></code>インターフェースで<code><a href="Queue.html" title="interface in java.util">Queue</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="paramLabel">参数</span>
@@ -1510,7 +1365,7 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
               <a href="Queue.html#offer(E)"><code>Queue.offer(E)</code></a>指定） 
              </dd>
 <dt>
-<span class="simpleTagLabel">从以下版本开始：</span>
+<span class="simpleTagLabel">以下のバージョンから：</span>
 </dt>
 <dd>
                1.5 
@@ -1521,16 +1376,13 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <!-- --> </a>
 <ul class="blockList">
 <li class="blockList"> <h4>offerFirst</h4> <pre class="methodSignature">public boolean offerFirst​(<a href="LinkedList.html" title="type parameter in LinkedList">E</a> e)</pre>
-<div class="block">
-              在此列表的前面插入指定的元素。 
-            </div>
+<div class="block">このリストの前に指定された要素を挿入します。</div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Deque.html#offerFirst(E)">offerFirst</a></code>在接口 
-              <code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Deque.html#offerFirst(E)">offerFirst</a></code>インターフェースで<code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="paramLabel">参数</span>
@@ -1545,7 +1397,7 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
               <a href="Deque.html#offerFirst(E)"><code>Deque.offerFirst(E)</code></a>指定） 
              </dd>
 <dt>
-<span class="simpleTagLabel">从以下版本开始：</span>
+<span class="simpleTagLabel">以下のバージョンから：</span>
 </dt>
 <dd>
                1.6 
@@ -1556,16 +1408,13 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <!-- --> </a>
 <ul class="blockList">
 <li class="blockList"> <h4>offerLast</h4> <pre class="methodSignature">public boolean offerLast​(<a href="LinkedList.html" title="type parameter in LinkedList">E</a> e)</pre>
-<div class="block">
-              在此列表的末尾插入指定的元素。 
-            </div>
+<div class="block">このリストの末尾に指定された要素を挿入します。</div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Deque.html#offerLast(E)">offerLast</a></code>在界面 
-              <code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Deque.html#offerLast(E)">offerLast</a></code>インターフェースで<code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="paramLabel">参数</span>
@@ -1580,7 +1429,7 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
               <a href="Deque.html#offerLast(E)"><code>Deque.offerLast(E)</code></a>指定） 
              </dd>
 <dt>
-<span class="simpleTagLabel">从以下版本开始：</span>
+<span class="simpleTagLabel">以下のバージョンから：</span>
 </dt>
 <dd>
                1.6 
@@ -1590,17 +1439,14 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <!-- --> </a>
 <ul class="blockList">
 <li class="blockList"> <h4>peekFirst</h4> <pre class="methodSignature">public <a href="LinkedList.html" title="type parameter in LinkedList">E</a> peekFirst()</pre>
-<div class="block">
-              检索但不删除此列表的第一个元素，如果此列表为空，则返回 
-             <code>null</code> 。 
+<div class="block">このリストの最初の要素を取得しますが、削除はしません。このリストが空の場合は null を返します。<code>null</code> 。 
             </div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Deque.html#peekFirst()">peekFirst</a></code>在界面 
-              <code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Deque.html#peekFirst()">peekFirst</a></code>インターフェースで<code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="returnLabel">结果</span>
@@ -1608,7 +1454,7 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <dd>このリストの最初の要素。このリストが空の場合、<code>null</code>
 </dd>
 <dt>
-<span class="simpleTagLabel">从以下版本开始：</span>
+<span class="simpleTagLabel">以下のバージョンから：</span>
 </dt>
 <dd>
                1.6 
@@ -1618,17 +1464,14 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <!-- --> </a>
 <ul class="blockList">
 <li class="blockList"> <h4>peekLast</h4> <pre class="methodSignature">public <a href="LinkedList.html" title="type parameter in LinkedList">E</a> peekLast()</pre>
-<div class="block">
-              检索但不删除此列表的最后一个元素，如果此列表为空，则返回 
-             <code>null</code> 。 
+<div class="block">このリストの最後の要素を取得しますが、削除はしません。このリストが空の場合は、nullを返します。<code>null</code> 。 
             </div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Deque.html#peekLast()">peekLast</a></code>在界面 
-              <code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Deque.html#peekLast()">peekLast</a></code>インターフェースで<code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="returnLabel">结果</span>
@@ -1636,7 +1479,7 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <dd>このリストの最後の要素。このリストが空の場合、<code>null</code>
 </dd>
 <dt>
-<span class="simpleTagLabel">从以下版本开始：</span>
+<span class="simpleTagLabel">以下のバージョンから：</span>
 </dt>
 <dd>
                1.6 
@@ -1646,17 +1489,14 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <!-- --> </a>
 <ul class="blockList">
 <li class="blockList"> <h4>pollFirst</h4> <pre class="methodSignature">public <a href="LinkedList.html" title="type parameter in LinkedList">E</a> pollFirst()</pre>
-<div class="block">
-              检索并删除此列表的第一个元素，如果此列表为空，则返回 
-             <code>null</code> 。 
+<div class="block">このリストの最初の要素を取得して削除します。このリストが空の場合は、返します。<code>null</code> 。 
             </div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Deque.html#pollFirst()">pollFirst</a></code>在界面 
-              <code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Deque.html#pollFirst()">pollFirst</a></code>インターフェースで<code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="returnLabel">结果</span>
@@ -1664,7 +1504,7 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <dd>このリストの最初の要素。このリストが空の場合、<code>null</code>
 </dd>
 <dt>
-<span class="simpleTagLabel">从以下版本开始：</span>
+<span class="simpleTagLabel">以下のバージョンから：</span>
 </dt>
 <dd>
                1.6 
@@ -1674,17 +1514,14 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <!-- --> </a>
 <ul class="blockList">
 <li class="blockList"> <h4>pollLast</h4> <pre class="methodSignature">public <a href="LinkedList.html" title="type parameter in LinkedList">E</a> pollLast()</pre>
-<div class="block">
-              检索并删除此列表的最后一个元素，如果此列表为空，则返回 
-             <code>null</code> 。 
+<div class="block">このリストの最後の要素を取得して削除します。このリストが空の場合は null を返します。<code>null</code> 。 
             </div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Deque.html#pollLast()">pollLast</a></code>在界面 
-              <code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Deque.html#pollLast()">pollLast</a></code>インターフェースで<code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="returnLabel">结果</span>
@@ -1692,7 +1529,7 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <dd>このリストの最後の要素。このリストが空の場合、<code>null</code>
 </dd>
 <dt>
-<span class="simpleTagLabel">从以下版本开始：</span>
+<span class="simpleTagLabel">以下のバージョンから：</span>
 </dt>
 <dd>
                1.6 
@@ -1704,8 +1541,8 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <ul class="blockList">
 <li class="blockList"> <h4>push</h4> <pre class="methodSignature">public void push​(<a href="LinkedList.html" title="type parameter in LinkedList">E</a> e)</pre>
 <div class="block">
-<span>将元素推送到此列表所表示的堆栈上。</span>
-<span>换句话说，将元素插入此列表的前面。</span>
+<span>このリストが表すスタックに要素をプッシュします。</span>
+<span>言い換えれば、要素をこのリストの先頭に挿入します。</span>
 <p> <span>此方法相当于<a href="#addFirst(E)"><code>addFirst(E)</code></a> 。</span> </p>
 </div>
 <dl>
@@ -1713,8 +1550,7 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Deque.html#push(E)">push</a></code>在界面 
-              <code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Deque.html#push(E)">push</a></code>インターフェースで<code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="paramLabel">参数</span>
@@ -1722,7 +1558,7 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <dd>
 <code>e</code>- プッシュする要素</dd>
 <dt>
-<span class="simpleTagLabel">从以下版本开始：</span>
+<span class="simpleTagLabel">以下のバージョンから：</span>
 </dt>
 <dd>
                1.6 
@@ -1733,8 +1569,8 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <ul class="blockList">
 <li class="blockList"> <h4>pop</h4> <pre class="methodSignature">public <a href="LinkedList.html" title="type parameter in LinkedList">E</a> pop()</pre>
 <div class="block">
-<span>弹出此列表所代表的堆栈中的元素。</span>
-<span>换句话说，删除并返回此列表的第一个元素。</span>
+<span>このリストが表すスタックから要素をポップします。</span>
+<span>言い換えると、このリストの最初の要素を削除して返します。</span>
 <p> <span>此方法相当于<a href="#removeFirst()"><code>removeFirst()</code></a> 。</span> </p>
 </div>
 <dl>
@@ -1742,8 +1578,7 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Deque.html#pop()">pop</a></code>在接口 
-              <code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Deque.html#pop()">pop</a></code>インターフェースで<code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="returnLabel">结果</span>
@@ -1755,7 +1590,7 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <dd>
 <code><a href="NoSuchElementException.html" title="class in java.util">NoSuchElementException</a></code>- このリストが空の場合</dd>
 <dt>
-<span class="simpleTagLabel">从以下版本开始：</span>
+<span class="simpleTagLabel">以下のバージョンから：</span>
 </dt>
 <dd>
                1.6 
@@ -1766,7 +1601,7 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <ul class="blockList">
 <li class="blockList"> <h4>removeFirstOccurrence</h4> <pre class="methodSignature">public boolean removeFirstOccurrence​(<a href="../lang/Object.html" title="class in java.lang">Object</a> o)</pre>
 <div class="block">
-<span>删除此列表中第一次出现的指定元素（从头到尾遍历列表时）。</span>
+<span>このリスト内で最初に出現する指定された要素を削除します（リストを先頭から末尾まで走査する場合）。</span>
 <span>如果列表不包含该元素，则不会更改。</span>
 </div>
 <dl>
@@ -1774,8 +1609,7 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Deque.html#removeFirstOccurrence(java.lang.Object)">removeFirstOccurrence</a></code>在界面 
-              <code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Deque.html#removeFirstOccurrence(java.lang.Object)">removeFirstOccurrence</a></code>インターフェースで<code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="paramLabel">参数</span>
@@ -1788,7 +1622,7 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <dd>
 <code>true</code>リストが指定された要素を含む場合</dd>
 <dt>
-<span class="simpleTagLabel">从以下版本开始：</span>
+<span class="simpleTagLabel">以下のバージョンから：</span>
 </dt>
 <dd>
                1.6 
@@ -1799,7 +1633,7 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <ul class="blockList">
 <li class="blockList"> <h4>removeLastOccurrence</h4> <pre class="methodSignature">public boolean removeLastOccurrence​(<a href="../lang/Object.html" title="class in java.lang">Object</a> o)</pre>
 <div class="block">
-<span>删除此列表中最后一次出现的指定元素（从头到尾遍历列表时）。</span>
+<span>このリスト内で最後に出現する指定された要素を削除します（リストを先頭から末尾まで走査する場合）。</span>
 <span>如果列表不包含该元素，则不会更改。</span>
 </div>
 <dl>
@@ -1807,8 +1641,7 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Deque.html#removeLastOccurrence(java.lang.Object)">removeLastOccurrence</a></code>在界面 
-              <code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Deque.html#removeLastOccurrence(java.lang.Object)">removeLastOccurrence</a></code>インターフェースで<code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="paramLabel">参数</span>
@@ -1821,7 +1654,7 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <dd>
 <code>true</code>リストが指定された要素を含む場合</dd>
 <dt>
-<span class="simpleTagLabel">从以下版本开始：</span>
+<span class="simpleTagLabel">以下のバージョンから：</span>
 </dt>
 <dd>
                1.6 
@@ -1832,24 +1665,22 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <ul class="blockList">
 <li class="blockList"> <h4>listIterator</h4> <pre class="methodSignature">public <a href="ListIterator.html" title="interface in java.util">ListIterator</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt; listIterator​(int index)</pre>
 <div class="block">
-<span>从列表中的指定位置开始，返回此列表中元素的列表迭代器（按正确顺序）。</span>
-<span><code>List.listIterator(int)</code>的总合同为<code>List.listIterator(int)</code> 。</span>
-<p> <span>list-iterator是<i>快速失败的</i> ：如果在创建Iterator之后的任何时候对列表进行结构修改，除了通过list-iterator自己的<code>remove</code>或<code>add</code>方法之外，list-iterator将抛出<code>ConcurrentModificationException</code> 。</span> <span>因此，在并发修改的情况下，迭代器快速而干净地失败，而不是在未来的未确定时间冒任意，非确定性行为的风险。</span> </p>
+<span>リスト内の指定された位置から開始して、このリスト内の要素のリスト反復子を（正しい順序で）返します。</span>
+<span><code>List.listIterator(int)</code>の総契約は<code>List.listIterator(int)</code> 。</span>
+<p> <span>list-iteratorは<i>フェイルファストの</i>：イテレータ作成後の任意の時点でリストが構造のに変更された場合、リストイテレータ自身の<code>remove</code>或<code>add</code>方法之外，list-iterator将抛出<code>ConcurrentModificationException</code> 。</span> <span>したがって、並行変更の場合、イテレータは将来の不確定な時点で任意の非決定のな動作のリスクを冒すのではなく、迅速かつクリーンに失敗します。</span> </p>
 </div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="List.html#listIterator(int)">listIterator</a></code>在界面 
-              <code><a href="List.html" title="interface in java.util">List</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="List.html#listIterator(int)">listIterator</a></code>インターフェースで<code><a href="List.html" title="interface in java.util">List</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="AbstractSequentialList.html#listIterator(int)">listIterator</a></code>在类 
-              <code><a href="AbstractSequentialList.html" title="class in java.util">AbstractSequentialList</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="AbstractSequentialList.html#listIterator(int)">listIterator</a></code>クラス内<code><a href="AbstractSequentialList.html" title="class in java.util">AbstractSequentialList</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="paramLabel">参数</span>
@@ -1879,26 +1710,25 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <ul class="blockList">
 <li class="blockList"> <h4>descendingIterator</h4> <pre class="methodSignature">public <a href="Iterator.html" title="interface in java.util">Iterator</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt; descendingIterator()</pre>
 <div class="block">
-<span class="descfrmTypeLabel">从界面复制的说明： <code><a href="Deque.html#descendingIterator()">Deque</a></code></span>
+<span class="descfrmTypeLabel">インターフェースからコピーされた説明：<code><a href="Deque.html#descendingIterator()">Deque</a></code></span>
 </div>
 <div class="block">
-<span>以相反的顺序返回此双端队列中元素的迭代器。</span>
-<span>元素将按从最后（尾部）到第一个（头部）的顺序返回。</span>
+<span>この両端キュー内の要素を逆順で返すイテレータを返します。</span>
+<span>要素は、最後（末尾）から最初（先頭）の順序で返されます。</span>
 </div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Deque.html#descendingIterator()">descendingIterator</a></code>在界面 
-              <code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Deque.html#descendingIterator()">descendingIterator</a></code>インターフェースで<code><a href="Deque.html" title="interface in java.util">Deque</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="returnLabel">结果</span>
 </dt>
 <dd>この両端キュー内の要素を逆順で反復処理するイテレータ</dd>
 <dt>
-<span class="simpleTagLabel">从以下版本开始：</span>
+<span class="simpleTagLabel">以下のバージョンから：</span>
 </dt>
 <dd>
                1.6 
@@ -1909,8 +1739,8 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <ul class="blockList">
 <li class="blockList"> <h4>clone</h4> <pre class="methodSignature">public <a href="../lang/Object.html" title="class in java.lang">Object</a> clone()</pre>
 <div class="block">
-<span>返回此<code>LinkedList</code>的浅表副本。</span>
-<span>（元素本身未被克隆。）</span>
+<span>返回此<code>LinkedList</code>の浅いコピー。</span>
+<span>（要素自体はクローンされません。）</span>
 </div>
 <dl>
 <dt>
@@ -1923,9 +1753,7 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <dt>
 <span class="returnLabel">结果</span>
 </dt>
-<dd>
-               这个 
-              <code>LinkedList</code>インスタンスのシャロー・コピー</dd>
+<dd>この<code>LinkedList</code>インスタンスのシャロー・コピー</dd>
 <dt>
 <span class="seeLabel">另请参见：</span>
 </dt>
@@ -1938,31 +1766,28 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <ul class="blockList">
 <li class="blockList"> <h4>toArray</h4> <pre class="methodSignature">public <a href="../lang/Object.html" title="class in java.lang">Object</a>[] toArray()</pre>
 <div class="block">
-<span>以适当的顺序（从第一个元素到最后一个元素）返回包含此列表中所有元素的数组。</span>
-<p> <span>返回的数组将是“安全的”，因为此列表不会保留对它的引用。</span> <span>（换句话说，此方法必须分配一个新数组）。</span> <span>因此调用者可以自由修改返回的数组。</span> </p>
-<p> <span>此方法充当基于阵列和基于集合的API之间的桥梁。</span> </p>
+<span>適切な順序（最初の要素から最後の要素まで）で、このリスト内のすべての要素を含む配列を返します。</span>
+<p> <span>返される配列は、このリストがその配列への参照を保持しないため、「安全」です。</span> <span>（换句话说，此方法必须分配一个新数组）。</span> <span>したがって、呼び出し元は返された配列を自由に変更できます。</span> </p>
+<p> <span>このメソッドは、配列ベースのAPIとコレクションベースのAPIの間のブリッジとして機能します。</span> </p>
 </div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Collection.html#toArray()">toArray</a></code>在界面 
-              <code><a href="Collection.html" title="interface in java.util">Collection</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Collection.html#toArray()">toArray</a></code>インターフェースで<code><a href="Collection.html" title="interface in java.util">Collection</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="List.html#toArray()">toArray</a></code>在界面 
-              <code><a href="List.html" title="interface in java.util">List</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="List.html#toArray()">toArray</a></code>インターフェースで<code><a href="List.html" title="interface in java.util">List</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">重写：</span>
 </dt>
 <dd>
-<code><a href="AbstractCollection.html#toArray()">toArray</a></code>在类 
-              <code><a href="AbstractCollection.html" title="class in java.util">AbstractCollection</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="AbstractCollection.html#toArray()">toArray</a></code>クラス内<code><a href="AbstractCollection.html" title="class in java.util">AbstractCollection</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="returnLabel">结果</span>
@@ -1981,37 +1806,34 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <ul class="blockList">
 <li class="blockList"> <h4>toArray</h4> <pre class="methodSignature">public &lt;T&gt; T[] toArray​(T[] a)</pre>
 <div class="block">
-<span>以适当的顺序返回包含此列表中所有元素的数组（从第一个元素到最后一个元素）;</span>
-<span>返回数组的运行时类型是指定数组的运行时类型。</span>
-<span>如果列表适合指定的数组，则返回其中。</span>
-<span>否则，将为新数组分配指定数组的运行时类型和此列表的大小。</span>
-<p> <span>如果列表适合指定的数组，并且有空余空间（即，数组的元素多于列表），则紧跟在列表末尾的数组中的元素将设置为<code>null</code> 。</span> <span>（ <i>仅</i>当调用者知道列表不包含任何null元素时，这在确定列表长度时很有用。）</span> </p>
-<p> <span>与<a href="#toArray()"><code>toArray()</code></a>方法一样，此方法充当基于阵列和基于集合的API之间的桥梁。</span> <span>此外，该方法允许精确控制输出阵列的运行时类型，并且在某些情况下可以用于节省分配成本。</span> </p>
-<p> <span>假设<code>x</code>是已知仅包含字符串的列表。</span> <span>以下代码可用于将列表转储到新分配的<code>String</code>数组中：</span> </p>
+<span>適切な順序でこのリスト内のすべての要素を含む配列を返します（最初の要素から最後の要素まで）;</span>
+<span>返される配列の実行時型は、指定された配列の実行時型です。</span>
+<span>リストが指定された配列に収まる場合は、その配列内に返されます。</span>
+<span>それ以外の場合、指定された配列の実行時型とこのリストのサイズを持つ新しい配列が割り当てられます。</span>
+<p> <span>リストが指定された配列に適合し、空きスペースがある場合（つまり、配列の要素がリストより多い場合）、リストの末尾の直後の配列内の要素は設定される<code>null</code> 。</span> <span>（ <i>仅</i>呼び出し側がリストにnull要素が含まれていないことを知っている場合、これはリストの長さを決定するのに役立ちます。）</span> </p>
+<p> <span>と<a href="#toArray()"><code>toArray()</code></a>メソッドと同様に、このメソッドは配列ベースのAPIとコレクションベースのAPIの間のブリッジとして機能します。</span> <span>さらに、このメソッドは出力配列の実行時型を正確に制御でき、場合によっては割り当てコストの節約に使用できます。</span> </p>
+<p> <span>假设<code>x</code>文字列のみを含むことが知られているリストです。</span> <span>次のコードは、リストを新しく割り当てられた配列にダンプするために使用できます。<code>String</code>数组中：</span> </p>
 <pre>  <span>String[] y = x.toArray(new String[0]);</span> </pre>
-<span>请注意， <code>toArray(new Object[0])</code>功能与<code>toArray()</code> 。</span>
+<span>请注意， <code>toArray(new Object[0])</code>機能と<code>toArray()</code> 。</span>
 </div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Collection.html#toArray(T%5B%5D)">toArray</a></code>在界面 
-              <code><a href="Collection.html" title="interface in java.util">Collection</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Collection.html#toArray(T%5B%5D)">toArray</a></code>インターフェースで<code><a href="Collection.html" title="interface in java.util">Collection</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="List.html#toArray(T%5B%5D)">toArray</a></code>在界面 
-              <code><a href="List.html" title="interface in java.util">List</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="List.html#toArray(T%5B%5D)">toArray</a></code>インターフェースで<code><a href="List.html" title="interface in java.util">List</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">重写：</span>
 </dt>
 <dd>
-<code><a href="AbstractCollection.html#toArray(T%5B%5D)">toArray</a></code>在类 
-              <code><a href="AbstractCollection.html" title="class in java.util">AbstractCollection</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="AbstractCollection.html#toArray(T%5B%5D)">toArray</a></code>クラス内<code><a href="AbstractCollection.html" title="class in java.util">AbstractCollection</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="paramLabel">参数类型</span>
@@ -2022,8 +1844,8 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <span class="paramLabel">参数</span>
 </dt>
 <dd>
-<span><code>a</code> - 列表元素要存储的数组，如果它足够大;</span>
-<span>否则，为此目的分配相同运行时类型的新数组。</span>
+<span><code>a</code>- このリストの要素を格納する配列（十分な大きさがある場合）;</span>
+<span>それ以外の場合は、この目的のために同じ実行時型の新しい配列が割り当てられます。</span>
 </dd>
 <dt>
 <span class="returnLabel">结果</span>
@@ -2042,30 +1864,27 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <ul class="blockListLast">
 <li class="blockList"> <h4>spliterator</h4> <pre class="methodSignature">public <a href="Spliterator.html" title="interface in java.util">Spliterator</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt; spliterator()</pre>
 <div class="block">
-<span>在此列表中的元素上创建<em><a href="Spliterator.html#binding">late-binding</a></em>和<em>故障快速</em> <a href="Spliterator.html" title="java.util中的接口"><code>Spliterator</code></a> 。</span>
-<p> <span><code>Spliterator</code>报告<a href="Spliterator.html#SIZED"><code>Spliterator.SIZED</code></a>和<a href="Spliterator.html#ORDERED"><code>Spliterator.ORDERED</code></a> 。</span> <span>覆盖实现应记录其他特征值的报告。</span> </p>
+<span>このリスト内の要素上に作成<em><a href="Spliterator.html#binding">late-binding</a></em>と<em>故障快速</em> <a href="Spliterator.html" title="java.util中的接口"><code>Spliterator</code></a> 。</span>
+<p> <span><code>Spliterator</code>报告<a href="Spliterator.html#SIZED"><code>Spliterator.SIZED</code></a>と<a href="Spliterator.html#ORDERED"><code>Spliterator.ORDERED</code></a> 。</span> <span>オーバーライドする実装は、他の特性値のレポートを文書化する必要があります。</span> </p>
 </div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Collection.html#spliterator()">spliterator</a></code>在界面 
-              <code><a href="Collection.html" title="interface in java.util">Collection</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="Collection.html#spliterator()">spliterator</a></code>インターフェースで<code><a href="Collection.html" title="interface in java.util">Collection</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="../lang/Iterable.html#spliterator()">spliterator</a></code>在界面 
-              <code><a href="../lang/Iterable.html" title="interface in java.lang">Iterable</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="../lang/Iterable.html#spliterator()">spliterator</a></code>インターフェースで<code><a href="../lang/Iterable.html" title="interface in java.lang">Iterable</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="List.html#spliterator()">spliterator</a></code>在界面 
-              <code><a href="List.html" title="interface in java.util">List</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
+<code><a href="List.html#spliterator()">spliterator</a></code>インターフェースで<code><a href="List.html" title="interface in java.util">List</a>&lt;<a href="LinkedList.html" title="type parameter in LinkedList">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="simpleTagLabel">Implementation Note:</span>
@@ -2080,7 +1899,7 @@ implements <a href="List.html" title="interface in java.util">List</a>&lt;E&gt;,
 <dd>このリストの要素に対して実行されました<code>Spliterator</code>
 </dd>
 <dt>
-<span class="simpleTagLabel">从以下版本开始：</span>
+<span class="simpleTagLabel">以下のバージョンから：</span>
 </dt>
 <dd>
                1.8 

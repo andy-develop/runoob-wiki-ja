@@ -224,7 +224,7 @@ npm err! Error: connect ECONNREFUSED 127.0.0.1:8087
 <p><strong>インストールコマンド</strong>：プロジェクトディレクトリで<code>npm install &lt;package-name&gt;</code>を実行すると、パッケージが<code>node_modules</code>フォルダーにインストールされ、<code>package.json</code>ファイルに依存関係が追加されます。</p>
 </li>
 <li>
-<p><strong>バージョン管理</strong>：package.json ファイルを通じて<code>package.json</code> 和 <code>package-lock.json</code>依存関係のバージョンを管理し、プロジェクトがさまざまな環境で一貫性を持つようにします。</p>
+<p><strong>バージョン管理</strong>：package.json ファイルを通じて<code>package.json</code>と<code>package-lock.json</code>依存関係のバージョンを管理し、プロジェクトがさまざまな環境で一貫性を持つようにします。</p>
 </li>
 </ul>
 <h3>グローバルインストール</h3>
@@ -242,7 +242,7 @@ npm err! Error: connect ECONNREFUSED 127.0.0.1:8087
 <p><strong>バージョン管理</strong>：グローバルインストールされたパッケージのバージョンは npm が管理しますが、プロジェクトの<code>package.json</code>には反映されません。つまり、グローバルインストールされたパッケージは異なるプロジェクト間で共有される可能性がありますが、バージョンの競合によって問題が発生する可能性もあります。</p>
 </li>
 </ul>
-<table class="reference"><thead><tr><th>特性</th><th>ローカルインストール</th><th>グローバルインストール</th></tr></thead><tbody><tr><td><strong>インストール範囲</strong></td><td>現在のプロジェクトでのみ使用可能</td><td>システムのグローバル環境で使用可能</td></tr><tr><td><strong>コマンドの使用</strong></td><td><code>npm install package-name</code></td><td><code>npm install -g package-name</code></td></tr><tr><td><strong>インストール場所</strong></td><td><code>node_modules</code>ディレクトリ</td><td>システムグローバルディレクトリ（OSによって異なります）</td></tr><tr><td><strong>使用シナリオ</strong></td><td>プロジェクトの依存関係（ライブラリ、フレームワーク）</td><td>CLIツール、プロジェクトジェネレーター</td></tr><tr><td><strong>アクセス方法</strong></td><td>～を通じて<code>require()</code> 或 <code>import</code>使用する</td><td>コマンドラインで直接使用する</td></tr><tr><td><strong>依存関係の宣言</strong></td><td>在 <code>package.json</code>に記録</td><td>記録されない<code>package.json</code>に記録</td></tr><tr><td><strong>バージョン管理</strong></td><td>プロジェクトごとに異なるバージョンを使用可能</td><td>システムには1つのバージョンのみ保持</td></tr><tr><td><strong>権限の問題</strong></td><td>特別な権限は不要</td><td>管理者権限が必要な場合があります</td></tr></tbody></table>
+<table class="reference"><thead><tr><th>特性</th><th>ローカルインストール</th><th>グローバルインストール</th></tr></thead><tbody><tr><td><strong>インストール範囲</strong></td><td>現在のプロジェクトでのみ使用可能</td><td>システムのグローバル環境で使用可能</td></tr><tr><td><strong>コマンドの使用</strong></td><td><code>npm install package-name</code></td><td><code>npm install -g package-name</code></td></tr><tr><td><strong>インストール場所</strong></td><td><code>node_modules</code>ディレクトリ</td><td>システムグローバルディレクトリ（OSによって異なります）</td></tr><tr><td><strong>使用シナリオ</strong></td><td>プロジェクトの依存関係（ライブラリ、フレームワーク）</td><td>CLIツール、プロジェクトジェネレーター</td></tr><tr><td><strong>アクセス方法</strong></td><td>～を通じて<code>require()</code> 或 <code>import</code>使用する</td><td>コマンドラインで直接使用する</td></tr><tr><td><strong>依存関係の宣言</strong></td><td>に<code>package.json</code>に記録</td><td>記録されない<code>package.json</code>に記録</td></tr><tr><td><strong>バージョン管理</strong></td><td>プロジェクトごとに異なるバージョンを使用可能</td><td>システムには1つのバージョンのみ保持</td></tr><tr><td><strong>権限の問題</strong></td><td>特別な権限は不要</td><td>管理者権限が必要な場合があります</td></tr></tbody></table>
 <p>両方の機能を利用したい場合は、2つの場所にインストールするか、<strong>npm link</strong>。</p>
 <p>次に、グローバル方式で express をインストールします</p>
 <pre>$ npm install express -g</pre>
@@ -376,7 +376,7 @@ Email: (this IS public) mcmohd@gmail.com
 <hr/>
 <h2 id="taobaonpm">淘宝 NPM ミラーの使用</h2>
 <p>国内からnpmの公式ミラーを直接使用すると非常に遅いため、この問題を解決するには、淘宝が提供するミラー（cnpmまたはNPMの設定）を使用して、パッケージのダウンロードとインストールを高速化できます。</p>
-<p>淘宝NPMミラーは完全なnpmjs.orgミラーであり、公式バージョンの代わりに使用できます（読み取り専用）。同期頻度は現在10分に1回で、公式サービスとの同期をできる限り保証しています。</p>
+<p>タオバオNPMミラーは完全なnpmjs.orgミラーであり、公式バージョンの代わりに使用できます（読み取り専用）。同期頻度は現在10分に1回で、公式サービスとの同期をできる限り保証しています。</p>
 <p>淘宝がカスタマイズしたcnpm（gzip圧縮サポート）コマンドラインツールをデフォルトのnpmの代わりに使用できます：</p>
 <pre>
 $ npm install -g cnpm --registry=https://registry.npmmirror.com
@@ -420,7 +420,7 @@ $ cnpm install [name]
 <p><strong>パッケージの公開</strong>：プロジェクトがnpmに公開する準備ができたら、...を使用できます<code>npm publish</code>コマンドを実行すると、npmは...を読み取ります<code>package.json</code>内の情報を読み取ってパッケージを公開します。</p>
 </li>
 <li>
-<p><strong>依存関係の管理</strong>：<code>package.json</code> 和 <code>package-lock.json</code>ファイルと連携して、プロジェクトがさまざまな環境で依存関係のバージョンを一致させることを保証します。</p>
+<p><strong>依存関係の管理</strong>：<code>package.json</code>と<code>package-lock.json</code>ファイルと連携して、プロジェクトがさまざまな環境で依存関係のバージョンを一致させることを保証します。</p>
 </li>
 </ol>
 <p>典型的なpackage.jsonファイルの構造は次のとおりです：</p>
@@ -624,11 +624,11 @@ npm install</pre><div class="comt-meta wrapper"><span class="comt-author"><a hre
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックできます</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックできます</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -917,7 +917,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

@@ -179,7 +179,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2>AIプロダクト思考</h2>
 <p>良いAIプロダクトを設計するには、まずAIの独自性と、それがユーザーにどのような心理的変化をもたらすかを理解する必要がある。</p>
 <h3>確率的出力</h3>
-<p>大規模モデルの出力は本質的に確率サンプリングであり、同じ質問でも毎回異なる回答が得られることがある。良い時もあれば悪い時もあり、平凡な時もある。これはバグではなく、AIの特性である。</p>
+<p>大規模モデルの出力は本質的に確率のサンプリングであり、同じ質問でも毎回異なる回答が得られることがある。良い時もあれば悪い時もあり、平凡な時もある。これはバグではなく、AIの特性である。</p>
 <p>デザイナーにとって、これはいくつかの重要な原則を意味する：</p>
 <table class="reference">
 <tr><th>設計原則</th><th>具体的な方法</th><th>なぜ重要か</th></tr>
@@ -371,7 +371,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example_code">
 <span style="color: #a50"># ============================================</span><br/>
 <span style="color: #a50"># Prompt A/B 测试分析脚本</span><br/>
-<span style="color: #a50"># 用于比较两个版本提示词的效果</span><br/>
+<span style="color: #a50"># 2つのバージョンのプロンプトの効果を比較するために</span><br/>
 <span style="color: #a50"># ============================================</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">from</span> dataclasses <span style="color: Green;font-weight:bold;">import</span> dataclass<br/>
@@ -381,27 +381,27 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <br/>
 <span style="color: Gray;">@</span>dataclass<br/>
 <span style="color: Green;font-weight:bold;">class</span> TestResult:<br/>
-    <span style="color: #a11;">"""单个测试结果的数据结构"""</span><br/>
+    <span style="color: #a11;">"""単一のテスト結果のデータ構造"""</span><br/>
     prompt_version: <span style="color: Teal;">str</span>      <span style="color: #a50"># "A" 或 "B"</span><br/>
     user_satisfaction: <span style="color: Teal;">int</span>   <span style="color: #a50"># 用户满意度 1-5</span><br/>
     retry_count: <span style="color: Teal;">int</span>         <span style="color: #a50"># 用户重试次数</span><br/>
-    task_completed: <span style="color: Teal;">bool</span>     <span style="color: #a50"># 任务是否完成</span><br/>
+    task_completed: <span style="color: Teal;">bool</span>     <span style="color: #a50"># タスクが完了したかどうか</span><br/>
     time_spent_seconds: <span style="color: Teal;">int</span>  <span style="color: #a50"># 花费时间</span><br/>
-    test_case_id: <span style="color: Teal;">str</span>        <span style="color: #a50"># 测试用例标识（比如不同的查询类型）</span><br/>
+    test_case_id: <span style="color: Teal;">str</span>        <span style="color: #a50"># テストケース識別子（例えば、異なるクエリタイプ）</span><br/>
 <br/>
 <br/>
 <span style="color: Green;font-weight:bold;">def</span> analyze_ab_test<span style="color: Olive;">(</span>results: List<span style="color: Olive;">[</span>TestResult<span style="color: Olive;">]</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> Dict:<br/>
-    <span style="color: #a11;">"""分析 A/B 测试结果，返回对比统计"""</span><br/>
+    <span style="color: #a11;">"""A/B テスト結果を分析し、比較統計を返す"""</span><br/>
 <br/>
     <span style="color: #a50"># 按版本分组</span><br/>
     group_a <span style="color: Gray;">=</span> <span style="color: Olive;">[</span>r <span style="color: Green;font-weight:bold;">for</span> r <span style="color: Green;font-weight:bold;">in</span> results <span style="color: Green;font-weight:bold;">if</span> r.<span style="color: #05a;">prompt_version</span> <span style="color: Gray;">==</span> <span style="color: #a11;">"A"</span><span style="color: Olive;">]</span><br/>
     group_b <span style="color: Gray;">=</span> <span style="color: Olive;">[</span>r <span style="color: Green;font-weight:bold;">for</span> r <span style="color: Green;font-weight:bold;">in</span> results <span style="color: Green;font-weight:bold;">if</span> r.<span style="color: #05a;">prompt_version</span> <span style="color: Gray;">==</span> <span style="color: #a11;">"B"</span><span style="color: Olive;">]</span><br/>
 <br/>
     <span style="color: Green;font-weight:bold;">if</span> <span style="color: Green;font-weight:bold;">not</span> group_a <span style="color: Green;font-weight:bold;">or</span> <span style="color: Green;font-weight:bold;">not</span> group_b:<br/>
-        <span style="color: Green;font-weight:bold;">return</span> <span style="color: Olive;">{</span><span style="color: #a11;">"error"</span>: <span style="color: #a11;">"需要至少两个版本的测试数据"</span><span style="color: Olive;">}</span><br/>
+        <span style="color: Green;font-weight:bold;">return</span> <span style="color: Olive;">{</span><span style="color: #a11;">"error"</span>: <span style="color: #a11;">"少なくとも2つのバージョンのテストデータが必要です"</span><span style="color: Olive;">}</span><br/>
 <br/>
     <span style="color: Green;font-weight:bold;">def</span> calc_stats<span style="color: Olive;">(</span>group: List<span style="color: Olive;">[</span>TestResult<span style="color: Olive;">]</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> Dict:<br/>
-        <span style="color: #a11;">"""计算单个组的统计数据"""</span><br/>
+        <span style="color: #a11;">"""単一グループの統計データを計算する"""</span><br/>
         satisfaction_scores <span style="color: Gray;">=</span> <span style="color: Olive;">[</span>r.<span style="color: #05a;">user_satisfaction</span> <span style="color: Green;font-weight:bold;">for</span> r <span style="color: Green;font-weight:bold;">in</span> group<span style="color: Olive;">]</span><br/>
         <span style="color: Green;font-weight:bold;">return</span> <span style="color: Olive;">{</span><br/>
             <span style="color: #a11;">"sample_size"</span>: <span style="color: Teal;">len</span><span style="color: Olive;">(</span>group<span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
@@ -422,7 +422,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         <span style="color: #a11;">"completion_diff"</span>: stats_b<span style="color: Olive;">[</span><span style="color: #a11;">"completion_rate"</span><span style="color: Olive;">]</span> - stats_a<span style="color: Olive;">[</span><span style="color: #a11;">"completion_rate"</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
     <span style="color: Olive;">}</span><br/>
 <br/>
-    <span style="color: #a50"># 也可以按测试用例细分（比如不同类型的查询）</span><br/>
+    <span style="color: #a50"># テストケースごとに細分化することもできます（例：異なるタイプのクエリ）</span><br/>
     by_test_case <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: Olive;">}</span><br/>
     test_case_ids <span style="color: Gray;">=</span> <span style="color: Teal;">set</span><span style="color: Olive;">(</span>r.<span style="color: #05a;">test_case_id</span> <span style="color: Green;font-weight:bold;">for</span> r <span style="color: Green;font-weight:bold;">in</span> results<span style="color: Olive;">)</span><br/>
     <span style="color: Green;font-weight:bold;">for</span> case_id <span style="color: Green;font-weight:bold;">in</span> test_case_ids:<br/>
@@ -465,7 +465,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <br/>
 <br/>
 <span style="color: Green;font-weight:bold;">def</span> print_report<span style="color: Olive;">(</span>analysis: Dict<span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">None</span>:<br/>
-    <span style="color: #a11;">"""打印可读的 A/B 测试报告"""</span><br/>
+    <span style="color: #a11;">"""読みやすいA/Bテストレポートを出力する"""</span><br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"="</span> * <span style="color: Maroon;">60</span><span style="color: Olive;">)</span><br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"RUNOOB Prompt A/B 测试报告"</span><span style="color: Olive;">)</span><br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"="</span> * <span style="color: Maroon;">60</span><span style="color: Olive;">)</span><br/>
@@ -486,7 +486,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"  完成率: {analysis['version_b']['completion_rate']:.1%}"</span><span style="color: Olive;">)</span><br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"  平均重试次数: {analysis['version_b']['avg_retry']:.2f}"</span><span style="color: Olive;">)</span><br/>
 <br/>
-    <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>对比结果:"</span><span style="color: Olive;">)</span><br/>
+    <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>比較結果:"</span><span style="color: Olive;">)</span><br/>
     diff <span style="color: Gray;">=</span> analysis<span style="color: Olive;">[</span><span style="color: #a11;">"comparison"</span><span style="color: Olive;">]</span><br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"  满意度变化: {diff['satisfaction_diff']:+.2f}"</span><span style="color: Olive;">)</span><br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"  完成率变化: {diff['completion_diff']:+.1%}"</span><span style="color: Olive;">)</span><br/>
@@ -512,14 +512,14 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: Green;font-weight:bold;">if</span> __name__ <span style="color: Gray;">==</span> <span style="color: #a11;">"__main__"</span>:<br/>
     <span style="color: #a50"># 模拟一些测试数据</span><br/>
     test_data <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><br/>
-        <span style="color: #a50"># 版本 A 的测试结果</span><br/>
+        <span style="color: #a50"># バージョンAのテスト結果</span><br/>
         TestResult<span style="color: Olive;">(</span><span style="color: #a11;">"A"</span><span style="color: Gray;">,</span> <span style="color: Maroon;">4</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0</span><span style="color: Gray;">,</span> <span style="color: Teal;">True</span><span style="color: Gray;">,</span> <span style="color: Maroon;">15</span><span style="color: Gray;">,</span> <span style="color: #a11;">"邮件写作"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
         TestResult<span style="color: Olive;">(</span><span style="color: #a11;">"A"</span><span style="color: Gray;">,</span> <span style="color: Maroon;">3</span><span style="color: Gray;">,</span> <span style="color: Maroon;">1</span><span style="color: Gray;">,</span> <span style="color: Teal;">True</span><span style="color: Gray;">,</span> <span style="color: Maroon;">25</span><span style="color: Gray;">,</span> <span style="color: #a11;">"邮件写作"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
         TestResult<span style="color: Olive;">(</span><span style="color: #a11;">"A"</span><span style="color: Gray;">,</span> <span style="color: Maroon;">5</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0</span><span style="color: Gray;">,</span> <span style="color: Teal;">True</span><span style="color: Gray;">,</span> <span style="color: Maroon;">12</span><span style="color: Gray;">,</span> <span style="color: #a11;">"摘要生成"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
         TestResult<span style="color: Olive;">(</span><span style="color: #a11;">"A"</span><span style="color: Gray;">,</span> <span style="color: Maroon;">2</span><span style="color: Gray;">,</span> <span style="color: Maroon;">2</span><span style="color: Gray;">,</span> <span style="color: Teal;">True</span><span style="color: Gray;">,</span> <span style="color: Maroon;">40</span><span style="color: Gray;">,</span> <span style="color: #a11;">"摘要生成"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
         TestResult<span style="color: Olive;">(</span><span style="color: #a11;">"A"</span><span style="color: Gray;">,</span> <span style="color: Maroon;">4</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0</span><span style="color: Gray;">,</span> <span style="color: Teal;">True</span><span style="color: Gray;">,</span> <span style="color: Maroon;">18</span><span style="color: Gray;">,</span> <span style="color: #a11;">"代码解释"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
         TestResult<span style="color: Olive;">(</span><span style="color: #a11;">"A"</span><span style="color: Gray;">,</span> <span style="color: Maroon;">3</span><span style="color: Gray;">,</span> <span style="color: Maroon;">1</span><span style="color: Gray;">,</span> <span style="color: Teal;">False</span><span style="color: Gray;">,</span> <span style="color: Maroon;">35</span><span style="color: Gray;">,</span> <span style="color: #a11;">"代码解释"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
-        <span style="color: #a50"># 版本 B 的测试结果</span><br/>
+        <span style="color: #a50"># バージョンBのテスト結果</span><br/>
         TestResult<span style="color: Olive;">(</span><span style="color: #a11;">"B"</span><span style="color: Gray;">,</span> <span style="color: Maroon;">5</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0</span><span style="color: Gray;">,</span> <span style="color: Teal;">True</span><span style="color: Gray;">,</span> <span style="color: Maroon;">12</span><span style="color: Gray;">,</span> <span style="color: #a11;">"邮件写作"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
         TestResult<span style="color: Olive;">(</span><span style="color: #a11;">"B"</span><span style="color: Gray;">,</span> <span style="color: Maroon;">4</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0</span><span style="color: Gray;">,</span> <span style="color: Teal;">True</span><span style="color: Gray;">,</span> <span style="color: Maroon;">18</span><span style="color: Gray;">,</span> <span style="color: #a11;">"邮件写作"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
         TestResult<span style="color: Olive;">(</span><span style="color: #a11;">"B"</span><span style="color: Gray;">,</span> <span style="color: Maroon;">4</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0</span><span style="color: Gray;">,</span> <span style="color: Teal;">True</span><span style="color: Gray;">,</span> <span style="color: Maroon;">10</span><span style="color: Gray;">,</span> <span style="color: #a11;">"摘要生成"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
@@ -648,7 +648,7 @@ RUNOOB Prompt A/B 测试报告
 <li>
 <p>第三に、標準回答または採点基準がある——「良い」出力が何かを把握できる。</p></li>
 <li>
-<p>第四に、規模が適切——数十から数百件で、十分に代表的でありながら、実行が遅すぎないこと。</p></li></ul>
+<p>第四に、規模が適切——数十から数百件で、十分に代表性のでありながら、実行が遅すぎないこと。</p></li></ul>
 <p>ゴールデンテストセットはセーフティネットのようなもの：重要なシナリオの効果を誤って壊す心配をせずに、安心して反復改善できる。</p>
 <hr/>
 <h2>AIプロダクトの商業化（収益化）の道筋</h2>
@@ -822,11 +822,11 @@ RUNOOB Prompt A/B 测试报告
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてメモを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1115,7 +1115,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

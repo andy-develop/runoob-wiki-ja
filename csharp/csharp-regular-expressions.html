@@ -165,7 +165,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="article-intro" id="content">
 <h1>C# <span class="color_h1">正则表达式</span></h1>
 <p><b>正则表达式</b>テキストパターンを記述・照合するための検索式です。簡単に言うと、特殊なワイルドカード言語のようなもので、文字列内の内容を正確に検索、検証、または置換するために使います。</p>
-<p>例えば、ユーザー入力が有効なメールアドレスや電話番号かどうかを判断したい、またはテキストからすべての日付を抽出したい——これらはすべて正規表現の典型的な使用例です。</p>
+<p>例えば、ユーザー入力が有効なメールアドレスや電話番号であるかどうかを判断したり、テキストからすべての日付を抽出したり——これらはすべて正規表現の典型的な用途です。</p>
 <p>.NET フレームワークには機能が充実した正規表現エンジンが組み込まれており、<code>System.Text.RegularExpressions</code>名前空間がサポートを提供します。</p>
 <p>正規表現パターンは、1つ以上の文字、演算子、構造体で構成され、それらが一致させるテキストの規則をまとめて記述します。</p>
 <p>正規表現をまだ理解していない場合は、まず当サイトの<a href="../regexp/regexp-tutorial.html" rel="noopener noreferrer" target="_blank">正则表达式 - 教程</a>。</p>
@@ -183,45 +183,45 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <li><b>杂项构造</b>：インラインオプション、コメントなどの補助機能</li>
 </ul>
 <h3>字符转义</h3>
-<p>正規表現では、バックスラッシュ文字（<code>\</code>）には2つの役割があります。1つは、その後の<b>普通字符变成特殊含义</b>（如<code>\n</code>改行を表す）、もう1つは<b>特殊字符转义为原义字符</b>（如<code>\.</code>実際のドット文字をマッチングし、「任意の文字」ではなくなる）。</p>
+<p>正規表現では、バックスラッシュ文字（<code>\</code>）には2つの役割があります。1つは、その後の<b>普通字符变成特殊含义</b>（如<code>\n</code>改行を表す）、もう1つは<b>特殊文字をリテラル文字にエスケープする</b>（如<code>\.</code>実際のドット文字をマッチングし、「任意の文字」ではなくなる）。</p>
 <p>初心者によくある誤解：C# の文字列では、<code>\</code>自体もエスケープ文字であるため、正規表現では<code>\d</code>、C# の文字列では<code>"\\d"</code>、または verbatim 文字列を使用します<code>@"\d"</code>（推荐）。</p>
 <p>次の表は、よく使われるエスケープ文字の一覧です：</p>
 <table class="reference">
 <tr><th style="width:10%;">转义字符</th><th style="width:40%;">描述</th><th style="width:20%;">模式</th><th style="width:30%;">匹配</th></tr>
-<tr><td><b>\a</b></td><td>ベル文字 \u0007 と一致します。</td><td>\a</td><td>"Warning!" + '\u0007' 中的 "\u0007"</td></tr>
-<tr><td><b>\b</b></td><td>文字クラス内では、バックスペース \u0008 と一致します。（注意：文字クラス外では、\b は単語境界を表します。「アンカー」のセクションを参照）</td><td>[\b]{3,}</td><td>"\b\b\b\b" 中的 "\b\b\b\b"</td></tr>
-<tr><td><b>\t</b></td><td>タブ文字 \u0009 と一致します。タブ区切りテキストのマッチングによく使用されます。</td><td>(\w+)\t</td><td>"Name\tAddr\t" 中的 "Name\t" 和 "Addr\t"</td></tr>
-<tr><td><b>\r</b></td><td>キャリッジリターン \u000D と一致します。（\r と改行文字 \n は同等ではありません。Windows の改行は通常 \r\n です）</td><td>\r\n(\w+)</td><td>"\r\nHello\nWorld." 中的 "\r\nHello"</td></tr>
-<tr><td><b>\v</b></td><td>垂直タブ \u000B と一致します。</td><td>[\v]{2,}</td><td>"\v\v\v" 中的 "\v\v\v"</td></tr>
-<tr><td><b>\f</b></td><td>改ページ文字 \u000C と一致します。</td><td>[\f]{2,}</td><td>"\f\f\f" 中的 "\f\f\f"</td></tr>
-<tr><td><b>\n</b></td><td>改行文字 \u000A と一致します。Unix/Linux システムの行末は通常 \n のみです。</td><td>\r\n(\w+)</td><td>"\r\nHello\nWorld." 中的 "\r\nHello"</td></tr>
-<tr><td><b>\e</b></td><td>エスケープ文字 \u001B と一致します。</td><td>\e</td><td>"\x001B" 中的 "\x001B"</td></tr>
-<tr><td><b>\ nnn</b></td><td>8進数表現を使用して文字を指定します（nnn は2〜3桁の数字で構成されます）。</td><td>\w\040\w</td><td>"a bc d" 中的 "a b" 和 "c d"</td></tr>
-<tr><td><b>\x nn</b></td><td>16進数表現を使用して文字を指定します（nn はちょうど2桁の数字で構成されます）。</td><td>\w\x20\w</td><td>"a bc d" 中的 "a b" 和 "c d"</td></tr>
+<tr><td><b>\a</b></td><td>ベル文字 \u0007 と一致します。</td><td>\a</td><td>"Warning!" + '\u0007' の中の "\u0007"</td></tr>
+<tr><td><b>\b</b></td><td>文字クラス内では、バックスペース \u0008 と一致します。（注意：文字クラス外では、\b は単語境界を表します。「アンカー」のセクションを参照）</td><td>[\b]{3,}</td><td>"\b\b\b\b" の中の "\b\b\b\b"</td></tr>
+<tr><td><b>\t</b></td><td>タブ文字 \u0009 と一致します。タブ区切りテキストのマッチングによく使用されます。</td><td>(\w+)\t</td><td>"Name\tAddr\t" の中の "Name\t" と "Addr\t"</td></tr>
+<tr><td><b>\r</b></td><td>キャリッジリターン \u000D と一致します。（\r と改行文字 \n は同等ではありません。Windows の改行は通常 \r\n です）</td><td>\r\n(\w+)</td><td>"\r\nHello\nWorld." の中の "\r\nHello"</td></tr>
+<tr><td><b>\v</b></td><td>垂直タブ \u000B と一致します。</td><td>[\v]{2,}</td><td>"\v\v\v" の中の "\v\v\v"</td></tr>
+<tr><td><b>\f</b></td><td>改ページ文字 \u000C と一致します。</td><td>[\f]{2,}</td><td>"\f\f\f" の中の "\f\f\f"</td></tr>
+<tr><td><b>\n</b></td><td>改行文字 \u000A と一致します。Unix/Linux システムの行末は通常 \n のみです。</td><td>\r\n(\w+)</td><td>"\r\nHello\nWorld." の中の "\r\nHello"</td></tr>
+<tr><td><b>\e</b></td><td>エスケープ文字 \u001B と一致します。</td><td>\e</td><td>"\x001B" の中の "\x001B"</td></tr>
+<tr><td><b>\ nnn</b></td><td>8進数表現を使用して文字を指定します（nnn は2〜3桁の数字で構成されます）。</td><td>\w\040\w</td><td>"a bc d" の中の "a b" と "c d"</td></tr>
+<tr><td><b>\x nn</b></td><td>16進数表現を使用して文字を指定します（nn はちょうど2桁の数字で構成されます）。</td><td>\w\x20\w</td><td>"a bc d" の中の "a b" と "c d"</td></tr>
 <tr><td><b>\c X
 \c x
-</b></td><td>X または x で指定される ASCII 制御文字と一致します。ここで X または x は制御文字のアルファベットです。</td><td>\cC</td><td>"\x0003" 中的 "\x0003" (Ctrl-C)</td></tr>
-<tr><td><b>\u nnnn</b></td><td>16進数表現を使用して Unicode 文字（nnnn で表される4桁の数字）と一致します。</td><td>\w\u0020\w</td><td>"a bc d" 中的 "a b" 和 "c d"</td></tr>
-<tr><td><b>\</b></td><td>後ろに認識されないエスケープ文字が続く場合、その文字と一致します。</td><td>\d+[\+-x\*]\d+\d+[\+-x\*\d+</td><td>"(2+2) * 3*9" 中的 "2+2" 和 "3*9"</td></tr>
+</b></td><td>X または x で指定される ASCII 制御文字と一致します。ここで X または x は制御文字のアルファベットです。</td><td>\cC</td><td>"\x0003" の中の "\x0003" (Ctrl-C)</td></tr>
+<tr><td><b>\u nnnn</b></td><td>16進数表現を使用して Unicode 文字（nnnn で表される4桁の数字）と一致します。</td><td>\w\u0020\w</td><td>"a bc d" の中の "a b" と "c d"</td></tr>
+<tr><td><b>\</b></td><td>後ろに認識されないエスケープ文字が続く場合、その文字と一致します。</td><td>\d+[\+-x\*]\d+\d+[\+-x\*\d+</td><td>"(2+2) * 3*9" の中の "2+2" と "3*9"</td></tr>
 </table>
 <h3>字符类</h3>
 <p>文字クラスは「ある種類」の文字のうち<b>任意一个</b>。例如<code>[aeiou]</code>任意の母音文字1つにマッチします。<code>\d</code>任意の1つの数字と一致します。これは正規表現で最もよく使われる基本機能の1つです。</p>
 <p>次の表に文字クラスを示します：</p>
 <table class="reference">
 <tr><th style="width:10%;">字符类</th><th style="width:40%;">描述</th><th style="width:20%;">模式</th><th style="width:30%;">匹配</th></tr>
-<tr><td><b>[character_group]</b></td><td>character_group 内の任意の単一文字と一致します。既定では、マッチングは大文字と小文字を区別します。</td><td>[mn]</td><td>"mat" 中的 "m"，"moon" 中的 "m" 和 "n"</td></tr>
-<tr><td><b>[^character_group]</b></td><td>否定：character_group 内にない任意の単一文字と一致します。既定では、character_group 内の文字は大文字と小文字を区別します。</td><td>[^aei]</td><td>"avail" 中的 "v" 和 "l"</td></tr>
+<tr><td><b>[character_group]</b></td><td>character_group 内の任意の単一文字と一致します。既定では、マッチングは大文字と小文字を区別します。</td><td>[mn]</td><td>"mat" の "m"、"moon" の "m" と "n"</td></tr>
+<tr><td><b>[^character_group]</b></td><td>否定：character_group 内にない任意の単一文字と一致します。既定では、character_group 内の文字は大文字と小文字を区別します。</td><td>[^aei]</td><td>"avail" の "v" と "l"</td></tr>
 <tr><td><b>[ first - last ]</b></td><td>文字範囲：first から last までの範囲内の任意の単一文字と一致します。</td><td>[b-d]</td><td>[b-d]irds 可以匹配 Birds、 Cirds、 Dirds</td></tr>
-<tr><td><b>.</b></td><td>ワイルドカード：\n 以外の任意の単一文字と一致します。<br/>本来の意味のピリオド文字（. または \u002E）と一致させるには、その文字の前にエスケープ文字（\.）を付ける必要があります。</td><td>a.e</td><td>"have" 中的 "ave"， "mate" 中的 "ate"</td></tr>
-<tr><td><b>\p{ name }</b></td><td>与 <i>name</i>指定された Unicode 一般カテゴリまたは名前付きブロック内の任意の単一文字と一致します。</td><td>\p{Lu}
-</td><td>"City Lights" 中的 "C" 和 "L"</td></tr>
-<tr><td><b>\P{ name }</b></td><td>与不在<i>name</i>指定された Unicode 一般カテゴリまたは名前付きブロック内の任意の単一文字と一致します。</td><td>\P{Lu}</td><td>"City" 中的 "i"、 "t" 和 "y"</td></tr>
-<tr><td><b>\w</b></td><td>任意の単語文字（英字、数字、アンダースコア）と一致します。[a-zA-Z0-9_]（ASCII 範囲内）と同等です。</td><td>\w</td><td>"Room#1" 中的 "R"、 "o"、 "m" 和 "1"</td></tr>
-<tr><td><b>\W</b></td><td>任意の非単語文字と一致します。\w の否定です。</td><td>\W</td><td>"Room#1" 中的 "#"</td></tr>
-<tr><td><b>\s</b></td><td>任意の空白文字（スペース、タブ、改行など）と一致します。</td><td>\w\s</td><td>"ID A1.3" 中的 "D "</td></tr>
-<tr><td><b>\S</b></td><td>任意の非空白文字と一致します。\s の否定です。</td><td>\s\S</td><td>"int __ctr" 中的 " _"</td></tr>
-<tr><td><b>\d</b></td><td>任意の10進数字と一致します。[0-9] と同等です。</td><td>\d</td><td>"4 = IV" 中的 "4"</td></tr>
-<tr><td><b>\D</b></td><td>10進数字ではない任意の文字と一致します。\d の否定です。</td><td>\D</td><td>"4 = IV" 中的 " "、 "="、 " "、 "I" 和 "V"</td></tr>
+<tr><td><b>.</b></td><td>ワイルドカード：\n 以外の任意の単一文字と一致します。<br/>本来の意味のピリオド文字（. または \u002E）と一致させるには、その文字の前にエスケープ文字（\.）を付ける必要があります。</td><td>a.e</td><td>"have" の "ave"、"mate" の "ate"</td></tr>
+<tr><td><b>\p{ name }</b></td><td>と<i>name</i>指定された Unicode 一般カテゴリまたは名前付きブロック内の任意の単一文字と一致します。</td><td>\p{Lu}
+</td><td>"City Lights" の中の "C" と "L"</td></tr>
+<tr><td><b>\P{ name }</b></td><td>と不に<i>name</i>指定された Unicode 一般カテゴリまたは名前付きブロック内の任意の単一文字と一致します。</td><td>\P{Lu}</td><td>"City" の中の "i"、"t"、"y"</td></tr>
+<tr><td><b>\w</b></td><td>任意の単語文字（英字、数字、アンダースコア）と一致します。[a-zA-Z0-9_]（ASCII 範囲内）と同等です。</td><td>\w</td><td>"Room#1" の中の "R"、"o"、"m" と "1"</td></tr>
+<tr><td><b>\W</b></td><td>任意の非単語文字と一致します。\w の否定です。</td><td>\W</td><td>"Room#1" の中の "#"</td></tr>
+<tr><td><b>\s</b></td><td>任意の空白文字（スペース、タブ、改行など）と一致します。</td><td>\w\s</td><td>"ID A1.3" の "D "</td></tr>
+<tr><td><b>\S</b></td><td>任意の非空白文字と一致します。\s の否定です。</td><td>\s\S</td><td>「int __ctr」の中の「_」</td></tr>
+<tr><td><b>\d</b></td><td>任意の10進数字と一致します。[0-9] と同等です。</td><td>\d</td><td>"4 = IV" の中の "4"</td></tr>
+<tr><td><b>\D</b></td><td>10進数字ではない任意の文字と一致します。\d の否定です。</td><td>\D</td><td>"4 = IV" の " "、 "="、 " "、 "I" と "V"</td></tr>
 </table>
 <h3>定位点</h3>
 <p>アンカー（「錨」とも呼ばれます）は具体的な文字とは一致せず、文字列内の特定の<b>位置</b>。これらは「ゼロ幅」であり、文字を消費せず、現在の位置が特定の条件を満たしていることを表明するだけです。</p>
@@ -229,12 +229,12 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>次の表にアンカーを示します：</p>
 <table class="reference">
 <tr><th style="width:10%;">断言</th><th style="width:40%;">描述</th><th style="width:20%;">模式</th><th style="width:30%;">匹配</th></tr>
-<tr><td><b>^</b></td><td>マッチは文字列または行の先頭から始まる必要があります。</td><td>^\d{3}</td><td>"567-777-" 中的 "567"</td></tr>
-<tr><td><b>$</b></td><td>マッチは文字列の末尾、または行もしくは文字列末尾の<b>\n</b>之前。</td><td>-\d{4}$</td><td>"8-12-2012" 中的 "-2012"</td></tr>
-<tr><td><b>\A</b></td><td>マッチは文字列の先頭に出現する必要があります（複数行モードの影響を受けず、常に文字列全体の先頭です）。</td><td>\A\w{4}</td><td>"Code-007-" 中的 "Code"</td></tr>
-<tr><td><b>\Z</b></td><td>マッチは文字列の末尾、または文字列末尾の<b>\n</b>之前。</td><td>-\d{3}\Z</td><td>"Bond-901-007" 中的 "-007"</td></tr>
-<tr><td><b>\z</b></td><td>マッチは文字列の末尾に出現する必要があります（厳密な末尾で、末尾に \n は許可されません）。</td><td>-\d{3}\z</td><td>"-901-333" 中的 "-333"</td></tr>
-<tr><td><b>\G</b></td><td>マッチは前のマッチが終了した場所に出現する必要があります。連続マッチングのシナリオでよく使用されます。</td><td>\G\(\d\)</td><td>"(1)(3)(5)[7](9)" 中的 "(1)"、 "(3)" 和 "(5)"</td></tr>
+<tr><td><b>^</b></td><td>マッチは文字列または行の先頭から始まる必要があります。</td><td>^\d{3}</td><td>「567-777-」の中の「567」</td></tr>
+<tr><td><b>$</b></td><td>マッチは文字列の末尾、または行もしくは文字列末尾の<b>\n</b>之前。</td><td>-\d{4}$</td><td>"8-12-2012" の中の "-2012"</td></tr>
+<tr><td><b>\A</b></td><td>マッチは文字列の先頭に出現する必要があります（複数行モードの影響を受けず、常に文字列全体の先頭です）。</td><td>\A\w{4}</td><td>"Code-007-" の中の "Code"</td></tr>
+<tr><td><b>\Z</b></td><td>マッチは文字列の末尾、または文字列末尾の<b>\n</b>之前。</td><td>-\d{3}\Z</td><td>"Bond-901-007" の中の "-007"</td></tr>
+<tr><td><b>\z</b></td><td>マッチは文字列の末尾に出現する必要があります（厳密な末尾で、末尾に \n は許可されません）。</td><td>-\d{3}\z</td><td>"-901-333" の "-333"</td></tr>
+<tr><td><b>\G</b></td><td>マッチは前のマッチが終了した場所に出現する必要があります。連続マッチングのシナリオでよく使用されます。</td><td>\G\(\d\)</td><td>"(1)(3)(5)[7](9)" 中の "(1)"、 "(3)" と "(5)"</td></tr>
 <tr><td><b>\b</b></td><td>単語境界と一致します。つまり、単語と空白の間の位置のことです。</td><td>er\b</td><td>"never" の中の "er" にマッチするが、"verb" の中の "er" にはマッチしない。</td></tr>
 <tr><td><b>\B</b></td><td>単語の境界以外と一致します。</td><td>er\B</td><td>"verb" の中の "er" にマッチするが、"never" の中の "er" にはマッチしない。</td></tr>
 </table>
@@ -244,20 +244,20 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <li><b>捕获</b>：一致した部分文字列を「保存」して、後で抽出したり置換内で参照したりできるようにします。</li>
 <li><b>作用域限定</b>：量指定子や代替構造をグループ内の部分式にのみ作用させます。</li>
 </ul>
-<p>この部分は理解しにくいので、<strong><a href="../regexp/regexp-syntax.html" rel="noopener noreferrer" target="_blank">正则表达式-选择</a></strong> 、<strong><a href="../w3cnote/reg-lookahead-lookbehind.html" rel="noopener noreferrer" target="_blank">正则表达式的先行断言(lookahead)和后行断言(lookbehind)</a></strong>帮助理解。</p>
+<p>この部分は理解しにくいので、<strong><a href="../regexp/regexp-syntax.html" rel="noopener noreferrer" target="_blank">正则表达式-选择</a></strong> 、<strong><a href="../w3cnote/reg-lookahead-lookbehind.html" rel="noopener noreferrer" target="_blank">正規表現の先行断言（lookahead）と後行断言（lookbehind）</a></strong>帮助理解。</p>
 <p>次の表は、グループ化構造の一覧です：</p>
 <table class="reference">
 <tr><th>分组构造</th><th>描述</th><th>模式</th><th>匹配</th></tr>
-<tr><td><b>( subexpression )</b></td><td>一致した部分式をキャプチャし、ゼロから始まる序数に割り当てます。</td><td>(\w)\1</td><td>"deep" 中的 "ee"</td></tr>
-<tr><td><b>(?&lt; name &gt;subexpression)</b></td><td>マッチした部分式を名前付きグループにキャプチャします。名前付きグループは数字の番号より読みやすいため、複雑な正規表現での使用をお勧めします。</td><td>(?&lt; double&gt;\w)\k&lt; double&gt;</td><td>"deep" 中的 "ee"</td></tr>
-<tr><td><b>(?&lt; name1 -name2 &gt;subexpression)</b></td><td>平衡グループ定義を定義します。ネストされた構造（括弧のペアなど）のマッチングに使用され、高度な機能です。</td><td>(((?'Open'\()[^\(\)]*)+((?'Close-Open'\))[^\(\)]*)+)*(?(Open)(?!))$</td><td>"3+2^((1-3)*(3-1))" 中的 "((1-3)*(3-1))"</td></tr>
-<tr><td><b>(?: subexpression)</b></td><td>非キャプチャグループを定義します。グループ化（範囲の限定）だけでマッチ内容の保存が不要な場合に使用され、キャプチャグループよりわずかにパフォーマンスが優れています。</td><td>Write(?:Line)?</td><td>"Console.WriteLine()" 中的 "WriteLine"</td></tr>
-<tr><td><b>(?imnsx-imnsx:subexpression)</b></td><td>应用或禁用<i>subexpression</i>で指定されたオプション。</td><td>A\d{2}(?i:\w+)\b</td><td>"A12xl A12XL a12xl" 中的 "A12xl" 和 "A12XL"</td></tr>
-<tr><td><b>(?= subexpression)</b></td><td>ゼロ幅の正の先読みアサーション（lookahead）。後に subexpression が続く位置と一致しますが、文字は消費しません。</td><td>\w+(?=\.)</td><td>"He is. The dog ran. The sun is out." 中的 "is"、 "ran" 和 "out"</td></tr>
-<tr><td><b>(?! subexpression)</b></td><td>ゼロ幅の負の先読みアサーション。後に subexpression が続かない位置と一致します。</td><td>\b(?!un)\w+\b</td><td>"unsure sure unity used" 中的 "sure" 和 "used"</td></tr>
-<tr><td><b>(?&lt;=subexpression)</b></td><td>ゼロ幅の正の後読みアサーション（lookbehind）。前に subexpression が直接続く位置と一致します。</td><td>(?&lt;=19)\d{2}\b</td><td>"1851 1999 1950 1905 2003" 中的 "99"、"50"和 "05"</td></tr>
-<tr><td><b>(?&lt;! subexpression)</b></td><td>ゼロ幅の負の後読みアサーション。前に subexpression が続かない位置と一致します。</td><td>(?&lt;!wo)man\b</td><td>"Hi woman Hi man" 中的 "man"</td></tr>
-<tr><td><b>(?&gt; subexpression)</b></td><td>バックトラックしない（原子グループ）部分式。マッチ成功後にバックトラックを許可しないため、特定のシナリオでパフォーマンスを向上できます。</td><td>[13579](?&gt;A+B+)</td><td>"1ABB 3ABBC 5AB 5AC" 中的 "1ABB"、 "3ABB" 和 "5AB"</td></tr>
+<tr><td><b>( subexpression )</b></td><td>一致した部分式をキャプチャし、ゼロから始まる序数に割り当てます。</td><td>(\w)\1</td><td>「deep」の中の「ee」</td></tr>
+<tr><td><b>(?&lt; name &gt;subexpression)</b></td><td>マッチした部分式を名前付きグループにキャプチャします。名前付きグループは数字の番号より読みやすいため、複雑な正規表現での使用をお勧めします。</td><td>(?&lt; double&gt;\w)\k&lt; double&gt;</td><td>「deep」の中の「ee」</td></tr>
+<tr><td><b>(?&lt; name1 -name2 &gt;subexpression)</b></td><td>平衡グループ定義を定義します。ネストされた構造（括弧のペアなど）のマッチングに使用され、高度な機能です。</td><td>(((?'Open'\()[^\(\)]*)+((?'Close-Open'\))[^\(\)]*)+)*(?(Open)(?!))$</td><td>「3+2^((1-3)*(3-1))」の中の「((1-3)*(3-1))」</td></tr>
+<tr><td><b>(?: subexpression)</b></td><td>非キャプチャグループを定義します。グループ化（範囲の限定）だけでマッチ内容の保存が不要な場合に使用され、キャプチャグループよりわずかにパフォーマンスが優れています。</td><td>Write(?:Line)?</td><td>"Console.WriteLine()" の "WriteLine"</td></tr>
+<tr><td><b>(?imnsx-imnsx:subexpression)</b></td><td>应用或禁用<i>subexpression</i>で指定されたオプション。</td><td>A\d{2}(?i:\w+)\b</td><td>"A12xl A12XL a12xl" の中の "A12xl" と "A12XL"</td></tr>
+<tr><td><b>(?= subexpression)</b></td><td>ゼロ幅の正の先読みアサーション（lookahead）。後に subexpression が続く位置と一致しますが、文字は消費しません。</td><td>\w+(?=\.)</td><td>"He is. The dog ran. The sun is out." の中の "is"、"ran"、"out"</td></tr>
+<tr><td><b>(?! subexpression)</b></td><td>ゼロ幅の負の先読みアサーション。後に subexpression が続かない位置と一致します。</td><td>\b(?!un)\w+\b</td><td>"unsure sure unity used" の中の "sure" と "used"</td></tr>
+<tr><td><b>(?&lt;=subexpression)</b></td><td>ゼロ幅の正の後読みアサーション（lookbehind）。前に subexpression が直接続く位置と一致します。</td><td>(?&lt;=19)\d{2}\b</td><td>"1851 1999 1950 1905 2003" の中の "99"、"50"と "05"</td></tr>
+<tr><td><b>(?&lt;! subexpression)</b></td><td>ゼロ幅の負の後読みアサーション。前に subexpression が続かない位置と一致します。</td><td>(?&lt;!wo)man\b</td><td>"Hi woman Hi man" の中の "man"</td></tr>
+<tr><td><b>(?&gt; subexpression)</b></td><td>バックトラックしない（原子グループ）部分式。マッチ成功後にバックトラックを許可しないため、特定のシナリオでパフォーマンスを向上できます。</td><td>[13579](?&gt;A+B+)</td><td>"1ABB 3ABBC 5AB 5AC" の中の "1ABB"、"3ABB" と "5AB"</td></tr>
 </table>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
 <span style="color: #05a; font-weight: bold;">using</span> <span style="color: #696969;">System</span><span style="color: #008000;">;</span><br/>
@@ -281,45 +281,45 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div>
 <h3>限定符</h3>
 <p>量指定子は、前の要素（文字、文字クラス、またはグループ）が出現する必要があることを指定します。<b>多少次</b>初めて一致成功となります。</p>
-<p>量指定子はデフォルトで<b>贪婪的</b>、つまり可能な限り多くの文字をマッチングします。量指定子の後に<code>?</code>可变为<b>懒惰（非贪婪）</b>モードを付けると、つまり可能な限り少ない文字をマッチングします。初心者はまず<code>*</code>、<code>+</code>、<code>?</code>、<code>{n}</code>これら4つの基本量指定子。</p>
+<p>量指定子はデフォルトで<b>貪欲な</b>、つまり可能な限り多くの文字をマッチングします。量指定子の後に<code>?</code>になり得る<b>懒惰（非贪婪）</b>モードを付けると、つまり可能な限り少ない文字をマッチングします。初心者はまず<code>*</code>、<code>+</code>、<code>?</code>、<code>{n}</code>これら4つの基本量指定子。</p>
 <p>次の表に量指定子を示します：</p>
 <table class="reference">
 <tr><th style="width:10%;">限定符</th><th style="width:40%;">描述</th><th style="width:20%;">模式</th><th style="width:30%;">匹配</th></tr>
 <tr><td><b>*</b></td><td>前の要素に0回以上一致します。（0回でも一致とみなされます）</td><td>\d*\.\d</td><td>".0"、 "19.9"、 "219.9"</td></tr>
-<tr><td><b>+</b></td><td>前の要素に1回以上一致します。（少なくとも1回）</td><td>"be+"</td><td>"been" 中的 "bee"， "bent" 中的 "be"</td></tr>
+<tr><td><b>+</b></td><td>前の要素に1回以上一致します。（少なくとも1回）</td><td>"be+"</td><td>"been" の中の "bee"、"bent" の中の "be"</td></tr>
 <tr><td><b>?</b></td><td>前の要素に0回または1回一致します。（つまり、その要素は省略可能）</td><td>"rai?n"</td><td>"ran"、 "rain"</td></tr>
-<tr><td><b>{ n }</b></td><td>直前の要素にちょうど n 回マッチします。</td><td>",\d{3}"</td><td>"1,043.6" 中的 ",043"， "9,876,543,210" 中的 ",876"、 ",543" 和 ",210"</td></tr>
+<tr><td><b>{ n }</b></td><td>直前の要素にちょうど n 回マッチします。</td><td>",\d{3}"</td><td>"1,043.6" の ",043"、"9,876,543,210" の ",876"、",543" と ",210"</td></tr>
 <tr><td><b>{ n ,}</b></td><td>直前の要素に少なくとも n 回マッチします。</td><td>"\d{2,}"</td><td>"166"、 "29"、 "1930"</td></tr>
-<tr><td><b>{ n , m }</b></td><td>前の要素に少なくとも n 回、ただし m 回以下で一致します。</td><td>"\d{3,5}"</td><td>"166"， "17668"， 
-"193024" 中的 "19302"</td></tr>
+<tr><td><b>{ n , m }</b></td><td>前の要素に少なくとも n 回、ただし m 回以下で一致します。</td><td>"\d{3,5}"</td><td>"166"、"17668"、
+"193024" の中の "19302"</td></tr>
 <tr><td><b>*?</b></td><td>前の要素に0回以上一致しますが、回数はできるだけ少なくなります（怠惰モード）。</td><td>\d*?\.\d</td><td>".0"、 "19.9"、 "219.9"</td></tr>
-<tr><td><b>+?</b></td><td>前の要素に1回以上一致しますが、回数はできるだけ少なくなります（怠惰モード）。</td><td>"be+?"</td><td>"been" 中的 "be"， "bent" 中的 "be"</td></tr>
+<tr><td><b>+?</b></td><td>前の要素に1回以上一致しますが、回数はできるだけ少なくなります（怠惰モード）。</td><td>"be+?"</td><td>"been" の中の "be"、"bent" の中の "be"</td></tr>
 <tr><td><b>??</b></td><td>前の要素に0回または1回一致しますが、回数はできるだけ少なくなります（怠惰モード）。</td><td>"rai??n"</td><td>"ran"、 "rain"
 </td></tr>
-<tr><td><b>{ n }?</b></td><td>直前の要素にちょうど n 回マッチします。</td><td>",\d{3}?"</td><td>"1,043.6" 中的 ",043"， "9,876,543,210" 中的 ",876"、 ",543" 和 ",210"</td></tr>
-<tr><td><b>{ n ,}?</b></td><td>前の要素に少なくとも n 回一致しますが、回数はできるだけ少なくなります。</td><td>"\d{2,}?"</td><td>"166"、 "29" 和 "1930"</td></tr>
-<tr><td><b>{ n , m }?</b></td><td>前の要素に n 回以上 m 回以下で一致しますが、回数はできるだけ少なくなります。</td><td>"\d{3,5}?"</td><td>"166"， "17668"， 
-"193024" 中的 "193" 和 "024"</td></tr>
+<tr><td><b>{ n }?</b></td><td>直前の要素にちょうど n 回マッチします。</td><td>",\d{3}?"</td><td>"1,043.6" の ",043"、"9,876,543,210" の ",876"、",543" と ",210"</td></tr>
+<tr><td><b>{ n ,}?</b></td><td>前の要素に少なくとも n 回一致しますが、回数はできるだけ少なくなります。</td><td>"\d{2,}?"</td><td>"166"、"29" と "1930"</td></tr>
+<tr><td><b>{ n , m }?</b></td><td>前の要素に n 回以上 m 回以下で一致しますが、回数はできるだけ少なくなります。</td><td>"\d{3,5}?"</td><td>"166"、"17668"、
+"193024" の中の "193" と "024"</td></tr>
 </table>
 <h3>後方参照構造</h3>
-<p>後方参照により、同じ正規表現内で<b>前面已捕获的分组内容</b>再マッチを行います。例えば、<code>(\w)\1</code>「ee」や「ll」のような連続して繰り返される文字を見つけることができます。</p>
+<p>後方参照により、同じ正規表現内で<b>前にキャプチャされたグループの内容</b>再マッチを行います。例えば、<code>(\w)\1</code>「ee」や「ll」のような連続して繰り返される文字を見つけることができます。</p>
 <p>次の表は、後方参照構造の一覧です：</p>
 <table class="reference notranslate">
 <tr><th style="width:15%;">後方参照構造</th><th style="width:40%;">描述</th><th style="width:25%;">模式</th><th style="width:20%;">匹配</th></tr>
-<tr><td><b>\ number</b></td><td>後方参照。番号付き部分式の値と一致します。</td><td>(\w)\1</td><td>"seek" 中的 "ee"</td></tr>
-<tr><td><b>\k&lt; name &gt;</b></td><td>名前付き後方参照。名前付き式の値にマッチします。数字による参照より読みやすいため、使用をお勧めします。</td><td>(?&lt; char&gt;\w)\k&lt; char&gt;</td><td>"seek" 中的 "ee"</td></tr>
+<tr><td><b>\ number</b></td><td>後方参照。番号付き部分式の値と一致します。</td><td>(\w)\1</td><td>「seek」の中の「ee」</td></tr>
+<tr><td><b>\k&lt; name &gt;</b></td><td>名前付き後方参照。名前付き式の値にマッチします。数字による参照より読みやすいため、使用をお勧めします。</td><td>(?&lt; char&gt;\w)\k&lt; char&gt;</td><td>「seek」の中の「ee」</td></tr>
 </table>
 <h3>备用构造</h3>
 <p>代替構造は縦棒を使用します<code>|</code>「または」の論理を実装し、正規表現が複数の候補パターンのいずれかに一致できるようにします。プログラミング言語の<code>||</code>运算符。</p>
 <p>次の表は、代替構造の一覧です：</p>
 <table class="reference">
 <tr><th style="width:25%;">备用构造</th><th style="width:30%;">描述</th><th style="width:25%;">模式</th><th style="width:20%;">匹配</th></tr>
-<tr><td><b>|</b></td><td>縦棒 (|) 文字で区切られた任意の1つの要素と一致します。</td><td>th(e|is|at)</td><td>"this is the day. " 中的 "the" 和 "this"</td></tr>
-<tr><td><b>(?( expression )yes | no )</b></td><td>正規表現パターンが expression のマッチによって指定される場合、一致するのは<i>yes</i>；それ以外の場合はオプションの<i>no</i>部分です。expression はゼロ幅アサーションとして解釈されます。</td><td>(?(A)A\d{2}\b|\b\d{3}\b)</td><td>"A10 C103 910" 中的 "A10" 和 "910"</td></tr>
-<tr><td><b>(?( name )yes | no )</b></td><td>name または名前付き・番号付きキャプチャグループにマッチがある場合、<i>yes</i>；それ以外の場合はオプションの<i>no</i>。</td><td>(?&lt; quoted&gt;")?(?(quoted).+?"|\S+\s)</td><td>"Dogs.jpg "Yiska playing.jpg"" 中的 Dogs.jpg 和 "Yiska playing.jpg"</td></tr>
+<tr><td><b>|</b></td><td>縦棒 (|) 文字で区切られた任意の1つの要素と一致します。</td><td>th(e|is|at)</td><td>"this is the day. " の中の "the" と "this"</td></tr>
+<tr><td><b>(?( expression )yes | no )</b></td><td>正規表現パターンが expression のマッチによって指定される場合、一致するのは<i>yes</i>；それ以外の場合はオプションの<i>no</i>部分です。expression はゼロ幅アサーションとして解釈されます。</td><td>(?(A)A\d{2}\b|\b\d{3}\b)</td><td>"A10 C103 910" の中の "A10" と "910"</td></tr>
+<tr><td><b>(?( name )yes | no )</b></td><td>name または名前付き・番号付きキャプチャグループにマッチがある場合、<i>yes</i>；それ以外の場合はオプションの<i>no</i>。</td><td>(?&lt; quoted&gt;")?(?(quoted).+?"|\S+\s)</td><td>"Dogs.jpg "Yiska playing.jpg"" の中の Dogs.jpg と "Yiska playing.jpg"</td></tr>
 </table>
 <h3>替换</h3>
-<p>置換構文は〜に使用されます<code>Regex.Replace()</code>方法的<b>替换模式字符串</b>で、〜することができます<code>$</code>番号または名前を使用して以前にキャプチャしたグループ内容を参照し、柔軟なテキスト再構成を実現します。</p>
+<p>置換構文は〜に使用されます<code>Regex.Replace()</code>方法の<b>替换模式字符串</b>で、〜することができます<code>$</code>番号または名前を使用して以前にキャプチャしたグループ内容を参照し、柔軟なテキスト再構成を実現します。</p>
 <p>次の表は、置換に使用する文字の一覧です：</p>
 <table class="reference notranslate">
 <tr><th style="width:10%;">字符</th><th style="width:30%;">描述</th><th style="width:30%;">模式</th><th style="width:10%;">替换模式</th><th style="width:15%;">输入字符串</th><th style="width:15%;">结果字符串</th></tr>
@@ -336,7 +336,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>次の表は、さまざまなその他の構造の一覧です：</p>
 <table class="reference notranslate">
 <tr><th style="width:20%;">构造</th><th style="width:50%;">描述</th><th style="width:30%;">实例</th></tr>
-<tr><td><b>(?imnsx-imnsx)</b></td><td>パターン内で、大文字と小文字を区別しないなどのオプションを設定または無効にします。</td><td>\bA(?i)b\w+\b 匹配 "ABA Able Act" 中的 "ABA" 和 "Able"</td></tr>
+<tr><td><b>(?imnsx-imnsx)</b></td><td>パターン内で、大文字と小文字を区別しないなどのオプションを設定または無効にします。</td><td>\bA(?i)b\w+\b は "ABA Able Act" 内の "ABA" と "Able" にマッチする</td></tr>
 <tr><td><b>(?#注释)</b></td><td>インラインコメント。このコメントは最初の右括弧で終了します。</td><td>\bA(?#Aで始まる単語に一致)\w+\b</td></tr>
 <tr><td><b># </b>[行尾]</td><td>このコメントはエスケープされていない # で始まり、行の末尾まで続きます。</td><td>(?x)\bA\w+\b# A で始まる単語と一致</td></tr>
 </table>
@@ -498,7 +498,7 @@ Replacement String: Hello World
 <span style="color: #696969; font-style: italic;">// 方式二：静态字段 + Compiled（常见优化做法）</span><br/>
 <span style="color: #05a; font-weight: bold;">private</span> <span style="color: #05a; font-weight: bold;">static</span> <span style="color: #05a; font-weight: bold;">readonly</span> Regex DateRegex <span style="color: #008000;">=</span> <span style="color: #008000;">new</span> Regex<span style="color: #008000;">(</span><span style="color: #a11;">@"\d{4}-\d{2}-\d{2}"</span>, RegexOptions<span style="color: #008000;">.</span><span style="color: #05a;">Compiled</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
 </div></div>
-<h3>GeneratedRegex 的用法</h3>
+<h3>GeneratedRegex の用法</h3>
 <p>使用<code>[GeneratedRegex]</code>属性を使用すると、コンパイラは<b>编译阶段</b>正規表現を効率的な C# コードとして直接生成するため、実行時の解析やコンパイルが不要です。</p>
 <p>使用条件: .NET 7 以降が必要で、かつそのメソッドは<code>partial</code>メソッドであり、所属するクラスも<code>partial</code>类。</p>
 <div class="example"><h2 class="example">GeneratedRegex 基本の使い方</h2> <div class="example_code">
@@ -507,7 +507,7 @@ Replacement String: Hello World
 <br/>
 <span style="color: #05a; font-weight: bold;">namespace</span> RegExApplication<br/>
 <span style="color: #008000;">{</span><br/>
-   <span style="color: #696969; font-style: italic;">// 类必须声明为 partial</span><br/>
+   <span style="color: #696969; font-style: italic;">// クラスは partial として宣言する必要があります</span><br/>
    <span style="color: #05a; font-weight: bold;">partial</span> <span style="color: #6666CC; font-weight: bold;">class</span> Program<br/>
    <span style="color: #008000;">{</span><br/>
       <span style="color: #696969; font-style: italic;">// 使用 [GeneratedRegex] 特性，编译器自动生成实现</span><br/>
@@ -522,13 +522,13 @@ Replacement String: Hello World
       <span style="color: #008000;">{</span><br/>
          <span style="color: #6666CC; font-weight: bold;">string</span> input <span style="color: #008000;">=</span> <span style="color: #a11;">"Today is 2024-06-18, next event: 2025-01-01"</span><span style="color: #008000;">;</span><br/>
 <br/>
-         <span style="color: #696969; font-style: italic;">// 像调用普通方法一样使用，返回的是 Regex 实例</span><br/>
+         <span style="color: #696969; font-style: italic;">// 普通のメソッドを呼び出すように使用し、Regex インスタンスを返します</span><br/>
          <span style="color: #05a; font-weight: bold;">foreach</span> <span style="color: #008000;">(</span>Match m <span style="color: #05a; font-weight: bold;">in</span> DateRegex<span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008000;">.</span><span style="color: #05a;">Matches</span><span style="color: #008000;">(</span>input<span style="color: #008000;">)</span><span style="color: #008000;">)</span><br/>
          <span style="color: #008000;">{</span><br/>
             Console<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span><span style="color: #a11;">"找到日期："</span> <span style="color: #008000;">+</span> m<span style="color: #008000;">.</span><span style="color: #05a; font-weight: bold;">Value</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
          <span style="color: #008000;">}</span><br/>
 <br/>
-         <span style="color: #696969; font-style: italic;">// 验证是否匹配</span><br/>
+         <span style="color: #696969; font-style: italic;">// 一致するか検証</span><br/>
          Console<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span>StartsWithSRegex<span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008000;">.</span><span style="color: #05a;">IsMatch</span><span style="color: #008000;">(</span><span style="color: #a11;">"Splendid"</span><span style="color: #008000;">)</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span> <span style="color: #696969; font-style: italic;">// True</span><br/>
       <span style="color: #008000;">}</span><br/>
    <span style="color: #008000;">}</span><br/>
@@ -540,10 +540,10 @@ Replacement String: Hello World
 找到日期：2025-01-01
 True
 </pre>
-<h3>GeneratedRegex 与传统 Regex 对比</h3>
+<h3>GeneratedRegex と従来の Regex の比較</h3>
 <p>次の表は、複数の観点から2つの方法を比較し、適切な使用方法を選択するのに役立ちます：</p>
 <table class="reference">
-<tr><th style="width:20%;">对比维度</th><th style="width:35%;">传统 Regex</th><th style="width:35%;">GeneratedRegex（ソースジェネレーター）</th><th style="width:10%;">推荐</th></tr>
+<tr><th style="width:20%;">比較次元</th><th style="width:35%;">传统 Regex</th><th style="width:35%;">GeneratedRegex（ソースジェネレーター）</th><th style="width:10%;">推荐</th></tr>
 <tr><td><b>最低版本要求</b></td><td>.NET Framework / .NET Core 全版本支持</td><td>.NET 7 以降</td><td>—</td></tr>
 <tr><td><b>编译时机</b></td><td>ランタイム解析とコンパイル</td><td>コンパイル段階（ビルド時）に Roslyn ソースジェネレーターがコードを生成します。</td><td>GeneratedRegex</td></tr>
 <tr><td><b>执行性能</b></td><td>普通：遅い。Compiled オプションを付けると：速いが、起動時のオーバーヘッドが大きい。</td><td>最速で、手書きコードのパフォーマンスに近く、起動時のオーバーヘッドもありません。</td><td>GeneratedRegex</td></tr>
@@ -710,11 +710,11 @@ missing@dot: 无效
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1003,7 +1003,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

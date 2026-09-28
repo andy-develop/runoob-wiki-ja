@@ -282,7 +282,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2>逐次実行 vs パイプライン実行</h2>
 <h3>逐次実行の問題点</h3>
 <p>第12講を振り返ると、各命令は4つのステージを経ます：命令フェッチ（IF）、デコード（ID）、実行（EX）、ライトバック（WB）。</p>
-<p>在<span class="marked">逐次実行（パイプラインなし）モード</span>このモードでは、CPUは現在の命令の4つのステージをすべて実行し終えるまで、次の命令をフェッチできません。</p>
+<p>に<span class="marked">逐次実行（パイプラインなし）モード</span>このモードでは、CPUは現在の命令の4つのステージをすべて実行し終えるまで、次の命令をフェッチできません。</p>
 <pre>
 周期:  1    2    3    4    5    6    7    8    9    10   11   12
 I1:   [IF] [ID] [EX] [WB]
@@ -292,7 +292,7 @@ I3:                                          [IF] [ID] [EX] [WB]
 3 条指令 = 12 个周期
 </pre>
 <h3>パイプライン実行の利点</h3>
-<p>在<span class="marked">パイプライン実行モード</span>このモードでは、命令I1が命令フェッチ（IF）ステージを完了すると、CPUのフェッチユニットは空きます。それを何もせず待たせるよりも、すぐに次の命令I2のフェッチを開始します。</p>
+<p>に<span class="marked">パイプライン実行モード</span>このモードでは、命令I1が命令フェッチ（IF）ステージを完了すると、CPUのフェッチユニットは空きます。それを何もせず待たせるよりも、すぐに次の命令I2のフェッチを開始します。</p>
 <p>同様に、I1がデコード（ID）を完了して実行ステージに入ると、デコードユニットはI2の処理を開始し、同時にフェッチユニットはI3の処理を開始します。</p>
 <pre>
 周期:  1    2    3    4    5    6    7
@@ -333,20 +333,20 @@ I3:             [IF] [ID] [EX] [WB]
 <span style="color: #a11;">"""<br/>CPUパイプラインシミュレータ（runoobデモ）<br/>比較：パイプラインなし（逐次） vs パイプラインあり（並行・重複）<br/>各命令の各ステージの実行タイムラインをガントチャート風に出力する<br/>
 """</span><br/>
 <br/>
-<span style="color: #a50"># 定义指令序列和各阶段的简称</span><br/>
+<span style="color: #a50"># 命令シーケンスと各段階の略称を定義する</span><br/>
 INSTRUCTIONS <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: #a11;">"I1"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"I2"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"I3"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"I4"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"I5"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"I6"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"I7"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"I8"</span><span style="color: Olive;">]</span><br/>
 STAGES <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: #a11;">"IF"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"ID"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"EX"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"WB"</span><span style="color: Olive;">]</span>  <span style="color: #a50"># 取指、译码、执行、写回</span><br/>
 STAGE_NAMES <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: #a11;">"IF"</span>: <span style="color: #a11;">"取指"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"ID"</span>: <span style="color: #a11;">"译码"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"EX"</span>: <span style="color: #a11;">"执行"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"WB"</span>: <span style="color: #a11;">"写回"</span><span style="color: Olive;">}</span><br/>
 <br/>
 <br/>
 <span style="color: Green;font-weight:bold;">def</span> simulate_serial<span style="color: Olive;">(</span>instructions<span style="color: Gray;">,</span> stages<span style="color: Olive;">)</span>:<br/>
-    <span style="color: #a11;">"""<br/>无流水线模式：每条指令完整执行完 4 个阶段后，才开始下一条<br/>返回: (总周期数, 时间线二维数组)<br/>时间线格式: time_grid[周期][阶段列] = 当前正在执行的指令名 或 None<br/>
+    <span style="color: #a11;">"""<br/>无流水线模式：每条指令完整执行完 4 个阶段后，才开始下一条<br/>返回: (总周期数, 时间线二维数组)<br/>タイムライン形式: time_grid[サイクル][ステージ列] = 現在実行中の命令名 または None<br/>
     """</span><br/>
     num_instr <span style="color: Gray;">=</span> <span style="color: Teal;">len</span><span style="color: Olive;">(</span>instructions<span style="color: Olive;">)</span><br/>
     num_stages <span style="color: Gray;">=</span> <span style="color: Teal;">len</span><span style="color: Olive;">(</span>stages<span style="color: Olive;">)</span><br/>
     total_cycles <span style="color: Gray;">=</span> num_instr * num_stages  <span style="color: #a50"># n 条指令 × 4 阶段</span><br/>
 <br/>
-    <span style="color: #a50"># time_grid[cycle][stage_slot] → 哪个指令在此周期的此阶段</span><br/>
+    <span style="color: #a50"># time_grid[cycle][stage_slot] → どの命令がこのサイクルのこのステージにあるか</span><br/>
     time_grid <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: Olive;">[</span><span style="color: Teal;">None</span> <span style="color: Green;font-weight:bold;">for</span> _ <span style="color: Green;font-weight:bold;">in</span> <span style="color: Teal;">range</span><span style="color: Olive;">(</span>num_instr<span style="color: Olive;">)</span><span style="color: Olive;">]</span> <span style="color: Green;font-weight:bold;">for</span> _ <span style="color: Green;font-weight:bold;">in</span> <span style="color: Teal;">range</span><span style="color: Olive;">(</span>total_cycles<span style="color: Olive;">)</span><span style="color: Olive;">]</span><br/>
 <br/>
     <span style="color: Green;font-weight:bold;">for</span> i<span style="color: Gray;">,</span> instr <span style="color: Green;font-weight:bold;">in</span> <span style="color: Teal;">enumerate</span><span style="color: Olive;">(</span>instructions<span style="color: Olive;">)</span>:<br/>
@@ -359,7 +359,7 @@ STAGE_NAMES <span style="color: Gray;">=</span> <span style="color: Olive;">{</s
 <br/>
 <br/>
 <span style="color: Green;font-weight:bold;">def</span> simulate_pipeline<span style="color: Olive;">(</span>instructions<span style="color: Gray;">,</span> stages<span style="color: Olive;">)</span>:<br/>
-    <span style="color: #a11;">"""<br/>有流水线模式：不同指令的不同阶段可以重叠执行<br/>返回: (总周期数, 时间线二维数组)<br/>
+    <span style="color: #a11;">"""<br/>パイプライン方式：異なる命令の異なるステージは重ねて実行できる<br/>返回: (总周期数, 时间线二维数组)<br/>
     """</span><br/>
     num_instr <span style="color: Gray;">=</span> <span style="color: Teal;">len</span><span style="color: Olive;">(</span>instructions<span style="color: Olive;">)</span><br/>
     num_stages <span style="color: Gray;">=</span> <span style="color: Teal;">len</span><span style="color: Olive;">(</span>stages<span style="color: Olive;">)</span><br/>
@@ -369,7 +369,7 @@ STAGE_NAMES <span style="color: Gray;">=</span> <span style="color: Olive;">{</s
     time_grid <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: Olive;">[</span><span style="color: Teal;">None</span> <span style="color: Green;font-weight:bold;">for</span> _ <span style="color: Green;font-weight:bold;">in</span> <span style="color: Teal;">range</span><span style="color: Olive;">(</span>num_instr<span style="color: Olive;">)</span><span style="color: Olive;">]</span> <span style="color: Green;font-weight:bold;">for</span> _ <span style="color: Green;font-weight:bold;">in</span> <span style="color: Teal;">range</span><span style="color: Olive;">(</span>total_cycles<span style="color: Olive;">)</span><span style="color: Olive;">]</span><br/>
 <br/>
     <span style="color: Green;font-weight:bold;">for</span> i<span style="color: Gray;">,</span> instr <span style="color: Green;font-weight:bold;">in</span> <span style="color: Teal;">enumerate</span><span style="color: Olive;">(</span>instructions<span style="color: Olive;">)</span>:<br/>
-        <span style="color: #a50"># 指令 i 的阶段 s 在周期 (i + s) 执行</span><br/>
+        <span style="color: #a50"># 命令 i のステージ s はサイクル (i + s) で実行される</span><br/>
         <span style="color: Green;font-weight:bold;">for</span> s_idx<span style="color: Gray;">,</span> stage <span style="color: Green;font-weight:bold;">in</span> <span style="color: Teal;">enumerate</span><span style="color: Olive;">(</span>stages<span style="color: Olive;">)</span>:<br/>
             cycle <span style="color: Gray;">=</span> i + s_idx<br/>
             <span style="color: Green;font-weight:bold;">if</span> cycle <span style="color: Gray;">&lt;</span> total_cycles:<br/>
@@ -451,7 +451,7 @@ STAGE_NAMES <span style="color: Gray;">=</span> <span style="color: Olive;">{</s
     speedup <span style="color: Gray;">=</span> serial_cycles / pipeline_cycles<br/>
     ideal_speedup <span style="color: Gray;">=</span> num_stages  <span style="color: #a50"># 理想加速比 = 流水线级数</span><br/>
 <br/>
-    <span style="color: #a50"># 吞吐率：每周期完成的指令数</span><br/>
+    <span style="color: #a50"># スループット：各サイクルで完了する命令数</span><br/>
     serial_throughput <span style="color: Gray;">=</span> num_instr / serial_cycles<br/>
     pipeline_throughput <span style="color: Gray;">=</span> num_instr / pipeline_cycles<br/>
 <br/>
@@ -474,7 +474,7 @@ STAGE_NAMES <span style="color: Gray;">=</span> <span style="color: Olive;">{</s
 <br/>
 <span style="color: #a50"># ===== 主程序 =====</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"="</span> * <span style="color: Maroon;">70</span><span style="color: Olive;">)</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"  CPU 流水线模拟器 — 甘特图风格对比 (runoob 演示)"</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">CPU パイプラインシミュレータ — ガントチャートスタイル対比 (runoob デモ)</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"="</span> * <span style="color: Maroon;">70</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">" 指令序列: {', '.join(INSTRUCTIONS[:8])}"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">" 流水线级数: 4 (IF=取指, ID=译码, EX=执行, WB=写回)"</span><span style="color: Olive;">)</span><br/>
@@ -488,11 +488,11 @@ print_simple_gantt<span style="color: Olive;">(</span>INSTRUCTIONS<span style="c
 pipeline_cycles<span style="color: Gray;">,</span> pipeline_grid <span style="color: Gray;">=</span> simulate_pipeline<span style="color: Olive;">(</span>INSTRUCTIONS<span style="color: Gray;">,</span> STAGES<span style="color: Olive;">)</span><br/>
 print_simple_gantt<span style="color: Olive;">(</span>INSTRUCTIONS<span style="color: Gray;">,</span> STAGES<span style="color: Gray;">,</span> pipeline_grid<span style="color: Gray;">,</span> pipeline_cycles<span style="color: Gray;">,</span> <span style="color: #a11;">"模式 B: 有流水线（4级流水线）"</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 3. 性能对比</span><br/>
+<span style="color: #a50"># 3. 性能比較</span><br/>
 metrics <span style="color: Gray;">=</span> calculate_metrics<span style="color: Olive;">(</span>serial_cycles<span style="color: Gray;">,</span> pipeline_cycles<span style="color: Gray;">,</span> <span style="color: Teal;">len</span><span style="color: Olive;">(</span>INSTRUCTIONS<span style="color: Olive;">)</span><span style="color: Gray;">,</span> <span style="color: Teal;">len</span><span style="color: Olive;">(</span>STAGES<span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>{'='*70}"</span><span style="color: Olive;">)</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">" 性能对比分析"</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">" 性能比較分析"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"{'='*70}"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"  指令数量:       {len(INSTRUCTIONS)} 条"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"  流水线级数:     {len(STAGES)} 级"</span><span style="color: Olive;">)</span><br/>
@@ -544,10 +544,10 @@ metrics <span style="color: Gray;">=</span> calculate_metrics<span style="color:
 <ul>
 <li><span class="tag1 green">"ガントチャート比較"</span>"：パイプラインなしモードでは、各命令が連続した 4 サイクルを占有し、命令間に大量の空白があります。パイプラインありモードでは、各ステージが密に配置され、空白サイクルはほとんどありません。"</li>
 <li><span class="tag1 green">"加速比の傾向"</span>"：命令が多いほど、加速比はパイプラインの段数（ここでは 4）に近づきます。ただし、命令が 1 つだけの場合は、充填期と排出期のオーバーヘッドが 100% を占めるため、パイプラインにはまったく高速化効果がありません。"</li>
-<li><span class="tag1 green">"スループット"</span>"：パイプラインが「満たされた」後（4 サイクル目から）、毎サイクル 1 つの命令を完了できます。これがパイプラインの核心的な価値です。"</li>
+<li><span class="tag1 green">"スループット"</span>：パイプラインが「満たされた」後（4 サイクル目から）、毎サイクル 1 つの命令を完了できます。これがパイプラインの核心のな価値です。</li>
 </ul>
 <h2>インタラクティブデモ：パイプラインのガントチャート比較</h2>
-<p>"以下では、Chart.js の横方向スタックバーチャートを使用してガントチャートを描画し、直感的に比較します。"<strong>"パイプラインなし（直列）"</strong>和<strong>"パイプラインあり（4段）"</strong>"2 つのモードにおける、4 つの命令の各ステージの時間分布。各色のブロックは 1 つのステージを表します（IF=命令フェッチ, ID=デコード, EX=実行, WB=ライトバック）。x 軸はクロックサイクルです。"</p>
+<p>以下では、Chart.js の横方向スタックバーチャートを使用してガントチャートを描画し、直感的に比較します。<strong>"パイプラインなし（直列）"</strong>と<strong>"パイプラインあり（4段）"</strong>"2 つのモードにおける、4 つの命令の各ステージの時間分布。各色のブロックは 1 つのステージを表します（IF=命令フェッチ, ID=デコード, EX=実行, WB=ライトバック）。x 軸はクロックサイクルです。"</p>
 <script src="../static.jyshare.com/assets/libs/chart.js-4.5.0/chart.umd.min.js"></script>
 <style>
 /* 流水线甘特图演示样式 (runoob) */
@@ -676,7 +676,7 @@ metrics <span style="color: Gray;">=</span> calculate_metrics<span style="color:
 </div>
 </div>
 <div class="pipeline-info-text">
-<strong>"重要な観察："</strong><br/>"パイプラインなしモード：各命令が連続した 4 サイクルを占有し、命令間は完全に直列で、4 つの命令に 16 サイクルかかります。"<br/>"パイプラインありモード：異なる命令の異なるステージが重なって実行され、4 つの命令はわずか 7 サイクル（= 4 + (4-1)）で完了します。"<br/>"パイプラインが「満たされた」後（サイクル 4 以降）、毎サイクル 1 つの命令が完了します——これがスループットが大幅に向上する理由です。"</div>
+<strong>"重要な観察："</strong><br/>"パイプラインなしモード：各命令が連続した 4 サイクルを占有し、命令間は完全に直列で、4 つの命令に 16 サイクルかかります。"<br/>"パイプラインありモード：異なる命令の異なるステージが重なって実行され、4 つの命令はわずか 7 サイクル（= 4 + (4-1)）で完了します。"<br/>パイプラインが「満たされた」後（サイクル 4 以降）、毎サイクル 1 つの命令が完了します——これがスループットが大幅に向上する理由です。</div>
 </div>
 <script>
 /*
@@ -780,7 +780,7 @@ new Chart(ctxPipeline, {
 <p>"パイプラインの「段数」が理論上の高速化の上限を決定しますが、段数が多くなるほどハザード問題も深刻になります："</p>
 <table class="reference">
 <tr><th>"CPU モデル"</th><th>"パイプライン段数"</th><th>"特徴"</th></tr>
-<tr><td>"古典的な RISC（例：MIPS）"</td><td>"5 段"</td><td>"シンプルで効率的、教育に適しています。古典的な 5 段パイプライン：IF、ID、EX、MEM、WB"</td></tr>
+<tr><td>"古典的な RISC（例：MIPS）"</td><td>"5 段"</td><td>シンプルで効率的、教育に適しています。古典のな 5 段パイプライン：IF、ID、EX、MEM、WB</td></tr>
 <tr><td>Intel Pentium 4（NetBurst）</td><td>"20〜31 段"</td><td>"超長パイプラインで、高周波数を追求。ただし分岐予測失敗時の損失が大きく、最終的に放棄されました"</td></tr>
 <tr><td>"Intel Core シリーズ（2006 年以降）"</td><td>"14〜19 段"</td><td>"短めのパイプライン + 高い IPC で、周波数と効率のバランスを取りました"</td></tr>
 <tr><td>Apple M1（2020）</td><td>"8 段（デコード）"</td><td>"超幅広アーキテクチャ（8 発行）、低周波数・高 IPC、電力効率に非常に優れています"</td></tr>
@@ -906,11 +906,11 @@ new Chart(ctxPipeline, {
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-"<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックできます</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に必ず<a href=";.html" class="runoob-pop">ログイン</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>"
+"<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックできます</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に必ず<a class="runoob-pop" href=";.html">ログイン</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>"
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1210,7 +1210,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

@@ -180,7 +180,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h3>1.2 多項式回帰の導入</h3>
 <p>多項式回帰の中心的な考え方は：<strong>特徴の高次のべき乗を新しい特徴とみなす</strong>そして、この拡張された特徴セットに線形回帰を適用します。</p>
 <p>例えば、2次多項式回帰モデル：<code>y = w₁ * x + w₂ * x² + b</code></p>
-<p>ご覧のとおり、方程式の中には<code>x²</code>が現れていますが、これを私たちが<code>x</code> 和 <code>x²</code>2つの独立した特徴と見なすなら<code>X1</code> 和 <code>X2</code>、モデルは次のようになります：<code>y = w₁ * X1 + w₂ * X2 + b</code>これは本質的に依然として<strong>線形モデル</strong>ですが、それが線形なのは<strong>特徴</strong> <code>X1</code> 和 <code>X2</code>に関してです。これが、多項式回帰が「線形回帰の拡張」と呼ばれる理由です。</p>
+<p>ご覧のとおり、方程式の中には<code>x²</code>が現れていますが、これを私たちが<code>x</code>と<code>x²</code>2つの独立した特徴と見なすなら<code>X1</code>と<code>X2</code>、モデルは次のようになります：<code>y = w₁ * X1 + w₂ * X2 + b</code>これは本質的に依然として<strong>線形モデル</strong>ですが、それが線形なのは<strong>特徴</strong> <code>X1</code>と<code>X2</code>に関してです。これが、多項式回帰が「線形回帰の拡張」と呼ばれる理由です。</p>
 <h3>1.3 重要な用語</h3>
 <ul>
 <li><strong>次数</strong>：多項式の中で最も高い指数。次数が2なら2次曲線（放物線）、次数が3なら3次曲線、以下同様です。</li>
@@ -315,7 +315,7 @@ plt.<span style="color: #05a;">show</span><span style="color: Olive;">(</span><s
 <li><strong>Degree=15（15次）</strong>：曲線が激しく振動し、多くのデータ点を通過しますが、データ点の間の傾向の予測は奇妙です。訓練データ上では<code>R²</code>1に近くなるかもしれませんが、新しいデータに対する予測は非常に悪くなります。これは典型的な<strong>過学習</strong>。</li>
 </ul>
 <h3>3.1 より科学的な方法：交差検証</h3>
-<p>実際には、私たちは<strong>交差検証</strong>を用いて、異なる次数のモデルの未知データでの性能を評価し、検証セットで最も性能の良いモデルを選択します。<code>scikit-learn</code> 的 <code>cross_val_score</code>これを簡単に実現できます。</p>
+<p>実際には、私たちは<strong>交差検証</strong>を用いて、異なる次数のモデルの未知データでの性能を評価し、検証セットで最も性能の良いモデルを選択します。<code>scikit-learn</code>の<code>cross_val_score</code>これを簡単に実現できます。</p>
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
@@ -379,26 +379,20 @@ plt.<span style="color: #05a;">legend</span><span style="color: Olive;">(</span>
 plt.<span style="color: #05a;">show</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 </div>
 </div>
-<p><strong>演習2：実データセットの探索</strong>使用<code>scikit-learn</code>付属の<code>ボストン住宅価格データセット</code> 或 <code>糖尿病データセット</code>，选择一个与目标值呈现非线性关系的特征，应用多项式回归。
-→ 目的値と非線形関係にある特徴量を選択し、多項式回帰を適用します。</p>
+<p><strong>演習2：実データセットの探索</strong>使用<code>scikit-learn</code>付属の<code>ボストン住宅価格データセット</code> 或 <code>糖尿病データセット</code>目的値と非線形関係にある特徴量を選択し、多項式回帰を適用します。</p>
 <ol>
 <li>绘制原始数据散点图。
 → 元データの散布図を描画します。</li>
 <li>尝试不同阶数（2, 3, 4），可视化拟合曲线。
 → 異なる次数（2, 3, 4）を試し、適合曲線を可視化します。</li>
-<li>使用交叉验证找出对该特征而言预测效果最好的多项式阶数。
-→ 交差検証を使用して、その特徴量に対して予測性能が最も良い多項式の次数を見つけます。</li>
+<li>交差検証を使用して、その特徴量に対して予測性能が最も良い多項式の次数を見つけます。</li>
 </ol>
 <p><strong>练习 3：挑战 - 多元多项式回归
-→ 演習3：チャレンジ - 多変量多項式回帰</strong>我们上面的例子只有一个特征
-→ 上記の例では、特徴量は1つだけです<code>x</code>。多项式回归同样适用于多个特征。例如，有两个特征
-→ 。多項式回帰は複数の特徴量にも同様に適用できます。例えば、2つの特徴量がある<code>x1</code> 和 <code>x2</code>場合、<code>degree=2</code>的多项式特征会包括：
-→ の多項式特徴量には次のものが含まれます：<code>x1</code>, <code>x2</code>, <code>x1²</code>, <code>x1*x2</code>, <code>x2²</code>。
+→ 演習3：チャレンジ - 多変量多項式回帰</strong>上記の例では、特徴量は1つだけです<code>x</code>。多项式回归同样适用于多个特征。例如，有两个特征
+→ 。多項式回帰は複数の特徴量にも同様に適用できます。例えば、2つの特徴量がある<code>x1</code>と<code>x2</code>場合、<code>degree=2</code>の多項式特徴量には次のものが含まれます：<code>x1</code>, <code>x2</code>, <code>x1²</code>, <code>x1*x2</code>, <code>x2²</code>。
 尝试创建一个包含两个特征
-→ 。2つの特徴量を含む<code>(x1, x2)</code>的模拟数据集（例如，
-→ シミュレーションデータセット（例えば、<code>y = x1 + x2² + 噪声</code>），并使用
-→ ）を作成し、それを使用して<code>PolynomialFeatures(degree=2)</code>进行拟合。观察生成的特征矩阵形状，并理解其含义。
-→ フィッティングを行います。生成された特徴行列の形状を観察し、その意味を理解しましょう。</p>
+→ 。2つの特徴量を含む<code>(x1, x2)</code>のシミュレーションデータセット（例えば、→ シミュレーションデータセット（例えば、<code>y = x1 + x2² + 噪声</code>），并使用
+→ ）を作成し、それを使用して<code>PolynomialFeatures(degree=2)</code>フィッティングを行います。生成された特徴行列の形状を観察し、その意味を理解しましょう。</p>
 其他扩展
 → その他の拡張
 </div>
@@ -522,16 +516,16 @@ plt.<span style="color: #05a;">show</span><span style="color: Olive;">(</span><s
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-→ <p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリックできます</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前には必ず<a href=";.html" class="runoob-pop">ログイン</a>してください！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+→ <p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリックできます</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前には必ず<a class="runoob-pop" href=";.html">ログイン</a>してください！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -827,7 +821,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

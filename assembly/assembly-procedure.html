@@ -166,14 +166,14 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h1>アセンブリ言語 - プロシージャ（サブルーチン）</h1>
 <p>プロシージャ（Procedure）は、アセンブリ言語で関数/サブルーチンを再利用するための仕組みであり、コードを構造化し、再利用可能にします。プロシージャとスタックの関係を理解することは、アセンブリプログラミングの重要なマイルストーンです。</p>
 <hr/>
-<h2>什么是过程</h2>
+<h2>プロセスとは何か</h2>
 <p><span class="marked">过程</span>これは、複数回呼び出せるコードブロックであり、高級言語における関数（Function）やサブルーチン（Subroutine）に似ています。</p>
 <p>アセンブリでは、プロシージャは<code>CALL</code>命令呼び出し、経由<code>RET</code>指令返回。<code>CALL</code>リターンアドレスをスタックにプッシュし、<code>RET</code>スタックから戻りアドレスをポップし、そこへジャンプして戻ります。</p>
 <div class="example">
 <h2 class="example">实例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;">; 文件路径：simple_proc.asm</span><br/>
-<span style="color: #666666; font-style: italic;">; 最简单的过程调用示例</span><br/>
+<span style="color: #666666; font-style: italic;">; 最も単純なプロシージャ呼び出しの例</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
     msg <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'Hello, runoob!'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0xA</span><br/>
@@ -192,7 +192,7 @@ _start<span style="color: #339933;">:</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;">; 过程：打印消息</span><br/>
 print_message<span style="color: #339933;">:</span><br/>
-    <span style="color: #00007F; font-weight: bold;">push</span> <span style="color: #46AA03; font-weight: bold;">eax</span>                     <span style="color: #666666; font-style: italic;">; 保存要修改的寄存器</span><br/>
+    <span style="color: #00007F; font-weight: bold;">push</span> <span style="color: #46AA03; font-weight: bold;">eax</span>                     <span style="color: #666666; font-style: italic;">; 変更するレジスタを保存する</span><br/>
     <span style="color: #00007F; font-weight: bold;">push</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><br/>
     <span style="color: #00007F; font-weight: bold;">push</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><br/>
     <span style="color: #00007F; font-weight: bold;">push</span> <span style="color: #46AA03; font-weight: bold;">edx</span><br/>
@@ -207,13 +207,13 @@ print_message<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">pop</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><br/>
     <span style="color: #00007F; font-weight: bold;">pop</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><br/>
     <span style="color: #00007F; font-weight: bold;">pop</span> <span style="color: #46AA03; font-weight: bold;">eax</span><br/>
-    <span style="color: #00007F; font-weight: bold;">ret</span>                          <span style="color: #666666; font-style: italic;">; 返回调用处（从栈中弹出返回地址）</span><br/>
+    <span style="color: #00007F; font-weight: bold;">ret</span>                          <span style="color: #666666; font-style: italic;">; 呼び出し元へ戻る（スタックからリターンアドレスをポップする）</span><br/>
 </div>
 </div>
 <blockquote><p>プロシージャ内部では、変更するすべてのレジスタを保存および復元する必要があります（EAX が戻り値の場合は除く）。これはアセンブリプログラミングの基本マナーです。これを行わないと、呼び出し元のレジスタ値が意図せず変更される可能性があります。</p></blockquote>
 <hr/>
 <h2>CALLとRETの原理</h2>
-<p><code>CALL</code> 和 <code>RET</code>ペアで動作し、スタックに依存して戻りアドレスを管理します：</p>
+<p><code>CALL</code>と<code>RET</code>ペアで動作し、スタックに依存して戻りアドレスを管理します：</p>
 <table class="reference">
 <tr><th>指令</th><th>実際に実行される操作</th></tr>
 <tr><td><code>CALL label</code></td><td><code>push eip</code>（次の命令アドレスを保存）+<code>jmp label</code></td></tr>
@@ -236,16 +236,16 @@ print_message<span style="color: #339933;">:</span><br/>
 <br/>
 _start<span style="color: #339933;">:</span><br/>
     <span style="color: #666666; font-style: italic;">; 调用 add_two 过程：计算 10 + 20</span><br/>
-    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">10</span>                  <span style="color: #666666; font-style: italic;">; 第一个参数放在 eax</span><br/>
-    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">20</span>                  <span style="color: #666666; font-style: italic;">; 第二个参数放在 ebx</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">10</span>                  <span style="color: #666666; font-style: italic;">; 最初の引数を eax に置く</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">20</span>                  <span style="color: #666666; font-style: italic;">; 2番目の引数を ebx に置く</span><br/>
     <span style="color: #00007F; font-weight: bold;">call</span> add_two                 <span style="color: #666666; font-style: italic;">; 调用过程</span><br/>
-    <span style="color: #666666; font-style: italic;">; 返回值在 eax 中 = 30</span><br/>
+    <span style="color: #666666; font-style: italic;">; eax 内の戻り値 = 30</span><br/>
 <br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">eax</span>                 <span style="color: #666666; font-style: italic;">; 退出码 = 30</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
     <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
 <br/>
-<span style="color: #666666; font-style: italic;">; 过程：计算 eax + ebx，结果返回在 eax 中</span><br/>
+<span style="color: #666666; font-style: italic;">; 過程：eax + ebx を計算し、結果は eax に格納される</span><br/>
 add_two<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">ebx</span>                 <span style="color: #666666; font-style: italic;">; eax = eax + ebx</span><br/>
     <span style="color: #00007F; font-weight: bold;">ret</span><br/>
@@ -277,7 +277,7 @@ _start<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">push</span> <span style="color: #0000FF; font-weight: bold;">dword</span> <span style="color: #FF0000;">100</span>               <span style="color: #666666; font-style: italic;">; 压入第 1 个参数</span><br/>
     <span style="color: #00007F; font-weight: bold;">call</span> sum                     <span style="color: #666666; font-style: italic;">; 调用过程</span><br/>
     <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #46AA03; font-weight: bold;">esp</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">8</span>                   <span style="color: #666666; font-style: italic;">; ★ 调用者清理栈（cdecl 约定）</span><br/>
-    <span style="color: #666666; font-style: italic;">; 返回值在 eax 中 = 300</span><br/>
+    <span style="color: #666666; font-style: italic;">; 戻り値は eax 内 = 300</span><br/>
 <br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">eax</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
@@ -285,20 +285,20 @@ _start<span style="color: #339933;">:</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;">; 过程：sum(a, b) = a + b</span><br/>
 sum<span style="color: #339933;">:</span><br/>
-    <span style="color: #00007F; font-weight: bold;">push</span> <span style="color: #46AA03; font-weight: bold;">ebp</span>                     <span style="color: #666666; font-style: italic;">; ★ 保存旧的基址指针</span><br/>
-    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebp</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">esp</span>                 <span style="color: #666666; font-style: italic;">; ★ 设置新的栈帧基址</span><br/>
+    <span style="color: #00007F; font-weight: bold;">push</span> <span style="color: #46AA03; font-weight: bold;">ebp</span>                     <span style="color: #666666; font-style: italic;">; ★ 古いベースポインタを保存する</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebp</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">esp</span>                 <span style="color: #666666; font-style: italic;">; ★ 新しいスタックフレームのベースアドレスを設定する</span><br/>
 <br/>
-    <span style="color: #666666; font-style: italic;">; 栈布局（从高地址到低地址）：</span><br/>
+    <span style="color: #666666; font-style: italic;">; スタックレイアウト（高アドレスから低アドレスへ）：</span><br/>
     <span style="color: #666666; font-style: italic;">; [ebp+12] = 参数 b（200）</span><br/>
     <span style="color: #666666; font-style: italic;">; [ebp+8]  = 参数 a（100）</span><br/>
     <span style="color: #666666; font-style: italic;">; [ebp+4]  = 返回地址</span><br/>
-    <span style="color: #666666; font-style: italic;">; [ebp]    = 旧的 ebp</span><br/>
+    <span style="color: #666666; font-style: italic;">; [ebp]    = 古い ebp</span><br/>
     <span style="color: #666666; font-style: italic;">; [ebp-4]  = 局部变量空间</span><br/>
 <br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46AA03; font-weight: bold;">ebp</span> <span style="color: #339933;">+</span> <span style="color: #FF0000;">8</span><span style="color: #009900; font-weight: bold;">]</span>           <span style="color: #666666; font-style: italic;">; 获取第 1 个参数（a）</span><br/>
     <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46AA03; font-weight: bold;">ebp</span> <span style="color: #339933;">+</span> <span style="color: #FF0000;">12</span><span style="color: #009900; font-weight: bold;">]</span>          <span style="color: #666666; font-style: italic;">; 加上第 2 个参数（b）</span><br/>
 <br/>
-    <span style="color: #00007F; font-weight: bold;">pop</span> <span style="color: #46AA03; font-weight: bold;">ebp</span>                      <span style="color: #666666; font-style: italic;">; ★ 恢复旧的基址指针</span><br/>
+    <span style="color: #00007F; font-weight: bold;">pop</span> <span style="color: #46AA03; font-weight: bold;">ebp</span>                      <span style="color: #666666; font-style: italic;">; ★ 古いベースポインタを復元する</span><br/>
     <span style="color: #00007F; font-weight: bold;">ret</span>                          <span style="color: #666666; font-style: italic;">; 返回</span><br/>
 </div>
 </div>
@@ -338,7 +338,7 @@ sum<span style="color: #339933;">:</span><br/>
     <span style="color: #666666; font-style: italic;">; edx:eax = 64 位结果</span><br/>
 <br/>
 get_answer<span style="color: #339933;">:</span><br/>
-    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">42</span>                  <span style="color: #666666; font-style: italic;">; 返回值放在 eax 中</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">42</span>                  <span style="color: #666666; font-style: italic;">; 戻り値を eax に置く</span><br/>
     <span style="color: #00007F; font-weight: bold;">ret</span><br/>
 <br/>
 get_big_value<span style="color: #339933;">:</span><br/>
@@ -354,7 +354,7 @@ get_big_value<span style="color: #339933;">:</span><br/>
 <h2 class="example">实例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;">; 文件路径：local_vars.asm</span><br/>
-<span style="color: #666666; font-style: italic;">; 在过程中使用局部变量</span><br/>
+<span style="color: #666666; font-style: italic;">; プロシージャ内でローカル変数を使用する</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.text</span><br/>
     <span style="color: #0000FF; font-weight: bold;">global</span> _start<br/>
@@ -374,9 +374,9 @@ _start<span style="color: #339933;">:</span><br/>
 multiply_add<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">push</span> <span style="color: #46AA03; font-weight: bold;">ebp</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebp</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">esp</span><br/>
-    <span style="color: #00007F; font-weight: bold;">sub</span> <span style="color: #46AA03; font-weight: bold;">esp</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">8</span>                   <span style="color: #666666; font-style: italic;">; ★ 在栈上分配 8 字节局部变量空间</span><br/>
+    <span style="color: #00007F; font-weight: bold;">sub</span> <span style="color: #46AA03; font-weight: bold;">esp</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">8</span>                   <span style="color: #666666; font-style: italic;">; ★ スタック上に8バイトのローカル変数領域を割り当てる</span><br/>
 <br/>
-    <span style="color: #666666; font-style: italic;">; 现在 [ebp-4] 和 [ebp-8] 都是可用的局部变量</span><br/>
+    <span style="color: #666666; font-style: italic;">; 現在、[ebp-4] と [ebp-8] は使用可能なローカル変数です。</span><br/>
 <br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46AA03; font-weight: bold;">ebp</span> <span style="color: #339933;">+</span> <span style="color: #FF0000;">8</span><span style="color: #009900; font-weight: bold;">]</span>           <span style="color: #666666; font-style: italic;">; x</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46AA03; font-weight: bold;">ebp</span> <span style="color: #339933;">+</span> <span style="color: #FF0000;">12</span><span style="color: #009900; font-weight: bold;">]</span>          <span style="color: #666666; font-style: italic;">; y</span><br/>
@@ -406,8 +406,8 @@ multiply_add<span style="color: #339933;">:</span><br/>
 <table class="reference">
 <tr><th>约定</th><th>参数传递</th><th>栈清理者</th><th>寄存器保存</th><th>返回值</th></tr>
 <tr><td>cdecl</td><td>スタック（右から左にプッシュ）</td><td>调用者</td><td>EAX、ECX、EDXは呼び出し元が保存</td><td>EAX</td></tr>
-<tr><td>stdcall</td><td>スタック（右から左にプッシュ）</td><td>被调用者</td><td>EAX、ECX、EDXは呼び出し元が保存</td><td>EAX</td></tr>
-<tr><td>fastcall</td><td>ECX, EDX + 栈</td><td>被调用者</td><td>EAX、ECX、EDXは呼び出し元が保存</td><td>EAX</td></tr>
+<tr><td>stdcall</td><td>スタック（右から左にプッシュ）</td><td>される呼び出し側</td><td>EAX、ECX、EDXは呼び出し元が保存</td><td>EAX</td></tr>
+<tr><td>fastcall</td><td>ECX, EDX + 栈</td><td>される呼び出し側</td><td>EAX、ECX、EDXは呼び出し元が保存</td><td>EAX</td></tr>
 </table>
 其他扩展
 </div>
@@ -527,11 +527,11 @@ multiply_add<span style="color: #339933;">:</span><br/>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -820,7 +820,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

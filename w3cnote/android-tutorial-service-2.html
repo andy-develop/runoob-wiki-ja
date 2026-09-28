@@ -254,7 +254,7 @@ manager.set(AlarmManager.RTC_WAKEUP,triggerAtTime,pendingIntent);</li>
 <blockquote><p><strong>①type:</strong>選択可能な値は5つあります：<br/>
 <strong>AlarmManager.ELAPSED_REALTIME:</strong>アラームはスマートフォンのスリープ状態では使用できません。この状態ではアラームは相対時間（システム起動開始からの相対時間）を使用します。状態値は3です。<br/><strong>AlarmManager.ELAPSED_REALTIME_WAKEUP</strong>アラームはスリープ状態でシステムを起こし、通知機能を実行します。この状態ではアラームも相対時間を使用します。状態値は2です。<br/><strong>AlarmManager.RTC</strong>アラームはスリープ状態では使用できません。この状態ではアラームは絶対時間、つまり現在のシステム時間を使用します。状態値は1です。<br/><strong>AlarmManager.RTC_WAKEUP</strong>アラームがスリープ状態でシステムを起こして通知機能を実行することを示します。この状態ではアラームは絶対時間を使用します。状態値は0です。<br/><strong>AlarmManager.POWER_OFF_WAKEUP</strong>アラームがスマートフォンの電源オフ状態でも正常に通知機能を実行できることを示します。そのため5つの状態の中で最もよく使われる状態の1つです。この状態ではアラームも絶対時間を使用します。状態値は4です。ただし、この状態はSDKバージョンの影響を受けるようで、一部のバージョンではサポートされていません。</p></blockquote>
 <p>PS：最初のパラメータが2番目のパラメータのタイプを決定します。REALTIMEの場合：SystemClock.elapsedRealtime()メソッドでシステム起動から現在までの経過ミリ秒数を取得できます。RTCの場合は：System.currentTimeMillis()で1970.1.1 0時から現在までの経過ミリ秒数を取得できます。</p>
-<blockquote><p><strong>②startTime：</strong>アラームの最初の実行時間です。ミリ秒単位で、時間をカスタマイズできますが、通常は現在の時間を使用します。注意すべき点は、この属性は最初の属性（type）と密接に関連していることです。最初のパラメータに対応するアラームが相対時間を使用している場合（<strong>ELAPSED_REALTIME</strong>和<strong>ELAPSED_REALTIME_WAKEUP</strong>）、本属性は相対時間（システム起動時間からの相対時間）を使用する必要があります。例えば現在の時間は次のように表します：SystemClock.elapsedRealtime()。最初のパラメータに対応するアラームが絶対時間（RTC、RTC_WAKEUP、POWER_OFF_WAKEUP）を使用している場合、本属性は絶対時間を使用する必要があります。例えば現在の時間は次のように表します：System.currentTimeMillis()。</p>
+<blockquote><p><strong>②startTime：</strong>アラームの最初の実行時間です。ミリ秒単位で、時間をカスタマイズできますが、通常は現在の時間を使用します。注意すべき点は、この属性は最初の属性（type）と密接に関連していることです。最初のパラメータに対応するアラームが相対時間を使用している場合（<strong>ELAPSED_REALTIME</strong>と<strong>ELAPSED_REALTIME_WAKEUP</strong>）、本属性は相対時間（システム起動時間からの相対時間）を使用する必要があります。例えば現在の時間は次のように表します：SystemClock.elapsedRealtime()。最初のパラメータに対応するアラームが絶対時間（RTC、RTC_WAKEUP、POWER_OFF_WAKEUP）を使用している場合、本属性は絶対時間を使用する必要があります。例えば現在の時間は次のように表します：System.currentTimeMillis()。</p>
 <p><strong>③PendingIntent:</strong>アラームの実行アクションをバインドします。例えば、ブロードキャストを送信したり、通知を出したりします。PendingIntentはIntentのラッパークラスです。<br/>注意すべき点は、サービスを起動してアラーム通知を実現する場合は、PendingIntentオブジェクトの取得にはPending.getService(Context c, int i, Intent intent, int j)メソッドを使用すべきです。<br/>アラーム通知をブロードキャストで実現する場合、PendingIntentオブジェクトの取得は PendingIntent.getBroadcast (Context c,int i,Intent intent,int j) メソッドを使用すべきです。<br/>Activityの方式でアラーム通知を実現する場合、PendingIntentオブジェクトの取得は PendingIntent.getActivity(Context c,int i,Intent intent,int j) メソッドを使用すべきです。<br/>これら3つのメソッドを誤って使用した場合、エラーは発生しませんが、アラーム通知の効果は確認できません。</p></blockquote>
 <p><strong>また：</strong></p>
 <p>4.4以降（API 19）では、Alarmタスクのトリガー時間が不正確になり、遅延する可能性があります。これはシステムの省電力最適化のためです。正確に実行したい場合は、setExtra()メソッドを呼び出してください。</p>
@@ -413,11 +413,11 @@ public class AlarmReceiver extends BroadcastReceiver {
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=".." class="runoob-pop">ログイン</a>する必要があります！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href="..">ログイン</a>する必要があります！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

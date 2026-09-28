@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Zig 数组和切片 | 菜鸟教程</title>
+<title>Zig の配列とスライス | 初心者チュートリアル</title>
 <script>
 window.RUNOOB_CONFIG = {
   darkCssUrl: "https://www.runoob.com/wp-content/themes/runoob/dark-mode.css?v=1.125"
@@ -159,7 +159,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="article">
 <div class="previous-next-links">
 <div class="previous-design-link"><i aria-hidden="true" class="fa fa-arrow-left" style="font-size:16px;"></i> <a href="../zig/zig-fn.html" rel="prev">Zig 函数</a> </div>
-<div class="next-design-link"><a href="../zig/zig-struct-enum.html" rel="next">Zig 结构体和枚举</a> <i aria-hidden="true" class="fa fa-arrow-right" style="font-size:16px;"></i></div>
+<div class="next-design-link"><a href="../zig/zig-struct-enum.html" rel="next">Zig の構造体と列挙型</a> <i aria-hidden="true" class="fa fa-arrow-right" style="font-size:16px;"></i></div>
 </div>
 <div class="article-body">
 <div class="article-intro" id="content">
@@ -195,14 +195,14 @@ var myArray: [10]u8 = [10]u8{0} ** 10; // 定义并初始化一个大小为 10 �
 <span style="color: #05a;">const</span> std <span style="color: #000080;">=</span> @import<span style="color: #008000;">(</span><span style="color: #a11;">"std"</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <br/>
 pub fn main<span style="color: #008000;">(</span><span style="color: #008000;">)</span> <span style="color: #05a;">void</span> <span style="color: #008000;">{</span><br/>
-    <span style="color: #666666;">// 定义一个包含 5 个 i32 类型元素的数组</span><br/>
+    <span style="color: #666666;">// 5つのi32型要素を含む配列を定義する</span><br/>
     <span style="color: #05a;">const</span> arr<span style="color: #008080;">:</span> <span style="color: #008000;">[</span><span style="color: #0000DD;">5</span><span style="color: #008000;">]</span>i32 <span style="color: #000080;">=</span> <span style="color: #008000;">[</span><span style="color: #0000DD;">5</span><span style="color: #008000;">]</span>i32<span style="color: #008000;">{</span><span style="color: #0000DD;">1</span>, <span style="color: #0000DD;">2</span>, <span style="color: #0000DD;">3</span>, <span style="color: #0000DD;">4</span>, <span style="color: #0000DD;">5</span><span style="color: #008000;">}</span><span style="color: #008080;">;</span><br/>
 <br/>
     <span style="color: #666666;">// 通过索引访问数组元素</span><br/>
     std.<span style="color: #007788;">debug</span>.<span style="color: #007788;">print</span><span style="color: #008000;">(</span><span style="color: #a11;">"First element: {}<span style="color: #000099; font-weight: bold;">\n</span>"</span>, .<span style="color: #008000;">{</span>arr<span style="color: #008000;">[</span><span style="color: #0000DD;">0</span><span style="color: #008000;">]</span><span style="color: #008000;">}</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
     std.<span style="color: #007788;">debug</span>.<span style="color: #007788;">print</span><span style="color: #008000;">(</span><span style="color: #a11;">"Third element: {}<span style="color: #000099; font-weight: bold;">\n</span>"</span>, .<span style="color: #008000;">{</span>arr<span style="color: #008000;">[</span><span style="color: #0000DD;">2</span><span style="color: #008000;">]</span><span style="color: #008000;">}</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <br/>
-    <span style="color: #666666;">// 数组的大小是固定的</span><br/>
+    <span style="color: #666666;">// 配列のサイズは固定されている</span><br/>
     <span style="color: #05a;">const</span> size<span style="color: #008080;">:</span> usize <span style="color: #000080;">=</span> arr.<span style="color: #007788;">len</span><span style="color: #008080;">;</span><br/>
     std.<span style="color: #007788;">debug</span>.<span style="color: #007788;">print</span><span style="color: #008000;">(</span><span style="color: #a11;">"Array size: {}<span style="color: #000099; font-weight: bold;">\n</span>"</span>, .<span style="color: #008000;">{</span>size<span style="color: #008000;">}</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <span style="color: #008000;">}</span><br/>
@@ -242,7 +242,7 @@ Index: 4, Item: 5
 <h3>定義と初期化</h3><p>スライスは、配列や他の連続したメモリ領域の一部への参照です。</p><p>スライスは動的であり、そのサイズを変更でき、通常は配列の一部や動的に割り当てられたメモリブロックを表すために使用されます。</p>
 <h3>语法格式</h3>
 <pre>const sliceName: []ElementType = array[start..end];</pre><p><strong>参数说明：</strong></p>
-<ul><li><code>sliceName</code>：スライスの名前。</li><li><code>ElementType</code>：スライス内の要素の型です。</li><li><code>array[start..end]</code>：从<code>array</code>から部分スライスを抽出し、<code>start</code> 和 <code>end</code>是索引。</li></ul>
+<ul><li><code>sliceName</code>：スライスの名前。</li><li><code>ElementType</code>：スライス内の要素の型です。</li><li><code>array[start..end]</code>：から<code>array</code>から部分スライスを抽出し、<code>start</code>と<code>end</code>インデックスです。</li></ul>
 <p>スライスは、配列の部分集合から作成することも、ポインタと長さから作成することもできます：</p>
 <pre>var myArray: [10]u8 = ...; // 假设已经初始化
 var mySlice = myArray[2..7]; // 创建一个切片，包含索引2到6的元素
@@ -261,14 +261,14 @@ var mySlicePtr = myArray[2..]; // 创建一个切片，从索引2开始到数组
 pub fn main<span style="color: #008000;">(</span><span style="color: #008000;">)</span> <span style="color: #05a;">void</span> <span style="color: #008000;">{</span><br/>
     var arr<span style="color: #008080;">:</span> <span style="color: #008000;">[</span><span style="color: #0000DD;">5</span><span style="color: #008000;">]</span>i32 <span style="color: #000080;">=</span> <span style="color: #008000;">[</span><span style="color: #0000DD;">5</span><span style="color: #008000;">]</span>i32<span style="color: #008000;">{</span> <span style="color: #0000DD;">1</span>, <span style="color: #0000DD;">2</span>, <span style="color: #0000DD;">3</span>, <span style="color: #0000DD;">4</span>, <span style="color: #0000DD;">5</span> <span style="color: #008000;">}</span><span style="color: #008080;">;</span><br/>
 <br/>
-    <span style="color: #666666;">// 从数组创建切片</span><br/>
+    <span style="color: #666666;">// 配列からスライスを作成</span><br/>
     <span style="color: #05a;">const</span> slice<span style="color: #008080;">:</span> <span style="color: #008000;">[</span><span style="color: #008000;">]</span>i32 <span style="color: #000080;">=</span> arr<span style="color: #008000;">[</span><span style="color: #0000DD;">1</span>..<span style="color: #0000DD;">4</span><span style="color: #008000;">]</span><span style="color: #008080;">;</span><br/>
 <br/>
     <span style="color: #666666;">// 通过索引访问切片元素</span><br/>
     std.<span style="color: #007788;">debug</span>.<span style="color: #007788;">print</span><span style="color: #008000;">(</span><span style="color: #a11;">"First element of slice: {}<span style="color: #000099; font-weight: bold;">\n</span>"</span>, .<span style="color: #008000;">{</span>slice<span style="color: #008000;">[</span><span style="color: #0000DD;">0</span><span style="color: #008000;">]</span><span style="color: #008000;">}</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
     std.<span style="color: #007788;">debug</span>.<span style="color: #007788;">print</span><span style="color: #008000;">(</span><span style="color: #a11;">"Second element of slice: {}<span style="color: #000099; font-weight: bold;">\n</span>"</span>, .<span style="color: #008000;">{</span>slice<span style="color: #008000;">[</span><span style="color: #0000DD;">1</span><span style="color: #008000;">]</span><span style="color: #008000;">}</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <br/>
-    <span style="color: #666666;">// 切片的长度</span><br/>
+    <span style="color: #666666;">// スライスの長さ</span><br/>
     <span style="color: #05a;">const</span> length<span style="color: #008080;">:</span> usize <span style="color: #000080;">=</span> slice.<span style="color: #007788;">len</span><span style="color: #008080;">;</span><br/>
     std.<span style="color: #007788;">debug</span>.<span style="color: #007788;">print</span><span style="color: #008000;">(</span><span style="color: #a11;">"Slice length: {}<span style="color: #000099; font-weight: bold;">\n</span>"</span>, .<span style="color: #008000;">{</span>length<span style="color: #008000;">}</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <span style="color: #008000;">}</span><br/>
@@ -345,7 +345,7 @@ Slice item: 4</pre>
 </div>
 <div class="previous-next-links">
 <div class="previous-design-link"><i aria-hidden="true" class="fa fa-arrow-left" style="font-size:16px;"></i> <a href="../zig/zig-fn.html" rel="prev">Zig 函数</a> </div>
-<div class="next-design-link"><a href="../zig/zig-struct-enum.html" rel="next">Zig 结构体和枚举</a> <i aria-hidden="true" class="fa fa-arrow-right" style="font-size:16px;"></i></div>
+<div class="next-design-link"><a href="../zig/zig-struct-enum.html" rel="next">Zig の構造体と列挙型</a> <i aria-hidden="true" class="fa fa-arrow-right" style="font-size:16px;"></i></div>
 </div>
 
 笔记列表
@@ -453,11 +453,11 @@ Slice item: 4</pre>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -746,7 +746,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

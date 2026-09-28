@@ -345,7 +345,7 @@ $name = "Qadir'; DELETE FROM users;";
 <p>関数呼び出しは、ユーザーテーブルから name 列がユーザー指定の名前と一致するレコードを取得するためのものです。通常、<b>$name</b>英数字またはスペースのみを含みます。たとえば、文字列 ilia などです。しかし、ここでは $name にまったく新しいクエリが追加されています。これにより、データベースへのこの呼び出しは壊滅的な問題を引き起こします：注入された DELETE クエリが users のすべてのレコードを削除します。</p>
 <p>クエリのスタックや単一の関数呼び出しでの複数クエリの実行を許可しないデータベースインターフェースも存在します。スタッククエリを試みると呼び出しは失敗しますが、SQLite と PostgreSQL ではスタッククエリが可能で、つまり1つの文字列内で提供されるすべてのクエリが実行され、深刻なセキュリティ問題を引き起こす可能性があります。</p>
 <h2>SQL インジェクションの防止</h2>
-<p>スクリプト言語（PERL や PHP など）では、すべてのエスケープ文字を巧妙に処理できます。プログラミング言語 PHP は文字列関数を提供します。<strong>SQLite3::escapeString($string)</strong> 和 <b>sqlite_escape_string()</b>SQLite にとって特別な入力文字をエスケープします。</p>
+<p>スクリプト言語（PERL や PHP など）では、すべてのエスケープ文字を巧妙に処理できます。プログラミング言語 PHP は文字列関数を提供します。<strong>SQLite3::escapeString($string)</strong>と<b>sqlite_escape_string()</b>SQLite にとって特別な入力文字をエスケープします。</p>
 <p>注意：使用する関数<b>sqlite_escape_string()</b>の PHP バージョン要件は次のとおりです：<strong>PHP 5 &lt; 5.4.0</strong>。</p>
 <p>PHP 5 &gt;= 5.3.0、PHP 7 などのより高いバージョンでは、上記の関数を使用します：</p>
 <pre>SQLite3::escapeString($string);//$string为要转义的字符串</pre>
@@ -477,11 +477,11 @@ $result = @$db-&gt;query("SELECT * FROM users WHERE username='{$name}'");
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>する必要があります！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>する必要があります！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -781,7 +781,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

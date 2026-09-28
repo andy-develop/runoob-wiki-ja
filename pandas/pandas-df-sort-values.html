@@ -511,7 +511,7 @@ df <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFrame</
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df<span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"="</span> * <span style="color: Maroon;">50</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 先按班级排序，再按数学成绩排序（都是升序）</span><br/>
+<span style="color: #a50"># まずクラス順に並べ、次に数学の成績順に並べます（いずれも昇順）</span><br/>
 df_sorted <span style="color: Gray;">=</span> df.<span style="color: #05a;">sort_values</span><span style="color: Olive;">(</span>by<span style="color: Gray;">=</span><span style="color: Olive;">[</span><span style="color: #a11;">'班级'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'数学'</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"先按班级，再按数学成绩排序后："</span><span style="color: Olive;">)</span><br/>
@@ -566,7 +566,7 @@ df_sorted2 <span style="color: Gray;">=</span> df.<span style="color: #05a;">sor
 <span style="color: Green;font-weight:bold;">import</span> pandas <span style="color: Green;font-weight:bold;">as</span> pd<br/>
 <span style="color: Green;font-weight:bold;">import</span> numpy <span style="color: Green;font-weight:bold;">as</span> np<br/>
 <br/>
-<span style="color: #a50"># 创建一个包含缺失值的 DataFrame</span><br/>
+<span style="color: #a50"># 欠損値を含むDataFrameを作成する</span><br/>
 data <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><br/>
     <span style="color: #a11;">'姓名'</span>: <span style="color: Olive;">[</span><span style="color: #a11;">'张三'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'李四'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'王五'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'赵六'</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
     <span style="color: #a11;">'成绩'</span>: <span style="color: Olive;">[</span><span style="color: Maroon;">85</span><span style="color: Gray;">,</span> np.<span style="color: #05a;">nan</span><span style="color: Gray;">,</span> <span style="color: Maroon;">92</span><span style="color: Gray;">,</span> <span style="color: Maroon;">78</span><span style="color: Olive;">]</span><br/>
@@ -577,17 +577,17 @@ df <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFrame</
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df<span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"="</span> * <span style="color: Maroon;">50</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 默认：缺失值放在最后</span><br/>
+<span style="color: #a50"># デフォルト：欠損値は最後に置く</span><br/>
 df_sorted_last <span style="color: Gray;">=</span> df.<span style="color: #05a;">sort_values</span><span style="color: Olive;">(</span>by<span style="color: Gray;">=</span><span style="color: #a11;">'成绩'</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"缺失值放在最后："</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"欠損値を最後に置く："</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df_sorted_last<span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"="</span> * <span style="color: Maroon;">50</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 将缺失值放在最前面</span><br/>
+<span style="color: #a50"># 欠損値を先頭に配置</span><br/>
 df_sorted_first <span style="color: Gray;">=</span> df.<span style="color: #05a;">sort_values</span><span style="color: Olive;">(</span>by<span style="color: Gray;">=</span><span style="color: #a11;">'成绩'</span><span style="color: Gray;">,</span> na_position<span style="color: Gray;">=</span><span style="color: #a11;">'first'</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"缺失值放在最前："</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"欠損値を先頭に置く："</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df_sorted_first<span style="color: Olive;">)</span><br/>
 </div>
 </div>
@@ -683,7 +683,7 @@ df_sorted_reset <span style="color: Gray;">=</span> df.<span style="color: #05a;
 <div class="example_code">
 <span style="color: Green;font-weight:bold;">import</span> pandas <span style="color: Green;font-weight:bold;">as</span> pd<br/>
 <br/>
-<span style="color: #a50"># 大文字と小文字が混在する文字列 DataFrame を作成する</span><br/>
+<span style="color: #a50">大文字と小文字が混在する文字列 DataFrame を作成する</span><br/>
 data <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><br/>
     <span style="color: #a11;">'单词'</span>: <span style="color: Olive;">[</span><span style="color: #a11;">'apple'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'Banana'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'cherry'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'APPLE'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'banana'</span><span style="color: Olive;">]</span><br/>
 <span style="color: Olive;">}</span><br/>
@@ -916,11 +916,11 @@ df.<span style="color: #05a;">sort_values</span><span style="color: Olive;">(</s
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前には<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前には<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1220,7 +1220,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

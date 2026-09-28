@@ -292,17 +292,17 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <br/>
 <span style="color: #006600; font-style: italic;">// 基础命令</span><br/>
 pi.<span style="color: #660066;">registerCommand</span><span style="color: #009900;">(</span><span style="color: #3366CC;">"stats"</span><span style="color: #339933;">,</span> <span style="color: #009900;">{</span><br/>
-  description<span style="color: #339933;">:</span> <span style="color: #3366CC;">"显示当前会话的统计信息"</span><span style="color: #339933;">,</span> <span style="color: #006600; font-style: italic;">// 必填，显示在 / 自动补全列表中</span><br/>
+  description<span style="color: #339933;">:</span> <span style="color: #3366CC;">"現在のセッションの統計情報を表示"</span><span style="color: #339933;">,</span> <span style="color: #006600; font-style: italic;">// 必須、/ 自動補完リストに表示されます</span><br/>
   handler<span style="color: #339933;">:</span> async <span style="color: #009900;">(</span>args<span style="color: #339933;">,</span> ctx<span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
     <span style="color: #000066; font-weight: bold;">const</span> count <span style="color: #339933;">=</span> ctx.<span style="color: #660066;">sessionManager</span>.<span style="color: #660066;">getEntries</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span>.<span style="color: #660066;">length</span><span style="color: #339933;">;</span><br/>
     ctx.<span style="color: #660066;">ui</span>.<span style="color: #660066;">notify</span><span style="color: #009900;">(</span>`共 $<span style="color: #009900;">{</span>count<span style="color: #009900;">}</span>条消息`<span style="color: #339933;">,</span> <span style="color: #3366CC;">"info"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
   <span style="color: #009900;">}</span><br/>
 <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
-<span style="color: #006600; font-style: italic;">// 带参数自动补全的命令</span><br/>
+<span style="color: #006600; font-style: italic;">// パラメータ付き自動補完のコマンド</span><br/>
 pi.<span style="color: #660066;">registerCommand</span><span style="color: #009900;">(</span><span style="color: #3366CC;">"deploy"</span><span style="color: #339933;">,</span> <span style="color: #009900;">{</span><br/>
   description<span style="color: #339933;">:</span> <span style="color: #3366CC;">"部署到指定环境"</span><span style="color: #339933;">,</span><br/>
-  <span style="color: #006600; font-style: italic;">// 定义参数自动补全，prefix 是用户已输入的参数前缀</span><br/>
+  <span style="color: #006600; font-style: italic;">// パラメータの自動補完を定義します。prefix はユーザーが既に入力したパラメータのプレフィックスです。</span><br/>
   getArgumentCompletions<span style="color: #339933;">:</span> <span style="color: #009900;">(</span>prefix<span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
     <span style="color: #000066; font-weight: bold;">const</span> envs <span style="color: #339933;">=</span> <span style="color: #009900;">[</span><span style="color: #3366CC;">"dev"</span><span style="color: #339933;">,</span> <span style="color: #3366CC;">"staging"</span><span style="color: #339933;">,</span> <span style="color: #3366CC;">"prod"</span><span style="color: #009900;">]</span><span style="color: #339933;">;</span><br/>
     <span style="color: #000066; font-weight: bold;">const</span> items <span style="color: #339933;">=</span> envs<br/>
@@ -315,7 +315,7 @@ pi.<span style="color: #660066;">registerCommand</span><span style="color: #0099
       ctx.<span style="color: #660066;">ui</span>.<span style="color: #660066;">notify</span><span style="color: #009900;">(</span><span style="color: #3366CC;">"用法: /deploy &lt;环境名&gt;"</span><span style="color: #339933;">,</span> <span style="color: #3366CC;">"warning"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
       <span style="color: #000066; font-weight: bold;">return</span><span style="color: #339933;">;</span><br/>
     <span style="color: #009900;">}</span><br/>
-    ctx.<span style="color: #660066;">ui</span>.<span style="color: #660066;">notify</span><span style="color: #009900;">(</span>`正在部署到 $<span style="color: #009900;">{</span>args<span style="color: #009900;">}</span>环境...`<span style="color: #339933;">,</span> <span style="color: #3366CC;">"info"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+    ctx.<span style="color: #660066;">ui</span>.<span style="color: #660066;">notify</span><span style="color: #009900;">(</span>`$にデプロイ中<span style="color: #009900;">{</span>args<span style="color: #009900;">}</span>环境...`<span style="color: #339933;">,</span> <span style="color: #3366CC;">"info"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
   <span style="color: #009900;">}</span><span style="color: #339933;">,</span><br/>
 <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 </div>
@@ -348,7 +348,7 @@ pi.<span style="color: #660066;">sendUserMessage</span><span style="color: #0099
 <span style="color: #006600; font-style: italic;">// 只往上下文里塞参考信息，不模拟用户发言</span><br/>
 pi.<span style="color: #660066;">sendMessage</span><span style="color: #009900;">(</span><span style="color: #009900;">{</span><br/>
   customType<span style="color: #339933;">:</span> <span style="color: #3366CC;">"deploy-context"</span><span style="color: #339933;">,</span><br/>
-  content<span style="color: #339933;">:</span> <span style="color: #3366CC;">"当前部署目标是 production"</span><span style="color: #339933;">,</span><br/>
+  content<span style="color: #339933;">:</span> <span style="color: #3366CC;">"現在のデプロイ目標は production です"</span><span style="color: #339933;">,</span><br/>
   display<span style="color: #339933;">:</span> <span style="color: #003366; font-weight: bold;">true</span><span style="color: #339933;">,</span><br/>
 <span style="color: #009900;">}</span><span style="color: #339933;">,</span> <span style="color: #009900;">{</span><br/>
   deliverAs<span style="color: #339933;">:</span> <span style="color: #3366CC;">"steer"</span><span style="color: #339933;">,</span> <span style="color: #006600; font-style: italic;">// 默认值，插入当前轮</span><br/>
@@ -381,21 +381,21 @@ pi.<span style="color: #660066;">sendMessage</span><span style="color: #009900;"
 pi.<span style="color: #660066;">registerCommand</span><span style="color: #009900;">(</span><span style="color: #3366CC;">"switch"</span><span style="color: #339933;">,</span> <span style="color: #009900;">{</span><br/>
   description<span style="color: #339933;">:</span> <span style="color: #3366CC;">"切换到另一个会话"</span><span style="color: #339933;">,</span><br/>
   handler<span style="color: #339933;">:</span> async <span style="color: #009900;">(</span>args<span style="color: #339933;">,</span> ctx<span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
-    <span style="color: #006600; font-style: italic;">// 列出当前项目的所有会话</span><br/>
+    <span style="color: #006600; font-style: italic;">// 現在のプロジェクトのすべてのセッションを一覧表示</span><br/>
     <span style="color: #000066; font-weight: bold;">const</span> sessions <span style="color: #339933;">=</span> await SessionManager.<span style="color: #660066;">list</span><span style="color: #009900;">(</span>ctx.<span style="color: #660066;">cwd</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
     <span style="color: #000066; font-weight: bold;">if</span> <span style="color: #009900;">(</span>sessions.<span style="color: #660066;">length</span> <span style="color: #339933;">===</span> <span style="color: #CC0000;">0</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
-      ctx.<span style="color: #660066;">ui</span>.<span style="color: #660066;">notify</span><span style="color: #009900;">(</span><span style="color: #3366CC;">"没有可用的会话"</span><span style="color: #339933;">,</span> <span style="color: #3366CC;">"warning"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+      ctx.<span style="color: #660066;">ui</span>.<span style="color: #660066;">notify</span><span style="color: #009900;">(</span><span style="color: #3366CC;">利用可能なセッションがありません</span><span style="color: #339933;">,</span> <span style="color: #3366CC;">"warning"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
       <span style="color: #000066; font-weight: bold;">return</span><span style="color: #339933;">;</span><br/>
     <span style="color: #009900;">}</span><br/>
 <br/>
     <span style="color: #006600; font-style: italic;">// 弹出选择列表</span><br/>
     <span style="color: #000066; font-weight: bold;">const</span> choice <span style="color: #339933;">=</span> await ctx.<span style="color: #660066;">ui</span>.<span style="color: #660066;">select</span><span style="color: #009900;">(</span><br/>
-      <span style="color: #3366CC;">"选择要切换的会话："</span><span style="color: #339933;">,</span><br/>
+      <span style="color: #3366CC;">"切り替えるセッションを選択："</span><span style="color: #339933;">,</span><br/>
       sessions.<span style="color: #660066;">map</span><span style="color: #009900;">(</span>s <span style="color: #339933;">=&gt;</span> s.<span style="color: #660066;">file</span><span style="color: #009900;">)</span><span style="color: #339933;">,</span><br/>
     <span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
     <span style="color: #000066; font-weight: bold;">if</span> <span style="color: #009900;">(</span>choice<span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
-      <span style="color: #006600; font-style: italic;">// 切换到选中的会话</span><br/>
+      <span style="color: #006600; font-style: italic;">// 選択中のセッションに切り替える</span><br/>
       await ctx.<span style="color: #660066;">switchSession</span><span style="color: #009900;">(</span>choice<span style="color: #339933;">,</span> <span style="color: #009900;">{</span><br/>
         withSession<span style="color: #339933;">:</span> async <span style="color: #009900;">(</span>ctx<span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
           ctx.<span style="color: #660066;">ui</span>.<span style="color: #660066;">notify</span><span style="color: #009900;">(</span><span style="color: #3366CC;">"已切换会话"</span><span style="color: #339933;">,</span> <span style="color: #3366CC;">"info"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
@@ -455,10 +455,10 @@ pi.<span style="color: #660066;">registerFlag</span><span style="color: #009900;
   <span style="color: #000066; font-weight: bold;">default</span><span style="color: #339933;">:</span> <span style="color: #003366; font-weight: bold;">false</span><span style="color: #339933;">,</span><br/>
 <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
-<span style="color: #006600; font-style: italic;">// 在扩展代码中检查标志值</span><br/>
+<span style="color: #006600; font-style: italic;">// 拡張コード内でフラグ値を確認する</span><br/>
 <span style="color: #006600; font-style: italic;">// 注意：pi.getFlag() 要等到命令行参数解析完成后才有值，</span><br/>
-<span style="color: #006600; font-style: italic;">// 因此建议把判断放进事件回调里，而不是写在扩展模块顶层。</span><br/>
-<span style="color: #006600; font-style: italic;">// 模块顶层求值发生在扩展加载阶段，此时读到的永远是默认值 false。</span><br/>
+<span style="color: #006600; font-style: italic;">// したがって、判断は拡張モジュールのトップレベルに書くのではなく、イベントコールバックに入れることをお勧めします。</span><br/>
+<span style="color: #006600; font-style: italic;">// モジュールのトップレベル評価は拡張機能のロード段階で行われるため、この時点で読み取られる値は常にデフォルトの false です。</span><br/>
 pi.<span style="color: #660066;">on</span><span style="color: #009900;">(</span><span style="color: #3366CC;">"before_agent_start"</span><span style="color: #339933;">,</span> async <span style="color: #009900;">(</span>event<span style="color: #339933;">,</span> ctx<span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
   <span style="color: #000066; font-weight: bold;">if</span> <span style="color: #009900;">(</span><span style="color: #339933;">!</span>pi.<span style="color: #660066;">getFlag</span><span style="color: #009900;">(</span><span style="color: #3366CC;">"plan"</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span> <span style="color: #000066; font-weight: bold;">return</span><span style="color: #339933;">;</span> <span style="color: #006600; font-style: italic;">// 未启用 --plan 则不做任何修改</span><br/>
   <span style="color: #000066; font-weight: bold;">return</span> <span style="color: #009900;">{</span><br/>
@@ -487,7 +487,7 @@ pi.<span style="color: #660066;">events</span>.<span style="color: #660066;">emi
   timestamp<span style="color: #339933;">:</span> <span style="">Date</span>.<span style="color: #660066;">now</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">,</span><br/>
 <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
-<span style="color: #006600; font-style: italic;">// 扩展 B：监听事件（通常写在另一个扩展文件里）</span><br/>
+<span style="color: #006600; font-style: italic;">// 拡張 B：イベントの監視（通常は別の拡張ファイルに書かれます）</span><br/>
 pi.<span style="color: #660066;">events</span>.<span style="color: #660066;">on</span><span style="color: #009900;">(</span><span style="color: #3366CC;">"deploy:completed"</span><span style="color: #339933;">,</span> <span style="color: #009900;">(</span>data<span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
   console.<span style="color: #660066;">log</span><span style="color: #009900;">(</span>`部署完成：$<span style="color: #009900;">{</span>data.<span style="color: #660066;">env</span><span style="color: #009900;">}</span>`<span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
@@ -503,7 +503,7 @@ pi.<span style="color: #660066;">events</span>.<span style="color: #660066;">on<
 <span style="color: #006600; font-style: italic;">// 文件路径：~/.pi/agent/extensions/list-commands.ts</span><br/>
 <br/>
 pi.<span style="color: #660066;">registerCommand</span><span style="color: #009900;">(</span><span style="color: #3366CC;">"my-commands"</span><span style="color: #339933;">,</span> <span style="color: #009900;">{</span><br/>
-  description<span style="color: #339933;">:</span> <span style="color: #3366CC;">"列出扩展注册的所有命令"</span><span style="color: #339933;">,</span><br/>
+  description<span style="color: #339933;">:</span> <span style="color: #3366CC;">"拡張機能が登録したすべてのコマンドを一覧表示"</span><span style="color: #339933;">,</span><br/>
   handler<span style="color: #339933;">:</span> async <span style="color: #009900;">(</span>args<span style="color: #339933;">,</span> ctx<span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
     <span style="color: #000066; font-weight: bold;">const</span> commands <span style="color: #339933;">=</span> pi.<span style="color: #660066;">getCommands</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
@@ -518,7 +518,7 @@ pi.<span style="color: #660066;">registerCommand</span><span style="color: #0099
       c <span style="color: #339933;">=&gt;</span> c.<span style="color: #660066;">source</span> <span style="color: #339933;">===</span> <span style="color: #3366CC;">"skill"</span><br/>
     <span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
-    <span style="color: #006600; font-style: italic;">// 把结果展示出来，避免只计算不输出</span><br/>
+    <span style="color: #006600; font-style: italic;">// 結果を表示して、計算するだけで出力しないことを避けます</span><br/>
     ctx.<span style="color: #660066;">ui</span>.<span style="color: #660066;">notify</span><span style="color: #009900;">(</span><br/>`扩展命令 $<span style="color: #009900;">{</span>extCommands.<span style="color: #660066;">length</span><span style="color: #009900;">}</span>个：`<br/>
         <span style="color: #339933;">+</span> extCommands.<span style="color: #660066;">map</span><span style="color: #009900;">(</span>c <span style="color: #339933;">=&gt;</span> <span style="color: #3366CC;">"/"</span> <span style="color: #339933;">+</span> c.<span style="color: #660066;">name</span><span style="color: #009900;">)</span>.<span style="color: #660066;">join</span><span style="color: #009900;">(</span><span style="color: #3366CC;">"、"</span><span style="color: #009900;">)</span><span style="color: #339933;">,</span><br/>
       <span style="color: #3366CC;">"info"</span><br/>
@@ -697,11 +697,11 @@ pi.<span style="color: #660066;">setActiveTools</span><span style="color: #00990
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1001,7 +1001,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

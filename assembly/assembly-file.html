@@ -203,7 +203,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
     filename <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'runoob_output.txt'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>    <span style="color: #666666; font-style: italic;">; 文件名（null 结尾）</span><br/>
-    content <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'Hello, RUNOOB!'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0xA</span>       <span style="color: #666666; font-style: italic;">; 要写入的内容</span><br/>
+    content <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'Hello, RUNOOB!'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0xA</span>       <span style="color: #666666; font-style: italic;">; 書き込む内容</span><br/>
     content_len <span style="color: #0000FF; font-weight: bold;">equ</span> <span style="color: #0000FF; font-weight: bold;">$</span> <span style="color: #339933;">-</span> content<br/>
     create_msg <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'File created successfully!'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0xA</span><br/>
     create_msg_len <span style="color: #0000FF; font-weight: bold;">equ</span> <span style="color: #0000FF; font-weight: bold;">$</span> <span style="color: #339933;">-</span> create_msg<br/>
@@ -298,7 +298,7 @@ _start<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> buffer             <span style="color: #666666; font-style: italic;">; 缓冲区</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1024</span>               <span style="color: #666666; font-style: italic;">; 最多读取 1024 字节</span><br/>
     <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
-    <span style="color: #666666; font-style: italic;">; 返回值 eax = 实际读取的字节数</span><br/>
+    <span style="color: #666666; font-style: italic;">; 戻り値 eax = 実際に読み取ったバイト数</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">esi</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">eax</span>                <span style="color: #666666; font-style: italic;">; 保存读取字节数</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 3. 关闭文件</span><br/>
@@ -317,7 +317,7 @@ _start<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">4</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> buffer<br/>
-    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">esi</span>                <span style="color: #666666; font-style: italic;">; 使用实际读取的字节数</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">esi</span>                <span style="color: #666666; font-style: italic;">; 実際に読み取ったバイト数を使用する</span><br/>
     <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
     <span style="color: #00007F; font-weight: bold;">jmp</span> exit<br/>
 <br/>
@@ -368,7 +368,7 @@ _start<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0x441</span>              <span style="color: #666666; font-style: italic;">; O_WRONLY | O_CREAT | O_APPEND</span><br/>
     <span style="color: #666666; font-style: italic;">; O_WRONLY=1, O_CREAT=0x40, O_APPEND=0x400</span><br/>
     <span style="color: #666666; font-style: italic;">; 组合：1 | 0x40 | 0x400 = 0x441</span><br/>
-    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> 0o644              <span style="color: #666666; font-style: italic;">; 创建时的权限</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> 0o644              <span style="color: #666666; font-style: italic;">; 作成時の権限</span><br/>
     <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
 <br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #009900; font-weight: bold;">[</span>fd<span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">eax</span><br/>
@@ -436,22 +436,22 @@ _start<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #009900; font-weight: bold;">[</span>dst_fd<span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">eax</span><br/>
 <br/>
 copy_loop<span style="color: #339933;">:</span><br/>
-    <span style="color: #666666; font-style: italic;">; 3. 从源文件读取</span><br/>
+    <span style="color: #666666; font-style: italic;">; 3. ソースファイルから読み取る</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">3</span>                   <span style="color: #666666; font-style: italic;">; sys_read</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>src_fd<span style="color: #009900; font-weight: bold;">]</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> buffer<br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">4096</span><br/>
     <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
-    <span style="color: #666666; font-style: italic;">; eax = 实际读取的字节数</span><br/>
+    <span style="color: #666666; font-style: italic;">; eax = 実際に読み取ったバイト数</span><br/>
     <span style="color: #00007F; font-weight: bold;">cmp</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>                   <span style="color: #666666; font-style: italic;">; 读到 0 字节？</span><br/>
-    <span style="color: #00007F; font-weight: bold;">jle</span> copy_done                <span style="color: #666666; font-style: italic;">; 是，文件结束</span><br/>
+    <span style="color: #00007F; font-weight: bold;">jle</span> copy_done                <span style="color: #666666; font-style: italic;">; はい、ファイルの終わり</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 4. 写入目标文件</span><br/>
-    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">esi</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">eax</span>                 <span style="color: #666666; font-style: italic;">; 保存读取的字节数</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">esi</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">eax</span>                 <span style="color: #666666; font-style: italic;">; 読み取ったバイト数を保存</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">4</span>                   <span style="color: #666666; font-style: italic;">; sys_write</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>dst_fd<span style="color: #009900; font-weight: bold;">]</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> buffer<br/>
-    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">esi</span>                 <span style="color: #666666; font-style: italic;">; 写入实际读取的字节数</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">esi</span>                 <span style="color: #666666; font-style: italic;">; 実際に読み取ったバイト数を書き込む</span><br/>
     <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
     <span style="color: #00007F; font-weight: bold;">jmp</span> copy_loop                <span style="color: #666666; font-style: italic;">; 继续循环</span><br/>
 <br/>
@@ -605,11 +605,11 @@ exit<span style="color: #339933;">:</span><br/>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -898,7 +898,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

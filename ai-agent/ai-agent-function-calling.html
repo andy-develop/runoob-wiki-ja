@@ -205,7 +205,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: #a50"># 工具定义示例结构</span><br/>
 weather_tool <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><br/>
     <span style="color: #a11;">"name"</span>: <span style="color: #a11;">"get_weather"</span><span style="color: Gray;">,</span>  <span style="color: #a50"># 工具名称</span><br/>
-    <span style="color: #a11;">"description"</span>: <span style="color: #a11;">"获取指定城市的天气信息"</span><span style="color: Gray;">,</span>  <span style="color: #a50"># 工具描述</span><br/>
+    <span style="color: #a11;">"description"</span>: <span style="color: #a11;">"指定された都市の天気情報を取得する"</span><span style="color: Gray;">,</span>  <span style="color: #a50"># 工具描述</span><br/>
     <span style="color: #a11;">"parameters"</span>: <span style="color: Olive;">{</span>  <span style="color: #a50"># 参数定义</span><br/>
         <span style="color: #a11;">"type"</span>: <span style="color: #a11;">"object"</span><span style="color: Gray;">,</span><br/>
         <span style="color: #a11;">"properties"</span>: <span style="color: Olive;">{</span><br/>
@@ -429,7 +429,7 @@ def validate_required(params, tool_def):
         <span style="color: Teal;">self</span>.<span style="color: #05a;">tool_def</span> <span style="color: Gray;">=</span> tool_def<br/>
 <br/>
     <span style="color: Green;font-weight:bold;">def</span> validate<span style="color: Olive;">(</span><span style="color: Teal;">self</span><span style="color: Gray;">,</span> params<span style="color: Olive;">)</span>:<br/>
-        <span style="color: #a11;">"""执行完整的参数验证"""</span><br/>
+        <span style="color: #a11;">"""完全なパラメータ検証を実行します"""</span><br/>
         all_errors <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: Olive;">]</span><br/>
 <br/>
         <span style="color: #a50"># 检查必填参数</span><br/>
@@ -444,7 +444,7 @@ def validate_required(params, tool_def):
         range_errors <span style="color: Gray;">=</span> <span style="color: Teal;">self</span>.<span style="color: #05a;">validate_range</span><span style="color: Olive;">(</span>params<span style="color: Olive;">)</span><br/>
         all_errors.<span style="color: #05a;">extend</span><span style="color: Olive;">(</span>range_errors<span style="color: Olive;">)</span><br/>
 <br/>
-        <span style="color: #a50"># 检查额外参数（未定义的参数）</span><br/>
+        <span style="color: #a50"># 追加パラメータ（未定義のパラメータ）をチェック</span><br/>
         extra_errors <span style="color: Gray;">=</span> <span style="color: Teal;">self</span>.<span style="color: #05a;">validate_extra</span><span style="color: Olive;">(</span>params<span style="color: Olive;">)</span><br/>
         all_errors.<span style="color: #05a;">extend</span><span style="color: Olive;">(</span>extra_errors<span style="color: Olive;">)</span><br/>
 <br/>
@@ -471,13 +471,13 @@ def validate_required(params, tool_def):
                 expected_type <span style="color: Gray;">=</span> param_def.<span style="color: #05a;">get</span><span style="color: Olive;">(</span><span style="color: #a11;">"type"</span><span style="color: Olive;">)</span><br/>
 <br/>
                 <span style="color: Green;font-weight:bold;">if</span> expected_type <span style="color: Gray;">==</span> <span style="color: #a11;">"string"</span> <span style="color: Green;font-weight:bold;">and</span> <span style="color: Green;font-weight:bold;">not</span> <span style="color: Teal;">isinstance</span><span style="color: Olive;">(</span>param_value<span style="color: Gray;">,</span> <span style="color: Teal;">str</span><span style="color: Olive;">)</span>:<br/>
-                    errors.<span style="color: #05a;">append</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"参数'{param_name}'应为字符串类型，实际为{type(param_value).__name__}"</span><span style="color: Olive;">)</span><br/>
+                    errors.<span style="color: #05a;">append</span><span style="color: Olive;">(</span>f<span style="color: #a11;">パラメータ'{param_name}'は文字列型であるべきですが、実際は{type(param_value).__name__}です。</span><span style="color: Olive;">)</span><br/>
                 <span style="color: Green;font-weight:bold;">elif</span> expected_type <span style="color: Gray;">==</span> <span style="color: #a11;">"integer"</span> <span style="color: Green;font-weight:bold;">and</span> <span style="color: Green;font-weight:bold;">not</span> <span style="color: Teal;">isinstance</span><span style="color: Olive;">(</span>param_value<span style="color: Gray;">,</span> <span style="color: Teal;">int</span><span style="color: Olive;">)</span>:<br/>
-                    errors.<span style="color: #05a;">append</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"参数'{param_name}'应为整数类型，实际为{type(param_value).__name__}"</span><span style="color: Olive;">)</span><br/>
+                    errors.<span style="color: #05a;">append</span><span style="color: Olive;">(</span>f<span style="color: #a11;">パラメータ'{param_name}'は整数型であるべきですが、実際は{type(param_value).__name__}です。</span><span style="color: Olive;">)</span><br/>
                 <span style="color: Green;font-weight:bold;">elif</span> expected_type <span style="color: Gray;">==</span> <span style="color: #a11;">"number"</span> <span style="color: Green;font-weight:bold;">and</span> <span style="color: Green;font-weight:bold;">not</span> <span style="color: Teal;">isinstance</span><span style="color: Olive;">(</span>param_value<span style="color: Gray;">,</span> <span style="color: Olive;">(</span><span style="color: Teal;">int</span><span style="color: Gray;">,</span> <span style="color: Teal;">float</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span>:<br/>
-                    errors.<span style="color: #05a;">append</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"参数'{param_name}'应为数字类型，实际为{type(param_value).__name__}"</span><span style="color: Olive;">)</span><br/>
+                    errors.<span style="color: #05a;">append</span><span style="color: Olive;">(</span>f<span style="color: #a11;">パラメータ'{param_name}'は数値型であるべきですが、実際は{type(param_value).__name__}です。</span><span style="color: Olive;">)</span><br/>
                 <span style="color: Green;font-weight:bold;">elif</span> expected_type <span style="color: Gray;">==</span> <span style="color: #a11;">"boolean"</span> <span style="color: Green;font-weight:bold;">and</span> <span style="color: Green;font-weight:bold;">not</span> <span style="color: Teal;">isinstance</span><span style="color: Olive;">(</span>param_value<span style="color: Gray;">,</span> <span style="color: Teal;">bool</span><span style="color: Olive;">)</span>:<br/>
-                    errors.<span style="color: #05a;">append</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"参数'{param_name}'应为布尔类型，实际为{type(param_value).__name__}"</span><span style="color: Olive;">)</span><br/>
+                    errors.<span style="color: #05a;">append</span><span style="color: Olive;">(</span>f<span style="color: #a11;">パラメータ'{param_name}'はブール型であるべきですが、実際は{type(param_value).__name__}です。</span><span style="color: Olive;">)</span><br/>
 <br/>
         <span style="color: Green;font-weight:bold;">return</span> errors<br/>
 <br/>
@@ -499,25 +499,25 @@ def validate_required(params, tool_def):
 <br/>
                 <span style="color: #a50"># 检查枚举值</span><br/>
                 <span style="color: Green;font-weight:bold;">if</span> <span style="color: #a11;">"enum"</span> <span style="color: Green;font-weight:bold;">in</span> param_def <span style="color: Green;font-weight:bold;">and</span> param_value <span style="color: Green;font-weight:bold;">not</span> <span style="color: Green;font-weight:bold;">in</span> param_def<span style="color: Olive;">[</span><span style="color: #a11;">"enum"</span><span style="color: Olive;">]</span>:<br/>
-                    errors.<span style="color: #05a;">append</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"参数'{param_name}'必须是{param_def['enum']}中的一个"</span><span style="color: Olive;">)</span><br/>
+                    errors.<span style="color: #05a;">append</span><span style="color: Olive;">(</span>f<span style="color: #a11;">パラメータ'{param_name}'は{param_def['enum']}のいずれかでなければなりません</span><span style="color: Olive;">)</span><br/>
 <br/>
         <span style="color: Green;font-weight:bold;">return</span> errors<br/>
 <br/>
     <span style="color: Green;font-weight:bold;">def</span> validate_extra<span style="color: Olive;">(</span><span style="color: Teal;">self</span><span style="color: Gray;">,</span> params<span style="color: Olive;">)</span>:<br/>
-        <span style="color: #a11;">"""检查未定义的额外参数"""</span><br/>
+        <span style="color: #a11;">"""未定義の追加パラメータをチェック"""</span><br/>
         errors <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: Olive;">]</span><br/>
         defined_params <span style="color: Gray;">=</span> <span style="color: Teal;">set</span><span style="color: Olive;">(</span><span style="color: Teal;">self</span>.<span style="color: #05a;">tool_def</span><span style="color: Olive;">[</span><span style="color: #a11;">"parameters"</span><span style="color: Olive;">]</span><span style="color: Olive;">[</span><span style="color: #a11;">"properties"</span><span style="color: Olive;">]</span>.<span style="color: #05a;">keys</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
         provided_params <span style="color: Gray;">=</span> <span style="color: Teal;">set</span><span style="color: Olive;">(</span>params.<span style="color: #05a;">keys</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 <br/>
         extra_params <span style="color: Gray;">=</span> provided_params - defined_params<br/>
         <span style="color: Green;font-weight:bold;">if</span> extra_params:<br/>
-            errors.<span style="color: #05a;">append</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"提供了未定义的参数: {', '.join(extra_params)}"</span><span style="color: Olive;">)</span><br/>
+            errors.<span style="color: #05a;">append</span><span style="color: Olive;">(</span>f<span style="color: #a11;">未定義のパラメータが提供されました: {', '.join(extra_params)}</span><span style="color: Olive;">)</span><br/>
 <br/>
         <span style="color: Green;font-weight:bold;">return</span> errors<br/>
 <br/>
 <span style="color: #a50"># 使用示例</span><br/>
 validator <span style="color: Gray;">=</span> ParameterValidator<span style="color: Olive;">(</span>weather_tool<span style="color: Olive;">)</span><br/>
-params <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: #a11;">"city"</span>: <span style="color: #a11;">"北京"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"date"</span>: <span style="color: #a11;">"明天"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"extra"</span>: <span style="color: #a11;">"不应该有的参数"</span><span style="color: Olive;">}</span><br/>
+params <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: #a11;">"city"</span>: <span style="color: #a11;">"北京"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"date"</span>: <span style="color: #a11;">"明天"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"extra"</span>: <span style="color: #a11;">"あるべきでないパラメータ"</span><span style="color: Olive;">}</span><br/>
 is_valid<span style="color: Gray;">,</span> errors <span style="color: Gray;">=</span> validator.<span style="color: #05a;">validate</span><span style="color: Olive;">(</span>params<span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">if</span> is_valid:<br/>
@@ -1014,11 +1014,11 @@ response <span style="color: Gray;">=</span> executor.<span style="color: #05a;"
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてメモを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1307,7 +1307,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

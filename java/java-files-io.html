@@ -457,7 +457,7 @@ A
 <h3>補助クラス（その他の重要なクラス）</h3>
 <p>補助クラスは、ファイル、ディレクトリ、およびランダムファイルアクセスへのサポートを提供します。</p>
 <table class="reference"><thead><tr><th>クラス名</th><th>型</th><th>説明</th></tr></thead><tbody><tr><td><code>File</code></td><td>ファイルおよびディレクトリ操作</td><td>ファイルまたはディレクトリを表し、作成、削除、名前変更などのファイル操作を提供します。</td></tr><tr><td><code>RandomAccessFile</code></td><td>ランダムアクセスファイル</td><td>ファイルへのランダムアクセスをサポートし、ファイルの任意の位置からデータを読み書きできます。</td></tr><tr><td><code>Console</code></td><td>コンソール入出力</td><td>システムコンソールへの入出力サポートを提供します。</td></tr></tbody></table>
-<p>次に説明する2つの重要なストリームは<strong>FileInputStream</strong> 和 <strong>FileOutputStream</strong>。
+<p>次に説明する2つの重要なストリームは<strong>FileInputStream</strong>と<strong>FileOutputStream</strong>。
 </p><hr/>
 <h2>FileInputStream</h2>
 <p>このストリームはファイルからデータを読み取るために使用され、そのオブジェクトはキーワード new を使って作成できます。</p><p>オブジェクトを作成するための複数のコンストラクタメソッドがあります。</p><p>文字列型のファイル名を使用して、ファイルを読み取るための入力ストリームオブジェクトを作成できます：</p>
@@ -475,7 +475,7 @@ A
 </div>
 <p>InputStream オブジェクトを作成したら、次のメソッドを使用してストリームを読み取ったり、他のストリーム操作を行ったりできます。</p>
 <table class="reference">
-<thead><tr><th>メソッド</th><th>説明</th><th>サンプルコード</th></tr></thead><tbody><tr><td><code>int read()</code></td><td>1バイトのデータを読み取り、戻り値は0から255の間の整数です。ストリームの終わりに達した場合は、-1を返します。</td><td><code>int data = inputStream.read();</code></td></tr><tr><td><code>int read(byte[] b)</code></td><td>入力ストリームからバイトを読み取り、バイト配列<code>b</code>に格納し、実際に読み取ったバイト数を返します。ストリームの終わりに達した場合は、-1を返します。</td><td><code>byte[] buffer = new byte[1024]; int bytesRead = inputStream.read(buffer);</code></td></tr><tr><td><code>int read(byte[] b, int off, int len)</code></td><td>入力ストリームから最大<code>len</code>バイトを読み取り、バイト配列<code>b</code> 的 <code>off</code>のオフセット位置に格納し、実際に読み取ったバイト数を返します。ストリームの終わりに達した場合は、-1を返します。</td><td><code>byte[] buffer = new byte[1024]; int bytesRead = inputStream.read(buffer, 0, buffer.length);</code></td></tr><tr><td><code>long skip(long n)</code></td><td>入力ストリーム内の<code>n</code>バイトをスキップして破棄し、実際にスキップしたバイト数を返します。</td><td><code>long skippedBytes = inputStream.skip(100);</code></td></tr><tr><td><code>int available()</code></td><td>読み取り可能なバイト数を返します（ブロックされません）。</td><td><code>int availableBytes = inputStream.available();</code></td></tr><tr><td><code>void close()</code></td><td>入力ストリームを閉じ、そのストリームに関連するすべてのリソースを解放します。</td><td><code>inputStream.close();</code></td></tr><tr><td><code>void mark(int readlimit)</code></td><td>ストリーム内の現在位置にマークを設定し、<code>readlimit</code>は読み取り可能なバイト数の上限です。</td><td><code>inputStream.mark(1024);</code></td></tr><tr><td><code>void reset()</code></td><td>ストリームを最後にマークした位置に再配置します。マークがない場合やマークが無効な場合は、例外がスローされます。<code>IOException</code>。</td><td><code>inputStream.reset();</code></td></tr><tr><td><code>boolean markSupported()</code></td><td>現在の入力ストリームが<code>mark()</code> 和 <code>reset()</code>操作をサポートしているかどうかを確認します。</td><td><code>boolean isMarkSupported = inputStream.markSupported();</code></td></tr></tbody></table>
+<thead><tr><th>メソッド</th><th>説明</th><th>サンプルコード</th></tr></thead><tbody><tr><td><code>int read()</code></td><td>1バイトのデータを読み取り、戻り値は0から255の間の整数です。ストリームの終わりに達した場合は、-1を返します。</td><td><code>int data = inputStream.read();</code></td></tr><tr><td><code>int read(byte[] b)</code></td><td>入力ストリームからバイトを読み取り、バイト配列<code>b</code>に格納し、実際に読み取ったバイト数を返します。ストリームの終わりに達した場合は、-1を返します。</td><td><code>byte[] buffer = new byte[1024]; int bytesRead = inputStream.read(buffer);</code></td></tr><tr><td><code>int read(byte[] b, int off, int len)</code></td><td>入力ストリームから最大<code>len</code>バイトを読み取り、バイト配列<code>b</code>の<code>off</code>のオフセット位置に格納し、実際に読み取ったバイト数を返します。ストリームの終わりに達した場合は、-1を返します。</td><td><code>byte[] buffer = new byte[1024]; int bytesRead = inputStream.read(buffer, 0, buffer.length);</code></td></tr><tr><td><code>long skip(long n)</code></td><td>入力ストリーム内の<code>n</code>バイトをスキップして破棄し、実際にスキップしたバイト数を返します。</td><td><code>long skippedBytes = inputStream.skip(100);</code></td></tr><tr><td><code>int available()</code></td><td>読み取り可能なバイト数を返します（ブロックされません）。</td><td><code>int availableBytes = inputStream.available();</code></td></tr><tr><td><code>void close()</code></td><td>入力ストリームを閉じ、そのストリームに関連するすべてのリソースを解放します。</td><td><code>inputStream.close();</code></td></tr><tr><td><code>void mark(int readlimit)</code></td><td>ストリーム内の現在位置にマークを設定し、<code>readlimit</code>は読み取り可能なバイト数の上限です。</td><td><code>inputStream.mark(1024);</code></td></tr><tr><td><code>void reset()</code></td><td>ストリームを最後にマークした位置に再配置します。マークがない場合やマークが無効な場合は、例外がスローされます。<code>IOException</code>。</td><td><code>inputStream.reset();</code></td></tr><tr><td><code>boolean markSupported()</code></td><td>現在の入力ストリームが<code>mark()</code>と<code>reset()</code>操作をサポートしているかどうかを確認します。</td><td><code>boolean isMarkSupported = inputStream.markSupported();</code></td></tr></tbody></table>
 <p>InputStream 以外にも、他のいくつかの入力ストリームがあります。詳細は以下のリンクを参照してください：</p>
 <ul>
 <li>
@@ -815,7 +815,7 @@ include 是一个目录
 </div>
 <div id="postcomments" style="display:none;">
 <ol class="commentlist">
-<li class="comment even thread-even depth-1" id="comment-29433"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>童帅的二叔</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  120***7857@qq.com</p></div><div class="upvotejs" data-commid="29433" id="runoobvote-id-29433"><a class="upvote"></a> <span class="count">203</span></div></div><div class="comt-main" id="div-comment-29433"><p>自分で簡単な小さなプログラムを書いて、特定の長さの音声を編集し、それらをミックスして切り貼りしました。おおまかな考え方は次のとおりです：</p>
+<li class="comment even thread-even depth-1" id="comment-29433"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>童帅のおじさん</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  120***7857@qq.com</p></div><div class="upvotejs" data-commid="29433" id="runoobvote-id-29433"><a class="upvote"></a> <span class="count">203</span></div></div><div class="comt-main" id="div-comment-29433"><p>自分で簡単な小さなプログラムを書いて、特定の長さの音声を編集し、それらをミックスして切り貼りしました。おおまかな考え方は次のとおりです：</p>
 <p>1. FileInputStream を使用して2つの音声を入力します</p>
 <p>2. FileInputStreamのskip(long n)メソッドを使用して、特定のバイト長の音声ファイルをスキップします。例えば、skip(1024*1024*3)を入力すると、音声ファイルの先頭3MBの内容を破棄できます。</p>
 <p>3. 中間の特定の長さの音声ファイルを切り取る：毎回8KBの内容を入力し、countを使用して入力回数を記録し、設定した回数に達したら音声入力を終了します。例えば、2MBの音声を切り取る場合、毎回入力ストリームに8KBの内容を入力するので、1024*2/8回入力する必要があります。</p>
@@ -876,7 +876,7 @@ include 是一个目录
         }
     }
 }</pre>
-<div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">童帅的二叔</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>童帅的二叔</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  120***7857@qq.com</p></div></span>8年前 (2018-07-11)</div></div></li><!-- #comment-## -->
+<div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">童帅のおじさん</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>童帅のおじさん</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  120***7857@qq.com</p></div></span>8年前 (2018-07-11)</div></div></li><!-- #comment-## -->
 <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-36088"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>乔乔</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  287***2758@qq.com</p></div><div class="upvotejs" data-commid="36088" id="runoobvote-id-36088"><a class="upvote"></a> <span class="count">50</span></div></div><div class="comt-main" id="div-comment-36088"><p data-title="Java 列出目录下指定类型的文件">ディレクトリ内の指定されたタイプのファイルをリストアップする必要がある場合があります。例えば、.java、.txtなどの拡張子のファイルです。Fileクラスの以下の2つのメソッドを使用して、指定されたタイプのファイルをリストアップできます。</p>
 <ul><li>
 1、<strong>public String[ ] list(FilenameFilter obj)</strong>このメソッドは、文字列の形式でディレクトリ内の指定されたタイプのすべてのファイルを返します。</li><li>
@@ -1015,11 +1015,11 @@ public class Test {
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>する必要があります！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>する必要があります！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1319,7 +1319,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

@@ -381,7 +381,7 @@ await searchBox.<span style="color: #660066;">fill</span><span style="color: #00
 page.<span style="color: #660066;">getByRole</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'button'</span><span style="color: #339933;">,</span> <span style="color: #009900;">{</span> name<span style="color: #339933;">:</span> <span style="color: #3366CC;">'登录'</span> <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
 <span style="color: #006600; font-style: italic;">// aria-label でマッチング</span><br/>
-page.<span style="color: #660066;">getByRole</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'button'</span><span style="color: #339933;">,</span> <span style="color: #009900;">{</span> name<span style="color: #339933;">:</span> <span style="color: #3366CC;">'关闭对话框'</span> <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+page.<span style="color: #660066;">getByRole</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'button'</span><span style="color: #339933;">,</span> <span style="color: #009900;">{</span> name<span style="color: #339933;">:</span> <span style="color: #3366CC;">'ダイアログを閉じる'</span> <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
 <span style="color: #006600; font-style: italic;">// 正規表現でマッチング</span><br/>
 page.<span style="color: #660066;">getByRole</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'link'</span><span style="color: #339933;">,</span> <span style="color: #009900;">{</span> name<span style="color: #339933;">:</span> <span style="color: #009966; font-style: italic;">/RUNOOB|菜鸟/</span> <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
@@ -459,8 +459,8 @@ await page.<span style="color: #660066;">getByLabel</span><span style="color: #0
 <span style="color: #006600; font-style: italic;">// HTML 構造：&lt;input placeholder="请输入搜索关键词" /&gt;</span><br/>
 await page.<span style="color: #660066;">getByPlaceholder</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'请输入搜索关键词'</span><span style="color: #009900;">)</span>.<span style="color: #660066;">fill</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'Playwright'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
-<span style="color: #006600; font-style: italic;">// HTML 構造：&lt;textarea placeholder="说说你的想法..."&gt;&lt;/textarea&gt;</span><br/>
-await page.<span style="color: #660066;">getByPlaceholder</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'说说你的想法...'</span><span style="color: #009900;">)</span>.<span style="color: #660066;">fill</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'RUNOOB 教程很棒！'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+<span style="color: #006600; font-style: italic;">// HTML 構造：&lt;textarea placeholder="あなたの考えを入力してください..."&gt;&lt;/textarea&gt;</span><br/>
+await page.<span style="color: #660066;">getByPlaceholder</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'あなたの考えを聞かせて...'</span><span style="color: #009900;">)</span>.<span style="color: #660066;">fill</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'RUNOOB 教程很棒！'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 </div>
 </div>
 <h3>getByLabel vs getByPlaceholder の選択</h3>
@@ -470,7 +470,7 @@ await page.<span style="color: #660066;">getByPlaceholder</span><span style="col
 <tr><td><code>getByPlaceholder()</code></td><td>label がないが、placeholder がある場合</td><td>次に使用</td></tr>
 </table>
 <blockquote>
-<p><span class="marked">getByRole</span>Playwright が最も推奨する特定方法です。ユーザーがロールを使って要素を認識する方法を模倣しているためです。次に<span class="marked">getByLabel</span> 和 <span class="marked">getByPlaceholder</span>。セマンティックな要素がない場合にのみ使用を検討します<span class="marked">getByTestId</span>または CSS セレクター。</p>
+<p><span class="marked">getByRole</span>Playwright が最も推奨する特定方法です。ユーザーがロールを使って要素を認識する方法を模倣しているためです。次に<span class="marked">getByLabel</span>と<span class="marked">getByPlaceholder</span>。セマンティックな要素がない場合にのみ使用を検討します<span class="marked">getByTestId</span>または CSS セレクター。</p>
 </blockquote>
 <hr/>
 <h2>getByAltText() 画像の特定</h2>
@@ -496,11 +496,11 @@ await page.<span style="color: #660066;">getByTitle</span><span style="color: #0
 </div>
 </div>
 <blockquote>
-<p><code>getByAltText</code> 和 <code>getByTitle</code>使用頻度は低く、要素に明確な alt または title 属性があり、他の方法では特定できない場合にのみ使用します。</p>
+<p><code>getByAltText</code>と<code>getByTitle</code>使用頻度は低く、要素に明確な alt または title 属性があり、他の方法では特定できない場合にのみ使用します。</p>
 </blockquote>
 <hr/>
 <h2>getByTestId() テスト ID による特定</h2>
-<p><code>getByTestId()</code> 是<span class="marked">フォールバック方法</span>、経由で<code>data-testid</code>属性を使用して要素を特定します。</p>
+<p><code>getByTestId()</code>である<span class="marked">フォールバック方法</span>、経由で<code>data-testid</code>属性を使用して要素を特定します。</p>
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
@@ -766,11 +766,11 @@ page<br/>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらから</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらから</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1070,7 +1070,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

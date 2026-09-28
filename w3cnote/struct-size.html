@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>结构体大小的计算 | 菜鸟教程</title>
+<title>構造体サイズの計算 | 菜鳥教程</title>
 <script>
 window.RUNOOB_CONFIG = {
   darkCssUrl: "https://www.runoob.com/wp-content/themes/runoob/dark-mode.css?v=1.125"
@@ -94,7 +94,7 @@ struct {  char  a;  char  b;  short c; }S2;</pre>
 <p>それぞれプログラムでテストして求めた<strong>sizeof(S1)=6 , sizeof(S2)=4</strong>。</p>
 <p>注意：なぜ構造体メンバーの順序を変えただけで、結果が異なるのでしょうか？</p>
 <p>解：</p>
-<ul><li>（1）まずメンバー変数の中で最大のバイト数を見つける。S1 と S2 の場合、最大は short で、2バイトを占める；</li><li>（2）したがって、以降は2バイトを基準とする。つまり、最大でも2バイト単位とし、他はパディングで埋める。下の図では1つのマスが1バイトを表すことに注意；</li><li>（3）そこでまず2つのマスを描き、以降はメンバーの順序を見ながら、毎回2を増加の基準として徐々に増やしていく。</li></ul>对于 S1 来说，顺序是<span class="marked">char-&gt;short-&gt;char </span>:
+<ul><li>（1）まずメンバー変数の中で最大のバイト数を見つける。S1 と S2 の場合、最大は short で、2バイトを占める；</li><li>（2）したがって、以降は2バイトを基準とする。つまり、最大でも2バイト単位とし、他はパディングで埋める。下の図では1つのマスが1バイトを表すことに注意；</li><li>（3）そこでまず2つのマスを描き、以降はメンバーの順序を見ながら、毎回2を増加の基準として徐々に増やしていく。</li></ul>S1 にとって、順序は<span class="marked">char-&gt;short-&gt;char </span>:
 <p><img decoding="async" src="../wp-content/uploads/2019/05/8DA2FF64-8FFA-4012-967D-5DB63FB284F5.jpg"/></p>
 <p>したがって、S1の構造体サイズは2*3=6です。なぜ2番目のcharの余分なバイトを捨てないのかというと、3つ目の原則に従うからです。つまり構造体サイズの結果は、メンバーの中で最大のバイト数の整数倍でなければならないということです。</p>
 <pre>S1=2*3=6</pre>
@@ -142,8 +142,8 @@ typedef struct B
 </div>
 </div>
 <div class="previous-next-links">
-<div class="previous-design-link">← <a href="./c-assert.html" rel="prev">断言(assert)的用法</a> </div>
-<div class="next-design-link"><a href="./shell-read-line.html" rel="next">SHELL  读取文件的每一行内容并输出</a> →</div>
+<div class="previous-design-link">← <a href="./c-assert.html" rel="prev">アサーション(assert)の使い方</a> </div>
+<div class="next-design-link"><a href="./shell-read-line.html" rel="next">SHELL  ファイルの各行を読み取って出力する</a> →</div>
 </div>
 <style>
 .wrapper {
@@ -257,7 +257,7 @@ typedef struct B
 </div>
 <div id="postcomments">
 <ol class="commentlist">
-<li class="comment even thread-even depth-1" id="comment-63958"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>淞松松</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  105***7532@qq.com</p></div><div class="upvotejs" data-commid="63958" id="runoobvote-id-63958"><a class="upvote"></a> <span class="count">46</span></div></div><div class="comt-main" id="div-comment-63958"><p>3つ目の原則に誤りがあります。「構造体サイズの結果は～でなければならない」という部分が。<b>成员中最大字节的整数倍</b>。"</p><p>正確には、アライメントバイト数を設定していない場合、最大メンバーがアライメントバイト数となる。</p><p>アライメントバイト数を設定している場合、アライメントバイト数は：min(最大メンバー，設定したアライメントバイト数) となる。</p><p>参考文章：<a href="https://zhuanlan.zhihu.com/p/30007037" rel="nofollow ugc">https://zhuanlan.zhihu.com/p/30007037</a></p><div class="comt-meta wrapper"><span class="comt-author"><a href=".." target="_blank">淞松松</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>淞松松</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  105***7532@qq.com</p></div></span>5年前 (2021-05-25)</div></div></li><!-- #comment-## -->
+<li class="comment even thread-even depth-1" id="comment-63958"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>淞松松</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  105***7532@qq.com</p></div><div class="upvotejs" data-commid="63958" id="runoobvote-id-63958"><a class="upvote"></a> <span class="count">46</span></div></div><div class="comt-main" id="div-comment-63958"><p>3つ目の原則に誤りがあります。「構造体サイズの結果は～でなければならない」という部分が。<b>メンバー中の最大バイト数の整数倍</b>。"</p><p>正確には、アライメントバイト数を設定していない場合、最大メンバーがアライメントバイト数となる。</p><p>アライメントバイト数を設定している場合、アライメントバイト数は：min(最大メンバー，設定したアライメントバイト数) となる。</p><p>参考文章：<a href="https://zhuanlan.zhihu.com/p/30007037" rel="nofollow ugc">https://zhuanlan.zhihu.com/p/30007037</a></p><div class="comt-meta wrapper"><span class="comt-author"><a href=".." target="_blank">淞松松</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>淞松松</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  105***7532@qq.com</p></div></span>5年前 (2021-05-25)</div></div></li><!-- #comment-## -->
 <li class="comment byuser comment-author-tianqixin bypostauthor odd alt thread-odd thread-alt depth-1" id="comment-79926"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>刀を抜いて人を助ける好漢</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  141***3926@qq.com</p></div><div class="upvotejs" data-commid="79926" id="runoobvote-id-79926"><a class="upvote"></a> <span class="count">26</span></div></div><div class="comt-main" id="div-comment-79926"><p>もう一つ見てみよう：構造体のメンバー変数が別の構造体である場合、その構造体の中の別構造体であるメンバーを全体として加算すればよい。</p>
 <pre>typedef struct A { 
     char a1; 
@@ -271,17 +271,17 @@ typedef struct B {
     short int b1; 
     A a; 
 };</pre>
-<p>一方Bについては、まずA aを考えないでください。つまりA aメンバーを取り除いて構造体Bを計算すると8になります。したがって最後の結果は8+16=24；24が最終結果です。</p><p>この部分はまったく人を誤らせるだけで、理論が間違っている！</p><div class="comt-meta wrapper"><span class="comt-author"><a href=".." target="_blank">拔刀相助的好汉</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>刀を抜いて人を助ける好漢</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  141***3926@qq.com</p></div></span>3年前 (2023-07-12)</div></div></li><!-- #comment-## -->
+<p>一方Bについては、まずA aを考えないでください。つまりA aメンバーを取り除いて構造体Bを計算すると8になります。したがって最後の結果は8+16=24；24が最終結果です。</p><p>この部分はまったく人を誤らせるだけで、理論が間違っている！</p><div class="comt-meta wrapper"><span class="comt-author"><a href=".." target="_blank">刀を抜いて助ける好漢</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>刀を抜いて人を助ける好漢</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  141***3926@qq.com</p></div></span>3年前 (2023-07-12)</div></div></li><!-- #comment-## -->
 </ol>
 </div>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=".." class="runoob-pop">登录</a>！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href="..">登录</a>！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

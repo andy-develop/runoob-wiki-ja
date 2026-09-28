@@ -267,8 +267,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 			DeepSeek Harness サンドボックスと承認			</a>
 <a data-p="par" href="../deepseek-harness/deepseek-harness-session-turn.html" target="_top" title="DeepSeek Harness セッションログとラウンドライフサイクル">
 			DeepSeek Harness セッションログ			</a>
-<a data-p="par" href="../deepseek-harness/deeseek-harness-defensive-patterns.html" target="_top" title="DeeSeek Harness 防御的プログラミング：結果報告、クリーンアップと資格情報">
-			DeeSeek Harness 防御的プログラミング			</a>
+<a data-p="par" href="../deepseek-harness/deeseek-harness-defensive-patterns.html" target="_top" title="DeeSeek Harness 防御的プログラミング：結果報告、クリーンアップと資格情報">DeeSeek Harness 防御的プログラミング</a>
 <a data-p="par" href="../deepseek-harness/deeseek-harness-postmortem.html" target="_top" title="DeeSeek Harness 事故の振り返りとエンジニアリング文化">
 			DeeSeek Harness 事故の振り返り			</a>
 </div>
@@ -284,7 +283,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="article-intro" id="content">
 <h1>DeepSeek Harness サンドボックスと承認：Agent の危険な動作を制御可能にする</h1>
 <p>前の章ではツール実行パイプラインについて説明しました。その中で特に気になるのが 2 つのポイントです：サンドボックスがどうコマンドを制約するか、承認がどう「実行できるかどうか」を決定するか。</p>
-<p>この章ではさらに深く掘り下げます<span class="marked">ctx.sandbox</span> 与 <span class="marked">ctx.approval</span>2 つのサービスについて、それぞれの役割分担とフェイルクローズの原則を明確に説明します。</p>
+<p>この章ではさらに深く掘り下げます<span class="marked">ctx.sandbox</span>と<span class="marked">ctx.approval</span>2 つのサービスについて、それぞれの役割分担とフェイルクローズの原則を明確に説明します。</p>
 <blockquote>
 <p>一言で言うと：サンドボックスは「コマンドがどの境界内で実行されるか」を管理し、承認は「この具体的な操作が許可されるかどうか」を管理します。どちらもデフォルトでフェイルクローズです。</p>
 </blockquote>
@@ -406,7 +405,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </tbody>
 </table>
 <p>、許可ではありません。<code>unavailable</code>呼び出し側は、</p>
-<p>一律に拒否を実行します。<code>rejected</code>、<code>cancelled</code> 和 <code>unavailable</code>セッション別の承認ポリシー：ask と never</p>
+<p>一律に拒否を実行します。<code>rejected</code>、<code>cancelled</code>と<code>unavailable</code>セッション別の承認ポリシー：ask と never</p>
 <hr/>
 <h2>セッション別の承認ポリシー：ask と never</h2>
 <p><span class="marked">ApprovalPolicy</span>ポリシー</p>
@@ -423,7 +422,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p><code>setApprovalPolicy(session, policy)</code>サービス内部で、waterfall ディスパッチの前に強制されるため、後から</p>
 <p><code>never</code>を使って登録された応答者でもそれを迂回できません。<code>prepend</code>監査とモデル可視性の違い：承認の監査イベントペア（</p>
 <blockquote>
-<p>）はログにのみ書き込まれ、モデルの transcript には入りません。<code>approval/asked</code> 与 <code>approval/decided</code>モデルに見える動作は、呼び出し側が派生したツール結果と現在のランタイムコンテキストのスナップショットです。</p>
+<p>）はログにのみ書き込まれ、モデルの transcript には入りません。<code>approval/asked</code>と<code>approval/decided</code>モデルに見える動作は、呼び出し側が派生したツール結果と現在のランタイムコンテキストのスナップショットです。</p>
 <p>権限プリセット：2 つのノブを束ねて名前付きプリセットに</p>
 </blockquote>
 <hr/>
@@ -580,11 +579,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -884,7 +883,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

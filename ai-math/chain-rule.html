@@ -247,8 +247,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 			関数と極限			</a>
 <a data-p="par" href="../ai-math/derivative-intro.html" target="_top" title="微分入門 — 瞬間変化率と接線">
 			微分入門			</a>
-<a data-p="par" href="../ai-math/derivative-rules.html" target="_top" title="よく使う微分規則 — 冪関数、指数と対数">
-			一般的な微分規則			</a>
+<a data-p="par" href="../ai-math/derivative-rules.html" target="_top" title="よく使う微分規則 — 冪関数、指数と対数">一般的な微分規則</a>
 <a data-p="par" href="../ai-math/partial-derivative.html" target="_top" title="偏微分 — 多変数関数を変数ごとに微分する">
 			偏微分			</a>
 <a data-p="par" href="../ai-math/gradient.html" target="_top" title="勾配 — 関数が最も速く上昇する方向">
@@ -390,15 +389,15 @@ d_chain <span style="color: Gray;">=</span> sp.<span style="color: #05a;">cos</s
 <br/>
 <span style="color: #a50"># 两层网络反向传播</span><br/>
 w<span style="color: Gray;">,</span> xi<span style="color: Gray;">,</span> yi <span style="color: Gray;">=</span> sp.<span style="color: #05a;">symbols</span><span style="color: Olive;">(</span><span style="color: #a11;">'w x_i y_i'</span><span style="color: Olive;">)</span><br/>
-a <span style="color: Gray;">=</span> sp.<span style="color: #05a;">Symbol</span><span style="color: Olive;">(</span><span style="color: #a11;">'a'</span><span style="color: Olive;">)</span>            <span style="color: #a50"># 中间变量单独定义为符号</span><br/>
-a_expr <span style="color: Gray;">=</span> w * xi               <span style="color: #a50"># a 关于 w 的具体表达式</span><br/>
-loss <span style="color: Gray;">=</span> <span style="color: Olive;">(</span>a - yi<span style="color: Olive;">)</span>**<span style="color: Maroon;">2</span>            <span style="color: #a50"># loss 定义为关于符号 a 的函数</span><br/>
+a <span style="color: Gray;">=</span> sp.<span style="color: #05a;">Symbol</span><span style="color: Olive;">(</span><span style="color: #a11;">'a'</span><span style="color: Olive;">)</span>            <span style="color: #a50"># 中間変数は単独でシンボルとして定義する</span><br/>
+a_expr <span style="color: Gray;">=</span> w * xi               <span style="color: #a50"># a の w に関する具体的な式</span><br/>
+loss <span style="color: Gray;">=</span> <span style="color: Olive;">(</span>a - yi<span style="color: Olive;">)</span>**<span style="color: Maroon;">2</span>            <span style="color: #a50"># loss を記号 a の関数として定義する</span><br/>
 <br/>
 dL_da <span style="color: Gray;">=</span> sp.<span style="color: #05a;">diff</span><span style="color: Olive;">(</span>loss<span style="color: Gray;">,</span> a<span style="color: Olive;">)</span>                      <span style="color: #a50"># ∂L/∂a</span><br/>
 da_dw <span style="color: Gray;">=</span> sp.<span style="color: #05a;">diff</span><span style="color: Olive;">(</span>a_expr<span style="color: Gray;">,</span> w<span style="color: Olive;">)</span>                    <span style="color: #a50"># ∂a/∂w</span><br/>
 dL_dw_chain <span style="color: Gray;">=</span> dL_da.<span style="color: #05a;">subs</span><span style="color: Olive;">(</span>a<span style="color: Gray;">,</span> a_expr<span style="color: Olive;">)</span> * da_dw   <span style="color: #a50"># 链式法则：代入 a=w*x_i 后相乘</span><br/>
 <br/>
-loss_direct <span style="color: Gray;">=</span> loss.<span style="color: #05a;">subs</span><span style="color: Olive;">(</span>a<span style="color: Gray;">,</span> a_expr<span style="color: Olive;">)</span>            <span style="color: #a50"># 把 loss 完全展开成 w 的函数</span><br/>
+loss_direct <span style="color: Gray;">=</span> loss.<span style="color: #05a;">subs</span><span style="color: Olive;">(</span>a<span style="color: Gray;">,</span> a_expr<span style="color: Olive;">)</span>            <span style="color: #a50"># loss を w の関数として完全に展開する</span><br/>
 dL_dw_direct <span style="color: Gray;">=</span> sp.<span style="color: #05a;">diff</span><span style="color: Olive;">(</span>loss_direct<span style="color: Gray;">,</span> w<span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>链式 ∂L/∂w: {sp.simplify(dL_dw_chain)}"</span><span style="color: Olive;">)</span><br/>
@@ -552,11 +551,11 @@ $(function() {
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容をさらに発展させたものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容をさらに発展させたものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -856,7 +855,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

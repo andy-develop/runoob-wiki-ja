@@ -164,7 +164,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="article-body">
 <div class="article-intro" id="content">
 <h1>Rust 入門</h1>
-<p>Rust は Mozilla Research 主導で開発されたシステムプログラミング言語であり、以下の<span class="marked">メモリ安全性</span>、<span class="marked">ゼロコスト抽象</span>和<span class="marked">恐れることのない並行性</span>を中核となる設計目標としています。</p>
+<p>Rust は Mozilla Research 主導で開発されたシステムプログラミング言語であり、以下の<span class="marked">メモリ安全性</span>、<span class="marked">ゼロコスト抽象</span>と<span class="marked">恐れることのない並行性</span>を中核となる設計目標としています。</p>
 <p>Rust は2006年に生まれ、当初は Mozilla の従業員 Graydon Hoare の個人プロジェクトでしたが、その後2009年に Mozilla が正式にスポンサーとなり、チームを結成して開発を進めました。</p>
 <p>Rust の設計当初の目的は、C/C++ がシステムプログラミングで長年抱えてきた痛点を解決することでした：<span class="marked">メモリ安全性の問題</span>（ヌルポインタ、ダングリングポインタ、バッファオーバーフロー）と<span class="marked">並行プログラミングの複雑さ</span>（データ競合、デッドロック）。</p>
 <p><img decoding="async" src="../wp-content/uploads/2020/04/102ccb46-f01a-4b0b-bb62-73f390352c7f.webp"/></p>
@@ -272,7 +272,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div>
 <h3>列挙型と Option/Result</h3>
 <p>Rust の列挙型（enum）はデータを保持でき、match と組み合わせることで安全かつ表現力の高い制御フローを実現できます。</p>
-<p>標準ライブラリの<span class="tag1">Option&lt;T&gt;</span> 和 <span class="tag1">Result&lt;T, E&gt;</span>は2つの最も中核となる列挙型であり、「null の可能性」と「エラーの可能性」をそれぞれ扱います。Rust には null も例外もありません。</p>
+<p>標準ライブラリの<span class="tag1">Option&lt;T&gt;</span>と<span class="tag1">Result&lt;T, E&gt;</span>は2つの最も中核となる列挙型であり、「null の可能性」と「エラーの可能性」をそれぞれ扱います。Rust には null も例外もありません。</p>
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
@@ -293,7 +293,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     <span style="color: #708;">if</span> <span style="color: #708;">let</span> Some<span style="">(</span><span style="">&amp;</span>val<span style="">)</span> <span style="">=</span> missing <span style="">{</span><br/>
         println<span style="">!</span><span style="">(</span><span style="color: #a11;">"見つかりました: {}"</span><span style="">,</span> val<span style="">)</span><span style="">;</span><br/>
     <span style="">}</span> <span style="color: #708;">else</span> <span style="">{</span><br/>
-        println<span style="">!</span><span style="">(</span><span style="color: #a11;">"インデックス 5 は存在しません"</span><span style="">)</span><span style="">;</span>  <span style="color: #a50; font-style: italic;">// この分岐に入ることを期待</span><br/>
+        println<span style="">!</span><span style="">(</span><span style="color: #a11;">インデックス 5 は存在しません</span><span style="">)</span><span style="">;</span>  <span style="color: #a50; font-style: italic;">// この分岐に入ることを期待</span><br/>
     <span style="">}</span><br/>
 <br/>
     <span style="color: #a50; font-style: italic;">// Result&lt;T, E&gt;: 操作は成功するか失敗する可能性がある（例外の代替）</span><br/>
@@ -387,7 +387,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>これは Rust の「本領」です。究極のパフォーマンスと高いメモリ安全性が求められるシナリオに適しています。非同期ランタイム<span class="tag1">Tokio</span>と Web フレームワーク<span class="tag1">Actix Web</span>、<span class="tag1">Axum</span>高並行シナリオで優れた性能を発揮します。</p>
 <h3>WebAssembly</h3>
 <p>Rust は<span class="marked">WebAssembly へのコンパイルに最適な言語の一つです</span>。そのゼロコスト抽象化と GC なしの特性により、Wasm 成果物はサイズが小さく、高性能です。</p>
-<p>フロントエンドフレームワーク<span class="tag1">Yew</span> 和 <span class="tag1">Leptos</span>Rust で SPA アプリケーションを書くことができます。Figma、Cloudflare Workers などは本番環境で Rust + Wasm を多用しています。</p>
+<p>フロントエンドフレームワーク<span class="tag1">Yew</span>と<span class="tag1">Leptos</span>Rust で SPA アプリケーションを書くことができます。Figma、Cloudflare Workers などは本番環境で Rust + Wasm を多用しています。</p>
 <h3>組み込みとIoT</h3>
 <p>Rust の<span class="tag1">no_std</span>モードは、OS のないベアメタル上での実行を可能にし、MCU、センサーなどのリソース制約のあるデバイスに適しています。</p>
 <p><span class="tag1">RTIC</span>（リアルタイム割り込み駆動並行フレームワーク）と<span class="tag1">Embassy</span>（非同期組み込みフレームワーク）は、組み込み Rust の代表的なプロジェクトです。</p>
@@ -524,7 +524,7 @@ Hello, RUNOOB!
 <tr><td>文字列</td><td>String / &amp;str</td><td>let s = String::from("hi");</td><td>String は変更可能、&amp;str は参照</td></tr>
 </table>
 <h3>制御フロー</h3>
-<p>Rust の制御フローには次が含まれます<span class="tag1">if</span>、<span class="tag1">loop</span>、<span class="tag1">while</span>、<span class="tag1">for</span> 和 <span class="tag1">match</span>。このうち if と loop は式として値を返すことができます。</p>
+<p>Rust の制御フローには次が含まれます<span class="tag1">if</span>、<span class="tag1">loop</span>、<span class="tag1">while</span>、<span class="tag1">for</span>と<span class="tag1">match</span>。このうち if と loop は式として値を返すことができます。</p>
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
@@ -899,7 +899,7 @@ html                 1        510        14256
 </ul>
 <hr/>
 <h2>まとめ</h2>
-<p>Rust は<span class="marked">メモリ安全性（GC なし）</span>、<span class="marked">ゼロコスト抽象</span>和<span class="marked">恐れることのない並行性（fearless concurrency）</span>という 3 つの核となる強みにより、システムプログラミング、高性能サービス、WebAssembly、ブロックチェーンなどの分野で独自のエコシステム的位置を確立しています。</p>
+<p>Rust は<span class="marked">メモリ安全性（GC なし）</span>、<span class="marked">ゼロコスト抽象</span>と<span class="marked">恐れることのない並行性（fearless concurrency）</span>という 3 つの核となる強みにより、システムプログラミング、高性能サービス、WebAssembly、ブロックチェーンなどの分野で独自のエコシステム的位置を確立しています。</p>
 <p>学習曲線は急ですが、コンパイラの厳格な検査は長期的なプロジェクトにおいて非常に高いコード品質と保守性をもたらします——これが、ますます多くの企業やオープンソースプロジェクトが Rust を選ぶ理由です。</p>
 <p>Rust の強みと適用シーンは以下の通りです：</p>
 <table class="reference">
@@ -1030,11 +1030,11 @@ html                 1        510        14256
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノート共有前には<a href=";.html" class="runoob-pop">ログイン</a>が必須です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノート共有前には<a class="runoob-pop" href=";.html">ログイン</a>が必須です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1323,7 +1323,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

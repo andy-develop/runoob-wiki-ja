@@ -338,8 +338,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h1>C ライブラリ関数 - memmove()</h1>
 <p><a href="c-standard-library-string-h.html"><img alt="C 标准库 - string.h" class="navup" decoding="async" src="../images/up.gif"/>C 標準ライブラリ - string.h</a></p><hr/>
 <p><code>memmove()</code>は C 言語標準ライブラリ<code>&lt;string.h&gt;</code>のメモリ操作関数で、指定したバイト数をソースアドレスからデスティネーションアドレスにコピーし、メモリの重複を安全に処理できます。</p>
-<p><strong>単語の意味</strong>：<code>memmove</code> 是 <code>memory move</code>（メモリ移動）の略で、メモリ内のデータを移動することを意味します。</p>
-<p>C ライブラリ関数<code>void *memmove(void *str1, const void *str2, size_t n)</code> 从 <b>str2</b>コピー<b>n</b>バイトを<b>str1</b>。</p>
+<p><strong>単語の意味</strong>：<code>memmove</code>である<code>memory move</code>（メモリ移動）の略で、メモリ内のデータを移動することを意味します。</p>
+<p>C ライブラリ関数<code>void *memmove(void *str1, const void *str2, size_t n)</code>から<b>str2</b>コピー<b>n</b>バイトを<b>str1</b>。</p>
 <p><strong>memcpy() との違い</strong>：</p>
 <ul>
 <li>デスティネーション領域とソース領域がメモリ上で重複する場合、<code>memmove()</code>は、ソースデータが上書きされる前に、重複部分のバイトを安全にデスティネーション領域へ転送できることを保証するため、<code>memcpy()</code>より信頼性が高くなります。</li>
@@ -396,7 +396,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </pre>
 <p><strong>コードの解説：</strong></p>
 <ol>
-<li>シナリオ1では、<code>dest</code> 和 <code>src</code>は2つの独立した配列であり、重複はありません。<code>memmove(dest, src, 9)</code> 将 <code>src</code>の最初の9バイトがそのままコピーされます<code>dest</code>。</li>
+<li>シナリオ1では、<code>dest</code>と<code>src</code>は2つの独立した配列であり、重複はありません。<code>memmove(dest, src, 9)</code> 将 <code>src</code>の最初の9バイトがそのままコピーされます<code>dest</code>。</li>
 <li>シナリオ2では、<code>str + 2</code>（デスティネーション）と<code>str</code>（ソース）は同じ配列内の重複領域を指しています。<code>memmove</code>上書きされるデータを先に保存してからコピーを完了するため、結果は正しくなります。</li>
 <li>シナリオ2を次のものに置き換えると<code>memcpy</code>、一部のコンパイラやプラットフォームでは誤った結果が生じる可能性があります。なぜなら<code>memcpy</code>重複するケースの処理を保証しないためです。</li>
 </ol>
@@ -645,11 +645,11 @@ Length: 5
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -949,7 +949,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

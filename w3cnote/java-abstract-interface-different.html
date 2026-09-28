@@ -103,7 +103,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <pre>[public] interface InterfaceName {
  
 }</pre>
-<p>インターフェースには変数とメソッドを含めることができます。ただし、注意すべき点として、インターフェース内の変数は暗黙的にpublic static final変数として指定されます（そしてpublic static final変数でなければなりません。privateで修飾するとコンパイルエラーになります）。一方、メソッドは暗黙的にpublic abstractメソッドとして指定され、public abstractメソッドでなければなりません（private、protected、static、finalなどの他のキーワードで修飾するとコンパイルエラーになります）。また、インターフェース内のすべてのメソッドは具体的な実装を持つことができません。つまり、インターフェース内のメソッドはすべて抽象メソッドでなければなりません。ここからインターフェースと抽象クラスの違いがうっすらと見えてきます。インターフェースは非常に抽象的な型であり、抽象クラスよりもさらに「抽象的」で、一般的にはインターフェース内に変数を定義しません。</p>
+<p>インターフェースには変数とメソッドを含めることができます。ただし、注意すべき点として、インターフェース内の変数は暗黙的にpublic static final変数として指定されます（そしてpublic static final変数でなければなりません。privateで修飾するとコンパイルエラーになります）。一方、メソッドは暗黙的にpublic abstractメソッドとして指定され、public abstractメソッドでなければなりません（private、protected、static、finalなどの他のキーワードで修飾するとコンパイルエラーになります）。また、インターフェース内のすべてのメソッドは具体的な実装を持つことができません。つまり、インターフェース内のメソッドはすべて抽象メソッドでなければなりません。ここからインターフェースと抽象クラスの違いがうっすらと見えてきます。インターフェースは非常に抽象的な型であり、抽象クラスよりもさらに「抽象の」で、一般的にはインターフェース内に変数を定義しません。</p>
 <p>クラスに特定のインターフェースを実装させるには、implementsキーワードを使用する必要があります。具体的な形式は次の通りです：</p>
 <pre>
 class ClassName implements Interface1,Interface2,[....]{
@@ -116,7 +116,7 @@ class ClassName implements Interface1,Interface2,[....]{
 <h3>2、設計レベルでの違い</h3>
 <p>1）抽象クラスはある事物の抽象化、つまりクラスの抽象化であり、インターフェースは振る舞いの抽象化です。抽象クラスはクラス全体を抽象化し、属性や振る舞いを含みますが、インターフェースはクラスの一部（振る舞い）を抽象化します。簡単な例を挙げると、飛行機と鳥は異なる種類の事物ですが、両者には共通点があります。それはどちらも飛べるということです。設計する際に、飛行機をクラスAirplaneとして設計し、鳥をクラスBirdとして設計できます。しかし、<strong>飛行</strong>という特性もクラスとして設計することはできません。なぜなら、それは単なる振る舞いの特性であり、ある種類の事物に対する抽象的な記述ではないからです。このとき、「飛行」をインターフェースFlyとして設計し、fly()メソッドを含め、AirplaneとBirdがそれぞれ自分の必要に応じてFlyインターフェースを実装できます。また、戦闘機や民間機など異なる種類の飛行機がある場合は、直接Airplaneを継承すればよく、鳥も同様に、異なる種類の鳥は直接Birdクラスを継承すればよいのです。ここからわかるように、継承は「であるかどうか」の関係であり、インターフェースの実装は「持っているかどうか」の関係です。クラスが抽象クラスを継承した場合、サブクラスは必ず抽象クラスの種類に属します。一方、インターフェースの実装は持っているかどうか、備わっているかどうかの関係です。例えば、鳥が飛べるかどうか（飛行という特性を備えているかどうか）で、飛べるならこのインターフェースを実装でき、飛べないならこのインターフェースを実装しません。</p>
 <p>2）設計レベルが異なります。抽象クラスは多くのサブクラスの親クラスとして、テンプレート型の設計です。一方、インターフェースは振る舞いの規範であり、放射型の設計です。テンプレート型の設計とは何でしょうか。最も簡単な例として、皆さんはPPTのテンプレートを使ったことがあるでしょう。テンプレートAを使ってPPT BとPPT Cを設計した場合、PPT BとPPT Cの共通部分がテンプレートAです。それらの共通部分を変更する必要があれば、テンプレートAだけを変更すればよく、PPT BとPPT Cを再度変更する必要はありません。一方、放射型の設計とは、例えば、あるエレベーターに特定の警報器がすべて取り付けられている場合、警報器を更新する際にはすべてを更新しなければなりません。つまり、抽象クラスの場合は、新しいメソッドを追加する必要があれば、抽象クラスに直接具体的な実装を追加でき、サブクラスを変更する必要はありません。しかし、インターフェースの場合はそれができません。インターフェースが変更された場合、そのインターフェースを実装するすべてのクラスが相応の変更を行う必要があります。</p>
-<p>次に、インターネット上で最も広く広まっている例を見てみましょう。ドアと警報の例です。ドアには<strong>open()</strong> 和 <strong>close()</strong>2つの動作があります。このとき、抽象クラスとインターフェースを通じてこの抽象概念を定義できます：</p>
+<p>次に、インターネット上で最も広く広まっている例を見てみましょう。ドアと警報の例です。ドアには<strong>open()</strong>と<strong>close()</strong>2つの動作があります。このとき、抽象クラスとインターフェースを通じてこの抽象概念を定義できます：</p>
 <div class="example"><div class="example_code"><div class="hl-main"><span class="hl-reserved">abstract</span><span class="hl-code"> </span><span class="hl-reserved">class</span><span class="hl-code"> </span><span class="hl-identifier">Door</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
 </span><span class="hl-reserved">public</span><span class="hl-code"> </span><span class="hl-reserved">abstract</span><span class="hl-code"> </span><span class="hl-types">void</span><span class="hl-code"> </span><span class="hl-identifier">open</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
     </span><span class="hl-reserved">public</span><span class="hl-code"> </span><span class="hl-reserved">abstract</span><span class="hl-code"> </span><span class="hl-types">void</span><span class="hl-code"> </span><span class="hl-identifier">close</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
@@ -259,11 +259,11 @@ class ClassName implements Interface1,Interface2,[....]{
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=".." class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href="..">ログイン</a>が必要です！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

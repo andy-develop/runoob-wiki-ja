@@ -557,7 +557,7 @@ $( ".selector" ).autocomplete( "option", "position", { my : "right top", at: "ri
 <ul>
 <li><strong>Array</strong>：ローカルデータに使用できる配列。次の 2 つの形式をサポートします：<ul>
 <li>文字列の配列：<code>[ "Choice1", "Choice2" ]</code></li>
-<li>次のプロパティを持つ<code>label</code> 和 <code>value</code>オブジェクトの配列：<code>[ { label: "Choice1", value: "value1" }, ... ]</code></li>
+<li>次のプロパティを持つ<code>label</code>と<code>value</code>オブジェクトの配列：<code>[ { label: "Choice1", value: "value1" }, ... ]</code></li>
 </ul>label プロパティは候補メニューに表示されます。ユーザーが項目を選択すると、value が input 要素に挿入されます。1 つのプロパティのみが指定された場合、そのプロパティは label と value の両方として扱われます。たとえば、<code>value</code>value プロパティを提供した場合、value もラベルとして扱われます。</li>
 <li><strong>String</strong>：文字列を使用する場合、Autocomplete プラグインはその文字列が JSON データを返す URL リソースを指していることを期待します。同じホスト上でも、異なるホスト上でもかまいません（JSONP を提供する必要があります）。Autocomplete プラグインは結果をフィルタリングせず、<code>term</code>フィールドを介してクエリ文字列を追加し、サーバー側スクリプトが結果をフィルタリングできるようにします。たとえば、<code>source</code>オプションが<code>"http://example.com"</code>に設定され、ユーザーが<code>foo</code>と入力した場合、GET リクエストは<code>http://example.com?term=foo</code>になります。データ自体の形式は、前述のローカルデータの形式と同じにすることができます。</li>
 <li><strong>Function</strong>：3番目のバリアントであるコールバック関数は、最大の柔軟性を提供し、任意のデータソースを Autocomplete に接続するために使用できます。コールバック関数は 2 つの引数を受け取ります：<ul>
@@ -776,7 +776,7 @@ _renderItem: function( ul, item ) {
 <td>このメソッドは、メニューを表示する前にメニューのサイズを調整します。メニュー要素は<code>this.menu.element</code>を使用してアクセスできます。<br/>
 <ul>
 <li><strong>ul</strong><br/>型：jQuery<br/>説明：ウィジェットのメニューとして使用される空の<code>&lt;ul&gt;</code>要素。</li>
-<li><strong>items</strong><br/>型：Array<br/>説明：ユーザーの入力に一致する項目を含む配列。各項目は<code>label</code> 和 <code>value</code>プロパティを持つオブジェクトです。</li>
+<li><strong>items</strong><br/>型：Array<br/>説明：ユーザーの入力に一致する項目を含む配列。各項目は<code>label</code>と<code>value</code>プロパティを持つオブジェクトです。</li>
 </ul>
 <p><strong>コード例：</strong></p>
 <p>古いメニュー項目に CSS クラス名を追加します。</p>
@@ -937,7 +937,7 @@ $( ".selector" ).on( "autocompleteopen", function( event, ui ) {} );
 <ul>
 <li><strong>event</strong><br/>型：Event</li>
 <li><strong>ui</strong><br/>型：Object<ul>
-<li><strong>content</strong><br/>型：Array<br/>説明：レスポンスデータを含み、表示結果を変更するために修正できます。このデータはすでに標準化されているため、データを変更する場合は、各項目に<code>value</code> 和 <code>label</code>プロパティが含まれていることを確認してください。</li>
+<li><strong>content</strong><br/>型：Array<br/>説明：レスポンスデータを含み、表示結果を変更するために修正できます。このデータはすでに標準化されているため、データを変更する場合は、各項目に<code>value</code>と<code>label</code>プロパティが含まれていることを確認してください。</li>
 </ul>
 </li>
 </ul>
@@ -957,7 +957,7 @@ $( ".selector" ).on( "autocompleteresponse", function( event, ui ) {} );
 <tr id="event-search">
 <td>search( event, ui )</td>
 <td>autocompletesearch</td>
-<td>検索の実行前に満たされた<a href="../index.html"><code>minLength</code></a> 和 <a href="../index.html"><code>delay</code></a>後にトリガーされます。このイベントをキャンセルした場合、リクエストは送信されず、候補項目も提供されません。<br/>
+<td>検索の実行前に満たされた<a href="../index.html"><code>minLength</code></a>と<a href="../index.html"><code>delay</code></a>後にトリガーされます。このイベントをキャンセルした場合、リクエストは送信されず、候補項目も提供されません。<br/>
 <ul>
 <li><strong>event</strong><br/>タイプ：Event</li>
 <li><strong>ui</strong><br/>タイプ：Object</li>
@@ -983,7 +983,7 @@ $( ".selector" ).on( "autocompletesearch", function( event, ui ) {} );
 <ul>
 <li><strong>event</strong><br/>タイプ：Event</li>
 <li><strong>ui</strong><br/>タイプ：Object<ul>
-<li><strong>item</strong><br/>タイプ：Object<br/>説明：選択された項目の<code>label</code> 和 <code>value</code>プロパティを持つオブジェクト。</li>
+<li><strong>item</strong><br/>タイプ：Object<br/>説明：選択された項目の<code>label</code>と<code>value</code>プロパティを持つオブジェクト。</li>
 </ul>
 </li>
 </ul>
@@ -1180,11 +1180,11 @@ $( "#autocomplete" ).autocomplete({
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1484,7 +1484,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

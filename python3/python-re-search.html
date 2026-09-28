@@ -166,7 +166,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h1>Python re.search() メソッド</h1>
 <p><a href="python-re.html">Python re モジュール</a></p><hr/>
 <p><code>re.search()</code>は Python<code>re</code>モジュール内で<strong>パターンを検索するための</strong>関数であり、文字列内で<strong>スキャンして検索し</strong>指定された正規表現にマッチする最初の位置を探します。</p>
-<p>与 <code>re.match()</code>とは異なり、<code>re.search()</code>文字列の先頭からマッチする必要はなく、文字列内の任意の位置でマッチを検索します。</p>
+<p>と<code>re.match()</code>とは異なり、<code>re.search()</code>文字列の先頭からマッチする必要はなく、文字列内の任意の位置でマッチを検索します。</p>
 <p><strong>単語の意味</strong>： <code>search</code>「検索」「探す」という意味です。</p>
 <hr/>
 <h2>基本構文とパラメータ</h2>
@@ -207,8 +207,8 @@ re.search(pattern, string, flags=0)
 <div class="example_code">
 <span style="color: Green;font-weight:bold;">import</span> <span style="color: #05a;">re</span><br/>
 <br/>
-<span style="color: #a50"># 在字符串中搜索第一个匹配的数字</span><br/>
-text <span style="color: Gray;">=</span> <span style="color: #a11;">"Python 3.9 是最常用的版本"</span><br/>
+<span style="color: #a50"># 文字列内で最初に一致する数字を検索する</span><br/>
+text <span style="color: Gray;">=</span> <span style="color: #a11;">Python 3.9 は最もよく使われているバージョンです</span><br/>
 result <span style="color: Gray;">=</span> <span style="color: #05a;">re</span>.<span style="color: #05a;">search</span><span style="color: Olive;">(</span>r<span style="color: #a11;">'<span style="color: #000099; font-weight: bold;">\d</span>+<span style="color: #000099; font-weight: bold;">\.</span><span style="color: #000099; font-weight: bold;">\d</span>+'</span><span style="color: Gray;">,</span> text<span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">if</span> result:<br/>
@@ -227,7 +227,7 @@ result <span style="color: Gray;">=</span> <span style="color: #05a;">re</span>.
 <li><code>r'\d+\.\d+'</code>1つ以上の数字、続いてドット、さらに1つ以上の数字（バージョン番号形式）にマッチします。</li>
 <li><code>re.search()</code>最初のマッチ位置のオブジェクトを返します。</li>
 <li><code>result.group()</code>マッチしたテキスト内容を返します。</li>
-<li><code>result.start()</code> 和 <code>result.end()</code>マッチした位置のインデックスを返します。</li>
+<li><code>result.start()</code>と<code>result.end()</code>マッチした位置のインデックスを返します。</li>
 </ol>
 <h3>例2：任意の位置でのマッチ検索</h3>
 <p><code>re.search()</code>は文字列内の任意の位置で検索できます。これが<code>re.match()</code>との主な違いです。</p>
@@ -236,7 +236,7 @@ result <span style="color: Gray;">=</span> <span style="color: #05a;">re</span>.
 <div class="example_code">
 <span style="color: Green;font-weight:bold;">import</span> <span style="color: #05a;">re</span><br/>
 <br/>
-text <span style="color: Gray;">=</span> <span style="color: #a11;">"我的手机号是 138-1234-5678，他的手机号是 139-9876-5432"</span><br/>
+text <span style="color: Gray;">=</span> <span style="color: #a11;">"私の携帯番号は138-1234-5678で、彼の携帯番号は139-9876-5432です。"</span><br/>
 <br/>
 <span style="color: #a50"># 查找第一个手机号</span><br/>
 result <span style="color: Gray;">=</span> <span style="color: #05a;">re</span>.<span style="color: #05a;">search</span><span style="color: Olive;">(</span>r<span style="color: #a11;">'<span style="color: #000099; font-weight: bold;">\d</span>{3}-<span style="color: #000099; font-weight: bold;">\d</span>{4}-<span style="color: #000099; font-weight: bold;">\d</span>{4}'</span><span style="color: Gray;">,</span> text<span style="color: Olive;">)</span><br/>
@@ -285,7 +285,7 @@ result <span style="color: Gray;">=</span> <span style="color: #05a;">re</span>.
 <br/>
 text <span style="color: Gray;">=</span> <span style="color: #a11;">"用户邮箱: user@example.com"</span><br/>
 <br/>
-<span style="color: #a50"># 使用分组提取用户名和域名</span><br/>
+<span style="color: #a50"># グループを使用してユーザー名とドメイン名を抽出する</span><br/>
 result <span style="color: Gray;">=</span> <span style="color: #05a;">re</span>.<span style="color: #05a;">search</span><span style="color: Olive;">(</span>r<span style="color: #a11;">'(<span style="color: #000099; font-weight: bold;">\w</span>+)@(<span style="color: #000099; font-weight: bold;">\w</span>+<span style="color: #000099; font-weight: bold;">\.</span><span style="color: #000099; font-weight: bold;">\w</span>+)'</span><span style="color: Gray;">,</span> text<span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">if</span> result:<br/>
@@ -302,7 +302,7 @@ result <span style="color: Gray;">=</span> <span style="color: #05a;">re</span>.
 <p><strong>コード解説：</strong></p>
 <ul>
 <li>丸括弧<code>()</code>で2つのグループを作成しました。</li>
-<li><code>result.group(1)</code> 和 <code>result.group(2)</code>2つのグループの内容をそれぞれ抽出します。</li>
+<li><code>result.group(1)</code>と<code>result.group(2)</code>2つのグループの内容をそれぞれ抽出します。</li>
 </ul>
 <hr/>
 <p><a href="python-re.html">Python re モジュール</a></p> その他の拡張
@@ -423,11 +423,11 @@ result <span style="color: Gray;">=</span> <span style="color: #05a;">re</span>.
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックできます</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックできます</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -716,7 +716,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

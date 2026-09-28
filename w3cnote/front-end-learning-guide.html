@@ -157,7 +157,7 @@ Lorem ipsum dolor sit amet. ...
 </pre>
 <h3>tableタグはテーブルデータにのみ使用する</h3>
 <p>tableタグは常にテーブルデータの表示にのみ使用すべきです。唯一の例外はHTML形式のメールを作成する場合で、その場合、tableは一部の迷惑なメールクライアントが唯一サポートするスタイルである可能性があります。</p>
-<p>読みやすさのため、テーブルの見出しには常に<strong>&lt;th&gt;</strong>要素を使用します。また、必ず<strong>cellpadding</strong>, <strong>cellspacing</strong> 和 <strong>border</strong>の値を<strong>0</strong>に設定します。これらのスタイルはCSSで制御する方が一貫性を保ちやすいためです。</p>
+<p>読みやすさのため、テーブルの見出しには常に<strong>&lt;th&gt;</strong>要素を使用します。また、必ず<strong>cellpadding</strong>, <strong>cellspacing</strong>と<strong>border</strong>の値を<strong>0</strong>に設定します。これらのスタイルはCSSで制御する方が一貫性を保ちやすいためです。</p>
 <pre>
 &lt;table cellpadding="0" cellspacing="0" border="0"&gt;
     &lt;thead&gt;
@@ -388,7 +388,7 @@ Person.prototype.findFriend = function(toFind) {
     });
 }
 </pre>
-<p>上記の例では、<strong>this</strong>は、<strong>Bob</strong>への参照から、その友人である<strong>Barry</strong>への参照へと変化する過程をたどります。<strong>this</strong>の値が時間とともに変化することを理解することは重要です。プロトタイプ関数の内部では、<strong>this</strong>は、所在する擬似クラスの現在のインスタンスを指します（ここでは<strong>Bob</strong>）。しかし、<strong>$.each()</strong>ループに入ると、<strong>this</strong>は、解析対象の配列の<strong>i</strong>番目の要素に再マッピングされます。</p>
+<p>上記の例では、<strong>this</strong>は、<strong>Bob</strong>への参照から、その友人である<strong>Barry</strong>への参照へと変化する過程をたどります。<strong>this</strong>の値が時間とともに変化することを理解することは重要です。プロトタイプ関数の内部では、<strong>this</strong>は、所にする擬似クラスの現在のインスタンスを指します（ここでは<strong>Bob</strong>）。しかし、<strong>$.each()</strong>ループに入ると、<strong>this</strong>は、解析対象の配列の<strong>i</strong>番目の要素に再マッピングされます。</p>
 <p>解決策は、<strong>this</strong>の値を<strong>self</strong>または<strong>_self</strong>に再マッピングすることです。<strong>self</strong>（アンダースコアなし）は、<a href="https://developer.mozilla.org/en/JavaScript/Reference/Reserved_Words" rel="noopener noreferrer" target="_blank">予約語ではありません。</a>しかし、それは<em>確かに</em> <strong>window</strong>オブジェクトのプロパティです。上記で<strong>self</strong>の例は jQuery のソースコードから取ったものですが、彼らもこの間違いを認識しており、<a href="http://bugs.jqueryui.com/ticket/5404" rel="noopener noreferrer" target="_blank">現在の状況を修正しようとしています。</a>具体的には<strong>_self</strong>に変更する予定です。個人的には<strong>self</strong>が好きです。他でもなく、その簡潔さのためです。ただし、非常に紛らわしいバグを引き起こす可能性があります。とにかく、<strong>self</strong>を使用するのはリスクがあり、慎重に使用する必要があります。</p>
 <p>次の例では、<strong>$.each()</strong>ヘルパー内で提供される引数をより有効に活用し、同時に<strong>this</strong>の値を再マッピングします。</p>
 <pre>
@@ -503,7 +503,7 @@ $(".quote")
 </pre>
 <p>上記の例では、あるDOMオブジェクトに対する操作を完了するたびに、DOMを逆方向に走査して参照していた元のオブジェクトに戻る必要があります。そのようなときに<a href="http://api.jquery.com/end/" rel="noopener noreferrer" target="_blank">.end()</a>関数を使用します。そして、それに沿って元のDOM内の位置まで戻るわけです。</p>
 <h3>data-* 属性を使用する</h3>
-<p>長い間Javascript（ネイティブで、jQueryではない）コードを書いてきた人たちは、おそらくさまざまな属性に精通しているでしょう。属性を設定したり、取得したり、あるいは濫用したりしてきました。<strong>rel</strong> 和 <strong>title</strong> ...
+<p>長い間Javascript（ネイティブで、jQueryではない）コードを書いてきた人たちは、おそらくさまざまな属性に精通しているでしょう。属性を設定したり、取得したり、あるいは濫用したりしてきました。<strong>rel</strong>と<strong>title</strong> ...
 </p>
 <p>HTML5やjQueryが何も助けにならなかったとは言わせません。新しい仕様では、HTML要素内で<strong>data-</strong>プレフィックスを使ってデータを含む属性を示すことができます。jQueryは指定された文字列を正しいJavascriptデータ型に変換してくれるので、非常にうまく機能します。いくつかのデータ属性を持つ<strong>DIV</strong> 。
 </p>
@@ -526,7 +526,7 @@ typeof $("#test").data("someNumber"); // number
 <pre>
 &lt;div id="test" data-is-bool="true" data-some-number="123"&gt;&lt;/div&gt;
 </pre>
-<h3>'.stop()' は協調とリスニングを停止する</h3><p>jQueryのアニメーション効果とマウスイベントを結びつけることは、ウェブベースの現代的なユーザーインタラクションの重要な部分ですが、この点において、最も有名なWebサイトでさえも下手な実装をしていることがあります。<a href="http://www.learningjquery.com/2009/01/quick-tip-prevent-animation-queue-buildup" rel="noopener noreferrer" target="_blank">この記事</a>は、アニメーションを実装する直接的な例を提供し、これらのアニメーションを組み合わせると、視覚的にどれほど不快な効果が生じるかを示しています。<strong>$.animate</strong>呼び出しに1つのパラメータを追加することで簡単に解決できます。</p><p>使用する際には<strong>$.animate</strong>パラメータに<strong>queue: false</strong>を追加することで、チェーンを回避できます。例えば<strong>$.fadeIn</strong> 或 <strong>$.slideDown</strong>のようなアニメーションのショートカットは<strong>queue</strong>設定を受け付けないため、必ず<strong>$.stop</strong>メソッドを使って、これらのアニメーションを事前に停止しなければなりません。<strong>clearQueue</strong> 和 <strong>jumpToEnd</strong>これら2つのパラメータに関する<a href="http://api.jquery.com/stop/" rel="noopener noreferrer" target="_blank">ドキュメント</a>を確認しておくことをお勧めします。神にかけて、他にあなたを助ける方法はありませんから。</p>
+<h3>'.stop()' は協調とリスニングを停止する</h3><p>jQueryのアニメーション効果とマウスイベントを結びつけることは、ウェブベースの現代的なユーザーインタラクションの重要な部分ですが、この点において、最も有名なWebサイトでさえも下手な実装をしていることがあります。<a href="http://www.learningjquery.com/2009/01/quick-tip-prevent-animation-queue-buildup" rel="noopener noreferrer" target="_blank">この記事</a>は、アニメーションを実装する直接的な例を提供し、これらのアニメーションを組み合わせると、視覚的にどれほど不快な効果が生じるかを示しています。<strong>$.animate</strong>呼び出しに1つのパラメータを追加することで簡単に解決できます。</p><p>使用する際には<strong>$.animate</strong>パラメータに<strong>queue: false</strong>を追加することで、チェーンを回避できます。例えば<strong>$.fadeIn</strong> 或 <strong>$.slideDown</strong>のようなアニメーションのショートカットは<strong>queue</strong>設定を受け付けないため、必ず<strong>$.stop</strong>メソッドを使って、これらのアニメーションを事前に停止しなければなりません。<strong>clearQueue</strong>と<strong>jumpToEnd</strong>これら2つのパラメータに関する<a href="http://api.jquery.com/stop/" rel="noopener noreferrer" target="_blank">ドキュメント</a>を確認しておくことをお勧めします。神にかけて、他にあなたを助ける方法はありませんから。</p>
 <pre>
 $("selector").stop(true,true).fadeOut();
 
@@ -616,10 +616,10 @@ $(".foo",bar);
 </pre>
 <p>に適用されます。これにより、要素の寸法を計算する正確な方法を選択でき、あなたを窮地から救ってくれます。サポートされるパラメータはブラウザによって異なり、ベンダープレフィックスが必要です。詳細は<strong>padding/margin/borders</strong>とはいえ、最初の方法のように、幅を暗算して各ピクセル数を足したり引いたりすることも常に可能ですが、異なる幅の単位（パーセンテージやEMなど）が関わると、誰も正確に把握できなくなります。現時点では、要素を親要素でラップして、幅と</p>
 <h3>floatをいつ使い、positionをいつ使うかを知る</h3><p>floatを使うべき時とpositionを使うべき時を理解する</p>
-<p>floatを使ってDOMから要素を取り出し、それらを左または右に強制的に寄せるのは、かなり信頼できる方法です。それらはフロントエンド開発におけるテーブルレイアウト後の時代の万能薬となっています。これはおそらく、以前のブラウザが<strong>display: inline</strong> 和 <strong>inline-block</strong>のサポートが不十分だったこと、またpositionのサポートにおいて発生した<strong>z-index</strong>バグのせいです。しかし今となっては本当に言い訳はできません。inline-block はすでに十分サポートされており、簡単な修正を加えるだけで IE7 でも適用できます。</p>
+<p>floatを使ってDOMから要素を取り出し、それらを左または右に強制的に寄せるのは、かなり信頼できる方法です。それらはフロントエンド開発におけるテーブルレイアウド後の時代の万能薬となっています。これはおそらく、以前のブラウザが<strong>display: inline</strong>と<strong>inline-block</strong>のサポートが不十分だったこと、またpositionのサポートにおいて発生した<strong>z-index</strong>バグのせいです。しかし今となっては本当に言い訳はできません。inline-block はすでに十分サポートされており、簡単な修正を加えるだけで IE7 でも適用できます。</p>
 <p>ありがたいことに、CSSで要素を絶対配置することを妨げていた以前の議論は消え去りました。理論上、positionプロパティを使えば、ページ上でX座標とY座標で要素を配置できます。この方法はシンプルで直接的であり、Flash開発者にはおなじみのはずです。</p><h4>Position を理解する</h4><p>CSSで要素を配置する際、配置位置は常に、positionプロパティを持つ最も近い親要素を基準にするという事実を理解することが非常に重要です。CSSを使い始めたばかりの人々は、次のようなよくある誤解をします。<strong>position: absolute;</strong>それはページのルート要素を基準に配置されるというものです。この誤解は、ある要素にpositionスタイルを持つ親要素がまったくない場合に由来すると思います。その場合、彼らの結論は正しいのです。このようにDOMツリーを上へ辿ってもpositionスタイルを持つ要素が見つからない場合、ページのルート要素を基準に配置されます。</p><p>では、もし<strong>position: absolute;</strong>が要素を通常のフローから引き抜くのであれば、どのようにして要素をその親要素に対して配置すればよいでしょうか？方法はとても直接的です。親要素は定義する必要があります。<strong>position: relative;</strong>スタイルを定義すると、すべての子要素は上、右、下、左の順に配置されます。この知識を利用して、次の非常に直感的なレイアウトをどのように実現しますか？</p>
 <p><img decoding="async" src="../wp-content/uploads/2016/01/float-or-position.png"/></p>
-<p>使用するには<strong>float</strong>、これらの要素を親要素で包み、次に<strong>.one</strong>floatを左に設定し、それから<strong>.two</strong> 和 <strong>.three</strong> 的 <strong>float</strong> 和 <strong>margin</strong>を調整します。最終的には次のようなものになるはずです：</p>
+<p>使用するには<strong>float</strong>、これらの要素を親要素で包み、次に<strong>.one</strong>floatを左に設定し、それから<strong>.two</strong>と<strong>.three</strong>の<strong>float</strong>と<strong>margin</strong>を調整します。最終的には次のようなものになるはずです：</p>
 <pre>
 .parent {
     /* ghetto clearfix */
@@ -810,21 +810,20 @@ padding: 0 10px;
    border-bottom-width: 2px;
 }</pre>
 <h3>!important を乱用しない</h3>
-<p>!important タグに依存することは<strong>!important</strong>危険な現象です。それを使わざるを得ない状況はごくわずかで、特殊なケースです。そのような状況とは、おおむね別のスタイルシートを上書きする必要があるが、それを編集できないか、編集する権限がない場合です。もう1つのシナリオは、Javascriptがオンラインで生成するスタイルがより高い優先順位を持つことを防ぐために、要素のスタイルをハードコードする場合です。しかし実際には、<strong>!important</strong>は、あるスタイルを他のスタイルより優先させるための怠惰なショートカットとして使われることがよくあり、そうすると将来多くの問題を引き起こすことになります。</p><p>
-对 <strong>!important</strong>タグの使用の大部分は、CSSセレクタの優先順位と、要素をより正確にターゲットする方法をよりよく理解すれば回避できます。セレクタが具体的であればあるほど、適切なスタイルとして受け入れられる可能性が高くなります。vanseodesign の以下の例は、具体性が機能する状況を示しています。</p>
+<p>!important タグに依存することは<strong>!important</strong>危険な現象です。それを使わざるを得ない状況はごくわずかで、特殊なケースです。そのような状況とは、おおむね別のスタイルシートを上書きする必要があるが、それを編集できないか、編集する権限がない場合です。もう1つのシナリオは、Javascriptがオンラインで生成するスタイルがより高い優先順位を持つことを防ぐために、要素のスタイルをハードコードする場合です。しかし実際には、<strong>!important</strong>は、あるスタイルを他のスタイルより優先させるための怠惰なショートカットとして使われることがよくあり、そうすると将来多くの問題を引き起こすことになります。</p><p>に対して<strong>!important</strong>タグの使用の大部分は、CSSセレクタの優先順位と、要素をより正確にターゲットする方法をよりよく理解すれば回避できます。セレクタが具体的であればあるほど、適切なスタイルとして受け入れられる可能性が高くなります。vanseodesign の以下の例は、具体性が機能する状況を示しています。</p>
 <pre>
 p { font-size: 12px; }
 p.bio { font-size: 14px; }
 </pre>
 <p>スタイルの優先順位に関して、<a href="http://www.vanseodesign.com/css/css-specificity-inheritance-cascaade/" rel="noopener noreferrer" target="_blank">彼らの記事は</a>継承性の説明において、私が書けるどんな記事よりも優れているので、ぜひいいねを押してください。</p>
 <h3>アグレッシブな後方互換性</h3>
-<p>注意すべき点として、これは私個人の見解であり、特定の状況にのみ当てはまります。古いバージョンのブラウザに依存する大規模な商用プロジェクトやエンタープライズ向けソリューションでは、積極的な下方互換の立場は受け入れられにくいでしょう。</p><p>積極的な下方互換とは、特定の（古い）ブラウザが特定の効果をレンダリングできない場合、それを直接無視するという意味です。CSS3 ボタンは良い例です。たとえば<strong>border-radius</strong>， <strong>box-shadow</strong>， <strong>text-shadow</strong> 和 <strong>gradients</strong>のような効果は、先進的なブラウザでは表示されます。少し古いバージョンのブラウザでは、<strong>.PNG</strong>画像を無害な代替手段として使用できます。そしてすべての解決策の中で最もエレガントなのは、IE6向けにPNG-Fixを提供するか、<strong>filter</strong>パラメータを使用して gradients や shadows などのプロパティを置き換えることです。ただし、この場合、積極的な下方互換のアプローチでは、古いブラウザを無視し、その中で平面的でまずまずの見た目のオブジェクトを表示することになります。</p><p>簡単に言うと、積極的な下方互換とは要するにこうです：<strong>ブラウザがグラデーションやボックスシャドウをレンダリングできなくても、それは運が悪いということです</strong>。
+<p>注意すべき点として、これは私個人の見解であり、特定の状況にのみ当てはまります。古いバージョンのブラウザに依存する大規模な商用プロジェクトやエンタープライズ向けソリューションでは、積極的な下方互換の立場は受け入れられにくいでしょう。</p><p>積極的な下方互換とは、特定の（古い）ブラウザが特定の効果をレンダリングできない場合、それを直接無視するという意味です。CSS3 ボタンは良い例です。たとえば<strong>border-radius</strong>， <strong>box-shadow</strong>， <strong>text-shadow</strong>と<strong>gradients</strong>のような効果は、先進的なブラウザでは表示されます。少し古いバージョンのブラウザでは、<strong>.PNG</strong>画像を無害な代替手段として使用できます。そしてすべての解決策の中で最もエレガントなのは、IE6向けにPNG-Fixを提供するか、<strong>filter</strong>パラメータを使用して gradients や shadows などのプロパティを置き換えることです。ただし、この場合、積極的な下方互換のアプローチでは、古いブラウザを無視し、その中で平面的でまずまずの見た目のオブジェクトを表示することになります。</p><p>簡単に言うと、積極的な下方互換とは要するにこうです：<strong>ブラウザがグラデーションやボックスシャドウをレンダリングできなくても、それは運が悪いということです</strong>。
 </p><p>すべての状況に理想的というわけではありませんが、この方法はプロジェクトを期限内に納品し、コア製品が使用可能であることを保証できます。ブラウザのハックに依存する必要はありません。</p>
 <hr/>
 <h2>CSS3 と HTML5</h2>
 <p>このトピックについては、もう十分に語ったと思います。<a href="http://www.modernizr.com" rel="noopener noreferrer" target="_blank">Modernizr</a>を使用して、特定の HTML5 および CSS3 機能が利用可能かどうかを検出してください。</p>
 <h3>@font-face の使用と滥用</h3>
-<p>カスタムフォントの埋め込みを検討する前に、[ライセンス]を確認し、<abbr>EULA</abbr>Web埋め込みが許可されているかどうかをチェックすることが非常に重要です。フォントライブラリのベンダーは、デザイナーや開発者がフォントライブラリファイルをサーバーに直接置き、熟練したエンドユーザーにコピーされることを当然望みません。一部のベンダーは、特定のファイルタイプの埋め込みも禁止しています。たとえば<strong>.TTF</strong> 和 <strong>.OTF</strong>。
+<p>カスタムフォントの埋め込みを検討する前に、[ライセンス]を確認し、<abbr>EULA</abbr>Web埋め込みが許可されているかどうかをチェックすることが非常に重要です。フォントライブラリのベンダーは、デザイナーや開発者がフォントライブラリファイルをサーバーに直接置き、熟練したエンドユーザーにコピーされることを当然望みません。一部のベンダーは、特定のファイルタイプの埋め込みも禁止しています。たとえば<strong>.TTF</strong>と<strong>.OTF</strong>。
 </p><p>慎重に検討した結果、希望するフォントが埋め込み可能であると確信した場合は、Font Squirrelの<a href="http://www.fontsquirrel.com/fontface/generator" rel="noopener noreferrer" target="_blank">@font-face ジェネレーター</a>を参照してください。それは Fontspring の<a href="http://www.fontspring.com/blog/further-hardening-of-the-bulletproof-syntax" rel="noopener noreferrer" target="_blank">防弾 @font-face 構造</a>を利用し、必要なすべてのファイル形式を自動的に生成できます。</p>
 <h3>後方互換性</h3>
 <p>ありがたいことに、ブラウザはサポートしていないHTML5およびCSS3の機能に対して、優雅な処理を実現しています。タグに追加された<strong>&lt;input /&gt;</strong>タグの新しいタイプ（例: "email"、"search" など）は、ブラウザがネイティブでサポートしていない場合、通常は通常のテキスト入力にフォールバックされます。<strong>&lt;input type="text" /&gt;</strong>同様に、サポートされていないCSS3機能は表示されず、高さと幅のメディアクエリによって制御されるレスポンシブレイアウトも適用されません。</p><p>
@@ -979,11 +978,11 @@ Twitter Bootstrap
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=".." class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href="..">ログイン</a>が必要です！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

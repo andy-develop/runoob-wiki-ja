@@ -4,8 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>交叉熵与 KL 散度 — 衡量分布之间的差距 | 菜鸟教程
-→ 交差エントロピーとKLダイバージェンス — 分布間の乖離を測る | 菜鸟教程</title>
+<title>交差エントロピーとKLダイバージェンス — 分布間の乖離を測る | 菜鸟教程</title>
 <script>
 window.RUNOOB_CONFIG = {
   darkCssUrl: "https://www.runoob.com/wp-content/themes/runoob/dark-mode.css?v=1.125"
@@ -159,10 +158,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div> <div class="col middle-column">
 <div class="article">
 <div class="previous-next-links">
-<div class="previous-design-link"><i aria-hidden="true" class="fa fa-arrow-left" style="font-size:16px;"></i> <a href="../ai-math/entropy.html" rel="prev">信息量与熵 — 量化不确定性
-→ 情報量とエントロピー — 不確実性を定量化する</a> </div>
-<div class="next-design-link"><a href="../ai-math/optimization-intro.html" rel="next">优化问题入门 — 目标函数、变量与约束
-→ 最適化問題入門 — 目的関数、変数と制約</a> <i aria-hidden="true" class="fa fa-arrow-right" style="font-size:16px;"></i></div>
+<div class="previous-design-link"><i aria-hidden="true" class="fa fa-arrow-left" style="font-size:16px;"></i> <a href="../ai-math/entropy.html" rel="prev">情報量とエントロピー — 不確実性を定量化する</a> </div>
+<div class="next-design-link"><a href="../ai-math/optimization-intro.html" rel="next">最適化問題入門 — 目的関数、変数と制約</a> <i aria-hidden="true" class="fa fa-arrow-right" style="font-size:16px;"></i></div>
 </div>
 <div class="article-body">
 <div class="article-intro" id="content">
@@ -176,56 +173,41 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
             padding: 14px 18px; margin: 16px 0; border-radius: 0 8px 8px 0;
         }
     </style>
-<h1>交叉熵与 KL 散度 -- 衡量分布之间的差距
-→ 交差エントロピーとKLダイバージェンス -- 分布間の乖離を測る</h1>
-<p>交叉熵是分类任务最常用的损失函数。
-→ 交差エントロピーは分類タスクで最もよく使われる損失関数です。<span class="marked">KL 散度衡量两个概率分布有多不像。
+<h1>交差エントロピーとKLダイバージェンス -- 分布間の乖離を測る</h1>
+<p>交差エントロピーは分類タスクで最もよく使われる損失関数です。<span class="marked">KL 散度衡量两个概率分布有多不像。
 → KLダイバージェンスは2つの確率分布がどれだけ異なるかを測ります。</span></p>
 <hr/>
 <h2>概念解析
 → 概念の解説</h2>
-<p>上一章学了熵——衡量单个分布自身的混乱程度。本章的两个概念衡量的是
-→ 前章ではエントロピー——単一の分布自体の乱雑さを測る——を学びました。本章の2つの概念が測るのは<span class="marked">两个分布之间的差距
-→ 2つの分布間の乖離</span>，这直接决定了分类任务中损失函数的设计。
-→ であり、これが分類タスクにおける損失関数の設計を直接決定します。</p>
+<p>前章ではエントロピー——単一の分布自体の乱雑さを測る——を学びました。本章の2つの概念が測るのは<span class="marked">2つの分布間の乖離</span>、これは分類タスクにおける損失関数の設計を直接決定します。</p>
 <h3>交叉熵
 → 交差エントロピー</h3>
 \[
 H(p, q) = -\sum_x p(x) \log q(x)
 \]
-<p>含义：用预测分布 q 去编码真实分布 p 的数据，平均花多少信息量。
+<p>意味：予測分布 q で実際の分布 p のデータを符号化するとき、平均でどれだけの情報量を使うか。
 → 意味：予測分布 q で実際の分布 p のデータを符号化するとき、平均でどれだけの情報量を使うか。</p>
-<h3>KL 散度（相对熵）
-→ KLダイバージェンス（相対エントロピー）</h3>\[
+<h3>KLダイバージェンス（相対エントロピー）</h3>\[
 D_{KL}(p \| q) = \sum_x p(x) \log \frac{p(x)}{q(x)} = \underbrace{H(p,q)}_{\text{交差エントロピー}} - \underbrace{H(p)}_{\text{真のエントロピー}}
-\]<p>含义：q 代替 p 后额外浪费的信息量。KL ≥ 0，等于 0 时 p=q。
-→ 意味：q が p の代わりになったときに余分に浪費される情報量。KL ≥ 0 で、0 に等しいとき p=q。</p>
+\]<p>意味：q が p の代わりになったときに余分に浪費される情報量。KL ≥ 0 で、0 に等しいとき p=q。</p>
 <blockquote>
 <p>KL 散度
-→ KLダイバージェンス<span class="marked">不对称
-→ 非対称</span>：D_KL(p||q) ≠ D_KL(q||p)，它不是真正的「距离」。
-→ ：D_KL(p||q) ≠ D_KL(q||p) であり、真の「距離」ではありません。</p>
-<p>当真实分布 p 是 one-hot（确定）时，H(p)=0，此时交叉熵 = KL 散度。
-→ 実際の分布 p が one-hot（確定的）の場合、H(p)=0 となり、このとき交差エントロピー = KLダイバージェンス です。</p>
+→ KLダイバージェンス<span class="marked">非対称
+→ 非対称</span>：D_KL(p||q) ≠ D_KL(q||p) であり、真の「距離」ではありません。</p>
+<p>真の分布 p が one-hot（決定の）である場合、H(p)=0 となり、このとき交差エントロピー = KLダイバージェンス です。</p>
 </blockquote>
-<h3>为什么分类用交叉熵而不是 MSE？
-→ なぜ分類にはMSEではなく交差エントロピーを使うのか？</h3>
-<p>交叉熵 + Softmax 的梯度 = \( \hat{y} - y \)（预测 - 真实），简洁高效。
-→ 交差エントロピー + Softmax の勾配 = \( \hat{y} - y \)（予測 - 実際）で、簡潔かつ効率的です。</p>
-<p>MSE + Softmax 的梯度在预测自信时趋近于 0——梯度消失，学不动。
-→ MSE + Softmax の勾配は予測に自信があるときに 0 に近づきます——勾配消失で学習が進みません。</p>
+<h3>なぜ分類にはMSEではなく交差エントロピーを使うのか？</h3>
+<p>交差エントロピー + Softmax の勾配 = \( \hat{y} - y \)（予測 - 実際）で、簡潔かつ効率のです。</p>
+<p>MSE + Softmax の勾配は予測に自信があるときに 0 に近づきます——勾配消失で学習が進みません。</p>
 <hr/>
 <h2>生活例子
 → 身近な例</h2>
 <div class="life-example">
 <p><i class="fa fa-language" style="color:#2196F3;"></i> <strong>密码本设计
 → コードブック（暗号表）の設計</strong></p>
-<p>你用一套密码（短码代表常见字，长码代表生僻字）写信。
-→ あなたはあるコード（短いコードは一般的な文字、長いコードは珍しい文字を表す）を使って手紙を書きます。</p>
-<p>但如果你的密码基于英文频率设计，而写的是中文——编码效率低下。
-→ しかし、あなたのコードが英語の頻度に基づいて設計されていて、中国語を書く場合——符号化効率が低くなります。</p>
-<p>用错误的分布 q 去编码真实分布 p 的数据，额外浪费的比特 = KL 散度。
-→ 誤った分布 q で実際の分布 p のデータを符号化するとき、余分に浪費されるビット = KLダイバージェンス です。</p>
+<p>あなたはあるコード（短いコードは一般的な文字、長いコードは珍しい文字を表す）を使って手紙を書きます。</p>
+<p>しかし、もしあなたのコードが英語の頻度に基づいて設計されているのに、中国語で書かれているなら——符号化効率が低い。</p>
+<p>誤った分布 q で実際の分布 p のデータを符号化するとき、余分に浪費されるビット = KLダイバージェンス です。</p>
 </div>
 <hr/>
 <h2>Python 动手实践
@@ -250,12 +232,11 @@ p_true <span style="color: Gray;">=</span> np.<span style="color: #05a;">array</
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"{desc}: 交叉熵={cross_entropy(p_true, q):.4f}"
 → "{desc}: 交差エントロピー={cross_entropy(p_true, q):.4f}"</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 对比 CE 和 MSE 的梯度
-→ # CE と MSE の勾配を比較</span><br/>
+<span style="color: #a50"># CE と MSE の勾配を比較</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>预测很差(y_pred=0.01, 真=1): CE梯度=-100, MSE梯度=-1.98"
 → "予測が大きく外れた場合(y_pred=0.01, 真=1): CE勾配=-100, MSE勾配=-1.98"</span><span style="color: Olive;">)</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"CE在预测错误时给出大梯度 → 学得快"
-→ "CEは予測が誤っているときに大きな勾配を与える → 学習が速い"</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"CEは予測が誤っているときに大きな勾配をとえる → 学習が速い"
+→ "CEは予測が誤っているときに大きな勾配をとえる → 学習が速い"</span><span style="color: Olive;">)</span><br/>
 </div>
 </div>
 <p>実行結果：</p>
@@ -267,7 +248,7 @@ p_true <span style="color: Gray;">=</span> np.<span style="color: #05a;">array</
 预测很差(y_pred=0.01, 真=1): CE梯度=-100, MSE梯度=-1.98
 CE在预测错误时给出大梯度 → 学得快
 </pre>
-<h3>交叉熵 vs MSE 梯度对比
+<h3>交差エントロピー vs MSE 勾配の比較
 → 交差エントロピー vs MSE 勾配の比較</h3>
 <canvas id="ceChart" style="max-height:280px;"></canvas>
 <script>
@@ -319,28 +300,21 @@ CE在预测错误时给出大梯度 → 学得快
 })();
 </script>
 <hr/>
-<h2>AI 中的应用场景
-→ AIでの応用シーン</h2>
+<h2>AIでの応用シーン</h2>
 <h3>分类任务标配：交叉熵损失
 → 分類タスクの標準：交差エントロピー損失</h3>
-<p>PyTorch 的 nn.CrossEntropyLoss 和 TensorFlow 的 categorical_crossentropy 是分类任务的默认损失函数。它内部集成了 Softmax + 负对数似然——一个损失函数同时完成激活和损失计算，且梯度形式极简：\( \nabla = \hat{y} - y \)。
+<p>PyTorch の nn.CrossEntropyLoss と TensorFlow の categorical_crossentropy である分类任务の默认损失函数。它内部集成た Softmax + 负に対して数似然——一个损失函数同时完成激活と损失计算，且梯度形式极简：\( \nabla = \hat{y} - y \)。
 → PyTorch の nn.CrossEntropyLoss と TensorFlow の categorical_crossentropy は分類タスクのデフォルト損失関数です。内部で Softmax + 負の対数尤度を統合しており——1つの損失関数が活性化と損失計算を同時に実行し、勾配の形も極めて簡潔です：\( \nabla = \hat{y} - y \)。</p>
-<h3>为什么分类不用 MSE？梯度特性决定效率
+<h3>なぜ分類にMSEを使わないのか？勾配の特性が効率を決める
 → なぜ分類にMSEを使わないのか？勾配の特性が効率を決める</h3>
-<p>当模型预测错误时（如真实类别概率应接近 1 但预测为 0.01），交叉熵梯度约为 -100——给出极强的纠正信号。而 MSE 在同样情况下梯度只有 -1.98——几乎学不动。这解释了为什么分类任务中 MSE 收敛极慢甚至不收敛。
-→ モデルが誤った予測をしたとき（例：実際のクラスの確率は 1 に近いべきなのに予測が 0.01 の場合）、交差エントロピーの勾配は約 -100 で——非常に強い修正信号を与えます。一方 MSE は同じ状況で勾配が -1.98 しかなく——ほとんど学習が進みません。これが、分類タスクで MSE の収束が極めて遅いか、収束すらしない理由を説明しています。</p>
-<h3>知识蒸馏中的 KL 散度
-→ 知識蒸留におけるKLダイバージェンス</h3>
-<p>知识蒸馏：用大模型（教师）的 Softmax 输出作为软标签训练小模型（学生）。学生不仅要匹配真实标签，还要通过 KL 散度最小化自己与教师的输出分布差距。软标签包含了类别之间的相似性信息（如「猫」和「虎」输出概率都比「汽车」高），这是 one-hot 标签没有的暗知识。
+<p>モデルが誤った予測をしたとき（例：実際のクラスの確率は 1 に近いべきなのに予測が 0.01 の場合）、交差エントロピーの勾配は約 -100 で——非常に強い修正信号をとえます。一方 MSE は同じ状況で勾配が -1.98 しかなく——ほとんど学習が進みません。これが、分類タスクで MSE の収束が極めて遅いか、収束すらしない理由を説明しています。</p>
+<h3>知識蒸留におけるKLダイバージェンス</h3>
+<p>知识蒸馏：用大模型（教师）の Softmax 输出として软标签训练小模型（学生）。学生不仅要匹配真实标签，还要通过 KL 散度最小化自己と教师の输出分布差距。软标签包含た类别の間の相似性信息（如「猫」と「虎」输出概率都比「汽车」高），これは one-hot 标签没有の暗知识。
 → 知識蒸留：大規模モデル（教師）の Softmax 出力をソフトラベルとして使い、小規模モデル（生徒）を訓練します。生徒は実際のラベルに一致するだけでなく、KLダイバージェンスを通じて教師との出力分布の乖離も最小化する必要があります。ソフトラベルにはクラス間の類似性情報（例：「猫」と「虎」の出力確率がどちらも「自動車」より高い）が含まれており、これは one-hot ラベルにはない暗黙の知識です。</p>
-<h3>VAE 的 KL 散度正则项
-→ VAEのKLダイバージェンス正則化項</h3>
-<p>VAE 的损失函数 = 重构误差 + KL(N(μ,σ²) || N(0,I))。KL 项约束编码器输出的潜在分布在每个样本上不偏离标准正态太远——这起到正则化作用，确保潜在空间连续且平滑，不同类别的样本能在潜在空间中平滑过渡。
-→ VAE の損失関数 = 再構成誤差 + KL(N(μ,σ²) || N(0,I))。KL 項はエンコーダーが出力する潜在分布が各サンプルで標準正規分布から離れすぎないように制約します——これは正則化の役割を果たし、潜在空間が連続で滑らかであることを保証し、異なるクラスのサンプルが潜在空間内で滑らかに移行できるようにします。</p>
-<h3>RLHF 中的 KL 约束
-→ RLHFにおけるKL制約</h3>
-<p>ChatGPT 等模型使用 RLHF（人类反馈强化学习）微调时，在优化目标中加入 KL 散度约束：不要让当前策略偏离初始的 SFT 模型太远。这防止模型为了迎合奖励模型而输出奇怪的文本，保持生成质量。
-→ ChatGPT などのモデルが RLHF（人間のフィードバックからの強化学習）でファインチューニングする際、最適化目標に KLダイバージェンス制約を追加します：現在のポリシーが初期の SFT モデルから離れすぎないようにする、というものです。これにより、モデルが報酬モデルに迎合して奇妙なテキストを出力するのを防ぎ、生成品質を維持します。</p>
+<h3>VAEのKLダイバージェンス正則化項</h3>
+<p>VAE の損失関数 = 再構成誤差 + KL(N(μ,σ²) || N(0,I))。KL 項はエンコーダーが出力する潜に分布が各サンプルで標準正規分布からあまり逸脱しないように制約します——これは正則化の役割を果たし、潜に空間が連続かつ滑らかであることを保証し、異なるクラスのサンプルが潜に空間内で滑らかに遷移できるようにします。</p>
+<h3>RLHFにおけるKL制約</h3>
+<p>ChatGPT などのモデルが RLHF（人間のフィードバックによる強化学習）で微調整する際、最適化目標に KL ダイバージェンス制約を追加します。つまり、現在のポリシーが初期の SFT モデルからあまり乖離しないようにします。これにより、モデルが報酬モデルに迎合して奇妙なテキストを出力するのを防ぎ、生成品質を維持します。</p>
 <hr/>
 <script>
 $(function() {
@@ -363,10 +337,8 @@ $(function() {
 </div>
 </div>
 <div class="previous-next-links">
-<div class="previous-design-link"><i aria-hidden="true" class="fa fa-arrow-left" style="font-size:16px;"></i> <a href="../ai-math/entropy.html" rel="prev">信息量与熵 — 量化不确定性
-→ 情報量とエントロピー — 不確実性を定量化する</a> </div>
-<div class="next-design-link"><a href="../ai-math/optimization-intro.html" rel="next">优化问题入门 — 目标函数、变量与约束
-→ 最適化問題入門 — 目的関数、変数と制約</a> <i aria-hidden="true" class="fa fa-arrow-right" style="font-size:16px;"></i></div>
+<div class="previous-design-link"><i aria-hidden="true" class="fa fa-arrow-left" style="font-size:16px;"></i> <a href="../ai-math/entropy.html" rel="prev">情報量とエントロピー — 不確実性を定量化する</a> </div>
+<div class="next-design-link"><a href="../ai-math/optimization-intro.html" rel="next">最適化問題入門 — 目的関数、変数と制約</a> <i aria-hidden="true" class="fa fa-arrow-right" style="font-size:16px;"></i></div>
 </div>
 
 笔记列表
@@ -476,16 +448,16 @@ $(function() {
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>点我分享笔记
 → クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-→ <p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+→ <p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -782,7 +754,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

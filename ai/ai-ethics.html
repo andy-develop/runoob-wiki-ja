@@ -202,15 +202,15 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example_code">
 <span style="color: #a50"># ============================================</span><br/>
 <span style="color: #a50"># AI 偏见检测示例</span><br/>
-<span style="color: #a50"># 检测文本中是否存在性别、种族等方面的偏见倾向</span><br/>
+<span style="color: #a50"># テキスト中に性別、人種などに関する偏見の傾向が存在するかどうかを検出する</span><br/>
 <span style="color: #a50"># ============================================</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">class</span> BiasDetector:<br/>
-    <span style="color: #a11;">"""简单的偏见检测器，用于演示偏见检测的基本思路"""</span><br/>
+    <span style="color: #a11;">"""シンプルなバイアス検出器。バイアス検出の基本的な考え方を示すためのデモです。"""</span><br/>
 <br/>
     <span style="color: Green;font-weight:bold;">def</span> <span style="color: Navy;">__init__</span><span style="color: Olive;">(</span><span style="color: Teal;">self</span><span style="color: Olive;">)</span>:<br/>
-        <span style="color: #a11;">"""初始化偏见相关的关键词和模式"""</span><br/>
-        <span style="color: #a50"># 性别相关的职业刻板印象</span><br/>
+        <span style="color: #a11;">"""偏見に関連するキーワードとパターンを初期化する"""</span><br/>
+        <span style="color: #a50"># 性別に関する職業ステレオタイプ</span><br/>
         <span style="color: Teal;">self</span>.<span style="color: #05a;">gendered_occupations</span> <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><br/>
             <span style="color: #a11;">"护士"</span>: <span style="color: #a11;">"女性"</span><span style="color: Gray;">,</span><br/>
             <span style="color: #a11;">"工程师"</span>: <span style="color: #a11;">"男性"</span><span style="color: Gray;">,</span><br/>
@@ -222,25 +222,25 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
             <span style="color: #a11;">"秘书"</span>: <span style="color: #a11;">"女性"</span><span style="color: Gray;">,</span><br/>
         <span style="color: Olive;">}</span><br/>
 <br/>
-        <span style="color: #a50"># 被认为是"积极"的词</span><br/>
+        <span style="color: #a50"># 「ポジティブ」と見なされる単語</span><br/>
         <span style="color: Teal;">self</span>.<span style="color: #05a;">positive_words</span> <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><br/>
             <span style="color: #a11;">"优秀"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"聪明"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"能干"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"成功"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"杰出"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"专业"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"可靠"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"负责"</span><br/>
         <span style="color: Olive;">]</span><br/>
 <br/>
-        <span style="color: #a50"># 被认为是"消极"的词</span><br/>
+        <span style="color: #a50"># 「ネガティブ」と見なされる単語</span><br/>
         <span style="color: Teal;">self</span>.<span style="color: #05a;">negative_words</span> <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><br/>
             <span style="color: #a11;">"情绪化"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"软弱"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"不理性"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"敏感"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"冲动"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"粗心"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"靠不住"</span><br/>
         <span style="color: Olive;">]</span><br/>
 <br/>
-        <span style="color: #a50"># 测试用的句子模板</span><br/>
+        <span style="color: #a50"># テスト用の文テンプレート</span><br/>
         <span style="color: Teal;">self</span>.<span style="color: #05a;">test_templates</span> <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><br/>
-            <span style="color: #a11;">"{occupation}应该是{gender}的工作"</span><span style="color: Gray;">,</span><br/>
+            <span style="color: #a11;">"{occupation}は{gender}の仕事であるべき"</span><span style="color: Gray;">,</span><br/>
             <span style="color: #a11;">"{gender}更适合做{occupation}"</span><span style="color: Gray;">,</span><br/>
-            <span style="color: #a11;">"这个{occupation}很{adjective}"</span><span style="color: Gray;">,</span><br/>
+            <span style="color: #a11;">"この{occupation}はとても{adjective}"</span><span style="color: Gray;">,</span><br/>
         <span style="color: Olive;">]</span><br/>
 <br/>
     <span style="color: Green;font-weight:bold;">def</span> analyze_gender_bias<span style="color: Olive;">(</span><span style="color: Teal;">self</span><span style="color: Gray;">,</span> text: <span style="color: Teal;">str</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">dict</span>:<br/>
-        <span style="color: #a11;">"""分析文本中的性别偏见迹象"""</span><br/>
+        <span style="color: #a11;">テキスト中のジェンダーバイアスの兆候を分析する</span><br/>
         result <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><br/>
             <span style="color: #a11;">"text"</span>: text<span style="color: Gray;">,</span><br/>
             <span style="color: #a11;">"has_gendered_occupation"</span>: <span style="color: Teal;">False</span><span style="color: Gray;">,</span><br/>
@@ -248,28 +248,28 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
             <span style="color: #a11;">"bias_warning"</span>: <span style="color: #a11;">""</span><span style="color: Gray;">,</span><br/>
         <span style="color: Olive;">}</span><br/>
 <br/>
-        <span style="color: #a50"># 检查是否包含性别化的职业表述</span><br/>
+        <span style="color: #a50"># 性別化された職業表現が含まれているかどうかを確認する</span><br/>
         <span style="color: Green;font-weight:bold;">for</span> occupation<span style="color: Gray;">,</span> gender <span style="color: Green;font-weight:bold;">in</span> <span style="color: Teal;">self</span>.<span style="color: #05a;">gendered_occupations</span>.<span style="color: #05a;">items</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span>:<br/>
             <span style="color: Green;font-weight:bold;">if</span> occupation <span style="color: Green;font-weight:bold;">in</span> text:<br/>
                 result<span style="color: Olive;">[</span><span style="color: #a11;">"has_gendered_occupation"</span><span style="color: Olive;">]</span> <span style="color: Gray;">=</span> <span style="color: Teal;">True</span><br/>
                 result<span style="color: Olive;">[</span><span style="color: #a11;">"occupation"</span><span style="color: Olive;">]</span> <span style="color: Gray;">=</span> occupation<br/>
                 result<span style="color: Olive;">[</span><span style="color: #a11;">"stereotyped_gender"</span><span style="color: Olive;">]</span> <span style="color: Gray;">=</span> gender<br/>
 <br/>
-        <span style="color: #a50"># 检查是否有性别提及</span><br/>
+        <span style="color: #a50"># 性別への言及があるか確認</span><br/>
         <span style="color: Green;font-weight:bold;">if</span> <span style="color: #a11;">"男"</span> <span style="color: Green;font-weight:bold;">in</span> text <span style="color: Green;font-weight:bold;">or</span> <span style="color: #a11;">"女"</span> <span style="color: Green;font-weight:bold;">in</span> text <span style="color: Green;font-weight:bold;">or</span> <span style="color: #a11;">"男性"</span> <span style="color: Green;font-weight:bold;">in</span> text <span style="color: Green;font-weight:bold;">or</span> <span style="color: #a11;">"女性"</span> <span style="color: Green;font-weight:bold;">in</span> text:<br/>
             result<span style="color: Olive;">[</span><span style="color: #a11;">"has_gender_mention"</span><span style="color: Olive;">]</span> <span style="color: Gray;">=</span> <span style="color: Teal;">True</span><br/>
 <br/>
         <span style="color: #a50"># 生成警告（如果有）</span><br/>
         <span style="color: Green;font-weight:bold;">if</span> result<span style="color: Olive;">[</span><span style="color: #a11;">"has_gendered_occupation"</span><span style="color: Olive;">]</span> <span style="color: Green;font-weight:bold;">and</span> result<span style="color: Olive;">[</span><span style="color: #a11;">"has_gender_mention"</span><span style="color: Olive;">]</span>:<br/>
             result<span style="color: Olive;">[</span><span style="color: #a11;">"bias_warning"</span><span style="color: Olive;">]</span> <span style="color: Gray;">=</span> <span style="color: Olive;">(</span><br/>
-                f<span style="color: #a11;">"&amp;#x26a0;&amp;#xfe0f; 注意：文本将职业'{result['occupation']}'与特定性别关联，"</span><br/>
-                f<span style="color: #a11;">"这可能存在刻板印象风险"</span><br/>
+                f<span style="color: #a11;">"&amp;#x26a0;&amp;#xfe0f; 注意：テキストは職業'{result['occupation']}'を特定の性別と関連付けており、"</span><br/>
+                f<span style="color: #a11;">“これにはステレオタイプのリスクが存在する可能性がある”</span><br/>
             <span style="color: Olive;">)</span><br/>
 <br/>
         <span style="color: Green;font-weight:bold;">return</span> result<br/>
 <br/>
     <span style="color: Green;font-weight:bold;">def</span> detect_bias_in_sentences<span style="color: Olive;">(</span><span style="color: Teal;">self</span><span style="color: Gray;">,</span> sentences: <span style="color: Teal;">list</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">list</span>:<br/>
-        <span style="color: #a11;">"""批量检测一组句子的偏见"""</span><br/>
+        <span style="color: #a11;">"""文のグループのバイアスを一括検出する"""</span><br/>
         results <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: Olive;">]</span><br/>
         <span style="color: Green;font-weight:bold;">for</span> sentence <span style="color: Green;font-weight:bold;">in</span> sentences:<br/>
             analysis <span style="color: Gray;">=</span> <span style="color: Teal;">self</span>.<span style="color: #05a;">analyze_gender_bias</span><span style="color: Olive;">(</span>sentence<span style="color: Olive;">)</span><br/>
@@ -277,11 +277,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         <span style="color: Green;font-weight:bold;">return</span> results<br/>
 <br/>
     <span style="color: Green;font-weight:bold;">def</span> runoob_demo_test<span style="color: Olive;">(</span><span style="color: Teal;">self</span><span style="color: Olive;">)</span>:<br/>
-        <span style="color: #a11;">"""runoob 演示：测试一些常见的偏见表述"""</span><br/>
+        <span style="color: #a11;">"""runoob デモ：いくつかの一般的な偏見表現をテストする"""</span><br/>
         test_sentences <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><br/>
-            <span style="color: #a11;">"工程师应该是男性的工作"</span><span style="color: Gray;">,</span><br/>
+            <span style="color: #a11;">“エンジニアは男性の仕事であるべきだ”</span><span style="color: Gray;">,</span><br/>
             <span style="color: #a11;">"女性更适合做护士"</span><span style="color: Gray;">,</span><br/>
-            <span style="color: #a11;">"这个程序员很优秀"</span><span style="color: Gray;">,</span><br/>
+            <span style="color: #a11;">"このプログラマーはとても優秀です"</span><span style="color: Gray;">,</span><br/>
             <span style="color: #a11;">"她当医生很出色"</span><span style="color: Gray;">,</span><br/>
             <span style="color: #a11;">"男性不适合做幼儿园老师"</span><span style="color: Gray;">,</span><br/>
         <span style="color: Olive;">]</span><br/>
@@ -297,20 +297,20 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
             <span style="color: Green;font-weight:bold;">if</span> result<span style="color: Olive;">[</span><span style="color: #a11;">"bias_warning"</span><span style="color: Olive;">]</span>:<br/>
                 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"   {result['bias_warning']}"</span><span style="color: Olive;">)</span><br/>
             <span style="color: Green;font-weight:bold;">else</span>:<br/>
-                <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"   ✓ 未检测到明显的性别刻板印象"</span><span style="color: Olive;">)</span><br/>
+                <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"   ✓ 明確な性別ステレオタイプは検出されませんでした"</span><span style="color: Olive;">)</span><br/>
 <br/>
         <span style="color: Green;font-weight:bold;">return</span> results<br/>
 <br/>
 <br/>
 <span style="color: #a50"># ============================================</span><br/>
-<span style="color: #a50"># 更高级的偏见检测：统计分析</span><br/>
+<span style="color: #a50"># より高度なバイアス検出：統計分析</span><br/>
 <span style="color: #a50"># ============================================</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">def</span> analyze_representation_distribution<span style="color: Olive;">(</span>data: <span style="color: Teal;">list</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">dict</span>:<br/>
-    <span style="color: #a11;">"""<br/>分析数据中不同群体的代表性分布<br/>比如：在招聘数据中，男女简历的通过率是否一致<br/>
+    <span style="color: #a11;">"""<br/>データ内の異なるグループの代表性分布を分析する<br/>例えば：採用データにおいて、男女の履歴書の通過率が一致するかどうか<br/>
     """</span><br/>
     <span style="color: #a50"># 示例数据：群体标签 + 结果（通过/不通过）</span><br/>
-    <span style="color: #a50"># 实际应用中，这应该是真实的业务数据</span><br/>
+    <span style="color: #a50"># 実際のアプリケーションでは、これは実際の業務データであるはずです</span><br/>
     <span style="color: Green;font-weight:bold;">from</span> <span style="color: #05a;">collections</span> <span style="color: Green;font-weight:bold;">import</span> defaultdict<br/>
 <br/>
     counts <span style="color: Gray;">=</span> defaultdict<span style="color: Olive;">(</span><span style="color: Green;font-weight:bold;">lambda</span>: <span style="color: Olive;">{</span><span style="color: #a11;">"total"</span>: <span style="color: Maroon;">0</span><span style="color: Gray;">,</span> <span style="color: #a11;">"positive"</span>: <span style="color: Maroon;">0</span><span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
@@ -320,7 +320,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         <span style="color: Green;font-weight:bold;">if</span> outcome <span style="color: Gray;">==</span> <span style="color: #a11;">"positive"</span>:<br/>
             counts<span style="color: Olive;">[</span>group<span style="color: Olive;">]</span><span style="color: Olive;">[</span><span style="color: #a11;">"positive"</span><span style="color: Olive;">]</span> +<span style="color: Gray;">=</span> <span style="color: Maroon;">1</span><br/>
 <br/>
-    <span style="color: #a50"># 计算各群体的通过率</span><br/>
+    <span style="color: #a50"># 各グループの通過率を計算</span><br/>
     rates <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: Olive;">}</span><br/>
     <span style="color: Green;font-weight:bold;">for</span> group<span style="color: Gray;">,</span> stats <span style="color: Green;font-weight:bold;">in</span> counts.<span style="color: #05a;">items</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span>:<br/>
         <span style="color: Green;font-weight:bold;">if</span> stats<span style="color: Olive;">[</span><span style="color: #a11;">"total"</span><span style="color: Olive;">]</span> <span style="color: Gray;">&gt;</span> <span style="color: Maroon;">0</span>:<br/>
@@ -330,7 +330,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
                 <span style="color: #a11;">"rate"</span>: stats<span style="color: Olive;">[</span><span style="color: #a11;">"positive"</span><span style="color: Olive;">]</span> / stats<span style="color: Olive;">[</span><span style="color: #a11;">"total"</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
             <span style="color: Olive;">}</span><br/>
 <br/>
-    <span style="color: #a50"># 检查通过率差异是否过大（简化版）</span><br/>
+    <span style="color: #a50"># 通過率の差が大きすぎるかどうかを確認する（簡易版）</span><br/>
     <span style="color: #a50"># 实际应用中应该用统计学显著性检验</span><br/>
     <span style="color: Green;font-weight:bold;">if</span> <span style="color: Teal;">len</span><span style="color: Olive;">(</span>rates<span style="color: Olive;">)</span> <span style="color: Gray;">&gt;=</span> <span style="color: Maroon;">2</span>:<br/>
         all_rates <span style="color: Gray;">=</span> <span style="color: Olive;">[</span>r<span style="color: Olive;">[</span><span style="color: #a11;">"rate"</span><span style="color: Olive;">]</span> <span style="color: Green;font-weight:bold;">for</span> r <span style="color: Green;font-weight:bold;">in</span> rates.<span style="color: #05a;">values</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">]</span><br/>
@@ -738,11 +738,11 @@ RUNOOB 代表性分布分析演示
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">メモは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> メモを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">メモは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> メモを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1031,7 +1031,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

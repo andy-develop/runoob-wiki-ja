@@ -215,7 +215,7 @@ git branch -d fix_code_as3.0.1  # 删除合并后的本地分支</pre>
 <p>
 <img decoding="async" src="../wp-content/uploads/2017/12/1513928021-3638-1c1p0op3op171go0avr1fbvu8o1t.png"/></p>
 <h3>4) クラッシュログ収集クラスの作成</h3>
-<p>クラッシュログ収集クラスは<strong>Application</strong>与<strong>Thread.UncaughtExceptionHandler</strong>の実装に依存します。<strong>プログラムが原因で</strong>終了して抜けようとするとき、Thread.UncaughtExceptionHandlerを使用してスレッドのUncaughtExceptionHandlerを取得し、呼び出します。<strong>uncaughtExceptionメソッド</strong>を呼び出し、スレッドと例外をパラメータとして渡します。スレッドが<strong>UncaughtExceptionHandlerを明示的に設定していない場合は</strong>、それを<strong>ThreadGroup</strong>そのスレッドのUncaughtExceptionHandlerとして、デフォルトの未捕捉例外ハンドラに処理を委ねます。ですから、私たちはただ<strong>UncaughtExceptionHandlerインターフェースを実装し</strong>、オーバーライドして<strong>uncaughtExceptionメソッドを</strong>実装することで、独自の処理を実現できます。まずロジックのリストを整理しましょう。</p>
+<p>クラッシュログ収集クラスは<strong>Application</strong>と<strong>Thread.UncaughtExceptionHandler</strong>の実装に依存します。<strong>プログラムが原因で</strong>終了して抜けようとするとき、Thread.UncaughtExceptionHandlerを使用してスレッドのUncaughtExceptionHandlerを取得し、呼び出します。<strong>uncaughtExceptionメソッド</strong>を呼び出し、スレッドと例外をパラメータとして渡します。スレッドが<strong>UncaughtExceptionHandlerを明示的に設定していない場合は</strong>、それを<strong>ThreadGroup</strong>そのスレッドのUncaughtExceptionHandlerとして、デフォルトの未捕捉例外ハンドラに処理を委ねます。ですから、私たちはただ<strong>UncaughtExceptionHandlerインターフェースを実装し</strong>、オーバーライドして<strong>uncaughtExceptionメソッドを</strong>実装することで、独自の処理を実現できます。まずロジックのリストを整理しましょう。</p>
 <ul>
 <li>1.<strong>ログファイル専用のフォルダを作成する</strong>：ストレージカードが利用可能かどうかを判断し、フォルダが存在するかどうかを確認して、存在しなければ新しいフォルダを作成します。</li>
 <li>2. 文字列をファイルに書き込むメソッドが必要です</li>

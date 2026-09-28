@@ -405,7 +405,7 @@ output <span style="color: Gray;">=</span> model<span style="color: Olive;">(</s
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>output.<span style="color: #05a;">shape</span><span style="color: Olive;">)</span>   <span style="color: #a50"># torch.Size([32, 10])</span><br/>
 </div>
 </div>
-<blockquote><p>モデルが GPU 上にあっても、入力データが CPU 上にある場合、順伝播でエラーが発生します。DataLoader が各バッチを読み込んだ後、必ず<code>inputs</code> 和 <code>labels</code>すべて .to(device) を呼び出してください。<code>.to(device)</code>。</p></blockquote>
+<blockquote><p>モデルが GPU 上にあっても、入力データが CPU 上にある場合、順伝播でエラーが発生します。DataLoader が各バッチを読み込んだ後、必ず<code>inputs</code>と<code>labels</code>すべて .to(device) を呼び出してください。<code>.to(device)</code>。</p></blockquote>
 <hr/>
 <h2>5. 完全なトレーニングフロー</h2>
 <p>以下は、データ読み込み、モデルトレーニング、検証評価を含む標準的な GPU トレーニングテンプレートです。</p>
@@ -509,8 +509,8 @@ optimizer <span style="color: Gray;">=</span> optim.<span style="color: #05a;">A
 <ul>
 <li><code>device</code>変数はコードの最上部で宣言し、グローバルに統一参照する。ハードコーディングしない。<code>"cuda"</code></li>
 <li>モデル<code>.to(device)</code>一度だけ呼び出す</li>
-<li>各バッチの<code>inputs</code> 和 <code>labels</code>すべて<code>.to(device)</code></li>
-<li>DataLoaderの設定<code>pin_memory=True</code> 和 <code>non_blocking=True</code>データ転送の高速化</li>
+<li>各バッチの<code>inputs</code>と<code>labels</code>すべて<code>.to(device)</code></li>
+<li>DataLoaderの設定<code>pin_memory=True</code>と<code>non_blocking=True</code>データ転送の高速化</li>
 <li>検証段階では使用<code>torch.no_grad()</code>勾配をオフにし、GPUメモリを節約</li>
 </ul>
 <hr/>
@@ -1148,11 +1148,11 @@ arr <span style="color: Gray;">=</span> gpu_tensor.<span style="color: #05a;">de
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1441,7 +1441,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

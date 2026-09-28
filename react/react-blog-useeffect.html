@@ -318,7 +318,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
   <span style="color: #006600; font-style: italic;">// useEffect(fn, deps)：コンポーネントのレンダリング後に副作用を実行</span><br/>
   useEffect<span style="color: #009900;">(</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
     console.<span style="color: #660066;">log</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'コンポーネントが DOM にマウントされました。副作用を実行できます'</span><span style="color: #009900;">)</span><br/>
-    setMessage<span style="color: #009900;">(</span><span style="color: #3366CC;">'データの読み込みが完了しました！'</span><span style="color: #009900;">)</span><br/>
+    setMessage<span style="color: #009900;">(</span><span style="color: #3366CC;">データの読み込みが完了しました！</span><span style="color: #009900;">)</span><br/>
   <span style="color: #009900;">}</span><span style="color: #339933;">,</span> <span style="color: #009900;">[</span><span style="color: #009900;">]</span><span style="color: #009900;">)</span>  <span style="color: #006600; font-style: italic;">// 空の依存配列 = 初回レンダリング後にのみ1回実行</span><br/>
 <br/>
   <span style="color: #000066; font-weight: bold;">return</span> <span style="color: #339933;">&lt;</span>p<span style="color: #339933;">&gt;</span><span style="color: #009900;">{</span>message<span style="color: #009900;">}</span><span style="color: #339933;">&lt;/</span>p<span style="color: #339933;">&gt;</span><br/>
@@ -462,7 +462,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <hr/>
 <h2>クリーンアップ関数（Cleanup）</h2>
 <p>useEffect のコールバック関数は関数を返すことができ、それを<span class="marked">クリーンアップ関数</span>。</p>
-<p>と呼びます。これは次の2つのタイミングで実行されます：<span class="marked">コンポーネントのアンマウント時</span> 和 <span class="marked">次の effect の実行前</span>。</p>
+<p>と呼びます。これは次の2つのタイミングで実行されます：<span class="marked">コンポーネントのアンマウント時</span>と<span class="marked">次の effect の実行前</span>。</p>
 <div class="example">
 <h2 class="example">実例</h2>
 <div class="example_code">
@@ -492,10 +492,10 @@ useEffect<span style="color: #009900;">(</span><span style="color: #009900;">(</
 <table class="reference">
 <tbody>
 <tr><th>副作用</th><th>クリーンアップが必要？</th><th>クリーンアップ方法</th></tr>
-<tr><td>fetch リクエスト</td><td>是</td><td>cancelled フラグまたは AbortController を使用</td></tr>
-<tr><td>イベントリスナー</td><td>是</td><td>removeEventListener</td></tr>
-<tr><td>タイマー</td><td>是</td><td>clearInterval / clearTimeout</td></tr>
-<tr><td>DOM を変更したら元に戻す</td><td>是</td><td>cleanup で元の状態に戻す</td></tr>
+<tr><td>fetch リクエスト</td><td>である</td><td>cancelled フラグまたは AbortController を使用</td></tr>
+<tr><td>イベントリスナー</td><td>である</td><td>removeEventListener</td></tr>
+<tr><td>タイマー</td><td>である</td><td>clearInterval / clearTimeout</td></tr>
+<tr><td>DOM を変更したら元に戻す</td><td>である</td><td>cleanup で元の状態に戻す</td></tr>
 <tr><td>localStorage への書き込み</td><td>否</td><td>クリーンアップ不要</td></tr>
 </tbody>
 </table>
@@ -524,7 +524,7 @@ useEffect<span style="color: #009900;">(</span><span style="color: #009900;">(</
 </table>
 <hr/>
 <h2>章のまとめ</h2>
-<p>この章では、useEffect の核心的な使い方を習得しました：依存配列の3つの書き方、fetch による非同期データ読み込み、4つの UI 状態の処理、そして cleanup クリーンアップ関数の役割です。</p>
+<p>この章では、useEffectの核心のな使い方を習得しました：依存配列の3つの書き方、fetchによる非同期データの読み込み、4つのUI状態の処理、そしてクリーンアップ関数の役割です。</p>
 <p>これでブログデータは外部 JSON から動的に読み込まれ、JS にハードコードされなくなりました。</p>
 その他の拡張
 </div>
@@ -645,11 +645,11 @@ useEffect<span style="color: #009900;">(</span><span style="color: #009900;">(</
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものでなければなりません！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものでなければなりません！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -949,7 +949,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

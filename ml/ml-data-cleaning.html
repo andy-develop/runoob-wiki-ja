@@ -224,7 +224,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <td align="left">ビジネスロジックに基づいて修正するか、欠損として扱う。</td>
 </tr>
 </tbody></table>
-<p>次に、Pythonの<code>pandas</code> 和 <code>numpy</code>ライブラリを使用して、具体的なコードでこれらの問題を解決する方法を紹介します。</p>
+<p>次に、Pythonの<code>pandas</code>と<code>numpy</code>ライブラリを使用して、具体的なコードでこれらの問題を解決する方法を紹介します。</p>
 <hr/>
 <h2>三、実践：Pythonを使ったデータクリーニング</h2>
 <p>という名前の<code>customer_data.csv</code>顧客データセットがあるとします。それには典型的なデータ品質の問題がいくつか含まれています。</p>
@@ -233,14 +233,14 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #a50"># 导入必要的库</span><br/>
+<span style="color: #a50"># 必要なライブラリをインポートする</span><br/>
 <span style="color: Green;font-weight:bold;">import</span> pandas <span style="color: Green;font-weight:bold;">as</span> pd<br/>
 <span style="color: Green;font-weight:bold;">import</span> numpy <span style="color: Green;font-weight:bold;">as</span> np<br/>
 <br/>
 <span style="color: #a50"># 加载数据集</span><br/>
-df <span style="color: Gray;">=</span> pd.<span style="color: #05a;">read_csv</span><span style="color: Olive;">(</span><span style="color: #a11;">'customer_data.csv'</span><span style="color: Olive;">)</span> <span style="color: #a50"># 请替换为你的文件路径</span><br/>
+df <span style="color: Gray;">=</span> pd.<span style="color: #05a;">read_csv</span><span style="color: Olive;">(</span><span style="color: #a11;">'customer_data.csv'</span><span style="color: Olive;">)</span> <span style="color: #a50"># あなたのファイルパスに置き換えてください</span><br/>
 <br/>
-<span style="color: #a50"># 查看数据的基本信息和前几行</span><br/>
+<span style="color: #a50"># データの基本情報と最初の数行を確認する</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"数据集形状（行，列）:"</span><span style="color: Gray;">,</span> df.<span style="color: #05a;">shape</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>数据前5行："</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df.<span style="color: #05a;">head</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
@@ -260,23 +260,23 @@ df <span style="color: Gray;">=</span> pd.<span style="color: #05a;">read_csv</s
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df.<span style="color: #05a;">isnull</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span>.<span style="color: Teal;">sum</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 2. 处理缺失值 - 方法一：删除</span><br/>
-<span style="color: #a50"># 删除任何包含缺失值的行（适用于缺失值很少的情况）</span><br/>
+<span style="color: #a50"># 欠損値を含むすべての行を削除する（欠損値が少ない場合に適用）</span><br/>
 df_dropped <span style="color: Gray;">=</span> df.<span style="color: #05a;">dropna</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>删除缺失值后，数据形状: {df_dropped.shape}"</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 3. 处理缺失值 - 方法二：填充</span><br/>
-<span style="color: #a50"># 更常用的方法是根据列的特性进行填充</span><br/>
+<span style="color: #a50"># より一般的な方法は、列の特性に基づいて補完することです。</span><br/>
 df_filled <span style="color: Gray;">=</span> df.<span style="color: #05a;">copy</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 对于数值型列（如'年龄'），用中位数填充（比均值更抗异常值影响）</span><br/>
+<span style="color: #a50"># 数値型の列（例：'年齢'）については、中央値で埋める（平均値よりも外れ値の影響を受けにくい）</span><br/>
 <span style="color: Green;font-weight:bold;">if</span> <span style="color: #a11;">'年龄'</span> <span style="color: Green;font-weight:bold;">in</span> df_filled.<span style="color: #05a;">columns</span>:<br/>
     df_filled<span style="color: Olive;">[</span><span style="color: #a11;">'年龄'</span><span style="color: Olive;">]</span>.<span style="color: #05a;">fillna</span><span style="color: Olive;">(</span>df_filled<span style="color: Olive;">[</span><span style="color: #a11;">'年龄'</span><span style="color: Olive;">]</span>.<span style="color: #05a;">median</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span> inplace<span style="color: Gray;">=</span><span style="color: Teal;">True</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 对于分类列（如'城市'），用众数（最频繁出现的值）填充</span><br/>
+<span style="color: #a50"># カテゴリ列（例：「都市」）は、最頻値（最も頻繁に出現する値）で補完する</span><br/>
 <span style="color: Green;font-weight:bold;">if</span> <span style="color: #a11;">'城市'</span> <span style="color: Green;font-weight:bold;">in</span> df_filled.<span style="color: #05a;">columns</span>:<br/>
     df_filled<span style="color: Olive;">[</span><span style="color: #a11;">'城市'</span><span style="color: Olive;">]</span>.<span style="color: #05a;">fillna</span><span style="color: Olive;">(</span>df_filled<span style="color: Olive;">[</span><span style="color: #a11;">'城市'</span><span style="color: Olive;">]</span>.<span style="color: #05a;">mode</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">[</span><span style="color: Maroon;">0</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span> inplace<span style="color: Gray;">=</span><span style="color: Teal;">True</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 对于可能随时间变化的列（如'上次消费金额'），有时用0填充更有业务意义</span><br/>
+<span style="color: #a50"># 時間とともに変化する可能性のある列（例：'前回の消費金額'）については、0で埋める方がビジネス上意味がある場合もあります。</span><br/>
 <span style="color: Green;font-weight:bold;">if</span> <span style="color: #a11;">'上次消费金额'</span> <span style="color: Green;font-weight:bold;">in</span> df_filled.<span style="color: #05a;">columns</span>:<br/>
     df_filled<span style="color: Olive;">[</span><span style="color: #a11;">'上次消费金额'</span><span style="color: Olive;">]</span>.<span style="color: #05a;">fillna</span><span style="color: Olive;">(</span><span style="color: Maroon;">0</span><span style="color: Gray;">,</span> inplace<span style="color: Gray;">=</span><span style="color: Teal;">True</span><span style="color: Olive;">)</span><br/>
 <br/>
@@ -289,7 +289,7 @@ df_filled <span style="color: Gray;">=</span> df.<span style="color: #05a;">copy
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #a50"># 我们以'年收入'为例，假设它应该是一个合理的正值</span><br/>
+<span style="color: #a50"># '年収'を例に、それが合理的な正の値であると仮定する</span><br/>
 <span style="color: Green;font-weight:bold;">if</span> <span style="color: #a11;">'年收入'</span> <span style="color: Green;font-weight:bold;">in</span> df_filled.<span style="color: #05a;">columns</span>:<br/>
     <span style="color: #a50"># 方法一：使用四分位距（IQR）法识别</span><br/>
     Q1 <span style="color: Gray;">=</span> df_filled<span style="color: Olive;">[</span><span style="color: #a11;">'年收入'</span><span style="color: Olive;">]</span>.<span style="color: #05a;">quantile</span><span style="color: Olive;">(</span><span style="color: Maroon;">0.25</span><span style="color: Olive;">)</span><br/>
@@ -300,13 +300,13 @@ df_filled <span style="color: Gray;">=</span> df.<span style="color: #05a;">copy
 <br/>
     <span style="color: #a50"># 找出异常值</span><br/>
     outliers <span style="color: Gray;">=</span> df_filled<span style="color: Olive;">[</span><span style="color: Olive;">(</span>df_filled<span style="color: Olive;">[</span><span style="color: #a11;">'年收入'</span><span style="color: Olive;">]</span> <span style="color: Gray;">&lt;</span> lower_bound<span style="color: Olive;">)</span> | <span style="color: Olive;">(</span>df_filled<span style="color: Olive;">[</span><span style="color: #a11;">'年收入'</span><span style="color: Olive;">]</span> <span style="color: Gray;">&gt;</span> upper_bound<span style="color: Olive;">)</span><span style="color: Olive;">]</span><br/>
-    <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>使用IQR法发现的'年收入'异常值数量: {len(outliers)}"</span><span style="color: Olive;">)</span><br/>
+    <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>IQR法で検出された'年収'の外れ値の数: {len(outliers)}"</span><span style="color: Olive;">)</span><br/>
 <br/>
-    <span style="color: #a50"># 处理异常值：这里选择用上下边界值进行截断（Winsorization）</span><br/>
+    <span style="color: #a50"># 外れ値の処理：ここでは上下の境界値で切り詰める（Winsorization）を選択します。</span><br/>
     df_filled<span style="color: Olive;">[</span><span style="color: #a11;">'年收入'</span><span style="color: Olive;">]</span> <span style="color: Gray;">=</span> np.<span style="color: #05a;">where</span><span style="color: Olive;">(</span>df_filled<span style="color: Olive;">[</span><span style="color: #a11;">'年收入'</span><span style="color: Olive;">]</span> <span style="color: Gray;">&gt;</span> upper_bound<span style="color: Gray;">,</span> upper_bound<span style="color: Gray;">,</span><br/>
                                    np.<span style="color: #05a;">where</span><span style="color: Olive;">(</span>df_filled<span style="color: Olive;">[</span><span style="color: #a11;">'年收入'</span><span style="color: Olive;">]</span> <span style="color: Gray;">&lt;</span> lower_bound<span style="color: Gray;">,</span> lower_bound<span style="color: Gray;">,</span> df_filled<span style="color: Olive;">[</span><span style="color: #a11;">'年收入'</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 <br/>
-    <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"已对'年收入'的异常值进行截断处理。"</span><span style="color: Olive;">)</span><br/>
+    <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"「年収」の外れ値を切り詰め処理しました。"</span><span style="color: Olive;">)</span><br/>
 </div>
 </div>
 <h3>3.4 重複値の処理</h3>
@@ -314,11 +314,11 @@ df_filled <span style="color: Gray;">=</span> df.<span style="color: #05a;">copy
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #a50"># 检查并删除完全重复的行</span><br/>
+<span style="color: #a50"># 完全に重複した行をチェックして削除する</span><br/>
 duplicate_rows <span style="color: Gray;">=</span> df_filled.<span style="color: #05a;">duplicated</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>发现完全重复的行数: {duplicate_rows.sum()}"</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>完全に重複する行数: {duplicate_rows.sum()}"</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 删除这些重复行，只保留第一次出现的记录</span><br/>
+<span style="color: #a50"># 重複する行を削除し、最初に出現したレコードのみを保持する</span><br/>
 df_cleaned <span style="color: Gray;">=</span> df_filled.<span style="color: #05a;">drop_duplicates</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"删除重复值后，数据形状: {df_cleaned.shape}"</span><span style="color: Olive;">)</span><br/>
 </div>
@@ -328,17 +328,17 @@ df_cleaned <span style="color: Gray;">=</span> df_filled.<span style="color: #05
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #a50"># 1. 标准化文本格式：例如，将'城市'列统一为首字母大写</span><br/>
+<span style="color: #a50">テキスト形式の標準化：例えば、'城市'列の先頭文字を大文字に統一する</span><br/>
 <span style="color: Green;font-weight:bold;">if</span> <span style="color: #a11;">'城市'</span> <span style="color: Green;font-weight:bold;">in</span> df_cleaned.<span style="color: #05a;">columns</span>:<br/>
     df_cleaned<span style="color: Olive;">[</span><span style="color: #a11;">'城市'</span><span style="color: Olive;">]</span> <span style="color: Gray;">=</span> df_cleaned<span style="color: Olive;">[</span><span style="color: #a11;">'城市'</span><span style="color: Olive;">]</span>.<span style="color: Teal;">str</span>.<span style="color: #05a;">title</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 2. 映射统一值：例如，将性别信息统一为'男'和'女'</span><br/>
+<span style="color: #a50"># 2. 値をマッピングして統一する：例えば、性別情報を「男」と「女」に統一する</span><br/>
 <span style="color: Green;font-weight:bold;">if</span> <span style="color: #a11;">'性别'</span> <span style="color: Green;font-weight:bold;">in</span> df_cleaned.<span style="color: #05a;">columns</span>:<br/>
     gender_mapping <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: #a11;">'male'</span>: <span style="color: #a11;">'男'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'female'</span>: <span style="color: #a11;">'女'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'M'</span>: <span style="color: #a11;">'男'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'F'</span>: <span style="color: #a11;">'女'</span><span style="color: Olive;">}</span><br/>
     df_cleaned<span style="color: Olive;">[</span><span style="color: #a11;">'性别'</span><span style="color: Olive;">]</span> <span style="color: Gray;">=</span> df_cleaned<span style="color: Olive;">[</span><span style="color: #a11;">'性别'</span><span style="color: Olive;">]</span>.<span style="color: #05a;">replace</span><span style="color: Olive;">(</span>gender_mapping<span style="color: Olive;">)</span><br/>
-    <span style="color: #a50"># 也可以使用 .map() 函数，但 .replace() 更灵活，未指定的值保持不变</span><br/>
+    <span style="color: #a50"># .map() 関数を使用することもできますが、.replace() の方がより柔軟で、未指定の値はそのまま保持されます</span><br/>
 <br/>
-<span style="color: #a50"># 3. 转换数据类型：确保数值列是数字类型</span><br/>
+<span style="color: #a50"># 3. データ型の変換：数値列が数値型であることを確認してください</span><br/>
 <span style="color: Green;font-weight:bold;">if</span> <span style="color: #a11;">'年龄'</span> <span style="color: Green;font-weight:bold;">in</span> df_cleaned.<span style="color: #05a;">columns</span>:<br/>
     df_cleaned<span style="color: Olive;">[</span><span style="color: #a11;">'年齢'</span><span style="color: Olive;">]</span> <span style="color: Gray;">=</span> pd.<span style="color: #05a;">to_numeric</span><span style="color: Olive;">(</span>df_cleaned<span style="color: Olive;">[</span><span style="color: #a11;">'年齢'</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span> errors<span style="color: Gray;">=</span><span style="color: #a11;">'coerce'</span><span style="color: Olive;">)</span> <span style="color: #a50"># errors='coerce' はエラーをNaNに変換します</span><br/>
     <span style="color: #a50"># 変換後、変換で生じた新しいNaNは中央値で再び埋めることができます</span><br/>
@@ -477,11 +477,11 @@ df_cleaned <span style="color: Gray;">=</span> df_filled.<span style="color: #05
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に必ず<a href=";.html" class="runoob-pop">ログイン</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に必ず<a class="runoob-pop" href=";.html">ログイン</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -770,7 +770,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

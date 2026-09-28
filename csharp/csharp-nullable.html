@@ -164,13 +164,13 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="article-body">
 <div class="article-intro" id="content">
 <h1>C# <span class="color_h1">可空类型（Nullable）</span></h1>
-<p>在 C# 中，<code>int</code>、<code>float</code>、<code>bool</code>、<code>DateTime</code>等都是<strong>值类型</strong>、それらは既定では必ず値を持たなければならず、null にすることはできません<code>null</code>：</p>
+<p>C# では、<code>int</code>、<code>float</code>、<code>bool</code>、<code>DateTime</code>などはすべて<strong>值类型</strong>、それらは既定では必ず値を持たなければならず、null にすることはできません<code>null</code>：</p>
 <pre>int a = null;  // 编译错误：无法将 null 转换为 int</pre>
 <p><span class="marked">可空类型（Nullable Types）</span>この問題を解決しました——値型に「値がない」という状態を追加で持たせます（つまり<code>null</code>）。これは、データベースのフィールドや API の戻り値など、データが欠落する可能性がある場面で非常に実用的です。</p>
 <p>宣言方法はとても簡単です。型の後に<code>?</code>：</p>
 <pre>int? a = null;  // 合法
 int? b = 42;    // 合法</pre>
-<p>这里的<code>int?</code> 是 <code>Nullable&lt;int&gt;</code>という構文糖衣（簡略表記）を付けるだけです。両者は完全に等価です：</p>
+<p>ここの<code>int?</code>である<code>Nullable&lt;int&gt;</code>という構文糖衣（簡略表記）を付けるだけです。両者は完全に等価です：</p>
 <pre>Nullable&amp;lt;int&amp;gt; a = null;   // 完整写法
 int? a = null;              // 简写，效果相同</pre>
 <p>次の図は、null 許容型のメモリ内での動作を示しています——追加のブール型フラグを使用して「値があるかどうか」を記録します：</p>
@@ -184,7 +184,7 @@ int? a = null;              // 简写，效果相同</pre>
 </marker>
 </defs>
 <rect fill="#f8fafc" filter="url(#nsShadow)" height="280" rx="14" width="780"></rect>
-<text fill="#0f172a" font-family="system-ui" font-size="14" font-weight="700" text-anchor="middle" x="390" y="30">Nullable&lt;T&gt; 的内存结构</text>
+<text fill="#0f172a" font-family="system-ui" font-size="14" font-weight="700" text-anchor="middle" x="390" y="30">Nullable&lt;T&gt; のメモリ構造</text>
 <!-- Left: normal int -->
 <text fill="#334155" font-family="system-ui" font-size="12" font-weight="600" text-anchor="middle" x="150" y="62">int（普通值类型）</text>
 <rect fill="#dbeafe" height="44" rx="8" stroke="#3b82f6" stroke-width="1.5" width="160" x="70" y="74"></rect>
@@ -248,7 +248,7 @@ int? a = null;              // 简写，效果相同</pre>
 <tr>
 <td><code>??</code></td>
 <td>空合并运算符（Null-Coalescing Operator）</td>
-<td>当变量为<code>null</code>時にデフォルト値を提供する</td>
+<td>変数が<code>null</code>時にデフォルト値を提供する</td>
 <td><code>int result = i ?? 0;</code></td>
 </tr>
 </tbody>
@@ -265,7 +265,7 @@ int? ii;   // 可空类型，默认值为 null</pre>
 double? temperature = 36.6;
 bool? isActive = new bool?();   // 显式构造，默认为 null
 DateTime? birthday = null;</pre>
-<p><code>Nullable&lt;T&gt;</code>その基になる値型の通常の範囲に加えて、もう1つの状態を表すことができます<code>null</code>值。例如<code>Nullable&lt;int&gt;</code>可以是<code>-2,147,483,648</code> 到 <code>2,147,483,647</code>の間の任意の整数、または<code>null</code>。</p>
+<p><code>Nullable&lt;T&gt;</code>その基になる値型の通常の範囲に加えて、もう1つの状態を表すことができます<code>null</code>值。例如<code>Nullable&lt;int&gt;</code>であり得る<code>-2,147,483,648</code> 到 <code>2,147,483,647</code>の間の任意の整数、または<code>null</code>。</p>
 <h3>完整示例</h3>
 <div class="example">
 <h2 class="example">实例</h2>
@@ -278,14 +278,14 @@ DateTime? birthday = null;</pre>
     <span style="color: #008000;">{</span><br/>
         <span style="color: #05a; font-weight: bold;">static</span> <span style="color: #6666CC; font-weight: bold;">void</span> Main<span style="color: #008000;">(</span><span style="color: #6666CC; font-weight: bold;">string</span><span style="color: #008000;">[</span><span style="color: #008000;">]</span> args<span style="color: #008000;">)</span><br/>
         <span style="color: #008000;">{</span><br/>
-            <span style="color: #696969; font-style: italic;">// 声明不同类型的可空变量</span><br/>
+            <span style="color: #696969; font-style: italic;">// 異なる型のnull許容変数を宣言する</span><br/>
             <span style="color: #6666CC; font-weight: bold;">int</span><span style="color: #008000;">?</span> num1 <span style="color: #008000;">=</span> <span style="color: #05a; font-weight: bold;">null</span><span style="color: #008000;">;</span><br/>
             <span style="color: #6666CC; font-weight: bold;">int</span><span style="color: #008000;">?</span> num2 <span style="color: #008000;">=</span> <span style="color: Maroon;">45</span><span style="color: #008000;">;</span><br/>
             <span style="color: #6666CC; font-weight: bold;">double</span><span style="color: #008000;">?</span> num3 <span style="color: #008000;">=</span> <span style="color: #008000;">new</span> <span style="color: #6666CC; font-weight: bold;">double</span><span style="color: #008000;">?</span><span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span>   <span style="color: #696969; font-style: italic;">// null</span><br/>
             <span style="color: #6666CC; font-weight: bold;">double</span><span style="color: #008000;">?</span> num4 <span style="color: #008000;">=</span> <span style="color: Maroon;">3.14157</span><span style="color: #008000;">;</span><br/>
             <span style="color: #6666CC; font-weight: bold;">bool</span><span style="color: #008000;">?</span> boolVal <span style="color: #008000;">=</span> <span style="color: #008000;">new</span> <span style="color: #6666CC; font-weight: bold;">bool</span><span style="color: #008000;">?</span><span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span>    <span style="color: #696969; font-style: italic;">// null</span><br/>
 <br/>
-            <span style="color: #696969; font-style: italic;">// 显示值（null 会显示为空字符串）</span><br/>
+            <span style="color: #696969; font-style: italic;">// 値を表示（null は空文字列として表示される）</span><br/>
             Console<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span>$<span style="color: #a11;">"num1 = {num1 ?? 0}"</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span>         <span style="color: #696969; font-style: italic;">// 0</span><br/>
             Console<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span>$<span style="color: #a11;">"num2 = {num2 ?? 0}"</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span>         <span style="color: #696969; font-style: italic;">// 45</span><br/>
             Console<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span>$<span style="color: #a11;">"num3 = {num3 ?? 0.0}"</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span>       <span style="color: #696969; font-style: italic;">// 0</span><br/>
@@ -307,7 +307,7 @@ boolVal =</pre>
 <p><code>??</code>演算子は、null 許容型または参照型に既定値を提供するために使用されます<strong>兜底默认值</strong>。左側がnullでない場合<code>null</code>null でない場合、左側の値を返し、それ以外の場合は右側の値を返します：</p>
 <pre>&lt;表达式1&gt; ?? &lt;表达式2&gt;</pre>
 <ul>
-<li>如果<code>&lt;表达式1&gt;</code>不为<code>null</code>，返回<code>&lt;表达式1&gt;</code>；</li>
+<li>如果<code>&lt;表达式1&gt;</code>ではない<code>null</code>，返回<code>&lt;表达式1&gt;</code>；</li>
 <li>否则返回<code>&lt;表达式2&gt;</code>。</li>
 </ul>
 <p>C# 8.0 以降では、さらに<code>??=</code>（null 合体代入演算子）を使用でき、変数が null の場合にのみ代入します<code>null</code>时才赋值：</p>
@@ -329,7 +329,7 @@ x ??= 20;   // x 已有值 10，不再赋值</pre>
             <span style="color: #6666CC; font-weight: bold;">double</span><span style="color: #008000;">?</span> num2 <span style="color: #008000;">=</span> <span style="color: Maroon;">3.14157</span><span style="color: #008000;">;</span><br/>
 <br/>
             <span style="color: #696969; font-style: italic;">// ?? 提供默认值</span><br/>
-            <span style="color: #6666CC; font-weight: bold;">double</span> result1 <span style="color: #008000;">=</span> num1 <span style="color: #008000;">??</span> <span style="color: Maroon;">5.34</span><span style="color: #008000;">;</span>   <span style="color: #696969; font-style: italic;">// num1 为 null → 返回 5.34</span><br/>
+            <span style="color: #6666CC; font-weight: bold;">double</span> result1 <span style="color: #008000;">=</span> num1 <span style="color: #008000;">??</span> <span style="color: Maroon;">5.34</span><span style="color: #008000;">;</span>   <span style="color: #696969; font-style: italic;">// num1 が null の場合 → 5.34 を返す</span><br/>
             <span style="color: #6666CC; font-weight: bold;">double</span> result2 <span style="color: #008000;">=</span> num2 <span style="color: #008000;">??</span> <span style="color: Maroon;">5.34</span><span style="color: #008000;">;</span>   <span style="color: #696969; font-style: italic;">// num2 有值   → 返回 3.14157</span><br/>
 <br/>
             Console<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span>$<span style="color: #a11;">"num1 ?? 5.34 = {result1}"</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span>   <span style="color: #696969; font-style: italic;">// 5.34</span><br/>
@@ -403,7 +403,7 @@ a ?? b ?? c ?? 0 = 42</pre>
 <br/>
             <span style="color: #696969; font-style: italic;">// HasValue + Value（传统写法）</span><br/>
             <span style="color: #05a; font-weight: bold;">if</span> <span style="color: #008000;">(</span>num<span style="color: #008000;">.</span><span style="color: #05a;">HasValue</span><span style="color: #008000;">)</span><br/>
-                Console<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span>$<span style="color: #a11;">"值为: {num.Value}"</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
+                Console<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span>$<span style="color: #a11;">"値: {num.Value}"</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
             <span style="color: #05a; font-weight: bold;">else</span><br/>
                 Console<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span><span style="color: #a11;">"num 没有值"</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
 <br/>
@@ -429,7 +429,7 @@ a ?? b ?? c ?? 0 = 42</pre>
 <tr>
 <th>用户ID</th>
 <th>年龄</th>
-<th>是否激活</th>
+<th>アクティブかどうか</th>
 </tr>
 </thead>
 <tbody>
@@ -489,27 +489,27 @@ string? name = user?.Address?.City?.Name;
 <tr>
 <td>値の取得（安全ではない）</td>
 <td><code>x.Value</code></td>
-<td>若为<code>null</code>会抛<code>InvalidOperationException</code></td>
+<td>もし〜なら<code>null</code>会抛<code>InvalidOperationException</code></td>
 </tr>
 <tr>
 <td>获取默认值</td>
 <td><code>x ?? 0</code></td>
-<td>若为<code>null</code>返回右侧值</td>
+<td>もし〜なら<code>null</code>返回右侧值</td>
 </tr>
 <tr>
 <td>指定されたデフォルト値の取得</td>
 <td><code>x.GetValueOrDefault(10)</code></td>
-<td>若为<code>null</code>返回 10</td>
+<td>もし〜なら<code>null</code>返回 10</td>
 </tr>
 <tr>
 <td>空合并赋值</td>
 <td><code>x ??= 10</code></td>
-<td>仅当<code>x</code> 为 <code>null</code>時に代入する（C# 8.0+）</td>
+<td>仅当<code>x</code>ために<code>null</code>時に代入する（C# 8.0+）</td>
 </tr>
 <tr>
 <td>安全なナビゲーションアクセス</td>
 <td><code>user?.Name</code></td>
-<td>若 <code>user</code> 为 <code>null</code>则返回<code>null</code>（C# 6.0+）</td>
+<td>若 <code>user</code>ために<code>null</code>则返回<code>null</code>（C# 6.0+）</td>
 </tr>
 </tbody>
 </table>
@@ -519,7 +519,7 @@ string? name = user?.Address?.City?.Name;
 <table class="reference">
 <thead>
 <tr>
-<th>对比项</th>
+<th>比較項目</th>
 <th>可空值类型</th>
 <th>null許容参照型</th>
 </tr>
@@ -531,7 +531,7 @@ string? name = user?.Address?.City?.Name;
 <td><code>string?</code></td>
 </tr>
 <tr>
-<td>作用对象</td>
+<td>作用対象</td>
 <td>值类型（<code>int</code>、<code>bool</code>、<code>struct</code>等）</td>
 <td>引用类型（<code>string</code>、<code>class</code>、数组等）</td>
 </tr>
@@ -693,11 +693,11 @@ num3 = (num1 == null) ? 5.34 : num1;</pre><div class="comt-meta wrapper"><span c
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてメモを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -986,7 +986,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

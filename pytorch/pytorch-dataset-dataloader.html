@@ -270,8 +270,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 			PyTorch LSTM / GRU			</a>
 <a data-p="par" href="../pytorch/pytorch-embedding.html" target="_top" title="PyTorch 単語埋め込み（Embedding）">
 			PyTorch 単語埋め込み			</a>
-<a data-p="par" href="../pytorch/pytorch-gan.html" target="_top" title="PyTorch 敵対的生成ネットワーク (GAN)">
-			PyTorch 敵対的生成ネットワーク			</a>
+<a data-p="par" href="../pytorch/pytorch-gan.html" target="_top" title="PyTorch 敵対的生成ネットワーク (GAN)">PyTorch 敵対的生成ネットワーク</a>
 <a data-p="par" href="../pytorch/pytorch-autoencoder.html" target="_top" title="PyTorch オートエンコーダ (Autoencoder)">
 			PyTorch オートエンコーダー			</a>
 <a data-p="par" href="../pytorch/pytorch-evaluation-debugging.html" target="_top" title="PyTorch モデルの評価とデバッグ">
@@ -298,7 +297,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="article-body">
 <div class="article-intro" id="content">
 <h1>PyTorch データ処理と読み込み</h1><p>PyTorch では、データの処理と読み込みは深層学習トレーニングプロセスにおける重要なステップです。</p>
-<p>データを効率的に処理するために、PyTorch は強力なツールを提供しています。含まれるもの：<span class="marked">torch.utils.data.Dataset</span> 和 <span class="marked">torch.utils.data.DataLoader</span>、データセットの管理、バッチ読み込み、データ拡張などのタスクを支援します。</p>
+<p>データを効率的に処理するために、PyTorch は強力なツールを提供しています。含まれるもの：<span class="marked">torch.utils.data.Dataset</span>と<span class="marked">torch.utils.data.DataLoader</span>、データセットの管理、バッチ読み込み、データ拡張などのタスクを支援します。</p>
 <p>PyTorch データ処理と読み込みの紹介：</p>
 <ul><li><strong>カスタム Dataset</strong>：継承によって<code>torch.utils.data.Dataset</code>自分のデータセットを読み込む。</li><li><strong>DataLoader</strong>：<code>DataLoader</code>バッチごとにデータを読み込み、マルチスレッド読み込みをサポートし、データをシャッフルします。</li><li><strong>データ前処理と拡張</strong>：使用する<code>torchvision.transforms</code>一般的な画像前処理と拡張操作を行い、モデルの汎化能力を向上させます。</li><li><strong>標準データセットの読み込み</strong>：<code>torchvision.datasets</code>多くの一般的なデータセットを提供し、データ読み込みプロセスを簡素化します。</li><li><strong>複数のデータソース</strong>：複数の ... を組み合わせることで<code>Dataset</code>インスタンスを使用して、異なるソースからのデータを処理します。</li></ul>
 <h2>カスタム Dataset</h2><p>
@@ -416,7 +415,7 @@ test_loader <span style="color: Gray;">=</span> DataLoader<span style="color: Ol
 <span style="color: Green;font-weight:bold;">for</span> inputs<span style="color: Gray;">,</span> labels <span style="color: Green;font-weight:bold;">in</span> train_loader:<br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>inputs.<span style="color: #05a;">shape</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 各バッチの入力データの形状</span><br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>labels.<span style="color: #05a;">shape</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 各バッチのラベルの形状</span><br/>
-</div></div><ul><li><code>datasets.MNIST()</code>自動的に MNIST データセットをダウンロードして読み込みます。</li><li><code>transform</code>パラメータを使用すると、データの前処理が可能になります。</li><li><code>train=True</code> 和 <code>train=False</code>それぞれトレーニングセットとテストセットを表します。</li></ul><hr/>
+</div></div><ul><li><code>datasets.MNIST()</code>自動的に MNIST データセットをダウンロードして読み込みます。</li><li><code>transform</code>パラメータを使用すると、データの前処理が可能になります。</li><li><code>train=True</code>と<code>train=False</code>それぞれトレーニングセットとテストセットを表します。</li></ul><hr/>
 <h2>複数のデータソースを使用する（Multi-source Dataset）</h2><p>データセットが複数のファイルや複数のソース（例えば複数の画像フォルダ）で構成されている場合、Dataset クラスを継承して複数のデータソースをカスタムで読み込むことができます。</p><p>PyTorch は、複数のデータセットを結合するための ConcatDataset や ChainDataset などのクラスを提供しています。</p>
 <p>例えば、複数の画像フォルダのデータがある場合、それらを1つのデータセットに結合できます：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
@@ -545,11 +544,11 @@ combined_loader <span style="color: Gray;">=</span> DataLoader<span style="color
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -849,7 +848,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

@@ -229,7 +229,7 @@ del var_a, var_b
 <hr/>
 <h2>Python 数値演算</h2>
 <p>Python インタプリタは簡単な計算機として使用できます。インタプリタに式を入力すると、その式の値を出力します。</p>
-<p>式の構文はとても分かりやすいです：<span class="marked">+</span>, <span class="marked">-</span>, <span class="marked">*</span> 和 <span class="marked">/</span>、他の言語（PascalやCなど）と同じです。例：</p>
+<p>式の構文はとても分かりやすいです：<span class="marked">+</span>, <span class="marked">-</span>, <span class="marked">*</span>と<span class="marked">/</span>、他の言語（PascalやCなど）と同じです。例：</p>
 <pre>
 &gt;&gt;&gt; 2 + 2
 4
@@ -531,7 +531,7 @@ print()
 print(round(11.4)) #11
 print(round(11.5)) #12
 print(round(11.6)) #12</pre><p>実行して得られた結論：</p><ol><li>小数点の左側が偶数の場合：小数点の右側X&lt;6は切り捨て</li><li>小数点の左側が偶数の場合：小数点の右側X&gt;=6は切り上げ</li><li>小数点の左側が奇数の場合：小数点の右側X&lt;5は切り捨て</li><li>小数点の左側が奇数の場合：小数点の右側X&gt;=5は切り上げ</li></ol><p>したがって、小数点の左側が奇数か偶数かによって、小数点の右側の切り捨て/切り上げもそれぞれ2つの基準に対応します。</p><p>これは罠ですね！小数点以下2桁の場合はどうなるのか分かりませんが、興味のある方は試してみてください。忘れずに@してください、ありがとう！</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">DZ_小白王子</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>DZ_小白王子</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  dz_***obai@163.com</p></div></span>9年前 (2017-12-29)</div></div></li><!-- #comment-## -->
-<li class="comment even thread-even depth-1" id="comment-23054"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>春天的诗</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  he_***uan@163.com</p></div><div class="upvotejs" data-commid="23054" id="runoobvote-id-23054"><a class="upvote"></a> <span class="count">107</span></div></div><div class="comt-main" id="div-comment-23054"><p>roundについて、追加分析。結論は以下の通りです：</p>
+<li class="comment even thread-even depth-1" id="comment-23054"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>春の詩</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  he_***uan@163.com</p></div><div class="upvotejs" data-commid="23054" id="runoobvote-id-23054"><a class="upvote"></a> <span class="count">107</span></div></div><div class="comt-main" id="div-comment-23054"><p>roundについて、追加分析。結論は以下の通りです：</p>
 <p>一の位が奇数の場合、小数部分&gt;=0.5は切り上げ、それ以外は切り捨て</p>
 <p>一の位が偶数の場合、小数部分&gt;0.5は切り上げ、それ以外は切り捨て。</p>
 <p>対話モードでの例：</p>
@@ -546,8 +546,8 @@ print(round(11.6)) #12</pre><p>実行して得られた結論：</p><ol><li>小�
 &gt;&gt;&gt; round(11.49)
 11
 </pre>
-<div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">春天的诗</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>春天的诗</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  he_***uan@163.com</p></div></span>9年前 (2018-01-14)</div></div></li><!-- #comment-## -->
-<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-23169"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>刘亚彬</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  100***9598@qq.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="https://baike.baidu.com/item/%E5%A5%87%E8%BF%9B%E5%81%B6%E8%88%8D/2237210" rel="nofollow" target="_blank">参考URL</a></p></div><div class="upvotejs" data-commid="23169" id="runoobvote-id-23169"><a class="upvote"></a> <span class="count">333</span></div></div><div class="comt-main" id="div-comment-23169"><p>「4舍6入5看齐,奇进偶不进」（四捨六入五成双）は、浮動小数点数のコンピュータでの表現の問題ではないと思います。コンピュータの浮動小数点数の表現はIEEEで定義された標準規則であり、Pythonに存在するなら、他の言語に存在しない道理はありません。実際には、この丸め方法が従来の「四捨五入」より科学計算において正確だからです。また、国家標準でも「4舍6入5看齐,奇进偶不进」（四捨六入五成双）を使用して「四捨五入」に取って代わることが規定されています。</p><p>統計学の観点から言えば、大量のデータを無造作に四捨五入すると統計結果が大きめになります。「奇進偶捨」は丸め誤差を最小限に抑えられます。</p>
+<div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">春の詩</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>春の詩</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  he_***uan@163.com</p></div></span>9年前 (2018-01-14)</div></div></li><!-- #comment-## -->
+<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-23169"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>刘亚彬</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  100***9598@qq.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="https://baike.baidu.com/item/%E5%A5%87%E8%BF%9B%E5%81%B6%E8%88%8D/2237210" rel="nofollow" target="_blank">参考URL</a></p></div><div class="upvotejs" data-commid="23169" id="runoobvote-id-23169"><a class="upvote"></a> <span class="count">333</span></div></div><div class="comt-main" id="div-comment-23169"><p>「四捨六入五成双」は、浮動小数点数のコンピュータでの表現の問題ではないと思います。コンピュータの浮動小数点数の表現はIEEEで定義された標準規則であり、Pythonに存在するなら、他の言語に存在しない道理はありません。実際には、この丸め方法が従来の「四捨五入」より科学計算において正確だからです。また、国家標準でも「四捨六入五成双」を使用して「四捨五入」に取って代わることが規定されています。</p><p>統計学の観点から言えば、大量のデータを無造作に四捨五入すると統計結果が大きめになります。「奇進偶捨」は丸め誤差を最小限に抑えられます。</p>
 <p>奇進偶捨は、比較的正確で科学的な数値の保持方法であり、数字の丸め規則です。</p>
 <p>その具体的な要件は以下の通りです（小数第2位までを保持する場合を例とします）：</p>
 <ul><li>（1）保持したい位の次の位が4以下の数字の場合は切り捨てます。例：5.214を小数第2位まで保持すると5.21。</li><li>（2）保持したい位の次の位が6以上の数字の場合は切り上げます。例：5.216を小数第2位まで保持すると5.22。</li><li>（3）保持する位が整数部分または小数第1位までの場合は、保持する位に基づいて奇進偶捨を決定します：<pre>
@@ -678,13 +678,13 @@ True</pre>
   B     9     B .  9</pre>
 <p>最終結果は次のようになります：<strong>b9b.9</strong></p>
 <pre>注意：换算时不足四位的情况，可以向左或向右补0。</pre><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">杨叔儿</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>杨叔儿</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  231***9699@qq.com</p></div></span>8年前 (2018-05-30)</div></div></li><!-- #comment-## -->
-<li class="comment even thread-even depth-1" id="comment-28990"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>永远的兄弟</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  323***2588@qq.com</p></div><div class="upvotejs" data-commid="28990" id="runoobvote-id-28990"><a class="upvote"></a> <span class="count">45</span></div></div><div class="comt-main" id="div-comment-28990"><p>小数の四捨五入とコンピュータの2進数と10進数の変換に関する問題は、小数だけでなく一部の除算にも現れます。例えば：</p>
+<li class="comment even thread-even depth-1" id="comment-28990"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>永遠の兄弟</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  323***2588@qq.com</p></div><div class="upvotejs" data-commid="28990" id="runoobvote-id-28990"><a class="upvote"></a> <span class="count">45</span></div></div><div class="comt-main" id="div-comment-28990"><p>小数の四捨五入とコンピュータの2進数と10進数の変換に関する問題は、小数だけでなく一部の除算にも現れます。例えば：</p>
 <p><span class="marked">10/3=3.3333333333333335</span>ではなく、約等しい<strong>3.3333……</strong>:</p>
 <pre>&gt;&gt;&gt; 10/3
 3.3333333333333335</pre>
 <p>また、<span class="marked">0.1+0.1+0.1-0.3</span>は等しくならず<strong>0</strong>、ではなく等しい<strong>5.551115123125783e-17</strong>:</p>
 <pre>&gt;&gt;&gt; 0.1+0.1+0.1-0.3
-5.551115123125783e-17</pre><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">永远的兄弟</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>永远的兄弟</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  323***2588@qq.com</p></div></span>8年前 (2018-07-02)</div></div></li><!-- #comment-## -->
+5.551115123125783e-17</pre><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">永遠の兄弟</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>永遠の兄弟</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  323***2588@qq.com</p></div></span>8年前 (2018-07-02)</div></div></li><!-- #comment-## -->
 <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-37847"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   Victor.L</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  zux***ot@qq.com</p></div><div class="upvotejs" data-commid="37847" id="runoobvote-id-37847"><a class="upvote"></a> <span class="count">58</span></div></div><div class="comt-main" id="div-comment-37847"><p>上記の<span class="marked">cmp()</span>関数の問題について補足します。公式ドキュメントには次のような記述があります：（<strong>If you really need the cmp() functionality, you could use the expression (a &gt; b) - (a &lt; b) as the equivalent for cmp(a,b).</strong>)</p>
 <p>上記のround()関数の問題について補足します。以下の例に注意してください：</p>
 <pre>&gt;&gt;&gt; round(1.05,1)
@@ -727,7 +727,7 @@ num=int(var) # 如果是小数可用 float</pre>
 num_array=np.array(num_list)</pre>
 <p>または次のようにもできます：<span class="marked">num_array=[int(i) for i in num_list]</span>。</p>
 <div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">觉远大师</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>觉远大师</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  106***5870@qq.com</p></div></span>8年前 (2019-03-20)</div></div></li><!-- #comment-## -->
-<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-43471"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>热心用户</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  wjf***@msn.com</p></div><div class="upvotejs" data-commid="43471" id="runoobvote-id-43471"><a class="upvote"></a> <span class="count">58</span></div></div><div class="comt-main" id="div-comment-43471"><p>必ず注意してください<strong>+=</strong> 和 <strong>=+</strong>の違いに。</p>
+<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-43471"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>热心用户</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  wjf***@msn.com</p></div><div class="upvotejs" data-commid="43471" id="runoobvote-id-43471"><a class="upvote"></a> <span class="count">58</span></div></div><div class="comt-main" id="div-comment-43471"><p>必ず注意してください<strong>+=</strong>と<strong>=+</strong>の違いに。</p>
 <p>例1：</p>
 <pre>&gt;&gt;&gt; a = 5
 &gt;&gt;&gt; a += 6
@@ -782,7 +782,7 @@ False</pre><div class="comt-meta wrapper"><span class="comt-author"><a href=";.h
 &gt;&gt;&gt; del _ # 删除用户变量（10）
 &gt;&gt;&gt; _+1  # 此时只有只读变量 _ ，值为11，11+1=12
 12</pre><p>上記で言及した2つの変数が同名である件について、個人的にはソースコードを見ていないため推測でしかありませんが、2つの変数は内部では異なるものの、識別子はユーザーにとって透過的ではないため、どちらも _ としか見えないのです。</p><p>誤りがあればご指摘歓迎します</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">yanyu0821</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   yanyu0821</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  aaa***f@163.com</p></div></span>4年前 (2022-09-09)</div></div></li><!-- #comment-## -->
-<li class="comment byuser comment-author-tianqixin bypostauthor even thread-even depth-1" id="comment-86164"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   Andrew</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  102***3371@qq.com</p></div><div class="upvotejs" data-commid="86164" id="runoobvote-id-86164"><a class="upvote"></a> <span class="count">10</span></div></div><div class="comt-main" id="div-comment-86164"> <p data-title="Python randrange() 与 &lt;code&gt;uniform()&lt;/code&gt; 的区别"><code>randrange()</code> 和 <code>uniform()</code>はPythonで乱数を生成するための関数で、どちらも<code>random</code>モジュールに属します。</p>
+<li class="comment byuser comment-author-tianqixin bypostauthor even thread-even depth-1" id="comment-86164"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   Andrew</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  102***3371@qq.com</p></div><div class="upvotejs" data-commid="86164" id="runoobvote-id-86164"><a class="upvote"></a> <span class="count">10</span></div></div><div class="comt-main" id="div-comment-86164"> <p data-title="Python randrange() 与 &lt;code&gt;uniform()&lt;/code&gt; 的区别"><code>randrange()</code>と<code>uniform()</code>はPythonで乱数を生成するための関数で、どちらも<code>random</code>モジュールに属します。</p>
 <p>ニーズに応じて適切な関数を選択してください：</p><ul><li><p>整数の乱数を生成する場合は、<code>randrange()</code>。</p></li><li><p>浮動小数点数の乱数を生成する場合は、<code>uniform()</code>。</p></li></ul>
 <p>以下はそれらの違いと関連性です：</p>
 <h3>違い</h3>
@@ -807,7 +807,7 @@ False</pre><div class="comt-meta wrapper"><span class="comt-author"><a href=";.h
 <p><code>randrange()</code>の範囲は<code>[start, stop)</code>、すなわち<code>start</code>を含むが<code>stop</code>は含まない。<code>step</code>パラメータでステップを指定でき、乱数同士の間隔を制御できます。</p>
 </li>
 <li>
-<p><code>uniform()</code>の範囲は<code>[a, b]</code>、すなわち<code>a</code> 和 <code>b</code>を含む。生成される乱数浮動小数点数は<code>a</code> 和 <code>b</code>の間で一様分布します。</p>
+<p><code>uniform()</code>の範囲は<code>[a, b]</code>、すなわち<code>a</code>と<code>b</code>を含む。生成される乱数浮動小数点数は<code>a</code>と<code>b</code>の間で一様分布します。</p>
 </li>
 </ul>
 <hr/>
@@ -847,11 +847,11 @@ print(num)</pre>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">メモは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> メモを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">メモは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> メモを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1140,7 +1140,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

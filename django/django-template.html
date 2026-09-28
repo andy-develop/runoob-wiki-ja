@@ -195,7 +195,7 @@ HelloWorld/
 </div>
 </div>
 <p>テンプレートから、変数が二重括弧を使用していることがわかります。<span class="marked">{{ }}</span>。</p>
-<p>次に、Django にテンプレートファイルのパスを指定する必要があります。HelloWorld/HelloWorld/settings.py ファイルを開き、修正します<strong>TEMPLATES</strong>の中の<span class="marked">DIRS</span> 为 <b>[BASE_DIR / "templates"]</b>、次のようにします。</p>
+<p>次に、Django にテンプレートファイルのパスを指定する必要があります。HelloWorld/HelloWorld/settings.py ファイルを開き、修正します<strong>TEMPLATES</strong>の中の<span class="marked">DIRS</span>ために<b>[BASE_DIR / "templates"]</b>、次のようにします。</p>
 <div class="example">
 <h2 class="example">HelloWorld/HelloWorld/settings.py ファイルコード：</h2>
 <div class="example_code">
@@ -467,8 +467,7 @@ HTML：｛｛变量名｝｝</pre>
 <h3>for タグ</h3>
 <p>{% for %} を使用すると、シーケンス上で反復処理ができます。</p>
 <p>Python の for 文の状況と同様に、ループ構文は for X in Y です。Y は反復処理するシーケンスで、X は各特定のループで使用される変数名です。</p>
-<p>各ループで、テンプレートシステムは<span class="marked">{% for %}</span> 和 <span class="marked">{% endfor %}</span>の間のすべての内容をレンダリングします。</p>たとえば、アスリートのリスト athlete_list 変数が与えられた場合、次のコードを使用してこのリストを表示できます：
-<pre>
+<p>各ループで、テンプレートシステムは<span class="marked">{% for %}</span>と<span class="marked">{% endfor %}</span>の間のすべての内容をレンダリングします。</p>たとえば、アスリートのリスト athlete_list 変数が与えられた場合、次のコードを使用してこのリストを表示できます：<pre>
 &lt;ul&gt;
 {% for athlete in athlete_list %}
     &lt;li&gt;{{ athlete.name }}&lt;/li&gt;
@@ -863,19 +862,19 @@ STATICFILES_DIRS = [
 'DIRS': ["templates"]  
 'DIRS': [os.path.join(BASE_DIR, 'templates')]
 'DIRS': [BASE_DIR / "templates", ]</pre>
-<p>上記3つの方法は、私の環境で実際に試してすべて動作しました。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">不是枳是橘子</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>枳ではなく、蜜柑です。</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  469***701@qq.com</p></div></span>6年前 (2020-10-22)</div></div></li><!-- #comment-## -->
-<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-59356"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>巴神的春天</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  739***783@qq.com</p></div><div class="upvotejs" data-commid="59356" id="runoobvote-id-59356"><a class="upvote"></a> <span class="count">136</span></div></div><div class="comt-main" id="div-comment-59356"><p>PyCharm でエラーが発生した場合<strong>TemplateDoesNotExist の場合、問題は次の箇所にあります</strong></p><pre>os.path.join(BASE_DIR, 'templates')
-</pre><p>この設定文の中にあります。この文は「BASE_DIR/templates」フォルダからテンプレートを取得することを指しています。デバッグで settings のこの文を実行すると、BASE_DIR が指定しているのは実際には1階層目の Hello World フォルダであり、templates は2階層目の Hello World フォルダにあることがわかるため、ずっとエラーが表示されていました。注意：<b>BASE_DIR は manage.py ファイルがあるパスです。</b>.</p><p>正しい選択は以下の通りです：</p><pre>os.path.join(BASE_DIR, 'HelloWorld/templates')</pre><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">巴神的春天</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>バロテッリの春</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  739***783@qq.com</p></div></span>6年前 (2020-12-08)</div></div></li><!-- #comment-## -->
+<p>上記3つの方法は、私の環境で実際に試してすべて動作しました。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">カラタチではなく、ミカン</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>枳ではなく、蜜柑です。</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  469***701@qq.com</p></div></span>6年前 (2020-10-22)</div></div></li><!-- #comment-## -->
+<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-59356"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>巴神の春</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  739***783@qq.com</p></div><div class="upvotejs" data-commid="59356" id="runoobvote-id-59356"><a class="upvote"></a> <span class="count">136</span></div></div><div class="comt-main" id="div-comment-59356"><p>PyCharm でエラーが発生した場合<strong>TemplateDoesNotExist の場合、問題は次の箇所にあります</strong></p><pre>os.path.join(BASE_DIR, 'templates')
+</pre><p>この設定文の中にあります。この文は「BASE_DIR/templates」フォルダからテンプレートを取得することを指しています。デバッグで settings のこの文を実行すると、BASE_DIR が指定しているのは実際には1階層目の Hello World フォルダであり、templates は2階層目の Hello World フォルダにあることがわかるため、ずっとエラーが表示されていました。注意：<b>BASE_DIR は manage.py ファイルがあるパスです。</b>.</p><p>正しい選択は以下の通りです：</p><pre>os.path.join(BASE_DIR, 'HelloWorld/templates')</pre><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">巴神の春</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>バロテッリの春</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  739***783@qq.com</p></div></span>6年前 (2020-12-08)</div></div></li><!-- #comment-## -->
 </ol>
 </div>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてメモを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に必ず<a href=";.html" class="runoob-pop">ログイン</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に必ず<a class="runoob-pop" href=";.html">ログイン</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1164,7 +1163,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

@@ -248,7 +248,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="article-body">
 <div class="article-intro" id="content">
 <h1>Sklearn モデルの保存と読み込み</h1>
-<p>機械学習では、モデルのトレーニングプロセスは通常時間がかかります。毎回モデルを再トレーニングすることを避けるために、トレーニング済みのモデルを保存しておき、後で読み込んで予測できるようにすることができます。</p><p><code>scikit-learn</code>モデルを保存および読み込むための一般的な方法が2つあります：<code>joblib</code> 和 <code>pickle</code>。</p>
+<p>機械学習では、モデルのトレーニングプロセスは通常時間がかかります。毎回モデルを再トレーニングすることを避けるために、トレーニング済みのモデルを保存しておき、後で読み込んで予測できるようにすることができます。</p><p><code>scikit-learn</code>モデルを保存および読み込むための一般的な方法が2つあります：<code>joblib</code>と<code>pickle</code>。</p>
 <h2>1、使用<code>joblib</code>モデルの保存と読み込み</h2>
 <p><code>joblib</code>は効率的なPythonシリアライゼーションツールであり、特に大量の数値配列（numpy配列、scikit-learnモデルなど）を含むオブジェクトの保存に適しています。それに対して、<code>pickle</code>，<code>joblib</code>大規模データを処理する際に、より効率的です。</p>
 <p>joblib は Python の外部ライブラリであり、以下のコマンドでインストールできます：</p>
@@ -265,7 +265,7 @@ pip install joblib</pre>
 data <span style="color: Gray;">=</span> load_iris<span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 X<span style="color: Gray;">,</span> y <span style="color: Gray;">=</span> data.<span style="color: #05a;">data</span><span style="color: Gray;">,</span> data.<span style="color: #05a;">target</span><br/>
 <br/>
-<span style="color: #a50"># 划分训练集和测试集</span><br/>
+<span style="color: #a50"># トレーニングセットとテストセットに分割</span><br/>
 X_train<span style="color: Gray;">,</span> X_test<span style="color: Gray;">,</span> y_train<span style="color: Gray;">,</span> y_test <span style="color: Gray;">=</span> train_test_split<span style="color: Olive;">(</span>X<span style="color: Gray;">,</span> y<span style="color: Gray;">,</span> test_size<span style="color: Gray;">=</span><span style="color: Maroon;">0.2</span><span style="color: Gray;">,</span> random_state<span style="color: Gray;">=</span><span style="color: Maroon;">42</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 创建并训练模型</span><br/>
@@ -277,10 +277,10 @@ joblib.<span style="color: #05a;">dump</span><span style="color: Olive;">(</span
 </div></div>
 <h3>モデルの読み込み</h3><p>joblib.load() メソッドを使用して、保存されたモデルオブジェクトを読み込みます。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #a50"># 加载保存的模型</span><br/>
+<span style="color: #a50"># 保存されたモデルを読み込む</span><br/>
 loaded_model <span style="color: Gray;">=</span> joblib.<span style="color: #05a;">load</span><span style="color: Olive;">(</span><span style="color: #a11;">'svm_model.joblib'</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 使用加载的模型进行预测</span><br/>
+<span style="color: #a50"># 読み込んだモデルを使用して予測する</span><br/>
 y_pred <span style="color: Gray;">=</span> loaded_model.<span style="color: #05a;">predict</span><span style="color: Olive;">(</span>X_test<span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 打印预测结果</span><br/>
@@ -299,7 +299,7 @@ y_pred <span style="color: Gray;">=</span> loaded_model.<span style="color: #05a
 data <span style="color: Gray;">=</span> load_iris<span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 X<span style="color: Gray;">,</span> y <span style="color: Gray;">=</span> data.<span style="color: #05a;">data</span><span style="color: Gray;">,</span> data.<span style="color: #05a;">target</span><br/>
 <br/>
-<span style="color: #a50"># 划分训练集和测试集</span><br/>
+<span style="color: #a50"># トレーニングセットとテストセットに分割</span><br/>
 X_train<span style="color: Gray;">,</span> X_test<span style="color: Gray;">,</span> y_train<span style="color: Gray;">,</span> y_test <span style="color: Gray;">=</span> train_test_split<span style="color: Olive;">(</span>X<span style="color: Gray;">,</span> y<span style="color: Gray;">,</span> test_size<span style="color: Gray;">=</span><span style="color: Maroon;">0.2</span><span style="color: Gray;">,</span> random_state<span style="color: Gray;">=</span><span style="color: Maroon;">42</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 创建并训练模型</span><br/>
@@ -312,11 +312,11 @@ model.<span style="color: #05a;">fit</span><span style="color: Olive;">(</span>X
 </div></div>
 <h3>モデルの読み込み</h3><p>pickle.load() を使用してモデルを読み込みます：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #a50"># 使用 pickle 加载保存的模型</span><br/>
+<span style="color: #a50"># pickle を使用して保存されたモデルを読み込む</span><br/>
 <span style="color: Green;font-weight:bold;">with</span> <span style="color: Teal;">open</span><span style="color: Olive;">(</span><span style="color: #a11;">'svm_model.pkl'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'rb'</span><span style="color: Olive;">)</span> <span style="color: Green;font-weight:bold;">as</span> f:<br/>
     loaded_model <span style="color: Gray;">=</span> <span style="color: #05a;">pickle</span>.<span style="color: #05a;">load</span><span style="color: Olive;">(</span>f<span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 使用加载的模型进行预测</span><br/>
+<span style="color: #a50"># 読み込んだモデルを使用して予測する</span><br/>
 y_pred <span style="color: Gray;">=</span> loaded_model.<span style="color: #05a;">predict</span><span style="color: Olive;">(</span>X_test<span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 打印预测结果</span><br/>
@@ -350,7 +350,7 @@ joblib.<span style="color: #05a;">dump</span><span style="color: Olive;">(</span
 <span style="color: #a50"># 加载管道</span><br/>
 loaded_pipeline <span style="color: Gray;">=</span> joblib.<span style="color: #05a;">load</span><span style="color: Olive;">(</span><span style="color: #a11;">'pipeline_model.joblib'</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 使用加载的管道进行预测</span><br/>
+<span style="color: #a50"># 読み込んだパイプラインを使用して予測する</span><br/>
 y_pred <span style="color: Gray;">=</span> loaded_pipeline.<span style="color: #05a;">predict</span><span style="color: Olive;">(</span>X_test<span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 打印预测结果</span><br/>
@@ -363,7 +363,7 @@ y_pred <span style="color: Gray;">=</span> loaded_pipeline.<span style="color: #
 <span style="color: #a50"># 创建时间戳</span><br/>
 timestamp <span style="color: Gray;">=</span> <span style="color: #05a;">time</span>.<span style="color: #05a;">strftime</span><span style="color: Olive;">(</span><span style="color: #a11;">"%Y%m%d-%H%M%S"</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 保存带时间戳的模型</span><br/>
+<span style="color: #a50"># タイムスタンプ付きモデルを保存する</span><br/>
 joblib.<span style="color: #05a;">dump</span><span style="color: Olive;">(</span>model<span style="color: Gray;">,</span> f<span style="color: #a11;">'svm_model_{timestamp}.joblib'</span><span style="color: Olive;">)</span><br/>
 </div></div><p>これにより、タイムスタンプに基づいて異なるバージョンのモデルを管理でき、モデルのロールバックや更新が容易になります。</p>
 <hr/>
@@ -382,8 +382,8 @@ model <span style="color: Gray;">=</span> joblib.<span style="color: #05a;">load
 <span style="color: Gray;">@</span>app.<span style="color: #05a;">route</span><span style="color: Olive;">(</span><span style="color: #a11;">'/predict'</span><span style="color: Gray;">,</span> methods<span style="color: Gray;">=</span><span style="color: Olive;">[</span><span style="color: #a11;">'POST'</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">def</span> predict<span style="color: Olive;">(</span><span style="color: Olive;">)</span>:<br/>
     data <span style="color: Gray;">=</span> request.<span style="color: #05a;">get_json</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 获取输入数据</span><br/>
-    features <span style="color: Gray;">=</span> np.<span style="color: #05a;">array</span><span style="color: Olive;">(</span>data<span style="color: Olive;">[</span><span style="color: #a11;">'features'</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span>.<span style="color: #05a;">reshape</span><span style="color: Olive;">(</span><span style="color: Maroon;">1</span><span style="color: Gray;">,</span> -<span style="color: Maroon;">1</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 转换成适合预测的格式</span><br/>
-    prediction <span style="color: Gray;">=</span> model.<span style="color: #05a;">predict</span><span style="color: Olive;">(</span>features<span style="color: Olive;">)</span>  <span style="color: #a50"># 使用加载的模型进行预测</span><br/>
+    features <span style="color: Gray;">=</span> np.<span style="color: #05a;">array</span><span style="color: Olive;">(</span>data<span style="color: Olive;">[</span><span style="color: #a11;">'features'</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span>.<span style="color: #05a;">reshape</span><span style="color: Olive;">(</span><span style="color: Maroon;">1</span><span style="color: Gray;">,</span> -<span style="color: Maroon;">1</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 予測に適した形式に変換する</span><br/>
+    prediction <span style="color: Gray;">=</span> model.<span style="color: #05a;">predict</span><span style="color: Olive;">(</span>features<span style="color: Olive;">)</span>  <span style="color: #a50"># 読み込んだモデルを使用して予測する</span><br/>
     <span style="color: Green;font-weight:bold;">return</span> jsonify<span style="color: Olive;">(</span><span style="color: Olive;">{</span><span style="color: #a11;">'prediction'</span>: prediction.<span style="color: #05a;">tolist</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">}</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 返回预测结果</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">if</span> __name__ <span style="color: Gray;">==</span> <span style="color: #a11;">'__main__'</span>:<br/>
@@ -508,11 +508,11 @@ model <span style="color: Gray;">=</span> joblib.<span style="color: #05a;">load
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前には<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前には<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -812,7 +812,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

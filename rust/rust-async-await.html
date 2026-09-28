@@ -164,7 +164,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="article-body">
 <div class="article-intro" id="content">
 <h1>Rust 非同期プログラミング async/await</h1><p>現代のプログラミングでは、非同期プログラミングはますます重要になっています。I/O 操作（ファイルの読み書き、ネットワーク通信など）の待機中にプログラムがブロックされず、パフォーマンスと応答性を向上させることができるからです。</p>
-<p>非同期プログラミングは、Rust でノンブロッキング操作を処理する方法であり、プログラムが長時間の I/O 操作を実行している間もブロックされず、待機中に他のタスクを実行できるようにします。</p><p>Rust は非同期プログラミングを実現するためのさまざまなツールとライブラリを提供しています。含まれるもの：<span class="marked">async</span> 和 <span class="marked">await</span>キーワード、<span class="marked">futures</span>および非同期ランタイム（tokio、async-std など）、その他の補助ツール。</p>
+<p>非同期プログラミングは、Rust でノンブロッキング操作を処理する方法であり、プログラムが長時間の I/O 操作を実行している間もブロックされず、待機中に他のタスクを実行できるようにします。</p><p>Rust は非同期プログラミングを実現するためのさまざまなツールとライブラリを提供しています。含まれるもの：<span class="marked">async</span>と<span class="marked">await</span>キーワード、<span class="marked">futures</span>および非同期ランタイム（tokio、async-std など）、その他の補助ツール。</p>
 <ul>
 <li>
 <p><strong>Future</strong>：Future は Rust で非同期操作を表す抽象です。これは、まだ完了していない可能性のある計算であり、将来のある時点で値またはエラーを返します。</p>
@@ -210,7 +210,7 @@ async <span style="color: #708;">fn</span> main<span style="">(</span><span styl
 <pre>Start executing async task...
 Async task result: 42
 Async task completed!</pre>
-<p>この例は、Rust で<code>async</code> 和 <code>await</code>キーワードを使用して非同期関数を作成する方法と、非同期関数内で非同期タスクを実行してその完了を待つ方法を示しています。</p>
+<p>この例は、Rust で<code>async</code>と<code>await</code>キーワードを使用して非同期関数を作成する方法と、非同期関数内で非同期タスクを実行してその完了を待つ方法を示しています。</p>
 <p>以下の例では、tokio ライブラリを使用して非同期 HTTP リクエストを実行し、レスポンス結果を出力します。</p>
 <div class="example"><h2 class="example">例2</h2> <div class="example_code">
 <span style="color: #a50; font-style: italic;">// 必要な依存ライブラリをインポートする</span><br/>
@@ -282,7 +282,7 @@ async <span style="">{</span><br/>
     println<span style="">!</span><span style="">(</span><span style="color: #a11;">"Result: {}, {}"</span><span style="">,</span> result1<span style="">,</span> result2<span style="">)</span><span style="">;</span><br/>
 <span style="">}</span><span style="">;</span><br/>
 </div></div>
-<h3>非同期タスクの実行</h3><p>Rust では、非同期タスクは通常、実行コンテキスト内で実行する必要があり、<code>tokio::main</code>、<code>async-std</code> 的 <code>task::block_on</code> 或 <code>futures::executor::block_on</code>などの関数を使用して非同期タスクを実行できます。これらの関数は非同期関数または非同期ブロックを受け取り、現在のスレッドまたは実行環境内で実行します。</p>
+<h3>非同期タスクの実行</h3><p>Rust では、非同期タスクは通常、実行コンテキスト内で実行する必要があり、<code>tokio::main</code>、<code>async-std</code>の<code>task::block_on</code> 或 <code>futures::executor::block_on</code>などの関数を使用して非同期タスクを実行できます。これらの関数は非同期関数または非同期ブロックを受け取り、現在のスレッドまたは実行環境内で実行します。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #708;">use</span> async_std<span style="">::</span><span style="color: #164;">task</span><span style="">;</span><br/>
 <br/>
@@ -327,7 +327,7 @@ async <span style="color: #708;">fn</span> main<span style="">(</span><span styl
 <span style="">}</span><br/>
 </div></div>
 <h3>非同期I/O</h3>
-<p>Rust の標準ライブラリは非同期 I/O 操作を提供しています。たとえば、<span class="marked">tokio::fs::File</span> 和 <span class="marked">async_std::fs::File</span>。</p>
+<p>Rust の標準ライブラリは非同期 I/O 操作を提供しています。たとえば、<span class="marked">tokio::fs::File</span>と<span class="marked">async_std::fs::File</span>。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #708;">use</span> tokio<span style="">::</span><span style="color: #164;">fs</span><span style="">::</span><span style="color: #164;">File</span><span style="">;</span><br/>
 <span style="color: #708;">use</span> tokio<span style="">::</span><span style="color: #164;">io</span><span style="">::</span><span style="">{</span><span style="color: #708;">self</span><span style="">,</span> AsyncReadExt<span style="">}</span><span style="">;</span><br/>
@@ -480,11 +480,11 @@ async <span style="color: #708;">fn</span> main<span style="">(</span><span styl
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に必ず<a href=";.html" class="runoob-pop">ログイン</a>してください！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に必ず<a class="runoob-pop" href=";.html">ログイン</a>してください！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -773,7 +773,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

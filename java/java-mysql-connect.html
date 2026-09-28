@@ -568,7 +568,7 @@ conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_demo?useSSL
 <p>DAO（DataAccessobjects、データアクセスオブジェクト）とは、ビジネスロジックと永続化データの間に位置し、永続化データへのアクセスを実現するものです。わかりやすく言えば、データベース操作をすべてカプセル化することです。</p>
 <p><strong>外部に対応するインターフェースを提供する</strong></p>オブジェクト指向設計の過程では、特定の問題を解決するためのいくつかの「やり方」があり、それらをパターンと呼びます。<p>DAO パターンは、リレーショナルデータベースシステムへのアクセスに必要な操作のインターフェースを提供し、データアクセスとビジネスロジックを分離して、上位層に対してオブジェクト指向のデータアクセスインターフェースを提供します。</p>
 <p>上記のDAOパターンの使用から分かるように、DAOパターンの利点は、2つの分離を実現することにあります。</p>
-<ul><li>1. データアクセスコードとビジネスロジックコードを分離します。ビジネスロジックコードはDAOメソッドを直接呼び出すだけでよく、データベーステーブルの存在をまったく感じません。役割分担が明確で、データアクセス層のコードが変更されてもビジネスロジックコードに影響を与えません。これは単一責任の原則に適合し、結合度を低減し、再利用性を向上させます。</li>
+<ul><li>データアクセスコードとビジネスロジックコードを分離します。ビジネスロジックコードはDAOメソッドを直接呼び出すだけでよく、データベーステーブルの存在をまったく感じません。役割分担が明確で、データアクセス層のコードが変更されてもビジネスロジックコードに影響をとえません。これは単一責任の原則に適合し、結合度を低減し、再利用性を向上させます。</li>
 <li>2. 異なるデータベース実装を分離します。インターフェース指向プログラミングを採用しているため、基盤のデータベースが MySQL から Oracle に変わる場合でも、DAO インターフェースの新しい実装クラスを追加するだけでよく、既存の MySQL 実装を修正する必要はありません。これは以下の原則に適合します。<strong>「オープン・クローズド」</strong>原則。この原則はコードの結合度を低減し、コードの拡張性とシステムの移植性を向上させます。</li></ul>
 <p><strong>典型的なDAOパターンは、主に以下の部分から構成されます。</strong></p>
 <ul><li>1. DAOインターフェース：データベースに対するすべての操作を抽象メソッドとして定義し、複数の実装を提供できます。</li><li>2. DAO実装クラス：異なるデータベースに対して、DAOインターフェースで定義されたメソッドの具体的な実装を提供します。</li><li>3. エンティティクラス：オブジェクトデータの格納と転送に使用します。</li><li>4. データベース接続・クローズユーティリティクラス：データベース接続とクローズのコードの重複を避け、修正を容易にします。</li></ul>
@@ -691,7 +691,7 @@ Loading class `com.mysql.jdbc.Driver'. This is deprecated. The new driver class 
 <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-42694"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   Nomoku</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  222***4847@qq.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="https://my.oschina.net/gef/blog/712383" rel="nofollow" target="_blank">参考URL</a></p></div><div class="upvotejs" data-commid="42694" id="runoobvote-id-42694"><a class="upvote"></a> <span class="count">17</span></div></div><div class="comt-main" id="div-comment-42694"><p>プログラムを実行すると例外がスローされます：</p>
 <pre>Caused by: java.sql.SQLException: The server time zone value '�й���׼ʱ��' is unrecognized or represents more than one time zone. You must configure either the server or JDBC driver (via the serverTimezone configuration property) to use a more specifc time zone value if you want to utilize time zone support.</pre>
 <p><strong>解決方法：</strong></p>
-<p>在</p>
+<p>に</p>
 <pre>jdbcUrl=jdbc:mysql://localhost:3306/spring</pre>
 <p>末尾に追加：</p>
 <pre>jdbcUrl=jdbc:mysql://localhost:3306/spring?serverTimezone=UTC  </pre>
@@ -714,11 +714,11 @@ Loading class `com.mysql.jdbc.Driver'. This is deprecated. The new driver class 
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に必ず<a href=";.html" class="runoob-pop">ログイン</a>してください！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に必ず<a class="runoob-pop" href=";.html">ログイン</a>してください！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1018,7 +1018,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

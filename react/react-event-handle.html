@@ -562,7 +562,7 @@ handleClick(porps0, props1, ..., event) {
 }</pre>
 <p>イベント：<span class="marked">this.handleclick.bind(this, 渡したいパラメータ)</span></p>
 <p>関数：<span class="marked">handleclick(渡されたパラメータ, event)</span></p>
-<p>从 <strong>render</strong>外部関数にパラメータを渡します<span class="marked">one()</span>:</p>
+<p>から<strong>render</strong>外部関数にパラメータを渡します<span class="marked">one()</span>:</p>
 <pre>class Ex extends React.Component{
 
 ....  this.state={name:'Stupid Dog'};
@@ -609,7 +609,7 @@ ReactDOM.render(
   &lt;LikeButton /&gt;,
   document.getElementById('example')
 );</pre>
-<p>上記のデモでは this が多用されています。class LikeButton extends React.Component 内ではクラスを宣言しているだけなので、this はそのコンテキストによって決まるため、クラス定義内では this の使い方を知ることはできません。実質的には上記のクラスを new して、まず constructor() 関数が呼び出されます。this.state の this のコンテキストはそのインスタンスオブジェクトです。同様に、render() 関数内の this.state.liked の this のコンテキストもそのオブジェクトです。問題は onClick={this.handleClick} です。関数の参照を取得することは問題ありませんが、この this のコンテキストもそのオブジェクトです。</p>
+<p>上記のデモでは this が多用されています。class LikeButton extends React.Component 内ではクラスを宣言しているだけなので、this はそのコンテキストによって決まるため、クラス定義内では this の使い方を知ることはできません。実質のには上記のクラスを new して、まず constructor() 関数が呼び出されます。this.state の this のコンテキストはそのインスタンスオブジェクトです。同様に、render() 関数内の this.state.liked の this のコンテキストもそのオブジェクトです。問題は onClick={this.handleClick} です。関数の参照を取得することは問題ありませんが、この this のコンテキストもそのオブジェクトです。</p>
 <p>ここで問題が発生します。従来の React.createClass では、handleClick() は onClick イベントが発生したときに LikeButton インスタンスに自動的にバインドされ、その関数の this のコンテキストはそのインスタンスになります。しかし、ES6 の class の書き方では、Facebook は自動バインドを廃止しました。LikeButton をインスタンス化した後、handleClick() のコンテキストは div のバッキングインスタンス（backing instance）になり、handleClick() が本来バインドされるべきコンテキストは LikeButton のインスタンスです。この問題には、いくつかの解決策があります。</p>
 <h3>bind() 関数を使用して this のコンテキストを変更する</h3>
 <p>class 宣言内の constructor() 関数で、次を使用できます：</p>
@@ -835,11 +835,11 @@ ReactDOM.render(
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1139,7 +1139,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

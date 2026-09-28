@@ -258,8 +258,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 			FastAPI ミドルウェア			</a>
 <a data-p="par" href="../fastapi/fastapi-cors.html" target="_top" title="FastAPI CORS クロスオリジン">
 			FastAPI CORS クロスオリジン			</a>
-<a data-p="par" href="../fastapi/fastapi-static-files.html" target="_top" title="FastAPI 静的ファイル">
-			FastAPI 静的ファイル			</a>
+<a data-p="par" href="../fastapi/fastapi-static-files.html" target="_top" title="FastAPI 静的ファイル">FastAPI 静的ファイル</a>
 <a data-p="par" href="../fastapi/fastapi-security.html" target="_top" title="FastAPI セキュリティ認証">
 			FastAPI セキュリティ認証			</a>
 <a data-p="par" href="../fastapi/fastapi-testing.html" target="_top" title="FastAPI テスト">
@@ -298,7 +297,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="article-body">
 <div class="article-intro" id="content">
 <h1>FastAPI クエリパラメータバリデーション</h1>
-<p>FastAPI では、クエリパラメータに追加のバリデーションルールとメタデータを宣言できます（文字列長の制限や正規表現のマッチなど）。<code>Query</code> 和 <code>Annotated</code>これにより、関数ロジックを変更することなくパラメータバリデーションを強化できます。</p>
+<p>FastAPI では、クエリパラメータに追加のバリデーションルールとメタデータを宣言できます（文字列長の制限や正規表現のマッチなど）。<code>Query</code>と<code>Annotated</code>これにより、関数ロジックを変更することなくパラメータバリデーションを強化できます。</p>
 <hr/>
 <h2>基本バリデーション</h2>
 <p>以下の例では、クエリパラメータに<code>q</code>最大長制限を追加します：</p>
@@ -344,7 +343,7 @@ app <span style="color: Gray;">=</span> FastAPI<span style="color: Olive;">(</sp
 <br/>
 <span style="color: Gray;">@</span>app.<span style="color: #05a;">get</span><span style="color: Olive;">(</span><span style="color: #a11;">"/items/"</span><span style="color: Olive;">)</span><br/>
 async <span style="color: Green;font-weight:bold;">def</span> read_items<span style="color: Olive;">(</span><br/>
-    <span style="color: #a50"># 同时限制最小长度、最大长度和正则表达式</span><br/>
+    <span style="color: #a50"># 最小長さ、最大長さ、正規表現を同時に制限する</span><br/>
     q: Annotated<span style="color: Olive;">[</span><span style="color: Teal;">str</span> | <span style="color: Teal;">None</span><span style="color: Gray;">,</span> Query<span style="color: Olive;">(</span>min_length<span style="color: Gray;">=</span><span style="color: Maroon;">3</span><span style="color: Gray;">,</span> max_length<span style="color: Gray;">=</span><span style="color: Maroon;">50</span><span style="color: Gray;">,</span> pattern<span style="color: Gray;">=</span><span style="color: #a11;">"^fixedquery$"</span><span style="color: Olive;">)</span><span style="color: Olive;">]</span> <span style="color: Gray;">=</span> <span style="color: Teal;">None</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span>:<br/>
     results <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: #a11;">"items"</span>: <span style="color: Olive;">[</span><span style="color: Olive;">{</span><span style="color: #a11;">"item_id"</span>: <span style="color: #a11;">"Foo"</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"item_id"</span>: <span style="color: #a11;">"Bar"</span><span style="color: Olive;">}</span><span style="color: Olive;">]</span><span style="color: Olive;">}</span><br/>
@@ -380,7 +379,7 @@ app <span style="color: Gray;">=</span> FastAPI<span style="color: Olive;">(</sp
 <br/>
 <span style="color: Gray;">@</span>app.<span style="color: #05a;">get</span><span style="color: Olive;">(</span><span style="color: #a11;">"/items/"</span><span style="color: Olive;">)</span><br/>
 async <span style="color: Green;font-weight:bold;">def</span> read_items<span style="color: Olive;">(</span><br/>
-    <span style="color: #a50"># 默认值为 "fixedquery"，同时要求最小长度为 3</span><br/>
+    <span style="color: #a50"># デフォルト値は "fixedquery" で、かつ最小長は 3 である必要があります</span><br/>
     q: Annotated<span style="color: Olive;">[</span><span style="color: Teal;">str</span><span style="color: Gray;">,</span> Query<span style="color: Olive;">(</span>min_length<span style="color: Gray;">=</span><span style="color: Maroon;">3</span><span style="color: Olive;">)</span><span style="color: Olive;">]</span> <span style="color: Gray;">=</span> <span style="color: #a11;">"fixedquery"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span>:<br/>
     results <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: #a11;">"items"</span>: <span style="color: Olive;">[</span><span style="color: Olive;">{</span><span style="color: #a11;">"item_id"</span>: <span style="color: #a11;">"Foo"</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"item_id"</span>: <span style="color: #a11;">"Bar"</span><span style="color: Olive;">}</span><span style="color: Olive;">]</span><span style="color: Olive;">}</span><br/>
@@ -404,7 +403,7 @@ app <span style="color: Gray;">=</span> FastAPI<span style="color: Olive;">(</sp
 <br/>
 <span style="color: Gray;">@</span>app.<span style="color: #05a;">get</span><span style="color: Olive;">(</span><span style="color: #a11;">"/items/"</span><span style="color: Olive;">)</span><br/>
 async <span style="color: Green;font-weight:bold;">def</span> read_items<span style="color: Olive;">(</span><br/>
-    <span style="color: #a50"># 没有 = None，所以 q 是必填参数</span><br/>
+    <span style="color: #a50"># = None がないため、q は必須パラメータです</span><br/>
     q: Annotated<span style="color: Olive;">[</span><span style="color: Teal;">str</span><span style="color: Gray;">,</span> Query<span style="color: Olive;">(</span>min_length<span style="color: Gray;">=</span><span style="color: Maroon;">3</span><span style="color: Olive;">)</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span>:<br/>
     results <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: #a11;">"items"</span>: <span style="color: Olive;">[</span><span style="color: Olive;">{</span><span style="color: #a11;">"item_id"</span>: <span style="color: #a11;">"Foo"</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"item_id"</span>: <span style="color: #a11;">"Bar"</span><span style="color: Olive;">}</span><span style="color: Olive;">]</span><span style="color: Olive;">}</span><br/>
@@ -425,7 +424,7 @@ app <span style="color: Gray;">=</span> FastAPI<span style="color: Olive;">(</sp
 <br/>
 <span style="color: Gray;">@</span>app.<span style="color: #05a;">get</span><span style="color: Olive;">(</span><span style="color: #a11;">"/items/"</span><span style="color: Olive;">)</span><br/>
 async <span style="color: Green;font-weight:bold;">def</span> read_items<span style="color: Olive;">(</span><br/>
-    <span style="color: #a50"># 客户端必须提供 q 参数，但值可以是 None</span><br/>
+    <span style="color: #a50"># クライアントは q パラメータを提供する必要がありますが、値は None でも構いません</span><br/>
     q: Annotated<span style="color: Olive;">[</span><span style="color: Teal;">str</span> | <span style="color: Teal;">None</span><span style="color: Gray;">,</span> Query<span style="color: Olive;">(</span>min_length<span style="color: Gray;">=</span><span style="color: Maroon;">3</span><span style="color: Olive;">)</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span>:<br/>
     results <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: #a11;">"items"</span>: <span style="color: Olive;">[</span><span style="color: Olive;">{</span><span style="color: #a11;">"item_id"</span>: <span style="color: #a11;">"Foo"</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"item_id"</span>: <span style="color: #a11;">"Bar"</span><span style="color: Olive;">}</span><span style="color: Olive;">]</span><span style="color: Olive;">}</span><br/>
@@ -448,7 +447,7 @@ app <span style="color: Gray;">=</span> FastAPI<span style="color: Olive;">(</sp
 <br/>
 <span style="color: Gray;">@</span>app.<span style="color: #05a;">get</span><span style="color: Olive;">(</span><span style="color: #a11;">"/items/"</span><span style="color: Olive;">)</span><br/>
 async <span style="color: Green;font-weight:bold;">def</span> read_items<span style="color: Olive;">(</span><br/>
-    <span style="color: #a50"># q 可以在 URL 中出现多次，值会被收集为列表</span><br/>
+    <span style="color: #a50">q は URL に複数回出現でき、値はリストとして収集されます</span><br/>
     q: Annotated<span style="color: Olive;">[</span><span style="color: Teal;">list</span><span style="color: Olive;">[</span><span style="color: Teal;">str</span><span style="color: Olive;">]</span> | <span style="color: Teal;">None</span><span style="color: Gray;">,</span> Query<span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">]</span> <span style="color: Gray;">=</span> <span style="color: Teal;">None</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span>:<br/>
     query_items <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: #a11;">"q"</span>: q<span style="color: Olive;">}</span><br/>
@@ -474,11 +473,11 @@ app <span style="color: Gray;">=</span> FastAPI<span style="color: Olive;">(</sp
 async <span style="color: Green;font-weight:bold;">def</span> read_items<span style="color: Olive;">(</span><br/>
     q: Annotated<span style="color: Olive;">[</span><span style="color: Teal;">str</span> | <span style="color: Teal;">None</span><span style="color: Gray;">,</span> Query<span style="color: Olive;">(</span><br/>
         title<span style="color: Gray;">=</span><span style="color: #a11;">"查询字符串"</span><span style="color: Gray;">,</span>           <span style="color: #a50"># 参数标题</span><br/>
-        description<span style="color: Gray;">=</span><span style="color: #a11;">"用于筛选商品的查询字符串"</span><span style="color: Gray;">,</span>  <span style="color: #a50"># 参数描述</span><br/>
+        description<span style="color: Gray;">=</span><span style="color: #a11;">商品を絞り込むためのクエリ文字列</span><span style="color: Gray;">,</span>  <span style="color: #a50"># 参数描述</span><br/>
         min_length<span style="color: Gray;">=</span><span style="color: Maroon;">3</span><span style="color: Gray;">,</span><br/>
         max_length<span style="color: Gray;">=</span><span style="color: Maroon;">50</span><span style="color: Gray;">,</span><br/>
-        alias<span style="color: Gray;">=</span><span style="color: #a11;">"item-query"</span><span style="color: Gray;">,</span>    <span style="color: #a50"># URL 中的参数名别名</span><br/>
-        deprecated<span style="color: Gray;">=</span><span style="color: Teal;">True</span><span style="color: Gray;">,</span>       <span style="color: #a50"># 标记为已弃用</span><br/>
+        alias<span style="color: Gray;">=</span><span style="color: #a11;">"item-query"</span><span style="color: Gray;">,</span>    <span style="color: #a50"># URL内のパラメータ名の別名</span><br/>
+        deprecated<span style="color: Gray;">=</span><span style="color: Teal;">True</span><span style="color: Gray;">,</span>       <span style="color: #a50"># 非推奨としてマーク</span><br/>
     <span style="color: Olive;">)</span><span style="color: Olive;">]</span> <span style="color: Gray;">=</span> <span style="color: Teal;">None</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span>:<br/>
     results <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: #a11;">"items"</span>: <span style="color: Olive;">[</span><span style="color: Olive;">{</span><span style="color: #a11;">"item_id"</span>: <span style="color: #a11;">"Foo"</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"item_id"</span>: <span style="color: #a11;">"Bar"</span><span style="color: Olive;">}</span><span style="color: Olive;">]</span><span style="color: Olive;">}</span><br/>
@@ -510,7 +509,7 @@ app <span style="color: Gray;">=</span> FastAPI<span style="color: Olive;">(</sp
 <br/>
 <span style="color: Gray;">@</span>app.<span style="color: #05a;">get</span><span style="color: Olive;">(</span><span style="color: #a11;">"/items/"</span><span style="color: Olive;">)</span><br/>
 async <span style="color: Green;font-weight:bold;">def</span> read_items<span style="color: Olive;">(</span><br/>
-    <span style="color: #a50"># hidden_query 不会出现在 API 文档中，但仍然可以使用</span><br/>
+    <span style="color: #a50"># hidden_query は API ドキュメントに表示されませんが、それでも使用できます。</span><br/>
     hidden_query: Annotated<span style="color: Olive;">[</span><span style="color: Teal;">str</span> | <span style="color: Teal;">None</span><span style="color: Gray;">,</span> Query<span style="color: Olive;">(</span>include_in_schema<span style="color: Gray;">=</span><span style="color: Teal;">False</span><span style="color: Olive;">)</span><span style="color: Olive;">]</span> <span style="color: Gray;">=</span> <span style="color: Teal;">None</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span>:<br/>
     <span style="color: Green;font-weight:bold;">if</span> hidden_query:<br/>
@@ -648,11 +647,11 @@ async <span style="color: Green;font-weight:bold;">def</span> read_items<span st
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">メモはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> メモを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
+<p style="font-size:14px;">メモはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> メモを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -952,7 +951,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

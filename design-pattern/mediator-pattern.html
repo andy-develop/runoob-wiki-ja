@@ -164,7 +164,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="article-body">
 <div class="article-intro" id="content">
 <h1>仲介者パターン</h1>
-<p>仲介者パターン（Mediator Pattern）は、複数のオブジェクトとクラス間の通信の複雑さを低減するために使用され、振る舞い型パターンに属します。</p><p>仲介者パターンは、一連のオブジェクト間の相互作用をカプセル化するための中介オブジェクトを定義します。仲介者は、各オブジェクトが明示的に相互参照する必要をなくし、それによって結合を疎結合にし、オブジェクト間の相互作用を独立して変更できるようにします。</p>
+<p>仲介者パターン（Mediator Pattern）は、複数のオブジェクトとクラス間の通信の複雑さを低減するために使用され、振る舞い型パターンに属します。</p><p>仲介者パターンは、一連のオブジェクト間の相互作用をカプセル化するための仲介オブジェクトを定義します。仲介者は、各オブジェクトが明示的に相互参照する必要をなくし、それによって結合を疎結合にし、オブジェクト間の相互作用を独立して変更できるようにします。</p>
 <h2 class="tutheader">紹介</h2>
 <h3>意図</h3><p>仲介者オブジェクトを導入して複数のオブジェクト間の相互作用をカプセル化および調整し、オブジェクト間の結合度を低減します。</p>
 <h3>主な解決する問題</h3>
@@ -213,7 +213,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </ul><h3>構造</h3><p>仲介者パターンには、以下の主要な役割が含まれます：</p>
 <ul><li><p><strong>仲介者（メディエーター）</strong>：各同僚オブジェクトと通信するためのインターフェースを定義し、各同僚オブジェクト間の関係を管理します。通常、さまざまな相互作用イベントを処理するための1つ以上のイベント処理メソッドが含まれます。</p></li><li><p><strong>具体的な仲介者（Concrete Mediator）</strong>：仲介者インターフェースを実装し、各同僚オブジェクト間の通信ロジックの実装を担当します。各同僚オブジェクトへの参照を保持し、それらの相互作用を調整します。</p></li><li><p><strong>同僚オブジェクト（Colleague）</strong>：仲介者と通信するためのインターフェースを定義します。通常、メッセージを送信するメソッドとメッセージを受信するメソッドが含まれます。</p></li><li><p><strong>具体的な同僚オブジェクト（Concrete Colleague）</strong>：同僚オブジェクトのインターフェースを実装し、実際に相互作用に参加するオブジェクトです。自分のメッセージを仲介者に送信し、仲介者が他の同僚オブジェクトに転送します。</p></li></ul>
 <h2 class="tutheader">実装</h2>
-<p>チャットルームの例を通じて仲介者パターンをデモンストレーションします。この例では、複数のユーザーがチャットルームにメッセージを送信でき、チャットルームはすべてのユーザーにメッセージを表示します。2つのクラスを作成します<i>ChatRoom</i> 和 <i>User</i>。<i>User</i>オブジェクトは<i>ChatRoom</i>メソッドを使用してメッセージを共有します。</p>
+<p>チャットルームの例を通じて仲介者パターンをデモンストレーションします。この例では、複数のユーザーがチャットルームにメッセージを送信でき、チャットルームはすべてのユーザーにメッセージを表示します。2つのクラスを作成します<i>ChatRoom</i>と<i>User</i>。<i>User</i>オブジェクトは<i>ChatRoom</i>メソッドを使用してメッセージを共有します。</p>
 <p><i>MediatorPatternDemo</i>、デモクラスは<i>User</i>オブジェクトを使用してそれらの間の通信を表示します。</p>
 <img alt="中介者模式的 UML 图" decoding="async" src="../wp-content/uploads/2014/08/mediator_pattern_uml_diagram.jpg"/>
 <h3>ステップ 1</h3>
@@ -401,7 +401,7 @@ Thu Jan 31 16:05:46 IST 2013 [John] : Hello! Robert!
 <li class="comment even thread-even depth-1" id="comment-37340"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   zml1234</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  571***390@qq.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="http://www.cnblogs.com/snaildev/p/7686908.html" rel="nofollow" target="_blank">参考リンク</a></p></div><div class="upvotejs" data-commid="37340" id="runoobvote-id-37340"><a class="upvote"></a> <span class="count">36</span></div></div><div class="comt-main" id="div-comment-37340"><p><strong>仲介者パターンとは？</strong></p>
 <p><img src="../wp-content/uploads/2018/11/mediator-pattern21.jpg"/></p>
 <p>現実の生活には、仲介者パターンの例がたくさんあります。例えば、QQゲームプラットフォーム、チャットルーム、QQグループ、ショートメッセージプラットフォーム、不動産仲介などです。QQゲームであれQQグループであれ、それらは中間プラットフォームとして機能しています。QQユーザーはこの中間プラットフォームにログインして他のQQユーザーと交流できます。これらの中間プラットフォームがなければ、友人とチャットしたい場合、直接会う必要があるかもしれません。電話やショートメッセージも同様に中間プラットフォームです。この中間プラットフォームがあれば、各ユーザーは他のユーザーに直接依存する必要はなく、この中間プラットフォームに依存するだけでよく、すべての操作は中間プラットフォームが分配します。</p>
-<p>仲介者パターンは、一連のオブジェクト間の相互作用関係をカプセル化するための中介オブジェクトを定義します。仲介者により、各オブジェクトは明示的に相互参照する必要がなくなり、結合性が低下し、オブジェクト間の相互作用動作を独立して変更できます。</p>
+<p>仲介者パターンは、一連のオブジェクト間の相互作用関係をカプセル化するための仲介者オブジェクトを定義します。仲介者により、各オブジェクトは明示的に相互参照する必要がなくなり、結合性が低下し、オブジェクト間の相互作用動作を独立して変更できます。</p>
 <p><img src="../wp-content/uploads/2018/11/mediator-pattern22.png"/></p>
 <p><strong>設計の考え方とコード実装：</strong></p>
 <p><img src="../wp-content/uploads/2018/11/mediator-pattern23.jpeg"/></p>
@@ -463,8 +463,8 @@ static void Main(string[] args)
  
     Console.ReadLine();
 }</pre>
-<p>このような実装は確かに上記のシナリオの問題を解決しており、抽象クラスを使用して具体的なプレイヤーAとプレイヤーBの両方を抽象クラスに依存させることで、同僚クラス間の結合度を低減しています。しかし、プレイヤーAに変化が生じた場合、プレイヤーBの状態に影響を及ぼします。関与するオブジェクトが増えると、あるプレイヤーの変化が他のすべての関連するプレイヤーの状態に影響を与えることになります。例えば、プレイヤーAが金額を計算し間違えた場合、プレイヤーAとプレイヤーBの両方の金額が正しくなくなります。複数人でカードゲームをしている場合は、影響を受けるオブジェクトはさらに多くなります。そこで考えられるのは——お金の計算タスクをプログラムや計算が得意な人に任せられないか、ということです。こうしてQQゲームの「欢乐斗地主」などのカードゲームが生まれました。</p>
-<p>さらに改善された方案は、仲介者オブジェクトを追加して各オブジェクト間の関連を調整することです。これが仲介者パターンの応用です。改善後の具体的な実装コードは次のとおりです：</p>
+<p>このような実装は確かに上記のシナリオの問題を解決しており、抽象クラスを使用して具体的なプレイヤーAとプレイヤーBの両方を抽象クラスに依存させることで、同僚クラス間の結合度を低減しています。しかし、プレイヤーAに変化が生じた場合、プレイヤーBの状態に影響を及ぼします。関とするオブジェクトが増えると、あるプレイヤーの変化が他のすべての関連するプレイヤーの状態に影響をとえることになります。例えば、プレイヤーAが金額を計算し間違えた場合、プレイヤーAとプレイヤーBの両方の金額が正しくなくなります。複数人でカードゲームをしている場合は、影響を受けるオブジェクトはさらに多くなります。そこで考えられるのは——お金の計算タスクをプログラムや計算が得意な人に任せられないか、ということです。こうしてQQゲームの「欢乐斗地主」などのカードゲームが生まれました。</p>
+<p>さらに改善された案は、仲介者オブジェクトを追加して各オブジェクト間の関連を調整することです。これが仲介者パターンの応用です。改善後の具体的な実装コードは次のとおりです：</p>
 <pre>/// &lt;summary&gt;
 /// 抽象牌友类
 /// &lt;/summary&gt;
@@ -630,11 +630,11 @@ if __name__ == '__main__':
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります。</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります。</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -923,7 +923,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

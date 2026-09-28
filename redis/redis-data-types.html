@@ -191,7 +191,7 @@ OK
 redis 127.0.0.1:6379&gt; GET runoob
 "菜鸟教程"
 </pre>
-<p>上記の例では、Redis の<b>SET</b> 和 <b>GET</b>コマンドを使用しました。キーは runoob で、対応する値は<strong>菜鸟教程</strong>。</p>
+<p>上記の例では、Redis の<b>SET</b>と<b>GET</b>コマンドを使用しました。キーは runoob で、対応する値は<strong>菜鸟教程</strong>。</p>
 <p><b>注意：</b>1 つのキーは最大 512MB まで格納できます。</p>
 <hr/>
 <h2>Hash（ハッシュ）</h2>
@@ -461,17 +461,17 @@ redis 127.0.0.1:6379&gt; ZRANGEBYSCORE runoob 0 1000
 <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-35579"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   fsisjacky</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  fsi***cky@163.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="https://www.cnblogs.com/EasonJim/p/7818004.html" rel="nofollow" target="_blank">参考アドレス</a></p></div><div class="upvotejs" data-commid="35579" id="runoobvote-id-35579"><a class="upvote"></a> <span class="count">985</span></div></div><div class="comt-main" id="div-comment-35579"><p data-title="Redis 多个数据库">注意：Redisは複数のデータベースをサポートしており、各データベースのデータは分離され共有できません。また、これはスタンドアロンの場合のみで、クラスターの場合はデータベースの概念がありません。</p><p>Redisは辞書構造のストレージサーバーです。実際には1つのRedisインスタンスがデータを格納するための複数の辞書を提供しており、クライアントはデータをどの辞書に格納するかを指定できます。これは、リレーショナルデータベースのインスタンス内に複数のデータベースを作成できるというよく知られた仕組みと似ているため、各辞書を独立したデータベースと見なすことができます。</p><p>各データベースは外部に対して0から始まる連番で命名されます。Redisはデフォルトで16個のデータベースをサポートしています（設定ファイルでさらに多くのデータベースをサポート可能、上限なし）。databasesを設定することでこの数値を変更できます。クライアントはRedisとの接続確立後、自動的に0番データベースを選択しますが、いつでもSELECTコマンドを使用してデータベースを切り替えることができます。例えば、1番データベースを選択するには：</p><pre>redis&gt; SELECT 1
 OK
 redis [1] &gt; GET foo
-(nil)</pre><p>しかし、これらの数字で命名されたデータベースは、私たちが一般的に理解しているデータベースとは異なります。まず、Redisはデータベースの名前をカスタマイズすることをサポートしておらず、各データベースは番号で命名されます。開発者はどのデータベースにどのデータが格納されているかを自分で記録する必要があります。また、Redisはデータベースごとに異なるアクセスパスワードを設定することもサポートしていないため、クライアントはすべてのデータベースにアクセスできるか、1つのデータベースにもアクセス権限がないかのどちらかです。最も重要な点は、複数のデータベース間が完全に分離されているわけではないことです。例えば、FLUSHALLコマンドは1つのRedisインスタンス内のすべてのデータベースのデータをクリアできます。以上のことから、これらのデータベースはどちらかというと名前空間のようなものであり、異なるアプリケーションのデータを格納するのには適していません。例えば、0番データベースに特定のアプリケーションの本番環境のデータを格納し、1番データベースにテスト環境のデータを格納することはできますが、0番データベースにAアプリケーションのデータを格納し、1番データベースにBアプリケーションのデータを格納するのには適していません。異なるアプリケーションは異なるRedisインスタンスを使用してデータを格納すべきです。Redisは非常に軽量で、空のRedisインスタンスが占有するメモリは約1MB程度であるため、複数のRedisインスタンスが余分にメモリを占有することを心配する必要はありません。</p><div class="comt-meta wrapper"><span class="comt-author"><a href="../note/35579.html" target="_blank">fsisjacky</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   fsisjacky</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  fsi***cky@163.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="https://www.cnblogs.com/EasonJim/p/7818004.html" rel="nofollow" target="_blank">参考アドレス</a></p></div></span>8年前 (2018-10-03)</div></div></li><!-- #comment-## -->
+(nil)</pre><p>しかし、これらの数字で命名されたデータベースは、私たちが一般のに理解しているデータベースとは異なります。まず、Redisはデータベースの名前をカスタマイズすることをサポートしておらず、各データベースは番号で命名されます。開発者はどのデータベースにどのデータが格納されているかを自分で記録する必要があります。また、Redisはデータベースごとに異なるアクセスパスワードを設定することもサポートしていないため、クライアントはすべてのデータベースにアクセスできるか、1つのデータベースにもアクセス権限がないかのどちらかです。最も重要な点は、複数のデータベース間が完全に分離されているわけではないことです。例えば、FLUSHALLコマンドは1つのRedisインスタンス内のすべてのデータベースのデータをクリアできます。以上のことから、これらのデータベースはどちらかというと名前空間のようなものであり、異なるアプリケーションのデータを格納するのには適していません。例えば、0番データベースに特定のアプリケーションの本番環境のデータを格納し、1番データベースにテスト環境のデータを格納することはできますが、0番データベースにAアプリケーションのデータを格納し、1番データベースにBアプリケーションのデータを格納するのには適していません。異なるアプリケーションは異なるRedisインスタンスを使用してデータを格納すべきです。Redisは非常に軽量で、空のRedisインスタンスが占有するメモリは約1MB程度であるため、複数のRedisインスタンスが余分にメモリを占有することを心配する必要はありません。</p><div class="comt-meta wrapper"><span class="comt-author"><a href="../note/35579.html" target="_blank">fsisjacky</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   fsisjacky</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  fsi***cky@163.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="https://www.cnblogs.com/EasonJim/p/7818004.html" rel="nofollow" target="_blank">参考アドレス</a></p></div></span>8年前 (2018-10-03)</div></div></li><!-- #comment-## -->
 </ol>
 </div>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -760,7 +760,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

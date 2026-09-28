@@ -454,7 +454,7 @@ const filteredTasks = computed(() =&gt; {<br/>
 <p>上記のコードは、Vue 3 の最も中核となるロジックの構成方法を示しています：</p>
 <ul>
 <li><strong><code>ref</code>(リアクティブの基礎)</strong>：<code>tasks</code>、<code>newTaskTitle</code>などはリアクティブ参照です。<code>&lt;script&gt;</code>内では、それらを変更するには、次のものを使う必要があります：<code>.value</code>（例：<code>tasks.value = ...</code>）、ただし、<code>&lt;template&gt;</code>内では変数名を直接記述します。Vue はこれらの値の変化を自動的に追跡して UI を更新します。</li>
-<li><strong><code>computed</code>(計算プロパティ)</strong>：<code>filteredTasks</code>は非常に典型的な応用例です。これは<code>tasks</code> 和 <code>currentFilter</code>に基づいて派生しています。</li>
+<li><strong><code>computed</code>(計算プロパティ)</strong>：<code>filteredTasks</code>は非常に典型的な応用例です。これは<code>tasks</code>と<code>currentFilter</code>に基づいて派生しています。</li>
 <li><strong>利点</strong>：それはリアクティブで、かつ<strong>キャッシュ性を備えたものです。</strong>。もし<code>tasks</code>変わっていない場合、ページを何度レンダリングしても、フィルタリングロジックを繰り返し実行しません。</li>
 </ul>
 <h3>2. リストレンダリングと Key 値</h3>
@@ -470,7 +470,7 @@ const filteredTasks = computed(() =&gt; {<br/>
 <h3>4. 双方向バインディング (<code>v-model</code>)</h3>
 <ul>
 <li><code>v-model="newTaskTitle"</code>入力ボックスと変数の同期を実現します。</li>
-<li><strong>原理</strong>：これは実際には<code>:value</code> 和 <code>@input</code>の糖衣構文（シンタックスシュガー）です。</li>
+<li><strong>原理</strong>：これは実際には<code>:value</code>と<code>@input</code>の糖衣構文（シンタックスシュガー）です。</li>
 </ul>
 <h3>5. アニメーションシステム (<code>TransitionGroup</code>)</h3>
 <ul>
@@ -479,7 +479,7 @@ const filteredTasks = computed(() =&gt; {<br/>
 </ul>
 <hr/>
 <h2>Tailwind v4 のスタイル特性の解説</h2>
-<p>Tailwind v4 は v3 に比べて、より<strong>ネイティブ CSS の能力</strong> 和 <strong>簡潔さ</strong>。</p>
+<p>Tailwind v4 は v3 に比べて、より<strong>ネイティブ CSS の能力</strong>と<strong>簡潔さ</strong>。</p>
 <h3>1. 新しいグラデーション構文</h3>
 <ul>
 <li><strong><code>bg-linear-to-br</code></strong>：v4 では、グラデーションに<code>bg-gradient-to-br</code>のような冗長な書き方は不要で、直接<code>linear-to-方位</code>よりネイティブ CSS に近い<code>linear-gradient</code>。</li>
@@ -495,7 +495,7 @@ const filteredTasks = computed(() =&gt; {<br/>
 <h3>4. 強力なインタラクティブ擬似クラス</h3>
 <ul>
 <li><strong><code>group</code>と `group-hover:opacity-100</strong>`：</li>
-<li>在 <code>li</code>に設定します<code>group</code>。</li>
+<li>に<code>li</code>に設定します<code>group</code>。</li>
 <li>削除ボタンに設定します<code>group-hover:opacity-100</code>。</li>
 <li><strong>効果</strong>：「この行にマウスがホバーしたときだけ削除ボタンが表示される」を実現します。このような<strong>親子状態の連動</strong>JS コードを 1 行も書く必要はありません。</li>
 </ul>
@@ -624,11 +624,11 @@ const filteredTasks = computed(() =&gt; {<br/>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>する必要があります！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>する必要があります！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -928,7 +928,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

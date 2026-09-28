@@ -376,7 +376,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"移除 'Banana': "</span> <span style="color: #339933;">+</span> isRemoved<span style="color: #009900;">)</span><span style="color: #339933;">;</span> <br/>
         <span style="color: #666666; font-style: italic;">// 输出: 移除 'Banana': true</span><br/>
         <br/>
-        <span style="color: #666666; font-style: italic;">// 尝试移除不存在的元素</span><br/>
+        <span style="color: #666666; font-style: italic;">// 存在しない要素の削除を試みる</span><br/>
         isRemoved <span style="color: #339933;">=</span> fruits.<span style="color: #006633;">remove</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"Grape"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
         <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"移除 'Grape': "</span> <span style="color: #339933;">+</span> isRemoved<span style="color: #009900;">)</span><span style="color: #339933;">;</span> <br/>
         <span style="color: #666666; font-style: italic;">// 输出: 移除 'Grape': false</span><br/>
@@ -386,14 +386,14 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"移除 null: "</span> <span style="color: #339933;">+</span> isRemoved<span style="color: #009900;">)</span><span style="color: #339933;">;</span> <br/>
         <span style="color: #666666; font-style: italic;">// 输出: 移除 null: true</span><br/>
         <br/>
-        <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"修改后的集合: "</span> <span style="color: #339933;">+</span> fruits<span style="color: #009900;">)</span><span style="color: #339933;">;</span> <br/>
-        <span style="color: #666666; font-style: italic;">// 输出: 修改后的集合: [Apple, Orange]</span><br/>
+        <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span><span style="color: #0000FF;">変更後のコレクション:</span> <span style="color: #339933;">+</span> fruits<span style="color: #009900;">)</span><span style="color: #339933;">;</span> <br/>
+        <span style="color: #666666; font-style: italic;">// 出力: 変更後のコレクション: [Apple, Orange]</span><br/>
     <span style="color: #009900;">}</span><br/>
 <span style="color: #009900;">}</span><br/>
 </div>
 </div>
 <h3>カスタムオブジェクトの使用</h3>
-<p>カスタムオブジェクトを使用する場合、正しくオーバーライドする必要があります<code>equals()</code> 和 <code>hashCode()</code>メソッド。そうしないと、<code>remove()</code>メソッドが正常に動作しない可能性があります：</p>
+<p>カスタムオブジェクトを使用する場合、正しくオーバーライドする必要があります<code>equals()</code>と<code>hashCode()</code>メソッド。そうしないと、<code>remove()</code>メソッドが正常に動作しない可能性があります：</p>
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
@@ -408,7 +408,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         <span style="color: #000000; font-weight: bold;">this</span>.<span style="color: #006633;">name</span> <span style="color: #339933;">=</span> name<span style="color: #339933;">;</span><br/>
     <span style="color: #009900;">}</span><br/>
     <br/>
-    <span style="color: #666666; font-style: italic;">// 必须重写 equals 和 hashCode 方法</span><br/>
+    <span style="color: #666666; font-style: italic;">// equals と hashCode メソッドをオーバーライドする必要があります</span><br/>
     @Override<br/>
     <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000066; font-weight: bold;">boolean</span> equals<span style="color: #009900;">(</span><span style="color: #003399;">Object</span> o<span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
         <span style="color: #000000; font-weight: bold;">if</span> <span style="color: #009900;">(</span><span style="color: #000000; font-weight: bold;">this</span> <span style="color: #339933;">==</span> o<span style="color: #009900;">)</span> <span style="color: #000000; font-weight: bold;">return</span> <span style="color: #000066; font-weight: bold;">true</span><span style="color: #339933;">;</span><br/>
@@ -440,7 +440,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         <span style="color: #000066; font-weight: bold;">boolean</span> removed <span style="color: #339933;">=</span> students.<span style="color: #006633;">remove</span><span style="color: #009900;">(</span><span style="color: #000000; font-weight: bold;">new</span> Student<span style="color: #009900;">(</span><span style="color: #CC66CC;">1</span>, <span style="color: #0000FF;">"Alice"</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
         <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"移除 Alice: "</span> <span style="color: #339933;">+</span> removed<span style="color: #009900;">)</span><span style="color: #339933;">;</span> <span style="color: #666666; font-style: italic;">// 输出: 移除 Alice: true</span><br/>
         <br/>
-        <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"修改后的集合: "</span> <span style="color: #339933;">+</span> students<span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+        <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span><span style="color: #0000FF;">変更後のコレクション:</span> <span style="color: #339933;">+</span> students<span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
     <span style="color: #009900;">}</span><br/>
 <span style="color: #009900;">}</span><br/>
 </div>
@@ -461,7 +461,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2>まとめ</h2>
 <p><code>HashSet.remove()</code>メソッドは<code>HashSet</code>コレクションを操作する基本的なメソッドの1つであり、効率的な要素削除機能を提供します。使用する際の注意点：</p>
 <ol>
-<li>正しく実装する<code>equals()</code> 和 <code>hashCode()</code>メソッド（カスタムオブジェクトの場合）</li>
+<li>正しく実装する<code>equals()</code>と<code>hashCode()</code>メソッド（カスタムオブジェクトの場合）</li>
 <li>並行変更の問題を処理する</li>
 <li>戻り値が表す操作結果を理解する</li>
 </ol>
@@ -585,11 +585,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>する必要があります！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>する必要があります！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -889,7 +889,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

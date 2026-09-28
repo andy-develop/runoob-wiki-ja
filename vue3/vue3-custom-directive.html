@@ -335,11 +335,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">v-focus</span><span class="hl-brackets">&gt;</span><span class="hl-code">
 </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">const app = Vue.createApp({})
-// 注册一个全局自定义指令 `v-focus`
+// グローバルなカスタムディレクティブ `v-focus` を登録する
 app.directive('focus', {
-  // 当被绑定的元素挂载到 DOM 中时……
+  // バインドされた要素が DOM にマウントされたとき……
   mounted(el) {
-    // 聚焦元素
+    // 要素にフォーカスする
     el.focus()
   }
 })
@@ -356,22 +356,7 @@ app.mount('#app')</span><span class="hl-brackets">&lt;/</span><span class="hl-re
 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">ページ読み込み時に、input 要素が自動的にフォーカスを取得します：</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">input</span><span class="hl-code"> </span><span class="hl-var">v-focus</span><span class="hl-brackets">&gt;</span><span class="hl-code">
 </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
-</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">const app = {
-   data() {
-      return {
-      }
-   },
-   directives: {
-      focus: {
-         // 指令的定义
-         mounted(el) {
-            el.focus()
-         }
-      }
-   }
-}
- 
-Vue.createApp(app).mount('#app')</span></div>
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">ディレクティブの定義</span></div>
 </div>
 <br/>
 <a class="tryitbtn" data-lang="html" href="../try/editor.html" onclick="localStorage.setItem('tryit_code','PGRpdiBpZD0iYXBwIj4KICAgIDxwPumhtemdoui9veWFpeaXtu+8jGlucHV0IOWFg+e0oOiHquWKqOiOt+WPlueEpueCue+8mjwvcD4KICAgIDxpbnB1dCB2LWZvY3VzPgo8L2Rpdj4KIAo8c2NyaXB0Pgpjb25zdCBhcHAgPSB7CiAgIGRhdGEoKSB7CiAgICAgIHJldHVybiB7CiAgICAgIH0KICAgfSwKICAgZGlyZWN0aXZlczogewogICAgICBmb2N1czogewogICAgICAgICAvLyDmjIfku6TnmoTlrprkuYkKICAgICAgICAgbW91bnRlZChlbCkgewogICAgICAgICAgICBlbC5mb2N1cygpCiAgICAgICAgIH0KICAgICAgfQogICB9Cn0KIApWdWUuY3JlYXRlQXBwKGFwcCkubW91bnQoJyNhcHAnKQ==');localStorage.setItem('tryit_lang','html');">試してみる »</a>
@@ -428,7 +413,7 @@ Vue.createApp(app).mount('#app')</span></div>
 <p><span class="marked">el</span>ディレクティブがバインドされた要素。DOM を直接操作するために使用できます。</p>
 <p><strong>binding</strong></p>
 <p>binding はオブジェクトで、次の属性を含みます：</p>
-<ul><li><code>instance</code>：ディレクティブを使用するコンポーネントのインスタンス。</li> <li><code>value</code>：ディレクティブに渡される値。たとえば、<code>v-my-directive="1 + 1"</code>中では、その値は<code>2</code>。</li> <li><code>oldValue</code>：以前の値。使用できるのは<code>beforeUpdate</code> 和 <code>updated</code>中だけです。値が変更されているかどうかに関わらず使用できます。</li> <li><code>arg</code>：ディレクティブに渡されるパラメータ（もしあれば）。たとえば<code>v-my-directive:foo</code>中で、arg は<code>"foo"</code>。</li> <li><code>modifiers</code>：修飾子（もしあれば）を含むオブジェクト。たとえば<code>v-my-directive.foo.bar</code>中で、修飾子オブジェクトは<code>{foo: true，bar: true}</code>。</li> <li><code>dir</code>：ディレクティブの登録時にパラメータとして渡されるオブジェクト。たとえば、次のディレクティブでは：</li></ul>
+<ul><li><code>instance</code>：ディレクティブを使用するコンポーネントのインスタンス。</li> <li><code>value</code>：ディレクティブに渡される値。たとえば、<code>v-my-directive="1 + 1"</code>中では、その値は<code>2</code>。</li> <li><code>oldValue</code>：以前の値。使用できるのは<code>beforeUpdate</code>と<code>updated</code>中だけです。値が変更されているかどうかに関わらず使用できます。</li> <li><code>arg</code>：ディレクティブに渡されるパラメータ（もしあれば）。たとえば<code>v-my-directive:foo</code>中で、arg は<code>"foo"</code>。</li> <li><code>modifiers</code>：修飾子（もしあれば）を含むオブジェクト。たとえば<code>v-my-directive.foo.bar</code>中で、修飾子オブジェクトは<code>{foo: true，bar: true}</code>。</li> <li><code>dir</code>：ディレクティブの登録時にパラメータとして渡されるオブジェクト。たとえば、次のディレクティブでは：</li></ul>
 <pre>app.directive('focus', {
   mounted(el) {
     el.focus()
@@ -608,11 +593,11 @@ new Vue({
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -912,7 +897,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

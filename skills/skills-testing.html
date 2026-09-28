@@ -319,7 +319,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: Green;font-weight:bold;">import</span> <span style="color: #05a;">tempfile</span><br/>
 <span style="color: Green;font-weight:bold;">import</span> <span style="color: #05a;">csv</span><br/>
 <br/>
-<span style="color: #a50"># 被测试的模块</span><br/>
+<span style="color: #a50"># テスト対象のモジュール</span><br/>
 <span style="color: Green;font-weight:bold;">import</span> <span style="color: #05a;">sys</span><br/>
 <span style="color: #05a;">sys</span>.<span style="color: #05a;">path</span>.<span style="color: #05a;">insert</span><span style="color: Olive;">(</span><span style="color: Maroon;">0</span><span style="color: Gray;">,</span> <span style="color: #05a;">os</span>.<span style="color: #05a;">path</span>.<span style="color: #05a;">join</span><span style="color: Olive;">(</span><span style="color: #05a;">os</span>.<span style="color: #05a;">path</span>.<span style="color: #05a;">dirname</span><span style="color: Olive;">(</span>__file__<span style="color: Olive;">)</span><span style="color: Gray;">,</span> <span style="color: #a11;">".."</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">from</span> clean_data <span style="color: Green;font-weight:bold;">import</span> remove_duplicates<span style="color: Gray;">,</span> fill_nulls<span style="color: Gray;">,</span> strip_whitespace<br/>
@@ -342,14 +342,14 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <br/>
 <span style="color: #a50"># ── 测试：空值填充 ──────────────────────────────────────</span><br/>
 <span style="color: Green;font-weight:bold;">def</span> test_fill_nulls_numeric<span style="color: Olive;">(</span><span style="color: Olive;">)</span>:<br/>
-    <span style="color: #a11;">"""数值列的空值应填充为 0"""</span><br/>
+    <span style="color: #a11;">"""数値列の欠損値は0で埋めるべきである"""</span><br/>
     rows <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: Olive;">{</span><span style="color: #a11;">"value"</span>: <span style="color: #a11;">"10"</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"value"</span>: <span style="color: #a11;">""</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"value"</span>: <span style="color: #a11;">"20"</span><span style="color: Olive;">}</span><span style="color: Olive;">]</span><br/>
     result <span style="color: Gray;">=</span> fill_nulls<span style="color: Olive;">(</span>rows<span style="color: Gray;">,</span> col<span style="color: Gray;">=</span><span style="color: #a11;">"value"</span><span style="color: Gray;">,</span> fill_with<span style="color: Gray;">=</span><span style="color: #a11;">"0"</span><span style="color: Olive;">)</span><br/>
     <span style="color: Green;font-weight:bold;">assert</span> result<span style="color: Olive;">[</span><span style="color: Maroon;">1</span><span style="color: Olive;">]</span><span style="color: Olive;">[</span><span style="color: #a11;">"value"</span><span style="color: Olive;">]</span> <span style="color: Gray;">==</span> <span style="color: #a11;">"0"</span><br/>
 <br/>
 <span style="color: #a50"># ── 测试：去空格 ──────────────────────────────────────</span><br/>
 <span style="color: Green;font-weight:bold;">def</span> test_strip_whitespace<span style="color: Olive;">(</span><span style="color: Olive;">)</span>:<br/>
-    <span style="color: #a11;">"""字符串首尾空格应被清除"""</span><br/>
+    <span style="color: #a11;">"“文字列の先頭と末尾のスペースは削除されるべきです”"</span><br/>
     rows <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: Olive;">{</span><span style="color: #a11;">"name"</span>: <span style="color: #a11;">"  runoob  "</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"name"</span>: <span style="color: #a11;">"RUNOOB"</span><span style="color: Olive;">}</span><span style="color: Olive;">]</span><br/>
     result <span style="color: Gray;">=</span> strip_whitespace<span style="color: Olive;">(</span>rows<span style="color: Gray;">,</span> col<span style="color: Gray;">=</span><span style="color: #a11;">"name"</span><span style="color: Olive;">)</span><br/>
     <span style="color: Green;font-weight:bold;">assert</span> result<span style="color: Olive;">[</span><span style="color: Maroon;">0</span><span style="color: Olive;">]</span><span style="color: Olive;">[</span><span style="color: #a11;">"name"</span><span style="color: Olive;">]</span> <span style="color: Gray;">==</span> <span style="color: #a11;">"runoob"</span><br/>
@@ -404,7 +404,7 @@ scripts/tests/test_clean_data.py::test_process_real_file        PASSED
 <span style="color: #009900;">[</span><br/>
   <span style="color: #009900;">{</span><br/>
     <span style="color: #3366CC;">"id"</span><span style="color: #339933;">:</span> <span style="color: #3366CC;">"trigger_basic"</span><span style="color: #339933;">,</span><br/>
-    <span style="color: #3366CC;">"prompt"</span><span style="color: #339933;">:</span> <span style="color: #3366CC;">"帮我分析这份销售数据 CSV，找出月度趋势并生成统计摘要"</span><span style="color: #339933;">,</span><br/>
+    <span style="color: #3366CC;">"prompt"</span><span style="color: #339933;">:</span> <span style="color: #3366CC;">この販売データCSVを分析し、月次トレンドを特定して統計サマリーを生成してください。</span><span style="color: #339933;">,</span><br/>
     <span style="color: #3366CC;">"assertions"</span><span style="color: #339933;">:</span> <span style="color: #009900;">[</span><br/>
       <span style="color: #009900;">{</span><br/>
         <span style="color: #3366CC;">"type"</span><span style="color: #339933;">:</span> <span style="color: #3366CC;">"skill_triggered"</span><span style="color: #339933;">,</span><br/>
@@ -415,7 +415,7 @@ scripts/tests/test_clean_data.py::test_process_real_file        PASSED
   <span style="color: #009900;">}</span><span style="color: #339933;">,</span><br/>
   <span style="color: #009900;">{</span><br/>
     <span style="color: #3366CC;">"id"</span><span style="color: #339933;">:</span> <span style="color: #3366CC;">"trigger_with_file"</span><span style="color: #339933;">,</span><br/>
-    <span style="color: #3366CC;">"prompt"</span><span style="color: #339933;">:</span> <span style="color: #3366CC;">"我上传了 runoob_sales.csv，请分析各列的数据分布"</span><span style="color: #339933;">,</span><br/>
+    <span style="color: #3366CC;">"prompt"</span><span style="color: #339933;">:</span> <span style="color: #3366CC;">runoob_sales.csv をアップロードしました。各列のデータ分布を分析してください。</span><span style="color: #339933;">,</span><br/>
     <span style="color: #3366CC;">"assertions"</span><span style="color: #339933;">:</span> <span style="color: #009900;">[</span><br/>
       <span style="color: #009900;">{</span><br/>
         <span style="color: #3366CC;">"type"</span><span style="color: #339933;">:</span> <span style="color: #3366CC;">"skill_triggered"</span><span style="color: #339933;">,</span><br/>
@@ -430,7 +430,7 @@ scripts/tests/test_clean_data.py::test_process_real_file        PASSED
   <span style="color: #009900;">}</span><span style="color: #339933;">,</span><br/>
   <span style="color: #009900;">{</span><br/>
     <span style="color: #3366CC;">"id"</span><span style="color: #339933;">:</span> <span style="color: #3366CC;">"no_trigger_simple"</span><span style="color: #339933;">,</span><br/>
-    <span style="color: #3366CC;">"prompt"</span><span style="color: #339933;">:</span> <span style="color: #3366CC;">"CSV 是什么格式？"</span><span style="color: #339933;">,</span><br/>
+    <span style="color: #3366CC;">"prompt"</span><span style="color: #339933;">:</span> <span style="color: #3366CC;">"CSV はどんな形式ですか？"</span><span style="color: #339933;">,</span><br/>
     <span style="color: #3366CC;">"assertions"</span><span style="color: #339933;">:</span> <span style="color: #009900;">[</span><br/>
       <span style="color: #009900;">{</span><br/>
         <span style="color: #3366CC;">"type"</span><span style="color: #339933;">:</span> <span style="color: #3366CC;">"skill_not_triggered"</span><span style="color: #339933;">,</span><br/>
@@ -586,11 +586,11 @@ python eval-viewer<span style="color: #000000; font-weight: bold;">/</span>gener
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -890,7 +890,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

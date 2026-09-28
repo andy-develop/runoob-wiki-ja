@@ -250,9 +250,9 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h1>Sklearn カスタムモデルと機能</h1><p>カスタムモデルは scikit-learn の機能を拡張して、特定のアプリケーションシナリオのニーズを満たすことができます。</p>
 <p>scikit-learn では、既製のモデルや前処理機能を使用するだけでなく、ユーザーは自分のニーズに応じてカスタムモデル、変換器、機能を作成することもできます。</p><p>カスタムモデルと機能の実装には、通常、scikit-learn の基底クラス（BaseEstimator や TransformerMixin など）を継承し、特定の fit メソッドと predict メソッドを実装することが含まれます。</p>
 <p>この章では、以下のいくつかの側面について説明します：</p>
-<ol><li><strong>カスタム変換器（Transformer）</strong></li><li><strong>カスタム推定器（Estimator）</strong></li><li><strong>カスタムパイプラインステップ</strong></li><li><strong>継承によって<code>BaseEstimator</code> 和 <code>TransformerMixin</code>カスタムアルゴリズムを実装する</strong></li></ol>
+<ol><li><strong>カスタム変換器（Transformer）</strong></li><li><strong>カスタム推定器（Estimator）</strong></li><li><strong>カスタムパイプラインステップ</strong></li><li><strong>継承によって<code>BaseEstimator</code>と<code>TransformerMixin</code>カスタムアルゴリズムを実装する</strong></li></ol>
 <h2>1、カスタム変換器（Transformer）</h2>
-<p>変換器は、データを変換するためのコンポーネントであり、標準化や特徴選択などを行います。カスタム変換器は、<code>TransformerMixin</code>を継承し、<code>fit</code> 和 <code>transform</code>メソッドを実装します。</p>
+<p>変換器は、データを変換するためのコンポーネントであり、標準化や特徴選択などを行います。カスタム変換器は、<code>TransformerMixin</code>を継承し、<code>fit</code>と<code>transform</code>メソッドを実装します。</p>
 <p><strong>カスタム変換器の手順：</strong></p>
 <ul>
 <li><strong><code>fit</code>メソッド</strong>：通常、データの属性（平均、分散、特徴選択基準など）を学習するために使用されます。<code>fit</code>メソッドは変換器自体を返し、チェーン呼び出しができるようにします。</li>
@@ -409,7 +409,7 @@ y_pred <span style="color: Gray;">=</span> pipeline.<span style="color: #05a;">p
 <p><strong>説明：</strong></p>
 <p>CustomScaler と SimpleClassifier をパイプラインのステップとして使用し、パイプラインによってデータ前処理とモデルトレーニングを自動的に実行します。</p><p>これにより、パイプライン全体のワークフローは単一の fit メソッドと predict メソッドで完了でき、効率性と簡潔さが保たれます。</p>
 <hr/>
-<h2>BaseEstimator と TransformerMixin を継承してカスタムアルゴリズムを実装する方法</h2><ul><li><strong><code>BaseEstimator</code></strong>：すべての scikit-learn 推定器の基底クラスです。これは<code>get_params()</code> 和 <code>set_params()</code>メソッドを提供し、これによりカスタム推定器が<code>GridSearchCV</code>などのツールと連携して動作できるようになります。</li><li><strong><code>TransformerMixin</code></strong>：すべての scikit-learn 変換器の基底クラスです。これは<code>fit_transform()</code>メソッドを提供し、変換器が<code>Pipeline</code>と一緒に使用できるようにします。</li></ul>
+<h2>BaseEstimator と TransformerMixin を継承してカスタムアルゴリズムを実装する方法</h2><ul><li><strong><code>BaseEstimator</code></strong>：すべての scikit-learn 推定器の基底クラスです。これは<code>get_params()</code>と<code>set_params()</code>メソッドを提供し、これによりカスタム推定器が<code>GridSearchCV</code>などのツールと連携して動作できるようになります。</li><li><strong><code>TransformerMixin</code></strong>：すべての scikit-learn 変換器の基底クラスです。これは<code>fit_transform()</code>メソッドを提供し、変換器が<code>Pipeline</code>と一緒に使用できるようにします。</li></ul>
 <p>これら2つの基底クラスを継承することで、独自のカスタムモデルと機能を非常に簡単に作成でき、scikit-learn のツール（GridSearchCV や Pipeline など）を利用してチューニングと評価を行うことができます。</p>
 <p>完全なカスタム変換器と推定器の例：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
@@ -582,11 +582,11 @@ y_pred <span style="color: Gray;">=</span> pipeline.<span style="color: #05a;">p
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>してください！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>してください！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -886,7 +886,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

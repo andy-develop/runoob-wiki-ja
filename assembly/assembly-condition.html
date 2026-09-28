@@ -180,7 +180,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 _start<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">10</span><br/>
     <span style="color: #00007F; font-weight: bold;">cmp</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">10</span>                 <span style="color: #666666; font-style: italic;">; eax == 10?</span><br/>
-    <span style="color: #666666; font-style: italic;">; ZF = 1（相等，结果为零）</span><br/>
+    <span style="color: #666666; font-style: italic;">; ZF = 1（等しい場合、結果は0）</span><br/>
     <span style="color: #666666; font-style: italic;">; CF = 0（无借位）</span><br/>
     <span style="color: #666666; font-style: italic;">; SF = 0（结果非负）</span><br/>
 <br/>
@@ -240,7 +240,7 @@ _start<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #0000FF; font-weight: bold;">dword</span> <span style="color: #009900; font-weight: bold;">[</span>x<span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">10</span>           <span style="color: #666666; font-style: italic;">; x = 10</span><br/>
 <br/>
 skip_update<span style="color: #339933;">:</span><br/>
-    <span style="color: #666666; font-style: italic;">; 程序继续...（这里 x 已经是 10 了）</span><br/>
+    <span style="color: #666666; font-style: italic;">; プログラム続行...（ここで x は既に 10 になっている）</span><br/>
 <br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
@@ -277,7 +277,7 @@ pass_label<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #0000FF; font-weight: bold;">byte</span> <span style="color: #009900; font-weight: bold;">[</span>grade<span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #7F007F;">'P'</span>       <span style="color: #666666; font-style: italic;">; grade = 'P'</span><br/>
 <br/>
 end_if<span style="color: #339933;">:</span><br/>
-    <span style="color: #666666; font-style: italic;">; grade 变量现在已设置好</span><br/>
+    <span style="color: #666666; font-style: italic;">; grade 変数は設定済みです</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 输出成绩等级</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">4</span><br/>
@@ -375,16 +375,16 @@ print_result<span style="color: #339933;">:</span><br/>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;">; TEST 指令示例</span><br/>
 <br/>
-    <span style="color: #666666; font-style: italic;">; 检查 eax 是否为 0（比 CMP eax, 0 更高效）</span><br/>
+    <span style="color: #666666; font-style: italic;">; eax が 0 かどうかを確認します（CMP eax, 0 より効率の）</span><br/>
     <span style="color: #00007F; font-weight: bold;">test</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">eax</span>               <span style="color: #666666; font-style: italic;">; eax &amp; eax = eax，只更新 ZF</span><br/>
     <span style="color: #00007F; font-weight: bold;">jz</span>  eax_is_zero             <span style="color: #666666; font-style: italic;">; 若 ZF=1，说明 eax=0</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 检查特定位</span><br/>
-    <span style="color: #00007F; font-weight: bold;">test</span> <span style="color: #46AA03; font-weight: bold;">al</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0x01</span>               <span style="color: #666666; font-style: italic;">; 检查 bit0 是否为 1</span><br/>
+    <span style="color: #00007F; font-weight: bold;">test</span> <span style="color: #46AA03; font-weight: bold;">al</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0x01</span>               <span style="color: #666666; font-style: italic;">; bit0 が 1 かどうかをチェック</span><br/>
     <span style="color: #00007F; font-weight: bold;">jnz</span> bit0_is_set             <span style="color: #666666; font-style: italic;">; 若 bit0=1，跳转</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 检查多个位</span><br/>
-    <span style="color: #00007F; font-weight: bold;">test</span> <span style="color: #46AA03; font-weight: bold;">al</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0x03</span>               <span style="color: #666666; font-style: italic;">; 检查 bit0 和 bit1 是否有至少一个为 1</span><br/>
+    <span style="color: #00007F; font-weight: bold;">test</span> <span style="color: #46AA03; font-weight: bold;">al</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0x03</span>               <span style="color: #666666; font-style: italic;">; bit0 と bit1 の少なくとも1つが1であるかどうかをチェックする</span><br/>
     <span style="color: #00007F; font-weight: bold;">jnz</span> some_bit_set<br/>
 </div>
 </div>
@@ -396,15 +396,15 @@ print_result<span style="color: #339933;">:</span><br/>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;">; SETcc 条件设置示例</span><br/>
 <br/>
-    <span style="color: #666666; font-style: italic;">; 将 a &gt; b 的结果存入 al</span><br/>
+    <span style="color: #666666; font-style: italic;">; a &gt; b の結果を al に格納する</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">10</span><br/>
     <span style="color: #00007F; font-weight: bold;">cmp</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">5</span>                  <span style="color: #666666; font-style: italic;">; 10 &gt; 5 ?</span><br/>
     <span style="color: #00007F; font-weight: bold;">setg</span> <span style="color: #46AA03; font-weight: bold;">al</span>                     <span style="color: #666666; font-style: italic;">; al = 1（大于成立）</span><br/>
     <span style="color: #666666; font-style: italic;">; 如果 eax = 3，则 al = 0</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 其他 SETcc 指令：</span><br/>
-    <span style="color: #666666; font-style: italic;">; sete / setz   -&gt; 相等/为零</span><br/>
-    <span style="color: #666666; font-style: italic;">; setne / setnz -&gt; 不等/不为零</span><br/>
+    <span style="color: #666666; font-style: italic;">; sete / setz -&gt; 等しい/ゼロ</span><br/>
+    <span style="color: #666666; font-style: italic;">; setne / setnz -&gt; 不等/非ゼロ</span><br/>
     <span style="color: #666666; font-style: italic;">; setl          -&gt; 小于（有符号）</span><br/>
     <span style="color: #666666; font-style: italic;">; setb          -&gt; 小于（无符号）</span><br/>
     <span style="color: #666666; font-style: italic;">; setg          -&gt; 大于（有符号）</span><br/>
@@ -417,7 +417,7 @@ print_result<span style="color: #339933;">:</span><br/>
 <h2 class="example">实例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;">; 文件路径：number_check.asm</span><br/>
-<span style="color: #666666; font-style: italic;">; 判断数字的奇偶、正负</span><br/>
+<span style="color: #666666; font-style: italic;">; 数値の偶奇・正負を判定する</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
     number <span style="color: #0000FF; font-weight: bold;">dd</span> <span style="color: #339933;">-</span><span style="color: #FF0000;">42</span><br/>
@@ -438,10 +438,10 @@ print_result<span style="color: #339933;">:</span><br/>
 _start<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>number<span style="color: #009900; font-weight: bold;">]</span><br/>
 <br/>
-    <span style="color: #666666; font-style: italic;">; 判断是否为 0</span><br/>
+    <span style="color: #666666; font-style: italic;">; 0かどうかを判定</span><br/>
     <span style="color: #00007F; font-weight: bold;">cmp</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
     <span style="color: #00007F; font-weight: bold;">jne</span> check_sign<br/>
-    <span style="color: #666666; font-style: italic;">; 为零</span><br/>
+    <span style="color: #666666; font-style: italic;">; ゼロである</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">4</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> msg_zero<br/>
@@ -617,11 +617,11 @@ exit<span style="color: #339933;">:</span><br/>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -910,7 +910,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

@@ -732,7 +732,7 @@ sizeof eight_byte is:8</pre>
 <p>
 <span class="marked">struct FOUR_BYTE</span>、その2つのビットフィールドはすべてint型なので、ビットの順序で格納できます（バイトに分ける必要はありません）。int型は4バイトを占め、ちょうど16+16=32ビット<strong>=4</strong>バイト。int型が占めるバイト数の<strong>1</strong>倍（整数倍）なので、<span class="marked">sizeof(four_byte)=4</span>。</p>
 <p>
-<span class="marked">struct EIGHT_BYTE</span>、その2つのビットフィールドは異なる型なので、それらのビット値を1バイトに書き込むことはできません（連続したバイトで格納できません）。すると、ccc1 は第1バイト（アドレス0）の第1ビットを占有します。次に ccc2 を格納するバイトを探します。ccc2 は int 型であり、int 型は4バイトを占めるため、システムはデフォルトで4の整数倍のアドレスに格納します。つまり、第1〜第4バイト（アドレス0-アドレス3）か、第5〜第8バイト（アドレス4-アドレス7）か、……、というように続きます。しかし、第1バイト（アドレス0）には既に ccc1 が格納されているため、ccc2 は第5〜第8バイトにのみ格納できます。その前の3バイトは0で埋められます。したがって、最終的に eight_byte が8バイトを占めると判断されます。最後に、8バイトという数が EIGHT_BYTE 構造体の中で最も広いバイト数を占める型（int型）の4バイトの整数倍（2倍）であることを確認できるので、こうなります。<span class="marked">sizeof(eight_byte)=8</span>。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">xuxing</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   xuxing</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  176***6295@qq.com</p></div></span>4年前 (2022-05-04)</div></div></li><!-- #comment-## -->
+<span class="marked">struct EIGHT_BYTE</span>、その2つのビットフィールドは異なる型なので、それらのビット値を1バイトに書き込むことはできません（連続したバイトで格納できません）。すると、ccc1 は第1バイト（アドレス0）の第1ビットを占有します。次に ccc2 を格納するバイトを探します。ccc2 は int 型であり、int 型は4バイトを占めるため、システムはデフォルトで4の整数倍のアドレスに格納します。つまり、第1〜第4バイト（アドレス0-アドレス3）か、第5〜第8バイト（アドレス4-アドレス7）か、……、というように続きます。しかし、第1バイト（アドレス0）には既に ccc1 が格納されているため、ccc2 は第5〜第8バイトにのみ格納できます。その前の3バイトは0で埋められます。したがって、最終のに eight_byte が8バイトを占めると判断されます。最後に、8バイトという数が EIGHT_BYTE 構造体の中で最も広いバイト数を占める型（int型）の4バイトの整数倍（2倍）であることを確認できるので、こうなります。<span class="marked">sizeof(eight_byte)=8</span>。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">xuxing</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   xuxing</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  176***6295@qq.com</p></div></span>4年前 (2022-05-04)</div></div></li><!-- #comment-## -->
 <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-74390"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   Ethan</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  186***29376@163.com</p></div><div class="upvotejs" data-commid="74390" id="runoobvote-id-74390"><a class="upvote"></a> <span class="count">17</span></div></div><div class="comt-main" id="div-comment-74390"><p><span class="marked"><a href="../index.html" rel="nofollow ugc">@xuxing</a></span>、最後の<strong>struct EIGHT_BYTE</strong>の占有メモリサイズの分析は誤りです。unsigned int 型は4バイトのメモリ空間に格納する必要があります。<strong>unsigned char</strong>型は1バイトのメモリ空間に格納する必要があります。しかし、ここでのビットフィールドの使用に関して、cc1 と cc2 はどちらも1ビットしか使用しておらず、つまりそれぞれ1 Bitを占有します。そのためシステムは cc1 の<strong>unsigned int</strong>型に基づいて、このビットフィールド変数を格納するために4バイトを確保します。したがって、最終的な sizeof(eight_byte) の結果は4であるはずです。</p>
 <p>もちろん、cc2 のビットフィールドの占有を32に変更してみることもできます。この場合、4バイトの領域では2つのビットフィールド変数を格納するのに十分でないため、int型が占めるバイト数の2倍に従って領域を確保する必要があります。つまりここでは8バイトが必要になります。</p>
 <pre>#include &lt;stdio.h&gt;
@@ -763,11 +763,11 @@ sizeof eight_byte is : 4</pre><div class="comt-meta wrapper"><span class="comt-a
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックできます</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックできます</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1056,7 +1056,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

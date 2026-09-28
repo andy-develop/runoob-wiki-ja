@@ -221,15 +221,15 @@ Series.str.split(pat=None, n=-1, expand=False)
 <div class="example_code">
 <span style="color: Green;font-weight:bold;">import</span> pandas <span style="color: Green;font-weight:bold;">as</span> pd<br/>
 <br/>
-<span style="color: #a50"># 创建一个包含句子的 Series</span><br/>
+<span style="color: #a50"># 文を含む Series を作成する</span><br/>
 s <span style="color: Gray;">=</span> pd.<span style="color: #05a;">Series</span><span style="color: Olive;">(</span><span style="color: Olive;">[</span><span style="color: #a11;">'hello world'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'runoob python'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'pandas data analysis'</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 按空白字符拆分（默认行为）</span><br/>
+<span style="color: #a50"># 空白文字で分割（デフォルト動作）</span><br/>
 result <span style="color: Gray;">=</span> s.<span style="color: Teal;">str</span>.<span style="color: #05a;">split</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"原始 Series:"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>s<span style="color: Olive;">)</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"n拆分后的结果:"</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"n分割後の結果:"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>result<span style="color: Olive;">)</span><br/>
 </div>
 </div>
@@ -259,7 +259,7 @@ dtype: object
 <div class="example_code">
 <span style="color: Green;font-weight:bold;">import</span> pandas <span style="color: Green;font-weight:bold;">as</span> pd<br/>
 <br/>
-<span style="color: #a50"># 创建包含逗号分隔值的 Series</span><br/>
+<span style="color: #a50"># カンマ区切りの値を含む Series を作成する</span><br/>
 s <span style="color: Gray;">=</span> pd.<span style="color: #05a;">Series</span><span style="color: Olive;">(</span><span style="color: Olive;">[</span><span style="color: #a11;">'apple,banana,orange'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'dog,cat,bird'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'red,green,blue'</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 按逗号拆分</span><br/>
@@ -267,7 +267,7 @@ result <span style="color: Gray;">=</span> s.<span style="color: Teal;">str</spa
 <br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"原始 Series:"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>s<span style="color: Olive;">)</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"n按逗号拆分后的结果:"</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"nをカンマで分割した結果:"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>result<span style="color: Olive;">)</span><br/>
 </div>
 </div>
@@ -298,16 +298,16 @@ dtype: object
 <br/>
 s <span style="color: Gray;">=</span> pd.<span style="color: #05a;">Series</span><span style="color: Olive;">(</span><span style="color: Olive;">[</span><span style="color: #a11;">'a,b,c,d,e'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'1,2,3,4,5'</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 限制只拆分为 2 部分</span><br/>
+<span style="color: #a50"># 分割を2つの部分だけに限定</span><br/>
 result_2 <span style="color: Gray;">=</span> s.<span style="color: Teal;">str</span>.<span style="color: #05a;">split</span><span style="color: Olive;">(</span><span style="color: #a11;">','</span><span style="color: Gray;">,</span> n<span style="color: Gray;">=</span><span style="color: Maroon;">2</span><span style="color: Olive;">)</span><br/>
-<span style="color: #a50"># 限制只拆分为 1 部分（即只拆分一次）</span><br/>
+<span style="color: #a50"># 分割を1つの部分のみに制限（すなわち1回だけ分割）</span><br/>
 result_1 <span style="color: Gray;">=</span> s.<span style="color: Teal;">str</span>.<span style="color: #05a;">split</span><span style="color: Olive;">(</span><span style="color: #a11;">','</span><span style="color: Gray;">,</span> n<span style="color: Gray;">=</span><span style="color: Maroon;">1</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"原始 Series:"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>s<span style="color: Olive;">)</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"n限制拆分为 2 部分:"</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">n制限を2つの部分に分割:</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>result_2<span style="color: Olive;">)</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"n限制拆分为 1 部分:"</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">n制限を1つの部分に分割:</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>result_1<span style="color: Olive;">)</span><br/>
 </div>
 </div>
@@ -338,15 +338,15 @@ dtype: object
 <div class="example_code">
 <span style="color: Green;font-weight:bold;">import</span> pandas <span style="color: Green;font-weight:bold;">as</span> pd<br/>
 <br/>
-<span style="color: #a50"># 创建包含逗号分隔值的 Series</span><br/>
+<span style="color: #a50"># カンマ区切りの値を含む Series を作成する</span><br/>
 s <span style="color: Gray;">=</span> pd.<span style="color: #05a;">Series</span><span style="color: Olive;">(</span><span style="color: Olive;">[</span><span style="color: #a11;">'apple,banana,orange'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'dog,cat,bird'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'red,green,blue'</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 展开为 DataFrame</span><br/>
+<span style="color: #a50"># DataFrameに展開</span><br/>
 result <span style="color: Gray;">=</span> s.<span style="color: Teal;">str</span>.<span style="color: #05a;">split</span><span style="color: Olive;">(</span><span style="color: #a11;">','</span><span style="color: Gray;">,</span> expand<span style="color: Gray;">=</span><span style="color: Teal;">True</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"原始 Series:"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>s<span style="color: Olive;">)</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"n展开为 DataFrame:"</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">nをDataFrameに展開:</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>result<span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"nDataFrame 类型:"</span><span style="color: Gray;">,</span> <span style="color: Teal;">type</span><span style="color: Olive;">(</span>result<span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 </div>
@@ -380,10 +380,10 @@ DataFrame 类型: &amp;lt;class 'pandas.core.frame.DataFrame'&amp;gt;
 <div class="example_code">
 <span style="color: Green;font-weight:bold;">import</span> pandas <span style="color: Green;font-weight:bold;">as</span> pd<br/>
 <br/>
-<span style="color: #a50"># 创建包含不同分隔符的 Series</span><br/>
+<span style="color: #a50"># 異なる区切り文字を含む Series を作成する</span><br/>
 s <span style="color: Gray;">=</span> pd.<span style="color: #05a;">Series</span><span style="color: Olive;">(</span><span style="color: Olive;">[</span><span style="color: #a11;">'hello-world'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'runoob_python'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'pandas#tutorial'</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 按正则表达式拆分（匹配 -、_、# 中的任意一个）</span><br/>
+<span style="color: #a50"># 正規表現で分割（-、_、# のいずれかに一致）</span><br/>
 result <span style="color: Gray;">=</span> s.<span style="color: Teal;">str</span>.<span style="color: #05a;">split</span><span style="color: Olive;">(</span>r<span style="color: #a11;">'[-_#]'</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"原始 Series:"</span><span style="color: Olive;">)</span><br/>
@@ -417,7 +417,7 @@ dtype: object
 <div class="example_code">
 <span style="color: Green;font-weight:bold;">import</span> pandas <span style="color: Green;font-weight:bold;">as</span> pd<br/>
 <br/>
-<span style="color: #a50"># 模拟从日志中提取的数据</span><br/>
+<span style="color: #a50"># ログから抽出したデータをシミュレーションする</span><br/>
 logs <span style="color: Gray;">=</span> pd.<span style="color: #05a;">Series</span><span style="color: Olive;">(</span><span style="color: Olive;">[</span><br/>
     <span style="color: #a11;">'2024-01-01 10:30:45 ERROR Connection failed'</span><span style="color: Gray;">,</span><br/>
     <span style="color: #a11;">'2024-01-01 10:31:12 INFO User logged in'</span><span style="color: Gray;">,</span><br/>
@@ -429,12 +429,12 @@ log_parts <span style="color: Gray;">=</span> logs.<span style="color: Teal;">st
 <br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"原始日志:"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>logs<span style="color: Olive;">)</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"n拆分后的 DataFrame:"</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">n分割後の DataFrame：</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>log_parts<span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 重命名列</span><br/>
 log_parts.<span style="color: #05a;">columns</span> <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: #a11;">'timestamp'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'level'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'message'</span><span style="color: Olive;">]</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"n重命名后的结果:"</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"nリネーム後の結果:"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>log_parts<span style="color: Olive;">)</span><br/>
 </div>
 </div>
@@ -594,11 +594,11 @@ dtype: object
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">メモは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> メモを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">メモは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> メモを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -887,7 +887,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

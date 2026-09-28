@@ -847,17 +847,17 @@ Unsigned long long int value for -1 is 18446744073709551615(0xffffffffffffffff)
 //...
 }</pre>
 <p>したがって、できるだけ...を使用しないようにしてください<strong>typedef</strong>。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">万能な木头君</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>万能な木头君</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  inc***e@163.com</p></div></span>6年前 (2020-12-12)</div></div></li><!-- #comment-## -->
-<li class="comment byuser comment-author-tianqixin odd alt thread-odd thread-alt depth-1" id="comment-83955"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   clara</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  137***6875@qq.com</p></div><div class="upvotejs" data-commid="83955" id="runoobvote-id-83955"><a class="upvote"></a> <span class="count">19</span></div></div><div class="comt-main" id="div-comment-83955"><p><code>reinterpret_cast</code> 和 <code>static_cast</code>どちらも C++ の型変換演算子ですが、用途と安全性において顕著な違いがあります。</p><strong>1、reinterpret_cast</strong><p><code>reinterpret_cast</code>ほぼ任意の型間で低レベルで、型チェックがほとんどない変換を行うために使用されます。この変換はデータをビット単位で直接再解釈するため、最も安全ではない変換です。主に以下の用途で使用されます：</p><ul><li>ポインタ型を他のポインタ型に変換します。</li><li>ポインタを十分に大きな整数型に変換します。逆も同様です。</li><li>異なる型のオブジェクト間で低レベルの変換を行います。</li></ul><p>この変換は一切のチェックを行わないため、プログラマはこの変換が妥当で安全であることを保証する必要があります。</p><strong>2、static_cast</strong><p><code>static_cast</code>関連する型間での型変換に使用され、比較的安全でコンパイル時の型チェックが行われます。以下の場合に適しています：</p><ul><li>基本型間の変換。例えば、...から<code>int</code> 到 <code>float</code>。</li><li>関連するクラス階層内でのポインタと参照のアップキャストおよびダウンキャスト。</li><li>通常のポインタと参照を...に変換します<code>void*</code>、逆も同様です。</li></ul><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">clara</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   clara</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  137***6875@qq.com</p></div></span>2年前 (2024-05-24)</div></div></li><!-- #comment-## -->
+<li class="comment byuser comment-author-tianqixin odd alt thread-odd thread-alt depth-1" id="comment-83955"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   clara</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  137***6875@qq.com</p></div><div class="upvotejs" data-commid="83955" id="runoobvote-id-83955"><a class="upvote"></a> <span class="count">19</span></div></div><div class="comt-main" id="div-comment-83955"><p><code>reinterpret_cast</code>と<code>static_cast</code>どちらも C++ の型変換演算子ですが、用途と安全性において顕著な違いがあります。</p><strong>1、reinterpret_cast</strong><p><code>reinterpret_cast</code>ほぼ任意の型間で低レベルで、型チェックがほとんどない変換を行うために使用されます。この変換はデータをビット単位で直接再解釈するため、最も安全ではない変換です。主に以下の用途で使用されます：</p><ul><li>ポインタ型を他のポインタ型に変換します。</li><li>ポインタを十分に大きな整数型に変換します。逆も同様です。</li><li>異なる型のオブジェクト間で低レベルの変換を行います。</li></ul><p>この変換は一切のチェックを行わないため、プログラマはこの変換が妥当で安全であることを保証する必要があります。</p><strong>2、static_cast</strong><p><code>static_cast</code>関連する型間での型変換に使用され、比較的安全でコンパイル時の型チェックが行われます。以下の場合に適しています：</p><ul><li>基本型間の変換。例えば、...から<code>int</code> 到 <code>float</code>。</li><li>関連するクラス階層内でのポインタと参照のアップキャストおよびダウンキャスト。</li><li>通常のポインタと参照を...に変換します<code>void*</code>、逆も同様です。</li></ul><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">clara</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   clara</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  137***6875@qq.com</p></div></span>2年前 (2024-05-24)</div></div></li><!-- #comment-## -->
 </ol>
 </div>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1146,7 +1146,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

@@ -748,7 +748,7 @@ main:[]int{1, 100, 3, 4, 5},5,5
 slice_ptr:[]int{1, 100, 3, 4, 5, 7},6,10
 main:[]int{1, 100, 3, 4, 5, 7},6,10
 24</pre><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">gibson1112</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   gibson1112</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  185***72536@163.com</p></div></span>7年前 (2019-05-21)</div></div></li><!-- #comment-## -->
-<li class="comment even thread-even depth-1" id="comment-43365"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   ragonli</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  rag***ig@gmail.com</p></div><div class="upvotejs" data-commid="43365" id="runoobvote-id-43365"><a class="upvote"></a> <span class="count">20</span></div></div><div class="comt-main" id="div-comment-43365"><p>slice の基盤は配列ポインタなので、slice<strong>a</strong> 和 <strong>s</strong>が指しているのは同じ基盤となる配列です。したがって、<strong>s[0]</strong>を変更すると、<strong>a</strong>も変更されます。</p>
+<li class="comment even thread-even depth-1" id="comment-43365"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   ragonli</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  rag***ig@gmail.com</p></div><div class="upvotejs" data-commid="43365" id="runoobvote-id-43365"><a class="upvote"></a> <span class="count">20</span></div></div><div class="comt-main" id="div-comment-43365"><p>slice の基盤は配列ポインタなので、slice<strong>a</strong>と<strong>s</strong>が指しているのは同じ基盤となる配列です。したがって、<strong>s[0]</strong>を変更すると、<strong>a</strong>も変更されます。</p>
 <pre>package main
 import "fmt"
 func main() {
@@ -934,7 +934,7 @@ len:5 cap: 8 array ptr: 0xc82006c080
 len:6 cap: 8 array ptr: 0xc82006c080
 Array: [0 0 1 2 3 4]</pre><p>
 <strong>説明：</strong>cap が変わるたびに、array のメモリを指すポインタも変化しています。append を使用しているとき、cap==len になると、この時点でより大きなメモリ領域を新たに確保し、それまでのデータをコピーします（実際、Go は append のときに cap を拡大する規則性があります。cap が1024未満の場合は毎回 2 * cap に拡大され、1024より大きくなると毎回 1.25 * cap に拡大されます。そのため上記のテストでは cap の変化は 1, 2, 4, 8 です）。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">网友小王</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>网友小王</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  770***908@qq.com</p></div></span>6年前 (2020-06-09)</div></div></li><!-- #comment-## -->
-<li class="comment even thread-even depth-1" id="comment-56326"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>是小飞呀</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  211***3262@qq.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="https://www.liwenzhou.com/posts/Go/06_slice/" rel="nofollow" target="_blank">参考URL</a></p></div><div class="upvotejs" data-commid="56326" id="runoobvote-id-56326"><a class="upvote"></a> <span class="count">38</span></div></div><div class="comt-main" id="div-comment-56326"><p>$GOROOT/src/runtime/slice.go のソースコードを確認すると、拡張に関するコードは次のとおりです：</p>
+<li class="comment even thread-even depth-1" id="comment-56326"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>小飛だよ</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  211***3262@qq.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="https://www.liwenzhou.com/posts/Go/06_slice/" rel="nofollow" target="_blank">参考URL</a></p></div><div class="upvotejs" data-commid="56326" id="runoobvote-id-56326"><a class="upvote"></a> <span class="count">38</span></div></div><div class="comt-main" id="div-comment-56326"><p>$GOROOT/src/runtime/slice.go のソースコードを確認すると、拡張に関するコードは次のとおりです：</p>
 <pre>newcap := old.cap
 doublecap := newcap + newcap
 if cap &gt; doublecap {
@@ -955,7 +955,7 @@ if cap &gt; doublecap {
         }
     }
 }</pre>
-<p>上記のコードから次のことがわかります：</p><ul><li>まず判断します。新しく申請する容量（cap）が旧容量（old.cap）の2倍より大きい場合、最終容量（newcap）は新しく申請した容量（cap）になります。</li><li>そうでない場合、旧スライスの長さが1024未満なら、最終容量（newcap）は旧容量（old.cap）の2倍になります。すなわち（newcap=doublecap）、</li><li>そうでない場合、旧スライスの長さが1024以上なら、最終容量（newcap）は旧容量（old.cap）から始まり、元の1/4ずつループして増加します。すなわち（newcap=old.cap, for {newcap += newcap/4}）で、最終容量（newcap）が新しく申請した容量（cap）以上になるまで続けます。すなわち（newcap &gt;= cap）</li><li>最終容量（cap）の計算値がオーバーフローした場合、最終容量（cap）は新しく申請した容量（cap）になります。</li></ul><p>注意すべき点は、スライスの拡張は、スライス内の要素の型が異なると異なる処理が行われることです。例えば<code>int</code>和<code>string</code>型の処理方法は異なります。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">是小飞呀</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>是小飞呀</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  211***3262@qq.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="https://www.liwenzhou.com/posts/Go/06_slice/" rel="nofollow" target="_blank">参考URL</a></p></div></span>6年前 (2020-08-18)</div></div></li><!-- #comment-## -->
+<p>上記のコードから次のことがわかります：</p><ul><li>まず判断します。新しく申請する容量（cap）が旧容量（old.cap）の2倍より大きい場合、最終容量（newcap）は新しく申請した容量（cap）になります。</li><li>そうでない場合、旧スライスの長さが1024未満なら、最終容量（newcap）は旧容量（old.cap）の2倍になります。すなわち（newcap=doublecap）、</li><li>そうでない場合、旧スライスの長さが1024以上なら、最終容量（newcap）は旧容量（old.cap）から始まり、元の1/4ずつループして増加します。すなわち（newcap=old.cap, for {newcap += newcap/4}）で、最終容量（newcap）が新しく申請した容量（cap）以上になるまで続けます。すなわち（newcap &gt;= cap）</li><li>最終容量（cap）の計算値がオーバーフローした場合、最終容量（cap）は新しく申請した容量（cap）になります。</li></ul><p>注意すべき点は、スライスの拡張は、スライス内の要素の型が異なると異なる処理が行われることです。例えば<code>int</code>と<code>string</code>型の処理方法は異なります。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">小飛だよ</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>小飛だよ</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  211***3262@qq.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="https://www.liwenzhou.com/posts/Go/06_slice/" rel="nofollow" target="_blank">参考URL</a></p></div></span>6年前 (2020-08-18)</div></div></li><!-- #comment-## -->
 <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-60996"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   dopsie</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  850***208@qq.com</p></div><div class="upvotejs" data-commid="60996" id="runoobvote-id-60996"><a class="upvote"></a> <span class="count">11</span></div></div><div class="comt-main" id="div-comment-60996"><p>上の方々の拡張後の容量についての説明は、すべて拡張が発生するコードのロジックの中にあり、このコード内のパラメータ cap（申請容量）がどのように計算されるのかは説明されていません。</p>
 <p>何度もテストした結果、私の推測では、append で拡張が発生するとき、申請容量は「元のスライスの容量 + 追加する長さ」で、もし奇数なら +1 し、その容量を拡張メソッドに渡して判断させます。議論している cap が 6 になるコードを例にすると：</p>
 <p>元のスライスは []int{1, 2} で、長さは2（len1 = 2 と記す）、容量は2（cap1 = 2 と記す）です。</p>
@@ -1070,7 +1070,7 @@ part4  d len=5 cap=8 slice=[1 2 3 4 5]
 part5  a len=6 cap=8 slice=[1 2 3 4 5 6]
 part5  c len=5 cap=8 slice=[1 2 3 4 5]
 part5 *d len=6 cap=8 slice=[1 2 3 4 5 6]</pre>
-<p>在 <strong>part3</strong>中では、<span class="marked">a[0]=1</span>変更しました<span class="marked">a[0]</span>の値は、しかし<span class="marked">b[0]</span>の値は変わりませんでした；そして、<span class="marked">a=append(a,5)</span>データを1つ追加しました、<strong>b</strong>スライスにはデータが追加されませんでした；これは単に<strong>b</strong> 的 <strong>cap</strong>が比較的小さい場合にのみ発生する状況です；もし<strong>b</strong> 的 <strong>cap</strong>が十分に大きい場合はどうでしょうか？</p>
+<p>に<strong>part3</strong>中では、<span class="marked">a[0]=1</span>変更しました<span class="marked">a[0]</span>の値は、しかし<span class="marked">b[0]</span>の値は変わりませんでした；そして、<span class="marked">a=append(a,5)</span>データを1つ追加しました、<strong>b</strong>スライスにはデータが追加されませんでした；これは単に<strong>b</strong>の<strong>cap</strong>が比較的小さい場合にのみ発生する状況です；もし<strong>b</strong>の<strong>cap</strong>が十分に大きい場合はどうでしょうか？</p>
 <p>コードを次のように変更します：</p>
 <pre>package main
 
@@ -1134,8 +1134,8 @@ part4  d len=5 cap=10 slice=[100 2 3 4 5]
 part5  a len=6 cap=10 slice=[100 2 3 4 5 6]
 part5  c len=5 cap=10 slice=[100 2 3 4 5]
 part5 *d len=6 cap=10 slice=[100 2 3 4 5 6]</pre>
-<p>変更後のコードでは、<strong>a, b</strong> 的 <strong>cap</strong>をすべて<strong>10</strong>；</p>
-<p>在 <strong>part3</strong>部分に設定し、これによって<span class="marked">a[0]</span>変更すると<span class="marked">a[0]</span>値は、<span class="marked">b[0]</span>値も一緒に変更されます；これによって<span class="marked">a=append(a, 5)</span>に<span class="marked">a</span>データ項目を追加できますが、<span class="marked">b</span>のデータ項目は増加しませんでした；</p>
+<p>変更後のコードでは、<strong>a, b</strong>の<strong>cap</strong>をすべて<strong>10</strong>；</p>
+<p>に<strong>part3</strong>部分に設定し、これによって<span class="marked">a[0]</span>変更すると<span class="marked">a[0]</span>値は、<span class="marked">b[0]</span>値も一緒に変更されます；これによって<span class="marked">a=append(a, 5)</span>に<span class="marked">a</span>データ項目を追加できますが、<span class="marked">b</span>のデータ項目は増加しませんでした；</p>
 <p>上記の実験から分かるように、<span class="marked">b:=a</span>参照の方法では、<span class="marked">cap(b)</span>より小さい場合、<span class="marked">len(a)</span>、変更しても<span class="marked">a[i]</span>の値は変わりません<span class="marked">b[i]</span>の値；しかし、もし<span class="marked">cap(b)≥len(a)</span>時は、変更すると<span class="marked">a(i)</span>の値が変更されます<span class="marked">b(i)</span>の値；</p>
 <p>2つのスライスを同期して変更したい場合、最良の方法はスライスポインタを使用することです。つまり上記の<span class="marked">*d</span>。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">vivisol</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   vivisol</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  viv***l@foxmail.com</p></div></span>4年前 (2022-07-07)</div></div></li><!-- #comment-## -->
 </ol>
@@ -1143,11 +1143,11 @@ part5 *d len=6 cap=10 slice=[100 2 3 4 5 6]</pre>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に必ず<a href=";.html" class="runoob-pop">ログイン</a>してください！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に必ず<a class="runoob-pop" href=";.html">ログイン</a>してください！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1436,7 +1436,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

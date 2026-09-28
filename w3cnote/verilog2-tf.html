@@ -99,7 +99,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>TF サブルーチンの用途は次のように分類できます：</p>
 <ul><li>システムタスクの情報を取得する</li><li>パラメータリストの情報を取得する</li><li>パラメータ値を取得する</li><li>パラメータ値をシステムタスクに返す</li><li>パラメータ値の変更を監視する</li><li>シミュレーション時間とスケジュールイベントの情報を取得する</li><li>算術演算</li><li>情報の表示</li><li>タスクの管理・保守</li><li>一時停止、終了、保存、復元などのその他のタスク</li></ul><p>完全な TF サブルーチンとその簡単な使用方法の説明は次のセクションを参照してください<a href="./verilog2-tf-sub.html" rel="noopener" target="_blank">『8.3 TF サブルーチン一覧』</a>。</p>
 <h3>TF サブルーチンの例</h3>
-<p>PLI サブルーチンライブラリの関数は数が多く、一つずつ例を挙げて説明すると大量の篇幅が必要になります。そのため、必要になった時に個々のサブルーチンを詳しく調べることをお勧めします。以下では TF 内の一部のサブルーチンの例のみを示し、TF サブルーチンを使用して Verilog システムタスクを設計する基本的な流れを主に説明します。</p>
+<p>PLI サブルーチンライブラリの関数は数が多く、一つずつ例を挙げて説明すると多大な紙幅が必要になります。そのため、必要になった時に個々のサブルーチンを詳しく調べることをお勧めします。以下では TF 内の一部のサブルーチンの例のみを示し、TF サブルーチンを使用して Verilog システムタスクを設計する基本的な流れを主に説明します。</p>
 <p><strong>設計要件</strong></p><p>場合によっては、C 言語ファイルのコンパイル後のオブジェクトファイルサイズを小さくするため、または一定の形式でデバッグ情報を出力するために、ソフトウェア内のプリント関数は C 言語標準の printf 関数を使用せず、TF サブルーチンの io_printf 関数も使用せず、PLI インターフェースを利用して Verilog のシステム表示関数 ($display または $write) を使用してユーザー定義のソフトウェアプリント関数を実現することがあります。</p><p>今回はソフトウェアプリント関数を設計し、print_my と命名します。出力形式は「文字列+整数」です。</p>
 <p><strong>設計分析</strong></p><p>ユーザー定義のソフトウェアプリント関数 print_my は単なる見た目の良くない入れ物であり、プリント情報をソフトウェアの仮引数変数に渡すために使用されます。プリント情報を Verilog に渡すために、TF サブルーチンで構成されたシステムタスクも必要であり、$send_my() と命名します。</p><p>説明が必要なのは、TF サブルーチンで実装されたシステムタスクは通常、Verilog コード内で呼び出される必要があるということです。ソフトウェアがこの「システムタスク」を直接呼び出すことは、ソフトウェア関数を呼び出すことに相当し、Verilog コード内の関連変数の記述とは直接的な関係がありません。したがって、ソフトウェア関数 print_my 内で「ソフトウェア関数」send_my を直接呼び出しても意味がありません。そのため、print_my に特定のソフトウェア動作を追加して、システムタスク $send_my が Verilog によって呼び出されるようにトリガーする必要があります。</p>
 <p>ディジタルシステムに CPU が含まれる場合は、ソフトウェアでバスやメモリに書き込み、testbench 内で関連する信号変数を監視する方法を使用できます。今回は設計規模が小さいため、別の方法を採用できます。つまり、Verilog 内でシステムタスク $send_my を常に実行し、ソフトウェア関数 print_my 内でグローバル変数を設定して、情報転送とプリントの操作を行うかどうかを制御します。</p>
@@ -381,11 +381,11 @@ $call_c_print call=call_c_print</pre>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">メモはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリック</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> メモを共有する前に<a href=".." class="runoob-pop">ログイン</a>する必要があります！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">メモはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリック</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> メモを共有する前に<a class="runoob-pop" href="..">ログイン</a>する必要があります！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

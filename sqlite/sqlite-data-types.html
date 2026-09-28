@@ -179,12 +179,12 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <tr><td>BLOB</td><td>値は blob データで、入力内容に基づいてそのまま格納されます。</td></tr>
 </table>
 <p>SQLite のストレージクラスは、データ型よりもやや一般的です。たとえば、INTEGER ストレージクラスには、長さの異なる 6 種類の整数データ型が含まれます。</p>
-<h2 class="tutheader">SQLite 亲和(Affinity)类型</h2>
+<h2 class="tutheader">SQLite アフィニティ(Affinity)型</h2>
 <p>SQLite は列のアフィニティタイプの概念をサポートしています。どの列でも引き続き任意のタイプのデータを格納できますが、データ挿入時には、そのフィールドのデータは優先的にアフィニティタイプをその値の格納方法として採用します。SQLite の現在のバージョンでは、次の 5 つのアフィニティタイプをサポートしています：</p>
 <table class="reference">
-<tr><th style="width:30%">亲和类型</th><th style="width:70%">描述</th></tr>
+<tr><th style="width:30%">親と型</th><th style="width:70%">描述</th></tr>
 <tr><td>TEXT</td><td>数値型データは、挿入前にテキスト形式に変換されてから、対象フィールドに挿入される必要があります。</td></tr>
-<tr><td>NUMERIC</td><td>テキストデータが NUMERIC アフィニティのフィールドに挿入される場合、変換操作によってデータ情報が失われず、完全に可逆的であるならば、SQLite はそのテキストデータを INTEGER または REAL 型のデータに変換します。変換に失敗した場合、SQLite はそのデータを TEXT として格納します。NULL または BLOB 型の新しいデータについては、SQLite は変換を行わず、NULL または BLOB としてそのまま格納します。なお、補足として、"30000.0" のような浮動小数点形式の定数テキストは、INTEGER に変換しても数値情報が失われない場合、SQLite はそれを INTEGER の格納方式に変換します。</td></tr>
+<tr><td>NUMERIC</td><td>テキストデータが NUMERIC アフィニティのフィールドに挿入される場合、変換操作によってデータ情報が失われず、完全に可逆のであるならば、SQLite はそのテキストデータを INTEGER または REAL 型のデータに変換します。変換に失敗した場合、SQLite はそのデータを TEXT として格納します。NULL または BLOB 型の新しいデータについては、SQLite は変換を行わず、NULL または BLOB としてそのまま格納します。なお、補足として、"30000.0" のような浮動小数点形式の定数テキストは、INTEGER に変換しても数値情報が失われない場合、SQLite はそれを INTEGER の格納方式に変換します。</td></tr>
 <tr><td>INTEGER</td><td>アフィニティタイプが INTEGER のフィールドの場合、そのルールは NUMERIC と同じですが、唯一の違いは CAST 式を実行するときです。</td></tr>
 <tr><td>REAL</td><td>そのルールは基本的に NUMERIC と同じですが、唯一の違いは "30000.0" のようなテキストデータを INTEGER の格納方式に変換しないことです。</td></tr>
 <tr><td>NONE</td><td>変換は一切行わず、そのデータが属するデータ型のまま格納します。</td></tr>
@@ -192,7 +192,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2 class="tutheader">SQLite アフィニティ型と型名</h2>
 <p>次の表は、SQLite3 テーブルの作成時に使用できるさまざまなデータ型名と、対応するアフィニティタイプを示しています：</p>
 <table class="reference">
-<tr><th style="width:30%">数据类型</th><th style="width:70%">亲和类型</th></tr>
+<tr><th style="width:30%">数据类型</th><th style="width:70%">親と型</th></tr>
 <tr><td>
 <ul class="list">
 <li><p>INT</p></li>
@@ -370,11 +370,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -663,7 +663,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

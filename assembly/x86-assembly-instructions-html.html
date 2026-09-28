@@ -298,7 +298,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </tbody>
 </table>
 <blockquote>
-<p><code>LEA</code> 与 <code>MOV</code>の重要な違い：<code>LEA REG, [ADDR]</code>ロードされるのはアドレス値そのものであり、<code>MOV REG, [ADDR]</code>ロードされるのはそのアドレスにあるメモリの内容です。アドレス計算を行う場合（例：<code>LEA EAX, [EBX+4*ECX+8]</code>）の場合、LEAは非常に効率的です。</p>
+<p><code>LEA</code>と<code>MOV</code>の重要な違い：<code>LEA REG, [ADDR]</code>ロードされるのはアドレス値そのものであり、<code>MOV REG, [ADDR]</code>ロードされるのはそのアドレスにあるメモリの内容です。アドレス計算を行う場合（例：<code>LEA EAX, [EBX+4*ECX+8]</code>）の場合、LEAは非常に効率的です。</p>
 </blockquote>
 <hr/>
 <h2>算術演算命令</h2>
@@ -508,11 +508,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </tr>
 <tr>
 <td><code>REPE / REPZ</code></td>
-<td>相等/为零时重复，ECX ≠ 0 且 ZF = 1 时继续（通常与 CMPS、SCAS 联用搜索匹配项）</td>
+<td>等しい/ゼロの間繰り返す。ECX ≠ 0 かつ ZF = 1 の間続行（通常、CMPS、SCAS と併用して一致項目を検索します）</td>
 </tr>
 <tr>
 <td><code>REPNE / REPNZ</code></td>
-<td>不等/不为零时重复，ECX ≠ 0 且 ZF = 0 时继续（用于搜索不匹配项）</td>
+<td>不等/非ゼロのとき繰り返し、ECX ≠ 0 かつ ZF = 0 のとき続行（不一致の検索用）</td>
 </tr>
 </tbody>
 </table>
@@ -549,7 +549,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </table>
 <h3>条件跳转</h3>
 <p>条件ジャンプは、フラグレジスタ内の特定のフラグビットの値に基づいてジャンプするかどうかを決定します。</p>
-<p>通常紧跟在<code>CMP</code> 或 <code>TEST</code>命令の後に使用。</p>
+<p>通常はすぐ後に続く<code>CMP</code> 或 <code>TEST</code>命令の後に使用。</p>
 <table class="reference">
 <thead>
 <tr>
@@ -688,7 +688,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </tr>
 </tbody>
 </table>
-<h3>中断与返回</h3>
+<h3>中断と復帰</h3>
 <table class="reference">
 <thead>
 <tr>
@@ -831,11 +831,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </tr>
 <tr>
 <td><code>INS</code></td>
-<td>从端口读入字节/字/双字到 ES:EDI 指向的内存，并自动更新 EDI（类似 STOS 但从 I/O 读取）</td>
+<td>ポートからバイト/ワード/ダブルワードを ES:EDI が指すメモリへ読み込み、EDI を自動的に更新します（STOS に似ていますが、I/O から読み込みます）</td>
 </tr>
 <tr>
 <td><code>OUTS</code></td>
-<td>将 DS:ESI 指向的内存字节/字/双字输出到端口，并自动更新 ESI</td>
+<td>DS:ESI が指すメモリのバイト/ワード/ダブルワードをポートに出力し、ESI を自動的に更新する。</td>
 </tr>
 </tbody>
 </table>
@@ -1112,11 +1112,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1405,7 +1405,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

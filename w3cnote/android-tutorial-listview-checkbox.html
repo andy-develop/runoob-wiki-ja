@@ -102,7 +102,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p><img alt="" decoding="async" src="../wp-content/uploads/2015/09/23101560K-0.jpg"/></p>
 <p>上の図には一つの<strong>Recycler</strong>ものがあります。普段、ListView上で見えるItemはメモリ内にあり、その他のItemはこのRecyclerの中に置かれます。最初にitemを読み込むとき、現在のページ内のconvertViewはすべてNULLです。画面外にスクロールすると、このとき<strong>ConvertView</strong>空ではないため、新しい項目はこのConvertViewを再利用します！簡単な例を書いて、ログを追ってみましょう。以下は実行後のログの図の一部です！</p>
 <p><img alt="" decoding="async" src="../wp-content/uploads/2015/09/64217183.jpg"/></p>
-<p>図からわかるように、Positionが12から始まると、ConvertViewは空ではなくなります。具体的にここで何を表しているのかは、私もわかりません。おそらくソースコードを追う必要があります...ここでConvertViewがキャッシュされることを知っておけば十分です。この原因でcheckboxの位置ずれが発生するため、最初の解決方法はこのConvertViewを再利用しないこと、あるいは毎回getViewでこのConvertViewをnullに設定することです。しかし、表示する必要があるItemの数が膨大な場合、この方法は非常に冗長になります。一般的に実際の開発では、以下の解決方法を使用します。<strong>現在のItemのCheckBox状態を保存するものを見つけて、初期化時に判断し、選択済みかどうかを設定します！</strong></p>
+<p>図からわかるように、Positionが12から始まると、ConvertViewは空ではなくなります。具体的にここで何を表しているのかは、私もわかりません。おそらくソースコードを追う必要があります...ここでConvertViewがキャッシュされることを知っておけば十分です。この原因でcheckboxの位置ずれが発生するため、最初の解決方法はこのConvertViewを再利用しないこと、あるいは毎回getViewでこのConvertViewをnullに設定することです。しかし、表示する必要があるItemの数が膨大な場合、この方法は非常に冗長になります。一般のに実際の開発では、以下の解決方法を使用します。<strong>現在のItemのCheckBox状態を保存するものを見つけて、初期化時に判断し、選択済みかどうかを設定します！</strong></p>
 <hr/>
 <h2>2. 解決方法の例：</h2>
 <blockquote><p>このCheckboxの状態を保存する方法はたくさんあります。HashMap&lt;Integer, Boolean&gt;に入れて、初期化のたびにpositionに応じて対応するboolean値を取得し、checkboxの状態を設定できます。筆者のやり方は、entityクラスにboolean値を追加して判断するというものです。以下は筆者のプロジェクトから抽出したコードです。コードは比較的簡単なので、見ればすぐに理解できると思います。</p></blockquote>
@@ -337,11 +337,11 @@ public class ContactListAdapter extends BaseAdapter implements CompoundButton.On
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=".." class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href="..">ログイン</a>が必要です！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

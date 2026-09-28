@@ -319,7 +319,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <pre>
 CREATE INDEX index_name
 ON table_name (column1 [ASC|DESC], column2 [ASC|DESC], ...);
-</pre><ul><li><code>CREATE INDEX</code>: 通常のインデックスを作成するためのキーワード。</li><li><code>index_name</code>: 作成するインデックスの名前を指定します。インデックス名はテーブル内で一意である必要があります。</li><li><code>table_name</code>: どのテーブルにインデックスを作成するかを指定します。</li><li><code>(column1, column2, ...)</code>: インデックスを作成するテーブルの列名を指定します。1つまたは複数の列をインデックスの組み合わせとして指定できます。これらの列のデータ型は通常、数値、テキスト、または日付です。</li><li><code>ASC</code>和<code>DESC</code>（オプション）: インデックスの並べ替え順序を指定します。デフォルトでは、インデックスは昇順（ASC）で並べ替えられます。</li></ul>
+</pre><ul><li><code>CREATE INDEX</code>: 通常のインデックスを作成するためのキーワード。</li><li><code>index_name</code>: 作成するインデックスの名前を指定します。インデックス名はテーブル内で一意である必要があります。</li><li><code>table_name</code>: どのテーブルにインデックスを作成するかを指定します。</li><li><code>(column1, column2, ...)</code>: インデックスを作成するテーブルの列名を指定します。1つまたは複数の列をインデックスの組み合わせとして指定できます。これらの列のデータ型は通常、数値、テキスト、または日付です。</li><li><code>ASC</code>と<code>DESC</code>（オプション）: インデックスの並べ替え順序を指定します。デフォルトでは、インデックスは昇順（ASC）で並べ替えられます。</li></ul>
 <p>次の例では、id、name、age 列を含む students という名前のテーブルがあると仮定し、name 列に通常のインデックスを作成します。</p><pre>CREATE INDEX idx_name ON students (name);</pre>
 <p>上記のステートメントは、students テーブルの name 列に idx_name という名前の通常のインデックスを作成します。これにより、名前で検索するクエリのパフォーマンスが向上します。</p><p>注意すべき点として、テーブル内のデータ量が多い場合、インデックスの作成には時間がかかることがありますが、一度作成が完了すると、クエリのパフォーマンスは大幅に向上します。</p>
 <h3>テーブル構造の変更（インデックスの追加）</h3>
@@ -328,7 +328,7 @@ ON table_name (column1 [ASC|DESC], column2 [ASC|DESC], ...);
 <pre>
 ALTER TABLE table_name
 ADD INDEX index_name (column1 [ASC|DESC], column2 [ASC|DESC], ...);
-</pre><ul><li><code>ALTER TABLE</code>: テーブル構造を変更するためのキーワード。</li><li><code>table_name</code>: 変更するテーブルの名前を指定します。</li><li><code>ADD INDEX</code>: インデックスを追加する句。<code>ADD INDEX</code>通常のインデックスを作成するために使用されます。</li><li><code>index_name</code>: 作成するインデックスの名前を指定します。インデックス名はテーブル内で一意である必要があります。</li><li><code>(column1, column2, ...)</code>: インデックスを作成するテーブルの列名を指定します。1つまたは複数の列をインデックスの組み合わせとして指定できます。これらの列のデータ型は通常、数値、テキスト、または日付です。</li><li><code>ASC</code>和<code>DESC</code>（オプション）: インデックスの並べ替え順序を指定します。デフォルトでは、インデックスは昇順（ASC）で並べ替えられます。</li></ul><p>以下は例です。既存の employees という名前のテーブルに通常のインデックスを作成します:</p>
+</pre><ul><li><code>ALTER TABLE</code>: テーブル構造を変更するためのキーワード。</li><li><code>table_name</code>: 変更するテーブルの名前を指定します。</li><li><code>ADD INDEX</code>: インデックスを追加する句。<code>ADD INDEX</code>通常のインデックスを作成するために使用されます。</li><li><code>index_name</code>: 作成するインデックスの名前を指定します。インデックス名はテーブル内で一意である必要があります。</li><li><code>(column1, column2, ...)</code>: インデックスを作成するテーブルの列名を指定します。1つまたは複数の列をインデックスの組み合わせとして指定できます。これらの列のデータ型は通常、数値、テキスト、または日付です。</li><li><code>ASC</code>と<code>DESC</code>（オプション）: インデックスの並べ替え順序を指定します。デフォルトでは、インデックスは昇順（ASC）で並べ替えられます。</li></ul><p>以下は例です。既存の employees という名前のテーブルに通常のインデックスを作成します:</p>
 <pre>ALTER TABLE employees
 ADD INDEX idx_age (age);</pre><p>上記のステートメントは、employees テーブルの age 列に idx_age という名前の通常のインデックスを作成します。</p>
 <h3>テーブル作成時に直接指定</h3><p>テーブルを作成するときには、<strong>CREATE TABLE</strong>ステートメントでインデックスを直接指定して、テーブルとインデックスの組み合わせを作成できます。</p>
@@ -340,7 +340,7 @@ CREATE TABLE table_name (
   INDEX index_name (column1 [ASC|DESC], column2 [ASC|DESC], ...)
 );
 </pre><ul><li><code>CREATE TABLE</code>: 新しいテーブルを作成するためのキーワード。</li><li><code>table_name</code>: 作成するテーブルの名前を指定します。</li>
-<li><code>(column1 data_type, column2 data_type, ...)</code>: テーブルの列名とデータ型を定義します。1つまたは複数の列をインデックスの組み合わせとして指定できます。これらの列のデータ型は通常、数値、テキスト、または日付です。</li><li><code>INDEX</code>: 通常のインデックスを作成するためのキーワード。</li><li><code>index_name</code>: 作成するインデックスの名前を指定します。インデックス名はテーブル内で一意である必要があります。</li><li><code>(column1, column2, ...)</code>: インデックスを作成するテーブルの列名を指定します。1つまたは複数の列をインデックスの組み合わせとして指定できます。これらの列のデータ型は通常、数値、テキスト、または日付です。</li><li><code>ASC</code>和<code>DESC</code>（オプション）: インデックスの並べ替え順序を指定します。デフォルトでは、インデックスは昇順（ASC）で並べ替えられます。</li></ul><p>以下は例です。students という名前のテーブルを作成し、age 列に通常のインデックスを作成します。</p>
+<li><code>(column1 data_type, column2 data_type, ...)</code>: テーブルの列名とデータ型を定義します。1つまたは複数の列をインデックスの組み合わせとして指定できます。これらの列のデータ型は通常、数値、テキスト、または日付です。</li><li><code>INDEX</code>: 通常のインデックスを作成するためのキーワード。</li><li><code>index_name</code>: 作成するインデックスの名前を指定します。インデックス名はテーブル内で一意である必要があります。</li><li><code>(column1, column2, ...)</code>: インデックスを作成するテーブルの列名を指定します。1つまたは複数の列をインデックスの組み合わせとして指定できます。これらの列のデータ型は通常、数値、テキスト、または日付です。</li><li><code>ASC</code>と<code>DESC</code>（オプション）: インデックスの並べ替え順序を指定します。デフォルトでは、インデックスは昇順（ASC）で並べ替えられます。</li></ul><p>以下は例です。students という名前のテーブルを作成し、age 列に通常のインデックスを作成します。</p>
 <pre>CREATE TABLE students (
   id INT PRIMARY KEY,
   name VARCHAR(50),
@@ -369,7 +369,7 @@ DROP INDEX idx_age;</pre><p>これらの2つのコマンドはどちらも、emp
 CREATE UNIQUE INDEX index_name
 ON table_name (column1 [ASC|DESC], column2 [ASC|DESC], ...);
 </pre>
-<ul><li><code>CREATE UNIQUE INDEX</code>: 一意インデックスを作成するためのキーワードの組み合わせ。</li><li><code>index_name</code>: 作成する一意インデックスの名前を指定します。インデックス名はテーブル内で一意である必要があります。</li><li><code>table_name</code>: どのテーブルに一意インデックスを作成するかを指定します。</li><li><code>(column1, column2, ...)</code>: インデックスを作成するテーブルの列名を指定します。1つまたは複数の列をインデックスの組み合わせとして指定できます。これらの列のデータ型は通常、数値、テキスト、または日付です。</li><li><code>ASC</code>和<code>DESC</code>（オプション）: インデックスの並べ替え順序を指定します。デフォルトでは、インデックスは昇順（ASC）で並べ替えられます。</li></ul><p>以下は一意インデックスを作成する例です： id と email 列を含む employees という名前のテーブルがあると仮定します。ここで、各従業員の電子メールアドレスが一意であることを保証するために、email 列に一意インデックスを作成します。</p>
+<ul><li><code>CREATE UNIQUE INDEX</code>: 一意インデックスを作成するためのキーワードの組み合わせ。</li><li><code>index_name</code>: 作成する一意インデックスの名前を指定します。インデックス名はテーブル内で一意である必要があります。</li><li><code>table_name</code>: どのテーブルに一意インデックスを作成するかを指定します。</li><li><code>(column1, column2, ...)</code>: インデックスを作成するテーブルの列名を指定します。1つまたは複数の列をインデックスの組み合わせとして指定できます。これらの列のデータ型は通常、数値、テキスト、または日付です。</li><li><code>ASC</code>と<code>DESC</code>（オプション）: インデックスの並べ替え順序を指定します。デフォルトでは、インデックスは昇順（ASC）で並べ替えられます。</li></ul><p>以下は一意インデックスを作成する例です： id と email 列を含む employees という名前のテーブルがあると仮定します。ここで、各従業員の電子メールアドレスが一意であることを保証するために、email 列に一意インデックスを作成します。</p>
 <pre>CREATE UNIQUE INDEX idx_email ON employees (email);</pre>
 <p>上記の例では、employees テーブルの email 列に idx_email という名前の一意インデックスを作成します。</p>
 <h3>テーブル構造の変更によるインデックスの追加</h3>
@@ -393,7 +393,7 @@ CREATE TABLE table_name (
   ...,
   CONSTRAINT index_name UNIQUE (column1 [ASC|DESC], column2 [ASC|DESC], ...)
 );
-</pre><ul><li><code>CREATE TABLE</code>: 新しいテーブルを作成するためのキーワード。</li><li><code>table_name</code>: 作成するテーブルの名前を指定します。</li><li><code>(column1 data_type, column2 data_type, ...)</code>: テーブルの列名とデータ型を定義します。1つまたは複数の列をインデックスの組み合わせとして指定できます。これらの列のデータ型は通常、数値、テキスト、または日付です。</li><li><code>CONSTRAINT</code>: 制約を追加するためのキーワード。</li><li><code>index_name</code>: 作成する一意インデックスの名前を指定します。制約名はテーブル内で一意である必要があります。</li><li><code>UNIQUE (column1, column2, ...)</code>: インデックスを作成するテーブルの列名を指定します。</li><li><code>ASC</code>和<code>DESC</code>（オプション）: インデックスの並べ替え順序を指定します。デフォルトでは、インデックスは昇順（ASC）で並べ替えられます。</li></ul>
+</pre><ul><li><code>CREATE TABLE</code>: 新しいテーブルを作成するためのキーワード。</li><li><code>table_name</code>: 作成するテーブルの名前を指定します。</li><li><code>(column1 data_type, column2 data_type, ...)</code>: テーブルの列名とデータ型を定義します。1つまたは複数の列をインデックスの組み合わせとして指定できます。これらの列のデータ型は通常、数値、テキスト、または日付です。</li><li><code>CONSTRAINT</code>: 制約を追加するためのキーワード。</li><li><code>index_name</code>: 作成する一意インデックスの名前を指定します。制約名はテーブル内で一意である必要があります。</li><li><code>UNIQUE (column1, column2, ...)</code>: インデックスを作成するテーブルの列名を指定します。</li><li><code>ASC</code>と<code>DESC</code>（オプション）: インデックスの並べ替え順序を指定します。デフォルトでは、インデックスは昇順（ASC）で並べ替えられます。</li></ul>
 <p>以下は、テーブル作成時に一意インデックスを作成する例です：id、name、email 列を含む employees という名前のテーブルを作成するとします。email 列の値を一意にしたいので、テーブル作成時に一意インデックスを定義します。</p>
 <pre>CREATE TABLE employees (
   id INT PRIMARY KEY,
@@ -559,11 +559,11 @@ mysql&gt; SHOW INDEX FROM table_name\G
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>する必要があります！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>する必要があります！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -863,7 +863,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

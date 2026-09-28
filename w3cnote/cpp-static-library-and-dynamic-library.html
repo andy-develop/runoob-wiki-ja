@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>C++静的ライブラリと動的ライブラリ | 菜鸟教程</title>
+<title>C++静的ライブラリと動的ライブラリ | 初心者向けチュートリアル</title>
 <script>
 window.RUNOOB_CONFIG = {
   darkCssUrl: "https://www.runoob.com/wp-content/themes/runoob/dark-mode.css?v=1.125"
@@ -186,7 +186,7 @@ int main(int argc, char* argv[])
 <h3>2.2.Windowsでの静的ライブラリの作成と使用</h3>
 <h4>- まず、コンパイラオプションを使用して</h4>
 <p>コードをコンパイルします（</p>
-<p>）、"StaticMath.obj"という名前のオブジェクトファイルを作成します。<strong>/c</strong> 的 <strong>Cl.exe</strong>- 次に、ライブラリマネージャーを使用して<strong>cl
+<p>）、"StaticMath.obj"という名前のオブジェクトファイルを作成します。<strong>/c</strong>の<strong>Cl.exe</strong>- 次に、ライブラリマネージャーを使用して<strong>cl
  /c StaticMath.cpp</strong>コードをリンクし（</p>
 <p>）、静的ライブラリStaticMath.libを作成します。<strong>Lib.exe</strong>もちろん、通常はこの方法は使わず、VSのプロジェクト設定を使う方が便利です。Win32コンソールプログラムを作成する際に、静的ライブラリの種類をチェックし、プロジェクトの「プロパティパネル」→「構成プロパティ」→「全般」を開き、構成の種類で静的ライブラリを選択します。<strong>lib StaticMath.obj</strong>図：VS静的ライブラリのプロジェクトプロパティ設定</p>
 <p>プロジェクトをビルドすると静的ライブラリが生成されます。</p>
@@ -195,8 +195,8 @@ int main(int argc, char* argv[])
 <p>テストコードはLinuxの場合と同じです。使用方法は3つあります。</p>
 <h4>方法1：</h4>
 <p>VSで静的ライブラリを使用する方法：</p>
-<h4><em>- プロジェクトの「プロパティパネル」→「共通プロパティ」→「フレームワークと参照」→「参照の追加」で、「参照の追加」ダイアログが表示されます。「プロジェクト」タブには、現在のソリューション内の各プロジェクトと、参照できるすべてのライブラリが一覧表示されます。「プロジェクト」タブで、StaticLibraryを選択します。「OK」をクリックします。</em></h4>
-<p>- StaticMath.h ヘッダーファイルのディレクトリを追加するには、インクルードディレクトリのパスを変更する必要があります。プロジェクトの「プロパティパネル」→「構成プロパティ」→「C/C++」→「全般」を開き、「追加のインクルードディレクトリ」のプロパティ値に、StaticMath.h ヘッダーファイルが存在するディレクトリのパスを入力するか、そのディレクトリを参照します。</p>
+<h4><em>プロジェクトの「プロパティパネル」→「共通プロパティ」→「フレームワークと参照」→「参照の追加」で、「参照の追加」ダイアログが表示されます。「プロジェクト」タブには、現在のソリューション内の各プロジェクトと、参照できるすべてのライブラリが一覧表示されます。「プロジェクト」タブで、StaticLibraryを選択します。「OK」をクリックします。</em></h4>
+<p>StaticMath.h ヘッダーファイルのディレクトリを追加するには、インクルードディレクトリのパスを変更する必要があります。プロジェクトの「プロパティパネル」→「構成プロパティ」→「C/C++」→「全般」を開き、「追加のインクルードディレクトリ」のプロパティ値に、StaticMath.h ヘッダーファイルが存在するディレクトリのパスを入力するか、そのディレクトリを参照します。</p>
 <p>コンパイルして実行すればOKです。</p>
 <p align="center"><a href="../wp-content/uploads/2015/05/16201607-fed082fd8a134770b24c2b4569ad4405.jpg" style="color:rgb(61,129,238)" target="_blank"><img alt="clip_image012[4]" border="0" decoding="async" height="365" loading="lazy" src="../wp-content/uploads/2015/05/16201607-fed082fd8a134770b24c2b4569ad4405.jpg" title="clip_image012[4]" width="554"/></a></p>
 <p>図：静的ライブラリのテスト結果（VS）</p>
@@ -208,14 +208,14 @@ int main(int argc, char* argv[])
 <h4><em>方法3：</em></h4>
 <p>- 「プロパティパネル」→「構成プロパティ」→「リンカー」→「全般」で、「追加のライブラリディレクトリ」に静的ライブラリが存在するディレクトリを入力します。</p>
 <p align="center"><a href="../wp-content/uploads/2015/05/16201610-2bde8b094f5a4603848c574f1f228144.jpg" style="color:rgb(61,129,238)" target="_blank"><img alt="clip_image017[4]" border="0" decoding="async" height="359" loading="lazy" src="../wp-content/uploads/2015/05/16201610-2bde8b094f5a4603848c574f1f228144.jpg" title="clip_image017[4]" width="554"/></a></p>
-<h4><em>- 「プロパティパネル」→「構成プロパティ」→「リンカー」→「入力」で、「追加の依存ファイル」に静的ライブラリ名StaticLibrary.libを入力します。</em></h4>
+<h4><em>「プロパティパネル」→「構成プロパティ」→「リンカー」→「入力」で、「追加の依存ファイル」に静的ライブラリ名StaticLibrary.libを入力します。</em></h4>
 <p>3.動的ライブラリ</p>
 <p>上記の説明から、静的ライブラリは使いやすく理解しやすく、コード再利用の目的も達成できることがわかりました。では、なぜ動的ライブラリも必要なのか？</p>
 <p align="center"><a href="../wp-content/uploads/2015/05/16201612-3af709f047ca4964898f3ce29680093c.jpg" style="color:rgb(61,129,238)" target="_blank"><img alt="clip_image019[4]" border="0" decoding="async" height="359" loading="lazy" src="../wp-content/uploads/2015/05/16201612-3af709f047ca4964898f3ce29680093c.jpg" title="clip_image019[4]" width="554"/></a></p>
 <h2>3.動的ライブラリ</h2>
 <p>なぜ動的ライブラリが必要なのか、それは実は静的ライブラリの特徴によるものです。</p>
 <h3>3.1.なぜ動的ライブラリも必要なのか？</h3>
-<p>- もう1つの問題は、静的ライブラリがプログラムの更新、展開、リリースにも問題をもたらすことです。静的ライブラリliba.libが更新された場合、それを使用するすべてのアプリケーションを再コンパイルし、ユーザーに再リリースする必要があります（プレイヤーにとっては、ごく小さな変更であっても、プログラム全体を再ダウンロードすることになり、</p>
+<p>もう1つの問題は、静的ライブラリがプログラムの更新、展開、リリースにも問題をもたらすことです。静的ライブラリliba.libが更新された場合、それを使用するすべてのアプリケーションを再コンパイルし、ユーザーに再リリースする必要があります（プレイヤーにとっては、ごく小さな変更であっても、プログラム全体を再ダウンロードすることになり、</p>
 <p>全量更新</p>
 <p align="center"><a href="../wp-content/uploads/2015/05/16201613-1320ec57feb24583a6b1294421c323b8.png" style="color:rgb(61,129,238)" target="_blank"><img alt="clip_image021[4]" border="0" decoding="async" height="413" loading="lazy" src="../wp-content/uploads/2015/05/16201613-1320ec57feb24583a6b1294421c323b8.png" title="clip_image021[4]" width="483"/></a></p>
 <p>動的ライブラリはプログラムのコンパイル時にオブジェクトコードにリンクされず、プログラムの実行時にロードされます。<strong>異なるアプリケーションが同じライブラリを呼び出す場合、メモリ内にその共有ライブラリのインスタンスは1つだけで済みます。</strong>）。</p>
@@ -225,7 +225,7 @@ int main(int argc, char* argv[])
 <p>- 一部のプログラムのアップグレードが簡単になります。</p>
 <p>- リンクとロードを完全にプログラマーがプログラムコード内で制御することも可能です（</p>
 <p>明示的呼び出し</p>
-<p>WindowsとLinuxでは実行ファイルの形式が異なるため、動的ライブラリを作成する際にはいくつかの違いがあります。<strong>- Windowsシステムでは実行ファイルの形式はPE形式であり、動的ライブラリには</strong>）。</p>
+<p>WindowsとLinuxでは実行ファイルの形式が異なるため、動的ライブラリを作成する際にはいくつかの違いがあります。<strong>Windowsシステムでは実行ファイルの形式はPE形式であり、動的ライブラリには</strong>）。</p>
 <p>WindowsとLinuxでは実行ファイルの形式が異なり、ダイナミックライブラリを作成する際にいくつかの違いがあります。</p>
 <p>- Windowsシステムでの実行ファイル形式はPE形式であり、ダイナミックライブラリには一つが必要です。<strong>DllMain関数は初期化の入口となる。通常、エクスポート関数の宣言には_declspec(dllexport)が必要である。</strong><strong>キーワード</strong>。</p>
 <p>-  Linuxでgccコンパイルされた実行ファイルはデフォルトでELF形式である。<strong>初期化エントリが不要で、関数の特別な宣言も不要である。</strong>作成が比較的便利である。</p>
@@ -233,8 +233,8 @@ int main(int argc, char* argv[])
 <h3>3.2.Linuxでの動的ライブラリの作成と使用</h3>
 <h4>3.2.1.linux動的ライブラリの命名規則</h4>
 <p>動的リンクライブラリの名前形式はlibxxx.soで、接頭辞はlib、接尾辞は".so"である。</p>
-<p>- 実在するライブラリファイルに対して、各共有ライブラリには特別な名前「soname」がある。プログラム起動後、プログラムはこの名前を通じて動的ローダーにどの共有ライブラリをロードするかを伝える。</p>
-<p>- ファイルシステムでは、sonameは実際の動的ライブラリへのリンクにすぎない。動的ライブラリにとって、各ライブラリにはコンパイラが使う別の名前が実際にあり、それは実際のライブラリイメージファイルへのリンクファイル（lib+soname+.so）である。</p>
+<p>実にするライブラリファイルに対して、各共有ライブラリには特別な名前「soname」がある。プログラム起動後、プログラムはこの名前を通じて動的ローダーにどの共有ライブラリをロードするかを伝える。</p>
+<p>ファイルシステムでは、sonameは実際の動的ライブラリへのリンクにすぎない。動的ライブラリにとって、各ライブラリにはコンパイラが使う別の名前が実際にあり、それは実際のライブラリイメージファイルへのリンクファイル（lib+soname+.so）である。</p>
 <h4>3.2.2.動的ライブラリ（.so）の作成</h4>
 <p>四則演算の動的ライブラリコードを作成する：</p>
 <table border="1" cellpadding="0" cellspacing="0">
@@ -436,7 +436,7 @@ int _tmain(int argc, _TCHAR* argv[])
 </tbody>
 </table>
 <h4><em>方法1：</em></h4>
-<p>- プロジェクトの「プロパティパネル」--「共通プロパティ」--「フレームワークと参照」--「参照の追加」で「参照の追加」ダイアログが表示される。「プロジェクト」タブには、現在のソリューション内の各プロジェクトと参照可能なすべてのライブラリが一覧表示される。「プロジェクト」タブでDynamicLibraryを選択し、「OK」をクリックする。</p>
+<p>プロジェクトの「プロパティパネル」--「共通プロパティ」--「フレームワークと参照」--「参照の追加」で「参照の追加」ダイアログが表示される。「プロジェクト」タブには、現在のソリューション内の各プロジェクトと参照可能なすべてのライブラリが一覧表示される。「プロジェクト」タブでDynamicLibraryを選択し、「OK」をクリックする。</p>
 <p align="center"><a href="../wp-content/uploads/2015/05/16201623-914ff83612a4470fa59c2bc729053c6b.jpg" style="color:rgb(61,129,238)" target="_blank"><img alt="clip_image035[4]" border="0" decoding="async" height="363" loading="lazy" src="../wp-content/uploads/2015/05/16201623-914ff83612a4470fa59c2bc729053c6b.jpg" title="clip_image035[4]" width="554"/></a></p>
 <p>- DynamicMath.hヘッダーファイルのディレクトリを追加するには、インクルードディレクトリのパスを変更する必要がある。プロジェクトの「プロパティパネル」--「構成プロパティ」--「C/C++」--「全般」を開き、「追加のインクルードディレクトリ」のプロパティ値にDynamicMath.hヘッダーファイルがあるディレクトリのパスを入力するか、そのディレクトリを参照する。</p>
 <p align="center"><a href="../wp-content/uploads/2015/05/16201624-9cfecaf931ba4f4d96d6cf7cac3ac40e.jpg" style="color:rgb(61,129,238)" target="_blank"><img alt="clip_image037[4]" border="0" decoding="async" height="358" loading="lazy" src="../wp-content/uploads/2015/05/16201624-9cfecaf931ba4f4d96d6cf7cac3ac40e.jpg" title="clip_image037[4]" width="554"/></a></p>
@@ -446,7 +446,7 @@ int _tmain(int argc, _TCHAR* argv[])
 <h4><em>方法2：</em></h4>
 <p>- 「プロパティパネル」--「構成プロパティ」--「リンカー」--「全般」の「追加のライブラリディレクトリ」に動的ライブラリがあるディレクトリを入力する；</p>
 <p align="center"><a href="../wp-content/uploads/2015/05/16201626-98727f19e0d14d43942771bac7e24238.jpg" style="color:rgb(61,129,238)" target="_blank"><img alt="clip_image040[4]" border="0" decoding="async" height="359" loading="lazy" src="../wp-content/uploads/2015/05/16201626-98727f19e0d14d43942771bac7e24238.jpg" title="clip_image040[4]" width="554"/></a></p>
-<p>- 「プロパティパネル」--「構成プロパティ」--「リンカー」--「入力」の「追加の依存ファイル」に動的ライブラリをコンパイルして生成されたDynamicLibrary.libを入力する。</p>
+<p>「プロパティパネル」--「構成プロパティ」--「リンカー」--「入力」の「追加の依存ファイル」に動的ライブラリをコンパイルして生成されたDynamicLibrary.libを入力する。</p>
 <p align="center"><a href="../wp-content/uploads/2015/05/16201628-425bd512f3bf4b51b121bdb59604bc5e.jpg" style="color:rgb(61,129,238)" target="_blank"><img alt="clip_image042[4]" border="0" decoding="async" height="359" loading="lazy" src="../wp-content/uploads/2015/05/16201628-425bd512f3bf4b51b121bdb59604bc5e.jpg" title="clip_image042[4]" width="554"/></a></p>
 <p>ここで疑問があるかもしれない。動的ライブラリなのにDynamicLibrary.libファイルもあるのか？つまり、静的リンクライブラリでも動的リンクライブラリでも、最終的にlibファイルがある。では両者の違いは何か？実は、両者は全く異なるものである。</p>
 <p align="center"><a href="../wp-content/uploads/2015/05/16201631-f72543fd66ba4593996f864a7fb6f92a.jpg" style="color:rgb(61,129,238)" target="_blank"><img alt="clip_image044[4]" border="0" decoding="async" height="255" loading="lazy" src="../wp-content/uploads/2015/05/16201631-f72543fd66ba4593996f864a7fb6f92a.jpg" title="clip_image044[4]" width="554"/></a></p>
@@ -473,9 +473,9 @@ int _tmain(int argc, _TCHAR* argv[])
 <p><strong>「明示的」にC++動的ライブラリ内のClassを使用することは非常に煩雑で危険なことである。したがって、「暗黙的」を使えるなら「明示的」は使わないこと。静的を使えるなら動的は使わないこと。</strong></p>
 <h2>5.付録：Linuxでのライブラリ関連コマンド</h2>
 <h3>5.1.g++(gcc)コンパイルオプション</h3>
-<p>-  -shared ：動的リンクライブラリの生成を指定する。</p>
-<p>-  -static ：静的リンクライブラリの生成を指定する。</p>
-<p>-  -fPIC ：位置独立のコードとしてコンパイルすることを示し、共有ライブラリのコンパイルに使用する。オブジェクトファイルは位置独立コードとして作成する必要がある。概念的には、実行プログラムがそれらをロードするとき、実行プログラムのメモリ内のどこにでも配置できることを意味する。</p>
+<p>-shared ：動的リンクライブラリの生成を指定する。</p>
+<p>-static ：静的リンクライブラリの生成を指定する。</p>
+<p>-fPIC ：位置独立のコードとしてコンパイルすることを示し、共有ライブラリのコンパイルに使用する。オブジェクトファイルは位置独立コードとして作成する必要がある。概念のには、実行プログラムがそれらをロードするとき、実行プログラムのメモリ内のどこにでも配置できることを意味する。</p>
 <p>-  -L. ：リンクするライブラリが存在するディレクトリを示す。</p>
 <p>-  -l：リンク時に必要な動的ライブラリを指定する。コンパイラが動的リンクライブラリを検索する際には暗黙の命名規則があり、指定された名前の前にlibを付け、後ろに.a/.soを付けてライブラリ名を決定する。</p>
 <p>-  -Wall ：すべての警告情報を生成する。</p>
@@ -609,11 +609,11 @@ int _tmain(int argc, _TCHAR* argv[])
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=".." class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href="..">ログイン</a>が必要です！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

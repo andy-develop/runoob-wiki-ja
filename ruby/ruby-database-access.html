@@ -456,11 +456,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <pre>
 Server version: 5.0.45
 </pre>
-<p>接続時にデータソースを指定すると、データベースハンドル（Database Handle）が返され、<b>dbh</b>に保存されて以降の処理で使用されます。そうでない場合、<b>dbh</b>は nil 値に設定され、<i>e.err</i> 和 <i>e::errstr</i>それぞれエラーコードとエラー文字列が返されます。</p>
+<p>接続時にデータソースを指定すると、データベースハンドル（Database Handle）が返され、<b>dbh</b>に保存されて以降の処理で使用されます。そうでない場合、<b>dbh</b>は nil 値に設定され、<i>e.err</i>と<i>e::errstr</i>それぞれエラーコードとエラー文字列が返されます。</p>
 <p>最後に、プログラムを終了する前に、データベース接続を閉じてリソースを解放してください。</p>
 <h2 class="tutheader">INSERT 操作</h2>
 <p>データベーステーブルにレコードを作成する場合、INSERT 操作を使用する必要があります。</p>
-<p>データベース接続が確立されると、<b>do</b>メソッドまたは<b>prepare</b> 和 <b>execute</b>メソッドを使用して、テーブルを作成したり、データベーステーブルに挿入するレコードを作成したりできます。</p>
+<p>データベース接続が確立されると、<b>do</b>メソッドまたは<b>prepare</b>と<b>execute</b>メソッドを使用して、テーブルを作成したり、データベーステーブルに挿入するレコードを作成したりできます。</p>
 <h2>do 文の使用</h2>
 <p>行を返さないステートメントは、<b>do</b>データベース処理メソッドを呼び出すことで実行できます。このメソッドはステートメント文字列を1つの引数として受け取り、そのステートメントによって影響を受けた行数を返します。</p>
 <div class="example">
@@ -503,8 +503,8 @@ Server version: 5.0.45
 </span><span class="hl-reserved">end</span></div>
 </div>
 </div>
-<h2>使用<i>prepare</i> 和 <i>execute</i></h2>
-<p>DBI の<i>prepare</i> 和 <i>execute</i>メソッドを使用して、Ruby コード内の SQL ステートメントを実行できます。</p>
+<h2>使用<i>prepare</i>と<i>execute</i></h2>
+<p>DBI の<i>prepare</i>と<i>execute</i>メソッドを使用して、Ruby コード内の SQL ステートメントを実行できます。</p>
 <p>レコードを作成する手順は次のとおりです：</p>
 <ul class="list">
 <li>INSERT ステートメントを含む SQL ステートメントを準備します。これは、<b>prepare</b>メソッドを使用して行われます。</li>
@@ -558,7 +558,7 @@ Server version: 5.0.45
 <p>複数の INSERT を同時に使用する場合、1つのステートメントを準備してからループ内でそれを複数回実行する方が、ループ内で毎回 do を呼び出すよりもはるかに効率的です。</p>
 <h2 class="tutheader">READ 操作</h2>
 <p>あらゆるデータベースに対する READ 操作とは、データベースから有用な情報を取得することです。</p>
-<p>データベース接続が確立されると、データベースにクエリを実行する準備ができます。次を使用できます：<b>do</b>メソッドまたは<b>prepare</b> 和 <b>execute</b>メソッドを使用して、データベーステーブルから値を取得できます。</p>
+<p>データベース接続が確立されると、データベースにクエリを実行する準備ができます。次を使用できます：<b>do</b>メソッドまたは<b>prepare</b>と<b>execute</b>メソッドを使用して、データベーステーブルから値を取得できます。</p>
 <p>レコードを取得する手順は次のとおりです：</p>
 <ul class="list">
 <li>必要な条件に基づいて SQL クエリを準備します。これは、<b>prepare</b>メソッドを使用して完了します。</li>
@@ -682,7 +682,7 @@ Salary :2300
 </ul>
 <p>DBI はトランザクションを実行する2つの方法を提供します。1つは<i>commit</i> 或 <i>rollback</i>トランザクションをコミットまたはロールバックするためのメソッドです。もう1つは<i>transaction</i>トランザクションの実装に使用できるメソッドです。次に、トランザクションを実装するためのこの2つの簡単な方法を紹介します。</p>
 <h2>方法 I</h2>
-<p>最初の方法では、DBI の<i>commit</i> 和 <i>rollback</i>メソッドを使用して、トランザクションを明示的にコミットまたはキャンセルします。</p>
+<p>最初の方法では、DBI の<i>commit</i>と<i>rollback</i>メソッドを使用して、トランザクションを明示的にコミットまたはキャンセルします。</p>
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
@@ -741,8 +741,8 @@ Salary :2300
 <p>ユーザーが disconnect メソッドを使用してデータベース接続を閉じた場合、DBI は未完了のトランザクションをすべてロールバックします。ただし、DBI の実装の詳細に依存する必要はなく、アプリケーションは commit または rollback を明示的に呼び出すだけで十分です。</p>
 <h2 class="tutheader">エラー処理</h2>
 <p>さまざまなエラー原因があります。たとえば、SQL ステートメントの実行中の構文エラー、接続失敗、または既にキャンセルまたは完了したステートメントハンドルに対して fetch メソッドを呼び出すことなどです。</p>
-<p>特定の DBI メソッドが失敗すると、DBI は例外をスローします。DBI メソッドは任意のタイプの例外をスローできますが、最も重要な2つの例外クラスは<i>DBI::InterfaceError</i> 和 <i>DBI::DatabaseError</i>。</p>
-<p>これらのクラスの Exception オブジェクトには<i>err</i>、<i>errstr</i> 和 <i>state</i>3つの属性があり、それぞれエラー番号、説明的なエラー文字列、標準エラーコードを表します。属性の詳細は次のとおりです。</p>
+<p>特定の DBI メソッドが失敗すると、DBI は例外をスローします。DBI メソッドは任意のタイプの例外をスローできますが、最も重要な2つの例外クラスは<i>DBI::InterfaceError</i>と<i>DBI::DatabaseError</i>。</p>
+<p>これらのクラスの Exception オブジェクトには<i>err</i>、<i>errstr</i>と<i>state</i>3つの属性があり、それぞれエラー番号、説明的なエラー文字列、標準エラーコードを表します。属性の詳細は次のとおりです。</p>
 <ul class="list">
 <li><b>err：</b>発生したエラーの整数表現を返します。DBD がサポートしていない場合は、<i>nil</i>を返します。たとえば、Oracle DBD は<i>ORA-XXXX</i>エラーメッセージの数値部分を返します。</li>
 <li><b>errstr：</b>発生したエラーの文字列表現を返します。</li>
@@ -773,7 +773,10 @@ Salary :2300
 </div>
 <p>mode の値は 0（オフ）、1、2、または 3 にできます。destination の値は IO オブジェクトである必要があります。デフォルト値はそれぞれ 2 と STDERR です。</p>
 <h2 class="tutheader">メソッドのコードブロック</h2>
-<p>ハンドルを作成するメソッドがいくつかあります。これらのメソッドはコードブロックとともに呼び出されます。メソッドでコードブロックを使用する利点は、コードブロックにハンドルを引数として提供し、ブロックが終了するとハンドルを自動的にクリアすることです。以下に、この概念を理解するのに役立つ例をいくつか示します。</p>
+<p>ハンドルを作成するメソッドがいくつかあります。
+これらのメソッドはコードブロックとともに呼び出されます。
+メソッドでコードブロックを使用する利点は、コードブロックにハンドルを引数として提供し、ブロックが終了するとハンドルを自動的にクリアすることです。
+以下に、この概念を理解するのに役立つ例をいくつか示します。</p>
 <ul class="list">
 <li><b>DBI.connect ：</b>このメソッドはデータベースハンドルを生成します。ブロックの最後で<i>disconnect</i>を呼び出してデータベースを切断することをお勧めします。</li>
 <li><b>dbh.prepare ：</b>このメソッドはステートメントハンドルを生成します。ブロックの最後で<i>finish</i>を呼び出すことをお勧めします。ブロック内では、<i>execute</i>メソッドを呼び出してステートメントを実行する必要があります。</li>
@@ -979,12 +982,12 @@ Queries per second avg: 2.860
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<!--
-	<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>-->
+
+&lt;p style="font-size:14px;"&gt;ノートは本記事の内容の拡張である必要があります！&lt;/p&gt;&lt;br/&gt;
+&lt;p style="font-size:12px;"&gt;&lt;a href="../tougao.html" target="_blank"&gt;記事投稿は、ここをクリックしてください&lt;/a&gt;&lt;/p&gt;
+&lt;p style="font-size:14px;"&gt;&lt;a href="../w3cnote/runoob-user-test-intro.html" target="_blank"&gt;注册邀请码获取方式&lt;/a&gt;&lt;/p&gt;
+&lt;h3 class="text-muted"&gt;&lt;i aria-hidden="true" class="fa fa-info-circle"&gt;&lt;/i&gt; 分享笔记前必须&lt;a class="runoob-pop" href=";.html"&gt;登录&lt;/a&gt;！&lt;/h3&gt;
+&lt;p&gt;&lt;a href="../w3cnote/runoob-user-test-intro.html" target="_blank"&gt;注册邀请码获取方式&lt;/a&gt;&lt;/p&gt;
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1283,7 +1286,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

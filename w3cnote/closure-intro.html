@@ -114,7 +114,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>なぜそうなるのでしょうか？その理由は、f1 は f2 の親関数であり、f2 がグローバル変数に代入されるため、f2 は常にメモリ内に存在し、f2 の存在は f1 に依存しているので、f1 も常にメモリ内にあり、呼び出し終了後にガベージコレクション（garbage collection）によって回収されることはありません。</p>
 <p>このコードでもう1つ注目すべき点は、すなわち<strong>"nAdd=function(){n+=1}"</strong>この行では、まず nAdd の前に var キーワードを使用していないため、nAdd はローカル変数ではなくグローバル変数です。次に、nAdd の値は匿名関数（anonymous function）であり、この匿名関数自体もクロージャなので、nAdd はセッターに相当し、関数の外部から関数内部のローカル変数を操作できます。</p>
 <h3>5. クロージャを使用する際の注意点</h3>
-<ul><li>(1) クロージャは関数内の変数をすべてメモリに保持するため、メモリ消費が大きくなります。そのため、クロージャを濫用してはいけません。濫用するとウェブページのパフォーマンス問題を引き起こし、IEではメモリリークを引き起こす可能性があります。解決策は、関数を終了する前に、使用しないローカル変数をすべて削除することです。</li><li>(2) クロージャは親関数の外部で、親関数内部の変数の値を変更します。したがって、親関数をオブジェクト（object）として使用し、クロージャをそのパブリックメソッド（Public Method）、内部変数をそのプライベート属性（private value）として扱う場合は、親関数内部の変数の値をむやみに変更しないよう十分注意する必要があります。</li></ul>
+<ul><li>クロージャは関数内の変数をすべてメモリに保持するため、メモリ消費が大きくなります。そのため、クロージャを濫用してはいけません。濫用するとウェブページのパフォーマンス問題を引き起こし、IEではメモリリークを引き起こす可能性があります。解決策は、関数を終了する前に、使用しないローカル変数をすべて削除することです。</li><li>(2) クロージャは親関数の外部で、親関数内部の変数の値を変更します。したがって、親関数をオブジェクト（object）として使用し、クロージャをそのパブリックメソッド（Public Method）、内部変数をそのプライベート属性（private value）として扱う場合は、親関数内部の変数の値をむやみに変更しないよう十分注意する必要があります。</li></ul>
 <blockquote>
 <p>原文リンク: https://www.cnblogs.com/cxying93/p/6103375.html</p></blockquote>
 </div>
@@ -227,11 +227,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートをシェア</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートをシェアする前に<a href=".." class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートをシェアする前に<a class="runoob-pop" href="..">ログイン</a>が必要です！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

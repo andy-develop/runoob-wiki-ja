@@ -288,7 +288,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example">
 <h2 class="example">実例</h2>
 <div class="example_code">
-<span style="color: #a50"># 不好的实现：每个字符都是独立对象</span><br/>
+<span style="color: #a50"># 良くない実装：各文字が独立したオブジェクトである</span><br/>
 <span style="color: Green;font-weight:bold;">class</span> Character:<br/>
     <span style="color: Green;font-weight:bold;">def</span> <span style="color: Navy;">__init__</span><span style="color: Olive;">(</span><span style="color: Teal;">self</span><span style="color: Gray;">,</span> char<span style="color: Gray;">,</span> font<span style="color: Gray;">,</span> size<span style="color: Gray;">,</span> color<span style="color: Olive;">)</span>:<br/>
         <span style="color: Teal;">self</span>.<span style="color: #05a;">char</span> <span style="color: Gray;">=</span> char      <span style="color: #a50"># 字符</span><br/>
@@ -297,12 +297,12 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         <span style="color: Teal;">self</span>.<span style="color: #05a;">color</span> <span style="color: Gray;">=</span> color    <span style="color: #a50"># 颜色</span><br/>
     <br/>
     <span style="color: Green;font-weight:bold;">def</span> render<span style="color: Olive;">(</span><span style="color: Teal;">self</span><span style="color: Gray;">,</span> position<span style="color: Olive;">)</span>:<br/>
-        <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"在位置 {position} 渲染字符 '{self.char}'"</span><span style="color: Olive;">)</span><br/>
+        <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"位置 {position} に文字 '{self.char}' を描画"</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 使用示例</span><br/>
 char_a <span style="color: Gray;">=</span> Character<span style="color: Olive;">(</span><span style="color: #a11;">'A'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'宋体'</span><span style="color: Gray;">,</span> <span style="color: Maroon;">12</span><span style="color: Gray;">,</span> <span style="color: #a11;">'黑色'</span><span style="color: Olive;">)</span><br/>
 char_b <span style="color: Gray;">=</span> Character<span style="color: Olive;">(</span><span style="color: #a11;">'B'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'宋体'</span><span style="color: Gray;">,</span> <span style="color: Maroon;">12</span><span style="color: Gray;">,</span> <span style="color: #a11;">'黑色'</span><span style="color: Olive;">)</span><br/>
-char_a_another <span style="color: Gray;">=</span> Character<span style="color: Olive;">(</span><span style="color: #a11;">'A'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'宋体'</span><span style="color: Gray;">,</span> <span style="color: Maroon;">12</span><span style="color: Gray;">,</span> <span style="color: #a11;">'黑色'</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 重复创建相同的'A'</span><br/>
+char_a_another <span style="color: Gray;">=</span> Character<span style="color: Olive;">(</span><span style="color: #a11;">'A'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'宋体'</span><span style="color: Gray;">,</span> <span style="color: Maroon;">12</span><span style="color: Gray;">,</span> <span style="color: #a11;">'黑色'</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 同じ'A'を繰り返し作成する</span><br/>
 </div>
 </div>
 <p>この実装方法の問題点：</p>
@@ -336,38 +336,38 @@ char_a_another <span style="color: Gray;">=</span> Character<span style="color: 
         <span style="color: Teal;">self</span>.<span style="color: #05a;">color</span> <span style="color: Gray;">=</span> color    <span style="color: #a50"># 内部状态：颜色</span><br/>
     <br/>
     <span style="color: Green;font-weight:bold;">def</span> render<span style="color: Olive;">(</span><span style="color: Teal;">self</span><span style="color: Gray;">,</span> position: <span style="color: Teal;">tuple</span><span style="color: Olive;">)</span>:<br/>
-        <span style="color: #a11;">"""渲染字符，position 是外部状态"""</span><br/>
+        <span style="color: #a11;">"""文字をレンダリングし、position は外部状態です"""</span><br/>
         x<span style="color: Gray;">,</span> y <span style="color: Gray;">=</span> position<br/>
-        <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"在位置({x}, {y})渲染: 字符'{self.char}' "</span><br/>
+        <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"位置({x}, {y})に描画: 文字'{self.char}' "</span><br/>
               f<span style="color: #a11;">"[字体:{self.font}, 大小:{self.size}, 颜色:{self.color}]"</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 享元工厂 - 管理共享对象</span><br/>
+<span style="color: #a50"># フライウェイトファクトリ - 共有オブジェクトを管理</span><br/>
 <span style="color: Green;font-weight:bold;">class</span> CharacterFactory:<br/>
     _characters: Dict<span style="color: Olive;">[</span><span style="color: Teal;">str</span><span style="color: Gray;">,</span> CharacterFlyweight<span style="color: Olive;">]</span> <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: Olive;">}</span><br/>
     <br/>
     <span style="color: Gray;">@</span><span style="color: Teal;">classmethod</span><br/>
     <span style="color: Green;font-weight:bold;">def</span> get_character<span style="color: Olive;">(</span>cls<span style="color: Gray;">,</span> char: <span style="color: Teal;">str</span><span style="color: Gray;">,</span> font: <span style="color: Teal;">str</span><span style="color: Gray;">,</span> size: <span style="color: Teal;">int</span><span style="color: Gray;">,</span> color: <span style="color: Teal;">str</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> CharacterFlyweight:<br/>
-        <span style="color: #a50"># 创建对象的唯一标识键</span><br/>
+        <span style="color: #a50"># オブジェクトの一意の識別キーを作成する</span><br/>
         key <span style="color: Gray;">=</span> f<span style="color: #a11;">"{char}_{font}_{size}_{color}"</span><br/>
         <br/>
-        <span style="color: #a50"># 如果对象不存在，则创建并缓存</span><br/>
+        <span style="color: #a50"># オブジェクトが存在しない場合は、作成してキャッシュする</span><br/>
         <span style="color: Green;font-weight:bold;">if</span> key <span style="color: Green;font-weight:bold;">not</span> <span style="color: Green;font-weight:bold;">in</span> cls._characters:<br/>
             cls._characters<span style="color: Olive;">[</span>key<span style="color: Olive;">]</span> <span style="color: Gray;">=</span> CharacterFlyweight<span style="color: Olive;">(</span>char<span style="color: Gray;">,</span> font<span style="color: Gray;">,</span> size<span style="color: Gray;">,</span> color<span style="color: Olive;">)</span><br/>
-            <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"创建新字符对象: {key}"</span><span style="color: Olive;">)</span><br/>
+            <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"新しい文字オブジェクトを作成: {key}"</span><span style="color: Olive;">)</span><br/>
         <span style="color: Green;font-weight:bold;">else</span>:<br/>
-            <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"重用现有字符对象: {key}"</span><span style="color: Olive;">)</span><br/>
+            <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">既存の文字オブジェクトを再利用: {key}</span><span style="color: Olive;">)</span><br/>
         <br/>
         <span style="color: Green;font-weight:bold;">return</span> cls._characters<span style="color: Olive;">[</span>key<span style="color: Olive;">]</span><br/>
 <br/>
-<span style="color: #a50"># 客户端类 - 使用享元对象</span><br/>
+<span style="color: #a50"># クライアントクラス - フライウェイトオブジェクトを使用</span><br/>
 <span style="color: Green;font-weight:bold;">class</span> TextDocument:<br/>
     <span style="color: Green;font-weight:bold;">def</span> <span style="color: Navy;">__init__</span><span style="color: Olive;">(</span><span style="color: Teal;">self</span><span style="color: Olive;">)</span>:<br/>
-        <span style="color: Teal;">self</span>.<span style="color: #05a;">characters</span> <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: Olive;">]</span>  <span style="color: #a50"># 存储字符和位置信息</span><br/>
+        <span style="color: Teal;">self</span>.<span style="color: #05a;">characters</span> <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: Olive;">]</span>  <span style="color: #a50"># 文字と位置情報を格納する</span><br/>
     <br/>
     <span style="color: Green;font-weight:bold;">def</span> add_character<span style="color: Olive;">(</span><span style="color: Teal;">self</span><span style="color: Gray;">,</span> char: <span style="color: Teal;">str</span><span style="color: Gray;">,</span> font: <span style="color: Teal;">str</span><span style="color: Gray;">,</span> size: <span style="color: Teal;">int</span><span style="color: Gray;">,</span> color: <span style="color: Teal;">str</span><span style="color: Gray;">,</span> position: <span style="color: Teal;">tuple</span><span style="color: Olive;">)</span>:<br/>
-        <span style="color: #a50"># 从工厂获取享元对象</span><br/>
+        <span style="color: #a50"># ファクトリからフライウェイトオブジェクトを取得する</span><br/>
         character <span style="color: Gray;">=</span> CharacterFactory.<span style="color: #05a;">get_character</span><span style="color: Olive;">(</span>char<span style="color: Gray;">,</span> font<span style="color: Gray;">,</span> size<span style="color: Gray;">,</span> color<span style="color: Olive;">)</span><br/>
-        <span style="color: #a50"># 存储字符对象和外部状态（位置）</span><br/>
+        <span style="color: #a50"># 文字オブジェクトと外部状態（位置）を格納</span><br/>
         <span style="color: Teal;">self</span>.<span style="color: #05a;">characters</span>.<span style="color: #05a;">append</span><span style="color: Olive;">(</span><span style="color: Olive;">(</span>character<span style="color: Gray;">,</span> position<span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
     <br/>
     <span style="color: Green;font-weight:bold;">def</span> render<span style="color: Olive;">(</span><span style="color: Teal;">self</span><span style="color: Olive;">)</span>:<br/>
@@ -390,14 +390,14 @@ document.<span style="color: #05a;">add_character</span><span style="color: Oliv
 document.<span style="color: #05a;">add_character</span><span style="color: Olive;">(</span><span style="color: #a11;">'l'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'Arial'</span><span style="color: Gray;">,</span> <span style="color: Maroon;">12</span><span style="color: Gray;">,</span> <span style="color: #a11;">'black'</span><span style="color: Gray;">,</span> <span style="color: Olive;">(</span><span style="color: Maroon;">2</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 document.<span style="color: #05a;">add_character</span><span style="color: Olive;">(</span><span style="color: #a11;">'l'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'Arial'</span><span style="color: Gray;">,</span> <span style="color: Maroon;">12</span><span style="color: Gray;">,</span> <span style="color: #a11;">'black'</span><span style="color: Gray;">,</span> <span style="color: Olive;">(</span><span style="color: Maroon;">3</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 重用 'l'</span><br/>
 document.<span style="color: #05a;">add_character</span><span style="color: Olive;">(</span><span style="color: #a11;">'o'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'Arial'</span><span style="color: Gray;">,</span> <span style="color: Maroon;">12</span><span style="color: Gray;">,</span> <span style="color: #a11;">'black'</span><span style="color: Gray;">,</span> <span style="color: Olive;">(</span><span style="color: Maroon;">4</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
-document.<span style="color: #05a;">add_character</span><span style="color: Olive;">(</span><span style="color: #a11;">'!'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'Arial'</span><span style="color: Gray;">,</span> <span style="color: Maroon;">12</span><span style="color: Gray;">,</span> <span style="color: #a11;">'red'</span><span style="color: Gray;">,</span> <span style="color: Olive;">(</span><span style="color: Maroon;">5</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span>    <span style="color: #a50"># 不同颜色，创建新对象</span><br/>
+document.<span style="color: #05a;">add_character</span><span style="color: Olive;">(</span><span style="color: #a11;">'!'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'Arial'</span><span style="color: Gray;">,</span> <span style="color: Maroon;">12</span><span style="color: Gray;">,</span> <span style="color: #a11;">'red'</span><span style="color: Gray;">,</span> <span style="color: Olive;">(</span><span style="color: Maroon;">5</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span>    <span style="color: #a50"># 異なる色の場合は、新しいオブジェクトを作成する</span><br/>
 document.<span style="color: #05a;">add_character</span><span style="color: Olive;">(</span><span style="color: #a11;">'H'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'Arial'</span><span style="color: Gray;">,</span> <span style="color: Maroon;">12</span><span style="color: Gray;">,</span> <span style="color: #a11;">'black'</span><span style="color: Gray;">,</span> <span style="color: Olive;">(</span><span style="color: Maroon;">0</span><span style="color: Gray;">,</span> <span style="color: Maroon;">1</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 重用 'H'</span><br/>
 <br/>
 <span style="color: #a50"># 渲染文档</span><br/>
 document.<span style="color: #05a;">render</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 查看工厂中的对象数量</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"工厂中总共创建了 {len(CharacterFactory._characters)} 个字符对象"</span><span style="color: Olive;">)</span><br/>
+<span style="color: #a50"># ファクトリ内のオブジェクト数を確認する</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">工場では合計 {len(CharacterFactory._characters)} 個のキャラクターオブジェクトが作成されました。</span><span style="color: Olive;">)</span><br/>
 </div>
 </div>
 <p><strong>出力結果：</strong></p>
@@ -442,14 +442,14 @@ document.<span style="color: #05a;">render</span><span style="color: Olive;">(</
 <br/>
 <span style="color: Gray;">@</span>dataclass<br/>
 <span style="color: Green;font-weight:bold;">class</span> TreeType:<br/>
-    <span style="color: #a11;">"""享元类 - 树的类型（内部状态）"""</span><br/>
+    <span style="color: #a11;">"""フライウェイトクラス - 木の種類（内部状態）"""</span><br/>
     name: <span style="color: Teal;">str</span>          <span style="color: #a50"># 树种名称</span><br/>
     texture: <span style="color: Teal;">str</span>       <span style="color: #a50"># 纹理文件</span><br/>
     color: <span style="color: Teal;">str</span>         <span style="color: #a50"># 基础颜色</span><br/>
     <br/>
     <span style="color: Green;font-weight:bold;">def</span> render<span style="color: Olive;">(</span><span style="color: Teal;">self</span><span style="color: Gray;">,</span> x: <span style="color: Teal;">int</span><span style="color: Gray;">,</span> y: <span style="color: Teal;">int</span><span style="color: Gray;">,</span> height: <span style="color: Teal;">int</span><span style="color: Olive;">)</span>:<br/>
-        <span style="color: #a11;">"""渲染树，位置和高度是外部状态"""</span><br/>
-        <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"在({x}, {y})渲染{self.name}树，高度{height}米 "</span><br/>
+        <span style="color: #a11;">"""レンダリングツリー、位置と高さは外部状態"""</span><br/>
+        <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">({x}, {y}) で {self.name} の木をレンダリング、高さ {height} メートル</span><br/>
               f<span style="color: #a11;">"[纹理:{self.texture}, 颜色:{self.color}]"</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">class</span> TreeFactory:<br/>
@@ -461,7 +461,7 @@ document.<span style="color: #05a;">render</span><span style="color: Olive;">(</
         key <span style="color: Gray;">=</span> f<span style="color: #a11;">"{name}_{texture}_{color}"</span><br/>
         <span style="color: Green;font-weight:bold;">if</span> key <span style="color: Green;font-weight:bold;">not</span> <span style="color: Green;font-weight:bold;">in</span> cls._tree_types:<br/>
             cls._tree_types<span style="color: Olive;">[</span>key<span style="color: Olive;">]</span> <span style="color: Gray;">=</span> TreeType<span style="color: Olive;">(</span>name<span style="color: Gray;">,</span> texture<span style="color: Gray;">,</span> color<span style="color: Olive;">)</span><br/>
-            <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"创建新的树类型: {name}"</span><span style="color: Olive;">)</span><br/>
+            <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">新しいツリー型を作成: {name}</span><span style="color: Olive;">)</span><br/>
         <span style="color: Green;font-weight:bold;">return</span> cls._tree_types<span style="color: Olive;">[</span>key<span style="color: Olive;">]</span><br/>
     <br/>
     <span style="color: Gray;">@</span><span style="color: Teal;">classmethod</span><br/>
@@ -471,12 +471,12 @@ document.<span style="color: #05a;">render</span><span style="color: Olive;">(</
             <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"  - {tree_type.name}"</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">class</span> Tree:<br/>
-    <span style="color: #a11;">"""树对象 - 包含享元引用和外部状态"""</span><br/>
+    <span style="color: #a11;">"""ツリーオブジェクト - フライウェイト参照と外部状態を含む"""</span><br/>
     <span style="color: Green;font-weight:bold;">def</span> <span style="color: Navy;">__init__</span><span style="color: Olive;">(</span><span style="color: Teal;">self</span><span style="color: Gray;">,</span> x: <span style="color: Teal;">int</span><span style="color: Gray;">,</span> y: <span style="color: Teal;">int</span><span style="color: Gray;">,</span> height: <span style="color: Teal;">int</span><span style="color: Gray;">,</span> tree_type: TreeType<span style="color: Olive;">)</span>:<br/>
         <span style="color: Teal;">self</span>.<span style="color: #05a;">x</span> <span style="color: Gray;">=</span> x              <span style="color: #a50"># 外部状态：X坐标</span><br/>
         <span style="color: Teal;">self</span>.<span style="color: #05a;">y</span> <span style="color: Gray;">=</span> y              <span style="color: #a50"># 外部状态：Y坐标</span><br/>
         <span style="color: Teal;">self</span>.<span style="color: #05a;">height</span> <span style="color: Gray;">=</span> height    <span style="color: #a50"># 外部状态：高度</span><br/>
-        <span style="color: Teal;">self</span>.<span style="color: #05a;">tree_type</span> <span style="color: Gray;">=</span> tree_type  <span style="color: #a50"># 享元对象引用</span><br/>
+        <span style="color: Teal;">self</span>.<span style="color: #05a;">tree_type</span> <span style="color: Gray;">=</span> tree_type  <span style="color: #a50">フライウェイトオブジェクト参照</span><br/>
     <br/>
     <span style="color: Green;font-weight:bold;">def</span> render<span style="color: Olive;">(</span><span style="color: Teal;">self</span><span style="color: Olive;">)</span>:<br/>
         <span style="color: Teal;">self</span>.<span style="color: #05a;">tree_type</span>.<span style="color: #05a;">render</span><span style="color: Olive;">(</span><span style="color: Teal;">self</span>.<span style="color: #05a;">x</span><span style="color: Gray;">,</span> <span style="color: Teal;">self</span>.<span style="color: #05a;">y</span><span style="color: Gray;">,</span> <span style="color: Teal;">self</span>.<span style="color: #05a;">height</span><span style="color: Olive;">)</span><br/>
@@ -501,7 +501,7 @@ document.<span style="color: #05a;">render</span><span style="color: Olive;">(</
 <span style="color: #a50"># 使用示例</span><br/>
 forest <span style="color: Gray;">=</span> Forest<span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 种植树木 - 相同类型的树会共享享元对象</span><br/>
+<span style="color: #a50"># 木を植える - 同じ種類の木はフライウェイトオブジェクトを共有する</span><br/>
 forest.<span style="color: #05a;">plant_tree</span><span style="color: Olive;">(</span><span style="color: Maroon;">10</span><span style="color: Gray;">,</span> <span style="color: Maroon;">20</span><span style="color: Gray;">,</span> <span style="color: Maroon;">15</span><span style="color: Gray;">,</span> <span style="color: #a11;">"松树"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"pine_texture.png"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"深绿色"</span><span style="color: Olive;">)</span><br/>
 forest.<span style="color: #05a;">plant_tree</span><span style="color: Olive;">(</span><span style="color: Maroon;">30</span><span style="color: Gray;">,</span> <span style="color: Maroon;">40</span><span style="color: Gray;">,</span> <span style="color: Maroon;">12</span><span style="color: Gray;">,</span> <span style="color: #a11;">"松树"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"pine_texture.png"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"深绿色"</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 重用松树类型</span><br/>
 forest.<span style="color: #05a;">plant_tree</span><span style="color: Olive;">(</span><span style="color: Maroon;">50</span><span style="color: Gray;">,</span> <span style="color: Maroon;">60</span><span style="color: Gray;">,</span> <span style="color: Maroon;">18</span><span style="color: Gray;">,</span> <span style="color: #a11;">"橡树"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"oak_texture.png"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"浅绿色"</span><span style="color: Olive;">)</span><br/>
@@ -710,11 +710,11 @@ TreeFactory.<span style="color: #05a;">list_tree_types</span><span style="color:
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1014,7 +1014,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

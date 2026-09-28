@@ -434,11 +434,11 @@ WHERE name REGEXP '^[^A-H]';
 <ol class="commentlist">
 <li class="comment even thread-even depth-1" id="comment-23037"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>番茄土豆</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  799***193@qq.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="https://www.douban.com/note/311210644/" rel="nofollow" target="_blank">参考URL</a></p></div><div class="upvotejs" data-commid="23037" id="runoobvote-id-23037"><a class="upvote"></a> <span class="count">367</span></div></div><div class="comt-main" id="div-comment-23037"><p>まず、LIKE コマンドで使用されるワイルドカードについて説明します。</p><p>% は 1 つ以上の文字を置き換える</p><p>_ は 1 つの文字のみを置き換える</p><p>[charlist] 文字リスト内の任意の 1 文字</p><p>[^charlist] または [!charlist] 文字リスト内にない任意の 1 文字</p><p>上記のワイルドカードを組み合わせることで、LIKE コマンドでさまざまなテクニックを実現できます。</p><p>1、LIKE'Mc%' は、文字 Mc で始まるすべての文字列を検索します（例：McBadden）。</p><p>2、LIKE'%inger' は、文字 inger で終わるすべての文字列を検索します（例：Ringer、Stringer）。</p><p>3、LIKE'%en%' は、任意の位置に文字 en を含むすべての文字列を検索します（例：Bennet、Green、McBadden）。</p><p>4、LIKE'_heryl' は、文字 heryl で終わるすべての 6 文字の名前を検索します（例：Cheryl、Sheryl）。</p><p>5、LIKE'[CK]ars[eo]n' は、次の文字列を検索します：Carsen、Karsen、Carson、Karson（例：Carson）。</p><p>6、LIKE'[M-Z]inger' は、文字列 inger で終わり、M から Z までの任意の 1 文字で始まるすべての名前を検索します（例：Ringer）。</p><p>7、LIKE'M[^c]%' は、文字 M で始まり、2 番目の文字が c ではないすべての名前を検索します（例：MacFeather）。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">番茄土豆</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>番茄土豆</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  799***193@qq.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="https://www.douban.com/note/311210644/" rel="nofollow" target="_blank">参考URL</a></p></div></span>9年前 (2018-01-13)</div></div></li><!-- #comment-## -->
 <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-30282"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>白菜</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  min***eyiyi@gmail.ccom</p></div><div class="upvotejs" data-commid="30282" id="runoobvote-id-30282"><a class="upvote"></a> <span class="count">170</span></div></div><div class="comt-main" id="div-comment-30282"><p>SQL では、ワイルドカードは SQL LIKE 演算子と一緒に使用します。</p>
-<p>ただし、MySQL、SQLite はサポートするのは<span class="marked">%</span> 和 <span class="marked">_</span>ワイルドカードのみで、サポートしていません<span class="marked">[^charlist]</span> 或 <span class="marked">[!charlist]</span>ワイルドカード（MS Access はサポートしています。Microsoft Office はワイルドカードを一貫して良好にサポートしていますが、Microsoft は場合によってはワイルドカードをサポートしていません<span class="marked">%</span>、ではなく<span class="marked">*</span>、対応するソフトウェアの説明を参照してください）。ワイルドカードと正規表現は同じものではありません。</p>
+<p>ただし、MySQL、SQLite はサポートするのは<span class="marked">%</span>と<span class="marked">_</span>ワイルドカードのみで、サポートしていません<span class="marked">[^charlist]</span> 或 <span class="marked">[!charlist]</span>ワイルドカード（MS Access はサポートしています。Microsoft Office はワイルドカードを一貫して良好にサポートしていますが、Microsoft は場合によってはワイルドカードをサポートしていません<span class="marked">%</span>、ではなく<span class="marked">*</span>、対応するソフトウェアの説明を参照してください）。ワイルドカードと正規表現は同じものではありません。</p>
 <p>MySQL と SQLite は、<span class="marked">like '[xxx]yyy'</span>の角括弧を通常の文字として扱い、ワイルドカードとしては扱いません。</p>
 <p>例えば：</p>
 <pre>select * from persons WHERE City LIKE '[b]eijing'</pre>
-<p>検索されるのは<strong>city</strong> 为  <strong>[B]eijing</strong>の行であり、～ではなく<strong>city</strong> 为  <strong>beijing</strong>の行。</p>
+<p>検索されるのは<strong>city</strong>ために<strong>[B]eijing</strong>の行であり、～ではなく<strong>city</strong>ために<strong>beijing</strong>の行。</p>
 <p>MySQL で～を実現するには<span class="marked">[^charlist]</span> 或 <span class="marked">[!charlist]</span>ワイルドカードの検索効果は、正規表現によって実現する必要があります。</p>select * from persons WHERE City REGEXP '[b]eijing'
 
  SQLite は Regexp 正規表現メソッドをサポートしていません。<div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">白菜</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>白菜</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  min***eyiyi@gmail.ccom</p></div></span>8年前 (2018-07-27)</div></div></li><!-- #comment-## -->
@@ -657,11 +657,11 @@ mysql&gt; select "gheisa" REGEXP "^[^a-dXYZ]+$"; -&gt; 0（表示不匹配）</p
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前には<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前には<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -950,7 +950,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

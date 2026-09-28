@@ -425,7 +425,7 @@ int main ()
 200
 *ar = 0x7ffeef100bdc; ar[0] = 0x7ffeef100bdc</pre>
 <p>ループのたびに<span class="marked">*ar</span>配列の最初の要素の値を変更しているため、最初の出力結果だけが<span class="marked">ar[i]</span>変更されたことを示しています。</p>
-<p>最後の行では<span class="marked">*ar</span> 和 <span class="marked">ar[0]</span>のアドレス値を出力しており、結果は両者のアドレス値が同じであることを示しています。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">WosLovesLife</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   WosLovesLife</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  zha***0h00@126.com</p></div></span>8年前 (2018-07-06)</div></div></li><!-- #comment-## -->
+<p>最後の行では<span class="marked">*ar</span>と<span class="marked">ar[0]</span>のアドレス値を出力しており、結果は両者のアドレス値が同じであることを示しています。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">WosLovesLife</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   WosLovesLife</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  zha***0h00@126.com</p></div></span>8年前 (2018-07-06)</div></div></li><!-- #comment-## -->
 <li class="comment even thread-even depth-1" id="comment-30606"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   h799</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  799***144@qq.com</p></div><div class="upvotejs" data-commid="30606" id="runoobvote-id-30606"><a class="upvote"></a> <span class="count">35</span></div></div><div class="comt-main" id="div-comment-30606"><pre>#include &lt;iostream&gt;
 using namespace std;
 
@@ -519,7 +519,7 @@ int main(int argc,char* argv[])
     return 0;
 }
 </pre><p>1. ポインタを初期化する際には、newキーワードを使用できます。形式は「new 型名(引数)」です。int型の引数は空またはint値にすることができ、newキーワードはその変数のポインタを返します。</p><p>2. ポインタ自体を配列として使用できます。最初のforループでは、入力の形式がすでにこのことを示しています。ptr[i] は実際には *(ptr + i) であり、int ptr[] は const int* ptr を表します。初期アドレスが定数でありサイズが確定していることを除けば、ほとんど違いはありません。</p><p>3. まさにこの理由から、ポインタを可変長の配列として使用でき、事前に大きな配列を用意せずに任意の数の数値を渡すことができ、スペースを節約できます。初期化時にptrポインタ（配列）の長さが決まっていないため、RAMが尽きるまで無限に変数を追加できます。</p><p>4. 初期化する変数の型はポインタを含みません。main関数の前の変数定義では、最初にint*を型としてptrを定義し、次にint型でnを定義しました。明らかに、これは複数の変数を定義する際、変数の型はデフォルトではポインタを含まないことを示しています。実際、ポインタ記号*の作用対象は1つだけなので、型の隣に置いて括弧を付けても（ただし型を括弧で囲むとエラーになります）、この法則は変わりません。（マクロの話はしないでください）</p><p>ちなみに、forループの最後の文では、++iはi++よりも高速です。したがって、これら2つの演算子の優先順位の特性を利用する必要がない限り、文の中のインクリメント演算子として++iを使用することをお勧めします。実は、iをポインタ変数にして、最初の文でiを配列の先頭を指すポインタに初期化し、その後*iを配列変数として使用することもできます。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">Ohhhhhhhhh</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   Ohhhhhhhhh</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  xia***ix@msn.com</p></div></span>5年前 (2022-03-22)</div></div></li><!-- #comment-## -->
-<li class="comment even thread-even depth-1" id="comment-73682"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   邦</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  C99***@163.com</p></div><div class="upvotejs" data-commid="73682" id="runoobvote-id-73682"><a class="upvote"></a> <span class="count">21</span></div></div><div class="comt-main" id="div-comment-73682"><p>配列名<strong>a</strong> 是 <strong>a[0]</strong>のアドレスは、<strong>(a+n)</strong>つまり<strong>a[0]</strong>のアドレスに値を加えたものであり、<span class="marked">&amp;</span>はアドレス取得を表し、<span class="marked">*</span>は値の取得を表すとすると、<strong>a[i]</strong>と等価になり、<strong>*(a+i)</strong>，<strong>&amp;a[i]</strong>と等価です。<strong>(a+i)</strong>。</p>
+<li class="comment even thread-even depth-1" id="comment-73682"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   邦</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  C99***@163.com</p></div><div class="upvotejs" data-commid="73682" id="runoobvote-id-73682"><a class="upvote"></a> <span class="count">21</span></div></div><div class="comt-main" id="div-comment-73682"><p>配列名<strong>a</strong>である<strong>a[0]</strong>のアドレスは、<strong>(a+n)</strong>つまり<strong>a[0]</strong>のアドレスに値を加えたものであり、<span class="marked">&amp;</span>はアドレス取得を表し、<span class="marked">*</span>は値の取得を表すとすると、<strong>a[i]</strong>と等価になり、<strong>*(a+i)</strong>，<strong>&amp;a[i]</strong>と等価です。<strong>(a+i)</strong>。</p>
 <p>次のようになります：</p>
 <pre>
 #include&lt;iostream&gt;
@@ -610,17 +610,17 @@ a[10]=45
 (a+9)=0x70fe04
 (a+10)=0x70fe08</pre>
 <p>これは、なぜ<span class="marked">int main()</span>で配列を定義する際、配列に初期値を定義しなければ、その初期値がランダムになるという問題をうまく説明しています。なぜなら、どんな型であれ、どんな変数や定数であれ、すべてコンピュータ内に存在し、アドレスはそれらの位置であり、アドレスにはそれらの値が格納されているからです。アドレス値を定義していない場合、強制的にアドレス値を取得すると、アドレスが元々持っていた値を取得します。そして、<span class="marked">int main()</span>の外側の数値は、その初期値は<strong>0</strong>値です。</p>
-<p>よく観察すると気づくでしょう、<strong>a[10]</strong> 与 <strong>(a+10)</strong>のアドレスは同じですが値が異なります。それは、このアドレスが<strong>a[10]</strong>の宣言によって占有されておらず、他人のアドレスだからです。そうなると、他人は好きなように変更でき、<strong>a[10]</strong>は干渉する権利がありません。なぜなら、そのような配列自体が非合法だからです（したがって、負の配列やオーバーフロー配列は使わない方がよいでしょう）。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">邦</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   邦</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  C99***@163.com</p></div></span>4年前 (2022-07-03)</div></div></li><!-- #comment-## -->
+<p>よく観察すると気づくでしょう、<strong>a[10]</strong>と<strong>(a+10)</strong>のアドレスは同じですが値が異なります。それは、このアドレスが<strong>a[10]</strong>の宣言によって占有されておらず、他人のアドレスだからです。そうなると、他人は好きなように変更でき、<strong>a[10]</strong>は干渉する権利がありません。なぜなら、そのような配列自体が非合法だからです（したがって、負の配列やオーバーフロー配列は使わない方がよいでしょう）。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">邦</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   邦</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  C99***@163.com</p></div></span>4年前 (2022-07-03)</div></div></li><!-- #comment-## -->
 </ol>
 </div>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -909,7 +909,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

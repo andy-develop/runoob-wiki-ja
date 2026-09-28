@@ -228,7 +228,7 @@ SVG 図解：共変と反変
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #006600; font-style: italic;">// 定义动物和狗的类型</span><br/>
+<span style="color: #006600; font-style: italic;">// 動物と犬の型を定義</span><br/>
 <span style="color: #FF0000;">class</span> Animal <span style="color: #009900;">{</span><br/>
     name<span style="color: #339933;">:</span> string <span style="color: #339933;">=</span> <span style="color: #3366CC;">"动物"</span><span style="color: #339933;">;</span><br/>
 <span style="color: #009900;">}</span><br/>
@@ -237,12 +237,12 @@ SVG 図解：共変と反変
     breed<span style="color: #339933;">:</span> string <span style="color: #339933;">=</span> <span style="color: #3366CC;">"田园犬"</span><span style="color: #339933;">;</span><br/>
 <span style="color: #009900;">}</span><br/>
 <br/>
-<span style="color: #006600; font-style: italic;">// 协变：输出类型可以向更宽泛的类型转换</span><br/>
-<span style="color: #006600; font-style: italic;">// 返回 Dog 的函数可以赋值给返回 Animal 的函数</span><br/>
+<span style="color: #006600; font-style: italic;">// 共変：出力型はより広い型に変換できる</span><br/>
+<span style="color: #006600; font-style: italic;">// Dog を返す関数は Animal を返す関数に代入できます</span><br/>
 type AnimalGetter <span style="color: #339933;">=</span> <span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> Animal<span style="color: #339933;">;</span><br/>
 type DogGetter <span style="color: #339933;">=</span> <span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> Dog<span style="color: #339933;">;</span><br/>
 <br/>
-<span style="color: #006600; font-style: italic;">// Dog 是 Animal 的子类，所以 DogGetter 可以赋值给 AnimalGetter</span><br/>
+<span style="color: #006600; font-style: italic;">// Dog は Animal のサブクラスなので、DogGetter は AnimalGetter に代入できます。</span><br/>
 <span style="color: #000066; font-weight: bold;">const</span> getDog<span style="color: #339933;">:</span> DogGetter <span style="color: #339933;">=</span> <span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #000066; font-weight: bold;">new</span> Dog<span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <span style="color: #000066; font-weight: bold;">const</span> getAnimal<span style="color: #339933;">:</span> AnimalGetter <span style="color: #339933;">=</span> getDog<span style="color: #339933;">;</span>  <span style="color: #006600; font-style: italic;">// 协变：安全</span><br/>
 <br/>
@@ -269,13 +269,13 @@ console.<span style="color: #660066;">log</span><span style="color: #009900;">(<
     breed<span style="color: #339933;">:</span> string <span style="color: #339933;">=</span> <span style="color: #3366CC;">"田园犬"</span><span style="color: #339933;">;</span><br/>
 <span style="color: #009900;">}</span><br/>
 <br/>
-<span style="color: #006600; font-style: italic;">// 逆变：输入类型可以向更具体的类型转换</span><br/>
-<span style="color: #006600; font-style: italic;">// 接受 Animal 的函数可以赋值给接受 Dog 的函数</span><br/>
+<span style="color: #006600; font-style: italic;">// 反変：入力型はより具体的な型に変換できる</span><br/>
+<span style="color: #006600; font-style: italic;">// Animal を受け取る関数は Dog を受け取る関数に代入できます</span><br/>
 type DogConsumer <span style="color: #339933;">=</span> <span style="color: #009900;">(</span>dog<span style="color: #339933;">:</span> Dog<span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #000066; font-weight: bold;">void</span><span style="color: #339933;">;</span><br/>
 type AnimalConsumer <span style="color: #339933;">=</span> <span style="color: #009900;">(</span>animal<span style="color: #339933;">:</span> Animal<span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #000066; font-weight: bold;">void</span><span style="color: #339933;">;</span><br/>
 <br/>
-<span style="color: #006600; font-style: italic;">// 如果接受更宽泛类型的函数可以赋值给更具体类型的函数</span><br/>
-<span style="color: #006600; font-style: italic;">// 那么当我们传入 Dog 时，函数可能会处理不了（缺少 Dog 特有的属性）</span><br/>
+<span style="color: #006600; font-style: italic;">// より広い型を受け入れる関数を、より具体的な型の関数に代入できる場合</span><br/>
+<span style="color: #006600; font-style: italic;">// つまり、Dog を渡すと、関数は処理できないかもしれません（Dog 固有の属性が不足しているため）。</span><br/>
 <span style="color: #000066; font-weight: bold;">const</span> consumeAnimal<span style="color: #339933;">:</span> AnimalConsumer <span style="color: #339933;">=</span> <span style="color: #009900;">(</span>animal<span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
     console.<span style="color: #660066;">log</span><span style="color: #009900;">(</span><span style="color: #3366CC;">"处理动物: "</span> <span style="color: #339933;">+</span> animal.<span style="color: #660066;">name</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <span style="color: #009900;">}</span><span style="color: #339933;">;</span><br/>
@@ -308,18 +308,18 @@ consumeDog<span style="color: #009900;">(</span>dog<span style="color: #009900;"
 type GetName <span style="color: #339933;">=</span> <span style="color: #009900;">(</span>animal<span style="color: #339933;">:</span> Animal<span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> string<span style="color: #339933;">;</span><br/>
 type GetDogBreed <span style="color: #339933;">=</span> <span style="color: #009900;">(</span>dog<span style="color: #339933;">:</span> Dog<span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> string<span style="color: #339933;">;</span><br/>
 <br/>
-<span style="color: #006600; font-style: italic;">// 正确的赋值</span><br/>
+<span style="color: #006600; font-style: italic;">// 正しい代入</span><br/>
 <span style="color: #000066; font-weight: bold;">const</span> getDogBreed<span style="color: #339933;">:</span> GetDogBreed <span style="color: #339933;">=</span> <span style="color: #009900;">(</span>dog<span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> dog.<span style="color: #660066;">breed</span><span style="color: #339933;">;</span><br/>
 <br/>
-<span style="color: #006600; font-style: italic;">// 尝试赋值 - 在 strictFunctionTypes 下会报错</span><br/>
-<span style="color: #006600; font-style: italic;">// 因为 AnimalConsumer (参数更宽泛) 不能赋值给 DogConsumer (参数更具体)</span><br/>
-<span style="color: #006600; font-style: italic;">// 这是因为参数是逆变的</span><br/>
+<span style="color: #006600; font-style: italic;">// 代入を試みる - strictFunctionTypes ではエラーになる</span><br/>
+<span style="color: #006600; font-style: italic;">// AnimalConsumer（パラメータがより広い）は DogConsumer（パラメータがより具体的）に代入できないため</span><br/>
+<span style="color: #006600; font-style: italic;">// これはなぜなら参数である逆变の</span><br/>
 <br/>
 <span style="color: #000066; font-weight: bold;">function</span> printAnimalName<span style="color: #009900;">(</span>animal<span style="color: #339933;">:</span> Animal<span style="color: #009900;">)</span><span style="color: #339933;">:</span> string <span style="color: #009900;">{</span><br/>
     <span style="color: #000066; font-weight: bold;">return</span> animal.<span style="color: #660066;">name</span><span style="color: #339933;">;</span><br/>
 <span style="color: #009900;">}</span><br/>
 <br/>
-<span style="color: #006600; font-style: italic;">// 尝试将接受更宽泛类型的函数赋值给更具体类型</span><br/>
+<span style="color: #006600; font-style: italic;">// より広い型を受け入れる関数を、より具体的な型に代入しようとする</span><br/>
 <span style="color: #006600; font-style: italic;">// const getSpecific: GetDogBreed = printAnimalName; // 错误！</span><br/>
 <br/>
 console.<span style="color: #660066;">log</span><span style="color: #009900;">(</span><span style="color: #3366CC;">"犬种: "</span> <span style="color: #339933;">+</span> getDogBreed<span style="color: #009900;">(</span><span style="color: #009900;">{</span> name<span style="color: #339933;">:</span> <span style="color: #3366CC;">"旺财"</span><span style="color: #339933;">,</span> breed<span style="color: #339933;">:</span> <span style="color: #3366CC;">"哈士奇"</span> <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
@@ -354,7 +354,7 @@ console.<span style="color: #660066;">log</span><span style="color: #009900;">(<
 <span style="color: #000066; font-weight: bold;">const</span> dogCage <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">new</span> Cage<span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">new</span> Dog<span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <span style="color: #000066; font-weight: bold;">const</span> animalCage<span style="color: #339933;">:</span> Cage<span style="color: #339933;">&lt;</span>Animal<span style="color: #339933;">&gt;</span> <span style="color: #339933;">=</span> dogCage<span style="color: #339933;">;</span>  <span style="color: #006600; font-style: italic;">// 协变：安全</span><br/>
 <br/>
-<span style="color: #006600; font-style: italic;">// animalCage 现在可以安全地当作包含动物的笼子使用</span><br/>
+<span style="color: #006600; font-style: italic;">// animalCage は現在、動物を入れるケージとして安全に使用できます。</span><br/>
 console.<span style="color: #660066;">log</span><span style="color: #009900;">(</span><span style="color: #3366CC;">"动物名称: "</span> <span style="color: #339933;">+</span> animalCage.<span style="color: #660066;">animal</span>.<span style="color: #660066;">name</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 </div>
 </div>
@@ -398,12 +398,12 @@ console.<span style="color: #660066;">log</span><span style="color: #009900;">(<
 <div class="example_code">
 <span style="color: #006600; font-style: italic;">// 定义类型</span><br/>
 <span style="color: #FF0000;">interface</span> Producer<span style="color: #339933;">&lt;</span>T<span style="color: #339933;">&gt;</span> <span style="color: #009900;">{</span><br/>
-    <span style="color: #006600; font-style: italic;">// 生产方法：返回值是协变的</span><br/>
+    <span style="color: #006600; font-style: italic;">// 生成方法：戻り値は共変です</span><br/>
     produce<span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">:</span> T<span style="color: #339933;">;</span><br/>
 <span style="color: #009900;">}</span><br/>
 <br/>
 <span style="color: #FF0000;">interface</span> Consumer<span style="color: #339933;">&lt;</span>T<span style="color: #339933;">&gt;</span> <span style="color: #009900;">{</span><br/>
-    <span style="color: #006600; font-style: italic;">// 消费方法：参数是逆变的</span><br/>
+    <span style="color: #006600; font-style: italic;">// 消費方法：パラメータは反変です</span><br/>
     consume<span style="color: #009900;">(</span>value<span style="color: #339933;">:</span> T<span style="color: #009900;">)</span><span style="color: #339933;">:</span> <span style="color: #000066; font-weight: bold;">void</span><span style="color: #339933;">;</span><br/>
 <span style="color: #009900;">}</span><br/>
 <br/>
@@ -571,11 +571,11 @@ dogConsumer.<span style="color: #660066;">consume</span><span style="color: #009
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -864,7 +864,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

@@ -180,12 +180,12 @@ model <span style="color: Gray;">=</span> init_chat_model<span style="color: Oli
 <span style="color: #a50"># 方法1：文字列（最も簡単）</span><br/>
 agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;">(</span><br/>
     model<span style="color: Gray;">=</span>model<span style="color: Gray;">,</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは菜鸟教程 RUNOOB の学習アドバイザーです。回答は簡潔かつ専門的にしてください。"</span><span style="color: Gray;">,</span><br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">あなたは初心者向けチュートリアル RUNOOB の学習アドバイザーです。回答は簡潔かつ専門のにしてください。</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 方法2：SystemMessage オブジェクト（再利用可能）</span><br/>
 system_msg <span style="color: Gray;">=</span> SystemMessage<span style="color: Olive;">(</span><br/>
-    content<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは菜鸟教程 RUNOOB の学習アドバイザーです。回答は簡潔かつ専門的にしてください。"</span><br/>
+    content<span style="color: Gray;">=</span><span style="color: #a11;">あなたは初心者向けチュートリアル RUNOOB の学習アドバイザーです。回答は簡潔かつ専門のにしてください。</span><br/>
 <span style="color: Olive;">)</span><br/>
 agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;">(</span>model<span style="color: Gray;">=</span>model<span style="color: Gray;">,</span> system_prompt<span style="color: Gray;">=</span>system_msg<span style="color: Olive;">)</span><br/>
 </div>
@@ -264,7 +264,7 @@ result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invo
 <span style="color: #a50"># @dynamic_prompt デコレータ：ModelRequest を受け取り、新しい system_prompt を返す</span><br/>
 <span style="color: Gray;">@</span>dynamic_prompt<br/>
 <span style="color: Green;font-weight:bold;">def</span> personalized_prompt<span style="color: Olive;">(</span>request: ModelRequest<span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
-    <span style="color: #a11;">"""会話コンテキストに基づいて個別化されたプロンプトを動的に生成する"""</span><br/>
+    <span style="color: #a11;">会話コンテキストに基づいて個別化されたプロンプトを動的に生成する</span><br/>
     messages <span style="color: Gray;">=</span> request.<span style="color: #05a;">state</span>.<span style="color: #05a;">get</span><span style="color: Olive;">(</span><span style="color: #a11;">"messages"</span><span style="color: Gray;">,</span> <span style="color: Olive;">[</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
     message_count <span style="color: Gray;">=</span> <span style="color: Teal;">len</span><span style="color: Olive;">(</span>messages<span style="color: Olive;">)</span><br/>
 <br/>
@@ -323,7 +323,7 @@ result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invo
 <br/>
 <span style="color: Gray;">@</span>dynamic_prompt<br/>
 <span style="color: Green;font-weight:bold;">def</span> context_aware_prompt<span style="color: Olive;">(</span>request: ModelRequest<span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
-    <span style="color: #a11;">"""ユーザー情報、時刻、会話段階に基づいてプロンプトを動的に生成する"""</span><br/>
+    <span style="color: #a11;">ユーザー情報、時刻、会段階に基づいてプロンプトを動的に生成する</span><br/>
     <span style="color: #a50"># runtime.context からユーザー情報を取得する</span><br/>
     context <span style="color: Gray;">=</span> request.<span style="color: #05a;">runtime</span>.<span style="color: #05a;">context</span><br/>
     user_name <span style="color: Gray;">=</span> context.<span style="color: #05a;">get</span><span style="color: Olive;">(</span><span style="color: #a11;">"user_name"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"学生"</span><span style="color: Olive;">)</span> <span style="color: Green;font-weight:bold;">if</span> context <span style="color: Green;font-weight:bold;">else</span> <span style="color: #a11;">"学生"</span><br/>
@@ -369,7 +369,7 @@ result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invo
 model <span style="color: Gray;">=</span> init_chat_model<span style="color: Olive;">(</span><span style="color: #a11;">"deepseek:deepseek-v4-flash"</span><span style="color: Gray;">,</span> temperature<span style="color: Gray;">=</span><span style="color: Maroon;">0.7</span><span style="color: Olive;">)</span><br/>
 agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;">(</span><br/>
     model<span style="color: Gray;">=</span>model<span style="color: Gray;">,</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは菜鸟教程 RUNOOB の専門的な学習アドバイザーです。"</span><span style="color: Gray;">,</span>  <span style="color: #a50"># 上書きされる</span><br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは初心者向けチュートリアル RUNOOB の専門のな学習アドバイザーです。"</span><span style="color: Gray;">,</span>  <span style="color: #a50"># 上書きされる</span><br/>
     middleware<span style="color: Gray;">=</span><span style="color: Olive;">[</span>override_prompt<span style="color: Olive;">]</span><span style="color: Gray;">,</span>  <span style="color: #a50"># 優先順位が高い</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
@@ -512,11 +512,11 @@ result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invo
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -805,7 +805,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

@@ -284,8 +284,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>AngularJS は<strong>$scope</strong>オブジェクトを使用してコントローラーを呼び出します。</p>
 <p>AngularJS では、$scope はアプリケーションオブジェクト（アプリケーションの変数や関数に属する）です。</p>
 <p>コントローラーの<strong>$scope</strong>（スコープ、制御範囲に相当）AngularJS Model（モデル）を保存するために使用されるオブジェクト。</p>
-<p>コントローラーはスコープ内に2つのプロパティを作成します。<strong>firstName</strong> 和
-<strong>lastName</strong>)。</p>
+<p>コントローラーはスコープ内に2つのプロパティを作成します。<strong>firstName</strong>と<strong>lastName</strong>)。</p>
 <p><strong>ng-model</strong>ディレクティブは入力フィールドをコントローラーのプロパティ（firstName と lastName）にバインドします。</p>
 <hr/>
 <h2>コントローラーのメソッド</h2>
@@ -496,7 +495,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 &lt;/div&gt;</pre><p><a class="tryitbtn" data-lang="html" href="../try/editor.html" onclick="localStorage.setItem('tryit_code','PGRpdiBuZy1hcHA9Im15QXBwIj4KICAgIDxkaXYgbmctY29udHJvbGxlcj0ibXlDdHJsMSI+CiAgICAgICAg5ZCNOiAgPGlucHV0IHR5cGU9InRleHQiIG5nLW1vZGVsPSJmaXJzdE5hbWUiPjxicj4KICAgICAgICDlp5M6ICA8aW5wdXQgdHlwZT0idGV4dCIgbmctbW9kZWw9Imxhc3ROYW1lIj48YnI+CiAgICAgICAgPGJyPgogICAgICAgIOWnk+WQjToge3tmaXJzdE5hbWUgKyAiICIgKyBsYXN0TmFtZX19CiAgICA8L2Rpdj4KICAgIDxicj48YnI+CiAgICA8ZGl2IG5nLWNvbnRyb2xsZXI9Im15Q3RybDIiPgogICAgICAgIOWQjTogIDxpbnB1dCB0eXBlPSJ0ZXh0IiBuZy1tb2RlbD0iZmlyc3ROYW1lIj48YnI+CiAgICAgICAg5aeTOiAgPGlucHV0IHR5cGU9InRleHQiIG5nLW1vZGVsPSJsYXN0TmFtZSI+PGJyPgogICAgICAgIDxicj4KICAgICAgICDlp5PlkI06IHt7Zmlyc3ROYW1lICsgIiAiICsgbGFzdE5hbWV9fQogICAgPC9kaXY+CjwvZGl2Pg==');localStorage.setItem('tryit_lang','html');">試してみる »</a></p>
 <div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">Jerry X</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   Jerry X</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  xia***o110119@sina.com</p></div></span>9年前 (2018-03-15)</div></div></li><!-- #comment-## -->
 <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-27942"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   Butters</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  475***402@qq.com</p></div><div class="upvotejs" data-commid="27942" id="runoobvote-id-27942"><a class="upvote"></a> <span class="count">18</span></div></div><div class="comt-main" id="div-comment-27942"><p>controller のスコープに関する問題：</p>
-<p>controller 内で、ローカル $scope と $rootScope の両方が存在し、同じ名前の変数がある場合、<span class="marked">{{変数名}}</span>ローカル変数を指し、グローバル変数ではなく、スコープは現在の<strong>controller</strong>；<span class="marked">{{$root.変数名}}</span>はグローバル変数であり、<strong>ng-app=""</strong>の下の任意の<strong>controller</strong>内で使用できます。もし<strong>$scope</strong>、しかない場合は<strong>$rootScope</strong>、ならば<span class="marked">{{変数名}}</span> 和 <span class="marked">{{$root.変数名}}</span>区別はありません。</p>
+<p>controller 内で、ローカル $scope と $rootScope の両方が存在し、同じ名前の変数がある場合、<span class="marked">{{変数名}}</span>ローカル変数を指し、グローバル変数ではなく、スコープは現在の<strong>controller</strong>；<span class="marked">{{$root.変数名}}</span>はグローバル変数であり、<strong>ng-app=""</strong>の下の任意の<strong>controller</strong>内で使用できます。もし<strong>$scope</strong>、しかない場合は<strong>$rootScope</strong>、ならば<span class="marked">{{変数名}}</span>と<span class="marked">{{$root.変数名}}</span>区別はありません。</p>
 <pre>&lt;body ng-app="myApp"&gt;
 &lt;div ng-controller="myCtrl"&gt;       //输出结果
     {{first}}&lt;br&gt;                 //ctrl局部first
@@ -558,11 +557,11 @@ function($scope, $rootScope) {
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてメモを共有</h3>
-<p style="font-size:14px;">メモはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> メモを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>する必要があります！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">メモはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> メモを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>する必要があります！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -862,7 +861,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

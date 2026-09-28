@@ -191,7 +191,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p><strong>時系列サポート</strong>：<code>DataFrame</code>時系列データに対する特別なサポートがあり、時間データのスライス、インデックス、操作を簡単に行うことができます。</p>
 </li>
 <li>
-<p><strong>豊富なデータアクセス機能</strong>：これらの<code>.loc</code>、<code>.iloc</code> 和 <code>.query()</code>メソッドを使用して、データを柔軟にアクセスおよびフィルタリングできます。</p>
+<p><strong>豊富なデータアクセス機能</strong>：これらの<code>.loc</code>、<code>.iloc</code>と<code>.query()</code>メソッドを使用して、データを柔軟にアクセスおよびフィルタリングできます。</p>
 </li>
 <li>
 <p><strong>柔軟なデータ処理機能</strong>：データの結合、再形成、ピボット、グループ化、集約などが含まれます。</p>
@@ -373,41 +373,21 @@ calories    380
 duration     40
 Name: day2, dtype: int64</pre><hr/>
 <h2>DataFrame メソッド</h2><p>DataFrame の一般的な操作とメソッドは次の表のとおりです：</p>
-<table class="reference"><thead><tr><th><strong>メソッド名</strong></th><th><strong>機能の説明</strong></th></tr></thead><tbody><tr><td><code>head(n)</code></td><td>返回 DataFrame 的前 n 行数据（默认前 5 行）
-→ DataFrame の先頭 n 行のデータを返します（デフォルトは先頭 5 行）</td></tr><tr><td><code>tail(n)</code></td><td>返回 DataFrame 的后 n 行数据（默认后 5 行）
-→ DataFrame の末尾 n 行のデータを返します（デフォルトは末尾 5 行）</td></tr><tr><td><code>info()</code></td><td>显示 DataFrame 的简要信息，包括列名、数据类型、非空值数量等
-→ DataFrame の簡易情報を表示します。列名、データ型、非欠損値の数などを含みます。</td></tr><tr><td><code>describe()</code></td><td>返回 DataFrame 数值列的统计信息，如均值、标准差、最小值等
-→ DataFrame の数値列の統計情報を返します。平均、標準偏差、最小値などです。</td></tr><tr><td><code>shape</code></td><td>返回 DataFrame 的行数和列数（行数, 列数）
-→ DataFrame の行数と列数を返します（行数, 列数）</td></tr><tr><td><code>columns</code></td><td>返回 DataFrame 的所有列名
-→ DataFrame のすべての列名を返します</td></tr><tr><td><code>index</code></td><td>返回 DataFrame 的行索引
-→ DataFrame の行インデックスを返します</td></tr><tr><td><code>dtypes</code></td><td>返回每一列的数值数据类型
-→ 各列の数値データ型を返します</td></tr><tr><td><code>sort_values(by)</code></td><td>按照指定列排序
+<table class="reference"><thead><tr><th><strong>メソッド名</strong></th><th><strong>機能の説明</strong></th></tr></thead><tbody><tr><td><code>head(n)</code></td><td>DataFrame の先頭 n 行のデータを返します（デフォルトは先頭 5 行）</td></tr><tr><td><code>tail(n)</code></td><td>DataFrame の末尾 n 行のデータを返します（デフォルトは末尾 5 行）</td></tr><tr><td><code>info()</code></td><td>DataFrame の簡易情報を表示します。列名、データ型、非欠損値の数などを含みます。</td></tr><tr><td><code>describe()</code></td><td>DataFrame の数値列の統計情報を返します。平均、標準偏差、最小値などです。</td></tr><tr><td><code>shape</code></td><td>DataFrame の行数と列数を返します（行数, 列数）</td></tr><tr><td><code>columns</code></td><td>DataFrame のすべての列名を返します</td></tr><tr><td><code>index</code></td><td>DataFrame の行インデックスを返します</td></tr><tr><td><code>dtypes</code></td><td>各列の数値データ型を返します</td></tr><tr><td><code>sort_values(by)</code></td><td>按照指定列排序
 → 指定した列で並べ替えます</td></tr><tr><td><code>sort_index()</code></td><td>按行索引排序
-→ 行インデックスで並べ替えます</td></tr><tr><td><code>dropna()</code></td><td>删除含有缺失值（NaN）的行或列
-→ 欠損値（NaN）を含む行または列を削除します</td></tr><tr><td><code>fillna(value)</code></td><td>用指定的值填充缺失值
-→ 指定した値で欠損値を埋めます</td></tr><tr><td><code>isnull()</code></td><td>判断缺失值，返回一个布尔值 DataFrame
+→ 行インデックスで並べ替えます</td></tr><tr><td><code>dropna()</code></td><td>欠損値（NaN）を含む行または列を削除します</td></tr><tr><td><code>fillna(value)</code></td><td>指定した値で欠損値を埋めます</td></tr><tr><td><code>isnull()</code></td><td>判断缺失值，返回一个布尔值 DataFrame
 → 欠損値かどうかを判定し、ブール値の DataFrame を返します</td></tr><tr><td><code>notnull()</code></td><td>判断非缺失值，返回一个布尔值 DataFrame
 → 欠損値でないかどうかを判定し、ブール値の DataFrame を返します</td></tr><tr><td><code>loc[]</code></td><td>按标签索引选择数据
 → ラベルインデックスでデータを選択します</td></tr><tr><td><code>iloc[]</code></td><td>按位置索引选择数据
 → 位置インデックスでデータを選択します</td></tr><tr><td><code>at[]</code></td><td>访问 DataFrame 中单个元素（比
-→ DataFrame 内の単一要素にアクセスします（<code>loc[]</code>更高效）
-→ より効率的）</td></tr><tr><td><code>iat[]</code></td><td>访问 DataFrame 中单个元素（比
-→ DataFrame 内の単一要素にアクセスします（<code>iloc[]</code>更高效）
-→ より効率的）</td></tr><tr><td><code>apply(func)</code></td><td>对 DataFrame 或 Series 应用一个函数
-→ DataFrame または Series に関数を適用します</td></tr><tr><td><code>applymap(func)</code></td><td>对 DataFrame 的每个元素应用函数（仅对 DataFrame）
-→ DataFrame の各要素に関数を適用します（DataFrame のみ）</td></tr><tr><td><code>groupby(by)</code></td><td>分组操作，用于按某一列分组进行汇总统计
+→ DataFrame 内の単一要素にアクセスします（<code>loc[]</code>より効率の）
+→ より効率の）</td></tr><tr><td><code>iat[]</code></td><td>访问 DataFrame 中单个元素（比
+→ DataFrame 内の単一要素にアクセスします（<code>iloc[]</code>より効率の）
+→ より効率の）</td></tr><tr><td><code>apply(func)</code></td><td>DataFrame または Series に関数を適用します</td></tr><tr><td><code>applymap(func)</code></td><td>DataFrame の各要素に関数を適用します（DataFrame のみ）</td></tr><tr><td><code>groupby(by)</code></td><td>分组操作，用于按某一列分组进行汇总统计
 → グループ化操作。特定の列でグループ化して集計統計を行うために使用します</td></tr><tr><td><code>pivot_table()</code></td><td>创建透视表
-→ ピボットテーブルを作成します</td></tr><tr><td><code>merge()</code></td><td>合并多个 DataFrame（类似 SQL 的 JOIN 操作）
-→ 複数の DataFrame を結合します（SQL の JOIN 操作に似ています）</td></tr><tr><td><code>concat()</code></td><td>按行或按列连接多个 DataFrame
-→ 複数の DataFrame を行方向または列方向に連結します</td></tr><tr><td><code>to_csv()</code></td><td>将 DataFrame 导出为 CSV 文件
-→ DataFrame を CSV ファイルにエクスポートします</td></tr><tr><td><code>to_excel()</code></td><td>将 DataFrame 导出为 Excel 文件
-→ DataFrame を Excel ファイルにエクスポートします</td></tr><tr><td><code>to_json()</code></td><td>将 DataFrame 导出为 JSON 格式
-→ DataFrame を JSON 形式にエクスポートします</td></tr><tr><td><code>to_sql()</code></td><td>将 DataFrame 导出为 SQL 数据库
-→ DataFrame を SQL データベースにエクスポートします</td></tr><tr><td><code>query()</code></td><td>使用 SQL 风格的语法查询 DataFrame
-→ SQL 風の構文を使用して DataFrame をクエリします</td></tr><tr><td><code>duplicated()</code></td><td>返回布尔值 DataFrame，指示每行是否是重复的
-→ 各行が重複しているかどうかを示すブール値の DataFrame を返します</td></tr><tr><td><code>drop_duplicates()</code></td><td>删除重复的行
-→ 重複した行を削除します</td></tr><tr><td><code>set_index()</code></td><td>设置 DataFrame 的索引
-→ DataFrame のインデックスを設定します</td></tr><tr><td><code>reset_index()</code></td><td>重置 DataFrame 的索引
+→ ピボットテーブルを作成します</td></tr><tr><td><code>merge()</code></td><td>複数の DataFrame を結合します（SQL の JOIN 操作に似ています）</td></tr><tr><td><code>concat()</code></td><td>按行或按列连接多个 DataFrame
+→ 複数の DataFrame を行方向または列方向に連結します</td></tr><tr><td><code>to_csv()</code></td><td>DataFrame を CSV ファイルにエクスポートします</td></tr><tr><td><code>to_excel()</code></td><td>DataFrame を Excel ファイルにエクスポートします</td></tr><tr><td><code>to_json()</code></td><td>DataFrame を JSON 形式にエクスポートします</td></tr><tr><td><code>to_sql()</code></td><td>DataFrame を SQL データベースにエクスポートします</td></tr><tr><td><code>query()</code></td><td>SQL 風の構文を使用して DataFrame をクエリします</td></tr><tr><td><code>duplicated()</code></td><td>各行が重複しているかどうかを示すブール値の DataFrame を返します。</td></tr><tr><td><code>drop_duplicates()</code></td><td>重複した行を削除する
+→ 重複した行を削除します</td></tr><tr><td><code>set_index()</code></td><td>DataFrame のインデックスを設定します</td></tr><tr><td><code>reset_index()</code></td><td>DataFrame のインデックスをリセットする
 → DataFrame のインデックスをリセットします</td></tr><tr><td><code>transpose()</code></td><td>转置 DataFrame（行列交换）
 → DataFrame を転置します（行と列の入れ替え）</td></tr></tbody></table>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
@@ -426,8 +406,7 @@ df <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFrame</
 → # 先頭 2 行のデータを表示</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df.<span style="color: #05a;">head</span><span style="color: Olive;">(</span><span style="color: Maroon;">2</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 查看 DataFrame 的基本信息
-→ # DataFrame の基本情報を表示</span><br/>
+<span style="color: #a50"># DataFrame の基本情報を表示</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df.<span style="color: #05a;">info</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 获取描述统计信息
@@ -461,12 +440,11 @@ df_sorted <span style="color: Gray;">=</span> df.<span style="color: #05a;">sort
 → # 欠損値の処理（欠損値を埋める）</span><br/>
 df<span style="color: Olive;">[</span><span style="color: #a11;">'Age'</span><span style="color: Olive;">]</span> <span style="color: Gray;">=</span> df<span style="color: Olive;">[</span><span style="color: #a11;">'Age'</span><span style="color: Olive;">]</span>.<span style="color: #05a;">fillna</span><span style="color: Olive;">(</span><span style="color: Maroon;">30</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 导出为 CSV 文件
+<span style="color: #a50"># CSV ファイルにエクスポート
 → # CSV ファイルにエクスポート</span><br/>
 df.<span style="color: #05a;">to_csv</span><span style="color: Olive;">(</span><span style="color: #a11;">'output.csv'</span><span style="color: Gray;">,</span> index<span style="color: Gray;">=</span><span style="color: Teal;">False</span><span style="color: Olive;">)</span><br/>
 </div></div>
-<p>输出结果为：
-→ 出力結果は次のとおりです：</p>
+<p>出力結果は次のとおりです：</p>
 <pre>
 # 查看前两行数据
      Name  Age         City
@@ -519,9 +497,7 @@ Name: Age, dtype: float64
 <hr/>
 <h2>詳細な DataFrame の説明</h2>
 <h3>DataFrame の作成</h3>
-<p><strong>从字典创建：
-→ 辞書から作成：</strong>字典的键成为列名，值成为列数据。
-→ 辞書のキーが列名になり、値が列データになります。</p>
+<p><strong>辞書から作成：</strong>辞書のキーが列名になり、値が列データになります。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: Green;font-weight:bold;">import</span> pandas <span style="color: Green;font-weight:bold;">as</span> pd<br/>
 <br/>
@@ -529,15 +505,13 @@ Name: Age, dtype: float64
 → # 辞書から DataFrame を作成</span><br/>
 df <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFrame</span><span style="color: Olive;">(</span><span style="color: Olive;">{</span><span style="color: #a11;">'Column1'</span>: <span style="color: Olive;">[</span><span style="color: Maroon;">1</span><span style="color: Gray;">,</span> <span style="color: Maroon;">2</span><span style="color: Gray;">,</span> <span style="color: Maroon;">3</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span> <span style="color: #a11;">'Column2'</span>: <span style="color: Olive;">[</span><span style="color: Maroon;">4</span><span style="color: Gray;">,</span> <span style="color: Maroon;">5</span><span style="color: Gray;">,</span> <span style="color: Maroon;">6</span><span style="color: Olive;">]</span><span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
 </div></div>
-<p><strong>从列表的列表创建：
-→ リストのリストから作成：</strong>外层列表代表行，内层列表代表列。
-→ 外側のリストは行を表し、内側のリストは列を表します。</p># 通过列表的列表创建 DataFrame
+<p><strong>リストのリストから作成：</strong>外层列表代表行，内层列表代表列。
+→ 外側のリストは行を表し、内側のリストは列を表します。</p># リストのリストから DataFrame を作成
 → # リストのリストから DataFrame を作成<div class="example"><h2 class="example">例</h2> <div class="example_code">
 df <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFrame</span><span style="color: Olive;">(</span><span style="color: Olive;">[</span><span style="color: Olive;">[</span><span style="color: Maroon;">1</span><span style="color: Gray;">,</span> <span style="color: Maroon;">2</span><span style="color: Gray;">,</span> <span style="color: Maroon;">3</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span> <span style="color: Olive;">[</span><span style="color: Maroon;">4</span><span style="color: Gray;">,</span> <span style="color: Maroon;">5</span><span style="color: Gray;">,</span> <span style="color: Maroon;">6</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span> <span style="color: Olive;">[</span><span style="color: Maroon;">7</span><span style="color: Gray;">,</span> <span style="color: Maroon;">8</span><span style="color: Gray;">,</span> <span style="color: Maroon;">9</span><span style="color: Olive;">]</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
                   columns<span style="color: Gray;">=</span><span style="color: Olive;">[</span><span style="color: #a11;">'Column1'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'Column2'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'Column3'</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
 </div></div>
-<p><strong>从 NumPy 数组创建：
-→ NumPy 配列から作成：</strong>提供一个二维 NumPy 数组。
+<p><strong>NumPy 配列から作成：</strong>提供一个二维 NumPy 数组。
 → 2 次元の NumPy 配列を指定します。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: Green;font-weight:bold;">import</span> numpy <span style="color: Green;font-weight:bold;">as</span> np<br/>
@@ -546,46 +520,40 @@ df <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFrame</
 → # NumPy 配列から DataFrame を作成</span><br/>
 df <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFrame</span><span style="color: Olive;">(</span>np.<span style="color: #05a;">array</span><span style="color: Olive;">(</span><span style="color: Olive;">[</span><span style="color: Olive;">[</span><span style="color: Maroon;">1</span><span style="color: Gray;">,</span> <span style="color: Maroon;">2</span><span style="color: Gray;">,</span> <span style="color: Maroon;">3</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span> <span style="color: Olive;">[</span><span style="color: Maroon;">4</span><span style="color: Gray;">,</span> <span style="color: Maroon;">5</span><span style="color: Gray;">,</span> <span style="color: Maroon;">6</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span> <span style="color: Olive;">[</span><span style="color: Maroon;">7</span><span style="color: Gray;">,</span> <span style="color: Maroon;">8</span><span style="color: Gray;">,</span> <span style="color: Maroon;">9</span><span style="color: Olive;">]</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 </div></div>
-<p><strong>从 Series 创建 DataFrame：
-→ Series から DataFrame を作成：</strong>通过
+<p><strong>Series から DataFrame を作成：</strong>通过
 → を通じて<span class="marked">pd.Series()</span>创建。
 → 作成します。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #a50"># 从 Series 创建 DataFrame
+<span style="color: #a50"># Series から DataFrame を作成
 → # Series から DataFrame を作成</span><br/>
 s1 <span style="color: Gray;">=</span> pd.<span style="color: #05a;">Series</span><span style="color: Olive;">(</span><span style="color: Olive;">[</span><span style="color: #a11;">'Alice'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'Bob'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'Charlie'</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
 s2 <span style="color: Gray;">=</span> pd.<span style="color: #05a;">Series</span><span style="color: Olive;">(</span><span style="color: Olive;">[</span><span style="color: Maroon;">25</span><span style="color: Gray;">,</span> <span style="color: Maroon;">30</span><span style="color: Gray;">,</span> <span style="color: Maroon;">35</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
 s3 <span style="color: Gray;">=</span> pd.<span style="color: #05a;">Series</span><span style="color: Olive;">(</span><span style="color: Olive;">[</span><span style="color: #a11;">'New York'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'Los Angeles'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'Chicago'</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
 df <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFrame</span><span style="color: Olive;">(</span><span style="color: Olive;">{</span><span style="color: #a11;">'Name'</span>: s1<span style="color: Gray;">,</span> <span style="color: #a11;">'Age'</span>: s2<span style="color: Gray;">,</span> <span style="color: #a11;">'City'</span>: s3<span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
 </div></div>
-<h3>DataFrame の属性とメソッド</h3><p>DataFrame 对象有许多属性和方法，用于数据操作、索引和处理，例如：shape、columns、index、head()、tail()、info()、describe()、mean()、sum() 等。
-→ DataFrame オブジェクトには、データ操作、インデックス、処理のための多くの属性とメソッドがあります。例：shape、columns、index、head()、tail()、info()、describe()、mean()、sum() など。</p>
+<h3>DataFrame の属性とメソッド</h3><p>DataFrame オブジェクトには、データ操作、インデックス、処理のための多くの属性とメソッドがあります。例：shape、columns、index、head()、tail()、info()、describe()、mean()、sum() など。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #a50"># DataFrame 的属性和方法
-→ # DataFrame の属性とメソッド</span><br/>
+<span style="color: #a50"># DataFrame の属性とメソッド</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df.<span style="color: #05a;">shape</span><span style="color: Olive;">)</span>     <span style="color: #a50"># 形状
 → # 形状</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df.<span style="color: #05a;">columns</span><span style="color: Olive;">)</span>   <span style="color: #a50"># 列名
 → # 列名</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df.<span style="color: #05a;">index</span><span style="color: Olive;">)</span>     <span style="color: #a50"># 索引
 → # インデックス</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df.<span style="color: #05a;">head</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span>    <span style="color: #a50"># 前几行数据，默认是前 5 行
-→ # 先頭の数行のデータ。デフォルトは先頭 5 行</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df.<span style="color: #05a;">tail</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span>    <span style="color: #a50"># 后几行数据，默认是后 5 行
-→ # 末尾の数行のデータ。デフォルトは末尾 5 行</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df.<span style="color: #05a;">head</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span>    <span style="color: #a50"># 先頭の数行のデータ。デフォルトは先頭 5 行</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df.<span style="color: #05a;">tail</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span>    <span style="color: #a50"># 末尾の数行のデータ。デフォルトは末尾 5 行</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df.<span style="color: #05a;">info</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span>    <span style="color: #a50"># 数据信息
 → # データ情報</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df.<span style="color: #05a;">describe</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><span style="color: #a50"># 描述统计信息
 → # 記述統計情報</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df.<span style="color: #05a;">mean</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span>    <span style="color: #a50"># 求平均值
 → # 平均を求める</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df.<span style="color: Teal;">sum</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span>     <span style="color: #a50"># 求和
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df.<span style="color: Teal;">sum</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span>     <span style="color: #a50"># 合計を求める
 → # 合計を求める</span><br/>
 </div></div>
 <h3>DataFrame 要素へのアクセス</h3>
 <p><strong>访问列：
-→ 列へのアクセス：</strong>使用列名作为属性或通过
-→ 列名を属性として使用するか、または<span class="marked">.loc[]</span>、<span class="marked">.iloc[]</span>访问，也可以使用标签或位置索引。。
+→ 列へのアクセス：</strong>列名を属性として使用するか、または<span class="marked">.loc[]</span>、<span class="marked">.iloc[]</span>访问，也可以使用标签或位置索引。。
 → を使用してアクセスします。ラベルまたは位置インデックスも使用できます。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #a50"># 通过列名访问
@@ -602,16 +570,14 @@ df <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFrame</
 <br/>
 <span style="color: #a50"># 通过 .iloc[] 访问
 → # .iloc[] でアクセス</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df.<span style="color: #05a;">iloc</span><span style="color: Olive;">[</span>:<span style="color: Gray;">,</span> <span style="color: Maroon;">0</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 假设 'Column1' 是第一列
-→ # 'Column1' が最初の列であると仮定</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df.<span style="color: #05a;">iloc</span><span style="color: Olive;">[</span>:<span style="color: Gray;">,</span> <span style="color: Maroon;">0</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 'Column1' が最初の列であると仮定</span><br/>
 <br/>
 <span style="color: #a50"># 访问单个元素
 → # 単一要素にアクセス</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df<span style="color: Olive;">[</span><span style="color: #a11;">'Name'</span><span style="color: Olive;">]</span><span style="color: Olive;">[</span><span style="color: Maroon;">0</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
 </div></div>
 <p><strong>访问行：
-→ 行へのアクセス：</strong>使用行的标签和
-→ 行のラベルと<span class="marked">.loc[]</span>访问。
+→ 行へのアクセス：</strong>行のラベルと<span class="marked">.loc[]</span>访问。
 → を使用してアクセスします。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #a50"># 通过行标签访问
@@ -620,8 +586,7 @@ df <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFrame</
 </div></div>
 <h3>DataFrame の変更</h3>
 <p><strong>修改列数据：
-→ 列データの変更：</strong>直接对列进行赋值。
-→ 列に直接代入します。</p>
+→ 列データの変更：</strong>列に直接代入します。</p>
 <pre>df['Column1'] = [10, 11, 12]</pre>
 <p><strong>添加新列：
 → 新しい列の追加：</strong>给新列赋值。
@@ -631,8 +596,7 @@ df <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFrame</
 → 新しい行の追加：</strong>使用 loc、append 或 concat 方法。
 → loc、append、concat メソッドを使用します。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #a50"># 使用 loc 为特定索引添加新行
-→ # loc を使用して特定のインデックスに新しい行を追加</span><br/>
+<span style="color: #a50"># loc を使用して特定のインデックスに新しい行を追加</span><br/>
 df.<span style="color: #05a;">loc</span><span style="color: Olive;">[</span><span style="color: Maroon;">3</span><span style="color: Olive;">]</span> <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: Maroon;">13</span><span style="color: Gray;">,</span> <span style="color: Maroon;">14</span><span style="color: Gray;">,</span> <span style="color: Maroon;">15</span><span style="color: Gray;">,</span> <span style="color: Maroon;">16</span><span style="color: Olive;">]</span><br/>
 <br/>
 <span style="color: #a50"># 使用 append 添加新行到末尾
@@ -641,16 +605,13 @@ new_row <span style="color: Gray;">=</span> <span style="color: Olive;">{</span>
 df <span style="color: Gray;">=</span> df.<span style="color: #05a;">append</span><span style="color: Olive;">(</span>new_row<span style="color: Gray;">,</span> ignore_index<span style="color: Gray;">=</span><span style="color: Teal;">True</span><span style="color: Olive;">)</span><br/>
 </div></div>
 <p>
-<strong>注意：</strong><strong>append()</strong>方法在 pandas 版本 1.4.0 中已经被标记为弃用，并将在未来的版本中被移除，官方推荐使用
-→ メソッドは pandas バージョン 1.4.0 で非推奨に指定され、将来のバージョンで削除される予定です。公式では<span class="marked">concat()</span>作为替代方法来进行数据的合并操作。
-→ を代替メソッドとしてデータの結合操作を行うことを推奨しています。</p>
-<p>concat() 方法用于合并两个或多个 DataFrame，当你想要添加一行到另一个 DataFrame 时，可以将新行作为一个新的 DataFrame，然后使用 concat()：
-→ concat() メソッドは、2 つ以上の DataFrame を結合するために使用されます。別の DataFrame に行を追加したい場合は、新しい行を新しい DataFrame として作成し、concat() を使用します：</p>
+<strong>注意：</strong><strong>append()</strong>方法は pandas バージョン 1.4.0 で非推奨に指定され、将来のバージョンで削除される予定です。公式では使用を推奨しています。<span class="marked">concat()</span>データの結合操作の代替方法として行います。
+→ 代替メソッドとして、データの結合操作を行うことを推奨しています。</p>
+<p>concat() メソッドは、2 つ以上の DataFrame を結合するために使用されます。別の DataFrame に行を追加したい場合は、新しい行を新しい DataFrame として作成し、concat() を使用します：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #a50"># 使用concat添加新行
 → # concat を使用して新しい行を追加</span><br/>
-new_row <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFrame</span><span style="color: Olive;">(</span><span style="color: Olive;">[</span><span style="color: Olive;">[</span><span style="color: Maroon;">4</span><span style="color: Gray;">,</span> <span style="color: Maroon;">7</span><span style="color: Olive;">]</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span> columns<span style="color: Gray;">=</span><span style="color: Olive;">[</span><span style="color: #a11;">'A'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'B'</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 创建一个只包含新行的DataFrame
-→ # 新しい行のみを含む DataFrame を作成</span><br/>
+new_row <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFrame</span><span style="color: Olive;">(</span><span style="color: Olive;">[</span><span style="color: Olive;">[</span><span style="color: Maroon;">4</span><span style="color: Gray;">,</span> <span style="color: Maroon;">7</span><span style="color: Olive;">]</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span> columns<span style="color: Gray;">=</span><span style="color: Olive;">[</span><span style="color: #a11;">'A'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'B'</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 新しい行のみを含む DataFrame を作成</span><br/>
 df <span style="color: Gray;">=</span> pd.<span style="color: #05a;">concat</span><span style="color: Olive;">(</span><span style="color: Olive;">[</span>df<span style="color: Gray;">,</span> new_row<span style="color: Olive;">]</span><span style="color: Gray;">,</span> ignore_index<span style="color: Gray;">=</span><span style="color: Teal;">True</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 将新行添加到原始DataFrame
 → # 新しい行を元の DataFrame に追加</span><br/>
 <br/>
@@ -667,8 +628,7 @@ df <span style="color: Gray;">=</span> pd.<span style="color: #05a;">concat</spa
 <pre>df_dropped = df.drop(0)  # 删除索引为 0 的行</pre>
 <h3>DataFrame の統計分析</h3>
 <p><strong>記述統計：</strong>使用
-→ を使用して<span class="marked">.describe()</span>查看数值列的统计摘要。
-→ 数値列の統計要約を表示します。</p>
+→ を使用して<span class="marked">.describe()</span>数値列の統計要約を表示します。</p>
 <pre>df.describe()</pre>
 <p><strong>计算统计数据：
 → 統計データの計算：</strong>集計関数（<span class="marked">.sum()、.mean()、.max()</span>等。
@@ -712,11 +672,9 @@ df_pivot = df.pivot(index='Column1', columns='Column2', values='Column3')
 # 宽格式转长格式
 df_melt = df.melt(id_vars='Column1', value_vars=['Column2', 'Column3'])</pre>
 <h3>インデックスとスライス</h3>
-<p>DataFrame 支持对行和列进行索引和切片操作。
-→ DataFrame は行と列に対するインデックスとスライス操作をサポートします。</p>
+<p>DataFrame は行と列に対するインデックスとスライス操作をサポートします。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #a50"># 索引和切片
-→ # インデックスとスライス</span><br/>
+<span style="color: #a50"># インデックスとスライス</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df<span style="color: Olive;">[</span><span style="color: Olive;">[</span><span style="color: #a11;">'Name'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'Age'</span><span style="color: Olive;">]</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 提取多列
 → # 複数の列を抽出</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df<span style="color: Olive;">[</span><span style="color: Maroon;">1</span>:<span style="color: Maroon;">3</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span>               <span style="color: #a50"># 切片行
@@ -729,12 +687,8 @@ df_melt = df.melt(id_vars='Column1', value_vars=['Column2', 'Column3'])</pre>
 → # 位置インデックスで指定の列を抽出</span><br/>
 </div></div>
 <h3>注意事項</h3>
-<ul><li><code>DataFrame</code>是一种灵活的数据结构，可以容纳不同数据类型的列。
-→ 柔軟なデータ構造であり、異なるデータ型の列を格納できます。</li><li>列名和行索引可以是字符串、整数等。
-→ 列名と行インデックスは、文字列、整数などを使用できます。</li><li><code>DataFrame</code>可以通过多种方式进行数据选择、过滤、修改和分析。
-→ データの選択、フィルタリング、変更、分析は、さまざまな方法で行えます。</li><li>通过对
-→ に対する<code>DataFrame</code>的操作，可以进行数据清洗、转换、分析和可视化等工作。
-→ 操作を行うことで、データクリーニング、変換、分析、可視化などの作業ができます。</li></ul>
+<ul><li><code>DataFrame</code>柔軟なデータ構造であり、異なるデータ型の列を格納できます。</li><li>列名と行インデックスは、文字列、整数などを使用できます。</li><li><code>DataFrame</code>データの選択、フィルタリング、変更、分析は、さまざまな方法で行えます。</li><li>に対して
+→ に対する<code>DataFrame</code>操作を行うことで、データクリーニング、変換、分析、可視化などの作業ができます。</li></ul>
 其他扩展
 → その他の拡張
 </div>
@@ -937,11 +891,11 @@ print(df)</pre>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1230,7 +1184,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

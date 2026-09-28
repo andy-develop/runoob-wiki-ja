@@ -170,14 +170,14 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example">
 <h2 class="example">实例</h2>
 <div class="example_code">
-<span style="color: #666666; font-style: italic;">; 数组的定义方式</span><br/>
+<span style="color: #666666; font-style: italic;">; 配列の定義方法</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
     <span style="color: #666666; font-style: italic;">; 方式1：逐个列出元素</span><br/>
-    arr1 <span style="color: #0000FF; font-weight: bold;">dd</span> <span style="color: #FF0000;">10</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">20</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">30</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">40</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">50</span>  <span style="color: #666666; font-style: italic;">; 5 个双字元素的数组</span><br/>
+    arr1 <span style="color: #0000FF; font-weight: bold;">dd</span> <span style="color: #FF0000;">10</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">20</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">30</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">40</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">50</span>  <span style="color: #666666; font-style: italic;">; 5 つのダブルワード要素の配列</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 方式2：用 dup 初始化</span><br/>
-    arr2 <span style="color: #0000FF; font-weight: bold;">dd</span> <span style="color: #FF0000;">10</span> dup<span style="color: #009900; font-weight: bold;">(</span><span style="color: #FF0000;">0</span><span style="color: #009900; font-weight: bold;">)</span>            <span style="color: #666666; font-style: italic;">; 10 个双字，全为 0</span><br/>
+    arr2 <span style="color: #0000FF; font-weight: bold;">dd</span> <span style="color: #FF0000;">10</span> dup<span style="color: #009900; font-weight: bold;">(</span><span style="color: #FF0000;">0</span><span style="color: #009900; font-weight: bold;">)</span>            <span style="color: #666666; font-style: italic;">; 10 個のダブルワード、すべて 0</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 方式3：字节数组</span><br/>
     bytes <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #FF0000;">1</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">2</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">3</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">4</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">5</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">6</span>   <span style="color: #666666; font-style: italic;">; 6 个字节</span><br/>
@@ -186,13 +186,13 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     chars <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'runoob'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>         <span style="color: #666666; font-style: italic;">; 7 字节</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 数组长度计算（编译时）</span><br/>
-    arr1_len <span style="color: #0000FF; font-weight: bold;">equ</span> <span style="color: #009900; font-weight: bold;">(</span><span style="color: #0000FF; font-weight: bold;">$</span> <span style="color: #339933;">-</span> arr1<span style="color: #009900; font-weight: bold;">)</span> <span style="color: #339933;">/</span> <span style="color: #FF0000;">4</span>  <span style="color: #666666; font-style: italic;">; 双字数组的元素个数</span><br/>
+    arr1_len <span style="color: #0000FF; font-weight: bold;">equ</span> <span style="color: #009900; font-weight: bold;">(</span><span style="color: #0000FF; font-weight: bold;">$</span> <span style="color: #339933;">-</span> arr1<span style="color: #009900; font-weight: bold;">)</span> <span style="color: #339933;">/</span> <span style="color: #FF0000;">4</span>  <span style="color: #666666; font-style: italic;">; ダブルワード配列の要素数</span><br/>
     arr2_len <span style="color: #0000FF; font-weight: bold;">equ</span> <span style="color: #009900; font-weight: bold;">(</span><span style="color: #0000FF; font-weight: bold;">$</span> <span style="color: #339933;">-</span> arr2<span style="color: #009900; font-weight: bold;">)</span> <span style="color: #339933;">/</span> <span style="color: #FF0000;">4</span><br/>
     bytes_len <span style="color: #0000FF; font-weight: bold;">equ</span> <span style="color: #009900; font-weight: bold;">(</span><span style="color: #0000FF; font-weight: bold;">$</span> <span style="color: #339933;">-</span> bytes<span style="color: #009900; font-weight: bold;">)</span>    <span style="color: #666666; font-style: italic;">; 字节数组，不需除法</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.bss</span><br/>
-    <span style="color: #666666; font-style: italic;">; 未初始化的数组</span><br/>
-    buffer <span style="color: #0000FF; font-weight: bold;">resd</span> <span style="color: #FF0000;">100</span>              <span style="color: #666666; font-style: italic;">; 预留 100 个双字的空间</span><br/>
+    <span style="color: #666666; font-style: italic;">; 未初期化の配列</span><br/>
+    buffer <span style="color: #0000FF; font-weight: bold;">resd</span> <span style="color: #FF0000;">100</span>              <span style="color: #666666; font-style: italic;">; 100 個のダブルワードの領域を予約</span><br/>
 </div>
 </div>
 <hr/>
@@ -202,7 +202,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2 class="example">实例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;">; 文件路径：array_access.asm</span><br/>
-<span style="color: #666666; font-style: italic;">; 数组元素的读取和写入</span><br/>
+<span style="color: #666666; font-style: italic;">; 配列要素の読み取りと書き込み</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
     nums <span style="color: #0000FF; font-weight: bold;">dd</span> <span style="color: #FF0000;">100</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">200</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">300</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">400</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">500</span>   <span style="color: #666666; font-style: italic;">; 5 个元素</span><br/>
@@ -217,17 +217,17 @@ _start<span style="color: #339933;">:</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 访问第 2 个元素（下标 2）</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>nums <span style="color: #339933;">+</span> <span style="color: #FF0000;">2</span> <span style="color: #339933;">*</span> <span style="color: #FF0000;">4</span><span style="color: #009900; font-weight: bold;">]</span>      <span style="color: #666666; font-style: italic;">; eax = nums[2] = 300</span><br/>
-    <span style="color: #666666; font-style: italic;">; 2 * 4 = 8，从 nums 偏移 8 字节</span><br/>
+    <span style="color: #666666; font-style: italic;">; 2 * 4 = 8、nums から 8 バイトオフセット</span><br/>
 <br/>
-    <span style="color: #666666; font-style: italic;">; 使用寄存器作为下标</span><br/>
+    <span style="color: #666666; font-style: italic;">; レジスタをインデックスとして使用する</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">esi</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">3</span>                   <span style="color: #666666; font-style: italic;">; 下标 = 3</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>nums <span style="color: #339933;">+</span> <span style="color: #46AA03; font-weight: bold;">esi</span> <span style="color: #339933;">*</span> <span style="color: #FF0000;">4</span><span style="color: #009900; font-weight: bold;">]</span>    <span style="color: #666666; font-style: italic;">; eax = nums[3] = 400</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 修改数组元素</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #0000FF; font-weight: bold;">dword</span> <span style="color: #009900; font-weight: bold;">[</span>nums <span style="color: #339933;">+</span> <span style="color: #FF0000;">4</span><span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">250</span>    <span style="color: #666666; font-style: italic;">; nums[1] = 250</span><br/>
-    <span style="color: #666666; font-style: italic;">; 数组中现在：100, 250, 300, 400, 500</span><br/>
+    <span style="color: #666666; font-style: italic;">; 配列の中身は現在：100, 250, 300, 400, 500</span><br/>
 <br/>
-    <span style="color: #666666; font-style: italic;">; 使用 EBX 作为基址寄存器</span><br/>
+    <span style="color: #666666; font-style: italic;">; EBX をベースレジスタとして使用</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> nums                <span style="color: #666666; font-style: italic;">; ebx = 数组基址</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46AA03; font-weight: bold;">ebx</span> <span style="color: #339933;">+</span> <span style="color: #FF0000;">4</span> <span style="color: #339933;">*</span> <span style="color: #FF0000;">4</span><span style="color: #009900; font-weight: bold;">]</span>       <span style="color: #666666; font-style: italic;">; eax = nums[4] = 500</span><br/>
 <br/>
@@ -243,7 +243,7 @@ _start<span style="color: #339933;">:</span><br/>
 <h2 class="example">实例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;">; 文件路径：array_traverse.asm</span><br/>
-<span style="color: #666666; font-style: italic;">; 遍历数组并计算总和</span><br/>
+<span style="color: #666666; font-style: italic;">; 配列を走査して合計を計算する</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
     numbers <span style="color: #0000FF; font-weight: bold;">dd</span> <span style="color: #FF0000;">5</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">10</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">15</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">20</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">25</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">30</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">35</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">40</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">45</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">50</span><br/>
@@ -254,8 +254,8 @@ _start<span style="color: #339933;">:</span><br/>
 <br/>
 _start<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> count                <span style="color: #666666; font-style: italic;">; 循环次数</span><br/>
-    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">esi</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>                    <span style="color: #666666; font-style: italic;">; 下标（从 0 开始）</span><br/>
-    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>                    <span style="color: #666666; font-style: italic;">; 累加和</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">esi</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>                    <span style="color: #666666; font-style: italic;">; インデックス（0 から始まる）</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>                    <span style="color: #666666; font-style: italic;">; 累積と</span><br/>
 <br/>
 sum_loop<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>numbers <span style="color: #339933;">+</span> <span style="color: #46AA03; font-weight: bold;">esi</span> <span style="color: #339933;">*</span> <span style="color: #FF0000;">4</span><span style="color: #009900; font-weight: bold;">]</span>  <span style="color: #666666; font-style: italic;">; 累加数组元素</span><br/>
@@ -266,7 +266,7 @@ sum_loop<span style="color: #339933;">:</span><br/>
     <span style="color: #666666; font-style: italic;">; 另一种遍历方式：使用指针</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> count<br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> numbers              <span style="color: #666666; font-style: italic;">; ebx 指向数组起始</span><br/>
-    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>                    <span style="color: #666666; font-style: italic;">; 累加和</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>                    <span style="color: #666666; font-style: italic;">; 累積と</span><br/>
 <br/>
 sum_loop2<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #009900; font-weight: bold;">]</span>                <span style="color: #666666; font-style: italic;">; 累加当前元素</span><br/>
@@ -274,7 +274,7 @@ sum_loop2<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">loop</span> sum_loop2<br/>
     <span style="color: #666666; font-style: italic;">; eax = 275</span><br/>
 <br/>
-    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">eax</span>                  <span style="color: #666666; font-style: italic;">; 退出码 = 累加和</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">eax</span>                  <span style="color: #666666; font-style: italic;">; 終了コード = 累積と</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
     <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
 </div>
@@ -285,12 +285,12 @@ sum_loop2<span style="color: #339933;">:</span><br/>
 <h2 class="example">实例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;">; 文件路径：array_search.asm</span><br/>
-<span style="color: #666666; font-style: italic;">; 在数组中查找指定值</span><br/>
+<span style="color: #666666; font-style: italic;">; 配列内で指定値を検索する</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
     <span style="color: #0000FF; font-weight: bold;">data</span> <span style="color: #0000FF; font-weight: bold;">dd</span> <span style="color: #FF0000;">12</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">45</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">67</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">23</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">89</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">34</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">56</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">78</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">90</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">11</span><br/>
     data_len <span style="color: #0000FF; font-weight: bold;">equ</span> <span style="color: #009900; font-weight: bold;">(</span><span style="color: #0000FF; font-weight: bold;">$</span> <span style="color: #339933;">-</span> <span style="color: #0000FF; font-weight: bold;">data</span><span style="color: #009900; font-weight: bold;">)</span> <span style="color: #339933;">/</span> <span style="color: #FF0000;">4</span><br/>
-    target <span style="color: #0000FF; font-weight: bold;">dd</span> <span style="color: #FF0000;">23</span>                   <span style="color: #666666; font-style: italic;">; 要查找的值</span><br/>
+    target <span style="color: #0000FF; font-weight: bold;">dd</span> <span style="color: #FF0000;">23</span>                   <span style="color: #666666; font-style: italic;">; 検索する値</span><br/>
     found_msg <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'Found at index: '</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
     found_len <span style="color: #0000FF; font-weight: bold;">equ</span> <span style="color: #0000FF; font-weight: bold;">$</span> <span style="color: #339933;">-</span> found_msg<br/>
     notfound_msg <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'Not found (runoob)'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0xA</span><br/>
@@ -306,8 +306,8 @@ _start<span style="color: #339933;">:</span><br/>
 <br/>
 search_loop<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #0000FF; font-weight: bold;">data</span> <span style="color: #339933;">+</span> <span style="color: #46AA03; font-weight: bold;">esi</span> <span style="color: #339933;">*</span> <span style="color: #FF0000;">4</span><span style="color: #009900; font-weight: bold;">]</span>     <span style="color: #666666; font-style: italic;">; 加载当前元素</span><br/>
-    <span style="color: #00007F; font-weight: bold;">cmp</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>target<span style="color: #009900; font-weight: bold;">]</span>             <span style="color: #666666; font-style: italic;">; 是否等于目标值</span><br/>
-    <span style="color: #00007F; font-weight: bold;">je</span>  found                     <span style="color: #666666; font-style: italic;">; 找到了</span><br/>
+    <span style="color: #00007F; font-weight: bold;">cmp</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>target<span style="color: #009900; font-weight: bold;">]</span>             <span style="color: #666666; font-style: italic;">; 目標値に等しいかどうか</span><br/>
+    <span style="color: #00007F; font-weight: bold;">je</span>  found                     <span style="color: #666666; font-style: italic;">; 見つかった</span><br/>
 <br/>
     <span style="color: #00007F; font-weight: bold;">inc</span> <span style="color: #46AA03; font-weight: bold;">esi</span>                       <span style="color: #666666; font-style: italic;">; 下标 +1</span><br/>
     <span style="color: #00007F; font-weight: bold;">loop</span> search_loop<br/>
@@ -321,16 +321,16 @@ search_loop<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">jmp</span> exit<br/>
 <br/>
 found<span style="color: #339933;">:</span><br/>
-    <span style="color: #666666; font-style: italic;">; 找到了（esi 是下标）</span><br/>
+    <span style="color: #666666; font-style: italic;">; 見つかった（esi は添字）</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">4</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> found_msg<br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> found_len<br/>
     <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
 <br/>
-    <span style="color: #666666; font-style: italic;">; 将下标转为 ASCII 字符输出</span><br/>
+    <span style="color: #666666; font-style: italic;">; 添字をASCII文字に変換して出力する</span><br/>
     <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #46AA03; font-weight: bold;">esi</span><span style="color: #339933;">,</span> <span style="color: #7F007F;">'0'</span>                  <span style="color: #666666; font-style: italic;">; 单数字下标转字符</span><br/>
-    <span style="color: #00007F; font-weight: bold;">push</span> <span style="color: #46AA03; font-weight: bold;">esi</span>                      <span style="color: #666666; font-style: italic;">; 压栈作为临时存储</span><br/>
+    <span style="color: #00007F; font-weight: bold;">push</span> <span style="color: #46AA03; font-weight: bold;">esi</span>                      <span style="color: #666666; font-style: italic;">; 一時保存としてスタックにプッシュ</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">4</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">esp</span>                  <span style="color: #666666; font-style: italic;">; 栈顶地址</span><br/>
@@ -361,10 +361,10 @@ exit<span style="color: #339933;">:</span><br/>
 <h2 class="example">实例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;">; 文件路径：2d_array.asm</span><br/>
-<span style="color: #666666; font-style: italic;">; 二维数组的定义和访问</span><br/>
+<span style="color: #666666; font-style: italic;">; 2次元配列の定義とアクセス</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
-    <span style="color: #666666; font-style: italic;">; 3 行 4 列的二维数组</span><br/>
+    <span style="color: #666666; font-style: italic;">; 3行4列の二次元配列</span><br/>
     matrix <span style="color: #0000FF; font-weight: bold;">dd</span> <span style="color: #FF0000;">1</span><span style="color: #339933;">,</span>  <span style="color: #FF0000;">2</span><span style="color: #339933;">,</span>  <span style="color: #FF0000;">3</span><span style="color: #339933;">,</span>  <span style="color: #FF0000;">4</span><br/>
            <span style="color: #0000FF; font-weight: bold;">dd</span> <span style="color: #FF0000;">5</span><span style="color: #339933;">,</span>  <span style="color: #FF0000;">6</span><span style="color: #339933;">,</span>  <span style="color: #FF0000;">7</span><span style="color: #339933;">,</span>  <span style="color: #FF0000;">8</span><br/>
            <span style="color: #0000FF; font-weight: bold;">dd</span> <span style="color: #FF0000;">9</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">10</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">11</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">12</span><br/>
@@ -392,14 +392,14 @@ _start<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">mul</span> <span style="color: #46AA03; font-weight: bold;">esi</span>                      <span style="color: #666666; font-style: italic;">; eax = i * cols = 2*4 = 8</span><br/>
     <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">edi</span>                 <span style="color: #666666; font-style: italic;">; eax = i*cols + j = 8+1 = 9</span><br/>
     <span style="color: #666666; font-style: italic;">; eax = eax * elem_size</span><br/>
-    <span style="color: #666666; font-style: italic;">; 注意：MUL 的结果在 EAX 中，这里直接使用</span><br/>
+    <span style="color: #666666; font-style: italic;">; 注意：MUL の結果は EAX にあり、ここでは直接使用する</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>matrix <span style="color: #339933;">+</span> <span style="color: #46AA03; font-weight: bold;">eax</span> <span style="color: #339933;">*</span> elem_size<span style="color: #009900; font-weight: bold;">]</span><br/>
     <span style="color: #666666; font-style: italic;">; eax = 10</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 遍历二维数组所有元素</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> rows <span style="color: #339933;">*</span> cols         <span style="color: #666666; font-style: italic;">; 总元素数 = 12</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">esi</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>                   <span style="color: #666666; font-style: italic;">; 下标</span><br/>
-    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>                   <span style="color: #666666; font-style: italic;">; 累加和</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>                   <span style="color: #666666; font-style: italic;">; 累積と</span><br/>
 <br/>
 traverse<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>matrix <span style="color: #339933;">+</span> <span style="color: #46AA03; font-weight: bold;">esi</span> <span style="color: #339933;">*</span> elem_size<span style="color: #009900; font-weight: bold;">]</span><br/>
@@ -433,7 +433,7 @@ _start<span style="color: #339933;">:</span><br/>
 outer_loop<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">push</span> <span style="color: #46AA03; font-weight: bold;">ecx</span>                      <span style="color: #666666; font-style: italic;">; 保存外层计数器</span><br/>
 <br/>
-    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">esi</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>                    <span style="color: #666666; font-style: italic;">; 内层下标从 0 开始</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">esi</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>                    <span style="color: #666666; font-style: italic;">; 内側のインデックスは 0 から始まる</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> array_len <span style="color: #339933;">-</span> <span style="color: #FF0000;">1</span>        <span style="color: #666666; font-style: italic;">; 内层循环次数</span><br/>
 <br/>
 inner_loop<span style="color: #339933;">:</span><br/>
@@ -442,7 +442,7 @@ inner_loop<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">cmp</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">ebx</span>                  <span style="color: #666666; font-style: italic;">; a[j] &gt; a[j+1] ?</span><br/>
     <span style="color: #00007F; font-weight: bold;">jle</span> no_swap                   <span style="color: #666666; font-style: italic;">; 否，不交换</span><br/>
 <br/>
-    <span style="color: #666666; font-style: italic;">; 交换 a[j] 和 a[j+1]</span><br/>
+    <span style="color: #666666; font-style: italic;">; a[j] と a[j+1] を交換する</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #009900; font-weight: bold;">[</span>array <span style="color: #339933;">+</span> <span style="color: #46AA03; font-weight: bold;">esi</span> <span style="color: #339933;">*</span> <span style="color: #FF0000;">4</span><span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #009900; font-weight: bold;">[</span>array <span style="color: #339933;">+</span> <span style="color: #46AA03; font-weight: bold;">esi</span> <span style="color: #339933;">*</span> <span style="color: #FF0000;">4</span> <span style="color: #339933;">+</span> <span style="color: #FF0000;">4</span><span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">eax</span><br/>
 <br/>
@@ -452,7 +452,7 @@ no_swap<span style="color: #339933;">:</span><br/>
 <br/>
     <span style="color: #00007F; font-weight: bold;">pop</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><br/>
     <span style="color: #00007F; font-weight: bold;">loop</span> outer_loop<br/>
-    <span style="color: #666666; font-style: italic;">; 数组现在已排序：11, 12, 22, 25, 34, 64, 78, 90</span><br/>
+    <span style="color: #666666; font-style: italic;">; 配列は現在ソート済み: 11, 12, 22, 25, 34, 64, 78, 90</span><br/>
 <br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
@@ -578,11 +578,11 @@ no_swap<span style="color: #339933;">:</span><br/>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -871,7 +871,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

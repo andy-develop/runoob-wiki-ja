@@ -90,8 +90,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>Linux世界で最も人気のあるシェルスクリプト言語の1つがbashです。そして私が思うに（これは私個人の見解ですが）、その理由は、デフォルトのbashシェルでは、ユーザーが履歴コマンド（以前に実行したもの）を簡単にナビゲートできるからです。対照的に、kshでは履歴を確認してコマンドを修正するために、.profileを調整したり、「魔法の」キーの組み合わせを覚えたりする必要があります。</p>
 <p>さて、この紹介で十分だと思います。どの環境が自分に最適かは、あなた自身が判断してください。これからは、bashとそのスクリプトについてのみ説明します。以下の例では、CentOS 6.6とbash-4.1.2を使用します。同じバージョンか、それ以上のバージョンがあることを確認してください。</p>
 <h2>Shellスクリプトのストリーム</h2>
-<p>シェルスクリプト言語は、数人の人々とおしゃべりするようなものです。すべてのコマンドを、あなたを助けてくれる人々として想像してください。ただし、正しい方法で彼らに頼む必要があります。例えば、文書を書きたいとします。まず、紙が必要です。次に、誰かに内容を話して、書いてもらいます。最後に、それをどこかに保存したいと思います。あるいは、家を建てたい場合、土地を空にする適切な人を雇う必要があります。彼らが「仕事は終わった」と言ったら、今度はレンガを積んでくれる別の技術者を頼ることができます。最後に、それらの技術者たちも「仕事は終わった」とあなたに伝えたら、塗装工を呼んで家をペイントしてもらえます。もし壁ができる前にペンキを塗らせたらどうなるでしょうか？彼らは文句を言い始めるでしょう。ほぼすべてのこれらの人間のようなコマンドは話すことができます。問題なく仕事を完了したら、「標準出力」に知らせます。もし頼まれたことを実行できない場合は、「標準エラー」に知らせます。こうして、最終的にすべてのコマンドは「標準入力」を通じてあなたの指示を聞きます。</p>
-<p>簡単な例——Linuxターミナルを開いてテキストを入力するとき、あなたは「標準入力」を通じてbashと話している。では、bashシェルに尋ねてみよう。<strong>who am i（私は誰？）</strong>吧。</p>
+<p>シェルスクリプト言語は、数人の人々とおしゃべりするようなものです。すべてのコマンドを、あなたを助けてくれる人々として想像してください。ただし、正しい方法で彼らに頼む必要があります。例えば、文書を書きたいとします。まず、紙が必要です。次に、誰かに内容を話して、書いてもらいます。最後に、それをどこかに保存したいと思います。あるいは、家を建てたい場合、土地を空にする適切な人を雇う必要があります。彼らが「仕事は終わった」と言ったら、今度はレンガを積んでくれる別の技術者を頼ることができます。最後に、それらの技術者たちも「仕事は終わった」とあなたに伝えたら、塗装工を呼んで家をペイントしてもらえます。もし壁ができる前にペンキを塗らせたらどうなるでしょうか？彼らは文句を言い始めるでしょう。ほぼすべてのこれらの人間のようなコマンドは話すことができます。問題なく仕事を完了したら、「標準出力」に知らせます。もし頼まれたことを実行できない場合は、「標準エラー」に知らせます。こうして、最終のにすべてのコマンドは「標準入力」を通じてあなたの指示を聞きます。</p>
+<p>簡単な例——Linuxターミナルを開いてテキストを入力するとき、あなたは「標準入力」を通じてbashと話している。では、bashシェルに尋ねてみよう。<strong>who am i（私は誰？）</strong>でしょう。</p>
 <pre>
 root@localhost ~]# who am i                                &lt;--- 你通过标准输入对 bash shell 说
 root     pts/0        2015-04-22 20:17 (192.168.1.123)     &lt;--- bash shell通过标准输出回答你
@@ -129,7 +129,7 @@ root     pts/0        2015-04-22 20:17 (192.168.1.123)     &lt;--- bash shell通
 [root@localhost ~]#
 </pre>
 <p>案の定です！すべての文句がerrors.txtファイルに記録されていることがわかります。</p>
-<p>時には、コマンドは同時に生成する<strong>stdout</strong>和<strong>stderr</strong>。それらを異なるファイルにリダイレクトするには、次のステートメントを使用できます：</p>
+<p>時には、コマンドは同時に生成する<strong>stdout</strong>と<strong>stderr</strong>。それらを異なるファイルにリダイレクトするには、次のステートメントを使用できます：</p>
 <pre>command 1&gt;out.txt 2&gt;err.txt</pre>
 <p>ステートメントを少し短くするには、"1"を省略できます。デフォルトでは<strong>stdout</strong>リダイレクトされる：</p>
 <pre>command &gt;out.txt 2&gt;err.txt</pre>
@@ -186,7 +186,7 @@ Disk /dev/sda: 8589 MB, 8589934592 bytes
 Disk /dev/mapper/VolGroup-lv_root: 7205 MB, 7205814272 bytes
 Disk /dev/mapper/VolGroup-lv_swap: 855 MB, 855638016 bytes
 [root@localhost ~]#</pre>
-<p>ご覧のとおり、一時ファイルなしで同じ結果を得られた。私たちは、<strong>fdisk stdout</strong>重定向到了<strong>grep stdin</strong>。</p>
+<p>ご覧のとおり、一時ファイルなしで同じ結果を得られた。私たちは、<strong>fdisk stdout</strong>リダイレクトされた<strong>grep stdin</strong>。</p>
 <p><strong>注意</strong>：パイプリダイレクトは常に左から右へ行われます。</p>
 <p>他にもいくつかのリダイレクトがありますが、それらは後で説明します。</p>
 <h2>シェルでカスタムメッセージを表示する</h2>
@@ -240,7 +240,7 @@ Phone number ?
 123456
 You have entered 123456 as a phone number
 [root@localhost ~]#</pre>
-<p>在<strong>bash</strong>シェルでは、通常私たちは使用します<strong>$</strong>（ドル）記号を使用して、これが変数であることを示します。ただし、変数への読み込みやその他ごく少数の場面を除いて、$は使用しません（後で説明します）。</p>
+<p>に<strong>bash</strong>シェルでは、通常私たちは使用します<strong>$</strong>（ドル）記号を使用して、これが変数であることを示します。ただし、変数への読み込みやその他ごく少数の場面を除いて、$は使用しません（後で説明します）。</p>
 <p>さて、残りの質問を追加する準備ができました：</p>
 <pre>#!/bin/bash
 echo "Phone number?"
@@ -344,7 +344,7 @@ do
         read -p "Issue: " issue
         echo "$now/$phone/$name/$issue"&gt;&gt;data.txt
 done</pre>
-<p>私はすでに交換しました<strong>read phone</strong>和<strong>now=date</strong>行の位置。これは、電話番号を入力した後に時刻を取得したいからです。これをループの先頭に置くと、ループの1回の実行後、変数 now はデータがファイルに保存された直後に時刻を取得することになります。これは良くありません。次の呼び出しが20分後、あるいはそれ以降かもしれないからです。</p>
+<p>私はすでに交換しました<strong>read phone</strong>と<strong>now=date</strong>行の位置。これは、電話番号を入力した後に時刻を取得したいからです。これをループの先頭に置くと、ループの1回の実行後、変数 now はデータがファイルに保存された直後に時刻を取得することになります。これは良くありません。次の呼び出しが20分後、あるいはそれ以降かもしれないからです。</p>
 <pre>[root@localhost ~]# ./note.sh
 Phone number: 123
 Name: Jim
@@ -535,11 +535,11 @@ Phone number: ^C</pre>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてメモを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=".." class="runoob-pop">登录</a>！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href="..">登录</a>！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

@@ -406,7 +406,7 @@ print(b)</pre>
  [1 2 1 2 1 2]
  [3 4 3 4 3 4]]</pre>
 <div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">Visual Studio</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   Visual Studio</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  201***5574@qq.com</p></div></span>5年前 (2021-08-20)</div></div></li><!-- #comment-## -->
-<li class="comment byuser comment-author-tianqixin bypostauthor even thread-even depth-1" id="comment-77571"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   Tao</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  tao***iao10@gmail.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="https://numpy.org/doc/stable/reference/generated/numpy.tile.html#numpy.tile" rel="nofollow" target="_blank">参考URL</a></p></div><div class="upvotejs" data-commid="77571" id="runoobvote-id-77571"><a class="upvote"></a> <span class="count">8</span></div></div><div class="comt-main" id="div-comment-77571"><p>tile() が理解できなかったので、Numpy の公式ドキュメントを確認しました。具体的なノートは次のとおりです。</p>説明<p><code>numpy.tile(</code><code>A</code><code>, </code><code>reps</code><code>)</code></p><p>に基づいて<code>reps</code>繰り返すことで<code>A</code>の回数だけ配列を構築します。</p><p>仮定<code>reps</code>の長さは<code>d</code>、結果の次元は<code>max(d, A.ndim)</code>。具体的な動作は次のとおりです：</p><ul><li>もし<code>A.ndim &lt; d</code>の場合、先頭に新しい軸を追加することで、<code>A</code>引き上げて<code>d</code>次元にします。したがって、<code>shape(3，)</code>配列は次のように引き上げられます：<code>shape(1,3)</code>2-D複製に使用され、<code>shape(1,1,3)</code>3-D複製に使用されます。これが望ましい動作でない場合は、この関数を呼び出す前に手動で<code>A</code>引き上げて<code>d</code>次元にしてください。</li><li>もし<code>A.ndim &gt; d</code>, <code>reps</code>先頭に 1 を前置することで引き上げられ、<code>A.ndim</code>の長さになります。したがって、形状が<code>(2,3,4,5)</code>的<code>A</code>，<code>(2,2)</code>的<code>reps</code>は次のように見なされます：<code>(1,1,2,2)</code>。</li></ul>パラメータと戻り値<p><strong>パラメータの説明：</strong></p><p>パラメータ 型 説明 A array_like 入力配列。 reps array_like A の各軸における繰り返し回数。</p><p><strong>戻り値：</strong></p><ul><li>c：ndarray。出力配列。</li></ul><p>例</p><pre>a = np.array([0, 1, 2])
+<li class="comment byuser comment-author-tianqixin bypostauthor even thread-even depth-1" id="comment-77571"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   Tao</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  tao***iao10@gmail.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="https://numpy.org/doc/stable/reference/generated/numpy.tile.html#numpy.tile" rel="nofollow" target="_blank">参考URL</a></p></div><div class="upvotejs" data-commid="77571" id="runoobvote-id-77571"><a class="upvote"></a> <span class="count">8</span></div></div><div class="comt-main" id="div-comment-77571"><p>tile() が理解できなかったので、Numpy の公式ドキュメントを確認しました。具体的なノートは次のとおりです。</p>説明<p><code>numpy.tile(</code><code>A</code><code>, </code><code>reps</code><code>)</code></p><p>に基づいて<code>reps</code>繰り返すことで<code>A</code>の回数だけ配列を構築します。</p><p>仮定<code>reps</code>の長さは<code>d</code>、結果の次元は<code>max(d, A.ndim)</code>。具体的な動作は次のとおりです：</p><ul><li>もし<code>A.ndim &lt; d</code>の場合、先頭に新しい軸を追加することで、<code>A</code>引き上げて<code>d</code>次元にします。したがって、<code>shape(3，)</code>配列は次のように引き上げられます：<code>shape(1,3)</code>2-D複製に使用され、<code>shape(1,1,3)</code>3-D複製に使用されます。これが望ましい動作でない場合は、この関数を呼び出す前に手動で<code>A</code>引き上げて<code>d</code>次元にしてください。</li><li>もし<code>A.ndim &gt; d</code>, <code>reps</code>先頭に 1 を前置することで引き上げられ、<code>A.ndim</code>の長さになります。したがって、形状が<code>(2,3,4,5)</code>の<code>A</code>，<code>(2,2)</code>の<code>reps</code>は次のように見なされます：<code>(1,1,2,2)</code>。</li></ul>パラメータと戻り値<p><strong>パラメータの説明：</strong></p><p>パラメータ 型 説明 A array_like 入力配列。 reps array_like A の各軸における繰り返し回数。</p><p><strong>戻り値：</strong></p><ul><li>c：ndarray。出力配列。</li></ul><p>例</p><pre>a = np.array([0, 1, 2])
 a_ = np.tile(a, [2, 2])</pre><p>コードの実行結果：</p><pre>开始：a = [0, 1, 2], reps = [2,2]，所以d = 2, a.ndim = 1
 因为a.ndim &lt; d,所以a的形状由(3,)变为(1,3) ,结果a = [[0, 1, 2]]
 在根据reps进行复制，结果为
@@ -417,11 +417,11 @@ a_ = np.tile(a, [2, 2])</pre><p>コードの実行結果：</p><pre>开始：a =
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -710,7 +710,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

@@ -113,20 +113,20 @@ loadScripts(document, 'script');</script>
 extends <a href="AbstractSet.html" title="class in java.util">AbstractSet</a>&lt;E&gt;
 implements <a href="Set.html" title="interface in java.util">Set</a>&lt;E&gt;, <a href="../lang/Cloneable.html" title="interface in java.lang">Cloneable</a>, <a href="../io/Serializable.html" title="interface in java.io">Serializable</a></pre>
 <div class="block">
-<span>此类实现<code>Set</code>接口，由哈希表（实际上是<code>HashMap</code>实例）支持。</span>
-<span>它不保证集合的迭代顺序;</span>
-<span>特别是，它不保证订单会随着时间的推移保持不变。</span>
+<span>此类实现<code>Set</code>インターフェース、ハッシュテーブルによって（実際には<code>HashMap</code>实例）支持。</span>
+<span>それはコレクションの反復順序を保証しません;</span>
+<span>特に、順序が時間の経過とともに変わらないことは保証されません。</span>
 <span>此类允许<code>null</code>元素。</span>
-<p> <span>这个类提供了基本的操作（固定时间性能<code>add</code> ， <code>remove</code> ， <code>contains</code>和<code>size</code> ），假定哈希函数将分散的桶中正确的元素。</span> <span>迭代此集合需要的时间与<code>HashSet</code>实例的大小（元素数量）加上后备<code>HashMap</code>实例的“容量”（桶数）之和成比例。</span> <span>因此，如果迭代性能很重要，则不要将初始容量设置得太高（或负载因子太低）非常重要。</span> </p>
-<p> <span><strong>この実装は同期化されないことに注意してください。</strong></span> <span>如果多个线程同时访问哈希集，并且至少有一个线程修改了该集，则<i>必须</i>在外部进行同步。</span> <span>这通常通过在自然封装集合的某个对象上进行同步来实现。</span> <span>如果不存在此类对象，则应使用<a href="Collections.html#synchronizedSet(java.util.Set)"><code>Collections.synchronizedSet</code></a>方法“包装”该<a href="Collections.html#synchronizedSet(java.util.Set)">集合</a> 。</span> <span>这最好在创建时完成，以防止对集合的意外不同步访问：</span> </p>
+<p> <span>このクラスは基本的な操作を提供します（固定時間性能<code>add</code> ， <code>remove</code> ， <code>contains</code>と<code>size</code>）、ハッシュ関数が要素をバケット内に正しく分散すると仮定します。</span> <span>このコレクションの反復にかかる時間は、...と<code>HashSet</code>インスタンスのサイズ（要素数）に加えてバッキング<code>HashMap</code>インスタンスの「容量」（バケット数）の合計に比例します。</span> <span>因此，如果迭代性能很重要，则不要将初始容量设置得太高（或负载因子太低）非常重要。</span> </p>
+<p> <span><strong>この実装は同期化されないことに注意してください。</strong></span> <span>複数のスレッドが同時にハッシュセットにアクセスし、少なくとも1つのスレッドがそのセットを変更した場合、<i>必须</i>外部で同期します。</span> <span>これは通常、コレクションを自然にカプセル化する何らかのオブジェクト上で同期することによって実現されます。</span> <span>そのようなオブジェクトが存在しない場合は、使用する必要があります<a href="Collections.html#synchronizedSet(java.util.Set)"><code>Collections.synchronizedSet</code></a>方法“包装”该<a href="Collections.html#synchronizedSet(java.util.Set)">集合</a> 。</span> <span>これは、コレクションへの偶発のな同期されていないアクセスを防ぐために、作成時に行うのが最適です：</span> </p>
 <pre>  <span>Set s = Collections.synchronizedSet(new HashSet(...));</span> </pre>
-<p> <span>此类的<code>iterator</code>方法返回的迭代器是<i>快速失败的</i> ：如果在创建迭代器之后的任何时间修改该集，除了通过迭代器自己的<code>remove</code>方法之外，迭代器抛出<a href="ConcurrentModificationException.html" title="java.util中的类"><code>ConcurrentModificationException</code></a> 。</span> <span>因此，在并发修改的情况下，迭代器快速而干净地失败，而不是在未来的未确定时间冒任意，非确定性行为的风险。</span> </p>
-<p> <span>请注意，迭代器的快速失败行为无法得到保证，因为一般来说，在存在不同步的并发修改时，不可能做出任何硬性保证。</span> <span>失败快速迭代器以尽力而为的方式抛出<code>ConcurrentModificationException</code> 。</span> <span>因此，编写依赖于此异常的程序以确保其正确性是错误的： <i>迭代器的快速失败行为应该仅用于检测错误。</i></span> </p>
-<p> <span>此类是<a href="../../../java.base/java/util/package-summary.html#CollectionsFramework">Java Collections Framework</a>的成员。</span> </p>
+<p> <span>このクラスの<code>iterator</code>メソッドが返すイテレータは<i>フェイルファストの</i>：イテレータの作成後、イテレータ自身の...による場合を除いて、そのセットが変更された場合<code>remove</code>方法之外，迭代器抛出<a href="ConcurrentModificationException.html" title="java.util中的类"><code>ConcurrentModificationException</code></a> 。</span> <span>したがって、並行変更の場合、イテレータは将来の不確定な時点で任意の非決定のな動作のリスクを冒すのではなく、迅速かつクリーンに失敗します。</span> </p>
+<p> <span>イテレータのフェイルファスト動作は保証されないことに注意してください。一般のに、同期されていない並行変更が存在する場合、厳格な保証をすることは不可能です。</span> <span>フェイルファストイテレータはベストエフォート方式でスローされます。<code>ConcurrentModificationException</code> 。</span> <span>したがって、この例外に依存してその正しさを保証するプログラムを作成することは誤りです：<i>イテレータのフェイルファスト動作は、エラーを検出するためだけに使用すべきです。</i></span> </p>
+<p> <span>このクラスは<a href="../../../java.base/java/util/package-summary.html#CollectionsFramework">Java Collections Framework</a>のメンバー。</span> </p>
 </div>
 <dl>
 <dt>
-<span class="simpleTagLabel">从以下版本开始：</span>
+<span class="simpleTagLabel">以下のバージョンから：</span>
 </dt>
 <dd>
           1.2 
@@ -162,32 +162,30 @@ implements <a href="Set.html" title="interface in java.util">Set</a>&lt;E&gt;, <
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E()">HashSet</a></span>()</code></th>
 <td class="colLast">
 <div class="block">
-<span>构造一个新的空集;</span>
-<span>支持<code>HashMap</code>实例具有默认初始容量（16）和加载因子（0.75）。</span>
+<span>新しい空のセットを構築します;</span>
+<span>支持<code>HashMap</code>インスタンスはデフォルトの初期容量（16）と負荷係数（0.75）を持ちます。</span>
 </div> </td>
 </tr>
 <tr class="rowColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(int)">HashSet</a></span>​(int initialCapacity)</code></th>
 <td class="colLast">
 <div class="block">
-<span>构造一个新的空集;</span>
-<span>支持<code>HashMap</code>实例具有指定的初始容量和默认加载因子（0.75）。</span>
+<span>新しい空のセットを構築します;</span>
+<span>支持<code>HashMap</code>インスタンスは、指定された初期容量とデフォルトの負荷係数（0.75）を持ちます。</span>
 </div> </td>
 </tr>
 <tr class="altColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(int,float)">HashSet</a></span>​(int initialCapacity, float loadFactor)</code></th>
 <td class="colLast">
 <div class="block">
-<span>构造一个新的空集;</span>
-<span>支持<code>HashMap</code>实例具有指定的初始容量和指定的加载因子。</span>
+<span>新しい空のセットを構築します;</span>
+<span>支持<code>HashMap</code>インスタンスは、指定された初期容量と指定された負荷係数を持ちます。</span>
 </div> </td>
 </tr>
 <tr class="rowColor">
 <th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.util.Collection)">HashSet</a></span>​(<a href="Collection.html" title="interface in java.util">Collection</a>&lt;? extends <a href="HashSet.html" title="type parameter in HashSet">E</a>&gt; c)</code></th>
 <td class="colLast">
-<div class="block">
-                构造一个包含指定集合中元素的新集合。 
-              </div> </td>
+<div class="block">指定されたコレクション内の要素を含む新しいセットを構築します。</div> </td>
 </tr>
 </tbody>
 </table> </li>
@@ -206,7 +204,7 @@ implements <a href="Set.html" title="interface in java.util">Set</a>&lt;E&gt;, <
 </span></caption>
 <tbody>
 <tr>
-<th class="colFirst" scope="col">变量和类型</th>
+<th class="colFirst" scope="col">変数と型</th>
 <th class="colSecond" scope="col">方法</th>
 <th class="colLast" scope="col">描述</th>
 </tr>
@@ -214,17 +212,13 @@ implements <a href="Set.html" title="interface in java.util">Set</a>&lt;E&gt;, <
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#add(E)">add</a></span>​(<a href="HashSet.html" title="type parameter in HashSet">E</a> e)</code></th>
 <td class="colLast">
-<div class="block">
-                如果指定的元素尚不存在，则将其添加到此集合中。 
-              </div> </td>
+<div class="block">指定された要素がまだ存在しない場合は、このセットに追加します。</div> </td>
 </tr>
 <tr class="rowColor" id="i1">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#clear()">clear</a></span>()</code></th>
 <td class="colLast">
-<div class="block">
-                从该集中删除所有元素。 
-              </div> </td>
+<div class="block">このセットからすべての要素を削除します。</div> </td>
 </tr>
 <tr class="altColor" id="i2">
 <td class="colFirst"><code><a href="../lang/Object.html" title="class in java.lang">Object</a></code></td>
@@ -232,16 +226,13 @@ implements <a href="Set.html" title="interface in java.util">Set</a>&lt;E&gt;, <
 <td class="colLast">
 <div class="block">
                 返回此 
-               <code>HashSet</code>实例的浅表副本：未克隆元素本身。 
-              </div> </td>
+               <code>HashSet</code>インスタンスの浅いコピー：要素自体はクローンされません。</div> </td>
 </tr>
 <tr class="rowColor" id="i3">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#contains(java.lang.Object)">contains</a></span>​(<a href="../lang/Object.html" title="class in java.lang">Object</a> o)</code></th>
 <td class="colLast">
-<div class="block">
-                如果此set包含指定的元素，则返回 
-               <code>true</code> 。 
+<div class="block">このセットが指定された要素を含む場合、戻ります<code>true</code> 。 
               </div> </td>
 </tr>
 <tr class="altColor" id="i4">
@@ -257,32 +248,26 @@ implements <a href="Set.html" title="interface in java.util">Set</a>&lt;E&gt;, <
 <td class="colFirst"><code><a href="Iterator.html" title="interface in java.util">Iterator</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#iterator()">iterator</a></span>()</code></th>
 <td class="colLast">
-<div class="block">
-                返回此set中元素的迭代器。 
-              </div> </td>
+<div class="block">この set 内の要素のイテレータを返します。</div> </td>
 </tr>
 <tr class="altColor" id="i6">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#remove(java.lang.Object)">remove</a></span>​(<a href="../lang/Object.html" title="class in java.lang">Object</a> o)</code></th>
 <td class="colLast">
-<div class="block">
-                如果存在，则从该集合中移除指定的元素。 
-              </div> </td>
+<div class="block">存在する場合、このセットから指定された要素を削除します。</div> </td>
 </tr>
 <tr class="rowColor" id="i7">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#size()">size</a></span>()</code></th>
 <td class="colLast">
-<div class="block">
-                返回此集合中的元素数（基数）。 
-              </div> </td>
+<div class="block">このコレクション内の要素数（基数）を返します。</div> </td>
 </tr>
 <tr class="altColor" id="i8">
 <td class="colFirst"><code><a href="Spliterator.html" title="interface in java.util">Spliterator</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#spliterator()">spliterator</a></span>()</code></th>
 <td class="colLast">
 <div class="block">
-<span>在此集合中的元素上创建<em><a href="Spliterator.html#binding">late-binding</a></em>和<em>失败快速</em> <a href="Spliterator.html" title="java.util中的接口"><code>Spliterator</code></a> 。</span>
+<span>このコレクション内の要素上に作成する<em><a href="Spliterator.html#binding">late-binding</a></em>と<em>失败快速</em> <a href="Spliterator.html" title="java.util中的接口"><code>Spliterator</code></a> 。</span>
 </div> </td>
 </tr>
 </tbody>
@@ -327,16 +312,16 @@ implements <a href="Set.html" title="interface in java.util">Set</a>&lt;E&gt;, <
 <ul class="blockList">
 <li class="blockList"> <h4>HashSet</h4> <pre>public HashSet()</pre>
 <div class="block">
-<span>构造一个新的空集;</span>
-<span>支持<code>HashMap</code>实例具有默认初始容量（16）和加载因子（0.75）。</span>
+<span>新しい空のセットを構築します;</span>
+<span>支持<code>HashMap</code>インスタンスはデフォルトの初期容量（16）と負荷係数（0.75）を持ちます。</span>
 </div> </li>
 </ul> <a id="&lt;init&gt;(java.util.Collection)">
 <!-- --> </a>
 <ul class="blockList">
 <li class="blockList"> <h4>HashSet</h4> <pre>public HashSet​(<a href="Collection.html" title="interface in java.util">Collection</a>&lt;? extends <a href="HashSet.html" title="type parameter in HashSet">E</a>&gt; c)</pre>
 <div class="block">
-<span>构造一个包含指定集合中元素的新集合。</span>
-<span><code>HashMap</code>使用默认加载因子（0.75）创建，初始容量足以包含指定集合中的元素。</span>
+<span>指定されたコレクション内の要素を含む新しいセットを構築します。</span>
+<span><code>HashMap</code>デフォルトの負荷係数（0.75）を使用して作成され、初期容量は指定されたコレクション内の要素を格納するのに十分です。</span>
 </div>
 <dl>
 <dt>
@@ -357,8 +342,8 @@ implements <a href="Set.html" title="interface in java.util">Set</a>&lt;E&gt;, <
 <li class="blockList"> <h4>HashSet</h4> <pre>public HashSet​(int initialCapacity,
                float loadFactor)</pre>
 <div class="block">
-<span>构造一个新的空集;</span>
-<span>后备<code>HashMap</code>实例具有指定的初始容量和指定的加载因子。</span>
+<span>新しい空のセットを構築します;</span>
+<span>后备<code>HashMap</code>インスタンスは、指定された初期容量と指定された負荷係数を持ちます。</span>
 </div>
 <dl>
 <dt>
@@ -379,8 +364,8 @@ implements <a href="Set.html" title="interface in java.util">Set</a>&lt;E&gt;, <
 <ul class="blockListLast">
 <li class="blockList"> <h4>HashSet</h4> <pre>public HashSet​(int initialCapacity)</pre>
 <div class="block">
-<span>构造一个新的空集;</span>
-<span>支持<code>HashMap</code>实例具有指定的初始容量和默认加载因子（0.75）。</span>
+<span>新しい空のセットを構築します;</span>
+<span>支持<code>HashMap</code>インスタンスは、指定された初期容量とデフォルトの負荷係数（0.75）を持ちます。</span>
 </div>
 <dl>
 <dt>
@@ -406,7 +391,7 @@ implements <a href="Set.html" title="interface in java.util">Set</a>&lt;E&gt;, <
 <ul class="blockList">
 <li class="blockList"> <h4>iterator</h4> <pre class="methodSignature">public <a href="Iterator.html" title="interface in java.util">Iterator</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt; iterator()</pre>
 <div class="block">
-<span>返回此set中元素的迭代器。</span>
+<span>この set 内の要素のイテレータを返します。</span>
 <span>元素按特定顺序返回。</span>
 </div>
 <dl>
@@ -414,15 +399,13 @@ implements <a href="Set.html" title="interface in java.util">Set</a>&lt;E&gt;, <
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Collection.html#iterator()">iterator</a></code>在界面 
-              <code><a href="Collection.html" title="interface in java.util">Collection</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
+<code><a href="Collection.html#iterator()">iterator</a></code>インターフェースで<code><a href="Collection.html" title="interface in java.util">Collection</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="../lang/Iterable.html#iterator()">iterator</a></code>在界面 
-              <code><a href="../lang/Iterable.html" title="interface in java.lang">Iterable</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
+<code><a href="../lang/Iterable.html#iterator()">iterator</a></code>インターフェースで<code><a href="../lang/Iterable.html" title="interface in java.lang">Iterable</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
@@ -453,23 +436,19 @@ implements <a href="Set.html" title="interface in java.util">Set</a>&lt;E&gt;, <
 <!-- --> </a>
 <ul class="blockList">
 <li class="blockList"> <h4>size</h4> <pre class="methodSignature">public int size()</pre>
-<div class="block">
-              返回此集合中的元素数（基数）。 
-            </div>
+<div class="block">このコレクション内の要素数（基数）を返します。</div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Collection.html#size()">size</a></code>在界面 
-              <code><a href="Collection.html" title="interface in java.util">Collection</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
+<code><a href="Collection.html#size()">size</a></code>インターフェースで<code><a href="Collection.html" title="interface in java.util">Collection</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Set.html#size()">size</a></code>在界面 
-              <code><a href="Set.html" title="interface in java.util">Set</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
+<code><a href="Set.html#size()">size</a></code>インターフェースで<code><a href="Set.html" title="interface in java.util">Set</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="returnLabel">结果</span>
@@ -489,15 +468,13 @@ implements <a href="Set.html" title="interface in java.util">Set</a>&lt;E&gt;, <
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Collection.html#isEmpty()">isEmpty</a></code>在界面 
-              <code><a href="Collection.html" title="interface in java.util">Collection</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
+<code><a href="Collection.html#isEmpty()">isEmpty</a></code>インターフェースで<code><a href="Collection.html" title="interface in java.util">Collection</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Set.html#isEmpty()">isEmpty</a></code>在界面 
-              <code><a href="Set.html" title="interface in java.util">Set</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
+<code><a href="Set.html#isEmpty()">isEmpty</a></code>インターフェースで<code><a href="Set.html" title="interface in java.util">Set</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">重写：</span>
@@ -517,30 +494,27 @@ implements <a href="Set.html" title="interface in java.util">Set</a>&lt;E&gt;, <
 <ul class="blockList">
 <li class="blockList"> <h4>contains</h4> <pre class="methodSignature">public boolean contains​(<a href="../lang/Object.html" title="class in java.lang">Object</a> o)</pre>
 <div class="block">
-<span>如果此set包含指定的元素，则返回<code>true</code> 。</span>
-<span>更正式地说，返回<code>true</code>当且仅当此set包含的元素<code>e</code> ，使得<code>Objects.equals(o, e)</code> 。</span>
+<span>このセットが指定された要素を含む場合、戻ります<code>true</code> 。</span>
+<span>更正式地说，返回<code>true</code>このセットに含まれる要素が...である場合に限り<code>e</code> ，使得<code>Objects.equals(o, e)</code> 。</span>
 </div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Collection.html#contains(java.lang.Object)">contains</a></code>在界面 
-              <code><a href="Collection.html" title="interface in java.util">Collection</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
+<code><a href="Collection.html#contains(java.lang.Object)">contains</a></code>インターフェースで<code><a href="Collection.html" title="interface in java.util">Collection</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Set.html#contains(java.lang.Object)">contains</a></code>在界面 
-              <code><a href="Set.html" title="interface in java.util">Set</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
+<code><a href="Set.html#contains(java.lang.Object)">contains</a></code>インターフェースで<code><a href="Set.html" title="interface in java.util">Set</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">重写：</span>
 </dt>
 <dd>
-<code><a href="AbstractCollection.html#contains(java.lang.Object)">contains</a></code>在类 
-              <code><a href="AbstractCollection.html" title="class in java.util">AbstractCollection</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
+<code><a href="AbstractCollection.html#contains(java.lang.Object)">contains</a></code>クラス内<code><a href="AbstractCollection.html" title="class in java.util">AbstractCollection</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="paramLabel">参数</span>
@@ -559,8 +533,8 @@ implements <a href="Set.html" title="interface in java.util">Set</a>&lt;E&gt;, <
 <ul class="blockList">
 <li class="blockList"> <h4>add</h4> <pre class="methodSignature">public boolean add​(<a href="HashSet.html" title="type parameter in HashSet">E</a> e)</pre>
 <div class="block">
-<span>如果指定的元素尚不存在，则将其添加到此集合中。</span>
-<span>更正式地，将指定的元素<code>e</code>这一套，如果set不包含元素<code>e2</code>使得<code>Objects.equals(e, e2)</code> 。</span>
+<span>指定された要素がまだ存在しない場合は、このセットに追加します。</span>
+<span>より正式には、指定された要素を<code>e</code>この set は、set に要素が含まれていない場合。<code>e2</code>使得<code>Objects.equals(e, e2)</code> 。</span>
 <span>如果此set已包含该元素，则调用将保持set不变并返回<code>false</code> 。</span>
 </div>
 <dl>
@@ -568,22 +542,19 @@ implements <a href="Set.html" title="interface in java.util">Set</a>&lt;E&gt;, <
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Collection.html#add(E)">add</a></code>在界面 
-              <code><a href="Collection.html" title="interface in java.util">Collection</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
+<code><a href="Collection.html#add(E)">add</a></code>インターフェースで<code><a href="Collection.html" title="interface in java.util">Collection</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Set.html#add(E)">add</a></code>在界面 
-              <code><a href="Set.html" title="interface in java.util">Set</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
+<code><a href="Set.html#add(E)">add</a></code>インターフェースで<code><a href="Set.html" title="interface in java.util">Set</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">重写：</span>
 </dt>
 <dd>
-<code><a href="AbstractCollection.html#add(E)">add</a></code>在类 
-              <code><a href="AbstractCollection.html" title="class in java.util">AbstractCollection</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
+<code><a href="AbstractCollection.html#add(E)">add</a></code>クラス内<code><a href="AbstractCollection.html" title="class in java.util">AbstractCollection</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="paramLabel">参数</span>
@@ -601,8 +572,8 @@ implements <a href="Set.html" title="interface in java.util">Set</a>&lt;E&gt;, <
 <ul class="blockList">
 <li class="blockList"> <h4>remove</h4> <pre class="methodSignature">public boolean remove​(<a href="../lang/Object.html" title="class in java.lang">Object</a> o)</pre>
 <div class="block">
-<span>如果存在，则从该集合中移除指定的元素。</span>
-<span>更正式地，删除元素<code>e</code> ，使得<code>Objects.equals(o, e)</code> ，如果此集合包含这样的元素。</span>
+<span>存在する場合、このセットから指定された要素を削除します。</span>
+<span>更正式地，删除元素<code>e</code> ，使得<code>Objects.equals(o, e)</code>このコレクションがそのような要素を含む場合。</span>
 <span>如果此集合包含元素，则返回<code>true</code> （或等效地，如果此集合因调用而更改）。</span>
 <span>（一旦调用返回，该集合将不包含该元素。）</span>
 </div>
@@ -611,15 +582,13 @@ implements <a href="Set.html" title="interface in java.util">Set</a>&lt;E&gt;, <
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Collection.html#remove(java.lang.Object)">remove</a></code>在界面 
-              <code><a href="Collection.html" title="interface in java.util">Collection</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
+<code><a href="Collection.html#remove(java.lang.Object)">remove</a></code>インターフェースで<code><a href="Collection.html" title="interface in java.util">Collection</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Set.html#remove(java.lang.Object)">remove</a></code>在界面 
-              <code><a href="Set.html" title="interface in java.util">Set</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
+<code><a href="Set.html#remove(java.lang.Object)">remove</a></code>インターフェースで<code><a href="Set.html" title="interface in java.util">Set</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">重写：</span>
@@ -644,23 +613,21 @@ implements <a href="Set.html" title="interface in java.util">Set</a>&lt;E&gt;, <
 <ul class="blockList">
 <li class="blockList"> <h4>clear</h4> <pre class="methodSignature">public void clear()</pre>
 <div class="block">
-<span>从该集中删除所有元素。</span>
-<span>此调用返回后，该集将为空。</span>
+<span>このセットからすべての要素を削除します。</span>
+<span>この呼び出しから戻った後、そのセットは空になります。</span>
 </div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Collection.html#clear()">clear</a></code>在界面 
-              <code><a href="Collection.html" title="interface in java.util">Collection</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
+<code><a href="Collection.html#clear()">clear</a></code>インターフェースで<code><a href="Collection.html" title="interface in java.util">Collection</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Set.html#clear()">clear</a></code>在界面 
-              <code><a href="Set.html" title="interface in java.util">Set</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
+<code><a href="Set.html#clear()">clear</a></code>インターフェースで<code><a href="Set.html" title="interface in java.util">Set</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">重写：</span>
@@ -676,8 +643,7 @@ implements <a href="Set.html" title="interface in java.util">Set</a>&lt;E&gt;, <
 <li class="blockList"> <h4>clone</h4> <pre class="methodSignature">public <a href="../lang/Object.html" title="class in java.lang">Object</a> clone()</pre>
 <div class="block">
               返回此 
-             <code>HashSet</code>实例的浅表副本：未克隆元素本身。 
-            </div>
+             <code>HashSet</code>インスタンスの浅いコピー：要素自体はクローンされません。</div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">重写：</span>
@@ -702,30 +668,27 @@ implements <a href="Set.html" title="interface in java.util">Set</a>&lt;E&gt;, <
 <ul class="blockListLast">
 <li class="blockList"> <h4>spliterator</h4> <pre class="methodSignature">public <a href="Spliterator.html" title="interface in java.util">Spliterator</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt; spliterator()</pre>
 <div class="block">
-<span>在此集合中的元素上创建<em><a href="Spliterator.html#binding">late-binding</a></em>和<em>失败快速</em> <a href="Spliterator.html" title="java.util中的接口"><code>Spliterator</code></a> 。</span>
-<p> <span><code>Spliterator</code>报告<a href="Spliterator.html#SIZED"><code>Spliterator.SIZED</code></a>和<a href="Spliterator.html#DISTINCT"><code>Spliterator.DISTINCT</code></a> 。</span> <span>覆盖实现应记录其他特征值的报告。</span> </p>
+<span>このコレクション内の要素上に作成する<em><a href="Spliterator.html#binding">late-binding</a></em>と<em>失败快速</em> <a href="Spliterator.html" title="java.util中的接口"><code>Spliterator</code></a> 。</span>
+<p> <span><code>Spliterator</code>报告<a href="Spliterator.html#SIZED"><code>Spliterator.SIZED</code></a>と<a href="Spliterator.html#DISTINCT"><code>Spliterator.DISTINCT</code></a> 。</span> <span>オーバーライドする実装は、他の特性値のレポートを文書化する必要があります。</span> </p>
 </div>
 <dl>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Collection.html#spliterator()">spliterator</a></code>在界面 
-              <code><a href="Collection.html" title="interface in java.util">Collection</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
+<code><a href="Collection.html#spliterator()">spliterator</a></code>インターフェースで<code><a href="Collection.html" title="interface in java.util">Collection</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="../lang/Iterable.html#spliterator()">spliterator</a></code>在界面 
-              <code><a href="../lang/Iterable.html" title="interface in java.lang">Iterable</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
+<code><a href="../lang/Iterable.html#spliterator()">spliterator</a></code>インターフェースで<code><a href="../lang/Iterable.html" title="interface in java.lang">Iterable</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="overrideSpecifyLabel">Specified by:</span>
 </dt>
 <dd>
-<code><a href="Set.html#spliterator()">spliterator</a></code>在界面 
-              <code><a href="Set.html" title="interface in java.util">Set</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
+<code><a href="Set.html#spliterator()">spliterator</a></code>インターフェースで<code><a href="Set.html" title="interface in java.util">Set</a>&lt;<a href="HashSet.html" title="type parameter in HashSet">E</a>&gt;</code>
 </dd>
 <dt>
 <span class="returnLabel">结果</span>
@@ -734,7 +697,7 @@ implements <a href="Set.html" title="interface in java.util">Set</a>&lt;E&gt;, <
                a 
               <code>Spliterator</code>このコレクション内の要素</dd>
 <dt>
-<span class="simpleTagLabel">从以下版本开始：</span>
+<span class="simpleTagLabel">以下のバージョンから：</span>
 </dt>
 <dd>
                1.8 

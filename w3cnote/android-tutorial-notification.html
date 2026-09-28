@@ -162,8 +162,8 @@ Notification.Builder mBuilder = new Notification.Builder(this);</li>
 パラメータは順に：プログレスバーの最大値、現在のプログレス、プログレスが不確定かどうか。
 確定プログレスバーの場合：setProgress(max, progress, false)を呼び出して通知を設定します。
 プログレスを更新するときに、ここで通知を再度発行してprogressを更新します。ダウンロード完了後は、setProgress(0, 0, false)を呼び出してプログレスバーを削除します。
-不確定（継続的活動）のプログレスバーの場合、これは進捗を正確に把握できないときに活動が継続していることを表示するものです。setProgress(0, 0, true)を呼び出します。操作が終了したら、setProgress(0, 0, false)を呼び出して通知を更新し、インジケーターバーを削除します。</li>
-<li><p><strong>setContentIntent</strong>(PendingIntent)：PendingIntentはIntentと少し異なり、実行回数を設定できます。主にリモートサービス通信、アラーム、通知、ランチャー、SMSなどで使用され、一般的な場合にはあまり使われません。例えば、ここではPendingIntentを介してActivityを起動します：getActivity(Context, int, Intent, int)。もちろん、ServiceやBroadcastを起動することもできます。PendingIntentのビット識別子（第4パラメータ）：<br/>
+不確定（継続の活動）のプログレスバーの場合、これは進捗を正確にを握できないときに活動が継続していることを表示するものです。setProgress(0, 0, true)を呼び出します。操作が終了したら、setProgress(0, 0, false)を呼び出して通知を更新し、インジケーターバーを削除します。</li>
+<li><p><strong>setContentIntent</strong>（PendingIntent）：PendingIntentはIntentと少し異なり、実行回数を設定できます。主にリモートサービス通信、アラーム、通知、ランチャー、SMSなどで使用され、一般的な場合にはあまり使われません。例えば、ここではPendingIntentを介してActivityを起動します：getActivity(Context, int, Intent, int)。もちろん、ServiceやBroadcastを起動することもできます。PendingIntentのビット識別子（第4パラメータ）：<br/>
 <strong>FLAG_ONE_SHOT</strong>返されたPendingIntentが一度だけ実行できることを示し、実行後は自動的にキャンセルされます。<br/>
 <strong>FLAG_NO_CREATE</strong>記述されたPendingIntentが存在しない場合、対応するPendingIntentを作成せず、NULLを返すことを示します。<br/>
 <strong>FLAG_CANCEL_CURRENT</strong>対応するPendingIntentがすでに存在する場合、前者をキャンセルして新しいPendingIntentを作成します。これはデータを最新に保つのに役立ち、インスタントメッセージングの通信シナリオに使用できます。<br/>
@@ -398,11 +398,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックできます</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=".." class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックできます</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href="..">ログイン</a>が必要です！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

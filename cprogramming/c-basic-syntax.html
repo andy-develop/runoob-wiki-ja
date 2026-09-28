@@ -188,7 +188,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div></div>
 <p>上記のコードの構成は次のとおりです：</p>
 <ul>
-<li><strong>プリプロセッサディレクティブ</strong>：例：<code>#include</code> 和 <code>#define</code>、コンパイル前にプリプロセッサによって処理されます。</li>
+<li><strong>プリプロセッサディレクティブ</strong>：例：<code>#include</code>と<code>#define</code>、コンパイル前にプリプロセッサによって処理されます。</li>
 <li><strong>メイン関数</strong>：すべての C プログラムが必ず1つだけ持つ<code>main()</code>関数であり、プログラムの実行入口です。</li>
 <li><strong>変数宣言</strong>：プログラムで使用する変数を宣言します。C89 では宣言はコードブロックの先頭でなければなりません。</li>
 <li><strong>関数定義</strong>：プログラムで使用する関数を定義し、関数の具体的な実装ロジックを記述します。</li>
@@ -264,7 +264,7 @@ sum = add(num1, num2);</pre>
 </ul>
 <p><strong>制御フロー文</strong></p>
 <ul>
-<li>制御フロー文はプログラムの実行順序を制御するために使用され、条件分岐（<code>if</code>/<code>else</code>、<code>switch</code>）とループ（<code>for</code>、<code>while</code>、<code>do-while</code>）が含まれます。また、ジャンプ文もあります。<code>break</code>、<code>continue</code>、<code>goto</code> 和 <code>return</code>。</li>
+<li>制御フロー文はプログラムの実行順序を制御するために使用され、条件分岐（<code>if</code>/<code>else</code>、<code>switch</code>）とループ（<code>for</code>、<code>while</code>、<code>do-while</code>）が含まれます。また、ジャンプ文もあります。<code>break</code>、<code>continue</code>、<code>goto</code>と<code>return</code>。</li>
 <li>制御フロー文を適切に使用することは、論理が明確なプログラムを書く鍵であり、乱用を避けるべきです。<code>goto</code>コードの可読性を保つためです。</li>
 <li>例：<pre>if (num1 &gt; num2) {
     printf("num1 is greater than num2");
@@ -283,7 +283,7 @@ sum = add(num1, num2);</pre>
 <p><strong>return 文</strong></p>
 <ul>
 <li><code>return</code>return 文は関数の実行を終了し、制御権を戻り値とともに呼び出し元に返します。<code>void</code>型の関数は値なしの<code>return;</code>で途中終了できます。また、<code>return</code>文を省略することもできます。</li>
-<li><code>main()</code>関数の戻り値はオペレーティングシステムに渡されます。<code>0</code>は通常成功を表します。標準マクロ<code>EXIT_SUCCESS</code> 和 <code>EXIT_FAILURE</code>（定義されている<code>&lt;stdlib.h&gt;</code>）。</li>
+<li><code>main()</code>関数の戻り値はオペレーティングシステムに渡されます。<code>0</code>は通常成功を表します。標準マクロ<code>EXIT_SUCCESS</code>と<code>EXIT_FAILURE</code>（定義されている<code>&lt;stdlib.h&gt;</code>）。</li>
 <li>例：<code>return 0;</code>、<code>return EXIT_SUCCESS;</code></li>
 </ul>
 <h2 class="tutheader">区切り文字</h2>
@@ -342,7 +342,7 @@ while (condition);  // 空循环体，等待条件变化
 <h2 class="tutheader">識別子</h2>
 <p>識別子は、プログラム内の変数、関数、配列、型などの名前であり、プログラマー自身が定義します。識別子は英字（大文字または小文字）、数字、アンダースコアで構成されますが、最初の文字は英字またはアンダースコアでなければならず、数字は使用できません。</p>
 <p>識別子は、英字 A-Z または a-z またはアンダースコア _ で始まり、その後にゼロ個以上の英字、アンダースコア、数字（0-9）が続きます。</p>
-<p>C の識別子内では、@、$、% などの句読文字は許可されません。C は<b>大文字と小文字を区別する</b>プログラミング言語です。したがって、C では、<i>Manpower</i> 和 <i>manpower</i>は2つの異なる識別子です。以下に有効な識別子をいくつか示します：</p>
+<p>C の識別子内では、@、$、% などの句読文字は許可されません。C は<b>大文字と小文字を区別する</b>プログラミング言語です。したがって、C では、<i>Manpower</i>と<i>manpower</i>は2つの異なる識別子です。以下に有効な識別子をいくつか示します：</p>
 <pre>
 mohd       zara    abc   move_name  a_123
 myname50   _temp   j     a23b9      retVal
@@ -383,7 +383,7 @@ char greeting[] = "Hello, World!";  // 编译器自动计算长度（包含 \0�
 <li>"Hello" はメモリ内で実際には6バイトを占めます：<code>'H'、'e'、'l'、'l'、'o'、'\0'</code>。</li>
 <li>文字列リテラルは読み取り専用メモリ領域に格納されるため変更できません。変更する必要がある場合は、文字配列にコピーする必要があります。</li>
 <li>隣接する2つの文字列リテラルは、コンパイラによって自動的に連結されます：<code>"Hello, " "World!"</code>は次と同等です<code>"Hello, World!"</code>。</li>
-<li>文字<code>'A'</code>（文字定数）と文字列<code>"A"</code>（文字列リテラル）は異なります。後者には<code>'A'</code> 和 <code>'\0'</code>2つの文字が含まれます。</li>
+<li>文字<code>'A'</code>（文字定数）と文字列<code>"A"</code>（文字列リテラル）は異なります。後者には<code>'A'</code>と<code>'\0'</code>2つの文字が含まれます。</li>
 </ul>
 <h2 class="tutheader">演算子（Operators）</h2>
 <p>演算子は、算術演算、論理演算、比較演算などのさまざまな操作を実行するために使用されます。演算子はオペランドに作用し、式を形成して結果を生成します。</p>
@@ -488,11 +488,11 @@ int max = (a &gt; b) ? a : b; // 三目运算符，max = b = 10
 <pre>
 int age;
 </pre>
-<p><code>int</code> 和 <code>age</code>の間には、少なくとも1つの空白文字（通常は空白）が必要で、これによりコンパイラはそれらを区別できます。一方、次の文では：</p>
+<p><code>int</code>と<code>age</code>の間には、少なくとも1つの空白文字（通常は空白）が必要で、これによりコンパイラはそれらを区別できます。一方、次の文では：</p>
 <pre>
 fruit = apples + oranges;   // 获取水果的总数
 </pre>
-<p><code>fruit</code> 和 <code>=</code>、または<code>=</code> 和 <code>apples</code>の間の空白文字は必須ではありませんが、可読性を高めるために、必要に応じて適宜空白を追加することができます。</p>
+<p><code>fruit</code>と<code>=</code>、または<code>=</code>と<code>apples</code>の間の空白文字は必須ではありませんが、可読性を高めるために、必要に応じて適宜空白を追加することができます。</p>
 <p>優れた空白とインデントの習慣は高品質なコードの重要な構成要素です。以下の規範に従うことをお勧めします：</p>
 <ul>
 <li>一貫したインデント（通常はスペース4個またはタブ1個）を使用して、コードブロックの階層を表します。</li>
@@ -682,17 +682,17 @@ return</td><td>サブルーチンの戻り文（引数を指定することも�
 或
 
 printf("/*how do you do!*/\n");</pre>
-<p>出力はそれぞれ次のとおりです：<strong>//how do you do！</strong>和 <strong>/*how do you do!*/</strong></p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">CSTwang</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   CSTwang</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  248***3362@qq.com</p></div></span>8年前 (2018-08-02)</div></div></li><!-- #comment-## -->
+<p>出力はそれぞれ次のとおりです：<strong>//how do you do！</strong>と<strong>/*how do you do!*/</strong></p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">CSTwang</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   CSTwang</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  248***3362@qq.com</p></div></span>8年前 (2018-08-02)</div></div></li><!-- #comment-## -->
 </ol>
 </div>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -981,7 +981,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

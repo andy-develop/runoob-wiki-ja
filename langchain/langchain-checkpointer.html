@@ -181,7 +181,7 @@ load_dotenv<span style="color: Olive;">(</span><span style="color: Olive;">)</sp
 model <span style="color: Gray;">=</span> init_chat_model<span style="color: Olive;">(</span><span style="color: #a11;">"deepseek:deepseek-v4-flash"</span><span style="color: Gray;">,</span> temperature<span style="color: Gray;">=</span><span style="color: Maroon;">0</span><span style="color: Olive;">)</span><br/>
 agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;">(</span><br/>
     model<span style="color: Gray;">=</span>model<span style="color: Gray;">,</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"你是菜鸟教程 RUNOOB 的助手。"</span><span style="color: Gray;">,</span><br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは菜鳥教程（RUNOOB）のアシスタントです。"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 第1ターン</span><br/>
@@ -220,7 +220,7 @@ model <span style="color: Gray;">=</span> init_chat_model<span style="color: Oli
 agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;">(</span><br/>
     model<span style="color: Gray;">=</span>model<span style="color: Gray;">,</span><br/>
     checkpointer<span style="color: Gray;">=</span>checkpointer<span style="color: Gray;">,</span>  <span style="color: #a50"># Checkpointer を渡す</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"你是菜鸟教程 RUNOOB 的助手。"</span><span style="color: Gray;">,</span><br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは菜鳥教程（RUNOOB）のアシスタントです。"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># thread_id を使用して会話スレッドを識別する</span><br/>
@@ -228,14 +228,14 @@ config <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><
 <br/>
 <span style="color: #a50"># 第1ターン</span><br/>
 result1 <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><br/>
-    <span style="color: Olive;">{</span><span style="color: #a11;">"messages"</span>: <span style="color: Olive;">[</span>HumanMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"我叫小明，我在学 Python"</span><span style="color: Olive;">)</span><span style="color: Olive;">]</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span><br/>
+    <span style="color: Olive;">{</span><span style="color: #a11;">"messages"</span>: <span style="color: Olive;">[</span>HumanMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">私はシャオミンです。Pythonを勉強しています。</span><span style="color: Olive;">)</span><span style="color: Olive;">]</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span><br/>
     config<span style="color: Gray;">=</span>config<span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"第一轮: {result1['messages'][-1].content}"</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 第2ターン——同じ thread_id を使用すると、Agent は覚えていました！</span><br/>
 result2 <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><br/>
-    <span style="color: Olive;">{</span><span style="color: #a11;">"messages"</span>: <span style="color: Olive;">[</span>HumanMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"我叫什么名字？我在学什么？"</span><span style="color: Olive;">)</span><span style="color: Olive;">]</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span><br/>
+    <span style="color: Olive;">{</span><span style="color: #a11;">"messages"</span>: <span style="color: Olive;">[</span>HumanMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"私の名前は何ですか？私は何を学んでいますか？"</span><span style="color: Olive;">)</span><span style="color: Olive;">]</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span><br/>
     config<span style="color: Gray;">=</span>config<span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"第二轮: {result2['messages'][-1].content}"</span><span style="color: Olive;">)</span><br/>
@@ -269,7 +269,7 @@ checkpointer <span style="color: Gray;">=</span> InMemorySaver<span style="color
 agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;">(</span><br/>
     model<span style="color: Gray;">=</span>init_chat_model<span style="color: Olive;">(</span><span style="color: #a11;">"deepseek:deepseek-v4-flash"</span><span style="color: Gray;">,</span> temperature<span style="color: Gray;">=</span><span style="color: Maroon;">0</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
     checkpointer<span style="color: Gray;">=</span>checkpointer<span style="color: Gray;">,</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"你是菜鸟教程 RUNOOB 的助手。"</span><span style="color: Gray;">,</span><br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは菜鳥教程（RUNOOB）のアシスタントです。"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 config <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: #a11;">"configurable"</span>: <span style="color: Olive;">{</span><span style="color: #a11;">"thread_id"</span>: <span style="color: #a11;">"demo-001"</span><span style="color: Olive;">}</span><span style="color: Olive;">}</span><br/>
@@ -277,8 +277,8 @@ config <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><
 <span style="color: #a50"># マルチターン会話をシミュレート</span><br/>
 questions <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><br/>
     <span style="color: #a11;">"我叫小明"</span><span style="color: Gray;">,</span><br/>
-    <span style="color: #a11;">"我在学 Python"</span><span style="color: Gray;">,</span><br/>
-    <span style="color: #a11;">"帮我总结一下关于我的信息"</span><span style="color: Gray;">,</span><br/>
+    <span style="color: #a11;">"私はPythonを学んでいます"</span><span style="color: Gray;">,</span><br/>
+    <span style="color: #a11;">私に関する情報を要約してください</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">]</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">for</span> i<span style="color: Gray;">,</span> q <span style="color: Green;font-weight:bold;">in</span> <span style="color: Teal;">enumerate</span><span style="color: Olive;">(</span>questions<span style="color: Gray;">,</span> <span style="color: Maroon;">1</span><span style="color: Olive;">)</span>:<br/>
@@ -332,14 +332,14 @@ questions <span style="color: Gray;">=</span> <span style="color: Olive;">[</spa
 <tr>
 <td>SqliteSaver</td>
 <td>SQLite データベース</td>
-<td>是</td>
+<td>である</td>
 <td>langgraph-checkpoint-sqlite</td>
 <td>スタンドアロン展開、小規模アプリ</td>
 </tr>
 <tr>
 <td>PostgresSaver</td>
 <td>PostgreSQL</td>
-<td>是</td>
+<td>である</td>
 <td>langgraph-checkpoint-postgres</td>
 <td>本番環境、マルチインスタンス共有</td>
 </tr>
@@ -367,7 +367,7 @@ model <span style="color: Gray;">=</span> init_chat_model<span style="color: Oli
     agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;">(</span><br/>
         model<span style="color: Gray;">=</span>model<span style="color: Gray;">,</span><br/>
         checkpointer<span style="color: Gray;">=</span>checkpointer<span style="color: Gray;">,</span><br/>
-        system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"你是菜鸟教程 RUNOOB 的助手。"</span><span style="color: Gray;">,</span><br/>
+        system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは菜鳥教程（RUNOOB）のアシスタントです。"</span><span style="color: Gray;">,</span><br/>
     <span style="color: Olive;">)</span><br/>
 <br/>
     config <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: #a11;">"configurable"</span>: <span style="color: Olive;">{</span><span style="color: #a11;">"thread_id"</span>: <span style="color: #a11;">"user-001"</span><span style="color: Olive;">}</span><span style="color: Olive;">}</span><br/>
@@ -413,21 +413,21 @@ config_bob <span style="color: Gray;">=</span> <span style="color: Olive;">{</sp
 <br/>
 <span style="color: #a50"># Alice の会話</span><br/>
 agent.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><br/>
-    <span style="color: Olive;">{</span><span style="color: #a11;">"messages"</span>: <span style="color: Olive;">[</span>HumanMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"我是 Alice"</span><span style="color: Olive;">)</span><span style="color: Olive;">]</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span><br/>
+    <span style="color: Olive;">{</span><span style="color: #a11;">"messages"</span>: <span style="color: Olive;">[</span>HumanMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"私はアリスです"</span><span style="color: Olive;">)</span><span style="color: Olive;">]</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span><br/>
     config<span style="color: Gray;">=</span>config_alice<span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># Bob の会話——完全に独立しており、Alice が何を言ったかは知らない</span><br/>
 agent.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><br/>
-    <span style="color: Olive;">{</span><span style="color: #a11;">"messages"</span>: <span style="color: Olive;">[</span>HumanMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"我是 Bob"</span><span style="color: Olive;">)</span><span style="color: Olive;">]</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span><br/>
+    <span style="color: Olive;">{</span><span style="color: #a11;">"messages"</span>: <span style="color: Olive;">[</span>HumanMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"私はBob"</span><span style="color: Olive;">)</span><span style="color: Olive;">]</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span><br/>
     config<span style="color: Gray;">=</span>config_bob<span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 分離性の検証</span><br/>
 alice_state <span style="color: Gray;">=</span> agent.<span style="color: #05a;">get_state</span><span style="color: Olive;">(</span>config_alice<span style="color: Olive;">)</span><br/>
 bob_state <span style="color: Gray;">=</span> agent.<span style="color: #05a;">get_state</span><span style="color: Olive;">(</span>config_bob<span style="color: Olive;">)</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"Alice 对话消息数: {len(alice_state.values['messages'])}"</span><span style="color: Olive;">)</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"Bob 对话消息数: {len(bob_state.values['messages'])}"</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">Alice の会話メッセージ数: {len(alice_state.values['messages'])}</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">Bob の会話メッセージ数: {len(bob_state.values['messages'])}</span><span style="color: Olive;">)</span><br/>
 </div>
 </div>
 <hr/>
@@ -443,7 +443,7 @@ agent.<span style="color: #05a;">update_state</span><span style="color: Olive;">
     config<span style="color: Gray;">,</span><br/>
     <span style="color: Olive;">{</span><br/>
         <span style="color: #a11;">"messages"</span>: <span style="color: Olive;">[</span><br/>
-            SystemMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"（用户升级到了 VIP 会员）"</span><span style="color: Olive;">)</span><br/>
+            SystemMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">（ユーザーはVIP会員にアップグレードしました）</span><span style="color: Olive;">)</span><br/>
         <span style="color: Olive;">]</span><br/>
     <span style="color: Olive;">}</span><br/>
 <span style="color: Olive;">)</span><br/>
@@ -569,11 +569,11 @@ agent.<span style="color: #05a;">update_state</span><span style="color: Olive;">
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -862,7 +862,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

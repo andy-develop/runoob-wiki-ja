@@ -184,11 +184,11 @@ font-family: "PT Mono", Menlo, "Courier New", monospace;
 <li>より正確なエラー報告を得るために、各宣言はそれぞれ1行にすべきです。</li>
 <li>すべての宣言文はセミコロンで終わるべきです。最後の宣言文の後のセミコロンは省略可能ですが、省略するとコードがエラーを起こしやすくなる可能性があります。</li>
 <li>カンマで区切られたプロパティ値では、各カンマの後にスペースを1つ挿入します（例、<code>box-shadow</code>）。</li>
-<li>不要在<code>rgb()</code>、<code>rgba()</code>、<code>hsl()</code>、<code>hsla()</code> 或 <code>rect()</code>值的<em>内部</em>カンマの後にスペースを挿入します。これにより、複数のプロパティ値（カンマとスペースの両方）と複数の色値（カンマのみ、スペースなし）を区別しやすくなります。</li>
+<li>しないでください<code>rgb()</code>、<code>rgba()</code>、<code>hsl()</code>、<code>hsla()</code> 或 <code>rect()</code>値の<em>内部</em>カンマの後にスペースを挿入します。これにより、複数のプロパティ値（カンマとスペースの両方）と複数の色値（カンマのみ、スペースなし）を区別しやすくなります。</li>
 <li>プロパティ値または色の引数では、1未満の小数の前の0を省略します（例、<code>.5</code>代替<code>0.5</code>；<code>-.5px</code>代替<code>-0.5px</code>）。</li>
 <li>16進数の値はすべて小文字にすべきです。例、<code>#fff</code>ドキュメントをスキャンするとき、小文字の文字は、その形式が区別しやすいため、認識しやすくなります。</li>
 <li>可能な限り短縮形の16進数値を使用します。例えば、次のようにします。<code>#fff</code>代替<code>#ffffff</code>。</li>
-<li>セレクタ内の属性には二重引用符を追加します。例、<code>input[type="text"]</code>。<a href="http://mathiasbynens.be/notes/unquoted-attribute-values#css">只有在某些情况下是可选的</a>ただし、コードの一貫性のために、すべてに二重引用符を付けることを推奨します。</li>
+<li>セレクタ内の属性には二重引用符を追加します。例、<code>input[type="text"]</code>。<a href="http://mathiasbynens.be/notes/unquoted-attribute-values#css">特定の場合にのみオプションです</a>ただし、コードの一貫性のために、すべてに二重引用符を付けることを推奨します。</li>
 <li>0の値に単位を指定しないでください。例、次のようにします。<code>margin: 0;</code>代替<code>margin: 0px;</code>。</li>
 </ul>
 <p>ここで使用されている用語について疑問がありますか？ Wikipedia の<a href="https://zh.wikipedia.org/wiki/%E5%B1%82%E5%8F%A0%E6%A0%B7%E5%BC%8F%E8%A1%A8#.E8.AF.AD.E6.B3.95">层叠样式表 - 语法</a>。</p>
@@ -254,13 +254,13 @@ font-family: "PT Mono", Menlo, "Courier New", monospace;
 }
 </pre>
 <h2>不要使用<code>@import</code></h2>
-<p>与 <code>&lt;link&gt;</code>标签相比，<code>@import</code>@import ディレクティブははるかに遅く、余分なリクエスト回数が増えるだけでなく、予期しない問題を引き起こす可能性があります。代替方法は次のとおりです。</p>
+<p>と<code>&lt;link&gt;</code>标签相比，<code>@import</code>@import ディレクティブははるかに遅く、余分なリクエスト回数が増えるだけでなく、予期しない問題を引き起こす可能性があります。代替方法は次のとおりです。</p>
 <ul>
 <li>使用多个<code>&lt;link&gt;</code>元素</li>
 <li>Sass や Less などの CSS プリプロセッサを使用して、複数の CSS ファイルを1つのファイルにコンパイルします。</li>
 <li>Rails、Jekyll、または他のシステムで提供されている CSS ファイル結合機能を使用します。</li>
 </ul>
-<p>请参考<a href="http://www.stevesouders.com/blog/2009/04/09/dont-use-import/">Steve Souders 的文章</a>さらに詳しい知識を得る。</p>
+<p>请参考<a href="http://www.stevesouders.com/blog/2009/04/09/dont-use-import/">Steve Souders の記事</a>さらに詳しい知識を得る。</p>
 <pre>
 &lt;!-- Use link elements --&gt;
 &lt;link rel="stylesheet" href="core.css.html"&gt;
@@ -285,7 +285,7 @@ font-family: "PT Mono", Menlo, "Courier New", monospace;
 </pre>
 <h2>接頭辞付きプロパティ</h2>
 <p>特定ベンダーの接頭辞付きプロパティを使用する場合、インデントによって各プロパティの値を垂直方向に揃えてください。これにより複数行編集が容易になります。</p>
-<p>Textmate では、使用します。<strong>Text → Edit Each Line in Selection</strong>(⌃⌘A)。在 Sublime Text 2 中，使用<strong>Selection → Add Previous Line</strong>(⌃⇧↑) 和<strong>Selection →  Add Next Line</strong> (⌃⇧↓)。</p>
+<p>Textmate では、使用します。<strong>Text → Edit Each Line in Selection</strong>(⌃⌘A)。Sublime Text 2 では、<strong>Selection → Add Previous Line</strong>(⌃⇧↑) と<strong>Selection →  Add Next Line</strong> (⌃⇧↓)。</p>
 <pre>
 /* Prefixed properties */
 .selector {
@@ -294,7 +294,7 @@ font-family: "PT Mono", Menlo, "Courier New", monospace;
 }
 </pre>
 <h2>単一行のルール宣言</h2>
-<p>对于<strong>1つの宣言のみを含む</strong>のスタイルでは、可読性と迅速な編集の容易さのため、ステートメントを同じ行に配置することをお勧めします。複数の宣言を持つスタイルでは、宣言を複数行に分けるべきです。</p>
+<p>に対して<strong>1つの宣言のみを含む</strong>のスタイルでは、可読性と迅速な編集の容易さのため、ステートメントを同じ行に配置することをお勧めします。複数の宣言を持つスタイルでは、宣言を複数行に分けるべきです。</p>
 <p>これを行う主な理由はエラー検出です -- 例えば、CSS バリデータが183行目に構文エラーを指摘した場合。1行に1つの宣言であれば、このエラーを見逃すことはありません。1行に複数の宣言がある場合は、エラーを見逃さないように注意深く分析する必要があります。</p>
 <pre>
 /* Single declarations on one line */
@@ -374,8 +374,8 @@ font-family: "PT Mono", Menlo, "Courier New", monospace;
 </pre>
 <h2>class 命名</h2>
 <ul>
-<li>class 名には、小文字とダッシュ（dashe）のみ使用できます（アンダースコアやキャメルケースは不可）。ダッシュは、関連するクラスの命名（名前空間のようなもの）に使用すること（例：<code>.btn</code> 和 <code>.btn-danger</code>）。</li>
-<li>過度に恣意的なショートハンドは避けること。<code>.btn</code>代表<em>button</em>，但是<code>.s</code>何の意味も表現できない。</li>
+<li>class 名には、小文字とダッシュ（dashe）のみ使用できます（アンダースコアやキャメルケースは不可）。ダッシュは、関連するクラスの命名（名前空間のようなもの）に使用すること（例：<code>.btn</code>と<code>.btn-danger</code>）。</li>
+<li>過度に恣意的なショートハンドは避けること。<code>.btn</code>代表<em>button</em>、しかし<code>.s</code>何の意味も表現できない。</li>
 <li>class 名はできるだけ短く、かつ意味が明確であるべきです。</li>
 <li>意味のある名前を使用します。構造的または目的を明確にした名前を使用し、表現（presentational）に基づく名前は使用しないでください。</li>
 <li>直近の親クラスまたは基本（base）クラスに基づいて、新しいクラスの接頭辞とする。</li>
@@ -450,7 +450,7 @@ span { ... }
 <li>ファイルのエンコーディングを UTF-8 に設定する。</li>
 <li>ファイルの末尾に空白行を追加すること。</li>
 </ul>
-<p>ドキュメントを参照し、これらの設定情報をプロジェクトの設定に追加します。<code>.editorconfig</code>ファイル内。例：<a href="https://github.com/twbs/bootstrap/blob/master/.editorconfig">Bootstrap 中的 .editorconfig 实例</a>。詳細情報は〜を参照<a href="http://editorconfig.org">about EditorConfig</a>。</p>
+<p>ドキュメントを参照し、これらの設定情報をプロジェクトの設定に追加します。<code>.editorconfig</code>ファイル内。例：<a href="https://github.com/twbs/bootstrap/blob/master/.editorconfig">Bootstrap の .editorconfig の例</a>。詳細情報は〜を参照<a href="http://editorconfig.org">about EditorConfig</a>。</p>
 其他扩展
 </div>
 </div>
@@ -569,11 +569,11 @@ span { ... }
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -862,7 +862,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

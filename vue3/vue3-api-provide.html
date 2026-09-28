@@ -327,7 +327,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h1>Vue3 provide 関数</h1>
 <hr/>
 <p><a href="../vue3/vue3-options-api.html"><img alt="Vue3 选项式 API" class="navup" decoding="async" src="../images/up.gif"/>Vue3 オプション API</a></p>
-<p><code>provide</code>関数は Vue3 が提供する高階関数であり、コンポーネントツリー内の親コンポーネントから子コンポーネントへデータを渡すために使用されます。従来の<code>props</code>と比較して、<code>provide</code> 和 <code>inject</code>データを共有するためのより柔軟な方法を提供し、特にコンポーネントの階層が深い場合に役立ちます。</p>
+<p><code>provide</code>関数は Vue3 が提供する高階関数であり、コンポーネントツリー内の親コンポーネントから子コンポーネントへデータを渡すために使用されます。従来の<code>props</code>と比較して、<code>provide</code>と<code>inject</code>データを共有するためのより柔軟な方法を提供し、特にコンポーネントの階層が深い場合に役立ちます。</p>
 <p>使用<code>provide</code>関数を使用する場合、親コンポーネントはそれを介して子コンポーネントにデータやメソッドを公開でき、子コンポーネントは<code>inject</code>関数を介してこれらのデータやメソッドを受け取ることができます。</p>
 <hr/>
 <h2>provide 関数の基本的な使い方</h2>
@@ -437,7 +437,7 @@ export default {<br/>
 <h2>provide 関数の注意点</h2>
 <p>使用する際は、<code>provide</code>関数を使用する際、以下の点に注意してください。</p>
 <h3>1. 名前の競合</h3>
-<p>使用する際<code>provide</code> 和 <code>inject</code>に、複数の親コンポーネントが同じ名前のデータを提供すると、子コンポーネントは最も近い親コンポーネントが提供したデータを受け取ります。したがって、名前の競合を避けるには、一意な名前を使用することをお勧めします。</p>
+<p>使用する際<code>provide</code>と<code>inject</code>に、複数の親コンポーネントが同じ名前のデータを提供すると、子コンポーネントは最も近い親コンポーネントが提供したデータを受け取ります。したがって、名前の競合を避けるには、一意な名前を使用することをお勧めします。</p>
 <h3>2. リアクティブデータの処理</h3>
 <p>リアクティブデータを渡す場合、子コンポーネントはこれらのデータを直接変更できます。子コンポーネントにデータを読み取り専用にさせ、変更させたくない場合は、<code>readonly</code>関数を使用してリアクティブデータをラップできます。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
@@ -574,11 +574,11 @@ export default {<br/>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -878,7 +878,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

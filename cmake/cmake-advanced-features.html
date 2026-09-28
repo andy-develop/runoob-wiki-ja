@@ -325,12 +325,12 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #060;"># 文件路径：cmake/MyModule.cmake</span><br/>
-<span style="color: #060;"># 自定义模块：提供项目通用的辅助函数</span><br/>
+<span style="color: #060;"># カスタムモジュール：プロジェクト共通のヘルパー関数を提供する</span><br/>
 <br/>
-<span style="color: #060;"># 函数：为所有目标统一设置编译器警告选项</span><br/>
-<span style="color: #060;"># 参数 ARG_TARGET：需要设置警告的目标名称</span><br/>
+<span style="color: #060;"># 関数：すべてのターゲットにコンパイラの警告オプションを一括設定する</span><br/>
+<span style="color: #060;"># 引数 ARG_TARGET：警告を設定する必要があるターゲット名</span><br/>
 function<span style="color: #008000;">(</span>runoob_set_warnings ARG_TARGET<span style="color: #008000;">)</span><br/>
-    <span style="color: #060;"># 根据编译器类型设置不同的警告标志</span><br/>
+    <span style="color: #060;"># コンパイラの種類に応じて異なる警告フラグを設定する</span><br/>
     <span style="color: #05a;">if</span><span style="color: #008000;">(</span>MSVC<span style="color: #008000;">)</span><br/>
         <span style="color: #060;"># MSVC 编译器：启用 /W4 警告级别</span><br/>
         target_compile_options<span style="color: #008000;">(</span>$<span style="color: #008000;">{</span>ARG_TARGET<span style="color: #008000;">}</span> PRIVATE <span style="color: #000040;">/</span>W4<span style="color: #008000;">)</span><br/>
@@ -340,7 +340,7 @@ function<span style="color: #008000;">(</span>runoob_set_warnings ARG_TARGET<spa
     endif<span style="color: #008000;">(</span><span style="color: #008000;">)</span><br/>
 endfunction<span style="color: #008000;">(</span><span style="color: #008000;">)</span><br/>
 <br/>
-<span style="color: #060;"># 函数：打印目标的基本构建信息</span><br/>
+<span style="color: #060;"># 関数：ターゲットの基本的なビルド情報を出力する</span><br/>
 function<span style="color: #008000;">(</span>runoob_print_target_info ARG_TARGET<span style="color: #008000;">)</span><br/>
     message<span style="color: #008000;">(</span>STATUS <span style="color: #a11;">"目标名称：${ARG_TARGET}"</span><span style="color: #008000;">)</span><br/>
     message<span style="color: #008000;">(</span>STATUS <span style="color: #a11;">"源文件列表：$&lt;TARGET_PROPERTY:${ARG_TARGET},SOURCES&gt;"</span><span style="color: #008000;">)</span><br/>
@@ -364,10 +364,10 @@ include<span style="color: #008000;">(</span>MyModule<span style="color: #008000
 <span style="color: #060;"># 添加可执行文件目标</span><br/>
 add_executable<span style="color: #008000;">(</span>MyApp main.<span style="color: #007788;">cpp</span><span style="color: #008000;">)</span><br/>
 <br/>
-<span style="color: #060;"># 调用模块中的自定义函数，为 MyApp 设置警告选项</span><br/>
+<span style="color: #060;"># モジュール内のカスタム関数を呼び出して、MyApp に警告オプションを設定します</span><br/>
 runoob_set_warnings<span style="color: #008000;">(</span>MyApp<span style="color: #008000;">)</span><br/>
 <br/>
-<span style="color: #060;"># 调用模块中的自定义函数，打印目标信息</span><br/>
+<span style="color: #060;"># モジュール内のカスタム関数を呼び出して、目標情報を出力する</span><br/>
 runoob_print_target_info<span style="color: #008000;">(</span>MyApp<span style="color: #008000;">)</span><br/>
 </div>
 </div>
@@ -382,15 +382,15 @@ runoob_print_target_info<span style="color: #008000;">(</span>MyApp<span style="
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #060;"># 文件路径：config.cmake</span><br/>
-<span style="color: #060;"># 自定义脚本：集中管理项目的配置选项</span><br/>
+<span style="color: #060;"># カスタムスクリプト：プロジェクトの設定オプションを一元管理する</span><br/>
 <br/>
-<span style="color: #060;"># 设置默认构建类型为 Release</span><br/>
+<span style="color: #060;"># デフォルトのビルドタイプを Release に設定する</span><br/>
 <span style="color: #05a;">if</span><span style="color: #008000;">(</span>NOT CMAKE_BUILD_TYPE<span style="color: #008000;">)</span><br/>
     set<span style="color: #008000;">(</span>CMAKE_BUILD_TYPE <span style="color: #a11;">"Release"</span> CACHE STRING <span style="color: #a11;">"构建类型"</span> FORCE<span style="color: #008000;">)</span><br/>
     message<span style="color: #008000;">(</span>STATUS <span style="color: #a11;">"未指定构建类型，默认使用 Release"</span><span style="color: #008000;">)</span><br/>
 endif<span style="color: #008000;">(</span><span style="color: #008000;">)</span><br/>
 <br/>
-<span style="color: #060;"># 根据构建类型设置不同的编译选项</span><br/>
+<span style="color: #060;"># ビルドタイプに応じて異なるコンパイルオプションを設定する</span><br/>
 <span style="color: #05a;">if</span><span style="color: #008000;">(</span>CMAKE_BUILD_TYPE STREQUAL <span style="color: #a11;">"Debug"</span><span style="color: #008000;">)</span><br/>
     message<span style="color: #008000;">(</span>STATUS <span style="color: #a11;">"启用 Debug 模式：关闭优化，开启调试符号"</span><span style="color: #008000;">)</span><br/>
 <span style="color: #05a;">else</span><span style="color: #008000;">(</span><span style="color: #008000;">)</span><br/>
@@ -444,15 +444,15 @@ set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Build type")
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #060;"># 定义两个可执行文件目标，各自有不同的源文件</span><br/>
+<span style="color: #060;"># 2つの実行可能ファイルのターゲットを定義し、それぞれが異なるソースファイルを持つ</span><br/>
 add_executable<span style="color: #008000;">(</span>MyApp src<span style="color: #000040;">/</span>main.<span style="color: #007788;">cpp</span><span style="color: #008000;">)</span><br/>
 add_executable<span style="color: #008000;">(</span>MyTool src<span style="color: #000040;">/</span>tool.<span style="color: #007788;">cpp</span><span style="color: #008000;">)</span><br/>
 <br/>
-<span style="color: #060;"># 为不同目标设置不同的编译宏，控制条件编译</span><br/>
+<span style="color: #060;"># ターゲットごとに異なるコンパイルマクロを設定し、条件コンパイルを制御する</span><br/>
 set_target_properties<span style="color: #008000;">(</span>MyApp PROPERTIES COMPILE_DEFINITIONS <span style="color: #a11;">"APP_MODE"</span><span style="color: #008000;">)</span><br/>
 set_target_properties<span style="color: #008000;">(</span>MyTool PROPERTIES COMPILE_DEFINITIONS <span style="color: #a11;">"TOOL_MODE"</span><span style="color: #008000;">)</span><br/>
 <br/>
-<span style="color: #060;"># 为不同目标链接不同的库</span><br/>
+<span style="color: #060;"># 異なるターゲットに異なるライブラリをリンクする</span><br/>
 target_link_libraries<span style="color: #008000;">(</span>MyApp PRIVATE MyLib<span style="color: #008000;">)</span><br/>
 target_link_libraries<span style="color: #008000;">(</span>MyTool PRIVATE MyLib CLI11<span style="color: #008080;">::</span><span style="color: #007788;">CLI11</span><span style="color: #008000;">)</span><br/>
 </div>
@@ -466,7 +466,7 @@ target_link_libraries<span style="color: #008000;">(</span>MyTool PRIVATE MyLib 
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #060;"># 只查找 Boost 的 filesystem 和 system 两个组件（而非整个 Boost）</span><br/>
+<span style="color: #060;"># Boost の filesystem と system の 2 つのコンポーネントのみを検索します（Boost 全体ではなく）</span><br/>
 <span style="color: #060;"># filesystem は内部で system に依存するため、両方を宣言する必要がある</span><br/>
 find_package<span style="color: #008000;">(</span>Boost REQUIRED COMPONENTS filesystem <span style="color: #05a;">system</span><span style="color: #008000;">)</span><br/>
 <br/>
@@ -899,11 +899,11 @@ target_compile_features<span style="color: #008000;">(</span>MyLib PUBLIC cxx_st
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1203,7 +1203,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

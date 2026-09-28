@@ -173,7 +173,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2 class="tutheader">C# プリプロセッサディレクティブの一覧</h2>
 <p>次の表に、C# で使用できるプリプロセッサディレクティブを示します：</p>
 <table class="reference">
-<thead><tr><th>指令</th><th>描述</th></tr></thead><tbody><tr><td><code>#define</code></td><td>シンボルを定義します。条件付きコンパイルに使用できます。</td></tr><tr><td><code>#undef</code></td><td>シンボルの定義を解除する。</td></tr><tr><td><code>#if</code></td><td>条件付きコンパイルブロックを開始します。シンボルが定義されている場合、コードブロックが含まれます。</td></tr><tr><td><code>#elif</code></td><td>如果前面的<code>#if</code> 或 <code>#elif</code>条件が満たされず、現在の条件が満たされる場合、コードブロックが含まれます。</td></tr><tr><td><code>#else</code></td><td>如果前面的<code>#if</code> 或 <code>#elif</code>条件が満たされない場合、コードブロックが含まれます。</td></tr><tr><td><code>#endif</code></td><td>条件付きコンパイルブロックを終了します。</td></tr><tr><td><code>#warning</code></td><td>コンパイラの警告情報を生成します。</td></tr><tr><td><code>#error</code></td><td>コンパイラのエラー情報を生成します。</td></tr><tr><td><code>#region</code></td><td>コード領域をマークします。IDE ではこのコード領域を折りたたんだり展開したりできるため、コードの整理と可読性に役立ちます。</td></tr><tr><td><code>#endregion</code></td><td>コード領域を終了する。</td></tr><tr><td><code>#line</code></td><td>コンパイラ出力の行番号とファイル名を変更します。デバッグやコード生成ツールに使用できます。</td></tr><tr><td><code>#pragma</code></td><td>コンパイラに特別な指示を送るために使用します。例えば、特定の警告を無効化または復元します。</td></tr><tr><td><code>#nullable</code></td><td>null 許容コンテキストと注釈を制御し、null 許容参照型に対するコンパイラのチェックを有効または無効にすることができます。</td></tr></tbody></table>
+<thead><tr><th>指令</th><th>描述</th></tr></thead><tbody><tr><td><code>#define</code></td><td>シンボルを定義します。条件付きコンパイルに使用できます。</td></tr><tr><td><code>#undef</code></td><td>シンボルの定義を解除する。</td></tr><tr><td><code>#if</code></td><td>条件付きコンパイルブロックを開始します。シンボルが定義されている場合、コードブロックが含まれます。</td></tr><tr><td><code>#elif</code></td><td>もし前のものが<code>#if</code> 或 <code>#elif</code>条件が満たされず、現在の条件が満たされる場合、コードブロックが含まれます。</td></tr><tr><td><code>#else</code></td><td>もし前のものが<code>#if</code> 或 <code>#elif</code>条件が満たされない場合、コードブロックが含まれます。</td></tr><tr><td><code>#endif</code></td><td>条件付きコンパイルブロックを終了します。</td></tr><tr><td><code>#warning</code></td><td>コンパイラの警告情報を生成します。</td></tr><tr><td><code>#error</code></td><td>コンパイラのエラー情報を生成します。</td></tr><tr><td><code>#region</code></td><td>コード領域をマークします。IDE ではこのコード領域を折りたたんだり展開したりできるため、コードの整理と可読性に役立ちます。</td></tr><tr><td><code>#endregion</code></td><td>コード領域を終了する。</td></tr><tr><td><code>#line</code></td><td>コンパイラ出力の行番号とファイル名を変更します。デバッグやコード生成ツールに使用できます。</td></tr><tr><td><code>#pragma</code></td><td>コンパイラに特別な指示を送るために使用します。例えば、特定の警告を無効化または復元します。</td></tr><tr><td><code>#nullable</code></td><td>null 許容コンテキストと注釈を制御し、null 許容参照型に対するコンパイラのチェックを有効または無効にすることができます。</td></tr></tbody></table>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
 <span style="color: #696969;">#define DEBUG</span><br/>
 <br/>
@@ -239,7 +239,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <pre class="result">
 PI is defined
 </pre>
-<h2 class="tutheader">条件指令：#if, #elif, #else 和 #endif</h2>
+<h2 class="tutheader">条件付きディレクティブ：#if、#elif、#else および #endif</h2>
 <p>您可以使用<span class="marked">#if</span>ディレクティブを使用して条件ディレクティブを作成します。</p><p>条件ディレクティブは、シンボルが真であるかどうかをテストするために使用されます。真の場合、コンパイラは実行します。<span class="marked">#if</span>次のディレクティブとの間のコード。</p>
 <p>条件ディレクティブの構文：</p>
 <pre class="prettyprint">
@@ -250,7 +250,7 @@ PI is defined
 <ul class="list">
 <li>== (等于)</li>
 <li>!= (等しくない)</li>
-<li>&amp;&amp; (与)</li>
+<li>&amp;&amp; (論理積)</li>
 <li>|| (或)</li>
 </ul>
 <p>括弧を使用してシンボルと演算子をグループ化することもできます。条件ディレクティブは、デバッグビルドや指定された構成のコンパイル時にコードをコンパイルするために使用されます。1つの<b>#if</b>ディレクティブで始まる条件ディレクティブは、明示的に1つのディレクティブで終了する必要があります。<b>#endif</b>指令终止。</p>
@@ -290,10 +290,10 @@ PI is defined
 <pre class="result">
 DEBUG and VC_V10 are defined
 </pre>
-<h2 class="tutheader">#warning 和 #error</h2><p>#warning はコンパイラ警告を生成するために使用され、#error はコンパイラエラーを生成するために使用されます。</p>
+<h2 class="tutheader">#warning と #error</h2><p>#warning はコンパイラ警告を生成するために使用され、#error はコンパイラエラーを生成するために使用されます。</p>
 <pre>#warning This is a warning message
 #error This is an error message</pre>
-<h2 class="tutheader">#region 和 #endregion</h2>
+<h2 class="tutheader">#region と #endregion</h2>
 <p>コードの折りたたみに使用され、コードをより読みやすくします。</p>
 <pre>#region MyRegion
     // Your code here
@@ -311,7 +311,7 @@ DEBUG and VC_V10 are defined
     private int unusedVariable;
 #pragma warning restore 414</pre>
 <h2 class="tutheader">プリプロセッサディレクティブを使用する際の注意事項</h2>
-<ul><li><strong>コードの可読性を高める</strong>：使用<code>#region</code>コードブロックを区切り、コードの組織性を高めるのに役立ちます。</li><li><strong>条件编译</strong>：通过<code>#if</code>などのディレクティブを使用すると、開発環境と本番環境で異なるコードをコンパイルでき、デバッグとリリースに便利です。</li><li><strong>警告和错误</strong>：通过<code>#warning</code>和<code>#error</code>コンパイル時に開発者に特定の問題への注意を促すことができます。</li></ul>
+<ul><li><strong>コードの可読性を高める</strong>：使用<code>#region</code>コードブロックを区切り、コードの組織性を高めるのに役立ちます。</li><li><strong>条件编译</strong>：通过<code>#if</code>などのディレクティブを使用すると、開発環境と本番環境で異なるコードをコンパイルでき、デバッグとリリースに便利です。</li><li><strong>警告とエラー</strong>：通过<code>#warning</code>と<code>#error</code>コンパイル時に開発者に特定の問題への注意を促すことができます。</li></ul>
 <p>これらのプリプロセッサディレクティブを正しく使用することで、コードのコンパイルプロセスをより適切に制御し、コードの柔軟性と保守性を向上させることができます。</p> 其他扩展
 </div>
 </div>
@@ -439,7 +439,7 @@ DEBUG and VC_V10 are defined
 <div id="postcomments">
 <ol class="commentlist">
 <li class="comment even thread-even depth-1" id="comment-28198"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>樱花树</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  100***2797@qq.com</p></div><div class="upvotejs" data-commid="28198" id="runoobvote-id-28198"><a class="upvote"></a> <span class="count">426</span></div></div><div class="comt-main" id="div-comment-28198"><p><strong>プリプロセッサディレクティブの用途の理解：</strong></p>
-<p>プログラムのデバッグと実行において重要な役割を果たします。例えば、プリプロセッサディレクティブはコンパイラがコードの一部をコンパイルするのを禁止できます。基本バージョンとより多くの機能を持つエンタープライズバージョンの2つのバージョンのコードをリリースする予定がある場合、これらのプリプロセッサディレクティブを使用して制御できます。ソフトウェアの基本バージョンをコンパイルする際に、プリプロセッサディレクティブを使用して、追加機能に関連するコードをコンパイラがコンパイルするのも禁止できます。また、デバッグ情報を提供するコードを作成する際にも、プリプロセッサディレクティブを使用して制御できます。全体的に、通常の制御文（ifなど）と機能は似ていますが、便利な点は、プリプロセッサディレクティブに含まれる未実行部分はコンパイルする必要がないことです。</p>
+<p>プログラムのデバッグと実行において重要な役割を果たします。例えば、プリプロセッサディレクティブはコンパイラがコードの一部をコンパイルするのを禁止できます。基本バージョンとより多くの機能を持つエンタープライズバージョンの2つのバージョンのコードをリリースする予定がある場合、これらのプリプロセッサディレクティブを使用して制御できます。ソフトウェアの基本バージョンをコンパイルする際に、プリプロセッサディレクティブを使用して、追加機能に関連するコードをコンパイラがコンパイルするのも禁止できます。また、デバッグ情報を提供するコードを作成する際にも、プリプロセッサディレクティブを使用して制御できます。全体のに、通常の制御文（ifなど）と機能は似ていますが、便利な点は、プリプロセッサディレクティブに含まれる未実行部分はコンパイルする必要がないことです。</p>
 <pre>#define PI
 using System;
 namespace PreprocessorDAppl
@@ -458,14 +458,14 @@ namespace PreprocessorDAppl
    }
 }</pre>
 <p>その他のプリプロセッサディレクティブ：</p>
-<p><strong>#warning 和 #error：</strong></p>
+<p><strong>#warning と #error：</strong></p>
 <p>コンパイラがこれらのディレクティブに遭遇すると、それぞれ警告またはエラーが生成されます。コンパイラが #warning ディレクティブに遭遇した場合、#warning ディレクティブの後のテキストがユーザーに表示され、その後コンパイルは続行されます。コンパイラが #error ディレクティブに遭遇した場合、その後のテキストがコンパイルエラーメッセージとしてユーザーに表示され、コンパイルは直ちに終了します。これら2つのディレクティブを使用すると、#define ステートメントで何か誤りを犯していないかを確認でき、#warning ステートメントを使用すると、ある操作を実行するように自分自身に注意を促すことができます。</p>
 <pre>#if DEBUG &amp;&amp; RELEASE  
 #error "You've defined DEBUG and RELEASE simultaneously!"  
 #endif  
 #warning "Don't forget to remove this line before the boss tests the code!"  
 Console.WriteLine("*I hate this job.*");</pre>
-<p><strong>2. #region 和 #endregion</strong></p>
+<p><strong>2. #region と #endregion</strong></p>
 <p>#region および #endregion ディレクティブは、コードの一部を指定された名前を持つブロックとしてマークするために使用されます。次に示すとおりです：</p>
 <pre>#region Member Field Declarations
 int x;
@@ -494,11 +494,11 @@ public class MyClass
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -787,7 +787,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

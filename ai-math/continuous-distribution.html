@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>连续随机变量与常见分布 | 菜鸟教程  
+<title>連続確率変数とよくある分布 | 菜鸟教程  
 → 連続確率変数とよくある分布 | 菜鸟教程</title>
 <script>
 window.RUNOOB_CONFIG = {
@@ -159,10 +159,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div> <div class="col middle-column">
 <div class="article">
 <div class="previous-next-links">
-<div class="previous-design-link"><i aria-hidden="true" class="fa fa-arrow-left" style="font-size:16px;"></i> <a href="../ai-math/discrete-random-variable.html" rel="prev">离散随机变量 — 从掷骰子到概率质量函数  
-→ 離散確率変数 — サイコロ投げから確率質量関数まで</a> </div>
-<div class="next-design-link"><a href="../ai-math/expectation-variance.html" rel="next">期望、方差与协方差 — 数据的数字特征  
-→ 期待値・分散・共分散 — データの数値的特徴</a> <i aria-hidden="true" class="fa fa-arrow-right" style="font-size:16px;"></i></div>
+<div class="previous-design-link"><i aria-hidden="true" class="fa fa-arrow-left" style="font-size:16px;"></i> <a href="../ai-math/discrete-random-variable.html" rel="prev">離散確率変数 — サイコロ投げから確率質量関数まで</a> </div>
+<div class="next-design-link"><a href="../ai-math/expectation-variance.html" rel="next">期待値・分散・共分散 — データの数値の特徴</a> <i aria-hidden="true" class="fa fa-arrow-right" style="font-size:16px;"></i></div>
 </div>
 <div class="article-body">
 <div class="article-intro" id="content">
@@ -170,38 +168,28 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <script src="../static.jyshare.com/assets/libs/katex-0.15.2/dist/katex.min.js"></script>
 <script src="../static.jyshare.com/assets/libs/katex-0.15.2/dist/contrib/auto-render.min.js"></script>
 <script src="../static.jyshare.com/assets/libs/chart.js-4.5.0/chart.umd.min.js"></script>
-<h1>连续随机变量与常见分布  
-→ 連続確率変数とよくある分布</h1>
-<p>连续随机变量取值可以是实数轴上的任意值。  
-→ 連続確率変数は実数軸上の任意の値を取ることができます。<span class="marked">正态（高斯）分布是 AI 中最重要的分布，没有之一。  
-→ 正規（ガウス）分布はAIにおいて最も重要な分布であり、他に並ぶものはありません。</span></p>
+<h1>連続確率変数とよくある分布</h1>
+<p>連続確率変数は実数軸上の任意の値を取ることができます。<span class="marked">正規（ガウス）分布はAIにおいて最も重要な分布であり、他に並ぶものはありません。</span></p>
 <hr/>
 <h2>概念解析  
 → 概念の解説</h2>
 <h3>PDF：確率密度関数</h3>
-<p><span class="marked">PDF 不是概率本身，面积才是概率。  
-→ PDFは確率そのものではなく、面積が確率です。</span>某点的 PDF 值 f(x) 本身没有意义——连续变量恰好等于某个特定值的概率为 0。但 PDF 在区间上的积分 = X 落在该区间的概率。  
-→ ある点のPDF値 f(x) 自体には意味がありません——連続変数が特定の値に正確に等しい確率は0だからです。しかし、PDFの区間上の積分 = Xがその区間に含まれる確率となります。</p>
+<p><span class="marked">PDFは確率そのものではなく、面積が確率です。</span>ある点のPDF値 f(x) 自体には意味がありません——連続変数が特定の値に正確に等しい確率は0だからです。しかし、PDFの区間上の積分 = Xがその区間に含まれる確率となります。</p>
 <h3>正規分布 N(μ, σ²)</h3>
 \[
 f(x) = \frac{1}{\sigma\sqrt{2\pi}} \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)
 \]
-<p>由均值 μ（位置）和标准差 σ（宽度）决定。约 68% 数据落在 μ±σ，约 95% 落在 μ±2σ。  
-→ 平均 μ（位置）と標準偏差 σ（幅）によって決まります。約68%のデータが μ±σ に、約95%が μ±2σ に含まれます。</p>
+<p>平均 μ（位置）と標準偏差 σ（幅）によって決まります。約68%のデータが μ±σ に、約95%が μ±2σ に含まれます。</p>
 <h3>中心極限定理</h3>
-<p>大量独立因素叠加 → 结果趋近正态分布。这解释了正态分布为何在自然界和 AI 中无处不在。  
-→ 多数の独立した要因が重なり合うと → 結果は正規分布に近づきます。これは正規分布が自然界やAIにおいて遍在する理由を説明しています。</p>
+<p>多数の独立した要因が重なり合うと → 結果は正規分布に近づきます。これは正規分布が自然界やAIにおいて遍にする理由を説明しています。</p>
 <blockquote>
-<p>神经网络权重初始化、Batch Normalization、VAE 潜在空间、扩散模型的加噪去噪——都依赖于正态分布。  
-→ ニューラルネットワークの重み初期化、Batch Normalization、VAEの潜在空間、拡散モデルのノイズ付加・除去——これらはすべて正規分布に依存しています。</p>
+<p>ニューラルネットワークの重み初期化、Batch Normalization、VAEの潜に空間、拡散モデルのノイズ付加・除去——これらはすべて正規分布に依存しています。</p>
 </blockquote>
 <hr/>
 <h2>生活例子  
 → 身近な例</h2>
-<p>人的身高：170.1、170.12、170.128 cm——身高可以取连续范围内的任意值，整体服从正态分布。  
-→ 人間の身長：170.1、170.12、170.128 cm——身長は連続的な範囲内の任意の値を取ることができ、全体として正規分布に従います。</p>
-<p>大多数人身高接近平均值，极高和极矮的人是少数——这就是钟形曲线。  
-→ ほとんどの人の身長は平均値に近く、極端に高い人や低い人は少数です——これがベル型曲線です。</p>
+<p>人間の身長：170.1、170.12、170.128 cm——身長は連続のな範囲内の任意の値を取ることができ、全体として正規分布に従います。</p>
+<p>ほとんどの人の身長は平均値に近く、極端に高い人や低い人は少数です——これがベル型曲線です。</p>
 <hr/>
 <h2>Python 动手实践  
 → Python で実際に試す</h2>
@@ -222,11 +210,10 @@ samples <span style="color: Gray;">=</span> np.<span style="color: #05a;">random
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"μ±{k}σ: {within:.4f} (理论 {theory:.4f})"  
 → "μ±{k}σ: {within:.4f} (理論値 {theory:.4f})"</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 中心极限定理：12个骰子和 ≈ 正态  
-→ # 中心極限定理：12個のサイコロの和 ≈ 正規分布</span><br/>
+<span style="color: #a50"># 中心極限定理：12個のサイコロのと ≈ 正規分布  
+→ # 中心極限定理：12個のサイコロのと ≈ 正規分布</span><br/>
 dice <span style="color: Gray;">=</span> np.<span style="color: #05a;">random</span>.<span style="color: #05a;">randint</span><span style="color: Olive;">(</span><span style="color: Maroon;">1</span><span style="color: Gray;">,</span><span style="color: Maroon;">7</span><span style="color: Gray;">,</span><span style="color: Olive;">(</span><span style="color: Maroon;">100000</span><span style="color: Gray;">,</span><span style="color: Maroon;">12</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span>.<span style="color: Teal;">sum</span><span style="color: Olive;">(</span>axis<span style="color: Gray;">=</span><span style="color: Maroon;">1</span><span style="color: Olive;">)</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>12个骰子和: 均值={dice.mean():.1f}(理论42), 接近正态"  
-→ 12個のサイコロの和: 平均={dice.mean():.1f}(理論値42), 正規分布に近い"</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>12個のサイコロのと: 平均={dice.mean():.1f}(理論値42), 正規分布に近い"</span><span style="color: Olive;">)</span><br/>
 </div>
 </div>
 <p>実行結果：</p>
@@ -298,23 +285,19 @@ N(0,1) 采样: 均值=-0.002, 标准差=1.001
 })();
 </script>
 <hr/>
-<h2>AI 中的应用场景  
-→ AI における応用シーン</h2>
+<h2>AI における応用シーン</h2>
 <h3>权重初始化  
 → 重みの初期化</h3>
-<p>神经网络的权重通常从正态分布或均匀分布中随机初始化。Kaiming 初始化（ReLU 网络用）：\( W \sim N(0, \sqrt{2/n_{in}}) \)；Xavier 初始化：\( W \sim U(-\sqrt{6/(n_{in}+n_{out})}, \sqrt{6/(n_{in}+n_{out})}) \)。精心选择的方差确保信号在前向和反向传播中稳定传递，不爆炸不消失。  
+<p>神经网络の权重通常から正态分布或均匀分布中随机初始化。Kaiming 初始化（ReLU 网络用）：\( W \sim N(0, \sqrt{2/n_{in}}) \)；Xavier 初始化：\( W \sim U(-\sqrt{6/(n_{in}+n_{out})}, \sqrt{6/(n_{in}+n_{out})}) \)。精心选择の方差确保信号に前向と反向传播中稳定传递，不爆炸不消失。  
 → ニューラルネットワークの重みは通常、正規分布または一様分布からランダムに初期化されます。Kaiming初期化（ReLUネットワーク用）：\( W \sim N(0, \sqrt{2/n_{in}}) \)；Xavier初期化：\( W \sim U(-\sqrt{6/(n_{in}+n_{out})}, \sqrt{6/(n_{in}+n_{out})}) \)。慎重に選ばれた分散により、信号が順伝播および逆伝播で安定して伝わり、発散も消失もしません。</p>
 <h3>Batch Normalization</h3>
-<p>BN 假设每层激活值近似正态分布，减均值除标准差将其标准化到 N(0,1)，再通过可学习的 \(\gamma\) 和 \(\beta\) 缩放平移。这加速训练、允许更大学习率、减少对初始化的敏感度。BN 是深度学习史上最重要的训练技巧之一。  
-→ BNは各層の活性化値が近似的に正規分布に従うと仮定し、平均を引き標準偏差で割ることで N(0,1) に標準化し、さらに学習可能な \(\gamma\) と \(\beta\) でスケール・シフトします。これにより学習が加速し、より大きな学習率が可能になり、初期化への感度が低減します。BNはディープラーニング史上最も重要な学習テクニックの一つです。</p>
-<h3>VAE 的潜在空间假设  
-→ VAE の潜在空間の仮定</h3>
-<p>变分自编码器假设潜在变量 z 服从标准正态分布 N(0, I)。编码器输出 μ 和 log(σ²)，解码器从 N(μ, σ²) 中采样 z 重构输入。KL 散度损失约束 N(μ, σ²) 接近先验 N(0, I)，防止编码器坍缩到 Dirac 分布。  
-→ 変分オートエンコーダーは潜在変数 z が標準正規分布 N(0, I) に従うと仮定します。エンコーダーは μ と log(σ²) を出力し、デコーダーは N(μ, σ²) から z をサンプリングして入力を再構成します。KLダイバージェンス損失は N(μ, σ²) を事前分布 N(0, I) に近づけるように制約し、エンコーダーがディラック分布に潰れるのを防ぎます。</p>
-<h3>扩散模型的加噪与去噪  
-→ 拡散モデルのノイズ付加とノイズ除去</h3>
-<p>扩散模型（DDPM）的前向过程逐步向数据加高斯噪声 \epsilon ∼ N(0, I)，直到变为纯噪声。反向过程训练神经网络预测每步添加的噪声，从纯噪声开始逐步去噪生成图片。Stable Diffusion 和 DALL·E 都基于此原理。  
-→ 拡散モデル（DDPM）の前向き過程では、データに段階的にガウスノイズ \epsilon ∼ N(0, I) を加え、完全なノイズになるまで続けます。逆向き過程では、各ステップで追加されたノイズを予測するようにニューラルネットワークを学習させ、純粋なノイズから始めて段階的にノイズを除去しながら画像を生成します。Stable Diffusion や DALL·E はすべてこの原理に基づいています。</p>
+<p>BNは各層の活性化値が近似のに正規分布に従うと仮定し、平均を引き標準偏差で割ることで N(0,1) に標準化し、さらに学習可能な \(\gamma\) と \(\beta\) でスケール・シフトします。これにより学習が加速し、より大きな学習率が可能になり、初期化への感度が低減します。BNはディープラーニング史上最も重要な学習テクニックの一つです。</p>
+<h3>VAE の潜に空間の仮定</h3>
+<p>变分自编码器假设潜に变量 z 服から标准正态分布 N(0, I)。编码器输出 μ と log(σ²)，解码器から N(μ, σ²) 中采样 z 重构输入。KL 散度损失约束 N(μ, σ²) 接近先验 N(0, I)，防止编码器坍缩到 Dirac 分布。  
+→ 変分オートエンコーダーは潜に変数 z が標準正規分布 N(0, I) に従うと仮定します。エンコーダーは μ と log(σ²) を出力し、デコーダーは N(μ, σ²) から z をサンプリングして入力を再構成します。KLダイバージェンス損失は N(μ, σ²) を事前分布 N(0, I) に近づけるように制約し、エンコーダーがディラック分布に潰れるのを防ぎます。</p>
+<h3>拡散モデルのノイズ付加とノイズ除去</h3>
+<p>扩散模型（DDPM）の前向过程逐步向数据加高斯噪声 \epsilon ∼ N(0, I)，直到变ために纯噪声。反向过程训练神经网络预测每步添加の噪声，から纯噪声开始逐步去噪生成图片。Stable Diffusion と DALL·E 都基于此原理。  
+→ 拡散モデル（DDPM）の前向き過程では、データに段階のにガウスノイズ \epsilon ∼ N(0, I) を加え、完全なノイズになるまで続けます。逆向き過程では、各ステップで追加されたノイズを予測するようにニューラルネットワークを学習させ、純粋なノイズから始めて段階のにノイズを除去しながら画像を生成します。Stable Diffusion や DALL·E はすべてこの原理に基づいています。</p>
 <hr/>
 <script>
 $(function() {
@@ -337,10 +320,8 @@ $(function() {
 </div>
 </div>
 <div class="previous-next-links">
-<div class="previous-design-link"><i aria-hidden="true" class="fa fa-arrow-left" style="font-size:16px;"></i> <a href="../ai-math/discrete-random-variable.html" rel="prev">离散随机变量 — 从掷骰子到概率质量函数  
-→ 離散確率変数 — サイコロ投げから確率質量関数まで</a> </div>
-<div class="next-design-link"><a href="../ai-math/expectation-variance.html" rel="next">期望、方差与协方差 — 数据的数字特征  
-→ 期待値・分散・共分散 — データの数値的特徴</a> <i aria-hidden="true" class="fa fa-arrow-right" style="font-size:16px;"></i></div>
+<div class="previous-design-link"><i aria-hidden="true" class="fa fa-arrow-left" style="font-size:16px;"></i> <a href="../ai-math/discrete-random-variable.html" rel="prev">離散確率変数 — サイコロ投げから確率質量関数まで</a> </div>
+<div class="next-design-link"><a href="../ai-math/expectation-variance.html" rel="next">期待値・分散・共分散 — データの数値の特徴</a> <i aria-hidden="true" class="fa fa-arrow-right" style="font-size:16px;"></i></div>
 </div>
 
 笔记列表  
@@ -450,16 +431,16 @@ $(function() {
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>点我分享笔记  
 → クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>  
-→ <p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>  
+→ <p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -756,7 +737,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

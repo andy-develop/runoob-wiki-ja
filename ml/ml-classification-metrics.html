@@ -204,22 +204,22 @@ $(function() {
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #a50"># 一个混淆矩阵的示例（以二分类"是/否垃圾邮件"为例）</span><br/>
+<span style="color: #a50"># 混同行列の例（二値分類「スパム/非スパム」を例とする）</span><br/>
 <span style="color: Green;font-weight:bold;">from</span> sklearn.<span style="color: #05a;">metrics</span> <span style="color: Green;font-weight:bold;">import</span> confusion_matrix<br/>
 <span style="color: Green;font-weight:bold;">import</span> seaborn <span style="color: Green;font-weight:bold;">as</span> sns<br/>
 <span style="color: Green;font-weight:bold;">import</span> matplotlib.<span style="color: #05a;">pyplot</span> <span style="color: Green;font-weight:bold;">as</span> plt<br/>
 <br/>
-<span style="color: #a50"># 假设我们有真实标签和预测标签</span><br/>
+<span style="color: #a50"># 実ラベルと予測ラベルがあると仮定します。</span><br/>
 y_true <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: Maroon;">1</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0</span><span style="color: Gray;">,</span> <span style="color: Maroon;">1</span><span style="color: Gray;">,</span> <span style="color: Maroon;">1</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0</span><span style="color: Gray;">,</span> <span style="color: Maroon;">1</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0</span><span style="color: Gray;">,</span> <span style="color: Maroon;">1</span><span style="color: Olive;">]</span>  <span style="color: #a50"># 1代表垃圾邮件，0代表正常邮件</span><br/>
-y_pred <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: Maroon;">1</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0</span><span style="color: Gray;">,</span> <span style="color: Maroon;">1</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0</span><span style="color: Gray;">,</span> <span style="color: Maroon;">1</span><span style="color: Gray;">,</span> <span style="color: Maroon;">1</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0</span><span style="color: Gray;">,</span> <span style="color: Maroon;">1</span><span style="color: Olive;">]</span>  <span style="color: #a50"># 模型的预测结果</span><br/>
+y_pred <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: Maroon;">1</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0</span><span style="color: Gray;">,</span> <span style="color: Maroon;">1</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0</span><span style="color: Gray;">,</span> <span style="color: Maroon;">1</span><span style="color: Gray;">,</span> <span style="color: Maroon;">1</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0</span><span style="color: Gray;">,</span> <span style="color: Maroon;">1</span><span style="color: Olive;">]</span>  <span style="color: #a50"># モデルの予測結果</span><br/>
 <br/>
 <span style="color: #a50"># 计算混淆矩阵</span><br/>
 cm <span style="color: Gray;">=</span> confusion_matrix<span style="color: Olive;">(</span>y_true<span style="color: Gray;">,</span> y_pred<span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"混淆矩阵："</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>cm<span style="color: Olive;">)</span><br/>
-<span style="color: #a50"># 输出可能为：</span><br/>
-<span style="color: #a50"># [[4 1]   # 真实为0（正常），预测为0的有4个（TN），预测为1的有1个（FP）</span><br/>
-<span style="color: #a50">#  [1 4]]  # 真实为1（垃圾），预测为0的有1个（FN），预测为1的有4个（TP）</span><br/>
+<span style="color: #a50"># 出力は次のようになる：</span><br/>
+<span style="color: #a50"># [[4 1]   # 実際は0（正常）、予測が0のものが4個（TN）、予測が1のものが1個（FP）</span><br/>
+<span style="color: #a50">#  [1 4]]  # 実際は1（迷惑メール）、予測0が1個（FN）、予測1が4個（TP）</span><br/>
 </div>
 </div>
 <p>よりよく理解するために、これを可視化しましょう：</p>
@@ -256,7 +256,7 @@ cm <span style="color: Gray;">=</span> confusion_matrix<span style="color: Olive
 <td align="left"><strong>偽陰性</strong></td>
 <td align="left"><strong>FN</strong></td>
 <td align="left">モデルが「負」と予測し<strong>负</strong>、しかし実際は「正」<strong>正</strong>。</td>
-<td align="left">モデルが<strong>見逃した</strong>的<strong>スパムメール</strong>。 （Type II Error）</td>
+<td align="left">モデルが<strong>見逃した</strong>の<strong>スパムメール</strong>。 （Type II Error）</td>
 </tr>
 </tbody></table>
 <p><strong>覚え方</strong>：</p>
@@ -478,7 +478,7 @@ y_pred_proba <span style="color: Gray;">=</span> model.<span style="color: #05a;
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>=== マクロ平均 AUC (OvR) ==="</span><span style="color: Olive;">)</span><br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"{auc_ovr:.4f}"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">except</span> <span style="color: Teal;">Exception</span> <span style="color: Green;font-weight:bold;">as</span> e:<br/>
-    <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>AUC計算中にエラーが発生しました（一部のクラスがテストセットに存在しない可能性があります）: {e}"</span><span style="color: Olive;">)</span><br/>
+    <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>AUC計算中にエラーが発生しました（一部のクラスがテストセットに存在しない可能性があります）: {e}</span><span style="color: Olive;">)</span><br/>
 </div>
 </div>
 <p>このコードを実行すると、完全なモデル評価レポートが表示されます。モデルのパラメータを変更したり、異なるモデル（例：<code>sklearn.tree.DecisionTreeClassifier</code>）を使用して、これらの指標がどのように変化するかを観察してください。</p>
@@ -621,11 +621,11 @@ weighted avg       1.00      1.00      1.00        45
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -914,7 +914,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

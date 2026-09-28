@@ -4,8 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>JS 中徹底削除由 JSON 物件組成的陣列中的元素 | 菜鸟教程  
-→ JS で JSON オブジェクトで構成される配列の要素を完全に削除 | 菜鸟教程</title>
+<title>JS で JSON オブジェクトで構成される配列の要素を完全に削除 | 菜鸟教程</title>
 <script>
 window.RUNOOB_CONFIG = {
   darkCssUrl: "https://www.runoob.com/wp-content/themes/runoob/dark-mode.css?v=1.125"
@@ -80,8 +79,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="col middle-column big-middle-column">
 <div class="article">
 <div class="article-heading">
-<h2>JS 中徹底刪除 JSON 物件組成的陣列中的元素  
-→ JS で JSON オブジェクトで構成される配列の要素を完全に削除</h2> <h3><em>分類  
+<h2>JS で JSON オブジェクトで構成される配列の要素を完全に削除</h2> <h3><em>分類  
 → カテゴリ</em> <a href="../w3cnote_genre/code.html" title="编程技术">編程技術  
 → プログラミング技術</a> </h3>
 </div>
@@ -89,44 +87,35 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="article-intro">
 <!-- ad start-->
 <!-- ad end-->
-<p>在 JS 中，對於某個由 JSON 物件組成的陣列，例如：  
-→ JS では、JSON オブジェクトで構成される配列に対して、例えば：</p>
+<p>JS では、JSON オブジェクトで構成される配列に対して、例えば：</p>
 <pre>var test = [{ "a": "1", "b": "2" }, { "a": "3", "b": "4" }, { "a": "5", "b": "6" }];</pre>
-<p>如果我們想要刪除其中的第二個 json 物件，應該怎麼做呢？其實方法和操作陣列完全相同。  
-→ その中の 2 番目の JSON オブジェクトを削除したい場合、どうすればよいでしょうか？実は方法は配列の操作とまったく同じです。</p>
+<p>その中の 2 番目の JSON オブジェクトを削除したい場合、どうすればよいでしょうか？実は方法は配列の操作とまったく同じです。</p>
 
  
 
-<p>在最開始的時候嘗試使用了  
-→ 最初に使用してみたのは<strong>delete</strong>運算子，但在查詢陣列長度的時候發現其實這種方法並不是徹底刪除元素，而是刪除它的值，但仍會保留空間。  
-→ 演算子ですが、配列の長さを確認したところ、実はこの方法は要素を完全に削除するのではなく、その値を削除するだけで、領域は残ることがわかりました。</p>
+<p>最初に使用してみたのは<strong>delete</strong>演算子ですが、配列の長さを確認した際に、実はこの方法は要素を完全に削除するのではなく、その値を削除するだけで、領域が残ることがわかりました。</p>
 <pre>var test = [{ "a": "1", "b": "2" }, { "a": "3", "b": "4" }, { "a": "5", "b": "6" }];
 test.length   //输出为 3
 delete test[1];
 test.length   //输出仍为 3</pre>
-<p>查詢運算子 delete 我們知道它只是將該值置為 undefined，而不會影響陣列長度，即將其變為稀疏陣列（《JS權威指南》7.5節）。  
-→ delete 演算子を調べると、それは値を undefined にするだけで、配列の長さには影響せず、つまり疎な配列になることがわかります（『JS権威ガイド』7.5節）。</p>
+<p>delete 演算子について調べると、それは値を undefined にするだけで、配列の長さには影響をとえず、つまり疎な配列になることがわかります（『JS権威ガイド』7.5節）。</p>
 
  
 
-<p>了解及此，也許想著可以將刪除點之後的元素各往前移動 1 個單位，實現徹底剔除該元素，但在 JS 方法中我們可以查到一種更加簡便的方式：  
-→ これを踏まえると、削除位置以降の要素をそれぞれ 1 つ前へ移動させれば、その要素を完全に除外できると思うかもしれませんが、JS のメソッドの中にはもっと簡単な方法があります。<a href="../jsref/jsref-splice.html" rel="noopener" target="_blank">splice() 方法  
+<p>これを踏まえると、削除位置以降の要素をそれぞれ1つ前へ移動させれば、その要素を完全に除外できると思うかもしれませんが、JSのメソッドの中にはもっと簡単な方法があります。<a href="../jsref/jsref-splice.html" rel="noopener" target="_blank">splice() 方法  
 → splice() メソッド</a></p>
 <pre>var test = [{ "a": "1", "b": "2" }, { "a": "3", "b": "4" }, { "a": "5", "b": "6" }];
 test.length   //输出为 3
 test.splice(1, 1);
 test.length   //输出为 2</pre>
-<p>刪除後 test.length 變為 2，這正是我們想要的結果。  
-→ 削除後、test.length は 2 になります。これがまさに望んでいた結果です。</p>
+<p>削除後、test.length は 2 になります。これがまさに望んでいた結果です。</p>
 <blockquote><p>原文地址：https://blog.csdn.net/WI_232995/article/details/77776433  
 → 原文アドレス：https://blog.csdn.net/WI_232995/article/details/77776433</p></blockquote>
 </div>
 </div>
 <div class="previous-next-links">
-<div class="previous-design-link">← <a href="./java-json-instro.html" rel="prev">Java 中 JSON  的使用  
-→ Java における JSON の使用</a> </div>
-<div class="next-design-link"><a href="./c-bool-true-false.html" rel="next">C 語言的布爾類型(true 與 false)  
-→ C 言語のブール型（true と false）</a> →</div>
+<div class="previous-design-link">← <a href="./java-json-instro.html" rel="prev">Java における JSON の使用</a> </div>
+<div class="next-design-link"><a href="./c-bool-true-false.html" rel="next">C 言語のブール型（true と false）</a> →</div>
 </div>
 <style>
 .wrapper {
@@ -233,16 +222,16 @@ test.length   //输出为 2</pre>
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>點我分享筆記  
 → クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔記需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=".." class="runoob-pop">登录</a>！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>  
-→ <p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=".." class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">メモは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href="..">登录</a>！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>  
+→ <p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href="..">ログイン</a>が必要です！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

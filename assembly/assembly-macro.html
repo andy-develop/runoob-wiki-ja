@@ -166,7 +166,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h1>アセンブリ言語 - マクロ</h1>
 <p>マクロ（Macro）はNASMが提供するコード再利用の仕組みであり、コンパイル時にコードテンプレートを展開して、類似コードを繰り返し記述する必要性を減らすことができます。</p>
 <hr/>
-<h2>什么是宏</h2>
+<h2>マクロとは何か</h2>
 <p><span class="marked">宏（Macro）</span>これはコンパイル時のテキスト置換メカニズムであり、アセンブラのプリプロセッサがコンパイル前に展開します。</p>
 <p>プロセス（Procedure）とは異なり、マクロにはCALL/RETのオーバーヘッドがありません——マクロを使用するたびに、コンパイラはマクロの内容を使用位置に直接コピーします。</p>
 <p>マクロは関数呼び出しではなく、スタックフレームのオーバーヘッドもありません。ただし、展開のたびにコードがコピーされるため、実行ファイルのサイズは大きくなります。</p>
@@ -182,7 +182,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: #0000FF; font-weight: bold;">%define</span> MAX_SIZE <span style="color: #FF0000;">256</span><br/>
 <span style="color: #0000FF; font-weight: bold;">%define</span> APP_NAME <span style="color: #7F007F;">'runoob'</span><br/>
 <br/>
-<span style="color: #666666; font-style: italic;">; 定义带参数的宏（宏函数）</span><br/>
+<span style="color: #666666; font-style: italic;">; パラメータ付きマクロ（マクロ関数）を定義する</span><br/>
 <span style="color: #0000FF; font-weight: bold;">%define</span> mul_by_2<span style="color: #009900; font-weight: bold;">(</span>x<span style="color: #009900; font-weight: bold;">)</span> <span style="color: #009900; font-weight: bold;">(</span>x <span style="color: #339933;">*</span> <span style="color: #FF0000;">2</span><span style="color: #009900; font-weight: bold;">)</span><br/>
 <span style="color: #0000FF; font-weight: bold;">%define</span> sum3<span style="color: #009900; font-weight: bold;">(</span>a<span style="color: #339933;">,</span> b<span style="color: #339933;">,</span> c<span style="color: #009900; font-weight: bold;">)</span> <span style="color: #009900; font-weight: bold;">(</span><span style="color: #009900; font-weight: bold;">(</span>a<span style="color: #009900; font-weight: bold;">)</span> <span style="color: #339933;">+</span> <span style="color: #009900; font-weight: bold;">(</span>b<span style="color: #009900; font-weight: bold;">)</span> <span style="color: #339933;">+</span> <span style="color: #009900; font-weight: bold;">(</span>c<span style="color: #009900; font-weight: bold;">)</span><span style="color: #009900; font-weight: bold;">)</span><br/>
 <br/>
@@ -207,7 +207,7 @@ _start<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
 </div>
 </div>
-<blockquote><p><code>%define</code>マクロ展開時は純粋なテキスト置換です。例えば<code>mul_by_2(2+3)</code>展开为<code>(2+3 * 2)</code>、演算子の優先順位により、結果は10ではなく8になります。これがマクロの引数に必ず括弧を付ける必要がある理由です。</p></blockquote>
+<blockquote><p><code>%define</code>マクロ展開時は純粋なテキスト置換です。例えば<code>mul_by_2(2+3)</code>展開する<code>(2+3 * 2)</code>、演算子の優先順位により、結果は10ではなく8になります。これがマクロの引数に必ず括弧を付ける必要がある理由です。</p></blockquote>
 <hr/>
 <h2>多行宏：%macro / %endmacro</h2>
 <p><code>%macro</code>複数の命令を含む複雑なマクロを定義するために使用します：</p>
@@ -221,7 +221,7 @@ _start<span style="color: #339933;">:</span><br/>
 <span style="color: #666666; font-style: italic;">; 参数 argc：宏接受多少个参数</span><br/>
 <span style="color: #0000FF; font-weight: bold;">%macro</span> exit_program <span style="color: #FF0000;">1</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span>                   <span style="color: #666666; font-style: italic;">; sys_exit</span><br/>
-    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #0000FF; font-weight: bold;">%1</span>                  <span style="color: #666666; font-style: italic;">; 第 1 个参数作为退出码</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #0000FF; font-weight: bold;">%1</span>                  <span style="color: #666666; font-style: italic;">; 最初のパラメータを終了コードとして使用する</span><br/>
     <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
 <span style="color: #0000FF; font-weight: bold;">%endmacro</span><br/>
 <br/>
@@ -264,7 +264,7 @@ _start<span style="color: #339933;">:</span><br/>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;">; 高级宏参数示例</span><br/>
 <br/>
-<span style="color: #666666; font-style: italic;">; 带默认参数的宏（参数范围 2-3）</span><br/>
+<span style="color: #666666; font-style: italic;">; デフォルトパラメータを持つマクロ（パラメータ範囲 2-3）</span><br/>
 <span style="color: #0000FF; font-weight: bold;">%macro</span> debug_print <span style="color: #FF0000;">2</span><span style="color: #339933;">-</span><span style="color: #FF0000;">3</span> <span style="color: #FF0000;">1</span>        <span style="color: #666666; font-style: italic;">; 至少 2 个参数，最多 3 个，第 3 个默认 = 1</span><br/>
     <span style="color: #0000FF; font-weight: bold;">%if</span> <span style="color: #0000FF; font-weight: bold;">%3</span> = <span style="color: #FF0000;">1</span>                   <span style="color: #666666; font-style: italic;">; 如果第 3 个参数 = 1（debug 模式开启）</span><br/>
         <span style="color: #00007F; font-weight: bold;">push</span> <span style="color: #46AA03; font-weight: bold;">eax</span><br/>
@@ -283,9 +283,9 @@ _start<span style="color: #339933;">:</span><br/>
     <span style="color: #0000FF; font-weight: bold;">%endif</span><br/>
 <span style="color: #0000FF; font-weight: bold;">%endmacro</span><br/>
 <br/>
-<span style="color: #666666; font-style: italic;">; 不定数量参数的宏</span><br/>
+<span style="color: #666666; font-style: italic;">; 可変長引数のマクロ</span><br/>
 <span style="color: #0000FF; font-weight: bold;">%macro</span> push_registers <span style="color: #FF0000;">1</span><span style="color: #339933;">-*</span>        <span style="color: #666666; font-style: italic;">; 1 到任意多个参数</span><br/>
-    <span style="color: #339933;">%</span><span style="color: #00007F; font-weight: bold;">rep</span> <span style="color: #0000FF; font-weight: bold;">%0</span>                      <span style="color: #666666; font-style: italic;">; %0 是参数个数</span><br/>
+    <span style="color: #339933;">%</span><span style="color: #00007F; font-weight: bold;">rep</span> <span style="color: #0000FF; font-weight: bold;">%0</span>                      <span style="color: #666666; font-style: italic;">; %0 は引数の数</span><br/>
         <span style="color: #00007F; font-weight: bold;">push</span> <span style="color: #0000FF; font-weight: bold;">%1</span>                  <span style="color: #666666; font-style: italic;">; 展开第1个</span><br/>
         <span style="color: #0000FF; font-weight: bold;">%rotate</span> <span style="color: #FF0000;">1</span>                <span style="color: #666666; font-style: italic;">; 向左旋转参数列表</span><br/>
     <span style="color: #0000FF; font-weight: bold;">%endrep</span><br/>
@@ -297,13 +297,13 @@ _start<span style="color: #339933;">:</span><br/>
 _start<span style="color: #339933;">:</span><br/>
     <span style="color: #666666; font-style: italic;">; 使用 push_registers 保存多个寄存器</span><br/>
     push_registers <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">edx</span><br/>
-    <span style="color: #666666; font-style: italic;">; 展开为：</span><br/>
+    <span style="color: #666666; font-style: italic;">; 展開：</span><br/>
     <span style="color: #666666; font-style: italic;">; push eax</span><br/>
     <span style="color: #666666; font-style: italic;">; push ebx</span><br/>
     <span style="color: #666666; font-style: italic;">; push ecx</span><br/>
     <span style="color: #666666; font-style: italic;">; push edx</span><br/>
 <br/>
-    <span style="color: #666666; font-style: italic;">; 对应地弹出</span><br/>
+    <span style="color: #666666; font-style: italic;">; 対応してポップ</span><br/>
     <span style="color: #00007F; font-weight: bold;">pop</span> <span style="color: #46AA03; font-weight: bold;">edx</span><br/>
     <span style="color: #00007F; font-weight: bold;">pop</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><br/>
     <span style="color: #00007F; font-weight: bold;">pop</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><br/>
@@ -320,7 +320,7 @@ _start<span style="color: #339933;">:</span><br/>
 <div class="example">
 <h2 class="example">实例</h2>
 <div class="example_code">
-<span style="color: #666666; font-style: italic;">; 宏中的局部标签</span><br/>
+<span style="color: #666666; font-style: italic;">; マクロ内のローカルラベル</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;">; 比较两个值并设置最小值</span><br/>
 <span style="color: #0000FF; font-weight: bold;">%macro</span> min_val <span style="color: #FF0000;">2</span><br/>
@@ -332,7 +332,7 @@ _start<span style="color: #339933;">:</span><br/>
 <span style="color: #339933;">%%</span>skip<span style="color: #339933;">:</span><br/>
 <span style="color: #0000FF; font-weight: bold;">%endmacro</span><br/>
 <br/>
-<span style="color: #666666; font-style: italic;">; 如果不使用局部标签，展开两次后会出现重复的 skip 标签</span><br/>
+<span style="color: #666666; font-style: italic;">; ローカルラベルを使用しない場合、2回展開すると重複した skip ラベルが現れる</span><br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.text</span><br/>
     <span style="color: #0000FF; font-weight: bold;">global</span> _start<br/>
 <br/>
@@ -364,7 +364,7 @@ _start<span style="color: #339933;">:</span><br/>
 <h2 class="example">实例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;">; 文件路径：cond_compile.asm</span><br/>
-<span style="color: #666666; font-style: italic;">; 条件编译示例：调试和发布模式</span><br/>
+<span style="color: #666666; font-style: italic;">; 条件付きコンパイルの例：デバッグモードとリリースモード</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">%define</span> DEBUG <span style="color: #FF0000;">1</span>                  <span style="color: #666666; font-style: italic;">; 1=调试模式, 0=发布模式</span><br/>
 <br/>
@@ -415,18 +415,18 @@ _start<span style="color: #339933;">:</span><br/>
 <span style="color: #666666; font-style: italic;">; %rep 重复块示例</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
-    <span style="color: #666666; font-style: italic;">; 生成 256 字节的查找表</span><br/>
+    <span style="color: #666666; font-style: italic;">; 256 バイトのルックアップテーブルを生成</span><br/>
     <span style="color: #666666; font-style: italic;">; 0, 1, 4, 9, 16, 25, ...（平方数表）</span><br/>
     <span style="color: #0000FF; font-weight: bold;">%assign</span> i <span style="color: #FF0000;">0</span><br/>
-    <span style="color: #666666; font-style: italic;">; 这里不能用 %rep 生成平方表来进行复杂计算</span><br/>
-    <span style="color: #666666; font-style: italic;">; 简单示例：生成 0-9 的 ASCII 表</span><br/>
+    <span style="color: #666666; font-style: italic;">; ここでは %rep による平方表の生成は複雑な計算には使えない</span><br/>
+    <span style="color: #666666; font-style: italic;">; 簡単な例：0-9 の ASCII 表を生成する</span><br/>
     digits<span style="color: #339933;">:</span> <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'0'</span><span style="color: #339933;">,</span> <span style="color: #7F007F;">'1'</span><span style="color: #339933;">,</span> <span style="color: #7F007F;">'2'</span><span style="color: #339933;">,</span> <span style="color: #7F007F;">'3'</span><span style="color: #339933;">,</span> <span style="color: #7F007F;">'4'</span><span style="color: #339933;">,</span> <span style="color: #7F007F;">'5'</span><span style="color: #339933;">,</span> <span style="color: #7F007F;">'6'</span><span style="color: #339933;">,</span> <span style="color: #7F007F;">'7'</span><span style="color: #339933;">,</span> <span style="color: #7F007F;">'8'</span><span style="color: #339933;">,</span> <span style="color: #7F007F;">'9'</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.text</span><br/>
     <span style="color: #0000FF; font-weight: bold;">global</span> _start<br/>
 <br/>
 _start<span style="color: #339933;">:</span><br/>
-    <span style="color: #666666; font-style: italic;">; %rep 在代码中重复指令</span><br/>
+    <span style="color: #666666; font-style: italic;">; %rep でコード内の命令を繰り返す</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
     <span style="color: #339933;">%</span><span style="color: #00007F; font-weight: bold;">rep</span> <span style="color: #FF0000;">5</span>                      <span style="color: #666666; font-style: italic;">; 重复 5 次</span><br/>
         <span style="color: #00007F; font-weight: bold;">inc</span> <span style="color: #46AA03; font-weight: bold;">eax</span>                  <span style="color: #666666; font-style: italic;">; eax 每次加 1</span><br/>
@@ -557,11 +557,11 @@ _start<span style="color: #339933;">:</span><br/>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -850,7 +850,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

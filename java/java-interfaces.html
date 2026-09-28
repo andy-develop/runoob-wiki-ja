@@ -194,7 +194,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </ul>
 <blockquote><p>
 <strong>注</strong>：JDK 1.8 以降、インターフェース内に静的メソッドとメソッド本体を持たせることができるようになりました。</p>
-<p><strong>注</strong>：JDK 1.8 以降、インターフェースは具体的な実装を持つメソッドを含むことができます。このメソッドは「デフォルトメソッド」と呼ばれ、デフォルトメソッドは default キーワードで修飾されます。詳細は次を参照してください。<a href="../java/java8-default-methods.html" rel="noopener" target="_blank">Java 8 デフォルトメソッド</a>。</p>
+<p><strong>注</strong>JDK 1.8 以降、インターフェースは具体的な実装を持つメソッドを含むことができます。このメソッドは「デフォルトメソッド」と呼ばれ、デフォルトメソッドは default キーワードで修飾されます。詳細は次を参照してください。<a href="../java/java8-default-methods.html" rel="noopener" target="_blank">Java 8 デフォルトメソッド</a>。</p>
 <p>
 <strong>注</strong>：JDK 1.9 以降、メソッドを private として定義できるようになり、一部の再利用コードがメソッドを外部に公開しないようにできます。詳細は次を参照してください。<a href="../java/java9-private-interface-methods.html" rel="noopener" target="_blank">Java 9 プライベートインターフェースメソッド</a>。</p>
 </blockquote>
@@ -339,7 +339,7 @@ Mammal travels
 </span><span class="hl-brackets">{</span><span class="hl-brackets">}</span></div>
 </div>
 </div>
-<p>メソッドを持たないインターフェースはマーカーインターフェースと呼ばれます。マーカーインターフェースは主に次の2つの目的で使用されます：</p>
+<p>メソッドを持たないインターフェースはマーカーインターフェースと呼ばれます。マーカーインターフェースは主に以下の2つの目的で使用されます：</p>
 <ul><li><strong>共通の親インターフェースを確立する：</strong><p>EventListener インターフェースは、数十の他のインターフェースによって拡張されている Java API の例です。マーカーインターフェースを使用して、一連のインターフェースの親インターフェースを確立できます。例えば、あるインターフェースが EventListener インターフェースを継承すると、Java仮想マシン（JVM）はそのインターフェースがイベント委譲の仕組みに使用されることを認識します。</p></li><li><strong>クラスにデータ型を追加する：</strong><p>これはマーカーインターフェースの当初の目的です。マーカーインターフェースを実装するクラスは、インターフェースメソッドを定義する必要はありません（マーカーインターフェースにはメソッドがないため）。しかし、そのクラスは多態性（ポリモーフィズム）によってインターフェース型になります。</p></li></ul> その他の拡張
 </p></p></div>
 </div>
@@ -487,7 +487,7 @@ Mammal travels
         System.out.println("我是静态方法");
     }
 }</pre>
-<p>呼び出しについて、静的メソッドはインターフェース名でのみ呼び出せます。実装クラスのクラス名や実装クラスのオブジェクトからは呼び出せません。default メソッドはインターフェース実装クラスのオブジェクトからのみ呼び出せます。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">怀念那些快乐</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>あの楽しさを懐かしむ</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  add***lltree@163.com</p></div></span>9年前 (2018-01-11)</div></div></li><!-- #comment-## -->
+<p>呼び出しについて、静的メソッドはインターフェース名でのみ呼び出せます。実装クラスのクラス名や実装クラスのオブジェクトからは呼び出せません。default メソッドはインターフェース実装クラスのオブジェクトからのみ呼び出せます。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">あの楽しさを懐かしむ</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>あの楽しさを懐かしむ</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  add***lltree@163.com</p></div></span>9年前 (2018-01-11)</div></div></li><!-- #comment-## -->
 <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-28807"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>赤色星空</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  531***371@qq.com</p></div><div class="upvotejs" data-commid="28807" id="runoobvote-id-28807"><a class="upvote"></a> <span class="count">74</span></div></div><div class="comt-main" id="div-comment-28807"><p><strong>インターフェースの意味の理解</strong></p>
 <p>インターフェースは統一された<strong>プロトコル</strong>と理解できます。そして、インターフェース内の属性もプロトコルの内容に属します。ただし、インターフェースの属性はすべて public で static で final です。</p>
 <p>インターフェースのメンバーの特徴：</p>
@@ -508,7 +508,7 @@ public interface People {
 <pre>if(obj instanceof Cloneable) {………} </pre>
 <p>一部のコンテナ、例えば EJB コンテナ、サーブレットコンテナ、またはランタイム環境は、クラスが何らかの処理を必要とするかどうかを識別するためにマーカーインターフェースに依存します。例えば、Serializable インターフェースはクラスがシリアライズ操作を必要とすることを示します。</p>
 <ul><li>
-<strong>java.io.Serializable</strong>：このインターフェースを実装していないクラスは、その状態をシリアライズまたはデシリアライズできません。serialVersionUID 値が異なる Java コンパイラ実装間で一貫性を保つために、シリアライズ可能なクラスは明示的な serialVersionUID 値を宣言する必要があります。</li><li>
+<strong>java.io.Serializable</strong>このインターフェースを実装していないクラスは、その状態をシリアライズまたはデシリアライズできません。serialVersionUID 値が異なる Java コンパイラ実装間で一貫性を保つために、シリアライズ可能なクラスは明示的な serialVersionUID 値を宣言する必要があります。</li><li>
 <strong>java.lang.Cloneable</strong>：Object.clone() メソッドがそのクラスのインスタンスをフィールド単位で複製することが正当であることを示します。このインターフェースを実装するクラスは、Object.clone()（これは protected です）を public メソッドでオーバーライドする必要があります。Cloneable インターフェースを実装していないインスタンスで Object の clone メソッドを呼び出すと、CloneNotSupportedException がスローされます。</li><li>
 <strong>java.util.RandomAccess</strong>：高速（通常は固定時間）のランダムアクセスをサポートすることを示します。このインターフェースの主な目的は、一般的なアルゴリズムがその動作を変更できるようにし、ランダムアクセスまたはシーケンシャルアクセスリストに適用したときに優れたパフォーマンスを提供することです。</li><li>
 <strong>java.rmi.Remote</strong>：Remote インターフェースは、そのメソッドがローカルではない仮想マシンから呼び出せることを示すためのインターフェースです。すべてのリモートオブジェクトは、直接的または間接的にこのインターフェースを実装しなければなりません。「リモートインターフェース」（java.rmi.Remote を拡張したインターフェース）で指定されたメソッドのみがリモートで使用できます。</li></ul><div class="comt-meta wrapper"><span class="comt-author"><a href="../note/29626.html" target="_blank">Xander663</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   Xander663</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  xan***1998@163.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="https://blog.csdn.net/qq_36838191/article/details/81026755" rel="nofollow" target="_blank">参考URL</a></p></div></span>8年前 (2018-07-15)</div></div></li><!-- #comment-## -->
@@ -526,10 +526,10 @@ Fu fu = new Zi();</pre>
 <p><strong>詳細は以下を参照：<a href="../w3cnote/java-interface-and-polymorphism.html" rel="noopener nofollow" target="_blank">Java インターフェースとポリモーフィズム</a></strong></p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">Xander663</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   Xander663</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  xan***1998@163.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="../w3cnote/java-interface-and-polymorphism.html" rel="nofollow" target="_blank">参考URL</a></p></div></span>8年前 (2018-07-15)</div></div></li><!-- #comment-## -->
 <li class="comment even thread-even depth-1" id="comment-33415"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   Luochy</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  luo***ngyou_100@163.com</p></div><div class="upvotejs" data-commid="33415" id="runoobvote-id-33415"><a class="upvote"></a> <span class="count">43</span></div></div><div class="comt-main" id="div-comment-33415"><p data-title="Java 抽象类和接口总结"><strong>Java 抽象クラスとインターフェースのまとめ</strong></p>
 <ul><li>
-1、<strong>abstract class</strong> 在 <strong>Java</strong>抽象クラスは Java 言語において継承関係を表します。1つのクラスは1回しか継承関係を使用できません。しかし、1つのクラスは複数のインターフェースを実装できます。<strong>interface</strong>。
+1、<strong>abstract class</strong>に<strong>Java</strong>抽象クラスは Java 言語において継承関係を表します。1つのクラスは1回しか継承関係を使用できません。しかし、1つのクラスは複数のインターフェースを実装できます。<strong>interface</strong>。
 </li><li>2. 抽象クラスでは、<strong>abstract class</strong>自分自身のデータメンバーを持つことができ、非 abstract のメンバーメソッドも持つことができます。一方、interface では、静的で変更できないデータメンバー（つまり static final でなければなりません。ただし interface では通常データメンバーを定義しません）しか持つことができず、すべてのメンバーメソッドは abstract です。</li><li>
-3.<strong>abstract class</strong> 和 <strong>interface</strong>反映される設計理念は異なります。実際には、<strong>abstract class</strong>抽象クラスが表すのは<strong>"is-a"</strong>'is-a' 関係であり、<strong>interface</strong>インターフェースが表すのは<strong>"has-a"</strong>'like-a' 関係です。</li><li>4. 抽象クラスとインターフェースを実装するクラスは、その中のすべてのメソッドを実装しなければなりません。抽象クラスには非抽象メソッドを含めることができます。インターフェースには実装メソッドを含めることはできません。</li><li>5. インターフェースで定義される変数はデフォルトで<strong>public static final</strong>public static final 型であり、初期値を与えなければなりません。したがって、実装クラスでは再定義できず、その値も変更できません。</li><li>6. 抽象クラス内の変数はデフォルトで friendly 型です。その値はサブクラスで再定義することも、再代入することもできます。</li><li>7. インターフェース内のメソッドはデフォルトで public, abstract 型です。</li></ul>
-<p><strong>結論：</strong><strong>abstract class</strong> 和 <strong>interface</strong>抽象クラスとインターフェースは、Java 言語における抽象クラスを定義する2つの方法です。それらの間には大きな類似性があります。しかし、それらの選択は、問題領域における概念の本質の理解や、設計意図の反映が正しく合理的であるかどうかを反映することがよくあります。それらは概念間の異なる関係を表すからです（どちらも要求された機能を実現できますが）。これは実際には言語の慣用的な用法でもあり、読者の皆さんにじっくりと体感していただきたいと思います。</p><div class="comt-meta wrapper"><span class="comt-author"><a href="../note/33415.html" target="_blank">Luochy</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   Luochy</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  luo***ngyou_100@163.com</p></div></span>8年前 (2018-07-31)</div></div></li><!-- #comment-## -->
+3.<strong>abstract class</strong>と<strong>interface</strong>反映される設計理念は異なります。実際には、<strong>abstract class</strong>抽象クラスが表すのは<strong>"is-a"</strong>'is-a' 関係であり、<strong>interface</strong>インターフェースが表すのは<strong>"has-a"</strong>'like-a' 関係です。</li><li>4. 抽象クラスとインターフェースを実装するクラスは、その中のすべてのメソッドを実装しなければなりません。抽象クラスには非抽象メソッドを含めることができます。インターフェースには実装メソッドを含めることはできません。</li><li>5. インターフェースで定義される変数はデフォルトで<strong>public static final</strong>public static final 型であり、初期値を与えなければなりません。したがって、実装クラスでは再定義できず、その値も変更できません。</li><li>6. 抽象クラス内の変数はデフォルトで friendly 型です。その値はサブクラスで再定義することも、再代入することもできます。</li><li>7. インターフェース内のメソッドはデフォルトで public, abstract 型です。</li></ul>
+<p><strong>結論：</strong><strong>abstract class</strong>と<strong>interface</strong>抽象クラスとインターフェースは、Java 言語における抽象クラスを定義する2つの方法です。それらの間には大きな類似性があります。しかし、それらの選択は、問題領域における概念の本質の理解や、設計意図の反映が正しく合理的であるかどうかを反映することがよくあります。それらは概念間の異なる関係を表すからです（どちらも要求された機能を実現できますが）。これは実際には言語の慣用的な用法でもあり、読者の皆さんにじっくりと体感していただきたいと思います。</p><div class="comt-meta wrapper"><span class="comt-author"><a href="../note/33415.html" target="_blank">Luochy</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   Luochy</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  luo***ngyou_100@163.com</p></div></span>8年前 (2018-07-31)</div></div></li><!-- #comment-## -->
 <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-53639"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   Cheese</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  365***474@qq.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="https://blog.csdn.net/qq_19782019/article/details/80259836?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1.nonecase&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog" rel="nofollow" target="_blank">参考URL</a></p></div><div class="upvotejs" data-commid="53639" id="runoobvote-id-53639"><a class="upvote"></a> <span class="count">83</span></div></div><div class="comt-main" id="div-comment-53639"><p>インターフェースのより簡単な理解：</p>
 <pre>//USB接口
 interface USB {
@@ -585,11 +585,11 @@ public class InterDemo {
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてメモを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>する必要があります！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>する必要があります！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -878,7 +878,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

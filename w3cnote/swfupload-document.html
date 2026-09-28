@@ -149,10 +149,10 @@ p,div.des {
 <li><a href="../index.html">SWFUpload 版本 2</a></li>
 <li><a href="../index.html">概览 （Overview</a>） </li>
 <li><a href="../index.html">入门（ Getting Started</a>）</li>
-<li><a href="../index.html">js对象 （SWFUpload JavaScript Object</a>）
+<li><a href="../index.html">jsオブジェクト （SWFUpload JavaScript Object</a>）
 			<ol>
 <li><a href="../index.html">构造器（Constructor）</a></li>
-<li><a href="../index.html">全局变量和常量 （Globals and Constants</a>）
+<li><a href="../index.html">グローバル変数と定数 （Globals and Constants</a>）
 					<ol>
 <li><a href="../index.html">【新增内容】instances</a></li>
 <li><a href="../index.html">movieCount</a></li>
@@ -234,7 +234,7 @@ p,div.des {
 <li><a href="../index.html">debug</a></li>
 </ol>
 </li>
-<li><a href="../index.html">实用功能对象 SWFUpload Utility Objects</a>
+<li><a href="../index.html">ユーティリティオブジェクト SWFUpload Utility Objects</a>
 <ol>
 <li><a href="../index.html">Settings Object</a></li>
 <li><a href="../index.html">Settings Description</a></li>
@@ -250,7 +250,7 @@ p,div.des {
 </ol>
 <h3><a name="swfupload"></a>SWFUpload</h3>
 <p>
-<a href="http://www.swfupload.org">SWFUpload</a>最初是<a href="http://www.vinterwebb.se/">Vinterwebb.se</a>開発されたクライアント側ファイルアップロードツールです。JavaScriptとFlashを組み合わせ、ブラウザで従来のアップロードタグ &lt;input type="file" /&gt; よりも優れた機能（および優れたユーザーエクスペリエンス）を提供します。</p>
+<a href="http://www.swfupload.org">SWFUpload</a>最初は<a href="http://www.vinterwebb.se/">Vinterwebb.se</a>開発されたクライアント側ファイルアップロードツールです。JavaScriptとFlashを組み合わせ、ブラウザで従来のアップロードタグ &lt;input type="file" /&gt; よりも優れた機能（および優れたユーザーエクスペリエンス）を提供します。</p>
 <p>SWFUpload の主な特徴：</p>
 <p>
 <ul>
@@ -301,11 +301,11 @@ p,div.des {
 <ol>
 <li>初期化と設定（JavaScript）</li>
 <li>JavaScript 库: SWFUpload.js</li>
-<li>Flash控件: swfupload.swf 和 swfupload_fp9.swf</li>
+<li>Flashコントロール: swfupload.swf と swfupload_fp9.swf</li>
 <li>イベント処理メカニズム（JavaScript）</li>
 </ol>
 <p>SWFUpload を使用する際の問題の多くは設定に起因します。誤ったイベント処理、Flash/ブラウザのバグ、またはサーバー設定です。</p>
-<h4>初始化和设置 Initialization and Settings</h4>
+<h4>初期化と設定 Initialization and Settings</h4>
 <p>SWFUpload はページ上で初期化する必要があります。通常、JSのwindow.onloadイベント内で行われます。SWFUpload のコンストラクタは、Object型のオブジェクト（JS）を取得する必要があります。このオブジェクトのデータはコンストラクタに直接渡されます。</p>
 <p>初期化されたSWFUploadオブジェクトの参照（reference）は保存しておく必要があります。（yukon: つまり変数に格納します。例の中のswfuのように）ファイルアップロードの開始や他の機能を制御する際にもこの参照が必要だからです。</p>
 <p><strong>例子:</strong>SWFUploadの初期化時に、匿名オブジェクトを直接渡してパラメータを構成します。</p>
@@ -349,7 +349,7 @@ window.onload = function () {
 });
 </code>
 <h4>【新規追加】フラッシュコントロール Flash Control</h4>
-<p>SWFUpload js库能动态的加载 Flash 控件 (swfupload.swf 或 swfupload_fp9.swf).</p>
+<p>SWFUpload JSライブラリはFlashコントロール（swfupload.swf または swfupload_fp9.swf）を動的にロードできます。</p>
 <p>Flashコントロールのファイルアドレスは、初期化時にSWFUpload設定オブジェクト内で定義する必要があります。</p>
 <p>Flashコントロールは実際にはFlashの小さなムービーであり、ファイルの選択、検証、アップロードを制御できます。</p>
 <p>これはページ上でユーザーにUIをカスタマイズできるボタンとして表示され、Flash Playerのバージョン（9、10）を検出して、ユーザーのプレイヤーバージョンに適したFlashコントロールを自動的にロードできます。</p>
@@ -385,7 +385,7 @@ var swfu = new SWFUpload({
 	
 	<span class="redtext">upload_start_handler : myCustomUploadStartEventHandler,
 	upload_success_handler : myCustomUploadSuccessEventHandler</span> </code>
-<h3><a name="javascriptobject"></a>swfupload js 对象 SWFUpload JavaScript Object</h3>
+<h3><a name="javascriptobject"></a>swfupload js オブジェクト SWFUpload JavaScript Object</h3>
 <h4><a name="constructor"></a>コンストラクタ Constructor</h4>
 <p class="function">SWFUpload(<span class="parameter">settings object</span>) //SWFUpload（設定オブジェクト）</p>
 <p><b>返回:</b>SWFUpload インスタンス</p>
@@ -553,7 +553,7 @@ function uploadSuccess(file, serverData, receivedResponse) {
 <h4><a name="getSetting"></a>object getSetting(<span class="parameter">setting_name</span>)</h4>
 <p><strong>不赞成使用</strong> The getSetting function retrieves the value of a setting.  If the setting is not found an empty string is returned.</p>
 <h4><a name="retrieveSetting"></a>object retrieveSetting(<span class="parameter">setting_value</span>, <span class="parameter">default_value</span>)</h4>
-<p><strong>在 v2.1.0</strong>中移除 The retrieveSetting function is similar to the addSetting function except it does not modify the internal settings object.  retrieveSetting
+<p><strong>v2.1.0 で</strong>中移除 The retrieveSetting function is similar to the addSetting function except it does not modify the internal settings object.  retrieveSetting
 	returns the setting_value unless it is undefined in which case it returns the default_value</p>
 <p>This is a utility function.</p>
 <h4><a name="destroy"></a>bool destroy() [機能：SWFUploadインスタンスを破棄する]</h4>
@@ -580,7 +580,7 @@ function uploadSuccess(file, serverData, receivedResponse) {
 <p>quality は JPEG 形式画像の品質を調整する場合のみ使用できます。許容範囲は 0～100 です。この範囲外の場合は、強制的に 0 または 100 に設定されます。</p>
 <p>allowEnlarging パラメータは、SWFUpload が元の画像の拡大を許可するかどうかを定義します。（デフォルトは true）元の画像の幅と高さが前述の width と height より小さい場合に適用されます。この値を false に設定すると、画像はエンコードされますが、拡大はされません。</p>
 <p>startResizedUploadメソッドを呼び出すと、通常のアップロードイベントチェーンが発生します。ただし、Flash Playerは定期的に uploadProgress イベントを提供しません。SWFUploadは、シミュレートされた 0% と 100% のアップロード進行イベント（uploadProgress events）のみを送信します。</p>
-<p>リサイズされた画像は POST 方式でデータを送信します。（FILE のようにではなく）Flash Player 10 でセキュリティ機能が導入されたためです。<span class="redtext">附带调整图片大小功能的上传的php处理页面和普通的上传php处理页面有所不同：</span></p>
+<p>リサイズされた画像は POST 方式でデータを送信します。（FILE のようにではなく）Flash Player 10 でセキュリティ機能が導入されたためです。<span class="redtext">画像サイズ調整機能付きのアップロード用PHP処理ページは、通常のアップロード用PHP処理ページとは異なります：</span></p>
 <code>$resizedImageData = $_POST["Filedata"];	// 服务器端以$_POST方式接收数据而不是 $_FILE
 $fileHandle = fopen("image.jpg", "w");            //以file系列操作函数来存储图片
 fwrite($fileHandle, $resizedImageData);
@@ -610,10 +610,10 @@ fclose($fileHandle);
 <p>getQueueFile に file_id を渡すと、アップロード待ちキュー内のファイルのみが取得可能です。ファイルが見つからない場合は null を返します。</p>
 <p>getQueueFile に index を渡すと、アップロード待ちキュー内のファイルのみが取得できます。例: getQueueFile(0) はアップロード待ちキューの先頭にあるファイルオブジェクトを返します。startUpload 関数を呼び出すと、現在アップロード中のファイルのアップロード完了後にアップロードされます。</p>
 <p>（yukon：上記 2 つのメソッドの違いはおそらく、getFile はファイルキュー内のファイルを取得することです。アップロード済み、エラー、アップロード待ちのキューを含みます。一方、getQueueFile はアップロード待ちキュー内のファイルのみを取得します）</p>
-<h4><a name="addPostParam"></a>void addPostParam(<span class="parameter">name</span>, <span class="parameter">value</span>)【作用：添加一个键/值对】</h4>
+<h4><a name="addPostParam"></a>void addPostParam(<span class="parameter">name</span>, <span class="parameter">value</span>)【作用：キー/値ペアを追加する】</h4>
 <p>addPostParam は、各ファイルのアップロード時に POST 方式で一緒に送信されるキー/値のペアを追加します。</p>
 <p>これは post_params 設定内の同じキー/値のペアに対応します。post_params 内にその値が既に存在する場合、実際には上書きされます。</p>
-<h4><a name="removePostParam"></a>void removePostParam(<span class="parameter">name</span>)【作用：移除一个键/值对】</h4>
+<h4><a name="removePostParam"></a>void removePostParam(<span class="parameter">name</span>)【作用：キー/値ペアを削除する】</h4>
 <p>removePostParam は、各ファイルのアップロード時に POST 方式で一緒に送信されるキー/値のペアを削除します。</p>
 <p>これは post_params 設定内の同じキー/値のペアに対応します。post_params 内にその値が既に存在する場合、実際には削除されます。</p>
 <h4><a name="addFileParam"></a>bool addFileParam(<span class="parameter">file_idspan&gt;, <span class="parameter">name</span>, <span class="parameter">value</span>)</span></h4>
@@ -696,7 +696,7 @@ fclose($fileHandle);
 <p>mouseOutイベントは、マウスがFlashムービーから離れたときにトリガーされます。</p>
 <p>オブジェクトのmouse_out_handlerプロパティでこのイベント処理関数を設定できます。</p>
 <h4><a name="fileDialogStart"></a><span class="function">fileDialogStart(<span class="parameter"></span>)</span></h4>
-<p>このイベントは、selectFileまたはselectFilesが呼び出された後、ファイル選択ダイアログが表示される前にトリガーされます。同時に存在できるファイルダイアログは1つだけです。<span class="redtext">但是，这个事件处理函数将不被执行，直到文件选择对话框被关闭</span></p>
+<p>このイベントは、selectFileまたはselectFilesが呼び出された後、ファイル選択ダイアログが表示される前にトリガーされます。同時に存在できるファイルダイアログは1つだけです。<span class="redtext">しかし、このイベント処理関数は、ファイル選択ダイアログが閉じられるまで実行されません。</span></p>
 <p>オブジェクトのfile_dialog_start_handlerプロパティでこのイベント処理関数を設定できます。</p>
 <h4><a name="fileQueued"></a><span class="function">fileQueued(<span class="parameter">file object</span>)</span></h4>
 <p>ファイルを選択し、ファイル選択ダイアログが閉じて消えたとき、選択したファイルがアップロード待ちキューに正常に追加された場合、正常に追加されたファイルごとにこのイベントが1回トリガーされます（N個のファイルが正常にキューに追加された場合、このイベントはN回トリガーされます）。</p>
@@ -706,10 +706,10 @@ fclose($fileHandle);
 <p>ファイル選択ダイアログが閉じたとき、選択したファイルのアップロードキューへの追加が失敗した場合、エラーが発生したファイルごとにこのイベントが1回トリガーされます（このイベントとfileQueuedイベントはどちらか一方がトリガーされます。ファイルのキューへの追加には成功と失敗の2つの可能性しかありません）。</p>
 <p>ファイルのキューへの追加でエラーが発生する原因としては、次のものが考えられます：1. アップロードサイズ制限を超えている、2. ファイルがゼロバイトである、3. ファイルキューの数量制限を超えている、4. 許可されていない無効なファイルタイプ。</p>
 <p>(yukon:テストの結果、messageに含まれる内容は次のとおりです：</p>
-<p>1.超过了上传大小限制：message=File size exceeds allowed limit.</p>
-<p>2.文件为零字节：message=File is zero bytes and cannot be uploaded.</p>
+<p>1. アップロードサイズ制限を超えました：message=File size exceeds allowed limit.</p>
+<p>2. ファイルがゼロバイトです：message=File is zero bytes and cannot be uploaded.</p>
 <p>3. ファイルキューの数量制限を超えている：message=int（設定したキューのサイズ制限数を指します）</p>
-<p>4.允许外的无效文件类型：message=File is not an allowed file type.</p>
+<p>許可されていない無効なファイルタイプ：message=File is not an allowed file type.</p>
 <p>これらのメッセージを変更する場合は、オープンソースパッケージ内のswfupload.asで変更し、swfupload.swfに再コンパイルしてください。</p>
 <p>)</p>
 <p>具体的なエラー原因はerror codeパラメータで取得できます。error codeのタイプはSWFUpload.QUEUE_ERRORの定義を参照できます。</p>
@@ -727,12 +727,12 @@ fclose($fileHandle);
 <p>最後の操作を完了した後、関数がfalseを返すと、このアップロードは開始されません。trueを返すか、何も返さない場合は、アップロードが正式に開始されます。</p>
 <p class="des"><span>提醒：</span>設定内のカスタムイベントupload_start_handlerに対応します。</p>
 <h4><a name="uploadProgress"></a><span class="function">uploadProgress(<span class="parameter">file object</span>, <span class="parameter">bytes complete</span>, <span class="parameter">total bytes</span>)</span></h4>
-<p>uploadProgressイベントは、Flashコントロールによって定期的にトリガーされます。<span class="redtext">提供三个参数分别访问上传文件对象、已上传的字节数，总共的字节数。因此可以在这个事件中来定时更新页面中的UI元素，以达到及时显示上传进度的效果。</span></p>
+<p>uploadProgressイベントは、Flashコントロールによって定期的にトリガーされます。<span class="redtext">3つのパラメータを提供し、それぞれアップロードファイルオブジェクト、アップロード済みのバイト数、総バイト数にアクセスします。したがって、このイベント内でページのUI要素を定期的に更新して、アップロード進捗をリアルタイムに表示する効果を達成できます。</span></p>
 <p><strong>注意:</strong>Linuxでは、Flash Playerはファイル全体のアップロードが完了した後にのみこのイベントを1回トリガーします。公式には、これはLinux Flash Playerのバグであり、現在のSWFUploadライブラリでは解決できないとされています。<i>。</i></p>
 <p class="des"><span>提醒：</span>設定内のカスタムイベント upload_progress_handler に対応</p>
 <h4><a name="uploadError"></a><span class="function">uploadError(<span class="parameter">file object</span>, <span class="parameter">error code</span>, <span class="parameter">message</span>)</span></h4>
 <p>アップロードが中止されたり、正常に完了しなかった場合は、常に<span class="function">uploadError</span>イベントがトリガーされます。error codeパラメータは現在のエラーのタイプを示します。より具体的なエラータイプは、<a href="../index.html">SWFUpload.UPLOAD_ERROR</a>の定義を参照してください。Messageパラメータはエラーの説明を示します。Fileパラメータはアップロードに失敗したファイルオブジェクトを示します。</p>
-<p>例えば、サーバー上に存在しないファイル処理ページをリクエストした場合、エラーコードは-200、メッセージは404になります。停止、終了、uploadStartがfalseを返す、HTTPエラー、IOエラー、ファイルアップロード数の制限超過などは、すべてこのイベントをトリガーします。キャンセルされたがまだキューで待機中のファイルについては、Upload errorは発生しません。<i>（对于官方的这句话我还存在疑问，文件退出以后怎么还会保留在文件上传队列中保留呢？）</i>
+<p>例えば、サーバー上に存在しないファイル処理ページをリクエストした場合、エラーコードは-200、メッセージは404になります。停止、終了、uploadStartがfalseを返す、HTTPエラー、IOエラー、ファイルアップロード数の制限超過などは、すべてこのイベントをトリガーします。キャンセルされたがまだキューで待機中のファイルについては、Upload errorは発生しません。<i>（公式のこの発言についてはまだ疑問があります。ファイルが退出した後、どうしてまだファイルアップロードキューに残っているのでしょうか？）</i>
 </p>
 <p class="des"><span>提醒：</span>設定内のカスタムイベントupload_error_handlerに対応します。</p>
 <p class="des"><span>注意：</span>この時点ではファイルアップロードの周期はまだ終了していないため、ここで次のファイルのアップロードを開始することはできません。</p>
@@ -740,7 +740,7 @@ fclose($fileHandle);
 <p>ファイルアップロードの処理が完了したとき（ここでの完了は、ターゲット処理プログラムにFiles情報を送り終えたというだけで、送信のみで、正常に受信されたかどうかは問わない）、かつサーバーが200のHTTPステータスを返したときにトリガーされます。<span class="function">uploadSuccess</span>事件。<span class="parameter">server data</span>サーバーが送信した一部のデータ（例えば自分でechoしたものなど）を指します。そして<span class="parameter">received response</span>サーバー自身が送信したHTTPステータスコードです。</p>
 <p>一部のFlash Playerのバグにより、HTTPステータスコードが取得できず、uploadSuccessイベントがトリガーされないことがあります。このため、2.50版では設定オブジェクトに新しいプロパティassume_success_timeoutが追加され、HTTPステータスコードの受信待ちの最大時間を超えたかどうかを設定し、超えた場合はuploadSuccessをトリガーします。この場合、<span class="parameter">（received response）</span>パラメータは無効になります。</p>
 <p>設定オブジェクトの http_success は、HTTPステータスコードが200以外の値でも uploadSuccess イベントをトリガーすることを許可します。この場合、Flash Player からサーバーデータは利用できません。</p>
-<p>在</p>
+<p>に</p>
 <p class="des"><span>提醒：</span>設定内のカスタムイベント upload_success_handler に対応</p>
 <div class="des"><span>注意：</span>
 <ol>
@@ -756,7 +756,7 @@ fclose($fileHandle);
 <h4><a name="debug"></a><span class="function">debug(<span class="parameter">message</span>)</span></h4>
 <p>debug設定がtrueに設定されている場合、ページの下部にtextAreaが自動的に追加されます。このdebugイベントが書き換えられていない場合、SWFUploadライブラリとFlashは両方ともこのイベントを呼び出して、ページ下部の出力ボックスにデバッグ情報を追加し、デバッグに使用します。</p>
 <p class="des"><span>提醒：</span>設定内のカスタムイベントdebug_handlerに対応します。</p>
-<h4><a name="utility"></a>功能对象 SWFUpload Utility Objects</h4>
+<h4><a name="utility"></a>機能オブジェクト SWFUpload Utility Objects</h4>
 <h4><a name="settingsobject"></a>設定オブジェクト Settings object</h4>
 <p>これはJSのObject型の変数で、SWFUploadインスタンスの初期化に設定を提供します。<strong>その中の各設定プロパティは1回だけしか出現できません。</strong>多くのプロパティはオプションです。オプションのプロパティが設定されていない場合は、SWFUploadライブラリでデフォルト指定されている適切な値が使用されます。詳細はsettingの詳細な説明を参照してください。</p>
 <p><strong>例如:</strong>（settingで設定できるすべてのプロパティ）</p>
@@ -966,7 +966,7 @@ swfu.customSetting.integer_setting += 25;
 swfu.customSetting["a_dom_setting"].style.visibility = "hidden";</code>
 <h5>Event Handlers</h5>
 <p><strong>默认值：</strong>null</p>
-<p>残りの設定は、一連のイベント処理コールバック関数を定義します。SWFUploadの操作中に<a href="../index.html">相应的事件</a>これらがトリガーされます。これらのコールバックでカスタム操作を行う必要がある場合は、設定内で対応するJavaScript関数を定義してください。</p>
+<p>残りの設定は、一連のイベント処理コールバック関数を定義します。SWFUploadの操作中に<a href="../index.html">対応するイベント</a>これらがトリガーされます。これらのコールバックでカスタム操作を行う必要がある場合は、設定内で対応するJavaScript関数を定義してください。</p>
 <h4><a name="supportobject"></a>【新】Support Object</h4>
 <p>SWFUploadインスタンスのsupportプロパティ（その型はオブジェクト）は、SWFUploadの特定の機能が、ブラウザが使用している特定のバージョンのFlash Playerでサポートされているかどうかを確認できます。</p>
 <code>{
@@ -997,7 +997,7 @@ swfu.customSetting["a_dom_setting"].style.visibility = "hidden";</code>
 	upload_cancelled : number	// 退出上传的文件数量
 	queue_errors : number		// 入队失败（fileQueueError触发）的文件数量
 </code>
-<p>これらすべてのプロパティの値は、setStatsメソッドを使用して変更できます。ただし、...を除きます。<em>in_progress</em> 和 <em>files_queued</em>。</p>
+<p>これらすべてのプロパティの値は、setStatsメソッドを使用して変更できます。ただし、...を除きます。<em>in_progress</em>と<em>files_queued</em>。</p>
 <h3><a name="plugins"></a>插件 SWFUpload Plug-ins</h3>
 <p>SWFUpload v2.0以降、いくつかのプラグインが導入されました。これらはSWFUploadがいくつかの機能を実装するのに役立ちます。</p>
 <p>ほとんどのプラグインの使用ドキュメントは、jsプラグイン（plugin）フォルダにあります。</p>
@@ -1014,12 +1014,12 @@ swfu.customSetting["a_dom_setting"].style.visibility = "hidden";</code>
 <p>speedプラグインは、'file'オブジェクトのいくつかのプロパティを拡張して、現在のアップロード状況を記述します。このプラグインには、現在の速度（current speed）、平均速度（average speed）、経過時間（elapsed time）、予想残り時間（remaining time）などの値が含まれます。</p>
 <h3><a name="knownissues"></a>既知の問題 Known Issues</h3>
 <p>Flash Playerおよび多くのブラウザのバグがSWFUploadを悩ませています。しかし、私たちは常に努力を続けています。</p>
-<h4>linux上的取消 Cancelling in Linux</h4>
+<h4>Linuxでのキャンセル Cancelling in Linux</h4>
 <p>Flash 9 Player以前のバージョンでは、Linuxオペレーティングシステム上でアップロードキャンセルを実行すると、ブラウザがクラッシュする可能性があります。ただし、新しいバージョンのFlash Playerではこの問題が改善されています。</p>
-<h4>linux上的上传进度 Upload Progress in Linux</h4>
+<h4>Linux 上のアップロード進捗 Upload Progress in Linux</h4>
 <p>Linux上のFlash Playerは、Windowsのようにアップロード中に継続的にイベントを発行するのではなく、アップロード完了後に一度だけアップロード進捗イベント（uploadProgress）を発行します。</p>
 <p>これは、一部のLinuxディストリビューションがアップロード中にブラウザ全体をロックするためです。</p>
-<h4>MAC上的上传进度 Upload Progress in OS X</h4>
+<h4>MAC上のアップロード進捗 Upload Progress in OS X</h4>
 <p>MAC OS上のFlash PlayerでuploadProgressイベントが発生しないという報告をいくつか受けています。詳細な状況はまだ調査中ですが、潜在的な問題に注意してください。</p>
 <h4>MIME Type</h4>
 <p>ファイルの実際のMIME形式が何であれ、Flash PlayerはMIME形式で...<em>application/octet-stream</em>すべてのファイルをアップロード</p>
@@ -1030,7 +1030,7 @@ swfu.customSetting["a_dom_setting"].style.visibility = "hidden";</code>
 <p>一部のアンチウイルスソフトウェアは、ローカルクライアントプロキシを使用してアップロードファイルを受信し、スキャンします（アップロードファイルをインターセプトしてプロキシサーバーに書き込み、スキャン完了後に実際にターゲットサーバーへ送信するようです）。これにより、SWFUploadはファイル全体がアップロードされたと誤って判断し、100%完了まで大量のuploadProgressイベントを発行します。プロキシが実際にターゲットサーバーへアップロードしている間、SWFUploadは一時停止しているように見えます。</p>
 <p><strong>カスペルスキーアンチウイルスソフトウェア：カスペルスキー</strong>（他の一部のアンチウイルスソフトウェアも）ローカルからのアップロードデータをインターセプトするためにクライアント側プロキシを実装しています。SWFUploadはこのプロキシシステムの存在を検出できません。これらのプロキシサーバーはアップロードファイルを非常に高速に受信し、スキャンしてからターゲットファイルに送信します。</p>
 <h4>apache安全模块 Apache mod_security</h4>
-<p>Apacheのセキュリティモジュールmod_securityは、サーバーが受信したPOSTメッセージを検証します。Flash Playerはエッジケースな方法（an edge case を「取巧的方式」と訳す？）を実装しており（検証するかどうかを決定するパラメータがあります）、POSTによるファイルアップロードもサーバー側で実装されています。</p>
+<p>Apacheのセキュリティモジュールmod_securityは、サーバーが受信したPOSTメッセージを検証します。Flash Playerはエッジケースな方法を実装しており（検証するかどうかを決定するパラメータがあります）、POSTによるファイルアップロードもサーバー側で実装されています。</p>
 <h4>セキュアソケットレイヤー SSL</h4>
 <p>Flash PlayerがSSLではアップロードできないという報告をいくつか受けています。この問題の具体的な状況はまだ確認されていませんが、SSL下でのアップロードは確かに信頼性が低いようです。特に公開鍵と自己署名証明書（self-signed certificates）を使用する場合に問題が発生します。</p>
 <p>同様に、信頼されていない認証機関（CA）が発行したSSL証明書はFlashでは受け入れられません。Flashにはこのような証明書を受け取る方法が用意されていないためです。前述のCookieバグと同様に、Windows版のFlash Playerは、ブラウザが現在使用中の証明書に関係なく、信頼リストにあるCAが発行した証明書のみを受け入れます。</p>
@@ -1038,13 +1038,13 @@ swfu.customSetting["a_dom_setting"].style.visibility = "hidden";</code>
 <p>HTTPの認証メカニズムはFlash Playerで十分にサポートされていません。最新バージョンのFlash Playerでは改善されていますが、旧バージョンではブラウザがクラッシュする可能性があります。</p>
 <h4>过早终止连接 Prematurely terminated connections</h4>
 <p>レスポンスを早期に終了させる（例：ASP.NETのResponse.end()メソッド）と、アップロードが本来完了しているにもかかわらず、SWFUploadがアップロード失敗を報告することがあります。</p>
-<h4>文件的POST名 Filedata POST name in Linux</h4>
+<h4>ファイルのPOST名 Filedata POST name in Linux</h4>
 <p>ファイル受信名の変更（デフォルトは"Filedata"、設定オブジェクトのfile_post_nameプロパティ）は、LinuxのFlash Playerでは機能しません。</p>
 <h4>Cookie bug</h4>
 <p>Windows環境の非IEブラウザ（FireFox, Opera, Safari, など）では、FlashプラグインがIEのcookieを送信します。これにより、多くのサーバーのセッションおよび認証メカニズムが壊れます。</p>
 <p>開発者は、Sessionおよび認証Cookie情報を渡す問題を自分で手動で解決し、サーバー上のセッションも自分で手動で修正する必要があります。セッションを使用したい場合です。</p>
 <p>ただし、SWFUploadパッケージには、このバグを解決するPHPまたはASP.Netのサンプルコードが提供されています。</p>
-<h4>ExternalInterface类的bug（ ExternalInterface bugs）</h4>
+<h4>ExternalInterfaceクラスのバグ（ ExternalInterface bugs）</h4>
 <p>ブラウザ/JSとやり取りするとき、Flash Playerはescapeメソッドを使用してデータを正しくエンコードできません。SWFUploadはこの問題を解決するために多大な努力を払ってきました。将来このバグが修正されれば、SWFUploadは追加のエスケープエンコードデータを送信する予定です。</p>
 <h4>超长服务器数据bug （Server Data length bugs）</h4>
 <p>サーバーレスポンスデータが長すぎると、MACまたはLinuxシステムのFlash Playerではエラーが発生する可能性があります。データが切り詰められたり、変更されたり、一部が重複したりすることがあります。サーバーから返すデータはできるだけ短く簡潔にすることをお勧めします。</p>
@@ -1072,7 +1072,7 @@ swfu.customSetting["a_dom_setting"].style.visibility = "hidden";</code>
 <li>サーバーが返すデータやMacシステム上のFlash Playerでは、uploadSuccessイベントがトリガーされない場合があります。この問題を解決するために、assume_success_timeout設定を追加しました。ただし通常は、受信成功後に短いフィールドを返すことが非常に簡単で信頼性があります。</li>
 <li>一部のユーザーは、Macシステムでサブドメインを含むアドレスへのアップロードに問題があると報告しています</li>
 <li>一部のユーザーは、リダイレクト（HTTPステータスコード302）がMac Flash Playerでうまく処理されないと報告しています。Windowsではこの問題はないようです。302リダイレクトは、いくつかの認証モデルやMVC設計フレームワークでよく使用されます。</li>
-<li>flashの開発ドキュメントによると、OS X 10.3より前のバージョンのシステムでは、bytes loadedが常に-1になります。SWFUploadはそれを0に変更しましたが、total bytesは送信されないため、進捗は永遠に100%に達しません。そのため、アップロード完了時にuploadSuccessまたはuploadCompleteイベントを発行し、UIを更新して100%を表示するよう設定してください。これにより、UIを各システムで統一します。</li>
+<li>Flashの開発ドキュメントによると、OS X 10.3より前のバージョンのシステムでは、bytes loadedが常に-1になります。SWFUploadはそれを0に変更しましたが、total bytesは送信されないため、進捗は永遠に100%に達しません。そのため、アップロード完了時にuploadSuccessまたはuploadCompleteイベントを発行し、UIを更新して100%を表示するよう設定してください。これにより、UIを各システムで統一します。</li>
 <li>一部のユーザーは、Mac Flash Playerでアップロードパスにスペース文字が含まれると問題が発生すると報告しています。それらを+または%20に置き換えてください</li>
 <li>一部のユーザーは、Mac Flash PlayerがHTTP HOSTヘッダーにポート番号を追加することを報告しています（例：http://www.example.com:80）。このパラメータをチェックする場合、この問題には注意が必要です。</li>
 <li>リソースフォーク（resource fork）のみを含むファイルは、Flash Playerによって0バイトファイルとして扱われ、アップロードできません（注：Flash Player 10.1でこの問題が解決された可能性があります）</li>
@@ -1187,11 +1187,11 @@ swfu.customSetting["a_dom_setting"].style.visibility = "hidden";</code>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=".." class="runoob-pop">登录</a>！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href="..">登录</a>！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

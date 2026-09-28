@@ -278,10 +278,10 @@ Animal destroyed</pre>
 <li><code>Animal</code>クラスには仮想関数が定義されています<code>sound()</code>、これは仮想関数（<code>virtual</code>）であり、動物の発声動作を表します。</li>
 <li><code>~Animal()</code>は仮想デストラクタであり、基本クラスポインタが指す派生クラスオブジェクトを解放する際、派生クラスのデストラクタを正しく呼び出してメモリリークを防ぎます。</li>
 </ul>
-<p><strong>派生クラス<code>Dog</code> 和 <code>Cat</code></strong>：</p>
+<p><strong>派生クラス<code>Dog</code>と<code>Cat</code></strong>：</p>
 <ul>
-<li><code>Dog</code> 和 <code>Cat</code>クラスはすべて<code>Animal</code>クラスから派生し、それぞれ<code>sound()</code>メソッドを実装しています。</li>
-<li><code>Dog</code> 的 <code>sound()</code>"Dog barks" と出力します；<code>Cat</code> 的 <code>sound()</code>"Cat meows" と出力します。これにより、同じメソッド（<code>sound()</code>）が異なるクラスで異なる動作を示します。</li>
+<li><code>Dog</code>と<code>Cat</code>クラスはすべて<code>Animal</code>クラスから派生し、それぞれ<code>sound()</code>メソッドを実装しています。</li>
+<li><code>Dog</code>の<code>sound()</code>"Dog barks" と出力します；<code>Cat</code>の<code>sound()</code>"Cat meows" と出力します。これにより、同じメソッド（<code>sound()</code>）が異なるクラスで異なる動作を示します。</li>
 </ul>
 <p><strong>main関数<code>main()</code></strong>：</p>
 <ul>
@@ -364,7 +364,7 @@ Triangle Area: Triangle class area:
 25
 </pre>
 <h3>コード分析</h3><p>
-<strong>Shape クラスの定義：</strong></p><ul><li><code>Shape</code>は抽象基本クラスであり、仮想関数を定義しています。<code>area()</code>。<code>area()</code>は面積を計算する仮想関数であり、<code>virtual</code>キーワードを使用しています。これにより、派生クラスでこの関数をオーバーライドしてポリモーフィズムを実現できます。</li><li><code>width</code> 和 <code>height</code> 是 <code>protected</code>属性は、<code>Shape</code>クラスおよびその派生クラス内でのみアクセスできます。</li></ul>
+<strong>Shape クラスの定義：</strong></p><ul><li><code>Shape</code>は抽象基本クラスであり、仮想関数を定義しています。<code>area()</code>。<code>area()</code>は面積を計算する仮想関数であり、<code>virtual</code>キーワードを使用しています。これにより、派生クラスでこの関数をオーバーライドしてポリモーフィズムを実現できます。</li><li><code>width</code>と<code>height</code>である<code>protected</code>属性は、<code>Shape</code>クラスおよびその派生クラス内でのみアクセスできます。</li></ul>
 <pre>// 基类 Shape，表示形状
 class Shape {
    protected:
@@ -380,7 +380,7 @@ class Shape {
          return 0;
       }
 };</pre>
-<p><strong>Rectangle クラスの定義：</strong></p><ul><li><code>Rectangle</code>は<code>Shape</code>クラスを継承し、<code>area()</code>メソッドをオーバーライドして、長方形の面積を計算します。</li><li><code>area()</code>メソッドは<code>override</code>キーワードを使用しており、これは基本クラスの<code>Shape</code> 的 <code>area()</code>メソッドのオーバーライドであることを示します。</li><li><code>Rectangle::area()</code>を返します。<code>width * height</code>、つまり長方形の面積です。</li></ul>
+<p><strong>Rectangle クラスの定義：</strong></p><ul><li><code>Rectangle</code>は<code>Shape</code>クラスを継承し、<code>area()</code>メソッドをオーバーライドして、長方形の面積を計算します。</li><li><code>area()</code>メソッドは<code>override</code>キーワードを使用しており、これは基本クラスの<code>Shape</code>の<code>area()</code>メソッドのオーバーライドであることを示します。</li><li><code>Rectangle::area()</code>を返します。<code>width * height</code>、つまり長方形の面積です。</li></ul>
 <pre>// 派生类 Rectangle，表示矩形
 class Rectangle : public Shape {
    public:
@@ -626,7 +626,7 @@ int main() {
 <p>7、フレンドはメンバ関数ではありません。メンバ関数のみが仮想にできるため、フレンドは仮想関数にできません。ただし、フレンド関数に仮想メンバ関数を呼び出させることで、フレンドの仮想問題を解決できます。</p>
 <p>8、デストラクタは仮想関数であるべきです。対応するオブジェクト型のデストラクタが呼び出されます。したがって、ポインタが子クラスオブジェクトを指している場合、子クラスのデストラクタが呼び出され、その後自動的に基底クラスのデストラクタが呼び出されます。</p>
 <div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">lqd052</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   lqd052</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  172***2008@qq.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="../w3cnote/cpp-virtual-functions.html" rel="nofollow" target="_blank">参考URL</a></p></div></span>9年前 (2017-08-02)</div></div></li><!-- #comment-## -->
-<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-22586"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   ZZsprite</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  125***39009@qq.com</p></div><div class="upvotejs" data-commid="22586" id="runoobvote-id-22586"><a class="upvote"></a> <span class="count">137</span></div></div><div class="comt-main" id="div-comment-22586"><p>C++の多態性は、メンバ関数を呼び出す際、その関数を呼び出すオブジェクトの型に応じて異なる関数が実行されることを意味します；</p><p>多態性を形成するには次の3つの条件が必要です：</p><p>1、継承関係が存在する必要があります；</p><p>2、継承関係には同名の仮想関数が必要です（<b>ここで、仮想関数は基底クラスでキーワード Virtual を使用して宣言された関数です。派生クラスで基底クラスに定義された仮想関数を再定義するとき、コンパイラにその関数へ静的にリンクしないように指示します。</b>）；</p><p>3、基底クラス型のポインタまたは参照が存在し、そのポインタまたは参照を通じて仮想関数を呼び出します；</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">ZZsprite</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   ZZsprite</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  125***39009@qq.com</p></div></span>9年前 (2018-01-04)</div></div></li><!-- #comment-## -->
+<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-22586"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   ZZsprite</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  125***39009@qq.com</p></div><div class="upvotejs" data-commid="22586" id="runoobvote-id-22586"><a class="upvote"></a> <span class="count">137</span></div></div><div class="comt-main" id="div-comment-22586"><p>C++の多態性は、メンバ関数を呼び出す際、その関数を呼び出すオブジェクトの型に応じて異なる関数が実行されることを意味します；</p><p>多態性を形成するには次の3つの条件が必要です：</p><p>継承関係が存在する必要があります；</p><p>2、継承関係には同名の仮想関数が必要です（<b>ここで、仮想関数は基底クラスでキーワード Virtual を使用して宣言された関数です。派生クラスで基底クラスに定義された仮想関数を再定義するとき、コンパイラにその関数へ静的にリンクしないように指示します。</b>）；</p><p>3、基底クラス型のポインタまたは参照が存在し、そのポインタまたは参照を通じて仮想関数を呼び出します；</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">ZZsprite</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   ZZsprite</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  125***39009@qq.com</p></div></span>9年前 (2018-01-04)</div></div></li><!-- #comment-## -->
 <li class="comment even thread-even depth-1" id="comment-29838"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   Coder</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  cm6***01@qq.com</p></div><div class="upvotejs" data-commid="29838" id="runoobvote-id-29838"><a class="upvote"></a> <span class="count">128</span></div></div><div class="comt-main" id="div-comment-29838"><p><strong>動的束縛の実装メカニズム VTABLE</strong></p><p>コンパイラは仮想関数を含む各クラスに対して仮想関数テーブルVTABLEを作成します。テーブルの各項目は仮想関数のアドレスを指します。つまり、VTABLEテーブルは関数ポインタの配列と見なすことができ、各仮想関数のエントリアドレスはこの配列の1つの要素です。</p><p>仮想関数を含む各クラスはそれぞれ独自の仮想関数テーブルVTABLEを持ちます。各派生クラスのVTABLEはその各基底クラスのVTABLEを継承します。基底クラスのVTABLEに特定の項目（仮想関数のエントリアドレス）が含まれている場合、その派生クラスのVTABLEにも同じ項目が含まれますが、2つの項目の値は異なる場合があります。派生クラスがその項目に対応する仮想関数をオーバーライドした場合、派生クラスのVTABLEのその項目はオーバーライド後の仮想関数を指します。派生クラスがその項目に対応する仮想関数を再定義していない場合は、基底クラスの仮想関数アドレスを使用します。</p><p>仮想関数を含むクラスのオブジェクトを作成するとき、コンパイラは各オブジェクトのメモリレイアウトにvptrポインタ項目を追加し、そのポインタはそのクラスのVTABLEを指します。基底クラスオブジェクトを指すポインタ（bpとする）を介して仮想関数を呼び出すとき、コンパイラが生成するコードは、まず指されているオブジェクトのvtb1ポインタを取得し、次にvtb1が指すクラスのVTABLE内の対応する項目（具体的な仮想関数のエントリアドレス）を呼び出します。</p><p>基底クラスが<b>仮想関数を定義していない</b>場合、その長さ＝データメンバの長さ；派生クラスの長さ＝自身のデータメンバの長さ＋基底クラスから継承したデータメンバの長さ；</p><p>基底クラスが<b>仮想関数を定義した後</b>，その長さ=データメンバーの長さ+仮想関数テーブルのアドレス長；派生クラスの長さ=自身のデータメンバーの長さ+基底クラスから継承したデータメンバーの長さ+仮想関数テーブルのアドレス長。</p><p>仮想関数を1つ含むクラスと複数の仮想関数を含むクラスの長さの増分は0です。仮想関数を含むクラスは、仮想関数テーブルの先頭アドレスを格納するためのポインタを1つ追加するだけです。</p><p>派生クラスと基底クラスで同名の仮想関数は、VTABLE内で同じインデックス番号（または順序番号）を持ちます。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">Coder</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   Coder</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  cm6***01@qq.com</p></div></span>8年前 (2018-07-19)</div></div></li><!-- #comment-## -->
 <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-34800"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>白菜</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  109***6982@qq.com</p></div><div class="upvotejs" data-commid="34800" id="runoobvote-id-34800"><a class="upvote"></a> <span class="count">169</span></div></div><div class="comt-main" id="div-comment-34800"><p>仮想関数についてここでの説明はやや混乱しています。C++の書き方は奇抜なものが少なくないためです。実際にはシンプルに理解できます。</p>
 <p>仮想関数は実装（定義）しなくても構いません。実装（定義）されていない仮想関数は純粋仮想関数です。</p>
@@ -803,11 +803,11 @@ Hello, world!</pre><div class="comt-meta wrapper"><span class="comt-author"><a h
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1096,7 +1096,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

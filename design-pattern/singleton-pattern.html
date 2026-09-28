@@ -230,7 +230,7 @@ Hello World!
 <h2 class="tutheader">シングルトンパターンのいくつかの実装方法</h2>
 <p>シングルトンパターンの実装には複数の方法があります。以下の通りです：</p>
 <h3>1、遅延初期化方式、スレッドセーフではない</h3>
-<p><b>Lazy 初期化を行うか：</b>是</p>
+<p><b>Lazy 初期化を行うか：</b>である</p>
 <p><b>マルチスレッドセーフか：</b>否</p>
 <p><b>実装の難易度：</b>易</p>
 <p><b>説明：</b>この方法は最も基本的な実装方法です。この実装の最大の問題は、マルチスレッドをサポートしないことです。synchronized によるロックがないため、厳密な意味ではシングルトンパターンとは言えません。<br/>この方法は lazy loading（遅延ロード）が顕著ですが、スレッドセーフは要求されておらず、マルチスレッドでは正常に動作しません。</p>
@@ -250,8 +250,8 @@ Hello World!
 </div></div>
 <p><b>次に紹介するいくつかの実装方法はすべてマルチスレッドをサポートしますが、パフォーマンスに違いがあります。</b></p>
 <h3>2、遅延初期化方式、スレッドセーフ</h3>
-<p><b>Lazy 初期化を行うか：</b>是</p>
-<p><b>マルチスレッドセーフか：</b>是</p>
+<p><b>Lazy 初期化を行うか：</b>である</p>
+<p><b>マルチスレッドセーフか：</b>である</p>
 <p><b>実装の難易度：</b>易</p>
 <p><b>説明：</b>この方法は優れた lazy loading を備えており、マルチスレッドでうまく動作しますが、効率が非常に低く、99% のケースでは同期は不要です。<br/>長所：最初の呼び出しでのみ初期化するため、メモリの無駄を避けます。<br/>短所：シングルトンを保証するには synchronized によるロックが必要ですが、ロックは効率に影響します。<br/>getInstance() のパフォーマンスはアプリケーションにとって重要ではありません（このメソッドはあまり頻繁に使用されません）。</p>
 <div class="example">
@@ -270,7 +270,7 @@ Hello World!
 </div></div>
 <h3>3、即時初期化方式</h3>
 <p><b>Lazy 初期化を行うか：</b>否</p>
-<p><b>マルチスレッドセーフか：</b>是</p>
+<p><b>マルチスレッドセーフか：</b>である</p>
 <p><b>実装の難易度：</b>易</p>
 <p><b>説明：</b>この方法は比較的よく使われますが、ガベージオブジェクトが発生しやすいです。<br/>長所：ロックがないため、実行効率が向上します。<br/>短所：クラスロード時に初期化されるため、メモリを浪費します。<br/>これは classloader メカニズムに基づいてマルチスレッドの同期問題を回避しています。ただし、instance はクラスロード時にインスタンス化されます。クラスロードを引き起こす原因はさまざまですが、シングルトンパターンではほとんどが getInstance メソッドの呼び出しです。しかし、他の方法（または他の静的メソッド）によってクラスロードが発生する可能性も否定できないため、この時点で instance を初期化しても明らかに lazy loading の効果は得られません。</p>
 <div class="example">
@@ -286,8 +286,8 @@ Hello World!
 </div></div>
 <h3>4、ダブルチェックロック/二重チェックロック（DCL、つまり double-checked locking）</h3>
 <p><b>JDK バージョン：</b>JDK 1.5 以降</p>
-<p><b>Lazy 初期化を行うか：</b>是</p>
-<p><b>マルチスレッドセーフか：</b>是</p>
+<p><b>Lazy 初期化を行うか：</b>である</p>
+<p><b>マルチスレッドセーフか：</b>である</p>
 <p><b>実装の難易度：</b>やや複雑</p>
 <p><b>説明：</b>この方法は二重ロック機構を採用しており、安全で、マルチスレッド環境でも高いパフォーマンスを維持できます。<br/>getInstance() のパフォーマンスはアプリケーションにとって重要です。</p>
 <div class="example">
@@ -309,8 +309,8 @@ Hello World!
 </span><span class="hl-brackets">}</span></div>
 </div></div>
 <h3>5、登録方式/静的内部クラス</h3>
-<p><b>Lazy 初期化を行うか：</b>是</p>
-<p><b>マルチスレッドセーフか：</b>是</p>
+<p><b>Lazy 初期化を行うか：</b>である</p>
+<p><b>マルチスレッドセーフか：</b>である</p>
 <p><b>実装の難易度：</b>概要</p>
 <p><b>説明：</b>この方法は二重チェックロック方式と同じ効果を達成できますが、実装はより簡単です。静的フィールドに遅延初期化を使用する場合は、二重チェックロック方式ではなくこの方法を使用する必要があります。この方法は静的フィールドの場合にのみ適用され、二重チェックロック方式はインスタンスフィールドで遅延初期化が必要な場合に使用できます。<br/>この方法も同様に classloader メカニズムを利用して、instance を初期化する際にスレッドが1つだけであることを保証します。第3の方法と異なる点は、第3の方法では Singleton クラスがロードされれば instance がインスタンス化される（lazy loading 効果が得られない）のに対し、この方法では Singleton クラスがロードされても instance が必ずしも初期化されるわけではないことです。SingletonHolder クラスは積極的に使用されないため、明示的に getInstance メソッドを呼び出して初めて SingletonHolder クラスが明示的にロードされ、instance がインスタンス化されます。考えてみてください。instance のインスタンス化がリソースを多く消費する場合、それを遅延ロードしたいと思うでしょう。一方で、Singleton クラスのロード時にインスタンス化したくない場合もあります。なぜなら、Singleton クラスが他の場所で積極的に使用されてロードされる可能性を排除できないため、その時点で instance をインスタンス化するのは明らかに適切ではないからです。このような場合、この方法は第3の方法よりも合理的です。</p>
 <div class="example">
@@ -329,7 +329,7 @@ Hello World!
 <h3>6、列挙型</h3>
 <p><b>JDK バージョン：</b>JDK1.5 以降</p>
 <p><b>Lazy 初期化かどうか：</b>否</p>
-<p><b>マルチスレッドセーフかどうか：</b>是</p>
+<p><b>マルチスレッドセーフかどうか：</b>である</p>
 <p><b>実装難易度：</b>易</p>
 <p><b>説明：</b>この実装方法はまだ広く採用されていませんが、シングルトンパターンを実装する最良の方法です。より簡潔で、シリアライゼーションメカニズムを自動的にサポートし、複数回のインスタンス化を絶対に防ぎます。<br/>この方法は Effective Java の著者 Josh Bloch が提唱した方法であり、マルチスレッドの同期問題を回避できるだけでなく、シリアライゼーションメカニズムを自動的にサポートし、デシリアライゼーションによる新しいオブジェクトの再作成を防ぎ、複数回のインスタンス化を絶対に防ぎます。ただし、JDK1.5 以降に追加された enum 機能のため、この方法で書くとどうしても馴染みが薄く感じられ、実際の作業でもあまり使われません。<br/>リフレクション攻撃によってプライベートコンストラクタを呼び出すことはできません。</p>
 <div class="example">
@@ -469,7 +469,7 @@ Hello World!
 <ol class="commentlist">
 <li class="comment even thread-even depth-1" id="comment-34897"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>呆けた全世界が狂っている</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  197***4949@qq.com</p></div><div class="upvotejs" data-commid="34897" id="runoobvote-id-34897"><a class="upvote"></a> <span class="count">94</span></div></div><div class="comt-main" id="div-comment-34897"><p>遅延初期化方式と先行初期化方式の根本的な違いは、クラス内のメソッド外で自分のオブジェクトを生成するかどうかにあります。</p>
 <p>また、オブジェクトの宣言はすべてプライベート化し、コンストラクタもすべてプライベート化する必要があります。これにより、外部から new でオブジェクトを生成してアクセスすることができなくなります。</p>
-<p>先行初期化方式はオブジェクトを宣言して作成します（お腹が空いているから）。遅延初期化方式はオブジェクトを宣言するだけで、そのクラスの getInstance() メソッドを呼び出したときに new でオブジェクトを生成します。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">呆的全世界疯狂</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>呆けた全世界が狂っている</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  197***4949@qq.com</p></div></span>8年前 (2018-09-10)</div></div></li><!-- #comment-## -->
+<p>先行初期化方式はオブジェクトを宣言して作成します（お腹が空いているから）。遅延初期化方式はオブジェクトを宣言するだけで、そのクラスの getInstance() メソッドを呼び出したときに new でオブジェクトを生成します。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">全世界が呆然と熱狂する</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>呆けた全世界が狂っている</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  197***4949@qq.com</p></div></span>8年前 (2018-09-10)</div></div></li><!-- #comment-## -->
 <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-35477"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   deed</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  jwd***@qq.com</p></div><div class="upvotejs" data-commid="35477" id="runoobvote-id-35477"><a class="upvote"></a> <span class="count">19</span></div></div><div class="comt-main" id="div-comment-35477"><p>シングルトンパターンにおける先行初期化方式</p>
 <pre>class Singleton{
 public static String a = "11";
@@ -684,11 +684,11 @@ public class Test {
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -977,7 +977,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

@@ -84,7 +84,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <!-- ad end-->
 <h2>一般的な列のデータ型選択</h2>
 <p>1.文字型はvarchar/nvarcharデータ型を採用することを推奨します。<br/>2.金額・通貨はmoneyデータ型を採用することを推奨します。<br/>3.科学計算はnumericデータ型を採用することを推奨します。<br/>4.自動増分IDはbigintデータ型を推奨します（データ量が多くなるとint型では収まりきらず、後々の改修が面倒になります）。<br/>5.時間型はdatetimeデータ型を推奨します。<br/>6.text、ntext、imageといった古いデータ型の使用は禁止します。<br/>7.xmlデータ型、varchar(max)、nvarchar(max)の使用禁止</p>
-<h2>约束与索引</h2>
+<h2>制約とインデックス</h2>
 <p><strong>各テーブルには主キーが必要</strong></p>
 <ul>
 <li>各テーブルには必ず主キーを設け、エンティティの整合性を強制します。</li>
@@ -102,7 +102,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>（<strong>新しいテーブルでNULLを許可しないのはなぜか？</strong><br/>
 <strong>NULL値を許可するとアプリケーションの複雑さが増します。さまざまな予期しないバグを防ぐために、特定のロジックコードを追加する必要があります。</strong><br/>
 <strong>三値論理では、すべての等号（"="）を使用するクエリにisnullの判定を追加する必要があります。</strong><br/>
-<strong>Null=Null、Null!=Null、not(Null=Null)、not(Null!=Null)都为unknown，不为true</strong>）</p>
+<strong>Null=Null、Null!=Null、not(Null=Null)、not(Null!=Null)はすべてunknownであり、trueではない。</strong>）</p>
 <p>例を挙げて説明します：</p>
 <p>テーブル内のデータが図のようにある場合：</p>
 <p><img alt="" decoding="async" src="../wp-content/uploads/2015/06/764796f7418b0a9e0fe74369bc94fb91.png"/></p>
@@ -207,7 +207,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <li>インデックスはアプリケーションに対して透過的であるべきです。指定したインデックスが削除されるとクエリエラーが発生し、障害対応に不利です。</li>
 <li>新しく作成したインデックスはアプリケーションですぐに使用できず、コードをリリースして初めて有効になります。</li>
 </ul>
-<h2>变量/参数/关联字段类型必须与字段类型一致（这是我之前不太关注的）</h2>
+<h2>変数/パラメータ/関連フィールドの型はフィールド型と一致する必要があります（これは以前あまり気にしていなかった点です）</h2>
 <p>型変換による余分なCPU消費を避けてください。大規模テーブルのスキャンでは特に深刻です。</p>
 <p><img alt="" decoding="async" src="../wp-content/uploads/2015/06/a46fb7e52c3107f55b1bfd1c36a53247.png"/></p>
 <p><img alt="" decoding="async" src="../wp-content/uploads/2015/06/ff9467e29f94f87b3ce197c1424f8e36.png"/></p>
@@ -400,11 +400,11 @@ Estimated Rows = Density * Total Rows</p>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=".." class="runoob-pop">登录</a>！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href="..">登录</a>！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

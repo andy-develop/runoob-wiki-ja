@@ -279,7 +279,7 @@ trainable_params <span style="color: Gray;">=</span> <span style="color: Teal;">
 <span style="color: Green;font-weight:bold;">import</span> torchvision.<span style="color: #05a;">models</span> <span style="color: Green;font-weight:bold;">as</span> models<br/>
 <span style="color: Green;font-weight:bold;">from</span> torchvision.<span style="color: #05a;">models</span> <span style="color: Green;font-weight:bold;">import</span> ResNet18_Weights<br/>
 <br/>
-NUM_CLASSES <span style="color: Gray;">=</span> <span style="color: Maroon;">5</span>   <span style="color: #a50"># 目标任务的类别数</span><br/>
+NUM_CLASSES <span style="color: Gray;">=</span> <span style="color: Maroon;">5</span>   <span style="color: #a50"># 対象タスクのクラス数</span><br/>
 <br/>
 <span style="color: #a50"># Step 1：加载预训练模型</span><br/>
 model <span style="color: Gray;">=</span> models.<span style="color: #05a;">resnet18</span><span style="color: Olive;">(</span>weights<span style="color: Gray;">=</span>ResNet18_Weights.<span style="color: #05a;">IMAGENET1K_V1</span><span style="color: Olive;">)</span><br/>
@@ -288,11 +288,11 @@ model <span style="color: Gray;">=</span> models.<span style="color: #05a;">resn
 <span style="color: Green;font-weight:bold;">for</span> param <span style="color: Green;font-weight:bold;">in</span> model.<span style="color: #05a;">parameters</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span>:<br/>
     param.<span style="color: #05a;">requires_grad</span> <span style="color: Gray;">=</span> <span style="color: Teal;">False</span><br/>
 <br/>
-<span style="color: #a50"># Step 3：替换分类头（这部分参数默认 requires_grad=True）</span><br/>
+<span style="color: #a50"># Step 3：分類ヘッドを置き換える（この部分のパラメータはデフォルトで requires_grad=True）</span><br/>
 in_features <span style="color: Gray;">=</span> model.<span style="color: #05a;">fc</span>.<span style="color: #05a;">in_features</span>    <span style="color: #a50"># 512</span><br/>
 model.<span style="color: #05a;">fc</span> <span style="color: Gray;">=</span> nn.<span style="color: #05a;">Linear</span><span style="color: Olive;">(</span>in_features<span style="color: Gray;">,</span> NUM_CLASSES<span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 验证：只有分类头是可训练的</span><br/>
+<span style="color: #a50"># 検証：分類ヘッドのみが訓練可能である</span><br/>
 trainable <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: Olive;">(</span>n<span style="color: Gray;">,</span> p.<span style="color: #05a;">shape</span><span style="color: Olive;">)</span> <span style="color: Green;font-weight:bold;">for</span> n<span style="color: Gray;">,</span> p <span style="color: Green;font-weight:bold;">in</span> model.<span style="color: #05a;">named_parameters</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span> <span style="color: Green;font-weight:bold;">if</span> p.<span style="color: #05a;">requires_grad</span><span style="color: Olive;">]</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"可训练层数: {len(trainable)}"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">for</span> name<span style="color: Gray;">,</span> shape <span style="color: Green;font-weight:bold;">in</span> trainable:<br/>
@@ -306,7 +306,7 @@ optimizer <span style="color: Gray;">=</span> torch.<span style="color: #05a;">o
     <span style="color: Teal;">filter</span><span style="color: Olive;">(</span><span style="color: Green;font-weight:bold;">lambda</span> p: p.<span style="color: #05a;">requires_grad</span><span style="color: Gray;">,</span> model.<span style="color: #05a;">parameters</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
     lr<span style="color: Gray;">=</span><span style="color: Maroon;">1e-3</span><br/>
 <span style="color: Olive;">)</span><br/>
-<span style="color: #a50"># 或等价的更清晰写法：</span><br/>
+<span style="color: #a50"># または同等の、より明確な書き方：</span><br/>
 optimizer <span style="color: Gray;">=</span> torch.<span style="color: #05a;">optim</span>.<span style="color: #05a;">Adam</span><span style="color: Olive;">(</span>model.<span style="color: #05a;">fc</span>.<span style="color: #05a;">parameters</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span> lr<span style="color: Gray;">=</span><span style="color: Maroon;">1e-3</span><span style="color: Olive;">)</span><br/>
 </div>
 </div>
@@ -347,7 +347,7 @@ model <span style="color: Gray;">=</span> models.<span style="color: #05a;">resn
 <span style="color: Green;font-weight:bold;">for</span> param <span style="color: Green;font-weight:bold;">in</span> model.<span style="color: #05a;">parameters</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span>:<br/>
     param.<span style="color: #05a;">requires_grad</span> <span style="color: Gray;">=</span> <span style="color: Teal;">False</span><br/>
 <br/>
-<span style="color: #a50"># 只解冻 layer4 和 fc（ResNet 的最后一个 Block 和分类头）</span><br/>
+<span style="color: #a50"># layer4 と fc（ResNet の最後のブロックと分類ヘッド）のみを凍結解除する</span><br/>
 <span style="color: Green;font-weight:bold;">for</span> param <span style="color: Green;font-weight:bold;">in</span> model.<span style="color: #05a;">layer4</span>.<span style="color: #05a;">parameters</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span>:<br/>
     param.<span style="color: #05a;">requires_grad</span> <span style="color: Gray;">=</span> <span style="color: Teal;">True</span><br/>
 <br/>
@@ -383,7 +383,7 @@ optimizer <span style="color: Gray;">=</span> torch.<span style="color: #05a;">o
 <br/>
 <br/>
 <span style="color: #a50"># 方案二：逐层递减学习率（最精细）</span><br/>
-<span style="color: #a50"># 越靠近输出的层，学习率越大</span><br/>
+<span style="color: #a50"># 出力に近い層ほど、学習率が大きい</span><br/>
 layer_groups <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><br/>
     <span style="color: Olive;">(</span>model.<span style="color: #05a;">layer1</span><span style="color: Gray;">,</span> <span style="color: Maroon;">1e-5</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span>    <span style="color: #a50"># 最浅层，最小学习率</span><br/>
     <span style="color: Olive;">(</span>model.<span style="color: #05a;">layer2</span><span style="color: Gray;">,</span> <span style="color: Maroon;">3e-5</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
@@ -1192,11 +1192,11 @@ transforms.<span style="color: #05a;">Normalize</span><span style="color: Olive;
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてメモを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1485,7 +1485,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

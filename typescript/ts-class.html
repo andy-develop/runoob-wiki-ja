@@ -195,7 +195,7 @@ class class_name {
 <h3>例：シンプルなクラスの作成</h3>
 <div class="example">
 <h2 class="example">例</h2>
-<div class="example_code">// 定义一个空的 Person 类<br/>
+<div class="example_code">// 空の Person クラスを定義する<br/>
 class Person {<br/>
 }<br/>
 </div>
@@ -217,9 +217,9 @@ class Person {<br/>
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">// 定义 Car 类<br/>
-class Car {<br/>// 字段：描述汽车的属性<br/>
+class Car {<br/>// 字段：描述汽车の属性<br/>
     engine: string;<br/>
-<br/>// 构造函数：在创建对象时初始化 engine<br/>
+<br/>// コンストラクター：オブジェクト作成時に engine を初期化する<br/>
     constructor(engine: string) {<br/>
         this.engine = engine;<br/>
     }<br/>
@@ -227,7 +227,7 @@ class Car {<br/>// 字段：描述汽车的属性<br/>
     disp(): void {<br/>console.log("发动机型号: " + this.engine);<br/>
     }<br/>
 }<br/>
-<br/>// 创建类的实例<br/>var car = new Car("V8 发动机");<br/>
+<br/>// クラスのインスタンスを作成<br/>var car = new Car("V8 发动机");<br/>
 <br/>// 访问字段<br/>console.log("读取发动机: " + car.engine);<br/>
 <br/>// 调用方法<br/>
 car.disp();<br/>
@@ -281,7 +281,7 @@ class Person {<br/>public name: string;    // 公有属性<br/>public age: numbe
         this.age = age;<br/>
     }<br/>
 <br/>
-    public introduce(): void {<br/>console.log("我是 " + this.name + "，今年 " + this.age + " 岁");<br/>
+    public introduce(): void {<br/>console.log("私は " + this.name + "、今年 " + this.age + " 歳");<br/>
     }<br/>
 }<br/>
 <br/>
@@ -305,7 +305,7 @@ class Person {<br/>
     }<br/>
 }<br/>
 <br/>var person = new Person("Alice", "我喜欢编程");<br/>
-<br/>console.log("姓名: " + person.name);   // 可以访问<br/>// console.log(person.secret);        // 错误：'secret' 是私有属性<br/>
+<br/>console.log("姓名: " + person.name);   // 可以访问<br/>// console.log(person.secret);        // エラー：'secret' はプライベートプロパティです<br/>
 <br/>person.revealSecret();                 // 通过公有方法访问私有属性<br/>
 </div>
 </div>
@@ -320,7 +320,7 @@ class Person {<br/>protected name: string;  // 受保护属性<br/>
         this.name = name;<br/>
     }<br/>
 <br/>
-    protected sayHello(): void {<br/>console.log("你好，我是 " + this.name);<br/>
+    protected sayHello(): void {<br/>console.log("こんにちは、私は " + this.name);<br/>
     }<br/>
 }<br/>
 <br/>
@@ -332,12 +332,12 @@ class Student extends Person {<br/>
         this.grade = grade;<br/>
     }<br/>
 <br/>
-    public introduce(): void {<br/>// 子类可以访问受保护的属性和方法<br/>console.log("我是 " + this.name + "，年级: " + this.grade);<br/>
+    public introduce(): void {<br/>// サブクラスは保護されたプロパティとメソッドにアクセスできる<br/>console.log("私は " + this.name + "、学年: " + this.grade);<br/>
         this.sayHello();<br/>
     }<br/>
 }<br/>
 <br/>var student = new Student("Bob", "高三");<br/>student.introduce();    // 可以访问<br/>
-<br/>// console.log(student.name);  // 错误：'name' 是受保护属性<br/>
+<br/>// console.log(student.name);  // エラー：'name' はプロテクトされたプロパティです<br/>
 </div>
 </div>
 <p><strong>実行結果：</strong></p>
@@ -366,7 +366,7 @@ class Shape {<br/>
 }<br/>
 <br/>// 子类：圆，继承自 Shape<br/>
 class Circle extends Shape {<br/>
-    disp(): void {<br/>console.log("圆的面积: " + this.area);<br/>
+    disp(): void {<br/>console.log("円の面積: " + this.area);<br/>
     }<br/>
 }<br/>
 <br/>
@@ -407,14 +407,14 @@ leaf.str = "hello";<br/>console.log("str 值: " + leaf.str);<br/>
 <h2 class="example">例</h2>
 <div class="example_code">// 父类<br/>
 class PrinterClass {<br/>
-    doPrint(): void {<br/>console.log("父类的 doPrint() 方法");<br/>
+    doPrint(): void {<br/>console.log("親クラスの doPrint() メソッド");<br/>
     }<br/>
 }<br/>
 <br/>// 子类：重写父类方法<br/>
 class StringPrinter extends PrinterClass {<br/>
-    doPrint(): void {<br/>// 调用父类的方法<br/>
+    doPrint(): void {<br/>// 親クラスのメソッドを呼び出す<br/>
         super.doPrint();<br/>
-<br/>// 子类自己的逻辑<br/>console.log("子类的 doPrint() 方法");<br/>
+<br/>// 子クラス自身のロジック<br/>console.log("子クラスの doPrint() メソッド");<br/>
     }<br/>
 }<br/>
 <br/>
@@ -436,7 +436,7 @@ obj.doPrint();<br/>
 class StaticMem {<br/>// 静态属性<br/>
     static num: number;<br/>
 <br/>// 静态方法<br/>
-    static disp(): void {<br/>console.log("num 值为 " + StaticMem.num);<br/>
+    static disp(): void {<br/>console.log("num の値は " + StaticMem.num);<br/>
     }<br/>
 }<br/>
 <br/>// 直接通过类名访问静态成员<br/>
@@ -460,7 +460,7 @@ class Person {<br/>
 <br/>
 var obj = new Person();<br/>
 var isPerson = obj instanceof Person;<br/>
-<br/>console.log("obj 是 Person 类的实例吗？ " + isPerson);<br/>
+<br/>console.log("obj は Person クラスのインスタンスですか？ " + isPerson);<br/>
 </div>
 </div>
 <p><strong>実行結果：</strong></p>
@@ -498,7 +498,7 @@ var loan = new AgriLoan(10, 1);<br/>console.log("利率: " + loan.interest + "%�
 <div class="example_code">// 抽象クラス<br/>
 abstract class Animal {<br/>abstract makeSound(): void;  // 抽象メソッド。サブクラスは実装する必要があります<br/>
 <br/>
-    move(): void {<br/>console.log("动物在移动");<br/>
+    move(): void {<br/>console.log("動物が移動しています");<br/>
     }<br/>
 }<br/>
 <br/>// 具象クラス：抽象クラスを継承<br/>
@@ -709,11 +709,11 @@ discountedProduct.print();<br/>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に必ず<a href=";.html" class="runoob-pop">ログイン</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に必ず<a class="runoob-pop" href=";.html">ログイン</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1002,7 +1002,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

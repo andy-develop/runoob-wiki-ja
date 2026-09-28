@@ -170,7 +170,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>コンピュータ内部ではすべての数値が2進数で格納されますが、プログラムでは異なる基数で表すことができます：</p>
 <table class="reference">
 <tr><th>进制</th><th>基数</th><th>NASM 写法</th><th>数値範囲（32ビット）</th></tr>
-<tr><td>二进制</td><td>2</td><td><code>0b10101010</code> 或 <code>10101010b</code></td><td>0 和 1</td></tr>
+<tr><td>二进制</td><td>2</td><td><code>0b10101010</code> 或 <code>10101010b</code></td><td>0 と 1</td></tr>
 <tr><td>八进制</td><td>8</td><td><code>0o52</code> 或 <code>52o</code></td><td>0-7</td></tr>
 <tr><td>十进制</td><td>10</td><td><code>42</code></td><td>0-9</td></tr>
 <tr><td>十六进制</td><td>16</td><td><code>0x2A</code> 或 <code>2Ah</code></td><td>0-9, A-F</td></tr>
@@ -180,7 +180,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>画面上で入力および出力されるものはすべて<span class="marked">ASCII 字符</span>、バイナリ数値ではありません。</p>
 <p>文字と数値の変換を理解することは、アセンブリ言語での数値処理の中核です：</p>
 <table class="reference">
-<tr><th>字符</th><th>ASCII 值</th><th>对应的数值</th></tr>
+<tr><th>字符</th><th>ASCII 值</th><th>対応する数値</th></tr>
 <tr><td>'0'</td><td>0x30（48）</td><td>0</td></tr>
 <tr><td>'1'</td><td>0x31（49）</td><td>1</td></tr>
 <tr><td>'9'</td><td>0x39（57）</td><td>9</td></tr>
@@ -197,14 +197,14 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2 class="example">实例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;">; 文件路径：string_to_int.asm</span><br/>
-<span style="color: #666666; font-style: italic;">; 将十进制数字字符串转换为整数值</span><br/>
+<span style="color: #666666; font-style: italic;">; 10進数の文字列を整数値に変換する</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
     input_str <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'12345'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>      <span style="color: #666666; font-style: italic;">; 输入字符串 "12345"</span><br/>
     input_len <span style="color: #0000FF; font-weight: bold;">dd</span> <span style="color: #FF0000;">5</span>               <span style="color: #666666; font-style: italic;">; 字符串长度</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.bss</span><br/>
-    result_val <span style="color: #0000FF; font-weight: bold;">resd</span> <span style="color: #FF0000;">1</span>            <span style="color: #666666; font-style: italic;">; 存放转换后的数值</span><br/>
+    result_val <span style="color: #0000FF; font-weight: bold;">resd</span> <span style="color: #FF0000;">1</span>            <span style="color: #666666; font-style: italic;">; 変換後の数値を格納</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.text</span><br/>
     <span style="color: #0000FF; font-weight: bold;">global</span> _start<br/>
@@ -222,13 +222,13 @@ convert_loop<span style="color: #339933;">:</span><br/>
     <span style="color: #666666; font-style: italic;">; mul ebx: edx:eax = eax * ebx</span><br/>
 <br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">bl</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46AA03; font-weight: bold;">esi</span><span style="color: #009900; font-weight: bold;">]</span>                <span style="color: #666666; font-style: italic;">; 读取当前字符</span><br/>
-    <span style="color: #00007F; font-weight: bold;">sub</span> <span style="color: #46AA03; font-weight: bold;">bl</span><span style="color: #339933;">,</span> <span style="color: #7F007F;">'0'</span>                  <span style="color: #666666; font-style: italic;">; 转为数值：字符 - '0'</span><br/>
+    <span style="color: #00007F; font-weight: bold;">sub</span> <span style="color: #46AA03; font-weight: bold;">bl</span><span style="color: #339933;">,</span> <span style="color: #7F007F;">'0'</span>                  <span style="color: #666666; font-style: italic;">; 数値に変換：文字 - '0'</span><br/>
     <span style="color: #00007F; font-weight: bold;">movzx</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">bl</span>                <span style="color: #666666; font-style: italic;">; 零扩展 ebx（bl -&gt; ebx）</span><br/>
     <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">ebx</span>                 <span style="color: #666666; font-style: italic;">; eax = eax + 当前位数值</span><br/>
 <br/>
     <span style="color: #00007F; font-weight: bold;">inc</span> <span style="color: #46AA03; font-weight: bold;">esi</span>                      <span style="color: #666666; font-style: italic;">; 移动到下一个字符</span><br/>
     <span style="color: #00007F; font-weight: bold;">loop</span> convert_loop<br/>
-    <span style="color: #666666; font-style: italic;">; eax 现在 = 12345</span><br/>
+    <span style="color: #666666; font-style: italic;">; eaxの現在値 = 12345</span><br/>
 <br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #009900; font-weight: bold;">[</span>result_val<span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">eax</span>        <span style="color: #666666; font-style: italic;">; 保存结果</span><br/>
 <br/>
@@ -245,14 +245,14 @@ convert_loop<span style="color: #339933;">:</span><br/>
 <h2 class="example">实例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;">; 文件路径：int_to_string.asm</span><br/>
-<span style="color: #666666; font-style: italic;">; 将整数值转换为十进制字符串输出</span><br/>
+<span style="color: #666666; font-style: italic;">; 整数値を10進数の文字列に変換して出力する</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
-    number <span style="color: #0000FF; font-weight: bold;">dd</span> <span style="color: #FF0000;">12345</span>              <span style="color: #666666; font-style: italic;">; 要输出的数字</span><br/>
+    number <span style="color: #0000FF; font-weight: bold;">dd</span> <span style="color: #FF0000;">12345</span>              <span style="color: #666666; font-style: italic;">; 出力する数値</span><br/>
     newline <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #FF0000;">0xA</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.bss</span><br/>
-    output_buf <span style="color: #0000FF; font-weight: bold;">resb</span> <span style="color: #FF0000;">12</span>           <span style="color: #666666; font-style: italic;">; 输出缓冲区（最大 32 位整数是 10 位 + 符号 + null）</span><br/>
+    output_buf <span style="color: #0000FF; font-weight: bold;">resb</span> <span style="color: #FF0000;">12</span>           <span style="color: #666666; font-style: italic;">; 出力バッファ（最大32ビット整数は10桁 + 符号 + null）</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.text</span><br/>
     <span style="color: #0000FF; font-weight: bold;">global</span> _start<br/>
@@ -270,13 +270,13 @@ convert_digit<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>                   <span style="color: #666666; font-style: italic;">; 清零 edx（div 需要 edx:eax）</span><br/>
     <span style="color: #00007F; font-weight: bold;">div</span> <span style="color: #46AA03; font-weight: bold;">ebx</span>                      <span style="color: #666666; font-style: italic;">; eax = eax/10, edx = eax%10</span><br/>
     <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #46AA03; font-weight: bold;">dl</span><span style="color: #339933;">,</span> <span style="color: #7F007F;">'0'</span>                  <span style="color: #666666; font-style: italic;">; 余数转字符</span><br/>
-    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46AA03; font-weight: bold;">edi</span><span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">dl</span>                <span style="color: #666666; font-style: italic;">; 存入缓冲区（从后往前）</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46AA03; font-weight: bold;">edi</span><span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">dl</span>                <span style="color: #666666; font-style: italic;">; バッファに格納（後ろから前へ）</span><br/>
     <span style="color: #00007F; font-weight: bold;">dec</span> <span style="color: #46AA03; font-weight: bold;">edi</span>                      <span style="color: #666666; font-style: italic;">; 缓冲区指针前移</span><br/>
     <span style="color: #00007F; font-weight: bold;">inc</span> <span style="color: #46AA03; font-weight: bold;">ecx</span>                      <span style="color: #666666; font-style: italic;">; 位数 +1</span><br/>
-    <span style="color: #00007F; font-weight: bold;">cmp</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>                   <span style="color: #666666; font-style: italic;">; 商是否为 0？</span><br/>
+    <span style="color: #00007F; font-weight: bold;">cmp</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>                   <span style="color: #666666; font-style: italic;">; 商は0か？</span><br/>
     <span style="color: #00007F; font-weight: bold;">jne</span> convert_digit            <span style="color: #666666; font-style: italic;">; 否，继续循环</span><br/>
 <br/>
-    <span style="color: #666666; font-style: italic;">; 现在 edi+1 指向第一个有效数字字符</span><br/>
+    <span style="color: #666666; font-style: italic;">; 現在 edi+1 は最初の有効数字文字を指しています</span><br/>
     <span style="color: #00007F; font-weight: bold;">inc</span> <span style="color: #46AA03; font-weight: bold;">edi</span>                      <span style="color: #666666; font-style: italic;">; 修正指针，指向字符串开头</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 计算有效字符长度</span><br/>
@@ -285,7 +285,7 @@ convert_digit<span style="color: #339933;">:</span><br/>
     <span style="color: #666666; font-style: italic;">; 输出数字</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">4</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
-    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">edi</span>                 <span style="color: #666666; font-style: italic;">; 指向转换后的字符串</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">edi</span>                 <span style="color: #666666; font-style: italic;">; 変換後の文字列を指す</span><br/>
     <span style="color: #666666; font-style: italic;">; 计算长度</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> output_buf <span style="color: #339933;">+</span> <span style="color: #FF0000;">11</span><br/>
     <span style="color: #00007F; font-weight: bold;">sub</span> <span style="color: #46AA03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">edi</span>                 <span style="color: #666666; font-style: italic;">; edx = 缓冲区末尾 - 字符串开头</span><br/>
@@ -320,7 +320,7 @@ $ ./int_to_string
 <span style="color: #666666; font-style: italic;">; 将数值以十六进制格式输出</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
-    number <span style="color: #0000FF; font-weight: bold;">dd</span> <span style="color: #FF0000;">0x1A2B3C4D</span>         <span style="color: #666666; font-style: italic;">; 要输出的值</span><br/>
+    number <span style="color: #0000FF; font-weight: bold;">dd</span> <span style="color: #FF0000;">0x1A2B3C4D</span>         <span style="color: #666666; font-style: italic;">; 出力する値</span><br/>
     hex_prefix <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'0x'</span><br/>
     hex_prefix_len <span style="color: #0000FF; font-weight: bold;">equ</span> <span style="color: #0000FF; font-weight: bold;">$</span> <span style="color: #339933;">-</span> hex_prefix<br/>
     newline <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #FF0000;">0xA</span><br/>
@@ -339,19 +339,19 @@ _start<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> hex_prefix_len<br/>
     <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
 <br/>
-    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>number<span style="color: #009900; font-weight: bold;">]</span>            <span style="color: #666666; font-style: italic;">; 要转换的数值</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>number<span style="color: #009900; font-weight: bold;">]</span>            <span style="color: #666666; font-style: italic;">; 変換する数値</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">edi</span><span style="color: #339933;">,</span> hex_buf <span style="color: #339933;">+</span> <span style="color: #FF0000;">8</span>         <span style="color: #666666; font-style: italic;">; 缓冲区末尾（8 个十六进制位）</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">8</span>                   <span style="color: #666666; font-style: italic;">; 循环 8 次（32 位 = 8 个十六进制位）</span><br/>
 <br/>
 hex_loop<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>                   <span style="color: #666666; font-style: italic;">; 准备除法</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">16</span>                  <span style="color: #666666; font-style: italic;">; 除以 16</span><br/>
-    <span style="color: #00007F; font-weight: bold;">div</span> <span style="color: #46AA03; font-weight: bold;">ebx</span>                      <span style="color: #666666; font-style: italic;">; 现在：eax 除以 ebx</span><br/>
-    <span style="color: #666666; font-style: italic;">; 注意：这里 div ebx 实际是 edx:eax / ebx</span><br/>
-    <span style="color: #666666; font-style: italic;">; 余数在 edx（0-15），商在 eax</span><br/>
+    <span style="color: #00007F; font-weight: bold;">div</span> <span style="color: #46AA03; font-weight: bold;">ebx</span>                      <span style="color: #666666; font-style: italic;">; 現在：eax を ebx で割る</span><br/>
+    <span style="color: #666666; font-style: italic;">; 注意：ここで div ebx は実際には edx:eax / ebx です</span><br/>
+    <span style="color: #666666; font-style: italic;">; 余りは edx（0-15）に、商は eax に格納されています</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">eax</span>                 <span style="color: #666666; font-style: italic;">; 保存商</span><br/>
 <br/>
-    <span style="color: #666666; font-style: italic;">; 将余数转为十六进制字符</span><br/>
+    <span style="color: #666666; font-style: italic;">; 余りを16進文字に変換する</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">al</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">dl</span><br/>
     <span style="color: #00007F; font-weight: bold;">cmp</span> <span style="color: #46AA03; font-weight: bold;">al</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">10</span><br/>
     <span style="color: #00007F; font-weight: bold;">jl</span>  digit_09                 <span style="color: #666666; font-style: italic;">; 0-9</span><br/>
@@ -367,7 +367,7 @@ store_char<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">ebx</span>                 <span style="color: #666666; font-style: italic;">; 恢复商</span><br/>
     <span style="color: #00007F; font-weight: bold;">loop</span> hex_loop<br/>
 <br/>
-    <span style="color: #666666; font-style: italic;">; 移除了loop，直接使用递减方式</span><br/>
+    <span style="color: #666666; font-style: italic;">; loopを削除し、直接デクリメント方式を使用する</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 输出十六进制数字（8 位）</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">4</span><br/>
@@ -395,7 +395,7 @@ store_char<span style="color: #339933;">:</span><br/>
 <h2 class="example">实例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;">; 文件路径：simple_calc.asm</span><br/>
-<span style="color: #666666; font-style: italic;">; 输入两个一位数（0-9），计算和并输出</span><br/>
+<span style="color: #666666; font-style: italic;">; 2つの1桁の数値（0-9）を入力し、とを計算して出力する</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
     prompt1 <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'Enter first number (0-9): '</span><br/>
@@ -407,8 +407,8 @@ store_char<span style="color: #339933;">:</span><br/>
     newline <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #FF0000;">0xA</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.bss</span><br/>
-    num1 <span style="color: #0000FF; font-weight: bold;">resb</span> <span style="color: #FF0000;">2</span>                  <span style="color: #666666; font-style: italic;">; 第一个数的输入（1位+换行）</span><br/>
-    num2 <span style="color: #0000FF; font-weight: bold;">resb</span> <span style="color: #FF0000;">2</span>                  <span style="color: #666666; font-style: italic;">; 第二个数的输入</span><br/>
+    num1 <span style="color: #0000FF; font-weight: bold;">resb</span> <span style="color: #FF0000;">2</span>                  <span style="color: #666666; font-style: italic;">; 最初の数の入力（1桁+改行）</span><br/>
+    num2 <span style="color: #0000FF; font-weight: bold;">resb</span> <span style="color: #FF0000;">2</span>                  <span style="color: #666666; font-style: italic;">; 2番目の数の入力</span><br/>
     result_str <span style="color: #0000FF; font-weight: bold;">resb</span> <span style="color: #FF0000;">3</span>            <span style="color: #666666; font-style: italic;">; 结果字符串（最多2位+换行）</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.text</span><br/>
@@ -443,14 +443,14 @@ _start<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">2</span><br/>
     <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
 <br/>
-    <span style="color: #666666; font-style: italic;">; 计算和</span><br/>
+    <span style="color: #666666; font-style: italic;">; とを計算</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">al</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>num1<span style="color: #009900; font-weight: bold;">]</span>               <span style="color: #666666; font-style: italic;">; 读取第一个数（ASCII 字符）</span><br/>
-    <span style="color: #00007F; font-weight: bold;">sub</span> <span style="color: #46AA03; font-weight: bold;">al</span><span style="color: #339933;">,</span> <span style="color: #7F007F;">'0'</span>                  <span style="color: #666666; font-style: italic;">; 转为数值</span><br/>
+    <span style="color: #00007F; font-weight: bold;">sub</span> <span style="color: #46AA03; font-weight: bold;">al</span><span style="color: #339933;">,</span> <span style="color: #7F007F;">'0'</span>                  <span style="color: #666666; font-style: italic;">; 数値に変換</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">bl</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>num2<span style="color: #009900; font-weight: bold;">]</span>               <span style="color: #666666; font-style: italic;">; 读取第二个数</span><br/>
-    <span style="color: #00007F; font-weight: bold;">sub</span> <span style="color: #46AA03; font-weight: bold;">bl</span><span style="color: #339933;">,</span> <span style="color: #7F007F;">'0'</span>                  <span style="color: #666666; font-style: italic;">; 转为数值</span><br/>
-    <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #46AA03; font-weight: bold;">al</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">bl</span>                   <span style="color: #666666; font-style: italic;">; 求和</span><br/>
+    <span style="color: #00007F; font-weight: bold;">sub</span> <span style="color: #46AA03; font-weight: bold;">bl</span><span style="color: #339933;">,</span> <span style="color: #7F007F;">'0'</span>                  <span style="color: #666666; font-style: italic;">; 数値に変換</span><br/>
+    <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #46AA03; font-weight: bold;">al</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">bl</span>                   <span style="color: #666666; font-style: italic;">; 総と</span><br/>
 <br/>
-    <span style="color: #666666; font-style: italic;">; 将结果转为字符串</span><br/>
+    <span style="color: #666666; font-style: italic;">; 結果を文字列に変換</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ah</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>                    <span style="color: #666666; font-style: italic;">; 准备除法</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">bl</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">10</span>                   <span style="color: #666666; font-style: italic;">; 除以 10</span><br/>
     <span style="color: #00007F; font-weight: bold;">div</span> <span style="color: #46AA03; font-weight: bold;">bl</span>                       <span style="color: #666666; font-style: italic;">; al = 十位数, ah = 个位数</span><br/>
@@ -474,12 +474,12 @@ _start<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> result_str<br/>
     <span style="color: #00007F; font-weight: bold;">cmp</span> <span style="color: #0000FF; font-weight: bold;">byte</span> <span style="color: #009900; font-weight: bold;">[</span>result_str<span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #7F007F;">'0'</span><br/>
-    <span style="color: #00007F; font-weight: bold;">je</span>  output_one_digit        <span style="color: #666666; font-style: italic;">; 如果十位是 '0'，只输出个位</span><br/>
+    <span style="color: #00007F; font-weight: bold;">je</span>  output_one_digit        <span style="color: #666666; font-style: italic;">; 十の位が '0' の場合、一の位だけを出力する</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">3</span>                  <span style="color: #666666; font-style: italic;">; 2 位 + 换行</span><br/>
     <span style="color: #00007F; font-weight: bold;">jmp</span> do_output<br/>
 <br/>
 output_one_digit<span style="color: #339933;">:</span><br/>
-    <span style="color: #00007F; font-weight: bold;">inc</span> <span style="color: #46AA03; font-weight: bold;">ecx</span>                     <span style="color: #666666; font-style: italic;">; 跳过十位的 '0'</span><br/>
+    <span style="color: #00007F; font-weight: bold;">inc</span> <span style="color: #46AA03; font-weight: bold;">ecx</span>                     <span style="color: #666666; font-style: italic;">; 十の位の '0' をスキップする</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">2</span>                  <span style="color: #666666; font-style: italic;">; 1 位 + 换行</span><br/>
 <br/>
 do_output<span style="color: #339933;">:</span><br/>
@@ -618,11 +618,11 @@ Sum = 15
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -911,7 +911,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

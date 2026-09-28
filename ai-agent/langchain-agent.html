@@ -477,7 +477,7 @@ concept_to_explain <span style="color: Gray;">=</span> <span style="color: #a11;
 <h4>OutputParser</h4>
 <ul>
 <li>モデル出力は常に<code>Message</code></li>
-<li><code>StrOutputParser</code> 是<strong>明示的な型変換を必要とする</strong></li>
+<li><code>StrOutputParser</code>である<strong>明示的な型変換を必要とする</strong></li>
 <li>Parser がなければ、エンジニアリングは制御不能になる</li>
 </ul>
 <hr/>
@@ -613,7 +613,7 @@ question <span style="color: Gray;">=</span> <span style="color: #a11;">"問題�
 <li><strong>：この例では HuggingFace の</strong>モデルを使用します。初回実行時に自動でダウンロードされます（約 80MB）。<code>all-MiniLM-L6-v2</code>OpenAI API Key をお持ちの場合は、こちらも使用できます</li>
 <li>より良い中国語の効果を得ることができます。<code>OpenAIEmbeddings</code>国内の中国語シーンでは、使用を推奨します</li>
 <li>などの中文 Embedding モデル<code>BAAI/bge-small-zh-v1.5</code>実際のドキュメントの特性に応じて調整する必要があります。大きすぎると精度が失われ、小さすぎるとコンテキストが失われる可能性があります。</li>
-<li><strong>chunk_size</strong> 和 <strong>chunk_overlap</strong>5. メモリ（Memory）</li>
+<li><strong>chunk_size</strong>と<strong>chunk_overlap</strong>5. メモリ（Memory）</li>
 </ul>
 </div>
 <hr/>
@@ -666,9 +666,7 @@ Agent 意思決定ループ
 最終回答
 <rect fill="#557DA6" height="60" rx="8" width="120" x="650" y="130"></rect>
 <text fill="#FFFFFF" font-size="13" font-weight="bold" text-anchor="middle" x="710" y="158">タスク完了</text>
-<text fill="#E8F0F8" font-size="10" text-anchor="middle" x="710" y="175">矢印：結果の観察から最終回答へ</text>
-タスク完了
-<path d="M330 230 L385 270 L620 270 L620 180 L650 180" fill="none" marker-end="url(#arrowGreen)" stroke="#557DA6" stroke-width="2"></path>
+<text fill="#E8F0F8" font-size="10" text-anchor="middle" x="710" y="175">矢印：結果の観察から最終回答へ</text>タスク完了<path d="M330 230 L385 270 L620 270 L620 180 L650 180" fill="none" marker-end="url(#arrowGreen)" stroke="#557DA6" stroke-width="2"></path>
 <text fill="#557DA6" font-size="10" text-anchor="middle" x="480" y="262">矢印の定義</text>
 使用
 <defs>
@@ -704,7 +702,7 @@ llm <span style="color: Gray;">=</span> ChatOpenAI<span style="color: Olive;">(<
 <span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># @tool デコレータを使用すると、LangChain は関数名と docstring を自動的にモデルに伝えます</span><br/>
-<span style="color: #a50">"""指定された都市の現在の天気情報を取得します。ユーザーが天気を尋ねたときはこのツールを使用します。"""</span><br/>
+<span style="color: #a50">指定された都市の現在の天気情報を取得します。ユーザーが天気を尋ねたときはこのツールを使用します。</span><br/>
 <br/>
 <span style="color: Gray;">@</span>tool<br/>
 <span style="color: Green;font-weight:bold;">def</span> get_current_weather<span style="color: Olive;">(</span>city: <span style="color: Teal;">str</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
@@ -719,7 +717,7 @@ llm <span style="color: Gray;">=</span> ChatOpenAI<span style="color: Olive;">(<
 <br/>
 <span style="color: Gray;">@</span>tool<br/>
 <span style="color: Green;font-weight:bold;">def</span> calculate<span style="color: Olive;">(</span>expression: <span style="color: Teal;">str</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
-    <span style="color: #a11;">"""数学式を計算します。ユーザーが数学計算を行う必要がある場合にこのツールを使用します。"""<br/>基本的な四則演算をサポートします。例: '2 + 3 * 4'。"""</span><br/>
+    <span style="color: #a11;">"""数学式を計算します。ユーザーが数学計算を行う必要がある場合にこのツールを使用します。"""<br/>基本的な四則演算をサポートします。例: '2 + 3 * 4'。</span><br/>
     <span style="color: Green;font-weight:bold;">import</span> ast<br/>
     <span style="color: Green;font-weight:bold;">import</span> <span style="color: #05a;">operator</span><br/>
     <br/>
@@ -1188,11 +1186,11 @@ AI: 当然记得！你刚刚告诉我你叫**小明**～
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてメモを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1481,7 +1479,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

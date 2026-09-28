@@ -196,7 +196,7 @@ content <span style="color: Gray;">=</span> <span style="color: #a11;">''</span>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #05a;">chunk</span>.<span style="color: #05a;">message</span>.<span style="color: #05a;">content</span><span style="color: Gray;">,</span> end<span style="color: Gray;">=</span><span style="color: #a11;">''</span><span style="color: Gray;">,</span> flush<span style="color: Gray;">=</span><span style="color: Teal;">True</span><span style="color: Olive;">)</span><br/>
     content +<span style="color: Gray;">=</span> <span style="color: #05a;">chunk</span>.<span style="color: #05a;">message</span>.<span style="color: #05a;">content</span><br/>
 <br/>
-<span style="color: #a50"># 拼接后的 content 可用于保存历史、入库存档</span><br/>
+<span style="color: #a50"># 連結後のcontentは、履歴の保存やアーカイブに利用できます。</span><br/>
 </div>
 </div>
 <blockquote><p>重要なポイント：ストリームの各データチャンクは単なる「断片」であり、クライアント側で完全なコンテンツを自分で蓄積する必要があります。このラウンドの回答を後で会話履歴に入れる場合に使用するのは、連結後の完全なテキストです。</p></blockquote>
@@ -210,12 +210,12 @@ content <span style="color: Gray;">=</span> <span style="color: #a11;">''</span>
 <br/>
 response <span style="color: Gray;">=</span> chat<span style="color: Olive;">(</span><br/>
     model<span style="color: Gray;">=</span><span style="color: #a11;">'qwen3.5'</span><span style="color: Gray;">,</span><br/>
-    messages<span style="color: Gray;">=</span><span style="color: Olive;">[</span><span style="color: Olive;">{</span><span style="color: #a11;">'role'</span>: <span style="color: #a11;">'user'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'content'</span>: <span style="color: #a11;">'9.9 和 9.11 谁大？'</span><span style="color: Olive;">}</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
+    messages<span style="color: Gray;">=</span><span style="color: Olive;">[</span><span style="color: Olive;">{</span><span style="color: #a11;">'role'</span>: <span style="color: #a11;">'user'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'content'</span>: <span style="color: #a11;">'9.9 と 9.11 はどちらが大きい？'</span><span style="color: Olive;">}</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
     think<span style="color: Gray;">=</span><span style="color: Teal;">True</span><span style="color: Gray;">,</span><br/>
     stream<span style="color: Gray;">=</span><span style="color: Teal;">False</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 思考过程与最终答案分属两个字段</span><br/>
+<span style="color: #a50"># 思考プロセスと最終回答はそれぞれ別のフィールドに属する</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">'思考：'</span><span style="color: Gray;">,</span> response.<span style="color: #05a;">message</span>.<span style="color: #05a;">thinking</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">'答案：'</span><span style="color: Gray;">,</span> response.<span style="color: #05a;">message</span>.<span style="color: #05a;">content</span><span style="color: Olive;">)</span><br/>
 </div>
@@ -257,7 +257,7 @@ in_thinking <span style="color: Gray;">=</span> <span style="color: Teal;">False
 <span style="color: Green;font-weight:bold;">from</span> ollama <span style="color: Green;font-weight:bold;">import</span> chat<br/>
 <span style="color: Green;font-weight:bold;">from</span> pydantic <span style="color: Green;font-weight:bold;">import</span> BaseModel<br/>
 <br/>
-<span style="color: #a50"># 用 Pydantic 定义期望的数据结构</span><br/>
+<span style="color: #a50"># Pydantic を使用して期待されるデータ構造を定義する</span><br/>
 <span style="color: Green;font-weight:bold;">class</span> Site<span style="color: Olive;">(</span>BaseModel<span style="color: Olive;">)</span>:<br/>
     name: <span style="color: Teal;">str</span><br/>
     category: <span style="color: Teal;">str</span><br/>
@@ -269,7 +269,7 @@ response <span style="color: Gray;">=</span> chat<span style="color: Olive;">(</
     format<span style="color: Gray;">=</span>Site.<span style="color: #05a;">model_json_schema</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 返回内容是符合 schema 的 JSON 字符串，直接校验解析</span><br/>
+<span style="color: #a50"># 戻り値はスキーマに準拠した JSON 文字列で、直接検証・解析する</span><br/>
 <span style="color: #05a;">site</span> <span style="color: Gray;">=</span> Site.<span style="color: #05a;">model_validate_json</span><span style="color: Olive;">(</span>response.<span style="color: #05a;">message</span>.<span style="color: #05a;">content</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #05a;">site</span>.<span style="color: #05a;">name</span><span style="color: Gray;">,</span> <span style="color: #05a;">site</span>.<span style="color: #05a;">category</span><span style="color: Gray;">,</span> <span style="color: #05a;">site</span>.<span style="color: #05a;">free</span><span style="color: Olive;">)</span><br/>
 </div>
@@ -288,7 +288,7 @@ response <span style="color: Gray;">=</span> chat<span style="color: Olive;">(</
     model<span style="color: Gray;">=</span><span style="color: #a11;">'qwen3.5'</span><span style="color: Gray;">,</span><br/>
     messages<span style="color: Gray;">=</span><span style="color: Olive;">[</span><span style="color: Olive;">{</span><br/>
         <span style="color: #a11;">'role'</span>: <span style="color: #a11;">'user'</span><span style="color: Gray;">,</span><br/>
-        <span style="color: #a11;">'content'</span>: <span style="color: #a11;">'这张截图是什么页面？列出主要功能。'</span><span style="color: Gray;">,</span><br/>
+        <span style="color: #a11;">'content'</span>: <span style="color: #a11;">'このスクリーンショットは何のページですか？主な機能を列挙してください。'</span><span style="color: Gray;">,</span><br/>
         <span style="color: #a11;">'images'</span>: <span style="color: Olive;">[</span><span style="color: #a11;">'screenshot.png'</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
     <span style="color: Olive;">}</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
@@ -303,7 +303,7 @@ response <span style="color: Gray;">=</span> chat<span style="color: Olive;">(</
 <span style="color: Green;font-weight:bold;">from</span> ollama <span style="color: Green;font-weight:bold;">import</span> chat<br/>
 <span style="color: Green;font-weight:bold;">from</span> pydantic <span style="color: Green;font-weight:bold;">import</span> BaseModel<br/>
 <br/>
-<span style="color: #a50"># 定义从图片中抽取的目标结构</span><br/>
+<span style="color: #a50"># 画像から抽出する対象構造を定義する</span><br/>
 <span style="color: Green;font-weight:bold;">class</span> Receipt<span style="color: Olive;">(</span>BaseModel<span style="color: Olive;">)</span>:<br/>
     merchant: <span style="color: Teal;">str</span><br/>
     total: <span style="color: Teal;">float</span><br/>
@@ -313,7 +313,7 @@ response <span style="color: Gray;">=</span> chat<span style="color: Olive;">(</
     model<span style="color: Gray;">=</span><span style="color: #a11;">'qwen3.5'</span><span style="color: Gray;">,</span><br/>
     messages<span style="color: Gray;">=</span><span style="color: Olive;">[</span><span style="color: Olive;">{</span><br/>
         <span style="color: #a11;">'role'</span>: <span style="color: #a11;">'user'</span><span style="color: Gray;">,</span><br/>
-        <span style="color: #a11;">'content'</span>: <span style="color: #a11;">'从这张票据照片提取商家、金额、日期'</span><span style="color: Gray;">,</span><br/>
+        <span style="color: #a11;">'content'</span>: <span style="color: #a11;">'この領収書の写真から店名、金額、日付を抽出する'</span><span style="color: Gray;">,</span><br/>
         <span style="color: #a11;">'images'</span>: <span style="color: Olive;">[</span><span style="color: #a11;">'receipt.jpg'</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
     <span style="color: Olive;">}</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
     format<span style="color: Gray;">=</span>Receipt.<span style="color: #05a;">model_json_schema</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
@@ -333,16 +333,16 @@ response <span style="color: Gray;">=</span> chat<span style="color: Olive;">(</
 <br/>
 <span style="color: #a50"># 批量生成文档向量</span><br/>
 docs <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><br/>
-    <span style="color: #a11;">'Python 是一门解释型语言'</span><span style="color: Gray;">,</span><br/>
-    <span style="color: #a11;">'JavaScript 主要运行在浏览器'</span><span style="color: Gray;">,</span><br/>
+    <span style="color: #a11;">'Python はインタプリタ型言語です'</span><span style="color: Gray;">,</span><br/>
+    <span style="color: #a11;">'JavaScript は主にブラウザで動作します'</span><span style="color: Gray;">,</span><br/>
     <span style="color: #a11;">'RUNOOB 提供免费编程教程'</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">]</span><br/>
 result <span style="color: Gray;">=</span> ollama.<span style="color: #05a;">embed</span><span style="color: Olive;">(</span>model<span style="color: Gray;">=</span><span style="color: #a11;">'embeddinggemma'</span><span style="color: Gray;">,</span> <span style="color: Teal;">input</span><span style="color: Gray;">=</span>docs<span style="color: Olive;">)</span><br/>
 vectors <span style="color: Gray;">=</span> result<span style="color: Olive;">[</span><span style="color: #a11;">'embeddings'</span><span style="color: Olive;">]</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: Teal;">len</span><span style="color: Olive;">(</span>vectors<span style="color: Olive;">)</span><span style="color: Gray;">,</span> <span style="color: Teal;">len</span><span style="color: Olive;">(</span>vectors<span style="color: Olive;">[</span><span style="color: Maroon;">0</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 3 条向量及其维度</span><br/>
 <br/>
-<span style="color: #a50"># 查询向量与文档向量做余弦相似度即可排序检索</span><br/>
-query <span style="color: Gray;">=</span> ollama.<span style="color: #05a;">embed</span><span style="color: Olive;">(</span>model<span style="color: Gray;">=</span><span style="color: #a11;">'embeddinggemma'</span><span style="color: Gray;">,</span> <span style="color: Teal;">input</span><span style="color: Gray;">=</span><span style="color: #a11;">'学 python 难吗'</span><span style="color: Olive;">)</span><br/>
+<span style="color: #a50"># クエリベクトルとドキュメントベクトルのコサイン類似度を計算するだけで、並べ替えて検索できます</span><br/>
+query <span style="color: Gray;">=</span> ollama.<span style="color: #05a;">embed</span><span style="color: Olive;">(</span>model<span style="color: Gray;">=</span><span style="color: #a11;">'embeddinggemma'</span><span style="color: Gray;">,</span> <span style="color: Teal;">input</span><span style="color: Gray;">=</span><span style="color: #a11;">'Pythonを学ぶのは難しいですか'</span><span style="color: Olive;">)</span><br/>
 </div>
 </div>
 <blockquote><p>インデックスとクエリは同じ埋め込みモデルを使用する必要があります。そうしないとベクトル空間が一致せず、検索結果に意味がありません。完全な知識ベースの実践は RAG プロジェクトの章で詳しく解説します。</p></blockquote>
@@ -357,9 +357,9 @@ query <span style="color: Gray;">=</span> ollama.<span style="color: #05a;">embe
 <div class="example_code">
 <span style="color: Green;font-weight:bold;">from</span> ollama <span style="color: Green;font-weight:bold;">import</span> chat<br/>
 <br/>
-<span style="color: #a50"># 本地工具函数：docstring 会成为模型看到的工具说明</span><br/>
+<span style="color: #a50"># ローカルユーティリティ関数：docstring はモデルが見るツールの説明になります</span><br/>
 <span style="color: Green;font-weight:bold;">def</span> get_weather<span style="color: Olive;">(</span>city: <span style="color: Teal;">str</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
-    <span style="color: #a11;">"""查询指定城市的当前气温<br/>
+    <span style="color: #a11;">"""指定された都市の現在の気温を取得します<br/>
 <br/>
     Args:<br/>city: 城市名称<br/>
 <br/>
@@ -368,7 +368,7 @@ query <span style="color: Gray;">=</span> ollama.<span style="color: #05a;">embe
     temperatures <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: #a11;">"北京"</span>: <span style="color: #a11;">"22°C"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"上海"</span>: <span style="color: #a11;">"26°C"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"纽约"</span>: <span style="color: #a11;">"18°C"</span><span style="color: Olive;">}</span><br/>
     <span style="color: Green;font-weight:bold;">return</span> temperatures.<span style="color: #05a;">get</span><span style="color: Olive;">(</span>city<span style="color: Gray;">,</span> <span style="color: #a11;">"未知城市"</span><span style="color: Olive;">)</span><br/>
 <br/>
-messages <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: Olive;">{</span><span style="color: #a11;">'role'</span>: <span style="color: #a11;">'user'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'content'</span>: <span style="color: #a11;">'纽约现在多少度？'</span><span style="color: Olive;">}</span><span style="color: Olive;">]</span><br/>
+messages <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: Olive;">{</span><span style="color: #a11;">'role'</span>: <span style="color: #a11;">'user'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'content'</span>: <span style="color: #a11;">'ニューヨークは今何度？'</span><span style="color: Olive;">}</span><span style="color: Olive;">]</span><br/>
 <br/>
 <span style="color: #a50"># Agent loop：循环直到模型不再请求工具</span><br/>
 <span style="color: Green;font-weight:bold;">while</span> <span style="color: Teal;">True</span>:<br/>
@@ -378,15 +378,15 @@ messages <span style="color: Gray;">=</span> <span style="color: Olive;">[</span
         tools<span style="color: Gray;">=</span><span style="color: Olive;">[</span>get_weather<span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
     <span style="color: Olive;">)</span><br/>
 <br/>
-    <span style="color: #a50"># 把模型消息（含 tool_calls）追加进历史</span><br/>
+    <span style="color: #a50"># モデルメッセージ（tool_callsを含む）を履歴に追加</span><br/>
     messages.<span style="color: #05a;">append</span><span style="color: Olive;">(</span>response.<span style="color: #05a;">message</span><span style="color: Olive;">)</span><br/>
 <br/>
     <span style="color: Green;font-weight:bold;">if</span> <span style="color: Green;font-weight:bold;">not</span> response.<span style="color: #05a;">message</span>.<span style="color: #05a;">tool_calls</span>:<br/>
-        <span style="color: #a50"># 没有工具请求了，输出最终回答</span><br/>
+        <span style="color: #a50"># ツールのリクエストがなくなったので、最終回答を出力する</span><br/>
         <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>response.<span style="color: #05a;">message</span>.<span style="color: #05a;">content</span><span style="color: Olive;">)</span><br/>
         <span style="color: Green;font-weight:bold;">break</span><br/>
 <br/>
-    <span style="color: #a50"># 有工具请求：执行并把结果以 tool 角色回传</span><br/>
+    <span style="color: #a50"># ツールリクエストがある場合：実行し、結果を tool ロールで返す</span><br/>
     <span style="color: Green;font-weight:bold;">for</span> call <span style="color: Green;font-weight:bold;">in</span> response.<span style="color: #05a;">message</span>.<span style="color: #05a;">tool_calls</span>:<br/>
         result <span style="color: Gray;">=</span> get_weather<span style="color: Olive;">(</span>**call.<span style="color: #05a;">function</span>.<span style="color: #05a;">arguments</span><span style="color: Olive;">)</span><br/>
         messages.<span style="color: #05a;">append</span><span style="color: Olive;">(</span><span style="color: Olive;">{</span><br/>
@@ -405,7 +405,7 @@ messages <span style="color: Gray;">=</span> <span style="color: Olive;">[</span
 <div class="example_code">
 <span style="color: Green;font-weight:bold;">from</span> ollama <span style="color: Green;font-weight:bold;">import</span> chat<span style="color: Gray;">,</span> web_search<span style="color: Gray;">,</span> web_fetch<br/>
 <br/>
-<span style="color: #a50"># 把联网能力作为工具挂载</span><br/>
+<span style="color: #a50"># ネットワーク接続機能をツールとしてマウントする</span><br/>
 available_tools <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: #a11;">'web_search'</span>: web_search<span style="color: Gray;">,</span> <span style="color: #a11;">'web_fetch'</span>: web_fetch<span style="color: Olive;">}</span><br/>
 <br/>
 messages <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: Olive;">{</span><span style="color: #a11;">'role'</span>: <span style="color: #a11;">'user'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'content'</span>: <span style="color: #a11;">"Ollama 最近有什么新特性？"</span><span style="color: Olive;">}</span><span style="color: Olive;">]</span><br/>
@@ -554,11 +554,11 @@ messages <span style="color: Gray;">=</span> <span style="color: Olive;">[</span
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -847,7 +847,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

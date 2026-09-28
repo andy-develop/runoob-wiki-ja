@@ -171,14 +171,14 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div><p>SortedList には2つのバージョンがあります：</p>
 <ol><li><strong>非泛型<code>SortedList</code></strong>（<code>System.Collections.SortedList</code>）</li><li><strong>泛型<code>SortedList&lt;TKey, TValue&gt;</code></strong>（<code>System.Collections.Generic.SortedList&lt;TKey, TValue&gt;</code>）</li></ol>
 <p><strong>特点:</strong></p>
-<ul><li><strong>自动排序</strong>：すべてのキーは昇順に並べ替えられており、並べ替えメソッドを手動で呼び出す必要はありません。</li><li><strong>键值对存储</strong>：各キーは一意であり、関連付けられた値は重複することができます。</li><li><strong>動的に容量を調整する</strong>：必要に応じて内部ストレージのサイズを自動的に調整します。</li><li><strong>索引访问</strong>：キーまたはインデックスによってデータにアクセスします。</li><li><strong>高效操作</strong>：検索、挿入、削除の平均時間計算量は O(log n) です。</li></ul>
+<ul><li><strong>自动排序</strong>：すべてのキーは昇順に並べ替えられており、並べ替えメソッドを手動で呼び出す必要はありません。</li><li><strong>キーと値のペアの格納</strong>：各キーは一意であり、関連付けられた値は重複することができます。</li><li><strong>動的に容量を調整する</strong>：必要に応じて内部ストレージのサイズを自動的に調整します。</li><li><strong>索引访问</strong>：キーまたはインデックスによってデータにアクセスします。</li><li><strong>高效操作</strong>：検索、挿入、削除の平均時間計算量は O(log n) です。</li></ul>
 <h2 class="tutheader">SortedList クラスのメソッドとプロパティ</h2>
-<p>下表列出了<b>SortedList</b>クラスのよく使われるいくつかの<b>属性</b>：</p>
+<p>以下の表に一覧を示します<b>SortedList</b>クラスのよく使われるいくつかの<b>属性</b>：</p>
 <table class="reference">
 <thead><tr><th>属性名称</th><th>类型</th><th>描述</th></tr></thead><tbody><tr><td><code>Count</code></td><td><code>int</code></td><td>ソート済みリスト内のキーと値のペアの数を取得します。</td></tr><tr><td><code>Capacity</code></td><td><code>int</code></td><td>ソート済みリストの容量を取得または設定します。</td></tr><tr><td><code>Comparer</code></td><td><code>IComparer</code> 或 <code>IComparer&lt;TKey&gt;</code></td><td>キーを並べ替えるために使用する比較子を取得します。</td></tr><tr><td><code>IsReadOnly</code></td><td><code>bool</code></td><td>ソート済みリストが読み取り専用かどうかを示します。</td></tr><tr><td><code>IsFixedSize</code></td><td><code>bool</code></td><td>ソート済みリストが固定サイズかどうかを示します（常に<code>false</code>）。</td></tr><tr><td><code>Keys</code></td><td><code>ICollection</code> 或 <code>IList&lt;TKey&gt;</code></td><td>ソート済みリスト内のすべてのキーを取得します。</td></tr><tr><td><code>Values</code></td><td><code>ICollection</code> 或 <code>IList&lt;TValue&gt;</code></td><td>ソート済みリスト内のすべての値を取得します。</td></tr></tbody></table>
-<p>下表列出了<b>SortedList</b>クラスのよく使われるいくつかの<b>方法</b>：</p>
+<p>以下の表に一覧を示します<b>SortedList</b>クラスのよく使われるいくつかの<b>方法</b>：</p>
 <table class="reference">
-<thead><tr><th>方法名称</th><th>返回类型</th><th>描述</th></tr></thead><tbody><tr><td><strong>添加与移除</strong></td><td></td><td></td></tr><tr><td><code>Add(TKey key, TValue value)</code></td><td><code>void</code></td><td>指定されたキーと値のペアをソート済みリストに追加します。</td></tr><tr><td><code>Remove(TKey key)</code></td><td><code>bool</code></td><td>指定されたキーを持つ要素をソート済みリストから削除します。</td></tr><tr><td><code>RemoveAt(int index)</code></td><td><code>void</code></td><td>ソート済みリスト内の指定されたインデックス位置にあるキーと値のペアを削除します。</td></tr><tr><td><code>Clear()</code></td><td><code>void</code></td><td>ソート済みリストからすべての要素を削除します。</td></tr><tr><td><strong>查找与访问</strong></td><td></td><td></td></tr><tr><td><code>ContainsKey(TKey key)</code></td><td><code>bool</code></td><td>ソート済みリストに指定されたキーが含まれているかどうかを判断します。</td></tr><tr><td><code>ContainsValue(TValue value)</code></td><td><code>bool</code></td><td>ソート済みリストに指定された値が含まれているかどうかを判断します。</td></tr><tr><td><code>IndexOfKey(TKey key)</code></td><td><code>int</code></td><td>指定されたキーのインデックスを返します。</td></tr><tr><td><code>IndexOfValue(TValue value)</code></td><td><code>int</code></td><td>指定された値のインデックスを返します。</td></tr><tr><td><code>TryGetValue(TKey key, out TValue value)</code></td><td><code>bool</code></td><td>指定されたキーに関連付けられた値を取得し、存在する場合はそれを返します。<code>true</code>。</td></tr><tr><td><strong>复制与枚举</strong></td><td></td><td></td></tr><tr><td><code>CopyTo(Array array, int index)</code></td><td><code>void</code></td><td>ソート済みリストの要素を、指定されたインデックスから始まる配列にコピーします。</td></tr><tr><td><code>GetEnumerator()</code></td><td><code>IEnumerator</code></td><td>ソート済みリスト内の要素を反復処理するための列挙子を返します。</td></tr></tbody></table>
+<thead><tr><th>方法名称</th><th>返回类型</th><th>描述</th></tr></thead><tbody><tr><td><strong>追加と削除</strong></td><td></td><td></td></tr><tr><td><code>Add(TKey key, TValue value)</code></td><td><code>void</code></td><td>指定されたキーと値のペアをソート済みリストに追加します。</td></tr><tr><td><code>Remove(TKey key)</code></td><td><code>bool</code></td><td>指定されたキーを持つ要素をソート済みリストから削除します。</td></tr><tr><td><code>RemoveAt(int index)</code></td><td><code>void</code></td><td>ソート済みリスト内の指定されたインデックス位置にあるキーと値のペアを削除します。</td></tr><tr><td><code>Clear()</code></td><td><code>void</code></td><td>ソート済みリストからすべての要素を削除します。</td></tr><tr><td><strong>検索とアクセス</strong></td><td></td><td></td></tr><tr><td><code>ContainsKey(TKey key)</code></td><td><code>bool</code></td><td>ソート済みリストに指定されたキーが含まれているかどうかを判断します。</td></tr><tr><td><code>ContainsValue(TValue value)</code></td><td><code>bool</code></td><td>ソート済みリストに指定された値が含まれているかどうかを判断します。</td></tr><tr><td><code>IndexOfKey(TKey key)</code></td><td><code>int</code></td><td>指定されたキーのインデックスを返します。</td></tr><tr><td><code>IndexOfValue(TValue value)</code></td><td><code>int</code></td><td>指定された値のインデックスを返します。</td></tr><tr><td><code>TryGetValue(TKey key, out TValue value)</code></td><td><code>bool</code></td><td>指定されたキーに関連付けられた値を取得し、存在する場合はそれを返します。<code>true</code>。</td></tr><tr><td><strong>コピーと列挙</strong></td><td></td><td></td></tr><tr><td><code>CopyTo(Array array, int index)</code></td><td><code>void</code></td><td>ソート済みリストの要素を、指定されたインデックスから始まる配列にコピーします。</td></tr><tr><td><code>GetEnumerator()</code></td><td><code>IEnumerator</code></td><td>ソート済みリスト内の要素を反復処理するための列挙子を返します。</td></tr></tbody></table>
 <br/>
 <h2 class="tutheader">实例</h2>
 <p>以下の例は、ソート済みリスト（SortedList）の概念を示しています。</p>
@@ -212,7 +212,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
             sl<span style="color: #008000;">.</span><span style="color: #05a; font-weight: bold;">Add</span><span style="color: #008000;">(</span><span style="color: #a11;">"008"</span>, <span style="color: #a11;">"Nuha Ali"</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
          <span style="color: #008000;">}</span><br/>
 <br/>
-         <span style="color: #696969; font-style: italic;">// 获取键的集合</span><br/>
+         <span style="color: #696969; font-style: italic;">// キーの集合を取得</span><br/>
          ICollection key <span style="color: #008000;">=</span> sl<span style="color: #008000;">.</span><span style="color: #05a;">Keys</span><span style="color: #008000;">;</span><br/>
 <br/>
          <span style="color: #05a; font-weight: bold;">foreach</span> <span style="color: #008000;">(</span><span style="color: #6666CC; font-weight: bold;">string</span> k <span style="color: #05a; font-weight: bold;">in</span> key<span style="color: #008000;">)</span><br/>
@@ -246,7 +246,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         <span style="color: #696969; font-style: italic;">// 创建泛型 SortedList</span><br/>
         SortedList<span style="color: #008000;">&lt;</span><span style="color: #6666CC; font-weight: bold;">int</span>, <span style="color: #6666CC; font-weight: bold;">string</span><span style="color: #008000;">&gt;</span> sortedList <span style="color: #008000;">=</span> <span style="color: #008000;">new</span> SortedList<span style="color: #008000;">&lt;</span><span style="color: #6666CC; font-weight: bold;">int</span>, <span style="color: #6666CC; font-weight: bold;">string</span><span style="color: #008000;">&gt;</span><span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
 <br/>
-        <span style="color: #696969; font-style: italic;">// 添加键值对</span><br/>
+        <span style="color: #696969; font-style: italic;">// キーと値のペアを追加</span><br/>
         sortedList<span style="color: #008000;">.</span><span style="color: #05a; font-weight: bold;">Add</span><span style="color: #008000;">(</span><span style="color: Maroon;">2</span>, <span style="color: #a11;">"Banana"</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
         sortedList<span style="color: #008000;">.</span><span style="color: #05a; font-weight: bold;">Add</span><span style="color: #008000;">(</span><span style="color: Maroon;">1</span>, <span style="color: #a11;">"Apple"</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
         sortedList<span style="color: #008000;">.</span><span style="color: #05a; font-weight: bold;">Add</span><span style="color: #008000;">(</span><span style="color: Maroon;">3</span>, <span style="color: #a11;">"Cherry"</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
@@ -258,7 +258,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
             Console<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span>$<span style="color: #a11;">"Key: {kvp.Key}, Value: {kvp.Value}"</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
         <span style="color: #008000;">}</span><br/>
 <br/>
-        <span style="color: #696969; font-style: italic;">// 查找与访问</span><br/>
+        <span style="color: #696969; font-style: italic;">// 検索とアクセス</span><br/>
         Console<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span>$<span style="color: #a11;">"<span style="color: #008080; font-weight: bold;">\n</span>Value for key 2: {sortedList[2]}"</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span> <span style="color: #696969; font-style: italic;">// 输出：Banana</span><br/>
 <br/>
         <span style="color: #696969; font-style: italic;">// 删除元素</span><br/>
@@ -269,7 +269,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
             Console<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span>$<span style="color: #a11;">"Key: {kvp.Key}, Value: {kvp.Value}"</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
         <span style="color: #008000;">}</span><br/>
 <br/>
-        <span style="color: #696969; font-style: italic;">// 检查键与值</span><br/>
+        <span style="color: #696969; font-style: italic;">// キーと値を確認</span><br/>
         Console<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span>$<span style="color: #a11;">"<span style="color: #008080; font-weight: bold;">\n</span>Contains key 3: {sortedList.ContainsKey(3)}"</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span> <span style="color: #696969; font-style: italic;">// 输出：True</span><br/>
         Console<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span>$<span style="color: #a11;">"Contains value 'Apple': {sortedList.ContainsValue("</span>Apple<span style="color: #a11;">")}"</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span> <span style="color: #696969; font-style: italic;">// 输出：False</span><br/>
     <span style="color: #008000;">}</span><br/>
@@ -393,11 +393,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -686,7 +686,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

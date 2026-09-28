@@ -307,7 +307,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h1>Pandas df.fillna() 関数</h1>
 <p><a href="../pandas/pandas-general-functions.html"><img alt="Pandas 常用函数" class="navup" decoding="async" src="../images/up.gif"/>Pandas よく使う関数</a></p><hr/>
 <p><code>df.fillna()</code>は、Pandas で欠損値を埋めるために使用される関数です。</p>
-<p>与 <code>dropna()</code>欠損値を削除するのとは異なり、<code>fillna()</code>指定した値、平均値、中央値、前方埋め、後方埋めなどの方法で欠損データを埋めることができます。これは、データの完全性と分析の正確性を維持する上で非常に役立ちます。</p>
+<p>と<code>dropna()</code>欠損値を削除するのとは異なり、<code>fillna()</code>指定した値、平均値、中央値、前方埋め、後方埋めなどの方法で欠損データを埋めることができます。これは、データの完全性と分析の正確性を維持する上で非常に役立ちます。</p>
 <hr/>
 <h2>基本構文とパラメータ</h2>
 <p><code>fillna()</code>は DataFrame のメンバー関数であり、ドット演算子を介して<code>.</code>呼び出します。</p>
@@ -403,7 +403,7 @@ df <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFrame</
 <span style="color: #a50"># 定数 0 ですべての欠損値を埋める</span><br/>
 df_filled <span style="color: Gray;">=</span> df.<span style="color: #05a;">fillna</span><span style="color: Olive;">(</span><span style="color: Maroon;">0</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"用0填充后的数据："</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"0で埋めた後のデータ："</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df_filled<span style="color: Olive;">)</span><br/>
 </div>
 </div>
@@ -459,7 +459,7 @@ fill_values <span style="color: Gray;">=</span> <span style="color: Olive;">{</s
 <span style="color: Olive;">}</span><br/>
 df_filled <span style="color: Gray;">=</span> df.<span style="color: #05a;">fillna</span><span style="color: Olive;">(</span>fill_values<span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"不同列用不同值填充后的数据："</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"列ごとに異なる値で埋めた後のデータ："</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df_filled<span style="color: Olive;">)</span><br/>
 </div>
 </div>
@@ -521,7 +521,7 @@ df_filled <span style="color: Gray;">=</span> df.<span style="color: #05a;">fill
     <span style="color: #a11;">'物理'</span>: physics_mean<br/>
 <span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"用均值填充后的数据："</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">平均値で補完した後のデータ：</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df_filled<span style="color: Olive;">)</span><br/>
 </div>
 </div>
@@ -573,13 +573,13 @@ df <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFrame</
 <br/>
 <span style="color: #a50"># 前方埋め：前の値で欠損値を埋める</span><br/>
 df_ffill <span style="color: Gray;">=</span> df.<span style="color: #05a;">fillna</span><span style="color: Olive;">(</span>method<span style="color: Gray;">=</span><span style="color: #a11;">'ffill'</span><span style="color: Olive;">)</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"向前填充（ffill）后的数据："</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">前方充填（ffill）後のデータ：</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df_ffill<span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"="</span> * <span style="color: Maroon;">50</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 後方埋め：後ろの値で欠損値を埋める</span><br/>
 df_bfill <span style="color: Gray;">=</span> df.<span style="color: #05a;">fillna</span><span style="color: Olive;">(</span>method<span style="color: Gray;">=</span><span style="color: #a11;">'bfill'</span><span style="color: Olive;">)</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"向后填充（bfill）后的数据："</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">後方充填（bfill）後のデータ：</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df_bfill<span style="color: Olive;">)</span><br/>
 </div>
 </div>
@@ -718,7 +718,7 @@ df_interpolated<span style="color: Olive;">[</span><span style="color: #a11;">'y
 <h2>注意事項</h2>
 <ul>
 <li><code>fillna()</code>デフォルトでは元のDataFrameは変更されません。元のDataFrameを変更したい場合は、<code>inplace=True</code>パラメータを使用してください。</li>
-<li>注意<code>method</code>このパラメータは将来のPandasバージョンで非推奨になる可能性があります。代わりに<code>ffill()</code> 和 <code>bfill()</code>メソッドを使用することをお勧めします。</li>
+<li>注意<code>method</code>このパラメータは将来のPandasバージョンで非推奨になる可能性があります。代わりに<code>ffill()</code>と<code>bfill()</code>メソッドを使用することをお勧めします。</li>
 <li>平均値で補完する場合、データに極端な値（外れ値）が存在するならば、中央値で補完することを検討できます。その方がより堅牢（ロバスト）です。</li>
 <li>カテゴリデータ（部門、役職など）の場合、最頻値（モード）または明確なカテゴリ（例：「不明」）で補完することをお勧めします。</li>
 <li>欠損値を補完する前に、欠損の原因とパターンを分析し、最も適切な補完方法を選択することをお勧めします。</li>
@@ -844,11 +844,11 @@ df_interpolated<span style="color: Olive;">[</span><span style="color: #a11;">'y
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1148,7 +1148,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

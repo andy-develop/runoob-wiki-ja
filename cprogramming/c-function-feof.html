@@ -337,13 +337,13 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="article-intro" id="content">
 <h1>C ライブラリ関数 -<span class="color_h1">feof()</span></h1>
 <p><a href="c-standard-library-stdio-h.html"><img alt="C 标准库 - &lt;stdio.h&gt;" class="navup" decoding="async" src="../images/up.gif"/>C 標準ライブラリ - &lt;stdio.h&gt;</a></p>
-<p><span class="marked">feof()</span>ファイルがすでに末尾まで読まれたかどうかを検出するために使用されます。<p>これを「終点探知機」と理解できます——内容を読み終えるたびに「もう終わり了吗？」と尋ねるようなものです。</p>
+<p><span class="marked">feof()</span>ファイルがすでに末尾まで読まれたかどうかを検出するために使用されます。<p>これを「終点探知機」と理解できます——内容を読み終えるたびに「もう終わりか？」と尋ねるようなものです。</p>
 <hr/>
 <h2>説明</h2>
-<p>C ライブラリ関数<span class="marked">int feof(FILE *stream)</span>指定されたストリーム stream のファイル終了标识符をテストします。</p>
+<p>C ライブラリ関数<span class="marked">int feof(FILE *stream)</span>指定されたストリーム stream のファイル終了識別子をテストします。</p>
 <p>ここで新しい概念が2つ登場するので、それぞれ説明します：</p>
 <p><span class="marked">ストリーム（stream）</span>は、C 言語における入出力の抽象化です。ハードディスク上のファイル、キーボード入力、ネットワークデータのいずれであっても、C 言語では一律に「ストリーム」として扱います。ストリームを水道管のように想像できます。データが一方からもう一方へ流れていきます。</p>
-<p><span class="marked">ファイル終了标识符（EOF マーク）</span>は、各ファイルストリーム内部に備わっている状態マークです。これは本のしおりのようなもので、ファイル内容が読み終わると自動的に「読み終わり」のページにめくられます。</p>
+<p><span class="marked">ファイル終了識別子（EOF マーク）</span>は、各ファイルストリーム内部に備わっている状態マークです。これは本のしおりのようなもので、ファイル内容が読み終わると自動的に「読み終わり」のページにめくられます。</p>
 <p>feof() の役割はこのしおりを確認することです——しおりが「読み終わり」を示していれば、feof() は非ゼロ値を返します。しおりがまだ「未読了」の位置にあれば、feof() は 0 を返します。</p>
 <hr/>
 <h2>宣言</h2>
@@ -465,7 +465,7 @@ int feof(FILE *stream)
 <p>末尾に余分な文字化け文字が1つあります。なぜこうなるのか？以下でループの実行過程を1ラウンドずつ追跡します：</p>
 <table class="reference">
 <tr><th>ループのラウンド数</th><th>ループ入口の feof()</th><th>fgetc() が読み取ったもの</th><th>printf() が出力したもの</th><th>説明</th></tr>
-<tr><td>第1ラウンド</td><td>0 を返す（まだ読んでいない）</td><td>'这'</td><td>这</td><td>正常</td></tr>
+<tr><td>第1ラウンド</td><td>0 を返す（まだ読んでいない）</td><td>'これ'</td><td>この</td><td>正常</td></tr>
 <tr><td>第2ラウンド</td><td>0 を返す（まだ末尾に達していない）</td><td>'里'</td><td>里</td><td>正常</td></tr>
 <tr><td>...</td><td>...</td><td>...</td><td>...</td><td>途中の文字は正常に出力される</td></tr>
 <tr><td>最後のラウンド</td><td>0 を返す（まだ末尾に達していない）</td><td>'m'</td><td>m</td><td>最後の正常な文字</td></tr>
@@ -604,11 +604,11 @@ int feof(FILE *stream)
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -908,7 +908,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

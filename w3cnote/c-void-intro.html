@@ -82,7 +82,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="article-intro">
 <!-- ad start-->
 <!-- ad end-->
-<p>void は英語では名詞として次のように解釈されます<strong>虚無、空間、空隙</strong>、一方C言語では void は次のように翻訳されます<strong>「無型」</strong>、それに対応して<span class="marked">void * </span>为<strong>「無型ポインタ」</strong>。</p>
+<p>void は英語では名詞として次のように解釈されます<strong>虚無、空間、空隙</strong>、一方C言語では void は次のように翻訳されます<strong>「無型」</strong>、それに対応して<span class="marked">void * </span>ために<strong>「無型ポインタ」</strong>。</p>
 <p>void は「注釈」とプログラムを制限する役割だけがあるように思われます。もちろん、ここでの「注釈」は人間のための注釈ではなく、コンパイラに対するいわば注釈を提供するものです。</p>
 <hr/><h2>void の役割</h2>
 <p>1. 関数の戻り値の制限。このケースはよく見られます。</p>
@@ -96,7 +96,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 void *p；
 p=a；</pre>
 <p>void ポインタ p を他の型のポインタに代入する場合は、強制型変換が必要です。この例では：<span class="marked">a=（int *）p</span>。メモリ割り当てでは void ポインタの使用を見ることができます：メモリ割り当て関数 malloc 関数が返すポインタは<span class="marked">void *</span>型です。ユーザーがこのポインタを使用する際には、強制型変換を行う必要があります。つまり、そのポインタが指すメモリにどの型のデータが格納されているかを明示的に示すことです。<span class="marked">(int *)malloc(1024)</span>これは、malloc が返す void* ポインタが指すメモリに int 型のデータが格納されていることを強制的に指定することを表します。</p>
-<p>2. ANSI C 標準では、void ポインタに対する p++ や p+=1 などの算術演算は許可されていません。void は無型であるため、算術演算のたびに何バイト操作すればよいかわからないからです。例えば、char 型は sizeof(char) バイトを操作し、int 型は sizeof(int) バイトを操作します。一方、GNU では許可されています。デフォルトでは GNU は次のように見なすからです。<span class="marked">void *</span> 和 <span class="marked">char *</span>同じであり、確定している以上、もちろんいくつかの算術操作を行うことができます。ここでは<span class="marked">sizeof(*p)==sizeof(char)</span>。</p>
+<p>2. ANSI C 標準では、void ポインタに対する p++ や p+=1 などの算術演算は許可されていません。void は無型であるため、算術演算のたびに何バイト操作すればよいかわからないからです。例えば、char 型は sizeof(char) バイトを操作し、int 型は sizeof(int) バイトを操作します。一方、GNU では許可されています。デフォルトでは GNU は次のように見なすからです。<span class="marked">void *</span>と<span class="marked">char *</span>同じであり、確定している以上、もちろんいくつかの算術操作を行うことができます。ここでは<span class="marked">sizeof(*p)==sizeof(char)</span>。</p>
 <p>void にはほとんど「注釈」とプログラムを制限する役割しかありません。なぜなら、void 変数を定義する人は誰もいないからです。試しに定義してみましょう：</p>
 <pre>void a;</pre>
 <p>この行の文はコンパイル時にエラーになり、次のように表示されます。<strong>"illegal use of type 'void'"</strong>。たとえ<span class="marked">void a</span>そのコンパイルがエラーにならなくても、それに実用的な意味はありません。</p>
@@ -246,11 +246,11 @@ void * memset ( void * buffer, int c, size_t num );</pre>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=".." class="runoob-pop">ログイン</a>する必要があります！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href="..">ログイン</a>する必要があります！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

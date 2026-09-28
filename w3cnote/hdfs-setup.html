@@ -85,9 +85,9 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="article-intro">
 <!-- ad start-->
 <!-- ad end-->
-<p><span>以前に説明した Hadoop の 3 つのモード：</span><strong><span>スタンドアロンモード</span></strong><span>、</span><strong><span>擬似クラスターモード</span></strong><span>和</span><strong><span>クラスターモード</span></strong><span>。</span></p><p><strong><span>スタンドアロンモード</span></strong><span>：Hadoop はライブラリとしてのみ存在し、単一のコンピューター上で MapReduce タスクを実行できます。開発者が学習・試験環境を構築するためだけに使用されます。</span></p><p><strong><span>擬似クラスターモード</span></strong><span>：このモードでは、Hadoop はデーモンプロセスの形で単一マシン上で実行されます。通常、開発者が学習・試験環境を構築するために使用されます。</span></p><p><strong><span>クラスターモード</span></strong><span>：このモードは Hadoop の本番環境モードです。つまり、これが Hadoop が実際に使用するモードであり、本番レベルのサービスを提供するために使われます。</span></p>
+<p><span>以前に説明した Hadoop の 3 つのモード：</span><strong><span>スタンドアロンモード</span></strong><span>、</span><strong><span>擬似クラスターモード</span></strong><span>と</span><strong><span>クラスターモード</span></strong><span>。</span></p><p><strong><span>スタンドアロンモード</span></strong><span>：Hadoop はライブラリとしてのみ存在し、単一のコンピューター上で MapReduce タスクを実行できます。開発者が学習・試験環境を構築するためだけに使用されます。</span></p><p><strong><span>擬似クラスターモード</span></strong><span>：このモードでは、Hadoop はデーモンプロセスの形で単一マシン上で実行されます。通常、開発者が学習・試験環境を構築するために使用されます。</span></p><p><strong><span>クラスターモード</span></strong><span>：このモードは Hadoop の本番環境モードです。つまり、これが Hadoop が実際に使用するモードであり、本番レベルのサービスを提供するために使われます。</span></p>
 <h2>HDFS 設定と起動</h2>
-<p><span>HDFS はデータベースと似ており、デーモンプロセスとして起動します。HDFS を使用するには、HDFS クライアントがネットワーク（ソケット）経由で HDFS サーバーに接続し、ファイルシステムを利用する必要があります。</span></p><p><span>在</span><a href="./hadoop-setup.html"><span>Hadoop 実行環境</span></a><span>「Hadoop 実行環境」の章では、すでに Hadoop の基本環境を設定し、コンテナ名は hadoop_single です。前回そのコンテナをシャットダウンした、またはコンピューターをシャットダウンしてコンテナが停止した場合は、そのコンテナを起動して中に入ってください。</span></p><p><span>コンテナに入ったら、Hadoop が存在するか確認しましょう：</span></p>
+<p><span>HDFS はデータベースと似ており、デーモンプロセスとして起動します。HDFS を使用するには、HDFS クライアントがネットワーク（ソケット）経由で HDFS サーバーに接続し、ファイルシステムを利用する必要があります。</span></p><p><span>に</span><a href="./hadoop-setup.html"><span>Hadoop 実行環境</span></a><span>「Hadoop 実行環境」の章では、すでに Hadoop の基本環境を設定し、コンテナ名は hadoop_single です。前回そのコンテナをシャットダウンした、またはコンピューターをシャットダウンしてコンテナが停止した場合は、そのコンテナを起動して中に入ってください。</span></p><p><span>コンテナに入ったら、Hadoop が存在するか確認しましょう：</span></p>
 <pre>hadoop version</pre>
 <p>結果に Hadoop のバージョン番号が表示されれば、Hadoop が存在します。</p>
 <p>次に、正式な手順に進みます。</p>
@@ -142,7 +142,7 @@ docker commit hadoop_single hadoop_proto</pre>
 <p>次に HDFS を起動します：</p>
 <pre>start-dfs.sh</pre><p>起動は 3 つのステップに分かれており、NameNode、DataNode、Secondary NameNode をそれぞれ起動します。</p>
 <p>jps を実行して Java プロセスを確認できます：</p><p><img decoding="async" src="../wp-content/uploads/2021/02/hdfs-setup-2.png"/></p>
-<p>ここまでで、HDFS デーモンプロセスが確立されました。HDFS 自体に HTTP パネルがあるため、ブラウザで http://你的容器IP:9870/ にアクセスして、HDFS パネルと詳細情報を確認できます：</p><p><img decoding="async" src="../wp-content/uploads/2021/02/hdfs-setup-3.png"/></p>
+<p>ここまでで、HDFS デーモンプロセスが確立されました。HDFS 自体に HTTP パネルがあるため、ブラウザで http://あなたのコンテナIP:9870/ にアクセスして、HDFS パネルと詳細情報を確認できます：</p><p><img decoding="async" src="../wp-content/uploads/2021/02/hdfs-setup-3.png"/></p>
 <p>このページが表示されれば、HDFS の設定と起動が成功しています。</p>
 <p>
 <strong>注意：</strong>デスクトップ環境を含まない Linux システムを使用していて、ブラウザがない場合は、この手順をスキップできます。Windows システムを使用しているが Docker Desktop を使用していない場合、この手順を実行するのは難しいでしょう。</p>
@@ -314,11 +314,11 @@ HDFS API</h3>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事を投稿する場合は、ここをクリック</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に必ず<a href=".." class="runoob-pop">ログイン</a>してください！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事を投稿する場合は、ここをクリック</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に必ず<a class="runoob-pop" href="..">ログイン</a>してください！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

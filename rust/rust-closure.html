@@ -234,7 +234,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #708;">fn</span> main<span style="">(</span><span style="">)</span> <span style="">{</span><br/>
     <span style="color: #708;">let</span> <span style="color: #708;">mut</span> counter <span style="">=</span> <span style="color: #0000DD;">0</span><span style="">;</span><br/>
-    <span style="color: #a50; font-style: italic;">// 闭包以 &amp;mut 方式捕获 counter，闭包本身也要声明为 mut</span><br/>
+    <span style="color: #a50; font-style: italic;">// クロージャは &amp;mut で counter をキャプチャし、クロージャ自体も mut として宣言する必要があります</span><br/>
     <span style="color: #708;">let</span> <span style="color: #708;">mut</span> inc <span style="">=</span> <span style="">||</span> <span style="">{</span><br/>
         counter <span style="">+=</span> <span style="color: #0000DD;">1</span><span style="">;</span><br/>
     <span style="">}</span><span style="">;</span><br/>
@@ -248,10 +248,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #708;">fn</span> main<span style="">(</span><span style="">)</span> <span style="">{</span><br/>
     <span style="color: #708;">let</span> owned <span style="">=</span> String<span style="">::</span><span style="color: #164;">from</span><span style="">(</span><span style="color: #a11;">"RUNOOB"</span><span style="">)</span><span style="">;</span><br/>
-    <span style="color: #a50; font-style: italic;">// move 将 owned 的所有权转移进闭包</span><br/>
+    <span style="color: #a50; font-style: italic;">// move は owned の所有権をクロージャに移す</span><br/>
     <span style="color: #708;">let</span> take_owned <span style="">=</span> move <span style="">||</span> println<span style="">!</span><span style="">(</span><span style="color: #a11;">"owned = {}"</span><span style="">,</span> owned<span style="">)</span><span style="">;</span><br/>
     take_owned<span style="">(</span><span style="">)</span><span style="">;</span> <span style="color: #a50; font-style: italic;">// 输出: owned = RUNOOB</span><br/>
-    <span style="color: #a50; font-style: italic;">// 若取消下面这行注释，将编译报错：owned 的所有权已被移入闭包</span><br/>
+    <span style="color: #a50; font-style: italic;">// 下の行のコメントを解除すると、コンパイルエラーになります：owned の所有権はクロージャに移されています。</span><br/>
     <span style="color: #a50; font-style: italic;">// println!("{}", owned);</span><br/>
 <span style="">}</span><br/>
 </div></div>
@@ -267,7 +267,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <tr><td><code>FnOnce</code></td><td>所有権を取得する（<code>T</code>）</td><td>仅一次</td><td>捕获変数を消費するため、以降は呼び出せなくなる</td></tr>
 </tbody>
 </table>
-<p>3つの関係は次のとおりです：<code>Fn</code> 是 <code>FnMut</code>的子 trait，<code>FnMut</code> 是 <code>FnOnce</code>`FnMut` と `Fn` は `FnOnce` のサブトレイトです。つまり、`Fn` を実装したクロージャは、`FnMut` と `FnOnce` も同時に実装します。<code>Fn</code>のクロージャは、自動的に実装もされる<code>FnMut</code> 和 <code>FnOnce</code>。</p>
+<p>3つの関係は次のとおりです：<code>Fn</code>である<code>FnMut</code>のサブトレイト、<code>FnMut</code>である<code>FnOnce</code>`FnMut` と `Fn` は `FnOnce` のサブトレイトです。つまり、`Fn` を実装したクロージャは、`FnMut` と `FnOnce` も同時に実装します。<code>Fn</code>のクロージャは、自動的に実装もされる<code>FnMut</code>と<code>FnOnce</code>。</p>
 <blockquote><p>注意：<code>move</code>`move` キーワードは所有権の取得を強制するだけで、クロージャが必ず `FnOnce` であることを意味するわけではありません。<code>FnOnce</code>クロージャ本体がキャプチャした値を消費しない場合、たとえ `move` を付けても、そのクロージャは `Fn` と `FnMut` を実装できます。<code>move</code>、クロージャは依然として実装可能である<code>Fn</code>（複数回呼び出し可能）。</p></blockquote>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #708;">fn</span> main<span style="">(</span><span style="">)</span> <span style="">{</span><br/>
@@ -287,10 +287,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     println<span style="">!</span><span style="">(</span><span style="color: #a11;">"increment() = {}"</span><span style="">,</span> increment<span style="">(</span><span style="">)</span><span style="">)</span><span style="">;</span> <span style="color: #a50; font-style: italic;">// 输出: 1</span><br/>
     println<span style="">!</span><span style="">(</span><span style="color: #a11;">"increment() = {}"</span><span style="">,</span> increment<span style="">(</span><span style="">)</span><span style="">)</span><span style="">;</span> <span style="color: #a50; font-style: italic;">// 输出: 2</span><br/>
 <br/>
-    <span style="color: #a50; font-style: italic;">// FnOnce 闭包：消耗捕获的变量，只能调用一次</span><br/>
+    <span style="color: #a50; font-style: italic;">// FnOnce クロージャ：捕捉した変数を消費し、一度しか呼び出せない</span><br/>
     <span style="color: #708;">let</span> data <span style="">=</span> String<span style="">::</span><span style="color: #164;">from</span><span style="">(</span><span style="color: #a11;">"RUNOOB"</span><span style="">)</span><span style="">;</span><br/>
     <span style="color: #708;">let</span> consume <span style="">=</span> move <span style="">||</span> <span style="">{</span><br/>
-        <span style="color: #708;">let</span> _ <span style="">=</span> data<span style="">;</span> <span style="color: #a50; font-style: italic;">// 将 data 移出闭包环境，消耗了它</span><br/>
+        <span style="color: #708;">let</span> _ <span style="">=</span> data<span style="">;</span> <span style="color: #a50; font-style: italic;">// dataをクロージャ環境から取り出して消費する</span><br/>
         println<span style="">!</span><span style="">(</span><span style="color: #a11;">"data has been consumed"</span><span style="">)</span><span style="">;</span><br/>
     <span style="">}</span><span style="">;</span><br/>
     consume<span style="">(</span><span style="">)</span><span style="">;</span><br/>
@@ -301,9 +301,9 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2>クロージャを引数と戻り値として使う</h2>
 <p>クロージャは関数の引数として渡すことも、関数の戻り値として返すこともできます。これは、クロージャが実際の開発で最も一般的に使われる2つの方法です。</p>
 <h3>引数としてのクロージャ</h3>
-<p>クロージャを引数として受け取る場合、トレイト境界でクロージャのトレイト型を指定する必要があります。次の例では、パラメータ<code>F</code>被约束为<code>Fn(i32) -&gt; i32</code>、1つを受け取ることを示します<code>i32</code>参数并返回<code>i32</code>的闭包。</p>
+<p>クロージャを引数として受け取る場合、トレイト境界でクロージャのトレイト型を指定する必要があります。次の例では、パラメータ<code>F</code>制約される<code>Fn(i32) -&gt; i32</code>、1つを受け取ることを示します<code>i32</code>参数并返回<code>i32</code>のクロージャ。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #a50; font-style: italic;">// 定义一个函数，接受闭包作为参数</span><br/>
+<span style="color: #a50; font-style: italic;">// クロージャを引数として受け取る関数を定義する</span><br/>
 <span style="color: #708;">fn</span> apply<span style="">&lt;</span>F<span style="">&gt;</span><span style="">(</span>val<span style="">:</span> <span style="color: #05a;">i32</span><span style="">,</span> f<span style="">:</span> F<span style="">)</span> <span style="">-&gt;</span> <span style="color: #05a;">i32</span><br/>
 where<br/>
     F<span style="">:</span> Fn<span style="">(</span><span style="color: #05a;">i32</span><span style="">)</span> <span style="">-&gt;</span> <span style="color: #05a;">i32</span><span style="">,</span> <span style="color: #a50; font-style: italic;">// F 必须实现 Fn(i32) -&gt; i32</span><br/>
@@ -326,9 +326,9 @@ where<br/>
 <h4>impl Fn を使用してクロージャを返す</h4>
 <p>返すクロージャの型がコンパイル時に確定できる場合は、`impl Trait` を使用します。<code>impl Fn</code>でよく、ヒープ割り当ては不要である</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #a50; font-style: italic;">// 返回一个闭包，捕获参数 x 并与传入值相加</span><br/>
+<span style="color: #a50; font-style: italic;">// 引数 x をキャプチャし、渡された値と加算するクロージャを返す</span><br/>
 <span style="color: #708;">fn</span> make_adder<span style="">(</span>x<span style="">:</span> <span style="color: #05a;">i32</span><span style="">)</span> <span style="">-&gt;</span> <span style="color: #708;">impl</span> Fn<span style="">(</span><span style="color: #05a;">i32</span><span style="">)</span> <span style="">-&gt;</span> <span style="color: #05a;">i32</span> <span style="">{</span><br/>
-    <span style="color: #a50; font-style: italic;">// 必须 move，否则 x 是局部引用，闭包返回后 x 已失效</span><br/>
+    <span style="color: #a50; font-style: italic;">// move は必須。そうでなければ x はローカル参照であり、クロージャが返った後、x は無効になる。</span><br/>
     move <span style="">|</span>y<span style="">|</span> x <span style="">+</span> y<br/>
 <span style="">}</span><br/>
 <br/>
@@ -608,11 +608,11 @@ Cube of 5 is 125</pre>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -901,7 +901,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

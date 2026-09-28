@@ -201,13 +201,13 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: Green;font-weight:bold;">from</span> sklearn.<span style="color: #05a;">ensemble</span> <span style="color: Green;font-weight:bold;">import</span> RandomForestClassifier<br/>
 <span style="color: Green;font-weight:bold;">from</span> sklearn.<span style="color: #05a;">metrics</span> <span style="color: Green;font-weight:bold;">import</span> accuracy_score<br/>
 <br/>
-<span style="color: #a50"># 构造可运行的数据</span><br/>
+<span style="color: #a50"># 実行可能なデータを構築する</span><br/>
 <span style="color: #a50"># 200 条样本，4 个特征，二分类</span><br/>
 np.<span style="color: #05a;">random</span>.<span style="color: #05a;">seed</span><span style="color: Olive;">(</span><span style="color: Maroon;">42</span><span style="color: Olive;">)</span><br/>
 X <span style="color: Gray;">=</span> np.<span style="color: #05a;">random</span>.<span style="color: #05a;">randn</span><span style="color: Olive;">(</span><span style="color: Maroon;">200</span><span style="color: Gray;">,</span> <span style="color: Maroon;">4</span><span style="color: Olive;">)</span><br/>
 y <span style="color: Gray;">=</span> <span style="color: Olive;">(</span>X<span style="color: Olive;">[</span>:<span style="color: Gray;">,</span> <span style="color: Maroon;">0</span><span style="color: Olive;">]</span> + X<span style="color: Olive;">[</span>:<span style="color: Gray;">,</span> <span style="color: Maroon;">1</span><span style="color: Olive;">]</span> * <span style="color: Maroon;">0.7</span> - X<span style="color: Olive;">[</span>:<span style="color: Gray;">,</span> <span style="color: Maroon;">2</span><span style="color: Olive;">]</span> * <span style="color: Maroon;">0.4</span> <span style="color: Gray;">&gt;</span> <span style="color: Maroon;">0</span><span style="color: Olive;">)</span>.<span style="color: #05a;">astype</span><span style="color: Olive;">(</span><span style="color: Teal;">int</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 1. 划分训练集和测试集（7:3）</span><br/>
+<span style="color: #a50"># 1. トレーニングセットとテストセットを分割する（7:3）</span><br/>
 X_train<span style="color: Gray;">,</span> X_test<span style="color: Gray;">,</span> y_train<span style="color: Gray;">,</span> y_test <span style="color: Gray;">=</span> train_test_split<span style="color: Olive;">(</span><br/>
     X<span style="color: Gray;">,</span> y<span style="color: Gray;">,</span> test_size<span style="color: Gray;">=</span><span style="color: Maroon;">0.3</span><span style="color: Gray;">,</span> random_state<span style="color: Gray;">=</span><span style="color: Maroon;">42</span><br/>
 <span style="color: Olive;">)</span><br/>
@@ -234,7 +234,7 @@ accuracy <span style="color: Gray;">=</span> accuracy_score<span style="color: O
 <strong>欠点：</strong>評価結果が単一のランダム分割に大きく依存します。分割が運悪いと、評価結果が代表性を持たない可能性があります。また、テストセットは一度しか使用されないため、データの活用が不十分です。</li></p></ul>
 <h3>2. K分割交差検証 K-Fold Cross Validation</h3>
 <p>これは現在、最も一般的で標準的な交差検証方法です。</p>
-<p><strong>原理：</strong>データセットを<strong>均等に</strong>ランダムにK個の互いに排他的な部分集合（折り目またはFoldと呼ばれます）に分割します。</p><p>各実験では、そのうちの1つの部分集合をテストセットとし、残りのK-1個の部分集合をトレーニングセットとして順に使用します。このプロセスをK回繰り返し、各部分集合が1回ずつテストセットとして使用されるようにします。最終的にK個の評価スコアが得られ、その平均値をモデルの最終的な性能推定とします。</p>
+<p><strong>原理：</strong>データセットを<strong>均等に</strong>ランダムにK個の互いに排他のな部分集合（フォールドまたはFoldと呼ばれます）に分割します。</p><p>各実験では、そのうちの1つの部分集合をテストセットとし、残りのK-1個の部分集合をトレーニングセットとして順に使用します。このプロセスをK回繰り返し、各部分集合が1回ずつテストセットとして使用されるようにします。最終的にK個の評価スコアが得られ、その平均値をモデルの最終的な性能推定とします。</p>
 <div class="example">
 <h2 class="example">実例</h2>
 <div class="example_code">
@@ -242,7 +242,7 @@ accuracy <span style="color: Gray;">=</span> accuracy_score<span style="color: O
 <span style="color: Green;font-weight:bold;">from</span> sklearn.<span style="color: #05a;">model_selection</span> <span style="color: Green;font-weight:bold;">import</span> cross_val_score<span style="color: Gray;">,</span> KFold<br/>
 <span style="color: Green;font-weight:bold;">from</span> sklearn.<span style="color: #05a;">linear_model</span> <span style="color: Green;font-weight:bold;">import</span> LogisticRegression<br/>
 <br/>
-<span style="color: #a50"># 构造可运行的示例数据</span><br/>
+<span style="color: #a50"># 実行可能なサンプルデータを構築する</span><br/>
 <span style="color: #a50"># 100 条样本，4 个特征，二分类标签</span><br/>
 np.<span style="color: #05a;">random</span>.<span style="color: #05a;">seed</span><span style="color: Olive;">(</span><span style="color: Maroon;">42</span><span style="color: Olive;">)</span><br/>
 X <span style="color: Gray;">=</span> np.<span style="color: #05a;">random</span>.<span style="color: #05a;">randn</span><span style="color: Olive;">(</span><span style="color: Maroon;">100</span><span style="color: Gray;">,</span> <span style="color: Maroon;">4</span><span style="color: Olive;">)</span><br/>
@@ -257,7 +257,7 @@ kfold <span style="color: Gray;">=</span> KFold<span style="color: Olive;">(</sp
 <span style="color: #a50"># 3. 执行交叉验证</span><br/>
 scores <span style="color: Gray;">=</span> cross_val_score<span style="color: Olive;">(</span>model<span style="color: Gray;">,</span> X<span style="color: Gray;">,</span> y<span style="color: Gray;">,</span> cv<span style="color: Gray;">=</span>kfold<span style="color: Gray;">,</span> scoring<span style="color: Gray;">=</span><span style="color: #a11;">'accuracy'</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"每次折叠的准确率: {scores}"</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"各分割の精度: {scores}"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"平均准确率: {scores.mean():.4f} (+/- {scores.std() * 2:.4f})"</span><span style="color: Olive;">)</span><br/>
 </div>
 </div>
@@ -283,7 +283,7 @@ scores <span style="color: Gray;">=</span> cross_val_score<span style="color: Ol
 <div class="example_code">
 <span style="color: Green;font-weight:bold;">from</span> sklearn.<span style="color: #05a;">model_selection</span> <span style="color: Green;font-weight:bold;">import</span> StratifiedKFold<span style="color: Gray;">,</span> cross_val_score<br/>
 <br/>
-<span style="color: #a50"># 使用方式与 KFold 几乎相同，只需替换拆分器</span><br/>
+<span style="color: #a50"># 使用方法は KFold とほぼ同じで、スプリッターを置き換えるだけです</span><br/>
 stratified_kfold <span style="color: Gray;">=</span> StratifiedKFold<span style="color: Olive;">(</span>n_splits<span style="color: Gray;">=</span><span style="color: Maroon;">5</span><span style="color: Gray;">,</span> shuffle<span style="color: Gray;">=</span><span style="color: Teal;">True</span><span style="color: Gray;">,</span> random_state<span style="color: Gray;">=</span><span style="color: Maroon;">42</span><span style="color: Olive;">)</span><br/>
 scores <span style="color: Gray;">=</span> cross_val_score<span style="color: Olive;">(</span>model<span style="color: Gray;">,</span> X<span style="color: Gray;">,</span> y<span style="color: Gray;">,</span> cv<span style="color: Gray;">=</span>stratified_kfold<span style="color: Gray;">,</span> scoring<span style="color: Gray;">=</span><span style="color: #a11;">'accuracy'</span><span style="color: Olive;">)</span><br/>
 </div>
@@ -298,7 +298,7 @@ scores <span style="color: Gray;">=</span> cross_val_score<span style="color: Ol
 <span style="color: Green;font-weight:bold;">import</span> numpy <span style="color: Green;font-weight:bold;">as</span> np<br/>
 <span style="color: Green;font-weight:bold;">from</span> sklearn.<span style="color: #05a;">model_selection</span> <span style="color: Green;font-weight:bold;">import</span> TimeSeriesSplit<br/>
 <br/>
-<span style="color: #a50"># 构造可运行的时间序列数据</span><br/>
+<span style="color: #a50"># 実行可能な時系列データの構築</span><br/>
 <span style="color: #a50"># 100 个时间点，2 个特征</span><br/>
 np.<span style="color: #05a;">random</span>.<span style="color: #05a;">seed</span><span style="color: Olive;">(</span><span style="color: Maroon;">42</span><span style="color: Olive;">)</span><br/>
 X <span style="color: Gray;">=</span> np.<span style="color: #05a;">random</span>.<span style="color: #05a;">randn</span><span style="color: Olive;">(</span><span style="color: Maroon;">100</span><span style="color: Gray;">,</span> <span style="color: Maroon;">2</span><span style="color: Olive;">)</span><br/>
@@ -455,9 +455,9 @@ test_accuracy <span style="color: Gray;">=</span> best_rf_model.<span style="col
 <h2>実践演習とまとめ</h2>
 <h3>実践演習</h3>
 <ol>
-<li><strong>基本実装</strong>：を使用<code>sklearn</code>付属のアヤメデータセットを、それぞれ<code>train_test_split</code> 和 <code>cross_val_score</code>(K=5) でトレーニングして評価する<code>KNeighborsClassifier</code>、2つの評価方法で得られたスコアを比較します。</li>
-<li><strong>モデル比較</strong>：同じデータセット上で、交差検証を使用して比較する<code>SVC</code>、<code>RandomForestClassifier</code> 和 <code>GradientBoostingClassifier</code>の性能。</li>
-<li><strong>パラメータ調整</strong>：のために<code>SVC</code>モデルのパラメータグリッドを設計する（<code>C</code> 和 <code>gamma</code>を含む）、を使用して<code>GridSearchCV</code>最適なパラメータを見つけます。</li>
+<li><strong>基本実装</strong>：を使用<code>sklearn</code>付属のアヤメデータセットを、それぞれ<code>train_test_split</code>と<code>cross_val_score</code>(K=5) でトレーニングして評価する<code>KNeighborsClassifier</code>、2つの評価方法で得られたスコアを比較します。</li>
+<li><strong>モデル比較</strong>：同じデータセット上で、交差検証を使用して比較する<code>SVC</code>、<code>RandomForestClassifier</code>と<code>GradientBoostingClassifier</code>の性能。</li>
+<li><strong>パラメータ調整</strong>：のために<code>SVC</code>モデルのパラメータグリッドを設計する（<code>C</code>と<code>gamma</code>を含む）、を使用して<code>GridSearchCV</code>最適なパラメータを見つけます。</li>
 </ol>
 <h3>重要なポイントのまとめ</h3>
 <ul>
@@ -588,11 +588,11 @@ test_accuracy <span style="color: Gray;">=</span> best_rf_model.<span style="col
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -881,7 +881,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

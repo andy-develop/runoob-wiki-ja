@@ -90,12 +90,12 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <ul>
 <li>リソースとURI</li>
 <li>統一リソースインターフェース</li>
-<li>资源的表述</li>
-<li>资源的链接</li>
-<li>状态的转移</li>
+<li>リソースの表現</li>
+<li>リソースのリンク</li>
+<li>状態の遷移</li>
 </ul>
 <h2>2. 1 リソースとURI</h2>
-<p>RESTの正式名称は「表述性状態転移」ですが、それは一体何の「表述」を指すのでしょうか？実はそれはリソース（資源）を指します。どのようなものでも、参照する必要があれば、それはリソースです。リソースは実体（例えば電話番号）の場合もあれば、単なる抽象的な概念（例えば価値）の場合もあります。以下にリソースの例をいくつか示します：</p>
+<p>RESTの正式名称は「表象の状態転送」ですが、それは一体何の「表象」を指すのでしょうか？実はそれはリソース（資源）を指します。どのようなものでも、参照する必要があれば、それはリソースです。リソースは実体（例えば電話番号）の場合もあれば、単なる抽象的な概念（例えば価値）の場合もあります。以下にリソースの例をいくつか示します：</p>
 <ul>
 <li>あるユーザーの携帯電話番号</li>
 <li>あるユーザーの個人情報</li>
@@ -119,11 +119,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <li>_ または - を使用してURIの可読性を高めます</li>
 </ul><p>かつてWeb上のURIは無機質な数字や意味のない文字列でしたが、現在では多くのWebサイトが _ や - を使って単語を区切り、URIをより人間らしく見せています。例えば、中国国内で有名なオープンソース中国コミュニティ（开源中国）のニュースアドレスはこのスタイルを採用しています。例：http://www.oschina.net/news/38119/oschina-translate-reward-plan</p>
 <ul>
-<li>使用/来表示资源的层级关系</li>
+<li>/を使用してリソースの階層関係を表す</li>
 </ul><p>例えば上記の/git/git/commit/e3af72cdafab5993d18fae056f87e1d675913d08は多段階のリソースを表しており、gitユーザーのgitプロジェクトの特定のコミット記録を指します。また、例えば/orders/2012/10は2012年10月の注文記録を表すために使用できます。</p>
 <ul>
 <li>?を使用してリソースをフィルタリングする</li>
-</ul><p>很多人只是把?简单的当做是参数的传递，很容易造成URI过于复杂、难以理解。可以把?用于对资源的过滤， 例如/git/git/pulls用来表示git项目的所有推入请求，而/pulls?state=closed用来表示git项目中已经关闭的推入请求， 这种URL通常对应的是一些特定条件的查询结果或算法运算结果。</p>
+</ul><p>多くの人は単に?をパラメータの受け渡しとして考えてしまい、URIが複雑になりすぎて理解しにくくなりがちです。?はリソースのフィルタリングに使用できます。例えば、/git/git/pullsはgitプロジェクトのすべてのプルリクエストを表し、/pulls?state=closedはgitプロジェクトでクローズ済みのプルリクエストを表します。このようなURLは通常、特定の条件によるクエリ結果やアルゴリズムの演算結果に対応します。</p>
 <ul>
 <li>カンマ(,)またはセミコロン(;)は、同レベルのリソース間の関係を表すために使用できます。</li>
 </ul><p>時には同レベルのリソース間の関係を表す必要がある場合、カンマ(,)やセミコロン(;)を使用して区切ることができます。例えば、いつかGitHubが任意の2つのコミット記録間の特定ファイルの差分を比較できるようになった場合、URIとして/git/git /block-sha1/sha1.h/compare/e3af72cdafab5993d18fae056f87e1d675913d08;bd63e61bdf38e872d5215c07b264dcc16e4febcaを使用できるかもしれません。ただし、現在のGitHubは…を使用してこの処理を行っています。例えば/git/git/compare/master…nextです。</p>
@@ -163,7 +163,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <ul>
 <li>201（Created）- 新しいリソースが作成された場合</li>
 <li>202（Accepted）- 処理リクエストを受け付けたが、まだ完了していない（非同期処理）</li>
-<li>301（Moved Permanently）- 资源的URI被更新</li>
+<li>301（Moved Permanently）- リソースのURIが更新されました</li>
 <li>303（See Other）- その他（例：負荷分散）</li>
 <li>400（bad request）- 悪いリクエストを指す</li>
 <li>404（not found）- リソースが存在しません</li>
@@ -186,7 +186,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </ul>
 <ul>
 <li>201（created）- 新しいリソースが作成された場合</li>
-<li>301（Moved Permanently）- 资源的URI已更改</li>
+<li>301（Moved Permanently）- リソースのURIが変更されました</li>
 <li>303（See Other）- その他（例：負荷分散）</li>
 <li>400（bad request）- 悪いリクエストを指す</li>
 <li>404（not found）- リソースが存在しません</li>
@@ -206,7 +206,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <li>200（OK）- リソースが削除されました</li>
 </ul>
 <ul>
-<li>301 （Moved Permanently）- 资源的URI已更改</li>
+<li>301 （Moved Permanently） - リソースのURIが変更されました。</li>
 <li>303（See Other）- その他、例：負荷分散</li>
 <li>400（bad request）- 悪いリクエストを指す</li>
 <li>404（not found）- リソースが存在しません</li>
@@ -265,7 +265,7 @@ PATCH /repos/:owner/:repo/issues/:number
 <p>サーバーが要求された表現形式をサポートしていない場合はどうすればよいのか？サーバーがサポートしていない場合、HTTP 406レスポンスを返し、そのリクエストの処理を拒否することを示すべきです。以下、githubを例として、XML表現のリソースをリクエストした結果を示します：</p>
 <p data-mce-=""><img alt="291732082474844" class="attachment-full" decoding="async" height="189" loading="lazy" src="../wp-content/uploads/2015/07/291732082474844.jpg" width="773"/></p>
 　　<h2>2. 4 リソースのリンク</h2>
-<p>RESTが標準的なHTTPメソッドを使用してリソースを操作することは知っていますが、その理由だけでRESTをCURD付きのWebデータベースアーキテクチャと理解するのはあまりにも単純すぎます。</p><p>このアンチパターンは、「ハイパーメディア・アズ・ジ・エンジン・オブ・アプリケーション・ステート（hypermedia as the engine of application state）」という中核的概念を無視しています。ハイパーメディアとは何でしょうか。</p><p>Webページを閲覧するとき、あるリンクからページへ移動し、別のリンクからまた別のページへ移動するのは、まさにハイパーメディアの概念を利用しています。つまり、リソース同士をリンクで結びつけるということです。</p>
+<p>RESTが標準のなHTTPメソッドを使用してリソースを操作することは知っていますが、その理由だけでRESTをCRUD付きのWebデータベースアーキテクチャと理解するのはあまりにも単純すぎます。</p><p>このアンチパターンは、「ハイパーメディア・アズ・ジ・エンジン・オブ・アプリケーション・ステート（hypermedia as the engine of application state）」という中核的概念を無視しています。ハイパーメディアとは何でしょうか。</p><p>Webページを閲覧するとき、あるリンクからページへ移動し、別のリンクからまた別のページへ移動するのは、まさにハイパーメディアの概念を利用しています。つまり、リソース同士をリンクで結びつけるということです。</p>
 <p>この目的を達成するには、表現形式の中にリンクを追加してクライアントを導くことが求められます。『RESTful Web Services』という書籍では、著者はこのリンクを持つ特性を「コネクティビティ（connectedness）」と呼んでいます。以下で具体的にいくつかの例を見てみましょう。</p><p>以下は、githubが特定の組織のプロジェクトリストを取得するリクエストを示しています。レスポンスヘッダーにLinkヘッダーが追加され、クライアントに次のページと最後のページのレコードへのアクセス方法を伝えているのがわかります。レスポンスボディでは、urlを使用してプロジェクトのオーナーとプロジェクトのアドレスにリンクしています。</p>
 <p data-mce-=""><img alt="291731042784620" class="attachment-full" decoding="async" height="617" loading="lazy" src="../wp-content/uploads/2015/07/291731042784620.jpg" width="771"/></p><p>また、次の例のように、注文を作成した後にリンクを通じてクライアントを支払い方法へ導くこともできます。</p>
 <p data-mce-=""><a href="../wp-content/uploads/2015/07/291731052313462.jpg"><img alt="291731052313462" class="attachment-full" decoding="async" height="251" loading="lazy" src="../wp-content/uploads/2015/07/291731052313462.jpg" width="773"/></a></p>
@@ -281,7 +281,7 @@ PATCH /repos/:owner/:repo/issues/:number
 </div>
 <div class="previous-next-links">
 <div class="previous-design-link">← <a href="./basic-knowledge-summary-of-spring.html" rel="prev">Spring基础知识汇总 Java开发必看</a> </div>
-<div class="next-design-link"><a href="./ssh-slow.html" rel="next">SSH 连接慢的解决方案详解</a> →</div>
+<div class="next-design-link"><a href="./ssh-slow.html" rel="next">SSH接続が遅い場合の解決策の詳細</a> →</div>
 </div>
 <style>
 .wrapper {
@@ -387,11 +387,11 @@ PATCH /repos/:owner/:repo/issues/:number
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=".." class="runoob-pop">登录</a>！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href="..">登录</a>！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

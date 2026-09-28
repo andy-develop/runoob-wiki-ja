@@ -104,7 +104,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h3>1. resリソースフォルダの紹介：</h3>
 <p>PS：これについて言うと<strong>resディレクトリ</strong>、またこれも挙げておきます<strong>assetsディレクトリ</strong>、ここにはありませんが、自分で作成できます。両者の違いは、前者（res）のすべてのリソースファイルがR.javaファイルに対応するリソースIDを生成するのに対し、後者（assets）は生成しないことです。前者はリソースIDを直接使用して対応するリソースにアクセスできますが、後者はAssetManagerを介してバイナリストリームの形式で読み取る必要があります！そうそう、このRファイルは辞書のようなもので、resの下の各リソースはここで一意のIDを生成します！</p>
 <p>続いて、resリソースディレクトリの下の関連ディレクトリについて説明します：</p>
-<p><strong>PS:</strong>前述のmipmapディレクトリは、Eclipseには存在しません。Eclipseではすべてdrawableで始まります。実際には違いはほとんどありません。mipmapを使用すると、画像のスケーリングにおいて一定のパフォーマンス最適化が提供されるだけです。解像度が異なる場合、システムは画面解像度に応じてhdpi、mdpi、xmdpi、xxhdpiの下の対応する画像を選択します。そのため、他の人のAPKを解凍すると、上記のディレクトリに同じ名前の画像が4つのフォルダすべてに存在するのを見ることができます。サイズとピクセルが異なるだけです！もちろん、これは絶対的なものではありません。たとえば、すべての画像をdrawable-hdpiに置いた場合、携帯が本来ldpiフォルダの画像リソースを読み込むべきでも、ldpiにない場合は、hdpiの画像が読み込まれます！また、別のケースもあります：たとえばhdpi、mdpiディレクトリにはあるがldpiにはない場合、mdpiのリソースが読み込まれます！原則は、最も近い密度レベルを使用することです！また、Androidが画面密度に応じて異なるフォルダのリソースを読み込むのを禁止したい場合は、AndroidManifest.xmlファイルにandroid:anyDensity="false"フィールドを追加するだけで済みます！</p>
+<p><strong>PS:</strong>前述のmipmapディレクトリは、Eclipseには存在しません。Eclipseではすべてdrawableで始まります。実際には違いはほとんどありません。mipmapを使用すると、画像のスケーリングにおいて一定のパフォーマンス最適化が提供されるだけです。解像度が異なる場合、システムは画面解像度に応じてhdpi、mdpi、xmdpi、xxhdpiの下の対応する画像を選択します。そのため、他の人のAPKを解凍すると、上記のディレクトリに同じ名前の画像が4つのフォルダすべてに存在するのを見ることができます。サイズとピクセルが異なるだけです！もちろん、これは絶対のなものではありません。たとえば、すべての画像をdrawable-hdpiに置いた場合、携帯が本来ldpiフォルダの画像リソースを読み込むべきでも、ldpiにない場合は、hdpiの画像が読み込まれます！また、別のケースもあります：たとえばhdpi、mdpiディレクトリにはあるがldpiにはない場合、mdpiのリソースが読み込まれます！原則は、最も近い密度レベルを使用することです！また、Androidが画面密度に応じて異なるフォルダのリソースを読み込むのを禁止したい場合は、AndroidManifest.xmlファイルにandroid:anyDensity="false"フィールドを追加するだけで済みます！</p>
 <p>1. まずは<strong>画像</strong>リソース：</p>
 <blockquote><ul>
 <li><strong>drawable：</strong>さまざまなビットマップファイル（.png、.jpg、.9png、.gifなど）を格納します。その他に、drawableタイプのXMLファイルも含まれる場合があります</li>
@@ -334,11 +334,11 @@ public class MainActivity extends AppCompatActivity {
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてメモを共有</h3>
-<p style="font-size:14px;">メモは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> メモを共有する前に必ず<a href=".." class="runoob-pop">ログイン</a>！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">メモは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> メモを共有する前に必ず<a class="runoob-pop" href="..">ログイン</a>！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

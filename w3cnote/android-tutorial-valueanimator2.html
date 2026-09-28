@@ -379,7 +379,7 @@ getInterpolation()メソッドはinputパラメータを受け取ります。こ
 <p><img alt="" decoding="async" src="../wp-content/uploads/2015/11/43642406.jpg"/></p>
 <p>ここのアルゴリズムを私に聞かないでください、私も知りませんよ。もう少し理解しやすいものを見つけましょう：<strong>AccelerateDecelerateInterpolator</strong></p>
 <p><img alt="" decoding="async" src="../wp-content/uploads/2015/11/80592279.jpg"/></p>
-<p>このInterpolatorは最初に加速してから減速する効果があります：<strong>(float)(Math.cos((input + 1) * Math.PI) / 2.0f) + 0.5f</strong>のアルゴリズムの理解：</p><p>解：inputの値の範囲が[0,1]であることから、cosの中の値の範囲は[π,2π]となり、対応する値は-1と1です。この値を2で割って0.5を加えると、getInterpolation()メソッドが最終的に返す結果の値の範囲はやはり[0,1]となり、対応する曲線グラフは以下のとおりです：</p>
+<p>このInterpolatorは最初に加速してから減速する効果があります：<strong>(float)(Math.cos((input + 1) * Math.PI) / 2.0f) + 0.5f</strong>のアルゴリズムの理解：</p><p>解：inputの値の範囲が[0,1]であるため、cosの中の値の範囲は[π,2π]となり、対応する値は-1と1です。この値を2で割って0.5を加えると、getInterpolation()メソッドが最終のに返す結果の値の範囲はやはり[0,1]となり、対応する曲線グラフは以下のとおりです。</p>
 <p><img alt="" decoding="async" src="../wp-content/uploads/2015/11/Center.html"/></p>
 <p>したがって、最初に加速してから減速する過程です！</p>
 <p>うーん、勉強が苦手な者には手に負えない…<img alt="" decoding="async" src="../wp-content/uploads/2015/11/90823139.jpg"/>、上記は全部、郭大叔の記事から引っ張ってきたものです…私は静かにしたい…</p>
@@ -413,8 +413,7 @@ animator.start();</pre>
 <p>使い方はとても簡単で、使用するときにドキュメントを参照すればいいです〜。また、以下のいくつかの細かい点に注意してください！</p>
 <ul>
 <li>ViewPropertyAnimatorの機能全体は、Viewクラスに新しく追加されたanimate()メソッドの上に構築されています。このメソッドはViewPropertyAnimatorのインスタンスを作成して返し、その後呼び出されるすべてのメソッド、設定されるすべてのプロパティは、このインスタンスを通じて行われます。</li>
-<li>ViewPropertyAnimatorを使用すると、<strong>アニメーションの定義が完了した後</strong>、アニメーションは<strong>自動的に起動されます</strong>。
-そしてこの仕組みは複合アニメーションにも同様に有効です。新しいメソッドをどんどん連結していくだけで、アニメーションはすぐには実行されず、ViewPropertyAnimatorに設定されたすべてのメソッドが実行し終わるのを待ってから、アニメーションは自動的に起動されます。もちろん、このデフォルトの仕組みを使いたくない場合は、明示的に<strong>start</strong>()メソッドを呼び出してアニメーションを起動することもできます。</li>
+<li>ViewPropertyAnimatorを使用すると、<strong>アニメーションの定義が完了した後</strong>、アニメーションは<strong>自動的に起動されます</strong>。そしてこの仕組みは複合アニメーションにも同様に有効です。新しいメソッドをどんどん連結していくだけで、アニメーションはすぐには実行されず、ViewPropertyAnimatorに設定されたすべてのメソッドが実行し終わるのを待ってから、アニメーションは自動的に起動されます。もちろん、このデフォルトの仕組みを使いたくない場合は、明示的に<strong>start</strong>()メソッドを呼び出してアニメーションを起動することもできます。</li>
 <li>ViewPropertyAnimatorのすべてのインターフェースは連鎖構文で設計されており、各メソッドの戻り値はそれ<strong>自身のインスタンス</strong>です。したがって、1つのメソッドを呼び終えた後に、その別のメソッドを直接連鎖的に呼び出すことができ、これによりすべての機能を連結できます。一行のコードだけで、任意の複雑なアニメーション機能を実現することもできます。</li>
 </ul>
 <hr/>
@@ -537,11 +536,11 @@ animator.start();</pre>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります。</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=".." class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります。</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href="..">ログイン</a>が必要です！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

@@ -198,25 +198,25 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: Green;font-weight:bold;">import</span> matplotlib.<span style="color: #05a;">pyplot</span> <span style="color: Green;font-weight:bold;">as</span> plt<br/>
 <span style="color: Green;font-weight:bold;">import</span> seaborn <span style="color: Green;font-weight:bold;">as</span> sns<br/>
 <br/>
-<span style="color: #a50"># 1. 加载数据（这里以经典的鸢尾花数据集为例，你也可以加载自己的CSV文件）</span><br/>
-<span style="color: #a50"># 从本地文件加载</span><br/>
+<span style="color: #a50"># 1. データを読み込む（ここでは定番のIrisデータセットを例にします。自分のCSVファイルを読み込むこともできます）</span><br/>
+<span style="color: #a50"># ローカルファイルからロード</span><br/>
 df <span style="color: Gray;">=</span> pd.<span style="color: #05a;">read_csv</span><span style="color: Olive;">(</span><span style="color: #a11;">'iris.csv'</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 从网络加载</span><br/>
+<span style="color: #a50"># ネットワークから読み込む</span><br/>
 <span style="color: #a50"># url = "https://raw.githubusercontent.com/uiuc-cse/data-fa14/gh-pages/data/iris.csv"</span><br/>
 <span style="color: #a50"># df = pd.read_csv(url)</span><br/>
 <br/>
-<span style="color: #a50"># 2. 查看数据的前几行 - 第一印象</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"数据的前5行："</span><span style="color: Olive;">)</span><br/>
+<span style="color: #a50"># 2. データの最初の数行を確認 - 第一印象</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"データの最初の5行："</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df.<span style="color: #05a;">head</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>"</span> + <span style="color: #a11;">"="</span>*<span style="color: Maroon;">50</span> + <span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 3. 查看数据的整体信息：行数、列数、数据类型、内存占用</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"数据集的基本信息："</span><span style="color: Olive;">)</span><br/>
+<span style="color: #a50"># 3. データの全体像を確認：行数、列数、データ型、メモリ使用量</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"データセットの基本情報："</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df.<span style="color: #05a;">info</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>"</span> + <span style="color: #a11;">"="</span>*<span style="color: Maroon;">50</span> + <span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 4. 查看数据的形状（多少行，多少列）</span><br/>
+<span style="color: #a50"># 4. データの形状（何行、何列）を確認する</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"数据集形状：{df.shape}"</span><span style="color: Olive;">)</span> <span style="color: #a50"># 输出 (行数， 列数)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"共有 {df.shape</span><span style="color: Olive;">)</span><br/>
 </div>
@@ -260,8 +260,8 @@ missing_ratio <span style="color: Gray;">=</span> df.<span style="color: #05a;">
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>missing_ratio<span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>"</span> + <span style="color: #a11;">"="</span>*<span style="color: Maroon;">50</span> + <span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 2. 检查数值型特征的统计摘要 - 可以发现异常值的线索</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"数值型特征的统计描述："</span><span style="color: Olive;">)</span><br/>
+<span style="color: #a50"># 2. 数値型特徴量の統計サマリーを確認 - 異常値の手がかりを発見できます</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">数値型特徴の統計の記述：</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>df.<span style="color: #05a;">describe</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 </div>
 </div>
@@ -275,7 +275,7 @@ missing_ratio <span style="color: Gray;">=</span> df.<span style="color: #05a;">
 <li><code>min</code>：最小値</li>
 <li><code>25%</code>, <code>50%</code>（中央値）<code>75%</code>：四分位数</li>
 <li><code>max</code>：最大値</li>
-<li><strong>観察することにより<code>min</code> 和 <code>max</code>、異常値があるかどうかを初歩的に判断できます</strong>（例えば、年齢列に200歳が現れるなど）。</li>
+<li><strong>観察することにより<code>min</code>と<code>max</code>、異常値があるかどうかを初歩的に判断できます</strong>（例えば、年齢列に200歳が現れるなど）。</li>
 </ul>
 </li>
 </ul>
@@ -287,40 +287,40 @@ missing_ratio <span style="color: Gray;">=</span> df.<span style="color: #05a;">
 <span style="color: #a50"># 设置图表风格</span><br/>
 sns.<span style="color: Teal;">set</span><span style="color: Olive;">(</span>style<span style="color: Gray;">=</span><span style="color: #a11;">"whitegrid"</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 1. 单变量分布 - 了解每个特征自身的分布情况</span><br/>
-fig<span style="color: Gray;">,</span> axes <span style="color: Gray;">=</span> plt.<span style="color: #05a;">subplots</span><span style="color: Olive;">(</span><span style="color: Maroon;">2</span><span style="color: Gray;">,</span> <span style="color: Maroon;">2</span><span style="color: Gray;">,</span> figsize<span style="color: Gray;">=</span><span style="color: Olive;">(</span><span style="color: Maroon;">12</span><span style="color: Gray;">,</span> <span style="color: Maroon;">8</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span> <span style="color: #a50"># 创建2x2的画布</span><br/>
+<span style="color: #a50"># 1. 単変量分布 - 各特徴量自体の分布を理解する</span><br/>
+fig<span style="color: Gray;">,</span> axes <span style="color: Gray;">=</span> plt.<span style="color: #05a;">subplots</span><span style="color: Olive;">(</span><span style="color: Maroon;">2</span><span style="color: Gray;">,</span> <span style="color: Maroon;">2</span><span style="color: Gray;">,</span> figsize<span style="color: Gray;">=</span><span style="color: Olive;">(</span><span style="color: Maroon;">12</span><span style="color: Gray;">,</span> <span style="color: Maroon;">8</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span> <span style="color: #a50"># 2x2のキャンバスを作成する</span><br/>
 features <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: #a11;">'sepal_length'</span>， <span style="color: #a11;">'sepal_width'</span>， <span style="color: #a11;">'petal_length'</span>， <span style="color: #a11;">'petal_width'</span><span style="color: Olive;">]</span><br/>
 colors <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: #a11;">'skyblue'</span>， <span style="color: #a11;">'lightgreen'</span>， <span style="color: #a11;">'salmon'</span>， <span style="color: #a11;">'gold'</span><span style="color: Olive;">]</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">for</span> i<span style="color: Gray;">,</span> <span style="color: Olive;">(</span>ax<span style="color: Gray;">,</span> feature<span style="color: Gray;">,</span> color<span style="color: Olive;">)</span> <span style="color: Green;font-weight:bold;">in</span> <span style="color: Teal;">enumerate</span><span style="color: Olive;">(</span><span style="color: Teal;">zip</span><span style="color: Olive;">(</span>axes.<span style="color: #05a;">flat</span><span style="color: Gray;">,</span> features<span style="color: Gray;">,</span> colors<span style="color: Olive;">)</span><span style="color: Olive;">)</span>:<br/>
-    <span style="color: #a50"># 绘制直方图（分布）与核密度估计曲线</span><br/>
+    <span style="color: #a50"># ヒストグラム（分布）とカーネル密度推定曲線を描画する</span><br/>
     sns.<span style="color: #05a;">histplot</span><span style="color: Olive;">(</span>df<span style="color: Olive;">[</span>feature<span style="color: Olive;">]</span><span style="color: Gray;">,</span> kde<span style="color: Gray;">=</span><span style="color: Teal;">True</span><span style="color: Gray;">,</span> ax<span style="color: Gray;">=</span>ax<span style="color: Gray;">,</span> color<span style="color: Gray;">=</span>color<span style="color: Gray;">,</span> bins<span style="color: Gray;">=</span><span style="color: Maroon;">20</span><span style="color: Olive;">)</span><br/>
-    ax.<span style="color: #05a;">set_title</span><span style="color: Olive;">(</span>f<span style="color: #a11;">'{feature} 的分布'</span>， fontsize<span style="color: Gray;">=</span><span style="color: Maroon;">14</span><span style="color: Olive;">)</span><br/>
+    ax.<span style="color: #05a;">set_title</span><span style="color: Olive;">(</span>f<span style="color: #a11;">'{feature} の分布'</span>， fontsize<span style="color: Gray;">=</span><span style="color: Maroon;">14</span><span style="color: Olive;">)</span><br/>
     ax.<span style="color: #05a;">set_xlabel</span><span style="color: Olive;">(</span>feature<span style="color: Olive;">)</span><br/>
     ax.<span style="color: #05a;">set_ylabel</span><span style="color: Olive;">(</span><span style="color: #a11;">'频数'</span><span style="color: Olive;">)</span><br/>
 <br/>
 plt.<span style="color: #05a;">tight_layout</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 plt.<span style="color: #05a;">show</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 2. 箱线图 - 查看数据分布与异常值（更直观）</span><br/>
+<span style="color: #a50"># 2. 箱ひげ図 - データ分布と外れ値を確認する（より直感的）</span><br/>
 plt.<span style="color: #05a;">figure</span><span style="color: Olive;">(</span>figsize<span style="color: Gray;">=</span><span style="color: Olive;">(</span><span style="color: Maroon;">10</span><span style="color: Gray;">,</span> <span style="color: Maroon;">6</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 <span style="color: #a50"># 选择数值列绘制箱线图</span><br/>
-df_box <span style="color: Gray;">=</span> df.<span style="color: #05a;">drop</span><span style="color: Olive;">(</span>columns<span style="color: Gray;">=</span><span style="color: Olive;">[</span><span style="color: #a11;">'species'</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span> <span style="color: #a50"># 假设'species'是文本标签列，先去掉</span><br/>
+df_box <span style="color: Gray;">=</span> df.<span style="color: #05a;">drop</span><span style="color: Olive;">(</span>columns<span style="color: Gray;">=</span><span style="color: Olive;">[</span><span style="color: #a11;">'species'</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span> <span style="color: #a50"># 'species' はテキストラベル列なので、先に削除します</span><br/>
 sns.<span style="color: #05a;">boxplot</span><span style="color: Olive;">(</span>data<span style="color: Gray;">=</span>df_box<span style="color: Olive;">)</span><br/>
-plt.<span style="color: #05a;">title</span><span style="color: Olive;">(</span><span style="color: #a11;">'各数值特征的箱线图（查看分布与异常值）'</span>， fontsize<span style="color: Gray;">=</span><span style="color: Maroon;">14</span><span style="color: Olive;">)</span><br/>
+plt.<span style="color: #05a;">title</span><span style="color: Olive;">(</span><span style="color: #a11;">各数値特徴量の箱ひげ図（分布と外れ値の確認）</span>， fontsize<span style="color: Gray;">=</span><span style="color: Maroon;">14</span><span style="color: Olive;">)</span><br/>
 plt.<span style="color: #05a;">xticks</span><span style="color: Olive;">(</span>rotation<span style="color: Gray;">=</span><span style="color: Maroon;">45</span><span style="color: Olive;">)</span><br/>
 plt.<span style="color: #05a;">show</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 3. 变量间关系 - 散点图矩阵</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>绘制特征间关系的散点图矩阵...（这能帮助我们发现特征之间的关联）"</span><span style="color: Olive;">)</span><br/>
-<span style="color: #a50"># 使用Seaborn的pairplot， hue参数可以根据类别着色（如鸢尾花的品种）</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>特徴間の関係を表す散布図行列...（これは、特徴間の関連性を発見するのに役立ちます）</span><span style="color: Olive;">)</span><br/>
+<span style="color: #a50"># Seabornのpairplotを使用し、hueパラメータでカテゴリごとに色付けできる（例：アヤメの品種）</span><br/>
 sns.<span style="color: #05a;">pairplot</span><span style="color: Olive;">(</span>df<span style="color: Gray;">,</span> hue<span style="color: Gray;">=</span><span style="color: #a11;">'species'</span>， height<span style="color: Gray;">=</span><span style="color: Maroon;">2.5</span><span style="color: Olive;">)</span><br/>
-plt.<span style="color: #05a;">suptitle</span><span style="color: Olive;">(</span><span style="color: #a11;">'特征关系散点图矩阵（按种类着色）'</span>， y<span style="color: Gray;">=</span><span style="color: Maroon;">1.02</span><span style="color: Gray;">,</span> fontsize<span style="color: Gray;">=</span><span style="color: Maroon;">16</span><span style="color: Olive;">)</span><br/>
+plt.<span style="color: #05a;">suptitle</span><span style="color: Olive;">(</span><span style="color: #a11;">'特徴関係散布図行列（種類別に色付け）'</span>， y<span style="color: Gray;">=</span><span style="color: Maroon;">1.02</span><span style="color: Gray;">,</span> fontsize<span style="color: Gray;">=</span><span style="color: Maroon;">16</span><span style="color: Olive;">)</span><br/>
 plt.<span style="color: #05a;">show</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 4. 相关性热力图 - 量化特征间的线性关系</span><br/>
+<span style="color: #a50"># 4. 相関ヒートマップ - 特徴量間の線形関係を定量化する</span><br/>
 plt.<span style="color: #05a;">figure</span><span style="color: Olive;">(</span>figsize<span style="color: Gray;">=</span><span style="color: Olive;">(</span><span style="color: Maroon;">8</span><span style="color: Gray;">,</span> <span style="color: Maroon;">6</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
-<span style="color: #a50"># 计算数值特征之间的相关系数</span><br/>
+<span style="color: #a50"># 数値特徴間の相関係数を計算する</span><br/>
 numeric_df <span style="color: Gray;">=</span> df.<span style="color: #05a;">select_dtypes</span><span style="color: Olive;">(</span>include<span style="color: Gray;">=</span><span style="color: Olive;">[</span><span style="color: #a11;">'float64'</span>， <span style="color: #a11;">'int64'</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
 correlation_matrix <span style="color: Gray;">=</span> numeric_df.<span style="color: #05a;">corr</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 sns.<span style="color: #05a;">heatmap</span><span style="color: Olive;">(</span>correlation_matrix<span style="color: Gray;">,</span> annot<span style="color: Gray;">=</span><span style="color: Teal;">True</span><span style="color: Gray;">,</span> cmap<span style="color: Gray;">=</span><span style="color: #a11;">'coolwarm'</span>， center<span style="color: Gray;">=</span><span style="color: Maroon;">0</span><span style="color: Gray;">,</span> square<span style="color: Gray;">=</span><span style="color: Teal;">True</span><span style="color: Olive;">)</span><br/>
@@ -477,11 +477,11 @@ plt.<span style="color: #05a;">show</span><span style="color: Olive;">(</span><s
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -770,7 +770,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

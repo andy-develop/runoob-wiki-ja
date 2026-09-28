@@ -254,8 +254,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 			C++ 参照			</a>
 <a data-p="par" href="../cplusplus/cpp-date-time.html" target="_top" title="C++ 日付 &amp; 時刻">
 			C++ 日付 &amp; 時刻			</a>
-<a data-p="par" href="../cplusplus/cpp-basic-input-output.html" target="_top" title="C++ 基本的な入出力">
-			C++ 基本的な入出力			</a>
+<a data-p="par" href="../cplusplus/cpp-basic-input-output.html" target="_top" title="C++ 基本的な入出力">C++ 基本的な入出力</a>
 <a data-p="par" href="../cplusplus/cpp-struct.html" target="_top" title="C++ 構造体(struct)">
 			C++ 構造体(struct)			</a>
 <a href="../cplusplus/cpp-vector.html" target="_top" title="C++ vector コンテナ">C++ vector コンテナ</a>
@@ -278,8 +277,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 			C++ ファイルとストリーム			</a>
 <a data-p="par" href="../cplusplus/cpp-exceptions-handling.html" target="_top" title="C++ 例外処理">
 			C++ 例外処理			</a>
-<a data-p="par" href="../cplusplus/cpp-dynamic-memory.html" target="_top" title="C++ 動的メモリ">
-			C++ 動的メモリ			</a>
+<a data-p="par" href="../cplusplus/cpp-dynamic-memory.html" target="_top" title="C++ 動的メモリ">C++ 動的メモリ</a>
 <a data-p="par" href="../cplusplus/cpp-namespaces.html" target="_top" title="C++ 名前空間">
 			C++ 名前空間			</a>
 <a data-p="par" href="../cplusplus/cpp-templates.html" target="_top" title="C++ テンプレート">
@@ -776,7 +774,7 @@ int main()
 int a=10; //全局变量从此处定义</pre><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">xiaolin</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   xiaolin</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  129***7841@qq.com</p></div></span>9年前 (2018-02-28)</div></div></li><!-- #comment-## -->
 <li class="comment even thread-even depth-1" id="comment-28507"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   RealRookie</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  105***0686@qq.com</p></div><div class="upvotejs" data-commid="28507" id="runoobvote-id-28507"><a class="upvote"></a> <span class="count">196</span></div></div><div class="comt-main" id="div-comment-28507"><p><strong>静的変数</strong></p>
 <p>静的データ領域に格納される変数は、プログラムの実行開始時に初期化が完了します。これが唯一の初期化です。静的記憶域に格納される変数には、グローバル変数と static 変数の2種類があります。ただし、グローバル変数と比較すると、static は変数の可視範囲を制御できます。要するに static は隠すために使われます。この使い方は一般的ではありませんが。</p>
-<p>PS：static ローカル変数として関数内で定義された場合、その寿命はソースプログラム全体ですが、そのスコープは自動変数と同じで、その変数を定義した関数内でのみ使用できます。その関数を退出した後、その変数は存在し続けますが、使用することはできません。</p>
+<p>PS：static ローカル変数として関数内で定義された場合、その寿命はソースプログラム全体ですが、そのスコープは自動変数と同じで、その変数を定義した関数内でのみ使用できます。その関数から抜けた後も、その変数は存在し続けますが、使用することはできません。</p>
 <pre>#include &lt;iostream&gt;
 using namespace std;
 
@@ -820,7 +818,7 @@ int main()
 <p><strong>メモリ空間の割り当ての観点から見ると：</strong></p>
 <p>グローバル変数、静的ローカル変数、静的グローバル変数はすべて静的記憶域にスペースが割り当てられ、ローカル変数はスタックにスペースが割り当てられます。</p>
 <p>グローバル変数自体が静的記憶方式であり、静的グローバル変数ももちろん静的記憶方式である。この両者は記憶方式において違いはない。両者の違いは、非静的グローバル変数のスコープがソースプログラム全体にあることであり、ソースプログラムが複数のソースファイルで構成される場合、非静的グローバル変数は各ソースファイル内で有効である。一方、静的グローバル変数はそのスコープが制限され、すなわちその変数を定義したソースファイル内でのみ有効であり、同じソースプログラムの他のソースファイルでは使用できない。静的グローバル変数のスコープは1つのソースファイル内に限られるため、そのソースファイル内の関数だけが共用でき、他のソースファイルでエラーを引き起こすことを回避できる。</p>
-<ul><li>1) 静的変数はプログラムの静的データ格納領域（データセグメント）（グローバルから見える）に置かれるため、次回の呼び出し時にも以前の代入値を保持できる。この点がスタック変数およびヒープ変数との違いである。</li><li>2) staticはコンパイラに対して、自分が変数のスコープ範囲内でのみ見えることを知らせる。この点がグローバル変数との違いである。</li></ul>
+<ul><li>静的変数はプログラムの静的データ格納領域（データセグメント）（グローバルから見える）に置かれるため、次回の呼び出し時にも以前の代入値を保持できる。この点がスタック変数およびヒープ変数との違いである。</li><li>2) staticはコンパイラに対して、自分が変数のスコープ範囲内でのみ見えることを知らせる。この点がグローバル変数との違いである。</li></ul>
 <p>以上の分析からわかるように、ローカル変数を静的変数に変更することは、その記憶方式、すなわち生存期間を変更することである。グローバル変数を静的変数に変更することは、そのスコープを変更し、使用範囲を制限することである。したがって、staticという指定子は場所によって果たす役割が異なる。注意すべきである。</p>
 <p><strong>Tips:</strong></p>
 <ul><li>A、グローバル変数が単一のCファイル内でのみアクセスされる場合、この変数を静的グローバル変数に変更することで、モジュール間の結合度を低減できる。</li><li>B、グローバル変数が単一の関数によってのみアクセスされる場合、この変数をその関数の静的ローカル変数に変更することで、モジュール間の結合度を低減できる。</li><li>C、動的グローバル変数、静的グローバル変数、静的ローカル変数を設計およびアクセスする関数を作成する際は、再入問題を考慮する必要がある。なぜなら、それらはすべて静的データ格納領域に置かれ、グローバルから見えるためである。</li><li>D、再入可能な関数が必要な場合、関数内でstatic変数の使用を必ず避けなければならない（このような関数は「内部メモリ」機能を持つ関数と呼ばれる）。</li><li>E、関数内でstatic変数を使用しなければならないケース：たとえば、ある関数の戻り値がポインタ型の場合、静的ローカル変数のアドレスを戻り値としなければならない。auto型の場合、誤ったポインタが返される。</li></ul>
@@ -912,7 +910,7 @@ int a2 = a1;        // 整型变量的初始化
 int b2[4] = b1;     // 整型数组的初始化
 char str2[4] = str1;// 字符数组的初始化
 char *p = str1;     // 字符指针的初始化</pre><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">爱情神话</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>爱情神话</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  314***5912@qq.com</p></div></span>4年前 (2023-03-11)</div></div></li><!-- #comment-## -->
-<li class="comment even thread-even depth-1" id="comment-85230"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>菜鸟n号</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  129***5775@qq.com</p></div><div class="upvotejs" data-commid="85230" id="runoobvote-id-85230"><a class="upvote"></a> <span class="count">13</span></div></div><div class="comt-main" id="div-comment-85230"><p><code>MyClass::class_var</code>内の<code>::</code>はスコープ解決演算子であり、クラスの静的メンバーにアクセスするために使用される。一方、<code>std::cout</code>内の<code>::</code>は<code>cout</code> 是 <code>std</code>名前空間内のオブジェクトを指定するために使用される。この2つは構文の使用が似ているように見えるが、その意味と用途は完全に異なる。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">菜鸟n号</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>菜鸟n号</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  129***5775@qq.com</p></div></span>2年前 (2024-09-23)</div></div></li><!-- #comment-## -->
+<li class="comment even thread-even depth-1" id="comment-85230"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>菜鸟n号</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  129***5775@qq.com</p></div><div class="upvotejs" data-commid="85230" id="runoobvote-id-85230"><a class="upvote"></a> <span class="count">13</span></div></div><div class="comt-main" id="div-comment-85230"><p><code>MyClass::class_var</code>内の<code>::</code>スコープ解決演算子であり、クラスの静的メンバーにアクセスするために使用されます。一方、<code>std::cout</code>内の<code>::</code>は<code>cout</code>である<code>std</code>名前空間内のオブジェクトを指定するために使用される。この2つは構文の使用が似ているように見えるが、その意味と用途は完全に異なる。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">菜鸟n号</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>菜鸟n号</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  129***5775@qq.com</p></div></span>2年前 (2024-09-23)</div></div></li><!-- #comment-## -->
 </ol>
 <div class="pagenav">
 </div>
@@ -920,11 +918,11 @@ char *p = str1;     // 字符指针的初始化</pre><div class="comt-meta wrapp
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1224,7 +1222,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

@@ -223,8 +223,8 @@ julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #C93D39;">'A'
 julia<span style="color: #6BAB5B;">&gt;</span> str = <span style="color: #C93D39;">"RUNOOB"</span><br/>
 <span style="color: #C93D39;">"RUNOOB"</span><br/>
 <br/>
-julia<span style="color: #6BAB5B;">&gt;</span> runoob = <span style="color: #C93D39;">"""菜鸟教程 "RUNOOB"，包含了单个引号"""</span><br/>
-<span style="color: #C93D39;">"菜鸟教程<span style="color: #000099; font-weight: bold;">\"</span>RUNOOB<span style="color: #000099; font-weight: bold;">\"</span>，包含了单个引号"</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> runoob = <span style="color: #C93D39;">菜鸟教程 "RUNOOB"、単一引用符を含みます</span><br/>
+<span style="color: #C93D39;">"菜鸟教程<span style="color: #000099; font-weight: bold;">\"</span>RUNOOB<span style="color: #000099; font-weight: bold;">\"</span>、単一引用符を含む'</span><br/>
 </div></div>
 <p>文字列が長すぎる場合は、バックスラッシュを使用して<span class="marked">\</span>分割できます：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
@@ -265,7 +265,7 @@ julia<span style="color: #6BAB5B;">&gt;</span> str<span style="color: #3B972E;">
 julia<span style="color: #6BAB5B;">&gt;</span> str<span style="color: #3B972E;">[</span><span style="color: black;">2</span>:<span style="color: black;">5</span><span style="color: #3B972E;">]</span><br/>
 <span style="color: #C93D39;">"UNOO"</span><br/>
 </div></div>
-<p>さらに、式<span class="marked">str[k]</span> 和 <span class="marked">str[k:k]</span>から得られる結果は異なります。前者はインデックスによって指定位置の文字を取得するもので、型は Char 型です。後者は指定された範囲で文字列を読み取るものですが、それは単に1つの文字を含む文字列にすぎません：</p>
+<p>さらに、式<span class="marked">str[k]</span>と<span class="marked">str[k:k]</span>から得られる結果は異なります。前者はインデックスによって指定位置の文字を取得するもので、型は Char 型です。後者は指定された範囲で文字列を読み取るものですが、それは単に1つの文字を含む文字列にすぎません：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 julia<span style="color: #6BAB5B;">&gt;</span> str<span style="color: #3B972E;">[</span><span style="color: black;">6</span><span style="color: #3B972E;">]</span><br/>
 <span style="color: #C93D39;">'B'</span>: ASCII/Unicode U+0042 <span style="color: #3B972E;">(</span>category Lu: Letter, <span style="color: #0000A8;font-weight:bold;">uppercase</span><span style="color: #3B972E;">)</span><br/>
@@ -303,8 +303,7 @@ julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #C93D39;">"$g
 <span style="color: #C93D39;">"Hello, world.<span style="color: #000099; font-weight: bold;">\n</span>"</span><br/>
 </div></div>
 <p>これはより読みやすく便利で、上記の文字列連結と同等です。— システムはこの明らかに1行の文字列リテラルを、引数付きの文字列リテラル連結に書き換えます。<span class="marked">string(greet, ", ", whom, ".\n")</span>。</p>
-<p>
-在 <span class="marked">$</span>その後、最短の完全な式が、その値を文字列に挿入する式と見なされます。したがって、括弧を使って任意の式を文字列に挿入できます：</p>
+<p>に<span class="marked">$</span>その後、最短の完全な式が、その値を文字列に挿入する式と見なされます。したがって、括弧を使って任意の式を文字列に挿入できます：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #C93D39;">"1 + 2 = $(1 + 2)"</span><br/>
 <span style="color: #C93D39;">"1 + 2 = 3"</span><br/>
@@ -414,13 +413,13 @@ julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #0000A8;font-
 </div></div>
 <p>その他に役立つ関数には、以下もあります：</p>
 <ul><li>
-<span class="marked">firstindex(str)</span>- str へのインデックスに使用できる最小の（バイト）インデックスを与えます（文字列の場合は常に1ですが、他のコンテナではそうとは限りません）。</li><li>
+<span class="marked">firstindex(str)</span>str へのインデックスに使用できる最小の（バイト）インデックスをとえます（文字列の場合は常に1ですが、他のコンテナではそうとは限りません）。</li><li>
 <span class="marked">lastindex(str)</span>- str へのインデックスに使用できる最大の（バイト）インデックスを与えます。</li><li>
 <span class="marked">length(str)</span>- str 内の文字数。</li><li>
 <span class="marked">length(str, i, j)</span>- str 内の i から j までの有効な文字インデックスの数。</li><li>
 <span class="marked">ncodeunits(str)</span>- 文字列内のコードユニット（符号単位）の数。</li><li>
 <span class="marked">codeunit(str, i)</span>- 文字列 str 内のインデックス i にあるコードユニットの値を与えます。</li><li>
-<span class="marked">thisind(str, i)</span>- 文字列の任意のインデックスが与えられたとき、そのインデックスポイントの最初のインデックスを見つけます。</li><li>
+<span class="marked">thisind(str, i)</span>文字列の任意のインデックスが与えられたとき、そのインデックスポイントの最初のインデックスを見つけます。</li><li>
 <span class="marked">nextind(str, i, n=1)</span>- インデックス i の後にある n 番目の文字の先頭を見つけます。</li><li>
 <span class="marked">prevind(str, i, n=1)</span>- インデックス i の前にある n 番目の文字の先頭を見つけます。</li></ul>
 <hr/>
@@ -548,11 +547,11 @@ julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #0000A8;font-
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックできます</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックできます</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -841,7 +840,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

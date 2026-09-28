@@ -97,7 +97,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2>1.Activity、WindowとViewの関係</h2>
 <blockquote><p>まあ、本来はこれらの関係を理解したいだけだったのに、つい手を出して、彼らの呼び出しプロセスまで見始めてしまいました...結果、2時間も費やして、ほんのわずかな部分しか理解できませんでした。やはり、低レイヤーのソースコードを読み漁る人はみんな神です。例えば老罗のような。私はまだそのレベルには達していません。以下は自分で資料を調べて、少しソースコードを見てまとめたものです。もし間違いがあれば、ぜひご指摘ください！下にまとめの図を貼ります：</p></blockquote>
 <p><img alt="" decoding="async" src="../wp-content/uploads/2015/08/93497523.jpg"/></p>
-<p><strong>フロー解析：</strong>ActivityがstartActivityを呼び出した後、最終的にattachメソッドを呼び出します。そしてPolicyManagerでIpolicyインターフェースを実装し、次にPolicyオブジェクトを実装し、次にmakenewwindow(Context)メソッドを呼び出します。このメソッドはPhoneWindowオブジェクトを返します。PhoneWindowはWindowのサブクラスです。このPhoneWindowの中にDecorViewという内部クラスがあり、これはすべてのアプリウィンドウのルートView、つまりViewのトップであり、Activityを表示するかどうかを直接制御します（ベテランの言葉を引用）。そして、その中にLinearLayoutがあり、さらにその中に2つのFrameLayoutがあり、それぞれActionBarとCustomViewを格納します。そして、私たちがsetContentView()で読み込むレイアウトは、このCustomViewの中に配置されます！</p>
+<p><strong>フロー解析：</strong>ActivityがstartActivityを呼び出した後、最終のにattachメソッドを呼び出します。そしてPolicyManagerでIpolicyインターフェースを実装し、次にPolicyオブジェクトを実装し、次にmakenewwindow(Context)メソッドを呼び出します。このメソッドはPhoneWindowオブジェクトを返します。PhoneWindowはWindowのサブクラスです。このPhoneWindowの中にDecorViewという内部クラスがあり、これはすべてのアプリウィンドウのルートView、つまりViewのトップであり、Activityを表示するかどうかを直接制御します（ベテランの言葉を引用）。そして、その中にLinearLayoutがあり、さらにその中に2つのFrameLayoutがあり、それぞれActionBarとCustomViewを格納します。そして、私たちがsetContentView()で読み込むレイアウトは、このCustomViewの中に配置されます！</p>
 <p><strong>これら3者の関係をまとめる：</strong>強引な例えを出す：この3つのクラスをそれぞれこう見なすことができる：画家、キャンバス、筆が描くもの。画家は筆（<strong>LayoutInflater.infalte</strong>）で図案を描き、さらにキャンバス（<strong>addView</strong>）の上に描く！最後に表示される（<strong>setContentView</strong>)</p>
 <hr/>
 <h2>2.Activity、TaskとBack Stackの概念</h2>
@@ -415,11 +415,11 @@ public class AppManager {
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=".." class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href="..">ログイン</a>が必要です！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

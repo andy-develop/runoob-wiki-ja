@@ -367,8 +367,8 @@ Series.mean(axis=None, skipna=True, level=None, numeric_only=None, **kwargs)
 <div class="example_code">
 <span style="color: Green;font-weight:bold;">import</span> pandas <span style="color: Green;font-weight:bold;">as</span> pd<br/>
 <br/>
-<span style="color: #a50"># 创建一个包含学生成绩的 Series</span><br/>
-<span style="color: #a50"># 模拟一个班级 8 名学生的考试成绩</span><br/>
+<span style="color: #a50"># 学生の成績を含む Series を作成する</span><br/>
+<span style="color: #a50"># 1クラス8人の学生の試験成績をシミュレーションする</span><br/>
 scores <span style="color: Gray;">=</span> pd.<span style="color: #05a;">Series</span><span style="color: Olive;">(</span><span style="color: Olive;">[</span><span style="color: Maroon;">85</span><span style="color: Gray;">,</span> <span style="color: Maroon;">92</span><span style="color: Gray;">,</span> <span style="color: Maroon;">78</span><span style="color: Gray;">,</span> <span style="color: Maroon;">90</span><span style="color: Gray;">,</span> <span style="color: Maroon;">88</span><span style="color: Gray;">,</span> <span style="color: Maroon;">76</span><span style="color: Gray;">,</span> <span style="color: Maroon;">95</span><span style="color: Gray;">,</span> <span style="color: Maroon;">82</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 计算平均成绩</span><br/>
@@ -409,21 +409,21 @@ dtype: int64
 <span style="color: Green;font-weight:bold;">import</span> pandas <span style="color: Green;font-weight:bold;">as</span> pd<br/>
 <span style="color: Green;font-weight:bold;">import</span> numpy <span style="color: Green;font-weight:bold;">as</span> np<br/>
 <br/>
-<span style="color: #a50"># 创建一个包含缺失值的 Series</span><br/>
+<span style="color: #a50"># 欠損値を含む Series を作成する</span><br/>
 <span style="color: #a50"># 模拟某学生因病缺席部分考试</span><br/>
 scores_with_nan <span style="color: Gray;">=</span> pd.<span style="color: #05a;">Series</span><span style="color: Olive;">(</span><span style="color: Olive;">[</span><span style="color: Maroon;">85</span><span style="color: Gray;">,</span> <span style="color: Maroon;">92</span><span style="color: Gray;">,</span> np.<span style="color: #05a;">nan</span><span style="color: Gray;">,</span> <span style="color: Maroon;">90</span><span style="color: Gray;">,</span> <span style="color: Maroon;">88</span><span style="color: Gray;">,</span> np.<span style="color: #05a;">nan</span><span style="color: Gray;">,</span> <span style="color: Maroon;">95</span><span style="color: Gray;">,</span> <span style="color: Maroon;">82</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"包含缺考成绩的数据："</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"未受験の成績を含むデータ："</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>scores_with_nan<span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 默认 skipna=True，跳过 NaN 计算平均值</span><br/>
 average_skipna <span style="color: Gray;">=</span> scores_with_nan.<span style="color: #05a;">mean</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"skipna=True（默认）时的平均成绩：{average_skipna:.2f}"</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">skipna=True（デフォルト）のときの平均成績：{average_skipna:.2f}</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 设置 skipna=False，遇到 NaN 返回 NaN</span><br/>
 average_no_skipna <span style="color: Gray;">=</span> scores_with_nan.<span style="color: #05a;">mean</span><span style="color: Olive;">(</span>skipna<span style="color: Gray;">=</span><span style="color: Teal;">False</span><span style="color: Olive;">)</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"skipna=False 时的平均成绩：{average_no_skipna}"</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">skipna=False のときの平均成績：{average_no_skipna}</span><span style="color: Olive;">)</span><br/>
 </div>
 </div>
 <p><strong>実行結果：</strong></p>
@@ -455,8 +455,8 @@ skipna=False 时的平均成绩：nan
 <div class="example_code">
 <span style="color: Green;font-weight:bold;">import</span> pandas <span style="color: Green;font-weight:bold;">as</span> pd<br/>
 <br/>
-<span style="color: #a50"># 创建一个多层索引的 Series</span><br/>
-<span style="color: #a50"># 模拟两个班级学生的成绩</span><br/>
+<span style="color: #a50"># マルチインデックスの Series を作成する</span><br/>
+<span style="color: #a50"># 2つのクラスの学生の成績をシミュレートする</span><br/>
 multi_index_scores <span style="color: Gray;">=</span> pd.<span style="color: #05a;">Series</span><span style="color: Olive;">(</span><br/>
     <span style="color: Olive;">[</span><span style="color: Maroon;">85</span><span style="color: Gray;">,</span> <span style="color: Maroon;">92</span><span style="color: Gray;">,</span> <span style="color: Maroon;">78</span><span style="color: Gray;">,</span> <span style="color: Maroon;">90</span><span style="color: Gray;">,</span> <span style="color: Maroon;">88</span><span style="color: Gray;">,</span> <span style="color: Maroon;">76</span><span style="color: Gray;">,</span> <span style="color: Maroon;">95</span><span style="color: Gray;">,</span> <span style="color: Maroon;">82</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
     index<span style="color: Gray;">=</span>pd.<span style="color: #05a;">MultiIndex</span>.<span style="color: #05a;">from_tuples</span><span style="color: Olive;">(</span><span style="color: Olive;">[</span><br/>
@@ -467,11 +467,11 @@ multi_index_scores <span style="color: Gray;">=</span> pd.<span style="color: #0
     <span style="color: Olive;">)</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"两个班级的学生成绩："</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"2つのクラスの学生の成績："</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>multi_index_scores<span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 计算所有学生的平均成绩</span><br/>
+<span style="color: #a50"># すべての学生の平均成績を計算する</span><br/>
 overall_mean <span style="color: Gray;">=</span> multi_index_scores.<span style="color: #05a;">mean</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"所有学生平均成绩：{overall_mean:.2f}"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
@@ -517,14 +517,14 @@ B班学生平均成绩：85.25
 <span style="color: Green;font-weight:bold;">import</span> pandas <span style="color: Green;font-weight:bold;">as</span> pd<br/>
 <span style="color: Green;font-weight:bold;">import</span> numpy <span style="color: Green;font-weight:bold;">as</span> np<br/>
 <br/>
-<span style="color: #a50"># 创建模拟的股票每日收盘价数据</span><br/>
+<span style="color: #a50"># 株式の日次終値データを模擬作成する</span><br/>
 stock_prices <span style="color: Gray;">=</span> pd.<span style="color: #05a;">Series</span><span style="color: Olive;">(</span><span style="color: Olive;">[</span><br/>
     <span style="color: Maroon;">100.5</span><span style="color: Gray;">,</span> <span style="color: Maroon;">102.3</span><span style="color: Gray;">,</span> <span style="color: Maroon;">98.7</span><span style="color: Gray;">,</span> <span style="color: Maroon;">101.2</span><span style="color: Gray;">,</span> <span style="color: Maroon;">103.5</span><span style="color: Gray;">,</span><br/>
     <span style="color: Maroon;">105.2</span><span style="color: Gray;">,</span> <span style="color: Maroon;">103.8</span><span style="color: Gray;">,</span> <span style="color: Maroon;">107.1</span><span style="color: Gray;">,</span> <span style="color: Maroon;">108.3</span><span style="color: Gray;">,</span> <span style="color: Maroon;">106.9</span><br/>
 <span style="color: Olive;">]</span><span style="color: Gray;">,</span> index<span style="color: Gray;">=</span><span style="color: Olive;">[</span><span style="color: #a11;">'周一'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'周二'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'周三'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'周四'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'周五'</span><span style="color: Gray;">,</span><br/>
           <span style="color: #a11;">'周一'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'周二'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'周三'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'周四'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'周五'</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 创建两个周期的数据</span><br/>
+<span style="color: #a50"># 2周期分のデータを作成</span><br/>
 week1 <span style="color: Gray;">=</span> stock_prices<span style="color: Olive;">[</span>:<span style="color: Maroon;">5</span><span style="color: Olive;">]</span><br/>
 week2 <span style="color: Gray;">=</span> stock_prices<span style="color: Olive;">[</span><span style="color: Maroon;">5</span>:<span style="color: Olive;">]</span><br/>
 <br/>
@@ -538,7 +538,7 @@ week2 <span style="color: Gray;">=</span> stock_prices<span style="color: Olive;
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"第二周平均价格：{week2.mean():.2f}"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 计算两周的平均价格差异</span><br/>
+<span style="color: #a50"># 2週間の平均価格差を計算する</span><br/>
 price_diff <span style="color: Gray;">=</span> week2.<span style="color: #05a;">mean</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span> - week1.<span style="color: #05a;">mean</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"两周平均价格差异：{price_diff:.2f}"</span><span style="color: Olive;">)</span><br/>
 </div>
@@ -702,11 +702,11 @@ dtype: float64
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1006,7 +1006,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

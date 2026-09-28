@@ -249,7 +249,7 @@ compare_prompt_styles<span style="color: Olive;">(</span><span style="color: Oli
 <span style="color: #a50"># ============================================</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">def</span> create_cot_prompt<span style="color: Olive;">(</span>problem: <span style="color: Teal;">str</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
-    <span style="color: #a11;">"""標準的な思考連鎖プロンプトテンプレートを作成します<br/>
+    <span style="color: #a11;">標準のな思考連鎖プロンプトテンプレートを作成します<br/>
 <br/>
     Args:<br/>problem: 解決すべき問題<br/>
 <br/>
@@ -336,7 +336,7 @@ cot_prompt <span style="color: Gray;">=</span> create_cot_prompt<span style="col
 <br/>
 <span style="color: #a50"># 使用例</span><br/>
 prompt <span style="color: Gray;">=</span> create_few_shot_prompt<span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
-test_text <span style="color: Gray;">=</span> <span style="color: #a11;">"RUNOOB の Prompt チュートリアルはとても実用的ですが、もう少し詳しくできる部分もあります。"</span><br/>
+test_text <span style="color: Gray;">=</span> <span style="color: #a11;">RUNOOB の Prompt チュートリアルはとても実用のですが、もう少し詳しくできる部分もあります。</span><br/>
 final_prompt <span style="color: Gray;">=</span> prompt.<span style="color: #05a;">format</span><span style="color: Olive;">(</span>text<span style="color: Gray;">=</span>test_text<span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"="</span> * <span style="color: Maroon;">60</span><span style="color: Olive;">)</span><br/>
@@ -494,7 +494,7 @@ CODE_ASSISTANT_SYSTEM_PROMPT <span style="color: Gray;">=</span> <span style="co
 <br/># 中核となる能力<br/>- 明確で効率的かつ保守しやすい Python コードを作成する<br/>- コードの仕組みを説明し、ユーザーの理解を助ける<br/>- エラーをデバッグし、問題の根本原因を特定する<br/>- ベストプラクティスの提案を提供する<br/>
 <br/># 出力仕様<br/>1. まずユーザーのニーズを理解し、1〜2文で確認する<br/>2. 解決策を提示する際は、最初に考え方を説明し、次にコードを示す<br/>3. コードは以下を満たす必要がある：<br/>- 詳細なコメントを含む<br/>- 型ヒント（Type Hints）を使用する<br/>- 境界条件を考慮する<br/>- テストコードを含む<br/>4. 複数の選択肢がある場合は、メリットとデメリットを比較し、推奨理由を示す<br/>5. 最後に注意事項を伝える<br/>
 <br/># 禁止事項<br/>- 有害なコード、悪意のあるコードを生成しないこと<br/>- 存在しない API やライブラリをでっち上げないこと<br/>- 不確かな場合は正直に説明し、いい加減に作らないこと<br/>- セキュリティ上の脆弱性に関するコードを生成しないこと<br/>
-<br/># 覚えておくこと<br/>あなたはユーザーの学習を支援しているのであって、ユーザーの代わりに仕事を完了させるのではない。原則を適切に説明し、ユーザーの成長を助ける。"""</span><br/>
+<br/># 覚えておくこと<br/>あなたはユーザーの学習を支援しているのであって、ユーザーの代わりに仕事を完了させるのではない。原則を適切に説明し、ユーザーの成長を助ける。</span><br/>
 <br/>
 <br/>
 <span style="color: #a50"># 例2：コピーライティングのSystem Prompt</span><br/>
@@ -566,7 +566,7 @@ print_system_prompt<span style="color: Olive;">(</span><span style="color: #a11;
 <br/>
 <br/>
 <span style="color: Green;font-weight:bold;">def</span> create_code_writer_config<span style="color: Olive;">(</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> PromptConfig:<br/>
-    <span style="color: #a11;">"""コード作成設定：低温度、より決定論的"""</span><br/>
+    <span style="color: #a11;">コード作成設定：低温度、より決定論の</span><br/>
     <span style="color: Green;font-weight:bold;">return</span> PromptConfig<span style="color: Olive;">(</span><br/>
         system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは厳密なコードエンジニアであり、正確なコードを書き、詳細な注釈を付けます。"</span><span style="color: Gray;">,</span><br/>
         temperature<span style="color: Gray;">=</span><span style="color: Maroon;">0.2</span><span style="color: Gray;">,</span>  <span style="color: #a50"># 低温度、より安定</span><br/>
@@ -679,7 +679,7 @@ code_config <span style="color: Gray;">=</span> create_code_writer_config<span s
     <span style="color: Green;font-weight:bold;">def</span> finish<span style="color: Olive;">(</span><span style="color: Teal;">self</span><span style="color: Gray;">,</span> answer: <span style="color: Teal;">str</span><span style="color: Olive;">)</span>:<br/>
         <span style="color: #a11;">"""タスク完了"""</span><br/>
         <span style="color: Teal;">self</span>.<span style="color: #05a;">steps</span>.<span style="color: #05a;">append</span><span style="color: Olive;">(</span><span style="color: Olive;">{</span><span style="color: #a11;">"type"</span>: <span style="color: #a11;">"完了"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"content"</span>: answer<span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
-        <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"&amp;#x2705; 完了：{answer}"</span><span style="color: Olive;">)</span><br/>
+        <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">&amp;#x2705; 完了：{answer}</span><span style="color: Olive;">)</span><br/>
         <span style="color: Green;font-weight:bold;">return</span> answer<br/>
 <br/>
     <span style="color: Green;font-weight:bold;">def</span> get_trajectory<span style="color: Olive;">(</span><span style="color: Teal;">self</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
@@ -1241,7 +1241,7 @@ wrapped <span style="color: Gray;">=</span> guard.<span style="color: #05a;">wra
 <table class="reference">
 <tr><th>タスクの種類</th><th>適用シーン</th><th>主要技術</th></tr>
 <tr><td>1. テキスト要約</td><td>長文を短くする</td><td>長さの制御、構造化出力</td></tr>
-<tr><td>2. 感情分析</td><td>肯定的か否定的かを判断する</td><td>フューショットプロンプト、JSON 出力</td></tr>
+<tr><td>2. 感情分析</td><td>肯定のか否かを判断する</td><td>フューショットプロンプト、JSON 出力</td></tr>
 <tr><td>3. コード生成</td><td>コードを書く</td><td>System Prompt、思考の連鎖</td></tr>
 <tr><td>4. 文章のブラッシュアップ</td><td>文章を改善する</td><td>ロール設定、スタイル制約</td></tr>
 <tr><td>5. 質問応答</td><td>専門的な質問に回答する</td><td>思考の連鎖、ReAct</td></tr>
@@ -1567,11 +1567,11 @@ templates <span style="color: Gray;">=</span> library.<span style="color: #05a;"
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1860,7 +1860,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

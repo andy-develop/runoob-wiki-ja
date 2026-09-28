@@ -94,8 +94,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h3>2. なぜOOMが発生するのか？</h3>
 <p>Androidシステムのアプリの各プロセスまたは各仮想マシンには最大メモリ制限があるため、申請したメモリリソースがこの制限を超えると、システムはOOMエラーをスローします。デバイス全体の残りメモリとはあまり関係ありません。例えば、比較的古いAndroidシステムの仮想マシンは最大16Mメモリです。アプリが起動すると、仮想マシンは画像を読み込むためにメモリリソースを絶えず申請し、メモリ上限を超えるとOOMが発生します。AndroidシステムのAPPメモリ制限はどのように決定されるのでしょうか？</p>
 <h4>2.1 AndroidのAPPメモリの構成：</h4>
-<p>APPメモリは、<strong>dalvikメモリ</strong>
-和    <strong>nativeメモリ</strong>の2つの部分から構成されます。dalvikはすなわちJavaヒープであり、生成されたオブジェクトはここで割り当てられます。nativeはc/c++方式でメモリを申請するものであり、Bitmapはこの方式で割り当てられます。（Android 3.0以降、システムはデフォルトでdalvikを通じて割り当て、nativeはヒープとして管理されます）。この2つの部分の合計は、Androidの単一プロセス、仮想マシンに対するメモリ制限を超えてはなりません。</p>
+<p>APPメモリは、<strong>dalvikメモリ</strong>と<strong>nativeメモリ</strong>の2つの部分から構成されます。dalvikはすなわちJavaヒープであり、生成されたオブジェクトはここで割り当てられます。nativeはc/c++方式でメモリを申請するものであり、Bitmapはこの方式で割り当てられます。（Android 3.0以降、システムはデフォルトでdalvikを通じて割り当て、nativeはヒープとして管理されます）。この2つの部分の合計は、Androidの単一プロセス、仮想マシンに対するメモリ制限を超えてはなりません。</p>
 <p>各スマートフォンのメモリ制限の大きさはどれくらいですか？</p>
 <pre>
 ActivityManager activityManager = (ActivityManager)context.getSystemService(Context.ACTIVITY_SERVICE)
@@ -329,11 +328,11 @@ public   class  ClassName{
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=".." class="runoob-pop">ログイン</a>する必要があります！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href="..">ログイン</a>する必要があります！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

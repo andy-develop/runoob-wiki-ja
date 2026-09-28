@@ -104,7 +104,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>、完了後にParcelを使って結果として返します。その後、プロセスAで待機していたスレッドは、返されたParcelを受け取った後、実行を続行できます。実際には、別のプロセスは現在のプロセスの1つのスレッドのように見えますが、現在のプロセスによって作成されたものではありません。</p>
 <p>リモートオブジェクトを操作するとき、それらが有効かどうかを確認する必要がよくあります。使用できる方法は3つあります：</p>
 <ul>
-<li>1. transact()メソッドは、IBinderが存在するプロセスが存在しない場合にRemoteException例外をスローします。</li>
+<li>transact()メソッドは、IBinderが存在するプロセスが存在しない場合にRemoteException例外をスローします。</li>
 <li>2. ターゲットプロセスが存在しない場合、pingBinder()を呼び出すとfalseが返ります。</li>
 <li>3. linkToDeath()メソッドを使ってIBinderにIBinder.DeathRecipientを登録できます。これはIBinderが表すプロセスが終了したときに呼び出されます。</li>
 </ul>
@@ -394,11 +394,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 <blockquote><p>上記の例では、int型のパラメータだけを渡し、サーバー側はString型のパラメータを返しました。一見すると基本的なニーズを満たしているように見えますが、実際の開発では、複雑なデータ型を渡すケースを考慮する必要があるかもしれません！次に、サーバー側に複雑なデータ型のデータを渡す方法を学びましょう。始める前に、まず次について理解しておきましょう。<strong>Parcelableインターフェース</strong>！</p></blockquote>
 <p><strong>——Parcelableインターフェースの紹介：</strong></p>
 <p>シリアライズを使ったことがある人なら、このインターフェースをご存知でしょう。これ以外にもSerializableという別のインターフェースがあり、同じくシリアライズに使用されます。ただし、Parcelableはより軽量で高速です！しかし、書くのは少し面倒です。もちろん、ASを使っているなら、プラグインを使ってシリアライズを完了することもできます。例えば：<strong>Android Parcelable Code Generator</strong>もちろん、ここではこのインターフェースの実装方法を丁寧に説明します。</p>
-<p><strong>まず</strong>実装する必要があるのは：<strong>writeToParcel</strong>和<strong>readFromPacel</strong>書き込みメソッドはオブジェクトをparcelに書き込み、読み取りメソッドはparcelからオブジェクトを読み取ります。書き込む属性の順序は読み取る順序と一致している必要があることに注意してください。</p>
-<p><strong>次に</strong>このクラスに、次の名前の<strong>CREATOR</strong>的<strong>static final</strong>属性を追加する必要があります。この属性は、android.os.Parcelable.Creator<t>インターフェースを実装する必要があります。</t></p>
+<p><strong>まず</strong>実装する必要があるのは：<strong>writeToParcel</strong>と<strong>readFromPacel</strong>書き込みメソッドはオブジェクトをparcelに書き込み、読み取りメソッドはparcelからオブジェクトを読み取ります。書き込む属性の順序は読み取る順序と一致している必要があることに注意してください。</p>
+<p><strong>次に</strong>このクラスに、次の名前の<strong>CREATOR</strong>の<strong>static final</strong>属性を追加する必要があります。この属性は、android.os.Parcelable.Creator<t>インターフェースを実装する必要があります。</t></p>
 <p><strong>さらに</strong>インターフェース内の2つのメソッドをオーバーライドする必要があります：<strong>createFromParcel</strong>createFromParcel(Parcel source)メソッド：sourceからJavaBeanインスタンスを作成する機能を実装します。<strong>newArray</strong>newArray(int size)メソッド：型T、長さsizeの配列を作成します。単にreturn new T[size]; と書くだけです（ここでのTはPersonクラスです）。</p>
 <p><strong>最後に、describeContents()</strong>が何に使うのか私もよくわかりませんが、直接0を返すだけでOKです！気にしなくて大丈夫です。</p>
-<p><strong>——また</strong>，<strong>非プリミティブ型のうち、</strong>String以外は、<strong>String</strong>和<strong>CharSequence</strong>その他すべてが<strong>方向指示子を1つ必要とします。</strong>方向指示子には<strong>in</strong>、<strong>out</strong>、<strong>in、out、inoutがあります。</strong>inはクライアント側で設定されることを表し、outはサーバー側で設定されることを表し、inoutはクライアント側とサーバー側の両方で設定されることを表します。</p>
+<p><strong>——また</strong>，<strong>非プリミティブ型のうち、</strong>String以外は、<strong>String</strong>と<strong>CharSequence</strong>その他すべてが<strong>方向指示子を1つ必要とします。</strong>方向指示子には<strong>in</strong>、<strong>out</strong>、<strong>in、out、inoutがあります。</strong>inはクライアント側で設定されることを表し、outはサーバー側で設定されることを表し、inoutはクライアント側とサーバー側の両方で設定されることを表します。</p>
 <hr/>
 <p>では、続いてコードを書いて試してみましょう（ASではカスタム型に問題があり、まだ解決していないので、Eclipseに戻って行います）：</p>
 <p><strong>コード例：</strong></p>
@@ -978,11 +978,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=".." class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href="..">ログイン</a>が必要です！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

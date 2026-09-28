@@ -193,7 +193,7 @@ print(openai.__version__)  # 输出当前 SDK 版本</pre>
 <br/>
 client <span style="color: Gray;">=</span> OpenAI<span style="color: Olive;">(</span><br/>
     <span style="color: #a50"># This is the default and can be omitted</span><br/>
-    api_key<span style="color: Gray;">=</span><span style="color: #a11;">"你申请的 API key"</span><span style="color: Gray;">,</span><br/>
+    api_key<span style="color: Gray;">=</span><span style="color: #a11;">"あなたが申請した API key"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 response <span style="color: Gray;">=</span> client.<span style="color: #05a;">responses</span>.<span style="color: #05a;">create</span><span style="color: Olive;">(</span><br/>
@@ -217,13 +217,13 @@ response <span style="color: Gray;">=</span> client.<span style="color: #05a;">r
 <tbody>
 <tr>
 <td><code>api_key</code></td>
-<td>是</td>
+<td>である</td>
 <td><code>str</code></td>
 <td>申請した OpenAI key</td>
 </tr>
 <tr>
 <td><code>model</code></td>
-<td>是</td>
+<td>である</td>
 <td><code>str</code></td>
 <td>使用する OpenAI 大規模モデルを指定し、能力、推論レベル、コストを決定します。</td>
 </tr>
@@ -235,7 +235,7 @@ response <span style="color: Gray;">=</span> client.<span style="color: #05a;">r
 </tr>
 <tr>
 <td><code>input</code></td>
-<td>是</td>
+<td>である</td>
 <td><code>str</code> / <code>list</code></td>
 <td>ユーザー入力内容。具体的な問題やタスクを記述します。</td>
 </tr>
@@ -301,12 +301,12 @@ response <span style="color: Gray;">=</span> client.<span style="color: #05a;">c
 <span style="color: Green;font-weight:bold;">def</span> get_response<span style="color: Olive;">(</span><span style="color: Olive;">)</span>:<br/>
     client <span style="color: Gray;">=</span> OpenAI<span style="color: Olive;">(</span><br/>
         api_key<span style="color: Gray;">=</span><span style="color: #a11;">"sk-xxx"</span><span style="color: Gray;">,</span>  <span style="color: #a50"># 请用阿里云百炼 API Key</span><br/>
-        base_url<span style="color: Gray;">=</span><span style="color: #a11;">"https://dashscope.aliyuncs.com/compatible-mode/v1"</span><span style="color: Gray;">,</span>  <span style="color: #a50"># 填写DashScope SDK的base_url</span><br/>
+        base_url<span style="color: Gray;">=</span><span style="color: #a11;">"https://dashscope.aliyuncs.com/compatible-mode/v1"</span><span style="color: Gray;">,</span>  <span style="color: #a50"># DashScope SDKのbase_urlを設定</span><br/>
     <span style="color: Olive;">)</span><br/>
     completion <span style="color: Gray;">=</span> client.<span style="color: #05a;">chat</span>.<span style="color: #05a;">completions</span>.<span style="color: #05a;">create</span><span style="color: Olive;">(</span><br/>
-        model<span style="color: Gray;">=</span><span style="color: #a11;">"qwen-plus"</span><span style="color: Gray;">,</span>  <span style="color: #a50"># 此处以qwen-plus为例，可按需更换模型名称。模型列表：https://help.aliyun.com/zh/model-studio/getting-started/models</span><br/>
+        model<span style="color: Gray;">=</span><span style="color: #a11;">"qwen-plus"</span><span style="color: Gray;">,</span>  <span style="color: #a50"># ここではqwen-plusを例にします。必要に応じてモデル名を変更できます。モデルリスト：https://help.aliyun.com/zh/model-studio/getting-started/models</span><br/>
         messages<span style="color: Gray;">=</span><span style="color: Olive;">[</span><span style="color: Olive;">{</span><span style="color: #a11;">'role'</span>: <span style="color: #a11;">'system'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'content'</span>: <span style="color: #a11;">'You are a helpful assistant.'</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span><br/>
-                  <span style="color: Olive;">{</span><span style="color: #a11;">'role'</span>: <span style="color: #a11;">'user'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'content'</span>: <span style="color: #a11;">'你是谁？'</span><span style="color: Olive;">}</span><span style="color: Olive;">]</span><br/>
+                  <span style="color: Olive;">{</span><span style="color: #a11;">'role'</span>: <span style="color: #a11;">'user'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'content'</span>: <span style="color: #a11;">'あなたは誰ですか？'</span><span style="color: Olive;">}</span><span style="color: Olive;">]</span><br/>
         <span style="color: Olive;">)</span><br/>
     <span style="color: #a50"># json 数据</span><br/>
     <span style="color: #a50">#print(completion.model_dump_json())</span><br/>
@@ -330,7 +330,7 @@ response <span style="color: Gray;">=</span> client.<span style="color: #05a;">c
         model<span style="color: Gray;">=</span><span style="color: #a11;">"qwen-plus"</span><span style="color: Gray;">,</span><br/>
         messages<span style="color: Gray;">=</span><span style="color: Olive;">[</span><br/>
             <span style="color: Olive;">{</span><span style="color: #a11;">'role'</span>: <span style="color: #a11;">'system'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'content'</span>: <span style="color: #a11;">'You are a helpful assistant.'</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span><br/>
-            <span style="color: Olive;">{</span><span style="color: #a11;">'role'</span>: <span style="color: #a11;">'user'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'content'</span>: <span style="color: #a11;">'你是谁？'</span><span style="color: Olive;">}</span><br/>
+            <span style="color: Olive;">{</span><span style="color: #a11;">'role'</span>: <span style="color: #a11;">'user'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'content'</span>: <span style="color: #a11;">'あなたは誰ですか？'</span><span style="color: Olive;">}</span><br/>
         <span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
         stream<span style="color: Gray;">=</span><span style="color: Teal;">True</span><span style="color: Gray;">,</span><br/>
         stream_options<span style="color: Gray;">=</span><span style="color: Olive;">{</span><span style="color: #a11;">"include_usage"</span>: <span style="color: Teal;">True</span><span style="color: Olive;">}</span><br/>
@@ -379,7 +379,7 @@ response <span style="color: Gray;">=</span> client.<span style="color: #05a;">r
 client <span style="color: Gray;">=</span> OpenAI<span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
 prompt <span style="color: Gray;">=</span> <span style="color: #a11;">"What is in this image?"</span><br/>
-<span style="color: #a50"># 读取本地图片并编码为 Base64</span><br/>
+<span style="color: #a50"># ローカル画像を読み込んで Base64 にエンコードする</span><br/>
 <span style="color: Green;font-weight:bold;">with</span> <span style="color: Teal;">open</span><span style="color: Olive;">(</span><span style="color: #a11;">"path/to/image.png"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"rb"</span><span style="color: Olive;">)</span> <span style="color: Green;font-weight:bold;">as</span> image_file:<br/>
     b64_image <span style="color: Gray;">=</span> <span style="color: #05a;">base64</span>.<span style="color: #05a;">b64encode</span><span style="color: Olive;">(</span>image_file.<span style="color: #05a;">read</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span>.<span style="color: #05a;">decode</span><span style="color: Olive;">(</span><span style="color: #a11;">"utf-8"</span><span style="color: Olive;">)</span><br/>
 <br/>
@@ -526,10 +526,10 @@ async <span style="color: Green;font-weight:bold;">def</span> main<span style="c
 asyncio.<span style="color: #05a;">run</span><span style="color: Olive;">(</span>main<span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 </div></div>
 <hr/>
-<h2>リファレンスマニュアル</h2><p>以下表格包含的内容为：→ 以下の表の内容は次の通りです：</p>
+<h2>リファレンスマニュアル</h2><p>以下の表の内容は次の通りです：</p>
 <ul>
 <li>核心初始化：同步用 → コア初期化：同期用<code>OpenAI</code>、非同期用<code>AsyncOpenAI</code>、Azure 用 → 、Azure 用<code>AzureOpenAI</code>，推荐通过环境变量配置 API Key。→ 、API Keyは環境変数で設定することを推奨します。</li>
-<li>文本生成：新版优先用 → テキスト生成：新版では優先的に<code>responses.create()</code>，经典场景用 → 、クラシックなシナリオでは<code>chat.completions.create()</code>，流式输出需设置 → 、ストリーミング出力には設定が必要<code>stream=True</code>。</li>
+<li>テキスト生成：新版では優先のに<code>responses.create()</code>，经典场景用 → 、クラシックなシナリオでは<code>chat.completions.create()</code>，流式输出需设置 → 、ストリーミング出力には設定が必要<code>stream=True</code>。</li>
 <li>高级能力：支持多模态（图片输入）、实时 API、文件上传/微调，错误处理需捕获 → 高度な機能：マルチモーダル（画像入力）、リアルタイムAPI、ファイルアップロード/ファインチューニングに対応、エラー処理では<code>APIError</code>子类，超时/重试可灵活配置。→ サブクラスをキャッチし、タイムアウト/リトライを柔軟に設定できます。</li>
 </ul>
 <h3>インストールとインポート</h3>
@@ -556,7 +556,7 @@ from openai import OpenAI
 os.environ["OPENAI_API_KEY"] = "YOUR_API_KEY"
 client = OpenAI()
 </pre>
-<p>设置请求超时与重试次数：→ リクエストのタイムアウトとリトライ回数を設定：</p>
+<p>リクエストのタイムアウトとリトライ回数を設定：</p>
 <pre>
 client = OpenAI(
     timeout=30,
@@ -564,7 +564,7 @@ client = OpenAI(
 )
 </pre>
 <h3>テキスト生成（Responses API）</h3>
-<p>最基础的文本生成请求：→ 最も基本的なテキスト生成リクエスト：</p>
+<p>最も基本的なテキスト生成リクエスト：</p>
 <pre>
 response = client.responses.create(
     model="gpt-5.2",
@@ -573,7 +573,7 @@ response = client.responses.create(
 
 print(response.output_text)
 </pre>
-<p>通过 instructions 约束模型行为：→ instructions でモデルの動作を制約：</p>
+<p>instructions でモデルの動作を制約：</p>
 <pre>
 response = client.responses.create(
     model="gpt-5.2",
@@ -584,7 +584,7 @@ response = client.responses.create(
 print(response.output_text)
 </pre>
 <h3>マルチターン対話</h3>
-<p>使用 input 数组构建上下文对话：→ input 配列を使用してコンテキスト付き対話を構築：</p>
+<p>input 配列を使用してコンテキスト付き対話を構築：</p>
 <pre>
 response = client.responses.create(
     model="gpt-5.2",
@@ -598,7 +598,7 @@ response = client.responses.create(
 print(response.output_text)
 </pre>
 <h3>構造化出力（JSON Schema）</h3>
-<p>要求模型返回符合 Schema 的 JSON 数据：→ モデルにSchema準拠のJSONデータを返すよう要求：</p>
+<p>モデルにSchema準拠のJSONデータを返すよう要求：</p>
 <pre>
 response = client.responses.create(
     model="gpt-5.2",
@@ -622,7 +622,7 @@ response = client.responses.create(
 print(response.output_parsed)
 </pre>
 <h3>ツール呼び出し（Function Calling）</h3>
-<p>定义工具并让模型自动决定是否调用：→ ツールを定義し、モデルに呼び出しを自動判断させる：</p>
+<p>ツールを定義し、モデルに呼び出しを自動判断させる：→ ツールを定義し、モデルに呼び出しを自動判断させる：</p>
 <pre>
 tools = [
     {
@@ -672,7 +672,7 @@ async for event in stream:
     print(event)
 </pre>
 <h3>非同期呼び出し（AsyncOpenAI）</h3>
-<p>在 asyncio 中使用异步客户端：→ asyncio で非同期クライアントを使用：</p>
+<p>asyncio で非同期クライアントを使用：→ asyncio で非同期クライアントを使用：</p>
 <pre>
 import asyncio
 from openai import AsyncOpenAI
@@ -689,7 +689,7 @@ async def main():
 asyncio.run(main())
 </pre>
 <h3>リアルタイム API（Realtime）</h3>
-<p>使用 WebSocket 进行低延迟实时对话：→ WebSocket を使用した低遅延のリアルタイム対話：</p>
+<p>WebSocket を使用した低遅延のリアルタイム対話：</p>
 <pre>
 async with client.realtime.connect(model="gpt-realtime") as conn:
     await conn.session.update(
@@ -729,7 +729,7 @@ embedding = client.embeddings.create(
 print(embedding.data[0].embedding)
 </pre>
 <h3>音声からテキストへの変換（Speech to Text）</h3>
-<p>将音频文件转为文字：→ 音声ファイルをテキストに変換：</p>
+<p>音声ファイルをテキストに変換：</p>
 <pre>
 audio_file = open("speech.mp3", "rb")
 
@@ -741,7 +741,7 @@ transcript = client.audio.transcriptions.create(
 print(transcript.text)
 </pre>
 <h3>テキストから音声への変換（Text to Speech）</h3>
-<p>将文本转换为语音文件：→ テキストを音声ファイルに変換：</p>
+<p>テキストを音声ファイルに変換：</p>
 <pre>
 speech = client.audio.speech.create(
     model="gpt-4o-mini-tts",
@@ -792,7 +792,7 @@ event = client.webhooks.unwrap(request_body, request_headers)
 client.webhooks.verify_signature(request_body, request_headers)
 </pre>
 <h3>エラー処理</h3>
-<p>捕获 SDK 抛出的异常：→ SDK がスローする例外をキャッチ：</p>
+<p>SDK がスローする例外をキャッチ：</p>
 <pre>
 import openai
 
@@ -806,7 +806,7 @@ except openai.RateLimitError as e:
 except openai.APIConnectionError as e:
     print("连接失败：", e)
 </pre>
-<p>获取失败请求的 Request ID：→ 失敗したリクエストのリクエストIDを取得：</p>
+<p>失敗したリクエストのリクエストIDを取得：</p>
 <pre>
 try:
     client.responses.create(model="gpt-5.2", input="test")
@@ -843,7 +843,7 @@ export OPENAI_LOG=debug
 </div>
 </div>
 <div class="previous-next-links">
-<div class="previous-design-link"><i aria-hidden="true" class="fa fa-arrow-left" style="font-size:16px;"></i> <a href="../python3/uv-tutorial.html" rel="prev">uv 入门教程 — Python 包与环境管理工具 → uv 入門チュートリアル — Python パッケージと環境管理ツール</a> </div>
+<div class="previous-design-link"><i aria-hidden="true" class="fa fa-arrow-left" style="font-size:16px;"></i> <a href="../python3/uv-tutorial.html" rel="prev">uv 入門チュートリアル — Python パッケージと環境管理ツール → uv 入門チュートリアル — Python パッケージと環境管理ツール</a> </div>
 <div class="next-design-link"><a href="../python3/python-re-search.html" rel="next">Python re.search() 方法 → Python re.search() メソッド</a> <i aria-hidden="true" class="fa fa-arrow-right" style="font-size:16px;"></i></div>
 </div>
 
@@ -952,16 +952,16 @@ export OPENAI_LOG=debug
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-→ <p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+→ <p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1250,7 +1250,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

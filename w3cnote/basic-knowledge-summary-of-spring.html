@@ -163,12 +163,12 @@ public class BeanTest{
 <p>Beanのスコープを指定しない場合、Springはデフォルトでsingletonスコープを使用する。prototypeスコープのBeanは生成と破棄のコストが比較的高い。一方、singletonスコープのBeanインスタンスは一度生成されると再利用できる。したがって、Beanをprototypeスコープに設定することはできるだけ避けるべきである。</p>
 <h3 id="使用自动装配注入合作者Bean">自動配線を使用して協力者Beanを注入する</h3>
 <p>SpringはBean間の依存関係を自動配線できる。つまり、refを使用して依存Beanを明示的に指定する必要がなく、SpringコンテナがXML設定ファイルの内容を検査し、何らかの規則に基づいて、呼び出し側Beanに依存先Beanを注入する。<br/>Springの自動配線は、<code>&lt;beans/&gt;</code>要素の<code>default-autowire</code>属性で指定できる。この属性は設定ファイル内のすべてのBeanに影響を与える。また、<code>&lt;bean/&gt;</code>要素の<code>autowire</code>属性で指定できる。この属性はそのBeanにのみ影響を与える。</p>
-<p><code>autowire</code>和<code>default-autowire</code>次の値を受け入れることができる：</p>
+<p><code>autowire</code>と<code>default-autowire</code>次の値を受け入れることができる：</p>
 <ul>
 <li><code>no</code>: 自動配線を使用しない。Beanの依存関係はref要素で定義しなければならない。これはデフォルト設定であり、大規模なデプロイ環境ではこの設定を変更することは推奨されない。協力者を明示的に設定することで、より明確な依存関係が得られる。</li>
 <li><code>byName</code>: setterメソッド名に基づいて自動配線する。Springコンテナはコンテナ内のすべてのBeanを検索し、そのidがsetterメソッド名からsetプレフィックスを除き、先頭文字を小文字にしたものと同名のBeanを見つけて注入を完了する。一致するBeanインスタンスが見つからない場合、Springは一切注入を行わない。</li>
 <li><code>byType</code>: setterメソッドの仮引数型に基づいて自動配線する。Springコンテナはコンテナ内のすべてのBeanを検索し、setterメソッドの仮引数型と一致するBean型がちょうど1つあれば、そのBeanを自動的に注入する。そのようなBeanが複数見つかった場合は例外をスローする。そのようなBeanが見つからない場合は何も起こらず、setterメソッドは呼び出されない。</li>
-<li><code>constructor</code>: byTypeと似ているが、コンストラクタの引数を自動的に一致させるために使用される点が異なる。コンテナがコンストラクタの引数型と一致するBeanをちょうど1つ見つけられない場合、例外をスローする。</li>
+<li><code>constructor</code>byTypeと似ているが、コンストラクタの引数を自動的に一致させるために使用される点が異なる。コンテナがコンストラクタの引数型と一致するBeanをちょうど1つ見つけられない場合、例外をスローする。</li>
 <li><code>autodetect</code>: SpringコンテナはBeanの内部構造に基づいて、constructorまたはbyTypeの戦略を使用するかを自ら決定する。デフォルトのコンストラクタが見つかった場合、byType戦略が適用される。</li>
 </ul>
 <p><strong>あるBeanが自動配線による依存関係とrefによる明示的な依存関係の両方を使用する場合、明示的に指定された依存関係が自動配線の依存関係を上書きする。大規模なアプリケーションでは、自動配線の使用は推奨されない。自動配線を使用すると設定ファイルの作業量を減らせるが、依存関係の明確性と透明性が大幅に低下する。依存関係の配線はソースファイルのプロパティ名とプロパティ型に依存するため、Bean間の結合がコードレベルにまで低下し、高レベルの疎結合には不利である。</strong></p>
@@ -202,7 +202,7 @@ public class BeanTest{
 <p>2つ目の方法、メソッド注入を採用することを推奨する。lookupメソッド注入を使用するには、おおよそ次の2つの手順が必要である：</p>
 <ol>
 <li>呼び出し側Beanの実装クラスを抽象クラスとして定義し、依存先Beanを取得するための抽象メソッドを1つ定義する。</li>
-<li>在<code>&lt;bean.../&gt;</code>要素に<code>&lt;lookup-method.../&gt;</code>子要素を追加して、Springに呼び出し側Beanの実装クラスで指定された抽象メソッドを実装させる。</li>
+<li>に<code>&lt;bean.../&gt;</code>要素に<code>&lt;lookup-method.../&gt;</code>子要素を追加して、Springに呼び出し側Beanの実装クラスで指定された抽象メソッドを実装させる。</li>
 </ol>
 <p><strong><em>注意：</em></strong></p>
 <blockquote><p>Springは実行時に動的拡張を行う方法で、<code>&lt;lookup-method.../&gt;</code>要素で指定された抽象メソッドを実装する。対象の抽象クラスがインターフェースを実装したことがある場合、SpringはJDK動的プロキシを使用してその抽象クラスを実装し、抽象メソッドを実装する。対象の抽象クラスがインターフェースを実装したことがない場合、Springはcglibを使用してその抽象クラスを実装し、抽象メソッドを実装する。Spring4.0のspring-core-xxx.jarパッケージにはcglibライブラリがすでに統合されている。</p></blockquote>
@@ -241,10 +241,10 @@ Person p = (Person)beanFactory.getBean("person");
 <p>Spring設定ファイルで次のように設定し、自動スキャンするパッケージを指定します：</p>
 <pre>&lt;context:component-scan base-package="edu.shu.spring.domain"/&gt;</pre>
 <h3 id="使用@Resource配置依赖">@Resourceを使用した依存性の設定</h3>
-<p><code>@Resource</code>位置は<code>javax.annotation</code>パッケージ配下にあり、JavaEE仕様に由来する1つの<code>Annotation</code>、Springはこのアノテーションを直接参考にしました<code>Annotation</code>、このアノテーションを使用することで<code>Annotation</code>ターゲットBeanに協作者Beanを指定します。使用<code>@Resource</code>与<code>&lt;property.../&gt;</code>要素のref属性と同じ効果があります。<br/>
+<p><code>@Resource</code>位置は<code>javax.annotation</code>パッケージ配下にあり、JavaEE仕様に由来する1つの<code>Annotation</code>、Springはこのアノテーションを直接参考にしました<code>Annotation</code>、このアノテーションを使用することで<code>Annotation</code>ターゲットBeanに協作者Beanを指定します。使用<code>@Resource</code>と<code>&lt;property.../&gt;</code>要素のref属性と同じ効果があります。<br/>
 <code>@Resource</code>setterメソッドを修飾できるだけでなく、インスタンス変数を直接修飾することもできます。使用する場合<code>@Resource</code>インスタンス変数を修飾するとより簡単になります。この場合、SpringはJavaEE仕様のField注入を直接使用するため、setterメソッドさえ不要になります。</p>
 <h3 id="使用@PostConstruct和@PreDestroy定制生命周期行为">@PostConstructと@PreDestroyを使用したライフサイクル動作のカスタマイズ</h3>
-<p><code>@PostConstruct</code>和<code>@PreDestroy</code>同じくjavax.annotationパッケージ配下にあり、JavaEE仕様に由来する2つのAnnotationです。Springはこれらを直接参考にし、Springコンテナ内のBeanのライフサイクル動作をカスタマイズするために使用します。どちらもメソッドを修飾するために使用され、属性は不要です。前者が修飾するメソッドはBeanの初期化メソッドであり、後者が修飾するメソッドはBean破棄前のメソッドです。</p>
+<p><code>@PostConstruct</code>と<code>@PreDestroy</code>同じくjavax.annotationパッケージ配下にあり、JavaEE仕様に由来する2つのAnnotationです。Springはこれらを直接参考にし、Springコンテナ内のBeanのライフサイクル動作をカスタマイズするために使用します。どちらもメソッドを修飾するために使用され、属性は不要です。前者が修飾するメソッドはBeanの初期化メソッドであり、後者が修飾するメソッドはBean破棄前のメソッドです。</p>
 <h3 id="Spring4-0增强的自动装配和精确装配">Spring4.0で強化された自動配線と正確な配線</h3>
 <p>Springは<code>@Autowired</code>自動配線を指定するためのアノテーションを提供します。<code>@Autowired</code>setterメソッド、通常のメソッド、インスタンス変数、コンストラクタなどを修飾できます。使用する場合<code>@Autowired</code>setterメソッドをマークする場合、デフォルトでbyType自動配線戦略が採用されます。この戦略では、自動配線タイプに一致する候補Beanインスタンスが複数存在することがよくあり、この場合に例外が発生する可能性があります。精密な自動配線を実現するために、Springは<code>@Qualifier</code>アノテーションを提供しており、これを使用することで<code>@Qualifier</code>、Beanのidに基づいて自動配線を実行できます。</p>
 <h2 id="Spring的AOP">SpringのAOP</h2>
@@ -410,11 +410,11 @@ Person p = (Person)beanFactory.getBean("person");
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックできます</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=".." class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックできます</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href="..">ログイン</a>が必要です！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

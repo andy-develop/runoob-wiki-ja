@@ -176,7 +176,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>あなたが学生に動物の画像を識別させることを教えていると想像してください。</p>
 <ul>
 <li><strong>正しい方法</strong>: 猫と犬の画像（トレーニングセット）を見せて、どれが猫でどれが犬かを教えます。その後、彼が見たことのない新しい画像（テストセット）を出して、識別させます。</li>
-<li><strong>データリークのやり方</strong>: トレーニング画像を見せるときに、誤ってテストセットの画像も混ぜてしまい、しかも答えを教えてしまったとします。その結果、その学生は本当の「新しい」画像に直面したとき、実はすでに見たことがあり答えを覚えていました。彼はうまく学んでいるように見えても、実際には「特徴から動物を識別する」という汎用的な能力を習得しておらず、特定の画像の答えを覚えただけなのです。</li>
+<li><strong>データリークのやり方</strong>トレーニング画像を見せるときに、誤ってテストセットの画像も混ぜてしまい、しかも答えを教えてしまったとします。その結果、その学生は本当の「新しい」画像に直面したとき、実はすでに見たことがあり答えを覚えていました。彼はうまく学んでいるように見えても、実際には「特徴から動物を識別する」という汎用のな能力を習得しておらず、特定の画像の答えを覚えただけなのです。</li>
 </ul>
 <hr/>
 <h2>データリークの一般的な種類とシナリオ</h2>
@@ -192,11 +192,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h4><strong>シナリオ2: 目的変数の影</strong></h4>
 <p>特徴量と目的変数の間に因果の逆転や高い関連性が存在します。</p>
 <ul>
-<li><strong>誤った例</strong>: 医療診断モデルで、「特効薬Aを服用したかどうか」という特徴量を使って病気Xに罹患しているかどうかを予測します。しかし実際には、病気Xと診断された患者にのみ特効薬Aは処方されます。この特徴量はほぼ直接的に答えを明かしています。</li>
+<li><strong>誤った例</strong>医療診断モデルで、「特効薬Aを服用したかどうか」という特徴量を使って病気Xに罹患しているかどうかを予測します。しかし実際には、病気Xと診断された患者にのみ特効薬Aは処方されます。この特徴量はほぼ直接のに答えを明かしています。</li>
 <li><strong>誤った例</strong>: ユーザーが離脱するかどうかを予測するモデルに、顧客が最近カスタマーサポートに連絡した回数を追加します。カスタマーサポートへの連絡がユーザー離脱前の挽回措置であるなら、この特徴量には離脱間近の情報が含まれています。</li>
 </ul>
 <h4><strong>シナリオ3: データ前処理の不適切さ</strong></h4>
-<p>在<strong>トレーニングセットとテストセットを分割する前に</strong>グローバルなデータ前処理操作を行った。</p>
+<p>に<strong>トレーニングセットとテストセットを分割する前に</strong>グローバルなデータ前処理操作を行った。</p>
 <ul>
 <li><strong>誤った操作</strong>: 最初にデータセット全体に対して正規化（全体平均を引き、全体標準偏差で割る）を行い、その後でトレーニングセットとテストセットに分割します。</li>
 <li><strong>問題点</strong>: テストセットのデータが全体平均と標準偏差の計算に加わっており、モデルを学習する時点でテストセットの分布情報を「覗き見て」しまったことになります。</li>
@@ -272,11 +272,11 @@ for train_index, test_index in tscv.split(X):
 "最適なパラメータ:"
 "交差検証の最良スコア:"
 # 最後に独立したテストセットで評価
-"独立テストセットのスコア:"</p><p><strong>データリークを診断するには？</strong>性能ギャップの警告<strong>: モデルのトレーニング/検証セットでの性能（精度、AUCなど）が、実際のビジネスシナリオや厳密に隔離されたテストセットでの性能よりもはるかに高い場合、これが最も明らかな危険信号です。</strong>特徴量重要性の分析<code>Pipeline</code> 和 <code>GridSearchCV</code>: モデルが最も重要だと判断した特徴量を確認します。ある特徴量の重要度が異常に高く、ビジネスロジック上それほど強い予測力を持つべきではない場合（例えばIDフィールドや目的変数の情報を含むフィールド）、リークが存在する可能性が高いです。</p>
+"独立テストセットのスコア:"</p><p><strong>データリークを診断するには？</strong>性能ギャップの警告<strong>: モデルのトレーニング/検証セットでの性能（精度、AUCなど）が、実際のビジネスシナリオや厳密に隔離されたテストセットでの性能よりもはるかに高い場合、これが最も明らかな危険信号です。</strong>特徴量重要性の分析<code>Pipeline</code>と<code>GridSearchCV</code>: モデルが最も重要だと判断した特徴量を確認します。ある特徴量の重要度が異常に高く、ビジネスロジック上それほど強い予測力を持つべきではない場合（例えばIDフィールドや目的変数の情報を含むフィールド）、リークが存在する可能性が高いです。</p>
 <div class="example">
 <h2 class="example">実例</h2>
 <div class="example_code">
-<span style="color: #a50">: すべての特徴量と目的変数の相関を計算します。ある特徴量がトレーニングセットで目的変数との相関が異常に高いのに、ビジネスロジックでは説明がつかない場合、高度な警戒が必要です。</span><br/>
+<span style="color: #a50">： すべての特徴量と目的変数の相関を計算します。ある特徴量がトレーニングセットで目的変数との相関が異常に高いのに、ビジネスロジックでは説明がつかない場合、高度な警戒が必要です。</span><br/>
 <span style="color: Green;font-weight:bold;">from</span> sklearn.<span style="color: #05a;">pipeline</span> <span style="color: Green;font-weight:bold;">import</span> Pipeline<br/>
 <span style="color: Green;font-weight:bold;">from</span> sklearn.<span style="color: #05a;">feature_selection</span> <span style="color: Green;font-weight:bold;">import</span> SelectKBest<br/>
 <span style="color: Green;font-weight:bold;">from</span> sklearn.<span style="color: #05a;">model_selection</span> <span style="color: Green;font-weight:bold;">import</span> GridSearchCV<br/>
@@ -284,7 +284,7 @@ for train_index, test_index in tscv.split(X):
 <br/>
 <span style="color: #a50">「可用性テスト」を実施する</span><br/>
 pipe <span style="color: Gray;">=</span> Pipeline<span style="color: Olive;">(</span><span style="color: Olive;">[</span><br/>
-    <span style="color: Olive;">(</span><span style="color: #a11;">'selector'</span><span style="color: Gray;">,</span> SelectKBest<span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span>      <span style="color: #a50">: デプロイ前に、完全に閉じたテストをシミュレーションします。過去のある時点のデータで学習し、その後の一定期間のデータを予測して、実際の結果と比較します。これは時系列リークを検証する最も効果的な方法です。</span><br/>
+    <span style="color: Olive;">(</span><span style="color: #a11;">'selector'</span><span style="color: Gray;">,</span> SelectKBest<span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span>      <span style="color: #a50">デプロイ前に、完全に閉じたテストをシミュレーションします。過去のある時点のデータで学習し、その後の一定期間のデータを予測して、実際の結果と比較します。これは時系列リークを検証する最も効果のな方法です。</span><br/>
     <span style="color: Olive;">(</span><span style="color: #a11;">'classifier'</span><span style="color: Gray;">,</span> RandomForestClassifier<span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span> <span style="color: #a50">コードレビューとフローの振り返り</span><br/>
 <span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
 <br/>
@@ -302,7 +302,7 @@ grid_search.<span style="color: #05a;">fit</span><span style="color: Olive;">(</
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">最終テストセット</span><span style="color: Gray;">,</span> grid_search.<span style="color: #05a;">best_params_</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"交叉验证最佳分数:"</span><span style="color: Gray;">,</span> grid_search.<span style="color: #05a;">best_score_</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 最终在独立的测试集上评估</span><br/>
+<span style="color: #a50"># 最終のに独立したテストセット上で評価する</span><br/>
 final_score <span style="color: Gray;">=</span> grid_search.<span style="color: #05a;">score</span><span style="color: Olive;">(</span>X_test<span style="color: Gray;">,</span> y_test<span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"独立测试集分数:"</span><span style="color: Gray;">,</span> final_score<span style="color: Olive;">)</span><br/>
 </div>
@@ -453,11 +453,11 @@ final_score <span style="color: Gray;">=</span> grid_search.<span style="color: 
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前には必ず<a href=";.html" class="runoob-pop">ログイン</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前には必ず<a class="runoob-pop" href=";.html">ログイン</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -746,7 +746,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

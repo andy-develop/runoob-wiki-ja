@@ -231,12 +231,12 @@ _start<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">4096</span>                <span style="color: #666666; font-style: italic;">; 增加 4096 字节</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">45</span>                  <span style="color: #666666; font-style: italic;">; sys_brk</span><br/>
     <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
-    <span style="color: #666666; font-style: italic;">; EAX = 新的 break 地址（即分配后的区域末尾）</span><br/>
+    <span style="color: #666666; font-style: italic;">; EAX = 新しい break アドレス（すなわち割り当て後の領域の末尾）</span><br/>
 <br/>
-    <span style="color: #666666; font-style: italic;">; 3. 新分配的内存在 orig_break 到 eax-1 之间</span><br/>
-    <span style="color: #666666; font-style: italic;">; 可以安全地读写这片内存</span><br/>
-    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>orig_break<span style="color: #009900; font-weight: bold;">]</span>        <span style="color: #666666; font-style: italic;">; 获取分配区域的起始地址</span><br/>
-    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #0000FF; font-weight: bold;">dword</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">42</span>          <span style="color: #666666; font-style: italic;">; 在新内存中写入 42</span><br/>
+    <span style="color: #666666; font-style: italic;">; 3. 新しく割り当てられたメモリは orig_break から eax-1 の間にあります</span><br/>
+    <span style="color: #666666; font-style: italic;">; このメモリは安全に読み書きできる</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>orig_break<span style="color: #009900; font-weight: bold;">]</span>        <span style="color: #666666; font-style: italic;">; 割り当て領域の開始アドレスを取得する</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #0000FF; font-weight: bold;">dword</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">42</span>          <span style="color: #666666; font-style: italic;">; 新しいメモリに 42 を書き込む</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #009900; font-weight: bold;">]</span>               <span style="color: #666666; font-style: italic;">; 读取回来</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 4. 释放内存：将 break 恢复到原位</span><br/>
@@ -257,7 +257,7 @@ _start<span style="color: #339933;">:</span><br/>
 <h2 class="example">实例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;">; 文件路径：mmap_demo.asm</span><br/>
-<span style="color: #666666; font-style: italic;">; 使用 mmap 分配可独立释放的内存</span><br/>
+<span style="color: #666666; font-style: italic;">; mmap を使用して、独立して解放できるメモリを割り当てる</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
     <span style="color: #666666; font-style: italic;">; mmap 相关常量</span><br/>
@@ -267,13 +267,13 @@ _start<span style="color: #339933;">:</span><br/>
     MAP_ANONYMOUS <span style="color: #0000FF; font-weight: bold;">equ</span> <span style="color: #FF0000;">0x20</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.bss</span><br/>
-    mem_block <span style="color: #0000FF; font-weight: bold;">resd</span> <span style="color: #FF0000;">1</span>             <span style="color: #666666; font-style: italic;">; 保存分配的内存地址</span><br/>
+    mem_block <span style="color: #0000FF; font-weight: bold;">resd</span> <span style="color: #FF0000;">1</span>             <span style="color: #666666; font-style: italic;">; 割り当てられたメモリアドレスを保存</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.text</span><br/>
     <span style="color: #0000FF; font-weight: bold;">global</span> _start<br/>
 <br/>
 _start<span style="color: #339933;">:</span><br/>
-    <span style="color: #666666; font-style: italic;">; mmap 调用：分配 4096 字节的匿名内存</span><br/>
+    <span style="color: #666666; font-style: italic;">; mmap 呼び出し：4096 バイトの匿名メモリを割り当てる</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">192</span>                 <span style="color: #666666; font-style: italic;">; sys_mmap2</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>                   <span style="color: #666666; font-style: italic;">; 让内核选择地址</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">4096</span>                <span style="color: #666666; font-style: italic;">; 分配大小：4KB</span><br/>
@@ -282,14 +282,14 @@ _start<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">edi</span><span style="color: #339933;">,</span> <span style="color: #339933;">-</span><span style="color: #FF0000;">1</span>                  <span style="color: #666666; font-style: italic;">; 文件描述符（匿名映射用 -1）</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebp</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>                   <span style="color: #666666; font-style: italic;">; 偏移量（匿名映射用 0）</span><br/>
     <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
-    <span style="color: #666666; font-style: italic;">; EAX = 分配的内存地址（失败返回负值）</span><br/>
+    <span style="color: #666666; font-style: italic;">; EAX = 割り当てられたメモリアドレス（失敗時は負の値を返す）</span><br/>
 <br/>
-    <span style="color: #00007F; font-weight: bold;">cmp</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #339933;">-</span><span style="color: #FF0000;">4096</span>               <span style="color: #666666; font-style: italic;">; 检查是否失败</span><br/>
-    <span style="color: #00007F; font-weight: bold;">ja</span>  mmap_failed              <span style="color: #666666; font-style: italic;">; 如果在 -4095 ~ -1 之间，失败</span><br/>
+    <span style="color: #00007F; font-weight: bold;">cmp</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #339933;">-</span><span style="color: #FF0000;">4096</span>               <span style="color: #666666; font-style: italic;">; 失敗したかどうかを確認</span><br/>
+    <span style="color: #00007F; font-weight: bold;">ja</span>  mmap_failed              <span style="color: #666666; font-style: italic;">; -4095 ～ -1 の間にある場合は、失敗</span><br/>
 <br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #009900; font-weight: bold;">[</span>mem_block<span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">eax</span>         <span style="color: #666666; font-style: italic;">; 保存内存地址</span><br/>
 <br/>
-    <span style="color: #666666; font-style: italic;">; 使用分配的内存：写入数据</span><br/>
+    <span style="color: #666666; font-style: italic;">; 割り当てたメモリを使用：データを書き込む</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>mem_block<span style="color: #009900; font-weight: bold;">]</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #0000FF; font-weight: bold;">dword</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0x12345678</span>  <span style="color: #666666; font-style: italic;">; 写入 4 字节</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #0000FF; font-weight: bold;">dword</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46AA03; font-weight: bold;">ebx</span> <span style="color: #339933;">+</span> <span style="color: #FF0000;">4</span><span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #7F007F;">'runo'</span>  <span style="color: #666666; font-style: italic;">; 写入 "runo"</span><br/>
@@ -329,19 +329,19 @@ exit<span style="color: #339933;">:</span><br/>
     <span style="color: #0000FF; font-weight: bold;">global</span> _start<br/>
 <br/>
 _start<span style="color: #339933;">:</span><br/>
-    <span style="color: #666666; font-style: italic;">; 读取不同大小的内存</span><br/>
+    <span style="color: #666666; font-style: italic;">; 異なるサイズのメモリを読み取る</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">al</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>var1<span style="color: #009900; font-weight: bold;">]</span>              <span style="color: #666666; font-style: italic;">; 读取 1 字节：al = 0x55</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>var2<span style="color: #009900; font-weight: bold;">]</span>              <span style="color: #666666; font-style: italic;">; 读取 2 字节：ax = 0x1234</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>var3<span style="color: #009900; font-weight: bold;">]</span>             <span style="color: #666666; font-style: italic;">; 读取 4 字节：eax = 0x12345678</span><br/>
 <br/>
-    <span style="color: #666666; font-style: italic;">; 写入不同大小的内存</span><br/>
+    <span style="color: #666666; font-style: italic;">; 異なるサイズのメモリを書き込む</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #0000FF; font-weight: bold;">byte</span> <span style="color: #009900; font-weight: bold;">[</span>var1<span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0xAA</span>       <span style="color: #666666; font-style: italic;">; 写入 1 字节</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #0000FF; font-weight: bold;">word</span> <span style="color: #009900; font-weight: bold;">[</span>var2<span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0xABCD</span>     <span style="color: #666666; font-style: italic;">; 写入 2 字节</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #0000FF; font-weight: bold;">dword</span> <span style="color: #009900; font-weight: bold;">[</span>var3<span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0xDEADBEEF</span> <span style="color: #666666; font-style: italic;">; 写入 4 字节</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 通过指针操作内存</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> var3               <span style="color: #666666; font-style: italic;">; ebx 指向 var3</span><br/>
-    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #009900; font-weight: bold;">]</span>              <span style="color: #666666; font-style: italic;">; 间接读取 var3 的值</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #009900; font-weight: bold;">]</span>              <span style="color: #666666; font-style: italic;">; var3 の値を間接のに読み取る</span><br/>
     <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #0000FF; font-weight: bold;">dword</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span>          <span style="color: #666666; font-style: italic;">; var3 = var3 + 1</span><br/>
 <br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
@@ -354,11 +354,11 @@ _start<span style="color: #339933;">:</span><br/>
 <p>アセンブリでメモリを操作する際に「セーフティネット」はありません。以下の規則を必ず覚えておく必要があります：</p>
 <table class="reference">
 <tr><th>规范</th><th>说明</th><th>违反后果</th></tr>
-<tr><td>不越界访问</td><td>读写不超过变量/缓冲区的大小</td><td>データ破損、セグメンテーションフォールト</td></tr>
+<tr><td>不越界访问</td><td>変数/バッファのサイズを超えて読み書きしない</td><td>データ破損、セグメンテーションフォールト</td></tr>
 <tr><td>未初期化メモリを読み込まない</td><td>.bssセグメントの値は不定</td><td>予測不可能な結果</td></tr>
 <tr><td>無効なアドレスでの読み書きをしない</td><td>ポインタが有効なメモリを指していることを確認する</td><td>段错误（Segmentation Fault）</td></tr>
 <tr><td>読み取り専用メモリに書き込まない</td><td>.textセグメントと定数領域は書き込み不可</td><td>段错误</td></tr>
-<tr><td>地址对齐</td><td>ワードアクセスは偶数アドレス、ダブルワードは4の倍数を使用する</td><td>性能低下またはバスエラー</td></tr>
+<tr><td>アドレス整列</td><td>ワードアクセスは偶数アドレス、ダブルワードは4の倍数を使用する</td><td>性能低下またはバスエラー</td></tr>
 </table>
 <div class="example">
 <h2 class="example">实例</h2>
@@ -374,7 +374,7 @@ _start<span style="color: #339933;">:</span><br/>
 _start<span style="color: #339933;">:</span><br/>
     <span style="color: #666666; font-style: italic;">; 危险操作1：越界写入</span><br/>
     <span style="color: #666666; font-style: italic;">; mov dword [small_buf + 3], 0x12345678</span><br/>
-    <span style="color: #666666; font-style: italic;">; 这会覆盖 small_buf 之后 3 字节的数据！</span><br/>
+    <span style="color: #666666; font-style: italic;">; これは small_buf の後ろの 3 バイトのデータを上書きします！</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 危险操作2：写入代码段（只读）</span><br/>
     <span style="color: #666666; font-style: italic;">; mov dword [_start], 0x90  ; 尝试修改代码，会导致段错误</span><br/>
@@ -383,8 +383,8 @@ _start<span style="color: #339933;">:</span><br/>
     <span style="color: #666666; font-style: italic;">; mov eax, [0]              ; 读取地址 0，会导致段错误</span><br/>
     <span style="color: #666666; font-style: italic;">; mov [0], eax              ; 写入地址 0，会导致段错误</span><br/>
 <br/>
-    <span style="color: #666666; font-style: italic;">; 安全做法：始终在分配的内存范围内操作</span><br/>
-    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #0000FF; font-weight: bold;">dword</span> <span style="color: #009900; font-weight: bold;">[</span>small_buf<span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #7F007F;">'runo'</span>  <span style="color: #666666; font-style: italic;">; 正确：在 4 字节内操作</span><br/>
+    <span style="color: #666666; font-style: italic;">; 安全な方法：常に割り当てられたメモリ範囲内で操作する</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #0000FF; font-weight: bold;">dword</span> <span style="color: #009900; font-weight: bold;">[</span>small_buf<span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #7F007F;">'runo'</span>  <span style="color: #666666; font-style: italic;">; 正しい：4バイト内で操作する</span><br/>
 <br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
     <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
@@ -426,9 +426,9 @@ _start<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">pop</span> <span style="color: #46AA03; font-weight: bold;">ecx</span>                      <span style="color: #666666; font-style: italic;">; ecx = 100, ESP += 4</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 通过栈分配局部空间</span><br/>
-    <span style="color: #00007F; font-weight: bold;">sub</span> <span style="color: #46AA03; font-weight: bold;">esp</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">256</span>                 <span style="color: #666666; font-style: italic;">; 在栈上分配 256 字节</span><br/>
-    <span style="color: #666666; font-style: italic;">; 现在 ESP 到 ESP+255 这 256 字节可以安全使用</span><br/>
-    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #0000FF; font-weight: bold;">dword</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46AA03; font-weight: bold;">esp</span><span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">42</span>          <span style="color: #666666; font-style: italic;">; 在局部空间写入 42</span><br/>
+    <span style="color: #00007F; font-weight: bold;">sub</span> <span style="color: #46AA03; font-weight: bold;">esp</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">256</span>                 <span style="color: #666666; font-style: italic;">; スタック上に256バイトを割り当てる</span><br/>
+    <span style="color: #666666; font-style: italic;">; 現在、ESP から ESP+255 までの 256 バイトを安全に使用できます。</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #0000FF; font-weight: bold;">dword</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46AA03; font-weight: bold;">esp</span><span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">42</span>          <span style="color: #666666; font-style: italic;">; ローカル領域に 42 を書き込む</span><br/>
     <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #46AA03; font-weight: bold;">esp</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">256</span>                 <span style="color: #666666; font-style: italic;">; 释放局部空间</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 确保 ESP 回到原始位置！</span><br/>
@@ -437,7 +437,7 @@ _start<span style="color: #339933;">:</span><br/>
     <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
 </div>
 </div>
-<blockquote><p>スタック操作で最も重要なルール：<span class="marked">PUSH 和 POP 必须配对</span>関数が戻る前にESPが正しい位置に戻っていることを確認する必要があります。そうしないと、RETが誤った戻りアドレスをポップし、プログラムのクラッシュや任意のコードの実行を引き起こします。これはアセンブリプログラミングにおいて最も致命的なバグの1つです。</p></blockquote>
+<blockquote><p>スタック操作で最も重要なルール：<span class="marked">PUSH と POP はペアでなければならない</span>関数が戻る前にESPが正しい位置に戻っていることを確認する必要があります。そうしないと、RETが誤った戻りアドレスをポップし、プログラムのクラッシュや任意のコードの実行を引き起こします。これはアセンブリプログラミングにおいて最も致命的なバグの1つです。</p></blockquote>
 <hr/>
 <h2>メモリ管理方式の比較</h2>
 <table class="reference">
@@ -565,11 +565,11 @@ _start<span style="color: #339933;">:</span><br/>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -858,7 +858,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

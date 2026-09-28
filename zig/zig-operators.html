@@ -228,7 +228,7 @@ a &gt;= b: true
 a &lt;= b: false
 </pre>
 <h2>逻辑运算符</h2>
-<table class="reference"><thead><tr><th>运算符</th><th>描述</th></tr></thead><tbody><tr><td>and</td><td>逻辑与</td></tr><tr><td>or</td><td>逻辑或</td></tr><tr><td>!</td><td>逻辑非</td></tr></tbody></table>
+<table class="reference"><thead><tr><th>运算符</th><th>描述</th></tr></thead><tbody><tr><td>and</td><td>論理積</td></tr><tr><td>or</td><td>逻辑或</td></tr><tr><td>!</td><td>逻辑非</td></tr></tbody></table>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
 <span style="color: #05a;">const</span> std <span style="color: #000080;">=</span> @import<span style="color: #008000;">(</span><span style="color: #a11;">"std"</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <br/>
@@ -251,7 +251,7 @@ a and b: false
 a or b: true
 !a: false
 </pre>
-<h2>位运算符</h2><table class="reference"><thead><tr><th>运算符</th><th>描述</th></tr></thead><tbody><tr><td>&amp;</td><td>按位与</td></tr><tr><td>|</td><td>按位或</td></tr><tr><td>^</td><td>按位异或</td></tr><tr><td>~</td><td>按位取反</td></tr><tr><td>&lt;&lt;</td><td>左移</td></tr><tr><td>&gt;&gt;</td><td>右移</td></tr></tbody></table>
+<h2>位运算符</h2><table class="reference"><thead><tr><th>运算符</th><th>描述</th></tr></thead><tbody><tr><td>&amp;</td><td>ビットごとのAND</td></tr><tr><td>|</td><td>按位或</td></tr><tr><td>^</td><td>按位异或</td></tr><tr><td>~</td><td>按位取反</td></tr><tr><td>&lt;&lt;</td><td>左移</td></tr><tr><td>&gt;&gt;</td><td>右移</td></tr></tbody></table>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
 <span style="color: #05a;">const</span> std <span style="color: #000080;">=</span> @import<span style="color: #008000;">(</span><span style="color: #a11;">"std"</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <br/>
@@ -281,7 +281,7 @@ a ^ b: 6
 a &lt;&lt; 1: 10
 a &gt;&gt; 1: 2</pre>
 <h2>赋值运算符</h2>
-<table class="reference"><thead><tr><th>运算符</th><th>描述</th></tr></thead><tbody><tr><td>=</td><td>赋值</td></tr><tr><td>+=</td><td>加法赋值</td></tr><tr><td>-=</td><td>减法赋值</td></tr><tr><td>*=</td><td>乘法赋值</td></tr><tr><td>/=</td><td>除法赋值</td></tr><tr><td>%=</td><td>取余赋值</td></tr><tr><td>&amp;=</td><td>按位与赋值</td></tr><tr><td>|=</td><td>按位或赋值</td></tr><tr><td>^=</td><td>ビットごとのXOR代入</td></tr><tr><td>&lt;&lt;=</td><td>左移赋值</td></tr><tr><td>&gt;&gt;=</td><td>右移赋值</td></tr></tbody></table>
+<table class="reference"><thead><tr><th>运算符</th><th>描述</th></tr></thead><tbody><tr><td>=</td><td>赋值</td></tr><tr><td>+=</td><td>加法赋值</td></tr><tr><td>-=</td><td>减法赋值</td></tr><tr><td>*=</td><td>乘法赋值</td></tr><tr><td>/=</td><td>除法赋值</td></tr><tr><td>%=</td><td>取余赋值</td></tr><tr><td>&amp;=</td><td>ビット論理積代入</td></tr><tr><td>|=</td><td>按位或赋值</td></tr><tr><td>^=</td><td>ビットごとのXOR代入</td></tr><tr><td>&lt;&lt;=</td><td>左移赋值</td></tr><tr><td>&gt;&gt;=</td><td>右移赋值</td></tr></tbody></table>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
 <span style="color: #05a;">const</span> std <span style="color: #000080;">=</span> @import<span style="color: #008000;">(</span><span style="color: #a11;">"std"</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <br/>
@@ -348,7 +348,7 @@ pub fn main<span style="color: #008000;">(</span><span style="color: #008000;">)
 <pre>a += 1: 6
 a -= 1: 5</pre>
 <h2>演算子の優先順位</h2><p>以下は、Zigの演算子の優先順位のリストを、高い順から低い順に並べたものです。</p>
-<table class="reference"><thead><tr><th><strong>优先级</strong></th><th><strong>运算符</strong></th><th><strong>描述</strong></th></tr></thead><tbody><tr><td>1</td><td><code>[]</code></td><td>添字操作、配列またはポインタアクセス</td></tr><tr><td>1</td><td><code>.</code></td><td>成员访问</td></tr><tr><td>2</td><td><code>fn_call()</code></td><td>函数调用</td></tr><tr><td>2</td><td><code>@builtin()</code></td><td>組み込み関数の呼び出し</td></tr><tr><td>3</td><td><code>!</code></td><td>错误传播</td></tr><tr><td>3</td><td><code>?</code></td><td>可选值解包</td></tr><tr><td>4</td><td><code>*</code> <code>&amp;</code></td><td>ポインタの間接参照とアドレス操作</td></tr><tr><td>5</td><td><code>+</code> <code>-</code></td><td>単項の正号と負号</td></tr><tr><td>6</td><td><code>~</code></td><td>按位取反</td></tr><tr><td>7</td><td><code>*</code> <code>/</code> <code>%</code></td><td>乗算、除算、剰余</td></tr><tr><td>8</td><td><code>+</code> <code>-</code></td><td>加法、减法</td></tr><tr><td>9</td><td><code>&lt;&lt;</code> <code>&gt;&gt;</code></td><td>ビット左シフト、右シフト</td></tr><tr><td>10</td><td><code>&amp;</code></td><td>按位与</td></tr><tr><td>11</td><td><code>^</code></td><td>按位异或</td></tr><tr><td>12</td><td>`</td><td>`</td></tr><tr><td>13</td><td><code>==</code> <code>!=</code></td><td>等しい、等しくない</td></tr><tr><td>13</td><td><code>&lt;</code> <code>&lt;=</code> <code>&gt;</code> <code>&gt;=</code></td><td>小なり、小なりイコール、大なり、大なりイコール</td></tr><tr><td>14</td><td><code>and</code></td><td>逻辑与</td></tr><tr><td>15</td><td><code>or</code></td><td>逻辑或</td></tr><tr><td>16</td><td><code>orelse</code></td><td>または別の値を返す</td></tr><tr><td>17</td><td><code>catch</code></td><td>捕获错误</td></tr><tr><td>18</td><td><code>=</code></td><td>赋值</td></tr><tr><td>19</td><td><code>-&gt;</code></td><td>クロージャの関数本体または戻り値の型指示子</td></tr></tbody></table>
+<table class="reference"><thead><tr><th><strong>优先级</strong></th><th><strong>运算符</strong></th><th><strong>描述</strong></th></tr></thead><tbody><tr><td>1</td><td><code>[]</code></td><td>添字操作、配列またはポインタアクセス</td></tr><tr><td>1</td><td><code>.</code></td><td>成员访问</td></tr><tr><td>2</td><td><code>fn_call()</code></td><td>函数调用</td></tr><tr><td>2</td><td><code>@builtin()</code></td><td>組み込み関数の呼び出し</td></tr><tr><td>3</td><td><code>!</code></td><td>错误传播</td></tr><tr><td>3</td><td><code>?</code></td><td>可选值解包</td></tr><tr><td>4</td><td><code>*</code> <code>&amp;</code></td><td>ポインタの間接参照とアドレス操作</td></tr><tr><td>5</td><td><code>+</code> <code>-</code></td><td>単項の正号と負号</td></tr><tr><td>6</td><td><code>~</code></td><td>按位取反</td></tr><tr><td>7</td><td><code>*</code> <code>/</code> <code>%</code></td><td>乗算、除算、剰余</td></tr><tr><td>8</td><td><code>+</code> <code>-</code></td><td>加法、减法</td></tr><tr><td>9</td><td><code>&lt;&lt;</code> <code>&gt;&gt;</code></td><td>ビット左シフト、右シフト</td></tr><tr><td>10</td><td><code>&amp;</code></td><td>ビットごとのAND</td></tr><tr><td>11</td><td><code>^</code></td><td>按位异或</td></tr><tr><td>12</td><td>`</td><td>`</td></tr><tr><td>13</td><td><code>==</code> <code>!=</code></td><td>等しい、等しくない</td></tr><tr><td>13</td><td><code>&lt;</code> <code>&lt;=</code> <code>&gt;</code> <code>&gt;=</code></td><td>小なり、小なりイコール、大なり、大なりイコール</td></tr><tr><td>14</td><td><code>and</code></td><td>論理積</td></tr><tr><td>15</td><td><code>or</code></td><td>逻辑或</td></tr><tr><td>16</td><td><code>orelse</code></td><td>または別の値を返す</td></tr><tr><td>17</td><td><code>catch</code></td><td>捕获错误</td></tr><tr><td>18</td><td><code>=</code></td><td>赋值</td></tr><tr><td>19</td><td><code>-&gt;</code></td><td>クロージャの関数本体または戻り値の型指示子</td></tr></tbody></table>
 <p><strong>说明：</strong></p>
 <ul><li><strong>结合性</strong>通常、Zigの演算子は左結合ですが、演算子の具体的な機能に応じてドキュメントを参照できます。</li><li><strong>注意事项</strong>Zigの演算子はシンプルで明確に設計されており、多くの言語に見られる複雑な暗黙の動作（暗黙の型変換がないことなど）を避けています。</li></ul>
 <p>以下の例は、演算子の優先順位が式の評価順序にどのように影響するかを示しています。</p>
@@ -372,7 +372,7 @@ pub fn main<span style="color: #008000;">(</span><span style="color: #008000;">)
     <span style="color: #05a;">const</span> result3<span style="color: #008080;">:</span> <span style="color: #05a;">bool</span> <span style="color: #000080;">=</span> a <span style="color: #000080;">&gt;</span> b and b <span style="color: #000080;">&gt;</span> c<span style="color: #008080;">;</span> <span style="color: #666666;">// (5 &gt; 3) and (3 &gt; 2) = true</span><br/>
     std.<span style="color: #007788;">debug</span>.<span style="color: #007788;">print</span><span style="color: #008000;">(</span><span style="color: #a11;">"a &gt; b and b &gt; c = {}<span style="color: #000099; font-weight: bold;">\n</span>"</span>, .<span style="color: #008000;">{</span>result3<span style="color: #008000;">}</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <br/>
-    <span style="color: #666666;">// 逻辑非优先于逻辑与</span><br/>
+    <span style="color: #666666;">// 論理否定は論理積より優先される</span><br/>
     <span style="color: #05a;">const</span> result4<span style="color: #008080;">:</span> <span style="color: #05a;">bool</span> <span style="color: #000080;">=</span> <span style="color: #000040;">!</span><span style="color: #008000;">(</span>a <span style="color: #000080;">&gt;</span> b<span style="color: #008000;">)</span> and b <span style="color: #000080;">&gt;</span> c<span style="color: #008080;">;</span> <span style="color: #666666;">// !(5 &gt; 3) and (3 &gt; 2) = false</span><br/>
     std.<span style="color: #007788;">debug</span>.<span style="color: #007788;">print</span><span style="color: #008000;">(</span><span style="color: #a11;">"!(a &gt; b) and b &gt; c = {}<span style="color: #000099; font-weight: bold;">\n</span>"</span>, .<span style="color: #008000;">{</span>result4<span style="color: #008000;">}</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <span style="color: #008000;">}</span><br/>
@@ -500,11 +500,11 @@ a &gt; b and b &gt; c = true
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてメモを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -793,7 +793,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

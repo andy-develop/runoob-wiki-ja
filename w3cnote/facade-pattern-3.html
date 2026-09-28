@@ -92,9 +92,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <img decoding="async" src="../wp-content/uploads/2018/07/1530601040-5088-.png"/>
 <h1>ファサードパターンの構造</h1>
 <p>ファサードパターンには一般化されたクラス図の記述はありません。実際に最良の説明方法は、例を用いて示すことです。</p>
-<imgsrc=".. 07="" 1530601041-1318-.png"="" 2018="" uploads="" wp-content=""></imgsrc="..>
-ファサードパターンの構造図は抽象度が高いため、もう少し具体的にします。サブシステム内にModuleA、ModuleB、ModuleCという3つのモジュールがあり、それぞれにサンプルメソッドが1つずつあると仮定します。この場合、サンプルの全体構造図は次のようになります。
-<img decoding="async" src="../wp-content/uploads/2018/07/1530601040-4181-.png"/>
+<imgsrc=".. 07="" 1530601041-1318-.png"="" 2018="" uploads="" wp-content=""></imgsrc="..>ファサードパターンの構造図は抽象度が高いため、もう少し具体的にします。サブシステム内にModuleA、ModuleB、ModuleCという3つのモジュールがあり、それぞれにサンプルメソッドが1つずつあると仮定します。この場合、サンプルの全体構造図は次のようになります。<img decoding="async" src="../wp-content/uploads/2018/07/1530601040-4181-.png"/>
 このオブジェクト図には、2つの役割が登場します。
 <ul><li><strong>ファサード（Facade）役割：</strong>クライアントはこの役割のメソッドを呼び出すことができます。この役割は、関連する（1つまたは複数の）サブシステムの機能と責任を把握しています。通常、この役割はクライアントから送られたすべての要求を対応するサブシステムに委譲します。</li><li><strong>サブシステム（SubSystem）役割：</strong>同時に1つまたは複数のサブシステムを持つことができます。各サブシステムは単一のクラスではなく、クラスの集合です（上のサブシステムはModuleA、ModuleB、ModuleCの3つのクラスで構成されています）。各サブシステムはクライアントから直接呼び出されることも、ファサード役割から呼び出されることもできます。サブシステムはファサードの存在を知りません。サブシステムにとって、ファサードは単なる別のクライアントにすぎません。</li></ul>
 <h3>ソースコード</h3>
@@ -197,7 +195,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         c.c1();
     }
 }</pre>
-<p>このようにModuleFacadeクラスを定義すると、内部の詳細を効果的に隠蔽でき、クライアントがModuleクラスを呼び出す際に、知る必要のないメソッドを見つけてしまうのを防げます。例えば、a2()やa3()メソッドはクライアントに知らせる必要はありません。そうしなければ内部の詳細をさらけ出すことになり、クライアントを混乱させます。クライアントにとっては、a2()やa3()メソッドが何のために使われるのかを考えなければならなくなるかもしれません。実際、a2()とa3()は内部モジュール間のやり取りに使うもので、元々サブシステム外部向けではないので、いっそのことクライアントに知らせない方がよいのです。</p>
+<p>このようにModuleFacadeクラスを定義すると、内部の詳細を効果のに隠蔽でき、クライアントがModuleクラスを呼び出す際に、知る必要のないメソッドを見つけてしまうのを防げます。例えば、a2()やa3()メソッドはクライアントに知らせる必要はありません。そうしなければ内部の詳細をさらけ出すことになり、クライアントを混乱させます。クライアントにとっては、a2()やa3()メソッドが何のために使われるのかを考えなければならなくなるかもしれません。実際、a2()とa3()は内部モジュール間のやり取りに使うもので、元々サブシステム外部向けではないので、いっそのことクライアントに知らせない方がよいのです。</p>
 <h3>1つのシステムはいくつのファサードクラスを持つことができるか</h3>
 <p>ファサードパターンでは、通常は1つのファサードクラスのみが必要で、かつこのファサードクラスはインスタンスを1つだけ持ちます。言い換えると、それはシングルトンクラスです。もちろんこれはシステム全体にファサードクラスが1つしかないという意味ではなく、各サブシステムに対して1つのファサードクラスがあるという意味にすぎません。言い換えれば、システムに複数のサブシステムがある場合、各サブシステムに1つのファサードクラスがあり、システム全体では複数のファサードクラスを持つことができます。</p>
 <h3>サブシステムに新しい振る舞いを追加する</h3>
@@ -317,11 +315,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=".." class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href="..">ログイン</a>が必要です！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

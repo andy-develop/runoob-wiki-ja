@@ -579,7 +579,7 @@ print_func("Runoob")</pre>
 <p>ヒント：直接 print_func() を使用して呼び出すことができます。</p>
 <p>筆者の提案：一般的には、import 文を使用し、from … import を避けることをお勧めします。これによりプログラムがより読みやすくなり、名前の衝突も避けられるからです。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">Xiphap</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   Xiphap</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  xip***@qq.com</p></div></span>9年前 (2018-03-01)</div></div></li><!-- #comment-## -->
 <li class="comment even thread-even depth-1" id="comment-26325"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>小白、pythonを学ぶ</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  179***943@qq.com</p></div><div class="upvotejs" data-commid="26325" id="runoobvote-id-26325"><a class="upvote"></a> <span class="count">82</span></div></div><div class="comt-main" id="div-comment-26325"><p data-commid="24474,38110" data-title="from…import * 语句与 import 区别">この章を読んだ後、この<span class="marked">from…import *</span>ステートメントと<span class="marked">import</span>の違いについてとても疑問に思いましたが、他の場所で説明を読んで、以下のように理解しました。</p>
-<p>まず、理解する必要があります<span class="marked">import</span> 与 <span class="marked">from…import</span>の違い。</p>
+<p>まず、理解する必要があります<span class="marked">import</span>と<span class="marked">from…import</span>の違い。</p>
 <ul><li>
 <strong>import モジュール</strong>：1つのモジュールをインポートします。注：フォルダーをインポートするのと同じで、相対パスです。</li><li>
 <strong>from…import</strong>：モジュール内の1つの関数をインポートします。注：フォルダー内のファイルをインポートするのと同じで、絶対パスです。<li></li></li></ul>
@@ -613,8 +613,7 @@ class test()
 <li class="comment even thread-even depth-1" id="comment-39750"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>トウトウのママ</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  106***6785@qq.com</p></div><div class="upvotejs" data-commid="39750" id="runoobvote-id-39750"><a class="upvote"></a> <span class="count">158</span></div></div><div class="comt-main" id="div-comment-39750"><p>分かりやすく言うと<strong>__name__ == '__main__'</strong>：</p>
 <p>あなたが小明.pyという名前だとします。友達の目には、あなたは小明です(__name__ == '小明')。自分自身の目には、あなたはあなた自身です(__name__ == '__main__')。</p>
 <p><strong>if __name__ == '__main__' の意味は次のとおりです：</strong>.py ファイルが直接実行されると、if __name__ == '__main__' の下のコードブロックが実行されます。.py ファイルがモジュールとしてインポートされると、if __name__ == '__main__' の下のコードブロックは実行されません。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">トウトウのママ</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>トウトウのママ</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  106***6785@qq.com</p></div></span>8年前 (2019-02-14)</div></div></li><!-- #comment-## -->
-<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-61425"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   crazycat</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  spo***lanet@163.com</p></div><div class="upvotejs" data-commid="61425" id="runoobvote-id-61425"><a class="upvote"></a> <span class="count">19</span></div></div><div class="comt-main" id="div-comment-61425"><h3>import module</h3><p>
-对 <strong>module.xxx</strong>の変更は、import し直した後でも有効です：</p>
+<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-61425"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   crazycat</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  spo***lanet@163.com</p></div><div class="upvotejs" data-commid="61425" id="runoobvote-id-61425"><a class="upvote"></a> <span class="count">19</span></div></div><div class="comt-main" id="div-comment-61425"><h3>import module</h3><p>に対して<strong>module.xxx</strong>の変更は、import し直した後でも有効です：</p>
 <pre>#!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
@@ -630,8 +629,7 @@ print math.__name__</pre>
 math
 hello
 hello</pre><h3>
-from module import xxx</h3><p>
-对 <strong>module.xxx</strong>の変更は、再<strong>import</strong>後は有効になりません：</p>
+from module import xxx</h3><p>に対して<strong>module.xxx</strong>の変更は、再<strong>import</strong>後は有効になりません：</p>
 <pre>#!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
@@ -652,11 +650,11 @@ math</pre><div class="comt-meta wrapper"><span class="comt-author"><a href=";.ht
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">メモはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックできます</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> メモを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">メモはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックできます</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> メモを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -945,7 +943,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

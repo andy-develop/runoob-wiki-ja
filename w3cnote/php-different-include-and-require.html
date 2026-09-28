@@ -83,7 +83,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <!-- ad start-->
 <!-- ad end-->
 <h2>1、概要</h2>
-<p>require() ステートメントのパフォーマンスは include() と類似しており、どちらも指定されたファイルを読み込んで実行します。違いは、include() ステートメントの場合、ファイルを実行するたびに読み取りと評価を行うことです。一方、require() の場合、ファイルは一度だけ処理されます（実際には、ファイルの内容が require() ステートメントを置き換えます）。つまり、複数回実行される可能性のあるコードがある場合は、require() を使用する方が効率的です。また、毎回異なるファイルを読み込む場合や、一連のファイルを反復処理するループがある場合は、include() ステートメントを使用します。</p>
+<p>require() ステートメントのパフォーマンスは include() と類似しており、どちらも指定されたファイルを読み込んで実行します。違いは、include() ステートメントの場合、ファイルを実行するたびに読み取りと評価を行うことです。一方、require() の場合、ファイルは一度だけ処理されます（実際には、ファイルの内容が require() ステートメントを置き換えます）。つまり、複数回実行される可能性のあるコードがある場合は、require() を使用する方が効率のです。また、毎回異なるファイルを読み込む場合や、一連のファイルを反復処理するループがある場合は、include() ステートメントを使用します。</p>
 <p>require() の使用方法は次のとおりです：</p><pre>require("myfile.php")</pre>
 <p>このステートメントは通常、PHP スクリプトプログラムの先頭に置かれます。PHP プログラムは実行前に、require() ステートメントが導入するファイルを先に読み込み、それを PHP スクリプトファイルの一部にします。<p>include() の使用方法は require と同じです。例：</p></p><pre>include("myfile.php")</pre>
 <p>このステートメントは通常、フロー制御の処理セクションに置かれます。</p>
@@ -92,7 +92,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <strong>incluce</strong>必要なときに読み込む</li><li>
 <strong>require</strong>最初に読み込む</li><li>
 <strong>_once</strong>接尾辞は、既に読み込まれたものは読み込まないことを示します。</li></ul>
-<p>PHP システムは PHP プログラムを読み込む際に疑似コンパイルのプロセスがあり、プログラムの実行速度を速めることができます。しかし、incluce のファイルは依然として解釈実行されます。include したファイルでエラーが発生した場合、メインプログラムはそのまま下のコードを実行し続けます。require したファイルでエラーが発生した場合、メインプログラムも停止します。そのため、含まれるファイルのエラーがシステムに与える影響が小さい場合（インターフェースファイルなど）は include を使用し、そうでない場合は require を使用します。</p>
+<p>PHP システムは PHP プログラムを読み込む際に疑似コンパイルのプロセスがあり、プログラムの実行速度を速めることができます。しかし、include のファイルは依然として解釈実行されます。include したファイルでエラーが発生した場合、メインプログラムはそのまま下のコードを実行し続けます。require したファイルでエラーが発生した場合、メインプログラムも停止します。そのため、含まれるファイルのエラーがシステムにとえる影響が小さい場合（インターフェースファイルなど）は include を使用し、そうでない場合は require を使用します。</p>
 <p>require() と include() ステートメントは言語構造であり、本当の関数ではありません。PHP の他の言語構造と同様に、例えば echo() は echo("ab") 形式でも、echo "abc" 形式でも文字列 abc を出力できます。require() と include() ステートメントも丸括弧を付けずに直接パラメータを追加できます。</p>
 <p>include_once() と require_once() ステートメントも、スクリプト実行中に指定されたファイルを読み込んで実行します。この動作は include() ステートメントや require() と類似しており、使用方法も同じです。唯一の違いは、そのファイルのコードが既に読み込まれている場合は、再度読み込まれないことです。この2つのステートメントは、スクリプト実行中に同じファイルが複数回読み込まれる可能性がある場合に、関数の再定義や変数の再代入などの問題を避けるため、一度だけ読み込まれることを保証するために使用すべきです。</p>
 <hr/><h2>2、詳細解説</h2><h3>2.1 エラー報告</h3>
@@ -128,7 +128,7 @@ abc</pre>
 
 Fatal error: require() [function.require]: Failed opening required 'test-nothing' (include_path='.;C:\php5\pear') in D:\www\test-require.php on line 2 </pre>
 <h3>2.2 ファイルの参照方法</h3>
-<p>include() を実行するとき、参照するファイルは毎回読み取りと評価を行う必要があります。require() を実行するとき、参照するファイルは一度だけ処理されます（実際には、実行時に参照するファイルの内容が require() ステートメントを置き換えます）。これらの指示のいずれかを含むコードがあり、それが複数回実行される可能性がある場合は、require() を使用する方が効率的です。毎回異なるファイルを読み込む場合や、一連のファイルを反復処理するループがある場合は、include() を使用します。インクルードしたいファイル名に変数を設定し、パラメータが include() の場合にこの変数を使用できます。</p>
+<p>include() を実行するとき、参照するファイルは毎回読み取りと評価を行う必要があります。require() を実行するとき、参照するファイルは一度だけ処理されます（実際には、実行時に参照するファイルの内容が require() ステートメントを置き換えます）。これらの指示のいずれかを含むコードがあり、それが複数回実行される可能性がある場合は、require() を使用する方が効率のです。毎回異なるファイルを読み込む場合や、一連のファイルを反復処理するループがある場合は、include() を使用します。インクルードしたいファイル名に変数を設定し、パラメータが include() の場合にこの変数を使用できます。</p>
 <blockquote><p>原文リンク：https://blog.csdn.net/shenpengchao/article/details/52326233</p></blockquote>
 </div>
 </div>
@@ -240,11 +240,11 @@ Fatal error: require() [function.require]: Failed opening required 'test-nothing
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックできます</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に必ず<a href=".." class="runoob-pop">ログイン</a>してください！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックできます</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に必ず<a class="runoob-pop" href="..">ログイン</a>してください！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

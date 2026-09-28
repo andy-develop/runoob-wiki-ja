@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Skills 组合与编排 | 菜鸟教程</title>
+<title>Skills の組み合わせと編成 | 初心者向けチュートリアル</title>
 <script>
 window.RUNOOB_CONFIG = {
   darkCssUrl: "https://www.runoob.com/wp-content/themes/runoob/dark-mode.css?v=1.125"
@@ -159,7 +159,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="article">
 <div class="previous-next-links">
 <div class="previous-design-link"><i aria-hidden="true" class="fa fa-arrow-left" style="font-size:16px;"></i> <a href="../skills/skills-description-optimize.html" rel="prev">Skills 描述优化技巧</a> </div>
-<div class="next-design-link"><a href="../skills/skills-api-integration.html" rel="next">Skills 与外部 API 集成</a> <i aria-hidden="true" class="fa fa-arrow-right" style="font-size:16px;"></i></div>
+<div class="next-design-link"><a href="../skills/skills-api-integration.html" rel="next">Skills と外部 API の統合</a> <i aria-hidden="true" class="fa fa-arrow-right" style="font-size:16px;"></i></div>
 </div>
 <div class="article-body">
 <div class="article-intro" id="content">
@@ -229,7 +229,7 @@ python /mnt/skills/public/docx/scripts/generate.py \
 <h2 class="example">实例</h2>
 <div class="example_code">
 <span style="color: #a50"># 文件路径：scripts/pipeline_orchestrator.py</span><br/>
-<span style="color: #a50"># 编排多个 Skill 脚本的处理管道</span><br/>
+<span style="color: #a50"># 複数の Skill スクリプトの処理パイプラインをオーケストレーションする</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">import</span> <span style="color: #05a;">subprocess</span><br/>
 <span style="color: Green;font-weight:bold;">import</span> <span style="color: #05a;">sys</span><br/>
@@ -239,7 +239,7 @@ python /mnt/skills/public/docx/scripts/generate.py \
 SKILLS_BASE <span style="color: Gray;">=</span> <span style="color: #a11;">"/mnt/skills/public"</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">def</span> run_script<span style="color: Olive;">(</span>script_path: <span style="color: Teal;">str</span><span style="color: Gray;">,</span> args: <span style="color: Teal;">list</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">dict</span>:<br/>
-    <span style="color: #a11;">"""运行指定路径的脚本并返回 JSON 结果"""</span><br/>
+    <span style="color: #a11;">指定されたパスのスクリプトを実行し、JSON結果を返す</span><br/>
     <span style="color: #05a;">cmd</span> <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: #05a;">sys</span>.<span style="color: #05a;">executable</span><span style="color: Gray;">,</span> script_path<span style="color: Olive;">]</span> + args<br/>
     result <span style="color: Gray;">=</span> <span style="color: #05a;">subprocess</span>.<span style="color: #05a;">run</span><span style="color: Olive;">(</span><span style="color: #05a;">cmd</span><span style="color: Gray;">,</span> capture_output<span style="color: Gray;">=</span><span style="color: Teal;">True</span><span style="color: Gray;">,</span> text<span style="color: Gray;">=</span><span style="color: Teal;">True</span><span style="color: Gray;">,</span> timeout<span style="color: Gray;">=</span><span style="color: Maroon;">120</span><span style="color: Olive;">)</span><br/>
     <span style="color: Green;font-weight:bold;">if</span> result.<span style="color: #05a;">returncode</span> <span style="color: Gray;">!=</span> <span style="color: Maroon;">0</span>:<br/>
@@ -250,7 +250,7 @@ SKILLS_BASE <span style="color: Gray;">=</span> <span style="color: #a11;">"/mnt
         <span style="color: Green;font-weight:bold;">return</span> <span style="color: Olive;">{</span><span style="color: #a11;">"status"</span>: <span style="color: #a11;">"success"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"raw_output"</span>: result.<span style="color: #05a;">stdout</span><span style="color: Olive;">}</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">def</span> run_pipeline<span style="color: Olive;">(</span>pdf_path: <span style="color: Teal;">str</span><span style="color: Gray;">,</span> output_dir: <span style="color: Teal;">str</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">dict</span>:<br/>
-    <span style="color: #a11;">"""<br/>执行完整的 PDF → Word 报告生成管道<br/>
+    <span style="color: #a11;">"""<br/>完全な PDF → Word レポート生成パイプラインを実行する<br/>
 <br/>阶段 1：PDF 文字提取<br/>阶段 2：内容摘要生成（由 Claude 处理，此处跳过）<br/>阶段 3：Word 文档生成<br/>
     """</span><br/>
     <span style="color: #05a;">os</span>.<span style="color: #05a;">makedirs</span><span style="color: Olive;">(</span>output_dir<span style="color: Gray;">,</span> exist_ok<span style="color: Gray;">=</span><span style="color: Teal;">True</span><span style="color: Olive;">)</span><br/>
@@ -258,7 +258,7 @@ SKILLS_BASE <span style="color: Gray;">=</span> <span style="color: #a11;">"/mnt
     final_docx    <span style="color: Gray;">=</span> <span style="color: #05a;">os</span>.<span style="color: #05a;">path</span>.<span style="color: #05a;">join</span><span style="color: Olive;">(</span>output_dir<span style="color: Gray;">,</span> <span style="color: #a11;">"report.docx"</span><span style="color: Olive;">)</span><br/>
 <br/>
     <span style="color: #a50"># 阶段 1：提取 PDF 文字</span><br/>
-    <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"阶段 1：正在提取 PDF 文字..."</span><span style="color: Olive;">)</span><br/>
+    <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"段階 1：PDF テキストを抽出中..."</span><span style="color: Olive;">)</span><br/>
     step1 <span style="color: Gray;">=</span> run_script<span style="color: Olive;">(</span><br/>
         f<span style="color: #a11;">"{SKILLS_BASE}/pdf-reading/scripts/extract.py"</span><span style="color: Gray;">,</span><br/>
         <span style="color: Olive;">[</span><span style="color: #a11;">"--input"</span><span style="color: Gray;">,</span> pdf_path<span style="color: Gray;">,</span> <span style="color: #a11;">"--output"</span><span style="color: Gray;">,</span> extracted_txt<span style="color: Olive;">]</span><br/>
@@ -267,13 +267,13 @@ SKILLS_BASE <span style="color: Gray;">=</span> <span style="color: #a11;">"/mnt
         <span style="color: Green;font-weight:bold;">return</span> <span style="color: Olive;">{</span><span style="color: #a11;">"status"</span>: <span style="color: #a11;">"error"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"stage"</span>: <span style="color: Maroon;">1</span><span style="color: Gray;">,</span> <span style="color: #a11;">"message"</span>: step1<span style="color: Olive;">[</span><span style="color: #a11;">"message"</span><span style="color: Olive;">]</span><span style="color: Olive;">}</span><br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"  已提取 {step1.get('pages', '?')} 页"</span><span style="color: Olive;">)</span><br/>
 <br/>
-    <span style="color: #a50"># 阶段 3：生成 Word 报告（摘要由 Claude 在调用此脚本前生成并传入）</span><br/>
+    <span style="color: #a50"># 段階 3：Word レポートを生成（要約は Claude がこのスクリプトを呼び出す前に生成して渡す）</span><br/>
     summary_json <span style="color: Gray;">=</span> <span style="color: #05a;">os</span>.<span style="color: #05a;">path</span>.<span style="color: #05a;">join</span><span style="color: Olive;">(</span>output_dir<span style="color: Gray;">,</span> <span style="color: #a11;">"summary.json"</span><span style="color: Olive;">)</span><br/>
     <span style="color: Green;font-weight:bold;">if</span> <span style="color: Green;font-weight:bold;">not</span> <span style="color: #05a;">os</span>.<span style="color: #05a;">path</span>.<span style="color: #05a;">exists</span><span style="color: Olive;">(</span>summary_json<span style="color: Olive;">)</span>:<br/>
         <span style="color: Green;font-weight:bold;">return</span> <span style="color: Olive;">{</span><span style="color: #a11;">"status"</span>: <span style="color: #a11;">"error"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"stage"</span>: <span style="color: Maroon;">3</span><span style="color: Gray;">,</span><br/>
                 <span style="color: #a11;">"message"</span>: <span style="color: #a11;">"缺少 summary.json，请先完成阶段 2"</span><span style="color: Olive;">}</span><br/>
 <br/>
-    <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"阶段 3：正在生成 Word 报告..."</span><span style="color: Olive;">)</span><br/>
+    <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"段階 3：Word レポートを生成中です..."</span><span style="color: Olive;">)</span><br/>
     step3 <span style="color: Gray;">=</span> run_script<span style="color: Olive;">(</span><br/>
         f<span style="color: #a11;">"{SKILLS_BASE}/docx/scripts/generate.py"</span><span style="color: Gray;">,</span><br/>
         <span style="color: Olive;">[</span><span style="color: #a11;">"--data"</span><span style="color: Gray;">,</span> summary_json<span style="color: Gray;">,</span> <span style="color: #a11;">"--output"</span><span style="color: Gray;">,</span> final_docx<span style="color: Olive;">]</span><br/>
@@ -324,7 +324,7 @@ SKILLS_BASE <span style="color: Gray;">=</span> <span style="color: #a11;">"/mnt
 <h2 class="example">实例</h2>
 <div class="example_code">
 <span style="color: #a50"># 文件路径：/home/claude/shared/file_utils.py</span><br/>
-<span style="color: #a50"># 多个 Skill 共享的文件工具函数</span><br/>
+<span style="color: #a50"># 複数のスキルで共有されるファイルツール関数</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">import</span> <span style="color: #05a;">os</span><br/>
 <br/>
@@ -332,13 +332,13 @@ UPLOAD_DIR <span style="color: Gray;">=</span> <span style="color: #a11;">"/mnt/
 OUTPUT_DIR <span style="color: Gray;">=</span> <span style="color: #a11;">"/mnt/user-data/outputs"</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">def</span> resolve_upload<span style="color: Olive;">(</span>filename: <span style="color: Teal;">str</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
-    <span style="color: #a11;">"""将文件名解析为完整的上传路径"""</span><br/>
+    <span style="color: #a11;">"""ファイル名を完全なアップロードパスに解析します"""</span><br/>
     <span style="color: Green;font-weight:bold;">if</span> <span style="color: #05a;">os</span>.<span style="color: #05a;">path</span>.<span style="color: #05a;">isabs</span><span style="color: Olive;">(</span>filename<span style="color: Olive;">)</span>:<br/>
-        <span style="color: Green;font-weight:bold;">return</span> filename  <span style="color: #a50"># 已经是绝对路径</span><br/>
+        <span style="color: Green;font-weight:bold;">return</span> filename  <span style="color: #a50"># 既に絶対パス</span><br/>
     <span style="color: Green;font-weight:bold;">return</span> <span style="color: #05a;">os</span>.<span style="color: #05a;">path</span>.<span style="color: #05a;">join</span><span style="color: Olive;">(</span>UPLOAD_DIR<span style="color: Gray;">,</span> filename<span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">def</span> resolve_output<span style="color: Olive;">(</span>filename: <span style="color: Teal;">str</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
-    <span style="color: #a11;">"""将文件名解析为完整的输出路径，并确保目录存在"""</span><br/>
+    <span style="color: #a11;">"""ファイル名を完全な出力パスに解析し、ディレクトリが存在することを確認する"""</span><br/>
     <span style="color: Green;font-weight:bold;">if</span> <span style="color: #05a;">os</span>.<span style="color: #05a;">path</span>.<span style="color: #05a;">isabs</span><span style="color: Olive;">(</span>filename<span style="color: Olive;">)</span>:<br/>
         path <span style="color: Gray;">=</span> filename<br/>
     <span style="color: Green;font-weight:bold;">else</span>:<br/>
@@ -360,7 +360,7 @@ OUTPUT_DIR <span style="color: Gray;">=</span> <span style="color: #a11;">"/mnt/
 </div>
 <div class="previous-next-links">
 <div class="previous-design-link"><i aria-hidden="true" class="fa fa-arrow-left" style="font-size:16px;"></i> <a href="../skills/skills-description-optimize.html" rel="prev">Skills 描述优化技巧</a> </div>
-<div class="next-design-link"><a href="../skills/skills-api-integration.html" rel="next">Skills 与外部 API 集成</a> <i aria-hidden="true" class="fa fa-arrow-right" style="font-size:16px;"></i></div>
+<div class="next-design-link"><a href="../skills/skills-api-integration.html" rel="next">Skills と外部 API の統合</a> <i aria-hidden="true" class="fa fa-arrow-right" style="font-size:16px;"></i></div>
 </div>
 
 笔记列表
@@ -468,11 +468,11 @@ OUTPUT_DIR <span style="color: Gray;">=</span> <span style="color: #a11;">"/mnt/
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -761,7 +761,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

@@ -196,7 +196,7 @@ model.<span style="color: Teal;">compile</span><span style="color: Olive;">(</sp
               metrics<span style="color: Gray;">=</span><span style="color: Olive;">[</span><span style="color: #a11;">'accuracy'</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
 model.<span style="color: #05a;">fit</span><span style="color: Olive;">(</span>x_train<span style="color: Gray;">,</span> y_train<span style="color: Gray;">,</span> epochs<span style="color: Gray;">=</span><span style="color: Maroon;">5</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 保存为SavedModel格式</span><br/>
+<span style="color: #a50"># SavedModel形式で保存</span><br/>
 model.<span style="color: #05a;">save</span><span style="color: Olive;">(</span><span style="color: #a11;">'my_model'</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 注意：没有文件扩展名</span><br/>
 </div>
 </div>
@@ -213,7 +213,7 @@ model.<span style="color: #05a;">save</span><span style="color: Olive;">(</span>
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #a50"># 保存为HDF5格式</span><br/>
+<span style="color: #a50"># HDF5形式で保存</span><br/>
 model.<span style="color: #05a;">save</span><span style="color: Olive;">(</span><span style="color: #a11;">'my_model.h5'</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 注意.h5扩展名</span><br/>
 </div>
 </div>
@@ -228,12 +228,12 @@ model.<span style="color: #05a;">save</span><span style="color: Olive;">(</span>
 </thead>
 <tbody><tr>
 <td>カスタムオブジェクトを含む</td>
-<td>是</td>
+<td>である</td>
 <td>追加の設定が必要</td>
 </tr>
 <tr>
 <td>オプティマイザーの状態を含む</td>
-<td>是</td>
+<td>である</td>
 <td>任意</td>
 </tr>
 <tr>
@@ -253,7 +253,7 @@ model.<span style="color: #05a;">save</span><span style="color: Olive;">(</span>
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #a50"># 从SavedModel加载</span><br/>
+<span style="color: #a50"># SavedModelからロードする</span><br/>
 loaded_model <span style="color: Gray;">=</span> tf.<span style="color: #05a;">keras</span>.<span style="color: #05a;">models</span>.<span style="color: #05a;">load_model</span><span style="color: Olive;">(</span><span style="color: #a11;">'my_model'</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 验证模型</span><br/>
@@ -265,7 +265,7 @@ loss<span style="color: Gray;">,</span> acc <span style="color: Gray;">=</span> 
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #a50"># 从HDF5文件加载</span><br/>
+<span style="color: #a50"># HDF5ファイルから読み込む</span><br/>
 loaded_model <span style="color: Gray;">=</span> tf.<span style="color: #05a;">keras</span>.<span style="color: #05a;">models</span>.<span style="color: #05a;">load_model</span><span style="color: Olive;">(</span><span style="color: #a11;">'my_model.h5'</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 验证模型</span><br/>
@@ -282,7 +282,7 @@ loss<span style="color: Gray;">,</span> acc <span style="color: Gray;">=</span> 
 <span style="color: #a50"># 保存权重</span><br/>
 model.<span style="color: #05a;">save_weights</span><span style="color: Olive;">(</span><span style="color: #a11;">'my_model_weights'</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 保存为HDF5格式的权重</span><br/>
+<span style="color: #a50"># HDF5形式で重みを保存</span><br/>
 model.<span style="color: #05a;">save_weights</span><span style="color: Olive;">(</span><span style="color: #a11;">'my_model_weights.h5'</span><span style="color: Olive;">)</span><br/>
 </div>
 </div>
@@ -290,7 +290,7 @@ model.<span style="color: #05a;">save_weights</span><span style="color: Olive;">
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #a50"># 创建相同架构的模型</span><br/>
+<span style="color: #a50"># 同じアーキテクチャのモデルを作成</span><br/>
 new_model <span style="color: Gray;">=</span> tf.<span style="color: #05a;">keras</span>.<span style="color: #05a;">Sequential</span><span style="color: Olive;">(</span><span style="color: Olive;">[</span><br/>
     tf.<span style="color: #05a;">keras</span>.<span style="color: #05a;">layers</span>.<span style="color: #05a;">Dense</span><span style="color: Olive;">(</span><span style="color: Maroon;">64</span><span style="color: Gray;">,</span> activation<span style="color: Gray;">=</span><span style="color: #a11;">'relu'</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
     tf.<span style="color: #05a;">keras</span>.<span style="color: #05a;">layers</span>.<span style="color: #05a;">Dense</span><span style="color: Olive;">(</span><span style="color: Maroon;">10</span><span style="color: Gray;">,</span> activation<span style="color: Gray;">=</span><span style="color: #a11;">'softmax'</span><span style="color: Olive;">)</span><br/>
@@ -302,7 +302,7 @@ new_model.<span style="color: Teal;">compile</span><span style="color: Olive;">(
 <span style="color: #a50"># 加载权重</span><br/>
 new_model.<span style="color: #05a;">load_weights</span><span style="color: Olive;">(</span><span style="color: #a11;">'my_model_weights'</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 或者对于.h5文件</span><br/>
+<span style="color: #a50"># または.h5ファイルの場合</span><br/>
 new_model.<span style="color: #05a;">load_weights</span><span style="color: Olive;">(</span><span style="color: #a11;">'my_model_weights.h5'</span><span style="color: Olive;">)</span><br/>
 </div>
 </div>
@@ -498,11 +498,11 @@ model.<span style="color: #05a;">save_weights</span><span style="color: Olive;">
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>する必要があります！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>する必要があります！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -791,7 +791,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

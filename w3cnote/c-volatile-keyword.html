@@ -94,7 +94,7 @@ int a = i;
 ...
 // 其他代码，并未明确告诉编译器，对 i 进行过操作
 int b = i;</pre>
-<p>volatile は、i がいつでも変化し得ることを示します。i を使用するたびに i のアドレスから読み取らなければなりません。そのため、コンパイラが生成するアセンブリコードは、i のアドレスからデータを再読み取りして b に格納します。一方、最適化を行う場合は、コンパイラが i から2回データを読み取るコードの間に i に対する操作がないことを検出すると、前回読み取ったデータを自動的に b に格納します。i から再読み取りはしません。これでは、i がレジスタ変数であるかポートデータを表す場合、エラーが発生しやすくなります。したがって、volatile は特殊なアドレスへの安定したアクセスを保証できると言えます。なお、VC 6 では、通常のデバッグモードではコード最適化が行われないため、このキーワードの効果は見えません。次に、アセンブリコードを挿入して、volatile キーワードの有無がプログラムの最終的なコードに与える影響をテストします。以下のコードを入力してください：</p>
+<p>volatile は、i がいつでも変化し得ることを示します。i を使用するたびに i のアドレスから読み取らなければなりません。そのため、コンパイラが生成するアセンブリコードは、i のアドレスからデータを再読み取りして b に格納します。一方、最適化を行う場合は、コンパイラが i から2回データを読み取るコードの間に i に対する操作がないことを検出すると、前回読み取ったデータを自動的に b に格納します。i から再読み取りはしません。これでは、i がレジスタ変数であるかポートデータを表す場合、エラーが発生しやすくなります。したがって、volatile は特殊なアドレスへの安定したアクセスを保証できると言えます。なお、VC 6 では、通常のデバッグモードではコード最適化が行われないため、このキーワードの効果は見えません。次に、アセンブリコードを挿入して、volatile キーワードの有無がプログラムの最終のなコードにとえる影響をテストします。以下のコードを入力してください：</p>
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
@@ -144,7 +144,7 @@ i = 10</pre>
 <p>Debug と Release の各バージョンでプログラムを実行すると、出力はどちらも次のようになります：</p>
 <pre>i = 10
 i = 32</pre>
-<p>これは、volatile キーワードがその役割を果たしていることを示しています。実際には、インラインアセンブリによるスタック操作という方法だけが、コンパイラが認識できない変数の変更というわけではありません。さらに多いのは、マルチスレッドが共有変数に同時アクセスする際に、あるスレッドが変数の値を変更した場合、その変更後の値を他のスレッドに visible にする方法です。一般的に、volatile は以下のような場所で使用されます：</p>
+<p>{'translated': '{'translated': 'これは、volatile キーワードがその役割を果たしていることを示しています。実際には、インラインアセンブリによるスタック操作という方法だけが、コンパイラが認識できない変数の変更というわけではありません。さらに多いのは、マルチスレッドが共有変数に同時アクセスする際に、あるスレッドが変数の値を変更した場合、その変更後の値を他のスレッドに visible にする方法です。一般的に、volatile は以下のような場所で使用されます：'}'}</p>
 <ul><li>1) 割り込みサービスルーチン内で変更され、他のプログラムが検出するための変数には volatile を追加する必要があります；</li><li>2) マルチタスク環境で各タスク間で共有されるフラグには volatile を追加すべきです；</li><li>3) メモリマップされたハードウェアレジスタにも通常 volatile 指定を追加する必要があります。読み書きのたびに異なる意味を持つ可能性があるからです；</li></ul>
 <h3>2、volatile ポインタ</h3>
 <p>const 修飾子と同様に、const には「定数ポインタ」と「ポインタ定数」という言い方がありますが、volatile にも対応する概念があります：</p>
@@ -286,11 +286,11 @@ for(;  nMyCounter&lt;100;nMyCounter++)
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=".." class="runoob-pop">ログイン</a>！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href="..">ログイン</a>！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

@@ -441,14 +441,14 @@ $( ":data( 'ui-progressbar' )" );
 <h3>プロパティ</h3>
 <p>すべてのウィジェットには次のプロパティがあります：</p>
 <ul>
-<li><strong>defaultElement</strong>：ウィジェットインスタンスの構築時に要素が提供されなかった場合に使用する要素。たとえば、プログレスバーの<code>defaultElement</code> 是 <code>"&lt;div&gt;</code>"，<code>$.ui.progressbar({ value: 50 })</code>で、新しく作成された<code>&lt;div&gt;</code>上にプログレスバーウィジェットのインスタンスをインスタンス化します。</li>
+<li><strong>defaultElement</strong>：ウィジェットインスタンスの構築時に要素が提供されなかった場合に使用する要素。たとえば、プログレスバーの<code>defaultElement</code>である<code>"&lt;div&gt;</code>"，<code>$.ui.progressbar({ value: 50 })</code>で、新しく作成された<code>&lt;div&gt;</code>上にプログレスバーウィジェットのインスタンスをインスタンス化します。</li>
 <li><strong>document</strong>：ウィジェット要素を含む<code>document</code>。フレームワーク内でウィジェットと対話する必要がある場合に便利です。</li>
 <li><strong>element</strong>：ウィジェットのインスタンス化に使用される要素を含む jQuery オブジェクト。複数の要素を選択して呼び出すと<code>.myWidget()</code>、各要素に対して個別のウィジェットインスタンスが作成されます。したがって、このプロパティは常に 1 つの要素を含みます。</li>
-<li><strong>namespace</strong>：ウィジェットプロトタイプが保存されているグローバル jQuery オブジェクトの場所。たとえば、<code>"ui"</code> 的 <code>namespace</code>は、ウィジェットプロトタイプが<code>$.ui</code>。</li>
+<li><strong>namespace</strong>：ウィジェットプロトタイプが保存されているグローバル jQuery オブジェクトの場所。たとえば、<code>"ui"</code>の<code>namespace</code>は、ウィジェットプロトタイプが<code>$.ui</code>。</li>
 <li><strong>options</strong>：ウィジェットが現在使用しているオプションを含むオブジェクト。インスタンス化時に、ユーザーが指定したオプションは自動的に<code>$.myNamespace.myWidget.prototype.options</code>で定義されたデフォルト値とマージされます。ユーザーが指定したオプションはデフォルト値を上書きします。</li>
 <li><strong>uuid</strong>：コントロール識別子を表す一意の整数。</li>
 <li><strong>version</strong>：ウィジェットの文字列バージョン。jQuery UI ウィジェットの場合、このプロパティはウィジェットが使用する jQuery UI のバージョンに設定されます。プラグイン開発者は、プロトタイプでこのプロパティを明示的に設定する必要があります。</li>
-<li><strong>widgetEventPrefix</strong>：ウィジェットのイベント名に追加される接頭辞。たとえば、<a href="../jqueryui/api-draggable.html">ドラッグ可能ウィジェット（Draggable Widget）</a> 的 <code>widgetEventPrefix</code> 是 <code>"drag"</code>であるため、draggable を作成すると、イベント名は<code>"dragcreate"</code>。デフォルトでは、ウィジェットの<code>widgetEventPrefix</code>はその名前です。<em>注：このプロパティは非推奨であり、将来のバージョンで削除される予定です。イベント名は widgetName:eventName に変更されます（例：<code>"draggable:create"</code>）。</em></li>
+<li><strong>widgetEventPrefix</strong>：ウィジェットのイベント名に追加される接頭辞。たとえば、<a href="../jqueryui/api-draggable.html">ドラッグ可能ウィジェット（Draggable Widget）</a>の<code>widgetEventPrefix</code>である<code>"drag"</code>であるため、draggable を作成すると、イベント名は<code>"dragcreate"</code>。デフォルトでは、ウィジェットの<code>widgetEventPrefix</code>はその名前です。<em>注：このプロパティは非推奨であり、将来のバージョンで削除される予定です。イベント名は widgetName:eventName に変更されます（例：<code>"draggable:create"</code>）。</em></li>
 <li><strong>widgetFullName</strong>：名前空間を含むウィジェットの完全名。<code>$.widget( "myNamespace.myWidget", {} )</code>， <code>widgetFullName</code>は<code>"myNamespace-myWidget"</code>。</li>
 <li><strong>widgetName</strong>：ウィジェットの名前。<code>$.widget( "myNamespace.myWidget", {} )</code>，<code>widgetName</code>は<code>"myWidget"</code>。</li>
 <li><strong>window</strong>：ウィジェット要素を含む<code>window</code>。フレームワーク内でウィジェットと対話する必要がある場合に便利です。</li>
@@ -534,7 +534,7 @@ $( ".selector" ).widget( "option", "disabled", true );
 <li><strong>Boolean</strong>：に設定すると<code>false</code>、アニメーションは使用されず、要素はすぐに非表示になります。に設定すると<code>true</code>、要素はデフォルトの時間とデフォルトのイージングでフェードアウトします。</li>
 <li><strong>Number</strong>：要素は指定された時間とデフォルトのイージングでフェードアウトします。</li>
 <li><strong>String</strong>：要素は指定されたエフェクトを使用して非表示になります。この値は、組み込みの jQuery アニメーションメソッド名、たとえば<code>"slideUp"</code>、または<a href="../jqueryui/api-category-effects.html">jQuery UI エフェクト</a>の名前、たとえば<code>"fold"</code>上記の両方の場合のエフェクトは、デフォルトの継続時間とデフォルトのイージングを使用します。</li>
-<li><strong>Object</strong>：値がオブジェクトの場合、<code>effect</code>、<code>delay</code>、<code>duration</code> 和 <code>easing</code>プロパティが提供されます。もし<code>effect</code>プロパティに jQuery メソッドの名前が含まれている場合はそのメソッドが使用され、それ以外の場合は jQuery UI エフェクトの名前と見なされます。追加設定をサポートする jQuery UI エフェクトを使用する場合、オブジェクトにこれらの設定を含めることができ、それらはエフェクトに渡されます。もし<code>duration</code> 或 <code>easing</code>が省略された場合は、デフォルト値が使用されます。もし<code>effect</code>が省略された場合は、次が使用されます：<code>"fadeOut"</code>。もし<code>delay</code>が省略された場合は、遅延は使用されません。</li>
+<li><strong>Object</strong>：値がオブジェクトの場合、<code>effect</code>、<code>delay</code>、<code>duration</code>と<code>easing</code>プロパティが提供されます。もし<code>effect</code>プロパティに jQuery メソッドの名前が含まれている場合はそのメソッドが使用され、それ以外の場合は jQuery UI エフェクトの名前と見なされます。追加設定をサポートする jQuery UI エフェクトを使用する場合、オブジェクトにこれらの設定を含めることができ、それらはエフェクトに渡されます。もし<code>duration</code> 或 <code>easing</code>が省略された場合は、デフォルト値が使用されます。もし<code>effect</code>が省略された場合は、次が使用されます：<code>"fadeOut"</code>。もし<code>delay</code>が省略された場合は、遅延は使用されません。</li>
 </ul>
 <p><strong>コード例：</strong></p>
 <p>指定された<code>hide</code>オプションを持つウィジェットを初期化します：</p>
@@ -561,7 +561,7 @@ $( ".selector" ).widget( "option", "hide", { effect: "explode", duration: 1000 }
 <li><strong>Boolean</strong>：に設定すると、<code>false</code>の場合、アニメーションは使用されず、要素はすぐに表示されます。に設定すると、<code>true</code>の場合、要素はデフォルトの継続時間とデフォルトのイージングでフェードインします。</li>
 <li><strong>Number</strong>：要素は指定された継続時間とデフォルトのイージングでフェードインします。</li>
 <li><strong>String</strong>：要素は指定されたエフェクトを使用して表示されます。この値は組み込みの jQuery アニメーションメソッド名（例：<code>"slideDown"</code>、または<a href="../jqueryui/api-category-effects.html">jQuery UI エフェクト</a>の名前（例：<code>"fold"</code>。上記の両方の場合のエフェクトは、デフォルトの継続時間とデフォルトのイージングを使用します。</li>
-<li><strong>Object</strong>：値がオブジェクトの場合、<code>effect</code>、<code>delay</code>、<code>duration</code> 和 <code>easing</code>プロパティが提供されます。もし<code>effect</code>プロパティに jQuery メソッドの名前が含まれている場合はそのメソッドが使用され、それ以外の場合は jQuery UI エフェクトの名前と見なされます。追加設定をサポートする jQuery UI エフェクトを使用する場合、オブジェクトにこれらの設定を含めることができ、それらはエフェクトに渡されます。もし<code>duration</code> 或 <code>easing</code>が省略された場合は、デフォルト値が使用されます。もし<code>effect</code>が省略された場合は、次が使用されます：<code>"fadeIn"</code>。もし<code>delay</code>が省略された場合は、遅延は使用されません。</li>
+<li><strong>Object</strong>：値がオブジェクトの場合、<code>effect</code>、<code>delay</code>、<code>duration</code>と<code>easing</code>プロパティが提供されます。もし<code>effect</code>プロパティに jQuery メソッドの名前が含まれている場合はそのメソッドが使用され、それ以外の場合は jQuery UI エフェクトの名前と見なされます。追加設定をサポートする jQuery UI エフェクトを使用する場合、オブジェクトにこれらの設定を含めることができ、それらはエフェクトに渡されます。もし<code>duration</code> 或 <code>easing</code>が省略された場合は、デフォルト値が使用されます。もし<code>effect</code>が省略された場合は、次が使用されます：<code>"fadeIn"</code>。もし<code>delay</code>が省略された場合は、遅延は使用されません。</li>
 </ul>
 <p><strong>コード例：</strong></p>
 <p>指定された<code>show</code>オプションを持つウィジェットを初期化します：</p>
@@ -590,7 +590,7 @@ $( ".selector" ).widget( "option", "show", { effect: "blind", duration: 800 } );
 <tr id="method-_create">
 <td>_create()</td>
 <td>jQuery (plugin only)</td>
-<td><code>_create()</code>メソッドはウィジェットのコンストラクターです。引数はありませんが、<code>this.element</code> 和 <code>this.options</code>がすでに設定されています。<br/>
+<td><code>_create()</code>メソッドはウィジェットのコンストラクターです。引数はありませんが、<code>this.element</code>と<code>this.options</code>がすでに設定されています。<br/>
 <ul>
 <li>このメソッドは引数を受け付けません。</li>
 </ul>
@@ -1021,7 +1021,7 @@ this.option( "width", 500 );
 <li><strong>options</strong><br/>型：Object<br/>説明：設定する option-value ペア。</li>
 </ul>
 <p><strong>コード例：</strong></p>
-<p>設定する<code>height</code> 和 <code>width</code>オプションを<code>500</code>。</p>
+<p>設定する<code>height</code>と<code>width</code>オプションを<code>500</code>。</p>
 <pre style="white-space: pre-wrap;">
 this.option({
   width: 500,
@@ -1195,11 +1195,11 @@ $( ".selector" ).on( "widgetcreate", function( event, ui ) {} );
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1499,7 +1499,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

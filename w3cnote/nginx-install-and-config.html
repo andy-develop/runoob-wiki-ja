@@ -91,7 +91,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <pre># yum -y install gcc gcc-c++ make libtool zlib zlib-devel openssl openssl-devel pcre pcre-devel</pre>
 <p>これらのパッケージがyumにない場合はソースコードをダウンロードしてコンパイルインストールしてもかまいません。ただし、コンパイル時のデフォルトのインストールディレクトリに注意して、後でnginxをインストールする際にこれらのダイナミックライブラリファイルを見つけられるようにしてください（ldconfig）。</p>
 <p><img alt="nginx 服务器安装及配置文件详解" decoding="async" fetchpriority="high" height="266" src="../wp-content/uploads/2015/07/151329vtoxmfhwxhih1glz.jpg" width="700"/></p>
-<p>从 <a href="http://nginx.org/en/download.html" rel="external noopener noreferrer" target="_blank">http://nginx.org/en/download.html</a>安定版のnginx-1.6.3.tar.gzを/usr/local/srcにダウンロードして解凍します。</p>
+<p>から<a href="http://nginx.org/en/download.html" rel="external noopener noreferrer" target="_blank">http://nginx.org/en/download.html</a>安定版のnginx-1.6.3.tar.gzを/usr/local/srcにダウンロードして解凍します。</p>
 <p>後続の準備のために、さらに2つのプラグインモジュールをダウンロードします：<a href="https://github.com/yaoweibin/nginx_upstream_check_module/releases" rel="external noopener noreferrer" target="_blank">nginx_upstream_check_module-0.3.0.tar.gz</a>—— バックエンドサーバーの状態をチェックする，<a href="https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng/downloads" rel="external noopener noreferrer" target="_blank">nginx-goodies-nginx-sticky-module-ng-bd312d586752.tar.gz</a>（/usr/local/srcで解凍後、ディレクトリをnginx-sticky-module-ng-1.2.5にリネームすることを推奨します）—— バックエンド側で<span class="wp_keywordlink"><a href="http://www.codeceo.com/article/balanced-algorithm.html" rel="noopener noreferrer" target="_blank" title="负载均衡">負荷分散</a></span>session sticky問題を解決します（upstream_checkモジュールと組み合わせて使用する場合は追加のパッチが必要です。参照：<a href="http://seanlook.com/2015/06/02/nginx-cache-check/" rel="external noopener noreferrer" target="_blank">nginx負荷分散設定実践</a>）。</p>
 <p>プラグインとnginxのバージョン互換性に注意してください。一般的にプラグインは新しいほど良いですが、nginxは最新を追う必要はなく、安定性が第一です。nginx-1.4.7、nginx-sticky-module-1.1、nginx_upstream_check_module-0.2.0、この組み合わせでも問題ありません。sticky-1.1とnginx-1.6の組み合わせは、更新が追いつかずコンパイルエラーになります。（Tengineを直接使用してもかまいません。デフォルトでこれらのモジュールが含まれています）</p>
 <pre>
@@ -112,7 +112,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <li>–with-pcre ： PCREライブラリのソースパスを設定します。すでにyumでインストールしている場合は、–with-pcreを使用するとライブラリファイルを自動的に見つけます。–with-pcre=PATHを使用する場合、PCREのWebサイトからpcreライブラリのソースコード（バージョン4.4 – 8.30）をダウンロードして解凍する必要があります。残りはNginxの./configureとmakeに任せます。perl正規表現はlocationディレクティブとngx_http_rewrite_moduleモジュールで使用されます。</li>
 <li>–with-zlib=PATH ： zlib（バージョン1.1.3 – 1.2.5）のソースの解凍ディレクトリを指定します。デフォルトで有効なネットワーク転送圧縮モジュールngx_http_gzip_moduleを使用する際にzlibが必要です。</li>
 <li>–with-http_ssl_module ： httpsプロトコルモジュールを使用します。デフォルトでは、このモジュールはビルドされません。前提としてopensslとopenssl-develがインストールされていること</li>
-<li>–with-http_stub_status_module ： Nginxの現在の状態を監視するために使用します</li>
+<li>--with-http_stub_status_module ： Nginxの現在の状態を監視するために使用します</li>
 <li>–with-http_realip_module ： このモジュールにより、クライアントリクエストヘッダー内のクライアントIPアドレス値（例：X-Real-IP または X-Forwarded-For）を変更できます。その意味は、バックエンドサーバーが元のクライアントのIPアドレスを記録できるようにすることです。</li>
 <li>–add-module=PATH ： nginx-sticky-module-ngやキャッシュモジュールなどのサードパーティ製外部モジュールを追加します。新しいモジュールを追加するたびに再コンパイルする必要があります（Tengineは新しいmoduleを追加する際に再コンパイルが不要です）</li>
 </ul>
@@ -484,11 +484,11 @@ location /images {
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=".." class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href="..">ログイン</a>が必要です！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

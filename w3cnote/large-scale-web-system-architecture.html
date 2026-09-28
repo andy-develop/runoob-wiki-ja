@@ -96,7 +96,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <li>7）コード配布システム</li>
 </ul>
 <h3>Webフロントエンドシステム</h3><p>構成図：</p><p>
-<img alt="SouthEas" class="attachment-full" decoding="async" fetchpriority="high" height="405" src="../wp-content/uploads/2015/06/SouthEast.html" width="672"/></p><p>異なるアプリケーションのサーバー共有、単一障害点の回避、集中管理、統一設定などの目的を達成するために、アプリケーションごとにサーバーを分割するのではなく、すべてのサーバーを統一的に使用します。各サーバーは複数のアプリケーションにサービスを提供でき、一部のアプリケーションへのアクセスが増加した場合、サーバーノードを追加することでサーバークラスタ全体のパフォーマンスを向上させ、同時に他のアプリケーションも恩恵を受けます。このWebフロントエンドシステムは、Apache/Lighttpd/Eginxなどの仮想ホストプラットフォームに基づいており、PHPプログラムの実行環境を提供します。サーバーは開発者にとって透過的であり、開発者がサーバー管理に関与する必要はありません。</p>
+<img alt="SouthEas" class="attachment-full" decoding="async" fetchpriority="high" height="405" src="../wp-content/uploads/2015/06/SouthEast.html" width="672"/></p><p>異なるアプリケーションのサーバー共有、単一障害点の回避、集中管理、統一設定などの目的を達成するために、アプリケーションごとにサーバーを分割するのではなく、すべてのサーバーを統一のに使用します。各サーバーは複数のアプリケーションにサービスを提供でき、一部のアプリケーションへのアクセスが増加した場合、サーバーノードを追加することでサーバークラスタ全体のパフォーマンスを向上させ、同時に他のアプリケーションも恩恵を受けます。このWebフロントエンドシステムは、Apache/Lighttpd/Eginxなどの仮想ホストプラットフォームに基づいており、PHPプログラムの実行環境を提供します。サーバーは開発者にとって透過のであり、開発者がサーバー管理に関とする必要はありません。</p>
 <h3>負荷分散システム</h3>
 <img alt="SouthEast" class="attachment-full" decoding="async" height="391" src="../wp-content/uploads/2015/06/SouthEast6.html" width="672"/>
 <p>負荷分散システムには、ハードウェアとソフトウェアの2種類があります。ハードウェア負荷分散は効率が高いですが、価格が高く、例えばF5などがあります。ソフトウェア負荷分散システムは価格が低いまたは無料であり、効率はハードウェア負荷分散システムより劣りますが、トラフィックが普通またはやや多いWebサイトにとっては十分に使用できます。例えば、lvs、nginxなどです。ほとんどのWebサイトはハードウェアとソフトウェアの負荷分散システムを併用しています。</p>
@@ -109,9 +109,9 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <img alt="SouthEast" class="attachment-full" decoding="async" height="463" loading="lazy" src="../wp-content/uploads/2015/06/SouthEast2.html" width="672"/></p><p>Webシステムプラットフォームにおけるストレージ要件には、次の2つの特徴があります。</p><p>1) ストレージ容量が非常に大きく、単一サーバーでは提供できない規模に達することがよくあります。例えば、アルバム、ビデオなどのアプリケーションです。そのため、専門的な大規模ストレージシステムが必要です。</p><p>2) 負荷分散クラスタ内の各ノードは、任意のデータオブジェクトにアクセスする可能性があります。また、各ノードによるデータ処理は他のノードと共有できます。そのため、これらのノードが操作するデータは、論理的に見ると全体として1つのものであり、それぞれ独立したデータリソースではありません。</p><p>したがって、高性能な分散ストレージシステムは、大規模Webサイトアプリケーションにとって非常に重要な要素です。（ここには、特定の分散ストレージシステムの簡単な紹介を追加する必要があります。）</p>
 <h3>分散サーバー管理システム</h3><p>構成図：</p><p>
 <img alt="SouthEast" class="attachment-full" decoding="async" height="483" loading="lazy" src="../wp-content/uploads/2015/06/SouthEast3.html" width="672"/>
-</p><p>Webサイトのアクセストラフィックが増え続けるにつれて、多くのネットワークサービスは負荷分散クラスタの形で外部にサービスを提供しています。クラスタ規模の拡大に伴い、従来の単一サーバーによる管理モデルでは要件を満たせなくなってきました。新しい要件は、サーバーに対して集中管理、グループ管理、一括管理、自動化管理を行い、スケジュールタスクを一括実行できることです。</p><p>分散サーバー管理システムのソフトウェアには、いくつかの優れたソフトウェアがあり、その中でも理想的なものの1つがCfengineです。Cfengineはサーバーをグループ化でき、グループごとにシステム設定ファイルやスケジュールタスクなどの設定を個別にカスタマイズできます。CfengineはC/S（クライアント/サーバー）構造に基づいており、すべてのサーバー設定と管理スクリプトプログラムはCfengine Serverに保存されます。管理対象サーバーはCfengine Clientプログラムを実行し、Cfengine ClientはSSL暗号化接続を介して定期的にサーバー側にリクエストを送信し、最新の設定ファイル、管理コマンド、スクリプトプログラム、パッチインストールなどのタスクを取得します。</p><p>Cfengineのような集中管理型サーバー管理ツールがあれば、大規模なサーバークラスタ管理を効率的に実現できます。管理対象サーバーとCfengine Serverはどこにでも配置でき、ネットワークが接続されていれば迅速かつ自動化された管理を実現できます。</p>
+</p><p>Webサイトのアクセストラフィックが増え続けるにつれて、多くのネットワークサービスは負荷分散クラスタの形で外部にサービスを提供しています。クラスタ規模の拡大に伴い、従来の単一サーバーによる管理モデルでは要件を満たせなくなってきました。新しい要件は、サーバーに対して集中管理、グループ管理、一括管理、自動化管理を行い、スケジュールタスクを一括実行できることです。</p><p>分散サーバー管理システムのソフトウェアには、いくつかの優れたソフトウェアがあり、その中でも理想のなものの1つがCfengineです。Cfengineはサーバーをグループ化でき、グループごとにシステム設定ファイルやスケジュールタスクなどの設定を個別にカスタマイズできます。CfengineはC/S（クライアント/サーバー）構造に基づいており、すべてのサーバー設定と管理スクリプトプログラムはCfengine Serverに保存されます。管理対象サーバーはCfengine Clientプログラムを実行し、Cfengine ClientはSSL暗号化接続を介して定期的にサーバー側にリクエストを送信し、最新の設定ファイル、管理コマンド、スクリプトプログラム、パッチインストールなどのタスクを取得します。</p><p>Cfengineのような集中管理型サーバー管理ツールがあれば、大規模なサーバークラスタ管理を効率的に実現できます。管理対象サーバーとCfengine Serverはどこにでも配置でき、ネットワークが接続されていれば迅速かつ自動化された管理を実現できます。</p>
 <h3>コードリリースシステム</h3><p>構成図：</p><p>
-<img alt="SouthEast" class="attachment-full" decoding="async" height="446" loading="lazy" src="../wp-content/uploads/2015/06/SouthEast4.html" width="672"/></p><p>Webサイトのアクセストラフィックが増え続けるにつれて、多くのネットワークサービスは負荷分散クラスタの形で外部にサービスを提供しています。クラスタ規模の拡大に伴い、クラスタ環境でのプログラムコードの一括配布と更新を満たすために、プログラムコードリリースシステムも必要です。</p><p>このリリースシステムは、以下の目標を達成するのに役立ちます。</p><p>1) 本番環境のサーバーは仮想ホスト方式でサービスを提供します。開発者がメンテナンスや直接操作に関与する必要はありません。リリースシステムを提供することで、サーバーにログインすることなくプログラムを対象サーバーに配布できます。</p><p>2) 内部開発、内部テスト、本番環境テスト、本番環境リリースという4つの開発段階の管理を実現する必要があります。リリースシステムは各段階のコードリリースに対応できます。</p><p>3) ソースコード管理とバージョン管理を実現する必要があります。SVNはこの要件を実現できます。</p><p>ここでは一般的なツールであるRsyncを使用でき、対応するスクリプトツールを開発することでサーバークラスタ間のコード同期配布を実現します。</p><p>出典：http://blog.csdn.net/dinglang_2009/article/details/6863697</p> </div>
+<img alt="SouthEast" class="attachment-full" decoding="async" height="446" loading="lazy" src="../wp-content/uploads/2015/06/SouthEast4.html" width="672"/></p><p>Webサイトのアクセストラフィックが増え続けるにつれて、多くのネットワークサービスは負荷分散クラスタの形で外部にサービスを提供しています。クラスタ規模の拡大に伴い、クラスタ環境でのプログラムコードの一括配布と更新を満たすために、プログラムコードリリースシステムも必要です。</p><p>このリリースシステムは、以下の目標を達成するのに役立ちます。</p><p>本番環境のサーバーは仮想ホスト方式でサービスを提供します。開発者がメンテナンスや直接操作に関とする必要はありません。リリースシステムを提供することで、サーバーにログインすることなくプログラムを対象サーバーに配布できます。</p><p>2) 内部開発、内部テスト、本番環境テスト、本番環境リリースという4つの開発段階の管理を実現する必要があります。リリースシステムは各段階のコードリリースに対応できます。</p><p>3) ソースコード管理とバージョン管理を実現する必要があります。SVNはこの要件を実現できます。</p><p>ここでは一般的なツールであるRsyncを使用でき、対応するスクリプトツールを開発することでサーバークラスタ間のコード同期配布を実現します。</p><p>出典：http://blog.csdn.net/dinglang_2009/article/details/6863697</p> </div>
 </div>
 <div class="previous-next-links">
 <div class="previous-design-link">← <a href="./sql-server-specification.html" rel="prev">よく使われるSQL Server規範集</a> </div>
@@ -221,11 +221,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に必ず<a href=".." class="runoob-pop">ログイン</a>！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリック</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に必ず<a class="runoob-pop" href="..">ログイン</a>！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

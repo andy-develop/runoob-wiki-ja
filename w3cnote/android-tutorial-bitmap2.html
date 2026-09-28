@@ -91,7 +91,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <blockquote><p>前の節では、Bitmapの基本的な使い方を学びました。そして本節では、BitmapのOOM問題について考察します。実際の開発で、BitmapによるOOM問題に遭遇したことがある方も、ない方もいるかもしれません。本節ではこのテーマに沿って学んでいきます。OOMとは何か、なぜOOMが発生するのかを理解し、BitmapによるOOM問題を改善しましょう。</p></blockquote>
 <hr/>
 <h2>1. OOMとは何か？なぜOOMが発生するのか？</h2>
-<p>答え：<strong>Out Of Memory</strong>（メモリオーバーフロー）。Androidシステムは各APPに独立した作業スペース、つまり独立したDalvik仮想マシンを割り当てるため、各APPは互いに影響を与えずに独立して実行できます。またAndroidは各Dalvik仮想マシンに最大メモリ制限を設けており、現在使用中のメモリに申請したメモリリソースを加えたものがこの制限を超えると、システムはOOMエラーをスローします。さらに、ここでRAMと混同しないでください。現在のRAMの空きメモリが1G以上あっても、OOMは発生し得ます。RAM（物理メモリ）とOOMを混同しないように！また、RAMが不足した場合はアプリが強制終了されるだけで、単なるOOMではありません。そしてこのDalvikの最大メモリ基準は、機種によって異なります。次のように呼び出すことができます：</p>
+<p>答え：<strong>Out Of Memory</strong>（メモリオーバーフロー）。Androidシステムは各APPに独立した作業スペース、つまり独立したDalvik仮想マシンを割り当てるため、各APPは互いに影響をとえずに独立して実行できます。またAndroidは各Dalvik仮想マシンに最大メモリ制限を設けており、現在使用中のメモリに申請したメモリリソースを加えたものがこの制限を超えると、システムはOOMエラーをスローします。さらに、ここでRAMと混同しないでください。現在のRAMの空きメモリが1G以上あっても、OOMは発生し得ます。RAM（物理メモリ）とOOMを混同しないように！また、RAMが不足した場合はアプリが強制終了されるだけで、単なるOOMではありません。そしてこのDalvikの最大メモリ基準は、機種によって異なります。次のように呼び出すことができます：</p>
 <pre>
 ActivityManager activityManager = (ActivityManager)context.getSystemService(Context.ACTIVITY_SERVICE);
 Log.e("HEHE","最大内存：" + activityManager.getMemoryClass());
@@ -384,11 +384,11 @@ public synchronized void removeImageCache(String key) {
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=".." class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href="..">ログイン</a>が必要です！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

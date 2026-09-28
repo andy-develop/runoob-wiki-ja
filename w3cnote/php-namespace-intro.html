@@ -216,7 +216,7 @@ $filter_XSS = new \FilterXSS(); //正确
 <p>ちなみに、公共空間の関数と定数は \ を付けなくても<span class="marked">\</span>正常に呼び出せます（なぜPHPがこのようにしているのかはわかりません）が、要素を正しく区別するために、関数を呼び出すときは \ を付けることをお勧めします。<span class="marked">\</span></p>
 <h3>名称用語</h3>
 <p>エイリアスとインポートの説明の前に、空間に関する3種類の名称の用語と、PHPがそれらをどのように解析するかを知る必要があります。公式ドキュメントの説明が非常に良いので、そのまま引用します。</p>
-<ul><li>1.非限定名称、または接頭辞を含まないクラス名。例：$comment = new Comment();。現在の名前空間がBlog\Articleの場合、CommentはBlog\Article\Commentとして解析されます。Commentを使用するコードがいかなる名前空間にも含まれていない場合（グローバル空間）、CommentはCommentとして解析されます。</li><li>2.限定名称、または接頭辞を含む名前。例：$comment = new Article\Comment();。現在の名前空間がBlogの場合、CommentはBlog\Article\Commentとして解析されます。Commentを使用するコードがいかなる名前空間にも含まれていない場合（グローバル空間）、CommentはCommentとして解析されます。</li><li>3.完全限定名称、またはグローバル接頭辞演算子を含む名前。例：$comment = new \Article\Comment();。この場合、Commentは常にコード内の文字通りの名前(literal name)Article\Commentとして解析されます。</li></ul>
+<ul><li>{'translated': '非限定名称、または接頭辞を含まないクラス名。例：$comment = new Comment();。現在の名前空間がBlog\\Articleの場合、CommentはBlog\\Article\\Commentとして解析されます。Commentを使用するコードがいかなる名前空間にも含まれていない場合（グローバル空間）、CommentはCommentとして解析されます。'}</li><li>2.限定名称、または接頭辞を含む名前。例：$comment = new Article\Comment();。現在の名前空間がBlogの場合、CommentはBlog\Article\Commentとして解析されます。Commentを使用するコードがいかなる名前空間にも含まれていない場合（グローバル空間）、CommentはCommentとして解析されます。</li><li>3.完全限定名称、またはグローバル接頭辞演算子を含む名前。例：$comment = new \Article\Comment();。この場合、Commentは常にコード内の文字通りの名前(literal name)Article\Commentとして解析されます。</li></ul>
 <p>実際には、これら3種類の名称をファイル名（例：comment.php）、相対パス名（例：./article/comment.php）、絶対パス名（例：/blog/article/comment.php）に例えると、より理解しやすいかもしれません。</p>
 <p>いくつかの例を使ってそれらを示しました：</p>
 <pre>&lt;?php
@@ -470,11 +470,11 @@ class Common { }
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてメモを共有</h3>
-<p style="font-size:14px;">メモはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> メモを共有する前に<a href=".." class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">メモはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> メモを共有する前に<a class="runoob-pop" href="..">ログイン</a>が必要です！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

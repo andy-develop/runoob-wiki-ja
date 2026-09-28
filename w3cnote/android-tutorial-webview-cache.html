@@ -95,7 +95,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <!-- ad start-->
 <!-- ad end-->
 <h2>本節の導入：</h2>
-<blockquote><p>現在、多くのポータル系情報サイト、例えば虎嗅、ifanr、钛媒体などのAPP、簡単に言えば情報閲覧系のAPPの多くは、直接WebViewを埋め込んで関連情報を表示しています。これにはWebViewのキャッシュが関わってくる可能性があります！</p><p>いわゆるページキャッシュとは、Webページを読み込む際に必要なHTML、JS、CSSなどのページ関連データやその他のリソースを保存しておき、オフライン時やネットワーク状態が悪いときに、ローカルに保存された関連データを読み込むことを指します！そして、このキャッシュを実現する方法は2つあります。1つはバックグラウンドでダウンロードServiceを書き、記事関連のデータを自分のニーズに応じてデータベースにダウンロードするか、対応するフォルダに保存し、次に該当URLを読み込む前にローカルキャッシュが存在するかどうかを判断し、存在すればローカルキャッシュを優先的に読み込み、存在しなければネットワークリクエストを実行し、同時に関連リソースをキャッシュする方法です。典型的な例としては旧バージョンの36Krがあり、入ると先に記事をオフライン化してから表示します！</p><p>もちろん、本節で解説するのはこのような自分でロジックを書く方法ではなく、WebView自体が備えているキャッシュ機能を使ってページをキャッシュする方法です。この方法は非常に簡単で、WebViewに関連機能を有効にする設定と、データベースのキャッシュパスを設定するだけでキャッシュを完了できます！具体的な実装は以下で一つずつ説明していきます~</p></blockquote>
+<blockquote><p>現在、多くのポータル系情報サイト、例えば虎嗅、ifanr、钛媒体などのAPP、簡単に言えば情報閲覧系のAPPの多くは、直接WebViewを埋め込んで関連情報を表示しています。これにはWebViewのキャッシュが関わってくる可能性があります！</p><p>いわゆるページキャッシュとは、Webページを読み込む際に必要なHTML、JS、CSSなどのページ関連データやその他のリソースを保存しておき、オフライン時やネットワーク状態が悪いときに、ローカルに保存された関連データを読み込むことを指します！そして、このキャッシュを実現する方法は2つあります。1つはバックグラウンドでダウンロードServiceを書き、記事関連のデータを自分のニーズに応じてデータベースにダウンロードするか、対応するフォルダに保存し、次に該当URLを読み込む前にローカルキャッシュが存在するかどうかを判断し、存在すればローカルキャッシュを優先のに読み込み、存在しなければネットワークリクエストを実行し、同時に関連リソースをキャッシュする方法です。典型的な例としては旧バージョンの36Krがあり、入ると先に記事をオフライン化してから表示します！</p><p>もちろん、本節で解説するのはこのような自分でロジックを書く方法ではなく、WebView自体が備えているキャッシュ機能を使ってページをキャッシュする方法です。この方法は非常に簡単で、WebViewに関連機能を有効にする設定と、データベースのキャッシュパスを設定するだけでキャッシュを完了できます！具体的な実装は以下で一つずつ説明していきます~</p></blockquote>
 <hr/>
 <h2>1. キャッシュの分類：</h2>
 <blockquote><p>まず、キャッシュの分類について説明します。私たちがキャッシュするデータは次のように分けられます：<strong>ページキャッシュとデータキャッシュ</strong></p>
@@ -103,9 +103,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <li><p><strong>ページキャッシュ</strong>：Webページを読み込む際のHTML、JS、CSSなどのページまたはリソースデータです。これらのキャッシュリソースはブラウザの動作によって生成されるもので、開発者はHTTPレスポンスヘッダーを設定してブラウザの動作に影響を与えることでしか、これらのキャッシュデータに間接的に影響を与えられません。そして<strong>キャッシュのインデックス</strong>保存先：/data/data/&lt;パッケージ名&gt;/databases<strong>対応するファイル</strong>保存先：/data/data/package_name/cache/webviewCacheChromunm</p></li>
 <li><p><strong>データキャッシュ</strong>：AppCacheとDOM Storageの2種類に分けられます。
 開発者が自分で制御できるのはこれらのキャッシュリソースです。</p></li>
-<li><p><strong>AppCache</strong>：Webブラウザ内のすべてのもの、ページ、画像からスクリプト、CSSなどを選択的にキャッシュできます。
-特にウェブサイトの複数のページで使用されるCSSやJavaScriptファイルに関わる場合に非常に便利です。そのサイズは現在通常5Mです。
-Androidでは手動で有効化（setAppCacheEnabled）し、パス（setAppCachePath）と容量（setAppCacheMaxSize）を設定する必要があります。Androidでは<strong>ApplicationCache.db</strong>AppCacheデータの保存に使用します！</p></li>
+<li><p><strong>AppCache</strong>：Webブラウザ内のすべてのもの、ページ、画像からスクリプト、CSSなどを選択のにキャッシュできます。特にウェブサイトの複数のページで使用されるCSSやJavaScriptファイルに関わる場合に非常に便利です。そのサイズは現在通常5Mです。Androidでは手動で有効化（setAppCacheEnabled）し、パス（setAppCachePath）と容量（setAppCacheMaxSize）を設定する必要があります。Androidでは<strong>ApplicationCache.db</strong>AppCacheデータの保存に使用します！</p></li>
 <li><p><strong>DOM Storage</strong>：key/valueペアで解決できる簡単なデータを保存します。作用範囲の違いにより、Session StorageとLocal Storageの2種類があります。それぞれセッションレベルの保存（ページを閉じると消える）とローカル保存（明示的に削除しない限り、データは永遠に期限切れにならない）に使用されます。AndroidではDOM Storageを手動で有効化でき（setDomStorageEnabled）、保存パスを設定します（setDatabasePath）。AndroidではWebkitがDOM Storageのために2つのファイル（my_path/localstorage/http_blog.csdn.net_0.localstorageとmy_path/Databases.db）を生成します。</p></li>
 </ul>
 </blockquote>
@@ -213,7 +211,7 @@ public class MainActivity extends AppCompatActivity {
 <li>手動でdeleteメソッドを書き、ループでキャッシュフォルダを削除する！</li>
 </ul>
 </blockquote>
-<p>もちろん、前述の通り、私たちが直接操作できるのはデータ部分だけです。ページキャッシュはブラウザの動作によって生成されるもので、HTTPレスポンスヘッダーを設定してブラウザの動作に影響を与えることでしか、これらのキャッシュデータに間接的に影響を与えられません。したがって、上記の方法はデータ部分のキャッシュを削除するだけです！</p>
+<p>もちろん、前述の通り、私たちが直接操作できるのはデータ部分だけです。ページキャッシュはブラウザの動作によって生成されるもので、HTTPレスポンスヘッダーを設定してブラウザの動作に影響をとえることでのみ、これらのキャッシュデータに間接のに影響を与えられます。したがって、上記の方法はデータ部分のキャッシュを削除するだけです！</p>
 <hr/>
 <h2>4. サンプルコードのダウンロード：</h2>
 <p><strong>WebViewDemo7.zip</strong>：<a href="../try/download/WebViewDemo7.zip">WebViewDemo7.zipをダウンロード</a></p>
@@ -333,11 +331,11 @@ public class MainActivity extends AppCompatActivity {
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてメモを共有</h3>
-<p style="font-size:14px;">メモは本記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> メモを共有する前に<a href=".." class="runoob-pop">ログイン</a>する必要があります！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">メモは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> メモを共有する前に<a class="runoob-pop" href="..">ログイン</a>する必要があります！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

@@ -225,8 +225,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 			LangChain Agent			</a>
 <a data-p="par" href="../langchain/langchain-init_chat_mode.html" target="_top" title="LangChain モデル呼び出し — init_chat_model() 関数">
 			LangChain モデル呼び出し			</a>
-<a data-p="par" href="../langchain/langchain-model-params.html" target="_top" title="LangChain Chat Model 一般的なパラメータ">
-			LangChain 一般的なパラメータ			</a>
+<a data-p="par" href="../langchain/langchain-model-params.html" target="_top" title="LangChain Chat Model 一般的なパラメータ">LangChain 一般的なパラメータ</a>
 <a data-p="par" href="../langchain/langchain-model-advanced.html" target="_top" title="LangChain Chat Model 高度な使い方">
 			LangChain Chat Model 高度な使い方			</a>
 <a data-p="par" href="../langchain/langchain-messages.html" target="_top" title="LangChain メッセージタイプ">
@@ -330,7 +329,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     response <span style="color: Gray;">=</span> handler<span style="color: Olive;">(</span>request<span style="color: Olive;">)</span><br/>
 <br/>
     <span style="color: #a50"># モデル呼び出しの後に何でもできる</span><br/>
-    <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"モデル呼び出しが完了しました"</span><span style="color: Olive;">)</span><br/>
+    <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">モデル呼び出しが完了しました</span><span style="color: Olive;">)</span><br/>
 <br/>
     <span style="color: Green;font-weight:bold;">return</span> response<br/>
 </div>
@@ -421,7 +420,7 @@ fallback_model <span style="color: Gray;">=</span> init_chat_model<span style="c
             <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"[ダウングレード] バックアップモデルも失敗: {e2}"</span><span style="color: Olive;">)</span><br/>
             <span style="color: #a50"># 両方のモデルが失敗したら、親切なメッセージを返す</span><br/>
             <span style="color: Green;font-weight:bold;">return</span> AIMessage<span style="color: Olive;">(</span><br/>
-                content<span style="color: Gray;">=</span><span style="color: #a11;">"申し訳ございません、サービスは一時的に利用できません。しばらくしてから再試行してください。"</span><br/>
+                content<span style="color: Gray;">=</span><span style="color: #a11;">申し訳ございません、サービスは一時的に利用できません。しばらくしてから再試行してください。</span><br/>
             <span style="color: Olive;">)</span><br/>
 </div>
 </div>
@@ -460,7 +459,7 @@ cache <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><s
 <br/>
     <span style="color: #a50"># キャッシュミス、モデルを呼び出す</span><br/>
     result <span style="color: Gray;">=</span> handler<span style="color: Olive;">(</span>request<span style="color: Olive;">)</span><br/>
-    <span style="color: #a50"># AIMessage の content がリストに混在する可能性があるため、最初の要素を直接取得</span><br/>
+    <span style="color: #a50">AIMessage の content がリストに混在する可能性があるため、最初の要素を直接取得</span><br/>
     <span style="color: Green;font-weight:bold;">if</span> <span style="color: Teal;">hasattr</span><span style="color: Olive;">(</span>result<span style="color: Gray;">,</span> <span style="color: #a11;">'content'</span><span style="color: Olive;">)</span>:<br/>
         cache<span style="color: Olive;">[</span>cache_key<span style="color: Olive;">]</span> <span style="color: Gray;">=</span> result.<span style="color: #05a;">content</span><br/>
         <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"[キャッシュミス] キャッシュに保存済み、現在 {len(cache)} 件"</span><span style="color: Olive;">)</span><br/>
@@ -512,7 +511,7 @@ result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invo
 <br/>
 <span style="color: Gray;">@</span>wrap_model_call<br/>
 <span style="color: Green;font-weight:bold;">def</span> inject_time_context<span style="color: Olive;">(</span>request<span style="color: Gray;">,</span> handler<span style="color: Olive;">)</span>:<br/>
-    <span style="color: #a11;">"""毎回のモデル呼び出し前に現在時刻情報を注入する"""</span><br/>
+    <span style="color: #a11;">毎回のモデル呼び出し前に現在時刻情報を注入する</span><br/>
     now <span style="color: Gray;">=</span> <span style="color: #05a;">datetime</span>.<span style="color: #05a;">now</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
     time_context <span style="color: Gray;">=</span> <span style="color: Olive;">(</span><br/>
         f<span style="color: #a11;">"現在時刻：{now.strftime('%Y年%m月%d日 %H:%M')}。"</span><br/>
@@ -547,7 +546,7 @@ result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invo
     <span style="color: #a11;">"""最外層のミドルウェア"""</span><br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"[外側] 開始"</span><span style="color: Olive;">)</span><br/>
     result <span style="color: Gray;">=</span> handler<span style="color: Olive;">(</span>request<span style="color: Olive;">)</span>       <span style="color: #a50"># ここで inner_middleware に入る</span><br/>
-    <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"[外側] 終了"</span><span style="color: Olive;">)</span><br/>
+    <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">[外側] 終了</span><span style="color: Olive;">)</span><br/>
     <span style="color: Green;font-weight:bold;">return</span> result<br/>
 <br/>
 <br/>
@@ -556,7 +555,7 @@ result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invo
     <span style="color: #a11;">"""内側のミドルウェア"""</span><br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"  [内側] 開始"</span><span style="color: Olive;">)</span><br/>
     result <span style="color: Gray;">=</span> handler<span style="color: Olive;">(</span>request<span style="color: Olive;">)</span>       <span style="color: #a50"># ここで実際にモデルを呼び出す</span><br/>
-    <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"  [内側] 終了"</span><span style="color: Olive;">)</span><br/>
+    <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">[内側] 終了</span><span style="color: Olive;">)</span><br/>
     <span style="color: Green;font-weight:bold;">return</span> result<br/>
 <br/>
 <br/>
@@ -688,11 +687,11 @@ result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invo
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックできます</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノート共有前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックできます</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノート共有前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -992,7 +991,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

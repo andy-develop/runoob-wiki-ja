@@ -408,11 +408,11 @@ HTTP メソッド	</a>
 <h3>3、rel：リンクとリンク先ページの関係を定義します。</h3>
 <p><span class="marked">nofollow</span>nofollow：検索エンジンがこのリンクを追跡すべきではないことを示します。外部リンクでよく使用されます。</p>
 <p>
-<span class="marked">noopener</span> 和 <span class="marked">noreferrer</span>noopener：新しいタブでリンクを開く際のセキュリティ問題を防ぎます。特に<span class="marked">target="_blank"</span>`_blank` を使用する場合に有効です。</p>
+<span class="marked">noopener</span>と<span class="marked">noreferrer</span>noopener：新しいタブでリンクを開く際のセキュリティ問題を防ぎます。特に<span class="marked">target="_blank"</span>`_blank` を使用する場合に有効です。</p>
 <ul>
 <li><code class="">noopener</code>noopener：新しいブラウジングコンテキスト（ページ）が<code class="">window.opener</code>openerプロパティと<code class="">open</code>window.openerメソッドにアクセスするのを防ぎます。</li>
 <li><code class="">noreferrer</code>noreferrer：Refererヘッダーを送信しません（つまり、どのサイトから来たかを相手サイトに知らせません）。</li>
-<li><code class="">noopener noreferrer</code>noopener noreferrer：同時に使用します。<code class="">noopener</code>和<code class="">noreferrer</code>例：<code class="inlineCode___uUrJ9">&lt;a href="https://www.example.com" rel="noopener noreferrer"&gt;安全链接&lt;/a&gt;</code></li>
+<li><code class="">noopener noreferrer</code>noopener noreferrer：同時に使用します。<code class="">noopener</code>と<code class="">noreferrer</code>例：<code class="inlineCode___uUrJ9">&lt;a href="https://www.example.com" rel="noopener noreferrer"&gt;安全链接&lt;/a&gt;</code></li>
 </ul>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">a</span> <span style="color: #00c;">href</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"https://www.example.com"</span> <span style="color: #00c;">target</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"_blank"</span> <span style="color: #00c;">rel</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"noopener noreferrer"</span>&gt;</span>安全なリンク<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">a</span>&gt;</span><br/>
@@ -488,7 +488,7 @@ HTTP メソッド	</a>
 <pre>&lt;a href="../html/html-links.html"&gt;
 访问有用的提示部分&lt;/a&gt;</pre>
 <hr/><h2>空リンク</h2><p>空リンクを設定する一般的な方法と、それらの違いは次のとおりです。</p>
-<table class="reference"><thead><tr><th>方法</th><th>機能</th><th>リダイレクトするかどうか</th><th>シナリオ適用性</th></tr></thead><tbody><tr><td><code>href="../index.html"</code></td><td>ページ先頭へ移動</td><td>是</td><td>プレースホルダー、クリックイベントをキャプチャ</td></tr><tr><td><code>href="#"</code></td><td>デフォルトの動作を防ぎ、ページをリフレッシュしない</td><td>否</td><td>リダイレクトを防ぎ、JSと併用</td></tr><tr><td><code>href=""</code></td><td>現在のページをリフレッシュ</td><td>是</td><td>ページのリフレッシュが必要な場合</td></tr><tr><td><code>href="blank.html"</code></td><td>空白ページを開く</td><td>是</td><td>新しいウィンドウで空白ページを開く</td></tr><tr><td><code>role="button"</code></td><td>リンクがボタンとして表示され、デフォルトの動作なし</td><td>否</td><td>JSと併用してボタン機能を実装、リダイレクトなし</td></tr></tbody></table>
+<table class="reference"><thead><tr><th>方法</th><th>機能</th><th>リダイレクトするかどうか</th><th>シナリオ適用性</th></tr></thead><tbody><tr><td><code>href="../index.html"</code></td><td>ページ先頭へ移動</td><td>である</td><td>プレースホルダー、クリックイベントをキャプチャ</td></tr><tr><td><code>href="#"</code></td><td>デフォルトの動作を防ぎ、ページをリフレッシュしない</td><td>否</td><td>リダイレクトを防ぎ、JSと併用</td></tr><tr><td><code>href=""</code></td><td>現在のページをリフレッシュ</td><td>である</td><td>ページのリフレッシュが必要な場合</td></tr><tr><td><code>href="blank.html"</code></td><td>空白ページを開く</td><td>である</td><td>新しいウィンドウで空白ページを開く</td></tr><tr><td><code>role="button"</code></td><td>リンクがボタンとして表示され、デフォルトの動作なし</td><td>否</td><td>JSと併用してボタン機能を実装、リダイレクトなし</td></tr></tbody></table>
 <hr/><h2>基本的な注意事項 - 役立つヒント</h2><p><b>注釈：</b>サブフォルダには必ずスラッシュを追加してください。このようにリンクを記述すると：href="../html.html"、サーバーに対して2回のHTTPリクエストが発生します。これは、サーバーがこのアドレスにスラッシュを追加し、新しいリクエストを作成するためです。次のようになります：href="../html/index.html"。</p>
 <hr/><div class="tryit_ex">
 <img alt="Examples" decoding="async" height="46px" src="../images/tryitimg.gif" width="40"/><h2>その他の例</h2>
@@ -693,11 +693,11 @@ HTTP メソッド	</a>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に必ず<a href=";.html" class="runoob-pop">ログイン</a>してください！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に必ず<a class="runoob-pop" href=";.html">ログイン</a>してください！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -997,7 +997,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

@@ -247,8 +247,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 			関数と極限			</a>
 <a data-p="par" href="../ai-math/derivative-intro.html" target="_top" title="微分入門 — 瞬間変化率と接線">
 			微分入門			</a>
-<a data-p="par" href="../ai-math/derivative-rules.html" target="_top" title="よく使う微分規則 — 冪関数、指数と対数">
-			一般的な微分規則			</a>
+<a data-p="par" href="../ai-math/derivative-rules.html" target="_top" title="よく使う微分規則 — 冪関数、指数と対数">一般的な微分規則</a>
 <a data-p="par" href="../ai-math/partial-derivative.html" target="_top" title="偏微分 — 多変数関数を変数ごとに微分する">
 			偏微分			</a>
 <a data-p="par" href="../ai-math/gradient.html" target="_top" title="勾配 — 関数が最も速く上昇する方向">
@@ -400,45 +399,45 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example_code">
 <span style="color: Green;font-weight:bold;">import</span> numpy <span style="color: Green;font-weight:bold;">as</span> np<br/>
 <br/>
-<span style="color: #a50"># 1. 准备语料——5 句中文，包含 AI 学习与日常生活两类话题</span><br/>
+<span style="color: #a50"># 1. コーパスの準備——AI学習と日常生活の2種類の話題を含む中国語の文5つ</span><br/>
 sentences <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><br/>
     <span style="color: #a11;">"我喜欢用python学习机器学习"</span><span style="color: Gray;">,</span><br/>
-    <span style="color: #a11;">"python是学习人工智能的好工具"</span><span style="color: Gray;">,</span><br/>
+    <span style="color: #a11;">pythonは人工知能を学ぶのに良いツールです。</span><span style="color: Gray;">,</span><br/>
     <span style="color: #a11;">"今天天气很好适合出去散步"</span><span style="color: Gray;">,</span><br/>
-    <span style="color: #a11;">"深度学习需要大量的数据和算力"</span><span style="color: Gray;">,</span><br/>
-    <span style="color: #a11;">"散步是一种很好的放松方式"</span><span style="color: Gray;">,</span><br/>
+    <span style="color: #a11;">深層学習には大量のデータと計算能力が必要です</span><span style="color: Gray;">,</span><br/>
+    <span style="color: #a11;">"散歩はとても良いリラックス方法です"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">]</span><br/>
 <br/>
-<span style="color: #a50"># 2. 构建词表（教学简化版，手动定义可能出现的词语）</span><br/>
-vocab_words <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: #a11;">"我"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"喜欢"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"用"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"python"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"学习"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"机器学习"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"是"</span><span style="color: Gray;">,</span><br/>
+<span style="color: #a50"># 2. 語彙表の構築（教育用簡易版、出現する可能性のある単語を手動で定義）</span><br/>
+vocab_words <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: #a11;">"我"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"喜欢"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"用"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"python"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"学习"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"机器学习"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"だ"</span><span style="color: Gray;">,</span><br/>
                <span style="color: #a11;">"人工智能"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"好"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"工具"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"今天"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"天气"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"很"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"适合"</span><span style="color: Gray;">,</span><br/>
-               <span style="color: #a11;">"出去"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"散步"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"深度学习"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"需要"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"大量"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"的"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"数据"</span><span style="color: Gray;">,</span><br/>
+               <span style="color: #a11;">"出去"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"散步"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"深度学习"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"需要"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"大量"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"の"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"数据"</span><span style="color: Gray;">,</span><br/>
                <span style="color: #a11;">"算力"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"一种"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"放松"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"方式"</span><span style="color: Olive;">]</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">def</span> to_vector<span style="color: Olive;">(</span>sentence<span style="color: Gray;">,</span> vocab<span style="color: Olive;">)</span>:<br/>
-    <span style="color: #a11;">"""将句子转为词袋向量——出现过的词标记为 1"""</span><br/>
+    <span style="color: #a11;">'''文をbag-of-wordsベクトルに変換する——出現した単語を1としてマークする'''</span><br/>
     vec <span style="color: Gray;">=</span> np.<span style="color: #05a;">zeros</span><span style="color: Olive;">(</span><span style="color: Teal;">len</span><span style="color: Olive;">(</span>vocab<span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
     <span style="color: Green;font-weight:bold;">for</span> i<span style="color: Gray;">,</span> w <span style="color: Green;font-weight:bold;">in</span> <span style="color: Teal;">enumerate</span><span style="color: Olive;">(</span>vocab<span style="color: Olive;">)</span>:<br/>
         <span style="color: Green;font-weight:bold;">if</span> w <span style="color: Green;font-weight:bold;">in</span> sentence:<br/>
-            vec<span style="color: Olive;">[</span>i<span style="color: Olive;">]</span> <span style="color: Gray;">=</span> <span style="color: Maroon;">1</span>  <span style="color: #a50"># 词出现了就记 1</span><br/>
+            vec<span style="color: Olive;">[</span>i<span style="color: Olive;">]</span> <span style="color: Gray;">=</span> <span style="color: Maroon;">1</span>  <span style="color: #a50"># 単語が出現したら 1 を記録する</span><br/>
     <span style="color: Green;font-weight:bold;">return</span> vec<br/>
 <br/>
 <span style="color: #a50"># 5 句话 → 5 个向量</span><br/>
 vectors <span style="color: Gray;">=</span> np.<span style="color: #05a;">array</span><span style="color: Olive;">(</span><span style="color: Olive;">[</span>to_vector<span style="color: Olive;">(</span>s<span style="color: Gray;">,</span> vocab_words<span style="color: Olive;">)</span> <span style="color: Green;font-weight:bold;">for</span> s <span style="color: Green;font-weight:bold;">in</span> sentences<span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"RUNOOB 每句话的向量维度:"</span><span style="color: Gray;">,</span> vectors.<span style="color: #05a;">shape</span><span style="color: Olive;">[</span><span style="color: Maroon;">1</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">RUNOOB 各文のベクトル次元:</span><span style="color: Gray;">,</span> vectors.<span style="color: #05a;">shape</span><span style="color: Olive;">[</span><span style="color: Maroon;">1</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
       <span style="color: #a11;">（語彙リストのサイズ）</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 3. 手写余弦相似度函数（不调 sklearn）</span><br/>
 <span style="color: Green;font-weight:bold;">def</span> cosine_similarity<span style="color: Olive;">(</span>a<span style="color: Gray;">,</span> b<span style="color: Olive;">)</span>:<br/>
     dot <span style="color: Gray;">=</span> np.<span style="color: #05a;">dot</span><span style="color: Olive;">(</span>a<span style="color: Gray;">,</span> b<span style="color: Olive;">)</span>             <span style="color: #a50"># 点积</span><br/>
-    norm_a <span style="color: Gray;">=</span> np.<span style="color: #05a;">linalg</span>.<span style="color: #05a;">norm</span><span style="color: Olive;">(</span>a<span style="color: Olive;">)</span>     <span style="color: #a50"># a 的模长</span><br/>
-    norm_b <span style="color: Gray;">=</span> np.<span style="color: #05a;">linalg</span>.<span style="color: #05a;">norm</span><span style="color: Olive;">(</span>b<span style="color: Olive;">)</span>     <span style="color: #a50"># b 的模长</span><br/>
+    norm_a <span style="color: Gray;">=</span> np.<span style="color: #05a;">linalg</span>.<span style="color: #05a;">norm</span><span style="color: Olive;">(</span>a<span style="color: Olive;">)</span>     <span style="color: #a50"># a のノルム</span><br/>
+    norm_b <span style="color: Gray;">=</span> np.<span style="color: #05a;">linalg</span>.<span style="color: #05a;">norm</span><span style="color: Olive;">(</span>b<span style="color: Olive;">)</span>     <span style="color: #a50"># b のノルム</span><br/>
     <span style="color: Green;font-weight:bold;">if</span> norm_a <span style="color: Gray;">==</span> <span style="color: Maroon;">0</span> <span style="color: Green;font-weight:bold;">or</span> norm_b <span style="color: Gray;">==</span> <span style="color: Maroon;">0</span>:<br/>
         <span style="color: Green;font-weight:bold;">return</span> <span style="color: Maroon;">0.0</span>                 <span style="color: #a50"># 零向量没有方向</span><br/>
     <span style="color: Green;font-weight:bold;">return</span> dot / <span style="color: Olive;">(</span>norm_a * norm_b<span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 4. 给定查询句子，找出最相似的句子</span><br/>
-query <span style="color: Gray;">=</span> <span style="color: #a11;">"我在学习python和人工智能"</span><br/>
+<span style="color: #a50"># 4. 与えられたクエリ文から、最も類似した文を見つける</span><br/>
+query <span style="color: Gray;">=</span> <span style="color: #a11;">“私はPythonと人工知能を学習しています”</span><br/>
 query_vec <span style="color: Gray;">=</span> to_vector<span style="color: Olive;">(</span>query<span style="color: Gray;">,</span> vocab_words<span style="color: Olive;">)</span><br/>
 <br/>
 sims <span style="color: Gray;">=</span> <span style="color: Olive;">[</span>cosine_similarity<span style="color: Olive;">(</span>query_vec<span style="color: Gray;">,</span> v<span style="color: Olive;">)</span> <span style="color: Green;font-weight:bold;">for</span> v <span style="color: Green;font-weight:bold;">in</span> vectors<span style="color: Olive;">]</span><br/>
@@ -448,8 +447,8 @@ sims <span style="color: Gray;">=</span> <span style="color: Olive;">[</span>cos
                      key<span style="color: Gray;">=</span><span style="color: Green;font-weight:bold;">lambda</span> x: -x<span style="color: Olive;">[</span><span style="color: Maroon;">1</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span>:<br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"  相似度 {sim:.3f}  &lt;-  {s}"</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 5. 验证：不相关的句子相似度为 0</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>RUNOOB 验证：两个完全不相关的句子"</span><span style="color: Olive;">)</span><br/>
+<span style="color: #a50"># 5. 検証：無関係な文の類似度は0</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>RUNOOB 検証：2つの完全に関係のない文</span><span style="color: Olive;">)</span><br/>
 v1 <span style="color: Gray;">=</span> to_vector<span style="color: Olive;">(</span><span style="color: #a11;">"python机器学习"</span><span style="color: Gray;">,</span> vocab_words<span style="color: Olive;">)</span><br/>
 v2 <span style="color: Gray;">=</span> to_vector<span style="color: Olive;">(</span><span style="color: #a11;">"散步放松"</span><span style="color: Gray;">,</span> vocab_words<span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"  'python机器学习' vs '散步放松': "</span><br/>
@@ -605,11 +604,11 @@ $(function() { renderMathInElement(document.body, { delimiters: [{ left: "\\(", 
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前には<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前には<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -909,7 +908,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

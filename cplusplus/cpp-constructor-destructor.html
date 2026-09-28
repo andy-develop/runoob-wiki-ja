@@ -555,7 +555,7 @@ CMyClass::CMyClass(int x, int y) : m_y(y), m_x(m_y)
 {
 };</pre>
 <p>あなたは、上記のコードが最初に m_y=I を実行し、次に m_x=m_y を実行して、最終的にそれらが同じ値になると思うかもしれません。しかし、コンパイラは m_x を最初に初期化し、その後に m_y を初期化します。なぜなら、それらはこの順序で宣言されているからです。結果として、m_x は予測不可能な値になります。これを回避するには2つの方法があります。1つは、常に初期化したい順序でメンバを宣言することです。もう1つは、初期化リストを使用する場合は、常に宣言された順序でメンバを列挙することです。これにより混乱を排除できます。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">eric</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   eric</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  gxy***@163.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="../w3cnote/cpp-construct-function-initial-list.html" rel="nofollow" target="_blank">参考アドレス</a></p></div></span>9年前 (2017-12-28)</div></div></li><!-- #comment-## -->
-<li class="comment even thread-even depth-1" id="comment-34522"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>突然的幸福</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  292***0456@qq.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="https://www.cnblogs.com/newneul/p/7653093.html" rel="nofollow" target="_blank">参考アドレス</a></p></div><div class="upvotejs" data-commid="34522" id="runoobvote-id-34522"><a class="upvote"></a> <span class="count">66</span></div></div><div class="comt-main" id="div-comment-34522"><p>初期化順序は、変数のクラス内での宣言順序と一致させるのが最善です。そうしないと、次のような特別な状況が発生します：</p>
+<li class="comment even thread-even depth-1" id="comment-34522"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>突然の幸福</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  292***0456@qq.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="https://www.cnblogs.com/newneul/p/7653093.html" rel="nofollow" target="_blank">参考アドレス</a></p></div><div class="upvotejs" data-commid="34522" id="runoobvote-id-34522"><a class="upvote"></a> <span class="count">66</span></div></div><div class="comt-main" id="div-comment-34522"><p>初期化順序は、変数のクラス内での宣言順序と一致させるのが最善です。そうしないと、次のような特別な状況が発生します：</p>
 <pre>#include&lt;iostream&gt;
  
 using namespace std;
@@ -629,7 +629,7 @@ Student1(int i,int j,int k):b(i),a(j),c(k){}
 main:
     Student1 A(2,3,4);
     A.fprint();</pre>
-<p><img src="../wp-content/uploads/2018/08/1535521588-3828-20171011220657074-581871378.png"/></p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">突然的幸福</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>突然的幸福</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  292***0456@qq.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="https://www.cnblogs.com/newneul/p/7653093.html" rel="nofollow" target="_blank">参考アドレス</a></p></div></span>8年前 (2018-08-29)</div></div></li><!-- #comment-## -->
+<p><img src="../wp-content/uploads/2018/08/1535521588-3828-20171011220657074-581871378.png"/></p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">突然の幸福</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>突然の幸福</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  292***0456@qq.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="https://www.cnblogs.com/newneul/p/7653093.html" rel="nofollow" target="_blank">参考アドレス</a></p></div></span>8年前 (2018-08-29)</div></div></li><!-- #comment-## -->
 <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-44629"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>冰封绝杀</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  mz9***99999@163.com</p></div><div class="upvotejs" data-commid="44629" id="runoobvote-id-44629"><a class="upvote"></a> <span class="count">33</span></div></div><div class="comt-main" id="div-comment-44629"><p>上記の例を改良しました：</p>
 <pre>#include&lt;iostream&gt;
 
@@ -716,11 +716,11 @@ public:
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1009,7 +1009,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

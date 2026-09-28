@@ -116,7 +116,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p><strong>クロックレイテンシ（latency）</strong></p><p>クロックがクロック源（例えば、水晶発振器、PLL、または分周器の出力端）からフリップフロップのポートに到達するまでの遅延時間を、クロックレイテンシと呼びます。クロックレイテンシには、クロックソースレイテンシ（source latency）とクロックネットワークレイテンシ（network latency）が含まれます。下図のとおりです。</p>
 <p><img decoding="async" src="../wp-content/uploads/2021/05/v-clock-6.png"/></p>
 <p>クロックソースレイテンシは、クロック信号が実際のクロック原点から設計モジュールのクロック定義点までの伝送時間です。上図では 3ns です。</p><p>クロックネットワークレイテンシは、設計モジュールのクロック定義点からモジュール内のフリップフロップのクロック端子までの伝送時間であり、伝送経路にはバッファ（buffer）を経由する場合があります。上図では 1ns です。</p><p>クロックソースレイテンシ（source latency）は、設計モジュール内のすべてのフリップフロップに共通する遅延であるため、クロックスキュー（skew）には影響しません。</p>
-<h3>クロックツリー</h3><p>デジタル設計では、各モジュールは同期クロック回路を使用する必要があります。同期回路では、同じクロック信号によって駆動されるフリップフロップがまとまって1つのクロックドメインを構成します。理想的な回路では、クロック信号は同じクロックドメイン内のすべてのフリップフロップのクロック端子に同時に到達します。しかし実際には、さまざまな遅延が存在するため、このような遅延のないクロック特性を実現することは困難です。さらに、クロック信号の駆動能力には限界があるため、多数のフリップフロップを含むクロックドメインに対して、単独で有効なファンアウトを提供することは困難です。クロック遅延と駆動の問題を解決するには、クロックツリーシステムを採用してクロック信号を管理し、良好なタイミングと駆動能力を確保する必要があります。</p><p>クロックツリーは、多数のバッファセル（buffer cell）をバランスよく配置して構築されるネットワーク構造です。通常、1つのクロック源点から、段階的にバッファセルを配置して構築されます。clock buffer（図中のオレンジ色の三角形モジュール）を追加した実際のクロックツリー構造は、以下のとおりです。</p>
+<h3>クロックツリー</h3><p>デジタル設計では、各モジュールは同期クロック回路を使用する必要があります。同期回路では、同じクロック信号によって駆動されるフリップフロップがまとまって1つのクロックドメインを構成します。理想のな回路では、クロック信号は同じクロックドメイン内のすべてのフリップフロップのクロック端子に同時に到達します。しかし実際には、さまざまな遅延が存在するため、このような遅延のないクロック特性を実現することは困難です。さらに、クロック信号の駆動能力には限界があるため、多数のフリップフロップを含むクロックドメインに対して、単独で有効なファンアウトを提供することは困難です。クロック遅延と駆動の問題を解決するには、クロックツリーシステムを採用してクロック信号を管理し、良好なタイミングと駆動能力を確保する必要があります。</p><p>クロックツリーは、多数のバッファセル（buffer cell）をバランスよく配置して構築されるネットワーク構造です。通常、1つのクロック源点から、段階的にバッファセルを配置して構築されます。clock buffer（図中のオレンジ色の三角形モジュール）を追加した実際のクロックツリー構造は、以下のとおりです。</p>
 <p><img decoding="async" src="../wp-content/uploads/2021/05/v-clock-7.jpeg"/></p>青色の立ち上がりエッジ記号はクロックの遷移時間（transition）を表し、赤色の実線はクロックレイテンシ（latency）を表し、network delay と source latency を含みます。緑色の点線はクロックの不確かさ（uncertainty）を表し、クロックスキュー（skew）とクロックジッタ（jitter）を含みます。<p>クロックツリーは、クロック信号が各フリップフロップに到達するまでの時間を短縮するためのものではなく、各フリップフロップ間の到達時間の差を小さくするためのものです。通常、バックエンド設計者が clock buffer を挿入してクロックツリーの設計を行います。フロントエンド設計者は、クロックプランとデジタルロジックの機能的正しさを保証する必要があることが多いです。</p>
 <p>その他のクロック分類：</p>
 <p><strong>同期クロック、非同期クロック</strong></p><p>
@@ -357,11 +357,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=".." class="runoob-pop">ログイン</a>が必須です！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href="..">ログイン</a>が必須です！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

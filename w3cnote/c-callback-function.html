@@ -86,7 +86,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <!-- ad start-->
 <!-- ad end-->
 <h2>1. コールバック関数とは？</h2>
-<p>コールバック関数は、名前を聞くだけで普通の関数よりもハイレベルに感じられますが、一体何なのでしょうか？ 恐れながら私が読んだ本が少なく、どの本にもコールバック関数の定義は載っていませんでした。百度で検索してみると、諸説あり、その多くが次のようなシナリオで説明しています：A君がB君の店に買い物に行き、ちょうど在庫切れだったので、A君はB君に電話番号を残し、入荷したらA君に連絡してもらう、というものです。これはどちらかというと、コールバックではなく非同期操作を連想させます。また、印象に残った英文が2つあります：1) If you call me, I will call you back; 2) Don't call me, I will call you. 一見もっともらしいですが、よく考えると、普通の関数でもこの2つは実現できるのではないでしょうか？ したがって、これらの説明はどれも適切ではないと思います。なぜなら、これらの説明はコールバック関数の特徴を表現しておらず、普通の関数との違いが見えてこないからです。ただし、百度百科の解説はまあまあ良いと思います（百度検索についてはよく批判されますが...）：コールバック関数とは、関数ポインタを介して呼び出される関数のことです。関数のポインタ（アドレス）をパラメータとして別の関数に渡し、そのポインタが指す関数を呼び出すために使われたとき、それをコールバック関数と呼びます。</p>
+<p>コールバック関数は、名前を聞くだけで普通の関数よりもハイレベルに感じられますが、一体何なのでしょうか？ 恐れながら私が読んだ本が少なく、どの本にもコールバック関数の定義は載っていませんでした。百度で検索してみると、諸説あり、その多くが次のようなシナリオで説明しています：A君がB君の店に買い物に行き、ちょうどに庫切れだったので、A君はB君に電話番号を残し、入荷したらA君に連絡してもらう、というものです。これはどちらかというと、コールバックではなく非同期操作を連想させます。また、印象に残った英文が2つあります：1) If you call me, I will call you back; 2) Don't call me, I will call you. 一見もっともらしいですが、よく考えると、普通の関数でもこの2つは実現できるのではないでしょうか？ したがって、これらの説明はどれも適切ではないと思います。なぜなら、これらの説明はコールバック関数の特徴を表現しておらず、普通の関数との違いが見えてこないからです。ただし、百度百科の解説はまあまあ良いと思います（百度検索についてはよく批判されますが...）：コールバック関数とは、関数ポインタを介して呼び出される関数のことです。関数のポインタ（アドレス）をパラメータとして別の関数に渡し、そのポインタが指す関数を呼び出すために使われたとき、それをコールバック関数と呼びます。</p>
 <p>まず私の見解を述べます。「コールバック関数」を文字通り分解してみると、中国語では次の2つの意味に解釈できます：1) コールバックされる関数；2) 後から呼び出し動作を実行する関数。では、この「後から呼び出す」とは一体何なのでしょうか？</p>
 <p><strong>まずウィキペディアによるコールバック（Callback）の解説を見てみましょう。</strong>：In computer programming, a callback is any executable code that is passed as an argument to other code, which is expected to call back (execute) the argument at a given time. This execution may be immediate as in a synchronous callback, or it might happen at a later time as in an asynchronous callback. つまり、実行可能なコードをパラメータのように他のコードに渡し、そのコードが特定の時点で呼び出されて実行されることをコールバックと呼びます。コードが即座に実行される場合は同期コールバックと呼ばれ、後で遅れた時点で実行される場合は非同期コールバックと呼ばれます。同期と非同期についてはここでは議論しませんので、関連資料を参照してください。</p>
 <p><strong>次に、Stack Overflowのある達人の簡潔で明瞭な説明を見てみましょう：</strong>A "callback" is any function that is called by another function which takes the first function as a parameter. つまり、関数F1が関数F2を呼び出すとき、関数F1はパラメータを介して関数F2に別の関数F3のポインタを渡します。関数F2の実行中に、関数F2が関数F3を呼び出します。この動作をコールバック（Callback）と呼び、先にポインタとして渡され、後でコールバックされる関数F3がコールバック関数です。これでコールバック関数の定義がおわかりいただけたでしょうか？</p>
@@ -334,11 +334,11 @@ Leaving Main Function.</pre>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=".." class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href="..">ログイン</a>が必要です！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

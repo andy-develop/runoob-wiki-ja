@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>结构体变量和结构体类型的定义 | 菜鸟教程</title>
+<title>構造体変数と構造体型の定義 | 菜鸟教程</title>
 <script>
 window.RUNOOB_CONFIG = {
   darkCssUrl: "https://www.runoob.com/wp-content/themes/runoob/dark-mode.css?v=1.125"
@@ -95,9 +95,9 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 
 };
 Typedef struct  LNode  *LinkList;</pre>
-<p>上記の2つの定義方法は等価であり、つまり<strong>*LinkList</strong>定 义为<strong>struct  LNode</strong>类型，即<strong>LinkList</strong>型名として定義される。これにより、以下のように使用できる。<strong>LinkList</strong>新しい変数を定義・宣言するために使用します。例：</p>
+<p>上記の2つの定義方法は等価であり、つまり<strong>*LinkList</strong>定義として<strong>struct  LNode</strong>类型，即<strong>LinkList</strong>型名として定義される。これにより、以下のように使用できる。<strong>LinkList</strong>新しい変数を定義・宣言するために使用します。例：</p>
 <pre>LinkList  L;</pre>
-<p>即将<strong>L</strong>定义为<strong>struct  LNode</strong>型のポインタ変数。</p>
+<p>即将<strong>L</strong>と定義する<strong>struct  LNode</strong>型のポインタ変数。</p>
 <h3>2. 構造体型変数の定義</h3>
 <p>定義方法1：</p>
 <pre>struct  LNode {
@@ -112,15 +112,15 @@ Typedef struct  LNode  *LinkList;</pre>
 
 };
 struct  LNode LnodeA;</pre>
-<p>上記の2つの定義方法も等価であり、これにより<strong>LnodeA</strong>定义为一个<strong>struct  LNode</strong>型の変数、すなわち<strong>LnodeA</strong>为一个<strong>struct  LNode</strong>型の変数名。</p>
+<p>上記の2つの定義方法も等価であり、これにより<strong>LnodeA</strong>として定義される<strong>struct  LNode</strong>型の変数、すなわち<strong>LnodeA</strong>一つの〜として<strong>struct  LNode</strong>型の変数名。</p>
 <hr/><h2>構造体の内部テーブルの定義方法</h2>
 <h3>1. 構造体、透過テーブル領域、DATA ELEMENT、DOMAIN</h3>
 <p>透明テーブルは物理テーブルの論理的な記述です。透明テーブルには多くのフィールドがあり、特定のフィールドがPRIMARY KEYとして定義されます。フィールドには、言語属性と技術属性を記述するDATA ELEMENTが含まれます。DATA ELEMENTには、データ型とフィールド長を定義するDOMAINが含まれます。</p>
 <p>構造体は通常、構造変数を定義するために使用され、一時データの保存領域を持ち、PRIMARY KEYはありません。構造体にはFIELDではなくCOMPONENTが含まれます。</p>
-<h3>2.Internal table 中的属性分为三种 LINE TYPE ，KEY，TABLE KIND。</h3>
+<h3>2.Internal table の属性は、LINE TYPE、KEY、TABLE KIND の3種類に分けられます。</h3>
 <p>INTERNAL TABLE内の1行をLINE TYPEと呼び、各行の構造はすべて同じです。</p>
 <p>KEY: データベースの主キーに相当します。ソートの際に有用で、UNIQUEまたはNON-UNIQUEがあります。</p>
-<p>TABLE KIND：分为 STANDARD，SORTED，HASHED。</p>
+<p>TABLE KIND：STANDARD、SORTED、HASHED に分けられます。</p>
 <h3>3種類の内部テーブルの定義</h3>
 <p>标准表：</p>
 <pre>DATA itab1 TYPE STANDARD TABLE OF scarr WITH NON-UNIQUE KEY carrid.</pre>
@@ -355,10 +355,10 @@ student[30].age </pre>
 <pre>struct string *student; </pre>
 <p>構造体ポインタを使用した構造体メンバーへのアクセスは、構造変数による構造体メンバーへのアクセスとは表現方法が異なります。構造体ポインタによる構造体メンバーへのアクセスは次のように表されます。</p>
 <pre>構造体ポインタ名-&gt;構造体メンバー</pre>
-<p>其中<span class="marked">-&gt;</span>是两个符号<span class="marked">-</span> 和 <span class="marked">&gt;</span>の組み合わせは、矢印が構造体メンバーを指しているように見えます。例えば、上記で定義した構造体のnameとageに値を代入するには、次の文を使用できます。</p>
+<p>其中<span class="marked">-&gt;</span>は2つの記号です<span class="marked">-</span>と<span class="marked">&gt;</span>の組み合わせは、矢印が構造体メンバーを指しているように見えます。例えば、上記で定義した構造体のnameとageに値を代入するには、次の文を使用できます。</p>
 <pre>strcpy(student-&gt;name, Lu G.C); 
 student-&gt;age=18;</pre>
-<p>实际上，<strong>student-&gt;name</strong>就是<strong>(*student).name</strong>の省略形。</p>
+<p>实际上，<strong>student-&gt;name</strong>つまり<strong>(*student).name</strong>の省略形。</p>
 <p>構造体ポインタは構造体を指すポインタ、つまり構造体の最初のメンバーの先頭アドレスであることに注意してください。したがって、使用前に構造体ポインタを初期化する必要があります。つまり、構造体全体の長さのバイト空間を割り当てます。これは次の関数で実行できます。前述の例で説明すると以下のようになります。</p>
 <pre>student=(struct string*)malloc(size of (struct string));</pre>
 <p><strong>size of (struct string)</strong>string構造体のバイト長を自動的に取得します。malloc()関数は構造体の長さのサイズのメモリ領域を定義し、その先頭アドレスを構造体ポインタとして返します。</p>
@@ -388,8 +388,8 @@ student-&gt;age=18;</pre>
 </p></div>
 </div>
 <div class="previous-next-links">
-<div class="previous-design-link">← <a href="./java-interface-and-polymorphism.html" rel="prev">Java 接口和多态</a> </div>
-<div class="next-design-link"><a href="./python-append-deepcopy.html" rel="next">Python append() 与深拷贝、浅拷贝</a> →</div>
+<div class="previous-design-link">← <a href="./java-interface-and-polymorphism.html" rel="prev">Java インタフェースと多態性</a> </div>
+<div class="next-design-link"><a href="./python-append-deepcopy.html" rel="next">Python append() と深コピー、浅コピー</a> →</div>
 </div>
 <style>
 .wrapper {
@@ -495,11 +495,11 @@ student-&gt;age=18;</pre>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=".." class="runoob-pop">登录</a>！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href="..">登录</a>！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

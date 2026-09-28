@@ -98,7 +98,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <blockquote><p>本節で紹介するのは、Android 3.0以降で導入されたUIコントロール——ViewPager（ビュースワイプ切り替えツール）です。このコントロールを何と呼べばいいのか正直思いつきませんが、おおよその機能はこうです：ジェスチャーのスワイプ操作でViewの切り替えができます。通常はアプリのガイドページや画像カルーセルの実装に使われます。3.0以降の導入なので、低いバージョンで使いたい場合は、v4互換パッケージを導入する必要があります。また、ViewPagerはandroid.support.v4.view.ViewPagerディレクトリの下にあります。それでは、このコントロールの基本的な使い方を学んでいきましょう。公式APIドキュメント：<a href="http://androiddoc.qiniudn.com/reference/android/support/v4/view/ViewPager.html">ViewPager</a></p></blockquote>
 <hr/>
 <h2>1. ViewPagerの簡単な紹介</h2>
-<blockquote><p>ViewPagerはシンプルなページ切り替えコンポーネントで、その中に複数のViewを入れることができます。左右にスワイプして異なるViewに切り替えられます。setPageTransformer()メソッドを使うと、ViewPagerに切り替え時のアニメーション効果を設定できます。もちろん、アニメーションはまだ学習していないので、ViewPagerにアニメーションを設定する話は次の章の「描画とアニメーション」で解説します！以前に学んだListView、GridViewと同じように、ViewとViewPagerをバインドするためにはAdapter（アダプター）も必要です。そしてViewPagerには専用のAdapterがあります——<strong>PagerAdapter</strong>！また、Google公式はViewPagerの内容としてFragmentを使うことを推奨しています。そうすれば各Pageの生成をより簡単にでき、各Pageのライフサイクルも管理できます。Fragment専用のAdapterが2つ提供されています：<strong>FragmentPageAdapter</strong>和<strong>FragmentStatePagerAdapter</strong>この2つのAdapterの違いを簡単に分析してみましょう：</p>
+<blockquote><p>ViewPagerはシンプルなページ切り替えコンポーネントで、その中に複数のViewを入れることができます。左右にスワイプして異なるViewに切り替えられます。setPageTransformer()メソッドを使うと、ViewPagerに切り替え時のアニメーション効果を設定できます。もちろん、アニメーションはまだ学習していないので、ViewPagerにアニメーションを設定する話は次の章の「描画とアニメーション」で解説します！以前に学んだListView、GridViewと同じように、ViewとViewPagerをバインドするためにはAdapter（アダプター）も必要です。そしてViewPagerには専用のAdapterがあります——<strong>PagerAdapter</strong>！また、Google公式はViewPagerの内容としてFragmentを使うことを推奨しています。そうすれば各Pageの生成をより簡単にでき、各Pageのライフサイクルも管理できます。Fragment専用のAdapterが2つ提供されています：<strong>FragmentPageAdapter</strong>と<strong>FragmentStatePagerAdapter</strong>この2つのAdapterの違いを簡単に分析してみましょう：</p>
 <ul>
 <li><strong>FragmentPageAdapter</strong>PagerAdapterと同じく、現在のFragmentと左1つ、右1つ、つまり合計3つのFragmentだけをキャッシュします。仮に1、2、3、4の4ページがある場合：<br/>1ページ目にいる場合：1，2をキャッシュ<br/>2ページ目にいる場合：1，2，3をキャッシュ<br/>3ページ目にいる場合：1ページ目を破棄し、2，3，4をキャッシュ<br/>4ページ目にいる場合：2ページ目を破棄し、3，4をキャッシュ<br/>さらにページが多い場合も、同様に類推します~</li>
 <li><strong>FragmentStatePagerAdapter</strong>Fragmentがユーザーから見えなくなったとき、Fragment全体が破棄され、状態だけが保存されます。そして、ページを再度表示する必要があるときは、新しいページが生成されます！</li>
@@ -679,11 +679,11 @@ public class FourActivity extends AppCompatActivity implements View.OnClickListe
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてメモを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリック</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=".." class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリック</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href="..">ログイン</a>が必要です！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

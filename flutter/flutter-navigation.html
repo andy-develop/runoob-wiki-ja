@@ -292,7 +292,7 @@ Navigator.<span style="color: #006633;">of</span><span style="">(</span>context<
 Navigator.<span style="color: #006633;">of</span><span style="">(</span>context<span style="">)</span>.<span style="color: #006633;">pop</span><span style="">(</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
 <br/>
 <span style="color: #999988; font-style: italic;">// 带结果返回</span><br/>
-Navigator.<span style="color: #006633;">of</span><span style="">(</span>context<span style="">)</span>.<span style="color: #006633;">pop</span><span style="">(</span><span style="color: #d14;">'返回的数据'</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
+Navigator.<span style="color: #006633;">of</span><span style="">(</span>context<span style="">)</span>.<span style="color: #006633;">pop</span><span style="">(</span><span style="color: #d14;">'返されたデータ'</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
 <br/>
 <span style="color: #999988; font-style: italic;">// 替换当前页面（不可返回）</span><br/>
 Navigator.<span style="color: #006633;">of</span><span style="">(</span>context<span style="">)</span>.<span style="color: #006633;">pushReplacement</span><span style="">(</span><br/>
@@ -310,14 +310,14 @@ Navigator.<span style="color: #006633;">of</span><span style="">(</span>context<
 <div class="example">
 <h2 class="example">例：プラットフォーム別のページ切り替えアニメーション</h2>
 <div class="example_code">
-<span style="color: #999988; font-style: italic;">// Android 风格 - 从底部升起</span><br/>
+<span style="color: #999988; font-style: italic;">// Android スタイル - 下部からスライドアップ</span><br/>
 Navigator.<span style="color: #006633;">of</span><span style="">(</span>context<span style="">)</span>.<span style="color: #006633;">push</span><span style="">(</span><br/>
   MaterialPageRoute<span style="">(</span><br/>
     builder<span style="font-weight: bold;">:</span> <span style="">(</span>context<span style="">)</span> <span style="font-weight: bold;">=&gt;</span> <span style="font-weight: bold;">const</span> DetailPage<span style="">(</span><span style="">)</span><span style="font-weight: bold;">,</span><br/>
   <span style="">)</span><span style="font-weight: bold;">,</span><br/>
 <span style="">)</span><span style="font-weight: bold;">;</span><br/>
 <br/>
-<span style="color: #999988; font-style: italic;">// iOS 风格 - 从右侧滑入</span><br/>
+<span style="color: #999988; font-style: italic;">// iOS スタイル - 右側からスライドイン</span><br/>
 Navigator.<span style="color: #006633;">of</span><span style="">(</span>context<span style="">)</span>.<span style="color: #006633;">push</span><span style="">(</span><br/>
   CupertinoPageRoute<span style="">(</span><br/>
     builder<span style="font-weight: bold;">:</span> <span style="">(</span>context<span style="">)</span> <span style="font-weight: bold;">=&gt;</span> <span style="font-weight: bold;">const</span> DetailPage<span style="">(</span><span style="">)</span><span style="font-weight: bold;">,</span><br/>
@@ -385,7 +385,7 @@ Navigator.<span style="color: #006633;">of</span><span style="">(</span>context<
   @override<br/>
   Widget build<span style="">(</span>BuildContext context<span style="">)</span> <span style="">{</span><br/>
     <span style="font-weight: bold;">return</span> Scaffold<span style="">(</span><br/>
-      appBar<span style="font-weight: bold;">:</span> AppBar<span style="">(</span>title<span style="font-weight: bold;">:</span> Text<span style="">(</span><span style="color: #d14;">'$name 的主页'</span><span style="">)</span><span style="">)</span><span style="font-weight: bold;">,</span><br/>
+      appBar<span style="font-weight: bold;">:</span> AppBar<span style="">(</span>title<span style="font-weight: bold;">:</span> Text<span style="">(</span><span style="color: #d14;">'$name のホームページ'</span><span style="">)</span><span style="">)</span><span style="font-weight: bold;">,</span><br/>
       body<span style="font-weight: bold;">:</span> Center<span style="">(</span>child<span style="font-weight: bold;">:</span> Text<span style="">(</span><span style="color: #d14;">'年龄: $age'</span><span style="">)</span><span style="">)</span><span style="font-weight: bold;">,</span><br/>
     <span style="">)</span><span style="font-weight: bold;">;</span><br/>
   <span style="">}</span><br/>
@@ -429,13 +429,13 @@ Navigator.<span style="color: #006633;">pushNamed</span><span style="">(</span>c
 <span style="color: #999988; font-style: italic;">// 带参数跳转</span><br/>
 Navigator.<span style="color: #006633;">pushNamed</span><span style="">(</span>context<span style="font-weight: bold;">,</span> <span style="color: #d14;">'/user'</span><span style="font-weight: bold;">,</span> arguments<span style="font-weight: bold;">:</span> <span style="">{</span><span style="color: #d14;">'name'</span><span style="font-weight: bold;">:</span> <span style="color: #d14;">'张三'</span><span style="font-weight: bold;">,</span> <span style="color: #d14;">'age'</span><span style="font-weight: bold;">:</span> <span style="color: #009999;">25</span><span style="">}</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
 <br/>
-<span style="color: #999988; font-style: italic;">// 在目标页面获取参数</span><br/>
+<span style="color: #999988; font-style: italic;">// ターゲットページでパラメータを取得する</span><br/>
 <span style="font-weight: bold;">class</span> DetailPage <span style="font-weight: bold;">extends</span> StatelessWidget <span style="">{</span><br/>
   <span style="font-weight: bold;">const</span> DetailPage<span style="">(</span><span style="">{</span><span style="font-weight: bold;">super</span>.<span style="color: #006633;">key</span><span style="">}</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
 <br/>
   @override<br/>
   Widget build<span style="">(</span>BuildContext context<span style="">)</span> <span style="">{</span><br/>
-    <span style="color: #999988; font-style: italic;">// 获取传递的参数</span><br/>
+    <span style="color: #999988; font-style: italic;">// 渡されたパラメータを取得する</span><br/>
     <span style="font-weight: bold;">final</span> args <span style="font-weight: bold;">=</span> ModalRoute.<span style="color: #006633;">of</span><span style="">(</span>context<span style="">)</span><span style="font-weight: bold;">?</span>.<span style="color: #006633;">settings</span>.<span style="color: #006633;">arguments</span> <span style="font-weight: bold;">as</span> Map<span style="font-weight: bold;">?</span><span style="font-weight: bold;">;</span><br/>
 <br/>
     <span style="font-weight: bold;">return</span> Scaffold<span style="">(</span><br/>
@@ -463,7 +463,7 @@ MaterialApp<span style="">(</span><br/>
           builder<span style="font-weight: bold;">:</span> <span style="">(</span>_<span style="">)</span> <span style="font-weight: bold;">=&gt;</span> <span style="font-weight: bold;">const</span> HomePage<span style="">(</span><span style="">)</span><span style="font-weight: bold;">,</span><br/>
         <span style="">)</span><span style="font-weight: bold;">;</span><br/>
       <span style="font-weight: bold;">case</span> <span style="color: #d14;">'/detail'</span><span style="font-weight: bold;">:</span><br/>
-        <span style="color: #999988; font-style: italic;">// 从 arguments 获取参数</span><br/>
+        <span style="color: #999988; font-style: italic;">// arguments からパラメータを取得する</span><br/>
         <span style="font-weight: bold;">final</span> args <span style="font-weight: bold;">=</span> settings.<span style="color: #006633;">arguments</span> <span style="font-weight: bold;">as</span> Map<span style="font-weight: bold;">&lt;</span>String<span style="font-weight: bold;">,</span> dynamic<span style="font-weight: bold;">&gt;</span><span style="font-weight: bold;">?</span><span style="font-weight: bold;">;</span><br/>
         <span style="font-weight: bold;">return</span> MaterialPageRoute<span style="">(</span><br/>
           builder<span style="font-weight: bold;">:</span> <span style="">(</span>_<span style="">)</span> <span style="font-weight: bold;">=&gt;</span> DetailPage<span style="">(</span><br/>
@@ -607,11 +607,11 @@ MaterialApp<span style="">(</span><br/>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に必ず<a href=";.html" class="runoob-pop">ログイン</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に必ず<a class="runoob-pop" href=";.html">ログイン</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -911,7 +911,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

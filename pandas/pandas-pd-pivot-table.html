@@ -307,7 +307,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h1>Pandas pd.pivot_table() 関数</h1>
 <p><a href="../pandas/pandas-general-functions.html"><img alt="Pandas 常用函数" class="navup" decoding="async" src="../images/up.gif"/>Pandas よく使う関数</a></p><hr/>
 <p><code>pd.pivot_table()</code>Pandas ライブラリで使用される<strong>ピボットテーブルを作成する</strong>関数です。ピボットテーブルはスプレッドシートの一般的な機能であり、データをグループ化、集約、再形成して、さまざまな角度からデータを分析するのに便利です。</p>
-<p>与 <code>pd.crosstab()</code>に比べて、<code>pivot_table()</code>より強力で、複数の集約関数のサポート、欠損値の処理、より複雑なデータの再形成が可能です。</p>
+<p>と<code>pd.crosstab()</code>に比べて、<code>pivot_table()</code>より強力で、複数の集約関数のサポート、欠損値の処理、より複雑なデータの再形成が可能です。</p>
 <p><strong>単語の意味</strong>： <code>pivot_table</code>「ピボットテーブル」を意味し、データのレイアウトを動的に変更できる表であり、複数の視点からデータを集計・分析できます。</p>
 <hr/>
 <h2>基本構文とパラメータ</h2>
@@ -387,7 +387,7 @@ sales <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFram
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"=== 销售数据 ==="</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>sales<span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 2. 创建透视表 - 按产品和地区汇总销售额</span><br/>
+<span style="color: #a50"># 2. ピボットテーブルの作成 - 製品と地域別に売上を集計する</span><br/>
 pivot <span style="color: Gray;">=</span> pd.<span style="color: #05a;">pivot_table</span><span style="color: Olive;">(</span>sales<span style="color: Gray;">,</span> values<span style="color: Gray;">=</span><span style="color: #a11;">'sales'</span><span style="color: Gray;">,</span> index<span style="color: Gray;">=</span><span style="color: #a11;">'product'</span><span style="color: Gray;">,</span> columns<span style="color: Gray;">=</span><span style="color: #a11;">'region'</span><span style="color: Gray;">,</span> aggfunc<span style="color: Gray;">=</span><span style="color: #a11;">'sum'</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"n=== pd.pivot_table() 销售透视表 ==="</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>pivot<span style="color: Olive;">)</span><br/>
@@ -442,7 +442,7 @@ C           410   200   160   240
 <span style="color: Green;font-weight:bold;">import</span> pandas <span style="color: Green;font-weight:bold;">as</span> pd<br/>
 <span style="color: Green;font-weight:bold;">import</span> numpy <span style="color: Green;font-weight:bold;">as</span> np<br/>
 <br/>
-<span style="color: #a50"># 1. 创建更丰富的销售数据</span><br/>
+<span style="color: #a50"># 1. より豊富な売上データを作成</span><br/>
 sales <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFrame</span><span style="color: Olive;">(</span><span style="color: Olive;">{</span><br/>
     <span style="color: #a11;">'product'</span>: <span style="color: Olive;">[</span><span style="color: #a11;">'A'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'B'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'A'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'B'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'A'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'B'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'A'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'B'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'A'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'B'</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
     <span style="color: #a11;">'region'</span>: <span style="color: Olive;">[</span><span style="color: #a11;">'North'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'North'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'South'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'South'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'East'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'East'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'West'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'West'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'North'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'South'</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
@@ -453,8 +453,8 @@ sales <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFram
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"=== 销售数据 ==="</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>sales<span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 2. 汇总（求和）</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"n=== 销售额求和 ==="</span><span style="color: Olive;">)</span><br/>
+<span style="color: #a50"># 2. 集計（合計）</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"n=== 売上合計 ==="</span><span style="color: Olive;">)</span><br/>
 sum_result <span style="color: Gray;">=</span> pd.<span style="color: #05a;">pivot_table</span><span style="color: Olive;">(</span>sales<span style="color: Gray;">,</span> values<span style="color: Gray;">=</span><span style="color: #a11;">'sales'</span><span style="color: Gray;">,</span> index<span style="color: Gray;">=</span><span style="color: #a11;">'product'</span><span style="color: Gray;">,</span> columns<span style="color: Gray;">=</span><span style="color: #a11;">'region'</span><span style="color: Gray;">,</span> aggfunc<span style="color: Gray;">=</span><span style="color: #a11;">'sum'</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>sum_result<span style="color: Olive;">)</span><br/>
 <br/>
@@ -464,7 +464,7 @@ mean_result <span style="color: Gray;">=</span> pd.<span style="color: #05a;">pi
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>mean_result.<span style="color: Teal;">round</span><span style="color: Olive;">(</span><span style="color: Maroon;">1</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 4. 同时计算多种统计量（传递列表）</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"n=== 同时计算数量和、均值 ==="</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"n=== 件数と平均を同時に計算 ==="</span><span style="color: Olive;">)</span><br/>
 multi_agg <span style="color: Gray;">=</span> pd.<span style="color: #05a;">pivot_table</span><span style="color: Olive;">(</span>sales<span style="color: Gray;">,</span> values<span style="color: Gray;">=</span><span style="color: #a11;">'sales'</span><span style="color: Gray;">,</span> index<span style="color: Gray;">=</span><span style="color: #a11;">'product'</span><span style="color: Gray;">,</span> columns<span style="color: Gray;">=</span><span style="color: #a11;">'region'</span><span style="color: Gray;">,</span> aggfunc<span style="color: Gray;">=</span><span style="color: Olive;">[</span><span style="color: #a11;">'sum'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'mean'</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>multi_agg<span style="color: Olive;">)</span><br/>
 </div>
@@ -515,7 +515,7 @@ B       200   150   370   230   200  150.0  185.0   230
 <div class="example_code">
 <span style="color: Green;font-weight:bold;">import</span> pandas <span style="color: Green;font-weight:bold;">as</span> pd<br/>
 <br/>
-<span style="color: #a50"># 使用之前的销售数据</span><br/>
+<span style="color: #a50"># 以前の売上データを使用</span><br/>
 sales <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFrame</span><span style="color: Olive;">(</span><span style="color: Olive;">{</span><br/>
     <span style="color: #a11;">'product'</span>: <span style="color: Olive;">[</span><span style="color: #a11;">'A'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'B'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'A'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'B'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'A'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'B'</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
     <span style="color: #a11;">'region'</span>: <span style="color: Olive;">[</span><span style="color: #a11;">'North'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'North'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'South'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'South'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'East'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'East'</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
@@ -536,7 +536,7 @@ result <span style="color: Gray;">=</span> pd.<span style="color: #05a;">pivot_t
 result_name <span style="color: Gray;">=</span> pd.<span style="color: #05a;">pivot_table</span><span style="color: Olive;">(</span>sales<span style="color: Gray;">,</span> values<span style="color: Gray;">=</span><span style="color: #a11;">'sales'</span><span style="color: Gray;">,</span> index<span style="color: Gray;">=</span><span style="color: #a11;">'product'</span><span style="color: Gray;">,</span> columns<span style="color: Gray;">=</span><span style="color: #a11;">'region'</span><span style="color: Gray;">,</span> aggfunc<span style="color: Gray;">=</span><span style="color: #a11;">'sum'</span><span style="color: Gray;">,</span> margins<span style="color: Gray;">=</span><span style="color: Teal;">True</span><span style="color: Gray;">,</span> margins_name<span style="color: Gray;">=</span><span style="color: #a11;">'总计'</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>result_name<span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 4. 多层行索引的合计</span><br/>
+<span style="color: #a50"># 4. マルチレベル行インデックスの合計</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"n=== 多层行索引 ==="</span><span style="color: Olive;">)</span><br/>
 multi_index <span style="color: Gray;">=</span> pd.<span style="color: #05a;">pivot_table</span><span style="color: Olive;">(</span>sales<span style="color: Gray;">,</span> values<span style="color: Gray;">=</span><span style="color: #a11;">'sales'</span><span style="color: Gray;">,</span> index<span style="color: Gray;">=</span><span style="color: Olive;">[</span><span style="color: #a11;">'product'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'region'</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span> aggfunc<span style="color: Gray;">=</span><span style="color: #a11;">'sum'</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>multi_index<span style="color: Olive;">)</span><br/>
@@ -586,7 +586,7 @@ B       East        200
 <div class="example_code">
 <span style="color: Green;font-weight:bold;">import</span> pandas <span style="color: Green;font-weight:bold;">as</span> pd<br/>
 <br/>
-<span style="color: #a50"># 1. 创建包含多个分类变量的数据</span><br/>
+<span style="color: #a50"># 1. 複数のカテゴリ変数を含むデータを作成</span><br/>
 data <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFrame</span><span style="color: Olive;">(</span><span style="color: Olive;">{</span><br/>
     <span style="color: #a11;">'year'</span>: <span style="color: Olive;">[</span><span style="color: Maroon;">2022</span><span style="color: Gray;">,</span> <span style="color: Maroon;">2022</span><span style="color: Gray;">,</span> <span style="color: Maroon;">2022</span><span style="color: Gray;">,</span> <span style="color: Maroon;">2023</span><span style="color: Gray;">,</span> <span style="color: Maroon;">2023</span><span style="color: Gray;">,</span> <span style="color: Maroon;">2023</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
     <span style="color: #a11;">'quarter'</span>: <span style="color: Olive;">[</span><span style="color: #a11;">'Q1'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'Q2'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'Q3'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'Q1'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'Q2'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'Q3'</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
@@ -597,12 +597,12 @@ data <span style="color: Gray;">=</span> pd.<span style="color: #05a;">DataFrame
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"=== 数据 ==="</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>data<span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 2. 使用多个列作为行索引</span><br/>
+<span style="color: #a50"># 2. 複数の列を行インデックスとして使用</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"n=== 多年份多季度透视 ==="</span><span style="color: Olive;">)</span><br/>
 pivot <span style="color: Gray;">=</span> pd.<span style="color: #05a;">pivot_table</span><span style="color: Olive;">(</span>data<span style="color: Gray;">,</span> values<span style="color: Gray;">=</span><span style="color: #a11;">'sales'</span><span style="color: Gray;">,</span> index<span style="color: Gray;">=</span><span style="color: Olive;">[</span><span style="color: #a11;">'year'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'quarter'</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span> columns<span style="color: Gray;">=</span><span style="color: #a11;">'product'</span><span style="color: Gray;">,</span> aggfunc<span style="color: Gray;">=</span><span style="color: #a11;">'sum'</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>pivot<span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: #a50"># 3. 多个列作为列索引</span><br/>
+<span style="color: #a50"># 3. 複数の列を列インデックスとして使用</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"n=== 复杂交叉透视 ==="</span><span style="color: Olive;">)</span><br/>
 pivot_multi <span style="color: Gray;">=</span> pd.<span style="color: #05a;">pivot_table</span><span style="color: Olive;">(</span>data<span style="color: Gray;">,</span> values<span style="color: Gray;">=</span><span style="color: #a11;">'sales'</span><span style="color: Gray;">,</span> index<span style="color: Gray;">=</span><span style="color: #a11;">'year'</span><span style="color: Gray;">,</span> columns<span style="color: Gray;">=</span><span style="color: Olive;">[</span><span style="color: #a11;">'product'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'quarter'</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span> aggfunc<span style="color: Gray;">=</span><span style="color: #a11;">'sum'</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>pivot_multi<span style="color: Olive;">)</span><br/>
@@ -658,7 +658,7 @@ year quarter
 </ul>
 <hr/>
 <blockquote>
-<p><strong>ヒント：</strong> <code>pd.pivot_table()</code>強力なピボット機能を提供します。2つのカテゴリ変数の頻度を集計するだけでよい場合は、<code>pd.crosstab()</code>より簡潔かもしれません。<code>pd.crosstab()</code>頻度の数値を返す一方、<code>pivot_table()</code>平均、合計、標準偏差など、複数の統計量を計算できます。<code>pd.crosstab()</code>これは、`pd.pivot_table()` の<code>pivot_table()</code> 在 <code>aggfunc='count'</code>特殊なケースと見なすことができます。</p>
+<p><strong>ヒント：</strong> <code>pd.pivot_table()</code>強力なピボット機能を提供します。2つのカテゴリ変数の頻度を集計するだけでよい場合は、<code>pd.crosstab()</code>より簡潔かもしれません。<code>pd.crosstab()</code>頻度の数値を返す一方、<code>pivot_table()</code>平均、合計、標準偏差など、複数の統計量を計算できます。<code>pd.crosstab()</code>これは、`pd.pivot_table()` の<code>pivot_table()</code>に<code>aggfunc='count'</code>特殊なケースと見なすことができます。</p>
 </blockquote>
 <p><a href="../pandas/pandas-general-functions.html"><img alt="Pandas 常用函数" class="navup" decoding="async" src="../images/up.gif"/>Pandas よく使う関数</a></p>
 その他の拡張
@@ -780,11 +780,11 @@ year quarter
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1084,7 +1084,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

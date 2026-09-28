@@ -93,7 +93,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p><b><span style="color: #366092;">関数型言語</span></b></p>
 <p>動的言語の発展に伴い、人々の関数型言語への関心も高まっています。関数型言語では、関数自体を変数に格納でき、変数に格納された関数を別の関数の引数として渡すこともできます。現在のほとんどの言語は、ある程度関数型プログラミングをサポートしています。例えばC++では、プログラマーは関数にポインターを渡すことができます。JavaScriptなどの一部の言語は、関数の受け渡しをより簡単にしています。そのため、一般的にC++は真の意味での関数型言語とは見なされず、JavaScriptは関数型言語と見なされ、Haskellは一般に関数型言語の代表的な例と見なされています。</p>
 <p><b><span style="color: #366092;">ガベージコレクション機構</span></b></p>
-<p>理論的には、コードを正しく書けば、バグは一切発生しません。それは素晴らしいことのように聞こえます。しかし実際には、他の多くのプログラマーと一緒に大規模なプロジェクトを完成させる場合、頻繁に発生するバグが一つあります。それがメモリリークです。変数を定義し、その変数を使い終わった後にこの部分のメモリをすぐに回収しないと、メモリリークが発生したと言います。メモリリークが発生したのにすぐに気づかないと、プログラムの実行時間が増えるにつれてプログラムはどんどん大きくなり、システムのすべてのメモリを消費し尽くして、システムがクラッシュします。sounds terrible！</p>
+<p>理論のには、コードを正しく書けば、バグは一切発生しません。それは素晴らしいことのように聞こえます。しかし実際には、他の多くのプログラマーと一緒に大規模なプロジェクトを完成させる場合、頻繁に発生するバグが一つあります。それがメモリリークです。変数を定義し、その変数を使い終わった後にこの部分のメモリをすぐに回収しないと、メモリリークが発生したと言います。メモリリークが発生したのにすぐに気づかないと、プログラムの実行時間が増えるにつれてプログラムはどんどん大きくなり、システムのすべてのメモリを消費し尽くして、システムがクラッシュします。それは恐ろしいですね！</p>
 <p style="text-align: center;"><img alt="53e16c8e8239c" class="attachment-full" decoding="async" height="333" src="../wp-content/uploads/2014/09/53e16c8e8239c.jpg" width="500"/></p>
 <p>「毎回変数を使い終わったらすぐにメモリを解放すれば、メモリリークは発生しないのでは？」と思うかもしれません。考え方は良いのですが、実際の状況はそれよりもはるかに複雑かもしれません。例えば、データを格納するためにリンクリストを申請し、そのリンクリストを別の関数に渡したとします。その関数は他の人が書いたもので、その人が書いた関数の中でこのリンクリストをコピーした場合、あなたはそのことを知りません。このリンクリストを削除すべきでしょうか、それとも保持すべきでしょうか？このような状況に基づいて、プログラマーは代替案を考え出しました。メモリ回収の作業をシステムに任せることです。変数を使わなくなったとき、システムがメモリをスキャンして使われていないメモリを見つけ、自動的に回収します。これをガベージコレクション機構と呼びます。新しく開発される言語にとって、これは非常に重要な特徴です。ガベージコレクションの背後にある考え方は、プログラミングをより簡単にし、プログラマーが素晴らしいソフトウェアを創造することに集中できるようにすることです。</p>
 <p>説明しておくと、実際にはいくつかの異なるガベージコレクション機構が存在します。一つはシステムが定期的にメモリをスキャンし、もう使われていないメモリを発見する方法です。もう一つはシステムが各変数に対してテーブルを保持し、変数が使われなくなったことを発見するとすぐに削除する方法です。技術的には、後者はガベージコレクション機構ではなく「参照カウント」ですが、達成される効果は同じです。</p>
@@ -104,7 +104,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>ここまで話してきましたが、プログラマーは一体どの言語を学ぶべきでしょうか？以下に、将来の仕事で需要が豊富な5つの言語を挙げます。その他に、6つ目の言語を「honorable mention」として挙げておきます。</p>
 <p style="text-align: center;"><img alt="53e16cda02d86" class="attachment-full" decoding="async" height="231" loading="lazy" src="../wp-content/uploads/2014/09/53e16cda02d86.jpg" width="500"/></p>
 <p><b>JavaScript、HTML5、CSS3</b>：</p>
-<p>技術的には、HTML5は言語ではなく、CSS3やJavaScriptと一緒にWebベースのアプリケーションを構築できるようにする技術です。ブラウザー内で動作するソフトウェアを作成できます。その利点は、構築したアプリケーションがこれまでにない移植性を持つことです。ほぼすべてのデバイス（スマートフォンを含む）で動作します。数年前、FacebookはHTML5を使ってモバイルアプリを構築し始めました。彼らは時代を先取りしていましたが、当時のHTML5はまだ成熟していませんでした。しばらくして、彼らは従来の方式に戻りました。過去2年間で、ブラウザーは次々と最高のHTML5技術を実装し始め、JavaScriptへの需要が高まりました。競争力を維持したいなら、これは学ばなければならない技術です。（サーバー側では、多くの大企業がNode.jsの形でJavaScriptを使用しています）。</p>
+<p>技術のには、HTML5は言語ではなく、CSS3やJavaScriptと一緒にWebベースのアプリケーションを構築できるようにする技術です。ブラウザー内で動作するソフトウェアを作成できます。その利点は、構築したアプリケーションがこれまでにない移植性を持つことです。ほぼすべてのデバイス（スマートフォンを含む）で動作します。数年前、FacebookはHTML5を使ってモバイルアプリを構築し始めました。彼らは時代を先取りしていましたが、当時のHTML5はまだ成熟していませんでした。しばらくして、彼らは従来の方式に戻りました。過去2年間で、ブラウザーは次々と最高のHTML5技術を実装し始め、JavaScriptへの需要が高まりました。競争力を維持したいなら、これは学ばなければならない技術です。（サーバー側では、多くの大企業がNode.jsの形でJavaScriptを使用しています）。</p>
 <p><i><span style="color: #E36C09;">JavaScript の例：</span></i></p>
 <p><i>次の例は、JavaScriptがどのように関数を変数に格納し、それを別の関数に渡すかを示しています。JavaScriptを学ぶには、以下を参照してください：<a href="../js/js-tutorial.html" title="JavaScript 教程 - w3cschool菜鸟教程">JavaScript チュートリアル</a>。</i></p>
 <pre>
@@ -313,11 +313,11 @@ loop() -&gt;
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリック</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=".." class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリック</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href="..">ログイン</a>が必要です！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

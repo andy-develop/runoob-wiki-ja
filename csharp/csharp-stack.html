@@ -170,14 +170,14 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div><p><strong>Stack には2つの実装方法があります：</strong></p>
 <ol><li><strong>非泛型<code>Stack</code></strong>（<code>System.Collections.Stack</code>）：任意の型のオブジェクトを格納できます（ボックス化およびボックス化解除の操作が必要）。</li><li><strong>泛型<code>Stack&lt;T&gt;</code></strong>（<code>System.Collections.Generic.Stack&lt;T&gt;</code>）：強く型指定されたオブジェクトをサポートし、ボックス化とボックス化解除を回避して、パフォーマンスを向上させます。</li></ol>
 <p><strong>Stack 特性：</strong></p>
-<ul><li><strong>后进先出</strong>：最後にスタックにプッシュされた要素が最初にポップされます。</li><li><strong>动态大小</strong>：スタックの容量は必要に応じて動的に調整されます。</li><li><strong>泛型支持</strong>：通过<code>Stack&lt;T&gt;</code>型安全性を提供し、型変換エラーを回避します。</li><li><strong>非线程安全</strong>：默认<code>Stack</code> 和 <code>Stack&lt;T&gt;</code>いずれもスレッドセーフではありません。</li></ul>
+<ul><li><strong>后进先出</strong>：最後にスタックにプッシュされた要素が最初にポップされます。</li><li><strong>动态大小</strong>：スタックの容量は必要に応じて動的に調整されます。</li><li><strong>泛型支持</strong>：通过<code>Stack&lt;T&gt;</code>型安全性を提供し、型変換エラーを回避します。</li><li><strong>非线程安全</strong>：默认<code>Stack</code>と<code>Stack&lt;T&gt;</code>いずれもスレッドセーフではありません。</li></ul>
 <h2 class="tutheader">Stack クラスのメソッドとプロパティ</h2>
-<p>下表列出了<b>Stack</b>クラスのいくつかの一般的な<b>属性</b>：</p>
+<p>以下の表に一覧を示します<b>Stack</b>クラスのいくつかの一般的な<b>属性</b>：</p>
 <table class="reference">
 <thead><tr><th>属性名称</th><th>类型</th><th>描述</th></tr></thead><tbody><tr><td><code>Count</code></td><td><code>int</code></td><td>スタック内の要素数を取得します。</td></tr><tr><td><code>SyncRoot</code></td><td><code>object</code></td><td>スタックへのアクセスを同期するためのオブジェクトを取得します（非ジェネリック）。</td></tr><tr><td><code>IsSynchronized</code></td><td><code>bool</code></td><td>スタックへのアクセスが同期されているかどうかを示します（スレッドセーフ、常に<code>false</code>）。</td></tr></tbody></table>td&gt;<td>Stack に含まれる要素の数を取得します。</td>
-<p>下表列出了<b>Stack</b>クラスのいくつかの一般的な<b>方法</b>：</p>
+<p>以下の表に一覧を示します<b>Stack</b>クラスのいくつかの一般的な<b>方法</b>：</p>
 <table class="reference">
-<thead><tr><th>方法名称</th><th>返回类型</th><th>描述</th></tr></thead><tbody><tr><td><strong>元素操作</strong></td><td></td><td></td></tr><tr><td><code>Push(object item)</code></td><td><code>void</code></td><td>要素をスタックの先頭にプッシュします。</td></tr><tr><td><code>Pop()</code></td><td><code>object</code></td><td>スタックの先頭の要素を削除して返します。</td></tr><tr><td><code>Peek()</code></td><td><code>object</code></td><td>スタックの先頭の要素を削除せずに返します。</td></tr><tr><td><code>Clear()</code></td><td><code>void</code></td><td>スタック内のすべての要素を削除します。</td></tr><tr><td><strong>检查与复制</strong></td><td></td><td></td></tr><tr><td><code>Contains(object item)</code></td><td><code>bool</code></td><td>ある要素がスタック内に存在するかどうかを判断します。</td></tr><tr><td><code>ToArray()</code></td><td><code>object[]</code></td><td>スタック内の要素を新しい配列にコピーします（順序は逆になります）。</td></tr><tr><td><code>Clone()</code></td><td><code>object</code></td><td>現在のスタックのシャローコピーを作成します。</td></tr><tr><td><code>CopyTo(Array array, int index)</code></td><td><code>void</code></td><td>スタック内の要素を既存の配列に、指定したインデックスからコピーします。</td></tr><tr><td><strong>枚举器支持</strong></td><td></td><td></td></tr><tr><td><code>GetEnumerator()</code></td><td><code>IEnumerator</code></td><td>スタック内の要素を反復処理するための列挙子を返します。</td></tr><tr><td><strong>线程安全</strong></td><td></td><td></td></tr><tr><td><code>Synchronized(Stack stack)</code></td><td><code>Stack</code></td><td>スレッドセーフなスタックラッパーを返します。</td></tr></tbody></table>
+<thead><tr><th>方法名称</th><th>返回类型</th><th>描述</th></tr></thead><tbody><tr><td><strong>元素操作</strong></td><td></td><td></td></tr><tr><td><code>Push(object item)</code></td><td><code>void</code></td><td>要素をスタックの先頭にプッシュします。</td></tr><tr><td><code>Pop()</code></td><td><code>object</code></td><td>スタックの先頭の要素を削除して返します。</td></tr><tr><td><code>Peek()</code></td><td><code>object</code></td><td>スタックの先頭の要素を削除せずに返します。</td></tr><tr><td><code>Clear()</code></td><td><code>void</code></td><td>スタック内のすべての要素を削除します。</td></tr><tr><td><strong>検査とコピー</strong></td><td></td><td></td></tr><tr><td><code>Contains(object item)</code></td><td><code>bool</code></td><td>ある要素がスタック内に存在するかどうかを判断します。</td></tr><tr><td><code>ToArray()</code></td><td><code>object[]</code></td><td>スタック内の要素を新しい配列にコピーします（順序は逆になります）。</td></tr><tr><td><code>Clone()</code></td><td><code>object</code></td><td>現在のスタックのシャローコピーを作成します。</td></tr><tr><td><code>CopyTo(Array array, int index)</code></td><td><code>void</code></td><td>スタック内の要素を既存の配列に、指定したインデックスからコピーします。</td></tr><tr><td><strong>枚举器支持</strong></td><td></td><td></td></tr><tr><td><code>GetEnumerator()</code></td><td><code>IEnumerator</code></td><td>スタック内の要素を反復処理するための列挙子を返します。</td></tr><tr><td><strong>线程安全</strong></td><td></td><td></td></tr><tr><td><code>Synchronized(Stack stack)</code></td><td><code>Stack</code></td><td>スレッドセーフなスタックラッパーを返します。</td></tr></tbody></table>
 <br/>
 <h2 class="tutheader">实例</h2>
 <p>以下の例は、スタック（Stack）の使用法を示しています。</p>
@@ -274,9 +274,9 @@ G M A
     <span style="color: #008000;">}</span><br/>
 <span style="color: #008000;">}</span><br/>
 </div></div>
-<h3><strong>Stack 与 Stack&lt;T&gt; 区别</strong></h3>
+<h3><strong>Stack と Stack&lt;T&gt; の違い</strong></h3>
 <h4><strong>Stack（非ジェネリック）</strong></h4>
-<ul><li>存储对象为<code>object</code>类型。</li><li>使用時には明示的な型変換が必要で、実行時例外が発生する可能性があります。</li></ul><h4><strong>Stack&lt;T&gt;（泛型）</strong></h4>
+<ul><li>格納オブジェクトは<code>object</code>类型。</li><li>使用時には明示的な型変換が必要で、実行時例外が発生する可能性があります。</li></ul><h4><strong>Stack&lt;T&gt;（泛型）</strong></h4>
 <ul><li>型安全性を提供し、型変換の問題を回避します。</li><li>ボックス化とボックス化解除のオーバーヘッドを回避するため、パフォーマンスが優れています。</li></ul>
 <p><a href="csharp-collection.html">C# 集合</a></p> 其他扩展
 </div>
@@ -396,11 +396,11 @@ G M A
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -689,7 +689,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

@@ -170,13 +170,13 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <br/>
 <p><img alt="1465008820-1744-Lwm1Zm21Uzalicp2hfunoBux6KUA" class="attachment-full size-full" decoding="async" height="380" loading="lazy" src="../wp-content/uploads/2016/06/1465008820-1744-Lwm1Zm21Uzalicp2hfunoBux6KUA.gif" width="620"/></p>
 <br/>
-<p>ここで一点注意が必要です。コード領域に直接変数の値を表示する機能は、比較的新しいバージョンのChromeブラウザで追加された機能です。古いバージョンのChromeブラウザを使用している場合、ブレークポイント時に変数情報を直接表示できない可能性があります。その場合は、マウスを変数名の上に移動して少し停止すると変数の値が表示されます。また、マウスで変数名を選択し、右クリックで「Add to watch」を選ぶとWatchパネルで確認できます。この方法は式にも適用できます。さらに、ブレークポイント時にConsoleパネルに切り替え、コンソールに直接変数名を入力してEnterキーを押すと変数情報を確認することもできます。この部分は比較的簡単なので、紙面の都合上、図でのデモは省略します。</p>
+<p>ここで一点注意が必要です。コード領域に直接変数の値を表示する機能は、比較の新しいバージョンのChromeブラウザで追加された機能です。古いバージョンのChromeブラウザを使用している場合、ブレークポイント時に変数情報を直接表示できない可能性があります。その場合は、マウスを変数名の上に移動して少し停止すると変数の値が表示されます。また、マウスで変数名を選択し、右クリックで「Add to watch」を選ぶとWatchパネルで確認できます。この方法は式にも適用できます。さらに、ブレークポイント時にConsoleパネルに切り替え、コンソールに直接変数名を入力してEnterキーを押すと変数情報を確認することもできます。この部分は比較的簡単なので、紙面の都合上、図でのデモは省略します。</p>
 <br/>
 <h4><strong>3.2、Debuggerブレークポイント</strong></h4>
 <br/>
 <p>いわゆるDebuggerブレークポイントは、実は私自身が名付けたもので、専門用語をどう言うのかわかりません。具体的には、コードに「debugger;」文を追加することで、コードがその文に達したときに自動的にブレークポイントが発生します。その後の操作はSourcesパネルでのブレークポイントデバッグとほぼ同じですが、唯一の違いはデバッグ完了後にその文を削除する必要があることです。</p>
 <br/>
-<p>ブレークポイントの設定方法が異なるだけで、機能はSourcesパネルでブレークポイントを追加した場合と同じなのに、なぜこのような方法が存在するのでしょうか？理由はおそらくこうです。開発中に、非同期でHTML断片（インラインJSコードを含む）を読み込む状況に遭遇することがあります。この部分のJSコードはSourcesツリーには見つからないため、開発者ツールで直接ブレークポイントを追加できません。そのため、非同期で読み込まれるスクリプトにブレークポイントを追加したい場合、「debugger;」が役に立ちます。gif画像でその効果を直接見てみましょう：</p>
+<p>ブレークポイントの設定方法が異なるだけで、機能はSourcesパネルでブークポイントを追加した場合と同じなのに、なぜこのような方法が存在するのでしょうか？理由はおそらくこうです。開発中に、非同期でHTML断片（インラインJSコードを含む）を読み込む状況に遭遇することがあります。この部分のJSコードはSourcesツリーには見つからないため、開発者ツールで直接ブレークポイントを追加できません。そのため、非同期で読み込まれるスクリプトにブレークポイントを追加したい場合、「debugger;」が役に立ちます。gif画像でその効果を直接見てみましょう：</p>
 <br/>
 <p><img alt="1465008821-1866-xQr5Nu4bh6h1njUeQaLRK1Cu6f1w" class="attachment-full size-full" decoding="async" height="338" loading="lazy" src="../wp-content/uploads/2016/06/1465008821-1866-xQr5Nu4bh6h1njUeQaLRK1Cu6f1w.gif" width="620"/></p>
 <br/>
@@ -216,7 +216,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <br/>
 <p>「XHR Breakpoints」の右側の「+」ボタンで非同期ブレークポイントに条件を追加できます。非同期リクエストがトリガーされたときのURLがこの条件を満たすと、JSロジックが自動的にブレークポイントを生成します。デモアニメーションではブレークポイントの位置を示していません。これは、デモがjQueryでカプセル化されたajaxメソッドを使用しており、コードが圧縮済みで効果が確認できないためです。実際には、XHRブレークポイントは「xhr.send()」文の位置に生成されます。</p>
 <br/>
-<p>XHRブレークポイントの強力な点は、ブレークポイントルールをカスタマイズできることです。つまり、特定の一群、特定の一つ、さらにはすべての非同期リクエストに対してブレークポイントを設定できます。非常に強力です。しかし、この機能は日常開発ではあまり使われていないようです。少なくとも私はあまり使いません。その理由はおそらく2つあります。1つ目は、この種のブレークポイントデバッグのニーズが日常業務ではそもそもあまりないこと。2つ目は、現在のフロントエンド開発はほとんどがJSフレームワークに基づいており、最も基本的なjQueryもAjaxをうまくカプセル化しているため、自分でAjaxメソッドをカプセル化する人はほとんどいません。また、プロジェクトではコードサイズを減らすために圧縮されたコードライブラリを選ぶことが多く、XHRブレークポイントの追跡が比較的難しくなっています。</p>
+<p>XHRブレークポイントの強力な点は、ブレークポイントルールをカスタマイズできることです。つまり、特定の一群、特定の一つ、さらにはすべての非同期リクエストに対してブレークポイントを設定できます。非常に強力です。しかし、この機能は日常開発ではあまり使われていないようです。少なくとも私はあまり使いません。その理由はおそらく2つあります。1つ目は、この種のブレークポイントデバッグのニーズが日常業務ではそもそもあまりないこと。2つ目は、現在のフロントエンド開発はほとんどがJSフレームワークに基づいており、最も基本的なjQueryもAjaxをうまくカプセル化しているため、自分でAjaxメソッドをカプセル化する人はほとんどいません。また、プロジェクトではコードサイズを減らすために圧縮されたコードライブラリを選ぶことが多く、XHRブレークポイントの追跡が比較の難しくなっています。</p>
 <br/>
 <h3><strong>6、Event Listener Breakpoints</strong></h3>
 <br/>
@@ -339,11 +339,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=".." class="runoob-pop">ログイン</a>！</h3>
-		<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href="..">ログイン</a>！</h3>
+<p><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">

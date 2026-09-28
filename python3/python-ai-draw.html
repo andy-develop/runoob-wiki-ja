@@ -190,7 +190,7 @@ pip install -U requests dashscope</pre>
 <span style="color: Green;font-weight:bold;">from</span> dashscope <span style="color: Green;font-weight:bold;">import</span> ImageSynthesis<br/>
 <span style="color: Green;font-weight:bold;">import</span> <span style="color: #05a;">os</span><br/>
 <br/>
-prompt <span style="color: Gray;">=</span> <span style="color: #a11;">典雅で荘厳な対聯が広間の中央に掛けられている。部屋は静かで古典的な中国風のしつらえで、机の上には青磁がいくつか置かれている。対聯の左側には「义本生知人机同道善思新」と書かれ、右側には「通云赋智乾坤启数高志远」と書かれ、横批には「智启通义」と書かれている。字体は流麗で、中央には中国風の絵画が掛かっており、その内容は岳陽楼である。</span><br/>
+prompt <span style="color: Gray;">=</span> <span style="color: #a11;">典雅で荘厳な対聯が広間の中央に掛けられている。部屋は静かで古典のな中国風のしつらえで、机の上には青磁がいくつか置かれている。対聯の左側には「義本生知人機同道善思新」と書かれ、右側には「通雲賦智乾坤啓数高志遠」と書かれ、横批には「智啓通義」と書かれている。字体は流麗で、中央には中国風の絵画が掛かっており、その内容は岳陽楼である。</span><br/>
 <br/>
 <span style="color: #a50"># 请用百炼API Key</span><br/>
 api_key <span style="color: Gray;">=</span> <span style="color: #a11;">"sk-xxx"</span><br/>
@@ -205,7 +205,7 @@ rsp <span style="color: Gray;">=</span> ImageSynthesis.<span style="color: #05a;
                           watermark<span style="color: Gray;">=</span><span style="color: Teal;">True</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">'response: %s'</span> % rsp<span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">if</span> rsp.<span style="color: #05a;">status_code</span> <span style="color: Gray;">==</span> HTTPStatus.<span style="color: #05a;">OK</span>:<br/>
-    <span style="color: #a50"># 在当前目录下保存图片</span><br/>
+    <span style="color: #a50"># カレントディレクトリに画像を保存する</span><br/>
     <span style="color: Green;font-weight:bold;">for</span> result <span style="color: Green;font-weight:bold;">in</span> rsp.<span style="color: #05a;">output</span>.<span style="color: #05a;">results</span>:<br/>
         file_name <span style="color: Gray;">=</span> PurePosixPath<span style="color: Olive;">(</span>unquote<span style="color: Olive;">(</span><span style="color: #05a;">urlparse</span><span style="color: Olive;">(</span>result.<span style="color: #05a;">url</span><span style="color: Olive;">)</span>.<span style="color: #05a;">path</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span>.<span style="color: #05a;">parts</span><span style="color: Olive;">[</span>-<span style="color: Maroon;">1</span><span style="color: Olive;">]</span><br/>
         <span style="color: Green;font-weight:bold;">with</span> <span style="color: Teal;">open</span><span style="color: Olive;">(</span><span style="color: #a11;">'./%s'</span> % file_name<span style="color: Gray;">,</span> <span style="color: #a11;">'wb+'</span><span style="color: Olive;">)</span> <span style="color: Green;font-weight:bold;">as</span> f:<br/>
@@ -374,11 +374,11 @@ response: {"status_code": 200, "request_id": "1968746e-f434-4f77-9f8c-9b1adb80e8
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -667,7 +667,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

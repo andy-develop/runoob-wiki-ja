@@ -285,7 +285,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
       <span style="color: #008000;">}</span><br/>
       <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #05a; font-weight: bold;">override</span> <span style="color: #6666CC; font-weight: bold;">int</span> area <span style="color: #008000;">(</span><span style="color: #008000;">)</span><br/>
       <span style="color: #008000;">{</span> <br/>
-         Console<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span><span style="color: #a11;">"Rectangle 类的面积："</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
+         Console<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span><span style="color: #a11;">"Rectangle クラスの面積："</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
          <span style="color: #05a; font-weight: bold;">return</span> <span style="color: #008000;">(</span>width <span style="color: #008000;">*</span> length<span style="color: #008000;">)</span><span style="color: #008000;">;</span> <br/>
       <span style="color: #008000;">}</span><br/>
    <span style="color: #008000;">}</span><br/>
@@ -307,8 +307,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 Rectangle 类的面积：
 面积： 70
 </pre>
-<p>クラス内で定義された関数を継承クラスで実装する必要がある場合、使用できるのは<b>虚方法</b>。</p><p>仮想メソッドはキーワードを使用します<b>virtual</b>声明的。</p><p>仮想メソッドは、異なる継承クラスで異なる実装を持つことができます。</p><p>仮想メソッドの呼び出しは実行時に発生します。</p>
-<p>動的多態性は<b>抽象类</b> 和 <b>虚方法</b>实现的。</p>
+<p>クラス内で定義された関数を継承クラスで実装する必要がある場合、使用できるのは<b>虚方法</b>。</p><p>仮想メソッドはキーワードを使用します<b>virtual</b>宣言された。</p><p>仮想メソッドは、異なる継承クラスで異なる実装を持つことができます。</p><p>仮想メソッドの呼び出しは実行時に発生します。</p>
+<p>動的多態性は<b>抽象类</b>と<b>虚方法</b>実装された。</p>
 <p>次の例では、Shape 基底クラスを作成し、派生クラス Circle、Rectangle、Triangle を作成します。Shape クラスには Draw という仮想メソッドがあり、各派生クラスでこのメソッドをオーバーライドして、そのクラスで指定された図形を描画します。</p>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
 <span style="color: #05a; font-weight: bold;">using</span> <span style="color: #696969;">System</span><span style="color: #008000;">;</span><br/>
@@ -324,7 +324,7 @@ Rectangle 类的面积：
     <span style="color: #696969; font-style: italic;">// 虚方法</span><br/>
     <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #05a; font-weight: bold;">virtual</span> <span style="color: #6666CC; font-weight: bold;">void</span> Draw<span style="color: #008000;">(</span><span style="color: #008000;">)</span><br/>
     <span style="color: #008000;">{</span><br/>
-        Console<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span><span style="color: #a11;">"执行基类的画图任务"</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
+        Console<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span><span style="color: #a11;">"基底クラスの描画タスクを実行する"</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
     <span style="color: #008000;">}</span><br/>
 <span style="color: #008000;">}</span><br/>
 <br/>
@@ -357,7 +357,7 @@ Rectangle 类的面积：
 <span style="color: #008000;">{</span><br/>
     <span style="color: #05a; font-weight: bold;">static</span> <span style="color: #6666CC; font-weight: bold;">void</span> Main<span style="color: #008000;">(</span><span style="color: #6666CC; font-weight: bold;">string</span><span style="color: #008000;">[</span><span style="color: #008000;">]</span> args<span style="color: #008000;">)</span><br/>
     <span style="color: #008000;">{</span><br/>
-        <span style="color: #696969; font-style: italic;">// 创建一个 List&lt;Shape&gt; 对象，并向该对象添加 Circle、Triangle 和 Rectangle</span><br/>
+        <span style="color: #696969; font-style: italic;">// List&lt;Shape&gt; オブジェクトを作成し、そのオブジェクトに Circle、Triangle と Rectangle を追加します</span><br/>
         <span style="color: #05a; font-weight: bold;">var</span> shapes <span style="color: #008000;">=</span> <span style="color: #008000;">new</span> List<span style="color: #008000;">&lt;</span>Shape<span style="color: #008000;">&gt;</span><br/>
         <span style="color: #008000;">{</span><br/>
             <span style="color: #008000;">new</span> Rectangle<span style="color: #008000;">(</span><span style="color: #008000;">)</span>,<br/>
@@ -365,7 +365,7 @@ Rectangle 类的面积：
             <span style="color: #008000;">new</span> Circle<span style="color: #008000;">(</span><span style="color: #008000;">)</span><br/>
         <span style="color: #008000;">}</span><span style="color: #008000;">;</span><br/>
 <br/>
-        <span style="color: #696969; font-style: italic;">// 使用 foreach 循环对该列表的派生类进行循环访问，并对其中的每个 Shape 对象调用 Draw 方法</span><br/>
+        <span style="color: #696969; font-style: italic;">// foreach ループを使用して、このリストの派生クラスを反復処理し、各 Shape オブジェクトの Draw メソッドを呼び出します。</span><br/>
         <span style="color: #05a; font-weight: bold;">foreach</span> <span style="color: #008000;">(</span><span style="color: #05a; font-weight: bold;">var</span> shape <span style="color: #05a; font-weight: bold;">in</span> shapes<span style="color: #008000;">)</span><br/>
         <span style="color: #008000;">{</span><br/>
             shape<span style="color: #008000;">.</span><span style="color: #05a;">Draw</span><span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
@@ -400,7 +400,7 @@ Rectangle 类的面积：
       <span style="color: #008000;">}</span><br/>
       <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #05a; font-weight: bold;">virtual</span> <span style="color: #6666CC; font-weight: bold;">int</span> area<span style="color: #008000;">(</span><span style="color: #008000;">)</span><br/>
       <span style="color: #008000;">{</span><br/>
-         Console<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span><span style="color: #a11;">"父类的面积："</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
+         Console<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span><span style="color: #a11;">"親クラスの面積："</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
          <span style="color: #05a; font-weight: bold;">return</span> <span style="color: Maroon;">0</span><span style="color: #008000;">;</span><br/>
       <span style="color: #008000;">}</span><br/>
    <span style="color: #008000;">}</span><br/>
@@ -412,7 +412,7 @@ Rectangle 类的面积：
       <span style="color: #008000;">}</span><br/>
       <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #05a; font-weight: bold;">override</span> <span style="color: #6666CC; font-weight: bold;">int</span> area <span style="color: #008000;">(</span><span style="color: #008000;">)</span><br/>
       <span style="color: #008000;">{</span><br/>
-         Console<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span><span style="color: #a11;">"Rectangle 类的面积："</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
+         Console<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span><span style="color: #a11;">"Rectangle クラスの面積："</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
          <span style="color: #05a; font-weight: bold;">return</span> <span style="color: #008000;">(</span>width <span style="color: #008000;">*</span> height<span style="color: #008000;">)</span><span style="color: #008000;">;</span> <br/>
       <span style="color: #008000;">}</span><br/>
    <span style="color: #008000;">}</span><br/>
@@ -424,7 +424,7 @@ Rectangle 类的面积：
       <span style="color: #008000;">}</span><br/>
       <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #05a; font-weight: bold;">override</span> <span style="color: #6666CC; font-weight: bold;">int</span> area<span style="color: #008000;">(</span><span style="color: #008000;">)</span><br/>
       <span style="color: #008000;">{</span><br/>
-         Console<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span><span style="color: #a11;">"Triangle 类的面积："</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
+         Console<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span><span style="color: #a11;">"Triangle クラスの面積："</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
          <span style="color: #05a; font-weight: bold;">return</span> <span style="color: #008000;">(</span>width <span style="color: #008000;">*</span> height <span style="color: #008000;">/</span> <span style="color: Maroon;">2</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span> <br/>
       <span style="color: #008000;">}</span><br/>
    <span style="color: #008000;">}</span><br/>
@@ -597,9 +597,9 @@ Triangle 类的面积：
 <strong>演算子オーバーロード：</strong></p><p>キーワード abstract は抽象クラスを宣言します：インターフェースの一部のクラス実装に使用します（派生クラスが抽象クラスを継承すると実装が完了します）。抽象クラスには抽象メソッドが含まれ、抽象メソッドは派生クラスで実装できます。</p><p>抽象クラスのルール：</p><ul><li>1.抽象クラスのインスタンスを作成できない</li><li>2. 抽象クラスの外部で抽象メソッドを定義することはできません。</li><li>3. 抽象クラスを sealed として宣言することはできません（クラスの前にキーワード sealed を付けると、そのクラスはシールクラスであり継承できないことを意味します）。</li></ul>
 <p>キーワード virtual は仮想メソッドを宣言します：継承クラスでのメソッドの実装に使用します（異なる継承クラスで異なる実装を持ちます）。</p><p>抽象クラスと仮想メソッドは、動的ポリモーフィズムを共同で実現します。</p>
 <p>注：継承クラスで仮想関数をオーバーライドするにはキーワード override を宣言する必要があります。メソッドのパラメータ渡しでは（クラス名 仮引数名）と書きます。例：public void CallArea(Shape sh)。これは shape 型のクラスを渡すことを意味します。</p><div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">yuri</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>   yuri</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  246***6318@qq.com</p></div></span>10年前 (2017-03-21)</div></div></li><!-- #comment-## -->
-<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-10740"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   p</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  roz***ech@gmail.com</p></div><div class="upvotejs" data-commid="10740" id="runoobvote-id-10740"><a class="upvote"></a> <span class="count">149</span></div></div><div class="comt-main" id="div-comment-10740"><h2>virtual 和 abstract</h2>
+<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-10740"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   p</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  roz***ech@gmail.com</p></div><div class="upvotejs" data-commid="10740" id="runoobvote-id-10740"><a class="upvote"></a> <span class="count">149</span></div></div><div class="comt-main" id="div-comment-10740"><h2>virtual と abstract</h2>
 <p>virtual と abstract はどちらも親クラスを修飾するために使われ、親クラスの定義をオーバーライドすることで、子クラスが再定義できるようにします。<ul><li>1. virtual で修飾されたメソッドは実装を持つ必要があります（単に波括弧を1組追加するだけでも構いません）。一方、abstract で修飾されたメソッドは実装を持つことはできません。</li><li>2. virtual は子クラスでオーバーライドできますが、abstract は子クラスでオーバーライドしなければなりません。</li><li>3. クラスのメンバーが abstract で修飾されている場合、そのクラスの前にも abstract を付ける必要があります。抽象クラスだけが抽象メソッドを持てるからです。</li><li>4. abstractクラスのインスタンスは作成できません。継承のみ可能で、インスタンス化はできません。</li></ul>
-<h2>重载和重写</h2>
+<h2>オーバーロードとオーバーライド</h2>
 <p>オーバーロード (overload) は、同じ関数名を異なる戻り値の型やパラメータによって区別するためのメカニズムを提供します。</p>
 <blockquote>
 <p>见：<strong><a href="../index.html" rel="nofollow">函数重载</a></strong></p>
@@ -679,13 +679,13 @@ public class Animal : Biology
 {
     Console.WriteLine("Cat Sleep");
 }</pre>
-<p>或者为：</p>
+<p>または：</p>
 <pre>public new void Sleep()
 {
     Console.WriteLine("Cat Sleep");
 } </pre>
 <p><strong>注意：</strong></p><ul><li>（1）隠蔽メソッドは、基本クラスの仮想メソッドだけでなく、基本クラスの非仮想メソッドも隠蔽できます。</li><li>（2）隠蔽メソッドでは、親クラスのインスタンスは親クラスのメソッドを呼び出し、子クラスのインスタンスは子クラスのメソッドを呼び出します。</li><li>（3）前の項目と比較すると、オーバーライドメソッドでは、子クラスの変数は子クラスがオーバーライドしたメソッドを呼び出します。親クラスの変数は、その親クラスが子クラスのインスタンスを参照しているのか、それとも自身のインスタンスを参照しているのかによります。親クラスのインスタンスを参照している場合は基底クラスのメソッドを呼び出し、派生クラスのインスタンスを参照している場合は派生クラスのメソッドを呼び出します。</li></ul>
-<blockquote><p><strong>詳細については以下を参照してください：<a href="../w3cnote/csharp-polymorphism2.html" rel="noopener nofollow" target="_blank">C# 中的多态性</a></strong></p></blockquote>
+<blockquote><p><strong>詳細については以下を参照してください：<a href="../w3cnote/csharp-polymorphism2.html" rel="noopener nofollow" target="_blank">C# における多態性</a></strong></p></blockquote>
 <div class="comt-meta wrapper"><span class="comt-author"><a href=";.html" target="_blank">Lost丶先生</a><div class="tooltip tooltip1"><p><i aria-hidden="true" class="fa fa-user"></i>Lost丶先生</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  102***8263@qq.com</p><p><i aria-hidden="true" class="fa fa-external-link"></i> <a href="../w3cnote/csharp-polymorphism2.html" rel="nofollow" target="_blank">参考地址</a></p></div></span>8年前 (2018-07-18)</div></div></li><!-- #comment-## -->
 <li class="comment even thread-even depth-1" id="comment-30595"><span class="comt-f">#0</span><div class="comt-avatar wrapper"><i aria-hidden="true" class="fa fa-user-circle" style="font-size:36px;"></i><div class="tooltip"><p><i aria-hidden="true" class="fa fa-user"></i>   Marco</p><p><i aria-hidden="true" class="fa fa-envelope"></i>  329***308@qq.com</p></div><div class="upvotejs" data-commid="30595" id="runoobvote-id-30595"><a class="upvote"></a> <span class="count">66</span></div></div><div class="comt-main" id="div-comment-30595"><p><strong>仮想メソッドの呼び出し：</strong>呼び出しに関して、子クラスで生成されたオブジェクトを使用して仮想メソッドを呼び出すと子クラスのメソッドが呼び出され、親クラスで生成されたオブジェクトを使用すると親クラスのメソッドが呼び出されます。</p>
 <p><strong>隠しメソッドの呼び出し：</strong>呼び出しに関して、子クラス型の宣言を使用して隠蔽メソッドを呼び出すと、子クラスのメソッドが呼び出されます。隠蔽されたメソッドを呼び出したい場合は、親クラス型の宣言を使用して呼び出す必要があります。</p>
@@ -958,11 +958,11 @@ False is boolean.</pre><div class="comt-meta wrapper"><span class="comt-author">
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> 分享笔记前必须<a href=";.html" class="runoob-pop">登录</a>！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> 分享笔记前必须<a class="runoob-pop" href=";.html">登录</a>！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1251,7 +1251,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

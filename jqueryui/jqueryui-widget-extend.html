@@ -369,9 +369,9 @@ $( "&lt;div&gt;" ).superDialog();
 </pre>
 <p>このコードを実行すると、問題が1つあります。私たちは<code>open()</code>のデフォルトの動作をオーバーライドしたため、dialog（ダイアログ）は画面に表示されなくなります。</p>
 <p>プロトタイプオブジェクト上でメソッドを使用するとき、実際には元のメソッドをオーバーライドし、プロトタイプチェーン内で新しいメソッドを使用しています。</p>
-<p>親ウィジェットのメソッドを利用可能にするために、ウィジェット・ファクトリー（Widget Factory）は2つのメソッドを提供します -<code>_super()</code> 和 <code>_superApply()</code>。</p>
-<h3>使用<code>_super()</code> 和 <code>_superApply()</code>親ウィジェットにアクセスする</h3>
-<p><a href="./api-jquery-widget.html"><code>_super()</code></a> 和 <a href="./api-jquery-widget.html"><code>_superApply()</code></a>親ウィジェット内で同じメソッドを呼び出します。次の例を見てください。前の例と同様に、この例でも<code>open()</code>メソッドをオーバーライドして<code>"open"</code>を記録します。ただし、今回は<code>_super()</code>呼び出しているのは dialog（ダイアログ）の<code>open()</code>メソッドであり、ダイアログを開きます。</p>
+<p>親ウィジェットのメソッドを利用可能にするために、ウィジェット・ファクトリー（Widget Factory）は2つのメソッドを提供します -<code>_super()</code>と<code>_superApply()</code>。</p>
+<h3>使用<code>_super()</code>と<code>_superApply()</code>親ウィジェットにアクセスする</h3>
+<p><a href="./api-jquery-widget.html"><code>_super()</code></a>と<a href="./api-jquery-widget.html"><code>_superApply()</code></a>親ウィジェット内で同じメソッドを呼び出します。次の例を見てください。前の例と同様に、この例でも<code>open()</code>メソッドをオーバーライドして<code>"open"</code>を記録します。ただし、今回は<code>_super()</code>呼び出しているのは dialog（ダイアログ）の<code>open()</code>メソッドであり、ダイアログを開きます。</p>
 <pre>
 $.widget( "custom.superDialog", $.ui.dialog, {
     open: function() {
@@ -384,7 +384,7 @@ $.widget( "custom.superDialog", $.ui.dialog, {
  
 $( "&lt;div&gt;" ).superDialog();
 </pre>
-<p><code>_super()</code> 和 <code>_superApply()</code>実際には元の<code>Function.prototype.call()</code> 和 <code>Function.prototype.apply()</code>メソッドと同等です。したがって、<code>_super()</code>はパラメータリストを受け取り、<code>_superApply()</code>は配列をパラメータとして受け取ります。次の例は、この2つの違いを示しています。</p>
+<p><code>_super()</code>と<code>_superApply()</code>実際には元の<code>Function.prototype.call()</code>と<code>Function.prototype.apply()</code>メソッドと同等です。したがって、<code>_super()</code>はパラメータリストを受け取り、<code>_superApply()</code>は配列をパラメータとして受け取ります。次の例は、この2つの違いを示しています。</p>
 <pre>
 $.widget( "custom.superDialog", $.ui.dialog, {
     _setOption: function( key, value ) {
@@ -576,11 +576,11 @@ $( ":data(ui-dialog)" ).dialog( "close" );
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>が必要です！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>が必要です！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -880,7 +880,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">

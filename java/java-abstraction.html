@@ -666,7 +666,7 @@ public class BigDogs extends Dog{
 <h3>2、設計レベルの違い</h3>
 <p><strong>1</strong>）抽象クラスはある事物の抽象化、つまりクラスの抽象化であり、インターフェースは振る舞いの抽象化です。抽象クラスはクラス全体を属性や振る舞いを含めて抽象化しますが、インターフェースはクラスの一部（振る舞い）を抽象化します。簡単な例を挙げると、飛行機と鳥は異なる種類の事物ですが、両方とも飛ぶという共通点があります。設計する際、飛行機をクラス Airplane として設計し、鳥をクラス Bird として設計できますが、しかし～を<strong>飞行</strong>この特性もクラスとして設計されるため、それは単なる振る舞い特性であり、ある種類の事物の抽象的な記述ではありません。この場合、飛行をインターフェースFlyとして設計し、メソッドfly()を含めることができます。そして、AirplaneとBirdはそれぞれ自分の必要に応じてFlyインターフェースを実装します。さらに、異なる種類の飛行機、例えば戦闘機や民間機などは直接Airplaneを継承すればよく、鳥についても同様で、異なる種類の鳥は直接Birdクラスを継承すればよいです。ここからわかるように、継承は「である」の関係であり、インターフェースの実装は「持っているかどうか」の関係です。あるクラスが抽象クラスを継承した場合、そのサブクラスは必ず抽象クラスの一種であることになります。一方、インターフェースの実装は、持っているか持っていないか、備わっているかどうかの関係です。例えば、鳥が飛べるかどうか（または飛行という特性を備えているかどうか）について、飛べるならこのインターフェースを実装でき、飛べないならこのインターフェースを実装しません。</p>
 <p><strong>2）</strong>設計レベルが異なり、抽象クラスは多くのサブクラスの親クラスとして、テンプレート式設計です。一方、インターフェースは行動規範であり、放射式設計です。テンプレート式設計とは何か？最も簡単な例として、皆さんは ppt の中のテンプレートを使ったことがあるでしょう。テンプレート A を使って ppt B と ppt C をデザインした場合、ppt B と ppt C の共通部分がテンプレート A です。それらの共通部分を変更する必要があれば、テンプレート A だけを変更すればよく、ppt B と ppt C を再度変更する必要はありません。一方、放射式設計とは、例えば、あるエレベーターにすべて特定の警報器が取り付けられている場合、警報器を更新する必要があれば、全てを更新しなければなりません。つまり、抽象クラスでは、新しいメソッドを追加する必要がある場合、抽象クラスに直接具体的な実装を追加でき、サブクラスは変更しなくても構いません。しかしインターフェースではそれはできず、インターフェースが変更された場合、そのインターフェースを実装するすべてのクラスが対応する変更を行う必要があります。</p>
-<p>次に、ネット上で最も広く知られている例を見てみましょう：ドアと警報の例です。ドアにはすべて<strong>open()</strong> 和 <strong>close()</strong>2つの動作があり、このとき抽象クラスとインターフェースを通じてこの抽象概念を定義できます：</p>
+<p>次に、ネット上で最も広く知られている例を見てみましょう：ドアと警報の例です。ドアにはすべて<strong>open()</strong>と<strong>close()</strong>2つの動作があり、このとき抽象クラスとインターフェースを通じてこの抽象概念を定義できます：</p>
 <pre>abstract class Door {
     public abstract void open();
     public abstract void close();
@@ -709,11 +709,11 @@ class AlarmDoor extends Door implements Alarm {
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
 <h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
-<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
-	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
-	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
-		<h3 class="text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> ノートを共有する前に<a href=";.html" class="runoob-pop">ログイン</a>する必要があります！</h3>
-		<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br/>
+<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
+<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
+<h3 class="text-muted"><i aria-hidden="true" class="fa fa-info-circle"></i> ノートを共有する前に<a class="runoob-pop" href=";.html">ログイン</a>する必要があります！</h3>
+<p><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
 <div class="comt">
@@ -1002,7 +1002,7 @@ function coll() {
 
 })();
 </script>
-<!-- 反馈对话框开始 -->
+フィードバックダイアログ開始
 <script src="../wp-content/themes/runoob/assets/js/runoob-article-dir.min.js"></script>
 <div class="fixed-btn">
 <a class="go-top" href="#" title="返回顶部">
