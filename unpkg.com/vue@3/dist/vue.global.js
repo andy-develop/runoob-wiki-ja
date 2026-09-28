@@ -10840,7 +10840,7 @@ Component that was made reactive: `,
     if (typeof window === "undefined") {
       return;
     }
-    const vueStyle = { style: "color:#3ba776" };
+    const vueStyle = { style: "color:#3B71A7" };
     const numberStyle = { style: "color:#1677ff" };
     const stringStyle = { style: "color:#f5222d" };
     const keywordStyle = { style: "color:#eb2f96" };

@@ -26,8 +26,8 @@
         '#bm-toast-box{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);z-index:9999;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none}',
         '.bm-toast{padding:7px 18px;border-radius:20px;font-size:13px;font-family:system-ui,sans-serif;white-space:nowrap;animation:bmIn .2s ease;box-shadow:0 2px 10px rgba(0,0,0,.15)}',
         '.bm-toast.out{animation:bmOut .2s ease forwards}',
-        '.bm-toast.success{background:#eaf5ec;color:#2d7a3a}',
-        '.bm-toast.warning{background:#fef3dc;color:#64854c}',
+        '.bm-toast.success{background:#eaf5ec;color:#3D71A6}',
+        '.bm-toast.warning{background:#fef3dc;color:#5B80A6}',
         '.bm-toast.info{background:#f2f2f2;color:#555}',
         '.bm-toast.error{background:#fdecea;color:#c0392b}',
         '@keyframes bmIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}',
@@ -43,7 +43,7 @@
         '#bm-panel .bm-close:hover{background:#eee;color:#333}',
         '#bm-panel .bm-tabs{display:flex;border-bottom:1px solid #e8e4da;padding:0 16px;flex-shrink:0}',
         '#bm-panel .bm-tab{padding:9px 0;margin-right:20px;font:13px system-ui,sans-serif;cursor:pointer;color:#999;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;user-select:none}',
-        '#bm-panel .bm-tab.on{color:#1a1814;border-color:#64854c}',
+        '#bm-panel .bm-tab.on{color:#1a1814;border-color:#5B80A6}',
         '#bm-panel .bm-pane{display:none;flex-direction:column;flex:1;overflow:hidden}',
         '#bm-panel .bm-pane.on{display:flex}',
         '#bm-panel .bm-toolbar{padding:7px 16px;display:flex;justify-content:flex-end;flex-shrink:0}',
@@ -55,11 +55,11 @@
         '#bm-panel .bm-item{display:flex;align-items:flex-start;gap:8px;padding:10px 0;border-bottom:1px solid #f0ede6;animation:bmIn .18s ease}',
         '#bm-panel .bm-item:last-child{border-bottom:none}',
         '#bm-panel .bm-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:5px}',
-        '.bm-pane[data-pane=bookmarks] .bm-dot{background:#64854c}',
+        '.bm-pane[data-pane=bookmarks] .bm-dot{background:#5B80A6}',
         '.bm-pane[data-pane=history] .bm-dot{background:#bbb}',
         '#bm-panel .bm-body{flex:1;min-width:0}',
         '#bm-panel .bm-title{font-size:13px;line-height:1.5;color:#1a1814;text-decoration:none;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color .15s}',
-        '#bm-panel .bm-title:hover{color:#64854c}',
+        '#bm-panel .bm-title:hover{color:#5B80A6}',
         '#bm-panel .bm-date{font-size:11px;color:#bbb;margin-top:3px;font-family:system-ui,sans-serif}',
         '#bm-panel .bm-del{width:24px;height:24px;border:none;background:transparent;cursor:pointer;color:#ccc;font-size:15px;line-height:24px;text-align:center;border-radius:5px;padding:0;flex-shrink:0;transition:background .15s,color .15s}',
         '#bm-panel .bm-del:hover{background:#fdecea;color:#c0392b}',
@@ -67,8 +67,8 @@
         '#bm-panel .bm-empty i{font-size:28px;display:block;margin-bottom:8px;color:#ddd}',
 
         '.fixed-btn .writer{position:relative}',
-        '.fixed-btn .writer.bm-on i{color:#64854c}',
-        '.bm-badge{position:absolute;top:-4px;right:-4px;width:16px;height:16px;border-radius:50%;background:#64854c;color:#fff;font:700 10px/16px system-ui,sans-serif;text-align:center;display:none}',
+        '.fixed-btn .writer.bm-on i{color:#5B80A6}',
+        '.bm-badge{position:absolute;top:-4px;right:-4px;width:16px;height:16px;border-radius:50%;background:#5B80A6;color:#fff;font:700 10px/16px system-ui,sans-serif;text-align:center;display:none}',
         '.bm-badge.show{display:block}'
       ].join('')).appendTo('head');
 
@@ -77,7 +77,7 @@
         '<div id="bm-panel-overlay"></div>' +
         '<div id="bm-panel">' +
           '<div class="bm-ph">' +
-            '<h2><i class="fa fa-bookmark-o" style="margin-right:7px;color:#64854c"></i>我的收藏</h2>' +
+            '<h2><i class="fa fa-bookmark-o" style="margin-right:7px;color:#5B80A6"></i>我的收藏</h2>' +
             '<button class="bm-close" id="bm-close"><i class="fa fa-times"></i></button>' +
           '</div>' +
           '<div class="bm-tabs">' +

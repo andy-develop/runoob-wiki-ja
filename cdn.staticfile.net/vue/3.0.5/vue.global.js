@@ -7832,7 +7832,7 @@ var Vue = (function (exports) {
       if ( typeof window === 'undefined') {
           return;
       }
-      const vueStyle = { style: 'color:#3ba776' };
+      const vueStyle = { style: 'color:#3B71A7' };
       const numberStyle = { style: 'color:#0b1bc9' };
       const stringStyle = { style: 'color:#b62e24' };
       const keywordStyle = { style: 'color:#9d288c' };

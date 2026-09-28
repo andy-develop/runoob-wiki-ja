@@ -20844,11 +20844,11 @@ var globalDefault = {
     // https://dribbble.com/shots/1065960-Infographic-Pie-chart-visualization
     // color: ['#5793f3', '#d14a61', '#fd9c35', '#675bba', '#fec42c', '#dd4444', '#d4df5a', '#cd4870'],
     // Light colors:
-    // color: ['#bcd3bb', '#e88f70', '#edc1a5', '#9dc5c8', '#e1e8c8', '#7b7c68', '#e5b5b5', '#f0b489', '#928ea8', '#bda29a'],
-    // color: ['#cc5664', '#9bd6ec', '#ea946e', '#8acaaa', '#f1ec64', '#ee8686', '#a48dc1', '#5da6bc', '#b9dcae'],
+    // color: ['#BBC7D3', '#e88f70', '#edc1a5', '#9dc5c8', '#e1e8c8', '#7b7c68', '#e5b5b5', '#f0b489', '#928ea8', '#bda29a'],
+    // color: ['#cc5664', '#9bd6ec', '#ea946e', '#6F9DCA', '#f1ec64', '#ee8686', '#a48dc1', '#5da6bc', '#AEC5DC'],
     // Dark colors:
     color: [
-        '#c23531', '#2f4554', '#61a0a8', '#d48265', '#91c7ae', '#749f83',
+        '#c23531', '#2f4554', '#61a0a8', '#d48265', '#6D9AC7', '#5B80A6',
         '#ca8622', '#bda29a', '#6e7074', '#546570', '#c4ccd3'
     ],
 
@@ -26704,7 +26704,7 @@ function mockMethods(target, Clz) {
 */
 
 var colorAll = [
-    '#37A2DA', '#32C5E9', '#67E0E3', '#9FE6B8', '#FFDB5C', '#ff9f7f',
+    '#37A2DA', '#32C5E9', '#67E0E3', '#7FB2E6', '#FFDB5C', '#ff9f7f',
     '#fb7293', '#E062AE', '#E690D1', '#e7bcf3', '#9d96f5', '#8378EA', '#96BFFF'
 ];
 
@@ -26715,7 +26715,7 @@ var lightTheme = {
     colorLayer: [
         ['#37A2DA', '#ffd85c', '#fd7b5f'],
         ['#37A2DA', '#67E0E3', '#FFDB5C', '#ff9f7f', '#E062AE', '#9d96f5'],
-        ['#37A2DA', '#32C5E9', '#9FE6B8', '#FFDB5C', '#ff9f7f', '#fb7293', '#e7bcf3', '#8378EA', '#96BFFF'],
+        ['#37A2DA', '#32C5E9', '#7FB2E6', '#FFDB5C', '#ff9f7f', '#fb7293', '#e7bcf3', '#8378EA', '#96BFFF'],
         colorAll
     ]
 };
@@ -26772,8 +26772,8 @@ var axisCommon = function () {
 };
 
 var colorPalette = [
-    '#dd6b66', '#759aa0', '#e69d87', '#8dc1a9', '#ea7e53',
-    '#eedd78', '#73a373', '#73b9bc', '#7289ab', '#91ca8c', '#f49f42'
+    '#dd6b66', '#759aa0', '#e69d87', '#6A96C1', '#ea7e53',
+    '#eedd78', '#5B80A6', '#73b9bc', '#7289ab', '#6F9DCA', '#f49f42'
 ];
 var theme = {
     color: colorPalette,
@@ -26866,9 +26866,9 @@ var theme = {
         itemStyle: {
             normal: {
                 color: '#FD1050',
-                color0: '#0CF49B',
+                color0: '#0C80F4',
                 borderColor: '#FD1050',
-                borderColor0: '#0CF49B'
+                borderColor0: '#0C80F4'
             }
         }
     }
@@ -59035,7 +59035,7 @@ var GaugeSeries = SeriesModel.extend({
             // 默认显示，属性show控制显示与否
             show: true,
             lineStyle: {       // 属性lineStyle控制线条样式
-                color: [[0.2, '#91c7ae'], [0.8, '#63869e'], [1, '#c23531']],
+                color: [[0.2, '#6D9AC7'], [0.8, '#63869e'], [1, '#c23531']],
                 width: 30
             }
         },

@@ -1267,7 +1267,7 @@ Ajax.Request = Class.create(Ajax.Base, {
 
       /* Force "Connection: close" for older Mozilla browsers to work
        * around a bug where XMLHttpRequest sends an incorrect
-       * Content-length header. See Mozilla Bugzilla #246651.
+       * Content-length header. See Mozilla Bugzilla #3A70A6.
        */
       if (this.transport.overrideMimeType &&
           (navigator.userAgent.match(/Gecko\/(\d{4})/) || [0,2005])[1] < 2005)

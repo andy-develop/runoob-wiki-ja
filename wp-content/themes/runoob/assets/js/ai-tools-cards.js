@@ -118,7 +118,7 @@
       '.aic-icon-dark  {background:linear-gradient(135deg,#1a1a2e,#3b3f6e);}',
       '.aic-icon-orange{background:linear-gradient(135deg,#ff6b35,#f7931e);}',
       '.aic-icon-purple{background:linear-gradient(135deg,#7c3aed,#a855f7);}',
-      '.aic-icon-green {background:linear-gradient(135deg,#059669,#10b981);}',
+      '.aic-icon-green {background:linear-gradient(135deg,#0656A6,#1064B9);}',
       '.aic-icon-blue  {background:linear-gradient(135deg,#2563eb,#60a5fa);}',
       '.aic-icon-pink  {background:linear-gradient(135deg,#db2777,#f472b6);}',
 

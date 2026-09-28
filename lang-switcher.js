@@ -62,11 +62,11 @@
         btn.textContent = LANGS[lang].short;
         btn.title = LANGS[lang].label;
         btn.style.cssText = 'display:inline-block;padding:8px 14px;border-radius:20px;text-decoration:none;font-size:13px;font-weight:700;transition:background 0.2s;cursor:pointer;' + (isCurrent
-            ? 'background:rgba(255,255,255,0.9);color:#5c9e6e;box-shadow:0 2px 10px rgba(0,0,0,0.1);'
-            : 'background:#5c9e6e;color:#fff;box-shadow:0 2px 10px rgba(0,0,0,0.2);');
+            ? 'background:rgba(255,255,255,0.9);color:#5B80A6;box-shadow:0 2px 10px rgba(0,0,0,0.1);'
+            : 'background:#5B80A6;color:#fff;box-shadow:0 2px 10px rgba(0,0,0,0.2);');
         if (!isCurrent) {
-            btn.onmouseover = function() { this.style.background = '#4a8a5c'; };
-            btn.onmouseout = function() { this.style.background = '#5c9e6e'; };
+            btn.onmouseover = function() { this.style.background = '#597FA6'; };
+            btn.onmouseout = function() { this.style.background = '#5B80A6'; };
             btn.onclick = function() {
                 try { localStorage.setItem('preferred_lang', lang); } catch(e) {}
             };

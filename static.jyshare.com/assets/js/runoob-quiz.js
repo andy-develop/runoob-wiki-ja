@@ -16,7 +16,7 @@
 .runoob-quiz-header h1 {
     font-size: 1.875rem;
     font-weight: bold;
-    color: #64854c;
+    color: #5B80A6;
     margin-bottom: 0.5rem;
 }
 .runoob-quiz-header p {
@@ -41,7 +41,7 @@
 .runoob-quiz-option:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-color: #64854c;
+    border-color: #5B80A6;
 }
 .runoob-quiz-option-content {
     display: flex;
@@ -59,19 +59,19 @@
     margin-right: 0.75rem;
 }
 .runoob-quiz-option.selected .runoob-quiz-option-letter {
-    background-color: #64854c;
+    background-color: #5B80A6;
     color: white;
 }
 .runoob-quiz-correct {
-    background-color: #d1fae5;
-    border-color: #64854c;
+    background-color: #D1E6FA;
+    border-color: #5B80A6;
 }
 .runoob-quiz-incorrect {
     background-color: #fee2e2;
     border-color: #ef4444;
 }
 .runoob-quiz-progress-bar {
-    background-color: #64854c;
+    background-color: #5B80A6;
     height: 0.5rem;
     transition: width 0.3s ease-in-out;
 }
@@ -82,7 +82,7 @@
 }
 .runoob-quiz-question-number {
     background-color: #e0e7ff;
-    color: #64854c;
+    color: #5B80A6;
     padding: 0.25rem 0.75rem;
     border-radius: 9999px;
     font-size: 1em;
@@ -110,11 +110,11 @@
     transition: background-color 0.3s ease;
 }
 .runoob-quiz-btn-primary {
-    background-color: #64854c;
+    background-color: #5B80A6;
     color: white;
 }
 .runoob-quiz-btn-primary:hover {
-    background-color: #1d7e09;
+    background-color: #0C59A6;
 }
 .runoob-quiz-btn-secondary {
     background-color: #e5e7eb;
@@ -133,7 +133,7 @@
 .runoob-quiz-score-display {
     font-size: 2.25rem;
     font-weight: bold;
-    color: #64854c;
+    color: #5B80A6;
     margin: 1rem 0;
 }
 .runoob-quiz-result-message {
