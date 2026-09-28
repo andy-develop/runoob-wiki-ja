@@ -26,7 +26,7 @@
         '#bm-toast-box{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);z-index:9999;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none}',
         '.bm-toast{padding:7px 18px;border-radius:20px;font-size:13px;font-family:system-ui,sans-serif;white-space:nowrap;animation:bmIn .2s ease;box-shadow:0 2px 10px rgba(0,0,0,.15)}',
         '.bm-toast.out{animation:bmOut .2s ease forwards}',
-        '.bm-toast.success{background:#eaf5ec;color:#3D71A6}',
+        '.bm-toast.success{background:#EAF0F5;color:#3D71A6}',
         '.bm-toast.warning{background:#fef3dc;color:#5B80A6}',
         '.bm-toast.info{background:#f2f2f2;color:#555}',
         '.bm-toast.error{background:#fdecea;color:#c0392b}',
