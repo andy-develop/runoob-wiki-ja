@@ -305,10 +305,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># Ubuntu/Debian</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> <span style="color: #c20cb9; font-weight: bold;">apt-get install</span> auditd<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> <span style="color: #C20CB9; font-weight: bold;">apt-get install</span> auditd<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># CentOS/RHEL</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> <span style="color: #c20cb9; font-weight: bold;">yum install</span> audit<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> <span style="color: #C20CB9; font-weight: bold;">yum install</span> audit<br/>
 </div>
 </div>
 <h3>auditd サービスの起動と有効化</h3>
@@ -316,13 +316,13 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># サービスを起動</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> systemctl start auditd<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> systemctl start auditd<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># 自動起動を設定</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> systemctl <span style="color: #7a0874; font-weight: bold;">enable</span> auditd<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> systemctl <span style="color: #7A0874; font-weight: bold;">enable</span> auditd<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># サービス状態を確認</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> systemctl status auditd<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> systemctl status auditd<br/>
 </div>
 </div>
 <hr/>
@@ -404,7 +404,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># /etc/passwd ファイルの読み書きと属性変更を監視</span><br/>
-auditctl <span style="color: #660033;">-w</span> <span style="color: #000000; font-weight: bold;">/</span>etc<span style="color: #000000; font-weight: bold;">/</span><span style="color: #c20cb9; font-weight: bold;">passwd</span> <span style="color: #660033;">-p</span> rwxa <span style="color: #660033;">-k</span> passwd_access<br/>
+auditctl <span style="color: #660033;">-w</span> <span style="color: #000000; font-weight: bold;">/</span>etc<span style="color: #000000; font-weight: bold;">/</span><span style="color: #C20CB9; font-weight: bold;">passwd</span> <span style="color: #660033;">-p</span> rwxa <span style="color: #660033;">-k</span> passwd_access<br/>
 </div>
 </div>
 <ul>
@@ -417,7 +417,7 @@ auditctl <span style="color: #660033;">-w</span> <span style="color: #000000; fo
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># sudo を使用するすべてのコマンドを監視</span><br/>
-auditctl <span style="color: #660033;">-a</span> always,<span style="color: #7a0874; font-weight: bold;">exit</span> <span style="color: #660033;">-F</span> <span style="color: #007800;">arch</span>=b64 <span style="color: #660033;">-S</span> execve <span style="color: #660033;">-F</span> <span style="color: #007800;">path</span>=<span style="color: #000000; font-weight: bold;">/</span>usr<span style="color: #000000; font-weight: bold;">/</span>bin<span style="color: #000000; font-weight: bold;">/</span><span style="color: #c20cb9; font-weight: bold;">sudo</span> <span style="color: #660033;">-k</span> sudo_cmds<br/>
+auditctl <span style="color: #660033;">-a</span> always,<span style="color: #7A0874; font-weight: bold;">exit</span> <span style="color: #660033;">-F</span> <span style="color: #007800;">arch</span>=b64 <span style="color: #660033;">-S</span> execve <span style="color: #660033;">-F</span> <span style="color: #007800;">path</span>=<span style="color: #000000; font-weight: bold;">/</span>usr<span style="color: #000000; font-weight: bold;">/</span>bin<span style="color: #000000; font-weight: bold;">/</span><span style="color: #C20CB9; font-weight: bold;">sudo</span> <span style="color: #660033;">-k</span> sudo_cmds<br/>
 </div>
 </div>
 <ul>
@@ -430,7 +430,7 @@ auditctl <span style="color: #660033;">-a</span> always,<span style="color: #7a0
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># UID が 500 より大きいユーザーによるファイル削除を監視</span><br/>
-auditctl <span style="color: #660033;">-a</span> always,<span style="color: #7a0874; font-weight: bold;">exit</span> <span style="color: #660033;">-S</span> <span style="color: #c20cb9; font-weight: bold;">unlink</span> <span style="color: #660033;">-S</span> unlinkat <span style="color: #660033;">-S</span> rename <span style="color: #660033;">-S</span> renameat <span style="color: #660033;">-F</span> auid<span style="color: #000000; font-weight: bold;">&amp;</span>gt;=<span style="color: #000000;">500</span> <span style="color: #660033;">-F</span> auid<span style="color: #000000; font-weight: bold;">!</span>=<span style="color: #000000;">4294967295</span> <span style="color: #660033;">-k</span> delete_files<br/>
+auditctl <span style="color: #660033;">-a</span> always,<span style="color: #7A0874; font-weight: bold;">exit</span> <span style="color: #660033;">-S</span> <span style="color: #C20CB9; font-weight: bold;">unlink</span> <span style="color: #660033;">-S</span> unlinkat <span style="color: #660033;">-S</span> rename <span style="color: #660033;">-S</span> renameat <span style="color: #660033;">-F</span> auid<span style="color: #000000; font-weight: bold;">&amp;</span>gt;=<span style="color: #000000;">500</span> <span style="color: #660033;">-F</span> auid<span style="color: #000000; font-weight: bold;">!</span>=<span style="color: #000000;">4294967295</span> <span style="color: #660033;">-k</span> delete_files<br/>
 </div>
 </div>
 <hr/>
@@ -476,7 +476,7 @@ aureport <span style="color: #660033;">--summary</span><br/>
 auditctl <span style="color: #660033;">-w</span> <span style="color: #000000; font-weight: bold;">/</span>etc<span style="color: #000000; font-weight: bold;">/</span>shadow <span style="color: #660033;">-p</span> wa <span style="color: #660033;">-k</span> shadow_mod<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># 関連ログを確認</span><br/>
-ausearch <span style="color: #660033;">-k</span> shadow_mod <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #c20cb9; font-weight: bold;">less</span><br/>
+ausearch <span style="color: #660033;">-k</span> shadow_mod <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #C20CB9; font-weight: bold;">less</span><br/>
 </div>
 </div>
 <h3>例2：ユーザー権限昇格の監視</h3>
@@ -484,11 +484,11 @@ ausearch <span style="color: #660033;">-k</span> shadow_mod <span style="color: 
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># sudo または su を使用するすべてのコマンドを監視</span><br/>
-auditctl <span style="color: #660033;">-a</span> always,<span style="color: #7a0874; font-weight: bold;">exit</span> <span style="color: #660033;">-F</span> <span style="color: #007800;">arch</span>=b64 <span style="color: #660033;">-S</span> execve <span style="color: #660033;">-F</span> <span style="color: #007800;">path</span>=<span style="color: #000000; font-weight: bold;">/</span>usr<span style="color: #000000; font-weight: bold;">/</span>bin<span style="color: #000000; font-weight: bold;">/</span><span style="color: #c20cb9; font-weight: bold;">sudo</span> <span style="color: #660033;">-k</span> priv_esc<br/>
-auditctl <span style="color: #660033;">-a</span> always,<span style="color: #7a0874; font-weight: bold;">exit</span> <span style="color: #660033;">-F</span> <span style="color: #007800;">arch</span>=b64 <span style="color: #660033;">-S</span> execve <span style="color: #660033;">-F</span> <span style="color: #007800;">path</span>=<span style="color: #000000; font-weight: bold;">/</span>usr<span style="color: #000000; font-weight: bold;">/</span>bin<span style="color: #000000; font-weight: bold;">/</span><span style="color: #c20cb9; font-weight: bold;">su</span> <span style="color: #660033;">-k</span> priv_esc<br/>
+auditctl <span style="color: #660033;">-a</span> always,<span style="color: #7A0874; font-weight: bold;">exit</span> <span style="color: #660033;">-F</span> <span style="color: #007800;">arch</span>=b64 <span style="color: #660033;">-S</span> execve <span style="color: #660033;">-F</span> <span style="color: #007800;">path</span>=<span style="color: #000000; font-weight: bold;">/</span>usr<span style="color: #000000; font-weight: bold;">/</span>bin<span style="color: #000000; font-weight: bold;">/</span><span style="color: #C20CB9; font-weight: bold;">sudo</span> <span style="color: #660033;">-k</span> priv_esc<br/>
+auditctl <span style="color: #660033;">-a</span> always,<span style="color: #7A0874; font-weight: bold;">exit</span> <span style="color: #660033;">-F</span> <span style="color: #007800;">arch</span>=b64 <span style="color: #660033;">-S</span> execve <span style="color: #660033;">-F</span> <span style="color: #007800;">path</span>=<span style="color: #000000; font-weight: bold;">/</span>usr<span style="color: #000000; font-weight: bold;">/</span>bin<span style="color: #000000; font-weight: bold;">/</span><span style="color: #C20CB9; font-weight: bold;">su</span> <span style="color: #660033;">-k</span> priv_esc<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># 権限昇格レポートを生成</span><br/>
-aureport <span style="color: #660033;">--start</span> today <span style="color: #660033;">--event</span> <span style="color: #660033;">--summary</span> <span style="color: #660033;">-i</span> <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #c20cb9; font-weight: bold;">grep</span> priv_esc<br/>
+aureport <span style="color: #660033;">--start</span> today <span style="color: #660033;">--event</span> <span style="color: #660033;">--summary</span> <span style="color: #660033;">-i</span> <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #C20CB9; font-weight: bold;">grep</span> priv_esc<br/>
 </div>
 </div>
 <h3>例3：SSH ログインの監視</h3>
@@ -496,10 +496,10 @@ aureport <span style="color: #660033;">--start</span> today <span style="color: 
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># SSH ログインの成功と失敗を監視</span><br/>
-auditctl <span style="color: #660033;">-a</span> always,<span style="color: #7a0874; font-weight: bold;">exit</span> <span style="color: #660033;">-F</span> <span style="color: #007800;">arch</span>=b64 <span style="color: #660033;">-S</span> execve <span style="color: #660033;">-F</span> <span style="color: #007800;">path</span>=<span style="color: #000000; font-weight: bold;">/</span>usr<span style="color: #000000; font-weight: bold;">/</span>sbin<span style="color: #000000; font-weight: bold;">/</span>sshd <span style="color: #660033;">-k</span> sshd_login<br/>
+auditctl <span style="color: #660033;">-a</span> always,<span style="color: #7A0874; font-weight: bold;">exit</span> <span style="color: #660033;">-F</span> <span style="color: #007800;">arch</span>=b64 <span style="color: #660033;">-S</span> execve <span style="color: #660033;">-F</span> <span style="color: #007800;">path</span>=<span style="color: #000000; font-weight: bold;">/</span>usr<span style="color: #000000; font-weight: bold;">/</span>sbin<span style="color: #000000; font-weight: bold;">/</span>sshd <span style="color: #660033;">-k</span> sshd_login<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># SSH ログイン記録を確認</span><br/>
-ausearch <span style="color: #660033;">-k</span> sshd_login <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #c20cb9; font-weight: bold;">grep</span> <span style="color: #a10;">'acct="user"'</span> <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #c20cb9; font-weight: bold;">grep</span> <span style="color: #a10;">'res=success'</span><br/>
+ausearch <span style="color: #660033;">-k</span> sshd_login <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #C20CB9; font-weight: bold;">grep</span> <span style="color: #a10;">'acct="user"'</span> <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #C20CB9; font-weight: bold;">grep</span> <span style="color: #a10;">'res=success'</span><br/>
 </div>
 </div>
 <hr/>
@@ -518,7 +518,7 @@ num_logs = <span style="color: #000000;">10</span><br/>
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># ルールファイル /etc/audit/rules.d/my.rules を作成</span><br/>
-<span style="color: #660033;">-w</span> <span style="color: #000000; font-weight: bold;">/</span>etc<span style="color: #000000; font-weight: bold;">/</span><span style="color: #c20cb9; font-weight: bold;">passwd</span> <span style="color: #660033;">-p</span> wa <span style="color: #660033;">-k</span> passwd_changes<br/>
+<span style="color: #660033;">-w</span> <span style="color: #000000; font-weight: bold;">/</span>etc<span style="color: #000000; font-weight: bold;">/</span><span style="color: #C20CB9; font-weight: bold;">passwd</span> <span style="color: #660033;">-p</span> wa <span style="color: #660033;">-k</span> passwd_changes<br/>
 <span style="color: #660033;">-w</span> <span style="color: #000000; font-weight: bold;">/</span>etc<span style="color: #000000; font-weight: bold;">/</span>group <span style="color: #660033;">-p</span> wa <span style="color: #660033;">-k</span> group_changes<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># ルールを読み込む</span><br/>
@@ -537,8 +537,8 @@ auditctl <span style="color: #660033;">-R</span> <span style="color: #000000; fo
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #c20cb9; font-weight: bold;">chmod</span> <span style="color: #000000;">600</span> <span style="color: #000000; font-weight: bold;">/</span>var<span style="color: #000000; font-weight: bold;">/</span>log<span style="color: #000000; font-weight: bold;">/</span>audit<span style="color: #000000; font-weight: bold;">/</span>audit.log<br/>
-<span style="color: #c20cb9; font-weight: bold;">chown</span> root:root <span style="color: #000000; font-weight: bold;">/</span>var<span style="color: #000000; font-weight: bold;">/</span>log<span style="color: #000000; font-weight: bold;">/</span>audit<span style="color: #000000; font-weight: bold;">/</span>audit.log<br/>
+<span style="color: #C20CB9; font-weight: bold;">chmod</span> <span style="color: #000000;">600</span> <span style="color: #000000; font-weight: bold;">/</span>var<span style="color: #000000; font-weight: bold;">/</span>log<span style="color: #000000; font-weight: bold;">/</span>audit<span style="color: #000000; font-weight: bold;">/</span>audit.log<br/>
+<span style="color: #C20CB9; font-weight: bold;">chown</span> root:root <span style="color: #000000; font-weight: bold;">/</span>var<span style="color: #000000; font-weight: bold;">/</span>log<span style="color: #000000; font-weight: bold;">/</span>audit<span style="color: #000000; font-weight: bold;">/</span>audit.log<br/>
 </div>
 </div>
 <hr/>
@@ -606,7 +606,7 @@ auditctl <span style="color: #660033;">-R</span> <span style="color: #000000; fo
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -651,7 +651,7 @@ auditctl <span style="color: #660033;">-R</span> <span style="color: #000000; fo
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -690,7 +690,7 @@ auditctl <span style="color: #660033;">-R</span> <span style="color: #000000; fo
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -909,7 +909,7 @@ function kFormatter(num) {
 </style>
 <div class="sidebar-box re-box re-box-large">
 <div class="sidebar-box recommend-here" style="margin: 0 auto;">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
+<a href="#" style="font-size: 16px; color:#5B80A6;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
 </div>
 <div class="sidebar-box sidebar-cate">
 <div class="sidebar-tree">

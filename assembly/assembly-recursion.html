@@ -185,77 +185,77 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: #666666; font-style: italic;">; 文件路径：factorial.asm</span><br/>
 <span style="color: #666666; font-style: italic;">; 递归计算阶乘：n! = n * (n-1)!</span><br/>
 <br/>
-<span style="color: #0000ff; font-weight: bold;">section</span> <span style="color: #0000ff; font-weight: bold;">.data</span><br/>
-    n <span style="color: #0000ff; font-weight: bold;">dd</span> <span style="color: #ff0000;">5</span>                       <span style="color: #666666; font-style: italic;">; 计算 5!</span><br/>
-    result <span style="color: #0000ff; font-weight: bold;">dd</span> <span style="color: #ff0000;">0</span><br/>
-    output_msg <span style="color: #0000ff; font-weight: bold;">db</span> <span style="color: #7f007f;">'Factorial result: '</span><br/>
-    output_len <span style="color: #0000ff; font-weight: bold;">equ</span> <span style="color: #0000ff; font-weight: bold;">$</span> <span style="color: #339933;">-</span> output_msg<br/>
-    newline <span style="color: #0000ff; font-weight: bold;">db</span> <span style="color: #ff0000;">0xA</span><br/>
+<span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
+    n <span style="color: #0000FF; font-weight: bold;">dd</span> <span style="color: #FF0000;">5</span>                       <span style="color: #666666; font-style: italic;">; 计算 5!</span><br/>
+    result <span style="color: #0000FF; font-weight: bold;">dd</span> <span style="color: #FF0000;">0</span><br/>
+    output_msg <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'Factorial result: '</span><br/>
+    output_len <span style="color: #0000FF; font-weight: bold;">equ</span> <span style="color: #0000FF; font-weight: bold;">$</span> <span style="color: #339933;">-</span> output_msg<br/>
+    newline <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #FF0000;">0xA</span><br/>
 <br/>
-<span style="color: #0000ff; font-weight: bold;">section</span> <span style="color: #0000ff; font-weight: bold;">.bss</span><br/>
-    result_str <span style="color: #0000ff; font-weight: bold;">resb</span> <span style="color: #ff0000;">12</span><br/>
+<span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.bss</span><br/>
+    result_str <span style="color: #0000FF; font-weight: bold;">resb</span> <span style="color: #FF0000;">12</span><br/>
 <br/>
-<span style="color: #0000ff; font-weight: bold;">section</span> <span style="color: #0000ff; font-weight: bold;">.text</span><br/>
-    <span style="color: #0000ff; font-weight: bold;">global</span> _start<br/>
+<span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.text</span><br/>
+    <span style="color: #0000FF; font-weight: bold;">global</span> _start<br/>
 <br/>
 _start<span style="color: #339933;">:</span><br/>
     <span style="color: #666666; font-style: italic;">; 调用 factorial(5)</span><br/>
-    <span style="color: #00007f; font-weight: bold;">push</span> <span style="color: #0000ff; font-weight: bold;">dword</span> <span style="color: #009900; font-weight: bold;">[</span>n<span style="color: #009900; font-weight: bold;">]</span>               <span style="color: #666666; font-style: italic;">; 压入参数 n</span><br/>
-    <span style="color: #00007f; font-weight: bold;">call</span> factorial<br/>
-    <span style="color: #00007f; font-weight: bold;">add</span> <span style="color: #46aa03; font-weight: bold;">esp</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">4</span>                   <span style="color: #666666; font-style: italic;">; 清理参数</span><br/>
+    <span style="color: #00007F; font-weight: bold;">push</span> <span style="color: #0000FF; font-weight: bold;">dword</span> <span style="color: #009900; font-weight: bold;">[</span>n<span style="color: #009900; font-weight: bold;">]</span>               <span style="color: #666666; font-style: italic;">; 压入参数 n</span><br/>
+    <span style="color: #00007F; font-weight: bold;">call</span> factorial<br/>
+    <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #46AA03; font-weight: bold;">esp</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">4</span>                   <span style="color: #666666; font-style: italic;">; 清理参数</span><br/>
     <span style="color: #666666; font-style: italic;">; eax = 120 (5!)</span><br/>
 <br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #009900; font-weight: bold;">[</span>result<span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #46aa03; font-weight: bold;">eax</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #009900; font-weight: bold;">[</span>result<span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">eax</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 输出结果</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">4</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">1</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> output_msg<br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> output_len<br/>
-    <span style="color: #00007f; font-weight: bold;">int</span> <span style="color: #ff0000;">0x80</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">4</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> output_msg<br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> output_len<br/>
+    <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 简单输出数字（仅用于个位数演示）</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>result<span style="color: #009900; font-weight: bold;">]</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>result<span style="color: #009900; font-weight: bold;">]</span><br/>
     <span style="color: #666666; font-style: italic;">; 这里简化处理</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #46aa03; font-weight: bold;">eax</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">1</span><br/>
-    <span style="color: #00007f; font-weight: bold;">int</span> <span style="color: #ff0000;">0x80</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">eax</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
+    <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;">; 过程：factorial(n)</span><br/>
 <span style="color: #666666; font-style: italic;">; 输入：[ebp+8] = n</span><br/>
 <span style="color: #666666; font-style: italic;">; 输出：eax = n!</span><br/>
 factorial<span style="color: #339933;">:</span><br/>
-    <span style="color: #00007f; font-weight: bold;">push</span> <span style="color: #46aa03; font-weight: bold;">ebp</span>                     <span style="color: #666666; font-style: italic;">; 保存旧栈帧</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ebp</span><span style="color: #339933;">,</span> <span style="color: #46aa03; font-weight: bold;">esp</span>                 <span style="color: #666666; font-style: italic;">; 建立新栈帧</span><br/>
+    <span style="color: #00007F; font-weight: bold;">push</span> <span style="color: #46AA03; font-weight: bold;">ebp</span>                     <span style="color: #666666; font-style: italic;">; 保存旧栈帧</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebp</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">esp</span>                 <span style="color: #666666; font-style: italic;">; 建立新栈帧</span><br/>
 <br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46aa03; font-weight: bold;">ebp</span> <span style="color: #339933;">+</span> <span style="color: #ff0000;">8</span><span style="color: #009900; font-weight: bold;">]</span>           <span style="color: #666666; font-style: italic;">; 获取参数 n</span><br/>
-    <span style="color: #00007f; font-weight: bold;">cmp</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">1</span>                   <span style="color: #666666; font-style: italic;">; n &lt;= 1 ?</span><br/>
-    <span style="color: #00007f; font-weight: bold;">jg</span>  recurse                  <span style="color: #666666; font-style: italic;">; n &gt; 1，继续递归</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46AA03; font-weight: bold;">ebp</span> <span style="color: #339933;">+</span> <span style="color: #FF0000;">8</span><span style="color: #009900; font-weight: bold;">]</span>           <span style="color: #666666; font-style: italic;">; 获取参数 n</span><br/>
+    <span style="color: #00007F; font-weight: bold;">cmp</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span>                   <span style="color: #666666; font-style: italic;">; n &lt;= 1 ?</span><br/>
+    <span style="color: #00007F; font-weight: bold;">jg</span>  recurse                  <span style="color: #666666; font-style: italic;">; n &gt; 1，继续递归</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 终止条件：n &lt;= 1，返回 1</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">1</span><br/>
-    <span style="color: #00007f; font-weight: bold;">jmp</span> factorial_end<br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
+    <span style="color: #00007F; font-weight: bold;">jmp</span> factorial_end<br/>
 <br/>
 recurse<span style="color: #339933;">:</span><br/>
     <span style="color: #666666; font-style: italic;">; 保存当前 n 的值（寄存器会被递归调用破坏）</span><br/>
-    <span style="color: #00007f; font-weight: bold;">push</span> <span style="color: #46aa03; font-weight: bold;">eax</span>                     <span style="color: #666666; font-style: italic;">; 保存 n</span><br/>
+    <span style="color: #00007F; font-weight: bold;">push</span> <span style="color: #46AA03; font-weight: bold;">eax</span>                     <span style="color: #666666; font-style: italic;">; 保存 n</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 递归调用 factorial(n-1)</span><br/>
-    <span style="color: #00007f; font-weight: bold;">dec</span> <span style="color: #46aa03; font-weight: bold;">eax</span>                      <span style="color: #666666; font-style: italic;">; n - 1</span><br/>
-    <span style="color: #00007f; font-weight: bold;">push</span> <span style="color: #46aa03; font-weight: bold;">eax</span>                     <span style="color: #666666; font-style: italic;">; 参数：n-1</span><br/>
-    <span style="color: #00007f; font-weight: bold;">call</span> factorial               <span style="color: #666666; font-style: italic;">; 递归调用</span><br/>
-    <span style="color: #00007f; font-weight: bold;">add</span> <span style="color: #46aa03; font-weight: bold;">esp</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">4</span>                   <span style="color: #666666; font-style: italic;">; 清理参数</span><br/>
+    <span style="color: #00007F; font-weight: bold;">dec</span> <span style="color: #46AA03; font-weight: bold;">eax</span>                      <span style="color: #666666; font-style: italic;">; n - 1</span><br/>
+    <span style="color: #00007F; font-weight: bold;">push</span> <span style="color: #46AA03; font-weight: bold;">eax</span>                     <span style="color: #666666; font-style: italic;">; 参数：n-1</span><br/>
+    <span style="color: #00007F; font-weight: bold;">call</span> factorial               <span style="color: #666666; font-style: italic;">; 递归调用</span><br/>
+    <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #46AA03; font-weight: bold;">esp</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">4</span>                   <span style="color: #666666; font-style: italic;">; 清理参数</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 恢复 n</span><br/>
-    <span style="color: #00007f; font-weight: bold;">pop</span> <span style="color: #46aa03; font-weight: bold;">ebx</span>                      <span style="color: #666666; font-style: italic;">; ebx = n</span><br/>
+    <span style="color: #00007F; font-weight: bold;">pop</span> <span style="color: #46AA03; font-weight: bold;">ebx</span>                      <span style="color: #666666; font-style: italic;">; ebx = n</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; eax = n * factorial(n-1)</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mul</span> <span style="color: #46aa03; font-weight: bold;">ebx</span>                      <span style="color: #666666; font-style: italic;">; edx:eax = eax * ebx</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mul</span> <span style="color: #46AA03; font-weight: bold;">ebx</span>                      <span style="color: #666666; font-style: italic;">; edx:eax = eax * ebx</span><br/>
     <span style="color: #666666; font-style: italic;">; 对于较小的 n，edx 为 0，结果全在 eax 中</span><br/>
 <br/>
 factorial_end<span style="color: #339933;">:</span><br/>
-    <span style="color: #00007f; font-weight: bold;">pop</span> <span style="color: #46aa03; font-weight: bold;">ebp</span>                      <span style="color: #666666; font-style: italic;">; 恢复旧栈帧</span><br/>
-    <span style="color: #00007f; font-weight: bold;">ret</span><br/>
+    <span style="color: #00007F; font-weight: bold;">pop</span> <span style="color: #46AA03; font-weight: bold;">ebp</span>                      <span style="color: #666666; font-style: italic;">; 恢复旧栈帧</span><br/>
+    <span style="color: #00007F; font-weight: bold;">ret</span><br/>
 </div>
 </div>
 <p>再帰による factorial(5) の完全な呼び出しスタックと戻りのプロセス：</p>
@@ -281,66 +281,66 @@ factorial(5)
 <span style="color: #666666; font-style: italic;">; 文件路径：fibonacci.asm</span><br/>
 <span style="color: #666666; font-style: italic;">; 递归计算斐波那契数列：fib(n) = fib(n-1) + fib(n-2)</span><br/>
 <br/>
-<span style="color: #0000ff; font-weight: bold;">section</span> <span style="color: #0000ff; font-weight: bold;">.data</span><br/>
-    n <span style="color: #0000ff; font-weight: bold;">dd</span> <span style="color: #ff0000;">10</span>                      <span style="color: #666666; font-style: italic;">; 计算 fib(10)</span><br/>
+<span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
+    n <span style="color: #0000FF; font-weight: bold;">dd</span> <span style="color: #FF0000;">10</span>                      <span style="color: #666666; font-style: italic;">; 计算 fib(10)</span><br/>
 <br/>
-<span style="color: #0000ff; font-weight: bold;">section</span> <span style="color: #0000ff; font-weight: bold;">.text</span><br/>
-    <span style="color: #0000ff; font-weight: bold;">global</span> _start<br/>
+<span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.text</span><br/>
+    <span style="color: #0000FF; font-weight: bold;">global</span> _start<br/>
 <br/>
 _start<span style="color: #339933;">:</span><br/>
     <span style="color: #666666; font-style: italic;">; 调用 fib(10)</span><br/>
-    <span style="color: #00007f; font-weight: bold;">push</span> <span style="color: #0000ff; font-weight: bold;">dword</span> <span style="color: #009900; font-weight: bold;">[</span>n<span style="color: #009900; font-weight: bold;">]</span><br/>
-    <span style="color: #00007f; font-weight: bold;">call</span> fibonacci<br/>
-    <span style="color: #00007f; font-weight: bold;">add</span> <span style="color: #46aa03; font-weight: bold;">esp</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">4</span><br/>
+    <span style="color: #00007F; font-weight: bold;">push</span> <span style="color: #0000FF; font-weight: bold;">dword</span> <span style="color: #009900; font-weight: bold;">[</span>n<span style="color: #009900; font-weight: bold;">]</span><br/>
+    <span style="color: #00007F; font-weight: bold;">call</span> fibonacci<br/>
+    <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #46AA03; font-weight: bold;">esp</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">4</span><br/>
     <span style="color: #666666; font-style: italic;">; eax = fib(10) = 55</span><br/>
 <br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #46aa03; font-weight: bold;">eax</span>                 <span style="color: #666666; font-style: italic;">; 退出码 = 55</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">1</span><br/>
-    <span style="color: #00007f; font-weight: bold;">int</span> <span style="color: #ff0000;">0x80</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">eax</span>                 <span style="color: #666666; font-style: italic;">; 退出码 = 55</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
+    <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;">; 过程：fibonacci(n)</span><br/>
 <span style="color: #666666; font-style: italic;">; 输入：[ebp+8] = n</span><br/>
 <span style="color: #666666; font-style: italic;">; 输出：eax = fib(n)</span><br/>
 fibonacci<span style="color: #339933;">:</span><br/>
-    <span style="color: #00007f; font-weight: bold;">push</span> <span style="color: #46aa03; font-weight: bold;">ebp</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ebp</span><span style="color: #339933;">,</span> <span style="color: #46aa03; font-weight: bold;">esp</span><br/>
+    <span style="color: #00007F; font-weight: bold;">push</span> <span style="color: #46AA03; font-weight: bold;">ebp</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebp</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">esp</span><br/>
 <br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46aa03; font-weight: bold;">ebp</span> <span style="color: #339933;">+</span> <span style="color: #ff0000;">8</span><span style="color: #009900; font-weight: bold;">]</span>           <span style="color: #666666; font-style: italic;">; 获取参数 n</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46AA03; font-weight: bold;">ebp</span> <span style="color: #339933;">+</span> <span style="color: #FF0000;">8</span><span style="color: #009900; font-weight: bold;">]</span>           <span style="color: #666666; font-style: italic;">; 获取参数 n</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 终止条件：n &lt;= 1 返回 n</span><br/>
-    <span style="color: #00007f; font-weight: bold;">cmp</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">1</span><br/>
-    <span style="color: #00007f; font-weight: bold;">jg</span>  fib_recurse              <span style="color: #666666; font-style: italic;">; n &gt; 1，需要递归</span><br/>
+    <span style="color: #00007F; font-weight: bold;">cmp</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
+    <span style="color: #00007F; font-weight: bold;">jg</span>  fib_recurse              <span style="color: #666666; font-style: italic;">; n &gt; 1，需要递归</span><br/>
     <span style="color: #666666; font-style: italic;">; n &lt;= 1：fib(0)=0, fib(1)=1</span><br/>
-    <span style="color: #00007f; font-weight: bold;">jmp</span> fib_end<br/>
+    <span style="color: #00007F; font-weight: bold;">jmp</span> fib_end<br/>
 <br/>
 fib_recurse<span style="color: #339933;">:</span><br/>
     <span style="color: #666666; font-style: italic;">; ★ 注意：递归有两个分支，需要仔细管理栈</span><br/>
-    <span style="color: #00007f; font-weight: bold;">push</span> <span style="color: #46aa03; font-weight: bold;">ebx</span>                     <span style="color: #666666; font-style: italic;">; 保存 ebx（将被用于保存中间结果）</span><br/>
+    <span style="color: #00007F; font-weight: bold;">push</span> <span style="color: #46AA03; font-weight: bold;">ebx</span>                     <span style="color: #666666; font-style: italic;">; 保存 ebx（将被用于保存中间结果）</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 计算 fib(n-1)</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46aa03; font-weight: bold;">ebp</span> <span style="color: #339933;">+</span> <span style="color: #ff0000;">8</span><span style="color: #009900; font-weight: bold;">]</span><br/>
-    <span style="color: #00007f; font-weight: bold;">dec</span> <span style="color: #46aa03; font-weight: bold;">eax</span>                      <span style="color: #666666; font-style: italic;">; n - 1</span><br/>
-    <span style="color: #00007f; font-weight: bold;">push</span> <span style="color: #46aa03; font-weight: bold;">eax</span><br/>
-    <span style="color: #00007f; font-weight: bold;">call</span> fibonacci<br/>
-    <span style="color: #00007f; font-weight: bold;">add</span> <span style="color: #46aa03; font-weight: bold;">esp</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">4</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #46aa03; font-weight: bold;">eax</span>                 <span style="color: #666666; font-style: italic;">; ebx = fib(n-1)（保存结果！）</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46AA03; font-weight: bold;">ebp</span> <span style="color: #339933;">+</span> <span style="color: #FF0000;">8</span><span style="color: #009900; font-weight: bold;">]</span><br/>
+    <span style="color: #00007F; font-weight: bold;">dec</span> <span style="color: #46AA03; font-weight: bold;">eax</span>                      <span style="color: #666666; font-style: italic;">; n - 1</span><br/>
+    <span style="color: #00007F; font-weight: bold;">push</span> <span style="color: #46AA03; font-weight: bold;">eax</span><br/>
+    <span style="color: #00007F; font-weight: bold;">call</span> fibonacci<br/>
+    <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #46AA03; font-weight: bold;">esp</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">4</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">eax</span>                 <span style="color: #666666; font-style: italic;">; ebx = fib(n-1)（保存结果！）</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 计算 fib(n-2)</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46aa03; font-weight: bold;">ebp</span> <span style="color: #339933;">+</span> <span style="color: #ff0000;">8</span><span style="color: #009900; font-weight: bold;">]</span><br/>
-    <span style="color: #00007f; font-weight: bold;">sub</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">2</span>                   <span style="color: #666666; font-style: italic;">; n - 2</span><br/>
-    <span style="color: #00007f; font-weight: bold;">push</span> <span style="color: #46aa03; font-weight: bold;">eax</span><br/>
-    <span style="color: #00007f; font-weight: bold;">call</span> fibonacci<br/>
-    <span style="color: #00007f; font-weight: bold;">add</span> <span style="color: #46aa03; font-weight: bold;">esp</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">4</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46AA03; font-weight: bold;">ebp</span> <span style="color: #339933;">+</span> <span style="color: #FF0000;">8</span><span style="color: #009900; font-weight: bold;">]</span><br/>
+    <span style="color: #00007F; font-weight: bold;">sub</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">2</span>                   <span style="color: #666666; font-style: italic;">; n - 2</span><br/>
+    <span style="color: #00007F; font-weight: bold;">push</span> <span style="color: #46AA03; font-weight: bold;">eax</span><br/>
+    <span style="color: #00007F; font-weight: bold;">call</span> fibonacci<br/>
+    <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #46AA03; font-weight: bold;">esp</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">4</span><br/>
     <span style="color: #666666; font-style: italic;">; eax = fib(n-2)</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; eax = fib(n-1) + fib(n-2)</span><br/>
-    <span style="color: #00007f; font-weight: bold;">add</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #46aa03; font-weight: bold;">ebx</span>                 <span style="color: #666666; font-style: italic;">; eax = fib(n-2) + fib(n-1)</span><br/>
+    <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">ebx</span>                 <span style="color: #666666; font-style: italic;">; eax = fib(n-2) + fib(n-1)</span><br/>
 <br/>
-    <span style="color: #00007f; font-weight: bold;">pop</span> <span style="color: #46aa03; font-weight: bold;">ebx</span>                      <span style="color: #666666; font-style: italic;">; 恢复 ebx</span><br/>
+    <span style="color: #00007F; font-weight: bold;">pop</span> <span style="color: #46AA03; font-weight: bold;">ebx</span>                      <span style="color: #666666; font-style: italic;">; 恢复 ebx</span><br/>
 <br/>
 fib_end<span style="color: #339933;">:</span><br/>
-    <span style="color: #00007f; font-weight: bold;">pop</span> <span style="color: #46aa03; font-weight: bold;">ebp</span><br/>
-    <span style="color: #00007f; font-weight: bold;">ret</span><br/>
+    <span style="color: #00007F; font-weight: bold;">pop</span> <span style="color: #46AA03; font-weight: bold;">ebp</span><br/>
+    <span style="color: #00007F; font-weight: bold;">ret</span><br/>
 </div>
 </div>
 <blockquote><p>再帰版のフィボナッチには大量の重複計算があります。fib(10) は fib(9)、fib(8) を呼び出し、fib(8) は2回呼び出されます...そのため時間計算量は O(2^n) になります。実際のエンジニアリングではループ反復版を使用することをお勧めします。</p></blockquote>
@@ -352,33 +352,33 @@ fib_end<span style="color: #339933;">:</span><br/>
 <span style="color: #666666; font-style: italic;">; 文件路径：fibonacci_iter.asm</span><br/>
 <span style="color: #666666; font-style: italic;">; 迭代版本：更高效，无递归开销</span><br/>
 <br/>
-<span style="color: #0000ff; font-weight: bold;">section</span> <span style="color: #0000ff; font-weight: bold;">.data</span><br/>
-    n <span style="color: #0000ff; font-weight: bold;">dd</span> <span style="color: #ff0000;">10</span><br/>
+<span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
+    n <span style="color: #0000FF; font-weight: bold;">dd</span> <span style="color: #FF0000;">10</span><br/>
 <br/>
-<span style="color: #0000ff; font-weight: bold;">section</span> <span style="color: #0000ff; font-weight: bold;">.text</span><br/>
-    <span style="color: #0000ff; font-weight: bold;">global</span> _start<br/>
+<span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.text</span><br/>
+    <span style="color: #0000FF; font-weight: bold;">global</span> _start<br/>
 <br/>
 _start<span style="color: #339933;">:</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>n<span style="color: #009900; font-weight: bold;">]</span>                 <span style="color: #666666; font-style: italic;">; ecx = n</span><br/>
-    <span style="color: #00007f; font-weight: bold;">dec</span> <span style="color: #46aa03; font-weight: bold;">ecx</span>                      <span style="color: #666666; font-style: italic;">; 循环 n-1 次（从第 2 项开始）</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>n<span style="color: #009900; font-weight: bold;">]</span>                 <span style="color: #666666; font-style: italic;">; ecx = n</span><br/>
+    <span style="color: #00007F; font-weight: bold;">dec</span> <span style="color: #46AA03; font-weight: bold;">ecx</span>                      <span style="color: #666666; font-style: italic;">; 循环 n-1 次（从第 2 项开始）</span><br/>
 <br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">0</span>                   <span style="color: #666666; font-style: italic;">; fib(0) = 0</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">1</span>                   <span style="color: #666666; font-style: italic;">; fib(1) = 1</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>                   <span style="color: #666666; font-style: italic;">; fib(0) = 0</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span>                   <span style="color: #666666; font-style: italic;">; fib(1) = 1</span><br/>
 <br/>
-    <span style="color: #00007f; font-weight: bold;">cmp</span> <span style="color: #46aa03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">0</span><br/>
-    <span style="color: #00007f; font-weight: bold;">jle</span> fib_done                 <span style="color: #666666; font-style: italic;">; n &lt;= 1，直接返回</span><br/>
+    <span style="color: #00007F; font-weight: bold;">cmp</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
+    <span style="color: #00007F; font-weight: bold;">jle</span> fib_done                 <span style="color: #666666; font-style: italic;">; n &lt;= 1，直接返回</span><br/>
 <br/>
 fib_loop<span style="color: #339933;">:</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> <span style="color: #46aa03; font-weight: bold;">ebx</span>                 <span style="color: #666666; font-style: italic;">; 保存旧的 fib(n-1)</span><br/>
-    <span style="color: #00007f; font-weight: bold;">add</span> <span style="color: #46aa03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #46aa03; font-weight: bold;">eax</span>                 <span style="color: #666666; font-style: italic;">; ebx = fib(n-1) + fib(n-2)</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #46aa03; font-weight: bold;">edx</span>                 <span style="color: #666666; font-style: italic;">; 更新 fib(n-2)</span><br/>
-    <span style="color: #00007f; font-weight: bold;">loop</span> fib_loop<br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">ebx</span>                 <span style="color: #666666; font-style: italic;">; 保存旧的 fib(n-1)</span><br/>
+    <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">eax</span>                 <span style="color: #666666; font-style: italic;">; ebx = fib(n-1) + fib(n-2)</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">edx</span>                 <span style="color: #666666; font-style: italic;">; 更新 fib(n-2)</span><br/>
+    <span style="color: #00007F; font-weight: bold;">loop</span> fib_loop<br/>
 <br/>
 fib_done<span style="color: #339933;">:</span><br/>
     <span style="color: #666666; font-style: italic;">; 对于 n=10，最后 ebx = 55</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">1</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #46aa03; font-weight: bold;">ebx</span>                 <span style="color: #666666; font-style: italic;">; 返回值 = fib(n)</span><br/>
-    <span style="color: #00007f; font-weight: bold;">int</span> <span style="color: #ff0000;">0x80</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">ebx</span>                 <span style="color: #666666; font-style: italic;">; 返回值 = fib(n)</span><br/>
+    <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
 </div>
 </div>
 <hr/>
@@ -425,7 +425,7 @@ fib_done<span style="color: #339933;">:</span><br/>
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -470,7 +470,7 @@ fib_done<span style="color: #339933;">:</span><br/>
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -509,7 +509,7 @@ fib_done<span style="color: #339933;">:</span><br/>
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>

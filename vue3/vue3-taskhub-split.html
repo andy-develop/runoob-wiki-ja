@@ -341,11 +341,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h3>TaskHeader.vue —— 静的表示コンポーネント</h3><p>このコンポーネントは JS ロジックを一切必要とせず、単に UI を表示します。</p><p>Tailwind v4 では、新しいグラデーション構文を引き続き使用します。</p>
 <div class="example"><h2 class="example">実例</h2> <div class="example_code">
 <span style="color: #170;">&lt;template&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">header</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"bg-linear-to-br from-blue-600 to-indigo-700 p-8 text-white"</span>&gt;</span><br/>
-    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">h1</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"text-3xl font-black tracking-tight"</span>&gt;</span>TaskHub<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">h1</span>&gt;</span><br/>
-    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">p</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"text-blue-100/80 text-sm"</span>&gt;</span>Vue 3 + Tailwind v4 実践<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">p</span>&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">header</span>&gt;</span><br/>
-<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span>template&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">header</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"bg-linear-to-br from-blue-600 to-indigo-700 p-8 text-white"</span>&gt;</span><br/>
+    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">h1</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"text-3xl font-black tracking-tight"</span>&gt;</span>TaskHub<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">h1</span>&gt;</span><br/>
+    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">p</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"text-blue-100/80 text-sm"</span>&gt;</span>Vue 3 + Tailwind v4 実践<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">p</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">header</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span>template&gt;</span><br/>
 </div></div>
 <h3>TaskInput.vue —— defineEmits を使用してデータを送信</h3>
 <p>このコンポーネントはユーザー入力の取得を担当します。ユーザーが「追加」をクリックしたとき、データを直接変更せず、emit で親コンポーネントに通知します。</p>
@@ -364,21 +364,21 @@ const handleSubmit = () =&gt; {<br/>
   emit('add-task', value);<br/>
   title.value = '';<br/>
 };<br/>
-<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">script</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">script</span>&gt;</span><br/>
 <br/>
 <span style="color: #170;">&lt;template&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"flex gap-2 mb-8"</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"flex gap-2 mb-8"</span>&gt;</span><br/>
     <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">input</span> </span><br/>
-<span style="color: #170;">      v-model<span style="color: #66cc66;">=</span><span style="color: #a11;">"title"</span></span><br/>
-<span style="color: #170;">      @keyup.enter<span style="color: #66cc66;">=</span><span style="color: #a11;">"handleSubmit"</span></span><br/>
-<span style="color: #170;">      <span style="color: #00c;">placeholder</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"今日は何をやりますか？"</span></span><br/>
-<span style="color: #170;">      <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"flex-1 bg-slate-50 border-none rounded-2xl px-4 py-3 focus:ring-2 focus:ring-brand/50 outline-none transition-all"</span></span><br/>
-<span style="color: #170;">    <span style="color: #66cc66;">/</span>&gt;</span><br/>
-    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">button</span> @click<span style="color: #66cc66;">=</span><span style="color: #a11;">"handleSubmit"</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"bg-brand text-white px-6 rounded-2xl font-bold hover:scale-105 active:scale-95 transition-all"</span>&gt;</span><br/>
+<span style="color: #170;">      v-model<span style="color: #66CC66;">=</span><span style="color: #a11;">"title"</span></span><br/>
+<span style="color: #170;">      @keyup.enter<span style="color: #66CC66;">=</span><span style="color: #a11;">"handleSubmit"</span></span><br/>
+<span style="color: #170;">      <span style="color: #00c;">placeholder</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"今日は何をやりますか？"</span></span><br/>
+<span style="color: #170;">      <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"flex-1 bg-slate-50 border-none rounded-2xl px-4 py-3 focus:ring-2 focus:ring-brand/50 outline-none transition-all"</span></span><br/>
+<span style="color: #170;">    <span style="color: #66CC66;">/</span>&gt;</span><br/>
+    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">button</span> @click<span style="color: #66CC66;">=</span><span style="color: #a11;">"handleSubmit"</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"bg-brand text-white px-6 rounded-2xl font-bold hover:scale-105 active:scale-95 transition-all"</span>&gt;</span><br/>
       +<br/>
-    <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">button</span>&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
-<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span>template&gt;</span><br/>
+    <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">button</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span>template&gt;</span><br/>
 </div></div>
 <h3>TaskFilter.vue —— コンポーネント間の v-model 通信</h3><p>Vue 3.4+ では、defineModel() を使用して双方向バインディングを実装することを推奨します。これは Tailwind v4 の UI 切り替えで非常に効率的です。</p>
 <div class="example"><h2 class="example">実例</h2> <div class="example_code">
@@ -386,23 +386,23 @@ const handleSubmit = () =&gt; {<br/>
 const modelValue = defineModel();<br/>
 <br/>
 const filters = ['all', 'active', 'completed'];<br/>
-<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">script</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">script</span>&gt;</span><br/>
 <br/>
 <span style="color: #170;">&lt;template&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"flex p-1 bg-slate-100 rounded-xl mb-6"</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"flex p-1 bg-slate-100 rounded-xl mb-6"</span>&gt;</span><br/>
     <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">button</span> </span><br/>
-<span style="color: #170;">      v-<span style="color: #00c;">for</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"f in filters"</span> </span><br/>
-<span style="color: #170;">      :key<span style="color: #66cc66;">=</span><span style="color: #a11;">"f"</span></span><br/>
-<span style="color: #170;">      @click<span style="color: #66cc66;">=</span><span style="color: #a11;">"modelValue = f"</span></span><br/>
-<span style="color: #170;">      :<span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"[</span><br/>
+<span style="color: #170;">      v-<span style="color: #00c;">for</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"f in filters"</span> </span><br/>
+<span style="color: #170;">      :key<span style="color: #66CC66;">=</span><span style="color: #a11;">"f"</span></span><br/>
+<span style="color: #170;">      @click<span style="color: #66CC66;">=</span><span style="color: #a11;">"modelValue = f"</span></span><br/>
+<span style="color: #170;">      :<span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"[</span><br/>
 <span style="color: #170;">        'flex-1 py-1.5 text-xs font-bold rounded-lg transition-all capitalize',</span><br/>
 <span style="color: #170;">        modelValue === f ? 'bg-white text-brand shadow-sm' : 'text-slate-500'</span><br/>
 <span style="color: #170;">      ]"</span></span><br/>
 <span style="color: #170;">    &gt;</span><br/>
       {{ f }}<br/>
-    <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">button</span>&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
-<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span>template&gt;</span><br/>
+    <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">button</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span>template&gt;</span><br/>
 </div></div>
 <h3>TaskItem.vue —— defineProps を使用してデータを受信</h3>
 <p>これは最も中核となる子コンポーネントで、単一のタスクを表示し、変更・削除操作をフィードバックします。</p>
@@ -416,26 +416,26 @@ defineProps({<br/>
 });<br/>
 <br/>// 親コンポーネントに通知するイベントを定義する<br/>
 const emit = defineEmits(['toggle', 'remove']);<br/>
-<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">script</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">script</span>&gt;</span><br/>
 <br/>
 <span style="color: #170;">&lt;template&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">li</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"group flex items-center justify-between p-4 bg-slate-50 rounded-2xl border border-transparent hover:border-slate-200 hover:bg-white transition-all"</span>&gt;</span><br/>
-    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"flex items-center gap-3"</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">li</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"group flex items-center justify-between p-4 bg-slate-50 rounded-2xl border border-transparent hover:border-slate-200 hover:bg-white transition-all"</span>&gt;</span><br/>
+    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"flex items-center gap-3"</span>&gt;</span><br/>
       <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">input</span> </span><br/>
-<span style="color: #170;">        <span style="color: #00c;">type</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"checkbox"</span> </span><br/>
-<span style="color: #170;">        :<span style="color: #00c;">checked</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"task.isCompleted"</span> </span><br/>
-<span style="color: #170;">        @change<span style="color: #66cc66;">=</span><span style="color: #a11;">"emit('toggle', task.id)"</span></span><br/>
-<span style="color: #170;">        <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"w-5 h-5 accent-brand cursor-pointer"</span></span><br/>
-<span style="color: #170;">      <span style="color: #66cc66;">/</span>&gt;</span><br/>
-      <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">span</span> :<span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"['text-slate-700 font-medium', task.isCompleted ? 'line-through text-slate-400 opacity-50' : '']"</span>&gt;</span><br/>
+<span style="color: #170;">        <span style="color: #00c;">type</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"checkbox"</span> </span><br/>
+<span style="color: #170;">        :<span style="color: #00c;">checked</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"task.isCompleted"</span> </span><br/>
+<span style="color: #170;">        @change<span style="color: #66CC66;">=</span><span style="color: #a11;">"emit('toggle', task.id)"</span></span><br/>
+<span style="color: #170;">        <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"w-5 h-5 accent-brand cursor-pointer"</span></span><br/>
+<span style="color: #170;">      <span style="color: #66CC66;">/</span>&gt;</span><br/>
+      <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">span</span> :<span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"['text-slate-700 font-medium', task.isCompleted ? 'line-through text-slate-400 opacity-50' : '']"</span>&gt;</span><br/>
         {{ task.title }}<br/>
-      <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">span</span>&gt;</span><br/>
-    <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
-    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">button</span> @click<span style="color: #66cc66;">=</span><span style="color: #a11;">"emit('remove', task.id)"</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"opacity-0 group-hover:opacity-100 text-slate-300 hover:text-red-500 transition-all p-1"</span>&gt;</span><br/>
+      <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">span</span>&gt;</span><br/>
+    <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
+    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">button</span> @click<span style="color: #66CC66;">=</span><span style="color: #a11;">"emit('remove', task.id)"</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"opacity-0 group-hover:opacity-100 text-slate-300 hover:text-red-500 transition-all p-1"</span>&gt;</span><br/>
       ✕<br/>
-    <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">button</span>&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">li</span>&gt;</span><br/>
-<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span>template&gt;</span><br/>
+    <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">button</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">li</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span>template&gt;</span><br/>
 </div></div>
 <h3>リファクタリング後の App.vue (ロジック中枢)</h3><p>現在の App.vue はクリーンな指揮官となり、元データの管理と子コンポーネントから届く命令の処理だけを担当します。</p>
 <div class="example"><h2 class="example">実例</h2> <div class="example_code">
@@ -468,42 +468,42 @@ const filteredTasks = computed(() =&gt; {<br/>
   if (filter.value === 'completed') return tasks.value.filter(t =&gt; t.isCompleted);<br/>
   return tasks.value;<br/>
 });<br/>
-<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">script</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">script</span>&gt;</span><br/>
 <br/>
 <span style="color: #170;">&lt;template&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"min-h-screen py-12 px-4"</span>&gt;</span><br/>
-    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"max-w-md mx-auto bg-white rounded-3xl shadow-xl shadow-slate-200 border border-slate-100 overflow-hidden"</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"min-h-screen py-12 px-4"</span>&gt;</span><br/>
+    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"max-w-md mx-auto bg-white rounded-3xl shadow-xl shadow-slate-200 border border-slate-100 overflow-hidden"</span>&gt;</span><br/>
       <br/>
-      <span style="color: #170;">&lt;TaskHeader <span style="color: #66cc66;">/</span>&gt;</span><br/>
+      <span style="color: #170;">&lt;TaskHeader <span style="color: #66CC66;">/</span>&gt;</span><br/>
 <br/>
-      <span style="color: #170;">&lt;main <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"p-6"</span>&gt;</span><br/>
-        <span style="color: #170;">&lt;TaskInput @add-task<span style="color: #66cc66;">=</span><span style="color: #a11;">"handleAddTask"</span> <span style="color: #66cc66;">/</span>&gt;</span><br/>
+      <span style="color: #170;">&lt;main <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"p-6"</span>&gt;</span><br/>
+        <span style="color: #170;">&lt;TaskInput @add-task<span style="color: #66CC66;">=</span><span style="color: #a11;">"handleAddTask"</span> <span style="color: #66CC66;">/</span>&gt;</span><br/>
 <br/>
-        <span style="color: #170;">&lt;TaskFilter v-model<span style="color: #66cc66;">=</span><span style="color: #a11;">"filter"</span> <span style="color: #66cc66;">/</span>&gt;</span><br/>
+        <span style="color: #170;">&lt;TaskFilter v-model<span style="color: #66CC66;">=</span><span style="color: #a11;">"filter"</span> <span style="color: #66CC66;">/</span>&gt;</span><br/>
 <br/>
-        <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">ul</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"space-y-3"</span>&gt;</span><br/>
-          <span style="color: #170;">&lt;TransitionGroup <span style="color: #00c;">name</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"list"</span>&gt;</span><br/>
+        <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">ul</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"space-y-3"</span>&gt;</span><br/>
+          <span style="color: #170;">&lt;TransitionGroup <span style="color: #00c;">name</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"list"</span>&gt;</span><br/>
             <span style="color: #170;">&lt;TaskItem </span><br/>
-<span style="color: #170;">              v-<span style="color: #00c;">for</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"task in filteredTasks"</span> </span><br/>
-<span style="color: #170;">              :key<span style="color: #66cc66;">=</span><span style="color: #a11;">"task.id"</span></span><br/>
-<span style="color: #170;">              :task<span style="color: #66cc66;">=</span><span style="color: #a11;">"task"</span></span><br/>
-<span style="color: #170;">              @toggle<span style="color: #66cc66;">=</span><span style="color: #a11;">"handleToggleTask"</span></span><br/>
-<span style="color: #170;">              @remove<span style="color: #66cc66;">=</span><span style="color: #a11;">"handleRemoveTask"</span></span><br/>
-<span style="color: #170;">            <span style="color: #66cc66;">/</span>&gt;</span><br/>
-          <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span>TransitionGroup&gt;</span><br/>
-        <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">ul</span>&gt;</span><br/>
+<span style="color: #170;">              v-<span style="color: #00c;">for</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"task in filteredTasks"</span> </span><br/>
+<span style="color: #170;">              :key<span style="color: #66CC66;">=</span><span style="color: #a11;">"task.id"</span></span><br/>
+<span style="color: #170;">              :task<span style="color: #66CC66;">=</span><span style="color: #a11;">"task"</span></span><br/>
+<span style="color: #170;">              @toggle<span style="color: #66CC66;">=</span><span style="color: #a11;">"handleToggleTask"</span></span><br/>
+<span style="color: #170;">              @remove<span style="color: #66CC66;">=</span><span style="color: #a11;">"handleRemoveTask"</span></span><br/>
+<span style="color: #170;">            <span style="color: #66CC66;">/</span>&gt;</span><br/>
+          <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span>TransitionGroup&gt;</span><br/>
+        <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">ul</span>&gt;</span><br/>
 <br/>
-        <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> v-if<span style="color: #66cc66;">=</span><span style="color: #a11;">"filteredTasks.length === 0"</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"text-center py-12 text-slate-400 text-sm"</span>&gt;</span><br/>関連するタスクはありません...<br/>
-        <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
-      <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span>main&gt;</span><br/>
-    <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
-<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span>template&gt;</span><br/>
+        <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> v-if<span style="color: #66CC66;">=</span><span style="color: #a11;">"filteredTasks.length === 0"</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"text-center py-12 text-slate-400 text-sm"</span>&gt;</span><br/>関連するタスクはありません...<br/>
+        <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
+      <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span>main&gt;</span><br/>
+    <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span>template&gt;</span><br/>
 <br/>
 <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">style</span> scoped&gt;</span><br/>
 .list-enter-active, .list-leave-active { transition: all 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28); }<br/>
 .list-enter-from, .list-leave-to { opacity: 0; transform: translateX(30px); }<br/>
-<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">style</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">style</span>&gt;</span><br/>
 </div></div>
 <h3>核心知識ポイントのまとめ</h3>
 <p><strong><code>defineProps</code>（親から子へ）</strong>：</p>
@@ -556,7 +556,7 @@ const filteredTasks = computed(() =&gt; {<br/>
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -601,7 +601,7 @@ const filteredTasks = computed(() =&gt; {<br/>
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -640,7 +640,7 @@ const filteredTasks = computed(() =&gt; {<br/>
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
@@ -859,7 +859,7 @@ function kFormatter(num) {
 </style>
 <div class="sidebar-box re-box re-box-large">
 <div class="sidebar-box recommend-here" style="margin: 0 auto;">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
+<a href="#" style="font-size: 16px; color:#5B80A6;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
 </div>
 <div class="sidebar-box sidebar-cate">
 <div class="sidebar-tree">

@@ -366,19 +366,19 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
             <span style="color: #000000; font-weight: bold;">return</span><span style="color: #339933;">;</span><br/>
         <span style="color: #009900;">}</span><br/>
         <span style="color: #666666; font-style: italic;">// ランダムに arr[l...r] の範囲から1つの値を基準点pivotとして選択する</span><br/>
-        swap<span style="color: #009900;">(</span> arr, l, <span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span><span style="color: #009900;">)</span><span style="color: #009900;">(</span><span style="color: #003399;">Math</span>.<span style="color: #006633;">random</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">*</span><span style="color: #009900;">(</span>r<span style="color: #339933;">-</span>l<span style="color: #339933;">+</span><span style="color: #cc66cc;">1</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span> <span style="color: #339933;">+</span> l <span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+        swap<span style="color: #009900;">(</span> arr, l, <span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span><span style="color: #009900;">)</span><span style="color: #009900;">(</span><span style="color: #003399;">Math</span>.<span style="color: #006633;">random</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">*</span><span style="color: #009900;">(</span>r<span style="color: #339933;">-</span>l<span style="color: #339933;">+</span><span style="color: #CC66CC;">1</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span> <span style="color: #339933;">+</span> l <span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
         <span style="color: #003399;">Comparable</span> v <span style="color: #339933;">=</span> arr<span style="color: #009900;">[</span>l<span style="color: #009900;">]</span><span style="color: #339933;">;</span><br/>
         <span style="color: #000066; font-weight: bold;">int</span> lt <span style="color: #339933;">=</span> l<span style="color: #339933;">;</span>     <span style="color: #666666; font-style: italic;">// arr[l+1...lt] &lt; v</span><br/>
-        <span style="color: #000066; font-weight: bold;">int</span> gt <span style="color: #339933;">=</span> r <span style="color: #339933;">+</span> <span style="color: #cc66cc;">1</span><span style="color: #339933;">;</span> <span style="color: #666666; font-style: italic;">// arr[gt...r] &gt; v</span><br/>
-        <span style="color: #000066; font-weight: bold;">int</span> i <span style="color: #339933;">=</span> l<span style="color: #339933;">+</span><span style="color: #cc66cc;">1</span><span style="color: #339933;">;</span>    <span style="color: #666666; font-style: italic;">// arr[lt+1...i) == v</span><br/>
+        <span style="color: #000066; font-weight: bold;">int</span> gt <span style="color: #339933;">=</span> r <span style="color: #339933;">+</span> <span style="color: #CC66CC;">1</span><span style="color: #339933;">;</span> <span style="color: #666666; font-style: italic;">// arr[gt...r] &gt; v</span><br/>
+        <span style="color: #000066; font-weight: bold;">int</span> i <span style="color: #339933;">=</span> l<span style="color: #339933;">+</span><span style="color: #CC66CC;">1</span><span style="color: #339933;">;</span>    <span style="color: #666666; font-style: italic;">// arr[lt+1...i) == v</span><br/>
         <span style="color: #000000; font-weight: bold;">while</span><span style="color: #009900;">(</span> i <span style="color: #339933;">&lt;</span> gt <span style="color: #009900;">)</span><span style="color: #009900;">{</span><br/>
-            <span style="color: #000000; font-weight: bold;">if</span><span style="color: #009900;">(</span> arr<span style="color: #009900;">[</span>i<span style="color: #009900;">]</span>.<span style="color: #006633;">compareTo</span><span style="color: #009900;">(</span>v<span style="color: #009900;">)</span> <span style="color: #339933;">&lt;</span> <span style="color: #cc66cc;">0</span> <span style="color: #009900;">)</span><span style="color: #009900;">{</span><br/>
-                swap<span style="color: #009900;">(</span> arr, i, lt<span style="color: #339933;">+</span><span style="color: #cc66cc;">1</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+            <span style="color: #000000; font-weight: bold;">if</span><span style="color: #009900;">(</span> arr<span style="color: #009900;">[</span>i<span style="color: #009900;">]</span>.<span style="color: #006633;">compareTo</span><span style="color: #009900;">(</span>v<span style="color: #009900;">)</span> <span style="color: #339933;">&lt;</span> <span style="color: #CC66CC;">0</span> <span style="color: #009900;">)</span><span style="color: #009900;">{</span><br/>
+                swap<span style="color: #009900;">(</span> arr, i, lt<span style="color: #339933;">+</span><span style="color: #CC66CC;">1</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
                 i <span style="color: #339933;">++;</span><br/>
                 lt <span style="color: #339933;">++;</span><br/>
             <span style="color: #009900;">}</span><br/>
-            <span style="color: #000000; font-weight: bold;">else</span> <span style="color: #000000; font-weight: bold;">if</span><span style="color: #009900;">(</span> arr<span style="color: #009900;">[</span>i<span style="color: #009900;">]</span>.<span style="color: #006633;">compareTo</span><span style="color: #009900;">(</span>v<span style="color: #009900;">)</span> <span style="color: #339933;">&gt;</span> <span style="color: #cc66cc;">0</span> <span style="color: #009900;">)</span><span style="color: #009900;">{</span><br/>
-                swap<span style="color: #009900;">(</span> arr, i, gt<span style="color: #339933;">-</span><span style="color: #cc66cc;">1</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+            <span style="color: #000000; font-weight: bold;">else</span> <span style="color: #000000; font-weight: bold;">if</span><span style="color: #009900;">(</span> arr<span style="color: #009900;">[</span>i<span style="color: #009900;">]</span>.<span style="color: #006633;">compareTo</span><span style="color: #009900;">(</span>v<span style="color: #009900;">)</span> <span style="color: #339933;">&gt;</span> <span style="color: #CC66CC;">0</span> <span style="color: #009900;">)</span><span style="color: #009900;">{</span><br/>
+                swap<span style="color: #009900;">(</span> arr, i, gt<span style="color: #339933;">-</span><span style="color: #CC66CC;">1</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
                 gt <span style="color: #339933;">--;</span><br/>
             <span style="color: #009900;">}</span><br/>
             <span style="color: #000000; font-weight: bold;">else</span><span style="color: #009900;">{</span> <span style="color: #666666; font-style: italic;">// arr[i] == v</span><br/>
@@ -386,7 +386,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
             <span style="color: #009900;">}</span><br/>
         <span style="color: #009900;">}</span><br/>
         swap<span style="color: #009900;">(</span> arr, l, lt <span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
-        sort<span style="color: #009900;">(</span>arr, l, lt<span style="color: #339933;">-</span><span style="color: #cc66cc;">1</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+        sort<span style="color: #009900;">(</span>arr, l, lt<span style="color: #339933;">-</span><span style="color: #CC66CC;">1</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
         sort<span style="color: #009900;">(</span>arr, gt, r<span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
     <span style="color: #009900;">}</span><br/>
     <span style="color: #666666; font-style: italic;">//核心コード---終了</span><br/>
@@ -394,7 +394,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">static</span> <span style="color: #000066; font-weight: bold;">void</span> sort<span style="color: #009900;">(</span><span style="color: #003399;">Comparable</span><span style="color: #009900;">[</span><span style="color: #009900;">]</span> arr<span style="color: #009900;">)</span><span style="color: #009900;">{</span><br/>
 <br/>
         <span style="color: #000066; font-weight: bold;">int</span> n <span style="color: #339933;">=</span> arr.<span style="color: #006633;">length</span><span style="color: #339933;">;</span><br/>
-        sort<span style="color: #009900;">(</span>arr, <span style="color: #cc66cc;">0</span>, n<span style="color: #339933;">-</span><span style="color: #cc66cc;">1</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+        sort<span style="color: #009900;">(</span>arr, <span style="color: #CC66CC;">0</span>, n<span style="color: #339933;">-</span><span style="color: #CC66CC;">1</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
     <span style="color: #009900;">}</span><br/>
 <br/>
     <span style="color: #000000; font-weight: bold;">private</span> <span style="color: #000000; font-weight: bold;">static</span> <span style="color: #000066; font-weight: bold;">void</span> swap<span style="color: #009900;">(</span><span style="color: #003399;">Object</span><span style="color: #009900;">[</span><span style="color: #009900;">]</span> arr, <span style="color: #000066; font-weight: bold;">int</span> i, <span style="color: #000066; font-weight: bold;">int</span> j<span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
@@ -408,8 +408,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <br/>
         <span style="color: #666666; font-style: italic;">// 三路クイックソートアルゴリズムも O(nlogn) 計算量のアルゴリズムである</span><br/>
         <span style="color: #666666; font-style: italic;">// 100万オーダーのデータを1秒以内で簡単に処理できる</span><br/>
-        <span style="color: #000066; font-weight: bold;">int</span> N <span style="color: #339933;">=</span> <span style="color: #cc66cc;">1000000</span><span style="color: #339933;">;</span><br/>
-        <span style="color: #003399;">Integer</span><span style="color: #009900;">[</span><span style="color: #009900;">]</span> arr <span style="color: #339933;">=</span> SortTestHelper.<span style="color: #006633;">generateRandomArray</span><span style="color: #009900;">(</span>N, <span style="color: #cc66cc;">0</span>, <span style="color: #cc66cc;">100000</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+        <span style="color: #000066; font-weight: bold;">int</span> N <span style="color: #339933;">=</span> <span style="color: #CC66CC;">1000000</span><span style="color: #339933;">;</span><br/>
+        <span style="color: #003399;">Integer</span><span style="color: #009900;">[</span><span style="color: #009900;">]</span> arr <span style="color: #339933;">=</span> SortTestHelper.<span style="color: #006633;">generateRandomArray</span><span style="color: #009900;">(</span>N, <span style="color: #CC66CC;">0</span>, <span style="color: #CC66CC;">100000</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
         sort<span style="color: #009900;">(</span>arr<span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
         SortTestHelper.<span style="color: #006633;">printArray</span><span style="color: #009900;">(</span>arr<span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
     <span style="color: #009900;">}</span><br/>
@@ -619,7 +619,7 @@ $$</p>
 <hr/>
 <h2>その他のコード紹介</h2>
 <style>
-.cs-widget-wrapper{width:100%;background-color:#ffffff;box-shadow:0 4px 12px rgba(0,0,0,0.1);overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;border:1px solid #cccccc;border-radius:8px}.cs-header{display:flex;align-items:center;background-image:linear-gradient(#ffffff,#e5eecc 100px);padding:0 12px;border-bottom:1px solid rgb(120,150,100);height:40px}.cs-controls{display:flex;gap:6px;margin-right:20px}.cs-dot{width:10px;height:10px;border-radius:50%}.cs-red{background:#ff5f56}.cs-yellow{background:#ffbd2e}.cs-green{background:#27c93f}.cs-tabs{display:flex;height:100%;align-items:stretch}.cs-tab-btn{background:transparent;border:none;color:#333333;padding:0 16px;font-size:13px;cursor:pointer;height:100%;border-top:2px solid transparent;outline:none;transition:background .2s,color .2s}.cs-tab-btn:hover{color:#000000;background-color:rgba(0,0,0,0.08)}.cs-tab-btn.active{color:#000000;background-color:#ffffff;border-top-color:rgb(150,185,125)}.cs-body{position:relative;background-color:#ffffff;min-height:160px}pre.cs-code-pane{display:none;margin:0;border-radius:0 0 8px 8px}pre.cs-code-pane.active{display:block;margin:0;animation:cs-fadeIn .25s ease}@keyframes cs-fadeIn{from{opacity:0}to{opacity:1}}pre.cs-code-pane::-webkit-scrollbar{height:8px}pre.cs-code-pane::-webkit-scrollbar-track{background:#0d1117}pre.cs-code-pane::-webkit-scrollbar-thumb{background:#30363d;border-radius:4px}pre.cs-code-pane::-webkit-scrollbar-thumb:hover{background:#484f58}.cs-k{color:#79c0ff;font-weight:600}.cs-s{color:#a5d6ff}.cs-c{color:#8b949e;font-style:italic}.cs-f{color:#d2a8ff}
+.cs-widget-wrapper{width:100%;background-color:#ffffff;box-shadow:0 4px 12px rgba(0,0,0,0.1);overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;border:1px solid #cccccc;border-radius:8px}.cs-header{display:flex;align-items:center;background-image:linear-gradient(#ffffff,#e5eecc 100px);padding:0 12px;border-bottom:1px solid rgb(91, 128, 166);height:40px}.cs-controls{display:flex;gap:6px;margin-right:20px}.cs-dot{width:10px;height:10px;border-radius:50%}.cs-red{background:#ff5f56}.cs-yellow{background:#ffbd2e}.cs-green{background:#2778C9}.cs-tabs{display:flex;height:100%;align-items:stretch}.cs-tab-btn{background:transparent;border:none;color:#333333;padding:0 16px;font-size:13px;cursor:pointer;height:100%;border-top:2px solid transparent;outline:none;transition:background .2s,color .2s}.cs-tab-btn:hover{color:#000000;background-color:rgba(0,0,0,0.08)}.cs-tab-btn.active{color:#000000;background-color:#ffffff;border-top-color:rgb(102, 143, 185)}.cs-body{position:relative;background-color:#ffffff;min-height:160px}pre.cs-code-pane{display:none;margin:0;border-radius:0 0 8px 8px}pre.cs-code-pane.active{display:block;margin:0;animation:cs-fadeIn .25s ease}@keyframes cs-fadeIn{from{opacity:0}to{opacity:1}}pre.cs-code-pane::-webkit-scrollbar{height:8px}pre.cs-code-pane::-webkit-scrollbar-track{background:#0d1117}pre.cs-code-pane::-webkit-scrollbar-thumb{background:#30363d;border-radius:4px}pre.cs-code-pane::-webkit-scrollbar-thumb:hover{background:#484f58}.cs-k{color:#79c0ff;font-weight:600}.cs-s{color:#a5d6ff}.cs-c{color:#8b949e;font-style:italic}.cs-f{color:#d2a8ff}
 </style>
 <div class="cs-widget-wrapper">
 <div class="cs-header">
@@ -970,7 +970,7 @@ func quickSort3Way<T: Comparable>(_ arr: inout [T], _ l: Int, _ r: Int) {
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -1015,7 +1015,7 @@ func quickSort3Way<T: Comparable>(_ arr: inout [T], _ l: Int, _ r: Int) {
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -1054,7 +1054,7 @@ func quickSort3Way<T: Comparable>(_ arr: inout [T], _ l: Int, _ r: Int) {
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリック</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -1273,7 +1273,7 @@ function kFormatter(num) {
 </style>
 <div class="sidebar-box re-box re-box-large">
 <div class="sidebar-box recommend-here" style="margin: 0 auto;">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
+<a href="#" style="font-size: 16px; color:#5B80A6;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
 </div>
 <div class="sidebar-box sidebar-cate">
 <div class="sidebar-tree">

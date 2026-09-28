@@ -212,14 +212,14 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h3>改造<code>App.vue</code>(クリーンなコンテナにする)</h3>
 <div class="example"><h2 class="example">インスタンス</h2> <div class="example_code">
 <span style="color: #170;">&lt;template&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"min-h-screen bg-slate-50"</span>&gt;</span><br/>
-    <span style="color: #170;">&lt;router-view v-slot<span style="color: #66cc66;">=</span><span style="color: #a11;">"{ Component }"</span>&gt;</span><br/>
-      <span style="color: #170;">&lt;transition <span style="color: #00c;">name</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"page"</span> mode<span style="color: #66cc66;">=</span><span style="color: #a11;">"out-in"</span>&gt;</span><br/>
-        <span style="color: #170;">&lt;component :is<span style="color: #66cc66;">=</span><span style="color: #a11;">"Component"</span> <span style="color: #66cc66;">/</span>&gt;</span><br/>
-      <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span>transition&gt;</span><br/>
-    <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span>router-view&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
-<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span>template&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"min-h-screen bg-slate-50"</span>&gt;</span><br/>
+    <span style="color: #170;">&lt;router-view v-slot<span style="color: #66CC66;">=</span><span style="color: #a11;">"{ Component }"</span>&gt;</span><br/>
+      <span style="color: #170;">&lt;transition <span style="color: #00c;">name</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"page"</span> mode<span style="color: #66CC66;">=</span><span style="color: #a11;">"out-in"</span>&gt;</span><br/>
+        <span style="color: #170;">&lt;component :is<span style="color: #66CC66;">=</span><span style="color: #a11;">"Component"</span> <span style="color: #66CC66;">/</span>&gt;</span><br/>
+      <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span>transition&gt;</span><br/>
+    <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span>router-view&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span>template&gt;</span><br/>
 <br/>
 <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">style</span>&gt;</span><br/>/* ページ切り替えのフェードイン・フェードアウト効果 */<br/>
 .page-enter-active, .page-leave-active {<br/>
@@ -228,7 +228,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 .page-enter-from, .page-leave-to {<br/>
   opacity: 0;<br/>
 }<br/>
-<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">style</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">style</span>&gt;</span><br/>
 </div></div>
 <h3>元のロジックを移行する<code>Dashboard.vue</code></h3>
 <p>以前に に書いた<code>App.vue</code>のコード（Storeの導入、コンポーネントの導入、テンプレートレイアウト）をすべて切り取って に移します。<code>src/views/Dashboard.vue</code>に。</p>
@@ -250,37 +250,37 @@ const handleLogout = () =&gt; {<br/>
   localStorage.removeItem('isLoggedIn')<br/>
   router.push('/login')<br/>
 }<br/>
-<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">script</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">script</span>&gt;</span><br/>
 <br/>
 <span style="color: #170;">&lt;template&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"py-12 px-4"</span>&gt;</span><br/>
-    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"max-w-md mx-auto bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden"</span>&gt;</span><br/>
-      <span style="color: #170;">&lt;TaskHeader <span style="color: #66cc66;">/</span>&gt;</span><br/>
-      <span style="color: #170;">&lt;main <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"p-6"</span>&gt;</span><br/>
-        <span style="color: #170;">&lt;TaskInput @add-task<span style="color: #66cc66;">=</span><span style="color: #a11;">"addTask"</span> <span style="color: #66cc66;">/</span>&gt;</span><br/>
-        <span style="color: #170;">&lt;TaskFilter v-model<span style="color: #66cc66;">=</span><span style="color: #a11;">"filter"</span> <span style="color: #66cc66;">/</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"py-12 px-4"</span>&gt;</span><br/>
+    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"max-w-md mx-auto bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden"</span>&gt;</span><br/>
+      <span style="color: #170;">&lt;TaskHeader <span style="color: #66CC66;">/</span>&gt;</span><br/>
+      <span style="color: #170;">&lt;main <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"p-6"</span>&gt;</span><br/>
+        <span style="color: #170;">&lt;TaskInput @add-task<span style="color: #66CC66;">=</span><span style="color: #a11;">"addTask"</span> <span style="color: #66CC66;">/</span>&gt;</span><br/>
+        <span style="color: #170;">&lt;TaskFilter v-model<span style="color: #66CC66;">=</span><span style="color: #a11;">"filter"</span> <span style="color: #66CC66;">/</span>&gt;</span><br/>
         <br/>
-        <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">ul</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"space-y-3"</span>&gt;</span><br/>
-          <span style="color: #170;">&lt;TransitionGroup <span style="color: #00c;">name</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"list"</span>&gt;</span><br/>
+        <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">ul</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"space-y-3"</span>&gt;</span><br/>
+          <span style="color: #170;">&lt;TransitionGroup <span style="color: #00c;">name</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"list"</span>&gt;</span><br/>
             <span style="color: #170;">&lt;TaskItem </span><br/>
-<span style="color: #170;">              v-<span style="color: #00c;">for</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"task in filteredTasks"</span> </span><br/>
-<span style="color: #170;">              :key<span style="color: #66cc66;">=</span><span style="color: #a11;">"task.id"</span></span><br/>
-<span style="color: #170;">              :task<span style="color: #66cc66;">=</span><span style="color: #a11;">"task"</span></span><br/>
-<span style="color: #170;">              @toggle<span style="color: #66cc66;">=</span><span style="color: #a11;">"toggleTask"</span></span><br/>
-<span style="color: #170;">              @remove<span style="color: #66cc66;">=</span><span style="color: #a11;">"removeTask"</span></span><br/>
-<span style="color: #170;">            <span style="color: #66cc66;">/</span>&gt;</span><br/>
-          <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span>TransitionGroup&gt;</span><br/>
-        <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">ul</span>&gt;</span><br/>
+<span style="color: #170;">              v-<span style="color: #00c;">for</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"task in filteredTasks"</span> </span><br/>
+<span style="color: #170;">              :key<span style="color: #66CC66;">=</span><span style="color: #a11;">"task.id"</span></span><br/>
+<span style="color: #170;">              :task<span style="color: #66CC66;">=</span><span style="color: #a11;">"task"</span></span><br/>
+<span style="color: #170;">              @toggle<span style="color: #66CC66;">=</span><span style="color: #a11;">"toggleTask"</span></span><br/>
+<span style="color: #170;">              @remove<span style="color: #66CC66;">=</span><span style="color: #a11;">"removeTask"</span></span><br/>
+<span style="color: #170;">            <span style="color: #66CC66;">/</span>&gt;</span><br/>
+          <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span>TransitionGroup&gt;</span><br/>
+        <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">ul</span>&gt;</span><br/>
 <br/>
         <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">button</span> </span><br/>
-<span style="color: #170;">          @click<span style="color: #66cc66;">=</span><span style="color: #a11;">"handleLogout"</span></span><br/>
-<span style="color: #170;">          <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"mt-8 w-full py-2 text-xs text-slate-400 hover:text-red-500 transition-colors"</span></span><br/>
+<span style="color: #170;">          @click<span style="color: #66CC66;">=</span><span style="color: #a11;">"handleLogout"</span></span><br/>
+<span style="color: #170;">          <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"mt-8 w-full py-2 text-xs text-slate-400 hover:text-red-500 transition-colors"</span></span><br/>
 <span style="color: #170;">        &gt;</span><br/>現在のアカウントからログアウト<br/>
-        <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">button</span>&gt;</span><br/>
-      <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span>main&gt;</span><br/>
-    <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
-<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span>template&gt;</span><br/>
+        <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">button</span>&gt;</span><br/>
+      <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span>main&gt;</span><br/>
+    <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span>template&gt;</span><br/>
 </div></div><h3>ログインロジックの実装 (Login.vue)</h3>
 <p>Tailwind v4を利用してミニマルなログインページを素早く構築し、ログイン動作をシミュレートします。</p>
 <div class="example"><h2 class="example">インスタンス</h2> <div class="example_code">
@@ -298,22 +298,22 @@ const handleLogin = () =&gt; {<br/>
     isLoading.value = false<br/>
   }, 1000)<br/>
 }<br/>
-<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">script</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">script</span>&gt;</span><br/>
 <br/>
 <span style="color: #170;">&lt;template&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"min-h-screen flex items-center justify-center bg-slate-50"</span>&gt;</span><br/>
-    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"p-8 bg-white rounded-3xl shadow-xl w-full max-w-sm border border-slate-100"</span>&gt;</span><br/>
-      <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">h2</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"text-2xl font-black mb-6 text-slate-800"</span>&gt;</span>おかえりなさい<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">h2</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"min-h-screen flex items-center justify-center bg-slate-50"</span>&gt;</span><br/>
+    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"p-8 bg-white rounded-3xl shadow-xl w-full max-w-sm border border-slate-100"</span>&gt;</span><br/>
+      <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">h2</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"text-2xl font-black mb-6 text-slate-800"</span>&gt;</span>おかえりなさい<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">h2</span>&gt;</span><br/>
       <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">button</span></span><br/>
-<span style="color: #170;">       @click<span style="color: #66cc66;">=</span><span style="color: #a11;">"handleLogin"</span></span><br/>
-<span style="color: #170;">       :<span style="color: #00c;">disabled</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"isLoading"</span></span><br/>
-<span style="color: #170;">       <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"w-full bg-linear-to-r from-blue-600 to-indigo-600 text-white py-3 rounded-xl font-bold hover:opacity-90 active:scale-95 transition-all disabled:opacity-50"</span></span><br/>
+<span style="color: #170;">       @click<span style="color: #66CC66;">=</span><span style="color: #a11;">"handleLogin"</span></span><br/>
+<span style="color: #170;">       :<span style="color: #00c;">disabled</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"isLoading"</span></span><br/>
+<span style="color: #170;">       <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"w-full bg-linear-to-r from-blue-600 to-indigo-600 text-white py-3 rounded-xl font-bold hover:opacity-90 active:scale-95 transition-all disabled:opacity-50"</span></span><br/>
 <span style="color: #170;">     &gt;</span><br/>{{ isLoading ? 'ログイン中...' : 'ワンクリックでシステムへ' }}<br/>
-      <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">button</span>&gt;</span><br/>
-      <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">p</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"mt-4 text-center text-xs text-slate-400"</span>&gt;</span>テスト環境：クリックでログインできます<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">p</span>&gt;</span><br/>
-    <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
-<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span>template&gt;</span><br/>
+      <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">button</span>&gt;</span><br/>
+      <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">p</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"mt-4 text-center text-xs text-slate-400"</span>&gt;</span>テスト環境：クリックでログインできます<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">p</span>&gt;</span><br/>
+    <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span>template&gt;</span><br/>
 </div></div>
 <hr/>
 <h3>仕上げ<code>router/index.js</code>のガードロジック</h3>
@@ -425,7 +425,7 @@ app.<span style="color: #660066;">mount</span><span style="color: #009900;">(</s
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -470,7 +470,7 @@ app.<span style="color: #660066;">mount</span><span style="color: #009900;">(</s
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -509,7 +509,7 @@ app.<span style="color: #660066;">mount</span><span style="color: #009900;">(</s
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>

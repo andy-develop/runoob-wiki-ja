@@ -246,16 +246,16 @@ sorted_arr <span style="color: Gray;">=</span> bucket_sort<span style="color: Ol
         <span style="color: #666666; font-style: italic;">// arr をコピーし、引数の内容を変更しない</span><br/>
         <span style="color: #000066; font-weight: bold;">int</span><span style="color: #009900;">[</span><span style="color: #009900;">]</span> arr <span style="color: #339933;">=</span> <span style="color: #003399;">Arrays</span>.<span style="color: #006633;">copyOf</span><span style="color: #009900;">(</span>sourceArray, sourceArray.<span style="color: #006633;">length</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
-        <span style="color: #000000; font-weight: bold;">return</span> bucketSort<span style="color: #009900;">(</span>arr, <span style="color: #cc66cc;">5</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+        <span style="color: #000000; font-weight: bold;">return</span> bucketSort<span style="color: #009900;">(</span>arr, <span style="color: #CC66CC;">5</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
     <span style="color: #009900;">}</span><br/>
 <br/>
     <span style="color: #000000; font-weight: bold;">private</span> <span style="color: #000066; font-weight: bold;">int</span><span style="color: #009900;">[</span><span style="color: #009900;">]</span> bucketSort<span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span><span style="color: #009900;">[</span><span style="color: #009900;">]</span> arr, <span style="color: #000066; font-weight: bold;">int</span> bucketSize<span style="color: #009900;">)</span> <span style="color: #000000; font-weight: bold;">throws</span> <span style="color: #003399;">Exception</span> <span style="color: #009900;">{</span><br/>
-        <span style="color: #000000; font-weight: bold;">if</span> <span style="color: #009900;">(</span>arr.<span style="color: #006633;">length</span> <span style="color: #339933;">==</span> <span style="color: #cc66cc;">0</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
+        <span style="color: #000000; font-weight: bold;">if</span> <span style="color: #009900;">(</span>arr.<span style="color: #006633;">length</span> <span style="color: #339933;">==</span> <span style="color: #CC66CC;">0</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
             <span style="color: #000000; font-weight: bold;">return</span> arr<span style="color: #339933;">;</span><br/>
         <span style="color: #009900;">}</span><br/>
 <br/>
-        <span style="color: #000066; font-weight: bold;">int</span> minValue <span style="color: #339933;">=</span> arr<span style="color: #009900;">[</span><span style="color: #cc66cc;">0</span><span style="color: #009900;">]</span><span style="color: #339933;">;</span><br/>
-        <span style="color: #000066; font-weight: bold;">int</span> maxValue <span style="color: #339933;">=</span> arr<span style="color: #009900;">[</span><span style="color: #cc66cc;">0</span><span style="color: #009900;">]</span><span style="color: #339933;">;</span><br/>
+        <span style="color: #000066; font-weight: bold;">int</span> minValue <span style="color: #339933;">=</span> arr<span style="color: #009900;">[</span><span style="color: #CC66CC;">0</span><span style="color: #009900;">]</span><span style="color: #339933;">;</span><br/>
+        <span style="color: #000066; font-weight: bold;">int</span> maxValue <span style="color: #339933;">=</span> arr<span style="color: #009900;">[</span><span style="color: #CC66CC;">0</span><span style="color: #009900;">]</span><span style="color: #339933;">;</span><br/>
         <span style="color: #000000; font-weight: bold;">for</span> <span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span> value <span style="color: #339933;">:</span> arr<span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
             <span style="color: #000000; font-weight: bold;">if</span> <span style="color: #009900;">(</span>value <span style="color: #339933;">&lt;</span> minValue<span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
                 minValue <span style="color: #339933;">=</span> value<span style="color: #339933;">;</span><br/>
@@ -264,18 +264,18 @@ sorted_arr <span style="color: Gray;">=</span> bucket_sort<span style="color: Ol
             <span style="color: #009900;">}</span><br/>
         <span style="color: #009900;">}</span><br/>
 <br/>
-        <span style="color: #000066; font-weight: bold;">int</span> bucketCount <span style="color: #339933;">=</span> <span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span><span style="color: #009900;">)</span> <span style="color: #003399;">Math</span>.<span style="color: #006633;">floor</span><span style="color: #009900;">(</span><span style="color: #009900;">(</span>maxValue <span style="color: #339933;">-</span> minValue<span style="color: #009900;">)</span> <span style="color: #339933;">/</span> bucketSize<span style="color: #009900;">)</span> <span style="color: #339933;">+</span> <span style="color: #cc66cc;">1</span><span style="color: #339933;">;</span><br/>
-        <span style="color: #000066; font-weight: bold;">int</span><span style="color: #009900;">[</span><span style="color: #009900;">]</span><span style="color: #009900;">[</span><span style="color: #009900;">]</span> buckets <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> <span style="color: #000066; font-weight: bold;">int</span><span style="color: #009900;">[</span>bucketCount<span style="color: #009900;">]</span><span style="color: #009900;">[</span><span style="color: #cc66cc;">0</span><span style="color: #009900;">]</span><span style="color: #339933;">;</span><br/>
+        <span style="color: #000066; font-weight: bold;">int</span> bucketCount <span style="color: #339933;">=</span> <span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span><span style="color: #009900;">)</span> <span style="color: #003399;">Math</span>.<span style="color: #006633;">floor</span><span style="color: #009900;">(</span><span style="color: #009900;">(</span>maxValue <span style="color: #339933;">-</span> minValue<span style="color: #009900;">)</span> <span style="color: #339933;">/</span> bucketSize<span style="color: #009900;">)</span> <span style="color: #339933;">+</span> <span style="color: #CC66CC;">1</span><span style="color: #339933;">;</span><br/>
+        <span style="color: #000066; font-weight: bold;">int</span><span style="color: #009900;">[</span><span style="color: #009900;">]</span><span style="color: #009900;">[</span><span style="color: #009900;">]</span> buckets <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> <span style="color: #000066; font-weight: bold;">int</span><span style="color: #009900;">[</span>bucketCount<span style="color: #009900;">]</span><span style="color: #009900;">[</span><span style="color: #CC66CC;">0</span><span style="color: #009900;">]</span><span style="color: #339933;">;</span><br/>
 <br/>
         <span style="color: #666666; font-style: italic;">// マッピング関数を使用してデータを各バケットに割り当てる</span><br/>
-        <span style="color: #000000; font-weight: bold;">for</span> <span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span> i <span style="color: #339933;">=</span> <span style="color: #cc66cc;">0</span><span style="color: #339933;">;</span> i <span style="color: #339933;">&lt;</span> arr.<span style="color: #006633;">length</span><span style="color: #339933;">;</span> i<span style="color: #339933;">++</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
+        <span style="color: #000000; font-weight: bold;">for</span> <span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span> i <span style="color: #339933;">=</span> <span style="color: #CC66CC;">0</span><span style="color: #339933;">;</span> i <span style="color: #339933;">&lt;</span> arr.<span style="color: #006633;">length</span><span style="color: #339933;">;</span> i<span style="color: #339933;">++</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
             <span style="color: #000066; font-weight: bold;">int</span> index <span style="color: #339933;">=</span> <span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span><span style="color: #009900;">)</span> <span style="color: #003399;">Math</span>.<span style="color: #006633;">floor</span><span style="color: #009900;">(</span><span style="color: #009900;">(</span>arr<span style="color: #009900;">[</span>i<span style="color: #009900;">]</span> <span style="color: #339933;">-</span> minValue<span style="color: #009900;">)</span> <span style="color: #339933;">/</span> bucketSize<span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
             buckets<span style="color: #009900;">[</span>index<span style="color: #009900;">]</span> <span style="color: #339933;">=</span> arrAppend<span style="color: #009900;">(</span>buckets<span style="color: #009900;">[</span>index<span style="color: #009900;">]</span>, arr<span style="color: #009900;">[</span>i<span style="color: #009900;">]</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
         <span style="color: #009900;">}</span><br/>
 <br/>
-        <span style="color: #000066; font-weight: bold;">int</span> arrIndex <span style="color: #339933;">=</span> <span style="color: #cc66cc;">0</span><span style="color: #339933;">;</span><br/>
+        <span style="color: #000066; font-weight: bold;">int</span> arrIndex <span style="color: #339933;">=</span> <span style="color: #CC66CC;">0</span><span style="color: #339933;">;</span><br/>
         <span style="color: #000000; font-weight: bold;">for</span> <span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span><span style="color: #009900;">[</span><span style="color: #009900;">]</span> bucket <span style="color: #339933;">:</span> buckets<span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
-            <span style="color: #000000; font-weight: bold;">if</span> <span style="color: #009900;">(</span>bucket.<span style="color: #006633;">length</span> <span style="color: #339933;">&lt;=</span> <span style="color: #cc66cc;">0</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
+            <span style="color: #000000; font-weight: bold;">if</span> <span style="color: #009900;">(</span>bucket.<span style="color: #006633;">length</span> <span style="color: #339933;">&lt;=</span> <span style="color: #CC66CC;">0</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
                 <span style="color: #000000; font-weight: bold;">continue</span><span style="color: #339933;">;</span><br/>
             <span style="color: #009900;">}</span><br/>
             <span style="color: #666666; font-style: italic;">// 各バケットをソートする。ここでは挿入ソートを使用</span><br/>
@@ -294,8 +294,8 @@ sorted_arr <span style="color: Gray;">=</span> bucket_sort<span style="color: Ol
      * @param value<br/>
      */</span><br/>
     <span style="color: #000000; font-weight: bold;">private</span> <span style="color: #000066; font-weight: bold;">int</span><span style="color: #009900;">[</span><span style="color: #009900;">]</span> arrAppend<span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span><span style="color: #009900;">[</span><span style="color: #009900;">]</span> arr, <span style="color: #000066; font-weight: bold;">int</span> value<span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
-        arr <span style="color: #339933;">=</span> <span style="color: #003399;">Arrays</span>.<span style="color: #006633;">copyOf</span><span style="color: #009900;">(</span>arr, arr.<span style="color: #006633;">length</span> <span style="color: #339933;">+</span> <span style="color: #cc66cc;">1</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
-        arr<span style="color: #009900;">[</span>arr.<span style="color: #006633;">length</span> <span style="color: #339933;">-</span> <span style="color: #cc66cc;">1</span><span style="color: #009900;">]</span> <span style="color: #339933;">=</span> value<span style="color: #339933;">;</span><br/>
+        arr <span style="color: #339933;">=</span> <span style="color: #003399;">Arrays</span>.<span style="color: #006633;">copyOf</span><span style="color: #009900;">(</span>arr, arr.<span style="color: #006633;">length</span> <span style="color: #339933;">+</span> <span style="color: #CC66CC;">1</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+        arr<span style="color: #009900;">[</span>arr.<span style="color: #006633;">length</span> <span style="color: #339933;">-</span> <span style="color: #CC66CC;">1</span><span style="color: #009900;">]</span> <span style="color: #339933;">=</span> value<span style="color: #339933;">;</span><br/>
         <span style="color: #000000; font-weight: bold;">return</span> arr<span style="color: #339933;">;</span><br/>
     <span style="color: #009900;">}</span><br/>
 <br/>
@@ -347,10 +347,10 @@ sorted_arr <span style="color: Gray;">=</span> bucket_sort<span style="color: Ol
 <span style="color: #060;">#include&lt;iostream&gt;</span><br/>
 <span style="color: #060;">#include&lt;vector&gt;</span><br/>
 <span style="color: #05a;">using</span> <span style="color: #05a;">namespace</span> std<span style="color: #008080;">;</span><br/>
-<span style="color: #05a;">const</span> <span style="color: #05a;">int</span> BUCKET_NUM <span style="color: #000080;">=</span> <span style="color: #0000dd;">10</span><span style="color: #008080;">;</span><br/>
+<span style="color: #05a;">const</span> <span style="color: #05a;">int</span> BUCKET_NUM <span style="color: #000080;">=</span> <span style="color: #0000DD;">10</span><span style="color: #008080;">;</span><br/>
 <br/>
 <span style="color: #05a;">struct</span> ListNode<span style="color: #008000;">{</span><br/>
-        <span style="color: #05a;">explicit</span> ListNode<span style="color: #008000;">(</span><span style="color: #05a;">int</span> i<span style="color: #000080;">=</span><span style="color: #0000dd;">0</span><span style="color: #008000;">)</span><span style="color: #008080;">:</span>mData<span style="color: #008000;">(</span>i<span style="color: #008000;">)</span>,mNext<span style="color: #008000;">(</span><span style="color: #05a;">NULL</span><span style="color: #008000;">)</span><span style="color: #008000;">{</span><span style="color: #008000;">}</span><br/>
+        <span style="color: #05a;">explicit</span> ListNode<span style="color: #008000;">(</span><span style="color: #05a;">int</span> i<span style="color: #000080;">=</span><span style="color: #0000DD;">0</span><span style="color: #008000;">)</span><span style="color: #008080;">:</span>mData<span style="color: #008000;">(</span>i<span style="color: #008000;">)</span>,mNext<span style="color: #008000;">(</span><span style="color: #05a;">NULL</span><span style="color: #008000;">)</span><span style="color: #008000;">{</span><span style="color: #008000;">}</span><br/>
         ListNode<span style="color: #000040;">*</span> mNext<span style="color: #008080;">;</span><br/>
         <span style="color: #05a;">int</span> mData<span style="color: #008080;">;</span><br/>
 <span style="color: #008000;">}</span><span style="color: #008080;">;</span><br/>
@@ -392,17 +392,17 @@ ListNode<span style="color: #000040;">*</span> Merge<span style="color: #008000;
 <span style="color: #008000;">}</span><br/>
 <br/>
 <span style="color: #05a;">void</span> BucketSort<span style="color: #008000;">(</span><span style="color: #05a;">int</span> n,<span style="color: #05a;">int</span> arr<span style="color: #008000;">[</span><span style="color: #008000;">]</span><span style="color: #008000;">)</span><span style="color: #008000;">{</span><br/>
-        vector<span style="color: #000080;">&lt;</span>ListNode<span style="color: #000040;">*</span><span style="color: #000080;">&gt;</span> buckets<span style="color: #008000;">(</span>BUCKET_NUM,<span style="color: #008000;">(</span>ListNode<span style="color: #000040;">*</span><span style="color: #008000;">)</span><span style="color: #008000;">(</span><span style="color: #0000dd;">0</span><span style="color: #008000;">)</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
-        <span style="color: #05a;">for</span><span style="color: #008000;">(</span><span style="color: #05a;">int</span> i<span style="color: #000080;">=</span><span style="color: #0000dd;">0</span><span style="color: #008080;">;</span>i<span style="color: #000080;">&lt;</span>n<span style="color: #008080;">;</span><span style="color: #000040;">++</span>i<span style="color: #008000;">)</span><span style="color: #008000;">{</span><br/>
+        vector<span style="color: #000080;">&lt;</span>ListNode<span style="color: #000040;">*</span><span style="color: #000080;">&gt;</span> buckets<span style="color: #008000;">(</span>BUCKET_NUM,<span style="color: #008000;">(</span>ListNode<span style="color: #000040;">*</span><span style="color: #008000;">)</span><span style="color: #008000;">(</span><span style="color: #0000DD;">0</span><span style="color: #008000;">)</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
+        <span style="color: #05a;">for</span><span style="color: #008000;">(</span><span style="color: #05a;">int</span> i<span style="color: #000080;">=</span><span style="color: #0000DD;">0</span><span style="color: #008080;">;</span>i<span style="color: #000080;">&lt;</span>n<span style="color: #008080;">;</span><span style="color: #000040;">++</span>i<span style="color: #008000;">)</span><span style="color: #008000;">{</span><br/>
                 <span style="color: #05a;">int</span> index <span style="color: #000080;">=</span> arr<span style="color: #008000;">[</span>i<span style="color: #008000;">]</span><span style="color: #000040;">/</span>BUCKET_NUM<span style="color: #008080;">;</span><br/>
                 ListNode <span style="color: #000040;">*</span>head <span style="color: #000080;">=</span> buckets.<span style="color: #007788;">at</span><span style="color: #008000;">(</span>index<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
                 buckets.<span style="color: #007788;">at</span><span style="color: #008000;">(</span>index<span style="color: #008000;">)</span> <span style="color: #000080;">=</span> insert<span style="color: #008000;">(</span>head,arr<span style="color: #008000;">[</span>i<span style="color: #008000;">]</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
         <span style="color: #008000;">}</span><br/>
-        ListNode <span style="color: #000040;">*</span>head <span style="color: #000080;">=</span> buckets.<span style="color: #007788;">at</span><span style="color: #008000;">(</span><span style="color: #0000dd;">0</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
-        <span style="color: #05a;">for</span><span style="color: #008000;">(</span><span style="color: #05a;">int</span> i<span style="color: #000080;">=</span><span style="color: #0000dd;">1</span><span style="color: #008080;">;</span>i<span style="color: #000080;">&lt;</span>BUCKET_NUM<span style="color: #008080;">;</span><span style="color: #000040;">++</span>i<span style="color: #008000;">)</span><span style="color: #008000;">{</span><br/>
+        ListNode <span style="color: #000040;">*</span>head <span style="color: #000080;">=</span> buckets.<span style="color: #007788;">at</span><span style="color: #008000;">(</span><span style="color: #0000DD;">0</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
+        <span style="color: #05a;">for</span><span style="color: #008000;">(</span><span style="color: #05a;">int</span> i<span style="color: #000080;">=</span><span style="color: #0000DD;">1</span><span style="color: #008080;">;</span>i<span style="color: #000080;">&lt;</span>BUCKET_NUM<span style="color: #008080;">;</span><span style="color: #000040;">++</span>i<span style="color: #008000;">)</span><span style="color: #008000;">{</span><br/>
                 head <span style="color: #000080;">=</span> Merge<span style="color: #008000;">(</span>head,buckets.<span style="color: #007788;">at</span><span style="color: #008000;">(</span>i<span style="color: #008000;">)</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
         <span style="color: #008000;">}</span><br/>
-        <span style="color: #05a;">for</span><span style="color: #008000;">(</span><span style="color: #05a;">int</span> i<span style="color: #000080;">=</span><span style="color: #0000dd;">0</span><span style="color: #008080;">;</span>i<span style="color: #000080;">&lt;</span>n<span style="color: #008080;">;</span><span style="color: #000040;">++</span>i<span style="color: #008000;">)</span><span style="color: #008000;">{</span><br/>
+        <span style="color: #05a;">for</span><span style="color: #008000;">(</span><span style="color: #05a;">int</span> i<span style="color: #000080;">=</span><span style="color: #0000DD;">0</span><span style="color: #008080;">;</span>i<span style="color: #000080;">&lt;</span>n<span style="color: #008080;">;</span><span style="color: #000040;">++</span>i<span style="color: #008000;">)</span><span style="color: #008000;">{</span><br/>
                 arr<span style="color: #008000;">[</span>i<span style="color: #008000;">]</span> <span style="color: #000080;">=</span> head<span style="color: #000040;">-</span><span style="color: #000080;">&gt;</span>mData<span style="color: #008080;">;</span><br/>
                 head <span style="color: #000080;">=</span> head<span style="color: #000040;">-</span><span style="color: #000080;">&gt;</span>mNext<span style="color: #008080;">;</span><br/>
         <span style="color: #008000;">}</span><br/>
@@ -436,7 +436,7 @@ ListNode<span style="color: #000040;">*</span> Merge<span style="color: #008000;
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -481,7 +481,7 @@ ListNode<span style="color: #000040;">*</span> Merge<span style="color: #008000;
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -706,7 +706,7 @@ int main() {
 </div>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリック</a></p>
 	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -917,7 +917,7 @@ p.note-author {
     border-bottom: 1px solid #ddd;
     font-size: 18px;
     font-weight: bold;
-    color: #78a15a;
+    color: #5B80A6;
     padding-bottom: 2px;
     margin-bottom: 4px;
 }

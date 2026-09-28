@@ -188,12 +188,12 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #708;">fn</span> main<span style="">(</span><span style="">)</span> <span style="">{</span><br/>
     <span style="color: #a50; font-style: italic;">// クロージャ: 型注釈を省略し、コンパイラが自動的に推論</span><br/>
-    <span style="color: #708;">let</span> add_one <span style="">=</span> <span style="">|</span>x<span style="">|</span> x <span style="">+</span> <span style="color: #0000dd;">1</span><span style="">;</span><br/>
-    println<span style="">!</span><span style="">(</span><span style="color: #a11;">"add_one(4) = {}"</span><span style="">,</span> add_one<span style="">(</span><span style="color: #0000dd;">4</span><span style="">)</span><span style="">)</span><span style="">;</span> <span style="color: #a50; font-style: italic;">// 出力: 5</span><br/>
+    <span style="color: #708;">let</span> add_one <span style="">=</span> <span style="">|</span>x<span style="">|</span> x <span style="">+</span> <span style="color: #0000DD;">1</span><span style="">;</span><br/>
+    println<span style="">!</span><span style="">(</span><span style="color: #a11;">"add_one(4) = {}"</span><span style="">,</span> add_one<span style="">(</span><span style="color: #0000DD;">4</span><span style="">)</span><span style="">)</span><span style="">;</span> <span style="color: #a50; font-style: italic;">// 出力: 5</span><br/>
 <br/>
     <span style="color: #a50; font-style: italic;">// クロージャ: 引数と戻り値の型を明示的に指定</span><br/>
     <span style="color: #708;">let</span> multiply <span style="">=</span> <span style="">|</span>a<span style="">:</span> <span style="color: #05a;">i32</span><span style="">,</span> b<span style="">:</span> <span style="color: #05a;">i32</span><span style="">|</span> <span style="">-&gt;</span> <span style="color: #05a;">i32</span> <span style="">{</span> a <span style="">*</span> b <span style="">}</span><span style="">;</span><br/>
-    println<span style="">!</span><span style="">(</span><span style="color: #a11;">"multiply(3, 7) = {}"</span><span style="">,</span> multiply<span style="">(</span><span style="color: #0000dd;">3</span><span style="">,</span> <span style="color: #0000dd;">7</span><span style="">)</span><span style="">)</span><span style="">;</span> <span style="color: #a50; font-style: italic;">// 出力: 21</span><br/>
+    println<span style="">!</span><span style="">(</span><span style="color: #a11;">"multiply(3, 7) = {}"</span><span style="">,</span> multiply<span style="">(</span><span style="color: #0000DD;">3</span><span style="">,</span> <span style="color: #0000DD;">7</span><span style="">)</span><span style="">)</span><span style="">;</span> <span style="color: #a50; font-style: italic;">// 出力: 21</span><br/>
 <br/>
     <span style="color: #a50; font-style: italic;">// 複数行のクロージャは中括弧が必要</span><br/>
     <span style="color: #708;">let</span> greet <span style="">=</span> <span style="">|</span>name<span style="">:</span> <span style="">&amp;</span><span style="color: #05a;">str</span><span style="">|</span> <span style="">{</span><br/>
@@ -233,10 +233,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>クロージャがキャプチャした変数を変更する必要がある場合、Rust は可変参照としてキャプチャします。この場合、クロージャ自体は `mut` として宣言する必要があります。<code>mut</code>。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #708;">fn</span> main<span style="">(</span><span style="">)</span> <span style="">{</span><br/>
-    <span style="color: #708;">let</span> <span style="color: #708;">mut</span> counter <span style="">=</span> <span style="color: #0000dd;">0</span><span style="">;</span><br/>
+    <span style="color: #708;">let</span> <span style="color: #708;">mut</span> counter <span style="">=</span> <span style="color: #0000DD;">0</span><span style="">;</span><br/>
     <span style="color: #a50; font-style: italic;">// 闭包以 &amp;mut 方式捕获 counter，闭包本身也要声明为 mut</span><br/>
     <span style="color: #708;">let</span> <span style="color: #708;">mut</span> inc <span style="">=</span> <span style="">||</span> <span style="">{</span><br/>
-        counter <span style="">+=</span> <span style="color: #0000dd;">1</span><span style="">;</span><br/>
+        counter <span style="">+=</span> <span style="color: #0000DD;">1</span><span style="">;</span><br/>
     <span style="">}</span><span style="">;</span><br/>
     inc<span style="">(</span><span style="">)</span><span style="">;</span><br/>
     inc<span style="">(</span><span style="">)</span><span style="">;</span><br/>
@@ -279,9 +279,9 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     greet<span style="">(</span><span style="">)</span><span style="">;</span> <span style="color: #a50; font-style: italic;">// 第二调用，依然正常</span><br/>
 <br/>
     <span style="color: #a50; font-style: italic;">// FnMut 闭包：需要修改捕获变量</span><br/>
-    <span style="color: #708;">let</span> <span style="color: #708;">mut</span> count <span style="">=</span> <span style="color: #0000dd;">0</span><span style="">;</span><br/>
+    <span style="color: #708;">let</span> <span style="color: #708;">mut</span> count <span style="">=</span> <span style="color: #0000DD;">0</span><span style="">;</span><br/>
     <span style="color: #708;">let</span> <span style="color: #708;">mut</span> increment <span style="">=</span> <span style="">||</span> <span style="">{</span><br/>
-        count <span style="">+=</span> <span style="color: #0000dd;">1</span><span style="">;</span><br/>
+        count <span style="">+=</span> <span style="color: #0000DD;">1</span><span style="">;</span><br/>
         count<br/>
     <span style="">}</span><span style="">;</span><br/>
     println<span style="">!</span><span style="">(</span><span style="color: #a11;">"increment() = {}"</span><span style="">,</span> increment<span style="">(</span><span style="">)</span><span style="">)</span><span style="">;</span> <span style="color: #a50; font-style: italic;">// 输出: 1</span><br/>
@@ -312,12 +312,12 @@ where<br/>
 <span style="">}</span><br/>
 <br/>
 <span style="color: #708;">fn</span> main<span style="">(</span><span style="">)</span> <span style="">{</span><br/>
-    <span style="color: #708;">let</span> double <span style="">=</span> <span style="">|</span>x<span style="">|</span> x <span style="">*</span> <span style="color: #0000dd;">2</span><span style="">;</span><br/>
-    <span style="color: #708;">let</span> result <span style="">=</span> apply<span style="">(</span><span style="color: #0000dd;">5</span><span style="">,</span> double<span style="">)</span><span style="">;</span><br/>
+    <span style="color: #708;">let</span> double <span style="">=</span> <span style="">|</span>x<span style="">|</span> x <span style="">*</span> <span style="color: #0000DD;">2</span><span style="">;</span><br/>
+    <span style="color: #708;">let</span> result <span style="">=</span> apply<span style="">(</span><span style="color: #0000DD;">5</span><span style="">,</span> double<span style="">)</span><span style="">;</span><br/>
     println<span style="">!</span><span style="">(</span><span style="color: #a11;">"Result: {}"</span><span style="">,</span> result<span style="">)</span><span style="">;</span> <span style="color: #a50; font-style: italic;">// 输出: Result: 10</span><br/>
 <br/>
     <span style="color: #a50; font-style: italic;">// 也可以直接传入匿名闭包</span><br/>
-    <span style="color: #708;">let</span> result2 <span style="">=</span> apply<span style="">(</span><span style="color: #0000dd;">3</span><span style="">,</span> <span style="">|</span>x<span style="">|</span> x <span style="">+</span> <span style="color: #0000dd;">100</span><span style="">)</span><span style="">;</span><br/>
+    <span style="color: #708;">let</span> result2 <span style="">=</span> apply<span style="">(</span><span style="color: #0000DD;">3</span><span style="">,</span> <span style="">|</span>x<span style="">|</span> x <span style="">+</span> <span style="color: #0000DD;">100</span><span style="">)</span><span style="">;</span><br/>
     println<span style="">!</span><span style="">(</span><span style="color: #a11;">"Result2: {}"</span><span style="">,</span> result2<span style="">)</span><span style="">;</span> <span style="color: #a50; font-style: italic;">// 输出: Result2: 103</span><br/>
 <span style="">}</span><br/>
 </div></div>
@@ -333,11 +333,11 @@ where<br/>
 <span style="">}</span><br/>
 <br/>
 <span style="color: #708;">fn</span> main<span style="">(</span><span style="">)</span> <span style="">{</span><br/>
-    <span style="color: #708;">let</span> add_five <span style="">=</span> make_adder<span style="">(</span><span style="color: #0000dd;">5</span><span style="">)</span><span style="">;</span><br/>
-    println<span style="">!</span><span style="">(</span><span style="color: #a11;">"5 + 3 = {}"</span><span style="">,</span> add_five<span style="">(</span><span style="color: #0000dd;">3</span><span style="">)</span><span style="">)</span><span style="">;</span> <span style="color: #a50; font-style: italic;">// 出力: 5 + 3 = 8</span><br/>
+    <span style="color: #708;">let</span> add_five <span style="">=</span> make_adder<span style="">(</span><span style="color: #0000DD;">5</span><span style="">)</span><span style="">;</span><br/>
+    println<span style="">!</span><span style="">(</span><span style="color: #a11;">"5 + 3 = {}"</span><span style="">,</span> add_five<span style="">(</span><span style="color: #0000DD;">3</span><span style="">)</span><span style="">)</span><span style="">;</span> <span style="color: #a50; font-style: italic;">// 出力: 5 + 3 = 8</span><br/>
 <br/>
-    <span style="color: #708;">let</span> add_ten <span style="">=</span> make_adder<span style="">(</span><span style="color: #0000dd;">10</span><span style="">)</span><span style="">;</span><br/>
-    println<span style="">!</span><span style="">(</span><span style="color: #a11;">"10 + 2 = {}"</span><span style="">,</span> add_ten<span style="">(</span><span style="color: #0000dd;">2</span><span style="">)</span><span style="">)</span><span style="">;</span> <span style="color: #a50; font-style: italic;">// 出力: 10 + 2 = 12</span><br/>
+    <span style="color: #708;">let</span> add_ten <span style="">=</span> make_adder<span style="">(</span><span style="color: #0000DD;">10</span><span style="">)</span><span style="">;</span><br/>
+    println<span style="">!</span><span style="">(</span><span style="color: #a11;">"10 + 2 = {}"</span><span style="">,</span> add_ten<span style="">(</span><span style="color: #0000DD;">2</span><span style="">)</span><span style="">)</span><span style="">;</span> <span style="color: #a50; font-style: italic;">// 出力: 10 + 2 = 12</span><br/>
 <span style="">}</span><br/>
 </div></div>
 <h4>Box&lt;dyn Fn&gt; を使用してクロージャを返す</h4>
@@ -348,8 +348,8 @@ where<br/>
 <span style="">}</span><br/>
 <br/>
 <span style="color: #708;">fn</span> main<span style="">(</span><span style="">)</span> <span style="">{</span><br/>
-    <span style="color: #708;">let</span> add_ten <span style="">=</span> make_adder<span style="">(</span><span style="color: #0000dd;">10</span><span style="">)</span><span style="">;</span><br/>
-    println<span style="">!</span><span style="">(</span><span style="color: #a11;">"10 + 2 = {}"</span><span style="">,</span> add_ten<span style="">(</span><span style="color: #0000dd;">2</span><span style="">)</span><span style="">)</span><span style="">;</span> <span style="color: #a50; font-style: italic;">// 出力: 10 + 2 = 12</span><br/>
+    <span style="color: #708;">let</span> add_ten <span style="">=</span> make_adder<span style="">(</span><span style="color: #0000DD;">10</span><span style="">)</span><span style="">;</span><br/>
+    println<span style="">!</span><span style="">(</span><span style="color: #a11;">"10 + 2 = {}"</span><span style="">,</span> add_ten<span style="">(</span><span style="color: #0000DD;">2</span><span style="">)</span><span style="">)</span><span style="">;</span> <span style="color: #a50; font-style: italic;">// 出力: 10 + 2 = 12</span><br/>
 <span style="">}</span><br/>
 </div></div>
 <table class="reference">
@@ -366,18 +366,18 @@ where<br/>
 <p>クロージャはイテレータのメソッドと組み合わせて使用されることが多く、コレクションの要素を一括処理するために使用されます。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #708;">fn</span> main<span style="">(</span><span style="">)</span> <span style="">{</span><br/>
-    <span style="color: #708;">let</span> nums <span style="">=</span> vec<span style="">!</span><span style="">[</span><span style="color: #0000dd;">1</span><span style="">,</span> <span style="color: #0000dd;">2</span><span style="">,</span> <span style="color: #0000dd;">3</span><span style="">,</span> <span style="color: #0000dd;">4</span><span style="">,</span> <span style="color: #0000dd;">5</span><span style="">]</span><span style="">;</span><br/>
+    <span style="color: #708;">let</span> nums <span style="">=</span> vec<span style="">!</span><span style="">[</span><span style="color: #0000DD;">1</span><span style="">,</span> <span style="color: #0000DD;">2</span><span style="">,</span> <span style="color: #0000DD;">3</span><span style="">,</span> <span style="color: #0000DD;">4</span><span style="">,</span> <span style="color: #0000DD;">5</span><span style="">]</span><span style="">;</span><br/>
 <br/>
     <span style="color: #a50; font-style: italic;">// map: 各要素を変換する</span><br/>
     <span style="color: #708;">let</span> squared<span style="">:</span> Vec<span style="">&lt;</span>i32<span style="">&gt;</span> <span style="">=</span> nums.iter<span style="">(</span><span style="">)</span>.map<span style="">(</span><span style="">|</span>x<span style="">|</span> x <span style="">*</span> x<span style="">)</span>.collect<span style="">(</span><span style="">)</span><span style="">;</span><br/>
     println<span style="">!</span><span style="">(</span><span style="color: #a11;">"二乗: {:?}"</span><span style="">,</span> squared<span style="">)</span><span style="">;</span> <span style="color: #a50; font-style: italic;">// 出力: [1, 4, 9, 16, 25]</span><br/>
 <br/>
     <span style="color: #a50; font-style: italic;">// filter: 条件を満たす要素を絞り込む</span><br/>
-    <span style="color: #708;">let</span> even<span style="">:</span> Vec<span style="">&lt;&amp;</span>i32<span style="">&gt;</span> <span style="">=</span> nums.iter<span style="">(</span><span style="">)</span>.filter<span style="">(</span><span style="">|</span>x<span style="">|</span> <span style="">*</span>x <span style="">%</span> <span style="color: #0000dd;">2</span> <span style="">==</span> <span style="color: #0000dd;">0</span><span style="">)</span>.collect<span style="">(</span><span style="">)</span><span style="">;</span><br/>
+    <span style="color: #708;">let</span> even<span style="">:</span> Vec<span style="">&lt;&amp;</span>i32<span style="">&gt;</span> <span style="">=</span> nums.iter<span style="">(</span><span style="">)</span>.filter<span style="">(</span><span style="">|</span>x<span style="">|</span> <span style="">*</span>x <span style="">%</span> <span style="color: #0000DD;">2</span> <span style="">==</span> <span style="color: #0000DD;">0</span><span style="">)</span>.collect<span style="">(</span><span style="">)</span><span style="">;</span><br/>
     println<span style="">!</span><span style="">(</span><span style="color: #a11;">"偶数: {:?}"</span><span style="">,</span> even<span style="">)</span><span style="">;</span> <span style="color: #a50; font-style: italic;">// 出力: [2, 4]</span><br/>
 <br/>
     <span style="color: #a50; font-style: italic;">// fold: コレクションを単一の値に畳み込む</span><br/>
-    <span style="color: #708;">let</span> sum<span style="">:</span> <span style="color: #05a;">i32</span> <span style="">=</span> nums.iter<span style="">(</span><span style="">)</span>.fold<span style="">(</span><span style="color: #0000dd;">0</span><span style="">,</span> <span style="">|</span>acc<span style="">,</span> x<span style="">|</span> acc <span style="">+</span> x<span style="">)</span><span style="">;</span><br/>
+    <span style="color: #708;">let</span> sum<span style="">:</span> <span style="color: #05a;">i32</span> <span style="">=</span> nums.iter<span style="">(</span><span style="">)</span>.fold<span style="">(</span><span style="color: #0000DD;">0</span><span style="">,</span> <span style="">|</span>acc<span style="">,</span> x<span style="">|</span> acc <span style="">+</span> x<span style="">)</span><span style="">;</span><br/>
     println<span style="">!</span><span style="">(</span><span style="color: #a11;">"合計: {}"</span><span style="">,</span> sum<span style="">)</span><span style="">;</span> <span style="color: #a50; font-style: italic;">// 出力: 15</span><br/>
 <span style="">}</span><br/>
 </div></div>
@@ -387,12 +387,12 @@ where<br/>
 <span style="color: #708;">use</span> std<span style="">::</span><span style="color: #164;">thread</span><span style="">;</span><br/>
 <br/>
 <span style="color: #708;">fn</span> main<span style="">(</span><span style="">)</span> <span style="">{</span><br/>
-    <span style="color: #708;">let</span> nums <span style="">=</span> vec<span style="">!</span><span style="">[</span><span style="color: #0000dd;">1</span><span style="">,</span> <span style="color: #0000dd;">2</span><span style="">,</span> <span style="color: #0000dd;">3</span><span style="">,</span> <span style="color: #0000dd;">4</span><span style="">,</span> <span style="color: #0000dd;">5</span><span style="">]</span><span style="">;</span><br/>
+    <span style="color: #708;">let</span> nums <span style="">=</span> vec<span style="">!</span><span style="">[</span><span style="color: #0000DD;">1</span><span style="">,</span> <span style="color: #0000DD;">2</span><span style="">,</span> <span style="color: #0000DD;">3</span><span style="">,</span> <span style="color: #0000DD;">4</span><span style="">,</span> <span style="color: #0000DD;">5</span><span style="">]</span><span style="">;</span><br/>
 <br/>
     <span style="color: #a50; font-style: italic;">// 各数値に対してスレッドを作成し、move が num の所有権をスレッドに移す</span><br/>
     <span style="color: #708;">let</span> handles<span style="">:</span> Vec<span style="">&lt;</span>_<span style="">&gt;</span> <span style="">=</span> nums.into_iter<span style="">(</span><span style="">)</span>.map<span style="">(</span><span style="">|</span>num<span style="">|</span> <span style="">{</span><br/>
         thread<span style="">::</span><span style="color: #164;">spawn</span><span style="">(</span>move <span style="">||</span> <span style="">{</span><br/>
-            num <span style="">*</span> <span style="color: #0000dd;">2</span><br/>
+            num <span style="">*</span> <span style="color: #0000DD;">2</span><br/>
         <span style="">}</span><span style="">)</span><br/>
     <span style="">}</span><span style="">)</span>.collect<span style="">(</span><span style="">)</span><span style="">;</span><br/>
 <br/>
@@ -407,10 +407,10 @@ where<br/>
 <p>クロージャは<code>Result</code> 或 <code>Option</code>型を返すことができ、イテレータのメソッドと組み合わせることで簡潔なエラーハンドリングロジックを実現できます。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #708;">fn</span> main<span style="">(</span><span style="">)</span> <span style="">{</span><br/>
-    <span style="color: #708;">let</span> nums <span style="">=</span> vec<span style="">!</span><span style="">[</span><span style="color: #0000dd;">3</span><span style="">,</span> <span style="">-</span><span style="color: #0000dd;">1</span><span style="">,</span> <span style="color: #0000dd;">4</span><span style="">,</span> <span style="">-</span><span style="color: #0000dd;">5</span><span style="">,</span> <span style="color: #0000dd;">9</span><span style="">]</span><span style="">;</span><br/>
+    <span style="color: #708;">let</span> nums <span style="">=</span> vec<span style="">!</span><span style="">[</span><span style="color: #0000DD;">3</span><span style="">,</span> <span style="">-</span><span style="color: #0000DD;">1</span><span style="">,</span> <span style="color: #0000DD;">4</span><span style="">,</span> <span style="">-</span><span style="color: #0000DD;">5</span><span style="">,</span> <span style="color: #0000DD;">9</span><span style="">]</span><span style="">;</span><br/>
 <br/>
     <span style="color: #a50; font-style: italic;">// クロージャを使用して最初の正の数を検索する</span><br/>
-    <span style="color: #708;">let</span> first_positive <span style="">=</span> nums.iter<span style="">(</span><span style="">)</span>.find<span style="">(</span><span style="">|&amp;</span>amp<span style="">;&amp;</span>amp<span style="">;</span>x<span style="">|</span> x <span style="">&gt;</span> <span style="color: #0000dd;">0</span><span style="">)</span><span style="">;</span><br/>
+    <span style="color: #708;">let</span> first_positive <span style="">=</span> nums.iter<span style="">(</span><span style="">)</span>.find<span style="">(</span><span style="">|&amp;</span>amp<span style="">;&amp;</span>amp<span style="">;</span>x<span style="">|</span> x <span style="">&gt;</span> <span style="color: #0000DD;">0</span><span style="">)</span><span style="">;</span><br/>
     <span style="color: #708;">match</span> first_positive <span style="">{</span><br/>
         Some<span style="">(</span><span style="">&amp;</span>amp<span style="">;</span>n<span style="">)</span> <span style="">=&gt;</span> println<span style="">!</span><span style="">(</span><span style="color: #a11;">"最初の正の数: {}"</span><span style="">,</span> n<span style="">)</span><span style="">,</span> <span style="color: #a50; font-style: italic;">// 出力: 最初の正の数: 3</span><br/>
         None <span style="">=&gt;</span> println<span style="">!</span><span style="">(</span><span style="color: #a11;">"正の数がありません"</span><span style="">)</span><span style="">,</span><br/>
@@ -418,8 +418,8 @@ where<br/>
 <br/>
     <span style="color: #a50; font-style: italic;">// クロージャでフィルタリングと変換を行い、Result と組み合わせて起こり得るエラーを処理する</span><br/>
     <span style="color: #708;">let</span> results<span style="">:</span> Vec<span style="">&lt;</span>Result<span style="">&lt;</span><span style="color: #05a;">i32</span><span style="">,</span> <span style="">&amp;</span>amp<span style="">;</span>str<span style="">&gt;&gt;</span> <span style="">=</span> nums.iter<span style="">(</span><span style="">)</span>.map<span style="">(</span><span style="">|&amp;</span>amp<span style="">;</span>n<span style="">|</span> <span style="">{</span><br/>
-        <span style="color: #708;">if</span> n <span style="">&gt;</span> <span style="color: #0000dd;">0</span> <span style="">{</span><br/>
-            Ok<span style="">(</span>n <span style="">*</span> <span style="color: #0000dd;">10</span><span style="">)</span><br/>
+        <span style="color: #708;">if</span> n <span style="">&gt;</span> <span style="color: #0000DD;">0</span> <span style="">{</span><br/>
+            Ok<span style="">(</span>n <span style="">*</span> <span style="color: #0000DD;">10</span><span style="">)</span><br/>
         <span style="">}</span> <span style="color: #708;">else</span> <span style="">{</span><br/>
             Err<span style="">(</span><span style="color: #a11;">"負の数は処理できません"</span><span style="">)</span><br/>
         <span style="">}</span><br/>
@@ -468,7 +468,7 @@ where<br/>
 <span style="">}</span><br/>
 <br/>
 <span style="color: #708;">fn</span> main<span style="">(</span><span style="">)</span> <span style="">{</span><br/>
-    <span style="color: #708;">let</span> num <span style="">=</span> <span style="color: #0000dd;">5</span><span style="">;</span><br/>
+    <span style="color: #708;">let</span> num <span style="">=</span> <span style="color: #0000DD;">5</span><span style="">;</span><br/>
 <br/>
     <span style="color: #a50; font-style: italic;">// クロージャを定義: 数値を二乗する</span><br/>
     <span style="color: #708;">let</span> square <span style="">=</span> <span style="">|</span>x<span style="">|</span> x <span style="">*</span> x<span style="">;</span><br/>
@@ -523,7 +523,7 @@ Cube of 5 is 125</pre>
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -568,7 +568,7 @@ Cube of 5 is 125</pre>
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -607,7 +607,7 @@ Cube of 5 is 125</pre>
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>

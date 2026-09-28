@@ -549,21 +549,21 @@ size_t fwrite(const void *ptr, size_t size, size_t count, FILE *stream);</pre>
 <span style="color: #666666;">// 注意：必ず固定長配列を使用すること。char *name ポインタメンバーは使えない</span><br/>
 <span style="color: #05a;">typedef</span> <span style="color: #05a;">struct</span> <span style="color: #008000;">{</span><br/>
     <span style="color: #05a;">int</span> id<span style="color: #008080;">;</span>             <span style="color: #666666;">// 学籍番号</span><br/>
-    <span style="color: #05a;">char</span> name<span style="color: #008000;">[</span><span style="color: #0000dd;">50</span><span style="color: #008000;">]</span><span style="color: #008080;">;</span>      <span style="color: #666666;">// 氏名（固定配列。ポインタは不可）</span><br/>
+    <span style="color: #05a;">char</span> name<span style="color: #008000;">[</span><span style="color: #0000DD;">50</span><span style="color: #008000;">]</span><span style="color: #008080;">;</span>      <span style="color: #666666;">// 氏名（固定配列。ポインタは不可）</span><br/>
     <span style="color: #05a;">float</span> score<span style="color: #008080;">;</span>        <span style="color: #666666;">// 成績</span><br/>
 <span style="color: #008000;">}</span> Student<span style="color: #008080;">;</span><br/>
 <br/>
 <span style="color: #05a;">int</span> main<span style="color: #008000;">(</span><span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
     <span style="color: #666666;">// ===== 構造体をファイルに書き込む =====</span><br/>
-    Student s <span style="color: #000080;">=</span> <span style="color: #008000;">{</span><span style="color: #0000dd;">101</span>, <span style="color: #a11;">"Alice"</span>, <span style="color:#800080;">95.5f</span><span style="color: #008000;">}</span><span style="color: #008080;">;</span>  <span style="color: #666666;">// データを初期化</span><br/>
+    Student s <span style="color: #000080;">=</span> <span style="color: #008000;">{</span><span style="color: #0000DD;">101</span>, <span style="color: #a11;">"Alice"</span>, <span style="color:#800080;">95.5f</span><span style="color: #008000;">}</span><span style="color: #008080;">;</span>  <span style="color: #666666;">// データを初期化</span><br/>
     <span style="color: #05a;">FILE</span> <span style="color: #000040;">*</span>fp <span style="color: #000080;">=</span> <span style="color: #05a;">fopen</span><span style="color: #008000;">(</span><span style="color: #a11;">"student.bin"</span>, <span style="color: #a11;">"wb"</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
     <span style="color: #05a;">if</span> <span style="color: #008000;">(</span>fp <span style="color: #000080;">==</span> <span style="color: #05a;">NULL</span><span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
         <span style="color: #05a;">perror</span><span style="color: #008000;">(</span><span style="color: #a11;">"ファイルを開けませんでした"</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
-        <span style="color: #05a;">return</span> <span style="color: #0000dd;">1</span><span style="color: #008080;">;</span><br/>
+        <span style="color: #05a;">return</span> <span style="color: #0000DD;">1</span><span style="color: #008080;">;</span><br/>
     <span style="color: #008000;">}</span><br/>
     <span style="color: #666666;">// 構造体全体を1つのデータブロックとして書き込む</span><br/>
-    <span style="color: #05a;">size_t</span> written <span style="color: #000080;">=</span> <span style="color: #05a;">fwrite</span><span style="color: #008000;">(</span><span style="color: #000040;">&amp;</span>s, <span style="color: #05a;">sizeof</span><span style="color: #008000;">(</span>Student<span style="color: #008000;">)</span>, <span style="color: #0000dd;">1</span>, fp<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
-    <span style="color: #05a;">if</span> <span style="color: #008000;">(</span>written <span style="color: #000040;">!</span><span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span><span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
+    <span style="color: #05a;">size_t</span> written <span style="color: #000080;">=</span> <span style="color: #05a;">fwrite</span><span style="color: #008000;">(</span><span style="color: #000040;">&amp;</span>s, <span style="color: #05a;">sizeof</span><span style="color: #008000;">(</span>Student<span style="color: #008000;">)</span>, <span style="color: #0000DD;">1</span>, fp<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">if</span> <span style="color: #008000;">(</span>written <span style="color: #000040;">!</span><span style="color: #000080;">=</span> <span style="color: #0000DD;">1</span><span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
         <span style="color: #05a;">printf</span><span style="color: #008000;">(</span><span style="color: #a11;">"書き込みに失敗しました<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
     <span style="color: #008000;">}</span><br/>
     <span style="color: #05a;">fclose</span><span style="color: #008000;">(</span>fp<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
@@ -572,18 +572,18 @@ size_t fwrite(const void *ptr, size_t size, size_t count, FILE *stream);</pre>
     fp <span style="color: #000080;">=</span> <span style="color: #05a;">fopen</span><span style="color: #008000;">(</span><span style="color: #a11;">"student.bin"</span>, <span style="color: #a11;">"rb"</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
     <span style="color: #05a;">if</span> <span style="color: #008000;">(</span>fp <span style="color: #000080;">==</span> <span style="color: #05a;">NULL</span><span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
         <span style="color: #05a;">perror</span><span style="color: #008000;">(</span><span style="color: #a11;">"ファイルを開けませんでした"</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
-        <span style="color: #05a;">return</span> <span style="color: #0000dd;">1</span><span style="color: #008080;">;</span><br/>
+        <span style="color: #05a;">return</span> <span style="color: #0000DD;">1</span><span style="color: #008080;">;</span><br/>
     <span style="color: #008000;">}</span><br/>
     Student loaded<span style="color: #008080;">;</span>  <span style="color: #666666;">// 未初期化。fread が値を埋める</span><br/>
-    <span style="color: #05a;">size_t</span> read_count <span style="color: #000080;">=</span> <span style="color: #05a;">fread</span><span style="color: #008000;">(</span><span style="color: #000040;">&amp;</span>loaded, <span style="color: #05a;">sizeof</span><span style="color: #008000;">(</span>Student<span style="color: #008000;">)</span>, <span style="color: #0000dd;">1</span>, fp<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
-    <span style="color: #05a;">if</span> <span style="color: #008000;">(</span>read_count <span style="color: #000040;">!</span><span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span><span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
+    <span style="color: #05a;">size_t</span> read_count <span style="color: #000080;">=</span> <span style="color: #05a;">fread</span><span style="color: #008000;">(</span><span style="color: #000040;">&amp;</span>loaded, <span style="color: #05a;">sizeof</span><span style="color: #008000;">(</span>Student<span style="color: #008000;">)</span>, <span style="color: #0000DD;">1</span>, fp<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">if</span> <span style="color: #008000;">(</span>read_count <span style="color: #000040;">!</span><span style="color: #000080;">=</span> <span style="color: #0000DD;">1</span><span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
         <span style="color: #05a;">printf</span><span style="color: #008000;">(</span><span style="color: #a11;">"読み取りに失敗したか、ファイルの終端です<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
         <span style="color: #05a;">fclose</span><span style="color: #008000;">(</span>fp<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
-        <span style="color: #05a;">return</span> <span style="color: #0000dd;">1</span><span style="color: #008080;">;</span><br/>
+        <span style="color: #05a;">return</span> <span style="color: #0000DD;">1</span><span style="color: #008080;">;</span><br/>
     <span style="color: #008000;">}</span><br/>
     <span style="color: #05a;">printf</span><span style="color: #008000;">(</span><span style="color: #a11;">"学籍番号: %d, 氏名: %s, 成績: %.1f<span style="color: #000099; font-weight: bold;">\n</span>"</span>, loaded.<span style="color: #007788;">id</span>, loaded.<span style="color: #007788;">name</span>, loaded.<span style="color: #007788;">score</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
     <span style="color: #05a;">fclose</span><span style="color: #008000;">(</span>fp<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
-    <span style="color: #05a;">return</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">return</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span><br/>
 <span style="color: #008000;">}</span><br/>
 </div>
 </div>
@@ -991,7 +991,7 @@ fclose 也会自动刷新缓冲区
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -1036,7 +1036,7 @@ fclose 也会自动刷新缓冲区
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -1155,7 +1155,7 @@ int main()
 </div>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -1374,7 +1374,7 @@ function kFormatter(num) {
 </style>
 <div class="sidebar-box re-box re-box-large">
 <div class="sidebar-box recommend-here" style="margin: 0 auto;">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
+<a href="#" style="font-size: 16px; color:#5B80A6;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
 </div>
 <div class="sidebar-box sidebar-cate">
 <div class="sidebar-tree">

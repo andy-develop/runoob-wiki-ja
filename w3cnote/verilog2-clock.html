@@ -134,42 +134,42 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     <span style="color: #A52A2A; font-weight: bold;">input</span>               clk<span style="color: #5D478B;">,</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">input</span>               csn<span style="color: #5D478B;">,</span><br/>
 <br/>
-    <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>         din<span style="color: #5D478B;">,</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>         din<span style="color: #5D478B;">,</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">input</span>               din_en<span style="color: #5D478B;">,</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">output</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>        dout<span style="color: #5D478B;">,</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">output</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>        dout<span style="color: #5D478B;">,</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">output</span>              dout_en<span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
 <br/>
    <span style="color: #00008B; font-style: italic;">//capture at posedge</span><br/>
-   <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>            datap_r <span style="color: #5D478B;">;</span><br/>
+   <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>            datap_r <span style="color: #5D478B;">;</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">reg</span>                  datap_en_r <span style="color: #5D478B;">;</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">posedge</span> clk <span style="color: #A52A2A; font-weight: bold;">or</span> <span style="color: #A52A2A; font-weight: bold;">negedge</span> rstn<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
       <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span><span style="color: #5D478B;">!</span>rstn<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
          datap_r        <span style="color: #5D478B;">&lt;=</span> 'b0 <span style="color: #5D478B;">;</span><br/>
-         datap_en_r     <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
+         datap_en_r     <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
       <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
       <span style="color: #A52A2A; font-weight: bold;">else</span> <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span>din_en<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
          datap_r        <span style="color: #5D478B;">&lt;=</span> din <span style="color: #5D478B;">;</span><br/>
-         datap_en_r     <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
+         datap_en_r     <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
       <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
       <span style="color: #A52A2A; font-weight: bold;">else</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-         datap_en_r     <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
+         datap_en_r     <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
       <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 <br/>
    <span style="color: #00008B; font-style: italic;">//capture at negedge</span><br/>
-   <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>            datan_r <span style="color: #5D478B;">;</span><br/>
+   <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>            datan_r <span style="color: #5D478B;">;</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">reg</span>                  datan_en_r <span style="color: #5D478B;">;</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">negedge</span> clk <span style="color: #A52A2A; font-weight: bold;">or</span> <span style="color: #A52A2A; font-weight: bold;">negedge</span> rstn<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
       <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span><span style="color: #5D478B;">!</span>rstn<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
          datan_r        <span style="color: #5D478B;">&lt;=</span> 'b0 <span style="color: #5D478B;">;</span><br/>
-         datan_en_r     <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
+         datan_en_r     <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
       <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
       <span style="color: #A52A2A; font-weight: bold;">else</span> <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span>din_en<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
          datan_r        <span style="color: #5D478B;">&lt;=</span> din <span style="color: #5D478B;">;</span><br/>
-         datan_en_r     <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
+         datan_en_r     <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
       <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
       <span style="color: #A52A2A; font-weight: bold;">else</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-         datan_en_r     <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
+         datan_en_r     <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
       <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 <br/>
@@ -178,47 +178,47 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: #A52A2A; font-weight: bold;">endmodule</span><br/>
 </div></div><p>testbench の記述は以下のとおりです。ここで、両エッジデータ転送モジュールのクロック周波数は 100MHz ですが、入力データレートは 200MHz です。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #008800;">`timescale</span> <span style="color: #ff0055;">1ns</span><span style="color: #5D478B;">/</span><span style="color: #ff0055;">1ps</span><br/>
+<span style="color: #008800;">`timescale</span> <span style="color: #FF0055;">1ns</span><span style="color: #5D478B;">/</span><span style="color: #FF0055;">1ps</span><br/>
 <br/>
 <span style="color: #A52A2A; font-weight: bold;">module</span> test <span style="color: #5D478B;">;</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">reg</span>          clk_100mhz<span style="color: #5D478B;">,</span> clk_200mhz <span style="color: #5D478B;">;</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">reg</span>          rstn <span style="color: #5D478B;">;</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">reg</span>          csn <span style="color: #5D478B;">;</span><br/>
-   <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>    din <span style="color: #5D478B;">;</span><br/>
+   <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>    din <span style="color: #5D478B;">;</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">reg</span>          din_en <span style="color: #5D478B;">;</span><br/>
-   <span style="color: #A52A2A; font-weight: bold;">wire</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>   dout <span style="color: #5D478B;">;</span><br/>
+   <span style="color: #A52A2A; font-weight: bold;">wire</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>   dout <span style="color: #5D478B;">;</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">wire</span>         dout_en <span style="color: #5D478B;">;</span><br/>
 <br/>
-   <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #5D478B;">#</span><span style="color: #9F79EE;">(</span><span style="color: #ff0055;">2.5</span><span style="color: #9F79EE;">)</span>    clk_200mhz  <span style="color: #5D478B;">=</span> <span style="color: #5D478B;">~</span>clk_200mhz <span style="color: #5D478B;">;</span><br/>
+   <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #5D478B;">#</span><span style="color: #9F79EE;">(</span><span style="color: #FF0055;">2.5</span><span style="color: #9F79EE;">)</span>    clk_200mhz  <span style="color: #5D478B;">=</span> <span style="color: #5D478B;">~</span>clk_200mhz <span style="color: #5D478B;">;</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">posedge</span> clk_200mhz<span style="color: #9F79EE;">)</span><br/>
                     clk_100mhz  <span style="color: #5D478B;">=</span> <span style="color: #5D478B;">~</span>clk_100mhz <span style="color: #5D478B;">;</span><br/>
 <br/>
    <span style="color: #A52A2A; font-weight: bold;">initial</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-      clk_100mhz  <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span><br/>
-      clk_200mhz  <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span><br/>
-      rstn        <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span><br/>
-      din         <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span><br/>
-      din_en      <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span><br/>
-      csn         <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span><br/>
+      clk_100mhz  <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span><br/>
+      clk_200mhz  <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span><br/>
+      rstn        <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span><br/>
+      din         <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span><br/>
+      din_en      <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span><br/>
+      csn         <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span><br/>
       <span style="color: #00008B; font-style: italic;">//start work</span><br/>
-      <span style="color: #5D478B;">#</span><span style="color: #ff0055;">11</span> rstn    <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1</span> <span style="color: #5D478B;">;</span><br/>
+      <span style="color: #5D478B;">#</span><span style="color: #FF0055;">11</span> rstn    <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1</span> <span style="color: #5D478B;">;</span><br/>
       <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">negedge</span> clk_100mhz<span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
-      din_en      <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1</span> <span style="color: #5D478B;">;</span><br/>
-      <span style="color: #5D478B;">#</span><span style="color: #ff0055;">0.2</span> <span style="color: #5D478B;">;</span><br/>
-      csn         <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1</span> <span style="color: #5D478B;">;</span> <span style="color: #00008B; font-style: italic;">//csn=1 のとき、立ち下がりエッジで取得したデータを出力</span><br/>
+      din_en      <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1</span> <span style="color: #5D478B;">;</span><br/>
+      <span style="color: #5D478B;">#</span><span style="color: #FF0055;">0.2</span> <span style="color: #5D478B;">;</span><br/>
+      csn         <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1</span> <span style="color: #5D478B;">;</span> <span style="color: #00008B; font-style: italic;">//csn=1 のとき、立ち下がりエッジで取得したデータを出力</span><br/>
       <span style="color: #00008B; font-style: italic;">//generate csn</span><br/>
       <span style="color: #A52A2A; font-weight: bold;">forever</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
          <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">posedge</span> clk_100mhz<span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
-         <span style="color: #5D478B;">#</span><span style="color: #ff0055;">0.2</span> <span style="color: #5D478B;">;</span>         <span style="color: #00008B; font-style: italic;">//少し遅延を追加してデータ収集を確実にする</span><br/>
-         csn <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span>      <span style="color: #00008B; font-style: italic;">//csn=0 のとき立ち上がりエッジで取得したデータを出力</span><br/>
+         <span style="color: #5D478B;">#</span><span style="color: #FF0055;">0.2</span> <span style="color: #5D478B;">;</span>         <span style="color: #00008B; font-style: italic;">//少し遅延を追加してデータ収集を確実にする</span><br/>
+         csn <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span>      <span style="color: #00008B; font-style: italic;">//csn=0 のとき立ち上がりエッジで取得したデータを出力</span><br/>
          <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">negedge</span> clk_100mhz<span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
-         <span style="color: #5D478B;">#</span><span style="color: #ff0055;">0.2</span> <span style="color: #5D478B;">;</span><br/>
-         csn <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1</span> <span style="color: #5D478B;">;</span>      <span style="color: #00008B; font-style: italic;">//csn=1 のとき立ち下がりエッジで取得したデータを出力</span><br/>
+         <span style="color: #5D478B;">#</span><span style="color: #FF0055;">0.2</span> <span style="color: #5D478B;">;</span><br/>
+         csn <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1</span> <span style="color: #5D478B;">;</span>      <span style="color: #00008B; font-style: italic;">//csn=1 のとき立ち下がりエッジで取得したデータを出力</span><br/>
       <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 <br/>
    <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">negedge</span> clk_200mhz<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-      din <span style="color: #5D478B;">&lt;=</span> <span style="color: #9F79EE;">{</span><span style="color: #9932CC;">$random</span><span style="color: #9F79EE;">(</span><span style="color: #9F79EE;">)</span><span style="color: #9F79EE;">}</span> <span style="color: #5D478B;">%</span> <span style="color: #ff0055;">8'hFF</span> <span style="color: #5D478B;">;</span>  <span style="color: #00008B; font-style: italic;">//転送用のランダムデータを生成</span><br/>
+      din <span style="color: #5D478B;">&lt;=</span> <span style="color: #9F79EE;">{</span><span style="color: #9932CC;">$random</span><span style="color: #9F79EE;">(</span><span style="color: #9F79EE;">)</span><span style="color: #9F79EE;">}</span> <span style="color: #5D478B;">%</span> <span style="color: #FF0055;">8'hFF</span> <span style="color: #5D478B;">;</span>  <span style="color: #00008B; font-style: italic;">//転送用のランダムデータを生成</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 <br/>
    double_rate u_double_rate<span style="color: #9F79EE;">(</span><br/>
@@ -232,8 +232,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <br/>
    <span style="color: #A52A2A; font-weight: bold;">initial</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
       <span style="color: #A52A2A; font-weight: bold;">forever</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-         <span style="color: #5D478B;">#</span><span style="color: #ff0055;">100</span><span style="color: #5D478B;">;</span><br/>
-         <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span><span style="color: #9932CC;">$time</span> <span style="color: #5D478B;">&gt;=</span> <span style="color: #ff0055;">10000</span><span style="color: #9F79EE;">)</span>  <span style="color: #9932CC;">$finish</span> <span style="color: #5D478B;">;</span><br/>
+         <span style="color: #5D478B;">#</span><span style="color: #FF0055;">100</span><span style="color: #5D478B;">;</span><br/>
+         <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span><span style="color: #9932CC;">$time</span> <span style="color: #5D478B;">&gt;=</span> <span style="color: #FF0055;">10000</span><span style="color: #9F79EE;">)</span>  <span style="color: #9932CC;">$finish</span> <span style="color: #5D478B;">;</span><br/>
       <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 <br/>
@@ -272,7 +272,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -317,7 +317,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -356,7 +356,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリックしてください</a></p>
 	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -567,7 +567,7 @@ p.note-author {
     border-bottom: 1px solid #ddd;
     font-size: 18px;
     font-weight: bold;
-    color: #78a15a;
+    color: #5B80A6;
     padding-bottom: 2px;
     margin-bottom: 4px;
 }

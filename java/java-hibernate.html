@@ -391,16 +391,16 @@ session.<span style="color: #006633;">close</span><span style="color: #009900;">
 <h2 class="example">例</h2>
 <div class="example_code">
 @<span style="color: #003399;">Entity</span><br/>
-@Table<span style="color: #009900;">(</span>name <span style="color: #339933;">=</span> <span style="color: #0000ff;">"USERS"</span><span style="color: #009900;">)</span><br/>
+@Table<span style="color: #009900;">(</span>name <span style="color: #339933;">=</span> <span style="color: #0000FF;">"USERS"</span><span style="color: #009900;">)</span><br/>
 <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">class</span> User <span style="color: #009900;">{</span><br/>
     @Id<br/>
     @GeneratedValue<span style="color: #009900;">(</span>strategy <span style="color: #339933;">=</span> GenerationType.<span style="color: #006633;">IDENTITY</span><span style="color: #009900;">)</span><br/>
     <span style="color: #000000; font-weight: bold;">private</span> <span style="color: #003399;">Long</span> id<span style="color: #339933;">;</span><br/>
     <br/>
-    @Column<span style="color: #009900;">(</span>name <span style="color: #339933;">=</span> <span style="color: #0000ff;">"USER_NAME"</span><span style="color: #009900;">)</span><br/>
+    @Column<span style="color: #009900;">(</span>name <span style="color: #339933;">=</span> <span style="color: #0000FF;">"USER_NAME"</span><span style="color: #009900;">)</span><br/>
     <span style="color: #000000; font-weight: bold;">private</span> <span style="color: #003399;">String</span> name<span style="color: #339933;">;</span><br/>
     <br/>
-    @Column<span style="color: #009900;">(</span>name <span style="color: #339933;">=</span> <span style="color: #0000ff;">"USER_EMAIL"</span><span style="color: #009900;">)</span><br/>
+    @Column<span style="color: #009900;">(</span>name <span style="color: #339933;">=</span> <span style="color: #0000FF;">"USER_EMAIL"</span><span style="color: #009900;">)</span><br/>
     <span style="color: #000000; font-weight: bold;">private</span> <span style="color: #003399;">String</span> email<span style="color: #339933;">;</span><br/>
     <br/>
     <span style="color: #666666; font-style: italic;">// getters and setters</span><br/>
@@ -415,9 +415,9 @@ session.<span style="color: #006633;">close</span><span style="color: #009900;">
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #003399;">String</span> hql <span style="color: #339933;">=</span> <span style="color: #0000ff;">"FROM User WHERE name = :name"</span><span style="color: #339933;">;</span><br/>
+<span style="color: #003399;">String</span> hql <span style="color: #339933;">=</span> <span style="color: #0000FF;">"FROM User WHERE name = :name"</span><span style="color: #339933;">;</span><br/>
 Query<span style="color: #339933;">&lt;</span>User<span style="color: #339933;">&gt;</span> query <span style="color: #339933;">=</span> session.<span style="color: #006633;">createQuery</span><span style="color: #009900;">(</span>hql, User.<span style="color: #000000; font-weight: bold;">class</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
-query.<span style="color: #006633;">setParameter</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"name"</span>, <span style="color: #0000ff;">"John"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+query.<span style="color: #006633;">setParameter</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"name"</span>, <span style="color: #0000FF;">"John"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 List<span style="color: #339933;">&lt;</span>User<span style="color: #339933;">&gt;</span> users <span style="color: #339933;">=</span> query.<span style="color: #006633;">list</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 </div>
 </div>
@@ -429,7 +429,7 @@ List<span style="color: #339933;">&lt;</span>User<span style="color: #339933;">&
 CriteriaBuilder builder <span style="color: #339933;">=</span> session.<span style="color: #006633;">getCriteriaBuilder</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 CriteriaQuery<span style="color: #339933;">&lt;</span>User<span style="color: #339933;">&gt;</span> criteria <span style="color: #339933;">=</span> builder.<span style="color: #006633;">createQuery</span><span style="color: #009900;">(</span>User.<span style="color: #000000; font-weight: bold;">class</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 Root<span style="color: #339933;">&lt;</span>User<span style="color: #339933;">&gt;</span> root <span style="color: #339933;">=</span> criteria.<span style="color: #006633;">from</span><span style="color: #009900;">(</span>User.<span style="color: #000000; font-weight: bold;">class</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
-criteria.<span style="color: #006633;">select</span><span style="color: #009900;">(</span>root<span style="color: #009900;">)</span>.<span style="color: #006633;">where</span><span style="color: #009900;">(</span>builder.<span style="color: #006633;">equal</span><span style="color: #009900;">(</span>root.<span style="color: #006633;">get</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"name"</span><span style="color: #009900;">)</span>, <span style="color: #0000ff;">"John"</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+criteria.<span style="color: #006633;">select</span><span style="color: #009900;">(</span>root<span style="color: #009900;">)</span>.<span style="color: #006633;">where</span><span style="color: #009900;">(</span>builder.<span style="color: #006633;">equal</span><span style="color: #009900;">(</span>root.<span style="color: #006633;">get</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"name"</span><span style="color: #009900;">)</span>, <span style="color: #0000FF;">"John"</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 List<span style="color: #339933;">&lt;</span>User<span style="color: #339933;">&gt;</span> users <span style="color: #339933;">=</span> session.<span style="color: #006633;">createQuery</span><span style="color: #009900;">(</span>criteria<span style="color: #009900;">)</span>.<span style="color: #006633;">getResultList</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 </div>
 </div>
@@ -438,9 +438,9 @@ List<span style="color: #339933;">&lt;</span>User<span style="color: #339933;">&
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #003399;">String</span> sql <span style="color: #339933;">=</span> <span style="color: #0000ff;">"SELECT * FROM USERS WHERE USER_NAME = :name"</span><span style="color: #339933;">;</span><br/>
+<span style="color: #003399;">String</span> sql <span style="color: #339933;">=</span> <span style="color: #0000FF;">"SELECT * FROM USERS WHERE USER_NAME = :name"</span><span style="color: #339933;">;</span><br/>
 NativeQuery<span style="color: #339933;">&lt;</span>User<span style="color: #339933;">&gt;</span> query <span style="color: #339933;">=</span> session.<span style="color: #006633;">createNativeQuery</span><span style="color: #009900;">(</span>sql, User.<span style="color: #000000; font-weight: bold;">class</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
-query.<span style="color: #006633;">setParameter</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"name"</span>, <span style="color: #0000ff;">"John"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+query.<span style="color: #006633;">setParameter</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"name"</span>, <span style="color: #0000FF;">"John"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 List<span style="color: #339933;">&lt;</span>User<span style="color: #339933;">&gt;</span> users <span style="color: #339933;">=</span> query.<span style="color: #006633;">list</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 </div>
 </div>
@@ -510,11 +510,11 @@ Transaction tx <span style="color: #339933;">=</span> <span style="color: #00006
 Session session <span style="color: #339933;">=</span> sessionFactory.<span style="color: #006633;">openSession</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 Transaction tx <span style="color: #339933;">=</span> session.<span style="color: #006633;">beginTransaction</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
-<span style="color: #000000; font-weight: bold;">for</span> <span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span> i <span style="color: #339933;">=</span> <span style="color: #cc66cc;">0</span><span style="color: #339933;">;</span> i <span style="color: #339933;">&lt;</span> <span style="color: #cc66cc;">100000</span><span style="color: #339933;">;</span> i<span style="color: #339933;">++</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
-    User user <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> User<span style="color: #009900;">(</span><span style="color: #0000ff;">"User"</span> <span style="color: #339933;">+</span> i, <span style="color: #0000ff;">"user"</span> <span style="color: #339933;">+</span> i <span style="color: #339933;">+</span> <span style="color: #0000ff;">"@example.com"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+<span style="color: #000000; font-weight: bold;">for</span> <span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span> i <span style="color: #339933;">=</span> <span style="color: #CC66CC;">0</span><span style="color: #339933;">;</span> i <span style="color: #339933;">&lt;</span> <span style="color: #CC66CC;">100000</span><span style="color: #339933;">;</span> i<span style="color: #339933;">++</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
+    User user <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> User<span style="color: #009900;">(</span><span style="color: #0000FF;">"User"</span> <span style="color: #339933;">+</span> i, <span style="color: #0000FF;">"user"</span> <span style="color: #339933;">+</span> i <span style="color: #339933;">+</span> <span style="color: #0000FF;">"@example.com"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
     session.<span style="color: #006633;">save</span><span style="color: #009900;">(</span>user<span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
     <br/>
-    <span style="color: #000000; font-weight: bold;">if</span> <span style="color: #009900;">(</span>i <span style="color: #339933;">%</span> <span style="color: #cc66cc;">50</span> <span style="color: #339933;">==</span> <span style="color: #cc66cc;">0</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span> <span style="color: #666666; font-style: italic;">// 50件ごとに1回フラッシュ</span><br/>
+    <span style="color: #000000; font-weight: bold;">if</span> <span style="color: #009900;">(</span>i <span style="color: #339933;">%</span> <span style="color: #CC66CC;">50</span> <span style="color: #339933;">==</span> <span style="color: #CC66CC;">0</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span> <span style="color: #666666; font-style: italic;">// 50件ごとに1回フラッシュ</span><br/>
         session.<span style="color: #006633;">flush</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
         session.<span style="color: #006633;">clear</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
     <span style="color: #009900;">}</span><br/>
@@ -559,7 +559,7 @@ session.<span style="color: #006633;">close</span><span style="color: #009900;">
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -604,7 +604,7 @@ session.<span style="color: #006633;">close</span><span style="color: #009900;">
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -643,7 +643,7 @@ session.<span style="color: #006633;">close</span><span style="color: #009900;">
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -862,7 +862,7 @@ function kFormatter(num) {
 </style>
 <div class="sidebar-box re-box re-box-large">
 <div class="sidebar-box recommend-here" style="margin: 0 auto;">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
+<a href="#" style="font-size: 16px; color:#5B80A6;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
 </div>
 <div class="sidebar-box sidebar-cate">
 <div class="sidebar-tree">

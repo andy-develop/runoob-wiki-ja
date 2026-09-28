@@ -198,29 +198,29 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: #666666; font-style: italic;">; 文件路径：register_parts.asm</span><br/>
 <span style="color: #666666; font-style: italic;">; 演示寄存器的各部分访问</span><br/>
 <br/>
-<span style="color: #0000ff; font-weight: bold;">section</span> <span style="color: #0000ff; font-weight: bold;">.text</span><br/>
-    <span style="color: #0000ff; font-weight: bold;">global</span> _start<br/>
+<span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.text</span><br/>
+    <span style="color: #0000FF; font-weight: bold;">global</span> _start<br/>
 <br/>
 _start<span style="color: #339933;">:</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">0x12345678</span>     <span style="color: #666666; font-style: italic;">; 完整的 32 位寄存器</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0x12345678</span>     <span style="color: #666666; font-style: italic;">; 完整的 32 位寄存器</span><br/>
     <span style="color: #666666; font-style: italic;">; 此时：EAX = 0x12345678</span><br/>
     <span style="color: #666666; font-style: italic;">;       AX  = 0x5678      (低 16 位)</span><br/>
     <span style="color: #666666; font-style: italic;">;       AH  = 0x56        (高 8 位，指 AX 的高 8 位)</span><br/>
     <span style="color: #666666; font-style: italic;">;       AL  = 0x78        (低 8 位)</span><br/>
 <br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ax</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">0xAABB</span>          <span style="color: #666666; font-style: italic;">; 修改 AX（低 16 位）</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0xAABB</span>          <span style="color: #666666; font-style: italic;">; 修改 AX（低 16 位）</span><br/>
     <span style="color: #666666; font-style: italic;">; 此时：EAX = 0x1234AABB  (高 16 位保持不变！)</span><br/>
     <span style="color: #666666; font-style: italic;">;       AX  = 0xAABB</span><br/>
     <span style="color: #666666; font-style: italic;">;       AL  = 0xBB</span><br/>
 <br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">al</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">0xCC</span>            <span style="color: #666666; font-style: italic;">; 修改 AL（最低 8 位）</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">al</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0xCC</span>            <span style="color: #666666; font-style: italic;">; 修改 AL（最低 8 位）</span><br/>
     <span style="color: #666666; font-style: italic;">; 此时：EAX = 0x1234AACC  (只有低 8 位变了)</span><br/>
     <span style="color: #666666; font-style: italic;">;       AX  = 0xAACC</span><br/>
     <span style="color: #666666; font-style: italic;">;       AL  = 0xCC</span><br/>
 <br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">1</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">0</span><br/>
-    <span style="color: #00007f; font-weight: bold;">int</span> <span style="color: #ff0000;">0x80</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
+    <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
 </div>
 </div>
 <blockquote><p>32ビットレジスタの下位16ビット（AXなど）を変更する場合、上位16ビットは変更されません。しかし、32ビットレジスタをデスティネーションオペランドとして使用する場合、32ビット全体が上書きされます。これは初心者が間違いやすい点です。</p></blockquote>
@@ -268,25 +268,25 @@ _start<span style="color: #339933;">:</span><br/>
 <span style="color: #666666; font-style: italic;">; 文件路径：flags_demo.asm</span><br/>
 <span style="color: #666666; font-style: italic;">; 演示运算对标志位的影响</span><br/>
 <br/>
-<span style="color: #0000ff; font-weight: bold;">section</span> <span style="color: #0000ff; font-weight: bold;">.text</span><br/>
-    <span style="color: #0000ff; font-weight: bold;">global</span> _start<br/>
+<span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.text</span><br/>
+    <span style="color: #0000FF; font-weight: bold;">global</span> _start<br/>
 <br/>
 _start<span style="color: #339933;">:</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">10</span><br/>
-    <span style="color: #00007f; font-weight: bold;">sub</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">10</span>         <span style="color: #666666; font-style: italic;">; 10 - 10 = 0</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">10</span><br/>
+    <span style="color: #00007F; font-weight: bold;">sub</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">10</span>         <span style="color: #666666; font-style: italic;">; 10 - 10 = 0</span><br/>
     <span style="color: #666666; font-style: italic;">; ZF = 1（结果为零）</span><br/>
     <span style="color: #666666; font-style: italic;">; SF = 0（结果非负）</span><br/>
     <span style="color: #666666; font-style: italic;">; CF = 0（无借位）</span><br/>
 <br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">0xFFFFFFFF</span><br/>
-    <span style="color: #00007f; font-weight: bold;">add</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">1</span>          <span style="color: #666666; font-style: italic;">; 0xFFFFFFFF + 1 = 0x100000000（超出了 32 位）</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0xFFFFFFFF</span><br/>
+    <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span>          <span style="color: #666666; font-style: italic;">; 0xFFFFFFFF + 1 = 0x100000000（超出了 32 位）</span><br/>
     <span style="color: #666666; font-style: italic;">; ZF = 1（32位结果为0）</span><br/>
     <span style="color: #666666; font-style: italic;">; CF = 1（产生进位）</span><br/>
     <span style="color: #666666; font-style: italic;">; OF = 0（有符号角度看无溢出）</span><br/>
 <br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">1</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">0</span><br/>
-    <span style="color: #00007f; font-weight: bold;">int</span> <span style="color: #ff0000;">0x80</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
+    <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
 </div>
 </div>
 <hr/>
@@ -334,7 +334,7 @@ _start<span style="color: #339933;">:</span><br/>
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -379,7 +379,7 @@ _start<span style="color: #339933;">:</span><br/>
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -418,7 +418,7 @@ _start<span style="color: #339933;">:</span><br/>
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>

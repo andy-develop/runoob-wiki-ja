@@ -201,10 +201,10 @@ this.$refs.inputRef.focus()</pre></td>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #170;">&lt;template&gt;</span><br/>
   <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
-    <span style="color: #170;">&lt;component :is<span style="color: #66cc66;">=</span><span style="color: #a11;">"currentComponent"</span>&gt;&lt;<span style="color: #66cc66;">/</span>component&gt;</span><br/>
-    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">button</span> @click<span style="color: #66cc66;">=</span><span style="color: #a11;">"toggleComponent"</span>&gt;</span>Toggle Component<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">button</span>&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
-<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span>template&gt;</span><br/>
+    <span style="color: #170;">&lt;component :is<span style="color: #66CC66;">=</span><span style="color: #a11;">"currentComponent"</span>&gt;&lt;<span style="color: #66CC66;">/</span>component&gt;</span><br/>
+    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">button</span> @click<span style="color: #66CC66;">=</span><span style="color: #a11;">"toggleComponent"</span>&gt;</span>Toggle Component<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">button</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span>template&gt;</span><br/>
 <br/>
 <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">script</span>&gt;</span><br/>
 import FirstComponent from './FirstComponent.vue';<br/>
@@ -226,7 +226,7 @@ export default {<br/>
     }<br/>
   }<br/>
 };<br/>
-<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">script</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">script</span>&gt;</span><br/>
 </div></div>
 <p>上記のコードでは、<code>currentComponent</code>はデータ属性であり、それが決定します<code>&lt;component&gt;</code>要素がレンダリングする具体的なコンポーネント。ボタンをクリックすると、<code>toggleComponent</code>メソッドは切り替えます<code>currentComponent</code>の値を変更し、レンダリングされるコンポーネントを動的に変更します。</p><p><strong>注意事項：</strong></p>
 <ul><li><strong>注意事項</strong>:<ul><li><code>is</code>属性の値は、コンポーネントの名前文字列でも、コンポーネントオブジェクトでもかまいません。</li><li>文字列を使用する場合、コンポーネント名は登録されたコンポーネント名と一致している必要があります。</li><li>オブジェクトを使用する場合は、コンポーネントオブジェクトを直接参照するか、動的算出プロパティを使用してコンポーネントオブジェクトを返すことができます。</li></ul></li></ul>
@@ -240,8 +240,8 @@ export default {<br/>
 <p><strong>機能</strong>: Vue.js のリストレンダリングでは、各<code>v-for</code>ループ内の要素には一意の<code>key</code>属性が必要です。<code>key</code>の役割は、Vue が各ノードの一意性を識別し、仮想DOMを効率的に更新できるようにすることです。Vue がリストを再レンダリングするとき、<code>key</code>に基づいて、既存のDOM要素を再利用するか再作成するかを決定します。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">ul</span>&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">li</span> v-<span style="color: #00c;">for</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"item in items"</span> :key<span style="color: #66cc66;">=</span><span style="color: #a11;">"item.id"</span>&gt;</span>{{ item.name }}<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">li</span>&gt;</span><br/>
-<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">ul</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">li</span> v-<span style="color: #00c;">for</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"item in items"</span> :key<span style="color: #66CC66;">=</span><span style="color: #a11;">"item.id"</span>&gt;</span>{{ item.name }}<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">li</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">ul</span>&gt;</span><br/>
 </div></div>
 <p>上記のコードでは、<code>item.id</code>として<code>key</code>属性として使用することで、各リスト項目がデータ更新時にVueによって正しく識別され処理されることを保証します。</p>
 </li>
@@ -264,23 +264,23 @@ export default {<br/>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #170;">&lt;template&gt;</span><br/>
   <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
-    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">input</span> <span style="color: #00c;">type</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"text"</span> ref<span style="color: #66cc66;">=</span><span style="color: #a11;">"inputField"</span>&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
-<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span>template&gt;</span><br/>
+    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">input</span> <span style="color: #00c;">type</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"text"</span> ref<span style="color: #66CC66;">=</span><span style="color: #a11;">"inputField"</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span>template&gt;</span><br/>
 <br/>
 <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">script</span>&gt;</span><br/>
 export default {<br/>
   mounted() {<br/>console.log(this.$refs.inputField); // DOM要素にアクセス<br/>this.$refs.inputField.focus(); // DOM要素のメソッドを呼び出す<br/>
   }<br/>
 }<br/>
-<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">script</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">script</span>&gt;</span><br/>
 </div></div><p><strong>子コンポーネントに ref を追加する</strong></p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #170;">&lt;template&gt;</span><br/>
   <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
-    <span style="color: #170;">&lt;child-component ref<span style="color: #66cc66;">=</span><span style="color: #a11;">"childRef"</span>&gt;&lt;<span style="color: #66cc66;">/</span>child-component&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
-<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span>template&gt;</span><br/>
+    <span style="color: #170;">&lt;child-component ref<span style="color: #66CC66;">=</span><span style="color: #a11;">"childRef"</span>&gt;&lt;<span style="color: #66CC66;">/</span>child-component&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span>template&gt;</span><br/>
 <br/>
 <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">script</span>&gt;</span><br/>
 import ChildComponent from './ChildComponent.vue';<br/>
@@ -292,7 +292,7 @@ export default {<br/>
   mounted() {<br/>console.log(this.$refs.childRef); // 子コンポーネントインスタンスにアクセス<br/>this.$refs.childRef.doSomething(); // 子コンポーネントのメソッドを呼び出す<br/>
   }<br/>
 }<br/>
-<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">script</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">script</span>&gt;</span><br/>
 </div></div>
 <p><strong>注意事項</strong>:</p>
 <ul>
@@ -332,7 +332,7 @@ export default {<br/>
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -377,7 +377,7 @@ export default {<br/>
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -416,7 +416,7 @@ export default {<br/>
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリックしてください</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>

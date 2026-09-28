@@ -338,24 +338,24 @@ $ gunicorn -w 4 -b 0.0.0.0:8000 "app:create_app()"
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># ファイルパス：/etc/nginx/sites-available/runoob</span><br/>
-server <span style="color: #7a0874; font-weight: bold;">{</span><br/>
+server <span style="color: #7A0874; font-weight: bold;">{</span><br/>
     listen <span style="color: #000000;">80</span>;<br/>
     server_name runoob.com www.runoob.com;<br/>
 <br/>
     <span style="color: #666666; font-style: italic;"># 静的ファイルは Nginx が直接処理</span><br/>
-    location <span style="color: #000000; font-weight: bold;">/</span>static<span style="color: #000000; font-weight: bold;">/</span> <span style="color: #7a0874; font-weight: bold;">{</span><br/>
-        <span style="color: #7a0874; font-weight: bold;">alias</span> <span style="color: #000000; font-weight: bold;">/</span>var<span style="color: #000000; font-weight: bold;">/</span>www<span style="color: #000000; font-weight: bold;">/</span>runoob<span style="color: #000000; font-weight: bold;">/</span>static<span style="color: #000000; font-weight: bold;">/</span>;<br/>
+    location <span style="color: #000000; font-weight: bold;">/</span>static<span style="color: #000000; font-weight: bold;">/</span> <span style="color: #7A0874; font-weight: bold;">{</span><br/>
+        <span style="color: #7A0874; font-weight: bold;">alias</span> <span style="color: #000000; font-weight: bold;">/</span>var<span style="color: #000000; font-weight: bold;">/</span>www<span style="color: #000000; font-weight: bold;">/</span>runoob<span style="color: #000000; font-weight: bold;">/</span>static<span style="color: #000000; font-weight: bold;">/</span>;<br/>
         expires 30d;  <span style="color: #666666; font-style: italic;"># ブラウザキャッシュ 30 日</span><br/>
-    <span style="color: #7a0874; font-weight: bold;">}</span><br/>
+    <span style="color: #7A0874; font-weight: bold;">}</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;"># その他のリクエストは Gunicorn に転送</span><br/>
-    location <span style="color: #000000; font-weight: bold;">/</span> <span style="color: #7a0874; font-weight: bold;">{</span><br/>
+    location <span style="color: #000000; font-weight: bold;">/</span> <span style="color: #7A0874; font-weight: bold;">{</span><br/>
         proxy_pass http:<span style="color: #000000; font-weight: bold;">//</span>127.0.0.1:<span style="color: #000000;">8000</span>;<br/>
         proxy_set_header Host <span style="color: #007800;">$host</span>;<br/>
         proxy_set_header X-Real-IP <span style="color: #007800;">$remote_addr</span>;<br/>
         proxy_set_header X-Forwarded-For <span style="color: #007800;">$proxy_add_x_forwarded_for</span>;<br/>
-    <span style="color: #7a0874; font-weight: bold;">}</span><br/>
-<span style="color: #7a0874; font-weight: bold;">}</span><br/>
+    <span style="color: #7A0874; font-weight: bold;">}</span><br/>
+<span style="color: #7A0874; font-weight: bold;">}</span><br/>
 </div>
 </div>
 <p>設定を有効にして Nginx をリロード：</p>
@@ -371,11 +371,11 @@ $ sudo systemctl reload nginx
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># ファイルパス：/etc/systemd/system/runoob.service</span><br/>
-<span style="color: #7a0874; font-weight: bold;">[</span>Unit<span style="color: #7a0874; font-weight: bold;">]</span><br/>
+<span style="color: #7A0874; font-weight: bold;">[</span>Unit<span style="color: #7A0874; font-weight: bold;">]</span><br/>
 <span style="color: #007800;">Description</span>=RUNOOB Flask Application<br/>
 <span style="color: #007800;">After</span>=network.target<br/>
 <br/>
-<span style="color: #7a0874; font-weight: bold;">[</span>Service<span style="color: #7a0874; font-weight: bold;">]</span><br/>
+<span style="color: #7A0874; font-weight: bold;">[</span>Service<span style="color: #7A0874; font-weight: bold;">]</span><br/>
 <span style="color: #007800;">User</span>=www-data<br/>
 <span style="color: #007800;">WorkingDirectory</span>=<span style="color: #000000; font-weight: bold;">/</span>var<span style="color: #000000; font-weight: bold;">/</span>www<span style="color: #000000; font-weight: bold;">/</span>runoob<br/>
 <span style="color: #666666; font-style: italic;"># 起動時に .env ファイルの環境変数を自動読み込み</span><br/>
@@ -386,7 +386,7 @@ $ sudo systemctl reload nginx
 <span style="color: #007800;">Restart</span>=always<br/>
 <span style="color: #007800;">RestartSec</span>=<span style="color: #000000;">5</span><br/>
 <br/>
-<span style="color: #7a0874; font-weight: bold;">[</span>Install<span style="color: #7a0874; font-weight: bold;">]</span><br/>
+<span style="color: #7A0874; font-weight: bold;">[</span>Install<span style="color: #7A0874; font-weight: bold;">]</span><br/>
 <span style="color: #007800;">WantedBy</span>=multi-user.target<br/>
 </div>
 </div>
@@ -540,7 +540,7 @@ $ sudo journalctl -u runoob -f        # 实时查看日志
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -585,7 +585,7 @@ $ sudo journalctl -u runoob -f        # 实时查看日志
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -624,7 +624,7 @@ $ sudo journalctl -u runoob -f        # 实时查看日志
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>

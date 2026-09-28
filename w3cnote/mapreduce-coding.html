@@ -102,7 +102,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: #008000; font-style: italic; font-weight: bold;">/**<br/>* `Map` に関連するメソッド<br/>
  */</span><br/>
 <span style="color: #000000; font-weight: bold;">class</span> <span style="color: #003399;">Map</span> <span style="color: #000000; font-weight: bold;">extends</span> MapReduceBase <span style="color: #000000; font-weight: bold;">implements</span> Mapper<span style="color: #339933;">&lt;</span>LongWritable, Text, Text, IntWritable<span style="color: #339933;">&gt;</span> <span style="color: #009900;">{</span><br/>
-   <span style="color: #000000; font-weight: bold;">private</span> <span style="color: #000000; font-weight: bold;">final</span> <span style="color: #000000; font-weight: bold;">static</span> IntWritable one <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> IntWritable<span style="color: #009900;">(</span><span style="color: #cc66cc;">1</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+   <span style="color: #000000; font-weight: bold;">private</span> <span style="color: #000000; font-weight: bold;">final</span> <span style="color: #000000; font-weight: bold;">static</span> IntWritable one <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> IntWritable<span style="color: #009900;">(</span><span style="color: #CC66CC;">1</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
    <span style="color: #000000; font-weight: bold;">private</span> Text word <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> Text<span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000066; font-weight: bold;">void</span> map<span style="color: #009900;">(</span>LongWritable key,<br/>
                Text value,<br/>
@@ -125,7 +125,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
                   OutputCollector<span style="color: #339933;">&lt;</span>Text, IntWritable<span style="color: #339933;">&gt;</span> output,<br/>
                   Reporter reporter<span style="color: #009900;">)</span><br/>
          <span style="color: #000000; font-weight: bold;">throws</span> <span style="color: #003399;">IOException</span> <span style="color: #009900;">{</span><br/>
-      <span style="color: #000066; font-weight: bold;">int</span> sum <span style="color: #339933;">=</span> <span style="color: #cc66cc;">0</span><span style="color: #339933;">;</span><br/>
+      <span style="color: #000066; font-weight: bold;">int</span> sum <span style="color: #339933;">=</span> <span style="color: #CC66CC;">0</span><span style="color: #339933;">;</span><br/>
       <span style="color: #000000; font-weight: bold;">while</span> <span style="color: #009900;">(</span>values.<span style="color: #006633;">hasNext</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
          sum <span style="color: #339933;">+=</span> values.<span style="color: #006633;">next</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span>.<span style="color: #006633;">get</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
       <span style="color: #009900;">}</span><br/>
@@ -135,7 +135,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">class</span> MyWordCount <span style="color: #009900;">{</span><br/>
    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">static</span> <span style="color: #000066; font-weight: bold;">void</span> main<span style="color: #009900;">(</span><span style="color: #003399;">String</span><span style="color: #009900;">[</span><span style="color: #009900;">]</span> args<span style="color: #009900;">)</span> <span style="color: #000000; font-weight: bold;">throws</span> <span style="color: #003399;">Exception</span> <span style="color: #009900;">{</span><br/>
       JobConf conf <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> JobConf<span style="color: #009900;">(</span>MyWordCount.<span style="color: #000000; font-weight: bold;">class</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
-      conf.<span style="color: #006633;">setJobName</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"my_word_count"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+      conf.<span style="color: #006633;">setJobName</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"my_word_count"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
       conf.<span style="color: #006633;">setOutputKeyClass</span><span style="color: #009900;">(</span>Text.<span style="color: #000000; font-weight: bold;">class</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
       conf.<span style="color: #006633;">setOutputValueClass</span><span style="color: #009900;">(</span>IntWritable.<span style="color: #000000; font-weight: bold;">class</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
       conf.<span style="color: #006633;">setMapperClass</span><span style="color: #009900;">(</span><span style="color: #003399;">Map</span>.<span style="color: #000000; font-weight: bold;">class</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
@@ -144,9 +144,9 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
       conf.<span style="color: #006633;">setInputFormat</span><span style="color: #009900;">(</span>TextInputFormat.<span style="color: #000000; font-weight: bold;">class</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
       conf.<span style="color: #006633;">setOutputFormat</span><span style="color: #009900;">(</span>TextOutputFormat.<span style="color: #000000; font-weight: bold;">class</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
       <span style="color: #666666; font-style: italic;">// 最初のパラメータは入力を表します</span><br/>
-      FileInputFormat.<span style="color: #006633;">setInputPaths</span><span style="color: #009900;">(</span>conf, <span style="color: #000000; font-weight: bold;">new</span> Path<span style="color: #009900;">(</span>args<span style="color: #009900;">[</span><span style="color: #cc66cc;">0</span><span style="color: #009900;">]</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+      FileInputFormat.<span style="color: #006633;">setInputPaths</span><span style="color: #009900;">(</span>conf, <span style="color: #000000; font-weight: bold;">new</span> Path<span style="color: #009900;">(</span>args<span style="color: #009900;">[</span><span style="color: #CC66CC;">0</span><span style="color: #009900;">]</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
       <span style="color: #666666; font-style: italic;">// 2番目のパラメータは出力を表します</span><br/>
-      FileOutputFormat.<span style="color: #006633;">setOutputPath</span><span style="color: #009900;">(</span>conf, <span style="color: #000000; font-weight: bold;">new</span> Path<span style="color: #009900;">(</span>args<span style="color: #009900;">[</span><span style="color: #cc66cc;">1</span><span style="color: #009900;">]</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+      FileOutputFormat.<span style="color: #006633;">setOutputPath</span><span style="color: #009900;">(</span>conf, <span style="color: #000000; font-weight: bold;">new</span> Path<span style="color: #009900;">(</span>args<span style="color: #009900;">[</span><span style="color: #CC66CC;">1</span><span style="color: #009900;">]</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
       JobClient.<span style="color: #006633;">runJob</span><span style="color: #009900;">(</span>conf<span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
    <span style="color: #009900;">}</span><br/>
 <span style="color: #009900;">}</span><br/>
@@ -194,7 +194,7 @@ runoob  2</pre> </div>
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -239,7 +239,7 @@ runoob  2</pre> </div>
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -278,7 +278,7 @@ runoob  2</pre> </div>
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
 	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -489,7 +489,7 @@ p.note-author {
     border-bottom: 1px solid #ddd;
     font-size: 18px;
     font-weight: bold;
-    color: #78a15a;
+    color: #5B80A6;
     padding-bottom: 2px;
     margin-bottom: 4px;
 }

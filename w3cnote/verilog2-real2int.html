@@ -132,10 +132,10 @@ dec(num) = (-1) ^ S x M x (2^E ) </pre>
 <p>$realtobits と $bitstoreal を使用してデータを変換します：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
    <span style="color: #00008B; font-style: italic;">//real, bits</span><br/>
-   <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">63</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>   num_bits <span style="color: #5D478B;">;</span><br/>
+   <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">63</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>   num_bits <span style="color: #5D478B;">;</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">initial</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-      num_bits  <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">6</span><span style="color: #ff0055;">4'h4002_8000_0000_0000</span> <span style="color: #5D478B;">;</span><br/>
-      <span style="color: #9932CC;">$display</span><span style="color: #9F79EE;">(</span><span style="color: #FF00FF;">"-14.13 -&gt; hex: %h"</span><span style="color: #5D478B;">,</span> $realtobits<span style="color: #9F79EE;">(</span><span style="color: #5D478B;">-</span><span style="color: #ff0055;">13.14</span><span style="color: #9F79EE;">)</span><span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
+      num_bits  <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">6</span><span style="color: #FF0055;">4'h4002_8000_0000_0000</span> <span style="color: #5D478B;">;</span><br/>
+      <span style="color: #9932CC;">$display</span><span style="color: #9F79EE;">(</span><span style="color: #FF00FF;">"-14.13 -&gt; hex: %h"</span><span style="color: #5D478B;">,</span> $realtobits<span style="color: #9F79EE;">(</span><span style="color: #5D478B;">-</span><span style="color: #FF0055;">13.14</span><span style="color: #9F79EE;">)</span><span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
       <span style="color: #9932CC;">$display</span><span style="color: #9F79EE;">(</span><span style="color: #FF00FF;">"64'h4002_8000_0000_0000 -&gt; real: %f"</span><span style="color: #5D478B;">,</span> $bitstoreal<span style="color: #9F79EE;">(</span>num_bits<span style="color: #9F79EE;">)</span><span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 </div></div><p>シミュレーションログは次のとおりで、変換が正しいことがわかります。</p>
@@ -145,9 +145,9 @@ dec(num) = (-1) ^ S x M x (2^E ) </pre>
    <span style="color: #00008B; font-style: italic;">//$itor, $rtoi</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">initial</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
       <span style="color: #9932CC;">$display</span><span style="color: #9F79EE;">(</span><span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
-      <span style="color: #9932CC;">$display</span><span style="color: #9F79EE;">(</span><span style="color: #FF00FF;">"Real to integer: %h"</span><span style="color: #5D478B;">,</span> $rtoi<span style="color: #9F79EE;">(</span><span style="color: #ff0055;">13.14</span><span style="color: #9F79EE;">)</span><span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
-      <span style="color: #9932CC;">$display</span><span style="color: #9F79EE;">(</span><span style="color: #FF00FF;">"Display integer in float: %f"</span><span style="color: #5D478B;">,</span> <span style="color: #ff0055;">1001</span><span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
-      <span style="color: #9932CC;">$display</span><span style="color: #9F79EE;">(</span><span style="color: #FF00FF;">"Integer to real: %f"</span><span style="color: #5D478B;">,</span> $itor<span style="color: #9F79EE;">(</span><span style="color: #ff0055;">1001</span><span style="color: #9F79EE;">)</span><span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
+      <span style="color: #9932CC;">$display</span><span style="color: #9F79EE;">(</span><span style="color: #FF00FF;">"Real to integer: %h"</span><span style="color: #5D478B;">,</span> $rtoi<span style="color: #9F79EE;">(</span><span style="color: #FF0055;">13.14</span><span style="color: #9F79EE;">)</span><span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
+      <span style="color: #9932CC;">$display</span><span style="color: #9F79EE;">(</span><span style="color: #FF00FF;">"Display integer in float: %f"</span><span style="color: #5D478B;">,</span> <span style="color: #FF0055;">1001</span><span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
+      <span style="color: #9932CC;">$display</span><span style="color: #9F79EE;">(</span><span style="color: #FF00FF;">"Integer to real: %f"</span><span style="color: #5D478B;">,</span> $itor<span style="color: #9F79EE;">(</span><span style="color: #FF0055;">1001</span><span style="color: #9F79EE;">)</span><span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 </div></div>
 <p>以下のシミュレーションログからわかるように、$rtoi は実数（13.14）から整数（4'hd）への変換時に、整数部分のみを取り出しています。$itor が整数（1001）から実数（1001.000000）への変換を行うときは、変化がないように見えます。</p>
@@ -179,7 +179,7 @@ dec(num) = (-1) ^ S x M x (2^E ) </pre>
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -224,7 +224,7 @@ dec(num) = (-1) ^ S x M x (2^E ) </pre>
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -263,7 +263,7 @@ dec(num) = (-1) ^ S x M x (2^E ) </pre>
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリックしてください</a></p>
 	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -474,7 +474,7 @@ p.note-author {
     border-bottom: 1px solid #ddd;
     font-size: 18px;
     font-weight: bold;
-    color: #78a15a;
+    color: #5B80A6;
     padding-bottom: 2px;
     margin-bottom: 4px;
 }

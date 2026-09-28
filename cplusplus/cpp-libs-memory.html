@@ -445,7 +445,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     myPtr<span style="color: #000040;">-</span><span style="color: #000080;">&gt;</span>doSomething<span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span> <span style="color: #666666;">// スマートポインタを使用してメンバ関数を呼び出す</span><br/>
 <br/>
     <span style="color: #666666;">// main 関数が終了すると、myPtr が破棄され、MyClass オブジェクトのメモリが自動的に解放されます</span><br/>
-    <span style="color: #05a;">return</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">return</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span><br/>
 <span style="color: #008000;">}</span><br/>
 </div></div>
 <p>出力結果：</p>
@@ -470,7 +470,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     myPtr2<span style="color: #000040;">-</span><span style="color: #000080;">&gt;</span>doSomething<span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span> <span style="color: #666666;">// myPtr2 を使用してメンバ関数を呼び出す</span><br/>
 <br/>
     <span style="color: #666666;">// myPtr1 と myPtr2 の両方が破棄されると、MyClass オブジェクトのメモリが解放されます</span><br/>
-    <span style="color: #05a;">return</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">return</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span><br/>
 <span style="color: #008000;">}</span><br/>
 </div></div>
 <p>出力結果：</p>
@@ -498,7 +498,7 @@ Doing something</pre>
     node2<span style="color: #000040;">-</span><span style="color: #000080;">&gt;</span>prev <span style="color: #000080;">=</span> node1<span style="color: #008080;">;</span><br/>
 <br/>
     <span style="color: #666666;">// 循環参照ですが、weak_ptr を使うことでメモリリークを回避しています</span><br/>
-    <span style="color: #05a;">return</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">return</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span><br/>
 <span style="color: #008000;">}</span><br/>
 </div></div>
 <p>この例では、<code>node1</code> 和 <code>node2</code>循環参照が形成されています。weak_ptr の存在により、<code>prev</code> 是 <code>weak_ptr</code>shared_ptr が<code>node1</code> 和 <code>node2</code> 的 <code>shared_ptr</code>破棄されると、それらが指していたメモリも正しく解放されます。</p>
@@ -510,15 +510,15 @@ Doing something</pre>
 <br/>
 <span style="color: #05a;">int</span> main<span style="color: #008000;">(</span><span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
     std<span style="color: #008080;">::</span><span style="color: #007788;">allocator</span><span style="color: #000080;">&lt;</span><span style="color: #05a;">int</span><span style="color: #000080;">&gt;</span> alloc<span style="color: #008080;">;</span><br/>
-    <span style="color: #05a;">int</span><span style="color: #000040;">*</span> p <span style="color: #000080;">=</span> alloc.<span style="color: #007788;">allocate</span><span style="color: #008000;">(</span><span style="color: #0000dd;">1</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span> <span style="color: #666666;">// メモリを割り当てる</span><br/>
-    alloc.<span style="color: #007788;">construct</span><span style="color: #008000;">(</span>p, <span style="color: #0000dd;">42</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span> <span style="color: #666666;">// オブジェクトを構築する</span><br/>
+    <span style="color: #05a;">int</span><span style="color: #000040;">*</span> p <span style="color: #000080;">=</span> alloc.<span style="color: #007788;">allocate</span><span style="color: #008000;">(</span><span style="color: #0000DD;">1</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span> <span style="color: #666666;">// メモリを割り当てる</span><br/>
+    alloc.<span style="color: #007788;">construct</span><span style="color: #008000;">(</span>p, <span style="color: #0000DD;">42</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span> <span style="color: #666666;">// オブジェクトを構築する</span><br/>
 <br/>
     std<span style="color: #008080;">::</span><span style="color: #05a;">cout</span> <span style="color: #000080;">&lt;&lt;</span> <span style="color: #000040;">*</span>p <span style="color: #000080;">&lt;&lt;</span> std<span style="color: #008080;">::</span><span style="color: #007788;">endl</span><span style="color: #008080;">;</span><br/>
 <br/>
     alloc.<span style="color: #007788;">destroy</span><span style="color: #008000;">(</span>p<span style="color: #008000;">)</span><span style="color: #008080;">;</span> <span style="color: #666666;">// オブジェクトを破棄する</span><br/>
-    alloc.<span style="color: #007788;">deallocate</span><span style="color: #008000;">(</span>p, <span style="color: #0000dd;">1</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span> <span style="color: #666666;">// メモリを解放する</span><br/>
+    alloc.<span style="color: #007788;">deallocate</span><span style="color: #008000;">(</span>p, <span style="color: #0000DD;">1</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span> <span style="color: #666666;">// メモリを解放する</span><br/>
 <br/>
-    <span style="color: #05a;">return</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">return</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span><br/>
 <span style="color: #008000;">}</span><br/>
 </div></div>
 <h2>その他のメモリ管理ツール</h2><h3>
@@ -528,18 +528,18 @@ std::align</h3><p>std::align はポインタのアライメントを調整する
 <span style="color: #060;">#include &lt;iostream&gt;</span><br/>
 <br/>
 <span style="color: #05a;">int</span> main<span style="color: #008000;">(</span><span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
-    alignas<span style="color: #008000;">(</span><span style="color: #0000dd;">16</span><span style="color: #008000;">)</span> <span style="color: #05a;">char</span> buffer<span style="color: #008000;">[</span><span style="color: #0000dd;">64</span><span style="color: #008000;">]</span><span style="color: #008080;">;</span><br/>
+    alignas<span style="color: #008000;">(</span><span style="color: #0000DD;">16</span><span style="color: #008000;">)</span> <span style="color: #05a;">char</span> buffer<span style="color: #008000;">[</span><span style="color: #0000DD;">64</span><span style="color: #008000;">]</span><span style="color: #008080;">;</span><br/>
     <span style="color: #05a;">void</span><span style="color: #000040;">*</span> p <span style="color: #000080;">=</span> buffer<span style="color: #008080;">;</span><br/>
     <span style="color: #05a;">size_t</span> space <span style="color: #000080;">=</span> <span style="color: #05a;">sizeof</span><span style="color: #008000;">(</span>buffer<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <br/>
-    <span style="color: #05a;">void</span><span style="color: #000040;">*</span> aligned_ptr <span style="color: #000080;">=</span> std<span style="color: #008080;">::</span><span style="color: #007788;">align</span><span style="color: #008000;">(</span><span style="color: #0000dd;">16</span>, <span style="color: #05a;">sizeof</span><span style="color: #008000;">(</span><span style="color: #05a;">int</span><span style="color: #008000;">)</span>, p, space<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">void</span><span style="color: #000040;">*</span> aligned_ptr <span style="color: #000080;">=</span> std<span style="color: #008080;">::</span><span style="color: #007788;">align</span><span style="color: #008000;">(</span><span style="color: #0000DD;">16</span>, <span style="color: #05a;">sizeof</span><span style="color: #008000;">(</span><span style="color: #05a;">int</span><span style="color: #008000;">)</span>, p, space<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
     <span style="color: #05a;">if</span> <span style="color: #008000;">(</span>aligned_ptr<span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
         std<span style="color: #008080;">::</span><span style="color: #05a;">cout</span> <span style="color: #000080;">&lt;&lt;</span> <span style="color: #a11;">"Memory aligned<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #008080;">;</span><br/>
     <span style="color: #008000;">}</span> <span style="color: #05a;">else</span> <span style="color: #008000;">{</span><br/>
         std<span style="color: #008080;">::</span><span style="color: #05a;">cout</span> <span style="color: #000080;">&lt;&lt;</span> <span style="color: #a11;">"Memory alignment failed<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #008080;">;</span><br/>
     <span style="color: #008000;">}</span><br/>
 <br/>
-    <span style="color: #05a;">return</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">return</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span><br/>
 <span style="color: #008000;">}</span><br/>
 </div></div>
 <p><code>&lt;memory&gt;</code>このヘッダファイルは、C++ 標準ライブラリにおいて動的メモリ管理を扱う重要な部分です。</p><p>スマートポインタ（std::shared_ptr など）を<code>unique_ptr</code>、<code>shared_ptr</code> 和 <code>weak_ptr</code>使用することで、開発者はメモリをより安全かつ効率的に管理し、よくあるメモリ管理エラーを回避できます。この記事が、初心者が C++ の<code>&lt;memory&gt;</code>ヘッダファイルをよりよく理解し、使用する助けになることを願っています。</p> その他の拡張
@@ -576,7 +576,7 @@ std::align</h3><p>std::align はポインタのアライメントを調整する
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -621,7 +621,7 @@ std::align</h3><p>std::align はポインタのアライメントを調整する
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -660,7 +660,7 @@ std::align</h3><p>std::align はポインタのアライメントを調整する
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -879,7 +879,7 @@ function kFormatter(num) {
 </style>
 <div class="sidebar-box re-box re-box-large">
 <div class="sidebar-box recommend-here" style="margin: 0 auto;">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
+<a href="#" style="font-size: 16px; color:#5B80A6;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
 </div>
 <div class="sidebar-box sidebar-cate">
 <div class="sidebar-tree">

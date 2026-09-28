@@ -314,7 +314,7 @@ GROUP BY column1;
 <p>orders という名前のテーブルに、以下の列があるとします。<strong>order_id、customer_id、order_date、order_amount</strong>。</p>
 <p>customer_id ごとにグループ化し、各顧客の注文合計金額を計算したい場合、SQL文は次のようになります。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #993333; font-weight: bold;">SELECT</span> customer_id<span style="color: #66cc66;">,</span> <span style="color: #993333; font-weight: bold;">SUM</span><span style="color: #66cc66;">(</span>order_amount<span style="color: #66cc66;">)</span> <span style="color: #993333; font-weight: bold;">AS</span> total_amount<br/>
+<span style="color: #993333; font-weight: bold;">SELECT</span> customer_id<span style="color: #66CC66;">,</span> <span style="color: #993333; font-weight: bold;">SUM</span><span style="color: #66CC66;">(</span>order_amount<span style="color: #66CC66;">)</span> <span style="color: #993333; font-weight: bold;">AS</span> total_amount<br/>
 <span style="color: #993333; font-weight: bold;">FROM</span> orders<br/>
 <span style="color: #993333; font-weight: bold;">GROUP</span> <span style="color: #993333; font-weight: bold;">BY</span> customer_id;<br/>
 </div></div>
@@ -323,38 +323,38 @@ GROUP BY column1;
 <strong>注意事項：</strong></p>
 <ul><li><code>GROUP BY</code>句は通常、集計関数と一緒に使用されます。グループ化後、各グループに対して集計操作を行う必要があるためです。</li><li><code>SELECT</code>句内の列は通常、グループ化列または集計関数の引数のいずれかです。</li><li>複数の列でグループ化できます。その場合は、<code>GROUP BY</code>句内で列名をカンマで区切るだけです。</li></ul>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #993333; font-weight: bold;">SELECT</span> column1<span style="color: #66cc66;">,</span> column2<span style="color: #66cc66;">,</span> aggregate_function<span style="color: #66cc66;">(</span>column3<span style="color: #66cc66;">)</span><br/>
+<span style="color: #993333; font-weight: bold;">SELECT</span> column1<span style="color: #66CC66;">,</span> column2<span style="color: #66CC66;">,</span> aggregate_function<span style="color: #66CC66;">(</span>column3<span style="color: #66CC66;">)</span><br/>
 <span style="color: #993333; font-weight: bold;">FROM</span> <span style="color: #993333; font-weight: bold;">TABLE_NAME</span><br/>
 <span style="color: #993333; font-weight: bold;">WHERE</span> condition<br/>
-<span style="color: #993333; font-weight: bold;">GROUP</span> <span style="color: #993333; font-weight: bold;">BY</span> column1<span style="color: #66cc66;">,</span> column2;<br/>
+<span style="color: #993333; font-weight: bold;">GROUP</span> <span style="color: #993333; font-weight: bold;">BY</span> column1<span style="color: #66CC66;">,</span> column2;<br/>
 </div></div>
 <hr/>
 <h2>例のデモ</h2>
 <p>この章の例では、以下のテーブル構造とデータを使用します。使用前に、以下のデータをデータベースにインポートしておいてください。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #993333; font-weight: bold;">SET</span> NAMES utf8;<br/>
-<span style="color: #993333; font-weight: bold;">SET</span> FOREIGN_KEY_CHECKS <span style="color: #66cc66;">=</span> <span style="color: #cc66cc;">0</span>;<br/>
+<span style="color: #993333; font-weight: bold;">SET</span> FOREIGN_KEY_CHECKS <span style="color: #66CC66;">=</span> <span style="color: #CC66CC;">0</span>;<br/>
 <br/>
 <span style="color: #808080; font-style: italic;">-- ----------------------------</span><br/>
 <span style="color: #808080; font-style: italic;">--  Table structure for `employee_tbl`</span><br/>
 <span style="color: #808080; font-style: italic;">-- ----------------------------</span><br/>
-<span style="color: #993333; font-weight: bold;">DROP</span> <span style="color: #993333; font-weight: bold;">TABLE</span> <span style="color: #993333; font-weight: bold;">IF</span> <span style="color: #993333; font-weight: bold;">EXISTS</span> <span style="color: #ff0000;">`employee_tbl`</span>;<br/>
-<span style="color: #993333; font-weight: bold;">CREATE</span> <span style="color: #993333; font-weight: bold;">TABLE</span> <span style="color: #ff0000;">`employee_tbl`</span> <span style="color: #66cc66;">(</span><br/>
-  <span style="color: #ff0000;">`id`</span> <span style="color: #993333; font-weight: bold;">INT</span><span style="color: #66cc66;">(</span><span style="color: #cc66cc;">11</span><span style="color: #66cc66;">)</span> <span style="color: #993333; font-weight: bold;">NOT</span> <span style="color: #993333; font-weight: bold;">NULL</span><span style="color: #66cc66;">,</span><br/>
-  <span style="color: #ff0000;">`name`</span> <span style="color: #993333; font-weight: bold;">CHAR</span><span style="color: #66cc66;">(</span><span style="color: #cc66cc;">10</span><span style="color: #66cc66;">)</span> <span style="color: #993333; font-weight: bold;">NOT</span> <span style="color: #993333; font-weight: bold;">NULL</span> <span style="color: #993333; font-weight: bold;">DEFAULT</span> <span style="color: #ff0000;">''</span><span style="color: #66cc66;">,</span><br/>
-  <span style="color: #ff0000;">`date`</span> datetime <span style="color: #993333; font-weight: bold;">NOT</span> <span style="color: #993333; font-weight: bold;">NULL</span><span style="color: #66cc66;">,</span><br/>
-  <span style="color: #ff0000;">`signin`</span> tinyint<span style="color: #66cc66;">(</span><span style="color: #cc66cc;">4</span><span style="color: #66cc66;">)</span> <span style="color: #993333; font-weight: bold;">NOT</span> <span style="color: #993333; font-weight: bold;">NULL</span> <span style="color: #993333; font-weight: bold;">DEFAULT</span> <span style="color: #ff0000;">'0'</span> COMMENT <span style="color: #ff0000;">'ログイン回数'</span><span style="color: #66cc66;">,</span><br/>
-  <span style="color: #993333; font-weight: bold;">PRIMARY</span> <span style="color: #993333; font-weight: bold;">KEY</span> <span style="color: #66cc66;">(</span><span style="color: #ff0000;">`id`</span><span style="color: #66cc66;">)</span><br/>
-<span style="color: #66cc66;">)</span> ENGINE<span style="color: #66cc66;">=</span>InnoDB <span style="color: #993333; font-weight: bold;">DEFAULT</span> CHARSET<span style="color: #66cc66;">=</span>utf8;<br/>
+<span style="color: #993333; font-weight: bold;">DROP</span> <span style="color: #993333; font-weight: bold;">TABLE</span> <span style="color: #993333; font-weight: bold;">IF</span> <span style="color: #993333; font-weight: bold;">EXISTS</span> <span style="color: #FF0000;">`employee_tbl`</span>;<br/>
+<span style="color: #993333; font-weight: bold;">CREATE</span> <span style="color: #993333; font-weight: bold;">TABLE</span> <span style="color: #FF0000;">`employee_tbl`</span> <span style="color: #66CC66;">(</span><br/>
+  <span style="color: #FF0000;">`id`</span> <span style="color: #993333; font-weight: bold;">INT</span><span style="color: #66CC66;">(</span><span style="color: #CC66CC;">11</span><span style="color: #66CC66;">)</span> <span style="color: #993333; font-weight: bold;">NOT</span> <span style="color: #993333; font-weight: bold;">NULL</span><span style="color: #66CC66;">,</span><br/>
+  <span style="color: #FF0000;">`name`</span> <span style="color: #993333; font-weight: bold;">CHAR</span><span style="color: #66CC66;">(</span><span style="color: #CC66CC;">10</span><span style="color: #66CC66;">)</span> <span style="color: #993333; font-weight: bold;">NOT</span> <span style="color: #993333; font-weight: bold;">NULL</span> <span style="color: #993333; font-weight: bold;">DEFAULT</span> <span style="color: #FF0000;">''</span><span style="color: #66CC66;">,</span><br/>
+  <span style="color: #FF0000;">`date`</span> datetime <span style="color: #993333; font-weight: bold;">NOT</span> <span style="color: #993333; font-weight: bold;">NULL</span><span style="color: #66CC66;">,</span><br/>
+  <span style="color: #FF0000;">`signin`</span> tinyint<span style="color: #66CC66;">(</span><span style="color: #CC66CC;">4</span><span style="color: #66CC66;">)</span> <span style="color: #993333; font-weight: bold;">NOT</span> <span style="color: #993333; font-weight: bold;">NULL</span> <span style="color: #993333; font-weight: bold;">DEFAULT</span> <span style="color: #FF0000;">'0'</span> COMMENT <span style="color: #FF0000;">'ログイン回数'</span><span style="color: #66CC66;">,</span><br/>
+  <span style="color: #993333; font-weight: bold;">PRIMARY</span> <span style="color: #993333; font-weight: bold;">KEY</span> <span style="color: #66CC66;">(</span><span style="color: #FF0000;">`id`</span><span style="color: #66CC66;">)</span><br/>
+<span style="color: #66CC66;">)</span> ENGINE<span style="color: #66CC66;">=</span>InnoDB <span style="color: #993333; font-weight: bold;">DEFAULT</span> CHARSET<span style="color: #66CC66;">=</span>utf8;<br/>
 <br/>
 <span style="color: #808080; font-style: italic;">-- ----------------------------</span><br/>
 <span style="color: #808080; font-style: italic;">--  Records of `employee_tbl`</span><br/>
 <span style="color: #808080; font-style: italic;">-- ----------------------------</span><br/>
 <span style="color: #993333; font-weight: bold;">BEGIN</span>;<br/>
-<span style="color: #993333; font-weight: bold;">INSERT</span> <span style="color: #993333; font-weight: bold;">INTO</span> <span style="color: #ff0000;">`employee_tbl`</span> <span style="color: #993333; font-weight: bold;">VALUES</span> <span style="color: #66cc66;">(</span><span style="color: #ff0000;">'1'</span><span style="color: #66cc66;">,</span> <span style="color: #ff0000;">'小明'</span><span style="color: #66cc66;">,</span> <span style="color: #ff0000;">'2016-04-22 15:25:33'</span><span style="color: #66cc66;">,</span> <span style="color: #ff0000;">'1'</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">,</span> <span style="color: #66cc66;">(</span><span style="color: #ff0000;">'2'</span><span style="color: #66cc66;">,</span> <span style="color: #ff0000;">'小王'</span><span style="color: #66cc66;">,</span> <span style="color: #ff0000;">'2016-04-20 15:25:47'</span><span style="color: #66cc66;">,</span> <span style="color: #ff0000;">'3'</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">,</span> <span style="color: #66cc66;">(</span><span style="color: #ff0000;">'3'</span><span style="color: #66cc66;">,</span> <span style="color: #ff0000;">'小丽'</span><span style="color: #66cc66;">,</span> <span style="color: #ff0000;">'2016-04-19 15:26:02'</span><span style="color: #66cc66;">,</span> <span style="color: #ff0000;">'2'</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">,</span> <span style="color: #66cc66;">(</span><span style="color: #ff0000;">'4'</span><span style="color: #66cc66;">,</span> <span style="color: #ff0000;">'小王'</span><span style="color: #66cc66;">,</span> <span style="color: #ff0000;">'2016-04-07 15:26:14'</span><span style="color: #66cc66;">,</span> <span style="color: #ff0000;">'4'</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">,</span> <span style="color: #66cc66;">(</span><span style="color: #ff0000;">'5'</span><span style="color: #66cc66;">,</span> <span style="color: #ff0000;">'小明'</span><span style="color: #66cc66;">,</span> <span style="color: #ff0000;">'2016-04-11 15:26:40'</span><span style="color: #66cc66;">,</span> <span style="color: #ff0000;">'4'</span><span style="color: #66cc66;">)</span><span style="color: #66cc66;">,</span> <span style="color: #66cc66;">(</span><span style="color: #ff0000;">'6'</span><span style="color: #66cc66;">,</span> <span style="color: #ff0000;">'小明'</span><span style="color: #66cc66;">,</span> <span style="color: #ff0000;">'2016-04-04 15:26:54'</span><span style="color: #66cc66;">,</span> <span style="color: #ff0000;">'2'</span><span style="color: #66cc66;">)</span>;<br/>
+<span style="color: #993333; font-weight: bold;">INSERT</span> <span style="color: #993333; font-weight: bold;">INTO</span> <span style="color: #FF0000;">`employee_tbl`</span> <span style="color: #993333; font-weight: bold;">VALUES</span> <span style="color: #66CC66;">(</span><span style="color: #FF0000;">'1'</span><span style="color: #66CC66;">,</span> <span style="color: #FF0000;">'小明'</span><span style="color: #66CC66;">,</span> <span style="color: #FF0000;">'2016-04-22 15:25:33'</span><span style="color: #66CC66;">,</span> <span style="color: #FF0000;">'1'</span><span style="color: #66CC66;">)</span><span style="color: #66CC66;">,</span> <span style="color: #66CC66;">(</span><span style="color: #FF0000;">'2'</span><span style="color: #66CC66;">,</span> <span style="color: #FF0000;">'小王'</span><span style="color: #66CC66;">,</span> <span style="color: #FF0000;">'2016-04-20 15:25:47'</span><span style="color: #66CC66;">,</span> <span style="color: #FF0000;">'3'</span><span style="color: #66CC66;">)</span><span style="color: #66CC66;">,</span> <span style="color: #66CC66;">(</span><span style="color: #FF0000;">'3'</span><span style="color: #66CC66;">,</span> <span style="color: #FF0000;">'小丽'</span><span style="color: #66CC66;">,</span> <span style="color: #FF0000;">'2016-04-19 15:26:02'</span><span style="color: #66CC66;">,</span> <span style="color: #FF0000;">'2'</span><span style="color: #66CC66;">)</span><span style="color: #66CC66;">,</span> <span style="color: #66CC66;">(</span><span style="color: #FF0000;">'4'</span><span style="color: #66CC66;">,</span> <span style="color: #FF0000;">'小王'</span><span style="color: #66CC66;">,</span> <span style="color: #FF0000;">'2016-04-07 15:26:14'</span><span style="color: #66CC66;">,</span> <span style="color: #FF0000;">'4'</span><span style="color: #66CC66;">)</span><span style="color: #66CC66;">,</span> <span style="color: #66CC66;">(</span><span style="color: #FF0000;">'5'</span><span style="color: #66CC66;">,</span> <span style="color: #FF0000;">'小明'</span><span style="color: #66CC66;">,</span> <span style="color: #FF0000;">'2016-04-11 15:26:40'</span><span style="color: #66CC66;">,</span> <span style="color: #FF0000;">'4'</span><span style="color: #66CC66;">)</span><span style="color: #66CC66;">,</span> <span style="color: #66CC66;">(</span><span style="color: #FF0000;">'6'</span><span style="color: #66CC66;">,</span> <span style="color: #FF0000;">'小明'</span><span style="color: #66CC66;">,</span> <span style="color: #FF0000;">'2016-04-04 15:26:54'</span><span style="color: #66CC66;">,</span> <span style="color: #FF0000;">'2'</span><span style="color: #66CC66;">)</span>;<br/>
 COMMIT;<br/>
 <br/>
-<span style="color: #993333; font-weight: bold;">SET</span> FOREIGN_KEY_CHECKS <span style="color: #66cc66;">=</span> <span style="color: #cc66cc;">1</span>;<br/>
+<span style="color: #993333; font-weight: bold;">SET</span> FOREIGN_KEY_CHECKS <span style="color: #66CC66;">=</span> <span style="color: #CC66CC;">1</span>;<br/>
 </div></div>
 <p>インポートが成功したら、次のSQL文を実行します：</p>
 <pre>
@@ -452,7 +452,7 @@ mysql&gt; SELECT coalesce(name, '总数'), SUM(signin) as signin_count FROM  emp
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -497,7 +497,7 @@ mysql&gt; SELECT coalesce(name, '总数'), SUM(signin) as signin_count FROM  emp
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -583,7 +583,7 @@ SELECT COALESCE('first', 'second');  -- 返回 'first'</pre>
 </div>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
@@ -802,7 +802,7 @@ function kFormatter(num) {
 </style>
 <div class="sidebar-box re-box re-box-large">
 <div class="sidebar-box recommend-here" style="margin: 0 auto;">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
+<a href="#" style="font-size: 16px; color:#5B80A6;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
 </div>
 <div class="sidebar-box sidebar-cate">
 <div class="sidebar-tree">

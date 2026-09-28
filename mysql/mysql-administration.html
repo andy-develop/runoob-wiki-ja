@@ -224,7 +224,7 @@ sudo /usr/local/mysql/support-files/mysql.server status</pre><p>上記のコマ�
 CREATE USER 'username'@'host' IDENTIFIED BY 'password';</pre>
 <ul><li><code>username</code>: ユーザー名。</li><li><code>host</code>: ユーザーがどのホストから接続できるかを指定します。例:<code>localhost</code>ローカル接続のみ許可、<code>%</code>任意のホストからの接続を許可。</li><li><code>password</code>: ユーザーのパスワード。</li></ul>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #993333; font-weight: bold;">CREATE</span> <span style="color: #993333; font-weight: bold;">USER</span> <span style="color: #ff0000;">'john'</span>@<span style="color: #ff0000;">'localhost'</span> <span style="color: #993333; font-weight: bold;">IDENTIFIED</span> <span style="color: #993333; font-weight: bold;">BY</span> <span style="color: #ff0000;">'password123'</span>;<br/>
+<span style="color: #993333; font-weight: bold;">CREATE</span> <span style="color: #993333; font-weight: bold;">USER</span> <span style="color: #FF0000;">'john'</span>@<span style="color: #FF0000;">'localhost'</span> <span style="color: #993333; font-weight: bold;">IDENTIFIED</span> <span style="color: #993333; font-weight: bold;">BY</span> <span style="color: #FF0000;">'password123'</span>;<br/>
 </div></div>
 <h3>権限の付与</h3><p>ユーザーを作成した後、アクセス権限を付与する必要があります。次のコマンドを使用して<span class="marked">GRANT</span>コマンドで権限を付与します:</p>
 <pre>
@@ -232,7 +232,7 @@ GRANT privileges ON database_name.* TO 'username'@'host';</pre>
 <p>
 <ul><li><code>privileges</code>: 必要な権限。例:<code>ALL PRIVILEGES</code>、<code>SELECT</code>、<code>INSERT</code>、<code>UPDATE</code>、<code>DELETE</code>など。</li><li><code>database_name.*</code>: 特定のデータベースまたはテーブルに対する権限を付与します。<code>database_name.*</code>データベース全体のすべてのテーブルに対する権限を付与することを示します。<code>database_name.table_name</code>指定されたテーブルに対する権限を付与することを示します。</li><li><code>TO 'username'@'host'</code>: 権限を付与するユーザーとホストを指定します。</li></ul>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #993333; font-weight: bold;">GRANT</span> <span style="color: #993333; font-weight: bold;">ALL</span> PRIVILEGES <span style="color: #993333; font-weight: bold;">ON</span> test_db<span style="color: #66cc66;">.*</span> <span style="color: #993333; font-weight: bold;">TO</span> <span style="color: #ff0000;">'john'</span>@<span style="color: #ff0000;">'localhost'</span>;<br/>
+<span style="color: #993333; font-weight: bold;">GRANT</span> <span style="color: #993333; font-weight: bold;">ALL</span> PRIVILEGES <span style="color: #993333; font-weight: bold;">ON</span> test_db<span style="color: #66CC66;">.*</span> <span style="color: #993333; font-weight: bold;">TO</span> <span style="color: #FF0000;">'john'</span>@<span style="color: #FF0000;">'localhost'</span>;<br/>
 </div></div>
 <h3>権限のリフレッシュ</h3><p>権限を付与または取り消した後、変更を有効にするために権限をリフレッシュする必要があります:</p>
 <pre>
@@ -241,37 +241,37 @@ FLUSH PRIVILEGES;</pre>
 <pre>
 SHOW GRANTS FOR 'username'@'host';</pre>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #993333; font-weight: bold;">SHOW</span> GRANTS <span style="color: #993333; font-weight: bold;">FOR</span> <span style="color: #ff0000;">'john'</span>@<span style="color: #ff0000;">'localhost'</span>;<br/>
+<span style="color: #993333; font-weight: bold;">SHOW</span> GRANTS <span style="color: #993333; font-weight: bold;">FOR</span> <span style="color: #FF0000;">'john'</span>@<span style="color: #FF0000;">'localhost'</span>;<br/>
 </div></div>
 <h3>権限の取り消し</h3><p>ユーザーの権限を取り消すには、REVOKE コマンドを使用します:</p>
 <pre>
 REVOKE privileges ON database_name.* FROM 'username'@'host';</pre>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #993333; font-weight: bold;">REVOKE</span> <span style="color: #993333; font-weight: bold;">ALL</span> PRIVILEGES <span style="color: #993333; font-weight: bold;">ON</span> test_db<span style="color: #66cc66;">.*</span> <span style="color: #993333; font-weight: bold;">FROM</span> <span style="color: #ff0000;">'john'</span>@<span style="color: #ff0000;">'localhost'</span>;<br/>
+<span style="color: #993333; font-weight: bold;">REVOKE</span> <span style="color: #993333; font-weight: bold;">ALL</span> PRIVILEGES <span style="color: #993333; font-weight: bold;">ON</span> test_db<span style="color: #66CC66;">.*</span> <span style="color: #993333; font-weight: bold;">FROM</span> <span style="color: #FF0000;">'john'</span>@<span style="color: #FF0000;">'localhost'</span>;<br/>
 </div></div>
 <h3>ユーザーの削除</h3><p>ユーザーを削除する必要がある場合は、次のコマンドを使用できます:</p>
 <pre>
 DROP USER 'username'@'host';</pre>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #993333; font-weight: bold;">DROP</span> <span style="color: #993333; font-weight: bold;">USER</span> <span style="color: #ff0000;">'john'</span>@<span style="color: #ff0000;">'localhost'</span>;<br/>
+<span style="color: #993333; font-weight: bold;">DROP</span> <span style="color: #993333; font-weight: bold;">USER</span> <span style="color: #FF0000;">'john'</span>@<span style="color: #FF0000;">'localhost'</span>;<br/>
 </div></div>
 <h3>ユーザーのパスワード変更</h3><p>ユーザーのパスワードを変更するには、ALTER USER コマンドを使用できます:</p>
 <pre>ALTER USER 'username'@'host' IDENTIFIED BY 'new_password';</pre>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #993333; font-weight: bold;">ALTER</span> <span style="color: #993333; font-weight: bold;">USER</span> <span style="color: #ff0000;">'john'</span>@<span style="color: #ff0000;">'localhost'</span> <span style="color: #993333; font-weight: bold;">IDENTIFIED</span> <span style="color: #993333; font-weight: bold;">BY</span> <span style="color: #ff0000;">'newpassword456'</span>;<br/>
+<span style="color: #993333; font-weight: bold;">ALTER</span> <span style="color: #993333; font-weight: bold;">USER</span> <span style="color: #FF0000;">'john'</span>@<span style="color: #FF0000;">'localhost'</span> <span style="color: #993333; font-weight: bold;">IDENTIFIED</span> <span style="color: #993333; font-weight: bold;">BY</span> <span style="color: #FF0000;">'newpassword456'</span>;<br/>
 </div></div>
 <h3>ユーザーのホスト変更</h3><p>ユーザーのホスト（つまり、どのホストからの接続を許可するか）を変更するには、ユーザーを削除してから新しいユーザーを作成し直すことができます。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #808080; font-style: italic;">-- 古いユーザーを削除</span><br/>
-<span style="color: #993333; font-weight: bold;">DROP</span> <span style="color: #993333; font-weight: bold;">USER</span> <span style="color: #ff0000;">'john'</span>@<span style="color: #ff0000;">'localhost'</span>;<br/>
+<span style="color: #993333; font-weight: bold;">DROP</span> <span style="color: #993333; font-weight: bold;">USER</span> <span style="color: #FF0000;">'john'</span>@<span style="color: #FF0000;">'localhost'</span>;<br/>
 <br/>
 <span style="color: #808080; font-style: italic;">-- ユーザーを再作成し、新しいホストを指定</span><br/>
-<span style="color: #993333; font-weight: bold;">CREATE</span> <span style="color: #993333; font-weight: bold;">USER</span> <span style="color: #ff0000;">'john'</span>@<span style="color: #ff0000;">'%'</span> <span style="color: #993333; font-weight: bold;">IDENTIFIED</span> <span style="color: #993333; font-weight: bold;">BY</span> <span style="color: #ff0000;">'password123'</span>;<br/>
+<span style="color: #993333; font-weight: bold;">CREATE</span> <span style="color: #993333; font-weight: bold;">USER</span> <span style="color: #FF0000;">'john'</span>@<span style="color: #FF0000;">'%'</span> <span style="color: #993333; font-weight: bold;">IDENTIFIED</span> <span style="color: #993333; font-weight: bold;">BY</span> <span style="color: #FF0000;">'password123'</span>;<br/>
 </div></div>
 <h3>ユーザー作成時の権限指定</h3><p>ユーザー作成時に、同時に権限を付与することもできます（MySQL 8.0.16 以降）:</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #993333; font-weight: bold;">CREATE</span> <span style="color: #993333; font-weight: bold;">USER</span> <span style="color: #ff0000;">'john'</span>@<span style="color: #ff0000;">'localhost'</span> <span style="color: #993333; font-weight: bold;">IDENTIFIED</span> <span style="color: #993333; font-weight: bold;">BY</span> <span style="color: #ff0000;">'password123'</span> <span style="color: #993333; font-weight: bold;">WITH</span> <span style="color: #993333; font-weight: bold;">GRANT</span> <span style="color: #993333; font-weight: bold;">OPTION</span>;<br/>
-<span style="color: #993333; font-weight: bold;">GRANT</span> <span style="color: #993333; font-weight: bold;">ALL</span> PRIVILEGES <span style="color: #993333; font-weight: bold;">ON</span> test_db<span style="color: #66cc66;">.*</span> <span style="color: #993333; font-weight: bold;">TO</span> <span style="color: #ff0000;">'john'</span>@<span style="color: #ff0000;">'localhost'</span>;<br/>
+<span style="color: #993333; font-weight: bold;">CREATE</span> <span style="color: #993333; font-weight: bold;">USER</span> <span style="color: #FF0000;">'john'</span>@<span style="color: #FF0000;">'localhost'</span> <span style="color: #993333; font-weight: bold;">IDENTIFIED</span> <span style="color: #993333; font-weight: bold;">BY</span> <span style="color: #FF0000;">'password123'</span> <span style="color: #993333; font-weight: bold;">WITH</span> <span style="color: #993333; font-weight: bold;">GRANT</span> <span style="color: #993333; font-weight: bold;">OPTION</span>;<br/>
+<span style="color: #993333; font-weight: bold;">GRANT</span> <span style="color: #993333; font-weight: bold;">ALL</span> PRIVILEGES <span style="color: #993333; font-weight: bold;">ON</span> test_db<span style="color: #66CC66;">.*</span> <span style="color: #993333; font-weight: bold;">TO</span> <span style="color: #FF0000;">'john'</span>@<span style="color: #FF0000;">'localhost'</span>;<br/>
 </div></div>
 <hr/>
 <h2>/etc/my.cnf ファイルの設定</h2>
@@ -449,7 +449,7 @@ mysql&gt; SHOW TABLE STATUS from RUNOOB LIKE 'runoob%'\G;   # 加上 \G，查询
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -494,7 +494,7 @@ mysql&gt; SHOW TABLE STATUS from RUNOOB LIKE 'runoob%'\G;   # 加上 \G，查询
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -774,7 +774,7 @@ mysql&gt;</pre>
 </div>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>

@@ -374,16 +374,16 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     <span style="color: #05a;">char</span> src<span style="color: #008000;">[</span><span style="color: #008000;">]</span>  <span style="color: #000080;">=</span> <span style="color: #a11;">"newstring"</span><span style="color: #008080;">;</span><br/>
 <br/>
     <span style="color: #05a;">printf</span><span style="color: #008000;">(</span><span style="color: #a11;">"重複しないコピー前：dest = %s, src = %s<span style="color: #000099; font-weight: bold;">\n</span>"</span>, dest, src<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
-    <span style="color: #05a;">memmove</span><span style="color: #008000;">(</span>dest, src, <span style="color: #0000dd;">9</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">memmove</span><span style="color: #008000;">(</span>dest, src, <span style="color: #0000DD;">9</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
     <span style="color: #05a;">printf</span><span style="color: #008000;">(</span><span style="color: #a11;">"重複しないコピー後：dest = %s, src = %s<span style="color: #000099; font-weight: bold;">\n</span>"</span>, dest, src<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <br/>
     <span style="color: #696969;; font-style: italic;">/* シナリオ2：重複するメモリコピー（memmove の利点） */</span><br/>
     <span style="color: #05a;">char</span> str<span style="color: #008000;">[</span><span style="color: #008000;">]</span> <span style="color: #000080;">=</span> <span style="color: #a11;">"123456789"</span><span style="color: #008080;">;</span><br/>
     <span style="color: #05a;">printf</span><span style="color: #008000;">(</span><span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>重複コピー前：%s<span style="color: #000099; font-weight: bold;">\n</span>"</span>, str<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
-    <span style="color: #05a;">memmove</span><span style="color: #008000;">(</span>str <span style="color: #000040;">+</span> <span style="color: #0000dd;">2</span>, str, <span style="color: #0000dd;">6</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">memmove</span><span style="color: #008000;">(</span>str <span style="color: #000040;">+</span> <span style="color: #0000DD;">2</span>, str, <span style="color: #0000DD;">6</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
     <span style="color: #05a;">printf</span><span style="color: #008000;">(</span><span style="color: #a11;">"重複コピー後：%s<span style="color: #000099; font-weight: bold;">\n</span>"</span>, str<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <br/>
-    <span style="color: #05a;">return</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">return</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span><br/>
 <span style="color: #008000;">}</span><br/>
 </div></div>
 <p><strong>実行結果：</strong></p>
@@ -412,10 +412,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <br/>
     <span style="color: #05a;">printf</span><span style="color: #008000;">(</span><span style="color: #a11;">"Before: %s<span style="color: #000099; font-weight: bold;">\n</span>"</span>, str<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
     <span style="color: #696969;; font-style: italic;">/* 位置11から始まる7バイトを位置5にコピーします。2つの領域は重複しています */</span><br/>
-    <span style="color: #05a;">memmove</span><span style="color: #008000;">(</span>str <span style="color: #000040;">+</span> <span style="color: #0000dd;">5</span>, str <span style="color: #000040;">+</span> <span style="color: #0000dd;">11</span>, <span style="color: #0000dd;">7</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">memmove</span><span style="color: #008000;">(</span>str <span style="color: #000040;">+</span> <span style="color: #0000DD;">5</span>, str <span style="color: #000040;">+</span> <span style="color: #0000DD;">11</span>, <span style="color: #0000DD;">7</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
     <span style="color: #05a;">printf</span><span style="color: #008000;">(</span><span style="color: #a11;">"After:  %s<span style="color: #000099; font-weight: bold;">\n</span>"</span>, str<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <br/>
-    <span style="color: #05a;">return</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">return</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span><br/>
 <span style="color: #008000;">}</span><br/>
 </div></div>
 <p><strong>実行結果：</strong></p>
@@ -443,14 +443,14 @@ After:  memmove can be very useful
     <span style="color: #05a;">printf</span><span style="color: #008000;">(</span><span style="color: #a11;">"Original: %s<span style="color: #000099; font-weight: bold;">\n</span>"</span>, str1<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <br/>
     <span style="color: #696969;; font-style: italic;">/* memcpy を使用：重複時の動作は未定義 */</span><br/>
-    <span style="color: #05a;">memcpy</span><span style="color: #008000;">(</span>str1 <span style="color: #000040;">+</span> <span style="color: #0000dd;">2</span>, str1, <span style="color: #0000dd;">5</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">memcpy</span><span style="color: #008000;">(</span>str1 <span style="color: #000040;">+</span> <span style="color: #0000DD;">2</span>, str1, <span style="color: #0000DD;">5</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
     <span style="color: #05a;">printf</span><span style="color: #008000;">(</span><span style="color: #a11;">"memcpy:   %s<span style="color: #000099; font-weight: bold;">\n</span>"</span>, str1<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <br/>
     <span style="color: #696969;; font-style: italic;">/* memmove を使用：重複時の動作は保証される */</span><br/>
-    <span style="color: #05a;">memmove</span><span style="color: #008000;">(</span>str2 <span style="color: #000040;">+</span> <span style="color: #0000dd;">2</span>, str2, <span style="color: #0000dd;">5</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">memmove</span><span style="color: #008000;">(</span>str2 <span style="color: #000040;">+</span> <span style="color: #0000DD;">2</span>, str2, <span style="color: #0000DD;">5</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
     <span style="color: #05a;">printf</span><span style="color: #008000;">(</span><span style="color: #a11;">"memmove:  %s<span style="color: #000099; font-weight: bold;">\n</span>"</span>, str2<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <br/>
-    <span style="color: #05a;">return</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">return</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span><br/>
 <span style="color: #008000;">}</span><br/>
 </div></div>
 <p><strong>実行結果：</strong></p>
@@ -470,17 +470,17 @@ memmove:  ababcdfghij
 <span style="color: #05a;">int</span> main<span style="color: #008000;">(</span><span style="color: #008000;">)</span><br/>
 <span style="color: #008000;">{</span><br/>
     <span style="color: #05a;">char</span> src<span style="color: #008000;">[</span><span style="color: #008000;">]</span>  <span style="color: #000080;">=</span> <span style="color: #a11;">"Hello, World!"</span><span style="color: #008080;">;</span><br/>
-    <span style="color: #05a;">char</span> dest<span style="color: #008000;">[</span><span style="color: #0000dd;">20</span><span style="color: #008000;">]</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">char</span> dest<span style="color: #008000;">[</span><span style="color: #0000DD;">20</span><span style="color: #008000;">]</span><span style="color: #008080;">;</span><br/>
 <br/>
     <span style="color: #696969;; font-style: italic;">/* 先頭5バイトのみコピー */</span><br/>
-    <span style="color: #05a;">memmove</span><span style="color: #008000;">(</span>dest, src, <span style="color: #0000dd;">5</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
-    dest<span style="color: #008000;">[</span><span style="color: #0000dd;">5</span><span style="color: #008000;">]</span> <span style="color: #000080;">=</span> <span style="color: #a11;">'<span style="color: #006699; font-weight: bold;">\0</span>'</span><span style="color: #008080;">;</span>  <span style="color: #696969;; font-style: italic;">/* 文字列の終端文字を手動で追加 */</span><br/>
+    <span style="color: #05a;">memmove</span><span style="color: #008000;">(</span>dest, src, <span style="color: #0000DD;">5</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
+    dest<span style="color: #008000;">[</span><span style="color: #0000DD;">5</span><span style="color: #008000;">]</span> <span style="color: #000080;">=</span> <span style="color: #a11;">'<span style="color: #006699; font-weight: bold;">\0</span>'</span><span style="color: #008080;">;</span>  <span style="color: #696969;; font-style: italic;">/* 文字列の終端文字を手動で追加 */</span><br/>
 <br/>
     <span style="color: #05a;">printf</span><span style="color: #008000;">(</span><span style="color: #a11;">"Source: %s<span style="color: #000099; font-weight: bold;">\n</span>"</span>, src<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
     <span style="color: #05a;">printf</span><span style="color: #008000;">(</span><span style="color: #a11;">"Dest:   %s<span style="color: #000099; font-weight: bold;">\n</span>"</span>, dest<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
     <span style="color: #05a;">printf</span><span style="color: #008000;">(</span><span style="color: #a11;">"Length: %zu<span style="color: #000099; font-weight: bold;">\n</span>"</span>, <span style="color: #05a;">strlen</span><span style="color: #008000;">(</span>dest<span style="color: #008000;">)</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <br/>
-    <span style="color: #05a;">return</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">return</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span><br/>
 <span style="color: #008000;">}</span><br/>
 </div></div>
 <p><strong>実行結果：</strong></p>
@@ -560,7 +560,7 @@ Length: 5
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -605,7 +605,7 @@ Length: 5
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -644,7 +644,7 @@ Length: 5
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリックしてください</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -863,7 +863,7 @@ function kFormatter(num) {
 </style>
 <div class="sidebar-box re-box re-box-large">
 <div class="sidebar-box recommend-here" style="margin: 0 auto;">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
+<a href="#" style="font-size: 16px; color:#5B80A6;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
 </div>
 <div class="sidebar-box sidebar-cate">
 <div class="sidebar-tree">

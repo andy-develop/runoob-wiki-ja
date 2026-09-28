@@ -257,62 +257,62 @@ b=1.0  // b は変数、1.0 は浮動小数点リテラル<p>Julia は非常に�
 </tbody></table>
 <p>整数リテラルの形式：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: black;">1</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: black;">1</span><br/>
 <span style="color: black;">1</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: black;">1234</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: black;">1234</span><br/>
 <span style="color: black;">1234</span><br/>
 </div></div>
 <p>整数リテラルのデフォルト型は、対象システムが32ビットか64ビットのどちらのアーキテクチャであるかに依存します（現在のほとんどのシステムは64ビットです）：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #888888;"># 32ビットシステム：</span><br/>
-julia<span style="color: #6bab5b;">&gt;</span> typeof<span style="color: #3b972e;">(</span><span style="color: black;">1</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> typeof<span style="color: #3B972E;">(</span><span style="color: black;">1</span><span style="color: #3B972E;">)</span><br/>
 <span style="color: #0000A8;font-weight:bold;">Int32</span><br/>
 <br/>
 <span style="color: #888888;"># 64ビットシステム：</span><br/>
-julia<span style="color: #6bab5b;">&gt;</span> typeof<span style="color: #3b972e;">(</span><span style="color: black;">1</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> typeof<span style="color: #3B972E;">(</span><span style="color: black;">1</span><span style="color: #3B972E;">)</span><br/>
 <span style="color: #0000A8;font-weight:bold;">Int64</span><br/>
 </div></div><p>Julia の組み込み変数<span class="marked">Sys.WORD_SIZE</span>は、対象システムが32ビットか64ビットのどちらのアーキテクチャであるかを示します：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #888888;"># 32ビットシステム：</span><br/>
-julia<span style="color: #6bab5b;">&gt;</span> Sys.<span style="color: black;">WORD_SIZE</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> Sys.<span style="color: black;">WORD_SIZE</span><br/>
 <span style="color: black;">32</span><br/>
 <br/>
 <span style="color: #888888;"># 64ビットシステム：</span><br/>
-julia<span style="color: #6bab5b;">&gt;</span> Sys.<span style="color: black;">WORD_SIZE</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> Sys.<span style="color: black;">WORD_SIZE</span><br/>
 <span style="color: black;">64</span><br/>
 </div></div><p>Julia はまた、Int 型と UInt 型を定義しています。これらはそれぞれ、システムの符号付きおよび符号なしのネイティブ整数型のエイリアスです。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #888888;"># 32ビットシステム：</span><br/>
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: #0000A8;font-weight:bold;">Int</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #0000A8;font-weight:bold;">Int</span><br/>
 <span style="color: #0000A8;font-weight:bold;">Int32</span><br/>
-julia<span style="color: #6bab5b;">&gt;</span> UInt<br/>
+julia<span style="color: #6BAB5B;">&gt;</span> UInt<br/>
 UInt32<br/>
 <br/>
 <span style="color: #888888;"># 64ビットシステム：</span><br/>
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: #0000A8;font-weight:bold;">Int</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #0000A8;font-weight:bold;">Int</span><br/>
 <span style="color: #0000A8;font-weight:bold;">Int64</span><br/>
-julia<span style="color: #6bab5b;">&gt;</span> UInt<br/>
+julia<span style="color: #6BAB5B;">&gt;</span> UInt<br/>
 UInt64<br/>
 </div></div>
 <h3>オーバーフロー動作</h3><p>Julia では、型が表現できる最大値を超えると、ラップアラウンド（wraparound）動作が発生します：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> x = typemax<span style="color: #3b972e;">(</span><span style="color: #0000A8;font-weight:bold;">Int64</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> x = typemax<span style="color: #3B972E;">(</span><span style="color: #0000A8;font-weight:bold;">Int64</span><span style="color: #3B972E;">)</span><br/>
 <span style="color: black;">9223372036854775807</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> x + <span style="color: black;">1</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> x + <span style="color: black;">1</span><br/>
 -<span style="color: black;">9223372036854775808</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> x + <span style="color: black;">1</span> == typemin<span style="color: #3b972e;">(</span><span style="color: #0000A8;font-weight:bold;">Int64</span><span style="color: #3b972e;">)</span><br/>
-<span style="color: #4266d5;font-weight:bold;">true</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> x + <span style="color: black;">1</span> == typemin<span style="color: #3B972E;">(</span><span style="color: #0000A8;font-weight:bold;">Int64</span><span style="color: #3B972E;">)</span><br/>
+<span style="color: #4266D5;font-weight:bold;">true</span><br/>
 </div></div>
 <p>したがって、Julia の整数演算は実際にはモジュラー演算の一種であり、現代のコンピュータが低レベル演算を実装する方法を反映しています。オーバーフローが発生する可能性のあるプログラムでは、最大値・最小値の境界での循環を明示的にチェックすることが必要です。そうでない場合は、任意精度演算の BigInt 型を代替として使用することをお勧めします。</p>
 <p>以下は、オーバーフロー動作の例と、その対処方法です：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: black;">10</span>^<span style="color: black;">19</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: black;">10</span>^<span style="color: black;">19</span><br/>
 -<span style="color: black;">8446744073709551616</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> big<span style="color: #3b972e;">(</span><span style="color: black;">10</span><span style="color: #3b972e;">)</span>^<span style="color: black;">19</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> big<span style="color: #3B972E;">(</span><span style="color: black;">10</span><span style="color: #3B972E;">)</span>^<span style="color: black;">19</span><br/>
 <span style="color: black;">10000000000000000000</span><br/>
 </div></div>
 <h3>除算エラー</h3>次の2つの例外の場合、整数除算は DivideError エラーを発生させます：<ul>
@@ -322,22 +322,22 @@ julia<span style="color: #6bab5b;">&gt;</span> big<span style="color: #3b972e;">
 <p>
 <span class="marked">rem</span>剰余関数と<span class="marked">mod</span>モジュロ関数は、ゼロ除算時に DivideError エラーをスローします。以下に例を示します：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> mod<span style="color: #3b972e;">(</span><span style="color: black;">1</span>, <span style="color: black;">0</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> mod<span style="color: #3B972E;">(</span><span style="color: black;">1</span>, <span style="color: black;">0</span><span style="color: #3B972E;">)</span><br/>
 ERROR: <span style="color: #0000A8;font-weight:bold;">DivideError</span>: integer division error<br/>
 Stacktrace:<br/>
- <span style="color: #3b972e;">[</span><span style="color: black;">1</span><span style="color: #3b972e;">]</span> div at .\<span style="color: #0000A8;font-weight:bold;">int</span>.<span style="color: black;">jl</span>:<span style="color: black;">260</span> <span style="color: #3b972e;">[</span>inlined<span style="color: #3b972e;">]</span><br/>
- <span style="color: #3b972e;">[</span><span style="color: black;">2</span><span style="color: #3b972e;">]</span> div at .\div.<span style="color: black;">jl</span>:<span style="color: black;">217</span> <span style="color: #3b972e;">[</span>inlined<span style="color: #3b972e;">]</span><br/>
- <span style="color: #3b972e;">[</span><span style="color: black;">3</span><span style="color: #3b972e;">]</span> div at .\div.<span style="color: black;">jl</span>:<span style="color: black;">262</span> <span style="color: #3b972e;">[</span>inlined<span style="color: #3b972e;">]</span><br/>
- <span style="color: #3b972e;">[</span><span style="color: black;">4</span><span style="color: #3b972e;">]</span> fld at .\div.<span style="color: black;">jl</span>:<span style="color: black;">228</span> <span style="color: #3b972e;">[</span>inlined<span style="color: #3b972e;">]</span><br/>
- <span style="color: #3b972e;">[</span><span style="color: black;">5</span><span style="color: #3b972e;">]</span> mod<span style="color: #3b972e;">(</span>::<span style="color: #0000A8;font-weight:bold;">Int64</span>, ::<span style="color: #0000A8;font-weight:bold;">Int64</span><span style="color: #3b972e;">)</span> at .\<span style="color: #0000A8;font-weight:bold;">int</span>.<span style="color: black;">jl</span>:<span style="color: black;">252</span><br/>
- <span style="color: #3b972e;">[</span><span style="color: black;">6</span><span style="color: #3b972e;">]</span> top-level scope at REPL<span style="color: #3b972e;">[</span><span style="color: black;">52</span><span style="color: #3b972e;">]</span>:<span style="color: black;">1</span><br/>
+ <span style="color: #3B972E;">[</span><span style="color: black;">1</span><span style="color: #3B972E;">]</span> div at .\<span style="color: #0000A8;font-weight:bold;">int</span>.<span style="color: black;">jl</span>:<span style="color: black;">260</span> <span style="color: #3B972E;">[</span>inlined<span style="color: #3B972E;">]</span><br/>
+ <span style="color: #3B972E;">[</span><span style="color: black;">2</span><span style="color: #3B972E;">]</span> div at .\div.<span style="color: black;">jl</span>:<span style="color: black;">217</span> <span style="color: #3B972E;">[</span>inlined<span style="color: #3B972E;">]</span><br/>
+ <span style="color: #3B972E;">[</span><span style="color: black;">3</span><span style="color: #3B972E;">]</span> div at .\div.<span style="color: black;">jl</span>:<span style="color: black;">262</span> <span style="color: #3B972E;">[</span>inlined<span style="color: #3B972E;">]</span><br/>
+ <span style="color: #3B972E;">[</span><span style="color: black;">4</span><span style="color: #3B972E;">]</span> fld at .\div.<span style="color: black;">jl</span>:<span style="color: black;">228</span> <span style="color: #3B972E;">[</span>inlined<span style="color: #3B972E;">]</span><br/>
+ <span style="color: #3B972E;">[</span><span style="color: black;">5</span><span style="color: #3B972E;">]</span> mod<span style="color: #3B972E;">(</span>::<span style="color: #0000A8;font-weight:bold;">Int64</span>, ::<span style="color: #0000A8;font-weight:bold;">Int64</span><span style="color: #3B972E;">)</span> at .\<span style="color: #0000A8;font-weight:bold;">int</span>.<span style="color: black;">jl</span>:<span style="color: black;">252</span><br/>
+ <span style="color: #3B972E;">[</span><span style="color: black;">6</span><span style="color: #3B972E;">]</span> top-level scope at REPL<span style="color: #3B972E;">[</span><span style="color: black;">52</span><span style="color: #3B972E;">]</span>:<span style="color: black;">1</span><br/>
  <br/>
  <br/>
-julia<span style="color: #6bab5b;">&gt;</span> rem<span style="color: #3b972e;">(</span><span style="color: black;">1</span>, <span style="color: black;">0</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> rem<span style="color: #3B972E;">(</span><span style="color: black;">1</span>, <span style="color: black;">0</span><span style="color: #3B972E;">)</span><br/>
 ERROR: <span style="color: #0000A8;font-weight:bold;">DivideError</span>: integer division error<br/>
 Stacktrace:<br/>
- <span style="color: #3b972e;">[</span><span style="color: black;">1</span><span style="color: #3b972e;">]</span> rem<span style="color: #3b972e;">(</span>::<span style="color: #0000A8;font-weight:bold;">Int64</span>, ::<span style="color: #0000A8;font-weight:bold;">Int64</span><span style="color: #3b972e;">)</span> at .\<span style="color: #0000A8;font-weight:bold;">int</span>.<span style="color: black;">jl</span>:<span style="color: black;">261</span><br/>
- <span style="color: #3b972e;">[</span><span style="color: black;">2</span><span style="color: #3b972e;">]</span> top-level scope at REPL<span style="color: #3b972e;">[</span><span style="color: black;">54</span><span style="color: #3b972e;">]</span>:<span style="color: black;">1</span><br/>
+ <span style="color: #3B972E;">[</span><span style="color: black;">1</span><span style="color: #3B972E;">]</span> rem<span style="color: #3B972E;">(</span>::<span style="color: #0000A8;font-weight:bold;">Int64</span>, ::<span style="color: #0000A8;font-weight:bold;">Int64</span><span style="color: #3B972E;">)</span> at .\<span style="color: #0000A8;font-weight:bold;">int</span>.<span style="color: black;">jl</span>:<span style="color: black;">261</span><br/>
+ <span style="color: #3B972E;">[</span><span style="color: black;">2</span><span style="color: #3B972E;">]</span> top-level scope at REPL<span style="color: #3B972E;">[</span><span style="color: black;">54</span><span style="color: #3B972E;">]</span>:<span style="color: black;">1</span><br/>
 </div></div>
 <hr/>
 <h2>浮動小数点型</h2>
@@ -366,80 +366,80 @@ Stacktrace:<br/>
 </tbody></table><p>さらに、複素数と有理数に対する完全なサポートは、これらのプリミティブデータ型の上に構築されています。</p>
 <p>浮動小数点リテラルの形式は次のように表されます。必要に応じて、<span class="marked">E</span>を使用して表すことができます。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: black;">1.0</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: black;">1.0</span><br/>
 <span style="color: black;">1.0</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: black;">1</span>.<br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: black;">1</span>.<br/>
 <span style="color: black;">1.0</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: black;">0.5</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: black;">0.5</span><br/>
 <span style="color: black;">0.5</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> .5<br/>
+julia<span style="color: #6BAB5B;">&gt;</span> .5<br/>
 <span style="color: black;">0.5</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> -<span style="color: black;">1.23</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> -<span style="color: black;">1.23</span><br/>
 -<span style="color: black;">1.23</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> 1e10<br/>
+julia<span style="color: #6BAB5B;">&gt;</span> 1e10<br/>
 1.0e10<br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> 2.5e-4<br/>
+julia<span style="color: #6BAB5B;">&gt;</span> 2.5e-4<br/>
 <span style="color: black;">0.00025</span><br/>
 </div></div>
 <blockquote><p>
 <p>注：</p>科学表記法では、式を簡潔にするために、<span class="marked">E</span>の形式で表すことができます。例えば、1.03×10の8乗は、「1.03E+08」のように簡潔に書けます。ここで「E」は exponent（指数）の略です。</p></blockquote>
 <p>上記の結果はすべて Float64 型の値です。e の代わりに f を使用すると、Float32 型のリテラルが得られます：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> x = 0.5f0<br/>
+julia<span style="color: #6BAB5B;">&gt;</span> x = 0.5f0<br/>
 0.5f0<br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> typeof<span style="color: #3b972e;">(</span>x<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> typeof<span style="color: #3B972E;">(</span>x<span style="color: #3B972E;">)</span><br/>
 <span style="color: #0000A8;font-weight:bold;">Float32</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> 2.5f-<span style="color: black;">4</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> 2.5f-<span style="color: black;">4</span><br/>
 0.00025f0<br/>数値は簡単に<span style="color: #0000A8;font-weight:bold;">Float32</span>型に変換できます：<br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> x = <span style="color: #0000A8;font-weight:bold;">Float32</span><span style="color: #3b972e;">(</span>-<span style="color: black;">1.5</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> x = <span style="color: #0000A8;font-weight:bold;">Float32</span><span style="color: #3B972E;">(</span>-<span style="color: black;">1.5</span><span style="color: #3B972E;">)</span><br/>
 -1.5f0<br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> typeof<span style="color: #3b972e;">(</span>x<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> typeof<span style="color: #3B972E;">(</span>x<span style="color: #3B972E;">)</span><br/>
 <span style="color: #0000A8;font-weight:bold;">Float32</span><br/>
 </div></div><p>十六進数の浮動小数点リテラルも存在しますが、Float64 型の値にのみ適用されます。通常は p 接頭辞と2を底とする指数を使用して表します：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> 0x1p0<br/>
+julia<span style="color: #6BAB5B;">&gt;</span> 0x1p0<br/>
 <span style="color: black;">1.0</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> 0x1.8p3<br/>
+julia<span style="color: #6BAB5B;">&gt;</span> 0x1.8p3<br/>
 <span style="color: black;">12.0</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> x = 0x.4p-<span style="color: black;">1</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> x = 0x.4p-<span style="color: black;">1</span><br/>
 <span style="color: black;">0.125</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> typeof<span style="color: #3b972e;">(</span>x<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> typeof<span style="color: #3B972E;">(</span>x<span style="color: #3B972E;">)</span><br/>
 <span style="color: #0000A8;font-weight:bold;">Float64</span><br/>Julia は半精度浮動小数点数（Float16）もサポートしていますが、これらは<span style="color: #0000A8;font-weight:bold;">Float32</span>ソフトウェアシミュレーションによって実装されています。<br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> sizeof<span style="color: #3b972e;">(</span>Float16<span style="color: #3b972e;">(</span><span style="color: black;">4</span>.<span style="color: #3b972e;">)</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> sizeof<span style="color: #3B972E;">(</span>Float16<span style="color: #3B972E;">(</span><span style="color: black;">4</span>.<span style="color: #3B972E;">)</span><span style="color: #3B972E;">)</span><br/>
 <span style="color: black;">2</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: black;">2</span><span style="color: #6bab5b;">*</span>Float16<span style="color: #3b972e;">(</span><span style="color: black;">4</span>.<span style="color: #3b972e;">)</span><br/>
-Float16<span style="color: #3b972e;">(</span><span style="color: black;">8.0</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: black;">2</span><span style="color: #6BAB5B;">*</span>Float16<span style="color: #3B972E;">(</span><span style="color: black;">4</span>.<span style="color: #3B972E;">)</span><br/>
+Float16<span style="color: #3B972E;">(</span><span style="color: black;">8.0</span><span style="color: #3B972E;">)</span><br/>
 </div></div><p>アンダースコア<span class="marked">_</span>数字の区切り文字として使用できます：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: black;">10</span>_000, <span style="color: black;">0.000</span>_000_005, 0xdead_beef, 0b1011_0010<br/>
-<span style="color: #3b972e;">(</span><span style="color: black;">10000</span>, 5.0e-9, 0xdeadbeef, 0xb2<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: black;">10</span>_000, <span style="color: black;">0.000</span>_000_005, 0xdead_beef, 0b1011_0010<br/>
+<span style="color: #3B972E;">(</span><span style="color: black;">10000</span>, 5.0e-9, 0xdeadbeef, 0xb2<span style="color: #3B972E;">)</span><br/>
 </div></div>
 <h3>浮動小数点数におけるゼロ</h3>
 <p>浮動小数点数には2つのゼロ、正のゼロと負のゼロがあります。これらは互いに等しいですが、異なるバイナリ表現を持ちます。bitstring 関数を使って確認できます：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: black;">0.0</span> == -<span style="color: black;">0.0</span><br/>
-<span style="color: #4266d5;font-weight:bold;">true</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: black;">0.0</span> == -<span style="color: black;">0.0</span><br/>
+<span style="color: #4266D5;font-weight:bold;">true</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> bitstring<span style="color: #3b972e;">(</span><span style="color: black;">0.0</span><span style="color: #3b972e;">)</span><br/>
-<span style="color: #c93d39;">"0000000000000000000000000000000000000000000000000000000000000000"</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> bitstring<span style="color: #3B972E;">(</span><span style="color: black;">0.0</span><span style="color: #3B972E;">)</span><br/>
+<span style="color: #C93D39;">"0000000000000000000000000000000000000000000000000000000000000000"</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> bitstring<span style="color: #3b972e;">(</span>-<span style="color: black;">0.0</span><span style="color: #3b972e;">)</span><br/>
-<span style="color: #c93d39;">"1000000000000000000000000000000000000000000000000000000000000000"</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> bitstring<span style="color: #3B972E;">(</span>-<span style="color: black;">0.0</span><span style="color: #3B972E;">)</span><br/>
+<span style="color: #C93D39;">"1000000000000000000000000000000000000000000000000000000000000000"</span><br/>
 </div></div>
 <h3>特別な浮動小数点値</h3><p>実数軸上のどの点にも対応しない、3つの特定の標準浮動小数点値があります：</p>
 <table class="reference">
@@ -473,122 +473,122 @@ julia<span style="color: #6bab5b;">&gt;</span> bitstring<span style="color: #3b9
 </tr>
 </tbody></table><p>以下に、浮動小数点数の演算の例をいくつか示します：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: black;">1</span>/Inf<br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: black;">1</span>/Inf<br/>
 <span style="color: black;">0.0</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: black;">1</span>/<span style="color: black;">0</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: black;">1</span>/<span style="color: black;">0</span><br/>
 Inf<br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> -<span style="color: black;">5</span>/<span style="color: black;">0</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> -<span style="color: black;">5</span>/<span style="color: black;">0</span><br/>
 -Inf<br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: black;">0.000001</span>/<span style="color: black;">0</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: black;">0.000001</span>/<span style="color: black;">0</span><br/>
 Inf<br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: black;">0</span>/<span style="color: black;">0</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: black;">0</span>/<span style="color: black;">0</span><br/>
 NaN<br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: black;">500</span> + Inf<br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: black;">500</span> + Inf<br/>
 Inf<br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: black;">500</span> - Inf<br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: black;">500</span> - Inf<br/>
 -Inf<br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> Inf + Inf<br/>
+julia<span style="color: #6BAB5B;">&gt;</span> Inf + Inf<br/>
 Inf<br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> Inf - Inf<br/>
+julia<span style="color: #6BAB5B;">&gt;</span> Inf - Inf<br/>
 NaN<br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> Inf <span style="color: #6bab5b;">*</span> Inf<br/>
+julia<span style="color: #6BAB5B;">&gt;</span> Inf <span style="color: #6BAB5B;">*</span> Inf<br/>
 Inf<br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> Inf / Inf<br/>
+julia<span style="color: #6BAB5B;">&gt;</span> Inf / Inf<br/>
 NaN<br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: black;">0</span> <span style="color: #6bab5b;">*</span> Inf<br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: black;">0</span> <span style="color: #6BAB5B;">*</span> Inf<br/>
 NaN<br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> NaN == NaN<br/>
-<span style="color: #4266d5;font-weight:bold;">false</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> NaN == NaN<br/>
+<span style="color: #4266D5;font-weight:bold;">false</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> NaN <span style="color: #6bab5b;">!</span>= NaN<br/>
-<span style="color: #4266d5;font-weight:bold;">true</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> NaN <span style="color: #6BAB5B;">!</span>= NaN<br/>
+<span style="color: #4266D5;font-weight:bold;">true</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> NaN <span style="color: #6bab5b;">&lt;</span> NaN<br/>
-<span style="color: #4266d5;font-weight:bold;">false</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> NaN <span style="color: #6BAB5B;">&lt;</span> NaN<br/>
+<span style="color: #4266D5;font-weight:bold;">false</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> NaN <span style="color: #6bab5b;">&gt;</span> NaN<br/>
-<span style="color: #4266d5;font-weight:bold;">false</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> NaN <span style="color: #6BAB5B;">&gt;</span> NaN<br/>
+<span style="color: #4266D5;font-weight:bold;">false</span><br/>
 </div></div>
 <p>さらに、typemin 関数と typemax 関数を使用することもできます：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: #3b972e;">(</span>typemin<span style="color: #3b972e;">(</span>Float16<span style="color: #3b972e;">)</span>,typemax<span style="color: #3b972e;">(</span>Float16<span style="color: #3b972e;">)</span><span style="color: #3b972e;">)</span><br/>
-<span style="color: #3b972e;">(</span>-Inf16, Inf16<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #3B972E;">(</span>typemin<span style="color: #3B972E;">(</span>Float16<span style="color: #3B972E;">)</span>,typemax<span style="color: #3B972E;">(</span>Float16<span style="color: #3B972E;">)</span><span style="color: #3B972E;">)</span><br/>
+<span style="color: #3B972E;">(</span>-Inf16, Inf16<span style="color: #3B972E;">)</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: #3b972e;">(</span>typemin<span style="color: #3b972e;">(</span><span style="color: #0000A8;font-weight:bold;">Float32</span><span style="color: #3b972e;">)</span>,typemax<span style="color: #3b972e;">(</span><span style="color: #0000A8;font-weight:bold;">Float32</span><span style="color: #3b972e;">)</span><span style="color: #3b972e;">)</span><br/>
-<span style="color: #3b972e;">(</span>-Inf32, Inf32<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #3B972E;">(</span>typemin<span style="color: #3B972E;">(</span><span style="color: #0000A8;font-weight:bold;">Float32</span><span style="color: #3B972E;">)</span>,typemax<span style="color: #3B972E;">(</span><span style="color: #0000A8;font-weight:bold;">Float32</span><span style="color: #3B972E;">)</span><span style="color: #3B972E;">)</span><br/>
+<span style="color: #3B972E;">(</span>-Inf32, Inf32<span style="color: #3B972E;">)</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: #3b972e;">(</span>typemin<span style="color: #3b972e;">(</span><span style="color: #0000A8;font-weight:bold;">Float64</span><span style="color: #3b972e;">)</span>,typemax<span style="color: #3b972e;">(</span><span style="color: #0000A8;font-weight:bold;">Float64</span><span style="color: #3b972e;">)</span><span style="color: #3b972e;">)</span><br/>
-<span style="color: #3b972e;">(</span>-Inf, Inf<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #3B972E;">(</span>typemin<span style="color: #3B972E;">(</span><span style="color: #0000A8;font-weight:bold;">Float64</span><span style="color: #3B972E;">)</span>,typemax<span style="color: #3B972E;">(</span><span style="color: #0000A8;font-weight:bold;">Float64</span><span style="color: #3B972E;">)</span><span style="color: #3B972E;">)</span><br/>
+<span style="color: #3B972E;">(</span>-Inf, Inf<span style="color: #3B972E;">)</span><br/>
 </div></div>
 <h3>マシンイプシロン</h3><p>ほとんどの実数は浮動小数点数で正確に表現できないため、隣接する表現可能な浮動小数点数の間の距離を知ることが必要です。これは通常、マシンイプシロンと呼ばれます。</p>
 <p>Julia は<span class="marked">eps</span>関数を提供します。これは 1.0 と、Julia が表現できる次の浮動小数点数との差を返します：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> eps<span style="color: #3b972e;">(</span><span style="color: #0000A8;font-weight:bold;">Float32</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> eps<span style="color: #3B972E;">(</span><span style="color: #0000A8;font-weight:bold;">Float32</span><span style="color: #3B972E;">)</span><br/>
 1.1920929f-<span style="color: black;">7</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> eps<span style="color: #3b972e;">(</span><span style="color: #0000A8;font-weight:bold;">Float64</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> eps<span style="color: #3B972E;">(</span><span style="color: #0000A8;font-weight:bold;">Float64</span><span style="color: #3B972E;">)</span><br/>
 2.220446049250313e-16<br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> eps<span style="color: #3b972e;">(</span><span style="color: #3b972e;">)</span> <span style="color: #888888;"># eps(Float64) と同じ</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> eps<span style="color: #3B972E;">(</span><span style="color: #3B972E;">)</span> <span style="color: #888888;"># eps(Float64) と同じ</span><br/>
 2.220446049250313e-16<br/>
 </div></div>
 <p>これらの値は、それぞれ Float32 では 2.0^-23、Float64 では 2.0^-52 です。eps 関数は浮動小数点値を引数として受け取ることもでき、その値と次に表現可能な浮動小数点値との絶対差を返します。つまり、eps(x) は x と同じ型の値を生成し、x + eps(x) は x よりちょうど1つ大きい、次に表現可能な浮動小数点値になります：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> eps<span style="color: #3b972e;">(</span><span style="color: black;">1.0</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> eps<span style="color: #3B972E;">(</span><span style="color: black;">1.0</span><span style="color: #3B972E;">)</span><br/>
 2.220446049250313e-16<br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> eps<span style="color: #3b972e;">(</span><span style="color: black;">1000</span>.<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> eps<span style="color: #3B972E;">(</span><span style="color: black;">1000</span>.<span style="color: #3B972E;">)</span><br/>
 1.1368683772161603e-13<br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> eps<span style="color: #3b972e;">(</span>1e-27<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> eps<span style="color: #3B972E;">(</span>1e-27<span style="color: #3B972E;">)</span><br/>
 1.793662034335766e-43<br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> eps<span style="color: #3b972e;">(</span><span style="color: black;">0.0</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> eps<span style="color: #3B972E;">(</span><span style="color: black;">0.0</span><span style="color: #3B972E;">)</span><br/>
 5.0e-324<br/>
 </div></div><p>隣接する表現可能な浮動小数点数の間の距離は一定ではありません。値が小さいほど間隔は小さく、値が大きいほど間隔は大きくなります。言い換えると、表現可能な浮動小数点数は実数軸上のゼロ付近で最も密であり、ゼロから遠ざかるにつれて指数関数的に疎になっていきます。定義により、eps(1.0) は eps(Float64) と等しくなります。なぜなら、1.0 は64ビット浮動小数点値だからです。</p>
 <p>Julia はまた、引数に基づいて次に大きい、または次に小さい表現可能な浮動小数点数をそれぞれ返す nextfloat と prevfloat の2つの関数を提供しています：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> x = 1.25f0<br/>
+julia<span style="color: #6BAB5B;">&gt;</span> x = 1.25f0<br/>
 1.25f0<br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> nextfloat<span style="color: #3b972e;">(</span>x<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> nextfloat<span style="color: #3B972E;">(</span>x<span style="color: #3B972E;">)</span><br/>
 1.2500001f0<br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> prevfloat<span style="color: #3b972e;">(</span>x<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> prevfloat<span style="color: #3B972E;">(</span>x<span style="color: #3B972E;">)</span><br/>
 1.2499999f0<br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> bitstring<span style="color: #3b972e;">(</span>prevfloat<span style="color: #3b972e;">(</span>x<span style="color: #3b972e;">)</span><span style="color: #3b972e;">)</span><br/>
-<span style="color: #c93d39;">"00111111100111111111111111111111"</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> bitstring<span style="color: #3B972E;">(</span>prevfloat<span style="color: #3B972E;">(</span>x<span style="color: #3B972E;">)</span><span style="color: #3B972E;">)</span><br/>
+<span style="color: #C93D39;">"00111111100111111111111111111111"</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> bitstring<span style="color: #3b972e;">(</span>x<span style="color: #3b972e;">)</span><br/>
-<span style="color: #c93d39;">"00111111101000000000000000000000"</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> bitstring<span style="color: #3B972E;">(</span>x<span style="color: #3B972E;">)</span><br/>
+<span style="color: #C93D39;">"00111111101000000000000000000000"</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> bitstring<span style="color: #3b972e;">(</span>nextfloat<span style="color: #3b972e;">(</span>x<span style="color: #3b972e;">)</span><span style="color: #3b972e;">)</span><br/>
-<span style="color: #c93d39;">"00111111101000000000000000000001"</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> bitstring<span style="color: #3B972E;">(</span>nextfloat<span style="color: #3B972E;">(</span>x<span style="color: #3B972E;">)</span><span style="color: #3B972E;">)</span><br/>
+<span style="color: #C93D39;">"00111111101000000000000000000001"</span><br/>
 </div></div><p>この例は、隣接する表現可能な浮動小数点数が隣接するバイナリ整数表現も持つという一般原則を示しています。</p>
 <hr/>
 <h2>丸めモード</h2><p>正確な浮動小数点表現を持たない数は、適切な表現可能な値に丸められなければなりません。</p>
 <p>Julia が使用するデフォルトモードは常に<span class="marked">RoundNearest</span>であり、最も近い表現可能な値に丸めることを指します。この丸められた値は、可能な限り少ない有効桁数を使用します。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> BigFloat<span style="color: #3b972e;">(</span><span style="color: #c93d39;">"1.510564889"</span>,<span style="color: black;">2</span>,RoundNearest<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> BigFloat<span style="color: #3B972E;">(</span><span style="color: #C93D39;">"1.510564889"</span>,<span style="color: black;">2</span>,RoundNearest<span style="color: #3B972E;">)</span><br/>
 <span style="color: black;">1.5</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> BigFloat<span style="color: #3b972e;">(</span><span style="color: #c93d39;">"1.550564889"</span>,<span style="color: black;">2</span>,RoundNearest<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> BigFloat<span style="color: #3B972E;">(</span><span style="color: #C93D39;">"1.550564889"</span>,<span style="color: black;">2</span>,RoundNearest<span style="color: #3B972E;">)</span><br/>
 <span style="color: black;">1.5</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> BigFloat<span style="color: #3b972e;">(</span><span style="color: #c93d39;">"1.560564889"</span>,<span style="color: black;">2</span>,RoundNearest<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> BigFloat<span style="color: #3B972E;">(</span><span style="color: #C93D39;">"1.560564889"</span>,<span style="color: black;">2</span>,RoundNearest<span style="color: #3B972E;">)</span><br/>
 <span style="color: black;">1.5</span><br/>
 </div></div><hr/>
 <h2>0 と 1 のリテラル</h2><p>Julia は、0 と 1 のリテラル関数を提供しています。これは、特定の型または与えられた変数の型に基づいてリテラルを返します。</p>
@@ -600,16 +600,16 @@ one(x)</td><td>x 型、または変数 x の型に対する1のリテラル</td>
 <p>これらの関数は、数値比較において、不要な型変換によるオーバーヘッドを避けるために使用できます。</p>
 <p>例：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> zero<span style="color: #3b972e;">(</span><span style="color: #0000A8;font-weight:bold;">Float32</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> zero<span style="color: #3B972E;">(</span><span style="color: #0000A8;font-weight:bold;">Float32</span><span style="color: #3B972E;">)</span><br/>
 0.0f0<br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> zero<span style="color: #3b972e;">(</span><span style="color: black;">1.0</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> zero<span style="color: #3B972E;">(</span><span style="color: black;">1.0</span><span style="color: #3B972E;">)</span><br/>
 <span style="color: black;">0.0</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> one<span style="color: #3b972e;">(</span><span style="color: #0000A8;font-weight:bold;">Int32</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> one<span style="color: #3B972E;">(</span><span style="color: #0000A8;font-weight:bold;">Int32</span><span style="color: #3B972E;">)</span><br/>
 <span style="color: black;">1</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> one<span style="color: #3b972e;">(</span>BigFloat<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> one<span style="color: #3B972E;">(</span>BigFloat<span style="color: #3B972E;">)</span><br/>
 <span style="color: black;">1.0</span><br/>
 </div></div>
 <hr/>
@@ -625,40 +625,40 @@ convert(T,x) </pre>
 <p><strong>3つ目：</strong></p>
 <p>丸め関数は T 型のオプション引数を受け取ります。例えば、round(Int,x) は<span class="marked">Int(round(x))</span>の省略形です。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: #0000A8;font-weight:bold;">Int8</span><span style="color: #3b972e;">(</span><span style="color: black;">127</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #0000A8;font-weight:bold;">Int8</span><span style="color: #3B972E;">(</span><span style="color: black;">127</span><span style="color: #3B972E;">)</span><br/>
 <span style="color: black;">127</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: #0000A8;font-weight:bold;">Int8</span><span style="color: #3b972e;">(</span><span style="color: black;">128</span><span style="color: #3b972e;">)</span><br/>
-ERROR: InexactError: trunc<span style="color: #3b972e;">(</span><span style="color: #0000A8;font-weight:bold;">Int8</span>, <span style="color: black;">128</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #0000A8;font-weight:bold;">Int8</span><span style="color: #3B972E;">(</span><span style="color: black;">128</span><span style="color: #3B972E;">)</span><br/>
+ERROR: InexactError: trunc<span style="color: #3B972E;">(</span><span style="color: #0000A8;font-weight:bold;">Int8</span>, <span style="color: black;">128</span><span style="color: #3B972E;">)</span><br/>
 Stacktrace:<br/>
-<span style="color: #3b972e;">[</span>...<span style="color: #3b972e;">]</span><br/>
+<span style="color: #3B972E;">[</span>...<span style="color: #3B972E;">]</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: #0000A8;font-weight:bold;">Int8</span><span style="color: #3b972e;">(</span><span style="color: black;">127.0</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #0000A8;font-weight:bold;">Int8</span><span style="color: #3B972E;">(</span><span style="color: black;">127.0</span><span style="color: #3B972E;">)</span><br/>
 <span style="color: black;">127</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: #0000A8;font-weight:bold;">Int8</span><span style="color: #3b972e;">(</span><span style="color: black;">3.14</span><span style="color: #3b972e;">)</span><br/>
-ERROR: InexactError: <span style="color: #0000A8;font-weight:bold;">Int8</span><span style="color: #3b972e;">(</span><span style="color: black;">3.14</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #0000A8;font-weight:bold;">Int8</span><span style="color: #3B972E;">(</span><span style="color: black;">3.14</span><span style="color: #3B972E;">)</span><br/>
+ERROR: InexactError: <span style="color: #0000A8;font-weight:bold;">Int8</span><span style="color: #3B972E;">(</span><span style="color: black;">3.14</span><span style="color: #3B972E;">)</span><br/>
 Stacktrace:<br/>
-<span style="color: #3b972e;">[</span>...<span style="color: #3b972e;">]</span><br/>
+<span style="color: #3B972E;">[</span>...<span style="color: #3B972E;">]</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: #0000A8;font-weight:bold;">Int8</span><span style="color: #3b972e;">(</span><span style="color: black;">128.0</span><span style="color: #3b972e;">)</span><br/>
-ERROR: InexactError: <span style="color: #0000A8;font-weight:bold;">Int8</span><span style="color: #3b972e;">(</span><span style="color: black;">128.0</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #0000A8;font-weight:bold;">Int8</span><span style="color: #3B972E;">(</span><span style="color: black;">128.0</span><span style="color: #3B972E;">)</span><br/>
+ERROR: InexactError: <span style="color: #0000A8;font-weight:bold;">Int8</span><span style="color: #3B972E;">(</span><span style="color: black;">128.0</span><span style="color: #3B972E;">)</span><br/>
 Stacktrace:<br/>
-<span style="color: #3b972e;">[</span>...<span style="color: #3b972e;">]</span><br/>
+<span style="color: #3B972E;">[</span>...<span style="color: #3B972E;">]</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: black;">127</span> <span style="color: #6bab5b;">%</span> <span style="color: #0000A8;font-weight:bold;">Int8</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: black;">127</span> <span style="color: #6BAB5B;">%</span> <span style="color: #0000A8;font-weight:bold;">Int8</span><br/>
 <span style="color: black;">127</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: black;">128</span> <span style="color: #6bab5b;">%</span> <span style="color: #0000A8;font-weight:bold;">Int8</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: black;">128</span> <span style="color: #6BAB5B;">%</span> <span style="color: #0000A8;font-weight:bold;">Int8</span><br/>
 -<span style="color: black;">128</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: #0000A8;font-weight:bold;">round</span><span style="color: #3b972e;">(</span><span style="color: #0000A8;font-weight:bold;">Int8</span>,<span style="color: black;">127.4</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #0000A8;font-weight:bold;">round</span><span style="color: #3B972E;">(</span><span style="color: #0000A8;font-weight:bold;">Int8</span>,<span style="color: black;">127.4</span><span style="color: #3B972E;">)</span><br/>
 <span style="color: black;">127</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: #0000A8;font-weight:bold;">round</span><span style="color: #3b972e;">(</span><span style="color: #0000A8;font-weight:bold;">Int8</span>,<span style="color: black;">127.6</span><span style="color: #3b972e;">)</span><br/>
-ERROR: InexactError: trunc<span style="color: #3b972e;">(</span><span style="color: #0000A8;font-weight:bold;">Int8</span>, <span style="color: black;">128.0</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #0000A8;font-weight:bold;">round</span><span style="color: #3B972E;">(</span><span style="color: #0000A8;font-weight:bold;">Int8</span>,<span style="color: black;">127.6</span><span style="color: #3B972E;">)</span><br/>
+ERROR: InexactError: trunc<span style="color: #3B972E;">(</span><span style="color: #0000A8;font-weight:bold;">Int8</span>, <span style="color: black;">128.0</span><span style="color: #3B972E;">)</span><br/>
 Stacktrace:<br/>
-<span style="color: #3b972e;">[</span>...<span style="color: #3b972e;">]</span><br/>
+<span style="color: #3B972E;">[</span>...<span style="color: #3B972E;">]</span><br/>
 </div></div>
 その他の拡張
 </div>
@@ -693,7 +693,7 @@ Stacktrace:<br/>
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -738,7 +738,7 @@ Stacktrace:<br/>
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -777,7 +777,7 @@ Stacktrace:<br/>
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリック</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>

@@ -311,14 +311,14 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     cv<span style="color: #008080;">::</span><span style="color: #007788;">Mat</span> dst, dst_norm<span style="color: #008080;">;</span><br/>
 <br/>
     <span style="color: #666666;">// Harrisコーナー検出</span><br/>
-    cv<span style="color: #008080;">::</span><span style="color: #007788;">cornerHarris</span><span style="color: #008000;">(</span>src, dst, <span style="color: #0000dd;">2</span>, <span style="color: #0000dd;">3</span>, <span style="color:#800080;">0.04</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
+    cv<span style="color: #008080;">::</span><span style="color: #007788;">cornerHarris</span><span style="color: #008000;">(</span>src, dst, <span style="color: #0000DD;">2</span>, <span style="color: #0000DD;">3</span>, <span style="color:#800080;">0.04</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <br/>
     <span style="color: #666666;">// 正規化して結果を表示</span><br/>
-    cv<span style="color: #008080;">::</span><span style="color: #007788;">normalize</span><span style="color: #008000;">(</span>dst, dst_norm, <span style="color: #0000dd;">0</span>, <span style="color: #0000dd;">255</span>, cv<span style="color: #008080;">::</span><span style="color: #007788;">NORM_MINMAX</span>, CV_32FC1, cv<span style="color: #008080;">::</span><span style="color: #007788;">Mat</span><span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
+    cv<span style="color: #008080;">::</span><span style="color: #007788;">normalize</span><span style="color: #008000;">(</span>dst, dst_norm, <span style="color: #0000DD;">0</span>, <span style="color: #0000DD;">255</span>, cv<span style="color: #008080;">::</span><span style="color: #007788;">NORM_MINMAX</span>, CV_32FC1, cv<span style="color: #008080;">::</span><span style="color: #007788;">Mat</span><span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
     cv<span style="color: #008080;">::</span><span style="color: #007788;">imshow</span><span style="color: #008000;">(</span><span style="color: #a11;">"Harris Corners"</span>, dst_norm<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
-    cv<span style="color: #008080;">::</span><span style="color: #007788;">waitKey</span><span style="color: #008000;">(</span><span style="color: #0000dd;">0</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
+    cv<span style="color: #008080;">::</span><span style="color: #007788;">waitKey</span><span style="color: #008000;">(</span><span style="color: #0000DD;">0</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <br/>
-    <span style="color: #05a;">return</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">return</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span><br/>
 <span style="color: #008000;">}</span><br/>
 </div>
 </div>
@@ -335,17 +335,17 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     std<span style="color: #008080;">::</span><span style="color: #007788;">vector</span><span style="color: #000080;">&lt;</span>cv<span style="color: #008080;">::</span><span style="color: #007788;">Point2f</span><span style="color: #000080;">&gt;</span> corners<span style="color: #008080;">;</span><br/>
 <br/>
     <span style="color: #666666;">// Shi-Tomasiコーナー検出</span><br/>
-    cv<span style="color: #008080;">::</span><span style="color: #007788;">goodFeaturesToTrack</span><span style="color: #008000;">(</span>src, corners, <span style="color: #0000dd;">100</span>, <span style="color:#800080;">0.01</span>, <span style="color: #0000dd;">10</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
+    cv<span style="color: #008080;">::</span><span style="color: #007788;">goodFeaturesToTrack</span><span style="color: #008000;">(</span>src, corners, <span style="color: #0000DD;">100</span>, <span style="color:#800080;">0.01</span>, <span style="color: #0000DD;">10</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <br/>
     <span style="color: #666666;">// コーナーを描画</span><br/>
-    <span style="color: #05a;">for</span> <span style="color: #008000;">(</span><span style="color: #05a;">size_t</span> i <span style="color: #000080;">=</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span> i <span style="color: #000080;">&lt;</span> corners.<span style="color: #007788;">size</span><span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span> i<span style="color: #000040;">++</span><span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
-        cv<span style="color: #008080;">::</span><span style="color: #007788;">circle</span><span style="color: #008000;">(</span>src, corners<span style="color: #008000;">[</span>i<span style="color: #008000;">]</span>, <span style="color: #0000dd;">5</span>, cv<span style="color: #008080;">::</span><span style="color: #007788;">Scalar</span><span style="color: #008000;">(</span><span style="color: #0000dd;">0</span>, <span style="color: #0000dd;">0</span>, <span style="color: #0000dd;">255</span><span style="color: #008000;">)</span>, <span style="color: #0000dd;">2</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">for</span> <span style="color: #008000;">(</span><span style="color: #05a;">size_t</span> i <span style="color: #000080;">=</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span> i <span style="color: #000080;">&lt;</span> corners.<span style="color: #007788;">size</span><span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span> i<span style="color: #000040;">++</span><span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
+        cv<span style="color: #008080;">::</span><span style="color: #007788;">circle</span><span style="color: #008000;">(</span>src, corners<span style="color: #008000;">[</span>i<span style="color: #008000;">]</span>, <span style="color: #0000DD;">5</span>, cv<span style="color: #008080;">::</span><span style="color: #007788;">Scalar</span><span style="color: #008000;">(</span><span style="color: #0000DD;">0</span>, <span style="color: #0000DD;">0</span>, <span style="color: #0000DD;">255</span><span style="color: #008000;">)</span>, <span style="color: #0000DD;">2</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
     <span style="color: #008000;">}</span><br/>
 <br/>
     cv<span style="color: #008080;">::</span><span style="color: #007788;">imshow</span><span style="color: #008000;">(</span><span style="color: #a11;">"Shi-Tomasi Corners"</span>, src<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
-    cv<span style="color: #008080;">::</span><span style="color: #007788;">waitKey</span><span style="color: #008000;">(</span><span style="color: #0000dd;">0</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
+    cv<span style="color: #008080;">::</span><span style="color: #007788;">waitKey</span><span style="color: #008000;">(</span><span style="color: #0000DD;">0</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <br/>
-    <span style="color: #05a;">return</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">return</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span><br/>
 <span style="color: #008000;">}</span><br/>
 </div>
 </div>
@@ -374,9 +374,9 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     cv<span style="color: #008080;">::</span><span style="color: #007788;">Mat</span> output<span style="color: #008080;">;</span><br/>
     cv<span style="color: #008080;">::</span><span style="color: #007788;">drawKeypoints</span><span style="color: #008000;">(</span>src, keypoints, output<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
     cv<span style="color: #008080;">::</span><span style="color: #007788;">imshow</span><span style="color: #008000;">(</span><span style="color: #a11;">"SIFT Keypoints"</span>, output<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
-    cv<span style="color: #008080;">::</span><span style="color: #007788;">waitKey</span><span style="color: #008000;">(</span><span style="color: #0000dd;">0</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
+    cv<span style="color: #008080;">::</span><span style="color: #007788;">waitKey</span><span style="color: #008000;">(</span><span style="color: #0000DD;">0</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <br/>
-    <span style="color: #05a;">return</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">return</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span><br/>
 <span style="color: #008000;">}</span><br/>
 </div>
 </div>
@@ -402,9 +402,9 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     cv<span style="color: #008080;">::</span><span style="color: #007788;">Mat</span> output<span style="color: #008080;">;</span><br/>
     cv<span style="color: #008080;">::</span><span style="color: #007788;">drawKeypoints</span><span style="color: #008000;">(</span>src, keypoints, output<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
     cv<span style="color: #008080;">::</span><span style="color: #007788;">imshow</span><span style="color: #008000;">(</span><span style="color: #a11;">"SURF Keypoints"</span>, output<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
-    cv<span style="color: #008080;">::</span><span style="color: #007788;">waitKey</span><span style="color: #008000;">(</span><span style="color: #0000dd;">0</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
+    cv<span style="color: #008080;">::</span><span style="color: #007788;">waitKey</span><span style="color: #008000;">(</span><span style="color: #0000DD;">0</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <br/>
-    <span style="color: #05a;">return</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">return</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span><br/>
 <span style="color: #008000;">}</span><br/>
 </div>
 </div>
@@ -429,9 +429,9 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     cv<span style="color: #008080;">::</span><span style="color: #007788;">Mat</span> output<span style="color: #008080;">;</span><br/>
     cv<span style="color: #008080;">::</span><span style="color: #007788;">drawKeypoints</span><span style="color: #008000;">(</span>src, keypoints, output<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
     cv<span style="color: #008080;">::</span><span style="color: #007788;">imshow</span><span style="color: #008000;">(</span><span style="color: #a11;">"ORB Keypoints"</span>, output<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
-    cv<span style="color: #008080;">::</span><span style="color: #007788;">waitKey</span><span style="color: #008000;">(</span><span style="color: #0000dd;">0</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
+    cv<span style="color: #008080;">::</span><span style="color: #007788;">waitKey</span><span style="color: #008000;">(</span><span style="color: #0000DD;">0</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <br/>
-    <span style="color: #05a;">return</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">return</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span><br/>
 <span style="color: #008000;">}</span><br/>
 </div>
 </div>
@@ -467,9 +467,9 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     cv<span style="color: #008080;">::</span><span style="color: #007788;">Mat</span> output<span style="color: #008080;">;</span><br/>
     cv<span style="color: #008080;">::</span><span style="color: #007788;">drawMatches</span><span style="color: #008000;">(</span>src1, keypoints1, src2, keypoints2, matches, output<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
     cv<span style="color: #008080;">::</span><span style="color: #007788;">imshow</span><span style="color: #008000;">(</span><span style="color: #a11;">"BFMatcher Matches"</span>, output<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
-    cv<span style="color: #008080;">::</span><span style="color: #007788;">waitKey</span><span style="color: #008000;">(</span><span style="color: #0000dd;">0</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
+    cv<span style="color: #008080;">::</span><span style="color: #007788;">waitKey</span><span style="color: #008000;">(</span><span style="color: #0000DD;">0</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <br/>
-    <span style="color: #05a;">return</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">return</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span><br/>
 <span style="color: #008000;">}</span><br/>
 </div>
 </div>
@@ -502,9 +502,9 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     cv<span style="color: #008080;">::</span><span style="color: #007788;">Mat</span> output<span style="color: #008080;">;</span><br/>
     cv<span style="color: #008080;">::</span><span style="color: #007788;">drawMatches</span><span style="color: #008000;">(</span>src1, keypoints1, src2, keypoints2, matches, output<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
     cv<span style="color: #008080;">::</span><span style="color: #007788;">imshow</span><span style="color: #008000;">(</span><span style="color: #a11;">"FLANN Matches"</span>, output<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
-    cv<span style="color: #008080;">::</span><span style="color: #007788;">waitKey</span><span style="color: #008000;">(</span><span style="color: #0000dd;">0</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
+    cv<span style="color: #008080;">::</span><span style="color: #007788;">waitKey</span><span style="color: #008000;">(</span><span style="color: #0000DD;">0</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <br/>
-    <span style="color: #05a;">return</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">return</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span><br/>
 <span style="color: #008000;">}</span><br/>
 </div>
 </div>
@@ -538,9 +538,9 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     cv<span style="color: #008080;">::</span><span style="color: #007788;">Mat</span> output<span style="color: #008080;">;</span><br/>
     cv<span style="color: #008080;">::</span><span style="color: #007788;">drawMatches</span><span style="color: #008000;">(</span>src1, keypoints1, src2, keypoints2, matches, output<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
     cv<span style="color: #008080;">::</span><span style="color: #007788;">imshow</span><span style="color: #008000;">(</span><span style="color: #a11;">"Filtered Matches"</span>, output<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
-    cv<span style="color: #008080;">::</span><span style="color: #007788;">waitKey</span><span style="color: #008000;">(</span><span style="color: #0000dd;">0</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
+    cv<span style="color: #008080;">::</span><span style="color: #007788;">waitKey</span><span style="color: #008000;">(</span><span style="color: #0000DD;">0</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <br/>
-    <span style="color: #05a;">return</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">return</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span><br/>
 <span style="color: #008000;">}</span><br/>
 </div>
 </div>
@@ -570,17 +570,17 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <br/>
     <span style="color: #666666;">// 幾何学的制約に基づくフィルタリング</span><br/>
     std<span style="color: #008080;">::</span><span style="color: #007788;">vector</span><span style="color: #000080;">&lt;</span>cv<span style="color: #008080;">::</span><span style="color: #007788;">Point2f</span><span style="color: #000080;">&gt;</span> points1, points2<span style="color: #008080;">;</span><br/>
-    <span style="color: #05a;">for</span> <span style="color: #008000;">(</span><span style="color: #05a;">size_t</span> i <span style="color: #000080;">=</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span> i <span style="color: #000080;">&lt;</span> matches.<span style="color: #007788;">size</span><span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span> i<span style="color: #000040;">++</span><span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
+    <span style="color: #05a;">for</span> <span style="color: #008000;">(</span><span style="color: #05a;">size_t</span> i <span style="color: #000080;">=</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span> i <span style="color: #000080;">&lt;</span> matches.<span style="color: #007788;">size</span><span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span> i<span style="color: #000040;">++</span><span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
         points1.<span style="color: #007788;">push_back</span><span style="color: #008000;">(</span>keypoints1<span style="color: #008000;">[</span>matches<span style="color: #008000;">[</span>i<span style="color: #008000;">]</span>.<span style="color: #007788;">queryIdx</span><span style="color: #008000;">]</span>.<span style="color: #007788;">pt</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
         points2.<span style="color: #007788;">push_back</span><span style="color: #008000;">(</span>keypoints2<span style="color: #008000;">[</span>matches<span style="color: #008000;">[</span>i<span style="color: #008000;">]</span>.<span style="color: #007788;">trainIdx</span><span style="color: #008000;">]</span>.<span style="color: #007788;">pt</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
     <span style="color: #008000;">}</span><br/>
 <br/>
     cv<span style="color: #008080;">::</span><span style="color: #007788;">Mat</span> mask<span style="color: #008080;">;</span><br/>
-    cv<span style="color: #008080;">::</span><span style="color: #007788;">findHomography</span><span style="color: #008000;">(</span>points1, points2, cv<span style="color: #008080;">::</span><span style="color: #007788;">RANSAC</span>, <span style="color: #0000dd;">3</span>, mask<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
+    cv<span style="color: #008080;">::</span><span style="color: #007788;">findHomography</span><span style="color: #008000;">(</span>points1, points2, cv<span style="color: #008080;">::</span><span style="color: #007788;">RANSAC</span>, <span style="color: #0000DD;">3</span>, mask<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <br/>
     <span style="color: #666666;">// 対応ペアをフィルタリング</span><br/>
     std<span style="color: #008080;">::</span><span style="color: #007788;">vector</span><span style="color: #000080;">&lt;</span>cv<span style="color: #008080;">::</span><span style="color: #007788;">DMatch</span><span style="color: #000080;">&gt;</span> good_matches<span style="color: #008080;">;</span><br/>
-    <span style="color: #05a;">for</span> <span style="color: #008000;">(</span><span style="color: #05a;">size_t</span> i <span style="color: #000080;">=</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span> i <span style="color: #000080;">&lt;</span> matches.<span style="color: #007788;">size</span><span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span> i<span style="color: #000040;">++</span><span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
+    <span style="color: #05a;">for</span> <span style="color: #008000;">(</span><span style="color: #05a;">size_t</span> i <span style="color: #000080;">=</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span> i <span style="color: #000080;">&lt;</span> matches.<span style="color: #007788;">size</span><span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span> i<span style="color: #000040;">++</span><span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
         <span style="color: #05a;">if</span> <span style="color: #008000;">(</span>mask.<span style="color: #007788;">at</span><span style="color: #000080;">&lt;</span>uchar<span style="color: #000080;">&gt;</span><span style="color: #008000;">(</span>i<span style="color: #008000;">)</span><span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
             good_matches.<span style="color: #007788;">push_back</span><span style="color: #008000;">(</span>matches<span style="color: #008000;">[</span>i<span style="color: #008000;">]</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
         <span style="color: #008000;">}</span><br/>
@@ -590,9 +590,9 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     cv<span style="color: #008080;">::</span><span style="color: #007788;">Mat</span> output<span style="color: #008080;">;</span><br/>
     cv<span style="color: #008080;">::</span><span style="color: #007788;">drawMatches</span><span style="color: #008000;">(</span>src1, keypoints1, src2, keypoints2, good_matches, output<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
     cv<span style="color: #008080;">::</span><span style="color: #007788;">imshow</span><span style="color: #008000;">(</span><span style="color: #a11;">"Filtered Matches"</span>, output<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
-    cv<span style="color: #008080;">::</span><span style="color: #007788;">waitKey</span><span style="color: #008000;">(</span><span style="color: #0000dd;">0</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
+    cv<span style="color: #008080;">::</span><span style="color: #007788;">waitKey</span><span style="color: #008000;">(</span><span style="color: #0000DD;">0</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <br/>
-    <span style="color: #05a;">return</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">return</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span><br/>
 <span style="color: #008000;">}</span><br/>
 </div>
 </div>
@@ -630,7 +630,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -675,7 +675,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -714,7 +714,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートは本記事の内容を拡張したものでなければなりません！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -933,7 +933,7 @@ function kFormatter(num) {
 </style>
 <div class="sidebar-box re-box re-box-large">
 <div class="sidebar-box recommend-here" style="margin: 0 auto;">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
+<a href="#" style="font-size: 16px; color:#5B80A6;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
 </div>
 <div class="sidebar-box sidebar-cate">
 <div class="sidebar-tree">

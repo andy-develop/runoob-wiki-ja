@@ -118,21 +118,21 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: #A52A2A; font-weight: bold;">module</span>  vending_machine_p3  <span style="color: #9F79EE;">(</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">input</span>           clk <span style="color: #5D478B;">,</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">input</span>           rstn <span style="color: #5D478B;">,</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>     coin <span style="color: #5D478B;">,</span>     <span style="color: #00008B; font-style: italic;">//01 for 0.5 jiao, 10 for 1 yuan</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>     coin <span style="color: #5D478B;">,</span>     <span style="color: #00008B; font-style: italic;">//01 for 0.5 jiao, 10 for 1 yuan</span><br/>
 <br/>
-    <span style="color: #A52A2A; font-weight: bold;">output</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>    change <span style="color: #5D478B;">,</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">output</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>    change <span style="color: #5D478B;">,</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">output</span>          sell    <span style="color: #00008B; font-style: italic;">//output the drink</span><br/>
     <span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
 <br/>
     <span style="color: #00008B; font-style: italic;">//machine state decode</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">parameter</span>            IDLE   <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">3'd0</span> <span style="color: #5D478B;">;</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">parameter</span>            GET05  <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">3'd1</span> <span style="color: #5D478B;">;</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">parameter</span>            GET10  <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">3'd2</span> <span style="color: #5D478B;">;</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">parameter</span>            GET15  <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">3'd3</span> <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">parameter</span>            IDLE   <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">3'd0</span> <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">parameter</span>            GET05  <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">3'd1</span> <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">parameter</span>            GET10  <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">3'd2</span> <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">parameter</span>            GET15  <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">3'd3</span> <span style="color: #5D478B;">;</span><br/>
 <br/>
     <span style="color: #00008B; font-style: italic;">//machine variable</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">2</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>            st_next <span style="color: #5D478B;">;</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">2</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>            st_cur <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">2</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>            st_next <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">2</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>            st_cur <span style="color: #5D478B;">;</span><br/>
 <br/>
     <span style="color: #00008B; font-style: italic;">//(1) state transfer</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">posedge</span> clk <span style="color: #A52A2A; font-weight: bold;">or</span> <span style="color: #A52A2A; font-weight: bold;">negedge</span> rstn<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
@@ -151,26 +151,26 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         <span style="color: #A52A2A; font-weight: bold;">case</span><span style="color: #9F79EE;">(</span>st_cur<span style="color: #9F79EE;">)</span><br/>
             IDLE<span style="color: #5D478B;">:</span><br/>
                 <span style="color: #A52A2A; font-weight: bold;">case</span> <span style="color: #9F79EE;">(</span>coin<span style="color: #9F79EE;">)</span><br/>
-                    <span style="color: #ff0055;">2'b01</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> GET05 <span style="color: #5D478B;">;</span><br/>
-                    <span style="color: #ff0055;">2'b10</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> GET10 <span style="color: #5D478B;">;</span><br/>
+                    <span style="color: #FF0055;">2'b01</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> GET05 <span style="color: #5D478B;">;</span><br/>
+                    <span style="color: #FF0055;">2'b10</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> GET10 <span style="color: #5D478B;">;</span><br/>
                     <span style="color: #A52A2A; font-weight: bold;">default</span><span style="color: #5D478B;">:</span>   st_next <span style="color: #5D478B;">=</span> IDLE <span style="color: #5D478B;">;</span><br/>
                 <span style="color: #A52A2A; font-weight: bold;">endcase</span><br/>
             GET05<span style="color: #5D478B;">:</span><br/>
                 <span style="color: #A52A2A; font-weight: bold;">case</span> <span style="color: #9F79EE;">(</span>coin<span style="color: #9F79EE;">)</span><br/>
-                    <span style="color: #ff0055;">2'b01</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> GET10 <span style="color: #5D478B;">;</span><br/>
-                    <span style="color: #ff0055;">2'b10</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> GET15 <span style="color: #5D478B;">;</span><br/>
+                    <span style="color: #FF0055;">2'b01</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> GET10 <span style="color: #5D478B;">;</span><br/>
+                    <span style="color: #FF0055;">2'b10</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> GET15 <span style="color: #5D478B;">;</span><br/>
                     <span style="color: #A52A2A; font-weight: bold;">default</span><span style="color: #5D478B;">:</span>   st_next <span style="color: #5D478B;">=</span> GET05 <span style="color: #5D478B;">;</span><br/>
                 <span style="color: #A52A2A; font-weight: bold;">endcase</span><br/>
 <br/>
             GET10<span style="color: #5D478B;">:</span><br/>
                 <span style="color: #A52A2A; font-weight: bold;">case</span> <span style="color: #9F79EE;">(</span>coin<span style="color: #9F79EE;">)</span><br/>
-                    <span style="color: #ff0055;">2'b01</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> GET15 <span style="color: #5D478B;">;</span><br/>
-                    <span style="color: #ff0055;">2'b10</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> IDLE <span style="color: #5D478B;">;</span><br/>
+                    <span style="color: #FF0055;">2'b01</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> GET15 <span style="color: #5D478B;">;</span><br/>
+                    <span style="color: #FF0055;">2'b10</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> IDLE <span style="color: #5D478B;">;</span><br/>
                     <span style="color: #A52A2A; font-weight: bold;">default</span><span style="color: #5D478B;">:</span>   st_next <span style="color: #5D478B;">=</span> GET10 <span style="color: #5D478B;">;</span><br/>
                 <span style="color: #A52A2A; font-weight: bold;">endcase</span><br/>
             GET15<span style="color: #5D478B;">:</span><br/>
                 <span style="color: #A52A2A; font-weight: bold;">case</span> <span style="color: #9F79EE;">(</span>coin<span style="color: #9F79EE;">)</span><br/>
-                    <span style="color: #ff0055;">2'b01</span><span style="color: #5D478B;">,</span><span style="color: #ff0055;">2'b10</span><span style="color: #5D478B;">:</span><br/>
+                    <span style="color: #FF0055;">2'b01</span><span style="color: #5D478B;">,</span><span style="color: #FF0055;">2'b10</span><span style="color: #5D478B;">:</span><br/>
                                st_next <span style="color: #5D478B;">=</span> IDLE <span style="color: #5D478B;">;</span><br/>
                     <span style="color: #A52A2A; font-weight: bold;">default</span><span style="color: #5D478B;">:</span>   st_next <span style="color: #5D478B;">=</span> GET15 <span style="color: #5D478B;">;</span><br/>
                 <span style="color: #A52A2A; font-weight: bold;">endcase</span><br/>
@@ -179,25 +179,25 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 <br/>
     <span style="color: #00008B; font-style: italic;">//(3) output logic, using non-block assignment</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">reg</span>  <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>   change_r <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">reg</span>  <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>   change_r <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">reg</span>          sell_r <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">posedge</span> clk <span style="color: #A52A2A; font-weight: bold;">or</span> <span style="color: #A52A2A; font-weight: bold;">negedge</span> rstn<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span><span style="color: #5D478B;">!</span>rstn<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-            change_r       <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">2'b0</span> <span style="color: #5D478B;">;</span><br/>
-            sell_r         <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
+            change_r       <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">2'b0</span> <span style="color: #5D478B;">;</span><br/>
+            sell_r         <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
-        <span style="color: #A52A2A; font-weight: bold;">else</span> <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span><span style="color: #9F79EE;">(</span>st_cur <span style="color: #5D478B;">==</span> GET15 <span style="color: #5D478B;">&amp;&amp;</span> coin <span style="color: #5D478B;">==</span><span style="color: #ff0055;">2'h1</span><span style="color: #9F79EE;">)</span><br/>
-               <span style="color: #5D478B;">||</span> <span style="color: #9F79EE;">(</span>st_cur <span style="color: #5D478B;">==</span> GET10 <span style="color: #5D478B;">&amp;&amp;</span> coin <span style="color: #5D478B;">==</span><span style="color: #ff0055;">2'd2</span><span style="color: #9F79EE;">)</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-            change_r       <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">2'b0</span> <span style="color: #5D478B;">;</span><br/>
-            sell_r         <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
+        <span style="color: #A52A2A; font-weight: bold;">else</span> <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span><span style="color: #9F79EE;">(</span>st_cur <span style="color: #5D478B;">==</span> GET15 <span style="color: #5D478B;">&amp;&amp;</span> coin <span style="color: #5D478B;">==</span><span style="color: #FF0055;">2'h1</span><span style="color: #9F79EE;">)</span><br/>
+               <span style="color: #5D478B;">||</span> <span style="color: #9F79EE;">(</span>st_cur <span style="color: #5D478B;">==</span> GET10 <span style="color: #5D478B;">&amp;&amp;</span> coin <span style="color: #5D478B;">==</span><span style="color: #FF0055;">2'd2</span><span style="color: #9F79EE;">)</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
+            change_r       <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">2'b0</span> <span style="color: #5D478B;">;</span><br/>
+            sell_r         <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
-        <span style="color: #A52A2A; font-weight: bold;">else</span> <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span>st_cur <span style="color: #5D478B;">==</span> GET15 <span style="color: #5D478B;">&amp;&amp;</span> coin <span style="color: #5D478B;">==</span> <span style="color: #ff0055;">2'h2</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-            change_r       <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">2'b1</span> <span style="color: #5D478B;">;</span><br/>
-            sell_r         <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
+        <span style="color: #A52A2A; font-weight: bold;">else</span> <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span>st_cur <span style="color: #5D478B;">==</span> GET15 <span style="color: #5D478B;">&amp;&amp;</span> coin <span style="color: #5D478B;">==</span> <span style="color: #FF0055;">2'h2</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
+            change_r       <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">2'b1</span> <span style="color: #5D478B;">;</span><br/>
+            sell_r         <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">else</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-            change_r       <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">2'b0</span> <span style="color: #5D478B;">;</span><br/>
-            sell_r         <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
+            change_r       <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">2'b0</span> <span style="color: #5D478B;">;</span><br/>
+            sell_r         <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">assign</span>       sell    <span style="color: #5D478B;">=</span> sell_r <span style="color: #5D478B;">;</span><br/>
@@ -208,65 +208,65 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p><strong>testbench の設計は次のとおりである。シミュレーションでは4つのシナリオを模擬している。それぞれ次のとおりである：</strong></p>
 <p>case1 は0.5元硬貨を4回連続で投入する場合に対応する；case2 は1元 - 0.5元 - 1元の投入順序に対応する；case3 は0.5元 - 1元 - 0.5元の投入順序に対応する；case4 は0.5元を3回連続して投入し、その後1元を投入する順序に対応する。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #008800;">`timescale</span> <span style="color: #ff0055;">1ns</span><span style="color: #5D478B;">/</span><span style="color: #ff0055;">1ps</span><br/>
+<span style="color: #008800;">`timescale</span> <span style="color: #FF0055;">1ns</span><span style="color: #5D478B;">/</span><span style="color: #FF0055;">1ps</span><br/>
 <br/>
 <span style="color: #A52A2A; font-weight: bold;">module</span> test <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">reg</span>          clk<span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">reg</span>          rstn <span style="color: #5D478B;">;</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>    coin <span style="color: #5D478B;">;</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">wire</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>   change <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>    coin <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">wire</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>   change <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">wire</span>         sell <span style="color: #5D478B;">;</span><br/>
 <br/>
     <span style="color: #00008B; font-style: italic;">//clock generating</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">parameter</span>    CYCLE_200MHz <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">10</span> <span style="color: #5D478B;">;</span> <span style="color: #00008B; font-style: italic;">//</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">parameter</span>    CYCLE_200MHz <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">10</span> <span style="color: #5D478B;">;</span> <span style="color: #00008B; font-style: italic;">//</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-        clk <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span> <span style="color: #5D478B;">#</span><span style="color: #9F79EE;">(</span>CYCLE_200MHz<span style="color: #5D478B;">/</span><span style="color: #ff0055;">2</span><span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
-        clk <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1</span> <span style="color: #5D478B;">;</span> <span style="color: #5D478B;">#</span><span style="color: #9F79EE;">(</span>CYCLE_200MHz<span style="color: #5D478B;">/</span><span style="color: #ff0055;">2</span><span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
+        clk <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span> <span style="color: #5D478B;">#</span><span style="color: #9F79EE;">(</span>CYCLE_200MHz<span style="color: #5D478B;">/</span><span style="color: #FF0055;">2</span><span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
+        clk <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1</span> <span style="color: #5D478B;">;</span> <span style="color: #5D478B;">#</span><span style="color: #9F79EE;">(</span>CYCLE_200MHz<span style="color: #5D478B;">/</span><span style="color: #FF0055;">2</span><span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 <br/>
     <span style="color: #00008B; font-style: italic;">//motivation generating</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">9</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>    buy_oper <span style="color: #5D478B;">;</span> <span style="color: #00008B; font-style: italic;">//store state of the buy operation</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">9</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>    buy_oper <span style="color: #5D478B;">;</span> <span style="color: #00008B; font-style: italic;">//store state of the buy operation</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">initial</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
         buy_oper  <span style="color: #5D478B;">=</span> 'h0 <span style="color: #5D478B;">;</span><br/>
-        coin      <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">2'h0</span> <span style="color: #5D478B;">;</span><br/>
-        rstn      <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
-        <span style="color: #5D478B;">#</span><span style="color: #ff0055;">8</span> rstn   <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
+        coin      <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">2'h0</span> <span style="color: #5D478B;">;</span><br/>
+        rstn      <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
+        <span style="color: #5D478B;">#</span><span style="color: #FF0055;">8</span> rstn   <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
         <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">negedge</span> clk<span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
 <br/>
         <span style="color: #00008B; font-style: italic;">//case(1) 0.5 -&gt; 0.5 -&gt; 0.5 -&gt; 0.5</span><br/>
-        <span style="color: #5D478B;">#</span><span style="color: #ff0055;">16</span> <span style="color: #5D478B;">;</span><br/>
-        buy_oper  <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1</span><span style="color: #ff0055;">0'b00_0101_0101</span> <span style="color: #5D478B;">;</span><br/>
-        <span style="color: #A52A2A; font-weight: bold;">repeat</span><span style="color: #9F79EE;">(</span><span style="color: #ff0055;">5</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
+        <span style="color: #5D478B;">#</span><span style="color: #FF0055;">16</span> <span style="color: #5D478B;">;</span><br/>
+        buy_oper  <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1</span><span style="color: #FF0055;">0'b00_0101_0101</span> <span style="color: #5D478B;">;</span><br/>
+        <span style="color: #A52A2A; font-weight: bold;">repeat</span><span style="color: #9F79EE;">(</span><span style="color: #FF0055;">5</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
             <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">negedge</span> clk<span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
-            coin      <span style="color: #5D478B;">=</span> buy_oper<span style="color: #9F79EE;">[</span><span style="color: #ff0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span> <span style="color: #5D478B;">;</span><br/>
-            buy_oper  <span style="color: #5D478B;">=</span> buy_oper <span style="color: #5D478B;">&gt;&gt;</span> <span style="color: #ff0055;">2</span> <span style="color: #5D478B;">;</span><br/>
+            coin      <span style="color: #5D478B;">=</span> buy_oper<span style="color: #9F79EE;">[</span><span style="color: #FF0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span> <span style="color: #5D478B;">;</span><br/>
+            buy_oper  <span style="color: #5D478B;">=</span> buy_oper <span style="color: #5D478B;">&gt;&gt;</span> <span style="color: #FF0055;">2</span> <span style="color: #5D478B;">;</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 <br/>
         <span style="color: #00008B; font-style: italic;">//case(2) 1 -&gt; 0.5 -&gt; 1, taking change</span><br/>
-        <span style="color: #5D478B;">#</span><span style="color: #ff0055;">16</span> <span style="color: #5D478B;">;</span><br/>
-        buy_oper  <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1</span><span style="color: #ff0055;">0'b00_0010_0110</span> <span style="color: #5D478B;">;</span><br/>
-        <span style="color: #A52A2A; font-weight: bold;">repeat</span><span style="color: #9F79EE;">(</span><span style="color: #ff0055;">5</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
+        <span style="color: #5D478B;">#</span><span style="color: #FF0055;">16</span> <span style="color: #5D478B;">;</span><br/>
+        buy_oper  <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1</span><span style="color: #FF0055;">0'b00_0010_0110</span> <span style="color: #5D478B;">;</span><br/>
+        <span style="color: #A52A2A; font-weight: bold;">repeat</span><span style="color: #9F79EE;">(</span><span style="color: #FF0055;">5</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
             <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">negedge</span> clk<span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
-            coin      <span style="color: #5D478B;">=</span> buy_oper<span style="color: #9F79EE;">[</span><span style="color: #ff0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span> <span style="color: #5D478B;">;</span><br/>
-            buy_oper  <span style="color: #5D478B;">=</span> buy_oper <span style="color: #5D478B;">&gt;&gt;</span> <span style="color: #ff0055;">2</span> <span style="color: #5D478B;">;</span><br/>
+            coin      <span style="color: #5D478B;">=</span> buy_oper<span style="color: #9F79EE;">[</span><span style="color: #FF0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span> <span style="color: #5D478B;">;</span><br/>
+            buy_oper  <span style="color: #5D478B;">=</span> buy_oper <span style="color: #5D478B;">&gt;&gt;</span> <span style="color: #FF0055;">2</span> <span style="color: #5D478B;">;</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 <br/>
         <span style="color: #00008B; font-style: italic;">//case(3) 0.5 -&gt; 1 -&gt; 0.5</span><br/>
-        <span style="color: #5D478B;">#</span><span style="color: #ff0055;">16</span> <span style="color: #5D478B;">;</span><br/>
-        buy_oper  <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1</span><span style="color: #ff0055;">0'b00_0001_1001</span> <span style="color: #5D478B;">;</span><br/>
-        <span style="color: #A52A2A; font-weight: bold;">repeat</span><span style="color: #9F79EE;">(</span><span style="color: #ff0055;">5</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
+        <span style="color: #5D478B;">#</span><span style="color: #FF0055;">16</span> <span style="color: #5D478B;">;</span><br/>
+        buy_oper  <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1</span><span style="color: #FF0055;">0'b00_0001_1001</span> <span style="color: #5D478B;">;</span><br/>
+        <span style="color: #A52A2A; font-weight: bold;">repeat</span><span style="color: #9F79EE;">(</span><span style="color: #FF0055;">5</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
             <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">negedge</span> clk<span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
-            coin      <span style="color: #5D478B;">=</span> buy_oper<span style="color: #9F79EE;">[</span><span style="color: #ff0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span> <span style="color: #5D478B;">;</span><br/>
-            buy_oper  <span style="color: #5D478B;">=</span> buy_oper <span style="color: #5D478B;">&gt;&gt;</span> <span style="color: #ff0055;">2</span> <span style="color: #5D478B;">;</span><br/>
+            coin      <span style="color: #5D478B;">=</span> buy_oper<span style="color: #9F79EE;">[</span><span style="color: #FF0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span> <span style="color: #5D478B;">;</span><br/>
+            buy_oper  <span style="color: #5D478B;">=</span> buy_oper <span style="color: #5D478B;">&gt;&gt;</span> <span style="color: #FF0055;">2</span> <span style="color: #5D478B;">;</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 <br/>
         <span style="color: #00008B; font-style: italic;">//case(4) 0.5 -&gt; 0.5 -&gt; 0.5 -&gt; 1, taking change</span><br/>
-        <span style="color: #5D478B;">#</span><span style="color: #ff0055;">16</span> <span style="color: #5D478B;">;</span><br/>
-        buy_oper  <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1</span><span style="color: #ff0055;">0'b00_1001_0101</span> <span style="color: #5D478B;">;</span><br/>
-        <span style="color: #A52A2A; font-weight: bold;">repeat</span><span style="color: #9F79EE;">(</span><span style="color: #ff0055;">5</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
+        <span style="color: #5D478B;">#</span><span style="color: #FF0055;">16</span> <span style="color: #5D478B;">;</span><br/>
+        buy_oper  <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1</span><span style="color: #FF0055;">0'b00_1001_0101</span> <span style="color: #5D478B;">;</span><br/>
+        <span style="color: #A52A2A; font-weight: bold;">repeat</span><span style="color: #9F79EE;">(</span><span style="color: #FF0055;">5</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
             <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">negedge</span> clk<span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
-            coin      <span style="color: #5D478B;">=</span> buy_oper<span style="color: #9F79EE;">[</span><span style="color: #ff0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span> <span style="color: #5D478B;">;</span><br/>
-            buy_oper  <span style="color: #5D478B;">=</span> buy_oper <span style="color: #5D478B;">&gt;&gt;</span> <span style="color: #ff0055;">2</span> <span style="color: #5D478B;">;</span><br/>
+            coin      <span style="color: #5D478B;">=</span> buy_oper<span style="color: #9F79EE;">[</span><span style="color: #FF0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span> <span style="color: #5D478B;">;</span><br/>
+            buy_oper  <span style="color: #5D478B;">=</span> buy_oper <span style="color: #5D478B;">&gt;&gt;</span> <span style="color: #FF0055;">2</span> <span style="color: #5D478B;">;</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 <br/>
@@ -281,8 +281,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <br/>
    <span style="color: #00008B; font-style: italic;">//simulation finish</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-      <span style="color: #5D478B;">#</span><span style="color: #ff0055;">100</span><span style="color: #5D478B;">;</span><br/>
-      <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span><span style="color: #9932CC;">$time</span> <span style="color: #5D478B;">&gt;=</span> <span style="color: #ff0055;">10000</span><span style="color: #9F79EE;">)</span>  <span style="color: #9932CC;">$finish</span> <span style="color: #5D478B;">;</span><br/>
+      <span style="color: #5D478B;">#</span><span style="color: #FF0055;">100</span><span style="color: #5D478B;">;</span><br/>
+      <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span><span style="color: #9932CC;">$time</span> <span style="color: #5D478B;">&gt;=</span> <span style="color: #FF0055;">10000</span><span style="color: #9F79EE;">)</span>  <span style="color: #9932CC;">$finish</span> <span style="color: #5D478B;">;</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 <br/>
 <span style="color: #A52A2A; font-weight: bold;">endmodule</span> <span style="color: #00008B; font-style: italic;">// test</span><br/>
@@ -297,70 +297,70 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #00008B; font-style: italic;">//(2) state switch, and output logic</span><br/>
 <span style="color: #00008B; font-style: italic;">//all using block assignment for combination-logic</span><br/>
-<span style="color: #A52A2A; font-weight: bold;">reg</span>  <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>   change_r <span style="color: #5D478B;">;</span><br/>
+<span style="color: #A52A2A; font-weight: bold;">reg</span>  <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>   change_r <span style="color: #5D478B;">;</span><br/>
 <span style="color: #A52A2A; font-weight: bold;">reg</span>          sell_r <span style="color: #5D478B;">;</span><br/>
 <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #5D478B;">*</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span> <span style="color: #00008B; font-style: italic;">//all case items need to be displayed completely</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">case</span><span style="color: #9F79EE;">(</span>st_cur<span style="color: #9F79EE;">)</span><br/>
         IDLE<span style="color: #5D478B;">:</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-            change_r     <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">2'b0</span> <span style="color: #5D478B;">;</span><br/>
-            sell_r       <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
+            change_r     <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">2'b0</span> <span style="color: #5D478B;">;</span><br/>
+            sell_r       <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
             <span style="color: #A52A2A; font-weight: bold;">case</span> <span style="color: #9F79EE;">(</span>coin<span style="color: #9F79EE;">)</span><br/>
-                <span style="color: #ff0055;">2'b01</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> GET05 <span style="color: #5D478B;">;</span><br/>
-                <span style="color: #ff0055;">2'b10</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> GET10 <span style="color: #5D478B;">;</span><br/>
+                <span style="color: #FF0055;">2'b01</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> GET05 <span style="color: #5D478B;">;</span><br/>
+                <span style="color: #FF0055;">2'b10</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> GET10 <span style="color: #5D478B;">;</span><br/>
                 <span style="color: #A52A2A; font-weight: bold;">default</span><span style="color: #5D478B;">:</span>   st_next <span style="color: #5D478B;">=</span> IDLE <span style="color: #5D478B;">;</span><br/>
             <span style="color: #A52A2A; font-weight: bold;">endcase</span> <span style="color: #00008B; font-style: italic;">// case (coin)</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
         GET05<span style="color: #5D478B;">:</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-            change_r     <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">2'b0</span> <span style="color: #5D478B;">;</span><br/>
-            sell_r       <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
+            change_r     <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">2'b0</span> <span style="color: #5D478B;">;</span><br/>
+            sell_r       <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
             <span style="color: #A52A2A; font-weight: bold;">case</span> <span style="color: #9F79EE;">(</span>coin<span style="color: #9F79EE;">)</span><br/>
-                <span style="color: #ff0055;">2'b01</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> GET10 <span style="color: #5D478B;">;</span><br/>
-                <span style="color: #ff0055;">2'b10</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> GET15 <span style="color: #5D478B;">;</span><br/>
+                <span style="color: #FF0055;">2'b01</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> GET10 <span style="color: #5D478B;">;</span><br/>
+                <span style="color: #FF0055;">2'b10</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> GET15 <span style="color: #5D478B;">;</span><br/>
                 <span style="color: #A52A2A; font-weight: bold;">default</span><span style="color: #5D478B;">:</span>   st_next <span style="color: #5D478B;">=</span> GET05 <span style="color: #5D478B;">;</span><br/>
             <span style="color: #A52A2A; font-weight: bold;">endcase</span> <span style="color: #00008B; font-style: italic;">// case (coin)</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 <br/>
         GET10<span style="color: #5D478B;">:</span><br/>
             <span style="color: #A52A2A; font-weight: bold;">case</span> <span style="color: #9F79EE;">(</span>coin<span style="color: #9F79EE;">)</span><br/>
-                <span style="color: #ff0055;">2'b01</span><span style="color: #5D478B;">:</span>     <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
+                <span style="color: #FF0055;">2'b01</span><span style="color: #5D478B;">:</span>     <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
                     st_next      <span style="color: #5D478B;">=</span> GET15 <span style="color: #5D478B;">;</span><br/>
-                    change_r     <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">2'b0</span> <span style="color: #5D478B;">;</span><br/>
-                    sell_r       <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
+                    change_r     <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">2'b0</span> <span style="color: #5D478B;">;</span><br/>
+                    sell_r       <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
                 <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
-                <span style="color: #ff0055;">2'b10</span><span style="color: #5D478B;">:</span>     <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
+                <span style="color: #FF0055;">2'b10</span><span style="color: #5D478B;">:</span>     <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
                     st_next      <span style="color: #5D478B;">=</span> IDLE <span style="color: #5D478B;">;</span><br/>
-                    change_r     <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">2'b0</span> <span style="color: #5D478B;">;</span><br/>
-                    sell_r       <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
+                    change_r     <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">2'b0</span> <span style="color: #5D478B;">;</span><br/>
+                    sell_r       <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
                 <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
                 <span style="color: #A52A2A; font-weight: bold;">default</span><span style="color: #5D478B;">:</span>   <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
                     st_next      <span style="color: #5D478B;">=</span> GET10 <span style="color: #5D478B;">;</span><br/>
-                    change_r     <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">2'b0</span> <span style="color: #5D478B;">;</span><br/>
-                    sell_r       <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
+                    change_r     <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">2'b0</span> <span style="color: #5D478B;">;</span><br/>
+                    sell_r       <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
                 <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
             <span style="color: #A52A2A; font-weight: bold;">endcase</span> <span style="color: #00008B; font-style: italic;">// case (coin)</span><br/>
 <br/>
         GET15<span style="color: #5D478B;">:</span><br/>
             <span style="color: #A52A2A; font-weight: bold;">case</span> <span style="color: #9F79EE;">(</span>coin<span style="color: #9F79EE;">)</span><br/>
-                <span style="color: #ff0055;">2'b01</span><span style="color: #5D478B;">:</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
+                <span style="color: #FF0055;">2'b01</span><span style="color: #5D478B;">:</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
                     st_next     <span style="color: #5D478B;">=</span> IDLE <span style="color: #5D478B;">;</span><br/>
-                    change_r    <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">2'b0</span> <span style="color: #5D478B;">;</span><br/>
-                    sell_r      <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
+                    change_r    <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">2'b0</span> <span style="color: #5D478B;">;</span><br/>
+                    sell_r      <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
                 <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
-                <span style="color: #ff0055;">2'b10</span><span style="color: #5D478B;">:</span>     <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
+                <span style="color: #FF0055;">2'b10</span><span style="color: #5D478B;">:</span>     <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
                     st_next     <span style="color: #5D478B;">=</span> IDLE <span style="color: #5D478B;">;</span><br/>
-                    change_r    <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">2'b1</span> <span style="color: #5D478B;">;</span><br/>
-                    sell_r      <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
+                    change_r    <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">2'b1</span> <span style="color: #5D478B;">;</span><br/>
+                    sell_r      <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
                 <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
                 <span style="color: #A52A2A; font-weight: bold;">default</span><span style="color: #5D478B;">:</span>   <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
                     st_next     <span style="color: #5D478B;">=</span> GET15 <span style="color: #5D478B;">;</span><br/>
-                    change_r    <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">2'b0</span> <span style="color: #5D478B;">;</span><br/>
-                    sell_r      <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
+                    change_r    <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">2'b0</span> <span style="color: #5D478B;">;</span><br/>
+                    sell_r      <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
                 <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
             <span style="color: #A52A2A; font-weight: bold;">endcase</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">default</span><span style="color: #5D478B;">:</span>  <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
             st_next     <span style="color: #5D478B;">=</span> IDLE <span style="color: #5D478B;">;</span><br/>
-            change_r    <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">2'b0</span> <span style="color: #5D478B;">;</span><br/>
-            sell_r      <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
+            change_r    <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">2'b0</span> <span style="color: #5D478B;">;</span><br/>
+            sell_r      <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 <br/>
     <span style="color: #A52A2A; font-weight: bold;">endcase</span><br/>
@@ -375,51 +375,51 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <br/>
     <span style="color: #00008B; font-style: italic;">//(1) using one state-variable do describe</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">reg</span>  <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>   change_r <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">reg</span>  <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>   change_r <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">reg</span>          sell_r <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">posedge</span> clk <span style="color: #A52A2A; font-weight: bold;">or</span> <span style="color: #A52A2A; font-weight: bold;">negedge</span> rstn<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span><span style="color: #5D478B;">!</span>rstn<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
             st_cur     <span style="color: #5D478B;">&lt;=</span> 'b0 <span style="color: #5D478B;">;</span><br/>
-            change_r   <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">2'b0</span> <span style="color: #5D478B;">;</span><br/>
-            sell_r     <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
+            change_r   <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">2'b0</span> <span style="color: #5D478B;">;</span><br/>
+            sell_r     <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">else</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
             <span style="color: #A52A2A; font-weight: bold;">case</span><span style="color: #9F79EE;">(</span>st_cur<span style="color: #9F79EE;">)</span><br/>
 <br/>
             IDLE<span style="color: #5D478B;">:</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-                change_r  <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">2'b0</span> <span style="color: #5D478B;">;</span><br/>
-                sell_r    <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
+                change_r  <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">2'b0</span> <span style="color: #5D478B;">;</span><br/>
+                sell_r    <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
                 <span style="color: #A52A2A; font-weight: bold;">case</span> <span style="color: #9F79EE;">(</span>coin<span style="color: #9F79EE;">)</span><br/>
-                    <span style="color: #ff0055;">2'b01</span><span style="color: #5D478B;">:</span>     st_cur <span style="color: #5D478B;">&lt;=</span> GET05 <span style="color: #5D478B;">;</span><br/>
-                    <span style="color: #ff0055;">2'b10</span><span style="color: #5D478B;">:</span>     st_cur <span style="color: #5D478B;">&lt;=</span> GET10 <span style="color: #5D478B;">;</span><br/>
+                    <span style="color: #FF0055;">2'b01</span><span style="color: #5D478B;">:</span>     st_cur <span style="color: #5D478B;">&lt;=</span> GET05 <span style="color: #5D478B;">;</span><br/>
+                    <span style="color: #FF0055;">2'b10</span><span style="color: #5D478B;">:</span>     st_cur <span style="color: #5D478B;">&lt;=</span> GET10 <span style="color: #5D478B;">;</span><br/>
                 <span style="color: #A52A2A; font-weight: bold;">endcase</span><br/>
             <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
             GET05<span style="color: #5D478B;">:</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
                 <span style="color: #A52A2A; font-weight: bold;">case</span> <span style="color: #9F79EE;">(</span>coin<span style="color: #9F79EE;">)</span><br/>
-                    <span style="color: #ff0055;">2'b01</span><span style="color: #5D478B;">:</span>     st_cur <span style="color: #5D478B;">&lt;=</span> GET10 <span style="color: #5D478B;">;</span><br/>
-                    <span style="color: #ff0055;">2'b10</span><span style="color: #5D478B;">:</span>     st_cur <span style="color: #5D478B;">&lt;=</span> GET15 <span style="color: #5D478B;">;</span><br/>
+                    <span style="color: #FF0055;">2'b01</span><span style="color: #5D478B;">:</span>     st_cur <span style="color: #5D478B;">&lt;=</span> GET10 <span style="color: #5D478B;">;</span><br/>
+                    <span style="color: #FF0055;">2'b10</span><span style="color: #5D478B;">:</span>     st_cur <span style="color: #5D478B;">&lt;=</span> GET15 <span style="color: #5D478B;">;</span><br/>
                 <span style="color: #A52A2A; font-weight: bold;">endcase</span><br/>
             <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 <br/>
             GET10<span style="color: #5D478B;">:</span><br/>
                 <span style="color: #A52A2A; font-weight: bold;">case</span> <span style="color: #9F79EE;">(</span>coin<span style="color: #9F79EE;">)</span><br/>
-                    <span style="color: #ff0055;">2'b01</span><span style="color: #5D478B;">:</span>     st_cur   <span style="color: #5D478B;">&lt;=</span>  GET15 <span style="color: #5D478B;">;</span><br/>
-                    <span style="color: #ff0055;">2'b10</span><span style="color: #5D478B;">:</span>     <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
+                    <span style="color: #FF0055;">2'b01</span><span style="color: #5D478B;">:</span>     st_cur   <span style="color: #5D478B;">&lt;=</span>  GET15 <span style="color: #5D478B;">;</span><br/>
+                    <span style="color: #FF0055;">2'b10</span><span style="color: #5D478B;">:</span>     <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
                         st_cur   <span style="color: #5D478B;">&lt;=</span> IDLE <span style="color: #5D478B;">;</span><br/>
-                        sell_r   <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
+                        sell_r   <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
                     <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
                 <span style="color: #A52A2A; font-weight: bold;">endcase</span><br/>
 <br/>
             GET15<span style="color: #5D478B;">:</span><br/>
                 <span style="color: #A52A2A; font-weight: bold;">case</span> <span style="color: #9F79EE;">(</span>coin<span style="color: #9F79EE;">)</span><br/>
-                    <span style="color: #ff0055;">2'b01</span><span style="color: #5D478B;">:</span>     <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
+                    <span style="color: #FF0055;">2'b01</span><span style="color: #5D478B;">:</span>     <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
                         st_cur   <span style="color: #5D478B;">&lt;=</span> IDLE <span style="color: #5D478B;">;</span><br/>
-                        sell_r   <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
+                        sell_r   <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
                     <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
-                    <span style="color: #ff0055;">2'b10</span><span style="color: #5D478B;">:</span>     <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
+                    <span style="color: #FF0055;">2'b10</span><span style="color: #5D478B;">:</span>     <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
                         st_cur   <span style="color: #5D478B;">&lt;=</span> IDLE <span style="color: #5D478B;">;</span><br/>
-                        change_r <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">2'b1</span> <span style="color: #5D478B;">;</span><br/>
-                        sell_r   <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
+                        change_r <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">2'b1</span> <span style="color: #5D478B;">;</span><br/>
+                        sell_r   <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
                     <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
                 <span style="color: #A52A2A; font-weight: bold;">endcase</span><br/>
 <br/>
@@ -441,24 +441,24 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: #A52A2A; font-weight: bold;">module</span>  vending_machine_moore    <span style="color: #9F79EE;">(</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">input</span>           clk <span style="color: #5D478B;">,</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">input</span>           rstn <span style="color: #5D478B;">,</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>     coin <span style="color: #5D478B;">,</span>     <span style="color: #00008B; font-style: italic;">//01 for 0.5 jiao, 10 for 1 yuan</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>     coin <span style="color: #5D478B;">,</span>     <span style="color: #00008B; font-style: italic;">//01 for 0.5 jiao, 10 for 1 yuan</span><br/>
 <br/>
-    <span style="color: #A52A2A; font-weight: bold;">output</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>    change <span style="color: #5D478B;">,</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">output</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>    change <span style="color: #5D478B;">,</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">output</span>          sell    <span style="color: #00008B; font-style: italic;">//output the drink</span><br/>
     <span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
 <br/>
     <span style="color: #00008B; font-style: italic;">//machine state decode</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">parameter</span>            IDLE   <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">3'd0</span> <span style="color: #5D478B;">;</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">parameter</span>            GET05  <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">3'd1</span> <span style="color: #5D478B;">;</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">parameter</span>            GET10  <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">3'd2</span> <span style="color: #5D478B;">;</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">parameter</span>            GET15  <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">3'd3</span> <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">parameter</span>            IDLE   <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">3'd0</span> <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">parameter</span>            GET05  <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">3'd1</span> <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">parameter</span>            GET10  <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">3'd2</span> <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">parameter</span>            GET15  <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">3'd3</span> <span style="color: #5D478B;">;</span><br/>
     <span style="color: #00008B; font-style: italic;">// new state for moore state-machine</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">parameter</span>            GET20  <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">3'd4</span> <span style="color: #5D478B;">;</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">parameter</span>            GET25  <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">3'd5</span> <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">parameter</span>            GET20  <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">3'd4</span> <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">parameter</span>            GET25  <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">3'd5</span> <span style="color: #5D478B;">;</span><br/>
 <br/>
     <span style="color: #00008B; font-style: italic;">//machine variable</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">2</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>            st_next <span style="color: #5D478B;">;</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">2</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>            st_cur <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">2</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>            st_next <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">2</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>            st_cur <span style="color: #5D478B;">;</span><br/>
 <br/>
     <span style="color: #00008B; font-style: italic;">//(1) state transfer</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">posedge</span> clk <span style="color: #A52A2A; font-weight: bold;">or</span> <span style="color: #A52A2A; font-weight: bold;">negedge</span> rstn<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
@@ -475,27 +475,27 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         <span style="color: #A52A2A; font-weight: bold;">case</span><span style="color: #9F79EE;">(</span>st_cur<span style="color: #9F79EE;">)</span><br/>
             IDLE<span style="color: #5D478B;">:</span><br/>
                 <span style="color: #A52A2A; font-weight: bold;">case</span> <span style="color: #9F79EE;">(</span>coin<span style="color: #9F79EE;">)</span><br/>
-                    <span style="color: #ff0055;">2'b01</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> GET05 <span style="color: #5D478B;">;</span><br/>
-                    <span style="color: #ff0055;">2'b10</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> GET10 <span style="color: #5D478B;">;</span><br/>
+                    <span style="color: #FF0055;">2'b01</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> GET05 <span style="color: #5D478B;">;</span><br/>
+                    <span style="color: #FF0055;">2'b10</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> GET10 <span style="color: #5D478B;">;</span><br/>
                     <span style="color: #A52A2A; font-weight: bold;">default</span><span style="color: #5D478B;">:</span>   st_next <span style="color: #5D478B;">=</span> IDLE <span style="color: #5D478B;">;</span><br/>
                 <span style="color: #A52A2A; font-weight: bold;">endcase</span><br/>
             GET05<span style="color: #5D478B;">:</span><br/>
                 <span style="color: #A52A2A; font-weight: bold;">case</span> <span style="color: #9F79EE;">(</span>coin<span style="color: #9F79EE;">)</span><br/>
-                    <span style="color: #ff0055;">2'b01</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> GET10 <span style="color: #5D478B;">;</span><br/>
-                    <span style="color: #ff0055;">2'b10</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> GET15 <span style="color: #5D478B;">;</span><br/>
+                    <span style="color: #FF0055;">2'b01</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> GET10 <span style="color: #5D478B;">;</span><br/>
+                    <span style="color: #FF0055;">2'b10</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> GET15 <span style="color: #5D478B;">;</span><br/>
                     <span style="color: #A52A2A; font-weight: bold;">default</span><span style="color: #5D478B;">:</span>   st_next <span style="color: #5D478B;">=</span> GET05 <span style="color: #5D478B;">;</span><br/>
                 <span style="color: #A52A2A; font-weight: bold;">endcase</span><br/>
 <br/>
             GET10<span style="color: #5D478B;">:</span><br/>
                 <span style="color: #A52A2A; font-weight: bold;">case</span> <span style="color: #9F79EE;">(</span>coin<span style="color: #9F79EE;">)</span><br/>
-                    <span style="color: #ff0055;">2'b01</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> GET15 <span style="color: #5D478B;">;</span><br/>
-                    <span style="color: #ff0055;">2'b10</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> GET20 <span style="color: #5D478B;">;</span><br/>
+                    <span style="color: #FF0055;">2'b01</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> GET15 <span style="color: #5D478B;">;</span><br/>
+                    <span style="color: #FF0055;">2'b10</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> GET20 <span style="color: #5D478B;">;</span><br/>
                     <span style="color: #A52A2A; font-weight: bold;">default</span><span style="color: #5D478B;">:</span>   st_next <span style="color: #5D478B;">=</span> GET10 <span style="color: #5D478B;">;</span><br/>
                 <span style="color: #A52A2A; font-weight: bold;">endcase</span><br/>
             GET15<span style="color: #5D478B;">:</span><br/>
                 <span style="color: #A52A2A; font-weight: bold;">case</span> <span style="color: #9F79EE;">(</span>coin<span style="color: #9F79EE;">)</span><br/>
-                    <span style="color: #ff0055;">2'b01</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> GET20 <span style="color: #5D478B;">;</span><br/>
-                    <span style="color: #ff0055;">2'b10</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> GET25 <span style="color: #5D478B;">;</span><br/>
+                    <span style="color: #FF0055;">2'b01</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> GET20 <span style="color: #5D478B;">;</span><br/>
+                    <span style="color: #FF0055;">2'b10</span><span style="color: #5D478B;">:</span>     st_next <span style="color: #5D478B;">=</span> GET25 <span style="color: #5D478B;">;</span><br/>
                     <span style="color: #A52A2A; font-weight: bold;">default</span><span style="color: #5D478B;">:</span>   st_next <span style="color: #5D478B;">=</span> GET15 <span style="color: #5D478B;">;</span><br/>
                 <span style="color: #A52A2A; font-weight: bold;">endcase</span><br/>
             GET20<span style="color: #5D478B;">:</span>         st_next <span style="color: #5D478B;">=</span> IDLE <span style="color: #5D478B;">;</span><br/>
@@ -506,23 +506,23 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <br/>
    <span style="color: #00008B; font-style: italic;">// (3) output logic,</span><br/>
    <span style="color: #00008B; font-style: italic;">// one cycle delayed when using non-block assignment</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">reg</span>  <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>   change_r <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">reg</span>  <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>   change_r <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">reg</span>          sell_r <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">posedge</span> clk <span style="color: #A52A2A; font-weight: bold;">or</span> <span style="color: #A52A2A; font-weight: bold;">negedge</span> rstn<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span><span style="color: #5D478B;">!</span>rstn<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-            change_r       <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">2'b0</span> <span style="color: #5D478B;">;</span><br/>
-            sell_r         <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
+            change_r       <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">2'b0</span> <span style="color: #5D478B;">;</span><br/>
+            sell_r         <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">else</span> <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span>st_cur <span style="color: #5D478B;">==</span> GET20 <span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-            sell_r         <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
+            sell_r         <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">else</span> <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span>st_cur <span style="color: #5D478B;">==</span> GET25<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-            change_r       <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">2'b1</span> <span style="color: #5D478B;">;</span><br/>
-            sell_r         <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
+            change_r       <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">2'b1</span> <span style="color: #5D478B;">;</span><br/>
+            sell_r         <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">else</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-            change_r       <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">2'b0</span> <span style="color: #5D478B;">;</span><br/>
-            sell_r         <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
+            change_r       <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">2'b0</span> <span style="color: #5D478B;">;</span><br/>
+            sell_r         <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">assign</span>       sell    <span style="color: #5D478B;">=</span> sell_r <span style="color: #5D478B;">;</span><br/>
@@ -538,17 +538,17 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <br/>
     <span style="color: #00008B; font-style: italic;">// (3.2) output logic, using block assignment</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">reg</span>  <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>   change_r <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">reg</span>  <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>   change_r <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">reg</span>          sell_r <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #5D478B;">*</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
         change_r  <span style="color: #5D478B;">=</span> 'b0 <span style="color: #5D478B;">;</span><br/>
         sell_r    <span style="color: #5D478B;">=</span> 'b0 <span style="color: #5D478B;">;</span> <span style="color: #00008B; font-style: italic;">//not list all condition, initializing them</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span>st_cur <span style="color: #5D478B;">==</span> GET20 <span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-            sell_r         <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
+            sell_r         <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">else</span> <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span>st_cur <span style="color: #5D478B;">==</span> GET25<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-            change_r       <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">2'b1</span> <span style="color: #5D478B;">;</span><br/>
-            sell_r         <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
+            change_r       <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">2'b1</span> <span style="color: #5D478B;">;</span><br/>
+            sell_r         <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 </div></div>
@@ -581,7 +581,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -626,7 +626,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -665,7 +665,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックできます</a></p>
 	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -876,7 +876,7 @@ p.note-author {
     border-bottom: 1px solid #ddd;
     font-size: 18px;
     font-weight: bold;
-    color: #78a15a;
+    color: #5B80A6;
     padding-bottom: 2px;
     margin-bottom: 4px;
 }

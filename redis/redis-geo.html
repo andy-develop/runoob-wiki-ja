@@ -294,14 +294,14 @@ GEOADD key longitude latitude member [longitude latitude member ...]</pre>
 <p>次のインスタンスでは、key は Sicily で、Palermo と Catania は位置名です：</p>
 <div class="example"><h2 class="example">インスタンス</h2> <div class="example_code">
 redis<span style="color: #000000; font-weight: bold;">&gt;</span> GEOADD Sicily <span style="color: #000000;">13.361389</span> <span style="color: #000000;">38.115556</span> <span style="color: #a10;">"Palermo"</span> <span style="color: #000000;">15.087269</span> <span style="color: #000000;">37.502669</span> <span style="color: #a10;">"Catania"</span><br/>
-<span style="color: #7a0874; font-weight: bold;">(</span>integer<span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #000000;">2</span><br/>
+<span style="color: #7A0874; font-weight: bold;">(</span>integer<span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #000000;">2</span><br/>
 redis<span style="color: #000000; font-weight: bold;">&gt;</span> GEODIST Sicily Palermo Catania<br/>
 <span style="color: #a10;">"166274.1516"</span><br/>
 redis<span style="color: #000000; font-weight: bold;">&gt;</span> GEORADIUS Sicily <span style="color: #000000;">15</span> <span style="color: #000000;">37</span> <span style="color: #000000;">100</span> km<br/>
-<span style="color: #000000;">1</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #a10;">"Catania"</span><br/>
+<span style="color: #000000;">1</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"Catania"</span><br/>
 redis<span style="color: #000000; font-weight: bold;">&gt;</span> GEORADIUS Sicily <span style="color: #000000;">15</span> <span style="color: #000000;">37</span> <span style="color: #000000;">200</span> km<br/>
-<span style="color: #000000;">1</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #a10;">"Palermo"</span><br/>
-<span style="color: #000000;">2</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #a10;">"Catania"</span><br/>
+<span style="color: #000000;">1</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"Palermo"</span><br/>
+<span style="color: #000000;">2</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"Catania"</span><br/>
 redis<span style="color: #000000; font-weight: bold;">&gt;</span><br/>
 </div></div>
 <h3>geopos</h3>
@@ -309,13 +309,13 @@ redis<span style="color: #000000; font-weight: bold;">&gt;</span><br/>
 <pre>GEOPOS key member [member ...]</pre>
 <div class="example"><h2 class="example">インスタンス</h2> <div class="example_code">
 redis<span style="color: #000000; font-weight: bold;">&gt;</span> GEOADD Sicily <span style="color: #000000;">13.361389</span> <span style="color: #000000;">38.115556</span> <span style="color: #a10;">"Palermo"</span> <span style="color: #000000;">15.087269</span> <span style="color: #000000;">37.502669</span> <span style="color: #a10;">"Catania"</span><br/>
-<span style="color: #7a0874; font-weight: bold;">(</span>integer<span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #000000;">2</span><br/>
+<span style="color: #7A0874; font-weight: bold;">(</span>integer<span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #000000;">2</span><br/>
 redis<span style="color: #000000; font-weight: bold;">&gt;</span> GEOPOS Sicily Palermo Catania NonExisting<br/>
-<span style="color: #000000;">1</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #a10;">"13.36138933897018433"</span><br/>
-   <span style="color: #000000;">2</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #a10;">"38.11555639549629859"</span><br/>
-<span style="color: #000000;">2</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #a10;">"15.08726745843887329"</span><br/>
-   <span style="color: #000000;">2</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #a10;">"37.50266842333162032"</span><br/>
-<span style="color: #000000;">3</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #7a0874; font-weight: bold;">(</span>nil<span style="color: #7a0874; font-weight: bold;">)</span><br/>
+<span style="color: #000000;">1</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"13.36138933897018433"</span><br/>
+   <span style="color: #000000;">2</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"38.11555639549629859"</span><br/>
+<span style="color: #000000;">2</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"15.08726745843887329"</span><br/>
+   <span style="color: #000000;">2</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"37.50266842333162032"</span><br/>
+<span style="color: #000000;">3</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #7A0874; font-weight: bold;">(</span>nil<span style="color: #7A0874; font-weight: bold;">)</span><br/>
 redis<span style="color: #000000; font-weight: bold;">&gt;</span> <br/>
 </div></div>
 <h3>geodist</h3><p>geodist は、指定された2つの位置間の距離を返すために使用されます。</p><p>geodist の構文は次のとおりです：</p><pre>
@@ -325,7 +325,7 @@ GEODIST key member1 member2 [m|km|ft|mi]</pre>
 <ul><li>m ：メートル、デフォルト単位。</li><li>km ：キロメートル。</li><li>mi ：マイル。</li><li>ft ：フィート。</li>&gt; Palermo と Catania の間の距離を計算：
 <div class="example"><h2 class="example">インスタンス</h2> <div class="example_code">
 redis<span style="color: #000000; font-weight: bold;">&gt;</span> GEOADD Sicily <span style="color: #000000;">13.361389</span> <span style="color: #000000;">38.115556</span> <span style="color: #a10;">"Palermo"</span> <span style="color: #000000;">15.087269</span> <span style="color: #000000;">37.502669</span> <span style="color: #a10;">"Catania"</span><br/>
-<span style="color: #7a0874; font-weight: bold;">(</span>integer<span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #000000;">2</span><br/>
+<span style="color: #7A0874; font-weight: bold;">(</span>integer<span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #000000;">2</span><br/>
 redis<span style="color: #000000; font-weight: bold;">&gt;</span> GEODIST Sicily Palermo Catania<br/>
 <span style="color: #a10;">"166274.1516"</span><br/>
 redis<span style="color: #000000; font-weight: bold;">&gt;</span> GEODIST Sicily Palermo Catania km<br/>
@@ -333,7 +333,7 @@ redis<span style="color: #000000; font-weight: bold;">&gt;</span> GEODIST Sicily
 redis<span style="color: #000000; font-weight: bold;">&gt;</span> GEODIST Sicily Palermo Catania mi<br/>
 <span style="color: #a10;">"103.3182"</span><br/>
 redis<span style="color: #000000; font-weight: bold;">&gt;</span> GEODIST Sicily Foo Bar<br/>
-<span style="color: #7a0874; font-weight: bold;">(</span>nil<span style="color: #7a0874; font-weight: bold;">)</span><br/>
+<span style="color: #7A0874; font-weight: bold;">(</span>nil<span style="color: #7A0874; font-weight: bold;">)</span><br/>
 redis<span style="color: #000000; font-weight: bold;">&gt;</span> <br/>
 </div></div>
 <h3>georadius、georadiusbymember</h3><p>georadius は、指定された経度・緯度を中心とし、キーに含まれる位置要素のうち、中心からの距離が指定された最大距離を超えないすべての位置要素を返します。</p><p>georadiusbymember は GEORADIUS コマンドと同じように、指定された範囲内にある要素を見つけることができますが、georadiusbymember の中心点は指定された位置要素によって決定され、経度と緯度を使用して中心点を決定するものではありません。</p>
@@ -344,39 +344,39 @@ GEORADIUSBYMEMBER key member radius m|km|ft|mi [WITHCOORD] [WITHDIST] [WITHHASH]
 <p>georadius のインスタンス：</p>
 <div class="example"><h2 class="example">インスタンス</h2> <div class="example_code">
 redis<span style="color: #000000; font-weight: bold;">&gt;</span> GEOADD Sicily <span style="color: #000000;">13.361389</span> <span style="color: #000000;">38.115556</span> <span style="color: #a10;">"Palermo"</span> <span style="color: #000000;">15.087269</span> <span style="color: #000000;">37.502669</span> <span style="color: #a10;">"Catania"</span><br/>
-<span style="color: #7a0874; font-weight: bold;">(</span>integer<span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #000000;">2</span><br/>
+<span style="color: #7A0874; font-weight: bold;">(</span>integer<span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #000000;">2</span><br/>
 redis<span style="color: #000000; font-weight: bold;">&gt;</span> GEORADIUS Sicily <span style="color: #000000;">15</span> <span style="color: #000000;">37</span> <span style="color: #000000;">200</span> km WITHDIST<br/>
-<span style="color: #000000;">1</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #a10;">"Palermo"</span><br/>
-   <span style="color: #000000;">2</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #a10;">"190.4424"</span><br/>
-<span style="color: #000000;">2</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #a10;">"Catania"</span><br/>
-   <span style="color: #000000;">2</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #a10;">"56.4413"</span><br/>
+<span style="color: #000000;">1</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"Palermo"</span><br/>
+   <span style="color: #000000;">2</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"190.4424"</span><br/>
+<span style="color: #000000;">2</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"Catania"</span><br/>
+   <span style="color: #000000;">2</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"56.4413"</span><br/>
 redis<span style="color: #000000; font-weight: bold;">&gt;</span> GEORADIUS Sicily <span style="color: #000000;">15</span> <span style="color: #000000;">37</span> <span style="color: #000000;">200</span> km WITHCOORD<br/>
-<span style="color: #000000;">1</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #a10;">"Palermo"</span><br/>
-   <span style="color: #000000;">2</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #a10;">"13.36138933897018433"</span><br/>
-      <span style="color: #000000;">2</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #a10;">"38.11555639549629859"</span><br/>
-<span style="color: #000000;">2</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #a10;">"Catania"</span><br/>
-   <span style="color: #000000;">2</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #a10;">"15.08726745843887329"</span><br/>
-      <span style="color: #000000;">2</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #a10;">"37.50266842333162032"</span><br/>
+<span style="color: #000000;">1</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"Palermo"</span><br/>
+   <span style="color: #000000;">2</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"13.36138933897018433"</span><br/>
+      <span style="color: #000000;">2</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"38.11555639549629859"</span><br/>
+<span style="color: #000000;">2</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"Catania"</span><br/>
+   <span style="color: #000000;">2</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"15.08726745843887329"</span><br/>
+      <span style="color: #000000;">2</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"37.50266842333162032"</span><br/>
 redis<span style="color: #000000; font-weight: bold;">&gt;</span> GEORADIUS Sicily <span style="color: #000000;">15</span> <span style="color: #000000;">37</span> <span style="color: #000000;">200</span> km WITHDIST WITHCOORD<br/>
-<span style="color: #000000;">1</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #a10;">"Palermo"</span><br/>
-   <span style="color: #000000;">2</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #a10;">"190.4424"</span><br/>
-   <span style="color: #000000;">3</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #a10;">"13.36138933897018433"</span><br/>
-      <span style="color: #000000;">2</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #a10;">"38.11555639549629859"</span><br/>
-<span style="color: #000000;">2</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #a10;">"Catania"</span><br/>
-   <span style="color: #000000;">2</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #a10;">"56.4413"</span><br/>
-   <span style="color: #000000;">3</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #a10;">"15.08726745843887329"</span><br/>
-      <span style="color: #000000;">2</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #a10;">"37.50266842333162032"</span><br/>
+<span style="color: #000000;">1</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"Palermo"</span><br/>
+   <span style="color: #000000;">2</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"190.4424"</span><br/>
+   <span style="color: #000000;">3</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"13.36138933897018433"</span><br/>
+      <span style="color: #000000;">2</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"38.11555639549629859"</span><br/>
+<span style="color: #000000;">2</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"Catania"</span><br/>
+   <span style="color: #000000;">2</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"56.4413"</span><br/>
+   <span style="color: #000000;">3</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"15.08726745843887329"</span><br/>
+      <span style="color: #000000;">2</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"37.50266842333162032"</span><br/>
 redis<span style="color: #000000; font-weight: bold;">&gt;</span> <br/>
 </div></div>
 <p>georadiusbymember のインスタンス：</p>
 <div class="example"><h2 class="example">インスタンス</h2> <div class="example_code">
 redis<span style="color: #000000; font-weight: bold;">&gt;</span> GEOADD Sicily <span style="color: #000000;">13.583333</span> <span style="color: #000000;">37.316667</span> <span style="color: #a10;">"Agrigento"</span><br/>
-<span style="color: #7a0874; font-weight: bold;">(</span>integer<span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><br/>
+<span style="color: #7A0874; font-weight: bold;">(</span>integer<span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><br/>
 redis<span style="color: #000000; font-weight: bold;">&gt;</span> GEOADD Sicily <span style="color: #000000;">13.361389</span> <span style="color: #000000;">38.115556</span> <span style="color: #a10;">"Palermo"</span> <span style="color: #000000;">15.087269</span> <span style="color: #000000;">37.502669</span> <span style="color: #a10;">"Catania"</span><br/>
-<span style="color: #7a0874; font-weight: bold;">(</span>integer<span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #000000;">2</span><br/>
+<span style="color: #7A0874; font-weight: bold;">(</span>integer<span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #000000;">2</span><br/>
 redis<span style="color: #000000; font-weight: bold;">&gt;</span> GEORADIUSBYMEMBER Sicily Agrigento <span style="color: #000000;">100</span> km<br/>
-<span style="color: #000000;">1</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #a10;">"Agrigento"</span><br/>
-<span style="color: #000000;">2</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #a10;">"Palermo"</span><br/>
+<span style="color: #000000;">1</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"Agrigento"</span><br/>
+<span style="color: #000000;">2</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"Palermo"</span><br/>
 redis<span style="color: #000000; font-weight: bold;">&gt;</span> <br/>
 </div></div>
 <h3>geohash</h3><p>Redis GEO は geohash を使用して地理位置の座標を保存します。</p><p>geohash は、1つまたは複数の位置要素の geohash 値を取得するために使用されます。</p>
@@ -385,10 +385,10 @@ redis<span style="color: #000000; font-weight: bold;">&gt;</span> <br/>
 <p>インスタンス：</p>
 <div class="example"><h2 class="example">インスタンス</h2> <div class="example_code">
 redis<span style="color: #000000; font-weight: bold;">&gt;</span> GEOADD Sicily <span style="color: #000000;">13.361389</span> <span style="color: #000000;">38.115556</span> <span style="color: #a10;">"Palermo"</span> <span style="color: #000000;">15.087269</span> <span style="color: #000000;">37.502669</span> <span style="color: #a10;">"Catania"</span><br/>
-<span style="color: #7a0874; font-weight: bold;">(</span>integer<span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #000000;">2</span><br/>
+<span style="color: #7A0874; font-weight: bold;">(</span>integer<span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #000000;">2</span><br/>
 redis<span style="color: #000000; font-weight: bold;">&gt;</span> GEOHASH Sicily Palermo Catania<br/>
-<span style="color: #000000;">1</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #a10;">"sqc8b49rny0"</span><br/>
-<span style="color: #000000;">2</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #a10;">"sqdtr74hyu0"</span><br/>
+<span style="color: #000000;">1</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"sqc8b49rny0"</span><br/>
+<span style="color: #000000;">2</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"sqdtr74hyu0"</span><br/>
 redis<span style="color: #000000; font-weight: bold;">&gt;</span> <br/>
 </div></div> その他の拡張
 </ul></div>
@@ -424,7 +424,7 @@ redis<span style="color: #000000; font-weight: bold;">&gt;</span> <br/>
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -469,7 +469,7 @@ redis<span style="color: #000000; font-weight: bold;">&gt;</span> <br/>
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -508,7 +508,7 @@ redis<span style="color: #000000; font-weight: bold;">&gt;</span> <br/>
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてメモを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてメモを共有</h3>
 <p style="font-size:14px;">メモはこの記事の内容の拡張である必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -727,7 +727,7 @@ function kFormatter(num) {
 </style>
 <div class="sidebar-box re-box re-box-large">
 <div class="sidebar-box recommend-here" style="margin: 0 auto;">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
+<a href="#" style="font-size: 16px; color:#5B80A6;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
 </div>
 <div class="sidebar-box sidebar-cate">
 <div class="sidebar-tree">

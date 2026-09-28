@@ -412,7 +412,7 @@ FileTime lastModifiedTime <span style="color: #339933;">=</span> Files.<span sty
 Files.<span style="color: #006633;">setLastModifiedTime</span><span style="color: #009900;">(</span>path, FileTime.<span style="color: #006633;">fromMillis</span><span style="color: #009900;">(</span><span style="color: #003399;">System</span>.<span style="color: #006633;">currentTimeMillis</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;">// ファイルの権限を設定</span><br/>
-Set<span style="color: #339933;">&lt;</span>PosixFilePermission<span style="color: #339933;">&gt;</span> perms <span style="color: #339933;">=</span> PosixFilePermissions.<span style="color: #006633;">fromString</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"rwxr-x---"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+Set<span style="color: #339933;">&lt;</span>PosixFilePermission<span style="color: #339933;">&gt;</span> perms <span style="color: #339933;">=</span> PosixFilePermissions.<span style="color: #006633;">fromString</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"rwxr-x---"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 Files.<span style="color: #006633;">setPosixFilePermissions</span><span style="color: #009900;">(</span>path, perms<span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 </div>
 </div>
@@ -426,7 +426,7 @@ Files.<span style="color: #006633;">setPosixFilePermissions</span><span style="c
 <span style="color: #000000; font-weight: bold;">try</span> <span style="color: #009900;">(</span>Stream<span style="color: #339933;">&lt;</span>Path<span style="color: #339933;">&gt;</span> paths <span style="color: #339933;">=</span> Files.<span style="color: #006633;">find</span><span style="color: #009900;">(</span><br/>
         directoryPath, <br/>
         <span style="color: #003399;">Integer</span>.<span style="color: #006633;">MAX_VALUE</span>, <br/>
-        <span style="color: #009900;">(</span>path, attrs<span style="color: #009900;">)</span> <span style="color: #339933;">-&gt;</span> path.<span style="color: #006633;">toString</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span>.<span style="color: #006633;">endsWith</span><span style="color: #009900;">(</span><span style="color: #0000ff;">".txt"</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
+        <span style="color: #009900;">(</span>path, attrs<span style="color: #009900;">)</span> <span style="color: #339933;">-&gt;</span> path.<span style="color: #006633;">toString</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span>.<span style="color: #006633;">endsWith</span><span style="color: #009900;">(</span><span style="color: #0000FF;">".txt"</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
     paths.<span style="color: #000000; font-weight: bold;">forEach</span><span style="color: #009900;">(</span><span style="color: #003399;">System</span>.<span style="color: #006633;">out</span><span style="color: #339933;">::</span>println<span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <span style="color: #009900;">}</span><br/>
 </div>
@@ -436,10 +436,10 @@ Files.<span style="color: #006633;">setPosixFilePermissions</span><span style="c
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;">// 一時ファイルを作成</span><br/>
-Path tempFile <span style="color: #339933;">=</span> Files.<span style="color: #006633;">createTempFile</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"prefix"</span>, <span style="color: #0000ff;">".suffix"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+Path tempFile <span style="color: #339933;">=</span> Files.<span style="color: #006633;">createTempFile</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"prefix"</span>, <span style="color: #0000FF;">".suffix"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;">// 一時ディレクトリを作成</span><br/>
-Path tempDir <span style="color: #339933;">=</span> Files.<span style="color: #006633;">createTempDirectory</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"tempDir"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+Path tempDir <span style="color: #339933;">=</span> Files.<span style="color: #006633;">createTempDirectory</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"tempDir"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 </div>
 </div>
 <h3>3、ファイル属性ビュー</h3>
@@ -462,7 +462,7 @@ FileStore store <span style="color: #339933;">=</span> Files.<span style="color:
 <span style="color: #000000; font-weight: bold;">try</span> <span style="color: #009900;">{</span><br/>
     Files.<span style="color: #006633;">copy</span><span style="color: #009900;">(</span>sourcePath, targetPath, StandardCopyOption.<span style="color: #006633;">REPLACE_EXISTING</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <span style="color: #009900;">}</span> <span style="color: #000000; font-weight: bold;">catch</span> <span style="color: #009900;">(</span><span style="color: #003399;">IOException</span> e<span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
-    <span style="color: #003399;">System</span>.<span style="color: #006633;">err</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"ファイル操作に失敗しました: "</span> <span style="color: #339933;">+</span> e.<span style="color: #006633;">getMessage</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+    <span style="color: #003399;">System</span>.<span style="color: #006633;">err</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"ファイル操作に失敗しました: "</span> <span style="color: #339933;">+</span> e.<span style="color: #006633;">getMessage</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <span style="color: #009900;">}</span><br/>
 </div>
 </div>
@@ -555,7 +555,7 @@ FileStore store <span style="color: #339933;">=</span> Files.<span style="color:
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -600,7 +600,7 @@ FileStore store <span style="color: #339933;">=</span> Files.<span style="color:
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -639,7 +639,7 @@ FileStore store <span style="color: #339933;">=</span> Files.<span style="color:
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリックしてください</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>

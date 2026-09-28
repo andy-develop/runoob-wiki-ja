@@ -108,14 +108,14 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         <span style="color: #A52A2A; font-weight: bold;">input</span>           clken <span style="color: #5D478B;">,</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">input</span>           rstn <span style="color: #5D478B;">,</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">input</span>           wr_en <span style="color: #5D478B;">,</span><br/>
-        <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>     addr <span style="color: #5D478B;">,</span><br/>
-        <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>     data <span style="color: #5D478B;">,</span><br/>
-        <span style="color: #A52A2A; font-weight: bold;">output</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>    q<br/>
+        <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>     addr <span style="color: #5D478B;">,</span><br/>
+        <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>     data <span style="color: #5D478B;">,</span><br/>
+        <span style="color: #A52A2A; font-weight: bold;">output</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>    q<br/>
      <span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
 <br/>
    <span style="color: #00008B; font-style: italic;">//clk gate</span><br/>
   <span style="color: #A52A2A; font-weight: bold;">wire</span>                 clk_gate <span style="color: #5D478B;">=</span> clk <span style="color: #5D478B;">&amp;</span> clken <span style="color: #5D478B;">;</span><br/>
-   ram <span style="color: #5D478B;">#</span><span style="color: #9F79EE;">(</span><span style="color: #ff0055;">4</span><span style="color: #5D478B;">,</span> <span style="color: #ff0055;">8</span><span style="color: #9F79EE;">)</span><br/>
+   ram <span style="color: #5D478B;">#</span><span style="color: #9F79EE;">(</span><span style="color: #FF0055;">4</span><span style="color: #5D478B;">,</span> <span style="color: #FF0055;">8</span><span style="color: #9F79EE;">)</span><br/>
       u1_ram16x8<br/>
         <span style="color: #9F79EE;">(</span><br/>
          .CLK   <span style="color: #9F79EE;">(</span>clk_gate<span style="color: #9F79EE;">)</span><span style="color: #5D478B;">,</span><br/>
@@ -129,20 +129,20 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div></div><p>RAMモデルは以下の通りです。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #A52A2A; font-weight: bold;">module</span>  ram<br/>
-    <span style="color: #5D478B;">#</span><span style="color: #9F79EE;">(</span>  <span style="color: #A52A2A; font-weight: bold;">parameter</span>       AW <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">2</span> <span style="color: #5D478B;">,</span><br/>
-        <span style="color: #A52A2A; font-weight: bold;">parameter</span>       DW <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">3</span> <span style="color: #9F79EE;">)</span><br/>
+    <span style="color: #5D478B;">#</span><span style="color: #9F79EE;">(</span>  <span style="color: #A52A2A; font-weight: bold;">parameter</span>       AW <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">2</span> <span style="color: #5D478B;">,</span><br/>
+        <span style="color: #A52A2A; font-weight: bold;">parameter</span>       DW <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">3</span> <span style="color: #9F79EE;">)</span><br/>
     <span style="color: #9F79EE;">(</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">input</span>                   CLK <span style="color: #5D478B;">,</span><br/>
-        <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span>AW<span style="color: #5D478B;">-</span><span style="color: #ff0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>          A <span style="color: #5D478B;">,</span><br/>
-        <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span>DW<span style="color: #5D478B;">-</span><span style="color: #ff0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>          D <span style="color: #5D478B;">,</span><br/>
+        <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span>AW<span style="color: #5D478B;">-</span><span style="color: #FF0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>          A <span style="color: #5D478B;">,</span><br/>
+        <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span>DW<span style="color: #5D478B;">-</span><span style="color: #FF0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>          D <span style="color: #5D478B;">,</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">input</span>                   EN <span style="color: #5D478B;">,</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">input</span>                   WR <span style="color: #5D478B;">,</span>    <span style="color: #00008B; font-style: italic;">//1 for write and 0 for read</span><br/>
-        <span style="color: #A52A2A; font-weight: bold;">output</span> <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span>DW<span style="color: #5D478B;">-</span><span style="color: #ff0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>     Q<br/>
+        <span style="color: #A52A2A; font-weight: bold;">output</span> <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span>DW<span style="color: #5D478B;">-</span><span style="color: #FF0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>     Q<br/>
      <span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
 <br/>
-   <span style="color: #A52A2A; font-weight: bold;">parameter</span>            MASK <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">3</span> <span style="color: #5D478B;">;</span><br/>
+   <span style="color: #A52A2A; font-weight: bold;">parameter</span>            MASK <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">3</span> <span style="color: #5D478B;">;</span><br/>
 <br/>
-   <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span>DW<span style="color: #5D478B;">-</span><span style="color: #ff0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>         mem <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">0</span><span style="color: #5D478B;">:</span><span style="color: #9F79EE;">(</span><span style="color: #ff0055;">1</span><span style="color: #5D478B;">&lt;&lt;</span>AW<span style="color: #9F79EE;">)</span><span style="color: #5D478B;">-</span><span style="color: #ff0055;">1</span><span style="color: #9F79EE;">]</span> <span style="color: #5D478B;">;</span><br/>
+   <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span>DW<span style="color: #5D478B;">-</span><span style="color: #FF0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>         mem <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">0</span><span style="color: #5D478B;">:</span><span style="color: #9F79EE;">(</span><span style="color: #FF0055;">1</span><span style="color: #5D478B;">&lt;&lt;</span>AW<span style="color: #9F79EE;">)</span><span style="color: #5D478B;">-</span><span style="color: #FF0055;">1</span><span style="color: #9F79EE;">]</span> <span style="color: #5D478B;">;</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">posedge</span> CLK<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
       <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span>EN <span style="color: #5D478B;">&amp;&amp;</span> WR<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
          mem<span style="color: #9F79EE;">[</span>A<span style="color: #9F79EE;">]</span>  <span style="color: #5D478B;">&lt;=</span> D <span style="color: #5D478B;">;</span><br/>
@@ -156,57 +156,57 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div></div>
 <p>testbenchコードは以下の通りです。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #008800;">`timescale</span> <span style="color: #ff0055;">1ns</span><span style="color: #5D478B;">/</span><span style="color: #ff0055;">1ns</span><br/>
+<span style="color: #008800;">`timescale</span> <span style="color: #FF0055;">1ns</span><span style="color: #5D478B;">/</span><span style="color: #FF0055;">1ns</span><br/>
 <span style="color: #A52A2A; font-weight: bold;">module</span> test <span style="color: #5D478B;">;</span><br/>
    <span style="color: #00008B; font-style: italic;">//signals declaration</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">reg</span>          rstn <span style="color: #5D478B;">;</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">reg</span>          clk <span style="color: #5D478B;">;</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">reg</span>          clken <span style="color: #5D478B;">;</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">reg</span>          wr_en <span style="color: #5D478B;">;</span><br/>
-   <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>    addr <span style="color: #5D478B;">;</span><br/>
-   <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>    data <span style="color: #5D478B;">;</span><br/>
-   <span style="color: #A52A2A; font-weight: bold;">wire</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>   q <span style="color: #5D478B;">;</span><br/>
+   <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>    addr <span style="color: #5D478B;">;</span><br/>
+   <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>    data <span style="color: #5D478B;">;</span><br/>
+   <span style="color: #A52A2A; font-weight: bold;">wire</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>   q <span style="color: #5D478B;">;</span><br/>
 <br/>
    <span style="color: #A52A2A; font-weight: bold;">initial</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-      rstn      <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span><br/>
-      <span style="color: #5D478B;">#</span><span style="color: #ff0055;">7</span> rstn   <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span><br/>
+      rstn      <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span><br/>
+      <span style="color: #5D478B;">#</span><span style="color: #FF0055;">7</span> rstn   <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 <br/>
    <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-      <span style="color: #5D478B;">#</span><span style="color: #ff0055;">50</span> clk <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span><br/>
-      <span style="color: #5D478B;">#</span><span style="color: #ff0055;">50</span> clk <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1</span> <span style="color: #5D478B;">;</span><br/>
+      <span style="color: #5D478B;">#</span><span style="color: #FF0055;">50</span> clk <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span><br/>
+      <span style="color: #5D478B;">#</span><span style="color: #FF0055;">50</span> clk <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1</span> <span style="color: #5D478B;">;</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 <br/>
    <span style="color: #00008B; font-style: italic;">//data logic</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">initial</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-      clken     <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span><br/>
-      wr_en     <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span><br/>
-      addr      <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">4'h3</span> <span style="color: #5D478B;">;</span><br/>
-      data      <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">8'h31</span> <span style="color: #5D478B;">;</span><br/>
-      <span style="color: #5D478B;">#</span> <span style="color: #ff0055;">53</span> <span style="color: #5D478B;">;</span><br/>
+      clken     <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span><br/>
+      wr_en     <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span><br/>
+      addr      <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">4'h3</span> <span style="color: #5D478B;">;</span><br/>
+      data      <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">8'h31</span> <span style="color: #5D478B;">;</span><br/>
+      <span style="color: #5D478B;">#</span> <span style="color: #FF0055;">53</span> <span style="color: #5D478B;">;</span><br/>
       <span style="color: #00008B; font-style: italic;">//(1) normal write and read</span><br/>
-      clken     <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1</span> <span style="color: #5D478B;">;</span><br/>
-      wr_en     <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1</span> <span style="color: #5D478B;">;</span><br/>
-      <span style="color: #A52A2A; font-weight: bold;">repeat</span><span style="color: #9F79EE;">(</span><span style="color: #ff0055;">9</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
+      clken     <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1</span> <span style="color: #5D478B;">;</span><br/>
+      wr_en     <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1</span> <span style="color: #5D478B;">;</span><br/>
+      <span style="color: #A52A2A; font-weight: bold;">repeat</span><span style="color: #9F79EE;">(</span><span style="color: #FF0055;">9</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
          <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">negedge</span> clk<span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
-         data   <span style="color: #5D478B;">=</span> data <span style="color: #5D478B;">+</span> <span style="color: #ff0055;">1</span> <span style="color: #5D478B;">;</span><br/>
-         addr   <span style="color: #5D478B;">=</span> addr <span style="color: #5D478B;">+</span> <span style="color: #ff0055;">1</span> <span style="color: #5D478B;">;</span><br/>
+         data   <span style="color: #5D478B;">=</span> data <span style="color: #5D478B;">+</span> <span style="color: #FF0055;">1</span> <span style="color: #5D478B;">;</span><br/>
+         addr   <span style="color: #5D478B;">=</span> addr <span style="color: #5D478B;">+</span> <span style="color: #FF0055;">1</span> <span style="color: #5D478B;">;</span><br/>
       <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
       <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">negedge</span> clk<span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
-      clken     <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span><br/>
-      wr_en     <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span><br/>
+      clken     <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span><br/>
+      wr_en     <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span><br/>
 <br/>
       <span style="color: #00008B; font-style: italic;">//read</span><br/>
-      <span style="color: #5D478B;">#</span><span style="color: #ff0055;">211</span><span style="color: #5D478B;">;</span><br/>
-      addr      <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">4'h3</span> <span style="color: #5D478B;">;</span><br/>
-      clken     <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1</span> <span style="color: #5D478B;">;</span><br/>
-      <span style="color: #A52A2A; font-weight: bold;">repeat</span><span style="color: #9F79EE;">(</span><span style="color: #ff0055;">9</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
+      <span style="color: #5D478B;">#</span><span style="color: #FF0055;">211</span><span style="color: #5D478B;">;</span><br/>
+      addr      <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">4'h3</span> <span style="color: #5D478B;">;</span><br/>
+      clken     <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1</span> <span style="color: #5D478B;">;</span><br/>
+      <span style="color: #A52A2A; font-weight: bold;">repeat</span><span style="color: #9F79EE;">(</span><span style="color: #FF0055;">9</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
          <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">negedge</span> clk<span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
-         addr   <span style="color: #5D478B;">=</span> addr <span style="color: #5D478B;">+</span> <span style="color: #ff0055;">1</span> <span style="color: #5D478B;">;</span><br/>
+         addr   <span style="color: #5D478B;">=</span> addr <span style="color: #5D478B;">+</span> <span style="color: #FF0055;">1</span> <span style="color: #5D478B;">;</span><br/>
       <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
       <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">negedge</span> clk<span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
       <span style="color: #00008B; font-style: italic;">//end</span><br/>
-      clken     <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span><br/>
+      clken     <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">end</span> <span style="color: #00008B; font-style: italic;">// initial begin</span><br/>
 <br/>
    clkgate_basic u_ram_clkgate<br/>
@@ -222,9 +222,9 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <br/>
    <span style="color: #00008B; font-style: italic;">//simulation finish</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-      <span style="color: #5D478B;">#</span><span style="color: #ff0055;">100</span><span style="color: #5D478B;">;</span><br/>
-      <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span><span style="color: #9932CC;">$time</span> <span style="color: #5D478B;">&gt;=</span> <span style="color: #ff0055;">10000</span><span style="color: #9F79EE;">)</span>  <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-         <span style="color: #5D478B;">#</span><span style="color: #ff0055;">1</span> <span style="color: #5D478B;">;</span><br/>
+      <span style="color: #5D478B;">#</span><span style="color: #FF0055;">100</span><span style="color: #5D478B;">;</span><br/>
+      <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span><span style="color: #9932CC;">$time</span> <span style="color: #5D478B;">&gt;=</span> <span style="color: #FF0055;">10000</span><span style="color: #9F79EE;">)</span>  <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
+         <span style="color: #5D478B;">#</span><span style="color: #FF0055;">1</span> <span style="color: #5D478B;">;</span><br/>
          <span style="color: #9932CC;">$finish</span> <span style="color: #5D478B;">;</span><br/>
       <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
@@ -235,19 +235,19 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>この方法の欠点も非常に明白です。タイミングやジッタの原因により、クロックイネーブル信号とクロックをAND演算した後、グリッチが発生しやすく、デジタル回路に深刻な影響を与える可能性があります。</p><p>testbenchでクロックイネーブル信号を非理想的なものとしてシミュレートするために、以下のシミュレーションコードを追加します。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
       <span style="color: #00008B; font-style: italic;">//(2) jitter at the end of read</span><br/>
-      <span style="color: #5D478B;">#</span><span style="color: #ff0055;">985</span><span style="color: #5D478B;">;</span><br/>
-      addr      <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">4'h3</span> <span style="color: #5D478B;">;</span><br/>
-      clken     <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1</span> <span style="color: #5D478B;">;</span><br/>
-      <span style="color: #A52A2A; font-weight: bold;">repeat</span><span style="color: #9F79EE;">(</span><span style="color: #ff0055;">9</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
+      <span style="color: #5D478B;">#</span><span style="color: #FF0055;">985</span><span style="color: #5D478B;">;</span><br/>
+      addr      <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">4'h3</span> <span style="color: #5D478B;">;</span><br/>
+      clken     <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1</span> <span style="color: #5D478B;">;</span><br/>
+      <span style="color: #A52A2A; font-weight: bold;">repeat</span><span style="color: #9F79EE;">(</span><span style="color: #FF0055;">9</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
          <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">negedge</span> clk<span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
-         addr   <span style="color: #5D478B;">=</span> addr <span style="color: #5D478B;">+</span> <span style="color: #ff0055;">1</span> <span style="color: #5D478B;">;</span><br/>
+         addr   <span style="color: #5D478B;">=</span> addr <span style="color: #5D478B;">+</span> <span style="color: #FF0055;">1</span> <span style="color: #5D478B;">;</span><br/>
       <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
       <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">negedge</span> clk<span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
-      clken     <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span><br/>
-      <span style="color: #5D478B;">#</span><span style="color: #ff0055;">20</span> clken <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1</span> <span style="color: #5D478B;">;</span><br/>
-      <span style="color: #5D478B;">#</span><span style="color: #ff0055;">21</span> clken <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span><br/>
-      <span style="color: #5D478B;">#</span><span style="color: #ff0055;">31</span> clken <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1</span> <span style="color: #5D478B;">;</span><br/>
-      <span style="color: #5D478B;">#</span><span style="color: #ff0055;">13</span> clken <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span><br/>
+      clken     <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span><br/>
+      <span style="color: #5D478B;">#</span><span style="color: #FF0055;">20</span> clken <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1</span> <span style="color: #5D478B;">;</span><br/>
+      <span style="color: #5D478B;">#</span><span style="color: #FF0055;">21</span> clken <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span><br/>
+      <span style="color: #5D478B;">#</span><span style="color: #FF0055;">31</span> clken <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1</span> <span style="color: #5D478B;">;</span><br/>
+      <span style="color: #5D478B;">#</span><span style="color: #FF0055;">13</span> clken <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span><br/>
 </div></div><p>RAM読み出しのシミュレーション結果は以下の通りです。</p>
 <p><img decoding="async" src="../wp-content/uploads/2021/05/v-rtl-6.png"/></p>
 <p>図からわかるように、信号clkenの非同期やジッタの問題により、RAMに入力されるクロックにすでにグリッチが発生しています。アドレス0x3のデータは取りこぼされ（イネーブル信号のタイミングに関係）、アドレス0xCのデータは2回読み出されています。明らかに、このゲーテッドクロックのロジック設計は非常に危険です。</p><p>このような問題を解決するには、ラッチ構造を使用してグリッチを除去する必要があります。</p>
@@ -315,7 +315,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -360,7 +360,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -399,7 +399,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
 	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -610,7 +610,7 @@ p.note-author {
     border-bottom: 1px solid #ddd;
     font-size: 18px;
     font-weight: bold;
-    color: #78a15a;
+    color: #5B80A6;
     padding-bottom: 2px;
     margin-bottom: 4px;
 }

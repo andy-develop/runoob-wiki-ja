@@ -487,13 +487,13 @@ EOF<br/>
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># ファイルの内容をコンテキストとしてAgentに送信</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">cat</span> error.log <span style="color: #000000; font-weight: bold;">|</span> hermes chat <span style="color: #660033;">-q</span> <span style="color: #a10;">"これらのエラーログを分析して根本原因を特定してください"</span><br/>
+<span style="color: #C20CB9; font-weight: bold;">cat</span> error.log <span style="color: #000000; font-weight: bold;">|</span> hermes chat <span style="color: #660033;">-q</span> <span style="color: #a10;">"これらのエラーログを分析して根本原因を特定してください"</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># Agentの応答をファイルに保存</span><br/>
 hermes chat <span style="color: #660033;">-q</span> <span style="color: #a10;">"プロジェクトのREADME.mdを生成してください"</span> <span style="color: #000000; font-weight: bold;">&gt;</span> README.md<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># パイプラインでAgentをフィルターとして使用</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">cat</span> data.csv <span style="color: #000000; font-weight: bold;">|</span> hermes chat <span style="color: #660033;">-q</span> <span style="color: #a10;">"すべてのメールアドレスを1行に1つずつ抽出してください"</span> <span style="color: #000000; font-weight: bold;">&gt;</span> emails.txt<br/>
+<span style="color: #C20CB9; font-weight: bold;">cat</span> data.csv <span style="color: #000000; font-weight: bold;">|</span> hermes chat <span style="color: #660033;">-q</span> <span style="color: #a10;">"すべてのメールアドレスを1行に1つずつ抽出してください"</span> <span style="color: #000000; font-weight: bold;">&gt;</span> emails.txt<br/>
 </div>
 </div>
 <h3>Profileコマンドエイリアスとの組み合わせ</h3>
@@ -562,10 +562,10 @@ approvals</span>:<span style="color: green;"><br/>
 <span style="color: #666666; font-style: italic;"># 自動コードレビュースクリプト——Gitで変更されたファイルを1つずつレビュー</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># 変更されたすべてのPythonファイルを取得</span><br/>
-<span style="color: #007800;">changed_files</span>=$<span style="color: #7a0874; font-weight: bold;">(</span><span style="color: #c20cb9; font-weight: bold;">git diff</span> <span style="color: #660033;">--name-only</span> HEAD~<span style="color: #000000;">1</span> <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #c20cb9; font-weight: bold;">grep</span> <span style="color: #a10;">'\.py$'</span><span style="color: #7a0874; font-weight: bold;">)</span><br/>
+<span style="color: #007800;">changed_files</span>=$<span style="color: #7A0874; font-weight: bold;">(</span><span style="color: #C20CB9; font-weight: bold;">git diff</span> <span style="color: #660033;">--name-only</span> HEAD~<span style="color: #000000;">1</span> <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #C20CB9; font-weight: bold;">grep</span> <span style="color: #a10;">'\.py$'</span><span style="color: #7A0874; font-weight: bold;">)</span><br/>
 <br/>
-<span style="color: #000000; font-weight: bold;">for</span> <span style="color: #c20cb9; font-weight: bold;">file</span> <span style="color: #000000; font-weight: bold;">in</span> <span style="color: #007800;">$changed_files</span>; <span style="color: #000000; font-weight: bold;">do</span><br/>
-    <span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #a10;">"=== レビュー:<span style="color: #007800;">$file</span> ==="</span><br/>
+<span style="color: #000000; font-weight: bold;">for</span> <span style="color: #C20CB9; font-weight: bold;">file</span> <span style="color: #000000; font-weight: bold;">in</span> <span style="color: #007800;">$changed_files</span>; <span style="color: #000000; font-weight: bold;">do</span><br/>
+    <span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #a10;">"=== レビュー:<span style="color: #007800;">$file</span> ==="</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;"># Hermesを使用してコードをレビューし、結果をターミナルに直接出力</span><br/>
     hermes chat <span style="color: #660033;">-q</span> <span style="color: #a10;">"以下のPythonファイルのコードスタイルと潜在的な問題をレビューしてください：<br/>
@@ -573,11 +573,11 @@ approvals</span>:<span style="color: green;"><br/>
 <br/>見つかった問題と提案をリスト形式で提示してください。"</span> <span style="color: #000000;">2</span><span style="color: #000000; font-weight: bold;">&gt;/</span>dev<span style="color: #000000; font-weight: bold;">/</span>null<br/>
 <br/>
     <span style="color: #666666; font-style: italic;"># 終了コードを確認</span><br/>
-    <span style="color: #000000; font-weight: bold;">if</span> <span style="color: #7a0874; font-weight: bold;">[</span> <span style="color: #007800;">$?</span> <span style="color: #660033;">-ne</span> <span style="color: #000000;">0</span> <span style="color: #7a0874; font-weight: bold;">]</span>; <span style="color: #000000; font-weight: bold;">then</span><br/>
-        <span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #a10;">"[警告]<span style="color: #007800;">$file</span>レビュー中にエラーが発生しました"</span><br/>
+    <span style="color: #000000; font-weight: bold;">if</span> <span style="color: #7A0874; font-weight: bold;">[</span> <span style="color: #007800;">$?</span> <span style="color: #660033;">-ne</span> <span style="color: #000000;">0</span> <span style="color: #7A0874; font-weight: bold;">]</span>; <span style="color: #000000; font-weight: bold;">then</span><br/>
+        <span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #a10;">"[警告]<span style="color: #007800;">$file</span>レビュー中にエラーが発生しました"</span><br/>
     <span style="color: #000000; font-weight: bold;">fi</span><br/>
 <br/>
-    <span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #a10;">""</span><br/>
+    <span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #a10;">""</span><br/>
 <span style="color: #000000; font-weight: bold;">done</span><br/>
 </div>
 </div>
@@ -591,33 +591,33 @@ approvals</span>:<span style="color: green;"><br/>
 <span style="color: #666666; font-style: italic;"># Git pre-commit hook：コミット前にAgentがコードをチェック</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># ステージングエリアで変更されたファイルのリストを取得</span><br/>
-<span style="color: #007800;">staged_files</span>=$<span style="color: #7a0874; font-weight: bold;">(</span><span style="color: #c20cb9; font-weight: bold;">git diff</span> <span style="color: #660033;">--cached</span> --name-only<span style="color: #7a0874; font-weight: bold;">)</span><br/>
+<span style="color: #007800;">staged_files</span>=$<span style="color: #7A0874; font-weight: bold;">(</span><span style="color: #C20CB9; font-weight: bold;">git diff</span> <span style="color: #660033;">--cached</span> --name-only<span style="color: #7A0874; font-weight: bold;">)</span><br/>
 <br/>
-<span style="color: #000000; font-weight: bold;">if</span> <span style="color: #7a0874; font-weight: bold;">[</span> <span style="color: #660033;">-z</span> <span style="color: #a10;">"<span style="color: #007800;">$staged_files</span>"</span> <span style="color: #7a0874; font-weight: bold;">]</span>; <span style="color: #000000; font-weight: bold;">then</span><br/>
-    <span style="color: #7a0874; font-weight: bold;">exit</span> <span style="color: #000000;">0</span><br/>
+<span style="color: #000000; font-weight: bold;">if</span> <span style="color: #7A0874; font-weight: bold;">[</span> <span style="color: #660033;">-z</span> <span style="color: #a10;">"<span style="color: #007800;">$staged_files</span>"</span> <span style="color: #7A0874; font-weight: bold;">]</span>; <span style="color: #000000; font-weight: bold;">then</span><br/>
+    <span style="color: #7A0874; font-weight: bold;">exit</span> <span style="color: #000000;">0</span><br/>
 <span style="color: #000000; font-weight: bold;">fi</span><br/>
 <br/>
-<span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #a10;">"Hermes Agentがコード変更をチェックしています..."</span><br/>
+<span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #a10;">"Hermes Agentがコード変更をチェックしています..."</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># Agentにステージングされた変更をレビューさせる</span><br/>
-<span style="color: #007800;">result</span>=$<span style="color: #7a0874; font-weight: bold;">(</span>hermes chat <span style="color: #660033;">-q</span> <span style="color: #a10;">"以下のGitステージングエリアのコード変更をレビューし、<span style="color: #000099; font-weight: bold;">\<br/>
+<span style="color: #007800;">result</span>=$<span style="color: #7A0874; font-weight: bold;">(</span>hermes chat <span style="color: #660033;">-q</span> <span style="color: #a10;">"以下のGitステージングエリアのコード変更をレビューし、<span style="color: #000099; font-weight: bold;">\<br/>
 </span>重大な問題（セキュリティ脆弱性、論理エラー、破壊的な変更）のみ報告してください。<span style="color: #000099; font-weight: bold;">\<br/>
 </span>重大な問題がなければ、PASSと返信してください。<span style="color: #000099; font-weight: bold;">\<br/>
 </span><span style="color: #000099; font-weight: bold;">\<br/>
 </span>変更ファイル：<span style="color: #000099; font-weight: bold;">\n</span><span style="color: #007800;">$staged_files</span><span style="color: #000099; font-weight: bold;">\n</span><span style="color: #000099; font-weight: bold;">\<br/>
-</span>詳細なdiff：<span style="color: #000099; font-weight: bold;">\n</span><span style="color: #007800;">$(git diff --cached)</span>"</span> <span style="color: #000000;">2</span><span style="color: #000000; font-weight: bold;">&gt;/</span>dev<span style="color: #000000; font-weight: bold;">/</span>null<span style="color: #7a0874; font-weight: bold;">)</span><br/>
+</span>詳細なdiff：<span style="color: #000099; font-weight: bold;">\n</span><span style="color: #007800;">$(git diff --cached)</span>"</span> <span style="color: #000000;">2</span><span style="color: #000000; font-weight: bold;">&gt;/</span>dev<span style="color: #000000; font-weight: bold;">/</span>null<span style="color: #7A0874; font-weight: bold;">)</span><br/>
 <br/>
-<span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #a10;">"<span style="color: #007800;">$result</span>"</span><br/>
+<span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #a10;">"<span style="color: #007800;">$result</span>"</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># Agentが重大な問題を発見した場合、コミットをブロック</span><br/>
-<span style="color: #000000; font-weight: bold;">if</span> <span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #a10;">"<span style="color: #007800;">$result</span>"</span> <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #c20cb9; font-weight: bold;">grep</span> <span style="color: #660033;">-q</span> <span style="color: #a10;">"PASS"</span>; <span style="color: #000000; font-weight: bold;">then</span><br/>
-    <span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #a10;">"レビュー合格"</span><br/>
-    <span style="color: #7a0874; font-weight: bold;">exit</span> <span style="color: #000000;">0</span><br/>
+<span style="color: #000000; font-weight: bold;">if</span> <span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #a10;">"<span style="color: #007800;">$result</span>"</span> <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #C20CB9; font-weight: bold;">grep</span> <span style="color: #660033;">-q</span> <span style="color: #a10;">"PASS"</span>; <span style="color: #000000; font-weight: bold;">then</span><br/>
+    <span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #a10;">"レビュー合格"</span><br/>
+    <span style="color: #7A0874; font-weight: bold;">exit</span> <span style="color: #000000;">0</span><br/>
 <span style="color: #000000; font-weight: bold;">else</span><br/>
-    <span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #a10;">""</span><br/>
-    <span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #a10;">"Agentが注意すべき問題を発見しました。"</span><br/>
-    <span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #a10;">"問題がないことを確認した場合は、git commit --no-verify を使用してこのチェックをスキップしてください。"</span><br/>
-    <span style="color: #7a0874; font-weight: bold;">exit</span> <span style="color: #000000;">1</span><br/>
+    <span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #a10;">""</span><br/>
+    <span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #a10;">"Agentが注意すべき問題を発見しました。"</span><br/>
+    <span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #a10;">"問題がないことを確認した場合は、git commit --no-verify を使用してこのチェックをスキップしてください。"</span><br/>
+    <span style="color: #7A0874; font-weight: bold;">exit</span> <span style="color: #000000;">1</span><br/>
 <span style="color: #000000; font-weight: bold;">fi</span><br/>
 </div>
 </div>
@@ -657,7 +657,7 @@ approvals</span>:<span style="color: green;"><br/>
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -702,7 +702,7 @@ approvals</span>:<span style="color: green;"><br/>
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -741,7 +741,7 @@ approvals</span>:<span style="color: green;"><br/>
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -960,7 +960,7 @@ function kFormatter(num) {
 </style>
 <div class="sidebar-box re-box re-box-large">
 <div class="sidebar-box recommend-here" style="margin: 0 auto;">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
+<a href="#" style="font-size: 16px; color:#5B80A6;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
 </div>
 <div class="sidebar-box sidebar-cate">
 <div class="sidebar-tree">

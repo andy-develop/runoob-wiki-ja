@@ -190,8 +190,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h3>1. メイン設定ファイル (mybatis-config.xml)</h3>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;?xml</span> <span style="color: #000066;">version</span>=<span style="color: #a11;">"1.0"</span> <span style="color: #000066;">encoding</span>=<span style="color: #a11;">"UTF-8"</span><span style="color: #000000; font-weight: bold;">?&gt;</span></span><br/>
-<span style="color: #00bbdd;">&lt;!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" </span><br/>
-<span style="color: #00bbdd;">"http://mybatis.org/dtd/mybatis-3-config.dtd"&gt;</span><br/>
+<span style="color: #00BBDD;">&lt;!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" </span><br/>
+<span style="color: #00BBDD;">"http://mybatis.org/dtd/mybatis-3-config.dtd"&gt;</span><br/>
 <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;configuration<span style="color: #000000; font-weight: bold;">&gt;</span></span></span><br/>
     <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;environments</span> <span style="color: #000066;">default</span>=<span style="color: #a11;">"development"</span><span style="color: #000000; font-weight: bold;">&gt;</span></span><br/>
         <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;environment<span style="color: #000000; font-weight: bold;">&gt;</span></span></span><br/>
@@ -212,8 +212,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h3>2. Mapper ファイルの例</h3>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;?xml</span> <span style="color: #000066;">version</span>=<span style="color: #a11;">"1.0"</span> <span style="color: #000066;">encoding</span>=<span style="color: #a11;">"UTF-8"</span><span style="color: #000000; font-weight: bold;">?&gt;</span></span><br/>
-<span style="color: #00bbdd;">&lt;!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" </span><br/>
-<span style="color: #00bbdd;">"http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;</span><br/>
+<span style="color: #00BBDD;">&lt;!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" </span><br/>
+<span style="color: #00BBDD;">"http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;</span><br/>
 <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;mapper</span> <span style="color: #000066;">namespace</span>=<span style="color: #a11;">"com.example.mapper.UserMapper"</span><span style="color: #000000; font-weight: bold;">&gt;</span></span><br/>
     <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;select</span> <span style="color: #000066;">id</span>=<span style="color: #a11;">"getUserById"</span> <span style="color: #000066;">parameterType</span>=<span style="color: #a11;">"int"</span> <span style="color: #000066;">resultType</span>=<span style="color: #a11;">"com.example.model.User"</span><span style="color: #000000; font-weight: bold;">&gt;</span></span><br/>
         SELECT * FROM users WHERE id = #{id}<br/>
@@ -228,7 +228,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2>MyBatis の基本的な使い方</h2>
 <h3>1. SqlSession の取得</h3>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #003399;">String</span> resource <span style="color: #339933;">=</span> <span style="color: #0000ff;">"mybatis-config.xml"</span><span style="color: #339933;">;</span><br/>
+<span style="color: #003399;">String</span> resource <span style="color: #339933;">=</span> <span style="color: #0000FF;">"mybatis-config.xml"</span><span style="color: #339933;">;</span><br/>
 <span style="color: #003399;">InputStream</span> inputStream <span style="color: #339933;">=</span> Resources.<span style="color: #006633;">getResourceAsStream</span><span style="color: #009900;">(</span>resource<span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 SqlSessionFactory sqlSessionFactory <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> SqlSessionFactoryBuilder<span style="color: #009900;">(</span><span style="color: #009900;">)</span>.<span style="color: #006633;">build</span><span style="color: #009900;">(</span>inputStream<span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 SqlSession session <span style="color: #339933;">=</span> sqlSessionFactory.<span style="color: #006633;">openSession</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
@@ -236,17 +236,17 @@ SqlSession session <span style="color: #339933;">=</span> sqlSessionFactory.<spa
 <h3>2. クエリの実行</h3>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #666666; font-style: italic;">// 方法1：SqlSession を直接使用</span><br/>
-User user <span style="color: #339933;">=</span> session.<span style="color: #006633;">selectOne</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"com.example.mapper.UserMapper.getUserById"</span>, <span style="color: #cc66cc;">1</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+User user <span style="color: #339933;">=</span> session.<span style="color: #006633;">selectOne</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"com.example.mapper.UserMapper.getUserById"</span>, <span style="color: #CC66CC;">1</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;">// 方法2：Mapper インターフェース経由</span><br/>
 UserMapper mapper <span style="color: #339933;">=</span> session.<span style="color: #006633;">getMapper</span><span style="color: #009900;">(</span>UserMapper.<span style="color: #000000; font-weight: bold;">class</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
-User user <span style="color: #339933;">=</span> mapper.<span style="color: #006633;">getUserById</span><span style="color: #009900;">(</span><span style="color: #cc66cc;">1</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+User user <span style="color: #339933;">=</span> mapper.<span style="color: #006633;">getUserById</span><span style="color: #009900;">(</span><span style="color: #CC66CC;">1</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 </div></div>
 <h3>3. 挿入の実行</h3>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 User newUser <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> User<span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
-newUser.<span style="color: #006633;">setName</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"张三"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
-newUser.<span style="color: #006633;">setEmail</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"zhangsan@example.com"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+newUser.<span style="color: #006633;">setName</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"张三"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+newUser.<span style="color: #006633;">setEmail</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"zhangsan@example.com"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
 <span style="color: #000066; font-weight: bold;">int</span> rows <span style="color: #339933;">=</span> mapper.<span style="color: #006633;">insertUser</span><span style="color: #009900;">(</span>newUser<span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 session.<span style="color: #006633;">commit</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span> <span style="color: #666666; font-style: italic;">// トランザクションをコミット</span><br/>
@@ -347,8 +347,8 @@ session.<span style="color: #006633;">commit</span><span style="color: #009900;"
 <p><strong>注意事項：</strong></p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #666666; font-style: italic;">// 例：同じ SqlSession 内で同じクエリは一度だけ実行される</span><br/>
-User user1 <span style="color: #339933;">=</span> sqlSession.<span style="color: #006633;">selectOne</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"getUserById"</span>, <span style="color: #cc66cc;">1</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>  <span style="color: #666666; font-style: italic;">// SQL を実行</span><br/>
-User user2 <span style="color: #339933;">=</span> sqlSession.<span style="color: #006633;">selectOne</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"getUserById"</span>, <span style="color: #cc66cc;">1</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>  <span style="color: #666666; font-style: italic;">// キャッシュから取得</span><br/>
+User user1 <span style="color: #339933;">=</span> sqlSession.<span style="color: #006633;">selectOne</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"getUserById"</span>, <span style="color: #CC66CC;">1</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>  <span style="color: #666666; font-style: italic;">// SQL を実行</span><br/>
+User user2 <span style="color: #339933;">=</span> sqlSession.<span style="color: #006633;">selectOne</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"getUserById"</span>, <span style="color: #CC66CC;">1</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>  <span style="color: #666666; font-style: italic;">// キャッシュから取得</span><br/>
 </div></div>
 <h3>2. 二次キャッシュ</h3><p>二次キャッシュは Mapper レベルのキャッシュで、複数の SqlSession がキャッシュを共有できます。設定ファイルで有効にする必要があります：</p>
 <pre>&lt;settings&gt;
@@ -408,7 +408,7 @@ mybatis</span>:<span style="color: green;"><br/>
 <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">class</span> MyBatisConfig <span style="color: #009900;">{</span><br/>
     <br/>
     @Bean<br/>
-    @ConfigurationProperties<span style="color: #009900;">(</span>prefix <span style="color: #339933;">=</span> <span style="color: #0000ff;">"spring.datasource"</span><span style="color: #009900;">)</span><br/>
+    @ConfigurationProperties<span style="color: #009900;">(</span>prefix <span style="color: #339933;">=</span> <span style="color: #0000FF;">"spring.datasource"</span><span style="color: #009900;">)</span><br/>
     <span style="color: #000000; font-weight: bold;">public</span> DataSource dataSource<span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
         <span style="color: #000000; font-weight: bold;">return</span> DataSourceBuilder.<span style="color: #006633;">create</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span>.<span style="color: #006633;">build</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
     <span style="color: #009900;">}</span><br/>
@@ -417,12 +417,12 @@ mybatis</span>:<span style="color: green;"><br/>
     <span style="color: #000000; font-weight: bold;">public</span> SqlSessionFactory sqlSessionFactory<span style="color: #009900;">(</span>DataSource dataSource<span style="color: #009900;">)</span> <span style="color: #000000; font-weight: bold;">throws</span> <span style="color: #003399;">Exception</span> <span style="color: #009900;">{</span><br/>
         SqlSessionFactoryBean factory <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> SqlSessionFactoryBean<span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
         factory.<span style="color: #006633;">setDataSource</span><span style="color: #009900;">(</span>dataSource<span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
-        factory.<span style="color: #006633;">setTypeAliasesPackage</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"com.example.model"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+        factory.<span style="color: #006633;">setTypeAliasesPackage</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"com.example.model"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
         <br/>
         <span style="color: #666666; font-style: italic;">// カスタム設定（例）</span><br/>
         org.<span style="color: #006633;">apache</span>.<span style="color: #006633;">ibatis</span>.<span style="color: #006633;">session</span>.<span style="color: #006633;">Configuration</span> config <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> Configuration<span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
         config.<span style="color: #006633;">setMapUnderscoreToCamelCase</span><span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">true</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
-        config.<span style="color: #006633;">setDefaultFetchSize</span><span style="color: #009900;">(</span><span style="color: #cc66cc;">100</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+        config.<span style="color: #006633;">setDefaultFetchSize</span><span style="color: #009900;">(</span><span style="color: #CC66CC;">100</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
         factory.<span style="color: #006633;">setConfiguration</span><span style="color: #009900;">(</span>config<span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
         <br/>
         <span style="color: #666666; font-style: italic;">// プラグイン設定（例）</span><br/>
@@ -437,7 +437,7 @@ mybatis</span>:<span style="color: green;"><br/>
     @Bean<br/>
     <span style="color: #000000; font-weight: bold;">public</span> MapperScannerConfigurer mapperScanner<span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
         MapperScannerConfigurer scanner <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> MapperScannerConfigurer<span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
-        scanner.<span style="color: #006633;">setBasePackage</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"com.example.mapper"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+        scanner.<span style="color: #006633;">setBasePackage</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"com.example.mapper"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
         scanner.<span style="color: #006633;">setAnnotationClass</span><span style="color: #009900;">(</span><span style="color: #003399;">Repository</span>.<span style="color: #000000; font-weight: bold;">class</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span> <span style="color: #666666; font-style: italic;">// アノテーションスキャンの限定</span><br/>
         <span style="color: #000000; font-weight: bold;">return</span> scanner<span style="color: #339933;">;</span><br/>
     <span style="color: #009900;">}</span><br/>
@@ -477,11 +477,11 @@ mybatis</span>:<span style="color: green;"><br/>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 @<span style="color: #003399;">Repository</span> <span style="color: #666666; font-style: italic;">// DAO 層のアノテーションを明確に指定</span><br/>
 <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">interface</span> UserMapper <span style="color: #009900;">{</span><br/>
-    @Select<span style="color: #009900;">(</span><span style="color: #0000ff;">"SELECT * FROM users WHERE id = #{id}"</span><span style="color: #009900;">)</span><br/>
-    User selectById<span style="color: #009900;">(</span>@Param<span style="color: #009900;">(</span><span style="color: #0000ff;">"id"</span><span style="color: #009900;">)</span> <span style="color: #000066; font-weight: bold;">int</span> id<span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+    @Select<span style="color: #009900;">(</span><span style="color: #0000FF;">"SELECT * FROM users WHERE id = #{id}"</span><span style="color: #009900;">)</span><br/>
+    User selectById<span style="color: #009900;">(</span>@Param<span style="color: #009900;">(</span><span style="color: #0000FF;">"id"</span><span style="color: #009900;">)</span> <span style="color: #000066; font-weight: bold;">int</span> id<span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
     <br/>
-    @Options<span style="color: #009900;">(</span>useGeneratedKeys <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">true</span>, keyProperty <span style="color: #339933;">=</span> <span style="color: #0000ff;">"id"</span><span style="color: #009900;">)</span><br/>
-    @Insert<span style="color: #009900;">(</span><span style="color: #0000ff;">"INSERT INTO users(name) VALUES(#{name})"</span><span style="color: #009900;">)</span><br/>
+    @Options<span style="color: #009900;">(</span>useGeneratedKeys <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">true</span>, keyProperty <span style="color: #339933;">=</span> <span style="color: #0000FF;">"id"</span><span style="color: #009900;">)</span><br/>
+    @Insert<span style="color: #009900;">(</span><span style="color: #0000FF;">"INSERT INTO users(name) VALUES(#{name})"</span><span style="color: #009900;">)</span><br/>
     <span style="color: #000066; font-weight: bold;">int</span> insert<span style="color: #009900;">(</span>User user<span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <span style="color: #009900;">}</span><br/>
 </div></div>
@@ -516,8 +516,8 @@ mybatis</span>:<span style="color: green;"><br/>
     DynamicDataSource ds <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> DynamicDataSource<span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
     ds.<span style="color: #006633;">setDefaultTargetDataSource</span><span style="color: #009900;">(</span>primaryDataSource<span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
     ds.<span style="color: #006633;">setTargetDataSources</span><span style="color: #009900;">(</span><span style="color: #003399;">Map</span>.<span style="color: #006633;">of</span><span style="color: #009900;">(</span><br/>
-        <span style="color: #0000ff;">"master"</span>, primaryDataSource<span style="color: #009900;">(</span><span style="color: #009900;">)</span>,<br/>
-        <span style="color: #0000ff;">"slave"</span>, secondaryDataSource<span style="color: #009900;">(</span><span style="color: #009900;">)</span><br/>
+        <span style="color: #0000FF;">"master"</span>, primaryDataSource<span style="color: #009900;">(</span><span style="color: #009900;">)</span>,<br/>
+        <span style="color: #0000FF;">"slave"</span>, secondaryDataSource<span style="color: #009900;">(</span><span style="color: #009900;">)</span><br/>
     <span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
     <span style="color: #000000; font-weight: bold;">return</span> ds<span style="color: #339933;">;</span><br/>
 <span style="color: #009900;">}</span><br/>
@@ -575,7 +575,7 @@ mybatis</span>:<span style="color: green;"><br/>
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -620,7 +620,7 @@ mybatis</span>:<span style="color: green;"><br/>
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -659,7 +659,7 @@ mybatis</span>:<span style="color: green;"><br/>
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリック</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>

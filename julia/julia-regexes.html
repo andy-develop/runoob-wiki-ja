@@ -203,16 +203,16 @@ m <span style="color: #5D478B;">=</span> match<span style="color: #9F79EE;">(</s
 </div></div><p>正規表現がマッチした場合、match の戻り値は RegexMatch オブジェクトです。このオブジェクトは、式がどのようにマッチしたか、つまりパターンがマッチした部分文字列や、キャプチャされた可能性のある部分文字列を記録します。上記の例ではマッチした部分文字列だけをキャプチャしていますが、コメント文字の後にある空でないテキストをキャプチャしたい場合もあるでしょう。そのようにするには、次のようにします：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 julia<span style="color: #5D478B;">&gt;</span> m <span style="color: #5D478B;">=</span> match<span style="color: #9F79EE;">(</span>r<span style="color: #FF00FF;">"^<span style="color: #9F79EE">\s</span>*(?:#<span style="color: #9F79EE">\s</span>*(.*?)<span style="color: #9F79EE">\s</span>*$|$)"</span><span style="color: #5D478B;">,</span> <span style="color: #FF00FF;">"# a comment "</span><span style="color: #9F79EE;">)</span><br/>
-RegexMatch<span style="color: #9F79EE;">(</span><span style="color: #FF00FF;">"# a comment "</span><span style="color: #5D478B;">,</span> <span style="color: #ff0055;">1</span><span style="color: #5D478B;">=</span><span style="color: #FF00FF;">"a comment"</span><span style="color: #9F79EE;">)</span><br/>
+RegexMatch<span style="color: #9F79EE;">(</span><span style="color: #FF00FF;">"# a comment "</span><span style="color: #5D478B;">,</span> <span style="color: #FF0055;">1</span><span style="color: #5D478B;">=</span><span style="color: #FF00FF;">"a comment"</span><span style="color: #9F79EE;">)</span><br/>
 </div></div><p>match を呼び出すときに、検索を開始するインデックスを指定することもできます。例：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #5D478B;">&gt;</span> m <span style="color: #5D478B;">=</span> match<span style="color: #9F79EE;">(</span>r<span style="color: #FF00FF;">"[0-9]"</span><span style="color: #5D478B;">,</span><span style="color: #FF00FF;">"aaaa1aaaa2aaaa3"</span><span style="color: #5D478B;">,</span><span style="color: #ff0055;">1</span><span style="color: #9F79EE;">)</span><br/>
+julia<span style="color: #5D478B;">&gt;</span> m <span style="color: #5D478B;">=</span> match<span style="color: #9F79EE;">(</span>r<span style="color: #FF00FF;">"[0-9]"</span><span style="color: #5D478B;">,</span><span style="color: #FF00FF;">"aaaa1aaaa2aaaa3"</span><span style="color: #5D478B;">,</span><span style="color: #FF0055;">1</span><span style="color: #9F79EE;">)</span><br/>
 RegexMatch<span style="color: #9F79EE;">(</span><span style="color: #FF00FF;">"1"</span><span style="color: #9F79EE;">)</span><br/>
 <br/>
-julia<span style="color: #5D478B;">&gt;</span> m <span style="color: #5D478B;">=</span> match<span style="color: #9F79EE;">(</span>r<span style="color: #FF00FF;">"[0-9]"</span><span style="color: #5D478B;">,</span><span style="color: #FF00FF;">"aaaa1aaaa2aaaa3"</span><span style="color: #5D478B;">,</span><span style="color: #ff0055;">6</span><span style="color: #9F79EE;">)</span><br/>
+julia<span style="color: #5D478B;">&gt;</span> m <span style="color: #5D478B;">=</span> match<span style="color: #9F79EE;">(</span>r<span style="color: #FF00FF;">"[0-9]"</span><span style="color: #5D478B;">,</span><span style="color: #FF00FF;">"aaaa1aaaa2aaaa3"</span><span style="color: #5D478B;">,</span><span style="color: #FF0055;">6</span><span style="color: #9F79EE;">)</span><br/>
 RegexMatch<span style="color: #9F79EE;">(</span><span style="color: #FF00FF;">"2"</span><span style="color: #9F79EE;">)</span><br/>
 <br/>
-julia<span style="color: #5D478B;">&gt;</span> m <span style="color: #5D478B;">=</span> match<span style="color: #9F79EE;">(</span>r<span style="color: #FF00FF;">"[0-9]"</span><span style="color: #5D478B;">,</span><span style="color: #FF00FF;">"aaaa1aaaa2aaaa3"</span><span style="color: #5D478B;">,</span><span style="color: #ff0055;">11</span><span style="color: #9F79EE;">)</span><br/>
+julia<span style="color: #5D478B;">&gt;</span> m <span style="color: #5D478B;">=</span> match<span style="color: #9F79EE;">(</span>r<span style="color: #FF00FF;">"[0-9]"</span><span style="color: #5D478B;">,</span><span style="color: #FF00FF;">"aaaa1aaaa2aaaa3"</span><span style="color: #5D478B;">,</span><span style="color: #FF0055;">11</span><span style="color: #9F79EE;">)</span><br/>
 RegexMatch<span style="color: #9F79EE;">(</span><span style="color: #FF00FF;">"3"</span><span style="color: #9F79EE;">)</span><br/>
 </div></div>
 <p>RegexMatch オブジェクトから次の情報を抽出できます：</p>
@@ -220,46 +220,46 @@ RegexMatch<span style="color: #9F79EE;">(</span><span style="color: #FF00FF;">"3
 <p>キャプチャがマッチしない場合、<span class="marked">m.captures</span>その位置には部分文字列は含まれず、何も含まれません。さらに、<span class="marked">m.offsets</span>のオフセットは 0 です（Julia のインデックスは 1 から始まることを思い出してください。したがって、文字列のオフセット 0 は無効です）。次に、やや無理のある例を2つ示します：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 julia<span style="color: #5D478B;">&gt;</span> m <span style="color: #5D478B;">=</span> match<span style="color: #9F79EE;">(</span>r<span style="color: #FF00FF;">"(a|b)(c)?(d)"</span><span style="color: #5D478B;">,</span> <span style="color: #FF00FF;">"acd"</span><span style="color: #9F79EE;">)</span><br/>
-RegexMatch<span style="color: #9F79EE;">(</span><span style="color: #FF00FF;">"acd"</span><span style="color: #5D478B;">,</span> <span style="color: #ff0055;">1</span><span style="color: #5D478B;">=</span><span style="color: #FF00FF;">"a"</span><span style="color: #5D478B;">,</span> <span style="color: #ff0055;">2</span><span style="color: #5D478B;">=</span><span style="color: #FF00FF;">"c"</span><span style="color: #5D478B;">,</span> <span style="color: #ff0055;">3</span><span style="color: #5D478B;">=</span><span style="color: #FF00FF;">"d"</span><span style="color: #9F79EE;">)</span><br/>
+RegexMatch<span style="color: #9F79EE;">(</span><span style="color: #FF00FF;">"acd"</span><span style="color: #5D478B;">,</span> <span style="color: #FF0055;">1</span><span style="color: #5D478B;">=</span><span style="color: #FF00FF;">"a"</span><span style="color: #5D478B;">,</span> <span style="color: #FF0055;">2</span><span style="color: #5D478B;">=</span><span style="color: #FF00FF;">"c"</span><span style="color: #5D478B;">,</span> <span style="color: #FF0055;">3</span><span style="color: #5D478B;">=</span><span style="color: #FF00FF;">"d"</span><span style="color: #9F79EE;">)</span><br/>
 <br/>
 julia<span style="color: #5D478B;">&gt;</span> m.match<br/>
 <span style="color: #FF00FF;">"acd"</span><br/>
 <br/>
 julia<span style="color: #5D478B;">&gt;</span> m.captures<br/>
-<span style="color: #ff0055;">3</span><span style="color: #5D478B;">-</span>element Vector<span style="color: #9F79EE;">{</span><span style="color: #A52A2A; font-weight: bold;">Union</span><span style="color: #9F79EE;">{</span>Nothing<span style="color: #5D478B;">,</span> SubString<span style="color: #9F79EE;">{</span><span style="color: #A52A2A; font-weight: bold;">String</span><span style="color: #9F79EE;">}</span><span style="color: #9F79EE;">}</span><span style="color: #9F79EE;">}</span><span style="color: #5D478B;">:</span><br/>
+<span style="color: #FF0055;">3</span><span style="color: #5D478B;">-</span>element Vector<span style="color: #9F79EE;">{</span><span style="color: #A52A2A; font-weight: bold;">Union</span><span style="color: #9F79EE;">{</span>Nothing<span style="color: #5D478B;">,</span> SubString<span style="color: #9F79EE;">{</span><span style="color: #A52A2A; font-weight: bold;">String</span><span style="color: #9F79EE;">}</span><span style="color: #9F79EE;">}</span><span style="color: #9F79EE;">}</span><span style="color: #5D478B;">:</span><br/>
  <span style="color: #FF00FF;">"a"</span><br/>
  <span style="color: #FF00FF;">"c"</span><br/>
  <span style="color: #FF00FF;">"d"</span><br/>
 <br/>
 julia<span style="color: #5D478B;">&gt;</span> m.offset<br/>
-<span style="color: #ff0055;">1</span><br/>
+<span style="color: #FF0055;">1</span><br/>
 <br/>
 julia<span style="color: #5D478B;">&gt;</span> m.offsets<br/>
-<span style="color: #ff0055;">3</span><span style="color: #5D478B;">-</span>element Vector<span style="color: #9F79EE;">{</span>Int64<span style="color: #9F79EE;">}</span><span style="color: #5D478B;">:</span><br/>
- <span style="color: #ff0055;">1</span><br/>
- <span style="color: #ff0055;">2</span><br/>
- <span style="color: #ff0055;">3</span><br/>
+<span style="color: #FF0055;">3</span><span style="color: #5D478B;">-</span>element Vector<span style="color: #9F79EE;">{</span>Int64<span style="color: #9F79EE;">}</span><span style="color: #5D478B;">:</span><br/>
+ <span style="color: #FF0055;">1</span><br/>
+ <span style="color: #FF0055;">2</span><br/>
+ <span style="color: #FF0055;">3</span><br/>
 <br/>
 julia<span style="color: #5D478B;">&gt;</span> m <span style="color: #5D478B;">=</span> match<span style="color: #9F79EE;">(</span>r<span style="color: #FF00FF;">"(a|b)(c)?(d)"</span><span style="color: #5D478B;">,</span> <span style="color: #FF00FF;">"ad"</span><span style="color: #9F79EE;">)</span><br/>
-RegexMatch<span style="color: #9F79EE;">(</span><span style="color: #FF00FF;">"ad"</span><span style="color: #5D478B;">,</span> <span style="color: #ff0055;">1</span><span style="color: #5D478B;">=</span><span style="color: #FF00FF;">"a"</span><span style="color: #5D478B;">,</span> <span style="color: #ff0055;">2</span><span style="color: #5D478B;">=</span>nothing<span style="color: #5D478B;">,</span> <span style="color: #ff0055;">3</span><span style="color: #5D478B;">=</span><span style="color: #FF00FF;">"d"</span><span style="color: #9F79EE;">)</span><br/>
+RegexMatch<span style="color: #9F79EE;">(</span><span style="color: #FF00FF;">"ad"</span><span style="color: #5D478B;">,</span> <span style="color: #FF0055;">1</span><span style="color: #5D478B;">=</span><span style="color: #FF00FF;">"a"</span><span style="color: #5D478B;">,</span> <span style="color: #FF0055;">2</span><span style="color: #5D478B;">=</span>nothing<span style="color: #5D478B;">,</span> <span style="color: #FF0055;">3</span><span style="color: #5D478B;">=</span><span style="color: #FF00FF;">"d"</span><span style="color: #9F79EE;">)</span><br/>
 <br/>
 julia<span style="color: #5D478B;">&gt;</span> m.match<br/>
 <span style="color: #FF00FF;">"ad"</span><br/>
 <br/>
 julia<span style="color: #5D478B;">&gt;</span> m.captures<br/>
-<span style="color: #ff0055;">3</span><span style="color: #5D478B;">-</span>element Vector<span style="color: #9F79EE;">{</span><span style="color: #A52A2A; font-weight: bold;">Union</span><span style="color: #9F79EE;">{</span>Nothing<span style="color: #5D478B;">,</span> SubString<span style="color: #9F79EE;">{</span><span style="color: #A52A2A; font-weight: bold;">String</span><span style="color: #9F79EE;">}</span><span style="color: #9F79EE;">}</span><span style="color: #9F79EE;">}</span><span style="color: #5D478B;">:</span><br/>
+<span style="color: #FF0055;">3</span><span style="color: #5D478B;">-</span>element Vector<span style="color: #9F79EE;">{</span><span style="color: #A52A2A; font-weight: bold;">Union</span><span style="color: #9F79EE;">{</span>Nothing<span style="color: #5D478B;">,</span> SubString<span style="color: #9F79EE;">{</span><span style="color: #A52A2A; font-weight: bold;">String</span><span style="color: #9F79EE;">}</span><span style="color: #9F79EE;">}</span><span style="color: #9F79EE;">}</span><span style="color: #5D478B;">:</span><br/>
  <span style="color: #FF00FF;">"a"</span><br/>
  nothing<br/>
  <span style="color: #FF00FF;">"d"</span><br/>
 <br/>
 julia<span style="color: #5D478B;">&gt;</span> m.offset<br/>
-<span style="color: #ff0055;">1</span><br/>
+<span style="color: #FF0055;">1</span><br/>
 <br/>
 julia<span style="color: #5D478B;">&gt;</span> m.offsets<br/>
-<span style="color: #ff0055;">3</span><span style="color: #5D478B;">-</span>element Vector<span style="color: #9F79EE;">{</span>Int64<span style="color: #9F79EE;">}</span><span style="color: #5D478B;">:</span><br/>
- <span style="color: #ff0055;">1</span><br/>
- <span style="color: #ff0055;">0</span><br/>
- <span style="color: #ff0055;">2</span><br/>
+<span style="color: #FF0055;">3</span><span style="color: #5D478B;">-</span>element Vector<span style="color: #9F79EE;">{</span>Int64<span style="color: #9F79EE;">}</span><span style="color: #5D478B;">:</span><br/>
+ <span style="color: #FF0055;">1</span><br/>
+ <span style="color: #FF0055;">0</span><br/>
+ <span style="color: #FF0055;">2</span><br/>
 </div></div><p>キャプチャを配列として返すと便利です。そうすれば、分割代入構文を使ってキャプチャをローカル変数にバインドできます。便宜上、RegexMatch オブジェクトは captures フィールドに委譲するイテレータメソッドを実装しているため、マッチオブジェクトを直接分割代入できます：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 julia<span style="color: #5D478B;">&gt;</span> first<span style="color: #5D478B;">,</span> second<span style="color: #5D478B;">,</span> third <span style="color: #5D478B;">=</span> m<span style="color: #5D478B;">;</span> first<br/>
@@ -272,7 +272,7 @@ RegexMatch<span style="color: #9F79EE;">(</span><span style="color: #FF00FF;">"1
 julia<span style="color: #5D478B;">&gt;</span> m<span style="color: #9F79EE;">[</span><span style="color: #5D478B;">:</span>minute<span style="color: #9F79EE;">]</span><br/>
 <span style="color: #FF00FF;">"45"</span><br/>
 <br/>
-julia<span style="color: #5D478B;">&gt;</span> m<span style="color: #9F79EE;">[</span><span style="color: #ff0055;">2</span><span style="color: #9F79EE;">]</span><br/>
+julia<span style="color: #5D478B;">&gt;</span> m<span style="color: #9F79EE;">[</span><span style="color: #FF0055;">2</span><span style="color: #9F79EE;">]</span><br/>
 <span style="color: #FF00FF;">"45"</span><br/>
 </div></div>
 <p>replace を使用するとき、`\n` を使って n 番目のキャプチャグループを参照し、置換文字列に接頭辞 `s` を付けることで、置換文字列内でキャプチャを参照できます。キャプチャグループ 0 はマッチ全体を指します。置換内では `\g` を使用して、<groupname>名前付きキャプチャグループを参照できます。例：</groupname></p>
@@ -315,7 +315,7 @@ julia&gt; replace("a", r"." =&gt; s"\g&lt;0&gt;1")
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -360,7 +360,7 @@ julia&gt; replace("a", r"." =&gt; s"\g&lt;0&gt;1")
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -399,7 +399,7 @@ julia&gt; replace("a", r"." =&gt; s"\g&lt;0&gt;1")
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります。</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>

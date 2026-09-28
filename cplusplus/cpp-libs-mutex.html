@@ -440,10 +440,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: #060;">#include &lt;mutex&gt;</span><br/>
 <br/>
 std<span style="color: #008080;">::</span><span style="color: #007788;">mutex</span> mtx<span style="color: #008080;">;</span> <span style="color: #666666;">// 全局互斥锁</span><br/>
-<span style="color: #05a;">int</span> shared_resource <span style="color: #000080;">=</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span><br/>
+<span style="color: #05a;">int</span> shared_resource <span style="color: #000080;">=</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span><br/>
 <br/>
 <span style="color: #05a;">void</span> increment<span style="color: #008000;">(</span><span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
-    <span style="color: #05a;">for</span> <span style="color: #008000;">(</span><span style="color: #05a;">int</span> i <span style="color: #000080;">=</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span> i <span style="color: #000080;">&lt;</span> <span style="color: #0000dd;">10000</span><span style="color: #008080;">;</span> <span style="color: #000040;">++</span>i<span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
+    <span style="color: #05a;">for</span> <span style="color: #008000;">(</span><span style="color: #05a;">int</span> i <span style="color: #000080;">=</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span> i <span style="color: #000080;">&lt;</span> <span style="color: #0000DD;">10000</span><span style="color: #008080;">;</span> <span style="color: #000040;">++</span>i<span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
         mtx.<span style="color: #007788;">lock</span><span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span> <span style="color: #666666;">// 锁定互斥锁</span><br/>
         <span style="color: #000040;">++</span>shared_resource<span style="color: #008080;">;</span><br/>
         mtx.<span style="color: #007788;">unlock</span><span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span> <span style="color: #666666;">// 解锁互斥锁</span><br/>
@@ -458,7 +458,7 @@ std<span style="color: #008080;">::</span><span style="color: #007788;">mutex</s
     t2.<span style="color: #007788;">join</span><span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <br/>
     std<span style="color: #008080;">::</span><span style="color: #05a;">cout</span> <span style="color: #000080;">&lt;&lt;</span> <span style="color: #a11;">"Final value of shared_resource: "</span> <span style="color: #000080;">&lt;&lt;</span> shared_resource <span style="color: #000080;">&lt;&lt;</span> std<span style="color: #008080;">::</span><span style="color: #007788;">endl</span><span style="color: #008080;">;</span><br/>
-    <span style="color: #05a;">return</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">return</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span><br/>
 <span style="color: #008000;">}</span><br/>
 </div></div>
 <p>出力結果：</p>
@@ -472,30 +472,30 @@ Final value of shared_resource: 20000</pre>
 <span style="color: #060;">#include &lt;mutex&gt;</span><br/>
 <br/>
 std<span style="color: #008080;">::</span><span style="color: #007788;">recursive_mutex</span> rmtx<span style="color: #008080;">;</span> <span style="color: #666666;">// 创建一个递归 mutex 对象</span><br/>
-<span style="color: #05a;">int</span> shared_resource <span style="color: #000080;">=</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span> <span style="color: #666666;">// 共享资源</span><br/>
+<span style="color: #05a;">int</span> shared_resource <span style="color: #000080;">=</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span> <span style="color: #666666;">// 共享资源</span><br/>
 <br/>
 <span style="color: #666666;">// 递归函数</span><br/>
 <span style="color: #05a;">void</span> recursive_increment<span style="color: #008000;">(</span><span style="color: #05a;">int</span> count<span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
-    <span style="color: #05a;">if</span> <span style="color: #008000;">(</span>count <span style="color: #000080;">&lt;=</span> <span style="color: #0000dd;">0</span><span style="color: #008000;">)</span> <span style="color: #05a;">return</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">if</span> <span style="color: #008000;">(</span>count <span style="color: #000080;">&lt;=</span> <span style="color: #0000DD;">0</span><span style="color: #008000;">)</span> <span style="color: #05a;">return</span><span style="color: #008080;">;</span><br/>
 <br/>
     std<span style="color: #008080;">::</span><span style="color: #007788;">lock_guard</span><span style="color: #000080;">&lt;</span>std<span style="color: #008080;">::</span><span style="color: #007788;">recursive_mutex</span><span style="color: #000080;">&gt;</span> lock<span style="color: #008000;">(</span>rmtx<span style="color: #008000;">)</span><span style="color: #008080;">;</span> <span style="color: #666666;">// 上锁，确保线程安全</span><br/>
     <span style="color: #000040;">++</span>shared_resource<span style="color: #008080;">;</span><br/>
     std<span style="color: #008080;">::</span><span style="color: #05a;">cout</span> <span style="color: #000080;">&lt;&lt;</span> <span style="color: #a11;">"Incremented shared_resource to "</span> <span style="color: #000080;">&lt;&lt;</span> shared_resource <span style="color: #000080;">&lt;&lt;</span> <span style="color: #a11;">" (count = "</span> <span style="color: #000080;">&lt;&lt;</span> count <span style="color: #000080;">&lt;&lt;</span> <span style="color: #a11;">")"</span> <span style="color: #000080;">&lt;&lt;</span> std<span style="color: #008080;">::</span><span style="color: #007788;">endl</span><span style="color: #008080;">;</span><br/>
 <br/>
     <span style="color: #666666;">// 递归调用</span><br/>
-    recursive_increment<span style="color: #008000;">(</span>count <span style="color: #000040;">-</span> <span style="color: #0000dd;">1</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
+    recursive_increment<span style="color: #008000;">(</span>count <span style="color: #000040;">-</span> <span style="color: #0000DD;">1</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <span style="color: #008000;">}</span><br/>
 <br/>
 <span style="color: #05a;">int</span> main<span style="color: #008000;">(</span><span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
-    std<span style="color: #008080;">::</span><span style="color: #007788;">thread</span> t1<span style="color: #008000;">(</span>recursive_increment, <span style="color: #0000dd;">3</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span> <span style="color: #666666;">// 线程 t1 执行 recursive_increment(3)</span><br/>
-    std<span style="color: #008080;">::</span><span style="color: #007788;">thread</span> t2<span style="color: #008000;">(</span>recursive_increment, <span style="color: #0000dd;">3</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span> <span style="color: #666666;">// 线程 t2 执行 recursive_increment(3)</span><br/>
+    std<span style="color: #008080;">::</span><span style="color: #007788;">thread</span> t1<span style="color: #008000;">(</span>recursive_increment, <span style="color: #0000DD;">3</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span> <span style="color: #666666;">// 线程 t1 执行 recursive_increment(3)</span><br/>
+    std<span style="color: #008080;">::</span><span style="color: #007788;">thread</span> t2<span style="color: #008000;">(</span>recursive_increment, <span style="color: #0000DD;">3</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span> <span style="color: #666666;">// 线程 t2 执行 recursive_increment(3)</span><br/>
     <br/>
     t1.<span style="color: #007788;">join</span><span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span> <span style="color: #666666;">// 等待线程 t1 完成</span><br/>
     t2.<span style="color: #007788;">join</span><span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span> <span style="color: #666666;">// 等待线程 t2 完成</span><br/>
 <br/>
     std<span style="color: #008080;">::</span><span style="color: #05a;">cout</span> <span style="color: #000080;">&lt;&lt;</span> <span style="color: #a11;">"Final value of shared_resource: "</span> <span style="color: #000080;">&lt;&lt;</span> shared_resource <span style="color: #000080;">&lt;&lt;</span> std<span style="color: #008080;">::</span><span style="color: #007788;">endl</span><span style="color: #008080;">;</span><br/>
 <br/>
-    <span style="color: #05a;">return</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">return</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span><br/>
 <span style="color: #008000;">}</span><br/>
 </div></div><p>出力結果：</p>
 <pre>Incremented shared_resource to 1 (count = 3)
@@ -539,10 +539,10 @@ std<span style="color: #008080;">::</span><span style="color: #007788;">mutex</s
 std<span style="color: #008080;">::</span><span style="color: #007788;">recursive_mutex</span> rmtx<span style="color: #008080;">;</span><br/>
 <br/>
 <span style="color: #05a;">void</span> recursive_function<span style="color: #008000;">(</span><span style="color: #05a;">int</span> count<span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
-    <span style="color: #05a;">if</span> <span style="color: #008000;">(</span>count <span style="color: #000080;">&lt;=</span> <span style="color: #0000dd;">0</span><span style="color: #008000;">)</span> <span style="color: #05a;">return</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">if</span> <span style="color: #008000;">(</span>count <span style="color: #000080;">&lt;=</span> <span style="color: #0000DD;">0</span><span style="color: #008000;">)</span> <span style="color: #05a;">return</span><span style="color: #008080;">;</span><br/>
     std<span style="color: #008080;">::</span><span style="color: #007788;">lock_guard</span><span style="color: #000080;">&lt;</span>std<span style="color: #008080;">::</span><span style="color: #007788;">recursive_mutex</span><span style="color: #000080;">&gt;</span> lock<span style="color: #008000;">(</span>rmtx<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
     <span style="color: #666666;">// 递归调用</span><br/>
-    recursive_function<span style="color: #008000;">(</span>count <span style="color: #000040;">-</span> <span style="color: #0000dd;">1</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
+    recursive_function<span style="color: #008000;">(</span>count <span style="color: #000040;">-</span> <span style="color: #0000DD;">1</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <span style="color: #008000;">}</span><br/>
 </div></div>
 <h3>3. std::timed_mutex</h3><p>タイマー付きミューテックスを提供し、ロック取得を試みる際にタイムアウト時間を設定できます。</p>
@@ -553,7 +553,7 @@ std<span style="color: #008080;">::</span><span style="color: #007788;">recursiv
 std<span style="color: #008080;">::</span><span style="color: #007788;">timed_mutex</span> <span style="color: #05a;">tm</span><span style="color: #008080;">;</span><br/>
 <br/>
 <span style="color: #05a;">void</span> try_lock_for_example<span style="color: #008000;">(</span><span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
-    <span style="color: #05a;">if</span> <span style="color: #008000;">(</span><span style="color: #05a;">tm</span>.<span style="color: #007788;">try_lock_for</span><span style="color: #008000;">(</span>std<span style="color: #008080;">::</span><span style="color: #007788;">chrono</span><span style="color: #008080;">::</span><span style="color: #007788;">seconds</span><span style="color: #008000;">(</span><span style="color: #0000dd;">1</span><span style="color: #008000;">)</span><span style="color: #008000;">)</span><span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
+    <span style="color: #05a;">if</span> <span style="color: #008000;">(</span><span style="color: #05a;">tm</span>.<span style="color: #007788;">try_lock_for</span><span style="color: #008000;">(</span>std<span style="color: #008080;">::</span><span style="color: #007788;">chrono</span><span style="color: #008080;">::</span><span style="color: #007788;">seconds</span><span style="color: #008000;">(</span><span style="color: #0000DD;">1</span><span style="color: #008000;">)</span><span style="color: #008000;">)</span><span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
         <span style="color: #666666;">// 成功获得锁</span><br/>
         <span style="color: #05a;">tm</span>.<span style="color: #007788;">unlock</span><span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
     <span style="color: #008000;">}</span> <span style="color: #05a;">else</span> <span style="color: #008000;">{</span><br/>
@@ -569,10 +569,10 @@ std<span style="color: #008080;">::</span><span style="color: #007788;">timed_mu
 std<span style="color: #008080;">::</span><span style="color: #007788;">recursive_timed_mutex</span> rtm<span style="color: #008080;">;</span><br/>
 <br/>
 <span style="color: #05a;">void</span> recursive_timed_function<span style="color: #008000;">(</span><span style="color: #05a;">int</span> count<span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
-    <span style="color: #05a;">if</span> <span style="color: #008000;">(</span>count <span style="color: #000080;">&lt;=</span> <span style="color: #0000dd;">0</span><span style="color: #008000;">)</span> <span style="color: #05a;">return</span><span style="color: #008080;">;</span><br/>
-    <span style="color: #05a;">if</span> <span style="color: #008000;">(</span>rtm.<span style="color: #007788;">try_lock_for</span><span style="color: #008000;">(</span>std<span style="color: #008080;">::</span><span style="color: #007788;">chrono</span><span style="color: #008080;">::</span><span style="color: #007788;">seconds</span><span style="color: #008000;">(</span><span style="color: #0000dd;">1</span><span style="color: #008000;">)</span><span style="color: #008000;">)</span><span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
+    <span style="color: #05a;">if</span> <span style="color: #008000;">(</span>count <span style="color: #000080;">&lt;=</span> <span style="color: #0000DD;">0</span><span style="color: #008000;">)</span> <span style="color: #05a;">return</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">if</span> <span style="color: #008000;">(</span>rtm.<span style="color: #007788;">try_lock_for</span><span style="color: #008000;">(</span>std<span style="color: #008080;">::</span><span style="color: #007788;">chrono</span><span style="color: #008080;">::</span><span style="color: #007788;">seconds</span><span style="color: #008000;">(</span><span style="color: #0000DD;">1</span><span style="color: #008000;">)</span><span style="color: #008000;">)</span><span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
         <span style="color: #666666;">// 成功获得锁</span><br/>
-        recursive_timed_function<span style="color: #008000;">(</span>count <span style="color: #000040;">-</span> <span style="color: #0000dd;">1</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
+        recursive_timed_function<span style="color: #008000;">(</span>count <span style="color: #000040;">-</span> <span style="color: #0000DD;">1</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
         rtm.<span style="color: #007788;">unlock</span><span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
     <span style="color: #008000;">}</span> <span style="color: #05a;">else</span> <span style="color: #008000;">{</span><br/>
         <span style="color: #666666;">// 锁获取失败</span><br/>
@@ -610,7 +610,7 @@ std<span style="color: #008080;">::</span><span style="color: #007788;">mutex</s
     lock.<span style="color: #007788;">lock</span><span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
     <br/>
     <span style="color: #666666;">// 可以进行定时锁定</span><br/>
-    <span style="color: #05a;">if</span> <span style="color: #008000;">(</span>lock.<span style="color: #007788;">try_lock_for</span><span style="color: #008000;">(</span>std<span style="color: #008080;">::</span><span style="color: #007788;">chrono</span><span style="color: #008080;">::</span><span style="color: #007788;">seconds</span><span style="color: #008000;">(</span><span style="color: #0000dd;">1</span><span style="color: #008000;">)</span><span style="color: #008000;">)</span><span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
+    <span style="color: #05a;">if</span> <span style="color: #008000;">(</span>lock.<span style="color: #007788;">try_lock_for</span><span style="color: #008000;">(</span>std<span style="color: #008080;">::</span><span style="color: #007788;">chrono</span><span style="color: #008080;">::</span><span style="color: #007788;">seconds</span><span style="color: #008000;">(</span><span style="color: #0000DD;">1</span><span style="color: #008000;">)</span><span style="color: #008000;">)</span><span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
         <span style="color: #666666;">// 成功获得锁</span><br/>
     <span style="color: #008000;">}</span><br/>
 <span style="color: #008000;">}</span><br/>
@@ -671,7 +671,7 @@ std<span style="color: #008080;">::</span><span style="color: #007788;">unique_l
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -716,7 +716,7 @@ std<span style="color: #008080;">::</span><span style="color: #007788;">unique_l
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -755,7 +755,7 @@ std<span style="color: #008080;">::</span><span style="color: #007788;">unique_l
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
@@ -974,7 +974,7 @@ function kFormatter(num) {
 </style>
 <div class="sidebar-box re-box re-box-large">
 <div class="sidebar-box recommend-here" style="margin: 0 auto;">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
+<a href="#" style="font-size: 16px; color:#5B80A6;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
 </div>
 <div class="sidebar-box sidebar-cate">
 <div class="sidebar-tree">

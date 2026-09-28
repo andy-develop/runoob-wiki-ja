@@ -303,21 +303,21 @@ Rserve()</pre>
         RConnection rcon <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">null</span><span style="color: #339933;">;</span><br/>
         <span style="color: #000000; font-weight: bold;">try</span> <span style="color: #009900;">{</span><br/>
             <span style="color: #666666; font-style: italic;">// Rserve との接続を確立する</span><br/>
-            rcon <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> RConnection<span style="color: #009900;">(</span><span style="color: #0000ff;">"127.0.0.1"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+            rcon <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> RConnection<span style="color: #009900;">(</span><span style="color: #0000FF;">"127.0.0.1"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
             <br/>
             <span style="color: #666666; font-style: italic;">// eval() 関数は R に R 文を実行させるために使用します</span><br/>
             <span style="color: #666666; font-style: italic;">// ここで m1 行列を作成しています</span><br/>
-            rcon.<span style="color: #006633;">eval</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"m1 = matrix(c(1, 2, 3, 4), 2, 2, byrow=TRUE)"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+            rcon.<span style="color: #006633;">eval</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"m1 = matrix(c(1, 2, 3, 4), 2, 2, byrow=TRUE)"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
             <br/>
             <span style="color: #666666; font-style: italic;">// solve() 関数は R で m1 行列の逆行列を求めます</span><br/>
             <span style="color: #666666; font-style: italic;">// そして結果を返します。asDoubleMatrix 関数はデータを変換して</span><br/>
             <span style="color: #666666; font-style: italic;">// Java の double 2次元配列にして行列を表します</span><br/>
-            <span style="color: #000066; font-weight: bold;">double</span><span style="color: #009900;">[</span><span style="color: #009900;">]</span><span style="color: #009900;">[</span><span style="color: #009900;">]</span> m1 <span style="color: #339933;">=</span> rcon.<span style="color: #006633;">eval</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"solve(m1)"</span><span style="color: #009900;">)</span>.<span style="color: #006633;">asDoubleMatrix</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+            <span style="color: #000066; font-weight: bold;">double</span><span style="color: #009900;">[</span><span style="color: #009900;">]</span><span style="color: #009900;">[</span><span style="color: #009900;">]</span> m1 <span style="color: #339933;">=</span> rcon.<span style="color: #006633;">eval</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"solve(m1)"</span><span style="color: #009900;">)</span>.<span style="color: #006633;">asDoubleMatrix</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
             <br/>
             <span style="color: #666666; font-style: italic;">// 行列の内容を出力します</span><br/>
-            <span style="color: #000000; font-weight: bold;">for</span> <span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span> i <span style="color: #339933;">=</span> <span style="color: #cc66cc;">0</span><span style="color: #339933;">;</span> i <span style="color: #339933;">&lt;</span> m1.<span style="color: #006633;">length</span><span style="color: #339933;">;</span> i<span style="color: #339933;">++</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
-                <span style="color: #000000; font-weight: bold;">for</span> <span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span> j <span style="color: #339933;">=</span> <span style="color: #cc66cc;">0</span><span style="color: #339933;">;</span> j <span style="color: #339933;">&lt;</span> m1<span style="color: #009900;">[</span><span style="color: #cc66cc;">0</span><span style="color: #009900;">]</span>.<span style="color: #006633;">length</span><span style="color: #339933;">;</span> j<span style="color: #339933;">++</span><span style="color: #009900;">)</span><br/>
-                    <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">print</span><span style="color: #009900;">(</span>m1<span style="color: #009900;">[</span>i<span style="color: #009900;">]</span><span style="color: #009900;">[</span>j<span style="color: #009900;">]</span> <span style="color: #339933;">+</span> <span style="color: #0000ff;">"<span style="color: #000099; font-weight: bold;">\t</span>"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+            <span style="color: #000000; font-weight: bold;">for</span> <span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span> i <span style="color: #339933;">=</span> <span style="color: #CC66CC;">0</span><span style="color: #339933;">;</span> i <span style="color: #339933;">&lt;</span> m1.<span style="color: #006633;">length</span><span style="color: #339933;">;</span> i<span style="color: #339933;">++</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
+                <span style="color: #000000; font-weight: bold;">for</span> <span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">int</span> j <span style="color: #339933;">=</span> <span style="color: #CC66CC;">0</span><span style="color: #339933;">;</span> j <span style="color: #339933;">&lt;</span> m1<span style="color: #009900;">[</span><span style="color: #CC66CC;">0</span><span style="color: #009900;">]</span>.<span style="color: #006633;">length</span><span style="color: #339933;">;</span> j<span style="color: #339933;">++</span><span style="color: #009900;">)</span><br/>
+                    <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">print</span><span style="color: #009900;">(</span>m1<span style="color: #009900;">[</span>i<span style="color: #009900;">]</span><span style="color: #009900;">[</span>j<span style="color: #009900;">]</span> <span style="color: #339933;">+</span> <span style="color: #0000FF;">"<span style="color: #000099; font-weight: bold;">\t</span>"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
                 <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
             <span style="color: #009900;">}</span><br/>
         <span style="color: #009900;">}</span> <span style="color: #000000; font-weight: bold;">catch</span> <span style="color: #009900;">(</span><span style="color: #003399;">Exception</span> e<span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
@@ -364,7 +364,7 @@ Rserve()</pre>
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -409,7 +409,7 @@ Rserve()</pre>
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -448,7 +448,7 @@ Rserve()</pre>
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -667,7 +667,7 @@ function kFormatter(num) {
 </style>
 <div class="sidebar-box re-box re-box-large">
 <div class="sidebar-box recommend-here" style="margin: 0 auto;">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
+<a href="#" style="font-size: 16px; color:#5B80A6;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
 </div>
 <div class="sidebar-box sidebar-cate">
 <div class="sidebar-tree">

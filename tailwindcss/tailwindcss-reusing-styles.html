@@ -276,13 +276,13 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h3>なぜ重複するスタイルが発生するのか？</h3><p>Tailwind CSS の核心理念は、ユーティリティファースト（Utility-First）です。一連の低レベルなユーティリティクラスを組み合わせることで、要素のスタイルを非常に正確に制御できます。この方法は初期段階では強力ですが、プロジェクトが複雑になるにつれて、特に一般的な UI 要素（ボタン、カード、アバターなど）を扱う場合、同じユーティリティクラスが複数の場所で繰り返し使用されることがよくあります。</p>
 <p>次のテンプレートを考えてみましょう。各アバター画像が同じユーティリティクラスを使用しています：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"flex space-x-4"</span>&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">img</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"w-16 h-16 rounded-full border-2 border-white"</span> <span style="color: #00c;">src</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"/img/avatar1.jpg"</span> <span style="color: #00c;">alt</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"User 1"</span>&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">img</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"w-16 h-16 rounded-full border-2 border-white"</span> <span style="color: #00c;">src</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"/img/avatar2.jpg"</span> <span style="color: #00c;">alt</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"User 2"</span>&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">img</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"w-16 h-16 rounded-full border-2 border-white"</span> <span style="color: #00c;">src</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"/img/avatar3.jpg"</span> <span style="color: #00c;">alt</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"User 3"</span>&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">img</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"w-16 h-16 rounded-full border-2 border-white"</span> <span style="color: #00c;">src</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"/img/avatar4.jpg"</span> <span style="color: #00c;">alt</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"User 4"</span>&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">img</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"w-16 h-16 rounded-full border-2 border-white"</span> <span style="color: #00c;">src</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"/img/avatar5.jpg"</span> <span style="color: #00c;">alt</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"User 5"</span>&gt;</span><br/>
-<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"flex space-x-4"</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">img</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"w-16 h-16 rounded-full border-2 border-white"</span> <span style="color: #00c;">src</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"/img/avatar1.jpg"</span> <span style="color: #00c;">alt</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"User 1"</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">img</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"w-16 h-16 rounded-full border-2 border-white"</span> <span style="color: #00c;">src</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"/img/avatar2.jpg"</span> <span style="color: #00c;">alt</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"User 2"</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">img</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"w-16 h-16 rounded-full border-2 border-white"</span> <span style="color: #00c;">src</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"/img/avatar3.jpg"</span> <span style="color: #00c;">alt</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"User 3"</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">img</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"w-16 h-16 rounded-full border-2 border-white"</span> <span style="color: #00c;">src</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"/img/avatar4.jpg"</span> <span style="color: #00c;">alt</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"User 4"</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">img</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"w-16 h-16 rounded-full border-2 border-white"</span> <span style="color: #00c;">src</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"/img/avatar5.jpg"</span> <span style="color: #00c;">alt</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"User 5"</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
 </div>
 <br/><a class="tryitbtn" data-lang="html" href="../try/editor.html" onclick="localStorage.setItem('tryit_code','PGRpdiBjbGFzcz0iZmxleCBzcGFjZS14LTQiPgoKwqAgPGltZyBjbGFzcz0idy0xNiBoLTE2IHJvdW5kZWQtZnVsbCBib3JkZXItMiBib3JkZXItd2hpdGUiIHNyYz0iL2ltZy9hdmF0YXIxLmpwZyIgYWx0PSJVc2VyIDEiPgoKwqAgPGltZyBjbGFzcz0idy0xNiBoLTE2IHJvdW5kZWQtZnVsbCBib3JkZXItMiBib3JkZXItd2hpdGUiIHNyYz0iL2ltZy9hdmF0YXIyLmpwZyIgYWx0PSJVc2VyIDIiPgoKwqAgPGltZyBjbGFzcz0idy0xNiBoLTE2IHJvdW5kZWQtZnVsbCBib3JkZXItMiBib3JkZXItd2hpdGUiIHNyYz0iL2ltZy9hdmF0YXIzLmpwZyIgYWx0PSJVc2VyIDMiPgoKwqAgPGltZyBjbGFzcz0idy0xNiBoLTE2IHJvdW5kZWQtZnVsbCBib3JkZXItMiBib3JkZXItd2hpdGUiIHNyYz0iL2ltZy9hdmF0YXI0LmpwZyIgYWx0PSJVc2VyIDQiPgoKwqAgPGltZyBjbGFzcz0idy0xNiBoLTE2IHJvdW5kZWQtZnVsbCBib3JkZXItMiBib3JkZXItd2hpdGUiIHNyYz0iL2ltZy9hdmF0YXI1LmpwZyIgYWx0PSJVc2VyIDUiPgoKPC9kaXY+');localStorage.setItem('tryit_lang','html');">試してみる »</a>
 </div>
@@ -302,13 +302,13 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 }</pre>
 <p>次に、HTML では、このカスタムの avatar クラスを使用するだけで、同じユーティリティクラスを繰り返し記述する必要はありません：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"flex space-x-4"</span>&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">img</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"avatar"</span> <span style="color: #00c;">src</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"/img/avatar1.jpg"</span> <span style="color: #00c;">alt</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"User 1"</span>&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">img</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"avatar"</span> <span style="color: #00c;">src</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"/img/avatar2.jpg"</span> <span style="color: #00c;">alt</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"User 2"</span>&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">img</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"avatar"</span> <span style="color: #00c;">src</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"/img/avatar3.jpg"</span> <span style="color: #00c;">alt</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"User 3"</span>&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">img</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"avatar"</span> <span style="color: #00c;">src</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"/img/avatar4.jpg"</span> <span style="color: #00c;">alt</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"User 4"</span>&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">img</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"avatar"</span> <span style="color: #00c;">src</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"/img/avatar5.jpg"</span> <span style="color: #00c;">alt</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"User 5"</span>&gt;</span><br/>
-<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"flex space-x-4"</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">img</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"avatar"</span> <span style="color: #00c;">src</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"/img/avatar1.jpg"</span> <span style="color: #00c;">alt</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"User 1"</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">img</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"avatar"</span> <span style="color: #00c;">src</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"/img/avatar2.jpg"</span> <span style="color: #00c;">alt</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"User 2"</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">img</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"avatar"</span> <span style="color: #00c;">src</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"/img/avatar3.jpg"</span> <span style="color: #00c;">alt</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"User 3"</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">img</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"avatar"</span> <span style="color: #00c;">src</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"/img/avatar4.jpg"</span> <span style="color: #00c;">alt</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"User 4"</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">img</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"avatar"</span> <span style="color: #00c;">src</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"/img/avatar5.jpg"</span> <span style="color: #00c;">alt</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"User 5"</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
 </div>
 </div><p>この方法により、HTML で同じユーティリティクラスを繰り返し記述することを避けられ、将来のスタイルのメンテナンスや変更も容易になります。</p>
 <p>Tailwind CSS のコンパイルは、Tailwind CLI または PostCSS を使用して行います：</p>
@@ -330,10 +330,10 @@ npx tailwindcss -i ./styles.css -o ./output.css --watch</pre><p>コンパイル�
   }
 }</pre><p>次に、HTML では、avatar クラスと button クラスを使用して、これらの事前定義されたスタイルを引き続き利用できます。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"flex space-x-4"</span>&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">img</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"avatar"</span> <span style="color: #00c;">src</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"/img/avatar1.jpg"</span> <span style="color: #00c;">alt</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"User 1"</span>&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">button</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"button"</span>&gt;</span>クリックしてください<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">button</span>&gt;</span><br/>
-<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"flex space-x-4"</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">img</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"avatar"</span> <span style="color: #00c;">src</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"/img/avatar1.jpg"</span> <span style="color: #00c;">alt</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"User 1"</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">button</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"button"</span>&gt;</span>クリックしてください<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">button</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
 </div>
 </div><p>この方法により、CSS ファイル内で再利用可能なクラスを定義でき、HTML を簡潔に保つことができます。</p>
 <p><strong>3. Tailwind CSS の variants 機能を使用する</strong></p><p>Tailwind CSS では、variants を使用すると、さまざまな状態（レスポンシブ、ホバー、フォーカスなど）に応じて既存のユーティリティクラスを拡張できます。プロジェクト内の特定のユーティリティクラスの組み合わせを、さまざまな状態やデバイスサイズに応じて変更する必要がある場合は、variants を使用して、レスポンシブでインタラクティブな状態を持つ再利用可能なスタイルを作成できます。</p>
@@ -383,7 +383,7 @@ npx tailwindcss -i ./styles.css -o ./output.css --watch</pre><p>コンパイル�
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -428,7 +428,7 @@ npx tailwindcss -i ./styles.css -o ./output.css --watch</pre><p>コンパイル�
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -467,7 +467,7 @@ npx tailwindcss -i ./styles.css -o ./output.css --watch</pre><p>コンパイル�
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリック</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -686,7 +686,7 @@ function kFormatter(num) {
 </style>
 <div class="sidebar-box re-box re-box-large">
 <div class="sidebar-box recommend-here" style="margin: 0 auto;">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
+<a href="#" style="font-size: 16px; color:#5B80A6;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
 </div>
 <div class="sidebar-box sidebar-cate">
 <div class="sidebar-tree">

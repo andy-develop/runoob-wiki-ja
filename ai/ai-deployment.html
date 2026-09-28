@@ -192,7 +192,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># vLLM をインストール</span><br/>
-pip <span style="color: #c20cb9; font-weight: bold;">install</span> vllm<br/>
+pip <span style="color: #C20CB9; font-weight: bold;">install</span> vllm<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># vLLM で OpenAI 互換の API サービスを起動</span><br/>
 <span style="color: #666666; font-style: italic;"># --model でモデルを指定、--host と --port で待受アドレスを指定</span><br/>
@@ -342,11 +342,11 @@ response <span style="color: Gray;">=</span> client.<span style="color: #05a;">g
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># Ollama をインストール（Linux サーバー）</span><br/>
-curl <span style="color: #660033;">-fsSL</span> https:<span style="color: #000000; font-weight: bold;">//</span>ollama.com<span style="color: #000000; font-weight: bold;">/</span>install.sh <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #c20cb9; font-weight: bold;">sh</span><br/>
+curl <span style="color: #660033;">-fsSL</span> https:<span style="color: #000000; font-weight: bold;">//</span>ollama.com<span style="color: #000000; font-weight: bold;">/</span>install.sh <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #C20CB9; font-weight: bold;">sh</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># Ollama がすべてのネットワークインターフェースをリッスンするよう設定（本番環境ではファイアウォールに注意）</span><br/>
 <span style="color: #666666; font-style: italic;"># systemd サービスファイルを編集</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> systemctl edit ollama.service<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> systemctl edit ollama.service<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># 以下を追加：</span><br/>
 <span style="color: #666666; font-style: italic;"># [Service]</span><br/>
@@ -354,7 +354,7 @@ curl <span style="color: #660033;">-fsSL</span> https:<span style="color: #00000
 <span style="color: #666666; font-style: italic;"># Environment="OLLAMA_MODELS=/var/lib/ollama/models"</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># サービスを再起動</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> systemctl restart ollama<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> systemctl restart ollama<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># モデルをプルして実行</span><br/>
 ollama pull qwen2.5:7b<br/>
@@ -763,7 +763,7 @@ async <span style="color: Green;font-weight:bold;">def</span> list_models<span s
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># 依存関係をインストール</span><br/>
-pip <span style="color: #c20cb9; font-weight: bold;">install</span> fastapi uvicorn python-multipart pydantic<br/>
+pip <span style="color: #C20CB9; font-weight: bold;">install</span> fastapi uvicorn python-multipart pydantic<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># サービスを起動</span><br/>
 python llm_api_server.py<br/>
@@ -907,56 +907,56 @@ async <span style="color: Green;font-weight:bold;">def</span> main<span style="c
 <span style="color: #808080; font-style: italic;"># ファイルパス：nginx.conf</span><br/>
 <span style="color: #808080; font-style: italic;"># Nginx設定：複数台のLLMサービスの負荷分散</span><br/>
 <br/>
-<span style="color: #993333;">upstream</span> llm_backends <span style="color: #66cc66;">{</span><br/>
+<span style="color: #993333;">upstream</span> llm_backends <span style="color: #66CC66;">{</span><br/>
     <span style="color: #808080; font-style: italic;"># 最小接続数アルゴリズム：現在の接続数が最も少ないサーバーにリクエストを送信</span><br/>
-    <span style="color: #993333;">least_conn</span><span style="color: #66cc66;">;</span><br/>
+    <span style="color: #993333;">least_conn</span><span style="color: #66CC66;">;</span><br/>
 <br/>
     <span style="color: #808080; font-style: italic;"># バックエンドサーバーリスト</span><br/>
-    <span style="color: #000066;">server</span> 192.168.1.101:<span style="">8000</span> weight<span style="color: #66cc66;">=</span><span style="">1</span> max_fails<span style="color: #66cc66;">=</span><span style="">3</span> fail_timeout<span style="color: #66cc66;">=</span>30s<span style="color: #66cc66;">;</span><br/>
-    <span style="color: #000066;">server</span> 192.168.1.102:<span style="">8000</span> weight<span style="color: #66cc66;">=</span><span style="">1</span> max_fails<span style="color: #66cc66;">=</span><span style="">3</span> fail_timeout<span style="color: #66cc66;">=</span>30s<span style="color: #66cc66;">;</span><br/>
-    <span style="color: #000066;">server</span> 192.168.1.103:<span style="">8000</span> weight<span style="color: #66cc66;">=</span><span style="">1</span> max_fails<span style="color: #66cc66;">=</span><span style="">3</span> fail_timeout<span style="color: #66cc66;">=</span>30s<span style="color: #66cc66;">;</span><br/>
+    <span style="color: #000066;">server</span> 192.168.1.101:<span style="">8000</span> weight<span style="color: #66CC66;">=</span><span style="">1</span> max_fails<span style="color: #66CC66;">=</span><span style="">3</span> fail_timeout<span style="color: #66CC66;">=</span>30s<span style="color: #66CC66;">;</span><br/>
+    <span style="color: #000066;">server</span> 192.168.1.102:<span style="">8000</span> weight<span style="color: #66CC66;">=</span><span style="">1</span> max_fails<span style="color: #66CC66;">=</span><span style="">3</span> fail_timeout<span style="color: #66CC66;">=</span>30s<span style="color: #66CC66;">;</span><br/>
+    <span style="color: #000066;">server</span> 192.168.1.103:<span style="">8000</span> weight<span style="color: #66CC66;">=</span><span style="">1</span> max_fails<span style="color: #66CC66;">=</span><span style="">3</span> fail_timeout<span style="color: #66CC66;">=</span>30s<span style="color: #66CC66;">;</span><br/>
 <br/>
     <span style="color: #808080; font-style: italic;"># 複数種類のGPUがある場合、weightでトラフィックの比率を割り当てられる</span><br/>
     <span style="color: #808080; font-style: italic;"># weight=2 は、このサーバーが他の2倍のトラフィックを受け持つことを意味する</span><br/>
-<span style="color: #66cc66;">}</span><br/>
+<span style="color: #66CC66;">}</span><br/>
 <br/>
-<span style="color: #000066;">server</span> <span style="color: #66cc66;">{</span><br/>
-    <span style="color: #000066;">listen</span> <span style="">80</span><span style="color: #66cc66;">;</span><br/>
-    <span style="color: #000066;">server_name</span> api.runoob.com<span style="color: #66cc66;">;</span><br/>
+<span style="color: #000066;">server</span> <span style="color: #66CC66;">{</span><br/>
+    <span style="color: #000066;">listen</span> <span style="">80</span><span style="color: #66CC66;">;</span><br/>
+    <span style="color: #000066;">server_name</span> api.runoob.com<span style="color: #66CC66;">;</span><br/>
 <br/>
     <span style="color: #808080; font-style: italic;"># APIリクエストの転送</span><br/>
-    <span style="color: #000066;">location</span> /v1/ <span style="color: #66cc66;">{</span><br/>
+    <span style="color: #000066;">location</span> /v1/ <span style="color: #66CC66;">{</span><br/>
         <span style="color: #808080; font-style: italic;"># バックエンドに転送</span><br/>
-        <span style="">proxy_pass</span> <span style="color: #000066;">http</span>://llm_backends<span style="color: #66cc66;">;</span><br/>
+        <span style="">proxy_pass</span> <span style="color: #000066;">http</span>://llm_backends<span style="color: #66CC66;">;</span><br/>
 <br/>
         <span style="color: #808080; font-style: italic;"># タイムアウト設定（AI生成は遅い可能性がある）</span><br/>
-        <span style="">proxy_connect_timeout</span> 10s<span style="color: #66cc66;">;</span><br/>
-        <span style="">proxy_send_timeout</span> 600s<span style="color: #66cc66;">;</span><br/>
-        <span style="">proxy_read_timeout</span> 600s<span style="color: #66cc66;">;</span><br/>
+        <span style="">proxy_connect_timeout</span> 10s<span style="color: #66CC66;">;</span><br/>
+        <span style="">proxy_send_timeout</span> 600s<span style="color: #66CC66;">;</span><br/>
+        <span style="">proxy_read_timeout</span> 600s<span style="color: #66CC66;">;</span><br/>
 <br/>
         <span style="color: #808080; font-style: italic;"># クライアントの実際のIPを渡す</span><br/>
-        <span style="">proxy_set_header</span> Host <span style="color: #000066;">$host</span><span style="color: #66cc66;">;</span><br/>
-        <span style="">proxy_set_header</span> X-Real-IP <span style="color: #000066;">$remote_addr</span><span style="color: #66cc66;">;</span><br/>
-        <span style="">proxy_set_header</span> X-Forwarded-For <span style="color: #000066;">$proxy_add_x_forwarded_for</span><span style="color: #66cc66;">;</span><br/>
+        <span style="">proxy_set_header</span> Host <span style="color: #000066;">$host</span><span style="color: #66CC66;">;</span><br/>
+        <span style="">proxy_set_header</span> X-Real-IP <span style="color: #000066;">$remote_addr</span><span style="color: #66CC66;">;</span><br/>
+        <span style="">proxy_set_header</span> X-Forwarded-For <span style="color: #000066;">$proxy_add_x_forwarded_for</span><span style="color: #66CC66;">;</span><br/>
 <br/>
         <span style="color: #808080; font-style: italic;"># ストリーミングレスポンスに必要な設定</span><br/>
-        <span style="">proxy_buffering</span> off<span style="color: #66cc66;">;</span><br/>
-        <span style="">proxy_cache</span> off<span style="color: #66cc66;">;</span><br/>
-        <span style="">proxy_set_header</span> Connection <span style="color: #ff0000;">''</span><span style="color: #66cc66;">;</span><br/>
-        <span style="">proxy_http_version</span> <span style="">1.1</span><span style="color: #66cc66;">;</span><br/>
-    <span style="color: #66cc66;">}</span><br/>
+        <span style="">proxy_buffering</span> off<span style="color: #66CC66;">;</span><br/>
+        <span style="">proxy_cache</span> off<span style="color: #66CC66;">;</span><br/>
+        <span style="">proxy_set_header</span> Connection <span style="color: #FF0000;">''</span><span style="color: #66CC66;">;</span><br/>
+        <span style="">proxy_http_version</span> <span style="">1.1</span><span style="color: #66CC66;">;</span><br/>
+    <span style="color: #66CC66;">}</span><br/>
 <br/>
     <span style="color: #808080; font-style: italic;"># ヘルスチェックエンドポイント</span><br/>
-    <span style="color: #000066;">location</span> /health <span style="color: #66cc66;">{</span><br/>
-        <span style="">proxy_pass</span> <span style="color: #000066;">http</span>://llm_backends/health<span style="color: #66cc66;">;</span><br/>
-        <span style="">proxy_connect_timeout</span> 5s<span style="color: #66cc66;">;</span><br/>
-        <span style="">proxy_read_timeout</span> 5s<span style="color: #66cc66;">;</span><br/>
-    <span style="color: #66cc66;">}</span><br/>
+    <span style="color: #000066;">location</span> /health <span style="color: #66CC66;">{</span><br/>
+        <span style="">proxy_pass</span> <span style="color: #000066;">http</span>://llm_backends/health<span style="color: #66CC66;">;</span><br/>
+        <span style="">proxy_connect_timeout</span> 5s<span style="color: #66CC66;">;</span><br/>
+        <span style="">proxy_read_timeout</span> 5s<span style="color: #66CC66;">;</span><br/>
+    <span style="color: #66CC66;">}</span><br/>
 <br/>
     <span style="color: #808080; font-style: italic;"># レート制限：各IPは毎秒最大10リクエスト</span><br/>
-    <span style="">limit_req_zone</span> <span style="color: #000066;">$binary_remote_addr</span> zone<span style="color: #66cc66;">=</span>api_limit:10m rate<span style="color: #66cc66;">=</span>10r/s<span style="color: #66cc66;">;</span><br/>
-    <span style="">limit_req</span> zone<span style="color: #66cc66;">=</span>api_limit burst<span style="color: #66cc66;">=</span><span style="">20</span> nodelay<span style="color: #66cc66;">;</span><br/>
-<span style="color: #66cc66;">}</span><br/>
+    <span style="">limit_req_zone</span> <span style="color: #000066;">$binary_remote_addr</span> zone<span style="color: #66CC66;">=</span>api_limit:10m rate<span style="color: #66CC66;">=</span>10r/s<span style="color: #66CC66;">;</span><br/>
+    <span style="">limit_req</span> zone<span style="color: #66CC66;">=</span>api_limit burst<span style="color: #66CC66;">=</span><span style="">20</span> nodelay<span style="color: #66CC66;">;</span><br/>
+<span style="color: #66CC66;">}</span><br/>
 </div>
 </div>
 <h3>Kubernetes HPA による自動スケーリング</h3>
@@ -2459,7 +2459,7 @@ groups</span>:<span style="color: green;"><br/>
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -2504,7 +2504,7 @@ groups</span>:<span style="color: green;"><br/>
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -2543,7 +2543,7 @@ groups</span>:<span style="color: green;"><br/>
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>

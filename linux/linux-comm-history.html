@@ -362,7 +362,7 @@ history -d 1010</pre>
 <div class="example_code">
 <span style="color: #000000; font-weight: bold;">!</span><span style="color: #000000;">1024</span>     <span style="color: #666666; font-style: italic;"># 履歴の中で番号が1024のコマンドを実行する</span><br/>
 <span style="color: #000000; font-weight: bold;">!!</span>        <span style="color: #666666; font-style: italic;"># 直前のコマンドを再実行する</span><br/>
-<span style="color: #000000; font-weight: bold;">!</span><span style="color: #c20cb9; font-weight: bold;">vim</span>      <span style="color: #666666; font-style: italic;"># vim で始まる直近のコマンドを実行する</span><br/>
+<span style="color: #000000; font-weight: bold;">!</span><span style="color: #C20CB9; font-weight: bold;">vim</span>      <span style="color: #666666; font-style: italic;"># vim で始まる直近のコマンドを実行する</span><br/>
 </div>
 </div>
 <h3>2. 履歴コマンドを検索する</h3>
@@ -378,7 +378,7 @@ history -d 1010</pre>
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-$ <span style="color: #c20cb9; font-weight: bold;">cat</span> file1.txt<br/>
+$ <span style="color: #C20CB9; font-weight: bold;">cat</span> file1.txt<br/>
 $ ^file1^file2  <span style="color: #666666; font-style: italic;"># cat file2.txt を実行するのと同等</span><br/>
 </div>
 </div>
@@ -387,14 +387,14 @@ $ ^file1^file2  <span style="color: #666666; font-style: italic;"># cat file2.t
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #7a0874; font-weight: bold;">export</span> <span style="color: #007800;">HISTTIMEFORMAT</span>=<span style="color: #a10;">"%F %T "</span><br/>
+<span style="color: #7A0874; font-weight: bold;">export</span> <span style="color: #007800;">HISTTIMEFORMAT</span>=<span style="color: #a10;">"%F %T "</span><br/>
 </div>
 </div>
 <p>その後、以下を実行します：</p>
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #7a0874; font-weight: bold;">source</span> ~<span style="color: #000000; font-weight: bold;">/</span>.bashrc<br/>
+<span style="color: #7A0874; font-weight: bold;">source</span> ~<span style="color: #000000; font-weight: bold;">/</span>.bashrc<br/>
 </div>
 </div>
 <p>その後<code>history</code>history コマンドは各コマンドの実行時刻を表示します。</p>
@@ -434,11 +434,11 @@ $ ^file1^file2  <span style="color: #666666; font-style: italic;"># cat file2.t
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #7a0874; font-weight: bold;">export</span> <span style="color: #007800;">HISTSIZE</span>=<span style="color: #000000;">5000</span><br/>
-<span style="color: #7a0874; font-weight: bold;">export</span> <span style="color: #007800;">HISTFILESIZE</span>=<span style="color: #000000;">10000</span><br/>
-<span style="color: #7a0874; font-weight: bold;">export</span> <span style="color: #007800;">HISTCONTROL</span>=ignoredups:erasedups<br/>
-<span style="color: #7a0874; font-weight: bold;">export</span> <span style="color: #007800;">HISTIGNORE</span>=<span style="color: #a10;">"ls:cd:pwd:exit"</span><br/>
-<span style="color: #7a0874; font-weight: bold;">export</span> <span style="color: #007800;">HISTTIMEFORMAT</span>=<span style="color: #a10;">"%F %T "</span><br/>
+<span style="color: #7A0874; font-weight: bold;">export</span> <span style="color: #007800;">HISTSIZE</span>=<span style="color: #000000;">5000</span><br/>
+<span style="color: #7A0874; font-weight: bold;">export</span> <span style="color: #007800;">HISTFILESIZE</span>=<span style="color: #000000;">10000</span><br/>
+<span style="color: #7A0874; font-weight: bold;">export</span> <span style="color: #007800;">HISTCONTROL</span>=ignoredups:erasedups<br/>
+<span style="color: #7A0874; font-weight: bold;">export</span> <span style="color: #007800;">HISTIGNORE</span>=<span style="color: #a10;">"ls:cd:pwd:exit"</span><br/>
+<span style="color: #7A0874; font-weight: bold;">export</span> <span style="color: #007800;">HISTTIMEFORMAT</span>=<span style="color: #a10;">"%F %T "</span><br/>
 </div>
 </div>
 <hr/>
@@ -447,22 +447,22 @@ $ ^file1^file2  <span style="color: #666666; font-style: italic;"># cat file2.t
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #7a0874; font-weight: bold;">history</span> <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #c20cb9; font-weight: bold;">grep</span> <span style="color: #a10;">"apt install"</span><br/>
+<span style="color: #7A0874; font-weight: bold;">history</span> <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #C20CB9; font-weight: bold;">grep</span> <span style="color: #a10;">"apt install"</span><br/>
 </div>
 </div>
 <h3>シーン2：最もよく使うコマンドを統計する</h3>
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #7a0874; font-weight: bold;">history</span> <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #c20cb9; font-weight: bold;">awk</span> <span style="color: #a10;">'{CMD[$2]++;count++;} END {for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}'</span> <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #c20cb9; font-weight: bold;">grep</span> <span style="color: #660033;">-v</span> <span style="color: #a10;">"./"</span> <span style="color: #000000; font-weight: bold;">|</span> column <span style="color: #660033;">-c3</span> <span style="color: #660033;">-s</span> <span style="color: #a10;">" "</span> <span style="color: #660033;">-t</span> <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #c20cb9; font-weight: bold;">sort</span> <span style="color: #660033;">-nr</span> <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #c20cb9; font-weight: bold;">nl</span> <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #c20cb9; font-weight: bold;">head</span> <span style="color: #660033;">-n10</span><br/>
+<span style="color: #7A0874; font-weight: bold;">history</span> <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #C20CB9; font-weight: bold;">awk</span> <span style="color: #a10;">'{CMD[$2]++;count++;} END {for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}'</span> <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #C20CB9; font-weight: bold;">grep</span> <span style="color: #660033;">-v</span> <span style="color: #a10;">"./"</span> <span style="color: #000000; font-weight: bold;">|</span> column <span style="color: #660033;">-c3</span> <span style="color: #660033;">-s</span> <span style="color: #a10;">" "</span> <span style="color: #660033;">-t</span> <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #C20CB9; font-weight: bold;">sort</span> <span style="color: #660033;">-nr</span> <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #C20CB9; font-weight: bold;">nl</span> <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #C20CB9; font-weight: bold;">head</span> <span style="color: #660033;">-n10</span><br/>
 </div>
 </div>
 <h3>シーン3：履歴をバックアップする</h3>
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #7a0874; font-weight: bold;">history</span> <span style="color: #660033;">-a</span>  <span style="color: #666666; font-style: italic;"># 最新のコマンドがファイルに書き込まれていることを確認する</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">cp</span> ~<span style="color: #000000; font-weight: bold;">/</span>.bash_history ~<span style="color: #000000; font-weight: bold;">/</span>command_history_backup_$<span style="color: #7a0874; font-weight: bold;">(</span><span style="color: #c20cb9; font-weight: bold;">date</span> +<span style="color: #000000; font-weight: bold;">%</span>F<span style="color: #7a0874; font-weight: bold;">)</span>.txt<br/>
+<span style="color: #7A0874; font-weight: bold;">history</span> <span style="color: #660033;">-a</span>  <span style="color: #666666; font-style: italic;"># 最新のコマンドがファイルに書き込まれていることを確認する</span><br/>
+<span style="color: #C20CB9; font-weight: bold;">cp</span> ~<span style="color: #000000; font-weight: bold;">/</span>.bash_history ~<span style="color: #000000; font-weight: bold;">/</span>command_history_backup_$<span style="color: #7A0874; font-weight: bold;">(</span><span style="color: #C20CB9; font-weight: bold;">date</span> +<span style="color: #000000; font-weight: bold;">%</span>F<span style="color: #7A0874; font-weight: bold;">)</span>.txt<br/>
 </div>
 </div>
 <hr/>
@@ -524,7 +524,7 @@ alias backup_history='cp ~/.bash_history ~/history_backups/history_$(date +%Y%m%
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -569,7 +569,7 @@ alias backup_history='cp ~/.bash_history ~/history_backups/history_$(date +%Y%m%
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -608,7 +608,7 @@ alias backup_history='cp ~/.bash_history ~/history_backups/history_$(date +%Y%m%
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリック</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
@@ -827,7 +827,7 @@ function kFormatter(num) {
 </style>
 <div class="sidebar-box re-box re-box-large">
 <div class="sidebar-box recommend-here" style="margin: 0 auto;">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
+<a href="#" style="font-size: 16px; color:#5B80A6;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
 </div>
 <div class="sidebar-box sidebar-cate">
 <div class="sidebar-tree">

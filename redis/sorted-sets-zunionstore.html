@@ -295,24 +295,24 @@ redis 127.0.0.1:6379&gt; ZUNIONSTORE destination numkeys key [key ...] [WEIGHTS 
 <p>destination に保存された結果セットのメンバーの数。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 redis<span style="color: #000000; font-weight: bold;">&gt;</span> ZADD zset1 <span style="color: #000000;">1</span> <span style="color: #a10;">"one"</span><br/>
-<span style="color: #7a0874; font-weight: bold;">(</span>integer<span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><br/>
+<span style="color: #7A0874; font-weight: bold;">(</span>integer<span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><br/>
 redis<span style="color: #000000; font-weight: bold;">&gt;</span> ZADD zset1 <span style="color: #000000;">2</span> <span style="color: #a10;">"two"</span><br/>
-<span style="color: #7a0874; font-weight: bold;">(</span>integer<span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><br/>
+<span style="color: #7A0874; font-weight: bold;">(</span>integer<span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><br/>
 redis<span style="color: #000000; font-weight: bold;">&gt;</span> ZADD zset2 <span style="color: #000000;">1</span> <span style="color: #a10;">"one"</span><br/>
-<span style="color: #7a0874; font-weight: bold;">(</span>integer<span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><br/>
+<span style="color: #7A0874; font-weight: bold;">(</span>integer<span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><br/>
 redis<span style="color: #000000; font-weight: bold;">&gt;</span> ZADD zset2 <span style="color: #000000;">2</span> <span style="color: #a10;">"two"</span><br/>
-<span style="color: #7a0874; font-weight: bold;">(</span>integer<span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><br/>
+<span style="color: #7A0874; font-weight: bold;">(</span>integer<span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><br/>
 redis<span style="color: #000000; font-weight: bold;">&gt;</span> ZADD zset2 <span style="color: #000000;">3</span> <span style="color: #a10;">"three"</span><br/>
-<span style="color: #7a0874; font-weight: bold;">(</span>integer<span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><br/>
+<span style="color: #7A0874; font-weight: bold;">(</span>integer<span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><br/>
 redis<span style="color: #000000; font-weight: bold;">&gt;</span> ZUNIONSTORE out <span style="color: #000000;">2</span> zset1 zset2 WEIGHTS <span style="color: #000000;">2</span> <span style="color: #000000;">3</span><br/>
-<span style="color: #7a0874; font-weight: bold;">(</span>integer<span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #000000;">3</span><br/>
+<span style="color: #7A0874; font-weight: bold;">(</span>integer<span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #000000;">3</span><br/>
 redis<span style="color: #000000; font-weight: bold;">&gt;</span> ZRANGE out <span style="color: #000000;">0</span> <span style="color: #660033;">-1</span> WITHSCORES<br/>
-<span style="color: #000000;">1</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #a10;">"one"</span><br/>
-<span style="color: #000000;">2</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #a10;">"5"</span><br/>
-<span style="color: #000000;">3</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #a10;">"three"</span><br/>
-<span style="color: #000000;">4</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #a10;">"9"</span><br/>
-<span style="color: #000000;">5</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #a10;">"two"</span><br/>
-<span style="color: #000000;">6</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #a10;">"10"</span><br/>
+<span style="color: #000000;">1</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"one"</span><br/>
+<span style="color: #000000;">2</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"5"</span><br/>
+<span style="color: #000000;">3</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"three"</span><br/>
+<span style="color: #000000;">4</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"9"</span><br/>
+<span style="color: #000000;">5</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"two"</span><br/>
+<span style="color: #000000;">6</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"10"</span><br/>
 redis<span style="color: #000000; font-weight: bold;">&gt;</span> <br/>
 </div></div>
 <p>
@@ -351,7 +351,7 @@ redis<span style="color: #000000; font-weight: bold;">&gt;</span> <br/>
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -396,7 +396,7 @@ redis<span style="color: #000000; font-weight: bold;">&gt;</span> <br/>
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -451,7 +451,7 @@ redis<span style="color: #000000; font-weight: bold;">&gt;</span> <br/>
 </div>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリック</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -670,7 +670,7 @@ function kFormatter(num) {
 </style>
 <div class="sidebar-box re-box re-box-large">
 <div class="sidebar-box recommend-here" style="margin: 0 auto;">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
+<a href="#" style="font-size: 16px; color:#5B80A6;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
 </div>
 <div class="sidebar-box sidebar-cate">
 <div class="sidebar-tree">

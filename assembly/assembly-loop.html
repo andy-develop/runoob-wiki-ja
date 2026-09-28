@@ -175,34 +175,34 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: #666666; font-style: italic;">; 文件路径：loop_basic.asm</span><br/>
 <span style="color: #666666; font-style: italic;">; LOOP 指令基本用法：重复 5 次输出</span><br/>
 <br/>
-<span style="color: #0000ff; font-weight: bold;">section</span> <span style="color: #0000ff; font-weight: bold;">.data</span><br/>
-    msg <span style="color: #0000ff; font-weight: bold;">db</span> <span style="color: #7f007f;">'runoob'</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">0xA</span><br/>
-    len <span style="color: #0000ff; font-weight: bold;">equ</span> <span style="color: #0000ff; font-weight: bold;">$</span> <span style="color: #339933;">-</span> msg<br/>
+<span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
+    msg <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'runoob'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0xA</span><br/>
+    len <span style="color: #0000FF; font-weight: bold;">equ</span> <span style="color: #0000FF; font-weight: bold;">$</span> <span style="color: #339933;">-</span> msg<br/>
 <br/>
-<span style="color: #0000ff; font-weight: bold;">section</span> <span style="color: #0000ff; font-weight: bold;">.text</span><br/>
-    <span style="color: #0000ff; font-weight: bold;">global</span> _start<br/>
+<span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.text</span><br/>
+    <span style="color: #0000FF; font-weight: bold;">global</span> _start<br/>
 <br/>
 _start<span style="color: #339933;">:</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">5</span>                  <span style="color: #666666; font-style: italic;">; 循环计数器 = 5（循环 5 次）</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">5</span>                  <span style="color: #666666; font-style: italic;">; 循环计数器 = 5（循环 5 次）</span><br/>
 <br/>
 repeat<span style="color: #339933;">:</span><br/>
     <span style="color: #666666; font-style: italic;">; 保存 ecx（系统调用可能修改它）</span><br/>
-    <span style="color: #00007f; font-weight: bold;">push</span> <span style="color: #46aa03; font-weight: bold;">ecx</span><br/>
+    <span style="color: #00007F; font-weight: bold;">push</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 输出 msg</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">4</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">1</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> msg<br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> len<br/>
-    <span style="color: #00007f; font-weight: bold;">int</span> <span style="color: #ff0000;">0x80</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">4</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> msg<br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> len<br/>
+    <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 恢复 ecx</span><br/>
-    <span style="color: #00007f; font-weight: bold;">pop</span> <span style="color: #46aa03; font-weight: bold;">ecx</span><br/>
-    <span style="color: #00007f; font-weight: bold;">loop</span> repeat                 <span style="color: #666666; font-style: italic;">; ecx--; if ecx != 0 跳转到 repeat</span><br/>
+    <span style="color: #00007F; font-weight: bold;">pop</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><br/>
+    <span style="color: #00007F; font-weight: bold;">loop</span> repeat                 <span style="color: #666666; font-style: italic;">; ecx--; if ecx != 0 跳转到 repeat</span><br/>
 <br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">1</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">0</span><br/>
-    <span style="color: #00007f; font-weight: bold;">int</span> <span style="color: #ff0000;">0x80</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
+    <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
 </div>
 </div>
 <p>运行结果：</p>
@@ -230,28 +230,28 @@ runoob
 <div class="example_code">
 <span style="color: #666666; font-style: italic;">; LOOPE 示例：在数组中查找第一个非零值</span><br/>
 <br/>
-<span style="color: #0000ff; font-weight: bold;">section</span> <span style="color: #0000ff; font-weight: bold;">.data</span><br/>
-    array <span style="color: #0000ff; font-weight: bold;">db</span> <span style="color: #ff0000;">0</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">0</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">0</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">5</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">0</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">0</span>  <span style="color: #666666; font-style: italic;">; 前三个是 0，第四个是 5</span><br/>
+<span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
+    array <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #FF0000;">0</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">5</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>  <span style="color: #666666; font-style: italic;">; 前三个是 0，第四个是 5</span><br/>
 <br/>
-<span style="color: #0000ff; font-weight: bold;">section</span> <span style="color: #0000ff; font-weight: bold;">.text</span><br/>
-    <span style="color: #0000ff; font-weight: bold;">global</span> _start<br/>
+<span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.text</span><br/>
+    <span style="color: #0000FF; font-weight: bold;">global</span> _start<br/>
 <br/>
 _start<span style="color: #339933;">:</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">6</span>                  <span style="color: #666666; font-style: italic;">; 数组长度</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">esi</span><span style="color: #339933;">,</span> array <span style="color: #339933;">-</span> <span style="color: #ff0000;">1</span>          <span style="color: #666666; font-style: italic;">; 指向数组前一个位置</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">6</span>                  <span style="color: #666666; font-style: italic;">; 数组长度</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">esi</span><span style="color: #339933;">,</span> array <span style="color: #339933;">-</span> <span style="color: #FF0000;">1</span>          <span style="color: #666666; font-style: italic;">; 指向数组前一个位置</span><br/>
 <br/>
 find_nonzero<span style="color: #339933;">:</span><br/>
-    <span style="color: #00007f; font-weight: bold;">inc</span> <span style="color: #46aa03; font-weight: bold;">esi</span>                     <span style="color: #666666; font-style: italic;">; 移动到下一个元素</span><br/>
-    <span style="color: #00007f; font-weight: bold;">cmp</span> <span style="color: #0000ff; font-weight: bold;">byte</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46aa03; font-weight: bold;">esi</span><span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">0</span>           <span style="color: #666666; font-style: italic;">; 当前元素 == 0 ?</span><br/>
-    <span style="color: #00007f; font-weight: bold;">loope</span> find_nonzero          <span style="color: #666666; font-style: italic;">; 如果是 0 且 ecx &gt; 0，继续循环</span><br/>
+    <span style="color: #00007F; font-weight: bold;">inc</span> <span style="color: #46AA03; font-weight: bold;">esi</span>                     <span style="color: #666666; font-style: italic;">; 移动到下一个元素</span><br/>
+    <span style="color: #00007F; font-weight: bold;">cmp</span> <span style="color: #0000FF; font-weight: bold;">byte</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46AA03; font-weight: bold;">esi</span><span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>           <span style="color: #666666; font-style: italic;">; 当前元素 == 0 ?</span><br/>
+    <span style="color: #00007F; font-weight: bold;">loope</span> find_nonzero          <span style="color: #666666; font-style: italic;">; 如果是 0 且 ecx &gt; 0，继续循环</span><br/>
     <span style="color: #666666; font-style: italic;">; 循环结束：找到了第一个非零元素，或遍历结束</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; esi 现在指向第一个非零元素的地址</span><br/>
     <span style="color: #666666; font-style: italic;">; ecx 剩余未比较的元素个数</span><br/>
 <br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">1</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">0</span><br/>
-    <span style="color: #00007f; font-weight: bold;">int</span> <span style="color: #ff0000;">0x80</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
+    <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
 </div>
 </div>
 <hr/>
@@ -263,31 +263,31 @@ find_nonzero<span style="color: #339933;">:</span><br/>
 <span style="color: #666666; font-style: italic;">; 文件路径：while_loop.asm</span><br/>
 <span style="color: #666666; font-style: italic;">; 实现：while (x &lt; 100) x = x * 2;</span><br/>
 <br/>
-<span style="color: #0000ff; font-weight: bold;">section</span> <span style="color: #0000ff; font-weight: bold;">.data</span><br/>
-    x <span style="color: #0000ff; font-weight: bold;">dd</span> <span style="color: #ff0000;">1</span><br/>
-    limit <span style="color: #0000ff; font-weight: bold;">dd</span> <span style="color: #ff0000;">100</span><br/>
+<span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
+    x <span style="color: #0000FF; font-weight: bold;">dd</span> <span style="color: #FF0000;">1</span><br/>
+    limit <span style="color: #0000FF; font-weight: bold;">dd</span> <span style="color: #FF0000;">100</span><br/>
 <br/>
-<span style="color: #0000ff; font-weight: bold;">section</span> <span style="color: #0000ff; font-weight: bold;">.text</span><br/>
-    <span style="color: #0000ff; font-weight: bold;">global</span> _start<br/>
+<span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.text</span><br/>
+    <span style="color: #0000FF; font-weight: bold;">global</span> _start<br/>
 <br/>
 _start<span style="color: #339933;">:</span><br/>
     <span style="color: #666666; font-style: italic;">; while 循环</span><br/>
 while_start<span style="color: #339933;">:</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>x<span style="color: #009900; font-weight: bold;">]</span>                <span style="color: #666666; font-style: italic;">; 加载 x</span><br/>
-    <span style="color: #00007f; font-weight: bold;">cmp</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>limit<span style="color: #009900; font-weight: bold;">]</span>            <span style="color: #666666; font-style: italic;">; x &lt; 100 ?</span><br/>
-    <span style="color: #00007f; font-weight: bold;">jge</span> while_end               <span style="color: #666666; font-style: italic;">; 如果 x &gt;= 100，结束循环</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>x<span style="color: #009900; font-weight: bold;">]</span>                <span style="color: #666666; font-style: italic;">; 加载 x</span><br/>
+    <span style="color: #00007F; font-weight: bold;">cmp</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>limit<span style="color: #009900; font-weight: bold;">]</span>            <span style="color: #666666; font-style: italic;">; x &lt; 100 ?</span><br/>
+    <span style="color: #00007F; font-weight: bold;">jge</span> while_end               <span style="color: #666666; font-style: italic;">; 如果 x &gt;= 100，结束循环</span><br/>
 <br/>
-    <span style="color: #00007f; font-weight: bold;">shl</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">1</span>                  <span style="color: #666666; font-style: italic;">; x = x * 2</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #009900; font-weight: bold;">[</span>x<span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #46aa03; font-weight: bold;">eax</span>                <span style="color: #666666; font-style: italic;">; 存回 x</span><br/>
+    <span style="color: #00007F; font-weight: bold;">shl</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span>                  <span style="color: #666666; font-style: italic;">; x = x * 2</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #009900; font-weight: bold;">[</span>x<span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">eax</span>                <span style="color: #666666; font-style: italic;">; 存回 x</span><br/>
 <br/>
-    <span style="color: #00007f; font-weight: bold;">jmp</span> while_start             <span style="color: #666666; font-style: italic;">; 回到循环开始，重新判断</span><br/>
+    <span style="color: #00007F; font-weight: bold;">jmp</span> while_start             <span style="color: #666666; font-style: italic;">; 回到循环开始，重新判断</span><br/>
 <br/>
 while_end<span style="color: #339933;">:</span><br/>
     <span style="color: #666666; font-style: italic;">; x 现在是 128（1-&gt;2-&gt;4-&gt;8-&gt;16-&gt;32-&gt;64-&gt;128，128 &gt;= 100 停止）</span><br/>
 <br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">1</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>x<span style="color: #009900; font-weight: bold;">]</span>                <span style="color: #666666; font-style: italic;">; 返回 x 作为退出码</span><br/>
-    <span style="color: #00007f; font-weight: bold;">int</span> <span style="color: #ff0000;">0x80</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>x<span style="color: #009900; font-weight: bold;">]</span>                <span style="color: #666666; font-style: italic;">; 返回 x 作为退出码</span><br/>
+    <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
 </div>
 </div>
 <hr/>
@@ -298,27 +298,27 @@ while_end<span style="color: #339933;">:</span><br/>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;">; DO-WHILE 循环：至少执行一次</span><br/>
 <br/>
-<span style="color: #0000ff; font-weight: bold;">section</span> <span style="color: #0000ff; font-weight: bold;">.data</span><br/>
-    counter <span style="color: #0000ff; font-weight: bold;">dd</span> <span style="color: #ff0000;">0</span><br/>
+<span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
+    counter <span style="color: #0000FF; font-weight: bold;">dd</span> <span style="color: #FF0000;">0</span><br/>
 <br/>
-<span style="color: #0000ff; font-weight: bold;">section</span> <span style="color: #0000ff; font-weight: bold;">.text</span><br/>
-    <span style="color: #0000ff; font-weight: bold;">global</span> _start<br/>
+<span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.text</span><br/>
+    <span style="color: #0000FF; font-weight: bold;">global</span> _start<br/>
 <br/>
 _start<span style="color: #339933;">:</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #0000ff; font-weight: bold;">dword</span> <span style="color: #009900; font-weight: bold;">[</span>counter<span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">0</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #0000FF; font-weight: bold;">dword</span> <span style="color: #009900; font-weight: bold;">[</span>counter<span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
 <br/>
 do_loop<span style="color: #339933;">:</span><br/>
     <span style="color: #666666; font-style: italic;">; 循环体：counter++（至少执行一次）</span><br/>
-    <span style="color: #00007f; font-weight: bold;">inc</span> <span style="color: #0000ff; font-weight: bold;">dword</span> <span style="color: #009900; font-weight: bold;">[</span>counter<span style="color: #009900; font-weight: bold;">]</span><br/>
+    <span style="color: #00007F; font-weight: bold;">inc</span> <span style="color: #0000FF; font-weight: bold;">dword</span> <span style="color: #009900; font-weight: bold;">[</span>counter<span style="color: #009900; font-weight: bold;">]</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 判断条件</span><br/>
-    <span style="color: #00007f; font-weight: bold;">cmp</span> <span style="color: #0000ff; font-weight: bold;">dword</span> <span style="color: #009900; font-weight: bold;">[</span>counter<span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">5</span><br/>
-    <span style="color: #00007f; font-weight: bold;">jl</span>  do_loop                 <span style="color: #666666; font-style: italic;">; counter &lt; 5 时继续</span><br/>
+    <span style="color: #00007F; font-weight: bold;">cmp</span> <span style="color: #0000FF; font-weight: bold;">dword</span> <span style="color: #009900; font-weight: bold;">[</span>counter<span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">5</span><br/>
+    <span style="color: #00007F; font-weight: bold;">jl</span>  do_loop                 <span style="color: #666666; font-style: italic;">; counter &lt; 5 时继续</span><br/>
     <span style="color: #666666; font-style: italic;">; counter 最终 = 5</span><br/>
 <br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">1</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">0</span><br/>
-    <span style="color: #00007f; font-weight: bold;">int</span> <span style="color: #ff0000;">0x80</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
+    <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
 </div>
 </div>
 <hr/>
@@ -330,45 +330,45 @@ do_loop<span style="color: #339933;">:</span><br/>
 <span style="color: #666666; font-style: italic;">; 文件路径：nested_loop.asm</span><br/>
 <span style="color: #666666; font-style: italic;">; 嵌套循环示例：打印乘法表（3×3）</span><br/>
 <br/>
-<span style="color: #0000ff; font-weight: bold;">section</span> <span style="color: #0000ff; font-weight: bold;">.data</span><br/>
-    space <span style="color: #0000ff; font-weight: bold;">db</span> <span style="color: #7f007f;">' '</span><br/>
-    newline <span style="color: #0000ff; font-weight: bold;">db</span> <span style="color: #ff0000;">0xA</span><br/>
+<span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
+    space <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">' '</span><br/>
+    newline <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #FF0000;">0xA</span><br/>
     <span style="color: #666666; font-style: italic;">; 用于存放转换后的数字字符（2位 + 空格 + null）</span><br/>
-    num_str <span style="color: #0000ff; font-weight: bold;">db</span> <span style="color: #7f007f;">'  '</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">0</span><br/>
+    num_str <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'  '</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
 <br/>
-<span style="color: #0000ff; font-weight: bold;">section</span> <span style="color: #0000ff; font-weight: bold;">.text</span><br/>
-    <span style="color: #0000ff; font-weight: bold;">global</span> _start<br/>
+<span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.text</span><br/>
+    <span style="color: #0000FF; font-weight: bold;">global</span> _start<br/>
 <br/>
 _start<span style="color: #339933;">:</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">3</span>                  <span style="color: #666666; font-style: italic;">; 外层循环计数器（行数）</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">3</span>                  <span style="color: #666666; font-style: italic;">; 外层循环计数器（行数）</span><br/>
 <br/>
 outer_loop<span style="color: #339933;">:</span><br/>
-    <span style="color: #00007f; font-weight: bold;">push</span> <span style="color: #46aa03; font-weight: bold;">ecx</span>                    <span style="color: #666666; font-style: italic;">; ★ 保存外层计数器！（重要）</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">3</span>                  <span style="color: #666666; font-style: italic;">; 内层循环计数器（列数）</span><br/>
+    <span style="color: #00007F; font-weight: bold;">push</span> <span style="color: #46AA03; font-weight: bold;">ecx</span>                    <span style="color: #666666; font-style: italic;">; ★ 保存外层计数器！（重要）</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">3</span>                  <span style="color: #666666; font-style: italic;">; 内层循环计数器（列数）</span><br/>
 <br/>
 inner_loop<span style="color: #339933;">:</span><br/>
-    <span style="color: #00007f; font-weight: bold;">push</span> <span style="color: #46aa03; font-weight: bold;">ecx</span>                    <span style="color: #666666; font-style: italic;">; 保存内层计数器</span><br/>
+    <span style="color: #00007F; font-weight: bold;">push</span> <span style="color: #46AA03; font-weight: bold;">ecx</span>                    <span style="color: #666666; font-style: italic;">; 保存内层计数器</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 计算乘积 = 外层行号(4-当前ecx) × 内层列号</span><br/>
     <span style="color: #666666; font-style: italic;">; 此处省略具体数字转换输出，仅演示结构</span><br/>
     <span style="color: #666666; font-style: italic;">; 实际输出：行号×列号</span><br/>
 <br/>
-    <span style="color: #00007f; font-weight: bold;">pop</span> <span style="color: #46aa03; font-weight: bold;">ecx</span>                     <span style="color: #666666; font-style: italic;">; 恢复内层计数器</span><br/>
-    <span style="color: #00007f; font-weight: bold;">loop</span> inner_loop             <span style="color: #666666; font-style: italic;">; 内层循环</span><br/>
+    <span style="color: #00007F; font-weight: bold;">pop</span> <span style="color: #46AA03; font-weight: bold;">ecx</span>                     <span style="color: #666666; font-style: italic;">; 恢复内层计数器</span><br/>
+    <span style="color: #00007F; font-weight: bold;">loop</span> inner_loop             <span style="color: #666666; font-style: italic;">; 内层循环</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 输出换行</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">4</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">1</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> newline<br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">1</span><br/>
-    <span style="color: #00007f; font-weight: bold;">int</span> <span style="color: #ff0000;">0x80</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">4</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> newline<br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
+    <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
 <br/>
-    <span style="color: #00007f; font-weight: bold;">pop</span> <span style="color: #46aa03; font-weight: bold;">ecx</span>                     <span style="color: #666666; font-style: italic;">; ★ 恢复外层计数器</span><br/>
-    <span style="color: #00007f; font-weight: bold;">loop</span> outer_loop             <span style="color: #666666; font-style: italic;">; 外层循环</span><br/>
+    <span style="color: #00007F; font-weight: bold;">pop</span> <span style="color: #46AA03; font-weight: bold;">ecx</span>                     <span style="color: #666666; font-style: italic;">; ★ 恢复外层计数器</span><br/>
+    <span style="color: #00007F; font-weight: bold;">loop</span> outer_loop             <span style="color: #666666; font-style: italic;">; 外层循环</span><br/>
 <br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">1</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">0</span><br/>
-    <span style="color: #00007f; font-weight: bold;">int</span> <span style="color: #ff0000;">0x80</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
+    <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
 </div>
 </div>
 <blockquote><p>ネストされたループで最も一般的なエラーは、スタックを使って外側のカウンタの値を保存するのを忘れることです。LOOPはECXを変更するため、内側のループでECXを再設定すると、外側のカウンタ値が失われます。解決方法は、内側のループに入るたびに（前に値を保存することです）。<code>push ecx</code>，离开后<code>pop ecx</code>。</p></blockquote>
@@ -381,40 +381,40 @@ inner_loop<span style="color: #339933;">:</span><br/>
 <span style="color: #666666; font-style: italic;">; 循环优化对比</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;">; 方式A：使用 LOOP 指令（较慢，但不明显）</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">1000</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1000</span><br/>
 loop_a<span style="color: #339933;">:</span><br/>
-    <span style="color: #00007f; font-weight: bold;">add</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46aa03; font-weight: bold;">ebx</span><span style="color: #009900; font-weight: bold;">]</span><br/>
-    <span style="color: #00007f; font-weight: bold;">add</span> <span style="color: #46aa03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">4</span><br/>
-    <span style="color: #00007f; font-weight: bold;">loop</span> loop_a<br/>
+    <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #009900; font-weight: bold;">]</span><br/>
+    <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">4</span><br/>
+    <span style="color: #00007F; font-weight: bold;">loop</span> loop_a<br/>
 <br/>
 <span style="color: #666666; font-style: italic;">; 方式B：使用条件跳转（手工计数）（通常更快）</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">1000</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1000</span><br/>
 loop_b<span style="color: #339933;">:</span><br/>
-    <span style="color: #00007f; font-weight: bold;">add</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46aa03; font-weight: bold;">ebx</span><span style="color: #009900; font-weight: bold;">]</span><br/>
-    <span style="color: #00007f; font-weight: bold;">add</span> <span style="color: #46aa03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">4</span><br/>
-    <span style="color: #00007f; font-weight: bold;">dec</span> <span style="color: #46aa03; font-weight: bold;">ecx</span><br/>
-    <span style="color: #00007f; font-weight: bold;">jnz</span> loop_b<br/>
+    <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #009900; font-weight: bold;">]</span><br/>
+    <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">4</span><br/>
+    <span style="color: #00007F; font-weight: bold;">dec</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><br/>
+    <span style="color: #00007F; font-weight: bold;">jnz</span> loop_b<br/>
 <br/>
 <span style="color: #666666; font-style: italic;">; 方式C：循环展开（最快，但代码体积大）</span><br/>
     <span style="color: #666666; font-style: italic;">; 将 1000 次循环展开为每次处理 4 个元素</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">250</span>                <span style="color: #666666; font-style: italic;">; 1000 / 4 = 250</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">250</span>                <span style="color: #666666; font-style: italic;">; 1000 / 4 = 250</span><br/>
 loop_unrolled<span style="color: #339933;">:</span><br/>
-    <span style="color: #00007f; font-weight: bold;">add</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46aa03; font-weight: bold;">ebx</span><span style="color: #009900; font-weight: bold;">]</span><br/>
-    <span style="color: #00007f; font-weight: bold;">add</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46aa03; font-weight: bold;">ebx</span> <span style="color: #339933;">+</span> <span style="color: #ff0000;">4</span><span style="color: #009900; font-weight: bold;">]</span><br/>
-    <span style="color: #00007f; font-weight: bold;">add</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46aa03; font-weight: bold;">ebx</span> <span style="color: #339933;">+</span> <span style="color: #ff0000;">8</span><span style="color: #009900; font-weight: bold;">]</span><br/>
-    <span style="color: #00007f; font-weight: bold;">add</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46aa03; font-weight: bold;">ebx</span> <span style="color: #339933;">+</span> <span style="color: #ff0000;">12</span><span style="color: #009900; font-weight: bold;">]</span><br/>
-    <span style="color: #00007f; font-weight: bold;">add</span> <span style="color: #46aa03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">16</span><br/>
-    <span style="color: #00007f; font-weight: bold;">dec</span> <span style="color: #46aa03; font-weight: bold;">ecx</span><br/>
-    <span style="color: #00007f; font-weight: bold;">jnz</span> loop_unrolled<br/>
+    <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #009900; font-weight: bold;">]</span><br/>
+    <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46AA03; font-weight: bold;">ebx</span> <span style="color: #339933;">+</span> <span style="color: #FF0000;">4</span><span style="color: #009900; font-weight: bold;">]</span><br/>
+    <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46AA03; font-weight: bold;">ebx</span> <span style="color: #339933;">+</span> <span style="color: #FF0000;">8</span><span style="color: #009900; font-weight: bold;">]</span><br/>
+    <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46AA03; font-weight: bold;">ebx</span> <span style="color: #339933;">+</span> <span style="color: #FF0000;">12</span><span style="color: #009900; font-weight: bold;">]</span><br/>
+    <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">16</span><br/>
+    <span style="color: #00007F; font-weight: bold;">dec</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><br/>
+    <span style="color: #00007F; font-weight: bold;">jnz</span> loop_unrolled<br/>
 <br/>
 <span style="color: #666666; font-style: italic;">; 方式D：倒计数（减少比较指令）</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">1000</span><br/>
-    <span style="color: #00007f; font-weight: bold;">lea</span> <span style="color: #46aa03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>array <span style="color: #339933;">+</span> <span style="color: #ff0000;">1000</span><span style="color: #339933;">*</span><span style="color: #ff0000;">4</span> <span style="color: #339933;">-</span> <span style="color: #ff0000;">4</span><span style="color: #009900; font-weight: bold;">]</span>  <span style="color: #666666; font-style: italic;">; 从数组末尾开始</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1000</span><br/>
+    <span style="color: #00007F; font-weight: bold;">lea</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span>array <span style="color: #339933;">+</span> <span style="color: #FF0000;">1000</span><span style="color: #339933;">*</span><span style="color: #FF0000;">4</span> <span style="color: #339933;">-</span> <span style="color: #FF0000;">4</span><span style="color: #009900; font-weight: bold;">]</span>  <span style="color: #666666; font-style: italic;">; 从数组末尾开始</span><br/>
 loop_reverse<span style="color: #339933;">:</span><br/>
-    <span style="color: #00007f; font-weight: bold;">add</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46aa03; font-weight: bold;">ebx</span><span style="color: #009900; font-weight: bold;">]</span><br/>
-    <span style="color: #00007f; font-weight: bold;">sub</span> <span style="color: #46aa03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">4</span><br/>
-    <span style="color: #00007f; font-weight: bold;">dec</span> <span style="color: #46aa03; font-weight: bold;">ecx</span><br/>
-    <span style="color: #00007f; font-weight: bold;">jnz</span> loop_reverse<br/>
+    <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #009900; font-weight: bold;">[</span><span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #009900; font-weight: bold;">]</span><br/>
+    <span style="color: #00007F; font-weight: bold;">sub</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">4</span><br/>
+    <span style="color: #00007F; font-weight: bold;">dec</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><br/>
+    <span style="color: #00007F; font-weight: bold;">jnz</span> loop_reverse<br/>
 </div>
 </div>
 <hr/>
@@ -425,59 +425,59 @@ loop_reverse<span style="color: #339933;">:</span><br/>
 <span style="color: #666666; font-style: italic;">; 文件路径：sum_1_to_100.asm</span><br/>
 <span style="color: #666666; font-style: italic;">; 计算 1+2+...+100 = 5050</span><br/>
 <br/>
-<span style="color: #0000ff; font-weight: bold;">section</span> <span style="color: #0000ff; font-weight: bold;">.data</span><br/>
-    msg <span style="color: #0000ff; font-weight: bold;">db</span> <span style="color: #7f007f;">'Sum of 1 to 100 is: '</span><br/>
-    msg_len <span style="color: #0000ff; font-weight: bold;">equ</span> <span style="color: #0000ff; font-weight: bold;">$</span> <span style="color: #339933;">-</span> msg<br/>
-    newline <span style="color: #0000ff; font-weight: bold;">db</span> <span style="color: #ff0000;">0xA</span><br/>
+<span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
+    msg <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'Sum of 1 to 100 is: '</span><br/>
+    msg_len <span style="color: #0000FF; font-weight: bold;">equ</span> <span style="color: #0000FF; font-weight: bold;">$</span> <span style="color: #339933;">-</span> msg<br/>
+    newline <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #FF0000;">0xA</span><br/>
 <br/>
-<span style="color: #0000ff; font-weight: bold;">section</span> <span style="color: #0000ff; font-weight: bold;">.bss</span><br/>
-    result_str <span style="color: #0000ff; font-weight: bold;">resb</span> <span style="color: #ff0000;">12</span>           <span style="color: #666666; font-style: italic;">; 存放转换后的数字字符串</span><br/>
+<span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.bss</span><br/>
+    result_str <span style="color: #0000FF; font-weight: bold;">resb</span> <span style="color: #FF0000;">12</span>           <span style="color: #666666; font-style: italic;">; 存放转换后的数字字符串</span><br/>
 <br/>
-<span style="color: #0000ff; font-weight: bold;">section</span> <span style="color: #0000ff; font-weight: bold;">.text</span><br/>
-    <span style="color: #0000ff; font-weight: bold;">global</span> _start<br/>
+<span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.text</span><br/>
+    <span style="color: #0000FF; font-weight: bold;">global</span> _start<br/>
 <br/>
 _start<span style="color: #339933;">:</span><br/>
     <span style="color: #666666; font-style: italic;">; 计算累加和</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">100</span>                 <span style="color: #666666; font-style: italic;">; 循环 100 次</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">0</span>                   <span style="color: #666666; font-style: italic;">; 累加和初始为 0</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">1</span>                   <span style="color: #666666; font-style: italic;">; 当前要加的数</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">100</span>                 <span style="color: #666666; font-style: italic;">; 循环 100 次</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>                   <span style="color: #666666; font-style: italic;">; 累加和初始为 0</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span>                   <span style="color: #666666; font-style: italic;">; 当前要加的数</span><br/>
 <br/>
 sum_loop<span style="color: #339933;">:</span><br/>
-    <span style="color: #00007f; font-weight: bold;">add</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #46aa03; font-weight: bold;">ebx</span>                 <span style="color: #666666; font-style: italic;">; eax += ebx</span><br/>
-    <span style="color: #00007f; font-weight: bold;">inc</span> <span style="color: #46aa03; font-weight: bold;">ebx</span>                      <span style="color: #666666; font-style: italic;">; 下一个数</span><br/>
-    <span style="color: #00007f; font-weight: bold;">loop</span> sum_loop                <span style="color: #666666; font-style: italic;">; 继续循环</span><br/>
+    <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">ebx</span>                 <span style="color: #666666; font-style: italic;">; eax += ebx</span><br/>
+    <span style="color: #00007F; font-weight: bold;">inc</span> <span style="color: #46AA03; font-weight: bold;">ebx</span>                      <span style="color: #666666; font-style: italic;">; 下一个数</span><br/>
+    <span style="color: #00007F; font-weight: bold;">loop</span> sum_loop                <span style="color: #666666; font-style: italic;">; 继续循环</span><br/>
     <span style="color: #666666; font-style: italic;">; eax = 5050</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 输出提示文字</span><br/>
-    <span style="color: #00007f; font-weight: bold;">push</span> <span style="color: #46aa03; font-weight: bold;">eax</span>                     <span style="color: #666666; font-style: italic;">; 保存结果</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">4</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">1</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> msg<br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> msg_len<br/>
-    <span style="color: #00007f; font-weight: bold;">int</span> <span style="color: #ff0000;">0x80</span><br/>
-    <span style="color: #00007f; font-weight: bold;">pop</span> <span style="color: #46aa03; font-weight: bold;">eax</span>                      <span style="color: #666666; font-style: italic;">; 恢复结果</span><br/>
+    <span style="color: #00007F; font-weight: bold;">push</span> <span style="color: #46AA03; font-weight: bold;">eax</span>                     <span style="color: #666666; font-style: italic;">; 保存结果</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">4</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> msg<br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> msg_len<br/>
+    <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
+    <span style="color: #00007F; font-weight: bold;">pop</span> <span style="color: #46AA03; font-weight: bold;">eax</span>                      <span style="color: #666666; font-style: italic;">; 恢复结果</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 将数字转为字符串（简单版：直接输出整数值）</span><br/>
     <span style="color: #666666; font-style: italic;">; 这里简化处理，将 eax 的低字节转为字符</span><br/>
-    <span style="color: #00007f; font-weight: bold;">add</span> <span style="color: #46aa03; font-weight: bold;">al</span><span style="color: #339933;">,</span> <span style="color: #7f007f;">'0'</span>                  <span style="color: #666666; font-style: italic;">; 不准确，仅演示</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #009900; font-weight: bold;">[</span>result_str<span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #46aa03; font-weight: bold;">al</span><br/>
+    <span style="color: #00007F; font-weight: bold;">add</span> <span style="color: #46AA03; font-weight: bold;">al</span><span style="color: #339933;">,</span> <span style="color: #7F007F;">'0'</span>                  <span style="color: #666666; font-style: italic;">; 不准确，仅演示</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #009900; font-weight: bold;">[</span>result_str<span style="color: #009900; font-weight: bold;">]</span><span style="color: #339933;">,</span> <span style="color: #46AA03; font-weight: bold;">al</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 输出结果</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">4</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">1</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> result_str<br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">12</span><br/>
-    <span style="color: #00007f; font-weight: bold;">int</span> <span style="color: #ff0000;">0x80</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">4</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> result_str<br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">12</span><br/>
+    <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
 <br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">4</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">1</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> newline<br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">1</span><br/>
-    <span style="color: #00007f; font-weight: bold;">int</span> <span style="color: #ff0000;">0x80</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">4</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ecx</span><span style="color: #339933;">,</span> newline<br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">edx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
+    <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
 <br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">1</span><br/>
-    <span style="color: #00007f; font-weight: bold;">mov</span> <span style="color: #46aa03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #ff0000;">0</span><br/>
-    <span style="color: #00007f; font-weight: bold;">int</span> <span style="color: #ff0000;">0x80</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">eax</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">1</span><br/>
+    <span style="color: #00007F; font-weight: bold;">mov</span> <span style="color: #46AA03; font-weight: bold;">ebx</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
+    <span style="color: #00007F; font-weight: bold;">int</span> <span style="color: #FF0000;">0x80</span><br/>
 </div>
 </div>
 <blockquote><p>数値を文字列に変換するのはアセンブリでよくある問題です。上記の簡単な方法は、数値が0-9の場合にのみ有効です。完全な数値から文字列への変換アルゴリズムは「数値処理」の章で詳しく説明します。</p></blockquote>
@@ -514,7 +514,7 @@ sum_loop<span style="color: #339933;">:</span><br/>
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -559,7 +559,7 @@ sum_loop<span style="color: #339933;">:</span><br/>
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -598,7 +598,7 @@ sum_loop<span style="color: #339933;">:</span><br/>
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>

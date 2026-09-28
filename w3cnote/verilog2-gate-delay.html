@@ -115,11 +115,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>ユーザーが遅延値を指定しない場合、デフォルトの遅延は 0 です。</p><p>ユーザーが 1 つの遅延値を指定した場合、すべてのタイプの遅延値はその値になります。</p><p>ユーザーが 2 つの遅延値を指定した場合、それらはそれぞれ立ち上がり遅延と立ち下がり遅延を表し、ターンオフ遅延と「to_x」遅延は、この2つの遅延値のうち小さい方になります。</p><p>ユーザーが 3 つの遅延値を指定した場合、それらはそれぞれ立ち上がり遅延、立ち下がり遅延、ターンオフ遅延を表し、「to_x」遅延はこの3つの遅延値のうち最小のものになります。</p><p>遅延値を伴うゲートレベルセルのインスタンス化は次のとおりです。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
    <span style="color: #00008B; font-style: italic;">//rise, fall and turn-off delay are all 1</span><br/>
-   <span style="color: #A52A2A; font-weight: bold;">and</span> <span style="color: #5D478B;">#</span><span style="color: #9F79EE;">(</span><span style="color: #ff0055;">1</span><span style="color: #9F79EE;">)</span>             <span style="color: #9F79EE;">(</span>OUT1<span style="color: #5D478B;">,</span> IN1<span style="color: #5D478B;">,</span> IN2<span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
+   <span style="color: #A52A2A; font-weight: bold;">and</span> <span style="color: #5D478B;">#</span><span style="color: #9F79EE;">(</span><span style="color: #FF0055;">1</span><span style="color: #9F79EE;">)</span>             <span style="color: #9F79EE;">(</span>OUT1<span style="color: #5D478B;">,</span> IN1<span style="color: #5D478B;">,</span> IN2<span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
    <span style="color: #00008B; font-style: italic;">//rise delay = 2.1, fall dalay = 2, trun-off delay = 2</span><br/>
-   <span style="color: #A52A2A; font-weight: bold;">or</span>  <span style="color: #5D478B;">#</span><span style="color: #9F79EE;">(</span><span style="color: #ff0055;">2.1</span><span style="color: #5D478B;">,</span> <span style="color: #ff0055;">2</span><span style="color: #9F79EE;">)</span>        <span style="color: #9F79EE;">(</span>OUT2<span style="color: #5D478B;">,</span> IN1<span style="color: #5D478B;">,</span> IN2<span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
+   <span style="color: #A52A2A; font-weight: bold;">or</span>  <span style="color: #5D478B;">#</span><span style="color: #9F79EE;">(</span><span style="color: #FF0055;">2.1</span><span style="color: #5D478B;">,</span> <span style="color: #FF0055;">2</span><span style="color: #9F79EE;">)</span>        <span style="color: #9F79EE;">(</span>OUT2<span style="color: #5D478B;">,</span> IN1<span style="color: #5D478B;">,</span> IN2<span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
    <span style="color: #00008B; font-style: italic;">//rise delay = 2, fall dalay = 1, trun-off delay = 1.3</span><br/>
-   <span style="color: #A52A2A; font-weight: bold;">bufif0</span> <span style="color: #5D478B;">#</span><span style="color: #9F79EE;">(</span><span style="color: #ff0055;">2</span><span style="color: #5D478B;">,</span> <span style="color: #ff0055;">1</span><span style="color: #5D478B;">,</span> <span style="color: #ff0055;">1.3</span><span style="color: #9F79EE;">)</span>  <span style="color: #9F79EE;">(</span>OUT3<span style="color: #5D478B;">,</span> IN1<span style="color: #5D478B;">,</span> CTRL<span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
+   <span style="color: #A52A2A; font-weight: bold;">bufif0</span> <span style="color: #5D478B;">#</span><span style="color: #9F79EE;">(</span><span style="color: #FF0055;">2</span><span style="color: #5D478B;">,</span> <span style="color: #FF0055;">1</span><span style="color: #5D478B;">,</span> <span style="color: #FF0055;">1.3</span><span style="color: #9F79EE;">)</span>  <span style="color: #9F79EE;">(</span>OUT3<span style="color: #5D478B;">,</span> IN1<span style="color: #5D478B;">,</span> CTRL<span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
 </div></div>
 <p>注意すべき点として、多入力ゲート（ANDゲートなど）と多出力ゲート（NOTゲートなど）は、出力が z になることがないため、最大でも2つの遅延しか定義できません。</p>
 <p>三態ゲートと一方向スイッチ単路（MOS トランジスタ、CMOS トランジスタなど）は、3 つの遅延を定義できます。</p>
@@ -128,9 +128,9 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>制御端を持つ双方向スイッチ（tranif1, tranif0）は、スイッチ切り替え時にオンまたはオフの遅延が発生するため、この種の双方向スイッチには 0 個、1 個、または 2 個の遅延を指定できます。例：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
    <span style="color: #00008B; font-style: italic;">//turn-on and turn-off delay are all 1</span><br/>
-   <span style="color: #A52A2A; font-weight: bold;">tranif0</span> <span style="color: #5D478B;">#</span><span style="color: #9F79EE;">(</span><span style="color: #ff0055;">1</span><span style="color: #9F79EE;">)</span>         <span style="color: #9F79EE;">(</span>inout1<span style="color: #5D478B;">,</span> inout2<span style="color: #5D478B;">,</span> CTRL<span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
+   <span style="color: #A52A2A; font-weight: bold;">tranif0</span> <span style="color: #5D478B;">#</span><span style="color: #9F79EE;">(</span><span style="color: #FF0055;">1</span><span style="color: #9F79EE;">)</span>         <span style="color: #9F79EE;">(</span>inout1<span style="color: #5D478B;">,</span> inout2<span style="color: #5D478B;">,</span> CTRL<span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
    <span style="color: #00008B; font-style: italic;">//turn-on delay = 1, turn-off delay = 1.2</span><br/>
-   <span style="color: #A52A2A; font-weight: bold;">tranif1</span> <span style="color: #5D478B;">#</span><span style="color: #9F79EE;">(</span><span style="color: #ff0055;">1</span><span style="color: #5D478B;">,</span> <span style="color: #ff0055;">1.2</span><span style="color: #9F79EE;">)</span>    <span style="color: #9F79EE;">(</span>inout3<span style="color: #5D478B;">,</span> inout4<span style="color: #5D478B;">,</span> CTRL<span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
+   <span style="color: #A52A2A; font-weight: bold;">tranif1</span> <span style="color: #5D478B;">#</span><span style="color: #9F79EE;">(</span><span style="color: #FF0055;">1</span><span style="color: #5D478B;">,</span> <span style="color: #FF0055;">1.2</span><span style="color: #9F79EE;">)</span>    <span style="color: #9F79EE;">(</span>inout3<span style="color: #5D478B;">,</span> inout4<span style="color: #5D478B;">,</span> CTRL<span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
 </div></div><hr/>
 <h2>最小/典型/最大遅延</h2>
 <p>集積回路の製造プロセスの差異により、実際の回路におけるデバイスの遅延は常に一定の範囲内で変動します。Verilog では、ユーザーは3種類のゲート遅延を指定できるだけでなく、各タイプのゲート遅延に対して最小値、典型値、最大値を指定できます。コンパイルまたはシミュレーション段階でどの遅延値を使用するかを選択でき、より実際に即したシミュレーションをサポートします。</p>
@@ -140,15 +140,15 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <strong>最大値</strong>：ゲートセルが持つ最大の遅延。</li></ul><p>次に、インスタンス化の例を通じて、最小、典型、最大遅延の使い方を説明します。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
    <span style="color: #00008B; font-style: italic;">//すべての遅延タイプ： 最小遅延 1, 典型遅延 2, 最大遅延 3</span><br/>
-   <span style="color: #A52A2A; font-weight: bold;">and</span> <span style="color: #5D478B;">#</span><span style="color: #9F79EE;">(</span><span style="color: #ff0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">2</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">3</span><span style="color: #9F79EE;">)</span>             <span style="color: #9F79EE;">(</span>OUT1<span style="color: #5D478B;">,</span> IN1<span style="color: #5D478B;">,</span> IN2<span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
+   <span style="color: #A52A2A; font-weight: bold;">and</span> <span style="color: #5D478B;">#</span><span style="color: #9F79EE;">(</span><span style="color: #FF0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">2</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">3</span><span style="color: #9F79EE;">)</span>             <span style="color: #9F79EE;">(</span>OUT1<span style="color: #5D478B;">,</span> IN1<span style="color: #5D478B;">,</span> IN2<span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
    <span style="color: #00008B; font-style: italic;">//立ち上がり遅延：最小遅延 1, 典型遅延 2, 最大遅延 3</span><br/>
    <span style="color: #00008B; font-style: italic;">//立ち下がり遅延：最小遅延 3, 典型遅延 4, 最大遅延 5</span><br/>
    <span style="color: #00008B; font-style: italic;">//ターンオフ遅延：最小遅延 min(1,3), 典型遅延 min(2,4), 最大遅延 min(3,5)</span><br/>
-   <span style="color: #A52A2A; font-weight: bold;">or</span>  <span style="color: #5D478B;">#</span><span style="color: #9F79EE;">(</span><span style="color: #ff0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">2</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">3</span><span style="color: #5D478B;">,</span> <span style="color: #ff0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">4</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">5</span><span style="color: #9F79EE;">)</span>        <span style="color: #9F79EE;">(</span>OUT2<span style="color: #5D478B;">,</span> IN1<span style="color: #5D478B;">,</span> IN2<span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
+   <span style="color: #A52A2A; font-weight: bold;">or</span>  <span style="color: #5D478B;">#</span><span style="color: #9F79EE;">(</span><span style="color: #FF0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">2</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">3</span><span style="color: #5D478B;">,</span> <span style="color: #FF0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">4</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">5</span><span style="color: #9F79EE;">)</span>        <span style="color: #9F79EE;">(</span>OUT2<span style="color: #5D478B;">,</span> IN1<span style="color: #5D478B;">,</span> IN2<span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
    <span style="color: #00008B; font-style: italic;">//立ち上がり遅延：最小遅延 1, 典型遅延 2, 最大遅延 3</span><br/>
    <span style="color: #00008B; font-style: italic;">//立ち下がり遅延：最小遅延 3, 典型遅延 4, 最大遅延 5</span><br/>
    <span style="color: #00008B; font-style: italic;">//ターンオフ遅延：最小遅延 2, 典型遅延 3, 最大遅延 4</span><br/>
-   <span style="color: #A52A2A; font-weight: bold;">bufif0</span> <span style="color: #5D478B;">#</span><span style="color: #9F79EE;">(</span><span style="color: #ff0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">2</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">3</span><span style="color: #5D478B;">,</span> <span style="color: #ff0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">4</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">5</span><span style="color: #5D478B;">,</span> <span style="color: #ff0055;">2</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">4</span><span style="color: #9F79EE;">)</span>  <span style="color: #9F79EE;">(</span>OUT3<span style="color: #5D478B;">,</span> IN1<span style="color: #5D478B;">,</span> CTRL<span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
+   <span style="color: #A52A2A; font-weight: bold;">bufif0</span> <span style="color: #5D478B;">#</span><span style="color: #9F79EE;">(</span><span style="color: #FF0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">2</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">3</span><span style="color: #5D478B;">,</span> <span style="color: #FF0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">4</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">5</span><span style="color: #5D478B;">,</span> <span style="color: #FF0055;">2</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">4</span><span style="color: #9F79EE;">)</span>  <span style="color: #9F79EE;">(</span>OUT3<span style="color: #5D478B;">,</span> IN1<span style="color: #5D478B;">,</span> CTRL<span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
 </div></div>
 <hr/>
 <h2>D フリップフロップ</h2><p>次に、ゲートレベルモデリングの観点から D フリップフロップを設計します。</p>
@@ -186,8 +186,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: #A52A2A; font-weight: bold;">module</span> D_TRI<span style="color: #9F79EE;">(</span><br/>
             <span style="color: #A52A2A; font-weight: bold;">input</span>       D<span style="color: #5D478B;">,</span> CP<span style="color: #5D478B;">,</span><br/>
             <span style="color: #A52A2A; font-weight: bold;">output</span>      Q<span style="color: #5D478B;">,</span> QR<span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
-   <span style="color: #A52A2A; font-weight: bold;">parameter</span> RISE_TIME <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0.11</span> <span style="color: #5D478B;">;</span><br/>
-   <span style="color: #A52A2A; font-weight: bold;">parameter</span> FALL_TIME <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0.07</span> <span style="color: #5D478B;">;</span><br/>
+   <span style="color: #A52A2A; font-weight: bold;">parameter</span> RISE_TIME <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0.11</span> <span style="color: #5D478B;">;</span><br/>
+   <span style="color: #A52A2A; font-weight: bold;">parameter</span> FALL_TIME <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0.07</span> <span style="color: #5D478B;">;</span><br/>
    <span style="color: #00008B; font-style: italic;">//part1, not gate</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">wire</span>         CPN<span style="color: #5D478B;">,</span> DN <span style="color: #5D478B;">;</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">not</span>  <span style="color: #5D478B;">#</span><span style="color: #9F79EE;">(</span>RISE_TIME<span style="color: #5D478B;">,</span> FALL_TIME<span style="color: #9F79EE;">)</span>         <span style="color: #9F79EE;">(</span>CPN<span style="color: #5D478B;">,</span> CP<span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
@@ -212,18 +212,18 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div></div>
 <p>testbench は次のように記述します。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #008800;">`timescale</span> <span style="color: #ff0055;">1ns</span><span style="color: #5D478B;">/</span><span style="color: #ff0055;">1ps</span><br/>
+<span style="color: #008800;">`timescale</span> <span style="color: #FF0055;">1ns</span><span style="color: #5D478B;">/</span><span style="color: #FF0055;">1ps</span><br/>
 <span style="color: #A52A2A; font-weight: bold;">module</span> test <span style="color: #5D478B;">;</span><br/>
-   <span style="color: #A52A2A; font-weight: bold;">reg</span>  D<span style="color: #5D478B;">,</span> CP <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span><br/>
+   <span style="color: #A52A2A; font-weight: bold;">reg</span>  D<span style="color: #5D478B;">,</span> CP <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">wire</span> Q<span style="color: #5D478B;">,</span> QR <span style="color: #5D478B;">;</span><br/>
-   <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #5D478B;">#</span><span style="color: #ff0055;">5</span> CP <span style="color: #5D478B;">=</span> <span style="color: #5D478B;">~</span>CP <span style="color: #5D478B;">;</span><br/>
+   <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #5D478B;">#</span><span style="color: #FF0055;">5</span> CP <span style="color: #5D478B;">=</span> <span style="color: #5D478B;">~</span>CP <span style="color: #5D478B;">;</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">initial</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-      D <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span><br/>
-      <span style="color: #5D478B;">#</span><span style="color: #ff0055;">12</span> D <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1</span> <span style="color: #5D478B;">;</span><br/>
-      <span style="color: #5D478B;">#</span><span style="color: #ff0055;">10</span> D <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span><br/>
-      <span style="color: #5D478B;">#</span><span style="color: #ff0055;">14</span> D <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1</span> <span style="color: #5D478B;">;</span><br/>
-      <span style="color: #5D478B;">#</span><span style="color: #ff0055;">3</span>  D <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span><br/>
-      <span style="color: #5D478B;">#</span><span style="color: #ff0055;">18</span> D <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span><br/>
+      D <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span><br/>
+      <span style="color: #5D478B;">#</span><span style="color: #FF0055;">12</span> D <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1</span> <span style="color: #5D478B;">;</span><br/>
+      <span style="color: #5D478B;">#</span><span style="color: #FF0055;">10</span> D <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span><br/>
+      <span style="color: #5D478B;">#</span><span style="color: #FF0055;">14</span> D <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1</span> <span style="color: #5D478B;">;</span><br/>
+      <span style="color: #5D478B;">#</span><span style="color: #FF0055;">3</span>  D <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span><br/>
+      <span style="color: #5D478B;">#</span><span style="color: #FF0055;">18</span> D <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
    D_TRI u_d_trigger<span style="color: #9F79EE;">(</span><br/>
         .D      <span style="color: #9F79EE;">(</span>D<span style="color: #9F79EE;">)</span><span style="color: #5D478B;">,</span><br/>
@@ -232,9 +232,9 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         .QR     <span style="color: #9F79EE;">(</span>QR<span style="color: #9F79EE;">)</span><span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">initial</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
       <span style="color: #A52A2A; font-weight: bold;">forever</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-         <span style="color: #5D478B;">#</span><span style="color: #ff0055;">100</span><span style="color: #5D478B;">;</span><br/>
+         <span style="color: #5D478B;">#</span><span style="color: #FF0055;">100</span><span style="color: #5D478B;">;</span><br/>
          <span style="color: #00008B; font-style: italic;">//$display("---gyc---%d", $time);</span><br/>
-         <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span><span style="color: #9932CC;">$time</span> <span style="color: #5D478B;">&gt;=</span> <span style="color: #ff0055;">1000</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
+         <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span><span style="color: #9932CC;">$time</span> <span style="color: #5D478B;">&gt;=</span> <span style="color: #FF0055;">1000</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
             <span style="color: #9932CC;">$finish</span> <span style="color: #5D478B;">;</span><br/>
          <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
       <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
@@ -273,7 +273,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -318,7 +318,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -357,7 +357,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
 	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -568,7 +568,7 @@ p.note-author {
     border-bottom: 1px solid #ddd;
     font-size: 18px;
     font-weight: bold;
-    color: #78a15a;
+    color: #5B80A6;
     padding-bottom: 2px;
     margin-bottom: 4px;
 }

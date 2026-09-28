@@ -110,33 +110,33 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         <span style="color: #A52A2A; font-weight: bold;">input</span>           clk <span style="color: #5D478B;">,</span>           <span style="color: #00008B; font-style: italic;">//200MHz</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">input</span>           rstn <span style="color: #5D478B;">,</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">input</span>           en  <span style="color: #5D478B;">,</span><br/>
-        <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>     mul1 <span style="color: #5D478B;">,</span>          <span style="color: #00008B; font-style: italic;">//data in</span><br/>
-        <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>     mul2 <span style="color: #5D478B;">,</span>          <span style="color: #00008B; font-style: italic;">//data in</span><br/>
+        <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>     mul1 <span style="color: #5D478B;">,</span>          <span style="color: #00008B; font-style: italic;">//data in</span><br/>
+        <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>     mul2 <span style="color: #5D478B;">,</span>          <span style="color: #00008B; font-style: italic;">//data in</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">output</span>          dout_en <span style="color: #5D478B;">,</span><br/>
-        <span style="color: #A52A2A; font-weight: bold;">output</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">8</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>    dout<br/>
+        <span style="color: #A52A2A; font-weight: bold;">output</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">8</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>    dout<br/>
      <span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
 <br/>
     <span style="color: #A52A2A; font-weight: bold;">reg</span>                  flag <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">reg</span>                  en_r <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">posedge</span> clk <span style="color: #A52A2A; font-weight: bold;">or</span> <span style="color: #A52A2A; font-weight: bold;">negedge</span> rstn<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span><span style="color: #5D478B;">!</span>rstn<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-            flag   <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
-            en_r   <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
+            flag   <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
+            en_r   <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">else</span> <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span>en<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
             flag   <span style="color: #5D478B;">&lt;=</span> <span style="color: #5D478B;">~</span>flag <span style="color: #5D478B;">;</span><br/>
-            en_r   <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
+            en_r   <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">else</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-            flag   <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
-            en_r   <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
+            flag   <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
+            en_r   <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 <br/>
-    <span style="color: #A52A2A; font-weight: bold;">wire</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>           result <span style="color: #5D478B;">=</span> mul1 <span style="color: #5D478B;">*</span> mul2 <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">wire</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>           result <span style="color: #5D478B;">=</span> mul1 <span style="color: #5D478B;">*</span> mul2 <span style="color: #5D478B;">;</span><br/>
 <br/>
     <span style="color: #00008B; font-style: italic;">// data output en</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>            res1_r<span style="color: #5D478B;">,</span> res2_r <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>            res1_r<span style="color: #5D478B;">,</span> res2_r <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">posedge</span> clk <span style="color: #A52A2A; font-weight: bold;">or</span> <span style="color: #A52A2A; font-weight: bold;">negedge</span> rstn<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span><span style="color: #5D478B;">!</span>rstn<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
             res1_r         <span style="color: #5D478B;">&lt;=</span> 'b0 <span style="color: #5D478B;">;</span><br/>
@@ -162,22 +162,22 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         <span style="color: #A52A2A; font-weight: bold;">input</span>           clk <span style="color: #5D478B;">,</span>           <span style="color: #00008B; font-style: italic;">//100MHz</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">input</span>           rstn <span style="color: #5D478B;">,</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">input</span>           en  <span style="color: #5D478B;">,</span><br/>
-        <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>     mul1 <span style="color: #5D478B;">,</span>          <span style="color: #00008B; font-style: italic;">//data in</span><br/>
-        <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>     mul2 <span style="color: #5D478B;">,</span>          <span style="color: #00008B; font-style: italic;">//data in</span><br/>
-        <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>     mul3 <span style="color: #5D478B;">,</span>          <span style="color: #00008B; font-style: italic;">//data in</span><br/>
-        <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>     mul4 <span style="color: #5D478B;">,</span>          <span style="color: #00008B; font-style: italic;">//data in</span><br/>
+        <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>     mul1 <span style="color: #5D478B;">,</span>          <span style="color: #00008B; font-style: italic;">//data in</span><br/>
+        <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>     mul2 <span style="color: #5D478B;">,</span>          <span style="color: #00008B; font-style: italic;">//data in</span><br/>
+        <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>     mul3 <span style="color: #5D478B;">,</span>          <span style="color: #00008B; font-style: italic;">//data in</span><br/>
+        <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>     mul4 <span style="color: #5D478B;">,</span>          <span style="color: #00008B; font-style: italic;">//data in</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">output</span>          dout_en<span style="color: #5D478B;">,</span><br/>
-        <span style="color: #A52A2A; font-weight: bold;">output</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">8</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>    dout<br/>
+        <span style="color: #A52A2A; font-weight: bold;">output</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">8</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>    dout<br/>
      <span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
 <br/>
-    <span style="color: #A52A2A; font-weight: bold;">wire</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>           result1 <span style="color: #5D478B;">=</span> mul1 <span style="color: #5D478B;">*</span> mul2 <span style="color: #5D478B;">;</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">wire</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>           result2 <span style="color: #5D478B;">=</span> mul3 <span style="color: #5D478B;">*</span> mul4 <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">wire</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>           result1 <span style="color: #5D478B;">=</span> mul1 <span style="color: #5D478B;">*</span> mul2 <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">wire</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>           result2 <span style="color: #5D478B;">=</span> mul3 <span style="color: #5D478B;">*</span> mul4 <span style="color: #5D478B;">;</span><br/>
 <br/>
     <span style="color: #00008B; font-style: italic;">//en delay</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">reg</span>                  en_r <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">posedge</span> clk <span style="color: #A52A2A; font-weight: bold;">or</span> <span style="color: #A52A2A; font-weight: bold;">negedge</span> rstn<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span><span style="color: #5D478B;">!</span>rstn<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-            en_r           <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
+            en_r           <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">else</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
           en_r           <span style="color: #5D478B;">&lt;=</span> en <span style="color: #5D478B;">;</span><br/>
@@ -185,7 +185,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 <br/>
     <span style="color: #00008B; font-style: italic;">// data output en</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>            res1_r<span style="color: #5D478B;">,</span> res2_r <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>            res1_r<span style="color: #5D478B;">,</span> res2_r <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">posedge</span> clk <span style="color: #A52A2A; font-weight: bold;">or</span> <span style="color: #A52A2A; font-weight: bold;">negedge</span> rstn<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span><span style="color: #5D478B;">!</span>rstn<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
             res1_r         <span style="color: #5D478B;">&lt;=</span> 'b0 <span style="color: #5D478B;">;</span><br/>
@@ -203,31 +203,31 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div></div>
 <p>testbench の記述は以下のとおりです。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #008800;">`timescale</span> <span style="color: #ff0055;">1ns</span><span style="color: #5D478B;">/</span><span style="color: #ff0055;">1ps</span><br/>
+<span style="color: #008800;">`timescale</span> <span style="color: #FF0055;">1ns</span><span style="color: #5D478B;">/</span><span style="color: #FF0055;">1ps</span><br/>
 <span style="color: #A52A2A; font-weight: bold;">module</span> test <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">reg</span>          rstn <span style="color: #5D478B;">;</span><br/>
     <span style="color: #00008B; font-style: italic;">//mul1_hs</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">reg</span>          hs_clk<span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">reg</span>          hs_en <span style="color: #5D478B;">;</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>    hs_mul1 <span style="color: #5D478B;">;</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>    hs_mul2 <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>    hs_mul1 <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>    hs_mul2 <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">wire</span>         hs_dout_en <span style="color: #5D478B;">;</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">wire</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">8</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>   hs_dout <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">wire</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">8</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>   hs_dout <span style="color: #5D478B;">;</span><br/>
     <span style="color: #00008B; font-style: italic;">//mul1_ls</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">reg</span>          ls_clk <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span><span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">reg</span>          ls_clk <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span><span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">reg</span>          ls_en <span style="color: #5D478B;">;</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>    ls_mul1 <span style="color: #5D478B;">;</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>    ls_mul2 <span style="color: #5D478B;">;</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>    ls_mul3 <span style="color: #5D478B;">;</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>    ls_mul4 <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>    ls_mul1 <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>    ls_mul2 <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>    ls_mul3 <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>    ls_mul4 <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">wire</span>         ls_dout_en <span style="color: #5D478B;">;</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">wire</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">8</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>   ls_dout <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">wire</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">8</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>   ls_dout <span style="color: #5D478B;">;</span><br/>
 <br/>
     <span style="color: #00008B; font-style: italic;">//clock generating</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">real</span>         CYCLE_200MHz <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">5</span> <span style="color: #5D478B;">;</span> <span style="color: #00008B; font-style: italic;">//</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">real</span>         CYCLE_200MHz <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">5</span> <span style="color: #5D478B;">;</span> <span style="color: #00008B; font-style: italic;">//</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-        hs_clk <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span> <span style="color: #5D478B;">#</span><span style="color: #9F79EE;">(</span>CYCLE_200MHz<span style="color: #5D478B;">/</span><span style="color: #ff0055;">2</span><span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
-        hs_clk <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1</span> <span style="color: #5D478B;">;</span> <span style="color: #5D478B;">#</span><span style="color: #9F79EE;">(</span>CYCLE_200MHz<span style="color: #5D478B;">/</span><span style="color: #ff0055;">2</span><span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
+        hs_clk <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span> <span style="color: #5D478B;">#</span><span style="color: #9F79EE;">(</span>CYCLE_200MHz<span style="color: #5D478B;">/</span><span style="color: #FF0055;">2</span><span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
+        hs_clk <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1</span> <span style="color: #5D478B;">;</span> <span style="color: #5D478B;">#</span><span style="color: #9F79EE;">(</span>CYCLE_200MHz<span style="color: #5D478B;">/</span><span style="color: #FF0055;">2</span><span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
         <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">posedge</span> hs_clk<span style="color: #9F79EE;">)</span> ls_clk <span style="color: #5D478B;">=</span> <span style="color: #5D478B;">~</span>ls_clk <span style="color: #5D478B;">;</span><br/>
@@ -235,41 +235,41 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <br/>
     <span style="color: #00008B; font-style: italic;">//reset generating</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">initial</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-        rstn      <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
-        <span style="color: #5D478B;">#</span><span style="color: #ff0055;">8</span> rstn      <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
+        rstn      <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
+        <span style="color: #5D478B;">#</span><span style="color: #FF0055;">8</span> rstn      <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 <br/>
     <span style="color: #00008B; font-style: italic;">//motivation</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">initial</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-        hs_mul1   <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span><br/>
-        hs_mul2   <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">16</span> <span style="color: #5D478B;">;</span><br/>
-        hs_en     <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span><br/>
-        <span style="color: #5D478B;">#</span><span style="color: #ff0055;">103</span> <span style="color: #5D478B;">;</span><br/>
-        <span style="color: #A52A2A; font-weight: bold;">repeat</span><span style="color: #9F79EE;">(</span><span style="color: #ff0055;">12</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
+        hs_mul1   <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span><br/>
+        hs_mul2   <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">16</span> <span style="color: #5D478B;">;</span><br/>
+        hs_en     <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span><br/>
+        <span style="color: #5D478B;">#</span><span style="color: #FF0055;">103</span> <span style="color: #5D478B;">;</span><br/>
+        <span style="color: #A52A2A; font-weight: bold;">repeat</span><span style="color: #9F79EE;">(</span><span style="color: #FF0055;">12</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
             <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">negedge</span> hs_clk<span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
-            hs_en          <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1</span> <span style="color: #5D478B;">;</span><br/>
-            hs_mul1        <span style="color: #5D478B;">=</span> hs_mul1 <span style="color: #5D478B;">+</span> <span style="color: #ff0055;">1</span><span style="color: #5D478B;">;</span><br/>
-            hs_mul2        <span style="color: #5D478B;">=</span> hs_mul2 <span style="color: #5D478B;">-</span> <span style="color: #ff0055;">1</span><span style="color: #5D478B;">;</span><br/>
+            hs_en          <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1</span> <span style="color: #5D478B;">;</span><br/>
+            hs_mul1        <span style="color: #5D478B;">=</span> hs_mul1 <span style="color: #5D478B;">+</span> <span style="color: #FF0055;">1</span><span style="color: #5D478B;">;</span><br/>
+            hs_mul2        <span style="color: #5D478B;">=</span> hs_mul2 <span style="color: #5D478B;">-</span> <span style="color: #FF0055;">1</span><span style="color: #5D478B;">;</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
-        hs_en <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span><br/>
+        hs_en <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 <br/>
     <span style="color: #A52A2A; font-weight: bold;">initial</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-        ls_mul1   <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1</span> <span style="color: #5D478B;">;</span><br/>
-        ls_mul2   <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">15</span> <span style="color: #5D478B;">;</span><br/>
-        ls_mul3   <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">2</span> <span style="color: #5D478B;">;</span><br/>
-        ls_mul4   <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">14</span> <span style="color: #5D478B;">;</span><br/>
-        ls_en     <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span><br/>
-        <span style="color: #5D478B;">#</span><span style="color: #ff0055;">103</span> <span style="color: #5D478B;">;</span><br/>
-        <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">negedge</span> ls_clk<span style="color: #9F79EE;">)</span> ls_en <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1</span><span style="color: #5D478B;">;</span><br/>
-        <span style="color: #A52A2A; font-weight: bold;">repeat</span><span style="color: #9F79EE;">(</span><span style="color: #ff0055;">5</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
+        ls_mul1   <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1</span> <span style="color: #5D478B;">;</span><br/>
+        ls_mul2   <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">15</span> <span style="color: #5D478B;">;</span><br/>
+        ls_mul3   <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">2</span> <span style="color: #5D478B;">;</span><br/>
+        ls_mul4   <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">14</span> <span style="color: #5D478B;">;</span><br/>
+        ls_en     <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span><br/>
+        <span style="color: #5D478B;">#</span><span style="color: #FF0055;">103</span> <span style="color: #5D478B;">;</span><br/>
+        <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">negedge</span> ls_clk<span style="color: #9F79EE;">)</span> ls_en <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1</span><span style="color: #5D478B;">;</span><br/>
+        <span style="color: #A52A2A; font-weight: bold;">repeat</span><span style="color: #9F79EE;">(</span><span style="color: #FF0055;">5</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
             <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">negedge</span> ls_clk<span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span><br/>
-           ls_mul1        <span style="color: #5D478B;">=</span> ls_mul1 <span style="color: #5D478B;">+</span> <span style="color: #ff0055;">2</span><span style="color: #5D478B;">;</span><br/>
-           ls_mul2        <span style="color: #5D478B;">=</span> ls_mul2 <span style="color: #5D478B;">-</span> <span style="color: #ff0055;">2</span><span style="color: #5D478B;">;</span><br/>
-           ls_mul3        <span style="color: #5D478B;">=</span> ls_mul3 <span style="color: #5D478B;">+</span> <span style="color: #ff0055;">2</span><span style="color: #5D478B;">;</span><br/>
-           ls_mul4        <span style="color: #5D478B;">=</span> ls_mul4 <span style="color: #5D478B;">-</span> <span style="color: #ff0055;">2</span><span style="color: #5D478B;">;</span><br/>
+           ls_mul1        <span style="color: #5D478B;">=</span> ls_mul1 <span style="color: #5D478B;">+</span> <span style="color: #FF0055;">2</span><span style="color: #5D478B;">;</span><br/>
+           ls_mul2        <span style="color: #5D478B;">=</span> ls_mul2 <span style="color: #5D478B;">-</span> <span style="color: #FF0055;">2</span><span style="color: #5D478B;">;</span><br/>
+           ls_mul3        <span style="color: #5D478B;">=</span> ls_mul3 <span style="color: #5D478B;">+</span> <span style="color: #FF0055;">2</span><span style="color: #5D478B;">;</span><br/>
+           ls_mul4        <span style="color: #5D478B;">=</span> ls_mul4 <span style="color: #5D478B;">-</span> <span style="color: #FF0055;">2</span><span style="color: #5D478B;">;</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
-        ls_en <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span><br/>
+        ls_en <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 <br/>
     <span style="color: #00008B; font-style: italic;">//module instantiation</span><br/>
@@ -299,9 +299,9 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <br/>
     <span style="color: #00008B; font-style: italic;">//simulation finish</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-        <span style="color: #5D478B;">#</span><span style="color: #ff0055;">100</span><span style="color: #5D478B;">;</span><br/>
-        <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span><span style="color: #9932CC;">$time</span> <span style="color: #5D478B;">&gt;=</span> <span style="color: #ff0055;">1000</span><span style="color: #9F79EE;">)</span>  <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-            <span style="color: #5D478B;">#</span><span style="color: #ff0055;">1</span> <span style="color: #5D478B;">;</span><br/>
+        <span style="color: #5D478B;">#</span><span style="color: #FF0055;">100</span><span style="color: #5D478B;">;</span><br/>
+        <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span><span style="color: #9932CC;">$time</span> <span style="color: #5D478B;">&gt;=</span> <span style="color: #FF0055;">1000</span><span style="color: #9F79EE;">)</span>  <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
+            <span style="color: #5D478B;">#</span><span style="color: #FF0055;">1</span> <span style="color: #5D478B;">;</span><br/>
             <span style="color: #9932CC;">$finish</span> <span style="color: #5D478B;">;</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
@@ -322,28 +322,28 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
     <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #5D478B;">*</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">case</span> <span style="color: #9F79EE;">(</span>mode<span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">:</span><br/>
-            <span style="color: #ff0055;">3'b000</span><span style="color: #5D478B;">:</span>         result  <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
-            <span style="color: #ff0055;">3'b001</span><span style="color: #5D478B;">:</span>         result  <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
-            <span style="color: #ff0055;">3'b010</span><span style="color: #5D478B;">:</span>         result  <span style="color: #5D478B;">=</span> value1 <span style="color: #5D478B;">==</span> value2 <span style="color: #5D478B;">;</span><br/>
-            <span style="color: #ff0055;">3'b011</span><span style="color: #5D478B;">:</span>         result  <span style="color: #5D478B;">=</span> value1 <span style="color: #5D478B;">!=</span> value2 <span style="color: #5D478B;">;</span><br/>
-            <span style="color: #ff0055;">3'b100</span><span style="color: #5D478B;">:</span>         result  <span style="color: #5D478B;">=</span> value1 <span style="color: #5D478B;">&gt;</span> value2 <span style="color: #5D478B;">;</span><br/>
-            <span style="color: #ff0055;">3'b101</span><span style="color: #5D478B;">:</span>         result  <span style="color: #5D478B;">=</span> value1 <span style="color: #5D478B;">&lt;</span> value2 <span style="color: #5D478B;">;</span><br/>
-            <span style="color: #ff0055;">3'b110</span><span style="color: #5D478B;">:</span>         result  <span style="color: #5D478B;">=</span> value1 <span style="color: #5D478B;">&gt;=</span> value2 <span style="color: #5D478B;">;</span><br/>
-            <span style="color: #ff0055;">3'b111</span><span style="color: #5D478B;">:</span>         result  <span style="color: #5D478B;">=</span> value1 <span style="color: #5D478B;">&lt;=</span> value2 <span style="color: #5D478B;">;</span><br/>
+            <span style="color: #FF0055;">3'b000</span><span style="color: #5D478B;">:</span>         result  <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
+            <span style="color: #FF0055;">3'b001</span><span style="color: #5D478B;">:</span>         result  <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
+            <span style="color: #FF0055;">3'b010</span><span style="color: #5D478B;">:</span>         result  <span style="color: #5D478B;">=</span> value1 <span style="color: #5D478B;">==</span> value2 <span style="color: #5D478B;">;</span><br/>
+            <span style="color: #FF0055;">3'b011</span><span style="color: #5D478B;">:</span>         result  <span style="color: #5D478B;">=</span> value1 <span style="color: #5D478B;">!=</span> value2 <span style="color: #5D478B;">;</span><br/>
+            <span style="color: #FF0055;">3'b100</span><span style="color: #5D478B;">:</span>         result  <span style="color: #5D478B;">=</span> value1 <span style="color: #5D478B;">&gt;</span> value2 <span style="color: #5D478B;">;</span><br/>
+            <span style="color: #FF0055;">3'b101</span><span style="color: #5D478B;">:</span>         result  <span style="color: #5D478B;">=</span> value1 <span style="color: #5D478B;">&lt;</span> value2 <span style="color: #5D478B;">;</span><br/>
+            <span style="color: #FF0055;">3'b110</span><span style="color: #5D478B;">:</span>         result  <span style="color: #5D478B;">=</span> value1 <span style="color: #5D478B;">&gt;=</span> value2 <span style="color: #5D478B;">;</span><br/>
+            <span style="color: #FF0055;">3'b111</span><span style="color: #5D478B;">:</span>         result  <span style="color: #5D478B;">=</span> value1 <span style="color: #5D478B;">&lt;=</span> value2 <span style="color: #5D478B;">;</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">endcase</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">end</span><br/>上記のコードを最適化した記述は以下のとおりです。<br/>
     <span style="color: #A52A2A; font-weight: bold;">wire</span> equal_con       <span style="color: #5D478B;">=</span> value1 <span style="color: #5D478B;">==</span> value2 <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">wire</span> great_con       <span style="color: #5D478B;">=</span> value1 <span style="color: #5D478B;">&gt;</span> value2 <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #5D478B;">*</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">case</span> <span style="color: #9F79EE;">(</span>mode<span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">:</span><br/>
-            <span style="color: #ff0055;">3'b000</span><span style="color: #5D478B;">:</span>         result  <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
-            <span style="color: #ff0055;">3'b001</span><span style="color: #5D478B;">:</span>         result  <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
-            <span style="color: #ff0055;">3'b010</span><span style="color: #5D478B;">:</span>         result  <span style="color: #5D478B;">=</span> equal_con <span style="color: #5D478B;">;</span><br/>
-            <span style="color: #ff0055;">3'b011</span><span style="color: #5D478B;">:</span>         result  <span style="color: #5D478B;">=</span> equal_con <span style="color: #5D478B;">;</span><br/>
-            <span style="color: #ff0055;">3'b100</span><span style="color: #5D478B;">:</span>         result  <span style="color: #5D478B;">=</span> great_con <span style="color: #5D478B;">;</span><br/>
-            <span style="color: #ff0055;">3'b101</span><span style="color: #5D478B;">:</span>         result  <span style="color: #5D478B;">=</span> <span style="color: #5D478B;">!</span>great_con <span style="color: #5D478B;">&amp;&amp;</span> <span style="color: #5D478B;">!</span>equal_con <span style="color: #5D478B;">;</span><br/>
-            <span style="color: #ff0055;">3'b110</span><span style="color: #5D478B;">:</span>         result  <span style="color: #5D478B;">=</span> great_con <span style="color: #5D478B;">&amp;&amp;</span> equal_con <span style="color: #5D478B;">;</span><br/>
-            <span style="color: #ff0055;">3'b111</span><span style="color: #5D478B;">:</span>         result  <span style="color: #5D478B;">=</span> <span style="color: #5D478B;">!</span>great_con <span style="color: #5D478B;">;</span><br/>
+            <span style="color: #FF0055;">3'b000</span><span style="color: #5D478B;">:</span>         result  <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
+            <span style="color: #FF0055;">3'b001</span><span style="color: #5D478B;">:</span>         result  <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1'b0</span> <span style="color: #5D478B;">;</span><br/>
+            <span style="color: #FF0055;">3'b010</span><span style="color: #5D478B;">:</span>         result  <span style="color: #5D478B;">=</span> equal_con <span style="color: #5D478B;">;</span><br/>
+            <span style="color: #FF0055;">3'b011</span><span style="color: #5D478B;">:</span>         result  <span style="color: #5D478B;">=</span> equal_con <span style="color: #5D478B;">;</span><br/>
+            <span style="color: #FF0055;">3'b100</span><span style="color: #5D478B;">:</span>         result  <span style="color: #5D478B;">=</span> great_con <span style="color: #5D478B;">;</span><br/>
+            <span style="color: #FF0055;">3'b101</span><span style="color: #5D478B;">:</span>         result  <span style="color: #5D478B;">=</span> <span style="color: #5D478B;">!</span>great_con <span style="color: #5D478B;">&amp;&amp;</span> <span style="color: #5D478B;">!</span>equal_con <span style="color: #5D478B;">;</span><br/>
+            <span style="color: #FF0055;">3'b110</span><span style="color: #5D478B;">:</span>         result  <span style="color: #5D478B;">=</span> great_con <span style="color: #5D478B;">&amp;&amp;</span> equal_con <span style="color: #5D478B;">;</span><br/>
+            <span style="color: #FF0055;">3'b111</span><span style="color: #5D478B;">:</span>         result  <span style="color: #5D478B;">=</span> <span style="color: #5D478B;">!</span>great_con <span style="color: #5D478B;">;</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">endcase</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 </div></div><p>1つ目の方法を論理合成で実装する際、コンパイラの最適化が不十分な場合、6つの比較器が必要になる可能性があります。2つ目のリソース共有の方法では、同じ論理機能を2つの比較器だけで実現できるため、ある程度消費電力を削減できます。</p>
@@ -358,19 +358,19 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: #A52A2A; font-weight: bold;">module</span>  oper_isolation1<br/>
     <span style="color: #9F79EE;">(</span><br/>
      <span style="color: #A52A2A; font-weight: bold;">input</span>                clk <span style="color: #5D478B;">,</span>           <span style="color: #00008B; font-style: italic;">//100MHz</span><br/>
-     <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>          sel <span style="color: #5D478B;">,</span><br/>
-     <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>          din1 <span style="color: #5D478B;">,</span>          <span style="color: #00008B; font-style: italic;">//data in</span><br/>
-     <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>          din2 <span style="color: #5D478B;">,</span>          <span style="color: #00008B; font-style: italic;">//data in</span><br/>
-     <span style="color: #A52A2A; font-weight: bold;">output</span> <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>     dout<br/>
+     <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>          sel <span style="color: #5D478B;">,</span><br/>
+     <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>          din1 <span style="color: #5D478B;">,</span>          <span style="color: #00008B; font-style: italic;">//data in</span><br/>
+     <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>          din2 <span style="color: #5D478B;">,</span>          <span style="color: #00008B; font-style: italic;">//data in</span><br/>
+     <span style="color: #A52A2A; font-weight: bold;">output</span> <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>     dout<br/>
      <span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
 <br/>
-    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>       res <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>       res <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #5D478B;">*</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
         res       <span style="color: #5D478B;">=</span> din1 <span style="color: #5D478B;">*</span> din2 <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 <br/>
     <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">posedge</span> clk<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-        <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span>sel <span style="color: #5D478B;">==</span> <span style="color: #ff0055;">2'b01</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
+        <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span>sel <span style="color: #5D478B;">==</span> <span style="color: #FF0055;">2'b01</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
             dout   <span style="color: #5D478B;">&lt;=</span> res <span style="color: #5D478B;">;</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
@@ -382,21 +382,21 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: #A52A2A; font-weight: bold;">module</span>  oper_isolation2<br/>
     <span style="color: #9F79EE;">(</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">input</span>                clk <span style="color: #5D478B;">,</span>           <span style="color: #00008B; font-style: italic;">//100MHz</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>          sel <span style="color: #5D478B;">,</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>          din1 <span style="color: #5D478B;">,</span>          <span style="color: #00008B; font-style: italic;">//data in</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>          din2 <span style="color: #5D478B;">,</span>          <span style="color: #00008B; font-style: italic;">//data in</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">output</span> <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>     dout<br/>
+    <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>          sel <span style="color: #5D478B;">,</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>          din1 <span style="color: #5D478B;">,</span>          <span style="color: #00008B; font-style: italic;">//data in</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>          din2 <span style="color: #5D478B;">,</span>          <span style="color: #00008B; font-style: italic;">//data in</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">output</span> <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>     dout<br/>
     <span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
 <br/>
-    <span style="color: #A52A2A; font-weight: bold;">wire</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>           mul1 <span style="color: #5D478B;">=</span> sel <span style="color: #5D478B;">==</span> <span style="color: #ff0055;">2'b01</span> <span style="color: #5D478B;">?</span> din1 <span style="color: #5D478B;">:</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">wire</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>           mul2 <span style="color: #5D478B;">=</span> sel <span style="color: #5D478B;">==</span> <span style="color: #ff0055;">2'b01</span> <span style="color: #5D478B;">?</span> din2 <span style="color: #5D478B;">:</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>            res <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">wire</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>           mul1 <span style="color: #5D478B;">=</span> sel <span style="color: #5D478B;">==</span> <span style="color: #FF0055;">2'b01</span> <span style="color: #5D478B;">?</span> din1 <span style="color: #5D478B;">:</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">wire</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>           mul2 <span style="color: #5D478B;">=</span> sel <span style="color: #5D478B;">==</span> <span style="color: #FF0055;">2'b01</span> <span style="color: #5D478B;">?</span> din2 <span style="color: #5D478B;">:</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">7</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>            res <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #5D478B;">*</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
         res       <span style="color: #5D478B;">=</span> mul1 <span style="color: #5D478B;">*</span> mul2 <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 <br/>
     <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">posedge</span> clk<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-        <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span>sel <span style="color: #5D478B;">==</span> <span style="color: #ff0055;">2'b01</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
+        <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span>sel <span style="color: #5D478B;">==</span> <span style="color: #FF0055;">2'b01</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
             dout   <span style="color: #5D478B;">&lt;=</span> res <span style="color: #5D478B;">;</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
@@ -428,7 +428,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -473,7 +473,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -512,7 +512,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリック</a></p>
 	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -723,7 +723,7 @@ p.note-author {
     border-bottom: 1px solid #ddd;
     font-size: 18px;
     font-weight: bold;
-    color: #78a15a;
+    color: #5B80A6;
     padding-bottom: 2px;
     margin-bottom: 4px;
 }

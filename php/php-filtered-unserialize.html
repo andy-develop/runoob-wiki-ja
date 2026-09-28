@@ -390,31 +390,31 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>PHP 7 では、unserialize() にフィルタを提供できる機能が追加され、不正なデータによるコードインジェクションを防ぎ、より安全なデシリアライズデータを提供します。</p>
 <h3>例</h3>
 <div class="example"><h2 class="example">例</h2><div class="example_code"><span style="color: #0000BB">&lt;?php<br/>
-</span><span style="color: #007700">class </span><span style="color: #0000BB">MyClass1 </span><span style="color: #007700">{ <br/>
-   public </span><span style="color: #0000BB">$obj1prop</span><span style="color: #007700">;   <br/>
+</span><span style="color: #0053A6">class </span><span style="color: #0000BB">MyClass1 </span><span style="color: #0053A6">{ <br/>
+   public </span><span style="color: #0000BB">$obj1prop</span><span style="color: #0053A6">;   <br/>
 }<br/>
-class </span><span style="color: #0000BB">MyClass2 </span><span style="color: #007700">{<br/>
-   public </span><span style="color: #0000BB">$obj2prop</span><span style="color: #007700">;<br/>
+class </span><span style="color: #0000BB">MyClass2 </span><span style="color: #0053A6">{<br/>
+   public </span><span style="color: #0000BB">$obj2prop</span><span style="color: #0053A6">;<br/>
 }<br/>
 <br/>
 <br/>
-</span><span style="color: #0000BB">$obj1 </span><span style="color: #007700">= new </span><span style="color: #0000BB">MyClass1</span><span style="color: #007700">();<br/>
-</span><span style="color: #0000BB">$obj1</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">obj1prop </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;<br/>
-</span><span style="color: #0000BB">$obj2 </span><span style="color: #007700">= new </span><span style="color: #0000BB">MyClass2</span><span style="color: #007700">();<br/>
-</span><span style="color: #0000BB">$obj2</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">obj2prop </span><span style="color: #007700">= </span><span style="color: #0000BB">2</span><span style="color: #007700">;<br/>
+</span><span style="color: #0000BB">$obj1 </span><span style="color: #0053A6">= new </span><span style="color: #0000BB">MyClass1</span><span style="color: #0053A6">();<br/>
+</span><span style="color: #0000BB">$obj1</span><span style="color: #0053A6">-&gt;</span><span style="color: #0000BB">obj1prop </span><span style="color: #0053A6">= </span><span style="color: #0000BB">1</span><span style="color: #0053A6">;<br/>
+</span><span style="color: #0000BB">$obj2 </span><span style="color: #0053A6">= new </span><span style="color: #0000BB">MyClass2</span><span style="color: #0053A6">();<br/>
+</span><span style="color: #0000BB">$obj2</span><span style="color: #0053A6">-&gt;</span><span style="color: #0000BB">obj2prop </span><span style="color: #0053A6">= </span><span style="color: #0000BB">2</span><span style="color: #0053A6">;<br/>
 <br/>
-</span><span style="color: #0000BB">$serializedObj1 </span><span style="color: #007700">= </span><span style="color: #0000BB">serialize</span><span style="color: #007700">(</span><span style="color: #0000BB">$obj1</span><span style="color: #007700">);<br/>
-</span><span style="color: #0000BB">$serializedObj2 </span><span style="color: #007700">= </span><span style="color: #0000BB">serialize</span><span style="color: #007700">(</span><span style="color: #0000BB">$obj2</span><span style="color: #007700">);<br/>
+</span><span style="color: #0000BB">$serializedObj1 </span><span style="color: #0053A6">= </span><span style="color: #0000BB">serialize</span><span style="color: #0053A6">(</span><span style="color: #0000BB">$obj1</span><span style="color: #0053A6">);<br/>
+</span><span style="color: #0000BB">$serializedObj2 </span><span style="color: #0053A6">= </span><span style="color: #0000BB">serialize</span><span style="color: #0053A6">(</span><span style="color: #0000BB">$obj2</span><span style="color: #0053A6">);<br/>
 <br/>
 </span><span style="color: #FF8000">// デフォルトの動作はすべてのクラスを受け入れる<br/>// 2番目のパラメータは無視できます<br/>// allowed_classes が true に設定されている場合、unserialize はすべてのオブジェクトを __PHP_Incomplete_Class オブジェクトに変換します<br/>
-</span><span style="color: #0000BB">$data </span><span style="color: #007700">= </span><span style="color: #0000BB">unserialize</span><span style="color: #007700">(</span><span style="color: #0000BB">$serializedObj1 </span><span style="color: #007700">, [</span><span style="color: #DD0000">"allowed_classes" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">true</span><span style="color: #007700">]);<br/>
+</span><span style="color: #0000BB">$data </span><span style="color: #0053A6">= </span><span style="color: #0000BB">unserialize</span><span style="color: #0053A6">(</span><span style="color: #0000BB">$serializedObj1 </span><span style="color: #0053A6">, [</span><span style="color: #DD0000">"allowed_classes" </span><span style="color: #0053A6">=&gt; </span><span style="color: #0000BB">true</span><span style="color: #0053A6">]);<br/>
 <br/>
 </span><span style="color: #FF8000">// すべてのオブジェクトを __PHP_Incomplete_Class オブジェクトに変換し、MyClass1 と MyClass2 のみ __PHP_Incomplete_Class への変換を許可します<br/>
-</span><span style="color: #0000BB">$data2 </span><span style="color: #007700">= </span><span style="color: #0000BB">unserialize</span><span style="color: #007700">(</span><span style="color: #0000BB">$serializedObj2 </span><span style="color: #007700">, [</span><span style="color: #DD0000">"allowed_classes" </span><span style="color: #007700">=&gt; [</span><span style="color: #DD0000">"MyClass1"</span><span style="color: #007700">, </span><span style="color: #DD0000">"MyClass2"</span><span style="color: #007700">]]);<br/>
+</span><span style="color: #0000BB">$data2 </span><span style="color: #0053A6">= </span><span style="color: #0000BB">unserialize</span><span style="color: #0053A6">(</span><span style="color: #0000BB">$serializedObj2 </span><span style="color: #0053A6">, [</span><span style="color: #DD0000">"allowed_classes" </span><span style="color: #0053A6">=&gt; [</span><span style="color: #DD0000">"MyClass1"</span><span style="color: #0053A6">, </span><span style="color: #DD0000">"MyClass2"</span><span style="color: #0053A6">]]);<br/>
 <br/>
-print(</span><span style="color: #0000BB">$data</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">obj1prop</span><span style="color: #007700">);<br/>
-print(</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">);<br/>
-print(</span><span style="color: #0000BB">$data2</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">obj2prop</span><span style="color: #007700">);<br/>
+print(</span><span style="color: #0000BB">$data</span><span style="color: #0053A6">-&gt;</span><span style="color: #0000BB">obj1prop</span><span style="color: #0053A6">);<br/>
+print(</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #0053A6">);<br/>
+print(</span><span style="color: #0000BB">$data2</span><span style="color: #0053A6">-&gt;</span><span style="color: #0000BB">obj2prop</span><span style="color: #0053A6">);<br/>
 </span><span style="color: #0000BB">?&gt;</span></div></div>
 <p>上記のプログラムの実行結果は以下のとおりです：</p>
 <pre>
@@ -456,7 +456,7 @@ print(</span><span style="color: #0000BB">$data2</span><span style="color: #0077
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -501,7 +501,7 @@ print(</span><span style="color: #0000BB">$data2</span><span style="color: #0077
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -540,7 +540,7 @@ print(</span><span style="color: #0000BB">$data2</span><span style="color: #0077
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリックしてください</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -759,7 +759,7 @@ function kFormatter(num) {
 </style>
 <div class="sidebar-box re-box re-box-large">
 <div class="sidebar-box recommend-here" style="margin: 0 auto;">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
+<a href="#" style="font-size: 16px; color:#5B80A6;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
 </div>
 <div class="sidebar-box sidebar-cate">
 <div class="sidebar-tree">

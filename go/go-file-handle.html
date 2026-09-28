@@ -300,8 +300,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <line stroke="#cbd5e1" stroke-width="1.2" x1="420" x2="490" y1="100" y2="148"></line>
 <line stroke="#cbd5e1" stroke-width="1.2" x1="450" x2="650" y1="100" y2="148"></line>
 <!-- io -->
-<rect fill="white" height="50" rx="10" stroke="#10b981" stroke-width="1.5" width="160" x="60" y="150"></rect>
-<text fill="#059669" font-family="ui-monospace" font-size="13" font-weight="700" text-anchor="middle" x="150" y="172">io</text>
+<rect fill="white" height="50" rx="10" stroke="#1064B9" stroke-width="1.5" width="160" x="60" y="150"></rect>
+<text fill="#0656A6" font-family="ui-monospace" font-size="13" font-weight="700" text-anchor="middle" x="150" y="172">io</text>
 <text fill="#64748b" font-family="system-ui" font-size="9" text-anchor="middle" x="150" y="189">汎用 Reader/Writer インターフェース</text>
 <!-- bufio -->
 <rect fill="white" height="50" rx="10" stroke="#6366f1" stroke-width="1.5" width="160" x="230" y="150"></rect>
@@ -320,8 +320,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <rect fill="#dbeafe" height="34" rx="6" stroke="#3b82f6" stroke-width="1" width="120" x="100" y="248"></rect>
 <text fill="#1d4ed8" font-family="ui-monospace" font-size="10" text-anchor="middle" x="160" y="270">os.Open()</text>
 <line marker-end="url(#callArr)" stroke="#94a3b8" stroke-width="1.2" x1="222" x2="248" y1="265" y2="265"></line>
-<rect fill="#ecfdf5" height="34" rx="6" stroke="#10b981" stroke-width="1" width="120" x="252" y="248"></rect>
-<text fill="#059669" font-family="ui-monospace" font-size="10" text-anchor="middle" x="312" y="270">bufio.Scanner</text>
+<rect fill="#ECF4FD" height="34" rx="6" stroke="#1064B9" stroke-width="1" width="120" x="252" y="248"></rect>
+<text fill="#0656A6" font-family="ui-monospace" font-size="10" text-anchor="middle" x="312" y="270">bufio.Scanner</text>
 <line marker-end="url(#callArr)" stroke="#94a3b8" stroke-width="1.2" x1="374" x2="400" y1="265" y2="265"></line>
 <rect fill="#fef3c7" height="34" rx="6" stroke="#f59e0b" stroke-width="1" width="120" x="404" y="248"></rect>
 <text fill="#b45309" font-family="ui-monospace" font-size="10" text-anchor="middle" x="464" y="270">データの処理</text>
@@ -336,24 +336,24 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
-        <span style="color: #cc66cc;">"log"</span><br/>
-        <span style="color: #cc66cc;">"os"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
+        <span style="color: #CC66CC;">"log"</span><br/>
+        <span style="color: #CC66CC;">"os"</span><br/>
 <span style="color: #339933;">)</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
         <span style="color: #666666; font-style: italic;">// os.Create はファイルを作成する（既に存在する場合は空にする）</span><br/>
-        file<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span><span style="">Create</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"test.txt"</span><span style="color: #339933;">)</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
+        file<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span><span style="">Create</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"test.txt"</span><span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
                 log<span style="color: #339933;">.</span>Fatal<span style="color: #339933;">(</span>err<span style="color: #339933;">)</span><br/>
         <span style="color: #339933;">}</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">defer</span> file<span style="color: #339933;">.</span>Close<span style="color: #339933;">()</span> <span style="color: #666666; font-style: italic;">// defer で関数終了時にファイルを確実に閉じる</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">defer</span> file<span style="color: #339933;">.</span>Close<span style="color: #339933;">()</span> <span style="color: #666666; font-style: italic;">// defer で関数終了時にファイルを確実に閉じる</span><br/>
 <br/>
         <span style="color: #666666; font-style: italic;">// 内容を書き込んで作成成功を確認する</span><br/>
-        file<span style="color: #339933;">.</span><span style="">WriteString</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"ファイル作成成功<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">)</span><br/>
-        log<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"ファイル作成成功"</span><span style="color: #339933;">)</span><br/>
+        file<span style="color: #339933;">.</span><span style="">WriteString</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"ファイル作成成功<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">)</span><br/>
+        log<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"ファイル作成成功"</span><span style="color: #339933;">)</span><br/>
 <span style="color: #339933;">}</span><br/>
 </div>
 </div>
@@ -386,36 +386,36 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
-        <span style="color: #cc66cc;">"fmt"</span><br/>
-        <span style="color: #cc66cc;">"os"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
+        <span style="color: #CC66CC;">"fmt"</span><br/>
+        <span style="color: #CC66CC;">"os"</span><br/>
 <span style="color: #339933;">)</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
         <span style="color: #666666; font-style: italic;">// 方法1：読み取り専用で開く</span><br/>
-        file<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span><span style="">Open</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"example.txt"</span><span style="color: #339933;">)</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
-                fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #cc66cc;">"オープン失敗:"</span><span style="color: #339933;">,</span> err<span style="color: #339933;">)</span><br/>
-                <span style="color: #b1b100; font-weight: bold;">return</span><br/>
+        file<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span><span style="">Open</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"example.txt"</span><span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
+                fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #CC66CC;">"オープン失敗:"</span><span style="color: #339933;">,</span> err<span style="color: #339933;">)</span><br/>
+                <span style="color: #B1B100; font-weight: bold;">return</span><br/>
         <span style="color: #339933;">}</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">defer</span> file<span style="color: #339933;">.</span>Close<span style="color: #339933;">()</span><br/>
-        fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #cc66cc;">"ファイルのオープンに成功"</span><span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">defer</span> file<span style="color: #339933;">.</span>Close<span style="color: #339933;">()</span><br/>
+        fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #CC66CC;">"ファイルのオープンに成功"</span><span style="color: #339933;">)</span><br/>
 <br/>
         <span style="color: #666666; font-style: italic;">// 方法2：OpenFile カスタムモード</span><br/>
         <span style="color: #666666; font-style: italic;">// os.O_WRONLY  書き込み専用</span><br/>
         <span style="color: #666666; font-style: italic;">// os.O_CREATE  存在しない場合は作成</span><br/>
         <span style="color: #666666; font-style: italic;">// os.O_APPEND  追記モード</span><br/>
         <span style="color: #666666; font-style: italic;">// os.O_TRUNC   存在する場合は切り詰め</span><br/>
-        f<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span><span style="">OpenFile</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"log.txt"</span><span style="color: #339933;">,</span><br/>
-                os<span style="color: #339933;">.</span>O_WRONLY<span style="color: #339933;">|</span>os<span style="color: #339933;">.</span>O_CREATE<span style="color: #339933;">|</span>os<span style="color: #339933;">.</span>O_APPEND<span style="color: #339933;">,</span> <span style="color: #cc66cc;">0644</span><span style="color: #339933;">)</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
-                fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #cc66cc;">"オープン失敗:"</span><span style="color: #339933;">,</span> err<span style="color: #339933;">)</span><br/>
-                <span style="color: #b1b100; font-weight: bold;">return</span><br/>
+        f<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span><span style="">OpenFile</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"log.txt"</span><span style="color: #339933;">,</span><br/>
+                os<span style="color: #339933;">.</span>O_WRONLY<span style="color: #339933;">|</span>os<span style="color: #339933;">.</span>O_CREATE<span style="color: #339933;">|</span>os<span style="color: #339933;">.</span>O_APPEND<span style="color: #339933;">,</span> <span style="color: #CC66CC;">0644</span><span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
+                fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #CC66CC;">"オープン失敗:"</span><span style="color: #339933;">,</span> err<span style="color: #339933;">)</span><br/>
+                <span style="color: #B1B100; font-weight: bold;">return</span><br/>
         <span style="color: #339933;">}</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">defer</span> f<span style="color: #339933;">.</span>Close<span style="color: #339933;">()</span><br/>
-        f<span style="color: #339933;">.</span>WriteString<span style="color: #339933;">(</span><span style="color: #cc66cc;">"ログを1行追記<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">defer</span> f<span style="color: #339933;">.</span>Close<span style="color: #339933;">()</span><br/>
+        f<span style="color: #339933;">.</span>WriteString<span style="color: #339933;">(</span><span style="color: #CC66CC;">"ログを1行追記<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">)</span><br/>
 <span style="color: #339933;">}</span><br/>
 </div>
 </div>
@@ -466,14 +466,14 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <rect fill="#f8fafc" filter="url(#readShadow)" height="200" rx="14" width="800"></rect>
 <text fill="#0f172a" font-family="system-ui" font-size="13" font-weight="700" text-anchor="middle" x="400" y="28">3つのファイル読み込み方法</text>
 <!-- Card 1: ReadFile -->
-<rect fill="white" height="136" rx="10" stroke="#10b981" stroke-width="1.2" width="240" x="24" y="46"></rect>
-<rect fill="#ecfdf5" height="32" rx="10" width="240" x="24" y="46"></rect>
-<rect fill="#ecfdf5" height="12" width="240" x="24" y="66"></rect>
-<text fill="#059669" font-family="system-ui" font-size="11" font-weight="700" text-anchor="middle" x="144" y="67">一括読み込み</text>
+<rect fill="white" height="136" rx="10" stroke="#1064B9" stroke-width="1.2" width="240" x="24" y="46"></rect>
+<rect fill="#ECF4FD" height="32" rx="10" width="240" x="24" y="46"></rect>
+<rect fill="#ECF4FD" height="12" width="240" x="24" y="66"></rect>
+<text fill="#0656A6" font-family="system-ui" font-size="11" font-weight="700" text-anchor="middle" x="144" y="67">一括読み込み</text>
 <text fill="#334155" font-family="ui-monospace" font-size="10" text-anchor="middle" x="144" y="98">os.ReadFile("file.txt")</text>
 <text fill="#64748b" font-family="system-ui" font-size="9" text-anchor="middle" x="144" y="118">小ファイルに適しています（設定、JSONなど）</text>
-<rect fill="#f0fdf4" height="22" rx="4" width="168" x="60" y="130"></rect>
-<text fill="#166534" font-family="system-ui" font-size="9" font-weight="600" text-anchor="middle" x="144" y="145">自動で開閉するため、最も簡潔です</text>
+<rect fill="#F0F6FD" height="22" rx="4" width="168" x="60" y="130"></rect>
+<text fill="#2465A6" font-family="system-ui" font-size="9" font-weight="600" text-anchor="middle" x="144" y="145">自動で開閉するため、最も簡潔です</text>
 <!-- Card 2: Scanner -->
 <rect fill="white" height="136" rx="10" stroke="#6366f1" stroke-width="1.2" width="240" x="280" y="46"></rect>
 <rect fill="#eef2ff" height="32" rx="10" width="240" x="280" y="46"></rect>
@@ -498,18 +498,18 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
-        <span style="color: #cc66cc;">"fmt"</span><br/>
-        <span style="color: #cc66cc;">"log"</span><br/>
-        <span style="color: #cc66cc;">"os"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
+        <span style="color: #CC66CC;">"fmt"</span><br/>
+        <span style="color: #CC66CC;">"log"</span><br/>
+        <span style="color: #CC66CC;">"os"</span><br/>
 <span style="color: #339933;">)</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
         <span style="color: #666666; font-style: italic;">// ファイル全体を一括読み込み（Go 1.16+）</span><br/>
-        data<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span><span style="">ReadFile</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"config.json"</span><span style="color: #339933;">)</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
+        data<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span><span style="">ReadFile</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"config.json"</span><span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
                 log<span style="color: #339933;">.</span>Fatal<span style="color: #339933;">(</span>err<span style="color: #339933;">)</span><br/>
         <span style="color: #339933;">}</span><br/>
 <br/>
@@ -522,34 +522,34 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
-        <span style="color: #cc66cc;">"bufio"</span><br/>
-        <span style="color: #cc66cc;">"fmt"</span><br/>
-        <span style="color: #cc66cc;">"log"</span><br/>
-        <span style="color: #cc66cc;">"os"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
+        <span style="color: #CC66CC;">"bufio"</span><br/>
+        <span style="color: #CC66CC;">"fmt"</span><br/>
+        <span style="color: #CC66CC;">"log"</span><br/>
+        <span style="color: #CC66CC;">"os"</span><br/>
 <span style="color: #339933;">)</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
-        file<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span>Open<span style="color: #339933;">(</span><span style="color: #cc66cc;">"large-file.log"</span><span style="color: #339933;">)</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
+        file<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span>Open<span style="color: #339933;">(</span><span style="color: #CC66CC;">"large-file.log"</span><span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
                 log<span style="color: #339933;">.</span>Fatal<span style="color: #339933;">(</span>err<span style="color: #339933;">)</span><br/>
         <span style="color: #339933;">}</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">defer</span> file<span style="color: #339933;">.</span>Close<span style="color: #339933;">()</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">defer</span> file<span style="color: #339933;">.</span>Close<span style="color: #339933;">()</span><br/>
 <br/>
         <span style="color: #666666; font-style: italic;">// 行ごとにスキャン</span><br/>
         scanner <span style="color: #339933;">:=</span> bufio<span style="color: #339933;">.</span>NewScanner<span style="color: #339933;">(</span>file<span style="color: #339933;">)</span><br/>
-        lineNum <span style="color: #339933;">:=</span> <span style="color: #cc66cc;">0</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">for</span> scanner<span style="color: #339933;">.</span>Scan<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
+        lineNum <span style="color: #339933;">:=</span> <span style="color: #CC66CC;">0</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">for</span> scanner<span style="color: #339933;">.</span>Scan<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
                 lineNum<span style="color: #339933;">++</span><br/>
                 line <span style="color: #339933;">:=</span> scanner<span style="color: #339933;">.</span>Text<span style="color: #339933;">()</span> <span style="color: #666666; font-style: italic;">// 現在の行の内容を取得</span><br/>
-                fmt<span style="color: #339933;">.</span><span style="">Printf</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"%d行目: %s<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">,</span> lineNum<span style="color: #339933;">,</span> line<span style="color: #339933;">)</span><br/>
+                fmt<span style="color: #339933;">.</span><span style="">Printf</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"%d行目: %s<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">,</span> lineNum<span style="color: #339933;">,</span> line<span style="color: #339933;">)</span><br/>
         <span style="color: #339933;">}</span><br/>
 <br/>
         <span style="color: #666666; font-style: italic;">// スキャン中にエラーが発生したか確認する</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">if</span> err <span style="color: #339933;">:=</span> scanner<span style="color: #339933;">.</span>Err<span style="color: #339933;">();</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
-                log<span style="color: #339933;">.</span>Fatal<span style="color: #339933;">(</span><span style="color: #cc66cc;">"読み込みエラー:"</span><span style="color: #339933;">,</span> err<span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">if</span> err <span style="color: #339933;">:=</span> scanner<span style="color: #339933;">.</span>Err<span style="color: #339933;">();</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
+                log<span style="color: #339933;">.</span>Fatal<span style="color: #339933;">(</span><span style="color: #CC66CC;">"読み込みエラー:"</span><span style="color: #339933;">,</span> err<span style="color: #339933;">)</span><br/>
         <span style="color: #339933;">}</span><br/>
 <span style="color: #339933;">}</span><br/>
 </div>
@@ -560,25 +560,25 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
-        <span style="color: #cc66cc;">"fmt"</span><br/>
-        <span style="color: #cc66cc;">"io"</span><br/>
-        <span style="color: #cc66cc;">"log"</span><br/>
-        <span style="color: #cc66cc;">"os"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
+        <span style="color: #CC66CC;">"fmt"</span><br/>
+        <span style="color: #CC66CC;">"io"</span><br/>
+        <span style="color: #CC66CC;">"log"</span><br/>
+        <span style="color: #CC66CC;">"os"</span><br/>
 <span style="color: #339933;">)</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
-        file<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span>Open<span style="color: #339933;">(</span><span style="color: #cc66cc;">"example.txt"</span><span style="color: #339933;">)</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
+        file<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span>Open<span style="color: #339933;">(</span><span style="color: #CC66CC;">"example.txt"</span><span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
                 log<span style="color: #339933;">.</span>Fatal<span style="color: #339933;">(</span>err<span style="color: #339933;">)</span><br/>
         <span style="color: #339933;">}</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">defer</span> file<span style="color: #339933;">.</span>Close<span style="color: #339933;">()</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">defer</span> file<span style="color: #339933;">.</span>Close<span style="color: #339933;">()</span><br/>
 <br/>
         <span style="color: #666666; font-style: italic;">// Reader からすべてのデータを読み込む</span><br/>
         data<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> io<span style="color: #339933;">.</span>ReadAll<span style="color: #339933;">(</span>file<span style="color: #339933;">)</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
                 log<span style="color: #339933;">.</span>Fatal<span style="color: #339933;">(</span>err<span style="color: #339933;">)</span><br/>
         <span style="color: #339933;">}</span><br/>
 <br/>
@@ -594,22 +594,22 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
-        <span style="color: #cc66cc;">"log"</span><br/>
-        <span style="color: #cc66cc;">"os"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
+        <span style="color: #CC66CC;">"log"</span><br/>
+        <span style="color: #CC66CC;">"os"</span><br/>
 <span style="color: #339933;">)</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
-        content <span style="color: #339933;">:=</span> <span style="color: #339933;">[]</span><span style="color: #993333;">byte</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"Hello, Go!<span style="color: #000099; font-weight: bold;">\n</span>これは2行目<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">)</span><br/>
+        content <span style="color: #339933;">:=</span> <span style="color: #339933;">[]</span><span style="color: #993333;">byte</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"Hello, Go!<span style="color: #000099; font-weight: bold;">\n</span>これは2行目<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">)</span><br/>
 <br/>
         <span style="color: #666666; font-style: italic;">// 0644: 所有者は読み書き、その他のユーザーは読み取り専用</span><br/>
-        err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span><span style="">WriteFile</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"output.txt"</span><span style="color: #339933;">,</span> content<span style="color: #339933;">,</span> <span style="color: #cc66cc;">0644</span><span style="color: #339933;">)</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
+        err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span><span style="">WriteFile</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"output.txt"</span><span style="color: #339933;">,</span> content<span style="color: #339933;">,</span> <span style="color: #CC66CC;">0644</span><span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
                 log<span style="color: #339933;">.</span>Fatal<span style="color: #339933;">(</span>err<span style="color: #339933;">)</span><br/>
         <span style="color: #339933;">}</span><br/>
-        log<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #cc66cc;">"書き込み成功"</span><span style="color: #339933;">)</span><br/>
+        log<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #CC66CC;">"書き込み成功"</span><span style="color: #339933;">)</span><br/>
 <span style="color: #339933;">}</span><br/>
 </div>
 </div>
@@ -618,30 +618,30 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
-        <span style="color: #cc66cc;">"fmt"</span><br/>
-        <span style="color: #cc66cc;">"log"</span><br/>
-        <span style="color: #cc66cc;">"os"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
+        <span style="color: #CC66CC;">"fmt"</span><br/>
+        <span style="color: #CC66CC;">"log"</span><br/>
+        <span style="color: #CC66CC;">"os"</span><br/>
 <span style="color: #339933;">)</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
-        file<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span>Create<span style="color: #339933;">(</span><span style="color: #cc66cc;">"output.txt"</span><span style="color: #339933;">)</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
+        file<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span>Create<span style="color: #339933;">(</span><span style="color: #CC66CC;">"output.txt"</span><span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
                 log<span style="color: #339933;">.</span>Fatal<span style="color: #339933;">(</span>err<span style="color: #339933;">)</span><br/>
         <span style="color: #339933;">}</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">defer</span> file<span style="color: #339933;">.</span>Close<span style="color: #339933;">()</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">defer</span> file<span style="color: #339933;">.</span>Close<span style="color: #339933;">()</span><br/>
 <br/>
         <span style="color: #666666; font-style: italic;">// 方法1：文字列を書き込む</span><br/>
-        file<span style="color: #339933;">.</span><span style="">WriteString</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"文字列を直接書き込み<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">)</span><br/>
+        file<span style="color: #339933;">.</span><span style="">WriteString</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"文字列を直接書き込み<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">)</span><br/>
 <br/>
         <span style="color: #666666; font-style: italic;">// 方法2：バイトスライスを書き込む</span><br/>
-        data <span style="color: #339933;">:=</span> <span style="color: #339933;">[]</span><span style="color: #993333;">byte</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"バイトスライスを書き込み<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">)</span><br/>
+        data <span style="color: #339933;">:=</span> <span style="color: #339933;">[]</span><span style="color: #993333;">byte</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"バイトスライスを書き込み<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">)</span><br/>
         file<span style="color: #339933;">.</span><span style="">Write</span><span style="color: #339933;">(</span>data<span style="color: #339933;">)</span><br/>
 <br/>
         <span style="color: #666666; font-style: italic;">// 方法3：フォーマット書き込み</span><br/>
-        fmt<span style="color: #339933;">.</span><span style="">Fprintf</span><span style="color: #339933;">(</span>file<span style="color: #339933;">,</span> <span style="color: #cc66cc;">"フォーマット書き込み: %d + %d = %d<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">3</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">4</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">7</span><span style="color: #339933;">)</span><br/>
+        fmt<span style="color: #339933;">.</span><span style="">Fprintf</span><span style="color: #339933;">(</span>file<span style="color: #339933;">,</span> <span style="color: #CC66CC;">"フォーマット書き込み: %d + %d = %d<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">,</span> <span style="color: #CC66CC;">3</span><span style="color: #339933;">,</span> <span style="color: #CC66CC;">4</span><span style="color: #339933;">,</span> <span style="color: #CC66CC;">7</span><span style="color: #339933;">)</span><br/>
 <span style="color: #339933;">}</span><br/>
 </div>
 </div>
@@ -650,39 +650,39 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
-        <span style="color: #cc66cc;">"bufio"</span><br/>
-        <span style="color: #cc66cc;">"log"</span><br/>
-        <span style="color: #cc66cc;">"os"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
+        <span style="color: #CC66CC;">"bufio"</span><br/>
+        <span style="color: #CC66CC;">"log"</span><br/>
+        <span style="color: #CC66CC;">"os"</span><br/>
 <span style="color: #339933;">)</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
-        file<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span>Create<span style="color: #339933;">(</span><span style="color: #cc66cc;">"buffered-output.txt"</span><span style="color: #339933;">)</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
+        file<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span>Create<span style="color: #339933;">(</span><span style="color: #CC66CC;">"buffered-output.txt"</span><span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
                 log<span style="color: #339933;">.</span>Fatal<span style="color: #339933;">(</span>err<span style="color: #339933;">)</span><br/>
         <span style="color: #339933;">}</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">defer</span> file<span style="color: #339933;">.</span>Close<span style="color: #339933;">()</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">defer</span> file<span style="color: #339933;">.</span>Close<span style="color: #339933;">()</span><br/>
 <br/>
         <span style="color: #666666; font-style: italic;">// バッファ付きライターを作成</span><br/>
         writer <span style="color: #339933;">:=</span> bufio<span style="color: #339933;">.</span><span style="">NewWriter</span><span style="color: #339933;">(</span>file<span style="color: #339933;">)</span><br/>
 <br/>
         <span style="color: #666666; font-style: italic;">// 複数行を書き込む（まずバッファに入り、すぐにはディスクに書き込まれない）</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">for</span> <span style="">i</span> <span style="color: #339933;">:=</span> <span style="color: #cc66cc;">0</span><span style="color: #339933;">;</span> <span style="">i</span> &lt; <span style="color: #cc66cc;">1000</span><span style="color: #339933;">;</span> <span style="">i</span><span style="color: #339933;">++</span> <span style="color: #339933;">{</span><br/>
-                writer<span style="color: #339933;">.</span>WriteString<span style="color: #339933;">(</span><span style="color: #cc66cc;">"これは第</span> <span style="color: #339933;">+</span> itoa<span style="color: #339933;">(</span>i<span style="color: #339933;">)</span> <span style="color: #339933;">+</span> <span style="color: #cc66cc;">" 行<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">for</span> <span style="">i</span> <span style="color: #339933;">:=</span> <span style="color: #CC66CC;">0</span><span style="color: #339933;">;</span> <span style="">i</span> &lt; <span style="color: #CC66CC;">1000</span><span style="color: #339933;">;</span> <span style="">i</span><span style="color: #339933;">++</span> <span style="color: #339933;">{</span><br/>
+                writer<span style="color: #339933;">.</span>WriteString<span style="color: #339933;">(</span><span style="color: #CC66CC;">"これは第</span> <span style="color: #339933;">+</span> itoa<span style="color: #339933;">(</span>i<span style="color: #339933;">)</span> <span style="color: #339933;">+</span> <span style="color: #CC66CC;">" 行<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">)</span><br/>
         <span style="color: #339933;">}</span><br/>
 <br/>
         <span style="color: #666666; font-style: italic;">// Flush はバッファに残っているデータをファイルに書き込む</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">if</span> err <span style="color: #339933;">:=</span> writer<span style="color: #339933;">.</span>Flush<span style="color: #339933;">();</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
-                log<span style="color: #339933;">.</span>Fatal<span style="color: #339933;">(</span><span style="color: #cc66cc;">"バッファのフラッシュ失敗:"</span><span style="color: #339933;">,</span> err<span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">if</span> err <span style="color: #339933;">:=</span> writer<span style="color: #339933;">.</span>Flush<span style="color: #339933;">();</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
+                log<span style="color: #339933;">.</span>Fatal<span style="color: #339933;">(</span><span style="color: #CC66CC;">"バッファのフラッシュ失敗:"</span><span style="color: #339933;">,</span> err<span style="color: #339933;">)</span><br/>
         <span style="color: #339933;">}</span><br/>
-        log<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"バッファ書き込み完了"</span><span style="color: #339933;">)</span><br/>
+        log<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"バッファ書き込み完了"</span><span style="color: #339933;">)</span><br/>
 <span style="color: #339933;">}</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;">// int を string に変換する簡単なヘルパー関数</span><br/>
 <span style="color: #993333;">func</span> itoa<span style="color: #339933;">(</span>n <span style="color: #993333;">int</span><span style="color: #339933;">)</span> <span style="color: #993333;">string</span> <span style="color: #339933;">{</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">return</span> fmt<span style="color: #339933;">.</span>Sprintf<span style="color: #339933;">(</span><span style="color: #cc66cc;">"%d"</span><span style="color: #339933;">,</span> n<span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">return</span> fmt<span style="color: #339933;">.</span>Sprintf<span style="color: #339933;">(</span><span style="color: #CC66CC;">"%d"</span><span style="color: #339933;">,</span> n<span style="color: #339933;">)</span><br/>
 <span style="color: #339933;">}</span><br/>
 </div>
 </div>
@@ -692,28 +692,28 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
-        <span style="color: #cc66cc;">"log"</span><br/>
-        <span style="color: #cc66cc;">"os"</span><br/>
-        <span style="color: #cc66cc;">"time"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
+        <span style="color: #CC66CC;">"log"</span><br/>
+        <span style="color: #CC66CC;">"os"</span><br/>
+        <span style="color: #CC66CC;">"time"</span><br/>
 <span style="color: #339933;">)</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
         <span style="color: #666666; font-style: italic;">// O_APPEND: 追記モード</span><br/>
         <span style="color: #666666; font-style: italic;">// O_CREATE: 存在しない場合は作成</span><br/>
         <span style="color: #666666; font-style: italic;">// O_WRONLY: 書き込み専用</span><br/>
-        file<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span><span style="">OpenFile</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"app.log"</span><span style="color: #339933;">,</span><br/>
-                os<span style="color: #339933;">.</span>O_APPEND<span style="color: #339933;">|</span>os<span style="color: #339933;">.</span>O_CREATE<span style="color: #339933;">|</span>os<span style="color: #339933;">.</span>O_WRONLY<span style="color: #339933;">,</span> <span style="color: #cc66cc;">0644</span><span style="color: #339933;">)</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
+        file<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span><span style="">OpenFile</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"app.log"</span><span style="color: #339933;">,</span><br/>
+                os<span style="color: #339933;">.</span>O_APPEND<span style="color: #339933;">|</span>os<span style="color: #339933;">.</span>O_CREATE<span style="color: #339933;">|</span>os<span style="color: #339933;">.</span>O_WRONLY<span style="color: #339933;">,</span> <span style="color: #CC66CC;">0644</span><span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
                 log<span style="color: #339933;">.</span>Fatal<span style="color: #339933;">(</span>err<span style="color: #339933;">)</span><br/>
         <span style="color: #339933;">}</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">defer</span> file<span style="color: #339933;">.</span>Close<span style="color: #339933;">()</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">defer</span> file<span style="color: #339933;">.</span>Close<span style="color: #339933;">()</span><br/>
 <br/>
         <span style="color: #666666; font-style: italic;">// 実行するたびに追記され、上書きされません</span><br/>
-        timestamp <span style="color: #339933;">:=</span> time<span style="color: #339933;">.</span><span style="">Now</span><span style="color: #339933;">()</span><span style="color: #339933;">.</span><span style="">Format</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"2006-01-02 15:04:05"</span><span style="color: #339933;">)</span><br/>
-        file<span style="color: #339933;">.</span><span style="">WriteString</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"["</span> <span style="color: #339933;">+</span> timestamp <span style="color: #339933;">+</span> <span style="color: #cc66cc;">] アプリ起動<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">)</span><br/>
+        timestamp <span style="color: #339933;">:=</span> time<span style="color: #339933;">.</span><span style="">Now</span><span style="color: #339933;">()</span><span style="color: #339933;">.</span><span style="">Format</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"2006-01-02 15:04:05"</span><span style="color: #339933;">)</span><br/>
+        file<span style="color: #339933;">.</span><span style="">WriteString</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"["</span> <span style="color: #339933;">+</span> timestamp <span style="color: #339933;">+</span> <span style="color: #CC66CC;">] アプリ起動<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">)</span><br/>
 <span style="color: #339933;">}</span><br/>
 </div>
 </div>
@@ -723,27 +723,27 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
-        <span style="color: #cc66cc;">"log"</span><br/>
-        <span style="color: #cc66cc;">"os"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
+        <span style="color: #CC66CC;">"log"</span><br/>
+        <span style="color: #CC66CC;">"os"</span><br/>
 <span style="color: #339933;">)</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
         <span style="color: #666666; font-style: italic;">// ファイルの名前変更 / 移動</span><br/>
-        err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span><span style="">Rename</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"old.txt"</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">"new.txt"</span><span style="color: #339933;">)</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
-                log<span style="color: #339933;">.</span>Fatal<span style="color: #339933;">(</span><span style="color: #cc66cc;">"名前変更に失敗:"</span><span style="color: #339933;">,</span> err<span style="color: #339933;">)</span><br/>
+        err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span><span style="">Rename</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"old.txt"</span><span style="color: #339933;">,</span> <span style="color: #CC66CC;">"new.txt"</span><span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
+                log<span style="color: #339933;">.</span>Fatal<span style="color: #339933;">(</span><span style="color: #CC66CC;">"名前変更に失敗:"</span><span style="color: #339933;">,</span> err<span style="color: #339933;">)</span><br/>
         <span style="color: #339933;">}</span><br/>
-        log<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"名前変更に成功"</span><span style="color: #339933;">)</span><br/>
+        log<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"名前変更に成功"</span><span style="color: #339933;">)</span><br/>
 <br/>
         <span style="color: #666666; font-style: italic;">// ファイルの削除</span><br/>
-        err <span style="color: #339933;">=</span> os<span style="color: #339933;">.</span><span style="">Remove</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"temp.txt"</span><span style="color: #339933;">)</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
-                log<span style="color: #339933;">.</span>Fatal<span style="color: #339933;">(</span><span style="color: #cc66cc;">"削除に失敗:"</span><span style="color: #339933;">,</span> err<span style="color: #339933;">)</span><br/>
+        err <span style="color: #339933;">=</span> os<span style="color: #339933;">.</span><span style="">Remove</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"temp.txt"</span><span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
+                log<span style="color: #339933;">.</span>Fatal<span style="color: #339933;">(</span><span style="color: #CC66CC;">"削除に失敗:"</span><span style="color: #339933;">,</span> err<span style="color: #339933;">)</span><br/>
         <span style="color: #339933;">}</span><br/>
-        log<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"削除に成功"</span><span style="color: #339933;">)</span><br/>
+        log<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"削除に成功"</span><span style="color: #339933;">)</span><br/>
 <span style="color: #339933;">}</span><br/>
 </div>
 </div>
@@ -753,25 +753,25 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
-        <span style="color: #cc66cc;">"fmt"</span><br/>
-        <span style="color: #cc66cc;">"log"</span><br/>
-        <span style="color: #cc66cc;">"os"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
+        <span style="color: #CC66CC;">"fmt"</span><br/>
+        <span style="color: #CC66CC;">"log"</span><br/>
+        <span style="color: #CC66CC;">"os"</span><br/>
 <span style="color: #339933;">)</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
-        info<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span>Stat<span style="color: #339933;">(</span><span style="color: #cc66cc;">"test.txt"</span><span style="color: #339933;">)</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
+        info<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span>Stat<span style="color: #339933;">(</span><span style="color: #CC66CC;">"test.txt"</span><span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
                 log<span style="color: #339933;">.</span>Fatal<span style="color: #339933;">(</span>err<span style="color: #339933;">)</span><br/>
         <span style="color: #339933;">}</span><br/>
 <br/>
-        fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #cc66cc;">"ファイル名:    "</span><span style="color: #339933;">,</span> info<span style="color: #339933;">.</span><span style="">Name</span><span style="color: #339933;">())</span><br/>
-        fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"サイズ:      "</span><span style="color: #339933;">,</span> info<span style="color: #339933;">.</span><span style="">Size</span><span style="color: #339933;">(),</span> <span style="color: #cc66cc;">"バイト"</span><span style="color: #339933;">)</span><br/>
-        fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"権限:      "</span><span style="color: #339933;">,</span> info<span style="color: #339933;">.</span><span style="">Mode</span><span style="color: #339933;">())</span><br/>
-        fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"変更時間:  "</span><span style="color: #339933;">,</span> info<span style="color: #339933;">.</span><span style="">ModTime</span><span style="color: #339933;">())</span><br/>
-        fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"ディレクトリか:  "</span><span style="color: #339933;">,</span> info<span style="color: #339933;">.</span><span style="">IsDir</span><span style="color: #339933;">())</span><br/>
+        fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #CC66CC;">"ファイル名:    "</span><span style="color: #339933;">,</span> info<span style="color: #339933;">.</span><span style="">Name</span><span style="color: #339933;">())</span><br/>
+        fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"サイズ:      "</span><span style="color: #339933;">,</span> info<span style="color: #339933;">.</span><span style="">Size</span><span style="color: #339933;">(),</span> <span style="color: #CC66CC;">"バイト"</span><span style="color: #339933;">)</span><br/>
+        fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"権限:      "</span><span style="color: #339933;">,</span> info<span style="color: #339933;">.</span><span style="">Mode</span><span style="color: #339933;">())</span><br/>
+        fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"変更時間:  "</span><span style="color: #339933;">,</span> info<span style="color: #339933;">.</span><span style="">ModTime</span><span style="color: #339933;">())</span><br/>
+        fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"ディレクトリか:  "</span><span style="color: #339933;">,</span> info<span style="color: #339933;">.</span><span style="">IsDir</span><span style="color: #339933;">())</span><br/>
 <span style="color: #339933;">}</span><br/>
 </div>
 </div>
@@ -780,24 +780,24 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
-        <span style="color: #cc66cc;">"fmt"</span><br/>
-        <span style="color: #cc66cc;">"os"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
+        <span style="color: #CC66CC;">"fmt"</span><br/>
+        <span style="color: #CC66CC;">"os"</span><br/>
 <span style="color: #339933;">)</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;">// fileExists はファイルの存在を確認する</span><br/>
 <span style="color: #993333;">func</span> fileExists<span style="color: #339933;">(</span>path <span style="color: #993333;">string</span><span style="color: #339933;">)</span> <span style="color: #993333;">bool</span> <span style="color: #339933;">{</span><br/>
         _<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span>Stat<span style="color: #339933;">(</span>path<span style="color: #339933;">)</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">return</span> <span style="color: #339933;">!</span>os<span style="color: #339933;">.</span>IsNotExist<span style="color: #339933;">(</span>err<span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">return</span> <span style="color: #339933;">!</span>os<span style="color: #339933;">.</span>IsNotExist<span style="color: #339933;">(</span>err<span style="color: #339933;">)</span><br/>
 <span style="color: #339933;">}</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">if</span> fileExists<span style="color: #339933;">(</span><span style="color: #cc66cc;">"test.txt"</span><span style="color: #339933;">)</span> <span style="color: #339933;">{</span><br/>
-                fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"ファイルが存在します"</span><span style="color: #339933;">)</span><br/>
-        <span style="color: #339933;">}</span> <span style="color: #b1b100; font-weight: bold;">else</span> <span style="color: #339933;">{</span><br/>
-                fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #cc66cc;">"ファイルが存在しません"</span><span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">if</span> fileExists<span style="color: #339933;">(</span><span style="color: #CC66CC;">"test.txt"</span><span style="color: #339933;">)</span> <span style="color: #339933;">{</span><br/>
+                fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"ファイルが存在します"</span><span style="color: #339933;">)</span><br/>
+        <span style="color: #339933;">}</span> <span style="color: #B1B100; font-weight: bold;">else</span> <span style="color: #339933;">{</span><br/>
+                fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #CC66CC;">"ファイルが存在しません"</span><span style="color: #339933;">)</span><br/>
         <span style="color: #339933;">}</span><br/>
 <span style="color: #339933;">}</span><br/>
 </div>
@@ -807,45 +807,45 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
-        <span style="color: #cc66cc;">"fmt"</span><br/>
-        <span style="color: #cc66cc;">"log"</span><br/>
-        <span style="color: #cc66cc;">"os"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
+        <span style="color: #CC66CC;">"fmt"</span><br/>
+        <span style="color: #CC66CC;">"log"</span><br/>
+        <span style="color: #CC66CC;">"os"</span><br/>
 <span style="color: #339933;">)</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
         <span style="color: #666666; font-style: italic;">// 単一のディレクトリを作成</span><br/>
-        err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span><span style="">Mkdir</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"newdir"</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">0755</span><span style="color: #339933;">)</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
+        err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span><span style="">Mkdir</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"newdir"</span><span style="color: #339933;">,</span> <span style="color: #CC66CC;">0755</span><span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
                 log<span style="color: #339933;">.</span>Fatal<span style="color: #339933;">(</span>err<span style="color: #339933;">)</span><br/>
         <span style="color: #339933;">}</span><br/>
 <br/>
         <span style="color: #666666; font-style: italic;">// 再帰的に複数階層のディレクトリを作成（親ディレクトリが存在しなくても自動的に作成）</span><br/>
-        err <span style="color: #339933;">=</span> os<span style="color: #339933;">.</span><span style="">MkdirAll</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"path/to/deep/dir"</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">0755</span><span style="color: #339933;">)</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
+        err <span style="color: #339933;">=</span> os<span style="color: #339933;">.</span><span style="">MkdirAll</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"path/to/deep/dir"</span><span style="color: #339933;">,</span> <span style="color: #CC66CC;">0755</span><span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
                 log<span style="color: #339933;">.</span>Fatal<span style="color: #339933;">(</span>err<span style="color: #339933;">)</span><br/>
         <span style="color: #339933;">}</span><br/>
 <br/>
         <span style="color: #666666; font-style: italic;">// ディレクトリの内容を読み取る</span><br/>
-        entries<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span><span style="">ReadDir</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"."</span><span style="color: #339933;">)</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
+        entries<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span><span style="">ReadDir</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"."</span><span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
                 log<span style="color: #339933;">.</span>Fatal<span style="color: #339933;">(</span>err<span style="color: #339933;">)</span><br/>
         <span style="color: #339933;">}</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">for</span> _<span style="color: #339933;">,</span> entry <span style="color: #339933;">:=</span> <span style="color: #b1b100; font-weight: bold;">range</span> entries <span style="color: #339933;">{</span><br/>
-                mark <span style="color: #339933;">:=</span> <span style="color: #cc66cc;">"&amp;#x1f4c4;"</span><br/>
-                <span style="color: #b1b100; font-weight: bold;">if</span> entry<span style="color: #339933;">.</span>IsDir<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
-                        mark <span style="color: #339933;">=</span> <span style="color: #cc66cc;">"&amp;#x1f4c1;"</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">for</span> _<span style="color: #339933;">,</span> entry <span style="color: #339933;">:=</span> <span style="color: #B1B100; font-weight: bold;">range</span> entries <span style="color: #339933;">{</span><br/>
+                mark <span style="color: #339933;">:=</span> <span style="color: #CC66CC;">"&amp;#x1f4c4;"</span><br/>
+                <span style="color: #B1B100; font-weight: bold;">if</span> entry<span style="color: #339933;">.</span>IsDir<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
+                        mark <span style="color: #339933;">=</span> <span style="color: #CC66CC;">"&amp;#x1f4c1;"</span><br/>
                 <span style="color: #339933;">}</span><br/>
-                fmt<span style="color: #339933;">.</span><span style="">Printf</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"%s %s<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">,</span> mark<span style="color: #339933;">,</span> entry<span style="color: #339933;">.</span><span style="">Name</span><span style="color: #339933;">())</span><br/>
+                fmt<span style="color: #339933;">.</span><span style="">Printf</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"%s %s<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">,</span> mark<span style="color: #339933;">,</span> entry<span style="color: #339933;">.</span><span style="">Name</span><span style="color: #339933;">())</span><br/>
         <span style="color: #339933;">}</span><br/>
 <br/>
         <span style="color: #666666; font-style: italic;">// 空のディレクトリを削除</span><br/>
-        os<span style="color: #339933;">.</span><span style="">Remove</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"newdir"</span><span style="color: #339933;">)</span><br/>
+        os<span style="color: #339933;">.</span><span style="">Remove</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"newdir"</span><span style="color: #339933;">)</span><br/>
 <br/>
         <span style="color: #666666; font-style: italic;">// ディレクトリとそのすべての内容を再帰的に削除（⚠ 注意して使用）</span><br/>
-        os<span style="color: #339933;">.</span><span style="">RemoveAll</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"path"</span><span style="color: #339933;">)</span><br/>
+        os<span style="color: #339933;">.</span><span style="">RemoveAll</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"path"</span><span style="color: #339933;">)</span><br/>
 <span style="color: #339933;">}</span><br/>
 </div>
 </div>
@@ -856,38 +856,38 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
-        <span style="color: #cc66cc;">"io"</span><br/>
-        <span style="color: #cc66cc;">"log"</span><br/>
-        <span style="color: #cc66cc;">"os"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
+        <span style="color: #CC66CC;">"io"</span><br/>
+        <span style="color: #CC66CC;">"log"</span><br/>
+        <span style="color: #CC66CC;">"os"</span><br/>
 <span style="color: #339933;">)</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;">// copyFile はファイルをコピーする汎用関数</span><br/>
 <span style="color: #993333;">func</span> copyFile<span style="color: #339933;">(</span>src<span style="color: #339933;">,</span> dst <span style="color: #993333;">string</span><span style="color: #339933;">)</span> <span style="color: #339933;">(</span><span style="color: #993333;">int64</span><span style="color: #339933;">,</span> error<span style="color: #339933;">)</span> <span style="color: #339933;">{</span><br/>
         srcFile<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span>Open<span style="color: #339933;">(</span>src<span style="color: #339933;">)</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
-                <span style="color: #b1b100; font-weight: bold;">return</span> <span style="color: #cc66cc;">0</span><span style="color: #339933;">,</span> err<br/>
+        <span style="color: #B1B100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
+                <span style="color: #B1B100; font-weight: bold;">return</span> <span style="color: #CC66CC;">0</span><span style="color: #339933;">,</span> err<br/>
         <span style="color: #339933;">}</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">defer</span> srcFile<span style="color: #339933;">.</span>Close<span style="color: #339933;">()</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">defer</span> srcFile<span style="color: #339933;">.</span>Close<span style="color: #339933;">()</span><br/>
 <br/>
         dstFile<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span>Create<span style="color: #339933;">(</span>dst<span style="color: #339933;">)</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
-                <span style="color: #b1b100; font-weight: bold;">return</span> <span style="color: #cc66cc;">0</span><span style="color: #339933;">,</span> err<br/>
+        <span style="color: #B1B100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
+                <span style="color: #B1B100; font-weight: bold;">return</span> <span style="color: #CC66CC;">0</span><span style="color: #339933;">,</span> err<br/>
         <span style="color: #339933;">}</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">defer</span> dstFile<span style="color: #339933;">.</span>Close<span style="color: #339933;">()</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">defer</span> dstFile<span style="color: #339933;">.</span>Close<span style="color: #339933;">()</span><br/>
 <br/>
         <span style="color: #666666; font-style: italic;">// io.Copy はバッファを自動管理し、効率的にコピーする</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">return</span> io<span style="color: #339933;">.</span>Copy<span style="color: #339933;">(</span>dstFile<span style="color: #339933;">,</span> srcFile<span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">return</span> io<span style="color: #339933;">.</span>Copy<span style="color: #339933;">(</span>dstFile<span style="color: #339933;">,</span> srcFile<span style="color: #339933;">)</span><br/>
 <span style="color: #339933;">}</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
-        n<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> copyFile<span style="color: #339933;">(</span><span style="color: #cc66cc;">"source.txt"</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">"destination.txt"</span><span style="color: #339933;">)</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
+        n<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> copyFile<span style="color: #339933;">(</span><span style="color: #CC66CC;">"source.txt"</span><span style="color: #339933;">,</span> <span style="color: #CC66CC;">"destination.txt"</span><span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
                 log<span style="color: #339933;">.</span>Fatal<span style="color: #339933;">(</span>err<span style="color: #339933;">)</span><br/>
         <span style="color: #339933;">}</span><br/>
-        log<span style="color: #339933;">.</span>Printf<span style="color: #339933;">(</span><span style="color: #cc66cc;">"コピー完了、合計 %d バイト"</span><span style="color: #339933;">,</span> n<span style="color: #339933;">)</span><br/>
+        log<span style="color: #339933;">.</span>Printf<span style="color: #339933;">(</span><span style="color: #CC66CC;">"コピー完了、合計 %d バイト"</span><span style="color: #339933;">,</span> n<span style="color: #339933;">)</span><br/>
 <span style="color: #339933;">}</span><br/>
 </div>
 </div>
@@ -895,30 +895,30 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
-        <span style="color: #cc66cc;">"fmt"</span><br/>
-        <span style="color: #cc66cc;">"log"</span><br/>
-        <span style="color: #cc66cc;">"os"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
+        <span style="color: #CC66CC;">"fmt"</span><br/>
+        <span style="color: #CC66CC;">"log"</span><br/>
+        <span style="color: #CC66CC;">"os"</span><br/>
 <span style="color: #339933;">)</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
         <span style="color: #666666; font-style: italic;">// 一時ファイルを作成（自動命名、プレフィックスは "app-"）</span><br/>
-        tmpFile<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span><span style="">CreateTemp</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">""</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">"app-*.txt"</span><span style="color: #339933;">)</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
+        tmpFile<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span><span style="">CreateTemp</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">""</span><span style="color: #339933;">,</span> <span style="color: #CC66CC;">"app-*.txt"</span><span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
                 log<span style="color: #339933;">.</span>Fatal<span style="color: #339933;">(</span>err<span style="color: #339933;">)</span><br/>
         <span style="color: #339933;">}</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">defer</span> os<span style="color: #339933;">.</span>Remove<span style="color: #339933;">(</span>tmpFile<span style="color: #339933;">.</span>Name<span style="color: #339933;">())</span> <span style="color: #666666; font-style: italic;">// 使用後はクリーンアップ</span><br/>
-        fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"一時ファイル:"</span><span style="color: #339933;">,</span> tmpFile<span style="color: #339933;">.</span><span style="">Name</span><span style="color: #339933;">())</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">defer</span> os<span style="color: #339933;">.</span>Remove<span style="color: #339933;">(</span>tmpFile<span style="color: #339933;">.</span>Name<span style="color: #339933;">())</span> <span style="color: #666666; font-style: italic;">// 使用後はクリーンアップ</span><br/>
+        fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"一時ファイル:"</span><span style="color: #339933;">,</span> tmpFile<span style="color: #339933;">.</span><span style="">Name</span><span style="color: #339933;">())</span><br/>
 <br/>
         <span style="color: #666666; font-style: italic;">// 一時ディレクトリを作成</span><br/>
-        tmpDir<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span><span style="">MkdirTemp</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">""</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">"app-*"</span><span style="color: #339933;">)</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
+        tmpDir<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span><span style="">MkdirTemp</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">""</span><span style="color: #339933;">,</span> <span style="color: #CC66CC;">"app-*"</span><span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
                 log<span style="color: #339933;">.</span>Fatal<span style="color: #339933;">(</span>err<span style="color: #339933;">)</span><br/>
         <span style="color: #339933;">}</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">defer</span> os<span style="color: #339933;">.</span>RemoveAll<span style="color: #339933;">(</span>tmpDir<span style="color: #339933;">)</span> <span style="color: #666666; font-style: italic;">// 使用後はクリーンアップ</span><br/>
-        fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"一時ディレクトリ:"</span><span style="color: #339933;">,</span> tmpDir<span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">defer</span> os<span style="color: #339933;">.</span>RemoveAll<span style="color: #339933;">(</span>tmpDir<span style="color: #339933;">)</span> <span style="color: #666666; font-style: italic;">// 使用後はクリーンアップ</span><br/>
+        fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"一時ディレクトリ:"</span><span style="color: #339933;">,</span> tmpDir<span style="color: #339933;">)</span><br/>
 <span style="color: #339933;">}</span><br/>
 </div>
 </div>
@@ -927,33 +927,33 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
-        <span style="color: #cc66cc;">"fmt"</span><br/>
-        <span style="color: #cc66cc;">"log"</span><br/>
-        <span style="color: #cc66cc;">"os"</span><br/>
-        <span style="color: #cc66cc;">"path/filepath"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
+        <span style="color: #CC66CC;">"fmt"</span><br/>
+        <span style="color: #CC66CC;">"log"</span><br/>
+        <span style="color: #CC66CC;">"os"</span><br/>
+        <span style="color: #CC66CC;">"path/filepath"</span><br/>
 <span style="color: #339933;">)</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
-        root <span style="color: #339933;">:=</span> <span style="color: #cc66cc;">"."</span> <span style="color: #666666; font-style: italic;">// 現在のディレクトリから走査を開始</span><br/>
+        root <span style="color: #339933;">:=</span> <span style="color: #CC66CC;">"."</span> <span style="color: #666666; font-style: italic;">// 現在のディレクトリから走査を開始</span><br/>
 <br/>
         err <span style="color: #339933;">:=</span> filepath<span style="color: #339933;">.</span>Walk<span style="color: #339933;">(</span>root<span style="color: #339933;">,</span> <span style="color: #993333;">func</span><span style="color: #339933;">(</span>path <span style="color: #993333;">string</span><span style="color: #339933;">,</span> info <span style="color: #003399;">os.<span style="">FileInfo</span></span><span style="color: #339933;">,</span> err error<span style="color: #339933;">)</span> error <span style="color: #339933;">{</span><br/>
-                <span style="color: #b1b100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
-                        <span style="color: #b1b100; font-weight: bold;">return</span> err <span style="color: #666666; font-style: italic;">// エラーが発生した場合はスキップまたは返すことを選択できる</span><br/>
+                <span style="color: #B1B100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
+                        <span style="color: #B1B100; font-weight: bold;">return</span> err <span style="color: #666666; font-style: italic;">// エラーが発生した場合はスキップまたは返すことを選択できる</span><br/>
                 <span style="color: #339933;">}</span><br/>
 <br/>
                 <span style="color: #666666; font-style: italic;">// パスとサイズを出力</span><br/>
-                size <span style="color: #339933;">:=</span> <span style="color: #cc66cc;">""</span><br/>
-                <span style="color: #b1b100; font-weight: bold;">if</span> <span style="color: #339933;">!</span>info<span style="color: #339933;">.</span>IsDir<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
-                        size <span style="color: #339933;">=</span> fmt<span style="color: #339933;">.</span>Sprintf<span style="color: #339933;">(</span><span style="color: #cc66cc;">" (%d bytes)"</span><span style="color: #339933;">,</span> info<span style="color: #339933;">.</span>Size<span style="color: #339933;">())</span><br/>
+                size <span style="color: #339933;">:=</span> <span style="color: #CC66CC;">""</span><br/>
+                <span style="color: #B1B100; font-weight: bold;">if</span> <span style="color: #339933;">!</span>info<span style="color: #339933;">.</span>IsDir<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
+                        size <span style="color: #339933;">=</span> fmt<span style="color: #339933;">.</span>Sprintf<span style="color: #339933;">(</span><span style="color: #CC66CC;">" (%d bytes)"</span><span style="color: #339933;">,</span> info<span style="color: #339933;">.</span>Size<span style="color: #339933;">())</span><br/>
                 <span style="color: #339933;">}</span><br/>
                 fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span>path <span style="color: #339933;">+</span> size<span style="color: #339933;">)</span><br/>
-                <span style="color: #b1b100; font-weight: bold;">return</span> <span style="color: #000000; font-weight: bold;">nil</span><br/>
+                <span style="color: #B1B100; font-weight: bold;">return</span> <span style="color: #000000; font-weight: bold;">nil</span><br/>
         <span style="color: #339933;">})</span><br/>
 <br/>
-        <span style="color: #b1b100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
                 log<span style="color: #339933;">.</span>Fatal<span style="color: #339933;">(</span>err<span style="color: #339933;">)</span><br/>
         <span style="color: #339933;">}</span><br/>
 <span style="color: #339933;">}</span><br/>
@@ -1061,7 +1061,7 @@ path := filepath.Join("dir", "file.txt")
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -1106,7 +1106,7 @@ path := filepath.Join("dir", "file.txt")
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -1145,7 +1145,7 @@ path := filepath.Join("dir", "file.txt")
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -1364,7 +1364,7 @@ function kFormatter(num) {
 </style>
 <div class="sidebar-box re-box re-box-large">
 <div class="sidebar-box recommend-here" style="margin: 0 auto;">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
+<a href="#" style="font-size: 16px; color:#5B80A6;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
 </div>
 <div class="sidebar-box sidebar-cate">
 <div class="sidebar-tree">

@@ -194,17 +194,17 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># Ubuntu/Debian</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> apt <span style="color: #c20cb9; font-weight: bold;">install</span> bpftrace<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> apt <span style="color: #C20CB9; font-weight: bold;">install</span> bpftrace<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># CentOS/RHEL</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> <span style="color: #c20cb9; font-weight: bold;">yum install</span> bpftrace<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> <span style="color: #C20CB9; font-weight: bold;">yum install</span> bpftrace<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># ソースコードからコンパイル</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">git clone</span> https:<span style="color: #000000; font-weight: bold;">//</span>github.com<span style="color: #000000; font-weight: bold;">/</span>iovisor<span style="color: #000000; font-weight: bold;">/</span>bpftrace.git<br/>
-<span style="color: #c20cb9; font-weight: bold;">mkdir</span> bpftrace<span style="color: #000000; font-weight: bold;">/</span>build <span style="color: #000000; font-weight: bold;">&amp;</span>amp;<span style="color: #000000; font-weight: bold;">&amp;</span>amp; <span style="color: #7a0874; font-weight: bold;">cd</span> bpftrace<span style="color: #000000; font-weight: bold;">/</span>build<br/>
+<span style="color: #C20CB9; font-weight: bold;">git clone</span> https:<span style="color: #000000; font-weight: bold;">//</span>github.com<span style="color: #000000; font-weight: bold;">/</span>iovisor<span style="color: #000000; font-weight: bold;">/</span>bpftrace.git<br/>
+<span style="color: #C20CB9; font-weight: bold;">mkdir</span> bpftrace<span style="color: #000000; font-weight: bold;">/</span>build <span style="color: #000000; font-weight: bold;">&amp;</span>amp;<span style="color: #000000; font-weight: bold;">&amp;</span>amp; <span style="color: #7A0874; font-weight: bold;">cd</span> bpftrace<span style="color: #000000; font-weight: bold;">/</span>build<br/>
 cmake ..<br/>
-<span style="color: #c20cb9; font-weight: bold;">make</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> <span style="color: #c20cb9; font-weight: bold;">make</span> <span style="color: #c20cb9; font-weight: bold;">install</span><br/>
+<span style="color: #C20CB9; font-weight: bold;">make</span><br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> <span style="color: #C20CB9; font-weight: bold;">make</span> <span style="color: #C20CB9; font-weight: bold;">install</span><br/>
 </div>
 </div>
 <h3>インストールの確認</h3>
@@ -273,7 +273,7 @@ cmake ..<br/>
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># open システムコールの回数を集計</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> bpftrace <span style="color: #660033;">-e</span> <span style="color: #a10;">'tracepoint:syscalls:sys_enter_open { @[comm] = count(); }'</span><br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> bpftrace <span style="color: #660033;">-e</span> <span style="color: #a10;">'tracepoint:syscalls:sys_enter_open { @[comm] = count(); }'</span><br/>
 </div>
 </div>
 <h3>2. 関数の実行時間の分析</h3>
@@ -281,7 +281,7 @@ cmake ..<br/>
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># vfs_read の実行時間を測定</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> bpftrace <span style="color: #660033;">-e</span> <span style="color: #a10;">'<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> bpftrace <span style="color: #660033;">-e</span> <span style="color: #a10;">'<br/>
 kprobe:vfs_read { @start[tid] = nsecs; }<br/>
 kretprobe:vfs_read /@start[tid]/ { <br/>
     @times = hist(nsecs - @start[tid]); <br/>
@@ -294,7 +294,7 @@ kretprobe:vfs_read /@start[tid]/ { <br/>
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># 指定したプロセスが開いたファイルをトレース</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> bpftrace <span style="color: #660033;">-e</span> <span style="color: #a10;">'tracepoint:syscalls:sys_enter_openat /pid == 1234/ { printf("%s -&gt; %sn", comm, str(args-&gt;filename)); }'</span><br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> bpftrace <span style="color: #660033;">-e</span> <span style="color: #a10;">'tracepoint:syscalls:sys_enter_openat /pid == 1234/ { printf("%s -&gt; %sn", comm, str(args-&gt;filename)); }'</span><br/>
 </div>
 </div>
 <h3>4. TCP接続の統計</h3>
@@ -302,7 +302,7 @@ kretprobe:vfs_read /@start[tid]/ { <br/>
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># プロセスごとに TCP 接続数を集計</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> bpftrace <span style="color: #660033;">-e</span> <span style="color: #a10;">'kprobe:tcp_connect { @[comm] = count(); }'</span><br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> bpftrace <span style="color: #660033;">-e</span> <span style="color: #a10;">'kprobe:tcp_connect { @[comm] = count(); }'</span><br/>
 </div>
 </div>
 <hr/>
@@ -313,13 +313,13 @@ kretprobe:vfs_read /@start[tid]/ { <br/>
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># ヒストグラムを集計</span><br/>
-<span style="color: #000000; font-weight: bold;">@</span>hist = hist<span style="color: #7a0874; font-weight: bold;">(</span>nsecs<span style="color: #7a0874; font-weight: bold;">)</span>;<br/>
+<span style="color: #000000; font-weight: bold;">@</span>hist = hist<span style="color: #7A0874; font-weight: bold;">(</span>nsecs<span style="color: #7A0874; font-weight: bold;">)</span>;<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># 平均値を計算</span><br/>
-<span style="color: #000000; font-weight: bold;">@</span>avg = avg<span style="color: #7a0874; font-weight: bold;">(</span>nsecs<span style="color: #7a0874; font-weight: bold;">)</span>;<br/>
+<span style="color: #000000; font-weight: bold;">@</span>avg = avg<span style="color: #7A0874; font-weight: bold;">(</span>nsecs<span style="color: #7A0874; font-weight: bold;">)</span>;<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># ユニーク値を集計</span><br/>
-<span style="color: #000000; font-weight: bold;">@</span>unique = count<span style="color: #7a0874; font-weight: bold;">(</span><span style="color: #7a0874; font-weight: bold;">)</span>;<br/>
+<span style="color: #000000; font-weight: bold;">@</span>unique = count<span style="color: #7A0874; font-weight: bold;">(</span><span style="color: #7A0874; font-weight: bold;">)</span>;<br/>
 </div>
 </div>
 <h3>2. 条件フィルタリング</h3>
@@ -327,9 +327,9 @@ kretprobe:vfs_read /@start[tid]/ { <br/>
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># 特定のプロセスの read 呼び出しのみをトレース</span><br/>
-tracepoint:syscalls:sys_enter_read <span style="color: #000000; font-weight: bold;">/</span>pid == <span style="color: #000000;">1234</span><span style="color: #000000; font-weight: bold;">/</span> <span style="color: #7a0874; font-weight: bold;">{</span><br/>
-    <span style="color: #7a0874; font-weight: bold;">printf</span><span style="color: #7a0874; font-weight: bold;">(</span><span style="color: #a10;">"PID %d reading %d bytesn"</span>, pid, args-<span style="color: #000000; font-weight: bold;">&gt;</span>count<span style="color: #7a0874; font-weight: bold;">)</span>;<br/>
-<span style="color: #7a0874; font-weight: bold;">}</span><br/>
+tracepoint:syscalls:sys_enter_read <span style="color: #000000; font-weight: bold;">/</span>pid == <span style="color: #000000;">1234</span><span style="color: #000000; font-weight: bold;">/</span> <span style="color: #7A0874; font-weight: bold;">{</span><br/>
+    <span style="color: #7A0874; font-weight: bold;">printf</span><span style="color: #7A0874; font-weight: bold;">(</span><span style="color: #a10;">"PID %d reading %d bytesn"</span>, pid, args-<span style="color: #000000; font-weight: bold;">&gt;</span>count<span style="color: #7A0874; font-weight: bold;">)</span>;<br/>
+<span style="color: #7A0874; font-weight: bold;">}</span><br/>
 </div>
 </div>
 <h3>3. 複数プローブの組み合わせ</h3>
@@ -337,16 +337,16 @@ tracepoint:syscalls:sys_enter_read <span style="color: #000000; font-weight: bol
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># socket 作成から接続までの全プロセスをトレース</span><br/>
-kprobe:sock_alloc <span style="color: #7a0874; font-weight: bold;">{</span><br/>
-    <span style="color: #000000; font-weight: bold;">@</span>socket<span style="color: #7a0874; font-weight: bold;">[</span>tid<span style="color: #7a0874; font-weight: bold;">]</span> = <span style="color: #000000;">1</span>;<br/>
-<span style="color: #7a0874; font-weight: bold;">}</span><br/>
+kprobe:sock_alloc <span style="color: #7A0874; font-weight: bold;">{</span><br/>
+    <span style="color: #000000; font-weight: bold;">@</span>socket<span style="color: #7A0874; font-weight: bold;">[</span>tid<span style="color: #7A0874; font-weight: bold;">]</span> = <span style="color: #000000;">1</span>;<br/>
+<span style="color: #7A0874; font-weight: bold;">}</span><br/>
 <br/>
-kprobe:tcp_connect <span style="color: #000000; font-weight: bold;">/@</span>socket<span style="color: #7a0874; font-weight: bold;">[</span>tid<span style="color: #7a0874; font-weight: bold;">]</span><span style="color: #000000; font-weight: bold;">/</span> <span style="color: #7a0874; font-weight: bold;">{</span><br/>
-    <span style="color: #7a0874; font-weight: bold;">printf</span><span style="color: #7a0874; font-weight: bold;">(</span><span style="color: #a10;">"socket %d connecting to %s:%dn"</span>, args-<span style="color: #000000; font-weight: bold;">&gt;</span>sock-<span style="color: #000000; font-weight: bold;">&gt;</span>__sk_common.skc_dport, <br/>
-           ntop<span style="color: #7a0874; font-weight: bold;">(</span>args-<span style="color: #000000; font-weight: bold;">&gt;</span>sock-<span style="color: #000000; font-weight: bold;">&gt;</span>__sk_common.skc_daddr<span style="color: #7a0874; font-weight: bold;">)</span>, <br/>
-           args-<span style="color: #000000; font-weight: bold;">&gt;</span>sock-<span style="color: #000000; font-weight: bold;">&gt;</span>__sk_common.skc_dport<span style="color: #7a0874; font-weight: bold;">)</span>;<br/>
-    delete<span style="color: #7a0874; font-weight: bold;">(</span><span style="color: #000000; font-weight: bold;">@</span>socket<span style="color: #7a0874; font-weight: bold;">[</span>tid<span style="color: #7a0874; font-weight: bold;">]</span><span style="color: #7a0874; font-weight: bold;">)</span>;<br/>
-<span style="color: #7a0874; font-weight: bold;">}</span><br/>
+kprobe:tcp_connect <span style="color: #000000; font-weight: bold;">/@</span>socket<span style="color: #7A0874; font-weight: bold;">[</span>tid<span style="color: #7A0874; font-weight: bold;">]</span><span style="color: #000000; font-weight: bold;">/</span> <span style="color: #7A0874; font-weight: bold;">{</span><br/>
+    <span style="color: #7A0874; font-weight: bold;">printf</span><span style="color: #7A0874; font-weight: bold;">(</span><span style="color: #a10;">"socket %d connecting to %s:%dn"</span>, args-<span style="color: #000000; font-weight: bold;">&gt;</span>sock-<span style="color: #000000; font-weight: bold;">&gt;</span>__sk_common.skc_dport, <br/>
+           ntop<span style="color: #7A0874; font-weight: bold;">(</span>args-<span style="color: #000000; font-weight: bold;">&gt;</span>sock-<span style="color: #000000; font-weight: bold;">&gt;</span>__sk_common.skc_daddr<span style="color: #7A0874; font-weight: bold;">)</span>, <br/>
+           args-<span style="color: #000000; font-weight: bold;">&gt;</span>sock-<span style="color: #000000; font-weight: bold;">&gt;</span>__sk_common.skc_dport<span style="color: #7A0874; font-weight: bold;">)</span>;<br/>
+    delete<span style="color: #7A0874; font-weight: bold;">(</span><span style="color: #000000; font-weight: bold;">@</span>socket<span style="color: #7A0874; font-weight: bold;">[</span>tid<span style="color: #7A0874; font-weight: bold;">]</span><span style="color: #7A0874; font-weight: bold;">)</span>;<br/>
+<span style="color: #7A0874; font-weight: bold;">}</span><br/>
 </div>
 </div>
 <hr/>
@@ -432,7 +432,7 @@ kprobe:tcp_connect <span style="color: #000000; font-weight: bold;">/@</span>soc
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -477,7 +477,7 @@ kprobe:tcp_connect <span style="color: #000000; font-weight: bold;">/@</span>soc
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -516,7 +516,7 @@ kprobe:tcp_connect <span style="color: #000000; font-weight: bold;">/@</span>soc
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります。</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>

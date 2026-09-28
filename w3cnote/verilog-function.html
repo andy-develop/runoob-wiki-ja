@@ -108,32 +108,32 @@ endfunction</pre>
 <p>次に関数を使用して、データのエンディアン変換機能を実装します。</p><p>入力が 4'b0011 の場合、出力は 4'b1100 になります。例：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #A52A2A; font-weight: bold;">module</span> endian_rvs<br/>
-    <span style="color: #5D478B;">#</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">parameter</span> N <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">4</span><span style="color: #9F79EE;">)</span><br/>
+    <span style="color: #5D478B;">#</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">parameter</span> N <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">4</span><span style="color: #9F79EE;">)</span><br/>
         <span style="color: #9F79EE;">(</span><br/>
             <span style="color: #A52A2A; font-weight: bold;">input</span>             en<span style="color: #5D478B;">,</span>     <span style="color: #00008B; font-style: italic;">//enable control</span><br/>
-            <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span>N<span style="color: #5D478B;">-</span><span style="color: #ff0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>     a <span style="color: #5D478B;">,</span><br/>
-            <span style="color: #A52A2A; font-weight: bold;">output</span> <span style="color: #9F79EE;">[</span>N<span style="color: #5D478B;">-</span><span style="color: #ff0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>    b<br/>
+            <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span>N<span style="color: #5D478B;">-</span><span style="color: #FF0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>     a <span style="color: #5D478B;">,</span><br/>
+            <span style="color: #A52A2A; font-weight: bold;">output</span> <span style="color: #9F79EE;">[</span>N<span style="color: #5D478B;">-</span><span style="color: #FF0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>    b<br/>
     <span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
          <br/>
-        <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span>N<span style="color: #5D478B;">-</span><span style="color: #ff0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>          b_temp <span style="color: #5D478B;">;</span><br/>
+        <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span>N<span style="color: #5D478B;">-</span><span style="color: #FF0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>          b_temp <span style="color: #5D478B;">;</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #5D478B;">*</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span>en<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
                 b_temp <span style="color: #5D478B;">=</span>  data_rvs<span style="color: #9F79EE;">(</span>a<span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
             <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
             <span style="color: #A52A2A; font-weight: bold;">else</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-                b_temp <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span><br/>
+                b_temp <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span><br/>
             <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">assign</span> b <span style="color: #5D478B;">=</span> b_temp <span style="color: #5D478B;">;</span><br/>
          <br/>
     <span style="color: #00008B; font-style: italic;">//function entity</span><br/>
-        <span style="color: #A52A2A; font-weight: bold;">function</span> <span style="color: #9F79EE;">[</span>N<span style="color: #5D478B;">-</span><span style="color: #ff0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>     data_rvs <span style="color: #5D478B;">;</span><br/>
-            <span style="color: #A52A2A; font-weight: bold;">input</span>     <span style="color: #9F79EE;">[</span>N<span style="color: #5D478B;">-</span><span style="color: #ff0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span> data_in <span style="color: #5D478B;">;</span><br/>
-            <span style="color: #A52A2A; font-weight: bold;">parameter</span>         MASK <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">3</span><span style="color: #ff0055;">2'h3</span> <span style="color: #5D478B;">;</span> <br/>
+        <span style="color: #A52A2A; font-weight: bold;">function</span> <span style="color: #9F79EE;">[</span>N<span style="color: #5D478B;">-</span><span style="color: #FF0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>     data_rvs <span style="color: #5D478B;">;</span><br/>
+            <span style="color: #A52A2A; font-weight: bold;">input</span>     <span style="color: #9F79EE;">[</span>N<span style="color: #5D478B;">-</span><span style="color: #FF0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span> data_in <span style="color: #5D478B;">;</span><br/>
+            <span style="color: #A52A2A; font-weight: bold;">parameter</span>         MASK <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">3</span><span style="color: #FF0055;">2'h3</span> <span style="color: #5D478B;">;</span> <br/>
             <span style="color: #A52A2A; font-weight: bold;">integer</span>           k <span style="color: #5D478B;">;</span><br/>
             <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-                <span style="color: #A52A2A; font-weight: bold;">for</span><span style="color: #9F79EE;">(</span>k<span style="color: #5D478B;">=</span><span style="color: #ff0055;">0</span><span style="color: #5D478B;">;</span> k<span style="color: #5D478B;">&lt;</span>N<span style="color: #5D478B;">;</span> k<span style="color: #5D478B;">=</span>k<span style="color: #5D478B;">+</span><span style="color: #ff0055;">1</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-                    data_rvs<span style="color: #9F79EE;">[</span>N<span style="color: #5D478B;">-</span>k<span style="color: #5D478B;">-</span><span style="color: #ff0055;">1</span><span style="color: #9F79EE;">]</span>  <span style="color: #5D478B;">=</span> data_in<span style="color: #9F79EE;">[</span>k<span style="color: #9F79EE;">]</span> <span style="color: #5D478B;">;</span>  <br/>
+                <span style="color: #A52A2A; font-weight: bold;">for</span><span style="color: #9F79EE;">(</span>k<span style="color: #5D478B;">=</span><span style="color: #FF0055;">0</span><span style="color: #5D478B;">;</span> k<span style="color: #5D478B;">&lt;</span>N<span style="color: #5D478B;">;</span> k<span style="color: #5D478B;">=</span>k<span style="color: #5D478B;">+</span><span style="color: #FF0055;">1</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
+                    data_rvs<span style="color: #9F79EE;">[</span>N<span style="color: #5D478B;">-</span>k<span style="color: #5D478B;">-</span><span style="color: #FF0055;">1</span><span style="color: #9F79EE;">]</span>  <span style="color: #5D478B;">=</span> data_in<span style="color: #9F79EE;">[</span>k<span style="color: #9F79EE;">]</span> <span style="color: #5D478B;">;</span>  <br/>
                 <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
             <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">endfunction</span><br/>
@@ -150,14 +150,14 @@ input     [N-1:0] data_in
 <p>このような関数は複雑な値を参照するために使用できるため、定数の代わりに使用できます。</p>
 <p>例えば、次の定数関数は、モジュール内のアドレスバスの幅を計算できます：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #A52A2A; font-weight: bold;">parameter</span>    MEM_DEPTH <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">256</span> <span style="color: #5D478B;">;</span><br/>
-<span style="color: #A52A2A; font-weight: bold;">reg</span>  <span style="color: #9F79EE;">[</span>logb2<span style="color: #9F79EE;">(</span>MEM_DEPTH<span style="color: #9F79EE;">)</span><span style="color: #5D478B;">-</span><span style="color: #ff0055;">1</span><span style="color: #5D478B;">:</span> <span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span> addr <span style="color: #5D478B;">;</span> <span style="color: #00008B; font-style: italic;">// addr の幅は 8bit になる</span><br/>
+<span style="color: #A52A2A; font-weight: bold;">parameter</span>    MEM_DEPTH <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">256</span> <span style="color: #5D478B;">;</span><br/>
+<span style="color: #A52A2A; font-weight: bold;">reg</span>  <span style="color: #9F79EE;">[</span>logb2<span style="color: #9F79EE;">(</span>MEM_DEPTH<span style="color: #9F79EE;">)</span><span style="color: #5D478B;">-</span><span style="color: #FF0055;">1</span><span style="color: #5D478B;">:</span> <span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span> addr <span style="color: #5D478B;">;</span> <span style="color: #00008B; font-style: italic;">// addr の幅は 8bit になる</span><br/>
  <br/>
     <span style="color: #A52A2A; font-weight: bold;">function</span> <span style="color: #A52A2A; font-weight: bold;">integer</span>     logb2<span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #A52A2A; font-weight: bold;">integer</span>     depth <span style="color: #5D478B;">;</span><br/>
         <span style="color: #00008B; font-style: italic;">// 256 は 9bit、最終的なデータは 8 になるので、depth=2 のときにループを早めに停止する必要がある</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">for</span><span style="color: #9F79EE;">(</span>logb2<span style="color: #5D478B;">=</span><span style="color: #ff0055;">0</span><span style="color: #5D478B;">;</span> depth<span style="color: #5D478B;">&gt;</span><span style="color: #ff0055;">1</span><span style="color: #5D478B;">;</span> logb2<span style="color: #5D478B;">=</span>logb2<span style="color: #5D478B;">+</span><span style="color: #ff0055;">1</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span> <br/>
-        depth <span style="color: #5D478B;">=</span> depth <span style="color: #5D478B;">&gt;&gt;</span> <span style="color: #ff0055;">1</span> <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">for</span><span style="color: #9F79EE;">(</span>logb2<span style="color: #5D478B;">=</span><span style="color: #FF0055;">0</span><span style="color: #5D478B;">;</span> depth<span style="color: #5D478B;">&gt;</span><span style="color: #FF0055;">1</span><span style="color: #5D478B;">;</span> logb2<span style="color: #5D478B;">=</span>logb2<span style="color: #5D478B;">+</span><span style="color: #FF0055;">1</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span> <br/>
+        depth <span style="color: #5D478B;">=</span> depth <span style="color: #5D478B;">&gt;&gt;</span> <span style="color: #FF0055;">1</span> <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 <span style="color: #A52A2A; font-weight: bold;">endfunction</span><br/>
 </div></div>
@@ -166,12 +166,12 @@ input     [N-1:0] data_in
 <p>Verilog はキーワード automatic を使用して関数を宣言します。このような関数は、呼び出し時に新しいメモリ空間を自動的に割り当てることができ、再帰的であると理解することもできます。したがって、automatic 関数内で宣言されたローカル変数は階層名を介してアクセスすることはできませんが、automatic 関数自体は階層名を介して呼び出すことができます。</p>
 <p>次に、automatic 関数を使用して階乗計算を実装します：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #A52A2A; font-weight: bold;">wire</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">31</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>          results3 <span style="color: #5D478B;">=</span> factorial<span style="color: #9F79EE;">(</span><span style="color: #ff0055;">4</span><span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
+<span style="color: #A52A2A; font-weight: bold;">wire</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">31</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>          results3 <span style="color: #5D478B;">=</span> factorial<span style="color: #9F79EE;">(</span><span style="color: #FF0055;">4</span><span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
 <span style="color: #A52A2A; font-weight: bold;">function</span> <span style="color: #A52A2A; font-weight: bold;">automatic</span>   <span style="color: #A52A2A; font-weight: bold;">integer</span>         factorial <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #A52A2A; font-weight: bold;">integer</span>     data <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">integer</span>           i <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-        factorial <span style="color: #5D478B;">=</span> <span style="color: #9F79EE;">(</span>data<span style="color: #5D478B;">&gt;=</span><span style="color: #ff0055;">2</span><span style="color: #9F79EE;">)</span><span style="color: #5D478B;">?</span> data <span style="color: #5D478B;">*</span> factorial<span style="color: #9F79EE;">(</span>data<span style="color: #5D478B;">-</span><span style="color: #ff0055;">1</span><span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">:</span> <span style="color: #ff0055;">1</span> <span style="color: #5D478B;">;</span><br/>
+        factorial <span style="color: #5D478B;">=</span> <span style="color: #9F79EE;">(</span>data<span style="color: #5D478B;">&gt;=</span><span style="color: #FF0055;">2</span><span style="color: #9F79EE;">)</span><span style="color: #5D478B;">?</span> data <span style="color: #5D478B;">*</span> factorial<span style="color: #9F79EE;">(</span>data<span style="color: #5D478B;">-</span><span style="color: #FF0055;">1</span><span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">:</span> <span style="color: #FF0055;">1</span> <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 <span style="color: #A52A2A; font-weight: bold;">endfunction</span> <span style="color: #00008B; font-style: italic;">// factorial</span><br/>
 </div></div>
@@ -190,42 +190,42 @@ input     [N-1:0] data_in
       <span style="color: #A52A2A; font-weight: bold;">input</span>             rstn <span style="color: #5D478B;">,</span><br/>
       <span style="color: #A52A2A; font-weight: bold;">input</span>             en <span style="color: #5D478B;">,</span><br/>
  <br/>
-      <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>       single_digit <span style="color: #5D478B;">,</span><br/>
-      <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>       ten_digit <span style="color: #5D478B;">,</span><br/>
-      <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>       hundred_digit <span style="color: #5D478B;">,</span><br/>
-      <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>       kilo_digit <span style="color: #5D478B;">,</span><br/>
+      <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>       single_digit <span style="color: #5D478B;">,</span><br/>
+      <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>       ten_digit <span style="color: #5D478B;">,</span><br/>
+      <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>       hundred_digit <span style="color: #5D478B;">,</span><br/>
+      <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>       kilo_digit <span style="color: #5D478B;">,</span><br/>
  <br/>
-      <span style="color: #A52A2A; font-weight: bold;">output</span> <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>  csn <span style="color: #5D478B;">,</span> <span style="color: #00008B; font-style: italic;">//chip select, low-available</span><br/>
-      <span style="color: #A52A2A; font-weight: bold;">output</span> <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">6</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>  abcdefg        <span style="color: #00008B; font-style: italic;">//light control</span><br/>
+      <span style="color: #A52A2A; font-weight: bold;">output</span> <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>  csn <span style="color: #5D478B;">,</span> <span style="color: #00008B; font-style: italic;">//chip select, low-available</span><br/>
+      <span style="color: #A52A2A; font-weight: bold;">output</span> <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">6</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>  abcdefg        <span style="color: #00008B; font-style: italic;">//light control</span><br/>
       <span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
  <br/>
-    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>            scan_r <span style="color: #5D478B;">;</span>  <span style="color: #00008B; font-style: italic;">//scan_ctrl</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">1</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>            scan_r <span style="color: #5D478B;">;</span>  <span style="color: #00008B; font-style: italic;">//scan_ctrl</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #5D478B;">@</span> <span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">posedge</span> clk <span style="color: #A52A2A; font-weight: bold;">or</span> <span style="color: #A52A2A; font-weight: bold;">negedge</span> rstn<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">if</span><span style="color: #9F79EE;">(</span><span style="color: #5D478B;">!</span>rstn<span style="color: #9F79EE;">)</span><span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-            csn            <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">4'b1111</span><span style="color: #5D478B;">;</span><br/>
+            csn            <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">4'b1111</span><span style="color: #5D478B;">;</span><br/>
             abcdefg        <span style="color: #5D478B;">&lt;=</span> 'd0<span style="color: #5D478B;">;</span><br/>
-            scan_r         <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">3'd0</span><span style="color: #5D478B;">;</span><br/>
+            scan_r         <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">3'd0</span><span style="color: #5D478B;">;</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">else</span> <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span>en<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
             <span style="color: #A52A2A; font-weight: bold;">case</span><span style="color: #9F79EE;">(</span>scan_r<span style="color: #9F79EE;">)</span><br/>
-            <span style="color: #ff0055;">2'd0</span><span style="color: #5D478B;">:</span><span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-                scan_r    <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">3'd1</span><span style="color: #5D478B;">;</span><br/>
-                csn       <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">4'b0111</span><span style="color: #5D478B;">;</span>     <span style="color: #00008B; font-style: italic;">//select single digit</span><br/>
+            <span style="color: #FF0055;">2'd0</span><span style="color: #5D478B;">:</span><span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
+                scan_r    <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">3'd1</span><span style="color: #5D478B;">;</span><br/>
+                csn       <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">4'b0111</span><span style="color: #5D478B;">;</span>     <span style="color: #00008B; font-style: italic;">//select single digit</span><br/>
                 abcdefg   <span style="color: #5D478B;">&lt;=</span> dt_translate<span style="color: #9F79EE;">(</span>single_digit<span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
             <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
-            <span style="color: #ff0055;">2'd1</span><span style="color: #5D478B;">:</span><span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-                scan_r    <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">3'd2</span><span style="color: #5D478B;">;</span><br/>
-                csn       <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">4'b1011</span><span style="color: #5D478B;">;</span>     <span style="color: #00008B; font-style: italic;">//select ten digit</span><br/>
+            <span style="color: #FF0055;">2'd1</span><span style="color: #5D478B;">:</span><span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
+                scan_r    <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">3'd2</span><span style="color: #5D478B;">;</span><br/>
+                csn       <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">4'b1011</span><span style="color: #5D478B;">;</span>     <span style="color: #00008B; font-style: italic;">//select ten digit</span><br/>
                 abcdefg   <span style="color: #5D478B;">&lt;=</span> dt_translate<span style="color: #9F79EE;">(</span>ten_digit<span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
             <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
-            <span style="color: #ff0055;">2'd2</span><span style="color: #5D478B;">:</span><span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-                scan_r    <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">3'd3</span><span style="color: #5D478B;">;</span><br/>
-                csn       <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">4'b1101</span><span style="color: #5D478B;">;</span>     <span style="color: #00008B; font-style: italic;">//select hundred digit</span><br/>
+            <span style="color: #FF0055;">2'd2</span><span style="color: #5D478B;">:</span><span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
+                scan_r    <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">3'd3</span><span style="color: #5D478B;">;</span><br/>
+                csn       <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">4'b1101</span><span style="color: #5D478B;">;</span>     <span style="color: #00008B; font-style: italic;">//select hundred digit</span><br/>
                 abcdefg   <span style="color: #5D478B;">&lt;=</span> dt_translate<span style="color: #9F79EE;">(</span>hundred_digit<span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
             <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
-            <span style="color: #ff0055;">2'd3</span><span style="color: #5D478B;">:</span><span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-                scan_r    <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">3'd0</span><span style="color: #5D478B;">;</span><br/>
-                csn       <span style="color: #5D478B;">&lt;=</span> <span style="color: #ff0055;">4'b1110</span><span style="color: #5D478B;">;</span>     <span style="color: #00008B; font-style: italic;">//select kilo digit</span><br/>
+            <span style="color: #FF0055;">2'd3</span><span style="color: #5D478B;">:</span><span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
+                scan_r    <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">3'd0</span><span style="color: #5D478B;">;</span><br/>
+                csn       <span style="color: #5D478B;">&lt;=</span> <span style="color: #FF0055;">4'b1110</span><span style="color: #5D478B;">;</span>     <span style="color: #00008B; font-style: italic;">//select kilo digit</span><br/>
                 abcdefg   <span style="color: #5D478B;">&lt;=</span> dt_translate<span style="color: #9F79EE;">(</span>kilo_digit<span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
             <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
             <span style="color: #A52A2A; font-weight: bold;">endcase</span><br/>
@@ -233,20 +233,20 @@ input     [N-1:0] data_in
     <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
  <br/>
     <span style="color: #00008B; font-style: italic;">/*------------ translate function -------*/</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">function</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">6</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span> dt_translate<span style="color: #5D478B;">;</span><br/>
-        <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>   data<span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">function</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">6</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span> dt_translate<span style="color: #5D478B;">;</span><br/>
+        <span style="color: #A52A2A; font-weight: bold;">input</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>   data<span style="color: #5D478B;">;</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">case</span><span style="color: #9F79EE;">(</span>data<span style="color: #9F79EE;">)</span><br/>
-            <span style="color: #ff0055;">4'd0</span><span style="color: #5D478B;">:</span> dt_translate <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">7'b1111110</span><span style="color: #5D478B;">;</span>     <span style="color: #00008B; font-style: italic;">//number 0 -&gt; 0x7e</span><br/>
-            <span style="color: #ff0055;">4'd1</span><span style="color: #5D478B;">:</span> dt_translate <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">7'b0110000</span><span style="color: #5D478B;">;</span>     <span style="color: #00008B; font-style: italic;">//number 1 -&gt; 0x30</span><br/>
-            <span style="color: #ff0055;">4'd2</span><span style="color: #5D478B;">:</span> dt_translate <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">7'b1101101</span><span style="color: #5D478B;">;</span>     <span style="color: #00008B; font-style: italic;">//number 2 -&gt; 0x6d</span><br/>
-            <span style="color: #ff0055;">4'd3</span><span style="color: #5D478B;">:</span> dt_translate <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">7'b1111001</span><span style="color: #5D478B;">;</span>     <span style="color: #00008B; font-style: italic;">//number 3 -&gt; 0x79</span><br/>
-            <span style="color: #ff0055;">4'd4</span><span style="color: #5D478B;">:</span> dt_translate <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">7'b0110011</span><span style="color: #5D478B;">;</span>     <span style="color: #00008B; font-style: italic;">//number 4 -&gt; 0x33</span><br/>
-            <span style="color: #ff0055;">4'd5</span><span style="color: #5D478B;">:</span> dt_translate <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">7'b1011011</span><span style="color: #5D478B;">;</span>     <span style="color: #00008B; font-style: italic;">//number 5 -&gt; 0x5b</span><br/>
-            <span style="color: #ff0055;">4'd6</span><span style="color: #5D478B;">:</span> dt_translate <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">7'b1011111</span><span style="color: #5D478B;">;</span>     <span style="color: #00008B; font-style: italic;">//number 6 -&gt; 0x5f</span><br/>
-            <span style="color: #ff0055;">4'd7</span><span style="color: #5D478B;">:</span> dt_translate <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">7'b1110000</span><span style="color: #5D478B;">;</span>     <span style="color: #00008B; font-style: italic;">//number 7 -&gt; 0x70</span><br/>
-            <span style="color: #ff0055;">4'd8</span><span style="color: #5D478B;">:</span> dt_translate <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">7'b1111111</span><span style="color: #5D478B;">;</span>     <span style="color: #00008B; font-style: italic;">//number 8 -&gt; 0x7f</span><br/>
-            <span style="color: #ff0055;">4'd9</span><span style="color: #5D478B;">:</span> dt_translate <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">7'b1111011</span><span style="color: #5D478B;">;</span>     <span style="color: #00008B; font-style: italic;">//number 9 -&gt; 0x7b</span><br/>
+            <span style="color: #FF0055;">4'd0</span><span style="color: #5D478B;">:</span> dt_translate <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">7'b1111110</span><span style="color: #5D478B;">;</span>     <span style="color: #00008B; font-style: italic;">//number 0 -&gt; 0x7e</span><br/>
+            <span style="color: #FF0055;">4'd1</span><span style="color: #5D478B;">:</span> dt_translate <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">7'b0110000</span><span style="color: #5D478B;">;</span>     <span style="color: #00008B; font-style: italic;">//number 1 -&gt; 0x30</span><br/>
+            <span style="color: #FF0055;">4'd2</span><span style="color: #5D478B;">:</span> dt_translate <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">7'b1101101</span><span style="color: #5D478B;">;</span>     <span style="color: #00008B; font-style: italic;">//number 2 -&gt; 0x6d</span><br/>
+            <span style="color: #FF0055;">4'd3</span><span style="color: #5D478B;">:</span> dt_translate <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">7'b1111001</span><span style="color: #5D478B;">;</span>     <span style="color: #00008B; font-style: italic;">//number 3 -&gt; 0x79</span><br/>
+            <span style="color: #FF0055;">4'd4</span><span style="color: #5D478B;">:</span> dt_translate <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">7'b0110011</span><span style="color: #5D478B;">;</span>     <span style="color: #00008B; font-style: italic;">//number 4 -&gt; 0x33</span><br/>
+            <span style="color: #FF0055;">4'd5</span><span style="color: #5D478B;">:</span> dt_translate <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">7'b1011011</span><span style="color: #5D478B;">;</span>     <span style="color: #00008B; font-style: italic;">//number 5 -&gt; 0x5b</span><br/>
+            <span style="color: #FF0055;">4'd6</span><span style="color: #5D478B;">:</span> dt_translate <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">7'b1011111</span><span style="color: #5D478B;">;</span>     <span style="color: #00008B; font-style: italic;">//number 6 -&gt; 0x5f</span><br/>
+            <span style="color: #FF0055;">4'd7</span><span style="color: #5D478B;">:</span> dt_translate <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">7'b1110000</span><span style="color: #5D478B;">;</span>     <span style="color: #00008B; font-style: italic;">//number 7 -&gt; 0x70</span><br/>
+            <span style="color: #FF0055;">4'd8</span><span style="color: #5D478B;">:</span> dt_translate <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">7'b1111111</span><span style="color: #5D478B;">;</span>     <span style="color: #00008B; font-style: italic;">//number 8 -&gt; 0x7f</span><br/>
+            <span style="color: #FF0055;">4'd9</span><span style="color: #5D478B;">:</span> dt_translate <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">7'b1111011</span><span style="color: #5D478B;">;</span>     <span style="color: #00008B; font-style: italic;">//number 9 -&gt; 0x7b</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">endcase</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">endfunction</span><br/>
@@ -282,7 +282,7 @@ input     [N-1:0] data_in
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -327,7 +327,7 @@ input     [N-1:0] data_in
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -366,7 +366,7 @@ input     [N-1:0] data_in
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
 	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -577,7 +577,7 @@ p.note-author {
     border-bottom: 1px solid #ddd;
     font-size: 18px;
     font-weight: bold;
-    color: #78a15a;
+    color: #5B80A6;
     padding-bottom: 2px;
     margin-bottom: 4px;
 }

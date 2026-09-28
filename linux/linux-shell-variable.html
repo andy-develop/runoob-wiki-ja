@@ -209,9 +209,9 @@ variable_name=value
 variable_name = value</pre>
 <p>明示的に直接代入する以外にも、ステートメントを使用して変数に代入できます。例：</p>
 <div class="example"> <div class="example_code">
-<span style="color: #000000; font-weight: bold;">for</span> <span style="color: #c20cb9; font-weight: bold;">file</span> <span style="color: #000000; font-weight: bold;">in</span> <span style="color: #000000; font-weight: bold;">`</span><span style="color: #c20cb9; font-weight: bold;">ls</span> <span style="color: #000000; font-weight: bold;">/</span>etc<span style="color: #000000; font-weight: bold;">`</span><br/>
+<span style="color: #000000; font-weight: bold;">for</span> <span style="color: #C20CB9; font-weight: bold;">file</span> <span style="color: #000000; font-weight: bold;">in</span> <span style="color: #000000; font-weight: bold;">`</span><span style="color: #C20CB9; font-weight: bold;">ls</span> <span style="color: #000000; font-weight: bold;">/</span>etc<span style="color: #000000; font-weight: bold;">`</span><br/>
 或<br/>
-<span style="color: #000000; font-weight: bold;">for</span> <span style="color: #c20cb9; font-weight: bold;">file</span> <span style="color: #000000; font-weight: bold;">in</span> $<span style="color: #7a0874; font-weight: bold;">(</span><span style="color: #c20cb9; font-weight: bold;">ls</span> <span style="color: #000000; font-weight: bold;">/</span>etc<span style="color: #7a0874; font-weight: bold;">)</span><br/>
+<span style="color: #000000; font-weight: bold;">for</span> <span style="color: #C20CB9; font-weight: bold;">file</span> <span style="color: #000000; font-weight: bold;">in</span> $<span style="color: #7A0874; font-weight: bold;">(</span><span style="color: #C20CB9; font-weight: bold;">ls</span> <span style="color: #000000; font-weight: bold;">/</span>etc<span style="color: #7A0874; font-weight: bold;">)</span><br/>
 </div></div>
 <p>上記のステートメントは、/etc ディレクトリ内のファイル名をループ処理で出力します。</p>
 <hr/>
@@ -219,13 +219,13 @@ variable_name = value</pre>
 <p>定義済みの変数を使用するには、変数名の前にドル記号を付けるだけです。例：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #007800;">your_name</span>=<span style="color: #a10;">"qinjx"</span><br/>
-<span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #007800;">$your_name</span><br/>
-<span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #800000;">${your_name}</span><br/>
+<span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #007800;">$your_name</span><br/>
+<span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #800000;">${your_name}</span><br/>
 </div></div>
 <p>変数名の外側の中括弧は省略可能で、付けても付けなくても構いません。中括弧を付けるのは、インタープリタが変数の境界を認識するのを助けるためです。例えば次のような場合です：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #000000; font-weight: bold;">for</span> <span style="color: #c20cb9; font-weight: bold;">skill</span> <span style="color: #000000; font-weight: bold;">in</span> Ada Coffe Action Java; <span style="color: #000000; font-weight: bold;">do</span><br/>
-    <span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #a10;">"I am good at <span style="color: #007800;">${skill}</span>Script"</span><br/>
+<span style="color: #000000; font-weight: bold;">for</span> <span style="color: #C20CB9; font-weight: bold;">skill</span> <span style="color: #000000; font-weight: bold;">in</span> Ada Coffe Action Java; <span style="color: #000000; font-weight: bold;">do</span><br/>
+    <span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #a10;">"I am good at <span style="color: #007800;">${skill}</span>Script"</span><br/>
 <span style="color: #000000; font-weight: bold;">done</span><br/>
 </div></div>
 <p>skill 変数に中括弧を付けずに echo "I am good at $skillScript" と書くと、インタープリタは $skillScript を1つの変数（値は空）として扱います。そのため、コードの実行結果は期待どおりにはなりません。</p>
@@ -233,9 +233,9 @@ variable_name = value</pre>
 <p>定義済みの変数は再定義できます。例：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #007800;">your_name</span>=<span style="color: #a10;">"tom"</span><br/>
-<span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #007800;">$your_name</span><br/>
+<span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #007800;">$your_name</span><br/>
 <span style="color: #007800;">your_name</span>=<span style="color: #a10;">"alibaba"</span><br/>
-<span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #007800;">$your_name</span><br/>
+<span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #007800;">$your_name</span><br/>
 </div></div>
 <p>このように書くことは正しいですが、注意してください。2回目の代入時に $your_name="alibaba" と書くことはできません。変数を使用するときだけドル記号（$）を付けます。</p>
 <h3>読み取り専用変数</h3>
@@ -245,7 +245,7 @@ variable_name = value</pre>
 <span style="color: #666666; font-style: italic;">#!/bin/bash</span><br/>
 <br/>
 <span style="color: #007800;">myUrl</span>=<span style="color: #a10;">"https://www.google.com"</span><br/>
-<span style="color: #7a0874; font-weight: bold;">readonly</span> myUrl<br/>
+<span style="color: #7A0874; font-weight: bold;">readonly</span> myUrl<br/>
 <span style="color: #007800;">myUrl</span>=<span style="color: #a10;">"https://www.runoob.com"</span><br/>
 </div></div>
 <p>スクリプトを実行すると、結果は次のようになります：</p><pre>
@@ -259,8 +259,8 @@ variable_name = value</pre>
 <span style="color: #666666; font-style: italic;">#!/bin/sh</span><br/>
 <br/>
 <span style="color: #007800;">myUrl</span>=<span style="color: #a10;">"https://www.runoob.com"</span><br/>
-<span style="color: #7a0874; font-weight: bold;">unset</span> myUrl<br/>
-<span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #007800;">$myUrl</span><br/>
+<span style="color: #7A0874; font-weight: bold;">unset</span> myUrl<br/>
+<span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #007800;">$myUrl</span><br/>
 </div></div>
 <p>上記の例を実行しても、何も出力されません。</p>
 <h3>変数の型</h3>
@@ -303,7 +303,7 @@ str='this is a string'
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #007800;">your_name</span>=<span style="color: #a10;">"runoob"</span><br/>
 <span style="color: #007800;">str</span>=<span style="color: #a10;">"Hello, I know you are <span style="color: #000099; font-weight: bold;">\"</span><span style="color: #007800;">$your_name</span><span style="color: #000099; font-weight: bold;">\"</span>! <span style="color: #000099; font-weight: bold;">\n</span>"</span><br/>
-<span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #660033;">-e</span> <span style="color: #007800;">$str</span><br/>
+<span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #660033;">-e</span> <span style="color: #007800;">$str</span><br/>
 </div></div>
 <p>出力結果は次のとおりです：</p>
 <pre>Hello, I know you are "runoob"! </pre>
@@ -318,12 +318,12 @@ str='this is a string'
 <span style="color: #666666; font-style: italic;"># ダブルクォートを使用して連結</span><br/>
 <span style="color: #007800;">greeting</span>=<span style="color: #a10;">"hello, "</span><span style="color: #007800;">$your_name</span><span style="color: #a10;">" !"</span><br/>
 <span style="color: #007800;">greeting_1</span>=<span style="color: #a10;">"hello, <span style="color: #007800;">${your_name}</span> !"</span><br/>
-<span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #007800;">$greeting</span>  <span style="color: #007800;">$greeting_1</span><br/>
+<span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #007800;">$greeting</span>  <span style="color: #007800;">$greeting_1</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># シングルクォートを使用して連結</span><br/>
 <span style="color: #007800;">greeting_2</span>=<span style="color: #a10;">'hello, '</span><span style="color: #007800;">$your_name</span><span style="color: #a10;">' !'</span><br/>
 <span style="color: #007800;">greeting_3</span>=<span style="color: #a10;">'hello, ${your_name} !'</span><br/>
-<span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #007800;">$greeting_2</span>  <span style="color: #007800;">$greeting_3</span><br/>
+<span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #007800;">$greeting_2</span>  <span style="color: #007800;">$greeting_3</span><br/>
 </div></div>
 <p>出力結果は次のとおりです：</p>
 <pre>hello, runoob ! hello, runoob !
@@ -331,25 +331,25 @@ hello, runoob ! hello, ${your_name} !</pre>
 <h3>文字列の長さを取得</h3>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #007800;">string</span>=<span style="color: #a10;">"abcd"</span><br/>
-<span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #800000;">${#string}</span>   <span style="color: #666666; font-style: italic;"># 4 を出力</span><br/>
+<span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #800000;">${#string}</span>   <span style="color: #666666; font-style: italic;"># 4 を出力</span><br/>
 </div></div>
 <p>変数が文字列の場合、<span class="marked">${#string}</span>は次と同等です<span class="marked">${#string[0]}</span>:</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #007800;">string</span>=<span style="color: #a10;">"abcd"</span><br/>
-<span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #800000;">${#string[0]}</span>   <span style="color: #666666; font-style: italic;"># 4 を出力</span><br/>
+<span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #800000;">${#string[0]}</span>   <span style="color: #666666; font-style: italic;"># 4 を出力</span><br/>
 </div></div>
 <h3>部分文字列の抽出</h3>
 <p>次の例では、文字列の<strong>2</strong>文字目から<strong>4</strong>文字を抽出します：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #007800;">string</span>=<span style="color: #a10;">"runoob is a great site"</span><br/>
-<span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #800000;">${string:1:4}</span> <span style="color: #666666; font-style: italic;"># unoo を出力</span><br/>
+<span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #800000;">${string:1:4}</span> <span style="color: #666666; font-style: italic;"># unoo を出力</span><br/>
 </div></div>
 <p><strong>注意</strong>：最初の文字のインデックス値は<strong>0</strong>。</p>
 <h3>部分文字列の検索</h3>
 <p>文字を検索し、その<strong>i</strong> 或 <strong>o</strong>位置（どの文字が先に出現するかで計算します）：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #007800;">string</span>=<span style="color: #a10;">"runoob is a great site"</span><br/>
-<span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #000000; font-weight: bold;">`</span><span style="color: #c20cb9; font-weight: bold;">expr</span> index <span style="color: #a10;">"<span style="color: #007800;">$string</span>"</span> io<span style="color: #000000; font-weight: bold;">`</span>  <span style="color: #666666; font-style: italic;"># 4 を出力</span><br/>
+<span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #000000; font-weight: bold;">`</span><span style="color: #C20CB9; font-weight: bold;">expr</span> index <span style="color: #a10;">"<span style="color: #007800;">$string</span>"</span> io<span style="color: #000000; font-weight: bold;">`</span>  <span style="color: #666666; font-style: italic;"># 4 を出力</span><br/>
 </div></div>
 <p>
 <strong>注意：</strong>上記のスクリプト内の<span class="marked">`</span>はバッククォートであり、シングルクォートではありません<span class="marked">'</span>。見間違えないでくださいね。</p>
@@ -427,11 +427,11 @@ echo ${array_name[@]}
 <h3>複数行コメント</h3> <p><strong>Here ドキュメントを使用する</strong></p>
 <p>複数行コメントは次の形式も使用できます。</p>
 <div class="example"> <div class="example_code">
-:<span style="color: #cc0000; font-style: italic;">&lt;&lt;EOF<br/>コメント内容...<br/>コメント内容...<br/>コメント内容...<br/>
+:<span style="color: #CC0000; font-style: italic;">&lt;&lt;EOF<br/>コメント内容...<br/>コメント内容...<br/>コメント内容...<br/>
 EOF</span><br/>
 </div></div>上記の例では、<span class="marked">:</span>は空コマンドで、後続のヒアドキュメントを実行するために使用されます。<span class="marked">&lt;&lt;'EOF'</span>はヒアドキュメントの開始を示します。COMMENT はヒアドキュメントの識別子であり、この2つの識別子の間の内容はすべてコメントとして扱われ、実行されません。<p>EOF の代わりに他の記号を使用することもできます:</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-: <span style="color: #cc0000; font-style: italic;">&lt;&lt;'COMMENT'<br/>これはコメントの部分です。<br/>複数行の内容を含めることができます。<br/>
+: <span style="color: #CC0000; font-style: italic;">&lt;&lt;'COMMENT'<br/>これはコメントの部分です。<br/>複数行の内容を含めることができます。<br/>
 COMMENT</span><br/>
 <br/>
 :<span style="color: #000000; font-weight: bold;">&lt;&lt;</span><span style="color: #a10;">'<br/>コメント内容...<br/>コメント内容...<br/>コメント内容...<br/>
@@ -478,7 +478,7 @@ COMMENT</span><br/>
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -523,7 +523,7 @@ COMMENT</span><br/>
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -688,7 +688,7 @@ done</pre>
 </div>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリックしてください</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>

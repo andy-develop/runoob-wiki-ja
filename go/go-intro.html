@@ -220,42 +220,42 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
-    <span style="color: #cc66cc;">"fmt"</span><br/>
-    <span style="color: #cc66cc;">"time"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
+    <span style="color: #CC66CC;">"fmt"</span><br/>
+    <span style="color: #CC66CC;">"time"</span><br/>
 <span style="color: #339933;">)</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;">// worker は作業用コルーチンを模擬し、チャネルからタスクを受信して処理する</span><br/>
 <span style="color: #993333;">func</span> worker<span style="color: #339933;">(</span>id <span style="color: #993333;">int</span><span style="color: #339933;">,</span> jobs &lt;<span style="color: #339933;">-</span><span style="color: #993333;">chan</span> <span style="color: #993333;">int</span><span style="color: #339933;">,</span> results chan&lt;<span style="color: #339933;">-</span> <span style="color: #993333;">int</span><span style="color: #339933;">)</span> <span style="color: #339933;">{</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">for</span> j <span style="color: #339933;">:=</span> <span style="color: #b1b100; font-weight: bold;">range</span> jobs <span style="color: #339933;">{</span><br/>
-        fmt<span style="color: #339933;">.</span>Printf<span style="color: #339933;">(</span><span style="color: #cc66cc;">"worker %d はタスク %d の処理を開始します<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">,</span> id<span style="color: #339933;">,</span> j<span style="color: #339933;">)</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">for</span> j <span style="color: #339933;">:=</span> <span style="color: #B1B100; font-weight: bold;">range</span> jobs <span style="color: #339933;">{</span><br/>
+        fmt<span style="color: #339933;">.</span>Printf<span style="color: #339933;">(</span><span style="color: #CC66CC;">"worker %d はタスク %d の処理を開始します<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">,</span> id<span style="color: #339933;">,</span> j<span style="color: #339933;">)</span><br/>
         time<span style="color: #339933;">.</span><span style="">Sleep</span><span style="color: #339933;">(</span>time<span style="color: #339933;">.</span><span style="">Second</span><span style="color: #339933;">)</span> <span style="color: #666666; font-style: italic;">// 時間のかかる操作を模擬</span><br/>
-        results &lt;<span style="color: #339933;">-</span> j <span style="color: #339933;">*</span> <span style="color: #cc66cc;">2</span>        <span style="color: #666666; font-style: italic;">// 処理結果を results チャネルに送信</span><br/>
-        fmt<span style="color: #339933;">.</span><span style="">Printf</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"worker %d はタスク %d を完了しました<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">,</span> id<span style="color: #339933;">,</span> j<span style="color: #339933;">)</span><br/>
+        results &lt;<span style="color: #339933;">-</span> j <span style="color: #339933;">*</span> <span style="color: #CC66CC;">2</span>        <span style="color: #666666; font-style: italic;">// 処理結果を results チャネルに送信</span><br/>
+        fmt<span style="color: #339933;">.</span><span style="">Printf</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"worker %d はタスク %d を完了しました<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">,</span> id<span style="color: #339933;">,</span> j<span style="color: #339933;">)</span><br/>
     <span style="color: #339933;">}</span><br/>
 <span style="color: #339933;">}</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">const</span> numJobs <span style="color: #339933;">=</span> <span style="color: #cc66cc;">5</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">const</span> numJobs <span style="color: #339933;">=</span> <span style="color: #CC66CC;">5</span><br/>
     jobs <span style="color: #339933;">:=</span> <span style="color: #000066;">make</span><span style="color: #339933;">(</span><span style="color: #993333;">chan</span> <span style="color: #993333;">int</span><span style="color: #339933;">,</span> numJobs<span style="color: #339933;">)</span>    <span style="color: #666666; font-style: italic;">// バッファ付きタスクチャネルを作成</span><br/>
     results <span style="color: #339933;">:=</span> <span style="color: #000066;">make</span><span style="color: #339933;">(</span><span style="color: #993333;">chan</span> <span style="color: #993333;">int</span><span style="color: #339933;">,</span> numJobs<span style="color: #339933;">)</span> <span style="color: #666666; font-style: italic;">// バッファ付き結果チャネルを作成</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">// 3つの worker goroutine を起動</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">for</span> w <span style="color: #339933;">:=</span> <span style="color: #cc66cc;">1</span><span style="color: #339933;">;</span> w &lt;<span style="color: #339933;">=</span> <span style="color: #cc66cc;">3</span><span style="color: #339933;">;</span> w<span style="color: #339933;">++</span> <span style="color: #339933;">{</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">go</span> worker<span style="color: #339933;">(</span>w<span style="color: #339933;">,</span> jobs<span style="color: #339933;">,</span> results<span style="color: #339933;">)</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">for</span> w <span style="color: #339933;">:=</span> <span style="color: #CC66CC;">1</span><span style="color: #339933;">;</span> w &lt;<span style="color: #339933;">=</span> <span style="color: #CC66CC;">3</span><span style="color: #339933;">;</span> w<span style="color: #339933;">++</span> <span style="color: #339933;">{</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">go</span> worker<span style="color: #339933;">(</span>w<span style="color: #339933;">,</span> jobs<span style="color: #339933;">,</span> results<span style="color: #339933;">)</span><br/>
     <span style="color: #339933;">}</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">// 5つのタスクを jobs チャネルに送信</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">for</span> j <span style="color: #339933;">:=</span> <span style="color: #cc66cc;">1</span><span style="color: #339933;">;</span> j &lt;<span style="color: #339933;">=</span> numJobs<span style="color: #339933;">;</span> j<span style="color: #339933;">++</span> <span style="color: #339933;">{</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">for</span> j <span style="color: #339933;">:=</span> <span style="color: #CC66CC;">1</span><span style="color: #339933;">;</span> j &lt;<span style="color: #339933;">=</span> numJobs<span style="color: #339933;">;</span> j<span style="color: #339933;">++</span> <span style="color: #339933;">{</span><br/>
         jobs &lt;<span style="color: #339933;">-</span> j<br/>
     <span style="color: #339933;">}</span><br/>
     <span style="color: #000066;">close</span><span style="color: #339933;">(</span>jobs<span style="color: #339933;">)</span> <span style="color: #666666; font-style: italic;">// チャネルを閉じて、新たなタスクがないことを worker に通知</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">// すべての処理結果を収集</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">for</span> a <span style="color: #339933;">:=</span> <span style="color: #cc66cc;">1</span><span style="color: #339933;">;</span> a &lt;<span style="color: #339933;">=</span> numJobs<span style="color: #339933;">;</span> a<span style="color: #339933;">++</span> <span style="color: #339933;">{</span><br/>
-        fmt<span style="color: #339933;">.</span>Printf<span style="color: #339933;">(</span><span style="color: #cc66cc;">"結果: %d<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">,</span> <span style="color: #339933;">&lt;-</span>results<span style="color: #339933;">)</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">for</span> a <span style="color: #339933;">:=</span> <span style="color: #CC66CC;">1</span><span style="color: #339933;">;</span> a &lt;<span style="color: #339933;">=</span> numJobs<span style="color: #339933;">;</span> a<span style="color: #339933;">++</span> <span style="color: #339933;">{</span><br/>
+        fmt<span style="color: #339933;">.</span>Printf<span style="color: #339933;">(</span><span style="color: #CC66CC;">"結果: %d<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">,</span> <span style="color: #339933;">&lt;-</span>results<span style="color: #339933;">)</span><br/>
     <span style="color: #339933;">}</span><br/>
 <span style="color: #339933;">}</span><br/>
 </div>
@@ -266,21 +266,21 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #cc66cc;">"fmt"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #CC66CC;">"fmt"</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
     <span style="color: #666666; font-style: italic;">// 完全な宣言: 型を明示的に指定</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">var</span> name <span style="color: #993333;">string</span> <span style="color: #339933;">=</span> <span style="color: #cc66cc;">"runoob"</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">var</span> name <span style="color: #993333;">string</span> <span style="color: #339933;">=</span> <span style="color: #CC66CC;">"runoob"</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">// 型推論: コンパイラが型を自動的に推論</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">var</span> version <span style="color: #339933;">=</span> <span style="color: #cc66cc;">1</span><span style="color: #339933;">.</span><span style="color: #cc66cc;">24</span>      <span style="color: #666666; font-style: italic;">// float64 と推論される</span><br/>
-    count <span style="color: #339933;">:=</span> <span style="color: #cc66cc;">100</span>            <span style="color: #666666; font-style: italic;">// 短変数宣言、int と推論される</span><br/>
-    message <span style="color: #339933;">:=</span> <span style="color: #cc66cc;">"Hello Go"</span>   <span style="color: #666666; font-style: italic;">// string と推論される</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">var</span> version <span style="color: #339933;">=</span> <span style="color: #CC66CC;">1</span><span style="color: #339933;">.</span><span style="color: #CC66CC;">24</span>      <span style="color: #666666; font-style: italic;">// float64 と推論される</span><br/>
+    count <span style="color: #339933;">:=</span> <span style="color: #CC66CC;">100</span>            <span style="color: #666666; font-style: italic;">// 短変数宣言、int と推論される</span><br/>
+    message <span style="color: #339933;">:=</span> <span style="color: #CC66CC;">"Hello Go"</span>   <span style="color: #666666; font-style: italic;">// string と推論される</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">// 複数変数の宣言</span><br/>
-    x<span style="color: #339933;">,</span> y <span style="color: #339933;">:=</span> <span style="color: #cc66cc;">10</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">20</span>          <span style="color: #666666; font-style: italic;">// 複数の変数を同時に宣言</span><br/>
+    x<span style="color: #339933;">,</span> y <span style="color: #339933;">:=</span> <span style="color: #CC66CC;">10</span><span style="color: #339933;">,</span> <span style="color: #CC66CC;">20</span>          <span style="color: #666666; font-style: italic;">// 複数の変数を同時に宣言</span><br/>
 <br/>
     fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span>name<span style="color: #339933;">,</span> version<span style="color: #339933;">,</span> count<span style="color: #339933;">,</span> message<span style="color: #339933;">,</span> x<span style="color: #339933;">,</span> y<span style="color: #339933;">)</span><br/>
 <span style="color: #339933;">}</span><br/>
@@ -368,16 +368,16 @@ go version go1.24.0 darwin/arm64
 <span style="color: #666666; font-style: italic;">// ファイルパス: main.go</span><br/>
 <span style="color: #666666; font-style: italic;">// すべてのGoプログラムはパッケージに属する必要があり、mainパッケージは実行可能プログラムのエントリポイントです</span><br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
 <span style="color: #666666; font-style: italic;">// フォーマット出力用の標準ライブラリパッケージをインポート</span><br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #cc66cc;">"fmt"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #CC66CC;">"fmt"</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;">// main関数: プログラムのエントリポイント、引数なし、戻り値なし</span><br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
     <span style="color: #666666; font-style: italic;">// Printlnは1行の内容を出力し、末尾に自動的に改行を追加します</span><br/>
-    fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"Hello, RUNOOB!"</span><span style="color: #339933;">)</span><br/>
-    fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"Go言語の世界へようこそ"</span><span style="color: #339933;">)</span><br/>
+    fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"Hello, RUNOOB!"</span><span style="color: #339933;">)</span><br/>
+    fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"Go言語の世界へようこそ"</span><span style="color: #339933;">)</span><br/>
 <span style="color: #339933;">}</span><br/>
 </div>
 </div>
@@ -415,27 +415,27 @@ go 1.24
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #cc66cc;">"fmt"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #CC66CC;">"fmt"</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
     <span style="color: #666666; font-style: italic;">// 方法1: 標準宣言（明示的な型）</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">var</span> age <span style="color: #993333;">int</span> <span style="color: #339933;">=</span> <span style="color: #cc66cc;">25</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">var</span> age <span style="color: #993333;">int</span> <span style="color: #339933;">=</span> <span style="color: #CC66CC;">25</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">// 方法2: 宣言後の代入（型は宣言時に指定）</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">var</span> score <span style="color: #993333;">float64</span><br/>
-    score <span style="color: #339933;">=</span> <span style="color: #cc66cc;">98</span><span style="color: #339933;">.</span><span style="color: #cc66cc;">5</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">var</span> score <span style="color: #993333;">float64</span><br/>
+    score <span style="color: #339933;">=</span> <span style="color: #CC66CC;">98</span><span style="color: #339933;">.</span><span style="color: #CC66CC;">5</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">// 方法3: 短変数宣言（最も一般的、関数内のみ）</span><br/>
-    name <span style="color: #339933;">:=</span> <span style="color: #cc66cc;">"runoob"</span><br/>
+    name <span style="color: #339933;">:=</span> <span style="color: #CC66CC;">"runoob"</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">// 方法4: 複数変数の同時宣言</span><br/>
-    x<span style="color: #339933;">,</span> y <span style="color: #339933;">:=</span> <span style="color: #cc66cc;">10</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">20</span><br/>
+    x<span style="color: #339933;">,</span> y <span style="color: #339933;">:=</span> <span style="color: #CC66CC;">10</span><span style="color: #339933;">,</span> <span style="color: #CC66CC;">20</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">// 定数宣言（コンパイル時に確定、変更不可）</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">const</span> Pi <span style="color: #339933;">=</span> <span style="color: #cc66cc;">3</span><span style="color: #339933;">.</span><span style="color: #cc66cc;">14159</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">const</span> AppName <span style="color: #339933;">=</span> <span style="color: #cc66cc;">"RUNOOB"</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">const</span> Pi <span style="color: #339933;">=</span> <span style="color: #CC66CC;">3</span><span style="color: #339933;">.</span><span style="color: #CC66CC;">14159</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">const</span> AppName <span style="color: #339933;">=</span> <span style="color: #CC66CC;">"RUNOOB"</span><br/>
 <br/>
     fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span>name<span style="color: #339933;">,</span> age<span style="color: #339933;">,</span> score<span style="color: #339933;">,</span> x<span style="color: #339933;">,</span> y<span style="color: #339933;">,</span> Pi<span style="color: #339933;">,</span> AppName<span style="color: #339933;">)</span><br/>
 <span style="color: #339933;">}</span><br/>
@@ -446,52 +446,52 @@ go 1.24
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #cc66cc;">"fmt"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #CC66CC;">"fmt"</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
     <span style="color: #666666; font-style: italic;">// if文: 条件式には括弧は不要ですが、中括弧は必須です</span><br/>
-    score <span style="color: #339933;">:=</span> <span style="color: #cc66cc;">85</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">if</span> score &gt;<span style="color: #339933;">=</span> <span style="color: #cc66cc;">90</span> <span style="color: #339933;">{</span><br/>
-        fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #cc66cc;">"RUNOOB 評価: A"</span><span style="color: #339933;">)</span><br/>
-    <span style="color: #339933;">}</span> <span style="color: #b1b100; font-weight: bold;">else</span> <span style="color: #b1b100; font-weight: bold;">if</span> score &gt;<span style="color: #339933;">=</span> <span style="color: #cc66cc;">60</span> <span style="color: #339933;">{</span><br/>
-        fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #cc66cc;">"RUNOOB 評価: B"</span><span style="color: #339933;">)</span><br/>
-    <span style="color: #339933;">}</span> <span style="color: #b1b100; font-weight: bold;">else</span> <span style="color: #339933;">{</span><br/>
-        fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #cc66cc;">"RUNOOB 評価: C"</span><span style="color: #339933;">)</span><br/>
+    score <span style="color: #339933;">:=</span> <span style="color: #CC66CC;">85</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">if</span> score &gt;<span style="color: #339933;">=</span> <span style="color: #CC66CC;">90</span> <span style="color: #339933;">{</span><br/>
+        fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #CC66CC;">"RUNOOB 評価: A"</span><span style="color: #339933;">)</span><br/>
+    <span style="color: #339933;">}</span> <span style="color: #B1B100; font-weight: bold;">else</span> <span style="color: #B1B100; font-weight: bold;">if</span> score &gt;<span style="color: #339933;">=</span> <span style="color: #CC66CC;">60</span> <span style="color: #339933;">{</span><br/>
+        fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #CC66CC;">"RUNOOB 評価: B"</span><span style="color: #339933;">)</span><br/>
+    <span style="color: #339933;">}</span> <span style="color: #B1B100; font-weight: bold;">else</span> <span style="color: #339933;">{</span><br/>
+        fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #CC66CC;">"RUNOOB 評価: C"</span><span style="color: #339933;">)</span><br/>
     <span style="color: #339933;">}</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">// forループ1: 標準の3要素形式（Cのforに類似）</span><br/>
-    fmt<span style="color: #339933;">.</span><span style="">Print</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"カウント: "</span><span style="color: #339933;">)</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">for</span> <span style="">i</span> <span style="color: #339933;">:=</span> <span style="color: #cc66cc;">0</span><span style="color: #339933;">;</span> <span style="">i</span> &lt; <span style="color: #cc66cc;">5</span><span style="color: #339933;">;</span> <span style="">i</span><span style="color: #339933;">++</span> <span style="color: #339933;">{</span><br/>
-        fmt<span style="color: #339933;">.</span>Print<span style="color: #339933;">(</span><span style="">i</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">" "</span><span style="color: #339933;">)</span><br/>
+    fmt<span style="color: #339933;">.</span><span style="">Print</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"カウント: "</span><span style="color: #339933;">)</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">for</span> <span style="">i</span> <span style="color: #339933;">:=</span> <span style="color: #CC66CC;">0</span><span style="color: #339933;">;</span> <span style="">i</span> &lt; <span style="color: #CC66CC;">5</span><span style="color: #339933;">;</span> <span style="">i</span><span style="color: #339933;">++</span> <span style="color: #339933;">{</span><br/>
+        fmt<span style="color: #339933;">.</span>Print<span style="color: #339933;">(</span><span style="">i</span><span style="color: #339933;">,</span> <span style="color: #CC66CC;">" "</span><span style="color: #339933;">)</span><br/>
     <span style="color: #339933;">}</span><br/>
     fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">()</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">// forループ2: 条件のみ（whileに類似）</span><br/>
-    sum <span style="color: #339933;">:=</span> <span style="color: #cc66cc;">0</span><br/>
-    n <span style="color: #339933;">:=</span> <span style="color: #cc66cc;">1</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">for</span> n &lt;<span style="color: #339933;">=</span> <span style="color: #cc66cc;">10</span> <span style="color: #339933;">{</span><br/>
+    sum <span style="color: #339933;">:=</span> <span style="color: #CC66CC;">0</span><br/>
+    n <span style="color: #339933;">:=</span> <span style="color: #CC66CC;">1</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">for</span> n &lt;<span style="color: #339933;">=</span> <span style="color: #CC66CC;">10</span> <span style="color: #339933;">{</span><br/>
         sum <span style="color: #339933;">+=</span> n<br/>
         n<span style="color: #339933;">++</span><br/>
     <span style="color: #339933;">}</span><br/>
-    fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #cc66cc;">"1から10の合計:"</span><span style="color: #339933;">,</span> sum<span style="color: #339933;">)</span><br/>
+    fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #CC66CC;">"1から10の合計:"</span><span style="color: #339933;">,</span> sum<span style="color: #339933;">)</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">// forループ3: rangeによる反復（最も一般的）</span><br/>
-    fruits <span style="color: #339933;">:=</span> <span style="color: #339933;">[]</span><span style="color: #993333;">string</span><span style="color: #339933;">{</span><span style="color: #cc66cc;">"apple"</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">"banana"</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">"cherry"</span><span style="color: #339933;">}</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">for</span> index<span style="color: #339933;">,</span> fruit <span style="color: #339933;">:=</span> <span style="color: #b1b100; font-weight: bold;">range</span> fruits <span style="color: #339933;">{</span><br/>
-        fmt<span style="color: #339933;">.</span>Printf<span style="color: #339933;">(</span><span style="color: #cc66cc;">"インデックス %d: %s"<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">,</span> index<span style="color: #339933;">,</span> fruit<span style="color: #339933;">)</span><br/>
+    fruits <span style="color: #339933;">:=</span> <span style="color: #339933;">[]</span><span style="color: #993333;">string</span><span style="color: #339933;">{</span><span style="color: #CC66CC;">"apple"</span><span style="color: #339933;">,</span> <span style="color: #CC66CC;">"banana"</span><span style="color: #339933;">,</span> <span style="color: #CC66CC;">"cherry"</span><span style="color: #339933;">}</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">for</span> index<span style="color: #339933;">,</span> fruit <span style="color: #339933;">:=</span> <span style="color: #B1B100; font-weight: bold;">range</span> fruits <span style="color: #339933;">{</span><br/>
+        fmt<span style="color: #339933;">.</span>Printf<span style="color: #339933;">(</span><span style="color: #CC66CC;">"インデックス %d: %s"<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">,</span> index<span style="color: #339933;">,</span> fruit<span style="color: #339933;">)</span><br/>
     <span style="color: #339933;">}</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">// switch文: 各caseは自動的にbreakされるため、手動で追加する必要はありません</span><br/>
-    day <span style="color: #339933;">:=</span> <span style="color: #cc66cc;">"月曜日"</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">switch</span> day <span style="color: #339933;">{</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">case</span> <span style="color: #cc66cc;">"月曜日"</span><span style="color: #339933;">:</span><br/>
-        fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"新しい一週間が始まりました"</span><span style="color: #339933;">)</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">case</span> <span style="color: #cc66cc;">"金曜日"</span><span style="color: #339933;">:</span><br/>
-        fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"週末が近づいています"</span><span style="color: #339933;">)</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">default</span><span style="color: #339933;">:</span><br/>
-        fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #cc66cc;">"普通の一日"</span><span style="color: #339933;">)</span><br/>
+    day <span style="color: #339933;">:=</span> <span style="color: #CC66CC;">"月曜日"</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">switch</span> day <span style="color: #339933;">{</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">case</span> <span style="color: #CC66CC;">"月曜日"</span><span style="color: #339933;">:</span><br/>
+        fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"新しい一週間が始まりました"</span><span style="color: #339933;">)</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">case</span> <span style="color: #CC66CC;">"金曜日"</span><span style="color: #339933;">:</span><br/>
+        fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"週末が近づいています"</span><span style="color: #339933;">)</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">default</span><span style="color: #339933;">:</span><br/>
+        fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #CC66CC;">"普通の一日"</span><span style="color: #339933;">)</span><br/>
     <span style="color: #339933;">}</span><br/>
 <span style="color: #339933;">}</span><br/>
 </div>
@@ -501,55 +501,55 @@ go 1.24
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
-    <span style="color: #cc66cc;">"errors"</span><br/>
-    <span style="color: #cc66cc;">"fmt"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
+    <span style="color: #CC66CC;">"errors"</span><br/>
+    <span style="color: #CC66CC;">"fmt"</span><br/>
 <span style="color: #339933;">)</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;">// add 関数: 2つの引数は両方とも int 型で、1つの int を返します</span><br/>
 <span style="color: #993333;">func</span> add<span style="color: #339933;">(</span>a<span style="color: #339933;">,</span> b <span style="color: #993333;">int</span><span style="color: #339933;">)</span> <span style="color: #993333;">int</span> <span style="color: #339933;">{</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">return</span> a <span style="color: #339933;">+</span> b<br/>
+    <span style="color: #B1B100; font-weight: bold;">return</span> a <span style="color: #339933;">+</span> b<br/>
 <span style="color: #339933;">}</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;">// divide 関数: 結果とエラーの2つの値を返します</span><br/>
 <span style="color: #666666; font-style: italic;">// Go 慣用の (result, error) パターンでエラー処理を行います</span><br/>
 <span style="color: #993333;">func</span> divide<span style="color: #339933;">(</span>a<span style="color: #339933;">,</span> b <span style="color: #993333;">float64</span><span style="color: #339933;">)</span> <span style="color: #339933;">(</span><span style="color: #993333;">float64</span><span style="color: #339933;">,</span> error<span style="color: #339933;">)</span> <span style="color: #339933;">{</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">if</span> b <span style="color: #339933;">==</span> <span style="color: #cc66cc;">0</span> <span style="color: #339933;">{</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">if</span> b <span style="color: #339933;">==</span> <span style="color: #CC66CC;">0</span> <span style="color: #339933;">{</span><br/>
         <span style="color: #666666; font-style: italic;">// ゼロ値とカスタムエラーを返します</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">return</span> <span style="color: #cc66cc;">0</span><span style="color: #339933;">,</span> errors<span style="color: #339933;">.</span>New<span style="color: #339933;">(</span><span style="color: #cc66cc;">"除数はゼロにできません"</span><span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">return</span> <span style="color: #CC66CC;">0</span><span style="color: #339933;">,</span> errors<span style="color: #339933;">.</span>New<span style="color: #339933;">(</span><span style="color: #CC66CC;">"除数はゼロにできません"</span><span style="color: #339933;">)</span><br/>
     <span style="color: #339933;">}</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">return</span> a <span style="color: #339933;">/</span> b<span style="color: #339933;">,</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #666666; font-style: italic;">// nil はエラーがないことを示します</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">return</span> a <span style="color: #339933;">/</span> b<span style="color: #339933;">,</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #666666; font-style: italic;">// nil はエラーがないことを示します</span><br/>
 <span style="color: #339933;">}</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;">// swap 関数: 複数の戻り値を使用して複数の計算結果を返します</span><br/>
 <span style="color: #993333;">func</span> swap<span style="color: #339933;">(</span>x<span style="color: #339933;">,</span> y <span style="color: #993333;">string</span><span style="color: #339933;">)</span> <span style="color: #339933;">(</span><span style="color: #993333;">string</span><span style="color: #339933;">,</span> <span style="color: #993333;">string</span><span style="color: #339933;">)</span> <span style="color: #339933;">{</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">return</span> y<span style="color: #339933;">,</span> x<br/>
+    <span style="color: #B1B100; font-weight: bold;">return</span> y<span style="color: #339933;">,</span> x<br/>
 <span style="color: #339933;">}</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
     <span style="color: #666666; font-style: italic;">// 通常の関数を呼び出します</span><br/>
-    sum <span style="color: #339933;">:=</span> add<span style="color: #339933;">(</span><span style="color: #cc66cc;">10</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">20</span><span style="color: #339933;">)</span><br/>
-    fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #cc66cc;">"10 + 20 ="</span><span style="color: #339933;">,</span> sum<span style="color: #339933;">)</span><br/>
+    sum <span style="color: #339933;">:=</span> add<span style="color: #339933;">(</span><span style="color: #CC66CC;">10</span><span style="color: #339933;">,</span> <span style="color: #CC66CC;">20</span><span style="color: #339933;">)</span><br/>
+    fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #CC66CC;">"10 + 20 ="</span><span style="color: #339933;">,</span> sum<span style="color: #339933;">)</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">// 複数の戻り値を持つ関数を呼び出し、エラーをチェックします</span><br/>
-    result<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> divide<span style="color: #339933;">(</span><span style="color: #cc66cc;">10</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">2</span><span style="color: #339933;">)</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
-        fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #cc66cc;">"エラー:"</span><span style="color: #339933;">,</span> err<span style="color: #339933;">)</span><br/>
-    <span style="color: #339933;">}</span> <span style="color: #b1b100; font-weight: bold;">else</span> <span style="color: #339933;">{</span><br/>
-        fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #cc66cc;">"10 / 2 ="</span><span style="color: #339933;">,</span> result<span style="color: #339933;">)</span><br/>
+    result<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> divide<span style="color: #339933;">(</span><span style="color: #CC66CC;">10</span><span style="color: #339933;">,</span> <span style="color: #CC66CC;">2</span><span style="color: #339933;">)</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
+        fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #CC66CC;">"エラー:"</span><span style="color: #339933;">,</span> err<span style="color: #339933;">)</span><br/>
+    <span style="color: #339933;">}</span> <span style="color: #B1B100; font-weight: bold;">else</span> <span style="color: #339933;">{</span><br/>
+        fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #CC66CC;">"10 / 2 ="</span><span style="color: #339933;">,</span> result<span style="color: #339933;">)</span><br/>
     <span style="color: #339933;">}</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">// ゼロ除算のケースをテストします</span><br/>
-    _<span style="color: #339933;">,</span> err <span style="color: #339933;">=</span> divide<span style="color: #339933;">(</span><span style="color: #cc66cc;">10</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">0</span><span style="color: #339933;">)</span> <span style="color: #666666; font-style: italic;">// _ を使用して不要な戻り値を無視します</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
-        fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #cc66cc;">"ゼロ除算エラー:"</span><span style="color: #339933;">,</span> err<span style="color: #339933;">)</span> <span style="color: #666666; font-style: italic;">// このエラーが出力されることを期待しています</span><br/>
+    _<span style="color: #339933;">,</span> err <span style="color: #339933;">=</span> divide<span style="color: #339933;">(</span><span style="color: #CC66CC;">10</span><span style="color: #339933;">,</span> <span style="color: #CC66CC;">0</span><span style="color: #339933;">)</span> <span style="color: #666666; font-style: italic;">// _ を使用して不要な戻り値を無視します</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
+        fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #CC66CC;">"ゼロ除算エラー:"</span><span style="color: #339933;">,</span> err<span style="color: #339933;">)</span> <span style="color: #666666; font-style: italic;">// このエラーが出力されることを期待しています</span><br/>
     <span style="color: #339933;">}</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">// 複数の戻り値で交換します</span><br/>
-    first<span style="color: #339933;">,</span> second <span style="color: #339933;">:=</span> swap<span style="color: #339933;">(</span><span style="color: #cc66cc;">"RUNOOB"</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">"Hello"</span><span style="color: #339933;">)</span><br/>
-    fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"交換後:"</span><span style="color: #339933;">,</span> first<span style="color: #339933;">,</span> second<span style="color: #339933;">)</span><br/>
+    first<span style="color: #339933;">,</span> second <span style="color: #339933;">:=</span> swap<span style="color: #339933;">(</span><span style="color: #CC66CC;">"RUNOOB"</span><span style="color: #339933;">,</span> <span style="color: #CC66CC;">"Hello"</span><span style="color: #339933;">)</span><br/>
+    fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"交換後:"</span><span style="color: #339933;">,</span> first<span style="color: #339933;">,</span> second<span style="color: #339933;">)</span><br/>
 <span style="color: #339933;">}</span><br/>
 </div>
 </div>
@@ -559,12 +559,12 @@ go 1.24
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #cc66cc;">"fmt"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #CC66CC;">"fmt"</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;">// User はユーザー構造体を定義します（他の言語のクラスに似ています）</span><br/>
-<span style="color: #b1b100; font-weight: bold;">type</span> User <span style="color: #993333;">struct</span> <span style="color: #339933;">{</span><br/>
+<span style="color: #B1B100; font-weight: bold;">type</span> User <span style="color: #993333;">struct</span> <span style="color: #339933;">{</span><br/>
     Name  <span style="color: #993333;">string</span> <span style="color: #666666; font-style: italic;">// 先頭大文字 = 公開フィールド（外部パッケージからアクセス可能）</span><br/>
     Email <span style="color: #993333;">string</span><br/>
     age   <span style="color: #993333;">int</span>    <span style="color: #666666; font-style: italic;">// 先頭小文字 = プライベートフィールド（パッケージ内のみアクセス可能）</span><br/>
@@ -573,7 +573,7 @@ go 1.24
 <span style="color: #666666; font-style: italic;">// Greet は User 型に定義されたメソッドです</span><br/>
 <span style="color: #666666; font-style: italic;">// (u User) は値レシーバーであり、メソッド内で u を変更しても元の値には影響しません</span><br/>
 <span style="color: #993333;">func</span> <span style="color: #339933;">(</span>u User<span style="color: #339933;">)</span> Greet<span style="color: #339933;">()</span> <span style="color: #993333;">string</span> <span style="color: #339933;">{</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">return</span> fmt<span style="color: #339933;">.</span>Sprintf<span style="color: #339933;">(</span><span style="color: #cc66cc;">"こんにちは、私は %s です。メールアドレスは %s です"</span><span style="color: #339933;">,</span> u<span style="color: #339933;">.</span><span style="">Name</span><span style="color: #339933;">,</span> u<span style="color: #339933;">.</span><span style="">Email</span><span style="color: #339933;">)</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">return</span> fmt<span style="color: #339933;">.</span>Sprintf<span style="color: #339933;">(</span><span style="color: #CC66CC;">"こんにちは、私は %s です。メールアドレスは %s です"</span><span style="color: #339933;">,</span> u<span style="color: #339933;">.</span><span style="">Name</span><span style="color: #339933;">,</span> u<span style="color: #339933;">.</span><span style="">Email</span><span style="color: #339933;">)</span><br/>
 <span style="color: #339933;">}</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;">// Birthday はポインタレシーバーを使用するため、メソッド内で元の値を変更できます</span><br/>
@@ -584,17 +584,17 @@ go 1.24
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
     <span style="color: #666666; font-style: italic;">// 構造体インスタンスを作成します</span><br/>
     user <span style="color: #339933;">:=</span> User<span style="color: #339933;">{</span><br/>
-        Name<span style="color: #339933;">:</span>  <span style="color: #cc66cc;">"runoob"</span><span style="color: #339933;">,</span><br/>
-        Email<span style="color: #339933;">:</span> <span style="color: #cc66cc;">"runoob@example.com"</span><span style="color: #339933;">,</span><br/>
-        age<span style="color: #339933;">:</span>   <span style="color: #cc66cc;">25</span><span style="color: #339933;">,</span><br/>
+        Name<span style="color: #339933;">:</span>  <span style="color: #CC66CC;">"runoob"</span><span style="color: #339933;">,</span><br/>
+        Email<span style="color: #339933;">:</span> <span style="color: #CC66CC;">"runoob@example.com"</span><span style="color: #339933;">,</span><br/>
+        age<span style="color: #339933;">:</span>   <span style="color: #CC66CC;">25</span><span style="color: #339933;">,</span><br/>
     <span style="color: #339933;">}</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">// メソッドを呼び出します</span><br/>
     fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span>user<span style="color: #339933;">.</span><span style="">Greet</span><span style="color: #339933;">())</span><br/>
-    fmt<span style="color: #339933;">.</span><span style="">Printf</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"誕生日前の年齢: %d<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">,</span> user<span style="color: #339933;">.</span><span style="">age</span><span style="color: #339933;">)</span><br/>
+    fmt<span style="color: #339933;">.</span><span style="">Printf</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"誕生日前の年齢: %d<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">,</span> user<span style="color: #339933;">.</span><span style="">age</span><span style="color: #339933;">)</span><br/>
 <br/>
     user<span style="color: #339933;">.</span><span style="">Birthday</span><span style="color: #339933;">()</span> <span style="color: #666666; font-style: italic;">// ポインタレシーバーを使用するため、age が変更されます</span><br/>
-    fmt<span style="color: #339933;">.</span><span style="">Printf</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"誕生日後の年齢: %d<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">,</span> user<span style="color: #339933;">.</span><span style="">age</span><span style="color: #339933;">)</span><br/>
+    fmt<span style="color: #339933;">.</span><span style="">Printf</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"誕生日後の年齢: %d<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">,</span> user<span style="color: #339933;">.</span><span style="">age</span><span style="color: #339933;">)</span><br/>
 <span style="color: #339933;">}</span><br/>
 </div>
 </div>
@@ -603,60 +603,60 @@ go 1.24
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
-    <span style="color: #cc66cc;">"fmt"</span><br/>
-    <span style="color: #cc66cc;">"math"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
+    <span style="color: #CC66CC;">"fmt"</span><br/>
+    <span style="color: #CC66CC;">"math"</span><br/>
 <span style="color: #339933;">)</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;">// Shape インターフェース: 幾何学的形状の振る舞いの仕様を定義します</span><br/>
-<span style="color: #b1b100; font-weight: bold;">type</span> Shape <span style="color: #993333;">interface</span> <span style="color: #339933;">{</span><br/>
+<span style="color: #B1B100; font-weight: bold;">type</span> Shape <span style="color: #993333;">interface</span> <span style="color: #339933;">{</span><br/>
     Area<span style="color: #339933;">()</span> <span style="color: #993333;">float64</span>      <span style="color: #666666; font-style: italic;">// 面積を計算します</span><br/>
     Perimeter<span style="color: #339933;">()</span> <span style="color: #993333;">float64</span> <span style="color: #666666; font-style: italic;">// 周囲の長さを計算します</span><br/>
 <span style="color: #339933;">}</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;">// Circle 円形構造体</span><br/>
-<span style="color: #b1b100; font-weight: bold;">type</span> Circle <span style="color: #993333;">struct</span> <span style="color: #339933;">{</span><br/>
+<span style="color: #B1B100; font-weight: bold;">type</span> Circle <span style="color: #993333;">struct</span> <span style="color: #339933;">{</span><br/>
     Radius <span style="color: #993333;">float64</span><br/>
 <span style="color: #339933;">}</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;">// Circle は Shape インターフェースを実装します（暗黙的な実装であり、明示的な宣言は不要です）</span><br/>
 <span style="color: #993333;">func</span> <span style="color: #339933;">(</span>c Circle<span style="color: #339933;">)</span> Area<span style="color: #339933;">()</span> <span style="color: #993333;">float64</span> <span style="color: #339933;">{</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">return</span> math<span style="color: #339933;">.</span>Pi <span style="color: #339933;">*</span> c<span style="color: #339933;">.</span>Radius <span style="color: #339933;">*</span> c<span style="color: #339933;">.</span>Radius<br/>
+    <span style="color: #B1B100; font-weight: bold;">return</span> math<span style="color: #339933;">.</span>Pi <span style="color: #339933;">*</span> c<span style="color: #339933;">.</span>Radius <span style="color: #339933;">*</span> c<span style="color: #339933;">.</span>Radius<br/>
 <span style="color: #339933;">}</span><br/>
 <br/>
 <span style="color: #993333;">func</span> <span style="color: #339933;">(</span>c Circle<span style="color: #339933;">)</span> Perimeter<span style="color: #339933;">()</span> <span style="color: #993333;">float64</span> <span style="color: #339933;">{</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">return</span> <span style="color: #cc66cc;">2</span> <span style="color: #339933;">*</span> math<span style="color: #339933;">.</span>Pi <span style="color: #339933;">*</span> c<span style="color: #339933;">.</span>Radius<br/>
+    <span style="color: #B1B100; font-weight: bold;">return</span> <span style="color: #CC66CC;">2</span> <span style="color: #339933;">*</span> math<span style="color: #339933;">.</span>Pi <span style="color: #339933;">*</span> c<span style="color: #339933;">.</span>Radius<br/>
 <span style="color: #339933;">}</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;">// Rectangle 矩形構造体</span><br/>
-<span style="color: #b1b100; font-weight: bold;">type</span> Rectangle <span style="color: #993333;">struct</span> <span style="color: #339933;">{</span><br/>
+<span style="color: #B1B100; font-weight: bold;">type</span> Rectangle <span style="color: #993333;">struct</span> <span style="color: #339933;">{</span><br/>
     Width<span style="color: #339933;">,</span> Height <span style="color: #993333;">float64</span><br/>
 <span style="color: #339933;">}</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;">// Rectangle も暗黙的に Shape インターフェースを実装します</span><br/>
 <span style="color: #993333;">func</span> <span style="color: #339933;">(</span>r Rectangle<span style="color: #339933;">)</span> Area<span style="color: #339933;">()</span> <span style="color: #993333;">float64</span> <span style="color: #339933;">{</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">return</span> r<span style="color: #339933;">.</span>Width <span style="color: #339933;">*</span> r<span style="color: #339933;">.</span>Height<br/>
+    <span style="color: #B1B100; font-weight: bold;">return</span> r<span style="color: #339933;">.</span>Width <span style="color: #339933;">*</span> r<span style="color: #339933;">.</span>Height<br/>
 <span style="color: #339933;">}</span><br/>
 <br/>
 <span style="color: #993333;">func</span> <span style="color: #339933;">(</span>r Rectangle<span style="color: #339933;">)</span> Perimeter<span style="color: #339933;">()</span> <span style="color: #993333;">float64</span> <span style="color: #339933;">{</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">return</span> <span style="color: #cc66cc;">2</span> <span style="color: #339933;">*</span> <span style="color: #339933;">(</span>r<span style="color: #339933;">.</span>Width <span style="color: #339933;">+</span> r<span style="color: #339933;">.</span>Height<span style="color: #339933;">)</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">return</span> <span style="color: #CC66CC;">2</span> <span style="color: #339933;">*</span> <span style="color: #339933;">(</span>r<span style="color: #339933;">.</span>Width <span style="color: #339933;">+</span> r<span style="color: #339933;">.</span>Height<span style="color: #339933;">)</span><br/>
 <span style="color: #339933;">}</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;">// PrintShape は Shape インターフェースを実装した任意の型を受け取ります</span><br/>
 <span style="color: #993333;">func</span> PrintShape<span style="color: #339933;">(</span>s Shape<span style="color: #339933;">)</span> <span style="color: #339933;">{</span><br/>
-    fmt<span style="color: #339933;">.</span>Printf<span style="color: #339933;">(</span><span style="color: #cc66cc;">"面積: %.2f、周囲の長さ: %.2f<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">,</span> s<span style="color: #339933;">.</span>Area<span style="color: #339933;">(),</span> s<span style="color: #339933;">.</span>Perimeter<span style="color: #339933;">())</span><br/>
+    fmt<span style="color: #339933;">.</span>Printf<span style="color: #339933;">(</span><span style="color: #CC66CC;">"面積: %.2f、周囲の長さ: %.2f<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">,</span> s<span style="color: #339933;">.</span>Area<span style="color: #339933;">(),</span> s<span style="color: #339933;">.</span>Perimeter<span style="color: #339933;">())</span><br/>
 <span style="color: #339933;">}</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
-    c <span style="color: #339933;">:=</span> Circle<span style="color: #339933;">{</span>Radius<span style="color: #339933;">:</span> <span style="color: #cc66cc;">5</span><span style="color: #339933;">}</span>          <span style="color: #666666; font-style: italic;">// 半径5の円</span><br/>
-    r <span style="color: #339933;">:=</span> Rectangle<span style="color: #339933;">{</span>Width<span style="color: #339933;">:</span> <span style="color: #cc66cc;">4</span><span style="color: #339933;">,</span> Height<span style="color: #339933;">:</span> <span style="color: #cc66cc;">6</span><span style="color: #339933;">}</span> <span style="color: #666666; font-style: italic;">// 幅4、高さ6の矩形</span><br/>
+    c <span style="color: #339933;">:=</span> Circle<span style="color: #339933;">{</span>Radius<span style="color: #339933;">:</span> <span style="color: #CC66CC;">5</span><span style="color: #339933;">}</span>          <span style="color: #666666; font-style: italic;">// 半径5の円</span><br/>
+    r <span style="color: #339933;">:=</span> Rectangle<span style="color: #339933;">{</span>Width<span style="color: #339933;">:</span> <span style="color: #CC66CC;">4</span><span style="color: #339933;">,</span> Height<span style="color: #339933;">:</span> <span style="color: #CC66CC;">6</span><span style="color: #339933;">}</span> <span style="color: #666666; font-style: italic;">// 幅4、高さ6の矩形</span><br/>
 <br/>
-    fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"円形（RUNOOB の例）:"</span><span style="color: #339933;">)</span><br/>
+    fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"円形（RUNOOB の例）:"</span><span style="color: #339933;">)</span><br/>
     PrintShape<span style="color: #339933;">(</span>c<span style="color: #339933;">)</span><br/>
 <br/>
-    fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"矩形（RUNOOB の例）:"</span><span style="color: #339933;">)</span><br/>
+    fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"矩形（RUNOOB の例）:"</span><span style="color: #339933;">)</span><br/>
     PrintShape<span style="color: #339933;">(</span>r<span style="color: #339933;">)</span><br/>
 <span style="color: #339933;">}</span><br/>
 </div>
@@ -671,54 +671,54 @@ go 1.24
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;">// ファイルパス: server.go</span><br/>
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
-    <span style="color: #cc66cc;">"encoding/json"</span><br/>
-    <span style="color: #cc66cc;">"fmt"</span><br/>
-    <span style="color: #cc66cc;">"log"</span><br/>
-    <span style="color: #cc66cc;">"net/http"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
+    <span style="color: #CC66CC;">"encoding/json"</span><br/>
+    <span style="color: #CC66CC;">"fmt"</span><br/>
+    <span style="color: #CC66CC;">"log"</span><br/>
+    <span style="color: #CC66CC;">"net/http"</span><br/>
 <span style="color: #339933;">)</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;">// Response は JSON レスポンスのデータ構造を定義します</span><br/>
-<span style="color: #b1b100; font-weight: bold;">type</span> Response <span style="color: #993333;">struct</span> <span style="color: #339933;">{</span><br/>
-    Code    <span style="color: #993333;">int</span>    <span style="color: #0000ff;">`json:"code"`</span>    <span style="color: #666666; font-style: italic;">// 構造体タグで JSON フィールド名を指定します</span><br/>
-    Message <span style="color: #993333;">string</span> <span style="color: #0000ff;">`json:"message"`</span><br/>
-    Data    any    <span style="color: #0000ff;">`json:"data,omitempty"`</span> <span style="color: #666666; font-style: italic;">// omitempty: 値が空の場合、そのフィールドは出力されません</span><br/>
+<span style="color: #B1B100; font-weight: bold;">type</span> Response <span style="color: #993333;">struct</span> <span style="color: #339933;">{</span><br/>
+    Code    <span style="color: #993333;">int</span>    <span style="color: #0000FF;">`json:"code"`</span>    <span style="color: #666666; font-style: italic;">// 構造体タグで JSON フィールド名を指定します</span><br/>
+    Message <span style="color: #993333;">string</span> <span style="color: #0000FF;">`json:"message"`</span><br/>
+    Data    any    <span style="color: #0000FF;">`json:"data,omitempty"`</span> <span style="color: #666666; font-style: italic;">// omitempty: 値が空の場合、そのフィールドは出力されません</span><br/>
 <span style="color: #339933;">}</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;">// helloHandler は /hello ルートへのリクエストを処理します</span><br/>
 <span style="color: #993333;">func</span> helloHandler<span style="color: #339933;">(</span>w http<span style="color: #339933;">.</span>ResponseWriter<span style="color: #339933;">,</span> r <span style="color: #339933;">*</span><span style="color: #003399;">http.<span style="">Request</span></span><span style="color: #339933;">)</span> <span style="color: #339933;">{</span><br/>
     <span style="color: #666666; font-style: italic;">// GET リクエストのみ許可します</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">if</span> r<span style="color: #339933;">.</span>Method <span style="color: #339933;">!=</span> http<span style="color: #339933;">.</span>MethodGet <span style="color: #339933;">{</span><br/>
-        http<span style="color: #339933;">.</span>Error<span style="color: #339933;">(</span>w<span style="color: #339933;">,</span> <span style="color: #cc66cc;">"GET リクエストのみサポートしています"</span><span style="color: #339933;">,</span> http<span style="color: #339933;">.</span>StatusMethodNotAllowed<span style="color: #339933;">)</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">return</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">if</span> r<span style="color: #339933;">.</span>Method <span style="color: #339933;">!=</span> http<span style="color: #339933;">.</span>MethodGet <span style="color: #339933;">{</span><br/>
+        http<span style="color: #339933;">.</span>Error<span style="color: #339933;">(</span>w<span style="color: #339933;">,</span> <span style="color: #CC66CC;">"GET リクエストのみサポートしています"</span><span style="color: #339933;">,</span> http<span style="color: #339933;">.</span>StatusMethodNotAllowed<span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">return</span><br/>
     <span style="color: #339933;">}</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">// クエリパラメータから name を取得し、デフォルトは "RUNOOB" です</span><br/>
-    name <span style="color: #339933;">:=</span> r<span style="color: #339933;">.</span><span style="">URL</span><span style="color: #339933;">.</span><span style="">Query</span><span style="color: #339933;">()</span><span style="color: #339933;">.</span><span style="">Get</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"name"</span><span style="color: #339933;">)</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">if</span> name <span style="color: #339933;">==</span> <span style="color: #cc66cc;">""</span> <span style="color: #339933;">{</span><br/>
-        name <span style="color: #339933;">=</span> <span style="color: #cc66cc;">"RUNOOB"</span><br/>
+    name <span style="color: #339933;">:=</span> r<span style="color: #339933;">.</span><span style="">URL</span><span style="color: #339933;">.</span><span style="">Query</span><span style="color: #339933;">()</span><span style="color: #339933;">.</span><span style="">Get</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"name"</span><span style="color: #339933;">)</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">if</span> name <span style="color: #339933;">==</span> <span style="color: #CC66CC;">""</span> <span style="color: #339933;">{</span><br/>
+        name <span style="color: #339933;">=</span> <span style="color: #CC66CC;">"RUNOOB"</span><br/>
     <span style="color: #339933;">}</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">// レスポンスデータを構築します</span><br/>
     resp <span style="color: #339933;">:=</span> Response<span style="color: #339933;">{</span><br/>
-        Code<span style="color: #339933;">:</span>    <span style="color: #cc66cc;">200</span><span style="color: #339933;">,</span><br/>
-        Message<span style="color: #339933;">:</span> fmt<span style="color: #339933;">.</span>Sprintf<span style="color: #339933;">(</span><span style="color: #cc66cc;">"こんにちは、%s さん！ Go HTTP サービスへようこそ"</span><span style="color: #339933;">,</span> name<span style="color: #339933;">),</span><br/>
+        Code<span style="color: #339933;">:</span>    <span style="color: #CC66CC;">200</span><span style="color: #339933;">,</span><br/>
+        Message<span style="color: #339933;">:</span> fmt<span style="color: #339933;">.</span>Sprintf<span style="color: #339933;">(</span><span style="color: #CC66CC;">"こんにちは、%s さん！ Go HTTP サービスへようこそ"</span><span style="color: #339933;">,</span> name<span style="color: #339933;">),</span><br/>
     <span style="color: #339933;">}</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">// レスポンスヘッダーを設定し、JSON を返します</span><br/>
-    w<span style="color: #339933;">.</span><span style="">Header</span><span style="color: #339933;">()</span><span style="color: #339933;">.</span><span style="">Set</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"Content-Type"</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">"application/json; charset=utf-8"</span><span style="color: #339933;">)</span><br/>
+    w<span style="color: #339933;">.</span><span style="">Header</span><span style="color: #339933;">()</span><span style="color: #339933;">.</span><span style="">Set</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"Content-Type"</span><span style="color: #339933;">,</span> <span style="color: #CC66CC;">"application/json; charset=utf-8"</span><span style="color: #339933;">)</span><br/>
     json<span style="color: #339933;">.</span>NewEncoder<span style="color: #339933;">(</span>w<span style="color: #339933;">)</span><span style="color: #339933;">.</span>Encode<span style="color: #339933;">(</span>resp<span style="color: #339933;">)</span><br/>
 <span style="color: #339933;">}</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
     <span style="color: #666666; font-style: italic;">// ルート処理関数を登録します</span><br/>
-    http<span style="color: #339933;">.</span><span style="">HandleFunc</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"/hello"</span><span style="color: #339933;">,</span> helloHandler<span style="color: #339933;">)</span><br/>
+    http<span style="color: #339933;">.</span><span style="">HandleFunc</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"/hello"</span><span style="color: #339933;">,</span> helloHandler<span style="color: #339933;">)</span><br/>
 <br/>
-    addr <span style="color: #339933;">:=</span> <span style="color: #cc66cc;">":8080"</span><br/>
-    fmt<span style="color: #339933;">.</span><span style="">Printf</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"RUNOOB サーバーが起動しました。監視アドレス: http://localhost%s<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">,</span> addr<span style="color: #339933;">)</span><br/>
-    fmt<span style="color: #339933;">.</span><span style="">Printf</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"アクセス例: http://localhost%s/hello?name=Go開発者<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">,</span> addr<span style="color: #339933;">)</span><br/>
+    addr <span style="color: #339933;">:=</span> <span style="color: #CC66CC;">":8080"</span><br/>
+    fmt<span style="color: #339933;">.</span><span style="">Printf</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"RUNOOB サーバーが起動しました。監視アドレス: http://localhost%s<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">,</span> addr<span style="color: #339933;">)</span><br/>
+    fmt<span style="color: #339933;">.</span><span style="">Printf</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"アクセス例: http://localhost%s/hello?name=Go開発者<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">,</span> addr<span style="color: #339933;">)</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">// HTTP サービスを起動します（ブロックされ、サービスが停止するまで続きます）</span><br/>
     log<span style="color: #339933;">.</span>Fatal<span style="color: #339933;">(</span>http<span style="color: #339933;">.</span>ListenAndServe<span style="color: #339933;">(</span>addr<span style="color: #339933;">,</span> <span style="color: #000000; font-weight: bold;">nil</span><span style="color: #339933;">))</span><br/>
@@ -745,59 +745,59 @@ $ curl http://localhost:8080/hello
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;">// ファイルパス: workerpool.go</span><br/>
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
-    <span style="color: #cc66cc;">"fmt"</span><br/>
-    <span style="color: #cc66cc;">"sync"</span><br/>
-    <span style="color: #cc66cc;">"time"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
+    <span style="color: #CC66CC;">"fmt"</span><br/>
+    <span style="color: #CC66CC;">"sync"</span><br/>
+    <span style="color: #CC66CC;">"time"</span><br/>
 <span style="color: #339933;">)</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;">// worker は jobs チャネルからタスクを読み取り、処理後に結果を results チャネルに書き込みます</span><br/>
 <span style="color: #666666; font-style: italic;">// タスク処理が完了したら wg.Done() を呼び出して WaitGroup に通知します</span><br/>
 <span style="color: #993333;">func</span> worker<span style="color: #339933;">(</span>id <span style="color: #993333;">int</span><span style="color: #339933;">,</span> jobs &lt;<span style="color: #339933;">-</span><span style="color: #993333;">chan</span> <span style="color: #993333;">int</span><span style="color: #339933;">,</span> results chan&lt;<span style="color: #339933;">-</span> <span style="color: #993333;">int</span><span style="color: #339933;">,</span> wg <span style="color: #339933;">*</span>sync<span style="color: #339933;">.</span>WaitGroup<span style="color: #339933;">)</span> <span style="color: #339933;">{</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">defer</span> wg<span style="color: #339933;">.</span>Done<span style="color: #339933;">()</span> <span style="color: #666666; font-style: italic;">// 関数がどのように終了しても、その worker が完了したことをマークします</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">for</span> job <span style="color: #339933;">:=</span> <span style="color: #b1b100; font-weight: bold;">range</span> jobs <span style="color: #339933;">{</span><br/>
-        fmt<span style="color: #339933;">.</span>Printf<span style="color: #339933;">(</span><span style="color: #cc66cc;">"[Worker %d] タスク %d を処理中<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">,</span> id<span style="color: #339933;">,</span> job<span style="color: #339933;">)</span><br/>
-        time<span style="color: #339933;">.</span>Sleep<span style="color: #339933;">(</span><span style="color: #cc66cc;">200</span> <span style="color: #339933;">*</span> time<span style="color: #339933;">.</span>Millisecond<span style="color: #339933;">)</span> <span style="color: #666666; font-style: italic;">// タスク処理の所要時間をシミュレーションします</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">defer</span> wg<span style="color: #339933;">.</span>Done<span style="color: #339933;">()</span> <span style="color: #666666; font-style: italic;">// 関数がどのように終了しても、その worker が完了したことをマークします</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">for</span> job <span style="color: #339933;">:=</span> <span style="color: #B1B100; font-weight: bold;">range</span> jobs <span style="color: #339933;">{</span><br/>
+        fmt<span style="color: #339933;">.</span>Printf<span style="color: #339933;">(</span><span style="color: #CC66CC;">"[Worker %d] タスク %d を処理中<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">,</span> id<span style="color: #339933;">,</span> job<span style="color: #339933;">)</span><br/>
+        time<span style="color: #339933;">.</span>Sleep<span style="color: #339933;">(</span><span style="color: #CC66CC;">200</span> <span style="color: #339933;">*</span> time<span style="color: #339933;">.</span>Millisecond<span style="color: #339933;">)</span> <span style="color: #666666; font-style: italic;">// タスク処理の所要時間をシミュレーションします</span><br/>
         results <span style="color: #339933;">&lt;-</span> job <span style="color: #339933;">*</span> job               <span style="color: #666666; font-style: italic;">// 結果として平方を計算します</span><br/>
     <span style="color: #339933;">}</span><br/>
 <span style="color: #339933;">}</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">const</span> numJobs <span style="color: #339933;">=</span> <span style="color: #cc66cc;">10</span>    <span style="color: #666666; font-style: italic;">// タスクの総数</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">const</span> numWorkers <span style="color: #339933;">=</span> <span style="color: #cc66cc;">3</span>  <span style="color: #666666; font-style: italic;">// 並行 worker の数</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">const</span> numJobs <span style="color: #339933;">=</span> <span style="color: #CC66CC;">10</span>    <span style="color: #666666; font-style: italic;">// タスクの総数</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">const</span> numWorkers <span style="color: #339933;">=</span> <span style="color: #CC66CC;">3</span>  <span style="color: #666666; font-style: italic;">// 並行 worker の数</span><br/>
 <br/>
     jobs <span style="color: #339933;">:=</span> <span style="color: #000066;">make</span><span style="color: #339933;">(</span><span style="color: #993333;">chan</span> <span style="color: #993333;">int</span><span style="color: #339933;">,</span> numJobs<span style="color: #339933;">)</span>     <span style="color: #666666; font-style: italic;">// バッファ付きのタスクチャネル</span><br/>
     results <span style="color: #339933;">:=</span> <span style="color: #000066;">make</span><span style="color: #339933;">(</span><span style="color: #993333;">chan</span> <span style="color: #993333;">int</span><span style="color: #339933;">,</span> numJobs<span style="color: #339933;">)</span>  <span style="color: #666666; font-style: italic;">// バッファ付きの結果チャネル</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">var</span> wg sync<span style="color: #339933;">.</span>WaitGroup               <span style="color: #666666; font-style: italic;">// すべての worker の完了を待つために使用します</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">var</span> wg sync<span style="color: #339933;">.</span>WaitGroup               <span style="color: #666666; font-style: italic;">// すべての worker の完了を待つために使用します</span><br/>
 <br/>
-    fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"=== RUNOOB Worker Pool の例 ==="</span><span style="color: #339933;">)</span><br/>
+    fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"=== RUNOOB Worker Pool の例 ==="</span><span style="color: #339933;">)</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">// 固定数の worker goroutine を起動します</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">for</span> w <span style="color: #339933;">:=</span> <span style="color: #cc66cc;">1</span><span style="color: #339933;">;</span> w &lt;<span style="color: #339933;">=</span> numWorkers<span style="color: #339933;">;</span> w<span style="color: #339933;">++</span> <span style="color: #339933;">{</span><br/>
-        wg<span style="color: #339933;">.</span>Add<span style="color: #339933;">(</span><span style="color: #cc66cc;">1</span><span style="color: #339933;">)</span> <span style="color: #666666; font-style: italic;">// worker を1つ起動するたびに、WaitGroup のカウントを1増やします</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">go</span> worker<span style="color: #339933;">(</span>w<span style="color: #339933;">,</span> jobs<span style="color: #339933;">,</span> results<span style="color: #339933;">,</span> &amp;wg<span style="color: #339933;">)</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">for</span> w <span style="color: #339933;">:=</span> <span style="color: #CC66CC;">1</span><span style="color: #339933;">;</span> w &lt;<span style="color: #339933;">=</span> numWorkers<span style="color: #339933;">;</span> w<span style="color: #339933;">++</span> <span style="color: #339933;">{</span><br/>
+        wg<span style="color: #339933;">.</span>Add<span style="color: #339933;">(</span><span style="color: #CC66CC;">1</span><span style="color: #339933;">)</span> <span style="color: #666666; font-style: italic;">// worker を1つ起動するたびに、WaitGroup のカウントを1増やします</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">go</span> worker<span style="color: #339933;">(</span>w<span style="color: #339933;">,</span> jobs<span style="color: #339933;">,</span> results<span style="color: #339933;">,</span> &amp;wg<span style="color: #339933;">)</span><br/>
     <span style="color: #339933;">}</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">// すべてのタスクをチャネルに送信します</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">for</span> j <span style="color: #339933;">:=</span> <span style="color: #cc66cc;">1</span><span style="color: #339933;">;</span> j &lt;<span style="color: #339933;">=</span> numJobs<span style="color: #339933;">;</span> j<span style="color: #339933;">++</span> <span style="color: #339933;">{</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">for</span> j <span style="color: #339933;">:=</span> <span style="color: #CC66CC;">1</span><span style="color: #339933;">;</span> j &lt;<span style="color: #339933;">=</span> numJobs<span style="color: #339933;">;</span> j<span style="color: #339933;">++</span> <span style="color: #339933;">{</span><br/>
         jobs &lt;<span style="color: #339933;">-</span> j<br/>
     <span style="color: #339933;">}</span><br/>
     <span style="color: #000066;">close</span><span style="color: #339933;">(</span>jobs<span style="color: #339933;">)</span> <span style="color: #666666; font-style: italic;">// jobs チャネルを閉じると、worker の range ループは自動的に終了します</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">// すべての worker の完了を待ってから、結果チャネルを閉じます</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">go</span> <span style="color: #993333;">func</span><span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">go</span> <span style="color: #993333;">func</span><span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
         wg<span style="color: #339933;">.</span>Wait<span style="color: #339933;">()</span><br/>
         <span style="color: #000066;">close</span><span style="color: #339933;">(</span>results<span style="color: #339933;">)</span><br/>
     <span style="color: #339933;">}()</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">// すべての結果を収集して出力します</span><br/>
-    fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"結果の集計:"</span><span style="color: #339933;">)</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">for</span> result <span style="color: #339933;">:=</span> <span style="color: #b1b100; font-weight: bold;">range</span> results <span style="color: #339933;">{</span><br/>
-        fmt<span style="color: #339933;">.</span>Printf<span style="color: #339933;">(</span><span style="color: #cc66cc;">"%d "</span><span style="color: #339933;">,</span> result<span style="color: #339933;">)</span><br/>
+    fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"結果の集計:"</span><span style="color: #339933;">)</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">for</span> result <span style="color: #339933;">:=</span> <span style="color: #B1B100; font-weight: bold;">range</span> results <span style="color: #339933;">{</span><br/>
+        fmt<span style="color: #339933;">.</span>Printf<span style="color: #339933;">(</span><span style="color: #CC66CC;">"%d "</span><span style="color: #339933;">,</span> result<span style="color: #339933;">)</span><br/>
     <span style="color: #339933;">}</span><br/>
-    fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"<span style="color: #000099; font-weight: bold;">\n</span>すべてのタスクの処理が完了しました"</span><span style="color: #339933;">)</span><br/>
+    fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"<span style="color: #000099; font-weight: bold;">\n</span>すべてのタスクの処理が完了しました"</span><span style="color: #339933;">)</span><br/>
 <span style="color: #339933;">}</span><br/>
 </div>
 </div>
@@ -844,23 +844,23 @@ $ go run workerpool.go
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
-    <span style="color: #cc66cc;">"fmt"</span><br/>
-    <span style="color: #cc66cc;">"os"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
+    <span style="color: #CC66CC;">"fmt"</span><br/>
+    <span style="color: #CC66CC;">"os"</span><br/>
 <span style="color: #339933;">)</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
     <span style="color: #666666; font-style: italic;">// 非推奨：エラーを無視</span><br/>
-    data<span style="color: #339933;">,</span> _ <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span><span style="">ReadFile</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"config.txt"</span><span style="color: #339933;">)</span><br/>
+    data<span style="color: #339933;">,</span> _ <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span><span style="">ReadFile</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"config.txt"</span><span style="color: #339933;">)</span><br/>
     fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #993333;">string</span><span style="color: #339933;">(</span>data<span style="color: #339933;">))</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">// 推奨：エラーを明示的に処理</span><br/>
-    data<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span><span style="">ReadFile</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"config.txt"</span><span style="color: #339933;">)</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
-        fmt<span style="color: #339933;">.</span>Printf<span style="color: #339933;">(</span><span style="color: #cc66cc;">"ファイルの読み取りに失敗: %v<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">,</span> err<span style="color: #339933;">)</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">return</span><br/>
+    data<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> os<span style="color: #339933;">.</span><span style="">ReadFile</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"config.txt"</span><span style="color: #339933;">)</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
+        fmt<span style="color: #339933;">.</span>Printf<span style="color: #339933;">(</span><span style="color: #CC66CC;">"ファイルの読み取りに失敗: %v<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">,</span> err<span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">return</span><br/>
     <span style="color: #339933;">}</span><br/>
     fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #993333;">string</span><span style="color: #339933;">(</span>data<span style="color: #339933;">))</span><br/>
 <span style="color: #339933;">}</span><br/>
@@ -934,7 +934,7 @@ $ go run workerpool.go
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -979,7 +979,7 @@ $ go run workerpool.go
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -1018,7 +1018,7 @@ $ go run workerpool.go
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
     <p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
     <p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>

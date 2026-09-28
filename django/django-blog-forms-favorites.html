@@ -363,27 +363,27 @@ urlpatterns <span style="color: Gray;">=</span> <span style="color: Olive;">[</s
 <br/>{% block title %}{{ post.title }} - RUNOOB ブログ{% endblock %}<br/>
 <br/>
 {% block content %}<br/>
-<span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">article</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"post-view"</span>&gt;</span><br/>
-    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">span</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"category-tag"</span>&gt;</span>{{ post.category.name }}<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">span</span>&gt;</span><br/>
-    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"post-header"</span>&gt;</span><br/>
-        <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">h1</span>&gt;</span>{{ post.title }}<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">h1</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">article</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"post-view"</span>&gt;</span><br/>
+    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">span</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"category-tag"</span>&gt;</span>{{ post.category.name }}<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">span</span>&gt;</span><br/>
+    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"post-header"</span>&gt;</span><br/>
+        <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">h1</span>&gt;</span>{{ post.title }}<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">h1</span>&gt;</span><br/>
         <span style="color: #808080; font-style: italic;">&lt;!-- お気に入りボタン：ログインユーザーのみ表示 --&gt;</span><br/>
         {% if user.is_authenticated %}<br/>
-        <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">form</span> <span style="color: #00c;">method</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"post"</span> <span style="color: #00c;">action</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"{% url 'toggle_favorite' post.pk %}"</span>&gt;</span><br/>
+        <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">form</span> <span style="color: #00c;">method</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"post"</span> <span style="color: #00c;">action</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"{% url 'toggle_favorite' post.pk %}"</span>&gt;</span><br/>
             {% csrf_token %}<br/>
-            <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">button</span> <span style="color: #00c;">type</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"submit"</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"fav-btn"</span>&gt;</span><br/>
+            <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">button</span> <span style="color: #00c;">type</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"submit"</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"fav-btn"</span>&gt;</span><br/>
                 {% if user in post.favorites.all %}<br/>
-                    <span style="color: #ddbb00;">&amp;#x2665;</span>お気に入り登録済み<br/>
+                    <span style="color: #DDBB00;">&amp;#x2665;</span>お気に入り登録済み<br/>
                 {% else %}<br/>♡ お気に入り<br/>
                 {% endif %}<br/>
-            <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">button</span>&gt;</span><br/>
-        <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">form</span>&gt;</span><br/>
+            <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">button</span>&gt;</span><br/>
+        <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">form</span>&gt;</span><br/>
         {% endif %}<br/>
-    <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
-    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">time</span>&gt;</span>{{ post.created_at|date:"Y-m-d" }}<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">time</span>&gt;</span><br/>
-    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"content"</span>&gt;</span>{{ post.content|safe }}<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
-    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">a</span> <span style="color: #00c;">href</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"{% url 'index' %}"</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"back-link"</span>&gt;</span>← ホームページに戻る<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">a</span>&gt;</span><br/>
-<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">article</span>&gt;</span><br/>
+    <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
+    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">time</span>&gt;</span>{{ post.created_at|date:"Y-m-d" }}<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">time</span>&gt;</span><br/>
+    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"content"</span>&gt;</span>{{ post.content|safe }}<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
+    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">a</span> <span style="color: #00c;">href</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"{% url 'index' %}"</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"back-link"</span>&gt;</span>← ホームページに戻る<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">a</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">article</span>&gt;</span><br/>
 {% endblock %}<br/>
 </div>
 </div>
@@ -392,24 +392,24 @@ urlpatterns <span style="color: Gray;">=</span> <span style="color: Olive;">[</s
 <h2 class="example">実例</h2>
 <div class="example_code">
 <span style="color: #808080; font-style: italic;">&lt;!-- index.html の記事カードにお気に入りボタンを追加（footer 領域） --&gt;</span><br/>
-<span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"article-card"</span>&gt;</span><br/>
-    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"card-content"</span>&gt;</span><br/>
-        <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">span</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"card-category"</span>&gt;</span>{{ post.category.name }}<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">span</span>&gt;</span><br/>
-        <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">h3</span>&gt;</span>{{ post.title }}<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">h3</span>&gt;</span><br/>
-        <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">p</span>&gt;</span>{{ post.summary|truncatechars:80 }}<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">p</span>&gt;</span><br/>
-        <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"card-footer"</span>&gt;</span><br/>
-            <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">span</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"card-date"</span>&gt;</span>{{ post.created_at|date:"Y-m-d" }}<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">span</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"article-card"</span>&gt;</span><br/>
+    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"card-content"</span>&gt;</span><br/>
+        <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">span</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"card-category"</span>&gt;</span>{{ post.category.name }}<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">span</span>&gt;</span><br/>
+        <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">h3</span>&gt;</span>{{ post.title }}<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">h3</span>&gt;</span><br/>
+        <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">p</span>&gt;</span>{{ post.summary|truncatechars:80 }}<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">p</span>&gt;</span><br/>
+        <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"card-footer"</span>&gt;</span><br/>
+            <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">span</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"card-date"</span>&gt;</span>{{ post.created_at|date:"Y-m-d" }}<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">span</span>&gt;</span><br/>
             {% if user.is_authenticated %}<br/>
-            <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">form</span> <span style="color: #00c;">method</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"post"</span> <span style="color: #00c;">action</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"{% url 'toggle_favorite' post.pk %}"</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"fav-form"</span>&gt;</span><br/>
+            <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">form</span> <span style="color: #00c;">method</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"post"</span> <span style="color: #00c;">action</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"{% url 'toggle_favorite' post.pk %}"</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"fav-form"</span>&gt;</span><br/>
                 {% csrf_token %}<br/>
-                <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">button</span> <span style="color: #00c;">type</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"submit"</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"fav-btn-small"</span>&gt;</span><br/>
-                    {% if user in post.favorites.all %}<span style="color: #ddbb00;">&amp;#x2665;</span>{% else %}♡{% endif %}<br/>
-                <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">button</span>&gt;</span><br/>
-            <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">form</span>&gt;</span><br/>
+                <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">button</span> <span style="color: #00c;">type</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"submit"</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"fav-btn-small"</span>&gt;</span><br/>
+                    {% if user in post.favorites.all %}<span style="color: #DDBB00;">&amp;#x2665;</span>{% else %}♡{% endif %}<br/>
+                <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">button</span>&gt;</span><br/>
+            <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">form</span>&gt;</span><br/>
             {% endif %}<br/>
-        <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
-    <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
-<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
+        <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
+    <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
 </div>
 </div>
 <blockquote><p>なぜお気に入りボタンは a タグではなく form を使うのでしょうか？お気に入り操作はデータベースを変更するため、POSTリクエストに該当します。RESTの規範に従い、読み取り操作はGET、書き込み操作はPOSTを使用します。さらに重要なのは、POSTリクエストはCSRFトークンを携帯しているため。<code>csrf_token</code>、悪意のあるWebサイトによるリクエスト偽造を防止します。</p></blockquote>
@@ -438,35 +438,35 @@ urlpatterns <span style="color: Gray;">=</span> <span style="color: Olive;">[</s
 <h2 class="example">実例</h2>
 <div class="example_code">
 <span style="color: #808080; font-style: italic;">/* base.html の style に追記 */</span><br/>
-<span style="color: #6666ff;">.post-header</span> <span style="color: #00AA00;">{</span><br/>
+<span style="color: #6666FF;">.post-header</span> <span style="color: #00AA00;">{</span><br/>
     <span style="color: #000000; font-weight: bold;">display</span><span style="color: #00AA00;">:</span> <span style="color: #000000; font-weight: bold;">flex</span><span style="color: #00AA00;">;</span><br/>
     <span style="color: #000000; font-weight: bold;">justify-content</span><span style="color: #00AA00;">:</span> <span style="color: #993333;">space-between</span><span style="color: #00AA00;">;</span><br/>
     <span style="color: #000000; font-weight: bold;">align-items</span><span style="color: #00AA00;">:</span> <span style="color: #993333;">flex-start</span><span style="color: #00AA00;">;</span><br/>
 <span style="color: #00AA00;">}</span><br/>
 <br/>
-<span style="color: #6666ff;">.fav-btn</span><span style="color: #00AA00;">,</span> <span style="color: #6666ff;">.fav-btn-small</span> <span style="color: #00AA00;">{</span><br/>
+<span style="color: #6666FF;">.fav-btn</span><span style="color: #00AA00;">,</span> <span style="color: #6666FF;">.fav-btn-small</span> <span style="color: #00AA00;">{</span><br/>
     <span style="color: #000000; font-weight: bold;">background</span><span style="color: #00AA00;">:</span> <span style="color: #993333;">none</span><span style="color: #00AA00;">;</span><br/>
     <span style="color: #000000; font-weight: bold;">border</span><span style="color: #00AA00;">:</span> <span style="color: #993333;">none</span><span style="color: #00AA00;">;</span><br/>
     <span style="color: #000000; font-weight: bold;">font-size</span><span style="color: #00AA00;">:</span> <span style="color: #933;">18px</span><span style="color: #00AA00;">;</span><br/>
     <span style="color: #000000; font-weight: bold;">cursor</span><span style="color: #00AA00;">:</span> <span style="color: #993333;">pointer</span><span style="color: #00AA00;">;</span><br/>
-    <span style="color: #000000; font-weight: bold;">color</span><span style="color: #00AA00;">:</span> <span style="color: #cc00cc;">#e74c3c</span><span style="color: #00AA00;">;</span><br/>
+    <span style="color: #000000; font-weight: bold;">color</span><span style="color: #00AA00;">:</span> <span style="color: #CC00CC;">#e74c3c</span><span style="color: #00AA00;">;</span><br/>
     <span style="color: #000000; font-weight: bold;">padding</span><span style="color: #00AA00;">:</span> <span style="color: #933;">4px</span> <span style="color: #933;">8px</span><span style="color: #00AA00;">;</span><br/>
     transition<span style="color: #00AA00;">:</span> transform 0.2s<span style="color: #00AA00;">;</span><br/>
 <span style="color: #00AA00;">}</span><br/>
 <br/>
-<span style="color: #6666ff;">.fav-btn</span><span style="color: #3333ff;">:hover</span><span style="color: #00AA00;">,</span> <span style="color: #6666ff;">.fav-btn-small</span><span style="color: #3333ff;">:hover </span><span style="color: #00AA00;">{</span><br/>
-    transform<span style="color: #00AA00;">:</span> scale<span style="color: #00AA00;">(</span><span style="color: #cc66cc;">1.2</span><span style="color: #00AA00;">)</span><span style="color: #00AA00;">;</span><br/>
+<span style="color: #6666FF;">.fav-btn</span><span style="color: #3333FF;">:hover</span><span style="color: #00AA00;">,</span> <span style="color: #6666FF;">.fav-btn-small</span><span style="color: #3333FF;">:hover </span><span style="color: #00AA00;">{</span><br/>
+    transform<span style="color: #00AA00;">:</span> scale<span style="color: #00AA00;">(</span><span style="color: #CC66CC;">1.2</span><span style="color: #00AA00;">)</span><span style="color: #00AA00;">;</span><br/>
 <span style="color: #00AA00;">}</span><br/>
 <br/>
-<span style="color: #6666ff;">.fav-btn-small</span> <span style="color: #00AA00;">{</span><br/>
+<span style="color: #6666FF;">.fav-btn-small</span> <span style="color: #00AA00;">{</span><br/>
     <span style="color: #000000; font-weight: bold;">font-size</span><span style="color: #00AA00;">:</span> <span style="color: #933;">16px</span><span style="color: #00AA00;">;</span><br/>
 <span style="color: #00AA00;">}</span><br/>
 <br/>
-<span style="color: #6666ff;">.fav-form</span> <span style="color: #00AA00;">{</span><br/>
+<span style="color: #6666FF;">.fav-form</span> <span style="color: #00AA00;">{</span><br/>
     <span style="color: #000000; font-weight: bold;">display</span><span style="color: #00AA00;">:</span> <span style="color: #993333;">inline</span><span style="color: #00AA00;">;</span><br/>
 <span style="color: #00AA00;">}</span><br/>
 <br/>
-<span style="color: #6666ff;">.card-footer</span> <span style="color: #00AA00;">{</span><br/>
+<span style="color: #6666FF;">.card-footer</span> <span style="color: #00AA00;">{</span><br/>
     <span style="color: #000000; font-weight: bold;">display</span><span style="color: #00AA00;">:</span> <span style="color: #000000; font-weight: bold;">flex</span><span style="color: #00AA00;">;</span><br/>
     <span style="color: #000000; font-weight: bold;">justify-content</span><span style="color: #00AA00;">:</span> <span style="color: #993333;">space-between</span><span style="color: #00AA00;">;</span><br/>
     <span style="color: #000000; font-weight: bold;">align-items</span><span style="color: #00AA00;">:</span> <span style="color: #993333;">center</span><span style="color: #00AA00;">;</span><br/>
@@ -512,7 +512,7 @@ urlpatterns <span style="color: Gray;">=</span> <span style="color: Olive;">[</s
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -557,7 +557,7 @@ urlpatterns <span style="color: Gray;">=</span> <span style="color: Olive;">[</s
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -596,7 +596,7 @@ urlpatterns <span style="color: Gray;">=</span> <span style="color: Olive;">[</s
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートをシェア</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートをシェア</h3>
 <p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリックしてください</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -815,7 +815,7 @@ function kFormatter(num) {
 </style>
 <div class="sidebar-box re-box re-box-large">
 <div class="sidebar-box recommend-here" style="margin: 0 auto;">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
+<a href="#" style="font-size: 16px; color:#5B80A6;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
 </div>
 <div class="sidebar-box sidebar-cate">
 <div class="sidebar-tree">

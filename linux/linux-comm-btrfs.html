@@ -322,13 +322,13 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># デバイス上に btrfs ファイルシステムを作成</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> mkfs.btrfs <span style="color: #000000; font-weight: bold;">/</span>dev<span style="color: #000000; font-weight: bold;">/</span>sdX<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> mkfs.btrfs <span style="color: #000000; font-weight: bold;">/</span>dev<span style="color: #000000; font-weight: bold;">/</span>sdX<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># ラベル付きファイルシステムを作成</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> mkfs.btrfs <span style="color: #660033;">-L</span> mylabel <span style="color: #000000; font-weight: bold;">/</span>dev<span style="color: #000000; font-weight: bold;">/</span>sdX<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> mkfs.btrfs <span style="color: #660033;">-L</span> mylabel <span style="color: #000000; font-weight: bold;">/</span>dev<span style="color: #000000; font-weight: bold;">/</span>sdX<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># 複数のデバイスを使用して RAID1 を作成</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> mkfs.btrfs <span style="color: #660033;">-m</span> raid1 <span style="color: #660033;">-d</span> raid1 <span style="color: #000000; font-weight: bold;">/</span>dev<span style="color: #000000; font-weight: bold;">/</span>sdX <span style="color: #000000; font-weight: bold;">/</span>dev<span style="color: #000000; font-weight: bold;">/</span>sdY<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> mkfs.btrfs <span style="color: #660033;">-m</span> raid1 <span style="color: #660033;">-d</span> raid1 <span style="color: #000000; font-weight: bold;">/</span>dev<span style="color: #000000; font-weight: bold;">/</span>sdX <span style="color: #000000; font-weight: bold;">/</span>dev<span style="color: #000000; font-weight: bold;">/</span>sdY<br/>
 </div>
 </div>
 <h4>btrfs ファイルシステムのマウント</h4>
@@ -336,13 +336,13 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># 基本的なマウント</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> <span style="color: #c20cb9; font-weight: bold;">mount</span> <span style="color: #000000; font-weight: bold;">/</span>dev<span style="color: #000000; font-weight: bold;">/</span>sdX <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> <span style="color: #C20CB9; font-weight: bold;">mount</span> <span style="color: #000000; font-weight: bold;">/</span>dev<span style="color: #000000; font-weight: bold;">/</span>sdX <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># 圧縮を有効にする（推奨: lzo または zstd）</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> <span style="color: #c20cb9; font-weight: bold;">mount</span> <span style="color: #660033;">-o</span> <span style="color: #007800;">compress</span>=lzo <span style="color: #000000; font-weight: bold;">/</span>dev<span style="color: #000000; font-weight: bold;">/</span>sdX <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> <span style="color: #C20CB9; font-weight: bold;">mount</span> <span style="color: #660033;">-o</span> <span style="color: #007800;">compress</span>=lzo <span style="color: #000000; font-weight: bold;">/</span>dev<span style="color: #000000; font-weight: bold;">/</span>sdX <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># マウントオプションを表示</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">mount</span> <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #c20cb9; font-weight: bold;">grep</span> btrfs<br/>
+<span style="color: #C20CB9; font-weight: bold;">mount</span> <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #C20CB9; font-weight: bold;">grep</span> btrfs<br/>
 </div>
 </div>
 <h3>サブボリューム操作</h3>
@@ -351,13 +351,13 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># サブボリュームを作成</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> btrfs subvolume create <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<span style="color: #000000; font-weight: bold;">/</span>subvol1<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> btrfs subvolume create <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<span style="color: #000000; font-weight: bold;">/</span>subvol1<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># サブボリュームを一覧表示</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> btrfs subvolume list <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> btrfs subvolume list <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># サブボリュームを削除</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> btrfs subvolume delete <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<span style="color: #000000; font-weight: bold;">/</span>subvol1<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> btrfs subvolume delete <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<span style="color: #000000; font-weight: bold;">/</span>subvol1<br/>
 </div>
 </div>
 <h4>スナップショット管理</h4>
@@ -365,13 +365,13 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># スナップショットを作成</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> btrfs subvolume snapshot <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<span style="color: #000000; font-weight: bold;">/</span>snapshot_$<span style="color: #7a0874; font-weight: bold;">(</span><span style="color: #c20cb9; font-weight: bold;">date</span> +<span style="color: #000000; font-weight: bold;">%</span>Y<span style="color: #000000; font-weight: bold;">%</span>m<span style="color: #000000; font-weight: bold;">%</span>d<span style="color: #7a0874; font-weight: bold;">)</span><br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> btrfs subvolume snapshot <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<span style="color: #000000; font-weight: bold;">/</span>snapshot_$<span style="color: #7A0874; font-weight: bold;">(</span><span style="color: #C20CB9; font-weight: bold;">date</span> +<span style="color: #000000; font-weight: bold;">%</span>Y<span style="color: #000000; font-weight: bold;">%</span>m<span style="color: #000000; font-weight: bold;">%</span>d<span style="color: #7A0874; font-weight: bold;">)</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># 読み取り専用スナップショット</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> btrfs subvolume snapshot <span style="color: #660033;">-r</span> <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<span style="color: #000000; font-weight: bold;">/</span>readonly_snap<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> btrfs subvolume snapshot <span style="color: #660033;">-r</span> <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<span style="color: #000000; font-weight: bold;">/</span>readonly_snap<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># スナップショットを削除</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> btrfs subvolume delete <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<span style="color: #000000; font-weight: bold;">/</span>snapshot_20230101<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> btrfs subvolume delete <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<span style="color: #000000; font-weight: bold;">/</span>snapshot_20230101<br/>
 </div>
 </div>
 <h3>スペース管理</h3>
@@ -380,13 +380,13 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># 詳細なスペース情報を表示</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> btrfs filesystem usage <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> btrfs filesystem usage <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># ディスク使用状況を表示</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> btrfs filesystem <span style="color: #c20cb9; font-weight: bold;">df</span> <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> btrfs filesystem <span style="color: #C20CB9; font-weight: bold;">df</span> <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># データ分布のバランスを取る（注意して使用、時間がかかる可能性あり）</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> btrfs balance start <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> btrfs balance start <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<br/>
 </div>
 </div>
 <h4>ファイルシステムサイズの調整</h4>
@@ -394,10 +394,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># ファイルシステムを拡大</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> btrfs filesystem resize +10G <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> btrfs filesystem resize +10G <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># ファイルシステムを縮小</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> btrfs filesystem resize <span style="color: #660033;">-5G</span> <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> btrfs filesystem resize <span style="color: #660033;">-5G</span> <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<br/>
 </div>
 </div>
 <h3>データ整合性チェック</h3>
@@ -406,10 +406,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># 読み取り専用チェック</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> btrfs check <span style="color: #000000; font-weight: bold;">/</span>dev<span style="color: #000000; font-weight: bold;">/</span>sdX<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> btrfs check <span style="color: #000000; font-weight: bold;">/</span>dev<span style="color: #000000; font-weight: bold;">/</span>sdX<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># 修復を試みる（注意して使用）</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> btrfs check <span style="color: #660033;">--repair</span> <span style="color: #000000; font-weight: bold;">/</span>dev<span style="color: #000000; font-weight: bold;">/</span>sdX<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> btrfs check <span style="color: #660033;">--repair</span> <span style="color: #000000; font-weight: bold;">/</span>dev<span style="color: #000000; font-weight: bold;">/</span>sdX<br/>
 </div>
 </div>
 <h4>クリーンアップと修復</h4>
@@ -417,13 +417,13 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># 空きスペースをクリーンアップ</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> btrfs filesystem defrag <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> btrfs filesystem defrag <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># ファイルシステムをチェックして修復</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> btrfs scrub start <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> btrfs scrub start <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># 修復状態を表示</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> btrfs scrub status <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> btrfs scrub status <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<br/>
 </div>
 </div>
 <hr/>
@@ -433,20 +433,20 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># パーティションを作成</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> mkfs.btrfs <span style="color: #660033;">-L</span> home <span style="color: #000000; font-weight: bold;">/</span>dev<span style="color: #000000; font-weight: bold;">/</span>sdX<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> mkfs.btrfs <span style="color: #660033;">-L</span> home <span style="color: #000000; font-weight: bold;">/</span>dev<span style="color: #000000; font-weight: bold;">/</span>sdX<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># マウントして圧縮を有効化</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> <span style="color: #c20cb9; font-weight: bold;">mount</span> <span style="color: #660033;">-o</span> <span style="color: #007800;">compress</span>=zstd <span style="color: #000000; font-weight: bold;">/</span>dev<span style="color: #000000; font-weight: bold;">/</span>sdX <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>newhome<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> <span style="color: #C20CB9; font-weight: bold;">mount</span> <span style="color: #660033;">-o</span> <span style="color: #007800;">compress</span>=zstd <span style="color: #000000; font-weight: bold;">/</span>dev<span style="color: #000000; font-weight: bold;">/</span>sdX <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>newhome<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># 既存データをコピー</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> rsync <span style="color: #660033;">-avx</span> <span style="color: #000000; font-weight: bold;">/</span>home<span style="color: #000000; font-weight: bold;">/</span> <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>newhome<span style="color: #000000; font-weight: bold;">/</span><br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> rsync <span style="color: #660033;">-avx</span> <span style="color: #000000; font-weight: bold;">/</span>home<span style="color: #000000; font-weight: bold;">/</span> <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>newhome<span style="color: #000000; font-weight: bold;">/</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># fstab を更新して自動マウントを実現</span><br/>
-<span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #a10;">"UUID=<span style="color: #007800;">$(blkid -s UUID -o value /dev/sdX)</span> /home btrfs defaults,compress=zstd 0 2"</span> <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #c20cb9; font-weight: bold;">sudo</span> <span style="color: #c20cb9; font-weight: bold;">tee</span> <span style="color: #660033;">-a</span> <span style="color: #000000; font-weight: bold;">/</span>etc<span style="color: #000000; font-weight: bold;">/</span>fstab<br/>
+<span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #a10;">"UUID=<span style="color: #007800;">$(blkid -s UUID -o value /dev/sdX)</span> /home btrfs defaults,compress=zstd 0 2"</span> <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #C20CB9; font-weight: bold;">sudo</span> <span style="color: #C20CB9; font-weight: bold;">tee</span> <span style="color: #660033;">-a</span> <span style="color: #000000; font-weight: bold;">/</span>etc<span style="color: #000000; font-weight: bold;">/</span>fstab<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># 再マウント</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> <span style="color: #c20cb9; font-weight: bold;">umount</span> <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>newhome<br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> <span style="color: #c20cb9; font-weight: bold;">mount</span> <span style="color: #660033;">-a</span><br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> <span style="color: #C20CB9; font-weight: bold;">umount</span> <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>newhome<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> <span style="color: #C20CB9; font-weight: bold;">mount</span> <span style="color: #660033;">-a</span><br/>
 </div>
 </div>
 <h3>例2: 定期的なスナップショットとクリーンアップ</h3>
@@ -456,11 +456,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: #666666; font-style: italic;">#!/bin/bash</span><br/>
 <span style="color: #666666; font-style: italic;"># 毎日のスナップショットを作成</span><br/>
 <span style="color: #007800;">SNAP_DIR</span>=<span style="color: #a10;">"/mnt/btrfs/.snapshots"</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">mkdir</span> <span style="color: #660033;">-p</span> <span style="color: #a10;">"<span style="color: #007800;">$SNAP_DIR</span>"</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> btrfs subvolume snapshot <span style="color: #660033;">-r</span> <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs <span style="color: #a10;">"<span style="color: #007800;">$SNAP_DIR</span>/<span style="color: #007800;">$(date +%Y%m%d)</span>"</span><br/>
+<span style="color: #C20CB9; font-weight: bold;">mkdir</span> <span style="color: #660033;">-p</span> <span style="color: #a10;">"<span style="color: #007800;">$SNAP_DIR</span>"</span><br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> btrfs subvolume snapshot <span style="color: #660033;">-r</span> <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs <span style="color: #a10;">"<span style="color: #007800;">$SNAP_DIR</span>/<span style="color: #007800;">$(date +%Y%m%d)</span>"</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># 直近7日間のスナップショットを保持</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">find</span> <span style="color: #a10;">"<span style="color: #007800;">$SNAP_DIR</span>"</span> <span style="color: #660033;">-mindepth</span> <span style="color: #000000;">1</span> <span style="color: #660033;">-maxdepth</span> <span style="color: #000000;">1</span> <span style="color: #660033;">-type</span> d <span style="color: #660033;">-name</span> <span style="color: #a10;">"2*"</span> <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #c20cb9; font-weight: bold;">sort</span> <span style="color: #660033;">-r</span> <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #c20cb9; font-weight: bold;">tail</span> <span style="color: #660033;">-n</span> +<span style="color: #000000;">8</span> <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #c20cb9; font-weight: bold;">xargs</span> <span style="color: #660033;">-r</span> <span style="color: #c20cb9; font-weight: bold;">sudo</span> btrfs subvolume delete<br/>
+<span style="color: #C20CB9; font-weight: bold;">find</span> <span style="color: #a10;">"<span style="color: #007800;">$SNAP_DIR</span>"</span> <span style="color: #660033;">-mindepth</span> <span style="color: #000000;">1</span> <span style="color: #660033;">-maxdepth</span> <span style="color: #000000;">1</span> <span style="color: #660033;">-type</span> d <span style="color: #660033;">-name</span> <span style="color: #a10;">"2*"</span> <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #C20CB9; font-weight: bold;">sort</span> <span style="color: #660033;">-r</span> <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #C20CB9; font-weight: bold;">tail</span> <span style="color: #660033;">-n</span> +<span style="color: #000000;">8</span> <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #C20CB9; font-weight: bold;">xargs</span> <span style="color: #660033;">-r</span> <span style="color: #C20CB9; font-weight: bold;">sudo</span> btrfs subvolume delete<br/>
 </div>
 </div>
 <hr/>
@@ -470,10 +470,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># 削除されていないスナップショットの占有スペースを確認</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> btrfs subvolume list <span style="color: #660033;">-s</span> <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> btrfs subvolume list <span style="color: #660033;">-s</span> <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># 不要なスナップショットをクリーンアップ</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> btrfs subvolume delete <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<span style="color: #000000; font-weight: bold;">/</span>old_snapshot<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> btrfs subvolume delete <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<span style="color: #000000; font-weight: bold;">/</span>old_snapshot<br/>
 </div>
 </div>
 <h3>問題2: バランス操作がフリーズする</h3>
@@ -481,13 +481,13 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># バランス状態を確認</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> btrfs balance status <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> btrfs balance status <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># バランス操作を一時停止</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> btrfs balance pause <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> btrfs balance pause <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># バランス操作を再開</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> btrfs balance resume <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> btrfs balance resume <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<br/>
 </div>
 </div>
 <h3>問題3: マウントに失敗する</h3>
@@ -495,11 +495,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># ファイルシステムをチェック</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> btrfs check <span style="color: #000000; font-weight: bold;">/</span>dev<span style="color: #000000; font-weight: bold;">/</span>sdX<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> btrfs check <span style="color: #000000; font-weight: bold;">/</span>dev<span style="color: #000000; font-weight: bold;">/</span>sdX<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># 修復を試みる</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> btrfs rescue zero-log <span style="color: #000000; font-weight: bold;">/</span>dev<span style="color: #000000; font-weight: bold;">/</span>sdX<br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> <span style="color: #c20cb9; font-weight: bold;">mount</span> <span style="color: #000000; font-weight: bold;">/</span>dev<span style="color: #000000; font-weight: bold;">/</span>sdX <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> btrfs rescue zero-log <span style="color: #000000; font-weight: bold;">/</span>dev<span style="color: #000000; font-weight: bold;">/</span>sdX<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> <span style="color: #C20CB9; font-weight: bold;">mount</span> <span style="color: #000000; font-weight: bold;">/</span>dev<span style="color: #000000; font-weight: bold;">/</span>sdX <span style="color: #000000; font-weight: bold;">/</span>mnt<span style="color: #000000; font-weight: bold;">/</span>btrfs<br/>
 </div>
 </div>
 <hr/>
@@ -569,7 +569,7 @@ sudo btrfs scrub start /mnt/btrfs</pre>
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -614,7 +614,7 @@ sudo btrfs scrub start /mnt/btrfs</pre>
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -653,7 +653,7 @@ sudo btrfs scrub start /mnt/btrfs</pre>
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿はこちらをクリック</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -872,7 +872,7 @@ function kFormatter(num) {
 </style>
 <div class="sidebar-box re-box re-box-large">
 <div class="sidebar-box recommend-here" style="margin: 0 auto;">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
+<a href="#" style="font-size: 16px; color:#5B80A6;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
 </div>
 <div class="sidebar-box sidebar-cate">
 <div class="sidebar-tree">

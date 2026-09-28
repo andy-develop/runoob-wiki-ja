@@ -382,20 +382,20 @@ System.out.println("Superclass: " + superClass.getName());</pre>
         <br/>
         <span style="color: #666666; font-style: italic;">// オブジェクトの作成</span><br/>
         Constructor<span style="color: #339933;">&lt;?&gt;</span> constructor <span style="color: #339933;">=</span> clazz.<span style="color: #006633;">getConstructor</span><span style="color: #009900;">(</span><span style="color: #003399;">String</span>.<span style="color: #000000; font-weight: bold;">class</span>, <span style="color: #000066; font-weight: bold;">int</span>.<span style="color: #000000; font-weight: bold;">class</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
-        <span style="color: #003399;">Object</span> person <span style="color: #339933;">=</span> constructor.<span style="color: #006633;">newInstance</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"John"</span>, <span style="color: #cc66cc;">30</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+        <span style="color: #003399;">Object</span> person <span style="color: #339933;">=</span> constructor.<span style="color: #006633;">newInstance</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"John"</span>, <span style="color: #CC66CC;">30</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
         <br/>
         <span style="color: #666666; font-style: italic;">// フィールドへのアクセス</span><br/>
-        <span style="color: #003399;">Field</span> nameField <span style="color: #339933;">=</span> clazz.<span style="color: #006633;">getDeclaredField</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"name"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+        <span style="color: #003399;">Field</span> nameField <span style="color: #339933;">=</span> clazz.<span style="color: #006633;">getDeclaredField</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"name"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
         nameField.<span style="color: #006633;">setAccessible</span><span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">true</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
-        <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"Name: "</span> <span style="color: #339933;">+</span> nameField.<span style="color: #006633;">get</span><span style="color: #009900;">(</span>person<span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+        <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"Name: "</span> <span style="color: #339933;">+</span> nameField.<span style="color: #006633;">get</span><span style="color: #009900;">(</span>person<span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
         <br/>
         <span style="color: #666666; font-style: italic;">// フィールドの変更</span><br/>
-        nameField.<span style="color: #006633;">set</span><span style="color: #009900;">(</span>person, <span style="color: #0000ff;">"Doe"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
-        <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"Updated Name: "</span> <span style="color: #339933;">+</span> nameField.<span style="color: #006633;">get</span><span style="color: #009900;">(</span>person<span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+        nameField.<span style="color: #006633;">set</span><span style="color: #009900;">(</span>person, <span style="color: #0000FF;">"Doe"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+        <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"Updated Name: "</span> <span style="color: #339933;">+</span> nameField.<span style="color: #006633;">get</span><span style="color: #009900;">(</span>person<span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
         <br/>
         <span style="color: #666666; font-style: italic;">// メソッドの呼び出し</span><br/>
-        <span style="color: #003399;">Method</span> greetMethod <span style="color: #339933;">=</span> clazz.<span style="color: #006633;">getMethod</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"greet"</span>, <span style="color: #003399;">String</span>.<span style="color: #000000; font-weight: bold;">class</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
-        greetMethod.<span style="color: #006633;">invoke</span><span style="color: #009900;">(</span>person, <span style="color: #0000ff;">"World"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+        <span style="color: #003399;">Method</span> greetMethod <span style="color: #339933;">=</span> clazz.<span style="color: #006633;">getMethod</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"greet"</span>, <span style="color: #003399;">String</span>.<span style="color: #000000; font-weight: bold;">class</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+        greetMethod.<span style="color: #006633;">invoke</span><span style="color: #009900;">(</span>person, <span style="color: #0000FF;">"World"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
     <span style="color: #009900;">}</span><br/>
 <span style="color: #009900;">}</span><br/>
 <br/>
@@ -409,7 +409,7 @@ System.out.println("Superclass: " + superClass.getName());</pre>
     <span style="color: #009900;">}</span><br/>
 <br/>
     <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000066; font-weight: bold;">void</span> greet<span style="color: #009900;">(</span><span style="color: #003399;">String</span> message<span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
-        <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span>name <span style="color: #339933;">+</span> <span style="color: #0000ff;">" says: "</span> <span style="color: #339933;">+</span> message<span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+        <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span>name <span style="color: #339933;">+</span> <span style="color: #0000FF;">" says: "</span> <span style="color: #339933;">+</span> message<span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
     <span style="color: #009900;">}</span><br/>
 <span style="color: #009900;">}</span><br/>
 </div></div><p>上記のコードをコンパイルして実行すると、出力結果は次のようになります：</p>
@@ -434,30 +434,30 @@ Doe says: World</pre>
 <br/>
         <span style="color: #666666; font-style: italic;">// Carオブジェクトの作成</span><br/>
         Constructor<span style="color: #339933;">&lt;?&gt;</span> constructor <span style="color: #339933;">=</span> clazz.<span style="color: #006633;">getConstructor</span><span style="color: #009900;">(</span><span style="color: #003399;">String</span>.<span style="color: #000000; font-weight: bold;">class</span>, <span style="color: #000066; font-weight: bold;">int</span>.<span style="color: #000000; font-weight: bold;">class</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
-        <span style="color: #003399;">Object</span> car <span style="color: #339933;">=</span> constructor.<span style="color: #006633;">newInstance</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"Toyota"</span>, <span style="color: #cc66cc;">2020</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+        <span style="color: #003399;">Object</span> car <span style="color: #339933;">=</span> constructor.<span style="color: #006633;">newInstance</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"Toyota"</span>, <span style="color: #CC66CC;">2020</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
         <span style="color: #666666; font-style: italic;">// フィールドへのアクセスと変更</span><br/>
-        <span style="color: #003399;">Field</span> modelField <span style="color: #339933;">=</span> clazz.<span style="color: #006633;">getDeclaredField</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"model"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
-        <span style="color: #003399;">Field</span> yearField <span style="color: #339933;">=</span> clazz.<span style="color: #006633;">getDeclaredField</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"year"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+        <span style="color: #003399;">Field</span> modelField <span style="color: #339933;">=</span> clazz.<span style="color: #006633;">getDeclaredField</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"model"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+        <span style="color: #003399;">Field</span> yearField <span style="color: #339933;">=</span> clazz.<span style="color: #006633;">getDeclaredField</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"year"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
         <br/>
         <span style="color: #666666; font-style: italic;">// フィールドをアクセス可能に設定（フィールドがprivateの場合）</span><br/>
         modelField.<span style="color: #006633;">setAccessible</span><span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">true</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
         yearField.<span style="color: #006633;">setAccessible</span><span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">true</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
         <br/>
         <span style="color: #666666; font-style: italic;">// 元のフィールド値を出力</span><br/>
-        <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"Original Model: "</span> <span style="color: #339933;">+</span> modelField.<span style="color: #006633;">get</span><span style="color: #009900;">(</span>car<span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
-        <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"Original Year: "</span> <span style="color: #339933;">+</span> yearField.<span style="color: #006633;">get</span><span style="color: #009900;">(</span>car<span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+        <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"Original Model: "</span> <span style="color: #339933;">+</span> modelField.<span style="color: #006633;">get</span><span style="color: #009900;">(</span>car<span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+        <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"Original Year: "</span> <span style="color: #339933;">+</span> yearField.<span style="color: #006633;">get</span><span style="color: #009900;">(</span>car<span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
         <br/>
         <span style="color: #666666; font-style: italic;">// フィールド値を変更</span><br/>
-        modelField.<span style="color: #006633;">set</span><span style="color: #009900;">(</span>car, <span style="color: #0000ff;">"Honda"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
-        yearField.<span style="color: #006633;">set</span><span style="color: #009900;">(</span>car, <span style="color: #cc66cc;">2024</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+        modelField.<span style="color: #006633;">set</span><span style="color: #009900;">(</span>car, <span style="color: #0000FF;">"Honda"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+        yearField.<span style="color: #006633;">set</span><span style="color: #009900;">(</span>car, <span style="color: #CC66CC;">2024</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
         <br/>
         <span style="color: #666666; font-style: italic;">// 変更後のフィールド値を出力</span><br/>
-        <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"Updated Model: "</span> <span style="color: #339933;">+</span> modelField.<span style="color: #006633;">get</span><span style="color: #009900;">(</span>car<span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
-        <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"Updated Year: "</span> <span style="color: #339933;">+</span> yearField.<span style="color: #006633;">get</span><span style="color: #009900;">(</span>car<span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+        <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"Updated Model: "</span> <span style="color: #339933;">+</span> modelField.<span style="color: #006633;">get</span><span style="color: #009900;">(</span>car<span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+        <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"Updated Year: "</span> <span style="color: #339933;">+</span> yearField.<span style="color: #006633;">get</span><span style="color: #009900;">(</span>car<span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
         <br/>
         <span style="color: #666666; font-style: italic;">// メソッドの呼び出し</span><br/>
-        <span style="color: #003399;">Method</span> startMethod <span style="color: #339933;">=</span> clazz.<span style="color: #006633;">getMethod</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"start"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+        <span style="color: #003399;">Method</span> startMethod <span style="color: #339933;">=</span> clazz.<span style="color: #006633;">getMethod</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"start"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
         startMethod.<span style="color: #006633;">invoke</span><span style="color: #009900;">(</span>car<span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
     <span style="color: #009900;">}</span><br/>
 <span style="color: #009900;">}</span><br/>
@@ -472,7 +472,7 @@ Doe says: World</pre>
     <span style="color: #009900;">}</span><br/>
 <br/>
     <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000066; font-weight: bold;">void</span> start<span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
-        <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"The "</span> <span style="color: #339933;">+</span> model <span style="color: #339933;">+</span> <span style="color: #0000ff;">" car of year "</span> <span style="color: #339933;">+</span> year <span style="color: #339933;">+</span> <span style="color: #0000ff;">" is starting."</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+        <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"The "</span> <span style="color: #339933;">+</span> model <span style="color: #339933;">+</span> <span style="color: #0000FF;">" car of year "</span> <span style="color: #339933;">+</span> year <span style="color: #339933;">+</span> <span style="color: #0000FF;">" is starting."</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
     <span style="color: #009900;">}</span><br/>
 <span style="color: #009900;">}</span><br/>
 </div></div><p>上記のコードをコンパイルして実行すると、出力結果は次のようになります：</p>
@@ -515,7 +515,7 @@ The Honda car of year 2024 is starting.</pre>
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -560,7 +560,7 @@ The Honda car of year 2024 is starting.</pre>
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -599,7 +599,7 @@ The Honda car of year 2024 is starting.</pre>
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリックしてください</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -818,7 +818,7 @@ function kFormatter(num) {
 </style>
 <div class="sidebar-box re-box re-box-large">
 <div class="sidebar-box recommend-here" style="margin: 0 auto;">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
+<a href="#" style="font-size: 16px; color:#5B80A6;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
 </div>
 <div class="sidebar-box sidebar-cate">
 <div class="sidebar-tree">

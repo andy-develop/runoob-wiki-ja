@@ -97,31 +97,31 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h3>キーワード：initial， always</h3><p>プロセス構造文には2種類あり、initial 文と always 文です。それらは動作レベルモデリングの2つの基本文です。</p><p>1つのモジュールには複数の initial 文と always 文を含めることができますが、2種類の文を入れ子にして使用することはできません。</p><p>これらの文はモジュール内で並列に実行され、モジュール内の前後の順序とは関係ありません。</p><p>ただし、initial 文または always 文の内部は順次実行されると理解できます（ノンブロッキング代入を除く）。</p><p>各 initial 文または always 文は独立した制御フローを生成し、実行時間はすべて時刻0から始まります。</p>
 <h3>initial 文</h3><p>initial 文は時刻0から実行を開始し、1回だけ実行されます。複数の initial ブロックは互いに独立しています。</p><p>initial ブロック内に複数の文が含まれる場合、キーワード begin と end を使用してブロック文を構成する必要があります。</p><p>initial ブロック内に文が1つだけの場合は、キーワード begin と end は使用しても使用しなくても構いません。</p><p>initial は理論上は合成不可能であり、主に初期化や信号検出などに使用されます。</p><p>前のセクションのコードを少し修正してシミュレーションを行います。コードは以下の通りです。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #008800;">`timescale</span> <span style="color: #ff0055;">1ns</span><span style="color: #5D478B;">/</span><span style="color: #ff0055;">1ns</span><br/>
+<span style="color: #008800;">`timescale</span> <span style="color: #FF0055;">1ns</span><span style="color: #5D478B;">/</span><span style="color: #FF0055;">1ns</span><br/>
  <br/>
 <span style="color: #A52A2A; font-weight: bold;">module</span> test <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">reg</span>  ai<span style="color: #5D478B;">,</span> bi <span style="color: #5D478B;">;</span><br/>
  <br/>
     <span style="color: #A52A2A; font-weight: bold;">initial</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-        ai         <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span><br/>
-        <span style="color: #5D478B;">#</span><span style="color: #ff0055;">25</span> <span style="color: #5D478B;">;</span>      ai        <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1</span> <span style="color: #5D478B;">;</span><br/>
-        <span style="color: #5D478B;">#</span><span style="color: #ff0055;">35</span> <span style="color: #5D478B;">;</span>      ai        <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span>        <span style="color: #00008B; font-style: italic;">//absolute 60ns</span><br/>
-        <span style="color: #5D478B;">#</span><span style="color: #ff0055;">40</span> <span style="color: #5D478B;">;</span>      ai        <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1</span> <span style="color: #5D478B;">;</span>        <span style="color: #00008B; font-style: italic;">//absolute 100ns</span><br/>
-        <span style="color: #5D478B;">#</span><span style="color: #ff0055;">10</span> <span style="color: #5D478B;">;</span>      ai        <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span>        <span style="color: #00008B; font-style: italic;">//absolute 110ns</span><br/>
+        ai         <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span><br/>
+        <span style="color: #5D478B;">#</span><span style="color: #FF0055;">25</span> <span style="color: #5D478B;">;</span>      ai        <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1</span> <span style="color: #5D478B;">;</span><br/>
+        <span style="color: #5D478B;">#</span><span style="color: #FF0055;">35</span> <span style="color: #5D478B;">;</span>      ai        <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span>        <span style="color: #00008B; font-style: italic;">//absolute 60ns</span><br/>
+        <span style="color: #5D478B;">#</span><span style="color: #FF0055;">40</span> <span style="color: #5D478B;">;</span>      ai        <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1</span> <span style="color: #5D478B;">;</span>        <span style="color: #00008B; font-style: italic;">//absolute 100ns</span><br/>
+        <span style="color: #5D478B;">#</span><span style="color: #FF0055;">10</span> <span style="color: #5D478B;">;</span>      ai        <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span>        <span style="color: #00008B; font-style: italic;">//absolute 110ns</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
  <br/>
     <span style="color: #A52A2A; font-weight: bold;">initial</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-        bi         <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1</span> <span style="color: #5D478B;">;</span><br/>
-        <span style="color: #5D478B;">#</span><span style="color: #ff0055;">70</span> <span style="color: #5D478B;">;</span>      bi        <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span>        <span style="color: #00008B; font-style: italic;">//absolute 70ns</span><br/>
-        <span style="color: #5D478B;">#</span><span style="color: #ff0055;">20</span> <span style="color: #5D478B;">;</span>      bi        <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1</span> <span style="color: #5D478B;">;</span>        <span style="color: #00008B; font-style: italic;">//absolute 90ns</span><br/>
+        bi         <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1</span> <span style="color: #5D478B;">;</span><br/>
+        <span style="color: #5D478B;">#</span><span style="color: #FF0055;">70</span> <span style="color: #5D478B;">;</span>      bi        <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span>        <span style="color: #00008B; font-style: italic;">//absolute 70ns</span><br/>
+        <span style="color: #5D478B;">#</span><span style="color: #FF0055;">20</span> <span style="color: #5D478B;">;</span>      bi        <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1</span> <span style="color: #5D478B;">;</span>        <span style="color: #00008B; font-style: italic;">//absolute 90ns</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
  <br/>
     <span style="color: #00008B; font-style: italic;">//at proper time stop the simulation</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">initial</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">forever</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-            <span style="color: #5D478B;">#</span><span style="color: #ff0055;">100</span><span style="color: #5D478B;">;</span><br/>
+            <span style="color: #5D478B;">#</span><span style="color: #FF0055;">100</span><span style="color: #5D478B;">;</span><br/>
             <span style="color: #00008B; font-style: italic;">//$display("---gyc---%d", $time);</span><br/>
-            <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span><span style="color: #9932CC;">$time</span> <span style="color: #5D478B;">&gt;=</span> <span style="color: #ff0055;">1000</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
+            <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span><span style="color: #9932CC;">$time</span> <span style="color: #5D478B;">&gt;=</span> <span style="color: #FF0055;">1000</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
                 <span style="color: #9932CC;">$finish</span> <span style="color: #5D478B;">;</span><br/>
             <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
@@ -135,20 +135,20 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>initial 文とは逆に、always 文は繰り返し実行されます。always 文ブロックは時刻0からその中の動作文を実行し、最後の文を実行し終えると、再びブロック内の最初の文を実行し、このようにして繰り返します。</p><p>循環実行の特徴により、always 文は主にシミュレーションクロックの生成や信号動作の検出などに使用されます。</p>
 <p>次に always を使用して100MHzのクロックソースを生成し、1010nsでシミュレーションを停止します。コードは以下の通りです。</p><p>コードは以下の通りです。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #008800;">`timescale</span> <span style="color: #ff0055;">1ns</span><span style="color: #5D478B;">/</span><span style="color: #ff0055;">1ns</span><br/>
+<span style="color: #008800;">`timescale</span> <span style="color: #FF0055;">1ns</span><span style="color: #5D478B;">/</span><span style="color: #FF0055;">1ns</span><br/>
  <br/>
 <span style="color: #A52A2A; font-weight: bold;">module</span> test <span style="color: #5D478B;">;</span><br/>
  <br/>
-    <span style="color: #A52A2A; font-weight: bold;">parameter</span> CLK_FREQ   <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">100</span> <span style="color: #5D478B;">;</span> <span style="color: #00008B; font-style: italic;">//100MHz</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">parameter</span> CLK_FREQ   <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">100</span> <span style="color: #5D478B;">;</span> <span style="color: #00008B; font-style: italic;">//100MHz</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">parameter</span> CLK_CYCLE  <span style="color: #5D478B;">=</span> 1e9 <span style="color: #5D478B;">/</span> <span style="color: #9F79EE;">(</span>CLK_FREQ <span style="color: #5D478B;">*</span> 1e6<span style="color: #9F79EE;">)</span> <span style="color: #5D478B;">;</span>   <span style="color: #00008B; font-style: italic;">//switch to ns</span><br/>
  <br/>
     <span style="color: #A52A2A; font-weight: bold;">reg</span>  clk <span style="color: #5D478B;">;</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">initial</span>      clk <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">1'b0</span> <span style="color: #5D478B;">;</span>      <span style="color: #00008B; font-style: italic;">//clk is initialized to "0"</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">always</span>     <span style="color: #5D478B;">#</span> <span style="color: #9F79EE;">(</span>CLK_CYCLE<span style="color: #5D478B;">/</span><span style="color: #ff0055;">2</span><span style="color: #9F79EE;">)</span> clk <span style="color: #5D478B;">=</span> <span style="color: #5D478B;">~</span>clk <span style="color: #5D478B;">;</span>       <span style="color: #00008B; font-style: italic;">//generating a real clock by reversing</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">initial</span>      clk <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">1'b0</span> <span style="color: #5D478B;">;</span>      <span style="color: #00008B; font-style: italic;">//clk is initialized to "0"</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">always</span>     <span style="color: #5D478B;">#</span> <span style="color: #9F79EE;">(</span>CLK_CYCLE<span style="color: #5D478B;">/</span><span style="color: #FF0055;">2</span><span style="color: #9F79EE;">)</span> clk <span style="color: #5D478B;">=</span> <span style="color: #5D478B;">~</span>clk <span style="color: #5D478B;">;</span>       <span style="color: #00008B; font-style: italic;">//generating a real clock by reversing</span><br/>
  <br/>
     <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-        <span style="color: #5D478B;">#</span><span style="color: #ff0055;">10</span><span style="color: #5D478B;">;</span><br/>
-        <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span><span style="color: #9932CC;">$time</span> <span style="color: #5D478B;">&gt;=</span> <span style="color: #ff0055;">1000</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
+        <span style="color: #5D478B;">#</span><span style="color: #FF0055;">10</span><span style="color: #5D478B;">;</span><br/>
+        <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span><span style="color: #9932CC;">$time</span> <span style="color: #5D478B;">&gt;=</span> <span style="color: #FF0055;">1000</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
             <span style="color: #9932CC;">$finish</span> <span style="color: #5D478B;">;</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
@@ -183,7 +183,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -228,7 +228,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -267,7 +267,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
 	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -478,7 +478,7 @@ p.note-author {
     border-bottom: 1px solid #ddd;
     font-size: 18px;
     font-weight: bold;
-    color: #78a15a;
+    color: #5B80A6;
     padding-bottom: 2px;
     margin-bottom: 4px;
 }

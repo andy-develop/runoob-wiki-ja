@@ -170,22 +170,22 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2>関数を変数に代入する</h2>
 <p>関数は変数に代入でき、その変数を介して関数を呼び出すことができます：</p>
 <div class="example"><h2 class="example">実例</h2><div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
-    <span style="color: #cc66cc;">"fmt"</span><br/>
-    <span style="color: #cc66cc;">"math"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
+    <span style="color: #CC66CC;">"fmt"</span><br/>
+    <span style="color: #CC66CC;">"math"</span><br/>
 <span style="color: #339933;">)</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
     <span style="color: #666666; font-style: italic;">/* 匿名関数を変数 getSquareRoot に代入する */</span><br/>
     getSquareRoot <span style="color: #339933;">:=</span> <span style="color: #993333;">func</span><span style="color: #339933;">(</span>x <span style="color: #993333;">float64</span><span style="color: #339933;">)</span> <span style="color: #993333;">float64</span> <span style="color: #339933;">{</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">return</span> math<span style="color: #339933;">.</span>Sqrt<span style="color: #339933;">(</span>x<span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">return</span> math<span style="color: #339933;">.</span>Sqrt<span style="color: #339933;">(</span>x<span style="color: #339933;">)</span><br/>
     <span style="color: #339933;">}</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">/* 変数を介して関数を呼び出す */</span><br/>
-    fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span>getSquareRoot<span style="color: #339933;">(</span><span style="color: #cc66cc;">9</span><span style="color: #339933;">))</span>   <span style="color: #666666; font-style: italic;">// 出力：3</span><br/>
-    fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span>getSquareRoot<span style="color: #339933;">(</span><span style="color: #cc66cc;">16</span><span style="color: #339933;">))</span>  <span style="color: #666666; font-style: italic;">// 出力：4</span><br/>
+    fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span>getSquareRoot<span style="color: #339933;">(</span><span style="color: #CC66CC;">9</span><span style="color: #339933;">))</span>   <span style="color: #666666; font-style: italic;">// 出力：3</span><br/>
+    fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span>getSquareRoot<span style="color: #339933;">(</span><span style="color: #CC66CC;">16</span><span style="color: #339933;">))</span>  <span style="color: #666666; font-style: italic;">// 出力：4</span><br/>
 <span style="color: #339933;">}</span><br/>
 </div></div>
 <p>上記のコードの実行結果は次のとおりです：</p>
@@ -195,40 +195,40 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2>関数を実引数として渡す</h2>
 <p>関数を実引数として別の関数に渡す場合、受け取り側は対応する関数型のパラメータを宣言する必要があります。次の例では、ある関数を定義しています。<code>apply</code>その関数は、操作関数と2つのオペランドを受け取り、2つの数値に対して任意に指定された操作を実行します：</p>
 <div class="example"><h2 class="example">実例</h2><div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
-    <span style="color: #cc66cc;">"fmt"</span><br/>
-    <span style="color: #cc66cc;">"math"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
+    <span style="color: #CC66CC;">"fmt"</span><br/>
+    <span style="color: #CC66CC;">"math"</span><br/>
 <span style="color: #339933;">)</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;">/* 関数型のパラメータ op を受け取る関数を定義する */</span><br/>
 <span style="color: #666666; font-style: italic;">/* op の型は func(float64, float64) float64 で、2つの float64 パラメータを受け取り float64 を返す関数を表す */</span><br/>
 <span style="color: #993333;">func</span> apply<span style="color: #339933;">(</span>op <span style="color: #993333;">func</span><span style="color: #339933;">(</span><span style="color: #993333;">float64</span><span style="color: #339933;">,</span> <span style="color: #993333;">float64</span><span style="color: #339933;">)</span> <span style="color: #993333;">float64</span><span style="color: #339933;">,</span> a<span style="color: #339933;">,</span> b <span style="color: #993333;">float64</span><span style="color: #339933;">)</span> <span style="color: #993333;">float64</span> <span style="color: #339933;">{</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">return</span> op<span style="color: #339933;">(</span>a<span style="color: #339933;">,</span> b<span style="color: #339933;">)</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">return</span> op<span style="color: #339933;">(</span>a<span style="color: #339933;">,</span> b<span style="color: #339933;">)</span><br/>
 <span style="color: #339933;">}</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
     <span style="color: #666666; font-style: italic;">/* 加算関数を定義する */</span><br/>
     add <span style="color: #339933;">:=</span> <span style="color: #993333;">func</span><span style="color: #339933;">(</span>a<span style="color: #339933;">,</span> b <span style="color: #993333;">float64</span><span style="color: #339933;">)</span> <span style="color: #993333;">float64</span> <span style="color: #339933;">{</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">return</span> a <span style="color: #339933;">+</span> b<br/>
+        <span style="color: #B1B100; font-weight: bold;">return</span> a <span style="color: #339933;">+</span> b<br/>
     <span style="color: #339933;">}</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">/* 乗算関数を定義する */</span><br/>
     multiply <span style="color: #339933;">:=</span> <span style="color: #993333;">func</span><span style="color: #339933;">(</span>a<span style="color: #339933;">,</span> b <span style="color: #993333;">float64</span><span style="color: #339933;">)</span> <span style="color: #993333;">float64</span> <span style="color: #339933;">{</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">return</span> a <span style="color: #339933;">*</span> b<br/>
+        <span style="color: #B1B100; font-weight: bold;">return</span> a <span style="color: #339933;">*</span> b<br/>
     <span style="color: #339933;">}</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">/* add 関数を実引数として apply に渡す */</span><br/>
-    fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span>apply<span style="color: #339933;">(</span>add<span style="color: #339933;">,</span> <span style="color: #cc66cc;">3</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">4</span><span style="color: #339933;">))</span>       <span style="color: #666666; font-style: italic;">// 出力：7</span><br/>
+    fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span>apply<span style="color: #339933;">(</span>add<span style="color: #339933;">,</span> <span style="color: #CC66CC;">3</span><span style="color: #339933;">,</span> <span style="color: #CC66CC;">4</span><span style="color: #339933;">))</span>       <span style="color: #666666; font-style: italic;">// 出力：7</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">/* multiply 関数を実引数として apply に渡す */</span><br/>
-    fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span>apply<span style="color: #339933;">(</span>multiply<span style="color: #339933;">,</span> <span style="color: #cc66cc;">3</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">4</span><span style="color: #339933;">))</span>  <span style="color: #666666; font-style: italic;">// 出力：12</span><br/>
+    fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span>apply<span style="color: #339933;">(</span>multiply<span style="color: #339933;">,</span> <span style="color: #CC66CC;">3</span><span style="color: #339933;">,</span> <span style="color: #CC66CC;">4</span><span style="color: #339933;">))</span>  <span style="color: #666666; font-style: italic;">// 出力：12</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">/* 匿名関数を直接渡すこともできる */</span><br/>
     fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span>apply<span style="color: #339933;">(</span><span style="color: #993333;">func</span><span style="color: #339933;">(</span>a<span style="color: #339933;">,</span> b <span style="color: #993333;">float64</span><span style="color: #339933;">)</span> <span style="color: #993333;">float64</span> <span style="color: #339933;">{</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">return</span> math<span style="color: #339933;">.</span>Pow<span style="color: #339933;">(</span>a<span style="color: #339933;">,</span> b<span style="color: #339933;">)</span> <span style="color: #666666; font-style: italic;">// a の b 乗</span><br/>
-    <span style="color: #339933;">},</span> <span style="color: #cc66cc;">2</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">10</span><span style="color: #339933;">))</span>                          <span style="color: #666666; font-style: italic;">// 出力：1024</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">return</span> math<span style="color: #339933;">.</span>Pow<span style="color: #339933;">(</span>a<span style="color: #339933;">,</span> b<span style="color: #339933;">)</span> <span style="color: #666666; font-style: italic;">// a の b 乗</span><br/>
+    <span style="color: #339933;">},</span> <span style="color: #CC66CC;">2</span><span style="color: #339933;">,</span> <span style="color: #CC66CC;">10</span><span style="color: #339933;">))</span>                          <span style="color: #666666; font-style: italic;">// 出力：1024</span><br/>
 <span style="color: #339933;">}</span><br/>
 </div></div>
 <p>上記のコードの実行結果は次のとおりです：</p>
@@ -239,27 +239,27 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2>実際の応用：カスタムソートルール</h2>
 <p>関数を実引数として使う最も一般的な応用の1つは、カスタムソートルールです。Go標準ライブラリの<code>sort.Slice</code>sort.Slice は比較関数をパラメータとして受け取ります：</p>
 <div class="example"><h2 class="example">実例</h2><div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
-    <span style="color: #cc66cc;">"fmt"</span><br/>
-    <span style="color: #cc66cc;">"sort"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
+    <span style="color: #CC66CC;">"fmt"</span><br/>
+    <span style="color: #CC66CC;">"sort"</span><br/>
 <span style="color: #339933;">)</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
-    nums <span style="color: #339933;">:=</span> <span style="color: #339933;">[]</span><span style="color: #993333;">int</span><span style="color: #339933;">{</span><span style="color: #cc66cc;">5</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">2</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">8</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">1</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">9</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">3</span><span style="color: #339933;">}</span><br/>
+    nums <span style="color: #339933;">:=</span> <span style="color: #339933;">[]</span><span style="color: #993333;">int</span><span style="color: #339933;">{</span><span style="color: #CC66CC;">5</span><span style="color: #339933;">,</span> <span style="color: #CC66CC;">2</span><span style="color: #339933;">,</span> <span style="color: #CC66CC;">8</span><span style="color: #339933;">,</span> <span style="color: #CC66CC;">1</span><span style="color: #339933;">,</span> <span style="color: #CC66CC;">9</span><span style="color: #339933;">,</span> <span style="color: #CC66CC;">3</span><span style="color: #339933;">}</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">/* 比較関数を実引数として sort.Slice に渡し、小さい順にソートする */</span><br/>
     sort<span style="color: #339933;">.</span>Slice<span style="color: #339933;">(</span>nums<span style="color: #339933;">,</span> <span style="color: #993333;">func</span><span style="color: #339933;">(</span><span style="">i</span><span style="color: #339933;">,</span> j <span style="color: #993333;">int</span><span style="color: #339933;">)</span> <span style="color: #993333;">bool</span> <span style="color: #339933;">{</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">return</span> nums<span style="color: #339933;">[</span><span style="">i</span><span style="color: #339933;">]</span> &lt; nums<span style="color: #339933;">[</span>j<span style="color: #339933;">]</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">return</span> nums<span style="color: #339933;">[</span><span style="">i</span><span style="color: #339933;">]</span> &lt; nums<span style="color: #339933;">[</span>j<span style="color: #339933;">]</span><br/>
     <span style="color: #339933;">})</span><br/>
-    fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #cc66cc;">"昇順："</span><span style="color: #339933;">,</span> nums<span style="color: #339933;">)</span>  <span style="color: #666666; font-style: italic;">// 出力：昇順：[1 2 3 5 8 9]</span><br/>
+    fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #CC66CC;">"昇順："</span><span style="color: #339933;">,</span> nums<span style="color: #339933;">)</span>  <span style="color: #666666; font-style: italic;">// 出力：昇順：[1 2 3 5 8 9]</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">/* 異なる比較関数を渡して、大きい順にソートする */</span><br/>
     sort<span style="color: #339933;">.</span>Slice<span style="color: #339933;">(</span>nums<span style="color: #339933;">,</span> <span style="color: #993333;">func</span><span style="color: #339933;">(</span><span style="">i</span><span style="color: #339933;">,</span> j <span style="color: #993333;">int</span><span style="color: #339933;">)</span> <span style="color: #993333;">bool</span> <span style="color: #339933;">{</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">return</span> nums<span style="color: #339933;">[</span><span style="">i</span><span style="color: #339933;">]</span> &gt; nums<span style="color: #339933;">[</span>j<span style="color: #339933;">]</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">return</span> nums<span style="color: #339933;">[</span><span style="">i</span><span style="color: #339933;">]</span> &gt; nums<span style="color: #339933;">[</span>j<span style="color: #339933;">]</span><br/>
     <span style="color: #339933;">})</span><br/>
-    fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #cc66cc;">"降順："</span><span style="color: #339933;">,</span> nums<span style="color: #339933;">)</span>  <span style="color: #666666; font-style: italic;">// 出力：降順：[9 8 5 3 2 1]</span><br/>
+    fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #CC66CC;">"降順："</span><span style="color: #339933;">,</span> nums<span style="color: #339933;">)</span>  <span style="color: #666666; font-style: italic;">// 出力：降順：[9 8 5 3 2 1]</span><br/>
 <span style="color: #339933;">}</span><br/>
 </div></div>
 <p>上記のコードの実行結果は次のとおりです：</p>
@@ -299,7 +299,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -344,7 +344,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -471,7 +471,7 @@ func main(){
 </div>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリックしてください</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>

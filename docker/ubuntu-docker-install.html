@@ -308,7 +308,7 @@ sudo systemctl enable docker
 <pre>$ sudo apt-get update</pre>
 <p>HTTPS でリポジトリにアクセスするための apt 依存パッケージをインストールします：</p>
 <div class="example"> <div class="example_code">
-$ <span style="color: #c20cb9; font-weight: bold;">sudo</span> <span style="color: #c20cb9; font-weight: bold;">apt-get install</span> \<br/>
+$ <span style="color: #C20CB9; font-weight: bold;">sudo</span> <span style="color: #C20CB9; font-weight: bold;">apt-get install</span> \<br/>
     apt-transport-https \<br/>
     ca-certificates \<br/>
     curl \<br/>
@@ -319,11 +319,11 @@ $ <span style="color: #c20cb9; font-weight: bold;">sudo</span> <span style="colo
 <pre>curl -fsSL https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc</pre>
 <p>次のコマンドを使用して安定版リポジトリを設定します</p>
 <div class="example"> <div class="example_code">
-<span style="color: #7a0874; font-weight: bold;">echo</span> \<br/>
+<span style="color: #7A0874; font-weight: bold;">echo</span> \<br/>
   <span style="color: #a10;">"deb [arch=<span style="color: #007800;">$(dpkg --print-architecture)</span> signed-by=/etc/apt/keyrings/docker.asc] https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu/ <span style="color: #000099; font-weight: bold;">\<br/>
 </span>  <span style="color: #007800;">$(. /etc/os-release &amp;&amp; echo "$VERSION_CODENAME")</span> stable"</span> <span style="color: #000000; font-weight: bold;">|</span> \<br/>
-  <span style="color: #c20cb9; font-weight: bold;">sudo</span> <span style="color: #c20cb9; font-weight: bold;">tee</span> <span style="color: #000000; font-weight: bold;">/</span>etc<span style="color: #000000; font-weight: bold;">/</span>apt<span style="color: #000000; font-weight: bold;">/</span>sources.list.d<span style="color: #000000; font-weight: bold;">/</span>docker.list <span style="color: #000000; font-weight: bold;">&gt;</span> <span style="color: #000000; font-weight: bold;">/</span>dev<span style="color: #000000; font-weight: bold;">/</span>null<br/>
-<span style="color: #c20cb9; font-weight: bold;">sudo</span> <span style="color: #c20cb9; font-weight: bold;">apt-get update</span><br/>
+  <span style="color: #C20CB9; font-weight: bold;">sudo</span> <span style="color: #C20CB9; font-weight: bold;">tee</span> <span style="color: #000000; font-weight: bold;">/</span>etc<span style="color: #000000; font-weight: bold;">/</span>apt<span style="color: #000000; font-weight: bold;">/</span>sources.list.d<span style="color: #000000; font-weight: bold;">/</span>docker.list <span style="color: #000000; font-weight: bold;">&gt;</span> <span style="color: #000000; font-weight: bold;">/</span>dev<span style="color: #000000; font-weight: bold;">/</span>null<br/>
+<span style="color: #C20CB9; font-weight: bold;">sudo</span> <span style="color: #C20CB9; font-weight: bold;">apt-get update</span><br/>
 </div></div>
 <h3>Docker Engine-Community のインストール</h3>
 <p>apt パッケージインデックスを更新します。</p>
@@ -332,7 +332,7 @@ $ <span style="color: #c20cb9; font-weight: bold;">sudo</span> <span style="colo
 <pre>$ sudo apt-get install docker-ce docker-ce-cli containerd.io</pre>
 <p>特定のバージョンの Docker Engine-Community をインストールするには、リポジトリ内の利用可能なバージョンを一覧表示し、その中から選択してインストールします。リポジトリ内の利用可能なバージョンを一覧表示するには：</p>
 <div class="example"> <div class="example_code">
-$ <span style="color: #c20cb9; font-weight: bold;">apt-cache</span> madison docker-ce<br/>
+$ <span style="color: #C20CB9; font-weight: bold;">apt-cache</span> madison docker-ce<br/>
 <br/>
   docker-ce <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #000000;">5</span>:18.09.1~<span style="color: #000000;">3</span>-<span style="color: #000000;">0</span>~ubuntu-xenial <span style="color: #000000; font-weight: bold;">|</span> https:<span style="color: #000000; font-weight: bold;">//</span>mirrors.ustc.edu.cn<span style="color: #000000; font-weight: bold;">/</span>docker-ce<span style="color: #000000; font-weight: bold;">/</span>linux<span style="color: #000000; font-weight: bold;">/</span>ubuntu  xenial<span style="color: #000000; font-weight: bold;">/</span>stable amd64 Packages<br/>
   docker-ce <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #000000;">5</span>:18.09.0~<span style="color: #000000;">3</span>-<span style="color: #000000;">0</span>~ubuntu-xenial <span style="color: #000000; font-weight: bold;">|</span> https:<span style="color: #000000; font-weight: bold;">//</span>mirrors.ustc.edu.cn<span style="color: #000000; font-weight: bold;">/</span>docker-ce<span style="color: #000000; font-weight: bold;">/</span>linux<span style="color: #000000; font-weight: bold;">/</span>ubuntu  xenial<span style="color: #000000; font-weight: bold;">/</span>stable amd64 Packages<br/>
@@ -344,11 +344,11 @@ $ <span style="color: #c20cb9; font-weight: bold;">apt-cache</span> madison dock
 <pre>$ sudo apt-get install docker-ce=&lt;VERSION_STRING&gt; docker-ce-cli=&lt;VERSION_STRING&gt; containerd.io</pre>
 <p>Docker が正常にインストールされたかどうかをテストするには、次のコマンドを入力します。以下の情報が表示されればインストール成功です：</p>
 <div class="example"> <div class="example_code">
-$ <span style="color: #c20cb9; font-weight: bold;">sudo</span> docker run hello-world<br/>
+$ <span style="color: #C20CB9; font-weight: bold;">sudo</span> docker run hello-world<br/>
 <br/>
-Unable to <span style="color: #c20cb9; font-weight: bold;">find</span> image <span style="color: #a10;">'hello-world:latest'</span> locally<br/>
+Unable to <span style="color: #C20CB9; font-weight: bold;">find</span> image <span style="color: #a10;">'hello-world:latest'</span> locally<br/>
 latest: Pulling from library<span style="color: #000000; font-weight: bold;">/</span>hello-world<br/>
-1b930d010525: Pull <span style="color: #7a0874; font-weight: bold;">complete</span>                                                                                                                                  Digest: sha256:c3b4ada4687bbaa170745b3e4dd8ac3f194ca95b2d0518b417fb47e5879d9b5f<br/>
+1b930d010525: Pull <span style="color: #7A0874; font-weight: bold;">complete</span>                                                                                                                                  Digest: sha256:c3b4ada4687bbaa170745b3e4dd8ac3f194ca95b2d0518b417fb47e5879d9b5f<br/>
 Status: Downloaded newer image <span style="color: #000000; font-weight: bold;">for</span> hello-world:latest<br/>
 <br/>
 <br/>
@@ -359,22 +359,22 @@ This message shows that your installation appears to be working correctly.<br/>
 To generate this message, Docker took the following steps:<br/>
  <span style="color: #000000;">1</span>. The Docker client contacted the Docker daemon.<br/>
  <span style="color: #000000;">2</span>. The Docker daemon pulled the <span style="color: #a10;">"hello-world"</span> image from the Docker Hub.<br/>
-    <span style="color: #7a0874; font-weight: bold;">(</span>amd64<span style="color: #7a0874; font-weight: bold;">)</span><br/>
- <span style="color: #000000;">3</span>. The Docker daemon created a new container from that image <span style="color: #c20cb9; font-weight: bold;">which</span> runs the<br/>
+    <span style="color: #7A0874; font-weight: bold;">(</span>amd64<span style="color: #7A0874; font-weight: bold;">)</span><br/>
+ <span style="color: #000000;">3</span>. The Docker daemon created a new container from that image <span style="color: #C20CB9; font-weight: bold;">which</span> runs the<br/>
     executable that produces the output you are currently reading.<br/>
- <span style="color: #000000;">4</span>. The Docker daemon streamed that output to the Docker client, <span style="color: #c20cb9; font-weight: bold;">which</span> sent it<br/>
+ <span style="color: #000000;">4</span>. The Docker daemon streamed that output to the Docker client, <span style="color: #C20CB9; font-weight: bold;">which</span> sent it<br/>
     to your terminal.<br/>
 <br/>
 <br/>
-To try something <span style="color: #c20cb9; font-weight: bold;">more</span> ambitious, you can run an Ubuntu container with:<br/>
- $ docker run <span style="color: #660033;">-it</span> ubuntu <span style="color: #c20cb9; font-weight: bold;">bash</span><br/>
+To try something <span style="color: #C20CB9; font-weight: bold;">more</span> ambitious, you can run an Ubuntu container with:<br/>
+ $ docker run <span style="color: #660033;">-it</span> ubuntu <span style="color: #C20CB9; font-weight: bold;">bash</span><br/>
 <br/>
 <br/>
-Share images, automate workflows, and <span style="color: #c20cb9; font-weight: bold;">more</span> with a <span style="color: #c20cb9; font-weight: bold;">free</span> Docker ID:<br/>
+Share images, automate workflows, and <span style="color: #C20CB9; font-weight: bold;">more</span> with a <span style="color: #C20CB9; font-weight: bold;">free</span> Docker ID:<br/>
  https:<span style="color: #000000; font-weight: bold;">//</span>hub.docker.com<span style="color: #000000; font-weight: bold;">/</span><br/>
 <br/>
 <br/>
-For <span style="color: #c20cb9; font-weight: bold;">more</span> examples and ideas, visit:<br/>
+For <span style="color: #C20CB9; font-weight: bold;">more</span> examples and ideas, visit:<br/>
  https:<span style="color: #000000; font-weight: bold;">//</span>docs.docker.com<span style="color: #000000; font-weight: bold;">/</span>get-started<span style="color: #000000; font-weight: bold;">/</span><br/>
 </div></div>
 <hr/>
@@ -429,7 +429,7 @@ $ sudo sh get-docker.sh</pre>
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -474,7 +474,7 @@ $ sudo sh get-docker.sh</pre>
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -613,7 +613,7 @@ Deleted: sha256:af0b15c8625bb1938f1d7b17081031f649fd14e6b233688eea3c5483994a66a3
 </div>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリックしてください</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -832,7 +832,7 @@ function kFormatter(num) {
 </style>
 <div class="sidebar-box re-box re-box-large">
 <div class="sidebar-box recommend-here" style="margin: 0 auto;">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
+<a href="#" style="font-size: 16px; color:#5B80A6;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
 </div>
 <div class="sidebar-box sidebar-cate">
 <div class="sidebar-tree">

@@ -487,7 +487,7 @@ J'adore la programmation.
 <h2 class="example">例</h2>
 <div class="example_code">
 
-npm <span style="color: #c20cb9; font-weight: bold;">install</span> <span style="color: #000000; font-weight: bold;">@</span>langchain<span style="color: #000000; font-weight: bold;">/</span>community <span style="color: #000000; font-weight: bold;">@</span>langchain<span style="color: #000000; font-weight: bold;">/</span>core<br/>
+npm <span style="color: #C20CB9; font-weight: bold;">install</span> <span style="color: #000000; font-weight: bold;">@</span>langchain<span style="color: #000000; font-weight: bold;">/</span>community <span style="color: #000000; font-weight: bold;">@</span>langchain<span style="color: #000000; font-weight: bold;">/</span>core<br/>
 </div>
 </div>
 <p>サンプルコード：</p>
@@ -548,13 +548,13 @@ console.<span style="color: #660066;">log</span><span style="color: #009900;">(<
     <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">static</span> <span style="color: #000066; font-weight: bold;">void</span> main<span style="color: #009900;">(</span><span style="color: #003399;">String</span><span style="color: #009900;">[</span><span style="color: #009900;">]</span> args<span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
         <span style="color: #666666; font-style: italic;">// チャットモデルを作成し、OpenAIプロトコルを再利用して百炼（DashScope）に接続する</span><br/>
         ChatLanguageModel model <span style="color: #339933;">=</span> OpenAiChatModel.<span style="color: #006633;">builder</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><br/>
-                .<span style="color: #006633;">apiKey</span><span style="color: #009900;">(</span><span style="color: #003399;">System</span>.<span style="color: #006633;">getenv</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"DASHSCOPE_API_KEY"</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span>  <span style="color: #666666; font-style: italic;">// 環境変数からAPIキーを読み取る（必須）</span><br/>
-                .<span style="color: #006633;">baseUrl</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"https://dashscope.aliyuncs.com/compatible-mode/v1"</span><span style="color: #009900;">)</span>  <span style="color: #666666; font-style: italic;">// 百炼 OpenAI互換アドレス（必須）</span><br/>
-                .<span style="color: #006633;">modelName</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"qwen-plus"</span><span style="color: #009900;">)</span>  <span style="color: #666666; font-style: italic;">// モデル名（必須）</span><br/>
+                .<span style="color: #006633;">apiKey</span><span style="color: #009900;">(</span><span style="color: #003399;">System</span>.<span style="color: #006633;">getenv</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"DASHSCOPE_API_KEY"</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span>  <span style="color: #666666; font-style: italic;">// 環境変数からAPIキーを読み取る（必須）</span><br/>
+                .<span style="color: #006633;">baseUrl</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"https://dashscope.aliyuncs.com/compatible-mode/v1"</span><span style="color: #009900;">)</span>  <span style="color: #666666; font-style: italic;">// 百炼 OpenAI互換アドレス（必須）</span><br/>
+                .<span style="color: #006633;">modelName</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"qwen-plus"</span><span style="color: #009900;">)</span>  <span style="color: #666666; font-style: italic;">// モデル名（必須）</span><br/>
                 .<span style="color: #006633;">build</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
-        SystemMessage systemMessage <span style="color: #339933;">=</span> SystemMessage.<span style="color: #006633;">from</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"あなたは心理の専門家です"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>  <span style="color: #666666; font-style: italic;">// システムメッセージ、ロールを設定</span><br/>
-        UserMessage userMessage <span style="color: #339933;">=</span> UserMessage.<span style="color: #006633;">from</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"こんにちは"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>  <span style="color: #666666; font-style: italic;">// ユーザーメッセージ</span><br/>
+        SystemMessage systemMessage <span style="color: #339933;">=</span> SystemMessage.<span style="color: #006633;">from</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"あなたは心理の専門家です"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>  <span style="color: #666666; font-style: italic;">// システムメッセージ、ロールを設定</span><br/>
+        UserMessage userMessage <span style="color: #339933;">=</span> UserMessage.<span style="color: #006633;">from</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"こんにちは"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>  <span style="color: #666666; font-style: italic;">// ユーザーメッセージ</span><br/>
 <br/>
         <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span>model.<span style="color: #006633;">chat</span><span style="color: #009900;">(</span>systemMessage, userMessage<span style="color: #009900;">)</span>.<span style="color: #006633;">aiMessage</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span>.<span style="color: #006633;">text</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
     <span style="color: #009900;">}</span><br/>
@@ -595,15 +595,15 @@ console.<span style="color: #660066;">log</span><span style="color: #009900;">(<
     <span style="color: #666666; font-style: italic;">// 通常呼び出し：一度に完全な結果を返す</span><br/>
     <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">static</span> <span style="color: #000066; font-weight: bold;">void</span> chatLanguageModelTest<span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
         ChatLanguageModel qwenModel <span style="color: #339933;">=</span> QwenChatModel.<span style="color: #006633;">builder</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><br/>
-                .<span style="color: #006633;">apiKey</span><span style="color: #009900;">(</span><span style="color: #003399;">System</span>.<span style="color: #006633;">getenv</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"DASHSCOPE_API_KEY"</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span>  <span style="color: #666666; font-style: italic;">// 環境変数からAPIキーを読み取る（必須）</span><br/>
-                .<span style="color: #006633;">modelName</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"qwen-plus"</span><span style="color: #009900;">)</span>  <span style="color: #666666; font-style: italic;">// モデル名（必須）</span><br/>
+                .<span style="color: #006633;">apiKey</span><span style="color: #009900;">(</span><span style="color: #003399;">System</span>.<span style="color: #006633;">getenv</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"DASHSCOPE_API_KEY"</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span>  <span style="color: #666666; font-style: italic;">// 環境変数からAPIキーを読み取る（必須）</span><br/>
+                .<span style="color: #006633;">modelName</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"qwen-plus"</span><span style="color: #009900;">)</span>  <span style="color: #666666; font-style: italic;">// モデル名（必須）</span><br/>
                 .<span style="color: #006633;">build</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
         <span style="color: #666666; font-style: italic;">// リクエストを構築し、メッセージを時系列で並べる</span><br/>
         ChatRequest request <span style="color: #339933;">=</span> ChatRequest.<span style="color: #006633;">builder</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><br/>
                 .<span style="color: #006633;">messages</span><span style="color: #009900;">(</span><span style="color: #000000; font-weight: bold;">new</span> ChatMessage<span style="color: #009900;">[</span><span style="color: #009900;">]</span><span style="color: #009900;">{</span><br/>
-                        SystemMessage.<span style="color: #006633;">from</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"あなたは心理の専門家です"</span><span style="color: #009900;">)</span>,  <span style="color: #666666; font-style: italic;">// システムメッセージ</span><br/>
-                        UserMessage.<span style="color: #006633;">from</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"こんにちは"</span><span style="color: #009900;">)</span>  <span style="color: #666666; font-style: italic;">// ユーザーメッセージ</span><br/>
+                        SystemMessage.<span style="color: #006633;">from</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"あなたは心理の専門家です"</span><span style="color: #009900;">)</span>,  <span style="color: #666666; font-style: italic;">// システムメッセージ</span><br/>
+                        UserMessage.<span style="color: #006633;">from</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"こんにちは"</span><span style="color: #009900;">)</span>  <span style="color: #666666; font-style: italic;">// ユーザーメッセージ</span><br/>
                 <span style="color: #009900;">}</span><span style="color: #009900;">)</span><br/>
                 .<span style="color: #006633;">build</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
         <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span>qwenModel.<span style="color: #006633;">chat</span><span style="color: #009900;">(</span>request<span style="color: #009900;">)</span>.<span style="color: #006633;">aiMessage</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span>.<span style="color: #006633;">text</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
@@ -612,11 +612,11 @@ console.<span style="color: #660066;">log</span><span style="color: #009900;">(<
     <span style="color: #666666; font-style: italic;">// ストリーミング呼び出し：生成されたテキストを分割して受け取る</span><br/>
     <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">static</span> <span style="color: #000066; font-weight: bold;">void</span> streamingChatLanguageModelTest<span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
         StreamingChatLanguageModel model <span style="color: #339933;">=</span> QwenStreamingChatModel.<span style="color: #006633;">builder</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><br/>
-                .<span style="color: #006633;">apiKey</span><span style="color: #009900;">(</span><span style="color: #003399;">System</span>.<span style="color: #006633;">getenv</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"DASHSCOPE_API_KEY"</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span><br/>
-                .<span style="color: #006633;">modelName</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"qwen-plus"</span><span style="color: #009900;">)</span><br/>
+                .<span style="color: #006633;">apiKey</span><span style="color: #009900;">(</span><span style="color: #003399;">System</span>.<span style="color: #006633;">getenv</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"DASHSCOPE_API_KEY"</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span><br/>
+                .<span style="color: #006633;">modelName</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"qwen-plus"</span><span style="color: #009900;">)</span><br/>
                 .<span style="color: #006633;">build</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
-        model.<span style="color: #006633;">chat</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"こんにちは"</span>, <span style="color: #000000; font-weight: bold;">new</span> StreamingChatResponseHandler<span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
+        model.<span style="color: #006633;">chat</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"こんにちは"</span>, <span style="color: #000000; font-weight: bold;">new</span> StreamingChatResponseHandler<span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
             @Override<br/>
             <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000066; font-weight: bold;">void</span> onPartialResponse<span style="color: #009900;">(</span><span style="color: #003399;">String</span> s<span style="color: #009900;">)</span> <span style="color: #009900;">{</span>  <span style="color: #666666; font-style: italic;">// 生成のたびにコールバックされる</span><br/>
                 <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span>s<span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
@@ -624,14 +624,14 @@ console.<span style="color: #660066;">log</span><span style="color: #009900;">(<
 <br/>
             @Override<br/>
             <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000066; font-weight: bold;">void</span> onCompleteResponse<span style="color: #009900;">(</span>ChatResponse chatResponse<span style="color: #009900;">)</span> <span style="color: #009900;">{</span>  <span style="color: #666666; font-style: italic;">// 生成完了</span><br/>
-                <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"会話終了"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
-                <span style="color: #003399;">System</span>.<span style="color: #006633;">exit</span><span style="color: #009900;">(</span><span style="color: #cc66cc;">0</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+                <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"会話終了"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+                <span style="color: #003399;">System</span>.<span style="color: #006633;">exit</span><span style="color: #009900;">(</span><span style="color: #CC66CC;">0</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
             <span style="color: #009900;">}</span><br/>
 <br/>
             @Override<br/>
             <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000066; font-weight: bold;">void</span> onError<span style="color: #009900;">(</span><span style="color: #003399;">Throwable</span> throwable<span style="color: #009900;">)</span> <span style="color: #009900;">{</span>  <span style="color: #666666; font-style: italic;">// 例外発生</span><br/>
-                <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"異常が発生しました"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
-                <span style="color: #003399;">System</span>.<span style="color: #006633;">exit</span><span style="color: #009900;">(</span><span style="color: #cc66cc;">0</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+                <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"異常が発生しました"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+                <span style="color: #003399;">System</span>.<span style="color: #006633;">exit</span><span style="color: #009900;">(</span><span style="color: #CC66CC;">0</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
             <span style="color: #009900;">}</span><br/>
         <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
     <span style="color: #009900;">}</span><br/>
@@ -720,7 +720,7 @@ console.<span style="color: #660066;">log</span><span style="color: #009900;">(<
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -765,7 +765,7 @@ console.<span style="color: #660066;">log</span><span style="color: #009900;">(<
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -804,7 +804,7 @@ console.<span style="color: #660066;">log</span><span style="color: #009900;">(<
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリック</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>

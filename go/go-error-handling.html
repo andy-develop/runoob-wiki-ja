@@ -295,15 +295,15 @@ type error interface {
 <h3>errors パッケージを使用したエラー作成</h3><p>コード作成中に error インターフェース型を実装することで、エラー情報を生成できます。</p>
 <p>簡単なエラーを作成：</p>
 <div class="example"><h2 class="example">実例</h2> <div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
-    <span style="color: #cc66cc;">"errors"</span><br/>
-    <span style="color: #cc66cc;">"fmt"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
+    <span style="color: #CC66CC;">"errors"</span><br/>
+    <span style="color: #CC66CC;">"fmt"</span><br/>
 <span style="color: #339933;">)</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
-    err <span style="color: #339933;">:=</span> errors<span style="color: #339933;">.</span>New<span style="color: #339933;">(</span><span style="color: #cc66cc;">"this is an error"</span><span style="color: #339933;">)</span><br/>
+    err <span style="color: #339933;">:=</span> errors<span style="color: #339933;">.</span>New<span style="color: #339933;">(</span><span style="color: #CC66CC;">"this is an error"</span><span style="color: #339933;">)</span><br/>
     fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span>err<span style="color: #339933;">)</span> <span style="color: #666666; font-style: italic;">// 出力：this is an error</span><br/>
 <span style="color: #339933;">}</span><br/>
 </div></div>
@@ -328,26 +328,26 @@ if err != nil {
 <h2>エラーの明示的な返却</h2><p>Go では、エラーは通常関数の戻り値として返され、開発者は明示的にチェックして処理する必要があります。</p>
 <p>エラーを明示的に返す：</p>
 <div class="example"><h2 class="example">実例</h2> <div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
-        <span style="color: #cc66cc;">"errors"</span><br/>
-        <span style="color: #cc66cc;">"fmt"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
+        <span style="color: #CC66CC;">"errors"</span><br/>
+        <span style="color: #CC66CC;">"fmt"</span><br/>
 <span style="color: #339933;">)</span><br/>
 <br/>
 <span style="color: #993333;">func</span> divide<span style="color: #339933;">(</span>a<span style="color: #339933;">,</span> b <span style="color: #993333;">int</span><span style="color: #339933;">)</span> <span style="color: #339933;">(</span><span style="color: #993333;">int</span><span style="color: #339933;">,</span> error<span style="color: #339933;">)</span> <span style="color: #339933;">{</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">if</span> b <span style="color: #339933;">==</span> <span style="color: #cc66cc;">0</span> <span style="color: #339933;">{</span><br/>
-                <span style="color: #b1b100; font-weight: bold;">return</span> <span style="color: #cc66cc;">0</span><span style="color: #339933;">,</span> errors<span style="color: #339933;">.</span>New<span style="color: #339933;">(</span><span style="color: #cc66cc;">"division by zero"</span><span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">if</span> b <span style="color: #339933;">==</span> <span style="color: #CC66CC;">0</span> <span style="color: #339933;">{</span><br/>
+                <span style="color: #B1B100; font-weight: bold;">return</span> <span style="color: #CC66CC;">0</span><span style="color: #339933;">,</span> errors<span style="color: #339933;">.</span>New<span style="color: #339933;">(</span><span style="color: #CC66CC;">"division by zero"</span><span style="color: #339933;">)</span><br/>
         <span style="color: #339933;">}</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">return</span> a <span style="color: #339933;">/</span> b<span style="color: #339933;">,</span> <span style="color: #000000; font-weight: bold;">nil</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">return</span> a <span style="color: #339933;">/</span> b<span style="color: #339933;">,</span> <span style="color: #000000; font-weight: bold;">nil</span><br/>
 <span style="color: #339933;">}</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
-        result<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> divide<span style="color: #339933;">(</span><span style="color: #cc66cc;">10</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">0</span><span style="color: #339933;">)</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
-                fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #cc66cc;">"Error:"</span><span style="color: #339933;">,</span> err<span style="color: #339933;">)</span><br/>
-        <span style="color: #339933;">}</span> <span style="color: #b1b100; font-weight: bold;">else</span> <span style="color: #339933;">{</span><br/>
-                fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #cc66cc;">"Result:"</span><span style="color: #339933;">,</span> result<span style="color: #339933;">)</span><br/>
+        result<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> divide<span style="color: #339933;">(</span><span style="color: #CC66CC;">10</span><span style="color: #339933;">,</span> <span style="color: #CC66CC;">0</span><span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
+                fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #CC66CC;">"Error:"</span><span style="color: #339933;">,</span> err<span style="color: #339933;">)</span><br/>
+        <span style="color: #339933;">}</span> <span style="color: #B1B100; font-weight: bold;">else</span> <span style="color: #339933;">{</span><br/>
+                fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #CC66CC;">"Result:"</span><span style="color: #339933;">,</span> result<span style="color: #339933;">)</span><br/>
         <span style="color: #339933;">}</span><br/>
 <span style="color: #339933;">}</span><br/>
 </div></div>
@@ -358,31 +358,31 @@ Error: division by zero</pre>
 <h2>カスタムエラー</h2><p>カスタム型を定義することで、error インターフェースを拡張できます。</p>
 <p>カスタムエラー型：</p>
 <div class="example"><h2 class="example">実例</h2> <div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
-        <span style="color: #cc66cc;">"fmt"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
+        <span style="color: #CC66CC;">"fmt"</span><br/>
 <span style="color: #339933;">)</span><br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">type</span> DivideError <span style="color: #993333;">struct</span> <span style="color: #339933;">{</span><br/>
+<span style="color: #B1B100; font-weight: bold;">type</span> DivideError <span style="color: #993333;">struct</span> <span style="color: #339933;">{</span><br/>
         Dividend <span style="color: #993333;">int</span><br/>
         Divisor  <span style="color: #993333;">int</span><br/>
 <span style="color: #339933;">}</span><br/>
 <br/>
 <span style="color: #993333;">func</span> <span style="color: #339933;">(</span>e <span style="color: #339933;">*</span>DivideError<span style="color: #339933;">)</span> Error<span style="color: #339933;">()</span> <span style="color: #993333;">string</span> <span style="color: #339933;">{</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">return</span> fmt<span style="color: #339933;">.</span>Sprintf<span style="color: #339933;">(</span><span style="color: #cc66cc;">"cannot divide %d by %d"</span><span style="color: #339933;">,</span> e<span style="color: #339933;">.</span>Dividend<span style="color: #339933;">,</span> e<span style="color: #339933;">.</span>Divisor<span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">return</span> fmt<span style="color: #339933;">.</span>Sprintf<span style="color: #339933;">(</span><span style="color: #CC66CC;">"cannot divide %d by %d"</span><span style="color: #339933;">,</span> e<span style="color: #339933;">.</span>Dividend<span style="color: #339933;">,</span> e<span style="color: #339933;">.</span>Divisor<span style="color: #339933;">)</span><br/>
 <span style="color: #339933;">}</span><br/>
 <br/>
 <span style="color: #993333;">func</span> divide<span style="color: #339933;">(</span>a<span style="color: #339933;">,</span> b <span style="color: #993333;">int</span><span style="color: #339933;">)</span> <span style="color: #339933;">(</span><span style="color: #993333;">int</span><span style="color: #339933;">,</span> error<span style="color: #339933;">)</span> <span style="color: #339933;">{</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">if</span> b <span style="color: #339933;">==</span> <span style="color: #cc66cc;">0</span> <span style="color: #339933;">{</span><br/>
-                <span style="color: #b1b100; font-weight: bold;">return</span> <span style="color: #cc66cc;">0</span><span style="color: #339933;">,</span> &amp;DivideError<span style="color: #339933;">{</span>Dividend<span style="color: #339933;">:</span> a<span style="color: #339933;">,</span> Divisor<span style="color: #339933;">:</span> b<span style="color: #339933;">}</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">if</span> b <span style="color: #339933;">==</span> <span style="color: #CC66CC;">0</span> <span style="color: #339933;">{</span><br/>
+                <span style="color: #B1B100; font-weight: bold;">return</span> <span style="color: #CC66CC;">0</span><span style="color: #339933;">,</span> &amp;DivideError<span style="color: #339933;">{</span>Dividend<span style="color: #339933;">:</span> a<span style="color: #339933;">,</span> Divisor<span style="color: #339933;">:</span> b<span style="color: #339933;">}</span><br/>
         <span style="color: #339933;">}</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">return</span> a <span style="color: #339933;">/</span> b<span style="color: #339933;">,</span> <span style="color: #000000; font-weight: bold;">nil</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">return</span> a <span style="color: #339933;">/</span> b<span style="color: #339933;">,</span> <span style="color: #000000; font-weight: bold;">nil</span><br/>
 <span style="color: #339933;">}</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
-        _<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> divide<span style="color: #339933;">(</span><span style="color: #cc66cc;">10</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">0</span><span style="color: #339933;">)</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
+        _<span style="color: #339933;">,</span> err <span style="color: #339933;">:=</span> divide<span style="color: #339933;">(</span><span style="color: #CC66CC;">10</span><span style="color: #339933;">,</span> <span style="color: #CC66CC;">0</span><span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">if</span> err <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
                 fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span>err<span style="color: #339933;">)</span> <span style="color: #666666; font-style: italic;">// 出力：cannot divide 10 by 0</span><br/>
         <span style="color: #339933;">}</span><br/>
 <span style="color: #339933;">}</span><br/>
@@ -392,39 +392,39 @@ Error: division by zero</pre>
 <p><code>fmt</code>fmt パッケージはエラーのフォーマット出力をサポートしています：</p>
 <ul><li><code>%v</code>：デフォルト形式。</li><li><code>%+v</code>：対応している場合は、詳細なエラー情報を表示します。</li><li><code>%s</code>：文字列として出力します。</li></ul>
 <div class="example"><h2 class="example">実例</h2> <div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
-    <span style="color: #cc66cc;">"fmt"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
+    <span style="color: #CC66CC;">"fmt"</span><br/>
 <span style="color: #339933;">)</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;">// DivideError 構造体を定義</span><br/>
-<span style="color: #b1b100; font-weight: bold;">type</span> DivideError <span style="color: #993333;">struct</span> <span style="color: #339933;">{</span><br/>
+<span style="color: #B1B100; font-weight: bold;">type</span> DivideError <span style="color: #993333;">struct</span> <span style="color: #339933;">{</span><br/>
     dividee <span style="color: #993333;">int</span><br/>
     divider <span style="color: #993333;">int</span><br/>
 <span style="color: #339933;">}</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;">// `error` インターフェースを実装</span><br/>
 <span style="color: #993333;">func</span> <span style="color: #339933;">(</span>de <span style="color: #339933;">*</span>DivideError<span style="color: #339933;">)</span> Error<span style="color: #339933;">()</span> <span style="color: #993333;">string</span> <span style="color: #339933;">{</span><br/>
-    strFormat <span style="color: #339933;">:=</span> <span style="color: #0000ff;">`<br/>
+    strFormat <span style="color: #339933;">:=</span> <span style="color: #0000FF;">`<br/>
     Cannot proceed, the divider is zero.<br/>
     dividee: %d<br/>
     divider: 0<br/>
 `</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">return</span> fmt<span style="color: #339933;">.</span>Sprintf<span style="color: #339933;">(</span>strFormat<span style="color: #339933;">,</span> de<span style="color: #339933;">.</span>dividee<span style="color: #339933;">)</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">return</span> fmt<span style="color: #339933;">.</span>Sprintf<span style="color: #339933;">(</span>strFormat<span style="color: #339933;">,</span> de<span style="color: #339933;">.</span>dividee<span style="color: #339933;">)</span><br/>
 <span style="color: #339933;">}</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;">// `int` 型の除算を行う関数を定義</span><br/>
 <span style="color: #993333;">func</span> Divide<span style="color: #339933;">(</span>varDividee <span style="color: #993333;">int</span><span style="color: #339933;">,</span> varDivider <span style="color: #993333;">int</span><span style="color: #339933;">)</span> <span style="color: #339933;">(</span>result <span style="color: #993333;">int</span><span style="color: #339933;">,</span> errorMsg <span style="color: #993333;">string</span><span style="color: #339933;">)</span> <span style="color: #339933;">{</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">if</span> varDivider <span style="color: #339933;">==</span> <span style="color: #cc66cc;">0</span> <span style="color: #339933;">{</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">if</span> varDivider <span style="color: #339933;">==</span> <span style="color: #CC66CC;">0</span> <span style="color: #339933;">{</span><br/>
             dData <span style="color: #339933;">:=</span> DivideError<span style="color: #339933;">{</span><br/>
                     dividee<span style="color: #339933;">:</span> varDividee<span style="color: #339933;">,</span><br/>
                     divider<span style="color: #339933;">:</span> varDivider<span style="color: #339933;">,</span><br/>
             <span style="color: #339933;">}</span><br/>
             errorMsg <span style="color: #339933;">=</span> dData<span style="color: #339933;">.</span>Error<span style="color: #339933;">()</span><br/>
-            <span style="color: #b1b100; font-weight: bold;">return</span><br/>
-    <span style="color: #339933;">}</span> <span style="color: #b1b100; font-weight: bold;">else</span> <span style="color: #339933;">{</span><br/>
-            <span style="color: #b1b100; font-weight: bold;">return</span> varDividee <span style="color: #339933;">/</span> varDivider<span style="color: #339933;">,</span> <span style="color: #cc66cc;">""</span><br/>
+            <span style="color: #B1B100; font-weight: bold;">return</span><br/>
+    <span style="color: #339933;">}</span> <span style="color: #B1B100; font-weight: bold;">else</span> <span style="color: #339933;">{</span><br/>
+            <span style="color: #B1B100; font-weight: bold;">return</span> varDividee <span style="color: #339933;">/</span> varDivider<span style="color: #339933;">,</span> <span style="color: #CC66CC;">""</span><br/>
     <span style="color: #339933;">}</span><br/>
 <br/>
 <span style="color: #339933;">}</span><br/>
@@ -432,12 +432,12 @@ Error: division by zero</pre>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">// 正常な場合</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">if</span> result<span style="color: #339933;">,</span> errorMsg <span style="color: #339933;">:=</span> Divide<span style="color: #339933;">(</span><span style="color: #cc66cc;">100</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">10</span><span style="color: #339933;">);</span> errorMsg <span style="color: #339933;">==</span> <span style="color: #cc66cc;">""</span> <span style="color: #339933;">{</span><br/>
-            fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"100/10 = "</span><span style="color: #339933;">,</span> result<span style="color: #339933;">)</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">if</span> result<span style="color: #339933;">,</span> errorMsg <span style="color: #339933;">:=</span> Divide<span style="color: #339933;">(</span><span style="color: #CC66CC;">100</span><span style="color: #339933;">,</span> <span style="color: #CC66CC;">10</span><span style="color: #339933;">);</span> errorMsg <span style="color: #339933;">==</span> <span style="color: #CC66CC;">""</span> <span style="color: #339933;">{</span><br/>
+            fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"100/10 = "</span><span style="color: #339933;">,</span> result<span style="color: #339933;">)</span><br/>
     <span style="color: #339933;">}</span><br/>
     <span style="color: #666666; font-style: italic;">// 除数がゼロのときにエラー情報を返します</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">if</span> _<span style="color: #339933;">,</span> errorMsg <span style="color: #339933;">:=</span> Divide<span style="color: #339933;">(</span><span style="color: #cc66cc;">100</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">0</span><span style="color: #339933;">);</span> errorMsg <span style="color: #339933;">!=</span> <span style="color: #cc66cc;">""</span> <span style="color: #339933;">{</span><br/>
-            fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"errorMsg is: "</span><span style="color: #339933;">,</span> errorMsg<span style="color: #339933;">)</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">if</span> _<span style="color: #339933;">,</span> errorMsg <span style="color: #339933;">:=</span> Divide<span style="color: #339933;">(</span><span style="color: #CC66CC;">100</span><span style="color: #339933;">,</span> <span style="color: #CC66CC;">0</span><span style="color: #339933;">);</span> errorMsg <span style="color: #339933;">!=</span> <span style="color: #CC66CC;">""</span> <span style="color: #339933;">{</span><br/>
+            fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"errorMsg is: "</span><span style="color: #339933;">,</span> errorMsg<span style="color: #339933;">)</span><br/>
     <span style="color: #339933;">}</span><br/>
 <br/>
 <span style="color: #339933;">}</span><br/>
@@ -455,55 +455,55 @@ errorMsg is:
 <h2>errors.Is と errors.As の使用</h2><p>Go 1.13 以降、<code>errors</code>errors パッケージは以下を導入しました：<code>errors.Is</code> 和 <code>errors.As</code>エラーチェーンを処理するために使用されます：</p>
 <h3><strong><code>errors.Is</code></strong></h3><p>特定のエラーであるか、そのエラーによってラップされたものであるかをチェックします。</p>
 <div class="example"><h2 class="example">実例</h2> <div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
-        <span style="color: #cc66cc;">"errors"</span><br/>
-        <span style="color: #cc66cc;">"fmt"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
+        <span style="color: #CC66CC;">"errors"</span><br/>
+        <span style="color: #CC66CC;">"fmt"</span><br/>
 <span style="color: #339933;">)</span><br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">var</span> ErrNotFound <span style="color: #339933;">=</span> errors<span style="color: #339933;">.</span>New<span style="color: #339933;">(</span><span style="color: #cc66cc;">"not found"</span><span style="color: #339933;">)</span><br/>
+<span style="color: #B1B100; font-weight: bold;">var</span> ErrNotFound <span style="color: #339933;">=</span> errors<span style="color: #339933;">.</span>New<span style="color: #339933;">(</span><span style="color: #CC66CC;">"not found"</span><span style="color: #339933;">)</span><br/>
 <br/>
 <span style="color: #993333;">func</span> findItem<span style="color: #339933;">(</span>id <span style="color: #993333;">int</span><span style="color: #339933;">)</span> error <span style="color: #339933;">{</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">return</span> fmt<span style="color: #339933;">.</span>Errorf<span style="color: #339933;">(</span><span style="color: #cc66cc;">"database error: %w"</span><span style="color: #339933;">,</span> ErrNotFound<span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">return</span> fmt<span style="color: #339933;">.</span>Errorf<span style="color: #339933;">(</span><span style="color: #CC66CC;">"database error: %w"</span><span style="color: #339933;">,</span> ErrNotFound<span style="color: #339933;">)</span><br/>
 <span style="color: #339933;">}</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
-        err <span style="color: #339933;">:=</span> findItem<span style="color: #339933;">(</span><span style="color: #cc66cc;">1</span><span style="color: #339933;">)</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">if</span> errors<span style="color: #339933;">.</span>Is<span style="color: #339933;">(</span>err<span style="color: #339933;">,</span> ErrNotFound<span style="color: #339933;">)</span> <span style="color: #339933;">{</span><br/>
-                fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #cc66cc;">"Item not found"</span><span style="color: #339933;">)</span><br/>
-        <span style="color: #339933;">}</span> <span style="color: #b1b100; font-weight: bold;">else</span> <span style="color: #339933;">{</span><br/>
-                fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #cc66cc;">"Other error:"</span><span style="color: #339933;">,</span> err<span style="color: #339933;">)</span><br/>
+        err <span style="color: #339933;">:=</span> findItem<span style="color: #339933;">(</span><span style="color: #CC66CC;">1</span><span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">if</span> errors<span style="color: #339933;">.</span>Is<span style="color: #339933;">(</span>err<span style="color: #339933;">,</span> ErrNotFound<span style="color: #339933;">)</span> <span style="color: #339933;">{</span><br/>
+                fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #CC66CC;">"Item not found"</span><span style="color: #339933;">)</span><br/>
+        <span style="color: #339933;">}</span> <span style="color: #B1B100; font-weight: bold;">else</span> <span style="color: #339933;">{</span><br/>
+                fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #CC66CC;">"Other error:"</span><span style="color: #339933;">,</span> err<span style="color: #339933;">)</span><br/>
         <span style="color: #339933;">}</span><br/>
 <span style="color: #339933;">}</span><br/>
 </div></div><h3>errors.As</h3>
 <p>エラーを特定の型に変換して、さらに処理できるようにします。</p>
 <div class="example"><h2 class="example">実例</h2> <div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
-        <span style="color: #cc66cc;">"errors"</span><br/>
-        <span style="color: #cc66cc;">"fmt"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
+        <span style="color: #CC66CC;">"errors"</span><br/>
+        <span style="color: #CC66CC;">"fmt"</span><br/>
 <span style="color: #339933;">)</span><br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">type</span> MyError <span style="color: #993333;">struct</span> <span style="color: #339933;">{</span><br/>
+<span style="color: #B1B100; font-weight: bold;">type</span> MyError <span style="color: #993333;">struct</span> <span style="color: #339933;">{</span><br/>
         Code <span style="color: #993333;">int</span><br/>
         Msg  <span style="color: #993333;">string</span><br/>
 <span style="color: #339933;">}</span><br/>
 <br/>
 <span style="color: #993333;">func</span> <span style="color: #339933;">(</span>e <span style="color: #339933;">*</span>MyError<span style="color: #339933;">)</span> Error<span style="color: #339933;">()</span> <span style="color: #993333;">string</span> <span style="color: #339933;">{</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">return</span> fmt<span style="color: #339933;">.</span>Sprintf<span style="color: #339933;">(</span><span style="color: #cc66cc;">"Code: %d, Msg: %s"</span><span style="color: #339933;">,</span> e<span style="color: #339933;">.</span>Code<span style="color: #339933;">,</span> e<span style="color: #339933;">.</span>Msg<span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">return</span> fmt<span style="color: #339933;">.</span>Sprintf<span style="color: #339933;">(</span><span style="color: #CC66CC;">"Code: %d, Msg: %s"</span><span style="color: #339933;">,</span> e<span style="color: #339933;">.</span>Code<span style="color: #339933;">,</span> e<span style="color: #339933;">.</span>Msg<span style="color: #339933;">)</span><br/>
 <span style="color: #339933;">}</span><br/>
 <br/>
 <span style="color: #993333;">func</span> getError<span style="color: #339933;">()</span> error <span style="color: #339933;">{</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">return</span> &amp;MyError<span style="color: #339933;">{</span>Code<span style="color: #339933;">:</span> <span style="color: #cc66cc;">404</span><span style="color: #339933;">,</span> Msg<span style="color: #339933;">:</span> <span style="color: #cc66cc;">"Not Found"</span><span style="color: #339933;">}</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">return</span> &amp;MyError<span style="color: #339933;">{</span>Code<span style="color: #339933;">:</span> <span style="color: #CC66CC;">404</span><span style="color: #339933;">,</span> Msg<span style="color: #339933;">:</span> <span style="color: #CC66CC;">"Not Found"</span><span style="color: #339933;">}</span><br/>
 <span style="color: #339933;">}</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
         err <span style="color: #339933;">:=</span> getError<span style="color: #339933;">()</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">var</span> myErr <span style="color: #339933;">*</span>MyError<br/>
-        <span style="color: #b1b100; font-weight: bold;">if</span> errors<span style="color: #339933;">.</span>As<span style="color: #339933;">(</span>err<span style="color: #339933;">,</span> &amp;myErr<span style="color: #339933;">)</span> <span style="color: #339933;">{</span><br/>
-                fmt<span style="color: #339933;">.</span>Printf<span style="color: #339933;">(</span><span style="color: #cc66cc;">"Custom error - Code: %d, Msg: %s<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">,</span> myErr<span style="color: #339933;">.</span><span style="">Code</span><span style="color: #339933;">,</span> myErr<span style="color: #339933;">.</span><span style="">Msg</span><span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">var</span> myErr <span style="color: #339933;">*</span>MyError<br/>
+        <span style="color: #B1B100; font-weight: bold;">if</span> errors<span style="color: #339933;">.</span>As<span style="color: #339933;">(</span>err<span style="color: #339933;">,</span> &amp;myErr<span style="color: #339933;">)</span> <span style="color: #339933;">{</span><br/>
+                fmt<span style="color: #339933;">.</span>Printf<span style="color: #339933;">(</span><span style="color: #CC66CC;">"Custom error - Code: %d, Msg: %s<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #339933;">,</span> myErr<span style="color: #339933;">.</span><span style="">Code</span><span style="color: #339933;">,</span> myErr<span style="color: #339933;">.</span><span style="">Msg</span><span style="color: #339933;">)</span><br/>
         <span style="color: #339933;">}</span><br/>
 <span style="color: #339933;">}</span><br/>
 </div></div><hr/>
@@ -514,23 +514,23 @@ errorMsg is:
 <p><span class="marked">recover:</span></p>
 <ul><li>キャプチャ<code>panic</code>、プログラムのクラッシュを防ぎます。</li></ul>
 <div class="example"><h2 class="example">実例</h2> <div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #cc66cc;">"fmt"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #CC66CC;">"fmt"</span><br/>
 <br/>
 <span style="color: #993333;">func</span> safeFunction<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">defer</span> <span style="color: #993333;">func</span><span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
-                <span style="color: #b1b100; font-weight: bold;">if</span> r <span style="color: #339933;">:=</span> <span style="color: #000066;">recover</span><span style="color: #339933;">();</span> r <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
-                        fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #cc66cc;">"Recovered from panic:"</span><span style="color: #339933;">,</span> r<span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">defer</span> <span style="color: #993333;">func</span><span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
+                <span style="color: #B1B100; font-weight: bold;">if</span> r <span style="color: #339933;">:=</span> <span style="color: #000066;">recover</span><span style="color: #339933;">();</span> r <span style="color: #339933;">!=</span> <span style="color: #000000; font-weight: bold;">nil</span> <span style="color: #339933;">{</span><br/>
+                        fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #CC66CC;">"Recovered from panic:"</span><span style="color: #339933;">,</span> r<span style="color: #339933;">)</span><br/>
                 <span style="color: #339933;">}</span><br/>
         <span style="color: #339933;">}()</span><br/>
-        <span style="color: #000066;">panic</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"something went wrong"</span><span style="color: #339933;">)</span><br/>
+        <span style="color: #000066;">panic</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"something went wrong"</span><span style="color: #339933;">)</span><br/>
 <span style="color: #339933;">}</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
-        fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #cc66cc;">"Starting program..."</span><span style="color: #339933;">)</span><br/>
+        fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #CC66CC;">"Starting program..."</span><span style="color: #339933;">)</span><br/>
         safeFunction<span style="color: #339933;">()</span><br/>
-        fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"Program continued after panic"</span><span style="color: #339933;">)</span><br/>
+        fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"Program continued after panic"</span><span style="color: #339933;">)</span><br/>
 <span style="color: #339933;">}</span><br/>
 </div></div><p>上記のコードを実行すると、出力結果は次のとおりです：</p>
 <pre>Starting program...
@@ -570,7 +570,7 @@ Program continued after panic</pre>
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -615,7 +615,7 @@ Program continued after panic</pre>
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -890,7 +890,7 @@ func Divide(varDividee int, varDivider int) (result int, errorMsg string){
 </div>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">メモは本記事の内容を拡張したものである必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -1109,7 +1109,7 @@ function kFormatter(num) {
 </style>
 <div class="sidebar-box re-box re-box-large">
 <div class="sidebar-box recommend-here" style="margin: 0 auto;">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
+<a href="#" style="font-size: 16px; color:#5B80A6;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
 </div>
 <div class="sidebar-box sidebar-cate">
 <div class="sidebar-tree">

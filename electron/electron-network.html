@@ -386,9 +386,9 @@ socket.<span style="color: #660066;">onmessage</span> <span style="color: #33993
 </div></div>
 <p>レンダラープロセスの HTML：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">input</span> <span style="color: #00c;">id</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"input"</span> <span style="color: #00c;">placeholder</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"メッセージを入力"</span>&gt;</span><br/>
-<span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">button</span> <span style="color: #00c;">onclick</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"sendMessage()"</span>&gt;</span>送信<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">button</span>&gt;</span><br/>
-<span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">id</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"messages"</span>&gt;&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">input</span> <span style="color: #00c;">id</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"input"</span> <span style="color: #00c;">placeholder</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"メッセージを入力"</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">button</span> <span style="color: #00c;">onclick</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"sendMessage()"</span>&gt;</span>送信<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">button</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">id</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"messages"</span>&gt;&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
 </div></div>
 <p>このパターンにより、リアルタイムチャット、状態同期、共同編集などの機能を簡単に実装できます。</p>
 <hr/>
@@ -610,55 +610,55 @@ contextBridge.<span style="color: #660066;">exposeInMainWorld</span><span style=
 <h3>五、index.html（レンダラープロセスのインターフェース）</h3>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #555;">&lt;!DOCTYPE html&gt;</span><br/>
-<span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">html</span> <span style="color: #00c;">lang</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"zh"</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">html</span> <span style="color: #00c;">lang</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"zh"</span>&gt;</span><br/>
 <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">head</span>&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">meta</span> <span style="color: #00c;">charset</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"UTF-8"</span>&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">title</span>&gt;</span>Electron ネットワーク通信の例<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">title</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">meta</span> <span style="color: #00c;">charset</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"UTF-8"</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">title</span>&gt;</span>Electron ネットワーク通信の例<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">title</span>&gt;</span><br/>
   <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">style</span>&gt;</span><br/>
     body { font-family: sans-serif; padding: 20px; }<br/>
     button { margin: 5px; padding: 10px 20px; cursor: pointer; }<br/>
     #output { margin-top: 20px; }<br/>
-  <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">style</span>&gt;</span><br/>
-<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">head</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">style</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">head</span>&gt;</span><br/>
 <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">body</span>&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">h1</span>&gt;</span>Electron ネットワーク通信の例<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">h1</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">h1</span>&gt;</span>Electron ネットワーク通信の例<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">h1</span>&gt;</span><br/>
 <br/>
-  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">button</span> <span style="color: #00c;">id</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"fetchBtn"</span>&gt;</span>HTTP データを取得<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">button</span>&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">button</span> <span style="color: #00c;">id</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"wsBtn"</span>&gt;</span>WebSocket に接続<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">button</span>&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">button</span> <span style="color: #00c;">id</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"setCookieBtn"</span>&gt;</span>Cookie を設定<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">button</span>&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">button</span> <span style="color: #00c;">id</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"getCookieBtn"</span>&gt;</span>Cookie を読み取り<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">button</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">button</span> <span style="color: #00c;">id</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"fetchBtn"</span>&gt;</span>HTTP データを取得<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">button</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">button</span> <span style="color: #00c;">id</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"wsBtn"</span>&gt;</span>WebSocket に接続<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">button</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">button</span> <span style="color: #00c;">id</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"setCookieBtn"</span>&gt;</span>Cookie を設定<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">button</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">button</span> <span style="color: #00c;">id</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"getCookieBtn"</span>&gt;</span>Cookie を読み取り<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">button</span>&gt;</span><br/>
 <br/>
-  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">id</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"output"</span>&gt;&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">id</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"output"</span>&gt;&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
 <br/>
   <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">script</span>&gt;</span><br/>
     const output = document.getElementById('output')<br/>
 <br/>
     document.getElementById('fetchBtn').addEventListener('click', async () =&gt; {<br/>
       const data = await window.electronAPI.fetchData()<br/>
-      output.innerHTML += `<span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">p</span>&gt;</span>HTTP 応答データ：${JSON.stringify(data)}<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">p</span>&gt;</span>`<br/>
+      output.innerHTML += `<span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">p</span>&gt;</span>HTTP 応答データ：${JSON.stringify(data)}<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">p</span>&gt;</span>`<br/>
     })<br/>
 <br/>
     document.getElementById('wsBtn').addEventListener('click', async () =&gt; {<br/>
       await window.electronAPI.connectWS()<br/>
-      output.innerHTML += `<span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">p</span>&gt;</span>WebSocket 接続が確立されました<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">p</span>&gt;</span>`<br/>
+      output.innerHTML += `<span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">p</span>&gt;</span>WebSocket 接続が確立されました<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">p</span>&gt;</span>`<br/>
     })<br/>
 <br/>
     window.electronAPI.onWSMessage(msg =&gt; {<br/>
-      output.innerHTML += `<span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">p</span>&gt;</span>WebSocket メッセージ：${msg}<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">p</span>&gt;</span>`<br/>
+      output.innerHTML += `<span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">p</span>&gt;</span>WebSocket メッセージ：${msg}<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">p</span>&gt;</span>`<br/>
     })<br/>
 <br/>
     document.getElementById('setCookieBtn').addEventListener('click', async () =&gt; {<br/>
       const res = await window.electronAPI.setCookie('token', 'abc123')<br/>
-      output.innerHTML += `<span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">p</span>&gt;</span>${res}<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">p</span>&gt;</span>`<br/>
+      output.innerHTML += `<span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">p</span>&gt;</span>${res}<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">p</span>&gt;</span>`<br/>
     })<br/>
 <br/>
     document.getElementById('getCookieBtn').addEventListener('click', async () =&gt; {<br/>
       const value = await window.electronAPI.getCookie('token')<br/>
-      output.innerHTML += `<span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">p</span>&gt;</span>Cookie トークンの値：${value}<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">p</span>&gt;</span>`<br/>
+      output.innerHTML += `<span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">p</span>&gt;</span>Cookie トークンの値：${value}<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">p</span>&gt;</span>`<br/>
     })<br/>
-  <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">script</span>&gt;</span><br/>
-<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">body</span>&gt;</span><br/>
-<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">html</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">script</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">body</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">html</span>&gt;</span><br/>
 </div></div>
 <h3>六、実行と効果</h3>
 <pre>npm start</pre><ul>
@@ -700,7 +700,7 @@ contextBridge.<span style="color: #660066;">exposeInMainWorld</span><span style=
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -745,7 +745,7 @@ contextBridge.<span style="color: #660066;">exposeInMainWorld</span><span style=
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -784,7 +784,7 @@ contextBridge.<span style="color: #660066;">exposeInMainWorld</span><span style=
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -1003,7 +1003,7 @@ function kFormatter(num) {
 </style>
 <div class="sidebar-box re-box re-box-large">
 <div class="sidebar-box recommend-here" style="margin: 0 auto;">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
+<a href="#" style="font-size: 16px; color:#5B80A6;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
 </div>
 <div class="sidebar-box sidebar-cate">
 <div class="sidebar-tree">

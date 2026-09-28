@@ -220,7 +220,7 @@ graph TD<br/>A[false コマンドを呼び出し] --&gt; B[即座に終了コー
 <div class="example">
 <h2 class="example">実例</h2>
 <div class="example_code">
-<span style="color: #7a0874; font-weight: bold;">type</span> <span style="color: #c20cb9; font-weight: bold;">false</span><br/>
+<span style="color: #7A0874; font-weight: bold;">type</span> <span style="color: #C20CB9; font-weight: bold;">false</span><br/>
 <span style="color: #666666; font-style: italic;"># 出力の可能性：</span><br/>
 <span style="color: #666666; font-style: italic;"># false is a shell builtin</span><br/>
 <span style="color: #666666; font-style: italic;"># または</span><br/>
@@ -234,9 +234,9 @@ graph TD<br/>A[false コマンドを呼び出し] --&gt; B[即座に終了コー
 <h2 class="example">実例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># 未実装の機能を一時的に false でプレースホルダー</span><br/>
-<span style="color: #000000; font-weight: bold;">function</span> feature_to_be_implemented<span style="color: #7a0874; font-weight: bold;">(</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #7a0874; font-weight: bold;">{</span><br/>
-    <span style="color: #c20cb9; font-weight: bold;">false</span>  <span style="color: #666666; font-style: italic;"># TODO: 実際の実装は後で追加</span><br/>
-<span style="color: #7a0874; font-weight: bold;">}</span><br/>
+<span style="color: #000000; font-weight: bold;">function</span> feature_to_be_implemented<span style="color: #7A0874; font-weight: bold;">(</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #7A0874; font-weight: bold;">{</span><br/>
+    <span style="color: #C20CB9; font-weight: bold;">false</span>  <span style="color: #666666; font-style: italic;"># TODO: 実際の実装は後で追加</span><br/>
+<span style="color: #7A0874; font-weight: bold;">}</span><br/>
 </div>
 </div>
 <h3>2. 強制的にエラーステータスを返す</h3>
@@ -244,9 +244,9 @@ graph TD<br/>A[false コマンドを呼び出し] --&gt; B[即座に終了コー
 <h2 class="example">実例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># 条件を満たさない場合、スクリプトを強制的に終了させる</span><br/>
-check_dependencies<span style="color: #7a0874; font-weight: bold;">(</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #7a0874; font-weight: bold;">{</span><br/>
-    <span style="color: #7a0874; font-weight: bold;">[</span> <span style="color: #660033;">-f</span> <span style="color: #a10;">"/path/to/required/file"</span> <span style="color: #7a0874; font-weight: bold;">]</span> <span style="color: #000000; font-weight: bold;">||</span> <span style="color: #c20cb9; font-weight: bold;">false</span><br/>
-<span style="color: #7a0874; font-weight: bold;">}</span><br/>
+check_dependencies<span style="color: #7A0874; font-weight: bold;">(</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #7A0874; font-weight: bold;">{</span><br/>
+    <span style="color: #7A0874; font-weight: bold;">[</span> <span style="color: #660033;">-f</span> <span style="color: #a10;">"/path/to/required/file"</span> <span style="color: #7A0874; font-weight: bold;">]</span> <span style="color: #000000; font-weight: bold;">||</span> <span style="color: #C20CB9; font-weight: bold;">false</span><br/>
+<span style="color: #7A0874; font-weight: bold;">}</span><br/>
 </div>
 </div>
 <h3>3. 無限ループ制御</h3>
@@ -254,8 +254,8 @@ check_dependencies<span style="color: #7a0874; font-weight: bold;">(</span><span
 <h2 class="example">実例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># while と組み合わせて無限ループを作成</span><br/>
-<span style="color: #000000; font-weight: bold;">while</span> <span style="color: #c20cb9; font-weight: bold;">false</span>; <span style="color: #000000; font-weight: bold;">do</span><br/>
-    <span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #a10;">"この行は絶対に実行されない"</span><br/>
+<span style="color: #000000; font-weight: bold;">while</span> <span style="color: #C20CB9; font-weight: bold;">false</span>; <span style="color: #000000; font-weight: bold;">do</span><br/>
+    <span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #a10;">"この行は絶対に実行されない"</span><br/>
 <span style="color: #000000; font-weight: bold;">done</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># 実際には while true の方がよく使われるが、ここでは false の使い方を示す</span><br/>
@@ -266,13 +266,13 @@ check_dependencies<span style="color: #7a0874; font-weight: bold;">(</span><span
 <h2 class="example">実例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># スクリプトのエラーハンドリングロジックをテスト</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">false</span> <span style="color: #000000; font-weight: bold;">&amp;&amp;</span> <span style="color: #7a0874; font-weight: bold;">{</span><br/>
-    <span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #a10;">"この行は実行されない。false が非ゼロを返すため"</span><br/>
-<span style="color: #7a0874; font-weight: bold;">}</span><br/>
+<span style="color: #C20CB9; font-weight: bold;">false</span> <span style="color: #000000; font-weight: bold;">&amp;&amp;</span> <span style="color: #7A0874; font-weight: bold;">{</span><br/>
+    <span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #a10;">"この行は実行されない。false が非ゼロを返すため"</span><br/>
+<span style="color: #7A0874; font-weight: bold;">}</span><br/>
 <br/>
-<span style="color: #c20cb9; font-weight: bold;">false</span> <span style="color: #000000; font-weight: bold;">||</span> <span style="color: #7a0874; font-weight: bold;">{</span><br/>
-    <span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #a10;">"この行は実行される。false が非ゼロを返すため"</span><br/>
-<span style="color: #7a0874; font-weight: bold;">}</span><br/>
+<span style="color: #C20CB9; font-weight: bold;">false</span> <span style="color: #000000; font-weight: bold;">||</span> <span style="color: #7A0874; font-weight: bold;">{</span><br/>
+    <span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #a10;">"この行は実行される。false が非ゼロを返すため"</span><br/>
+<span style="color: #7A0874; font-weight: bold;">}</span><br/>
 </div>
 </div>
 <hr/>
@@ -317,18 +317,18 @@ check_dependencies<span style="color: #7a0874; font-weight: bold;">(</span><span
 <div class="example">
 <h2 class="example">実例</h2>
 <div class="example_code">
-<span style="color: #c20cb9; font-weight: bold;">false</span><br/>
-<span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #007800;">$?</span>  <span style="color: #666666; font-style: italic;"># 1 を出力する</span><br/>
+<span style="color: #C20CB9; font-weight: bold;">false</span><br/>
+<span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #007800;">$?</span>  <span style="color: #666666; font-style: italic;"># 1 を出力する</span><br/>
 </div>
 </div>
 <h3>演習2：条件判定テスト</h3>
 <div class="example">
 <h2 class="example">実例</h2>
 <div class="example_code">
-<span style="color: #000000; font-weight: bold;">if</span> <span style="color: #c20cb9; font-weight: bold;">false</span>; <span style="color: #000000; font-weight: bold;">then</span><br/>
-    <span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #a10;">"実行されない"</span><br/>
+<span style="color: #000000; font-weight: bold;">if</span> <span style="color: #C20CB9; font-weight: bold;">false</span>; <span style="color: #000000; font-weight: bold;">then</span><br/>
+    <span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #a10;">"実行されない"</span><br/>
 <span style="color: #000000; font-weight: bold;">else</span><br/>
-    <span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #a10;">"実行される"</span><br/>
+    <span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #a10;">"実行される"</span><br/>
 <span style="color: #000000; font-weight: bold;">fi</span><br/>
 </div>
 </div>
@@ -336,20 +336,20 @@ check_dependencies<span style="color: #7a0874; font-weight: bold;">(</span><span
 <div class="example">
 <h2 class="example">実例</h2>
 <div class="example_code">
-<span style="color: #c20cb9; font-weight: bold;">false</span> <span style="color: #000000; font-weight: bold;">&amp;&amp;</span> <span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #a10;">"表示されない"</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">false</span> <span style="color: #000000; font-weight: bold;">||</span> <span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #a10;">"表示される"</span><br/>
-<span style="color: #000000; font-weight: bold;">!</span> <span style="color: #c20cb9; font-weight: bold;">false</span> <span style="color: #000000; font-weight: bold;">&amp;&amp;</span> <span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #a10;">"表示される"</span><br/>
+<span style="color: #C20CB9; font-weight: bold;">false</span> <span style="color: #000000; font-weight: bold;">&amp;&amp;</span> <span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #a10;">"表示されない"</span><br/>
+<span style="color: #C20CB9; font-weight: bold;">false</span> <span style="color: #000000; font-weight: bold;">||</span> <span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #a10;">"表示される"</span><br/>
+<span style="color: #000000; font-weight: bold;">!</span> <span style="color: #C20CB9; font-weight: bold;">false</span> <span style="color: #000000; font-weight: bold;">&amp;&amp;</span> <span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #a10;">"表示される"</span><br/>
 </div>
 </div>
 <h3>演習4：関数内での使用</h3>
 <div class="example">
 <h2 class="example">実例</h2>
 <div class="example_code">
-test_user<span style="color: #7a0874; font-weight: bold;">(</span><span style="color: #7a0874; font-weight: bold;">)</span> <span style="color: #7a0874; font-weight: bold;">{</span><br/>
-    <span style="color: #7a0874; font-weight: bold;">[</span> <span style="color: #a10;">"<span style="color: #007800;">$(whoami)</span>"</span> = <span style="color: #a10;">"root"</span> <span style="color: #7a0874; font-weight: bold;">]</span> <span style="color: #000000; font-weight: bold;">||</span> <span style="color: #c20cb9; font-weight: bold;">false</span><br/>
-<span style="color: #7a0874; font-weight: bold;">}</span><br/>
+test_user<span style="color: #7A0874; font-weight: bold;">(</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #7A0874; font-weight: bold;">{</span><br/>
+    <span style="color: #7A0874; font-weight: bold;">[</span> <span style="color: #a10;">"<span style="color: #007800;">$(whoami)</span>"</span> = <span style="color: #a10;">"root"</span> <span style="color: #7A0874; font-weight: bold;">]</span> <span style="color: #000000; font-weight: bold;">||</span> <span style="color: #C20CB9; font-weight: bold;">false</span><br/>
+<span style="color: #7A0874; font-weight: bold;">}</span><br/>
 <br/>
-test_user <span style="color: #000000; font-weight: bold;">&amp;&amp;</span> <span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #a10;">"あなたはrootです"</span> <span style="color: #000000; font-weight: bold;">||</span> <span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #a10;">"あなたはrootではありません"</span><br/>
+test_user <span style="color: #000000; font-weight: bold;">&amp;&amp;</span> <span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #a10;">"あなたはrootです"</span> <span style="color: #000000; font-weight: bold;">||</span> <span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #a10;">"あなたはrootではありません"</span><br/>
 </div>
 </div>
 <hr/>
@@ -368,7 +368,7 @@ test_user <span style="color: #000000; font-weight: bold;">&amp;&amp;</span> <sp
 <h2 class="example">実例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># /etc/passwd 内で</span><br/>
-nobody:x:<span style="color: #000000;">65534</span>:<span style="color: #000000;">65534</span>:nobody:<span style="color: #000000; font-weight: bold;">/</span>nonexistent:<span style="color: #000000; font-weight: bold;">/</span>bin<span style="color: #000000; font-weight: bold;">/</span><span style="color: #c20cb9; font-weight: bold;">false</span><br/>
+nobody:x:<span style="color: #000000;">65534</span>:<span style="color: #000000;">65534</span>:nobody:<span style="color: #000000; font-weight: bold;">/</span>nonexistent:<span style="color: #000000; font-weight: bold;">/</span>bin<span style="color: #000000; font-weight: bold;">/</span><span style="color: #C20CB9; font-weight: bold;">false</span><br/>
 </div>
 </div>
 <h3>2. 実装原理</h3>
@@ -417,7 +417,7 @@ nobody:x:<span style="color: #000000;">65534</span>:<span style="color: #000000;
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -462,7 +462,7 @@ nobody:x:<span style="color: #000000;">65534</span>:<span style="color: #000000;
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -501,7 +501,7 @@ nobody:x:<span style="color: #000000;">65534</span>:<span style="color: #000000;
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートは本記事の内容を拡張したものである必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿はこちらをクリック</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>

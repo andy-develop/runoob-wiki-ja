@@ -689,13 +689,13 @@ claude --permission-mode bypassPermissions</pre>
 <div class="example"><h2 class="example">例</h2><div class="example_code">
 <span style="color: #666666; font-style: italic;">#!/bin/bash</span><br/>
 <span style="color: #666666; font-style: italic;"># PreToolUse hook の例：危険なコマンドをインターセプト</span><br/>
-<span style="color: #007800;">COMMAND</span>=$<span style="color: #7a0874; font-weight: bold;">(</span><span style="color: #c20cb9; font-weight: bold;">cat</span> <span style="color: #000000; font-weight: bold;">|</span> jq <span style="color: #660033;">-r</span> <span style="color: #a10;">'.tool_input.command // empty'</span><span style="color: #7a0874; font-weight: bold;">)</span><br/>
+<span style="color: #007800;">COMMAND</span>=$<span style="color: #7A0874; font-weight: bold;">(</span><span style="color: #C20CB9; font-weight: bold;">cat</span> <span style="color: #000000; font-weight: bold;">|</span> jq <span style="color: #660033;">-r</span> <span style="color: #a10;">'.tool_input.command // empty'</span><span style="color: #7A0874; font-weight: bold;">)</span><br/>
 <br/>
-<span style="color: #000000; font-weight: bold;">if</span> <span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #a10;">"<span style="color: #007800;">$COMMAND</span>"</span> <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #c20cb9; font-weight: bold;">grep</span> <span style="color: #660033;">-qE</span> <span style="color: #a10;">'rm\s+(-[rf]+\s+)*(\/|~|\.\.\/)'</span>; <span style="color: #000000; font-weight: bold;">then</span><br/>
-    <span style="color: #7a0874; font-weight: bold;">echo</span> <span style="color: #a10;">"BLOCKED: rm on sensitive path"</span><br/>
-    <span style="color: #7a0874; font-weight: bold;">exit</span> <span style="color: #000000;">2</span>  <span style="color: #666666; font-style: italic;"># 終了コード 2 でツール呼び出しをブロック</span><br/>
+<span style="color: #000000; font-weight: bold;">if</span> <span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #a10;">"<span style="color: #007800;">$COMMAND</span>"</span> <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #C20CB9; font-weight: bold;">grep</span> <span style="color: #660033;">-qE</span> <span style="color: #a10;">'rm\s+(-[rf]+\s+)*(\/|~|\.\.\/)'</span>; <span style="color: #000000; font-weight: bold;">then</span><br/>
+    <span style="color: #7A0874; font-weight: bold;">echo</span> <span style="color: #a10;">"BLOCKED: rm on sensitive path"</span><br/>
+    <span style="color: #7A0874; font-weight: bold;">exit</span> <span style="color: #000000;">2</span>  <span style="color: #666666; font-style: italic;"># 終了コード 2 でツール呼び出しをブロック</span><br/>
 <span style="color: #000000; font-weight: bold;">fi</span><br/>
-<span style="color: #7a0874; font-weight: bold;">exit</span> <span style="color: #000000;">0</span>  <span style="color: #666666; font-style: italic;"># 続行を許可</span><br/>
+<span style="color: #7A0874; font-weight: bold;">exit</span> <span style="color: #000000;">0</span>  <span style="color: #666666; font-style: italic;"># 続行を許可</span><br/>
 </div></div>
 <blockquote><p><strong>重要：</strong>プロンプトをスキップしても権限ルールはバイパスされません。Deny ルールと ask ルールは、hook が "allow" を返した後も引き続き評価されます。ブロックする hook が終了コード 2 で終了した場合、権限ルールが評価される前にツール呼び出しが停止されます。</p></blockquote>
 <hr/>
@@ -895,7 +895,7 @@ claude --permission-mode bypassPermissions</pre>
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -940,7 +940,7 @@ claude --permission-mode bypassPermissions</pre>
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -979,7 +979,7 @@ claude --permission-mode bypassPermissions</pre>
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックできます</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>

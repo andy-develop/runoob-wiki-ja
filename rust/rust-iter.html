@@ -195,12 +195,12 @@ let iter_mut = vec.iter_mut();</pre><p>into_iter() メソッドを使用して�
 let vec = vec![1, 2, 3, 4, 5];
 let into_iter = vec.into_iter();</pre>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #708;">let</span> v <span style="">=</span> vec<span style="">!</span><span style="">[</span><span style="color: #0000dd;">1</span><span style="">,</span> <span style="color: #0000dd;">2</span><span style="">,</span> <span style="color: #0000dd;">3</span><span style="">]</span><span style="">;</span><br/>
+<span style="color: #708;">let</span> v <span style="">=</span> vec<span style="">!</span><span style="">[</span><span style="color: #0000DD;">1</span><span style="">,</span> <span style="color: #0000DD;">2</span><span style="">,</span> <span style="color: #0000DD;">3</span><span style="">]</span><span style="">;</span><br/>
 <span style="color: #708;">let</span> <span style="color: #708;">mut</span> iter <span style="">=</span> v.iter<span style="">(</span><span style="">)</span><span style="">;</span><br/>
 <br/>
-assert_eq<span style="">!</span><span style="">(</span>iter.next<span style="">(</span><span style="">)</span><span style="">,</span> Some<span style="">(</span><span style="">&amp;</span><span style="color: #0000dd;">1</span><span style="">)</span><span style="">)</span><span style="">;</span><br/>
-assert_eq<span style="">!</span><span style="">(</span>iter.next<span style="">(</span><span style="">)</span><span style="">,</span> Some<span style="">(</span><span style="">&amp;</span><span style="color: #0000dd;">2</span><span style="">)</span><span style="">)</span><span style="">;</span><br/>
-assert_eq<span style="">!</span><span style="">(</span>iter.next<span style="">(</span><span style="">)</span><span style="">,</span> Some<span style="">(</span><span style="">&amp;</span><span style="color: #0000dd;">3</span><span style="">)</span><span style="">)</span><span style="">;</span><br/>
+assert_eq<span style="">!</span><span style="">(</span>iter.next<span style="">(</span><span style="">)</span><span style="">,</span> Some<span style="">(</span><span style="">&amp;</span><span style="color: #0000DD;">1</span><span style="">)</span><span style="">)</span><span style="">;</span><br/>
+assert_eq<span style="">!</span><span style="">(</span>iter.next<span style="">(</span><span style="">)</span><span style="">,</span> Some<span style="">(</span><span style="">&amp;</span><span style="color: #0000DD;">2</span><span style="">)</span><span style="">)</span><span style="">;</span><br/>
+assert_eq<span style="">!</span><span style="">(</span>iter.next<span style="">(</span><span style="">)</span><span style="">,</span> Some<span style="">(</span><span style="">&amp;</span><span style="color: #0000DD;">3</span><span style="">)</span><span style="">)</span><span style="">;</span><br/>
 assert_eq<span style="">!</span><span style="">(</span>iter.next<span style="">(</span><span style="">)</span><span style="">,</span> None<span style="">)</span><span style="">;</span>  <span style="color: #a50; font-style: italic;">// イテレーション終了</span><br/>
 </div></div>
 <h3>イテレータのメソッド</h3><p>Rust のイテレータは、コレクション内の要素を処理するための豊富なメソッドを提供しています。一般的なメソッドには次のようなものがあります：</p>
@@ -221,9 +221,9 @@ for &amp;num in vec.iter() {
 <h3>消費型アダプタ</h3><p>イテレータが完全に消費されるまで使用します。</p><p>イテレータには、イテレータを消費できるメソッドが多数あります。これらは反復を実行して最終結果（合計やコレクションなど）を返し、イテレータ自体を消費します。</p>
 <ul><li><code>collect()</code>：イテレータをコレクション（ベクタ、ハッシュセットなど）に変換します。</li><li><code>sum()</code>：イテレータ内のすべての要素の合計を計算します。</li><li><code>product()</code>：イテレータ内のすべての要素の積を計算します。</li><li><code>count()</code>：イテレータ内の要素の数を返します。</li></ul>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #708;">let</span> v <span style="">=</span> vec<span style="">!</span><span style="">[</span><span style="color: #0000dd;">1</span><span style="">,</span> <span style="color: #0000dd;">2</span><span style="">,</span> <span style="color: #0000dd;">3</span><span style="">]</span><span style="">;</span><br/>
+<span style="color: #708;">let</span> v <span style="">=</span> vec<span style="">!</span><span style="">[</span><span style="color: #0000DD;">1</span><span style="">,</span> <span style="color: #0000DD;">2</span><span style="">,</span> <span style="color: #0000DD;">3</span><span style="">]</span><span style="">;</span><br/>
 <span style="color: #708;">let</span> sum<span style="">:</span> <span style="color: #05a;">i32</span> <span style="">=</span> v.iter<span style="">(</span><span style="">)</span>.sum<span style="">(</span><span style="">)</span><span style="">;</span><br/>
-assert_eq<span style="">!</span><span style="">(</span>sum<span style="">,</span> <span style="color: #0000dd;">6</span><span style="">)</span><span style="">;</span><br/>
+assert_eq<span style="">!</span><span style="">(</span>sum<span style="">,</span> <span style="color: #0000DD;">6</span><span style="">)</span><span style="">;</span><br/>
 </div></div>
 <h3>アダプタ</h3><p>イテレータアダプタは、メソッドチェーンを使用してイテレータの内容を変更またはフィルタリングでき、すぐに消費することはありません。</p><ul><li><code>map()</code>：各要素に関数を適用し、新しいイテレータを返します。</li><li><code>filter()</code>：条件を満たす要素をフィルタリングします。</li><li><code>take(n)</code>：最初の<code>n</code>個の要素だけを返すイテレータ。</li><li><code>skip(n)</code>：最初の<code>n</code>個の要素をスキップし、残りの要素のイテレータを返します。</li></ul>
 <pre>let v = vec![1, 2, 3, 4, 5];
@@ -233,10 +233,10 @@ assert_eq!(doubled, vec![2, 4, 6, 8, 10]);</pre>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #708;">use</span> std<span style="">::</span><span style="color: #164;">iter</span><span style="">::</span><span style="color: #05a;">Peekable</span><span style="">;</span><br/>
 <br/>
-<span style="color: #708;">let</span> arr <span style="">=</span> <span style="">[</span><span style="color: #0000dd;">1</span><span style="">,</span> <span style="color: #0000dd;">2</span><span style="">,</span> <span style="color: #0000dd;">3</span><span style="">,</span> <span style="color: #0000dd;">4</span><span style="">,</span> <span style="color: #0000dd;">5</span><span style="">]</span><span style="">;</span><br/>
+<span style="color: #708;">let</span> arr <span style="">=</span> <span style="">[</span><span style="color: #0000DD;">1</span><span style="">,</span> <span style="color: #0000DD;">2</span><span style="">,</span> <span style="color: #0000DD;">3</span><span style="">,</span> <span style="color: #0000DD;">4</span><span style="">,</span> <span style="color: #0000DD;">5</span><span style="">]</span><span style="">;</span><br/>
 <span style="color: #708;">let</span> <span style="color: #708;">mut</span> iter <span style="">=</span> arr.into_iter<span style="">(</span><span style="">)</span>.peekable<span style="">(</span><span style="">)</span><span style="">;</span><br/>
 <span style="color: #708;">while</span> <span style="color: #708;">let</span> Some<span style="">(</span>val<span style="">)</span> <span style="">=</span> iter.next<span style="">(</span><span style="">)</span> <span style="">{</span><br/>
-    <span style="color: #708;">if</span> val <span style="">%</span> <span style="color: #0000dd;">2</span> <span style="">==</span> <span style="color: #0000dd;">0</span> <span style="">{</span><br/>
+    <span style="color: #708;">if</span> val <span style="">%</span> <span style="color: #0000DD;">2</span> <span style="">==</span> <span style="color: #0000DD;">0</span> <span style="">{</span><br/>
         <span style="color: #708;">continue</span><span style="">;</span><br/>
     <span style="">}</span><br/>
     println<span style="">!</span><span style="">(</span><span style="color: #a11;">"{}"</span><span style="">,</span> val<span style="">)</span><span style="">;</span><br/>
@@ -254,7 +254,7 @@ let sum: i32 = arr.into_iter().sum();</pre>
 <br/>
 <span style="color: #708;">impl</span> <span style="color: #05a;">Counter</span> <span style="">{</span><br/>
     <span style="color: #708;">fn</span> new<span style="">(</span><span style="">)</span> <span style="">-&gt;</span> <span style="color: #05a;">Counter</span> <span style="">{</span><br/>
-        <span style="color: #05a;">Counter</span> <span style="">{</span> count<span style="">:</span> <span style="color: #0000dd;">0</span> <span style="">}</span><br/>
+        <span style="color: #05a;">Counter</span> <span style="">{</span> count<span style="">:</span> <span style="color: #0000DD;">0</span> <span style="">}</span><br/>
     <span style="">}</span><br/>
 <span style="">}</span><br/>
 <br/>
@@ -262,8 +262,8 @@ let sum: i32 = arr.into_iter().sum();</pre>
     <span style="color: #708;">type</span> Item <span style="">=</span> usize<span style="">;</span><br/>
     <br/>
     <span style="color: #708;">fn</span> next<span style="">(</span><span style="">&amp;</span><span style="color: #708;">mut</span> <span style="color: #708;">self</span><span style="">)</span> <span style="">-&gt;</span> Option<span style="">&lt;</span>Self<span style="">::</span><span style="color: #164;">Item</span><span style="">&gt;</span> <span style="">{</span><br/>
-        <span style="color: #708;">self</span>.count <span style="">+=</span> <span style="color: #0000dd;">1</span><span style="">;</span><br/>
-        <span style="color: #708;">if</span> <span style="color: #708;">self</span>.count <span style="">&lt;=</span> <span style="color: #0000dd;">5</span> <span style="">{</span><br/>
+        <span style="color: #708;">self</span>.count <span style="">+=</span> <span style="color: #0000DD;">1</span><span style="">;</span><br/>
+        <span style="color: #708;">if</span> <span style="color: #708;">self</span>.count <span style="">&lt;=</span> <span style="color: #0000DD;">5</span> <span style="">{</span><br/>
             Some<span style="">(</span><span style="color: #708;">self</span>.count<span style="">)</span><br/>
         <span style="">}</span> <span style="color: #708;">else</span> <span style="">{</span><br/>
             None<br/>
@@ -285,7 +285,7 @@ let sum: i32 = arr.into_iter().sum();</pre>
 <span style="color: #a50; font-style: italic;">// メイン関数</span><br/>
 <span style="color: #708;">fn</span> main<span style="">(</span><span style="">)</span> <span style="">{</span><br/>
     <span style="color: #a50; font-style: italic;">// 整数を含む配列を定義する</span><br/>
-    <span style="color: #708;">let</span> numbers <span style="">=</span> vec<span style="">!</span><span style="">[</span><span style="color: #0000dd;">1</span><span style="">,</span> <span style="color: #0000dd;">2</span><span style="">,</span> <span style="color: #0000dd;">3</span><span style="">,</span> <span style="color: #0000dd;">4</span><span style="">,</span> <span style="color: #0000dd;">5</span><span style="">]</span><span style="">;</span><br/>
+    <span style="color: #708;">let</span> numbers <span style="">=</span> vec<span style="">!</span><span style="">[</span><span style="color: #0000DD;">1</span><span style="">,</span> <span style="color: #0000DD;">2</span><span style="">,</span> <span style="color: #0000DD;">3</span><span style="">,</span> <span style="color: #0000DD;">4</span><span style="">,</span> <span style="color: #0000DD;">5</span><span style="">]</span><span style="">;</span><br/>
 <br/>
     <span style="color: #a50; font-style: italic;">// イテレータを使用して配列を走査し、各要素を出力する</span><br/>
     println<span style="">!</span><span style="">(</span><span style="color: #a11;">"Iterating through the array:"</span><span style="">)</span><span style="">;</span><br/>
@@ -315,10 +315,10 @@ Squared numbers: [1, 4, 9, 16, 25]</pre>
 <span style="color: #a50; font-style: italic;">// メイン関数</span><br/>
 <span style="color: #708;">fn</span> main<span style="">(</span><span style="">)</span> <span style="">{</span><br/>
     <span style="color: #a50; font-style: italic;">// 整数を含む配列を定義する</span><br/>
-    <span style="color: #708;">let</span> numbers <span style="">=</span> vec<span style="">!</span><span style="">[</span><span style="color: #0000dd;">1</span><span style="">,</span> <span style="color: #0000dd;">2</span><span style="">,</span> <span style="color: #0000dd;">3</span><span style="">,</span> <span style="color: #0000dd;">4</span><span style="">,</span> <span style="color: #0000dd;">5</span><span style="">,</span> <span style="color: #0000dd;">6</span><span style="">,</span> <span style="color: #0000dd;">7</span><span style="">,</span> <span style="color: #0000dd;">8</span><span style="">,</span> <span style="color: #0000dd;">9</span><span style="">,</span> <span style="color: #0000dd;">10</span><span style="">]</span><span style="">;</span><br/>
+    <span style="color: #708;">let</span> numbers <span style="">=</span> vec<span style="">!</span><span style="">[</span><span style="color: #0000DD;">1</span><span style="">,</span> <span style="color: #0000DD;">2</span><span style="">,</span> <span style="color: #0000DD;">3</span><span style="">,</span> <span style="color: #0000DD;">4</span><span style="">,</span> <span style="color: #0000DD;">5</span><span style="">,</span> <span style="color: #0000DD;">6</span><span style="">,</span> <span style="color: #0000DD;">7</span><span style="">,</span> <span style="color: #0000DD;">8</span><span style="">,</span> <span style="color: #0000DD;">9</span><span style="">,</span> <span style="color: #0000DD;">10</span><span style="">]</span><span style="">;</span><br/>
 <br/>
     <span style="color: #a50; font-style: italic;">// イテレータの filter メソッドを使用して配列をフィルタリングし、偶数を抽出する</span><br/>
-    <span style="color: #708;">let</span> even_numbers<span style="">:</span> Vec<span style="">&lt;</span>i32<span style="">&gt;</span> <span style="">=</span> numbers.iter<span style="">(</span><span style="">)</span>.filter<span style="">(</span><span style="">|&amp;</span>x<span style="">|</span> x <span style="">%</span> <span style="color: #0000dd;">2</span> <span style="">==</span> <span style="color: #0000dd;">0</span><span style="">)</span>.cloned<span style="">(</span><span style="">)</span>.collect<span style="">(</span><span style="">)</span><span style="">;</span><br/>
+    <span style="color: #708;">let</span> even_numbers<span style="">:</span> Vec<span style="">&lt;</span>i32<span style="">&gt;</span> <span style="">=</span> numbers.iter<span style="">(</span><span style="">)</span>.filter<span style="">(</span><span style="">|&amp;</span>x<span style="">|</span> x <span style="">%</span> <span style="color: #0000DD;">2</span> <span style="">==</span> <span style="color: #0000DD;">0</span><span style="">)</span>.cloned<span style="">(</span><span style="">)</span>.collect<span style="">(</span><span style="">)</span><span style="">;</span><br/>
 <br/>
     <span style="color: #a50; font-style: italic;">// フィルタリング後の結果を出力する</span><br/>
     println<span style="">!</span><span style="">(</span><span style="color: #a11;">"Even numbers: {:?}"</span><span style="">,</span> even_numbers<span style="">)</span><span style="">;</span><br/>
@@ -531,7 +531,7 @@ Squared numbers: [1, 4, 9, 16, 25]</pre>
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -576,7 +576,7 @@ Squared numbers: [1, 4, 9, 16, 25]</pre>
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -615,7 +615,7 @@ Squared numbers: [1, 4, 9, 16, 25]</pre>
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>

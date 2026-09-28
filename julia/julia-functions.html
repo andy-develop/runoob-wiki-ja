@@ -272,36 +272,36 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 end</pre>
 <p>デフォルトでは、関数が返す値は最後に評価された式の値です。したがって、上記には<span class="marked">return</span>ステートメントはありません。もちろん、<span class="marked">return</span>キーワードを使用すると、関数は即座に戻り値を返します：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: #4266d5;font-weight:bold;">function</span> f<span style="color: #3b972e;">(</span>x,y<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #4266D5;font-weight:bold;">function</span> f<span style="color: #3B972E;">(</span>x,y<span style="color: #3B972E;">)</span><br/>
            x + y<br/>
-       <span style="color: #4266d5;font-weight:bold;">end</span><br/>
-f <span style="color: #3b972e;">(</span>generic <span style="color: #4266d5;font-weight:bold;">function</span> with <span style="color: black;">1</span> method<span style="color: #3b972e;">)</span><br/>
-julia<span style="color: #6bab5b;">&gt;</span> f<span style="color: #3b972e;">(</span><span style="color: black;">2</span>,<span style="color: black;">3</span><span style="color: #3b972e;">)</span><br/>
+       <span style="color: #4266D5;font-weight:bold;">end</span><br/>
+f <span style="color: #3B972E;">(</span>generic <span style="color: #4266D5;font-weight:bold;">function</span> with <span style="color: black;">1</span> method<span style="color: #3B972E;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> f<span style="color: #3B972E;">(</span><span style="color: black;">2</span>,<span style="color: black;">3</span><span style="color: #3B972E;">)</span><br/>
 <span style="color: black;">5</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: #4266d5;font-weight:bold;">function</span> bills<span style="color: #3b972e;">(</span>money<span style="color: #3b972e;">)</span><br/>
-      <span style="color: #4266d5;font-weight:bold;">if</span> money <span style="color: #6bab5b;">&lt;</span> <span style="color: black;">0</span><br/>
-         <span style="color: #4266d5;font-weight:bold;">return</span> <span style="color: #4266d5;font-weight:bold;">false</span><br/>
-      <span style="color: #4266d5;font-weight:bold;">else</span><br/>
-         <span style="color: #4266d5;font-weight:bold;">return</span> <span style="color: #4266d5;font-weight:bold;">true</span><br/>
-      <span style="color: #4266d5;font-weight:bold;">end</span><br/>
-   <span style="color: #4266d5;font-weight:bold;">end</span><br/>
-bills <span style="color: #3b972e;">(</span>generic <span style="color: #4266d5;font-weight:bold;">function</span> with <span style="color: black;">1</span> method<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #4266D5;font-weight:bold;">function</span> bills<span style="color: #3B972E;">(</span>money<span style="color: #3B972E;">)</span><br/>
+      <span style="color: #4266D5;font-weight:bold;">if</span> money <span style="color: #6BAB5B;">&lt;</span> <span style="color: black;">0</span><br/>
+         <span style="color: #4266D5;font-weight:bold;">return</span> <span style="color: #4266D5;font-weight:bold;">false</span><br/>
+      <span style="color: #4266D5;font-weight:bold;">else</span><br/>
+         <span style="color: #4266D5;font-weight:bold;">return</span> <span style="color: #4266D5;font-weight:bold;">true</span><br/>
+      <span style="color: #4266D5;font-weight:bold;">end</span><br/>
+   <span style="color: #4266D5;font-weight:bold;">end</span><br/>
+bills <span style="color: #3B972E;">(</span>generic <span style="color: #4266D5;font-weight:bold;">function</span> with <span style="color: black;">1</span> method<span style="color: #3B972E;">)</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> bills<span style="color: #3b972e;">(</span><span style="color: black;">50</span><span style="color: #3b972e;">)</span><br/>
-<span style="color: #4266d5;font-weight:bold;">true</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> bills<span style="color: #3B972E;">(</span><span style="color: black;">50</span><span style="color: #3B972E;">)</span><br/>
+<span style="color: #4266D5;font-weight:bold;">true</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> bills<span style="color: #3b972e;">(</span>-<span style="color: black;">50</span><span style="color: #3b972e;">)</span><br/>
-<span style="color: #4266d5;font-weight:bold;">false</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> bills<span style="color: #3B972E;">(</span>-<span style="color: black;">50</span><span style="color: #3B972E;">)</span><br/>
+<span style="color: #4266D5;font-weight:bold;">false</span><br/>
 </div></div><p>関数が複数の値を返す必要がある場合は、タプルを使用できます：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: #4266d5;font-weight:bold;">function</span> mul<span style="color: #3b972e;">(</span>x,y<span style="color: #3b972e;">)</span><br/>
-                  x+y, x<span style="color: #6bab5b;">*</span>y<br/>
-               <span style="color: #4266d5;font-weight:bold;">end</span><br/>
-mul <span style="color: #3b972e;">(</span>generic <span style="color: #4266d5;font-weight:bold;">function</span> with <span style="color: black;">1</span> method<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #4266D5;font-weight:bold;">function</span> mul<span style="color: #3B972E;">(</span>x,y<span style="color: #3B972E;">)</span><br/>
+                  x+y, x<span style="color: #6BAB5B;">*</span>y<br/>
+               <span style="color: #4266D5;font-weight:bold;">end</span><br/>
+mul <span style="color: #3B972E;">(</span>generic <span style="color: #4266D5;font-weight:bold;">function</span> with <span style="color: black;">1</span> method<span style="color: #3B972E;">)</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> mul<span style="color: #3b972e;">(</span><span style="color: black;">5</span>, <span style="color: black;">10</span><span style="color: #3b972e;">)</span><br/>
-<span style="color: #3b972e;">(</span><span style="color: black;">15</span>, <span style="color: black;">50</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> mul<span style="color: #3B972E;">(</span><span style="color: black;">5</span>, <span style="color: black;">10</span><span style="color: #3B972E;">)</span><br/>
+<span style="color: #3B972E;">(</span><span style="color: black;">15</span>, <span style="color: black;">50</span><span style="color: #3B972E;">)</span><br/>
 </div></div>
 <p>関数内に式が1つだけの場合、<span class="marked">function</span>キーワードを省略できます。等号の左側に関数名とパラメータを設定し、右側に式を設定します。これは代入の形式に似ています：</p>
 <pre>julia&gt; f(x,y) = x + y
@@ -311,16 +311,16 @@ f (generic function with 1 method)</pre>
 julia&gt; g(2,3)
 5</pre>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> f<span style="color: #3b972e;">(</span>a<span style="color: #3b972e;">)</span> = a <span style="color: #6bab5b;">*</span> a<br/>
-f <span style="color: #3b972e;">(</span>generic <span style="color: #4266d5;font-weight:bold;">function</span> with <span style="color: black;">1</span> method<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> f<span style="color: #3B972E;">(</span>a<span style="color: #3B972E;">)</span> = a <span style="color: #6BAB5B;">*</span> a<br/>
+f <span style="color: #3B972E;">(</span>generic <span style="color: #4266D5;font-weight:bold;">function</span> with <span style="color: black;">1</span> method<span style="color: #3B972E;">)</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> f<span style="color: #3b972e;">(</span><span style="color: black;">5</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> f<span style="color: #3B972E;">(</span><span style="color: black;">5</span><span style="color: #3B972E;">)</span><br/>
 <span style="color: black;">25</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> func<span style="color: #3b972e;">(</span>x, y<span style="color: #3b972e;">)</span> = sqrt<span style="color: #3b972e;">(</span>x^<span style="color: black;">2</span> + y^<span style="color: black;">2</span><span style="color: #3b972e;">)</span><br/>
-func <span style="color: #3b972e;">(</span>generic <span style="color: #4266d5;font-weight:bold;">function</span> with <span style="color: black;">1</span> method<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> func<span style="color: #3B972E;">(</span>x, y<span style="color: #3B972E;">)</span> = sqrt<span style="color: #3B972E;">(</span>x^<span style="color: black;">2</span> + y^<span style="color: black;">2</span><span style="color: #3B972E;">)</span><br/>
+func <span style="color: #3B972E;">(</span>generic <span style="color: #4266D5;font-weight:bold;">function</span> with <span style="color: black;">1</span> method<span style="color: #3B972E;">)</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> func<span style="color: #3b972e;">(</span><span style="color: black;">5</span>, <span style="color: black;">4</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> func<span style="color: #3B972E;">(</span><span style="color: black;">5</span>, <span style="color: black;">4</span><span style="color: #3B972E;">)</span><br/>
 <span style="color: black;">6.4031242374328485</span><br/>
 </div></div>
 <p>変数名と同様に、Unicode文字も関数名として使用できます：</p>
@@ -332,31 +332,31 @@ julia&gt; ∑(2, 3)
 <h3>戻り値の型</h3>
 <p>関数の戻り値の型を指定するには、<span class="marked">::</span>演算子を使用できます。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: #4266d5;font-weight:bold;">function</span> g<span style="color: #3b972e;">(</span>x, y<span style="color: #3b972e;">)</span>::<span style="color: #0000A8;font-weight:bold;">Int8</span><br/>
-           <span style="color: #4266d5;font-weight:bold;">return</span> x <span style="color: #6bab5b;">*</span> y<br/>
-       <span style="color: #4266d5;font-weight:bold;">end</span><span style="color: #6bab5b;">;</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #4266D5;font-weight:bold;">function</span> g<span style="color: #3B972E;">(</span>x, y<span style="color: #3B972E;">)</span>::<span style="color: #0000A8;font-weight:bold;">Int8</span><br/>
+           <span style="color: #4266D5;font-weight:bold;">return</span> x <span style="color: #6BAB5B;">*</span> y<br/>
+       <span style="color: #4266D5;font-weight:bold;">end</span><span style="color: #6BAB5B;">;</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> typeof<span style="color: #3b972e;">(</span>g<span style="color: #3b972e;">(</span><span style="color: black;">1</span>, <span style="color: black;">2</span><span style="color: #3b972e;">)</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> typeof<span style="color: #3B972E;">(</span>g<span style="color: #3B972E;">(</span><span style="color: black;">1</span>, <span style="color: black;">2</span><span style="color: #3B972E;">)</span><span style="color: #3B972E;">)</span><br/>
 <span style="color: #0000A8;font-weight:bold;">Int8</span><br/>
 </div></div><p>上記の関数の例では、x と y の型を無視して、Int8 型の値を返します。</p>
 <h3>オプション引数</h3><p>関数内でパラメータにデフォルト値を設定できます。これにより、そのパラメータが指定されていない場合でも、デフォルト値を使用して計算できます：</p><p>次の例では、関数 pos を定義し、3つのパラメータを設定しています。そのうちパラメータ cz のデフォルト値は 0 に設定されており、関数呼び出し時にこのパラメータを指定しなくても構いません：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: #4266d5;font-weight:bold;">function</span> pos<span style="color: #3b972e;">(</span>ax, <span style="color: #0000A8;font-weight:bold;">by</span>, cz=<span style="color: black;">0</span><span style="color: #3b972e;">)</span><br/>
-         <span style="color: #0000A8;font-weight:bold;">println</span><span style="color: #3b972e;">(</span><span style="color: #c93d39;">"$ax, $by, $cz"</span><span style="color: #3b972e;">)</span><br/>
-      <span style="color: #4266d5;font-weight:bold;">end</span><br/>
-pos <span style="color: #3b972e;">(</span>generic <span style="color: #4266d5;font-weight:bold;">function</span> with <span style="color: black;">2</span> methods<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #4266D5;font-weight:bold;">function</span> pos<span style="color: #3B972E;">(</span>ax, <span style="color: #0000A8;font-weight:bold;">by</span>, cz=<span style="color: black;">0</span><span style="color: #3B972E;">)</span><br/>
+         <span style="color: #0000A8;font-weight:bold;">println</span><span style="color: #3B972E;">(</span><span style="color: #C93D39;">"$ax, $by, $cz"</span><span style="color: #3B972E;">)</span><br/>
+      <span style="color: #4266D5;font-weight:bold;">end</span><br/>
+pos <span style="color: #3B972E;">(</span>generic <span style="color: #4266D5;font-weight:bold;">function</span> with <span style="color: black;">2</span> methods<span style="color: #3B972E;">)</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> pos<span style="color: #3b972e;">(</span><span style="color: black;">10</span>, <span style="color: black;">30</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> pos<span style="color: #3B972E;">(</span><span style="color: black;">10</span>, <span style="color: black;">30</span><span style="color: #3B972E;">)</span><br/>
 <span style="color: black;">10</span>, <span style="color: black;">30</span>, <span style="color: black;">0</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> pos<span style="color: #3b972e;">(</span><span style="color: black;">10</span>, <span style="color: black;">30</span>, <span style="color: black;">50</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> pos<span style="color: #3B972E;">(</span><span style="color: black;">10</span>, <span style="color: black;">30</span>, <span style="color: black;">50</span><span style="color: #3B972E;">)</span><br/>
 <span style="color: black;">10</span>, <span style="color: black;">30</span>, <span style="color: black;">50</span><br/>
 </div></div>
 <h3>キーワード引数</h3><p>時には、定義した関数が多くのパラメータを必要とすることがありますが、これらの関数の呼び出しは、パラメータの順序を忘れてしまう可能性があるため、非常に面倒な場合があります。 例えば：</p>
 <div class="example"><div class="example_code">
-<span style="color: #4266d5;font-weight:bold;">function</span> foo<span style="color: #3b972e;">(</span>a, b, c, d, e, f<span style="color: #3b972e;">)</span><br/>
+<span style="color: #4266D5;font-weight:bold;">function</span> foo<span style="color: #3B972E;">(</span>a, b, c, d, e, f<span style="color: #3B972E;">)</span><br/>
 ...<br/>
-<span style="color: #4266d5;font-weight:bold;">end</span><br/>
+<span style="color: #4266D5;font-weight:bold;">end</span><br/>
 </div></div><p>パラメータの順序を忘れてしまい、以下のような関数呼び出しが発生する可能性があります：</p>
 <pre>foo("25", -5.6987, "hello", 56, good, 'ABC')
 或
@@ -364,28 +364,28 @@ foo("hello", 56, "25", -5.6987, 'ABC', good)</pre>
 <p>これは非常に混乱しているように見えます。</p><p>Julia のキーワード引数を使用すると、位置だけでなく名前によってパラメータを識別できるため、これらの複雑な関数を簡単に使用および拡張できます。</p>
 <p>キーワードを使用してパラメータをマークするには、関数のマークされていないパラメータの後にセミコロン<span class="marked">;</span>を使用し、その後ろに1つ以上のキーワードと値のペア<span class="marked">key=value</span>を続けます。次のようになります：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: #4266d5;font-weight:bold;">function</span> foo<span style="color: #3b972e;">(</span>a, b <span style="color: #6bab5b;">;</span> c = <span style="color: black;">10</span>, d = <span style="color: #c93d39;">"hi"</span><span style="color: #3b972e;">)</span><br/>
-         <span style="color: #0000A8;font-weight:bold;">println</span><span style="color: #3b972e;">(</span><span style="color: #c93d39;">"a is $a"</span><span style="color: #3b972e;">)</span><br/>
-         <span style="color: #0000A8;font-weight:bold;">println</span><span style="color: #3b972e;">(</span><span style="color: #c93d39;">"b is $b"</span><span style="color: #3b972e;">)</span><br/>
-         <span style="color: #4266d5;font-weight:bold;">return</span> <span style="color: #c93d39;">"c =&gt; $c, d =&gt; $d"</span><br/>
-      <span style="color: #4266d5;font-weight:bold;">end</span><br/>
-foo <span style="color: #3b972e;">(</span>generic <span style="color: #4266d5;font-weight:bold;">function</span> with <span style="color: black;">1</span> method<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #4266D5;font-weight:bold;">function</span> foo<span style="color: #3B972E;">(</span>a, b <span style="color: #6BAB5B;">;</span> c = <span style="color: black;">10</span>, d = <span style="color: #C93D39;">"hi"</span><span style="color: #3B972E;">)</span><br/>
+         <span style="color: #0000A8;font-weight:bold;">println</span><span style="color: #3B972E;">(</span><span style="color: #C93D39;">"a is $a"</span><span style="color: #3B972E;">)</span><br/>
+         <span style="color: #0000A8;font-weight:bold;">println</span><span style="color: #3B972E;">(</span><span style="color: #C93D39;">"b is $b"</span><span style="color: #3B972E;">)</span><br/>
+         <span style="color: #4266D5;font-weight:bold;">return</span> <span style="color: #C93D39;">"c =&gt; $c, d =&gt; $d"</span><br/>
+      <span style="color: #4266D5;font-weight:bold;">end</span><br/>
+foo <span style="color: #3B972E;">(</span>generic <span style="color: #4266D5;font-weight:bold;">function</span> with <span style="color: black;">1</span> method<span style="color: #3B972E;">)</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> foo<span style="color: #3b972e;">(</span><span style="color: black;">100</span>,<span style="color: black;">20</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> foo<span style="color: #3B972E;">(</span><span style="color: black;">100</span>,<span style="color: black;">20</span><span style="color: #3B972E;">)</span><br/>
 a is <span style="color: black;">100</span><br/>
 b is <span style="color: black;">20</span><br/>
-<span style="color: #c93d39;">"c =&gt; 10, d =&gt; hi"</span><br/>
+<span style="color: #C93D39;">"c =&gt; 10, d =&gt; hi"</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> foo<span style="color: #3b972e;">(</span><span style="color: #c93d39;">"Hello"</span>, <span style="color: #c93d39;">"Runoob"</span>, c=pi, d=<span style="color: black;">22</span>//<span style="color: black;">7</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> foo<span style="color: #3B972E;">(</span><span style="color: #C93D39;">"Hello"</span>, <span style="color: #C93D39;">"Runoob"</span>, c=pi, d=<span style="color: black;">22</span>//<span style="color: black;">7</span><span style="color: #3B972E;">)</span><br/>
 a is Hello<br/>
 b is Runoob<br/>
-<span style="color: #c93d39;">"c =&gt; π, d =&gt; 22//7"</span><br/>
+<span style="color: #C93D39;">"c =&gt; π, d =&gt; 22//7"</span><br/>
 </div></div><p>キーワード引数を使用すると、パラメータの位置はそれほど重要ではなくなります。上記の関数は次のように呼び出すこともできます：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> foo<span style="color: #3b972e;">(</span>c=pi, d =<span style="color: black;">22</span>/<span style="color: black;">7</span>, <span style="color: #c93d39;">"Hello"</span>, <span style="color: #c93d39;">"Runoob"</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> foo<span style="color: #3B972E;">(</span>c=pi, d =<span style="color: black;">22</span>/<span style="color: black;">7</span>, <span style="color: #C93D39;">"Hello"</span>, <span style="color: #C93D39;">"Runoob"</span><span style="color: #3B972E;">)</span><br/>
 a is Hello<br/>
 b is Runoob<br/>
-<span style="color: #c93d39;">"c =&gt; π, d =&gt; 3.142857142857143"</span><br/>
+<span style="color: #C93D39;">"c =&gt; π, d =&gt; 3.142857142857143"</span><br/>
 </div></div>
 <hr/>
 <h2>匿名関数</h2>
@@ -395,55 +395,55 @@ b is Runoob<br/>
 <p>匿名関数を使用すると、コードがより簡潔になります。</p>
 <p>匿名関数の構文では記号<span class="marked">-&gt;</span>。 </p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> x -<span style="color: #6bab5b;">&gt;</span> x^<span style="color: black;">2</span> + 2x - <span style="color: black;">1</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> x -<span style="color: #6BAB5B;">&gt;</span> x^<span style="color: black;">2</span> + 2x - <span style="color: black;">1</span><br/>
 <span style="color: #888888;">#1 (generic function with 1 method)</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: #4266d5;font-weight:bold;">function</span> <span style="color: #3b972e;">(</span>x<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #4266D5;font-weight:bold;">function</span> <span style="color: #3B972E;">(</span>x<span style="color: #3B972E;">)</span><br/>
            x^<span style="color: black;">2</span> + 2x - <span style="color: black;">1</span><br/>
-       <span style="color: #4266d5;font-weight:bold;">end</span><br/>
+       <span style="color: #4266D5;font-weight:bold;">end</span><br/>
 <span style="color: #888888;">#3 (generic function with 1 method)</span><br/>
 </div></div><p>上記の例では、1つのパラメータ<strong>x</strong>を受け取り、現在の値の多項式<span class="marked">x^2+2x-1</span>を返す関数を作成しています。</p>
 <p>匿名関数の主な用途は、関数を引数として受け取る関数に渡すことです。典型的な例は map で、配列の各要素に関数を1回適用し、結果の値を含む新しい配列を返します：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: #0000A8;font-weight:bold;">map</span><span style="color: #3b972e;">(</span><span style="color: #0000A8;font-weight:bold;">round</span>, <span style="color: #3b972e;">[</span><span style="color: black;">1.2</span>, <span style="color: black;">3.5</span>, <span style="color: black;">1.7</span><span style="color: #3b972e;">]</span><span style="color: #3b972e;">)</span><br/>
-<span style="color: black;">3</span>-element <span style="color: #0000A8;font-weight:bold;">Vector</span><span style="color: #3b972e;">{</span><span style="color: #0000A8;font-weight:bold;">Float64</span><span style="color: #3b972e;">}</span>:<br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #0000A8;font-weight:bold;">map</span><span style="color: #3B972E;">(</span><span style="color: #0000A8;font-weight:bold;">round</span>, <span style="color: #3B972E;">[</span><span style="color: black;">1.2</span>, <span style="color: black;">3.5</span>, <span style="color: black;">1.7</span><span style="color: #3B972E;">]</span><span style="color: #3B972E;">)</span><br/>
+<span style="color: black;">3</span>-element <span style="color: #0000A8;font-weight:bold;">Vector</span><span style="color: #3B972E;">{</span><span style="color: #0000A8;font-weight:bold;">Float64</span><span style="color: #3B972E;">}</span>:<br/>
  <span style="color: black;">1.0</span><br/>
  <span style="color: black;">4.0</span><br/>
  <span style="color: black;">2.0</span><br/>
 </div></div>
 <p>map の最初の引数として渡す変換関数がすでに存在する場合は、関数名を直接使用しても問題ありません。しかし、通常は使用する関数がまだ定義されていないため、匿名関数を使用する方が便利です：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: #0000A8;font-weight:bold;">map</span><span style="color: #3b972e;">(</span>x -<span style="color: #6bab5b;">&gt;</span> x^<span style="color: black;">2</span> + 2x - <span style="color: black;">1</span>, <span style="color: #3b972e;">[</span><span style="color: black;">1</span>, <span style="color: black;">3</span>, -<span style="color: black;">1</span><span style="color: #3b972e;">]</span><span style="color: #3b972e;">)</span><br/>
-<span style="color: black;">3</span>-element <span style="color: #0000A8;font-weight:bold;">Vector</span><span style="color: #3b972e;">{</span><span style="color: #0000A8;font-weight:bold;">Int64</span><span style="color: #3b972e;">}</span>:<br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #0000A8;font-weight:bold;">map</span><span style="color: #3B972E;">(</span>x -<span style="color: #6BAB5B;">&gt;</span> x^<span style="color: black;">2</span> + 2x - <span style="color: black;">1</span>, <span style="color: #3B972E;">[</span><span style="color: black;">1</span>, <span style="color: black;">3</span>, -<span style="color: black;">1</span><span style="color: #3B972E;">]</span><span style="color: #3B972E;">)</span><br/>
+<span style="color: black;">3</span>-element <span style="color: #0000A8;font-weight:bold;">Vector</span><span style="color: #3B972E;">{</span><span style="color: #0000A8;font-weight:bold;">Int64</span><span style="color: #3B972E;">}</span>:<br/>
   <span style="color: black;">2</span><br/>
  <span style="color: black;">14</span><br/>
  -<span style="color: black;">2</span><br/>
 </div></div><p>複数のパラメータを受け取る匿名関数は、構文 (x,y,z)-&gt;2x+y-z を使用して記述できます。一方、引数なしの匿名関数は ()-&gt;3 と記述します。引数なしの関数のこのような記述方法は奇妙に見えるかもしれませんが、遅延計算には必要です。この使用方法では、コードブロックを引数なしの関数にラップし、後でそれを f として呼び出します。</p>
 <p>例えば、get の呼び出しを考えてみましょう：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #0000A8;font-weight:bold;">get</span><span style="color: #3b972e;">(</span>dict, key<span style="color: #3b972e;">)</span> <span style="color: #4266d5;font-weight:bold;">do</span><br/>
+<span style="color: #0000A8;font-weight:bold;">get</span><span style="color: #3B972E;">(</span>dict, key<span style="color: #3B972E;">)</span> <span style="color: #4266D5;font-weight:bold;">do</span><br/>
     <span style="color: #888888;"># default value calculated here</span><br/>
-    <span style="color: #0000A8;font-weight:bold;">time</span><span style="color: #3b972e;">(</span><span style="color: #3b972e;">)</span><br/>
-<span style="color: #4266d5;font-weight:bold;">end</span><br/>
+    <span style="color: #0000A8;font-weight:bold;">time</span><span style="color: #3B972E;">(</span><span style="color: #3B972E;">)</span><br/>
+<span style="color: #4266D5;font-weight:bold;">end</span><br/>
 </div></div><p>上記のコードは、コードを含む匿名関数を使用して get を呼び出すことと同等です。これは do と end の間に囲まれており、次のようになります：</p>
 <pre>get(()-&gt;time(), dict, key)</pre><p>ここでの time の呼び出しは、それをラップした引数なしの匿名関数によって遅延されます。この匿名関数は、dict に要求されたキーがない場合にのみ呼び出されます。</p>
 <hr/>
 <h2>関数のネストと再帰</h2>
 <p>Julia では、関数はネストして使用できます。</p><p>次の例では、add() 関数内に関数 add1 をネストしています：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: #4266d5;font-weight:bold;">function</span> add<span style="color: #3b972e;">(</span>x<span style="color: #3b972e;">)</span><br/>
-         Y = x <span style="color: #6bab5b;">*</span> <span style="color: black;">2</span><br/>
-         <span style="color: #4266d5;font-weight:bold;">function</span> add1<span style="color: #3b972e;">(</span>Y<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #4266D5;font-weight:bold;">function</span> add<span style="color: #3B972E;">(</span>x<span style="color: #3B972E;">)</span><br/>
+         Y = x <span style="color: #6BAB5B;">*</span> <span style="color: black;">2</span><br/>
+         <span style="color: #4266D5;font-weight:bold;">function</span> add1<span style="color: #3B972E;">(</span>Y<span style="color: #3B972E;">)</span><br/>
            Y += <span style="color: black;">1</span><br/>
-         <span style="color: #4266d5;font-weight:bold;">end</span><br/>
-         add1<span style="color: #3b972e;">(</span>Y<span style="color: #3b972e;">)</span><br/>
-       <span style="color: #4266d5;font-weight:bold;">end</span><br/>
-add <span style="color: #3b972e;">(</span>generic <span style="color: #4266d5;font-weight:bold;">function</span> with <span style="color: black;">1</span> method<span style="color: #3b972e;">)</span><br/>
+         <span style="color: #4266D5;font-weight:bold;">end</span><br/>
+         add1<span style="color: #3B972E;">(</span>Y<span style="color: #3B972E;">)</span><br/>
+       <span style="color: #4266D5;font-weight:bold;">end</span><br/>
+add <span style="color: #3B972E;">(</span>generic <span style="color: #4266D5;font-weight:bold;">function</span> with <span style="color: black;">1</span> method<span style="color: #3B972E;">)</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> d = <span style="color: black;">10</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> d = <span style="color: black;">10</span><br/>
 <span style="color: black;">10</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> add<span style="color: #3b972e;">(</span>d<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> add<span style="color: #3B972E;">(</span>d<span style="color: #3B972E;">)</span><br/>
 <span style="color: black;">21</span><br/>
 </div></div>
 <p>同様に、Julia の関数は再帰にすることもできます。</p>
@@ -451,22 +451,22 @@ julia<span style="color: #6bab5b;">&gt;</span> add<span style="color: #3b972e;">
 <blockquote><p>例を挙げます：<br/>昔々、ある山がありました。山の中にはお寺があり、お寺には老和尚がいて、小和尚に物語を語っていました。その物語とは？「昔々、ある山がありました。山の中にはお寺があり、お寺には老和尚がいて、小和尚に物語を語っていました。その物語とは？『昔々、ある山がありました。山の中にはお寺があり、お寺には老和尚がいて、小和尚に物語を語っていました。その物語とは？……』」</p></blockquote>
 <p>次に、三項演算子を使用して再帰をテストします。三項演算子は3つのオペランドを操作し、<span class="marked">expr ? a : b</span>expr が true の場合は a の評価結果の値、それ以外の場合は b の評価結果の値です。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> sum<span style="color: #3b972e;">(</span>x<span style="color: #3b972e;">)</span> = x <span style="color: #6bab5b;">&gt;</span> <span style="color: black;">1</span> <span style="color: #6bab5b;">?</span> sum<span style="color: #3b972e;">(</span>x-<span style="color: black;">1</span><span style="color: #3b972e;">)</span> + x : x<br/>
-sum <span style="color: #3b972e;">(</span>generic <span style="color: #4266d5;font-weight:bold;">function</span> with <span style="color: black;">1</span> method<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> sum<span style="color: #3B972E;">(</span>x<span style="color: #3B972E;">)</span> = x <span style="color: #6BAB5B;">&gt;</span> <span style="color: black;">1</span> <span style="color: #6BAB5B;">?</span> sum<span style="color: #3B972E;">(</span>x-<span style="color: black;">1</span><span style="color: #3B972E;">)</span> + x : x<br/>
+sum <span style="color: #3B972E;">(</span>generic <span style="color: #4266D5;font-weight:bold;">function</span> with <span style="color: black;">1</span> method<span style="color: #3B972E;">)</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> sum<span style="color: #3b972e;">(</span><span style="color: black;">10</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> sum<span style="color: #3B972E;">(</span><span style="color: black;">10</span><span style="color: #3B972E;">)</span><br/>
 <span style="color: black;">55</span><br/>
 </div></div><p>上記の例は、ある整数までのすべての数の合計を、その数を含めて計算するために使用されます。この再帰では、x が 1 の場合に値が返されるという基本ケースが存在します。</p>
 <p>再帰の最も有名な例は、n 番目のフィボナッチ数を計算することです。フィボナッチ数列とは、1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946, 17711, 28657, 46368........ という数列です。</p>
 <p>この数列は第3項から始まり、各項は前の2つの項の和に等しくなります。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> fib<span style="color: #3b972e;">(</span>x<span style="color: #3b972e;">)</span> = x <span style="color: #6bab5b;">&lt;</span> <span style="color: black;">2</span> <span style="color: #6bab5b;">?</span> x : fib<span style="color: #3b972e;">(</span>x-<span style="color: black;">1</span><span style="color: #3b972e;">)</span> + fib<span style="color: #3b972e;">(</span>x-<span style="color: black;">2</span><span style="color: #3b972e;">)</span><br/>
-fib <span style="color: #3b972e;">(</span>generic <span style="color: #4266d5;font-weight:bold;">function</span> with <span style="color: black;">1</span> method<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> fib<span style="color: #3B972E;">(</span>x<span style="color: #3B972E;">)</span> = x <span style="color: #6BAB5B;">&lt;</span> <span style="color: black;">2</span> <span style="color: #6BAB5B;">?</span> x : fib<span style="color: #3B972E;">(</span>x-<span style="color: black;">1</span><span style="color: #3B972E;">)</span> + fib<span style="color: #3B972E;">(</span>x-<span style="color: black;">2</span><span style="color: #3B972E;">)</span><br/>
+fib <span style="color: #3B972E;">(</span>generic <span style="color: #4266D5;font-weight:bold;">function</span> with <span style="color: black;">1</span> method<span style="color: #3B972E;">)</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> fib<span style="color: #3b972e;">(</span><span style="color: black;">10</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> fib<span style="color: #3B972E;">(</span><span style="color: black;">10</span><span style="color: #3B972E;">)</span><br/>
 <span style="color: black;">55</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> fib<span style="color: #3b972e;">(</span><span style="color: black;">20</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> fib<span style="color: #3B972E;">(</span><span style="color: black;">20</span><span style="color: #3B972E;">)</span><br/>
 <span style="color: black;">6765</span><br/>
 </div></div>
 <hr/>
@@ -474,8 +474,8 @@ julia<span style="color: #6bab5b;">&gt;</span> fib<span style="color: #3b972e;">
 <pre>map(func, coll)</pre>
 <p>ここで、func は関数であり、コレクション coll の各要素に順番に適用されます。Map は通常、匿名関数を含み、新しいコレクションを返します。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: #0000A8;font-weight:bold;">map</span><span style="color: #3b972e;">(</span>A -<span style="color: #6bab5b;">&gt;</span> A^<span style="color: black;">3</span> + 3A - <span style="color: black;">3</span>, <span style="color: #3b972e;">[</span><span style="color: black;">10</span>,<span style="color: black;">3</span>,-<span style="color: black;">2</span><span style="color: #3b972e;">]</span><span style="color: #3b972e;">)</span><br/>
-<span style="color: black;">3</span>-element <span style="color: #0000A8;font-weight:bold;">Array</span><span style="color: #3b972e;">{</span><span style="color: #0000A8;font-weight:bold;">Int64</span>,<span style="color: black;">1</span><span style="color: #3b972e;">}</span>:<br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #0000A8;font-weight:bold;">map</span><span style="color: #3B972E;">(</span>A -<span style="color: #6BAB5B;">&gt;</span> A^<span style="color: black;">3</span> + 3A - <span style="color: black;">3</span>, <span style="color: #3B972E;">[</span><span style="color: black;">10</span>,<span style="color: black;">3</span>,-<span style="color: black;">2</span><span style="color: #3B972E;">]</span><span style="color: #3B972E;">)</span><br/>
+<span style="color: black;">3</span>-element <span style="color: #0000A8;font-weight:bold;">Array</span><span style="color: #3B972E;">{</span><span style="color: #0000A8;font-weight:bold;">Int64</span>,<span style="color: black;">1</span><span style="color: #3B972E;">}</span>:<br/>
  <span style="color: black;">1027</span><br/>
    <span style="color: black;">33</span><br/>
   -<span style="color: black;">17</span><br/>
@@ -487,14 +487,14 @@ julia<span style="color: #6bab5b;">&gt;</span> <span style="color: #0000A8;font-
 filter(function, collection)</pre>
 <p>filter 関数は、その関数を呼び出した結果が false となる要素を削除した、コレクションのコピーを返します。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> array = <span style="color: #0000A8;font-weight:bold;">Int</span><span style="color: #3b972e;">[</span><span style="color: black;">1</span>,<span style="color: black;">2</span>,<span style="color: black;">3</span><span style="color: #3b972e;">]</span><br/>
-<span style="color: black;">3</span>-element <span style="color: #0000A8;font-weight:bold;">Array</span><span style="color: #3b972e;">{</span><span style="color: #0000A8;font-weight:bold;">Int64</span>,<span style="color: black;">1</span><span style="color: #3b972e;">}</span>:<br/>
+julia<span style="color: #6BAB5B;">&gt;</span> array = <span style="color: #0000A8;font-weight:bold;">Int</span><span style="color: #3B972E;">[</span><span style="color: black;">1</span>,<span style="color: black;">2</span>,<span style="color: black;">3</span><span style="color: #3B972E;">]</span><br/>
+<span style="color: black;">3</span>-element <span style="color: #0000A8;font-weight:bold;">Array</span><span style="color: #3B972E;">{</span><span style="color: #0000A8;font-weight:bold;">Int64</span>,<span style="color: black;">1</span><span style="color: #3B972E;">}</span>:<br/>
  <span style="color: black;">1</span><br/>
  <span style="color: black;">2</span><br/>
  <span style="color: black;">3</span><br/>
  <br/>
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: #0000A8;font-weight:bold;">filter</span><span style="color: #3b972e;">(</span>x -<span style="color: #6bab5b;">&gt;</span> x <span style="color: #6bab5b;">%</span> <span style="color: black;">2</span> == <span style="color: black;">0</span>, array<span style="color: #3b972e;">)</span><br/>
-<span style="color: black;">1</span>-element <span style="color: #0000A8;font-weight:bold;">Array</span><span style="color: #3b972e;">{</span><span style="color: #0000A8;font-weight:bold;">Int64</span>,<span style="color: black;">1</span><span style="color: #3b972e;">}</span>:<br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #0000A8;font-weight:bold;">filter</span><span style="color: #3B972E;">(</span>x -<span style="color: #6BAB5B;">&gt;</span> x <span style="color: #6BAB5B;">%</span> <span style="color: black;">2</span> == <span style="color: black;">0</span>, array<span style="color: #3B972E;">)</span><br/>
+<span style="color: black;">1</span>-element <span style="color: #0000A8;font-weight:bold;">Array</span><span style="color: #3B972E;">{</span><span style="color: #0000A8;font-weight:bold;">Int64</span>,<span style="color: black;">1</span><span style="color: #3B972E;">}</span>:<br/>
  <span style="color: black;">2</span><br/>
 </div></div>
 その他の拡張
@@ -531,7 +531,7 @@ julia<span style="color: #6bab5b;">&gt;</span> <span style="color: #0000A8;font-
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -576,7 +576,7 @@ julia<span style="color: #6bab5b;">&gt;</span> <span style="color: #0000A8;font-
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -615,7 +615,7 @@ julia<span style="color: #6bab5b;">&gt;</span> <span style="color: #0000A8;font-
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -834,7 +834,7 @@ function kFormatter(num) {
 </style>
 <div class="sidebar-box re-box re-box-large">
 <div class="sidebar-box recommend-here" style="margin: 0 auto;">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
+<a href="#" style="font-size: 16px; color:#5B80A6;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
 </div>
 <div class="sidebar-box sidebar-cate">
 <div class="sidebar-tree">

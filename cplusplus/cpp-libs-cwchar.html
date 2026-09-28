@@ -449,14 +449,14 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <br/>
     file <span style="color: #000080;">=</span> std<span style="color: #008080;">::</span><span style="color: #05a;">fopen</span><span style="color: #008000;">(</span><span style="color: #a11;">"example.txt"</span>, <span style="color: #a11;">"r"</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
     <span style="color: #05a;">if</span> <span style="color: #008000;">(</span>file<span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
-        <span style="color: #05a;">wchar_t</span> buffer<span style="color: #008000;">[</span><span style="color: #0000dd;">256</span><span style="color: #008000;">]</span><span style="color: #008080;">;</span><br/>
-        <span style="color: #05a;">if</span> <span style="color: #008000;">(</span>std<span style="color: #008080;">::</span><span style="color: #007788;">fgetws</span><span style="color: #008000;">(</span>buffer, <span style="color: #0000dd;">256</span>, file<span style="color: #008000;">)</span><span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
+        <span style="color: #05a;">wchar_t</span> buffer<span style="color: #008000;">[</span><span style="color: #0000DD;">256</span><span style="color: #008000;">]</span><span style="color: #008080;">;</span><br/>
+        <span style="color: #05a;">if</span> <span style="color: #008000;">(</span>std<span style="color: #008080;">::</span><span style="color: #007788;">fgetws</span><span style="color: #008000;">(</span>buffer, <span style="color: #0000DD;">256</span>, file<span style="color: #008000;">)</span><span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
             std<span style="color: #008080;">::</span><span style="color: #007788;">wcout</span> <span style="color: #000080;">&lt;&lt;</span> <span style="color: #696969;;">L</span><span style="color: #a11;">"Read from file: "</span> <span style="color: #000080;">&lt;&lt;</span> buffer<span style="color: #008080;">;</span><br/>
         <span style="color: #008000;">}</span><br/>
         std<span style="color: #008080;">::</span><span style="color: #05a;">fclose</span><span style="color: #008000;">(</span>file<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
     <span style="color: #008000;">}</span><br/>
 <br/>
-    <span style="color: #05a;">return</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">return</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span><br/>
 <span style="color: #008000;">}</span><br/>
 </div></div>
 <p>ワイド文字とワイド文字列の操作</p>
@@ -473,8 +473,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: #060;">#include &lt;iostream&gt;</span><br/>
 <br/>
 <span style="color: #05a;">int</span> main<span style="color: #008000;">(</span><span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
-    <span style="color: #05a;">wchar_t</span> str1<span style="color: #008000;">[</span><span style="color: #0000dd;">100</span><span style="color: #008000;">]</span> <span style="color: #000080;">=</span> <span style="color: #696969;;">L</span><span style="color: #a11;">"Hello"</span><span style="color: #008080;">;</span><br/>
-    <span style="color: #05a;">wchar_t</span> str2<span style="color: #008000;">[</span><span style="color: #0000dd;">100</span><span style="color: #008000;">]</span> <span style="color: #000080;">=</span> <span style="color: #696969;;">L</span><span style="color: #a11;">"World"</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">wchar_t</span> str1<span style="color: #008000;">[</span><span style="color: #0000DD;">100</span><span style="color: #008000;">]</span> <span style="color: #000080;">=</span> <span style="color: #696969;;">L</span><span style="color: #a11;">"Hello"</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">wchar_t</span> str2<span style="color: #008000;">[</span><span style="color: #0000DD;">100</span><span style="color: #008000;">]</span> <span style="color: #000080;">=</span> <span style="color: #696969;;">L</span><span style="color: #a11;">"World"</span><span style="color: #008080;">;</span><br/>
     <br/>
     <span style="color: #666666;">"Hello, 世界!"</span><br/>
     std<span style="color: #008080;">::</span><span style="color: #007788;">wcscpy</span><span style="color: #008000;">(</span>str1, <span style="color: #696969;;">L</span><span style="color: #a11;">// ワイド文字列の長さ</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
@@ -489,11 +489,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     std<span style="color: #008080;">::</span><span style="color: #007788;">wcout</span> <span style="color: #000080;">&lt;&lt;</span> <span style="color: #696969;;">L</span><span style="color: #a11;">"Comparison result: "</span> <span style="color: #000080;">&lt;&lt;</span> result <span style="color: #000080;">&lt;&lt;</span> std<span style="color: #008080;">::</span><span style="color: #007788;">endl</span><span style="color: #008080;">;</span><br/>
 <br/>
     <span style="color: #666666;">// 必ずヌル文字で終端する</span><br/>
-    std<span style="color: #008080;">::</span><span style="color: #007788;">wcsncpy</span><span style="color: #008000;">(</span>str2, str1, <span style="color: #0000dd;">5</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
-    str2<span style="color: #008000;">[</span><span style="color: #0000dd;">5</span><span style="color: #008000;">]</span> <span style="color: #000080;">=</span> L<span style="color: #a11;">'<span style="color: #006699; font-weight: bold;">\0</span>'</span><span style="color: #008080;">;</span>  <span style="color: #666666;">実行結果は次のとおりです：</span><br/>
+    std<span style="color: #008080;">::</span><span style="color: #007788;">wcsncpy</span><span style="color: #008000;">(</span>str2, str1, <span style="color: #0000DD;">5</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
+    str2<span style="color: #008000;">[</span><span style="color: #0000DD;">5</span><span style="color: #008000;">]</span> <span style="color: #000080;">=</span> L<span style="color: #a11;">'<span style="color: #006699; font-weight: bold;">\0</span>'</span><span style="color: #008080;">;</span>  <span style="color: #666666;">実行結果は次のとおりです：</span><br/>
     std<span style="color: #008080;">::</span><span style="color: #007788;">wcout</span> <span style="color: #000080;">&lt;&lt;</span> <span style="color: #696969;;">L</span><span style="color: #a11;">"Partially copied string: "</span> <span style="color: #000080;">&lt;&lt;</span> str2 <span style="color: #000080;">&lt;&lt;</span> std<span style="color: #008080;">::</span><span style="color: #007788;">endl</span><span style="color: #008080;">;</span><br/>
 <br/>
-    <span style="color: #05a;">return</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">return</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span><br/>
 <span style="color: #008000;">}</span><br/>
 </div></div><p>ワイド文字の分類と変換</p>
 <pre>Copied string: Hello, </pre>
@@ -532,7 +532,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     <span style="color: #05a;">wchar_t</span> upper_ch <span style="color: #000080;">=</span> std<span style="color: #008080;">::</span><span style="color: #007788;">towupper</span><span style="color: #008000;">(</span>ch<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
     std<span style="color: #008080;">::</span><span style="color: #007788;">wcout</span> <span style="color: #000080;">&lt;&lt;</span> <span style="color: #696969;;">L</span><span style="color: #a11;">"Uppercase of "</span> <span style="color: #000080;">&lt;&lt;</span> ch <span style="color: #000080;">&lt;&lt;</span> <span style="color: #696969;;">L</span><span style="color: #a11;">" is "</span> <span style="color: #000080;">&lt;&lt;</span> upper_ch <span style="color: #000080;">&lt;&lt;</span> std<span style="color: #008080;">::</span><span style="color: #007788;">endl</span><span style="color: #008080;">;</span><br/>
 <br/>
-    <span style="color: #05a;">return</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">return</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span><br/>
 <span style="color: #008000;">}</span><br/>
 </div></div>
 <p>ワイド文字とワイド文字列の入出力</p>
@@ -554,10 +554,10 @@ Uppercase of a is A
 <span style="color: #060;">#include &lt;iostream&gt;</span><br/>
 <br/>
 <span style="color: #05a;">int</span> main<span style="color: #008000;">(</span><span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
-    <span style="color: #05a;">wchar_t</span> buffer<span style="color: #008000;">[</span><span style="color: #0000dd;">100</span><span style="color: #008000;">]</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">wchar_t</span> buffer<span style="color: #008000;">[</span><span style="color: #0000DD;">100</span><span style="color: #008000;">]</span><span style="color: #008080;">;</span><br/>
 <br/>
     <span style="color: #666666;">// ワイド文字のフォーマット入力</span><br/>
-    std<span style="color: #008080;">::</span><span style="color: #007788;">wprintf</span><span style="color: #008000;">(</span><span style="color: #696969;;">L</span><span style="color: #a11;">"Formatted output: %d %s<span style="color: #000099; font-weight: bold;">\n</span>"</span>, <span style="color: #0000dd;">42</span>, <span style="color: #696969;;">L</span><span style="color: #a11;">"Hello"</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
+    std<span style="color: #008080;">::</span><span style="color: #007788;">wprintf</span><span style="color: #008000;">(</span><span style="color: #696969;;">L</span><span style="color: #a11;">"Formatted output: %d %s<span style="color: #000099; font-weight: bold;">\n</span>"</span>, <span style="color: #0000DD;">42</span>, <span style="color: #696969;;">L</span><span style="color: #a11;">"Hello"</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <br/>
     <span style="color: #666666;">// フォーマット済みのワイド文字をワイド文字列に書き込む</span><br/>
     std<span style="color: #008080;">::</span><span style="color: #007788;">wprintf</span><span style="color: #008000;">(</span><span style="color: #696969;;">L</span><span style="color: #a11;">"Enter a number and a string: "</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
@@ -565,16 +565,16 @@ Uppercase of a is A
     std<span style="color: #008080;">::</span><span style="color: #007788;">wprintf</span><span style="color: #008000;">(</span><span style="color: #696969;;">L</span><span style="color: #a11;">"You entered: %ls<span style="color: #000099; font-weight: bold;">\n</span>"</span>, buffer<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
 <br/>
     <span style="color: #666666;">// ワイド文字列からフォーマット済みのワイド文字を読み取る</span><br/>
-    std<span style="color: #008080;">::</span><span style="color: #007788;">swprintf</span><span style="color: #008000;">(</span>buffer, <span style="color: #0000dd;">100</span>, <span style="color: #696969;;">L</span><span style="color: #a11;">"Formatted %d %s"</span>, <span style="color: #0000dd;">42</span>, <span style="color: #696969;;">L</span><span style="color: #a11;">"output"</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
+    std<span style="color: #008080;">::</span><span style="color: #007788;">swprintf</span><span style="color: #008000;">(</span>buffer, <span style="color: #0000DD;">100</span>, <span style="color: #696969;;">L</span><span style="color: #a11;">"Formatted %d %s"</span>, <span style="color: #0000DD;">42</span>, <span style="color: #696969;;">L</span><span style="color: #a11;">"output"</span><span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
     std<span style="color: #008080;">::</span><span style="color: #007788;">wcout</span> <span style="color: #000080;">&lt;&lt;</span> <span style="color: #696969;;">L</span><span style="color: #a11;">"Buffer: "</span> <span style="color: #000080;">&lt;&lt;</span> buffer <span style="color: #000080;">&lt;&lt;</span> std<span style="color: #008080;">::</span><span style="color: #007788;">endl</span><span style="color: #008080;">;</span><br/>
 <br/>
     <span style="color: #666666;">実行結果は次のとおりです：</span><br/>
     <span style="color: #05a;">int</span> number<span style="color: #008080;">;</span><br/>
-    <span style="color: #05a;">wchar_t</span> word<span style="color: #008000;">[</span><span style="color: #0000dd;">100</span><span style="color: #008000;">]</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">wchar_t</span> word<span style="color: #008000;">[</span><span style="color: #0000DD;">100</span><span style="color: #008000;">]</span><span style="color: #008080;">;</span><br/>
     std<span style="color: #008080;">::</span><span style="color: #007788;">swscanf</span><span style="color: #008000;">(</span>buffer, <span style="color: #696969;;">L</span><span style="color: #a11;">"Formatted %d %s"</span>, <span style="color: #000040;">&amp;</span>number, word<span style="color: #008000;">)</span><span style="color: #008080;">;</span><br/>
     std<span style="color: #008080;">::</span><span style="color: #007788;">wcout</span> <span style="color: #000080;">&lt;&lt;</span> <span style="color: #696969;;">L</span><span style="color: #a11;">"Parsed number: "</span> <span style="color: #000080;">&lt;&lt;</span> number <span style="color: #000080;">&lt;&lt;</span> <span style="color: #696969;;">L</span><span style="color: #a11;">", word: "</span> <span style="color: #000080;">&lt;&lt;</span> word <span style="color: #000080;">&lt;&lt;</span> std<span style="color: #008080;">::</span><span style="color: #007788;">endl</span><span style="color: #008080;">;</span><br/>
 <br/>
-    <span style="color: #05a;">return</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span><br/>
+    <span style="color: #05a;">return</span> <span style="color: #0000DD;">0</span><span style="color: #008080;">;</span><br/>
 <span style="color: #008000;">}</span><br/>
 </div></div>
 <p>その他の拡張</p>
@@ -618,7 +618,7 @@ Parsed number: 42, word: o
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -663,7 +663,7 @@ Parsed number: 42, word: o
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -702,7 +702,7 @@ Parsed number: 42, word: o
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 キャンセル
 </div>
 <form action="../wp-content/themes/runoob/option/addnote.php" id="commentform" method="post" style="display:none;">
@@ -917,7 +917,7 @@ function kFormatter(num) {
 </style>
 <div class="sidebar-box re-box re-box-large">
 <div class="sidebar-box recommend-here" style="margin: 0 auto;">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
+<a href="#" style="font-size: 16px; color:#5B80A6;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
 </div>
 <div class="sidebar-box sidebar-cate">
 <div class="sidebar-tree">

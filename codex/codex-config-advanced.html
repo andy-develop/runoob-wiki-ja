@@ -181,7 +181,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <stop offset="100%" stop-color="#e74c3c"></stop>
 </lineargradient>
 <lineargradient id="midGrad" x1="0" x2="1" y1="0" y2="0">
-<stop offset="0%" stop-color="#16a085"></stop>
+<stop offset="0%" stop-color="#175EA6"></stop>
 <stop offset="100%" stop-color="#2980b9"></stop>
 </lineargradient>
 </defs>
@@ -252,7 +252,7 @@ model_catalog_json = <span style="color: #a10;">"/Users/me/.codex/model-catalogs
 codex <span style="color: #660033;">--profile</span> deep-review<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># または非対話型 exec モードで使用</span><br/>
-codex <span style="color: #7a0874; font-weight: bold;">exec</span> <span style="color: #660033;">--profile</span> deep-review <span style="color: #a10;">"review this change"</span><br/>
+codex <span style="color: #7A0874; font-weight: bold;">exec</span> <span style="color: #660033;">--profile</span> deep-review <span style="color: #a10;">"review this change"</span><br/>
 </div>
 </div>
 <h3>Profile のマージ（統合）セマンティクス</h3>
@@ -268,7 +268,7 @@ codex <span style="color: #7a0874; font-weight: bold;">exec</span> <span style="
 <span style="color: #666666; font-style: italic;"># 旧形式（非推奨）</span><br/>
 profile = <span style="color: #a10;">"deep-review"</span><br/>
 <br/>
-<span style="color: #7a0874; font-weight: bold;">[</span>profiles.deep-review<span style="color: #7a0874; font-weight: bold;">]</span><br/>
+<span style="color: #7A0874; font-weight: bold;">[</span>profiles.deep-review<span style="color: #7A0874; font-weight: bold;">]</span><br/>
 model = <span style="color: #a10;">"gpt-5.5"</span><br/>
 model_reasoning_effort = <span style="color: #a10;">"xhigh"</span><br/>
 </div>
@@ -303,7 +303,7 @@ codex <span style="color: #660033;">--model</span> gpt-<span style="color: #0000
 codex <span style="color: #660033;">--config</span> <span style="color: #007800;">model</span>=<span style="color: #a10;">'"gpt-5.4"'</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># ブール値はそのまま記述する</span><br/>
-codex <span style="color: #660033;">--config</span> sandbox_workspace_write.network_access=<span style="color: #c20cb9; font-weight: bold;">true</span><br/>
+codex <span style="color: #660033;">--config</span> sandbox_workspace_write.network_access=<span style="color: #C20CB9; font-weight: bold;">true</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># 配列は TOML 配列構文を使用する</span><br/>
 codex <span style="color: #660033;">--config</span> <span style="color: #a10;">'shell_environment_policy.include_only=["PATH","HOME"]'</span><br/>
@@ -381,13 +381,13 @@ openai_base_url = <span style="color: #a10;">"https://us.api.openai.com/v1"</spa
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># ファイルパス：~/.codex/config.toml</span><br/>
 <span style="color: #666666; font-style: italic;"># すべての Bash ツール呼び出しにマッチ</span><br/>
-<span style="color: #7a0874; font-weight: bold;">[</span><span style="color: #7a0874; font-weight: bold;">[</span>hooks.PreToolUse<span style="color: #7a0874; font-weight: bold;">]</span><span style="color: #7a0874; font-weight: bold;">]</span><br/>
+<span style="color: #7A0874; font-weight: bold;">[</span><span style="color: #7A0874; font-weight: bold;">[</span>hooks.PreToolUse<span style="color: #7A0874; font-weight: bold;">]</span><span style="color: #7A0874; font-weight: bold;">]</span><br/>
 matcher = <span style="color: #a10;">"^Bash$"</span><br/>
 <br/>
-<span style="color: #7a0874; font-weight: bold;">[</span><span style="color: #7a0874; font-weight: bold;">[</span>hooks.PreToolUse.hooks<span style="color: #7a0874; font-weight: bold;">]</span><span style="color: #7a0874; font-weight: bold;">]</span><br/>
-<span style="color: #7a0874; font-weight: bold;">type</span> = <span style="color: #a10;">"command"</span><br/>
+<span style="color: #7A0874; font-weight: bold;">[</span><span style="color: #7A0874; font-weight: bold;">[</span>hooks.PreToolUse.hooks<span style="color: #7A0874; font-weight: bold;">]</span><span style="color: #7A0874; font-weight: bold;">]</span><br/>
+<span style="color: #7A0874; font-weight: bold;">type</span> = <span style="color: #a10;">"command"</span><br/>
 <span style="color: #666666; font-style: italic;"># リポジトリ内の事前チェックスクリプトを呼び出す（パスは .codex/ が置かれているディレクトリを基準とする）</span><br/>
-<span style="color: #7a0874; font-weight: bold;">command</span> = <span style="color: #a10;">'/usr/bin/python3 "$(git rev-parse --show-toplevel)/.codex/hooks/pre_tool_use_policy.py"'</span><br/>
+<span style="color: #7A0874; font-weight: bold;">command</span> = <span style="color: #a10;">'/usr/bin/python3 "$(git rev-parse --show-toplevel)/.codex/hooks/pre_tool_use_policy.py"'</span><br/>
 timeout = <span style="color: #000000;">30</span>                                 <span style="color: #666666; font-style: italic;"># タイムアウト秒数。タイムアウト後は拒否とみなす</span><br/>
 statusMessage = <span style="color: #a10;">"Checking Bash command"</span>      <span style="color: #666666; font-style: italic;"># ステータスバー通知</span><br/>
 </div>
@@ -405,16 +405,16 @@ statusMessage = <span style="color: #a10;">"Checking Bash command"</span>     
 model = <span style="color: #a10;">"gpt-5.4"</span>           <span style="color: #666666; font-style: italic;"># モデル名は選択したプロバイダーによって決まる</span><br/>
 model_provider = <span style="color: #a10;">"proxy"</span>    <span style="color: #666666; font-style: italic;"># 下記の [model_providers.proxy] を指す</span><br/>
 <br/>
-<span style="color: #7a0874; font-weight: bold;">[</span>model_providers.proxy<span style="color: #7a0874; font-weight: bold;">]</span><br/>
+<span style="color: #7A0874; font-weight: bold;">[</span>model_providers.proxy<span style="color: #7A0874; font-weight: bold;">]</span><br/>
 name = <span style="color: #a10;">"OpenAI using LLM proxy"</span>  <span style="color: #666666; font-style: italic;"># 表示名</span><br/>
 base_url = <span style="color: #a10;">"http://proxy.example.com"</span><br/>
 env_key = <span style="color: #a10;">"OPENAI_API_KEY"</span>       <span style="color: #666666; font-style: italic;"># 環境変数からキーを読み取る</span><br/>
 <br/>
-<span style="color: #7a0874; font-weight: bold;">[</span>model_providers.local_ollama<span style="color: #7a0874; font-weight: bold;">]</span><br/>
+<span style="color: #7A0874; font-weight: bold;">[</span>model_providers.local_ollama<span style="color: #7A0874; font-weight: bold;">]</span><br/>
 name = <span style="color: #a10;">"Ollama"</span><br/>
 base_url = <span style="color: #a10;">"http://localhost:11434/v1"</span><br/>
 <br/>
-<span style="color: #7a0874; font-weight: bold;">[</span>model_providers.mistral<span style="color: #7a0874; font-weight: bold;">]</span><br/>
+<span style="color: #7A0874; font-weight: bold;">[</span>model_providers.mistral<span style="color: #7A0874; font-weight: bold;">]</span><br/>
 name = <span style="color: #a10;">"Mistral"</span><br/>
 base_url = <span style="color: #a10;">"https://api.mistral.ai/v1"</span><br/>
 env_key = <span style="color: #a10;">"MISTRAL_API_KEY"</span><br/>
@@ -425,11 +425,11 @@ env_key = <span style="color: #a10;">"MISTRAL_API_KEY"</span><br/>
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #7a0874; font-weight: bold;">[</span>model_providers.example<span style="color: #7a0874; font-weight: bold;">]</span><br/>
+<span style="color: #7A0874; font-weight: bold;">[</span>model_providers.example<span style="color: #7A0874; font-weight: bold;">]</span><br/>
 <span style="color: #666666; font-style: italic;"># 静的ヘッダー：毎回のリクエストに含める</span><br/>
-http_headers = <span style="color: #7a0874; font-weight: bold;">{</span> <span style="color: #a10;">"X-Example-Header"</span> = <span style="color: #a10;">"example-value"</span> <span style="color: #7a0874; font-weight: bold;">}</span><br/>
+http_headers = <span style="color: #7A0874; font-weight: bold;">{</span> <span style="color: #a10;">"X-Example-Header"</span> = <span style="color: #a10;">"example-value"</span> <span style="color: #7A0874; font-weight: bold;">}</span><br/>
 <span style="color: #666666; font-style: italic;"># 動的ヘッダー：値は環境変数から読み取る</span><br/>
-env_http_headers = <span style="color: #7a0874; font-weight: bold;">{</span> <span style="color: #a10;">"X-Example-Features"</span> = <span style="color: #a10;">"EXAMPLE_FEATURES"</span> <span style="color: #7a0874; font-weight: bold;">}</span><br/>
+env_http_headers = <span style="color: #7A0874; font-weight: bold;">{</span> <span style="color: #a10;">"X-Example-Features"</span> = <span style="color: #a10;">"EXAMPLE_FEATURES"</span> <span style="color: #7A0874; font-weight: bold;">}</span><br/>
 </div>
 </div>
 <h3>コマンドベース認証（Command-backed Auth）</h3>
@@ -437,14 +437,14 @@ env_http_headers = <span style="color: #7a0874; font-weight: bold;">{</span> <sp
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #7a0874; font-weight: bold;">[</span>model_providers.proxy<span style="color: #7a0874; font-weight: bold;">]</span><br/>
+<span style="color: #7A0874; font-weight: bold;">[</span>model_providers.proxy<span style="color: #7A0874; font-weight: bold;">]</span><br/>
 name = <span style="color: #a10;">"OpenAI using LLM proxy"</span><br/>
 base_url = <span style="color: #a10;">"https://proxy.example.com/v1"</span><br/>
 wire_api = <span style="color: #a10;">"responses"</span>   <span style="color: #666666; font-style: italic;">インスタンス</span><br/>
 <br/>
-<span style="color: #7a0874; font-weight: bold;">[</span>model_providers.proxy.auth<span style="color: #7a0874; font-weight: bold;">]</span><br/>
-<span style="color: #7a0874; font-weight: bold;">command</span> = <span style="color: #a10;">"/usr/local/bin/fetch-codex-token"</span><br/>
-args = <span style="color: #7a0874; font-weight: bold;">[</span><span style="color: #a10;">"--audience"</span>, <span style="color: #a10;">"codex"</span><span style="color: #7a0874; font-weight: bold;">]</span><br/>
+<span style="color: #7A0874; font-weight: bold;">[</span>model_providers.proxy.auth<span style="color: #7A0874; font-weight: bold;">]</span><br/>
+<span style="color: #7A0874; font-weight: bold;">command</span> = <span style="color: #a10;">"/usr/local/bin/fetch-codex-token"</span><br/>
+args = <span style="color: #7A0874; font-weight: bold;">[</span><span style="color: #a10;">"--audience"</span>, <span style="color: #a10;">"codex"</span><span style="color: #7A0874; font-weight: bold;">]</span><br/>
 timeout_ms = <span style="color: #000000;">5000</span>            <span style="color: #666666; font-style: italic;"># Responses API プロトコルを使用</span><br/>
 refresh_interval_ms = <span style="color: #000000;">300000</span> <span style="color: #666666; font-style: italic;"># 単回取得のタイムアウト</span><br/>
 </div>
@@ -465,7 +465,7 @@ refresh_interval_ms = <span style="color: #000000;">300000</span> <span style="c
 model_provider = <span style="color: #a10;">"amazon-bedrock"</span><br/>
 model = <span style="color: #a10;">"&lt;bedrock-model-id&gt;"</span><br/>
 <br/>
-<span style="color: #7a0874; font-weight: bold;">[</span>model_providers.amazon-bedrock.aws<span style="color: #7a0874; font-weight: bold;">]</span><br/>
+<span style="color: #7A0874; font-weight: bold;">[</span>model_providers.amazon-bedrock.aws<span style="color: #7A0874; font-weight: bold;">]</span><br/>
 profile = <span style="color: #a10;">"default"</span>      <span style="color: #666666; font-style: italic;"># ファイルパス：~/.codex/config.toml</span><br/>
 region = <span style="color: #a10;">"eu-central-1"</span>  <span style="color: #666666; font-style: italic;"># AWS プロファイル。未設定の場合は標準の認証情報チェーンを使用</span><br/>
 </div>
@@ -501,11 +501,11 @@ codex <span style="color: #660033;">--oss</span> <span style="color: #660033;">-
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;">インスタンス</span><br/>
-<span style="color: #7a0874; font-weight: bold;">[</span>model_providers.azure<span style="color: #7a0874; font-weight: bold;">]</span><br/>
+<span style="color: #7A0874; font-weight: bold;">[</span>model_providers.azure<span style="color: #7A0874; font-weight: bold;">]</span><br/>
 name = <span style="color: #a10;">"Azure"</span><br/>
 base_url = <span style="color: #a10;">"https://YOUR_PROJECT_NAME.openai.azure.com/openai"</span><br/>
 env_key = <span style="color: #a10;">"AZURE_OPENAI_API_KEY"</span>          <span style="color: #666666; font-style: italic;"># ファイルパス：~/.codex/config.toml</span><br/>
-query_params = <span style="color: #7a0874; font-weight: bold;">{</span> api-version = <span style="color: #a10;">"2025-04-01-preview"</span> <span style="color: #7a0874; font-weight: bold;">}</span><br/>
+query_params = <span style="color: #7A0874; font-weight: bold;">{</span> api-version = <span style="color: #a10;">"2025-04-01-preview"</span> <span style="color: #7A0874; font-weight: bold;">}</span><br/>
 wire_api = <span style="color: #a10;">"responses"</span>                    <span style="color: #666666; font-style: italic;"># 環境変数からキーを読み取る</span><br/>
 request_max_retries = <span style="color: #000000;">4</span>                   <span style="color: #666666; font-style: italic;"># Responses API プロトコルを使用</span><br/>
 stream_max_retries = <span style="color: #000000;">10</span>                   <span style="color: #666666; font-style: italic;"># 通常リクエストのリトライ回数</span><br/>
@@ -522,7 +522,7 @@ stream_idle_timeout_ms = <span style="color: #000000;">300000</span>        
 <span style="color: #666666; font-style: italic;"># ファイルパス: ~/.codex/config.toml</span><br/>
 model_provider = <span style="color: #a10;">"openaidr"</span><br/>
 <br/>
-<span style="color: #7a0874; font-weight: bold;">[</span>model_providers.openaidr<span style="color: #7a0874; font-weight: bold;">]</span><br/>
+<span style="color: #7A0874; font-weight: bold;">[</span>model_providers.openaidr<span style="color: #7A0874; font-weight: bold;">]</span><br/>
 name = <span style="color: #a10;">"OpenAI Data Residency"</span><br/>
 <span style="color: #666666; font-style: italic;"># "us" をデータ常駐ドキュメントで要求されるプレフィックス（eu、jp など）に置き換えます</span><br/>
 base_url = <span style="color: #a10;">"https://us.api.openai.com/v1"</span><br/>
@@ -538,7 +538,7 @@ base_url = <span style="color: #a10;">"https://us.api.openai.com/v1"</span><br/>
 <span style="color: #666666; font-style: italic;"># ファイルパス: ~/.codex/config.toml</span><br/>
 model_reasoning_summary = <span style="color: #a10;">"none"</span>          <span style="color: #666666; font-style: italic;"># 推論サマリーを無効化</span><br/>
 model_verbosity = <span style="color: #a10;">"low"</span>                   <span style="color: #666666; font-style: italic;"># 回答の長さを短縮</span><br/>
-model_supports_reasoning_summaries = <span style="color: #c20cb9; font-weight: bold;">true</span> <span style="color: #666666; font-style: italic;"># モデルに推論の出力を強制</span><br/>
+model_supports_reasoning_summaries = <span style="color: #C20CB9; font-weight: bold;">true</span> <span style="color: #666666; font-style: italic;"># モデルに推論の出力を強制</span><br/>
 model_context_window = <span style="color: #000000;">128000</span>             <span style="color: #666666; font-style: italic;"># コンテキストウィンドウサイズを上書き</span><br/>
 </div>
 </div>
@@ -554,7 +554,7 @@ model_context_window = <span style="color: #000000;">128000</span>         �
 approval_policy = <span style="color: #a10;">"untrusted"</span>   <span style="color: #666666; font-style: italic;"># その他のオプション：on-request、never、または { granular = { ... } }</span><br/>
 approvals_reviewer = <span style="color: #a10;">"user"</span>     <span style="color: #666666; font-style: italic;"># "auto_review" は自動レビューを使用</span><br/>
 sandbox_mode = <span style="color: #a10;">"workspace-write"</span><br/>
-allow_login_shell = <span style="color: #c20cb9; font-weight: bold;">false</span>       <span style="color: #666666; font-style: italic;"># ログインシェルを無効化（セキュリティ強化項目）</span><br/>
+allow_login_shell = <span style="color: #C20CB9; font-weight: bold;">false</span>       <span style="color: #666666; font-style: italic;"># ログインシェルを無効化（セキュリティ強化項目）</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># きめ細かい承認ポリシーの例（プロンプトカテゴリ別）</span><br/>
 <span style="color: #666666; font-style: italic;"># approval_policy = { granular = {</span><br/>
@@ -565,13 +565,13 @@ allow_login_shell = <span style="color: #c20cb9; font-weight: bold;">false</span
 <span style="color: #666666; font-style: italic;">#   skill_approval = false         # skill スクリプト系は直接 fail-closed</span><br/>
 <span style="color: #666666; font-style: italic;"># } }</span><br/>
 <br/>
-<span style="color: #7a0874; font-weight: bold;">[</span>sandbox_workspace_write<span style="color: #7a0874; font-weight: bold;">]</span><br/>
-exclude_tmpdir_env_var = <span style="color: #c20cb9; font-weight: bold;">false</span>  <span style="color: #666666; font-style: italic;"># $TMPDIR への書き込みを許可</span><br/>
-exclude_slash_tmp = <span style="color: #c20cb9; font-weight: bold;">false</span>       <span style="color: #666666; font-style: italic;"># /tmp への書き込みを許可</span><br/>
-writable_roots = <span style="color: #7a0874; font-weight: bold;">[</span><span style="color: #a10;">"/Users/YOU/.pyenv/shims"</span><span style="color: #7a0874; font-weight: bold;">]</span>   <span style="color: #666666; font-style: italic;"># 追加の書き込み可能ディレクトリ</span><br/>
-network_access = <span style="color: #c20cb9; font-weight: bold;">false</span>          <span style="color: #666666; font-style: italic;"># デフォルトで外部ネットワークを禁止</span><br/>
+<span style="color: #7A0874; font-weight: bold;">[</span>sandbox_workspace_write<span style="color: #7A0874; font-weight: bold;">]</span><br/>
+exclude_tmpdir_env_var = <span style="color: #C20CB9; font-weight: bold;">false</span>  <span style="color: #666666; font-style: italic;"># $TMPDIR への書き込みを許可</span><br/>
+exclude_slash_tmp = <span style="color: #C20CB9; font-weight: bold;">false</span>       <span style="color: #666666; font-style: italic;"># /tmp への書き込みを許可</span><br/>
+writable_roots = <span style="color: #7A0874; font-weight: bold;">[</span><span style="color: #a10;">"/Users/YOU/.pyenv/shims"</span><span style="color: #7A0874; font-weight: bold;">]</span>   <span style="color: #666666; font-style: italic;"># 追加の書き込み可能ディレクトリ</span><br/>
+network_access = <span style="color: #C20CB9; font-weight: bold;">false</span>          <span style="color: #666666; font-style: italic;"># デフォルトで外部ネットワークを禁止</span><br/>
 <br/>
-<span style="color: #7a0874; font-weight: bold;">[</span>auto_review<span style="color: #7a0874; font-weight: bold;">]</span><br/>
+<span style="color: #7A0874; font-weight: bold;">[</span>auto_review<span style="color: #7A0874; font-weight: bold;">]</span><br/>
 policy = <span style="color: #a10;">""</span><span style="color: #a10;">"<br/>
 Use your organization's automatic review policy.<br/>
 "</span><span style="color: #a10;">""</span><br/>
@@ -603,12 +603,12 @@ sandbox_mode = <span style="color: #a10;">"danger-full-access"</span><br/>
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># ファイルパス: ~/.codex/config.toml</span><br/>
-<span style="color: #7a0874; font-weight: bold;">[</span>shell_environment_policy<span style="color: #7a0874; font-weight: bold;">]</span><br/>
+<span style="color: #7A0874; font-weight: bold;">[</span>shell_environment_policy<span style="color: #7A0874; font-weight: bold;">]</span><br/>
 inherit = <span style="color: #a10;">"none"</span>                            <span style="color: #666666; font-style: italic;"># クリーンな状態から開始（推奨）</span><br/>
-<span style="color: #000000; font-weight: bold;">set</span> = <span style="color: #7a0874; font-weight: bold;">{</span> PATH = <span style="color: #a10;">"/usr/bin"</span>, MY_FLAG = <span style="color: #a10;">"1"</span> <span style="color: #7a0874; font-weight: bold;">}</span> <span style="color: #666666; font-style: italic;"># 変数を明示的に設定</span><br/>
-ignore_default_excludes = <span style="color: #c20cb9; font-weight: bold;">false</span>             <span style="color: #666666; font-style: italic;"># デフォルトの KEY/SECRET/TOKEN フィルタリングを保持</span><br/>
-exclude = <span style="color: #7a0874; font-weight: bold;">[</span><span style="color: #a10;">"AWS_*"</span>, <span style="color: #a10;">"AZURE_*"</span><span style="color: #7a0874; font-weight: bold;">]</span>              <span style="color: #666666; font-style: italic;"># さらに glob に一致する変数を除外</span><br/>
-include_only = <span style="color: #7a0874; font-weight: bold;">[</span><span style="color: #a10;">"PATH"</span>, <span style="color: #a10;">"HOME"</span><span style="color: #7a0874; font-weight: bold;">]</span>             <span style="color: #666666; font-style: italic;"># ホワイトリストのみを渡す（exclude を上書き）</span><br/>
+<span style="color: #000000; font-weight: bold;">set</span> = <span style="color: #7A0874; font-weight: bold;">{</span> PATH = <span style="color: #a10;">"/usr/bin"</span>, MY_FLAG = <span style="color: #a10;">"1"</span> <span style="color: #7A0874; font-weight: bold;">}</span> <span style="color: #666666; font-style: italic;"># 変数を明示的に設定</span><br/>
+ignore_default_excludes = <span style="color: #C20CB9; font-weight: bold;">false</span>             <span style="color: #666666; font-style: italic;"># デフォルトの KEY/SECRET/TOKEN フィルタリングを保持</span><br/>
+exclude = <span style="color: #7A0874; font-weight: bold;">[</span><span style="color: #a10;">"AWS_*"</span>, <span style="color: #a10;">"AZURE_*"</span><span style="color: #7A0874; font-weight: bold;">]</span>              <span style="color: #666666; font-style: italic;"># さらに glob に一致する変数を除外</span><br/>
+include_only = <span style="color: #7A0874; font-weight: bold;">[</span><span style="color: #a10;">"PATH"</span>, <span style="color: #a10;">"HOME"</span><span style="color: #7A0874; font-weight: bold;">]</span>             <span style="color: #666666; font-style: italic;"># ホワイトリストのみを渡す（exclude を上書き）</span><br/>
 </div>
 </div>
 <p>パターン構文：大文字小文字を区別しない glob、<span class="marked">*</span>任意の文字列にマッチ、<span class="marked">?</span>単一文字にマッチ、<span class="marked">[A-Z]</span>は文字クラスです。</p>
@@ -621,10 +621,10 @@ include_only = <span style="color: #7a0874; font-weight: bold;">[</span><span st
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># ファイルパス: ~/.codex/config.toml</span><br/>
-<span style="color: #7a0874; font-weight: bold;">[</span>mcp_servers.context7<span style="color: #7a0874; font-weight: bold;">]</span><br/>
-<span style="color: #7a0874; font-weight: bold;">command</span> = <span style="color: #a10;">"npx"</span><br/>
-args = <span style="color: #7a0874; font-weight: bold;">[</span><span style="color: #a10;">"-y"</span>, <span style="color: #a10;">"@upstash/context7-mcp"</span><span style="color: #7a0874; font-weight: bold;">]</span><br/>
-enabled = <span style="color: #c20cb9; font-weight: bold;">true</span><br/>
+<span style="color: #7A0874; font-weight: bold;">[</span>mcp_servers.context7<span style="color: #7A0874; font-weight: bold;">]</span><br/>
+<span style="color: #7A0874; font-weight: bold;">command</span> = <span style="color: #a10;">"npx"</span><br/>
+args = <span style="color: #7A0874; font-weight: bold;">[</span><span style="color: #a10;">"-y"</span>, <span style="color: #a10;">"@upstash/context7-mcp"</span><span style="color: #7A0874; font-weight: bold;">]</span><br/>
+enabled = <span style="color: #C20CB9; font-weight: bold;">true</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># --config を使用して特定の MCP サービスを一時的に無効化</span><br/>
 <span style="color: #666666; font-style: italic;"># codex --config mcp_servers.context7.enabled=false</span><br/>
@@ -637,33 +637,33 @@ enabled = <span style="color: #c20cb9; font-weight: bold;">true</span><br/>
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># ファイルパス: ~/.codex/config.toml</span><br/>
-<span style="color: #7a0874; font-weight: bold;">[</span>otel<span style="color: #7a0874; font-weight: bold;">]</span><br/>
+<span style="color: #7A0874; font-weight: bold;">[</span>otel<span style="color: #7A0874; font-weight: bold;">]</span><br/>
 environment = <span style="color: #a10;">"staging"</span>   <span style="color: #666666; font-style: italic;"># デフォルトは dev</span><br/>
 exporter = <span style="color: #a10;">"none"</span>         <span style="color: #666666; font-style: italic;"># オプション: otlp-http または otlp-grpc</span><br/>
-log_user_prompt = <span style="color: #c20cb9; font-weight: bold;">false</span>   <span style="color: #666666; font-style: italic;"># ユーザープロンプトの内容をエクスポートしない（推奨）</span><br/>
+log_user_prompt = <span style="color: #C20CB9; font-weight: bold;">false</span>   <span style="color: #666666; font-style: italic;"># ユーザープロンプトの内容をエクスポートしない（推奨）</span><br/>
 </div>
 </div>
 <h3>HTTP エクスポーターを選択</h3>
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #7a0874; font-weight: bold;">[</span>otel<span style="color: #7a0874; font-weight: bold;">]</span><br/>
-exporter = <span style="color: #7a0874; font-weight: bold;">{</span> otlp-http = <span style="color: #7a0874; font-weight: bold;">{</span><br/>
+<span style="color: #7A0874; font-weight: bold;">[</span>otel<span style="color: #7A0874; font-weight: bold;">]</span><br/>
+exporter = <span style="color: #7A0874; font-weight: bold;">{</span> otlp-http = <span style="color: #7A0874; font-weight: bold;">{</span><br/>
   endpoint = <span style="color: #a10;">"https://otel.example.com/v1/logs"</span>,<br/>
   protocol = <span style="color: #a10;">"binary"</span>,<br/>
-  headers = <span style="color: #7a0874; font-weight: bold;">{</span> <span style="color: #a10;">"x-otlp-api-key"</span> = <span style="color: #a10;">"<span style="color: #007800;">${OTLP_TOKEN}</span>"</span> <span style="color: #7a0874; font-weight: bold;">}</span><br/>
-<span style="color: #7a0874; font-weight: bold;">}</span><span style="color: #7a0874; font-weight: bold;">}</span><br/>
+  headers = <span style="color: #7A0874; font-weight: bold;">{</span> <span style="color: #a10;">"x-otlp-api-key"</span> = <span style="color: #a10;">"<span style="color: #007800;">${OTLP_TOKEN}</span>"</span> <span style="color: #7A0874; font-weight: bold;">}</span><br/>
+<span style="color: #7A0874; font-weight: bold;">}</span><span style="color: #7A0874; font-weight: bold;">}</span><br/>
 </div>
 </div>
 <h3>gRPC エクスポーターを選択</h3>
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #7a0874; font-weight: bold;">[</span>otel<span style="color: #7a0874; font-weight: bold;">]</span><br/>
-exporter = <span style="color: #7a0874; font-weight: bold;">{</span> otlp-grpc = <span style="color: #7a0874; font-weight: bold;">{</span><br/>
+<span style="color: #7A0874; font-weight: bold;">[</span>otel<span style="color: #7A0874; font-weight: bold;">]</span><br/>
+exporter = <span style="color: #7A0874; font-weight: bold;">{</span> otlp-grpc = <span style="color: #7A0874; font-weight: bold;">{</span><br/>
   endpoint = <span style="color: #a10;">"https://otel.example.com:4317"</span>,<br/>
-  headers = <span style="color: #7a0874; font-weight: bold;">{</span> <span style="color: #a10;">"x-otlp-meta"</span> = <span style="color: #a10;">"abc123"</span> <span style="color: #7a0874; font-weight: bold;">}</span><br/>
-<span style="color: #7a0874; font-weight: bold;">}</span><span style="color: #7a0874; font-weight: bold;">}</span><br/>
+  headers = <span style="color: #7A0874; font-weight: bold;">{</span> <span style="color: #a10;">"x-otlp-meta"</span> = <span style="color: #a10;">"abc123"</span> <span style="color: #7A0874; font-weight: bold;">}</span><br/>
+<span style="color: #7A0874; font-weight: bold;">}</span><span style="color: #7A0874; font-weight: bold;">}</span><br/>
 </div>
 </div>
 <h3>エクスポートするイベントタイプ</h3>
@@ -686,8 +686,8 @@ exporter = <span style="color: #7a0874; font-weight: bold;">{</span> otlp-grpc =
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># ファイルパス: ~/.codex/config.toml</span><br/>
-<span style="color: #7a0874; font-weight: bold;">[</span>analytics<span style="color: #7a0874; font-weight: bold;">]</span><br/>
-enabled = <span style="color: #c20cb9; font-weight: bold;">false</span><br/>
+<span style="color: #7A0874; font-weight: bold;">[</span>analytics<span style="color: #7A0874; font-weight: bold;">]</span><br/>
+enabled = <span style="color: #C20CB9; font-weight: bold;">false</span><br/>
 </div>
 </div>
 <h3>推論イベントの非表示と表示</h3>
@@ -696,7 +696,7 @@ enabled = <span style="color: #c20cb9; font-weight: bold;">false</span><br/>
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># ファイルパス: ~/.codex/config.toml</span><br/>
-hide_agent_reasoning = <span style="color: #c20cb9; font-weight: bold;">true</span><br/>
+hide_agent_reasoning = <span style="color: #C20CB9; font-weight: bold;">true</span><br/>
 </div>
 </div>
 <p>逆に、モデルの生の推論内容を確認する必要がある場合：</p>
@@ -704,7 +704,7 @@ hide_agent_reasoning = <span style="color: #c20cb9; font-weight: bold;">true</sp
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># ファイルパス: ~/.codex/config.toml</span><br/>
-show_raw_agent_reasoning = <span style="color: #c20cb9; font-weight: bold;">true</span><br/>
+show_raw_agent_reasoning = <span style="color: #C20CB9; font-weight: bold;">true</span><br/>
 </div>
 </div>
 <blockquote><p>ワークフローが生の推論の公開を許可していることを確認した場合にのみ有効にしてください。一部のモデル（例：<span class="marked">gpt-oss</span>）は生の推論を出力しないため、この設定は効果がありません。</p></blockquote>
@@ -715,7 +715,7 @@ show_raw_agent_reasoning = <span style="color: #c20cb9; font-weight: bold;">true
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># ファイルパス: ~/.codex/config.toml</span><br/>
-notify = <span style="color: #7a0874; font-weight: bold;">[</span><span style="color: #a10;">"python3"</span>, <span style="color: #a10;">"/path/to/notify.py"</span><span style="color: #7a0874; font-weight: bold;">]</span><br/>
+notify = <span style="color: #7A0874; font-weight: bold;">[</span><span style="color: #a10;">"python3"</span>, <span style="color: #a10;">"/path/to/notify.py"</span><span style="color: #7A0874; font-weight: bold;">]</span><br/>
 </div>
 </div>
 <p>スクリプトは1つの JSON 引数を受け取ります。一般的なフィールド：</p>
@@ -773,8 +773,8 @@ notify = <span style="color: #7a0874; font-weight: bold;">[</span><span style="c
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># ファイルパス：~/.codex/config.toml</span><br/>
-<span style="color: #7a0874; font-weight: bold;">[</span>feedback<span style="color: #7a0874; font-weight: bold;">]</span><br/>
-enabled = <span style="color: #c20cb9; font-weight: bold;">false</span><br/>
+<span style="color: #7A0874; font-weight: bold;">[</span>feedback<span style="color: #7A0874; font-weight: bold;">]</span><br/>
+enabled = <span style="color: #C20CB9; font-weight: bold;">false</span><br/>
 </div>
 </div>
 <p>無効にした後<span class="marked">/feedback</span>無効メッセージが表示され、Codex はフィードバックの送信を拒否します。</p>
@@ -784,7 +784,7 @@ enabled = <span style="color: #c20cb9; font-weight: bold;">false</span><br/>
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># ファイルパス：~/.codex/config.toml</span><br/>
-<span style="color: #7a0874; font-weight: bold;">[</span><span style="color: #7a0874; font-weight: bold;">history</span><span style="color: #7a0874; font-weight: bold;">]</span><br/>
+<span style="color: #7A0874; font-weight: bold;">[</span><span style="color: #7A0874; font-weight: bold;">history</span><span style="color: #7A0874; font-weight: bold;">]</span><br/>
 persistence = <span style="color: #a10;">"none"</span><br/>
 </div>
 </div>
@@ -793,7 +793,7 @@ persistence = <span style="color: #a10;">"none"</span><br/>
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># ファイルパス：~/.codex/config.toml</span><br/>
-<span style="color: #7a0874; font-weight: bold;">[</span><span style="color: #7a0874; font-weight: bold;">history</span><span style="color: #7a0874; font-weight: bold;">]</span><br/>
+<span style="color: #7A0874; font-weight: bold;">[</span><span style="color: #7A0874; font-weight: bold;">history</span><span style="color: #7A0874; font-weight: bold;">]</span><br/>
 max_bytes = <span style="color: #000000;">104857600</span>  <span style="color: #666666; font-style: italic;"># 100 MiB</span><br/>
 </div>
 </div>
@@ -893,7 +893,7 @@ file_opener = <span style="color: #a10;">"vscode"</span><br/>
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -938,7 +938,7 @@ file_opener = <span style="color: #a10;">"vscode"</span><br/>
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -977,7 +977,7 @@ file_opener = <span style="color: #a10;">"vscode"</span><br/>
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>

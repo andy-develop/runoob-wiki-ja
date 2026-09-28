@@ -181,33 +181,33 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <ul><li><code>table_name</code>作成するテーブルの名前です。</li><li><code>column1</code>, <code>column2</code>, ... はテーブルの列名です。</li><li><code>datatype</code>各列のデータ型です。</li></ul>
 <p>以下は、ユーザーテーブルを作成する具体的な例です。<strong>users</strong>：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #993333; font-weight: bold;">CREATE</span> <span style="color: #993333; font-weight: bold;">TABLE</span> users <span style="color: #66cc66;">(</span><br/>
-    id <span style="color: #993333; font-weight: bold;">INT</span> <span style="color: #993333; font-weight: bold;">AUTO_INCREMENT</span> <span style="color: #993333; font-weight: bold;">PRIMARY</span> <span style="color: #993333; font-weight: bold;">KEY</span><span style="color: #66cc66;">,</span><br/>
-    username <span style="color: #993333; font-weight: bold;">VARCHAR</span><span style="color: #66cc66;">(</span><span style="color: #cc66cc;">50</span><span style="color: #66cc66;">)</span> <span style="color: #993333; font-weight: bold;">NOT</span> <span style="color: #993333; font-weight: bold;">NULL</span><span style="color: #66cc66;">,</span><br/>
-    email <span style="color: #993333; font-weight: bold;">VARCHAR</span><span style="color: #66cc66;">(</span><span style="color: #cc66cc;">100</span><span style="color: #66cc66;">)</span> <span style="color: #993333; font-weight: bold;">NOT</span> <span style="color: #993333; font-weight: bold;">NULL</span><span style="color: #66cc66;">,</span><br/>
-    birthdate <span style="color: #993333; font-weight: bold;">DATE</span><span style="color: #66cc66;">,</span><br/>
+<span style="color: #993333; font-weight: bold;">CREATE</span> <span style="color: #993333; font-weight: bold;">TABLE</span> users <span style="color: #66CC66;">(</span><br/>
+    id <span style="color: #993333; font-weight: bold;">INT</span> <span style="color: #993333; font-weight: bold;">AUTO_INCREMENT</span> <span style="color: #993333; font-weight: bold;">PRIMARY</span> <span style="color: #993333; font-weight: bold;">KEY</span><span style="color: #66CC66;">,</span><br/>
+    username <span style="color: #993333; font-weight: bold;">VARCHAR</span><span style="color: #66CC66;">(</span><span style="color: #CC66CC;">50</span><span style="color: #66CC66;">)</span> <span style="color: #993333; font-weight: bold;">NOT</span> <span style="color: #993333; font-weight: bold;">NULL</span><span style="color: #66CC66;">,</span><br/>
+    email <span style="color: #993333; font-weight: bold;">VARCHAR</span><span style="color: #66CC66;">(</span><span style="color: #CC66CC;">100</span><span style="color: #66CC66;">)</span> <span style="color: #993333; font-weight: bold;">NOT</span> <span style="color: #993333; font-weight: bold;">NULL</span><span style="color: #66CC66;">,</span><br/>
+    birthdate <span style="color: #993333; font-weight: bold;">DATE</span><span style="color: #66CC66;">,</span><br/>
     is_active <span style="color: #993333; font-weight: bold;">BOOLEAN</span> <span style="color: #993333; font-weight: bold;">DEFAULT</span> <span style="color: #993333; font-weight: bold;">TRUE</span><br/>
-<span style="color: #66cc66;">)</span>;<br/>
+<span style="color: #66CC66;">)</span>;<br/>
 </div></div>
 <p>例の解説：</p>
 <ul><li><code>id</code>: ユーザーID、整数型、自動増加、主キーとして。</li><li><code>username</code>: ユーザー名、可変長文字列、NULL を許可しない。</li><li><code>email</code>: ユーザーメール、可変長文字列、NULL を許可しない。</li><li><code>birthdate</code>: ユーザーの誕生日、日付型。</li><li><code>is_active</code>: ユーザーがアクティブ化されているかどうか、ブール型、デフォルト値は true。</li></ul>
 <p>上記は単純な例であり、INT、VARCHAR、DATE、BOOLEAN などの一般的なデータ型を使用しています。実際のニーズに応じてさまざまなデータ型を選択できます。AUTO_INCREMENT キーワードは自動増加列を作成するために使用され、PRIMARY KEY は主キーを定義するために使用されます。</p>
 <p>テーブル作成時にストレージエンジン、文字セット、照合順序などを指定したい場合は、次を使用できます。<strong>CHARACTER SET</strong> 和 <strong>COLLATE</strong>句：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #993333; font-weight: bold;">CREATE</span> <span style="color: #993333; font-weight: bold;">TABLE</span> mytable <span style="color: #66cc66;">(</span><br/>
-    id <span style="color: #993333; font-weight: bold;">INT</span> <span style="color: #993333; font-weight: bold;">PRIMARY</span> <span style="color: #993333; font-weight: bold;">KEY</span><span style="color: #66cc66;">,</span><br/>
-    name <span style="color: #993333; font-weight: bold;">VARCHAR</span><span style="color: #66cc66;">(</span><span style="color: #cc66cc;">50</span><span style="color: #66cc66;">)</span><br/>
-<span style="color: #66cc66;">)</span> <span style="color: #993333; font-weight: bold;">CHARACTER</span> <span style="color: #993333; font-weight: bold;">SET</span> utf8mb4 <span style="color: #993333; font-weight: bold;">COLLATE</span> utf8mb4_general_ci;<br/>
+<span style="color: #993333; font-weight: bold;">CREATE</span> <span style="color: #993333; font-weight: bold;">TABLE</span> mytable <span style="color: #66CC66;">(</span><br/>
+    id <span style="color: #993333; font-weight: bold;">INT</span> <span style="color: #993333; font-weight: bold;">PRIMARY</span> <span style="color: #993333; font-weight: bold;">KEY</span><span style="color: #66CC66;">,</span><br/>
+    name <span style="color: #993333; font-weight: bold;">VARCHAR</span><span style="color: #66CC66;">(</span><span style="color: #CC66CC;">50</span><span style="color: #66CC66;">)</span><br/>
+<span style="color: #66CC66;">)</span> <span style="color: #993333; font-weight: bold;">CHARACTER</span> <span style="color: #993333; font-weight: bold;">SET</span> utf8mb4 <span style="color: #993333; font-weight: bold;">COLLATE</span> utf8mb4_general_ci;<br/>
 </div></div><p>上記のコードは、utf8mb4 文字セットと utf8mb4_general_ci 照合順序を使用するテーブルを作成します。</p>
 <p>以下の例では、RUNOOB データベースにテーブル runoob_tbl を作成します：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #993333; font-weight: bold;">CREATE</span> <span style="color: #993333; font-weight: bold;">TABLE</span> <span style="color: #993333; font-weight: bold;">IF</span> <span style="color: #993333; font-weight: bold;">NOT</span> <span style="color: #993333; font-weight: bold;">EXISTS</span> <span style="color: #ff0000;">`runoob_tbl`</span><span style="color: #66cc66;">(</span><br/>
-   <span style="color: #ff0000;">`runoob_id`</span> <span style="color: #993333; font-weight: bold;">INT</span> <span style="color: #993333; font-weight: bold;">UNSIGNED</span> <span style="color: #993333; font-weight: bold;">AUTO_INCREMENT</span><span style="color: #66cc66;">,</span><br/>
-   <span style="color: #ff0000;">`runoob_title`</span> <span style="color: #993333; font-weight: bold;">VARCHAR</span><span style="color: #66cc66;">(</span><span style="color: #cc66cc;">100</span><span style="color: #66cc66;">)</span> <span style="color: #993333; font-weight: bold;">NOT</span> <span style="color: #993333; font-weight: bold;">NULL</span><span style="color: #66cc66;">,</span><br/>
-   <span style="color: #ff0000;">`runoob_author`</span> <span style="color: #993333; font-weight: bold;">VARCHAR</span><span style="color: #66cc66;">(</span><span style="color: #cc66cc;">40</span><span style="color: #66cc66;">)</span> <span style="color: #993333; font-weight: bold;">NOT</span> <span style="color: #993333; font-weight: bold;">NULL</span><span style="color: #66cc66;">,</span><br/>
-   <span style="color: #ff0000;">`submission_date`</span> <span style="color: #993333; font-weight: bold;">DATE</span><span style="color: #66cc66;">,</span><br/>
-   <span style="color: #993333; font-weight: bold;">PRIMARY</span> <span style="color: #993333; font-weight: bold;">KEY</span> <span style="color: #66cc66;">(</span> <span style="color: #ff0000;">`runoob_id`</span> <span style="color: #66cc66;">)</span><br/>
-<span style="color: #66cc66;">)</span>ENGINE<span style="color: #66cc66;">=</span>InnoDB <span style="color: #993333; font-weight: bold;">DEFAULT</span> CHARSET<span style="color: #66cc66;">=</span>utf8;<br/>
+<span style="color: #993333; font-weight: bold;">CREATE</span> <span style="color: #993333; font-weight: bold;">TABLE</span> <span style="color: #993333; font-weight: bold;">IF</span> <span style="color: #993333; font-weight: bold;">NOT</span> <span style="color: #993333; font-weight: bold;">EXISTS</span> <span style="color: #FF0000;">`runoob_tbl`</span><span style="color: #66CC66;">(</span><br/>
+   <span style="color: #FF0000;">`runoob_id`</span> <span style="color: #993333; font-weight: bold;">INT</span> <span style="color: #993333; font-weight: bold;">UNSIGNED</span> <span style="color: #993333; font-weight: bold;">AUTO_INCREMENT</span><span style="color: #66CC66;">,</span><br/>
+   <span style="color: #FF0000;">`runoob_title`</span> <span style="color: #993333; font-weight: bold;">VARCHAR</span><span style="color: #66CC66;">(</span><span style="color: #CC66CC;">100</span><span style="color: #66CC66;">)</span> <span style="color: #993333; font-weight: bold;">NOT</span> <span style="color: #993333; font-weight: bold;">NULL</span><span style="color: #66CC66;">,</span><br/>
+   <span style="color: #FF0000;">`runoob_author`</span> <span style="color: #993333; font-weight: bold;">VARCHAR</span><span style="color: #66CC66;">(</span><span style="color: #CC66CC;">40</span><span style="color: #66CC66;">)</span> <span style="color: #993333; font-weight: bold;">NOT</span> <span style="color: #993333; font-weight: bold;">NULL</span><span style="color: #66CC66;">,</span><br/>
+   <span style="color: #FF0000;">`submission_date`</span> <span style="color: #993333; font-weight: bold;">DATE</span><span style="color: #66CC66;">,</span><br/>
+   <span style="color: #993333; font-weight: bold;">PRIMARY</span> <span style="color: #993333; font-weight: bold;">KEY</span> <span style="color: #66CC66;">(</span> <span style="color: #FF0000;">`runoob_id`</span> <span style="color: #66CC66;">)</span><br/>
+<span style="color: #66CC66;">)</span>ENGINE<span style="color: #66CC66;">=</span>InnoDB <span style="color: #993333; font-weight: bold;">DEFAULT</span> CHARSET<span style="color: #66CC66;">=</span>utf8;<br/>
 </div></div>
 <p>例の解説：</p>
 <ul>
@@ -224,19 +224,19 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h3>例</h3>
 <p>以下はテーブル runoob_tbl を作成する例です：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-root@host# mysql <span style="color: #66cc66;">-</span>u root <span style="color: #66cc66;">-</span>p<br/>
-Enter password:<span style="color: #66cc66;">*******</span><br/>
-mysql<span style="color: #66cc66;">&gt;</span> <span style="color: #993333; font-weight: bold;">USE</span> RUNOOB;<br/>
+root@host# mysql <span style="color: #66CC66;">-</span>u root <span style="color: #66CC66;">-</span>p<br/>
+Enter password:<span style="color: #66CC66;">*******</span><br/>
+mysql<span style="color: #66CC66;">&gt;</span> <span style="color: #993333; font-weight: bold;">USE</span> RUNOOB;<br/>
 <span style="color: #993333; font-weight: bold;">DATABASE</span> changed<br/>
-mysql<span style="color: #66cc66;">&gt;</span> <span style="color: #993333; font-weight: bold;">CREATE</span> <span style="color: #993333; font-weight: bold;">TABLE</span> runoob_tbl<span style="color: #66cc66;">(</span><br/>
-   <span style="color: #66cc66;">-&gt;</span> runoob_id <span style="color: #993333; font-weight: bold;">INT</span> <span style="color: #993333; font-weight: bold;">NOT</span> <span style="color: #993333; font-weight: bold;">NULL</span> <span style="color: #993333; font-weight: bold;">AUTO_INCREMENT</span><span style="color: #66cc66;">,</span><br/>
-   <span style="color: #66cc66;">-&gt;</span> runoob_title <span style="color: #993333; font-weight: bold;">VARCHAR</span><span style="color: #66cc66;">(</span><span style="color: #cc66cc;">100</span><span style="color: #66cc66;">)</span> <span style="color: #993333; font-weight: bold;">NOT</span> <span style="color: #993333; font-weight: bold;">NULL</span><span style="color: #66cc66;">,</span><br/>
-   <span style="color: #66cc66;">-&gt;</span> runoob_author <span style="color: #993333; font-weight: bold;">VARCHAR</span><span style="color: #66cc66;">(</span><span style="color: #cc66cc;">40</span><span style="color: #66cc66;">)</span> <span style="color: #993333; font-weight: bold;">NOT</span> <span style="color: #993333; font-weight: bold;">NULL</span><span style="color: #66cc66;">,</span><br/>
-   <span style="color: #66cc66;">-&gt;</span> submission_date <span style="color: #993333; font-weight: bold;">DATE</span><span style="color: #66cc66;">,</span><br/>
-   <span style="color: #66cc66;">-&gt;</span> <span style="color: #993333; font-weight: bold;">PRIMARY</span> <span style="color: #993333; font-weight: bold;">KEY</span> <span style="color: #66cc66;">(</span> runoob_id <span style="color: #66cc66;">)</span><br/>
-   <span style="color: #66cc66;">-&gt;</span> <span style="color: #66cc66;">)</span>ENGINE<span style="color: #66cc66;">=</span>InnoDB <span style="color: #993333; font-weight: bold;">DEFAULT</span> CHARSET<span style="color: #66cc66;">=</span>utf8;<br/>
-Query OK<span style="color: #66cc66;">,</span> <span style="color: #cc66cc;">0</span> <span style="color: #993333; font-weight: bold;">ROWS</span> affected <span style="color: #66cc66;">(</span><span style="color: #cc66cc;">0.16</span> sec<span style="color: #66cc66;">)</span><br/>
-mysql<span style="color: #66cc66;">&gt;</span><br/>
+mysql<span style="color: #66CC66;">&gt;</span> <span style="color: #993333; font-weight: bold;">CREATE</span> <span style="color: #993333; font-weight: bold;">TABLE</span> runoob_tbl<span style="color: #66CC66;">(</span><br/>
+   <span style="color: #66CC66;">-&gt;</span> runoob_id <span style="color: #993333; font-weight: bold;">INT</span> <span style="color: #993333; font-weight: bold;">NOT</span> <span style="color: #993333; font-weight: bold;">NULL</span> <span style="color: #993333; font-weight: bold;">AUTO_INCREMENT</span><span style="color: #66CC66;">,</span><br/>
+   <span style="color: #66CC66;">-&gt;</span> runoob_title <span style="color: #993333; font-weight: bold;">VARCHAR</span><span style="color: #66CC66;">(</span><span style="color: #CC66CC;">100</span><span style="color: #66CC66;">)</span> <span style="color: #993333; font-weight: bold;">NOT</span> <span style="color: #993333; font-weight: bold;">NULL</span><span style="color: #66CC66;">,</span><br/>
+   <span style="color: #66CC66;">-&gt;</span> runoob_author <span style="color: #993333; font-weight: bold;">VARCHAR</span><span style="color: #66CC66;">(</span><span style="color: #CC66CC;">40</span><span style="color: #66CC66;">)</span> <span style="color: #993333; font-weight: bold;">NOT</span> <span style="color: #993333; font-weight: bold;">NULL</span><span style="color: #66CC66;">,</span><br/>
+   <span style="color: #66CC66;">-&gt;</span> submission_date <span style="color: #993333; font-weight: bold;">DATE</span><span style="color: #66CC66;">,</span><br/>
+   <span style="color: #66CC66;">-&gt;</span> <span style="color: #993333; font-weight: bold;">PRIMARY</span> <span style="color: #993333; font-weight: bold;">KEY</span> <span style="color: #66CC66;">(</span> runoob_id <span style="color: #66CC66;">)</span><br/>
+   <span style="color: #66CC66;">-&gt;</span> <span style="color: #66CC66;">)</span>ENGINE<span style="color: #66CC66;">=</span>InnoDB <span style="color: #993333; font-weight: bold;">DEFAULT</span> CHARSET<span style="color: #66CC66;">=</span>utf8;<br/>
+Query OK<span style="color: #66CC66;">,</span> <span style="color: #CC66CC;">0</span> <span style="color: #993333; font-weight: bold;">ROWS</span> affected <span style="color: #66CC66;">(</span><span style="color: #CC66CC;">0.16</span> sec<span style="color: #66CC66;">)</span><br/>
+mysql<span style="color: #66CC66;">&gt;</span><br/>
 </div></div>
 <p>
 <strong>注意：</strong>MySQL コマンドの終端記号はセミコロンです。<span class="marked">;</span> 。</p>
@@ -338,7 +338,7 @@ mysqli_query(connection,query,resultmode);
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -383,7 +383,7 @@ mysqli_query(connection,query,resultmode);
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -457,7 +457,7 @@ mysqli_query(connection,query,resultmode);
 </div>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">メモはこの記事の内容の拡張である必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリックしてください</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>

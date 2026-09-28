@@ -298,16 +298,16 @@ RUN echo '这是一个本地构建的nginx镜像' &gt; /usr/share/nginx/html/ind
 <p><strong>注意</strong>注意：Dockerfileの命令は実行されるたびにdocker上に新しいレイヤーを作成します。そのため、意味のないレイヤーが多すぎると、イメージが過度に肥大化します。例：</p>
 <div class="example"> <div class="example_code">
 FROM centos<br/>
-RUN <span style="color: #c20cb9; font-weight: bold;">yum</span> <span style="color: #660033;">-y</span> <span style="color: #c20cb9; font-weight: bold;">install</span> <span style="color: #c20cb9; font-weight: bold;">wget</span><br/>
-RUN <span style="color: #c20cb9; font-weight: bold;">wget</span> <span style="color: #660033;">-O</span> redis.tar.gz <span style="color: #a10;">"http://download.redis.io/releases/redis-5.0.3.tar.gz"</span><br/>
-RUN <span style="color: #c20cb9; font-weight: bold;">tar</span> <span style="color: #660033;">-xvf</span> redis.tar.gz<br/>
+RUN <span style="color: #C20CB9; font-weight: bold;">yum</span> <span style="color: #660033;">-y</span> <span style="color: #C20CB9; font-weight: bold;">install</span> <span style="color: #C20CB9; font-weight: bold;">wget</span><br/>
+RUN <span style="color: #C20CB9; font-weight: bold;">wget</span> <span style="color: #660033;">-O</span> redis.tar.gz <span style="color: #a10;">"http://download.redis.io/releases/redis-5.0.3.tar.gz"</span><br/>
+RUN <span style="color: #C20CB9; font-weight: bold;">tar</span> <span style="color: #660033;">-xvf</span> redis.tar.gz<br/>
 </div></div>
 <p>上記の実行では3層のイメージが作成されます。次の形式に簡略化できます：</p>
 <div class="example"> <div class="example_code">
 FROM centos<br/>
-RUN <span style="color: #c20cb9; font-weight: bold;">yum</span> <span style="color: #660033;">-y</span> <span style="color: #c20cb9; font-weight: bold;">install</span> <span style="color: #c20cb9; font-weight: bold;">wget</span> \<br/>
-    <span style="color: #000000; font-weight: bold;">&amp;&amp;</span> <span style="color: #c20cb9; font-weight: bold;">wget</span> <span style="color: #660033;">-O</span> redis.tar.gz <span style="color: #a10;">"http://download.redis.io/releases/redis-5.0.3.tar.gz"</span> \<br/>
-    <span style="color: #000000; font-weight: bold;">&amp;&amp;</span> <span style="color: #c20cb9; font-weight: bold;">tar</span> <span style="color: #660033;">-xvf</span> redis.tar.gz<br/>
+RUN <span style="color: #C20CB9; font-weight: bold;">yum</span> <span style="color: #660033;">-y</span> <span style="color: #C20CB9; font-weight: bold;">install</span> <span style="color: #C20CB9; font-weight: bold;">wget</span> \<br/>
+    <span style="color: #000000; font-weight: bold;">&amp;&amp;</span> <span style="color: #C20CB9; font-weight: bold;">wget</span> <span style="color: #660033;">-O</span> redis.tar.gz <span style="color: #a10;">"http://download.redis.io/releases/redis-5.0.3.tar.gz"</span> \<br/>
+    <span style="color: #000000; font-weight: bold;">&amp;&amp;</span> <span style="color: #C20CB9; font-weight: bold;">tar</span> <span style="color: #660033;">-xvf</span> redis.tar.gz<br/>
 </div></div>
 <p>上記のように、<span class="marked">&amp;&amp;</span>記号でコマンドを接続すると、このように実行した後、作成されるイメージは1層だけです。</p>
 <h3>イメージの構築を開始する</h3>
@@ -461,7 +461,7 @@ HEALTHCHECK [选项] CMD &lt;命令&gt; : 这边 CMD 后面跟随的命令使用
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -506,7 +506,7 @@ HEALTHCHECK [选项] CMD &lt;命令&gt; : 这边 CMD 后面跟随的命令使用
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -563,7 +563,7 @@ HEALTHCHECK [选项] CMD &lt;命令&gt; : 这边 CMD 后面跟随的命令使用
 </div>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -782,7 +782,7 @@ function kFormatter(num) {
 </style>
 <div class="sidebar-box re-box re-box-large">
 <div class="sidebar-box recommend-here" style="margin: 0 auto;">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
+<a href="#" style="font-size: 16px; color:#5B80A6;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
 </div>
 <div class="sidebar-box sidebar-cate">
 <div class="sidebar-tree">

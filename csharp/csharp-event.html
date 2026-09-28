@@ -193,22 +193,22 @@ public event BoilerLogHandler BoilerEventLog;
 <span style="color: #05a; font-weight: bold;">namespace</span> EventDemo<br/>
 <span style="color: #008000;">{</span><br/>
     <span style="color: #696969; font-style: italic;">// イベントハンドラー用のデリゲート型を定義する</span><br/>
-    <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666cc; font-weight: bold;">delegate</span> <span style="color: #6666cc; font-weight: bold;">void</span> NotifyEventHandler<span style="color: #008000;">(</span><span style="color: #6666cc; font-weight: bold;">object</span> sender, EventArgs e<span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
+    <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666CC; font-weight: bold;">delegate</span> <span style="color: #6666CC; font-weight: bold;">void</span> NotifyEventHandler<span style="color: #008000;">(</span><span style="color: #6666CC; font-weight: bold;">object</span> sender, EventArgs e<span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
 <br/>
     <span style="color: #696969; font-style: italic;">// パブリッシャークラス</span><br/>
-    <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666cc; font-weight: bold;">class</span> ProcessBusinessLogic<br/>
+    <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666CC; font-weight: bold;">class</span> ProcessBusinessLogic<br/>
     <span style="color: #008000;">{</span><br/>
         <span style="color: #696969; font-style: italic;">// イベントを宣言する</span><br/>
         <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #05a; font-weight: bold;">event</span> NotifyEventHandler ProcessCompleted<span style="color: #008000;">;</span><br/>
 <br/>
         <span style="color: #696969; font-style: italic;">// イベントをトリガーするメソッド</span><br/>
-        <span style="color: #05a; font-weight: bold;">protected</span> <span style="color: #05a; font-weight: bold;">virtual</span> <span style="color: #6666cc; font-weight: bold;">void</span> OnProcessCompleted<span style="color: #008000;">(</span>EventArgs e<span style="color: #008000;">)</span><br/>
+        <span style="color: #05a; font-weight: bold;">protected</span> <span style="color: #05a; font-weight: bold;">virtual</span> <span style="color: #6666CC; font-weight: bold;">void</span> OnProcessCompleted<span style="color: #008000;">(</span>EventArgs e<span style="color: #008000;">)</span><br/>
         <span style="color: #008000;">{</span><br/>
             ProcessCompleted<span style="color: #008000;">?.</span><span style="color: #05a;">Invoke</span><span style="color: #008000;">(</span><span style="color: #05a; font-weight: bold;">this</span>, e<span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
         <span style="color: #008000;">}</span><br/>
 <br/>
         <span style="color: #696969; font-style: italic;">// ビジネスロジックのプロセスをシミュレートし、イベントをトリガーする</span><br/>
-        <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666cc; font-weight: bold;">void</span> StartProcess<span style="color: #008000;">(</span><span style="color: #008000;">)</span><br/>
+        <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666CC; font-weight: bold;">void</span> StartProcess<span style="color: #008000;">(</span><span style="color: #008000;">)</span><br/>
         <span style="color: #008000;">{</span><br/>
             Console<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span><span style="color: #a11;">"Process Started!"</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
 <br/>
@@ -220,22 +220,22 @@ public event BoilerLogHandler BoilerEventLog;
     <span style="color: #008000;">}</span><br/>
 <br/>
     <span style="color: #696969; font-style: italic;">// サブスクライバークラス</span><br/>
-    <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666cc; font-weight: bold;">class</span> EventSubscriber<br/>
+    <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666CC; font-weight: bold;">class</span> EventSubscriber<br/>
     <span style="color: #008000;">{</span><br/>
-        <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666cc; font-weight: bold;">void</span> Subscribe<span style="color: #008000;">(</span>ProcessBusinessLogic process<span style="color: #008000;">)</span><br/>
+        <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666CC; font-weight: bold;">void</span> Subscribe<span style="color: #008000;">(</span>ProcessBusinessLogic process<span style="color: #008000;">)</span><br/>
         <span style="color: #008000;">{</span><br/>
             process<span style="color: #008000;">.</span><span style="color: #05a;">ProcessCompleted</span> <span style="color: #008000;">+=</span> Process_ProcessCompleted<span style="color: #008000;">;</span><br/>
         <span style="color: #008000;">}</span><br/>
 <br/>
-        <span style="color: #05a; font-weight: bold;">private</span> <span style="color: #6666cc; font-weight: bold;">void</span> Process_ProcessCompleted<span style="color: #008000;">(</span><span style="color: #6666cc; font-weight: bold;">object</span> sender, EventArgs e<span style="color: #008000;">)</span><br/>
+        <span style="color: #05a; font-weight: bold;">private</span> <span style="color: #6666CC; font-weight: bold;">void</span> Process_ProcessCompleted<span style="color: #008000;">(</span><span style="color: #6666CC; font-weight: bold;">object</span> sender, EventArgs e<span style="color: #008000;">)</span><br/>
         <span style="color: #008000;">{</span><br/>
             Console<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span><span style="color: #a11;">"Process Completed!"</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
         <span style="color: #008000;">}</span><br/>
     <span style="color: #008000;">}</span><br/>
 <br/>
-    <span style="color: #6666cc; font-weight: bold;">class</span> Program<br/>
+    <span style="color: #6666CC; font-weight: bold;">class</span> Program<br/>
     <span style="color: #008000;">{</span><br/>
-        <span style="color: #05a; font-weight: bold;">static</span> <span style="color: #6666cc; font-weight: bold;">void</span> Main<span style="color: #008000;">(</span><span style="color: #6666cc; font-weight: bold;">string</span><span style="color: #008000;">[</span><span style="color: #008000;">]</span> args<span style="color: #008000;">)</span><br/>
+        <span style="color: #05a; font-weight: bold;">static</span> <span style="color: #6666CC; font-weight: bold;">void</span> Main<span style="color: #008000;">(</span><span style="color: #6666CC; font-weight: bold;">string</span><span style="color: #008000;">[</span><span style="color: #008000;">]</span> args<span style="color: #008000;">)</span><br/>
         <span style="color: #008000;">{</span><br/>
             ProcessBusinessLogic process <span style="color: #008000;">=</span> <span style="color: #008000;">new</span> ProcessBusinessLogic<span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
             EventSubscriber subscriber <span style="color: #008000;">=</span> <span style="color: #008000;">new</span> EventSubscriber<span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
@@ -268,15 +268,15 @@ public event BoilerLogHandler BoilerEventLog;
 <span style="color: #008000;">{</span><br/>
   <span style="color: #05a; font-weight: bold;">using</span> <span style="color: #696969;">System</span><span style="color: #008000;">;</span><br/>
   <span style="color: #696969; font-style: italic;">/***********パブリッシャークラス***********/</span><br/>
-  <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666cc; font-weight: bold;">class</span> EventTest<br/>
+  <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666CC; font-weight: bold;">class</span> EventTest<br/>
   <span style="color: #008000;">{</span><br/>
-    <span style="color: #05a; font-weight: bold;">private</span> <span style="color: #6666cc; font-weight: bold;">int</span> <span style="color: #05a; font-weight: bold;">value</span><span style="color: #008000;">;</span><br/>
+    <span style="color: #05a; font-weight: bold;">private</span> <span style="color: #6666CC; font-weight: bold;">int</span> <span style="color: #05a; font-weight: bold;">value</span><span style="color: #008000;">;</span><br/>
 <br/>
-    <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666cc; font-weight: bold;">delegate</span> <span style="color: #6666cc; font-weight: bold;">void</span> NumManipulationHandler<span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
+    <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666CC; font-weight: bold;">delegate</span> <span style="color: #6666CC; font-weight: bold;">void</span> NumManipulationHandler<span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
 <br/>
 <br/>
     <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #05a; font-weight: bold;">event</span> NumManipulationHandler ChangeNum<span style="color: #008000;">;</span><br/>
-    <span style="color: #05a; font-weight: bold;">protected</span> <span style="color: #05a; font-weight: bold;">virtual</span> <span style="color: #6666cc; font-weight: bold;">void</span> OnNumChanged<span style="color: #008000;">(</span><span style="color: #008000;">)</span><br/>
+    <span style="color: #05a; font-weight: bold;">protected</span> <span style="color: #05a; font-weight: bold;">virtual</span> <span style="color: #6666CC; font-weight: bold;">void</span> OnNumChanged<span style="color: #008000;">(</span><span style="color: #008000;">)</span><br/>
     <span style="color: #008000;">{</span><br/>
       <span style="color: #05a; font-weight: bold;">if</span> <span style="color: #008000;">(</span> ChangeNum <span style="color: #008000;">!=</span> <span style="color: #05a; font-weight: bold;">null</span> <span style="color: #008000;">)</span><br/>
       <span style="color: #008000;">{</span><br/>
@@ -290,12 +290,12 @@ public event BoilerLogHandler BoilerEventLog;
 <br/>
     <span style="color: #05a; font-weight: bold;">public</span> EventTest<span style="color: #008000;">(</span><span style="color: #008000;">)</span><br/>
     <span style="color: #008000;">{</span><br/>
-      <span style="color: #6666cc; font-weight: bold;">int</span> n <span style="color: #008000;">=</span> <span style="color: Maroon;">5</span><span style="color: #008000;">;</span><br/>
+      <span style="color: #6666CC; font-weight: bold;">int</span> n <span style="color: #008000;">=</span> <span style="color: Maroon;">5</span><span style="color: #008000;">;</span><br/>
       SetValue<span style="color: #008000;">(</span> n <span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
     <span style="color: #008000;">}</span><br/>
 <br/>
 <br/>
-    <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666cc; font-weight: bold;">void</span> SetValue<span style="color: #008000;">(</span> <span style="color: #6666cc; font-weight: bold;">int</span> n <span style="color: #008000;">)</span><br/>
+    <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666CC; font-weight: bold;">void</span> SetValue<span style="color: #008000;">(</span> <span style="color: #6666CC; font-weight: bold;">int</span> n <span style="color: #008000;">)</span><br/>
     <span style="color: #008000;">{</span><br/>
       <span style="color: #05a; font-weight: bold;">if</span> <span style="color: #008000;">(</span> <span style="color: #05a; font-weight: bold;">value</span> <span style="color: #008000;">!=</span> n <span style="color: #008000;">)</span><br/>
       <span style="color: #008000;">{</span><br/>
@@ -308,9 +308,9 @@ public event BoilerLogHandler BoilerEventLog;
 <br/>
   <span style="color: #696969; font-style: italic;">/***********サブスクライバークラス***********/</span><br/>
 <br/>
-  <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666cc; font-weight: bold;">class</span> subscribEvent<br/>
+  <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666CC; font-weight: bold;">class</span> subscribEvent<br/>
   <span style="color: #008000;">{</span><br/>
-    <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666cc; font-weight: bold;">void</span> printf<span style="color: #008000;">(</span><span style="color: #008000;">)</span><br/>
+    <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666CC; font-weight: bold;">void</span> printf<span style="color: #008000;">(</span><span style="color: #008000;">)</span><br/>
     <span style="color: #008000;">{</span><br/>
       Console<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span> <span style="color: #a11;">"event fire"</span> <span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
       Console<span style="color: #008000;">.</span><span style="color: #05a;">ReadKey</span><span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span> <span style="color: #696969; font-style: italic;">/* エンターで続行 */</span><br/>
@@ -318,9 +318,9 @@ public event BoilerLogHandler BoilerEventLog;
   <span style="color: #008000;">}</span><br/>
 <br/>
   <span style="color: #696969; font-style: italic;">/***********トリガー***********/</span><br/>
-  <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666cc; font-weight: bold;">class</span> MainClass<br/>
+  <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666CC; font-weight: bold;">class</span> MainClass<br/>
   <span style="color: #008000;">{</span><br/>
-    <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #05a; font-weight: bold;">static</span> <span style="color: #6666cc; font-weight: bold;">void</span> Main<span style="color: #008000;">(</span><span style="color: #008000;">)</span><br/>
+    <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #05a; font-weight: bold;">static</span> <span style="color: #6666CC; font-weight: bold;">void</span> Main<span style="color: #008000;">(</span><span style="color: #008000;">)</span><br/>
     <span style="color: #008000;">{</span><br/>
       EventTest e <span style="color: #008000;">=</span> <span style="color: #008000;">new</span> EventTest<span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span> <span style="color: #696969; font-style: italic;">/* オブジェクトをインスタンス化、最初はイベントをトリガーしない */</span><br/>
       subscribEvent v <span style="color: #008000;">=</span> <span style="color: #008000;">new</span> subscribEvent<span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span> <span style="color: #696969; font-style: italic;">/* オブジェクトをインスタンス化 */</span><br/>
@@ -346,12 +346,12 @@ event fire
 <span style="color: #05a; font-weight: bold;">namespace</span> BoilerEventAppl<br/>
 <span style="color: #008000;">{</span><br/>
     <span style="color: #696969; font-style: italic;">// Boiler クラス</span><br/>
-    <span style="color: #6666cc; font-weight: bold;">class</span> Boiler<br/>
+    <span style="color: #6666CC; font-weight: bold;">class</span> Boiler<br/>
     <span style="color: #008000;">{</span><br/>
-        <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666cc; font-weight: bold;">int</span> Temp <span style="color: #008000;">{</span> <span style="color: #05a; font-weight: bold;">get</span><span style="color: #008000;">;</span> <span style="color: #05a; font-weight: bold;">private</span> <span style="color: #05a; font-weight: bold;">set</span><span style="color: #008000;">;</span> <span style="color: #008000;">}</span><br/>
-        <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666cc; font-weight: bold;">int</span> Pressure <span style="color: #008000;">{</span> <span style="color: #05a; font-weight: bold;">get</span><span style="color: #008000;">;</span> <span style="color: #05a; font-weight: bold;">private</span> <span style="color: #05a; font-weight: bold;">set</span><span style="color: #008000;">;</span> <span style="color: #008000;">}</span><br/>
+        <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666CC; font-weight: bold;">int</span> Temp <span style="color: #008000;">{</span> <span style="color: #05a; font-weight: bold;">get</span><span style="color: #008000;">;</span> <span style="color: #05a; font-weight: bold;">private</span> <span style="color: #05a; font-weight: bold;">set</span><span style="color: #008000;">;</span> <span style="color: #008000;">}</span><br/>
+        <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666CC; font-weight: bold;">int</span> Pressure <span style="color: #008000;">{</span> <span style="color: #05a; font-weight: bold;">get</span><span style="color: #008000;">;</span> <span style="color: #05a; font-weight: bold;">private</span> <span style="color: #05a; font-weight: bold;">set</span><span style="color: #008000;">;</span> <span style="color: #008000;">}</span><br/>
 <br/>
-        <span style="color: #05a; font-weight: bold;">public</span> Boiler<span style="color: #008000;">(</span><span style="color: #6666cc; font-weight: bold;">int</span> temp, <span style="color: #6666cc; font-weight: bold;">int</span> pressure<span style="color: #008000;">)</span><br/>
+        <span style="color: #05a; font-weight: bold;">public</span> Boiler<span style="color: #008000;">(</span><span style="color: #6666CC; font-weight: bold;">int</span> temp, <span style="color: #6666CC; font-weight: bold;">int</span> pressure<span style="color: #008000;">)</span><br/>
         <span style="color: #008000;">{</span><br/>
             Temp <span style="color: #008000;">=</span> temp<span style="color: #008000;">;</span><br/>
             Pressure <span style="color: #008000;">=</span> pressure<span style="color: #008000;">;</span><br/>
@@ -359,19 +359,19 @@ event fire
     <span style="color: #008000;">}</span><br/>
 <br/>
     <span style="color: #696969; font-style: italic;">// イベントパブリッシャー</span><br/>
-    <span style="color: #6666cc; font-weight: bold;">class</span> DelegateBoilerEvent<br/>
+    <span style="color: #6666CC; font-weight: bold;">class</span> DelegateBoilerEvent<br/>
     <span style="color: #008000;">{</span><br/>
-        <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666cc; font-weight: bold;">delegate</span> <span style="color: #6666cc; font-weight: bold;">void</span> BoilerLogHandler<span style="color: #008000;">(</span><span style="color: #6666cc; font-weight: bold;">string</span> status<span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
+        <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666CC; font-weight: bold;">delegate</span> <span style="color: #6666CC; font-weight: bold;">void</span> BoilerLogHandler<span style="color: #008000;">(</span><span style="color: #6666CC; font-weight: bold;">string</span> status<span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
 <br/>
         <span style="color: #696969; font-style: italic;">// 上記のデリゲートに基づいてイベントを定義する</span><br/>
         <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #05a; font-weight: bold;">event</span> BoilerLogHandler BoilerEventLog<span style="color: #008000;">;</span><br/>
 <br/>
-        <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666cc; font-weight: bold;">void</span> LogProcess<span style="color: #008000;">(</span><span style="color: #008000;">)</span><br/>
+        <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666CC; font-weight: bold;">void</span> LogProcess<span style="color: #008000;">(</span><span style="color: #008000;">)</span><br/>
         <span style="color: #008000;">{</span><br/>
-            <span style="color: #6666cc; font-weight: bold;">string</span> remarks <span style="color: #008000;">=</span> <span style="color: #a11;">"O.K."</span><span style="color: #008000;">;</span><br/>
+            <span style="color: #6666CC; font-weight: bold;">string</span> remarks <span style="color: #008000;">=</span> <span style="color: #a11;">"O.K."</span><span style="color: #008000;">;</span><br/>
             Boiler boiler <span style="color: #008000;">=</span> <span style="color: #008000;">new</span> Boiler<span style="color: #008000;">(</span><span style="color: Maroon;">100</span>, <span style="color: Maroon;">12</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
-            <span style="color: #6666cc; font-weight: bold;">int</span> temp <span style="color: #008000;">=</span> boiler<span style="color: #008000;">.</span><span style="color: #05a;">Temp</span><span style="color: #008000;">;</span><br/>
-            <span style="color: #6666cc; font-weight: bold;">int</span> pressure <span style="color: #008000;">=</span> boiler<span style="color: #008000;">.</span><span style="color: #05a;">Pressure</span><span style="color: #008000;">;</span><br/>
+            <span style="color: #6666CC; font-weight: bold;">int</span> temp <span style="color: #008000;">=</span> boiler<span style="color: #008000;">.</span><span style="color: #05a;">Temp</span><span style="color: #008000;">;</span><br/>
+            <span style="color: #6666CC; font-weight: bold;">int</span> pressure <span style="color: #008000;">=</span> boiler<span style="color: #008000;">.</span><span style="color: #05a;">Pressure</span><span style="color: #008000;">;</span><br/>
 <br/>
             <span style="color: #05a; font-weight: bold;">if</span> <span style="color: #008000;">(</span>temp <span style="color: #008000;">&gt;</span> <span style="color: Maroon;">150</span> <span style="color: #008000;">||</span> temp <span style="color: #008000;">&lt;</span> <span style="color: Maroon;">80</span> <span style="color: #008000;">||</span> pressure <span style="color: #008000;">&lt;</span> <span style="color: Maroon;">12</span> <span style="color: #008000;">||</span> pressure <span style="color: #008000;">&gt;</span> <span style="color: Maroon;">15</span><span style="color: #008000;">)</span><br/>
             <span style="color: #008000;">{</span><br/>
@@ -381,42 +381,42 @@ event fire
             OnBoilerEventLog<span style="color: #008000;">(</span>$<span style="color: #a11;">"Logging Info:<span style="color: #008080; font-weight: bold;">\n</span>Temperature: {temp}<span style="color: #008080; font-weight: bold;">\n</span>Pressure: {pressure}<span style="color: #008080; font-weight: bold;">\n</span>Message: {remarks}"</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
         <span style="color: #008000;">}</span><br/>
 <br/>
-        <span style="color: #05a; font-weight: bold;">protected</span> <span style="color: #6666cc; font-weight: bold;">void</span> OnBoilerEventLog<span style="color: #008000;">(</span><span style="color: #6666cc; font-weight: bold;">string</span> message<span style="color: #008000;">)</span><br/>
+        <span style="color: #05a; font-weight: bold;">protected</span> <span style="color: #6666CC; font-weight: bold;">void</span> OnBoilerEventLog<span style="color: #008000;">(</span><span style="color: #6666CC; font-weight: bold;">string</span> message<span style="color: #008000;">)</span><br/>
         <span style="color: #008000;">{</span><br/>
             BoilerEventLog<span style="color: #008000;">?.</span><span style="color: #05a;">Invoke</span><span style="color: #008000;">(</span>message<span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
         <span style="color: #008000;">}</span><br/>
     <span style="color: #008000;">}</span><br/>
 <br/>
     <span style="color: #696969; font-style: italic;">// このクラスはログファイルへの書き込み条項を保持します</span><br/>
-    <span style="color: #6666cc; font-weight: bold;">class</span> BoilerInfoLogger <span style="color: #008000;">:</span> IDisposable<br/>
+    <span style="color: #6666CC; font-weight: bold;">class</span> BoilerInfoLogger <span style="color: #008000;">:</span> IDisposable<br/>
     <span style="color: #008000;">{</span><br/>
         <span style="color: #05a; font-weight: bold;">private</span> <span style="color: #05a; font-weight: bold;">readonly</span> StreamWriter _streamWriter<span style="color: #008000;">;</span><br/>
 <br/>
-        <span style="color: #05a; font-weight: bold;">public</span> BoilerInfoLogger<span style="color: #008000;">(</span><span style="color: #6666cc; font-weight: bold;">string</span> filename<span style="color: #008000;">)</span><br/>
+        <span style="color: #05a; font-weight: bold;">public</span> BoilerInfoLogger<span style="color: #008000;">(</span><span style="color: #6666CC; font-weight: bold;">string</span> filename<span style="color: #008000;">)</span><br/>
         <span style="color: #008000;">{</span><br/>
             _streamWriter <span style="color: #008000;">=</span> <span style="color: #008000;">new</span> StreamWriter<span style="color: #008000;">(</span><span style="color: #008000;">new</span> FileStream<span style="color: #008000;">(</span>filename, FileMode<span style="color: #008000;">.</span><span style="color: #05a;">Append</span>, FileAccess<span style="color: #008000;">.</span><span style="color: #05a;">Write</span><span style="color: #008000;">)</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
         <span style="color: #008000;">}</span><br/>
 <br/>
-        <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666cc; font-weight: bold;">void</span> Logger<span style="color: #008000;">(</span><span style="color: #6666cc; font-weight: bold;">string</span> info<span style="color: #008000;">)</span><br/>
+        <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666CC; font-weight: bold;">void</span> Logger<span style="color: #008000;">(</span><span style="color: #6666CC; font-weight: bold;">string</span> info<span style="color: #008000;">)</span><br/>
         <span style="color: #008000;">{</span><br/>
             _streamWriter<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span>info<span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
         <span style="color: #008000;">}</span><br/>
 <br/>
-        <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666cc; font-weight: bold;">void</span> Dispose<span style="color: #008000;">(</span><span style="color: #008000;">)</span><br/>
+        <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666CC; font-weight: bold;">void</span> Dispose<span style="color: #008000;">(</span><span style="color: #008000;">)</span><br/>
         <span style="color: #008000;">{</span><br/>
             _streamWriter<span style="color: #008000;">?.</span><span style="color: #05a;">Close</span><span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
         <span style="color: #008000;">}</span><br/>
     <span style="color: #008000;">}</span><br/>
 <br/>
     <span style="color: #696969; font-style: italic;">// イベントサブスクライバー</span><br/>
-    <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666cc; font-weight: bold;">class</span> RecordBoilerInfo<br/>
+    <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666CC; font-weight: bold;">class</span> RecordBoilerInfo<br/>
     <span style="color: #008000;">{</span><br/>
-        <span style="color: #05a; font-weight: bold;">static</span> <span style="color: #6666cc; font-weight: bold;">void</span> Logger<span style="color: #008000;">(</span><span style="color: #6666cc; font-weight: bold;">string</span> info<span style="color: #008000;">)</span><br/>
+        <span style="color: #05a; font-weight: bold;">static</span> <span style="color: #6666CC; font-weight: bold;">void</span> Logger<span style="color: #008000;">(</span><span style="color: #6666CC; font-weight: bold;">string</span> info<span style="color: #008000;">)</span><br/>
         <span style="color: #008000;">{</span><br/>
             Console<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span>info<span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
         <span style="color: #008000;">}</span><br/>
 <br/>
-        <span style="color: #05a; font-weight: bold;">static</span> <span style="color: #6666cc; font-weight: bold;">void</span> Main<span style="color: #008000;">(</span><span style="color: #6666cc; font-weight: bold;">string</span><span style="color: #008000;">[</span><span style="color: #008000;">]</span> args<span style="color: #008000;">)</span><br/>
+        <span style="color: #05a; font-weight: bold;">static</span> <span style="color: #6666CC; font-weight: bold;">void</span> Main<span style="color: #008000;">(</span><span style="color: #6666CC; font-weight: bold;">string</span><span style="color: #008000;">[</span><span style="color: #008000;">]</span> args<span style="color: #008000;">)</span><br/>
         <span style="color: #008000;">{</span><br/>
             <span style="color: #05a; font-weight: bold;">using</span> <span style="color: #008000;">(</span>BoilerInfoLogger fileLogger <span style="color: #008000;">=</span> <span style="color: #008000;">new</span> BoilerInfoLogger<span style="color: #008000;">(</span><span style="color: #a11;">"e:<span style="color: #008080; font-weight: bold;">\\</span>boiler.txt"</span><span style="color: #008000;">)</span><span style="color: #008000;">)</span><br/>
             <span style="color: #008000;">{</span><br/>
@@ -472,7 +472,7 @@ Message: O. K
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -517,7 +517,7 @@ Message: O. K
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -1232,7 +1232,7 @@ namespace AdventurerGuild
 </div>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>

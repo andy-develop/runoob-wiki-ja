@@ -102,14 +102,14 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     <span style="color: #000000; font-weight: bold;">static</span> ZooKeeper zooKeeper<span style="color: #339933;">;</span><br/>
     <span style="color: #000000; font-weight: bold;">static</span> <span style="color: #009900;">{</span><br/>
         <span style="color: #000000; font-weight: bold;">try</span> <span style="color: #009900;">{</span><br/>
-            zooKeeper <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> ZooKeeper<span style="color: #009900;">(</span><span style="color: #0000ff;">"192.168.3.39:2181"</span>, <span style="color: #cc66cc;">4000</span>,<span style="color: #000000; font-weight: bold;">new</span> WatcherDemo<span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+            zooKeeper <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> ZooKeeper<span style="color: #009900;">(</span><span style="color: #0000FF;">"192.168.3.39:2181"</span>, <span style="color: #CC66CC;">4000</span>,<span style="color: #000000; font-weight: bold;">new</span> WatcherDemo<span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
         <span style="color: #009900;">}</span> <span style="color: #000000; font-weight: bold;">catch</span> <span style="color: #009900;">(</span><span style="color: #003399;">IOException</span> e<span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
             e.<span style="color: #006633;">printStackTrace</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
         <span style="color: #009900;">}</span><br/>
     <span style="color: #009900;">}</span><br/>
     @Override<br/>
     <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000066; font-weight: bold;">void</span> process<span style="color: #009900;">(</span>WatchedEvent event<span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
-        <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"eventType:"</span><span style="color: #339933;">+</span>event.<span style="color: #006633;">getType</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+        <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"eventType:"</span><span style="color: #339933;">+</span>event.<span style="color: #006633;">getType</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
         <span style="color: #000000; font-weight: bold;">if</span><span style="color: #009900;">(</span>event.<span style="color: #006633;">getType</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">==</span><span style="color: #003399;">Event</span>.<span style="color: #006633;">EventType</span>.<span style="color: #006633;">NodeDataChanged</span><span style="color: #009900;">)</span><span style="color: #009900;">{</span><br/>
             <span style="color: #000000; font-weight: bold;">try</span> <span style="color: #009900;">{</span><br/>
                 zooKeeper.<span style="color: #006633;">exists</span><span style="color: #009900;">(</span>event.<span style="color: #006633;">getPath</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span>,<span style="color: #000066; font-weight: bold;">true</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
@@ -121,12 +121,12 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         <span style="color: #009900;">}</span><br/>
     <span style="color: #009900;">}</span><br/>
     <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">static</span> <span style="color: #000066; font-weight: bold;">void</span> main<span style="color: #009900;">(</span><span style="color: #003399;">String</span><span style="color: #009900;">[</span><span style="color: #009900;">]</span> args<span style="color: #009900;">)</span> <span style="color: #000000; font-weight: bold;">throws</span> <span style="color: #003399;">IOException</span>, KeeperException, <span style="color: #003399;">InterruptedException</span> <span style="color: #009900;">{</span><br/>
-        <span style="color: #003399;">String</span> path<span style="color: #339933;">=</span><span style="color: #0000ff;">"/watcher"</span><span style="color: #339933;">;</span><br/>
+        <span style="color: #003399;">String</span> path<span style="color: #339933;">=</span><span style="color: #0000FF;">"/watcher"</span><span style="color: #339933;">;</span><br/>
         <span style="color: #000000; font-weight: bold;">if</span><span style="color: #009900;">(</span>zooKeeper.<span style="color: #006633;">exists</span><span style="color: #009900;">(</span>path,<span style="color: #000066; font-weight: bold;">false</span><span style="color: #009900;">)</span><span style="color: #339933;">==</span><span style="color: #000066; font-weight: bold;">null</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
-            zooKeeper.<span style="color: #006633;">create</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"/watcher"</span>, <span style="color: #0000ff;">"0"</span>.<span style="color: #006633;">getBytes</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span>, ZooDefs.<span style="color: #006633;">Ids</span>.<span style="color: #006633;">OPEN_ACL_UNSAFE</span>, CreateMode.<span style="color: #006633;">PERSISTENT</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+            zooKeeper.<span style="color: #006633;">create</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"/watcher"</span>, <span style="color: #0000FF;">"0"</span>.<span style="color: #006633;">getBytes</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span>, ZooDefs.<span style="color: #006633;">Ids</span>.<span style="color: #006633;">OPEN_ACL_UNSAFE</span>, CreateMode.<span style="color: #006633;">PERSISTENT</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
         <span style="color: #009900;">}</span><br/>
-        <span style="color: #003399;">Thread</span>.<span style="color: #006633;">sleep</span><span style="color: #009900;">(</span><span style="color: #cc66cc;">1000</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
-        <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span><span style="color: #0000ff;">"-----------"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+        <span style="color: #003399;">Thread</span>.<span style="color: #006633;">sleep</span><span style="color: #009900;">(</span><span style="color: #CC66CC;">1000</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+        <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"-----------"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
         <span style="color: #666666; font-style: italic;">//trueはzookeeperインスタンスで設定されたwatcherを使用することを示します</span><br/>
         Stat stat<span style="color: #339933;">=</span>zooKeeper.<span style="color: #006633;">exists</span><span style="color: #009900;">(</span>path,<span style="color: #000066; font-weight: bold;">true</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
         <span style="color: #003399;">System</span>.<span style="color: #006633;">in</span>.<span style="color: #006633;">read</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
@@ -187,7 +187,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -232,7 +232,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -271,7 +271,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
 	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">招待コードの取得方法</a></p>
@@ -482,7 +482,7 @@ p.note-author {
     border-bottom: 1px solid #ddd;
     font-size: 18px;
     font-weight: bold;
-    color: #78a15a;
+    color: #5B80A6;
     padding-bottom: 2px;
     margin-bottom: 4px;
 }

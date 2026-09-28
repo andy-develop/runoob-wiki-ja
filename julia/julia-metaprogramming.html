@@ -173,134 +173,134 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2>プログラムの表現</h2>
 <p>Julia は Meta クラスを提供しており、Meta.parse(str) で文字列を解析し、typeof(e1) で Expr を返すことができます：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> prog = <span style="color: #c93d39;">"1 + 1"</span><br/>
-<span style="color: #c93d39;">"1 + 1"</span><br/>
-julia<span style="color: #6bab5b;">&gt;</span> ex1 = Meta.<span style="color: black;">parse</span><span style="color: #3b972e;">(</span>prog<span style="color: #3b972e;">)</span><br/>
-:<span style="color: #3b972e;">(</span><span style="color: black;">1</span> + <span style="color: black;">1</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> prog = <span style="color: #C93D39;">"1 + 1"</span><br/>
+<span style="color: #C93D39;">"1 + 1"</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> ex1 = Meta.<span style="color: black;">parse</span><span style="color: #3B972E;">(</span>prog<span style="color: #3B972E;">)</span><br/>
+:<span style="color: #3B972E;">(</span><span style="color: black;">1</span> + <span style="color: black;">1</span><span style="color: #3B972E;">)</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> typeof<span style="color: #3b972e;">(</span>ex1<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> typeof<span style="color: #3B972E;">(</span>ex1<span style="color: #3B972E;">)</span><br/>
 <span style="color: #0000A8;font-weight:bold;">Expr</span><br/>
 </div></div>
 <p>戻り値<strong>:(1 + 1)</strong>この戻り値はコロンと後続の式から構成され、typeof(ex1) で Expr が返されます。</p>
 <p>Expr オブジェクトは2つの部分を含みます（ex1 は head と args 属性を含みます）：</p>
 <p>1つは式の型を識別するシンボルオブジェクトです。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> ex1.<span style="color: #0000A8;font-weight:bold;">head</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> ex1.<span style="color: #0000A8;font-weight:bold;">head</span><br/>
 :call<br/>
 </div></div>
 <p>もう1つは式の引数で、シンボル、他の式、またはリテラルの場合があります：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> ex1.<span style="color: black;">args</span><br/>
-<span style="color: black;">3</span>-element <span style="color: #0000A8;font-weight:bold;">Vector</span><span style="color: #3b972e;">{</span><span style="color: #0000A8;font-weight:bold;">Any</span><span style="color: #3b972e;">}</span>:<br/>
+julia<span style="color: #6BAB5B;">&gt;</span> ex1.<span style="color: black;">args</span><br/>
+<span style="color: black;">3</span>-element <span style="color: #0000A8;font-weight:bold;">Vector</span><span style="color: #3B972E;">{</span><span style="color: #0000A8;font-weight:bold;">Any</span><span style="color: #3B972E;">}</span>:<br/>
   :+<br/>
  <span style="color: black;">1</span><br/>
  <span style="color: black;">1</span><br/>
 </div></div>
 <p>式は Expr を使って直接構築することもできます：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> ex2 = <span style="color: #0000A8;font-weight:bold;">Expr</span><span style="color: #3b972e;">(</span>:call, :+, <span style="color: black;">1</span>, <span style="color: black;">1</span><span style="color: #3b972e;">)</span><br/>
-:<span style="color: #3b972e;">(</span><span style="color: black;">1</span> + <span style="color: black;">1</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> ex2 = <span style="color: #0000A8;font-weight:bold;">Expr</span><span style="color: #3B972E;">(</span>:call, :+, <span style="color: black;">1</span>, <span style="color: black;">1</span><span style="color: #3B972E;">)</span><br/>
+:<span style="color: #3B972E;">(</span><span style="color: black;">1</span> + <span style="color: black;">1</span><span style="color: #3B972E;">)</span><br/>
 </div></div>
 <p>上で構築した2つの式：1つは解析によって構築され、もう1つは直接構築されたものですが、この2つは等価です：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> ex1 == ex2<br/>
-<span style="color: #4266d5;font-weight:bold;">true</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> ex1 == ex2<br/>
+<span style="color: #4266D5;font-weight:bold;">true</span><br/>
 </div></div>
 <p>Expr オブジェクトはネストすることもできます：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> ex3 = Meta.<span style="color: black;">parse</span><span style="color: #3b972e;">(</span><span style="color: #c93d39;">"(4 + 4) / 2"</span><span style="color: #3b972e;">)</span><br/>
-:<span style="color: #3b972e;">(</span><span style="color: #3b972e;">(</span><span style="color: black;">4</span> + <span style="color: black;">4</span><span style="color: #3b972e;">)</span> / <span style="color: black;">2</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> ex3 = Meta.<span style="color: black;">parse</span><span style="color: #3B972E;">(</span><span style="color: #C93D39;">"(4 + 4) / 2"</span><span style="color: #3B972E;">)</span><br/>
+:<span style="color: #3B972E;">(</span><span style="color: #3B972E;">(</span><span style="color: black;">4</span> + <span style="color: black;">4</span><span style="color: #3B972E;">)</span> / <span style="color: black;">2</span><span style="color: #3B972E;">)</span><br/>
 </div></div>
 <p>Meta.show_sexpr を使って式を表示することもできます。以下の例はネストされた Expr を示しています：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> Meta.<span style="color: black;">show_sexpr</span><span style="color: #3b972e;">(</span>ex3<span style="color: #3b972e;">)</span><br/>
-<span style="color: #3b972e;">(</span>:call, :/, <span style="color: #3b972e;">(</span>:call, :+, <span style="color: black;">4</span>, <span style="color: black;">4</span><span style="color: #3b972e;">)</span>, <span style="color: black;">2</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> Meta.<span style="color: black;">show_sexpr</span><span style="color: #3B972E;">(</span>ex3<span style="color: #3B972E;">)</span><br/>
+<span style="color: #3B972E;">(</span>:call, :/, <span style="color: #3B972E;">(</span>:call, :+, <span style="color: black;">4</span>, <span style="color: black;">4</span><span style="color: #3B972E;">)</span>, <span style="color: black;">2</span><span style="color: #3B972E;">)</span><br/>
 </div></div>
 <h3>シンボル</h3>
 <p>私たちはコロンという<strong>:</strong>前置演算子を使用して、未評価だが解析済みの式を格納できます。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> ABC = <span style="color: black;">100</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> ABC = <span style="color: black;">100</span><br/>
 <span style="color: black;">100</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> :ABC<br/>
+julia<span style="color: #6BAB5B;">&gt;</span> :ABC<br/>
 :ABC<br/>
 </div></div>
 <p>次の式全体をクォートします：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> :<span style="color: #3b972e;">(</span><span style="color: black;">100</span>-<span style="color: black;">50</span><span style="color: #3b972e;">)</span><br/>
-:<span style="color: #3b972e;">(</span><span style="color: black;">100</span> - <span style="color: black;">50</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> :<span style="color: #3B972E;">(</span><span style="color: black;">100</span>-<span style="color: black;">50</span><span style="color: #3B972E;">)</span><br/>
+:<span style="color: #3B972E;">(</span><span style="color: black;">100</span> - <span style="color: black;">50</span><span style="color: #3B972E;">)</span><br/>
 </div></div>
 <p>算術式をクォートします：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> ex = :<span style="color: #3b972e;">(</span>a+b<span style="color: #6bab5b;">*</span>c+<span style="color: black;">1</span><span style="color: #3b972e;">)</span><br/>
-:<span style="color: #3b972e;">(</span>a + b <span style="color: #6bab5b;">*</span> c + <span style="color: black;">1</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> ex = :<span style="color: #3B972E;">(</span>a+b<span style="color: #6BAB5B;">*</span>c+<span style="color: black;">1</span><span style="color: #3B972E;">)</span><br/>
+:<span style="color: #3B972E;">(</span>a + b <span style="color: #6BAB5B;">*</span> c + <span style="color: black;">1</span><span style="color: #3B972E;">)</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> typeof<span style="color: #3b972e;">(</span>ex<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> typeof<span style="color: #3B972E;">(</span>ex<span style="color: #3B972E;">)</span><br/>
 <span style="color: #0000A8;font-weight:bold;">Expr</span><br/>
 </div></div>
 <p>同等の式は Meta.parse を使用するか、Expr で直接構築することもできることに注意してください：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span>      :<span style="color: #3b972e;">(</span>a + b<span style="color: #6bab5b;">*</span>c + <span style="color: black;">1</span><span style="color: #3b972e;">)</span>       ==<br/>
-       Meta.<span style="color: black;">parse</span><span style="color: #3b972e;">(</span><span style="color: #c93d39;">"a + b*c + 1"</span><span style="color: #3b972e;">)</span> ==<br/>
-       <span style="color: #0000A8;font-weight:bold;">Expr</span><span style="color: #3b972e;">(</span>:call, :+, :a, <span style="color: #0000A8;font-weight:bold;">Expr</span><span style="color: #3b972e;">(</span>:call, :<span style="color: #6bab5b;">*</span>, :b, :c<span style="color: #3b972e;">)</span>, <span style="color: black;">1</span><span style="color: #3b972e;">)</span><br/>
-<span style="color: #4266d5;font-weight:bold;">true</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span>      :<span style="color: #3B972E;">(</span>a + b<span style="color: #6BAB5B;">*</span>c + <span style="color: black;">1</span><span style="color: #3B972E;">)</span>       ==<br/>
+       Meta.<span style="color: black;">parse</span><span style="color: #3B972E;">(</span><span style="color: #C93D39;">"a + b*c + 1"</span><span style="color: #3B972E;">)</span> ==<br/>
+       <span style="color: #0000A8;font-weight:bold;">Expr</span><span style="color: #3B972E;">(</span>:call, :+, :a, <span style="color: #0000A8;font-weight:bold;">Expr</span><span style="color: #3B972E;">(</span>:call, :<span style="color: #6BAB5B;">*</span>, :b, :c<span style="color: #3B972E;">)</span>, <span style="color: black;">1</span><span style="color: #3B972E;">)</span><br/>
+<span style="color: #4266D5;font-weight:bold;">true</span><br/>
 </div></div>
 <p>複数の式をクォートすることも、<strong>quote ... end</strong>コードブロックを含めることができます。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> ex = <span style="color: #4266d5;font-weight:bold;">quote</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> ex = <span style="color: #4266D5;font-weight:bold;">quote</span><br/>
            x = <span style="color: black;">1</span><br/>
            y = <span style="color: black;">2</span><br/>
            x + y<br/>
-       <span style="color: #4266d5;font-weight:bold;">end</span><br/>
-<span style="color: #4266d5;font-weight:bold;">quote</span><br/>
+       <span style="color: #4266D5;font-weight:bold;">end</span><br/>
+<span style="color: #4266D5;font-weight:bold;">quote</span><br/>
     <span style="color: #888888;">#= none:2 =#</span><br/>
     x = <span style="color: black;">1</span><br/>
     <span style="color: #888888;">#= none:3 =#</span><br/>
     y = <span style="color: black;">2</span><br/>
     <span style="color: #888888;">#= none:4 =#</span><br/>
     x + y<br/>
-<span style="color: #4266d5;font-weight:bold;">end</span><br/>
+<span style="color: #4266D5;font-weight:bold;">end</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> typeof<span style="color: #3b972e;">(</span>ex<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> typeof<span style="color: #3B972E;">(</span>ex<span style="color: #3B972E;">)</span><br/>
 <span style="color: #0000A8;font-weight:bold;">Expr</span><br/>
 </div></div>
 <h2>式の実行</h2>
 <p>式を解析した後、eval() 関数を使用して実行できます：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> ex1 = :<span style="color: #3b972e;">(</span><span style="color: black;">1</span> + <span style="color: black;">2</span><span style="color: #3b972e;">)</span><br/>
-:<span style="color: #3b972e;">(</span><span style="color: black;">1</span> + <span style="color: black;">2</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> ex1 = :<span style="color: #3B972E;">(</span><span style="color: black;">1</span> + <span style="color: black;">2</span><span style="color: #3B972E;">)</span><br/>
+:<span style="color: #3B972E;">(</span><span style="color: black;">1</span> + <span style="color: black;">2</span><span style="color: #3B972E;">)</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: #4266d5;font-weight:bold;">eval</span><span style="color: #3b972e;">(</span>ex1<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #4266D5;font-weight:bold;">eval</span><span style="color: #3B972E;">(</span>ex1<span style="color: #3B972E;">)</span><br/>
 <span style="color: black;">3</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> ex = :<span style="color: #3b972e;">(</span>a + b<span style="color: #3b972e;">)</span><br/>
-:<span style="color: #3b972e;">(</span>a + b<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> ex = :<span style="color: #3B972E;">(</span>a + b<span style="color: #3B972E;">)</span><br/>
+:<span style="color: #3B972E;">(</span>a + b<span style="color: #3B972E;">)</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: #4266d5;font-weight:bold;">eval</span><span style="color: #3b972e;">(</span>ex<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #4266D5;font-weight:bold;">eval</span><span style="color: #3B972E;">(</span>ex<span style="color: #3B972E;">)</span><br/>
 ERROR: UndefVarError: b not defined<br/>
-<span style="color: #3b972e;">[</span>...<span style="color: #3b972e;">]</span><br/>
+<span style="color: #3B972E;">[</span>...<span style="color: #3B972E;">]</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> a = <span style="color: black;">1</span><span style="color: #6bab5b;">;</span> b = <span style="color: black;">2</span><span style="color: #6bab5b;">;</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> a = <span style="color: black;">1</span><span style="color: #6BAB5B;">;</span> b = <span style="color: black;">2</span><span style="color: #6BAB5B;">;</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: #4266d5;font-weight:bold;">eval</span><span style="color: #3b972e;">(</span>ex<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #4266D5;font-weight:bold;">eval</span><span style="color: #3B972E;">(</span>ex<span style="color: #3B972E;">)</span><br/>
 <span style="color: black;">3</span><br/>
 </div></div>
 <h2>抽象構文木（AST）</h2>
 <p>抽象構文木 (AST) は構造の一種であり、ソースコードの構文構造の抽象的な表現です。</p><p>それはツリー形式でプログラミング言語の構文構造を表現し、ツリーの各ノードはソースコード内の1つの構造を表します。</p><p>dump() 関数で式の階層構造を確認できます：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> dump<span style="color: #3b972e;">(</span>:<span style="color: #3b972e;">(</span><span style="color: black;">1</span> <span style="color: #6bab5b;">*</span> cos<span style="color: #3b972e;">(</span>pi/<span style="color: black;">2</span><span style="color: #3b972e;">)</span><span style="color: #3b972e;">)</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> dump<span style="color: #3B972E;">(</span>:<span style="color: #3B972E;">(</span><span style="color: black;">1</span> <span style="color: #6BAB5B;">*</span> cos<span style="color: #3B972E;">(</span>pi/<span style="color: black;">2</span><span style="color: #3B972E;">)</span><span style="color: #3B972E;">)</span><span style="color: #3B972E;">)</span><br/>
 <span style="color: #0000A8;font-weight:bold;">Expr</span><br/>
    <span style="color: #0000A8;font-weight:bold;">head</span>: <span style="color: #0000A8;font-weight:bold;">Symbol</span> call<br/>
-   args: <span style="color: #0000A8;font-weight:bold;">Array</span><span style="color: #3b972e;">{</span><span style="color: #0000A8;font-weight:bold;">Any</span><span style="color: #3b972e;">}</span><span style="color: #3b972e;">(</span><span style="color: #3b972e;">(</span><span style="color: black;">3</span>,<span style="color: #3b972e;">)</span><span style="color: #3b972e;">)</span><br/>
-      <span style="color: black;">1</span>: <span style="color: #0000A8;font-weight:bold;">Symbol</span> <span style="color: #6bab5b;">*</span><br/>
+   args: <span style="color: #0000A8;font-weight:bold;">Array</span><span style="color: #3B972E;">{</span><span style="color: #0000A8;font-weight:bold;">Any</span><span style="color: #3B972E;">}</span><span style="color: #3B972E;">(</span><span style="color: #3B972E;">(</span><span style="color: black;">3</span>,<span style="color: #3B972E;">)</span><span style="color: #3B972E;">)</span><br/>
+      <span style="color: black;">1</span>: <span style="color: #0000A8;font-weight:bold;">Symbol</span> <span style="color: #6BAB5B;">*</span><br/>
       <span style="color: black;">2</span>: <span style="color: #0000A8;font-weight:bold;">Int64</span> <span style="color: black;">1</span><br/>
       <span style="color: black;">3</span>: <span style="color: #0000A8;font-weight:bold;">Expr</span><br/>
          <span style="color: #0000A8;font-weight:bold;">head</span>: <span style="color: #0000A8;font-weight:bold;">Symbol</span> call<br/>
-         args: <span style="color: #0000A8;font-weight:bold;">Array</span><span style="color: #3b972e;">{</span><span style="color: #0000A8;font-weight:bold;">Any</span><span style="color: #3b972e;">}</span><span style="color: #3b972e;">(</span><span style="color: #3b972e;">(</span><span style="color: black;">2</span>,<span style="color: #3b972e;">)</span><span style="color: #3b972e;">)</span><br/>
+         args: <span style="color: #0000A8;font-weight:bold;">Array</span><span style="color: #3B972E;">{</span><span style="color: #0000A8;font-weight:bold;">Any</span><span style="color: #3B972E;">}</span><span style="color: #3B972E;">(</span><span style="color: #3B972E;">(</span><span style="color: black;">2</span>,<span style="color: #3B972E;">)</span><span style="color: #3B972E;">)</span><br/>
             <span style="color: black;">1</span>: <span style="color: #0000A8;font-weight:bold;">Symbol</span> cos<br/>
             <span style="color: black;">2</span>: <span style="color: #0000A8;font-weight:bold;">Expr</span><br/>
                <span style="color: #0000A8;font-weight:bold;">head</span>: <span style="color: #0000A8;font-weight:bold;">Symbol</span> call<br/>
-               args: <span style="color: #0000A8;font-weight:bold;">Array</span><span style="color: #3b972e;">{</span><span style="color: #0000A8;font-weight:bold;">Any</span><span style="color: #3b972e;">}</span><span style="color: #3b972e;">(</span><span style="color: #3b972e;">(</span><span style="color: black;">3</span>,<span style="color: #3b972e;">)</span><span style="color: #3b972e;">)</span><br/>
+               args: <span style="color: #0000A8;font-weight:bold;">Array</span><span style="color: #3B972E;">{</span><span style="color: #0000A8;font-weight:bold;">Any</span><span style="color: #3B972E;">}</span><span style="color: #3B972E;">(</span><span style="color: #3B972E;">(</span><span style="color: black;">3</span>,<span style="color: #3B972E;">)</span><span style="color: #3B972E;">)</span><br/>
                   <span style="color: black;">1</span>: <span style="color: #0000A8;font-weight:bold;">Symbol</span> /<br/>
                   <span style="color: black;">2</span>: <span style="color: #0000A8;font-weight:bold;">Symbol</span> pi<br/>
                   <span style="color: black;">3</span>: <span style="color: #0000A8;font-weight:bold;">Int64</span> <span style="color: black;">2</span><br/>
@@ -309,10 +309,10 @@ julia<span style="color: #6bab5b;">&gt;</span> dump<span style="color: #3b972e;"
 <p>値パラメータを使用して Expr オブジェクトを直接構築するのは非常に強力ですが、Julia の構文と比較すると、Expr コンストラクタは退屈に感じられるかもしれません。代替方法として、Julia ではリテラルや式をクォートされた式に挿入することができます。式の補間は前置の $ で表されます。</p>
 <p>この例では、変数 a の値が挿入されます：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> a = <span style="color: black;">1</span><span style="color: #6bab5b;">;</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> a = <span style="color: black;">1</span><span style="color: #6BAB5B;">;</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> ex = :<span style="color: #3b972e;">(</span>$a + b<span style="color: #3b972e;">)</span><br/>
-:<span style="color: #3b972e;">(</span><span style="color: black;">1</span> + b<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> ex = :<span style="color: #3B972E;">(</span>$a + b<span style="color: #3B972E;">)</span><br/>
+:<span style="color: #3B972E;">(</span><span style="color: black;">1</span> + b<span style="color: #3B972E;">)</span><br/>
 </div></div>
 <p>クォートされていない式への補間はサポートされておらず、コンパイル時エラーが発生します：</p>
 <pre>julia&gt; $a + b
@@ -324,10 +324,10 @@ ERROR: syntax: "$" expression outside quote</pre>
 <h2>宏</h2><p>マクロは、生成されたコードをプログラムの最終本体に含めるためのメカニズムを提供します。マクロは一連の引数を返された式にマッピングし、生成された式は実行時の eval 呼び出しなしで直接コンパイルされます。マクロの引数には、式、リテラル、シンボルを含めることができます。</p>
 <p>これは非常に単純なマクロです：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: #4266d5;font-weight:bold;">macro</span> sayhello<span style="color: #3b972e;">(</span><span style="color: #3b972e;">)</span><br/>
-           <span style="color: #4266d5;font-weight:bold;">return</span> :<span style="color: #3b972e;">(</span> <span style="color: #0000A8;font-weight:bold;">println</span><span style="color: #3b972e;">(</span><span style="color: #c93d39;">"Hello, world!"</span><span style="color: #3b972e;">)</span> <span style="color: #3b972e;">)</span><br/>
-       <span style="color: #4266d5;font-weight:bold;">end</span><br/>
-@sayhello <span style="color: #3b972e;">(</span><span style="color: #4266d5;font-weight:bold;">macro</span> with <span style="color: black;">1</span> method<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #4266D5;font-weight:bold;">macro</span> sayhello<span style="color: #3B972E;">(</span><span style="color: #3B972E;">)</span><br/>
+           <span style="color: #4266D5;font-weight:bold;">return</span> :<span style="color: #3B972E;">(</span> <span style="color: #0000A8;font-weight:bold;">println</span><span style="color: #3B972E;">(</span><span style="color: #C93D39;">"Hello, world!"</span><span style="color: #3B972E;">)</span> <span style="color: #3B972E;">)</span><br/>
+       <span style="color: #4266D5;font-weight:bold;">end</span><br/>
+@sayhello <span style="color: #3B972E;">(</span><span style="color: #4266D5;font-weight:bold;">macro</span> with <span style="color: black;">1</span> method<span style="color: #3B972E;">)</span><br/>
 </div></div>
 <p>マクロは Julia の構文において専用の文字 @ (アットサイン) を持ち、その直後に macro NAME ... end という形式で宣言される一意のマクロ名が続きます。この例では、コンパイラはすべての @sayhello を次のように置き換えます：</p>
 <pre>:( println("Hello, world!") )</pre>
@@ -336,29 +336,29 @@ julia<span style="color: #6bab5b;">&gt;</span> <span style="color: #4266d5;font-
 Hello, world!</pre>
 <p>次に、もう少し複雑なマクロを考えてみましょう：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> <span style="color: #4266d5;font-weight:bold;">macro</span> sayhello<span style="color: #3b972e;">(</span>name<span style="color: #3b972e;">)</span><br/>
- <span style="color: #4266d5;font-weight:bold;">return</span> :<span style="color: #3b972e;">(</span> <span style="color: #0000A8;font-weight:bold;">println</span><span style="color: #3b972e;">(</span><span style="color: #c93d39;">"Hello, "</span>, $name<span style="color: #3b972e;">)</span> <span style="color: #3b972e;">)</span><br/>
- <span style="color: #4266d5;font-weight:bold;">end</span><br/>
-@sayhello <span style="color: #3b972e;">(</span><span style="color: #4266d5;font-weight:bold;">macro</span> with <span style="color: black;">1</span> method<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #4266D5;font-weight:bold;">macro</span> sayhello<span style="color: #3B972E;">(</span>name<span style="color: #3B972E;">)</span><br/>
+ <span style="color: #4266D5;font-weight:bold;">return</span> :<span style="color: #3B972E;">(</span> <span style="color: #0000A8;font-weight:bold;">println</span><span style="color: #3B972E;">(</span><span style="color: #C93D39;">"Hello, "</span>, $name<span style="color: #3B972E;">)</span> <span style="color: #3B972E;">)</span><br/>
+ <span style="color: #4266D5;font-weight:bold;">end</span><br/>
+@sayhello <span style="color: #3B972E;">(</span><span style="color: #4266D5;font-weight:bold;">macro</span> with <span style="color: black;">1</span> method<span style="color: #3B972E;">)</span><br/>
 </div></div>
 <p>このマクロは引数 name を受け取ります。@sayhello が現れると、クォートされた式が展開され、引数の値が最終的な式に挿入されます：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> @sayhello<span style="color: #3b972e;">(</span><span style="color: #c93d39;">"human"</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> @sayhello<span style="color: #3B972E;">(</span><span style="color: #C93D39;">"human"</span><span style="color: #3B972E;">)</span><br/>
 Hello, human<br/>
 </div></div>
 <p>関数 macroexpand を使用して、クォートされた返された式を確認できます：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> ex = macroexpand<span style="color: #3b972e;">(</span>Main, :<span style="color: #3b972e;">(</span>@sayhello<span style="color: #3b972e;">(</span><span style="color: #c93d39;">"human"</span><span style="color: #3b972e;">)</span><span style="color: #3b972e;">)</span> <span style="color: #3b972e;">)</span><br/>
-:<span style="color: #3b972e;">(</span>Main.<span style="color: #0000A8;font-weight:bold;">println</span><span style="color: #3b972e;">(</span><span style="color: #c93d39;">"Hello, "</span>, <span style="color: #c93d39;">"human"</span><span style="color: #3b972e;">)</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> ex = macroexpand<span style="color: #3B972E;">(</span>Main, :<span style="color: #3B972E;">(</span>@sayhello<span style="color: #3B972E;">(</span><span style="color: #C93D39;">"human"</span><span style="color: #3B972E;">)</span><span style="color: #3B972E;">)</span> <span style="color: #3B972E;">)</span><br/>
+:<span style="color: #3B972E;">(</span>Main.<span style="color: #0000A8;font-weight:bold;">println</span><span style="color: #3B972E;">(</span><span style="color: #C93D39;">"Hello, "</span>, <span style="color: #C93D39;">"human"</span><span style="color: #3B972E;">)</span><span style="color: #3B972E;">)</span><br/>
 <br/>
-julia<span style="color: #6bab5b;">&gt;</span> typeof<span style="color: #3b972e;">(</span>ex<span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> typeof<span style="color: #3B972E;">(</span>ex<span style="color: #3B972E;">)</span><br/>
 <span style="color: #0000A8;font-weight:bold;">Expr</span><br/>
 </div></div>
 <p>リテラル "human" が式に挿入されていることがわかります。</p>
 <p>マクロ @ macroexpand もあり、これは macroexpand 関数よりも便利かもしれません：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6bab5b;">&gt;</span> @macroexpand @sayhello <span style="color: #c93d39;">"human"</span><br/>
-:<span style="color: #3b972e;">(</span><span style="color: #0000A8;font-weight:bold;">println</span><span style="color: #3b972e;">(</span><span style="color: #c93d39;">"Hello, "</span>, <span style="color: #c93d39;">"human"</span><span style="color: #3b972e;">)</span><span style="color: #3b972e;">)</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> @macroexpand @sayhello <span style="color: #C93D39;">"human"</span><br/>
+:<span style="color: #3B972E;">(</span><span style="color: #0000A8;font-weight:bold;">println</span><span style="color: #3B972E;">(</span><span style="color: #C93D39;">"Hello, "</span>, <span style="color: #C93D39;">"human"</span><span style="color: #3B972E;">)</span><span style="color: #3B972E;">)</span><br/>
 </div></div> その他の拡張
 </div>
 </div>
@@ -392,7 +392,7 @@ julia<span style="color: #6bab5b;">&gt;</span> @macroexpand @sayhello <span styl
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -437,7 +437,7 @@ julia<span style="color: #6bab5b;">&gt;</span> @macroexpand @sayhello <span styl
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -476,7 +476,7 @@ julia<span style="color: #6bab5b;">&gt;</span> @macroexpand @sayhello <span styl
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてメモを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてメモを共有</h3>
 <p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>

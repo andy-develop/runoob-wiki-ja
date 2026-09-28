@@ -287,51 +287,51 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </ul>
 <h3>Box&lt;T&gt; スマートポインタ</h3><p>Box&lt;T&gt; は Rust で最も単純なスマートポインタの1つであり、ヒープ上にメモリを割り当て、そのメモリに値を格納することができます。</p><p>Rust の所有権ルールにより、Box を使用すると、ヒープ上に既知のサイズのデータを作成できます。</p>
 <div class="example"><h2 class="example">実例</h2> <div class="example_code">
-<span style="color: #708;">let</span> b <span style="">=</span> Box<span style="">::</span><span style="color: #164;">new</span><span style="">(</span><span style="color: #0000dd;">5</span><span style="">)</span><span style="">;</span><br/>
+<span style="color: #708;">let</span> b <span style="">=</span> Box<span style="">::</span><span style="color: #164;">new</span><span style="">(</span><span style="color: #0000DD;">5</span><span style="">)</span><span style="">;</span><br/>
 println<span style="">!</span><span style="">(</span><span style="color: #a11;">"b = {}"</span><span style="">,</span> b<span style="">)</span><span style="">;</span><br/>
 </div></div>
 <h3>Rc&lt;T&gt; スマートポインタ</h3><p>Rc&lt;T&gt;（参照カウントポインタ）は、複数の所有者がデータを共有できるようにします。参照カウントを使用してデータの所有者数を追跡し、所有者数がゼロになったときにデータを解放します。</p><p>Rc&lt;T&gt; は、シングルスレッド環境でのデータ共有に適しています。</p>
 <div class="example"><h2 class="example">実例</h2> <div class="example_code">
 <span style="color: #708;">use</span> std<span style="">::</span><span style="color: #164;">rc</span><span style="">::</span><span style="color: #05a;">Rc</span><span style="">;</span><br/>
 <br/>
-<span style="color: #708;">let</span> data <span style="">=</span> <span style="color: #05a;">Rc</span><span style="">::</span><span style="color: #164;">new</span><span style="">(</span><span style="color: #0000dd;">5</span><span style="">)</span><span style="">;</span><br/>
+<span style="color: #708;">let</span> data <span style="">=</span> <span style="color: #05a;">Rc</span><span style="">::</span><span style="color: #164;">new</span><span style="">(</span><span style="color: #0000DD;">5</span><span style="">)</span><span style="">;</span><br/>
 <span style="color: #708;">let</span> data_clone <span style="">=</span> <span style="color: #05a;">Rc</span><span style="">::</span><span style="color: #164;">clone</span><span style="">(</span><span style="">&amp;</span>data<span style="">)</span><span style="">;</span><br/>
 </div></div>
 <h3>Arc&lt;T&gt; スマートポインタ</h3><p>Arc&lt;T&gt;（アトミック参照カウントポインタ）は Rc&lt;T&gt; と似ていますが、参照カウントの更新にアトミック操作を使用するため、マルチスレッド環境で安全にデータを共有できます。</p>
 <div class="example"><h2 class="example">実例</h2> <div class="example_code">
 <span style="color: #708;">use</span> std<span style="">::</span><span style="color: #164;">sync</span><span style="">::</span><span style="color: #164;">Arc</span><span style="">;</span><br/>
 <br/>
-<span style="color: #708;">let</span> data <span style="">=</span> Arc<span style="">::</span><span style="color: #164;">new</span><span style="">(</span><span style="color: #0000dd;">5</span><span style="">)</span><span style="">;</span><br/>
+<span style="color: #708;">let</span> data <span style="">=</span> Arc<span style="">::</span><span style="color: #164;">new</span><span style="">(</span><span style="color: #0000DD;">5</span><span style="">)</span><span style="">;</span><br/>
 <span style="color: #708;">let</span> data_clone <span style="">=</span> Arc<span style="">::</span><span style="color: #164;">clone</span><span style="">(</span><span style="">&amp;</span>data<span style="">)</span><span style="">;</span><br/>
 </div></div>
 <h3>RefCell&lt;T&gt; スマートポインタ</h3><p>RefCell&lt;T&gt; は、実行時に借用ルールをチェックできます。内部可変性を使用して安全な内部可変性パターンを提供し、不変参照の場合でもデータを変更できるようにします。</p><p>ただし、RefCell&lt;T&gt; はシングルスレッド環境でのみ使用できます。</p>
 <div class="example"><h2 class="example">実例</h2> <div class="example_code">
 <span style="color: #708;">use</span> std<span style="">::</span><span style="color: #164;">cell</span><span style="">::</span><span style="color: #164;">RefCell</span><span style="">;</span><br/>
 <br/>
-<span style="color: #708;">let</span> data <span style="">=</span> RefCell<span style="">::</span><span style="color: #164;">new</span><span style="">(</span><span style="color: #0000dd;">5</span><span style="">)</span><span style="">;</span><br/>
+<span style="color: #708;">let</span> data <span style="">=</span> RefCell<span style="">::</span><span style="color: #164;">new</span><span style="">(</span><span style="color: #0000DD;">5</span><span style="">)</span><span style="">;</span><br/>
 <span style="color: #708;">let</span> <span style="color: #708;">mut</span> borrowed_data <span style="">=</span> data.borrow_mut<span style="">(</span><span style="">)</span><span style="">;</span><br/>
-<span style="">*</span>borrowed_data <span style="">=</span> <span style="color: #0000dd;">10</span><span style="">;</span><br/>
+<span style="">*</span>borrowed_data <span style="">=</span> <span style="color: #0000DD;">10</span><span style="">;</span><br/>
 </div></div>
 <h3>Mutex&lt;T&gt; スマートポインタ</h3>
 <p>Mutex&lt;T&gt; は相互排他ロックであり、常に1つのスレッドだけが Mutex 内部のデータにアクセスできることを保証します。</p>
 <div class="example"><h2 class="example">実例</h2> <div class="example_code">
 <span style="color: #708;">use</span> std<span style="">::</span><span style="color: #164;">sync</span><span style="">::</span><span style="color: #164;">Mutex</span><span style="">;</span><br/>
 <br/>
-<span style="color: #708;">let</span> m <span style="">=</span> Mutex<span style="">::</span><span style="color: #164;">new</span><span style="">(</span><span style="color: #0000dd;">5</span><span style="">)</span><span style="">;</span><br/>
+<span style="color: #708;">let</span> m <span style="">=</span> Mutex<span style="">::</span><span style="color: #164;">new</span><span style="">(</span><span style="color: #0000DD;">5</span><span style="">)</span><span style="">;</span><br/>
 <span style="color: #708;">let</span> <span style="color: #708;">mut</span> data <span style="">=</span> m.lock<span style="">(</span><span style="">)</span>.unwrap<span style="">(</span><span style="">)</span><span style="">;</span><br/>
 </div></div>
 <h3>RwLock&lt;T&gt; スマートポインタ</h3><p>RwLock&lt;T&gt; は読み取り・書き込みロックであり、複数の読み取り者が同時にデータにアクセスできますが、書き込み時は排他的です。</p>
 <div class="example"><h2 class="example">実例</h2> <div class="example_code">
 <span style="color: #708;">use</span> std<span style="">::</span><span style="color: #164;">sync</span><span style="">::</span><span style="color: #164;">RwLock</span><span style="">;</span><br/>
 <br/>
-<span style="color: #708;">let</span> lock <span style="">=</span> RwLock<span style="">::</span><span style="color: #164;">new</span><span style="">(</span><span style="color: #0000dd;">5</span><span style="">)</span><span style="">;</span><br/>
+<span style="color: #708;">let</span> lock <span style="">=</span> RwLock<span style="">::</span><span style="color: #164;">new</span><span style="">(</span><span style="color: #0000DD;">5</span><span style="">)</span><span style="">;</span><br/>
 <span style="color: #708;">let</span> read_guard <span style="">=</span> lock.read<span style="">(</span><span style="">)</span>.unwrap<span style="">(</span><span style="">)</span><span style="">;</span><br/>
 </div></div>
 <h3>Weak&lt;T&gt; スマートポインタ</h3><p>Weak&lt;T&gt; は Rc&lt;T&gt; の非所有型スマートポインタであり、参照カウントを増やさず、循環参照の問題を解決するために使用されます。</p>
 <div class="example"><h2 class="example">実例</h2> <div class="example_code">
 <span style="color: #708;">use</span> std<span style="">::</span><span style="color: #164;">rc</span><span style="">::</span><span style="">{</span><span style="color: #05a;">Rc</span><span style="">,</span> Weak<span style="">}</span><span style="">;</span><br/>
 <br/>
-<span style="color: #708;">let</span> five <span style="">=</span> <span style="color: #05a;">Rc</span><span style="">::</span><span style="color: #164;">new</span><span style="">(</span><span style="color: #0000dd;">5</span><span style="">)</span><span style="">;</span><br/>
+<span style="color: #708;">let</span> five <span style="">=</span> <span style="color: #05a;">Rc</span><span style="">::</span><span style="color: #164;">new</span><span style="">(</span><span style="color: #0000DD;">5</span><span style="">)</span><span style="">;</span><br/>
 <span style="color: #708;">let</span> weak_five <span style="">=</span> <span style="color: #05a;">Rc</span><span style="">::</span><span style="color: #164;">downgrade</span><span style="">(</span><span style="">&amp;</span>five<span style="">)</span><span style="">;</span><br/>
 </div></div>
 <h3>スマートポインタのライフタイム管理</h3><p>スマートポインタはデータのライフタイム管理を支援します。スマートポインタが破棄されると、メモリが自動的に解放されるため、メモリリークやダングリングポインタの問題を回避できます。</p><p>さらに、スマートポインタは、作成時に特定のデストラクタを指定して、カスタムのリソース管理を実装することもできます。</p>
@@ -349,7 +349,7 @@ println<span style="">!</span><span style="">(</span><span style="color: #a11;">
 <span style="color: #a50; font-style: italic;">// メイン関数</span><br/>
 <span style="color: #708;">fn</span> main<span style="">(</span><span style="">)</span> <span style="">{</span><br/>
     <span style="color: #a50; font-style: italic;">// Rc スマートポインタを作成し、データを共有する</span><br/>
-    <span style="color: #708;">let</span> data <span style="">=</span> <span style="color: #05a;">Rc</span><span style="">::</span><span style="color: #164;">new</span><span style="">(</span>Data <span style="">{</span> value<span style="">:</span> <span style="color: #0000dd;">5</span> <span style="">}</span><span style="">)</span><span style="">;</span><br/>
+    <span style="color: #708;">let</span> data <span style="">=</span> <span style="color: #05a;">Rc</span><span style="">::</span><span style="color: #164;">new</span><span style="">(</span>Data <span style="">{</span> value<span style="">:</span> <span style="color: #0000DD;">5</span> <span style="">}</span><span style="">)</span><span style="">;</span><br/>
 <br/>
     <span style="color: #a50; font-style: italic;">// Rc スマートポインタをクローンし、データの参照カウントを増やす</span><br/>
     <span style="color: #708;">let</span> data_clone1 <span style="">=</span> <span style="color: #05a;">Rc</span><span style="">::</span><span style="color: #164;">clone</span><span style="">(</span><span style="">&amp;</span>data<span style="">)</span><span style="">;</span><br/>
@@ -405,7 +405,7 @@ Data clone 2: Data { value: 5 }</pre><h3>まとめ</h3><p>Rust のスマート�
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -450,7 +450,7 @@ Data clone 2: Data { value: 5 }</pre><h3>まとめ</h3><p>Rust のスマート�
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -489,7 +489,7 @@ Data clone 2: Data { value: 5 }</pre><h3>まとめ</h3><p>Rust のスマート�
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートは本記事の内容の拡張である必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリック</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -708,7 +708,7 @@ function kFormatter(num) {
 </style>
 <div class="sidebar-box re-box re-box-large">
 <div class="sidebar-box recommend-here" style="margin: 0 auto;">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
+<a href="#" style="font-size: 16px; color:#5B80A6;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
 </div>
 <div class="sidebar-box sidebar-cate">
 <div class="sidebar-tree">

@@ -417,31 +417,31 @@ const taskStore = useTaskStore()<br/>
 <br/>// storeToRefs を使用してデータのリアクティブな分割代入を維持<br/>// これによりテンプレート内で filter と filteredTasks を直接使える<br/>
 const { filter, filteredTasks } = storeToRefs(taskStore)<br/>
 const { addTask, removeTask, toggleTask } = taskStore<br/>
-<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">script</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">script</span>&gt;</span><br/>
 <br/>
 <span style="color: #170;">&lt;template&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"min-h-screen py-12 px-4"</span>&gt;</span><br/>
-    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"max-w-md mx-auto bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden"</span>&gt;</span><br/>
-      <span style="color: #170;">&lt;TaskHeader <span style="color: #66cc66;">/</span>&gt;</span><br/>
-      <span style="color: #170;">&lt;main <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"p-6"</span>&gt;</span><br/>
-        <span style="color: #170;">&lt;TaskInput @add-task<span style="color: #66cc66;">=</span><span style="color: #a11;">"addTask"</span> <span style="color: #66cc66;">/</span>&gt;</span><br/>
-        <span style="color: #170;">&lt;TaskFilter v-model<span style="color: #66cc66;">=</span><span style="color: #a11;">"filter"</span> <span style="color: #66cc66;">/</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"min-h-screen py-12 px-4"</span>&gt;</span><br/>
+    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"max-w-md mx-auto bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden"</span>&gt;</span><br/>
+      <span style="color: #170;">&lt;TaskHeader <span style="color: #66CC66;">/</span>&gt;</span><br/>
+      <span style="color: #170;">&lt;main <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"p-6"</span>&gt;</span><br/>
+        <span style="color: #170;">&lt;TaskInput @add-task<span style="color: #66CC66;">=</span><span style="color: #a11;">"addTask"</span> <span style="color: #66CC66;">/</span>&gt;</span><br/>
+        <span style="color: #170;">&lt;TaskFilter v-model<span style="color: #66CC66;">=</span><span style="color: #a11;">"filter"</span> <span style="color: #66CC66;">/</span>&gt;</span><br/>
 <br/>
-        <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">ul</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"space-y-3"</span>&gt;</span><br/>
-          <span style="color: #170;">&lt;TransitionGroup <span style="color: #00c;">name</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"list"</span>&gt;</span><br/>
+        <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">ul</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"space-y-3"</span>&gt;</span><br/>
+          <span style="color: #170;">&lt;TransitionGroup <span style="color: #00c;">name</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"list"</span>&gt;</span><br/>
             <span style="color: #170;">&lt;TaskItem </span><br/>
-<span style="color: #170;">              v-<span style="color: #00c;">for</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"task in filteredTasks"</span> </span><br/>
-<span style="color: #170;">              :key<span style="color: #66cc66;">=</span><span style="color: #a11;">"task.id"</span></span><br/>
-<span style="color: #170;">              :task<span style="color: #66cc66;">=</span><span style="color: #a11;">"task"</span></span><br/>
-<span style="color: #170;">              @toggle<span style="color: #66cc66;">=</span><span style="color: #a11;">"toggleTask"</span></span><br/>
-<span style="color: #170;">              @remove<span style="color: #66cc66;">=</span><span style="color: #a11;">"removeTask"</span></span><br/>
-<span style="color: #170;">            <span style="color: #66cc66;">/</span>&gt;</span><br/>
-          <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span>TransitionGroup&gt;</span><br/>
-        <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">ul</span>&gt;</span><br/>
-      <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span>main&gt;</span><br/>
-    <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
-<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span>template&gt;</span><br/>
+<span style="color: #170;">              v-<span style="color: #00c;">for</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"task in filteredTasks"</span> </span><br/>
+<span style="color: #170;">              :key<span style="color: #66CC66;">=</span><span style="color: #a11;">"task.id"</span></span><br/>
+<span style="color: #170;">              :task<span style="color: #66CC66;">=</span><span style="color: #a11;">"task"</span></span><br/>
+<span style="color: #170;">              @toggle<span style="color: #66CC66;">=</span><span style="color: #a11;">"toggleTask"</span></span><br/>
+<span style="color: #170;">              @remove<span style="color: #66CC66;">=</span><span style="color: #a11;">"removeTask"</span></span><br/>
+<span style="color: #170;">            <span style="color: #66CC66;">/</span>&gt;</span><br/>
+          <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span>TransitionGroup&gt;</span><br/>
+        <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">ul</span>&gt;</span><br/>
+      <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span>main&gt;</span><br/>
+    <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span>template&gt;</span><br/>
 </div></div>
 <hr/>
 <h2>知識ポイントの詳細解説</h2>
@@ -482,27 +482,27 @@ const progress = computed(() =&gt; {<br/>
   const completedCount = tasks.value.filter(t =&gt; t.isCompleted).length;<br/>// パーセンテージを計算して整数に丸める<br/>
   return Math.round((completedCount / total) * 100);<br/>
 });<br/>
-<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">script</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">script</span>&gt;</span><br/>
 <br/>
 <span style="color: #170;">&lt;template&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">header</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"bg-linear-to-br from-blue-600 to-indigo-700 p-8 text-white"</span>&gt;</span><br/>
-    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">h1</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"text-3xl font-black tracking-tight"</span>&gt;</span>TaskHub<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">h1</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">header</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"bg-linear-to-br from-blue-600 to-indigo-700 p-8 text-white"</span>&gt;</span><br/>
+    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">h1</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"text-3xl font-black tracking-tight"</span>&gt;</span>TaskHub<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">h1</span>&gt;</span><br/>
     <br/>
-    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"mt-6"</span>&gt;</span><br/>
-      <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"flex justify-between items-end mb-2"</span>&gt;</span><br/>
-        <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">p</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"text-blue-100/80 text-xs font-bold uppercase tracking-wider"</span>&gt;</span>完了進捗<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">p</span>&gt;</span><br/>
-        <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">span</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"text-2xl font-mono font-black"</span>&gt;</span>{{ progress }}%<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">span</span>&gt;</span><br/>
-      <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
+    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"mt-6"</span>&gt;</span><br/>
+      <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"flex justify-between items-end mb-2"</span>&gt;</span><br/>
+        <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">p</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"text-blue-100/80 text-xs font-bold uppercase tracking-wider"</span>&gt;</span>完了進捗<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">p</span>&gt;</span><br/>
+        <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">span</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"text-2xl font-mono font-black"</span>&gt;</span>{{ progress }}%<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">span</span>&gt;</span><br/>
+      <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
       <br/>
-      <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"h-2 w-full bg-white/20 rounded-full overflow-hidden backdrop-blur-sm"</span>&gt;</span><br/>
+      <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"h-2 w-full bg-white/20 rounded-full overflow-hidden backdrop-blur-sm"</span>&gt;</span><br/>
         <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">div</span> </span><br/>
-<span style="color: #170;">          <span style="color: #00c;">class</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"h-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.5)] transition-all duration-500 ease-out"</span> </span><br/>
-<span style="color: #170;">          :<span style="color: #00c;">style</span><span style="color: #66cc66;">=</span><span style="color: #a11;">"{ width: `${progress}%` }"</span></span><br/>
-<span style="color: #170;">        &gt;&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
-      <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
-    <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
-  <span style="color: #170;">&lt;<span style="color: #66cc66;">/</span><span style="color: #170; font-weight: bold;">header</span>&gt;</span><br/>
-<span style="color: #170;">&lt;<span style="color: #66cc66;">/</span>template&gt;</span><br/>
+<span style="color: #170;">          <span style="color: #00c;">class</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"h-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.5)] transition-all duration-500 ease-out"</span> </span><br/>
+<span style="color: #170;">          :<span style="color: #00c;">style</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"{ width: `${progress}%` }"</span></span><br/>
+<span style="color: #170;">        &gt;&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
+      <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
+    <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">div</span>&gt;</span><br/>
+  <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">header</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span>template&gt;</span><br/>
 </div></div><p>変更後、画面全体に進捗バーの機能が追加されます：</p>
 <p><img decoding="async" src="../wp-content/uploads/2026/01/45d8fc70-cab5-464b-b25f-c217e74197cd.png"/></p>
 その他の拡張
@@ -539,7 +539,7 @@ const progress = computed(() =&gt; {<br/>
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -584,7 +584,7 @@ const progress = computed(() =&gt; {<br/>
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -623,7 +623,7 @@ const progress = computed(() =&gt; {<br/>
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、こちらをクリックしてください</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -842,7 +842,7 @@ function kFormatter(num) {
 </style>
 <div class="sidebar-box re-box re-box-large">
 <div class="sidebar-box recommend-here" style="margin: 0 auto;">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
+<a href="#" style="font-size: 16px; color:#5B80A6;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
 </div>
 <div class="sidebar-box sidebar-cate">
 <div class="sidebar-tree">

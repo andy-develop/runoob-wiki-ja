@@ -172,34 +172,34 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>例えば、int から long、float から double など。</p>
 <p>小さい整数型から大きい整数型への変換、派生クラスから基底クラスへの変換です。byte型の変数をint型の変数に代入する場合、コンパイラは自動的にbyte型をint型に変換するため、明示的な変換は不要です。</p>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
-<span style="color: #6666cc; font-weight: bold;">byte</span> b <span style="color: #008000;">=</span> <span style="color: Maroon;">10</span><span style="color: #008000;">;</span><br/>
-<span style="color: #6666cc; font-weight: bold;">int</span> i <span style="color: #008000;">=</span> b<span style="color: #008000;">;</span> <span style="color: #696969; font-style: italic;">// 隐式转换，不需要显式转换</span><br/>
+<span style="color: #6666CC; font-weight: bold;">byte</span> b <span style="color: #008000;">=</span> <span style="color: Maroon;">10</span><span style="color: #008000;">;</span><br/>
+<span style="color: #6666CC; font-weight: bold;">int</span> i <span style="color: #008000;">=</span> b<span style="color: #008000;">;</span> <span style="color: #696969; font-style: italic;">// 隐式转换，不需要显式转换</span><br/>
 </div></div><p>整数を長整数に代入する場合や、浮動小数点数を倍精度浮動小数点数に代入する場合、この変換はデータ損失を引き起こしません：</p>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
-<span style="color: #6666cc; font-weight: bold;">int</span> intValue <span style="color: #008000;">=</span> <span style="color: Maroon;">42</span><span style="color: #008000;">;</span><br/>
-<span style="color: #6666cc; font-weight: bold;">long</span> longValue <span style="color: #008000;">=</span> intValue<span style="color: #008000;">;</span> <span style="color: #696969; font-style: italic;">// 隐式转换，从 int 到 long</span><br/>
+<span style="color: #6666CC; font-weight: bold;">int</span> intValue <span style="color: #008000;">=</span> <span style="color: Maroon;">42</span><span style="color: #008000;">;</span><br/>
+<span style="color: #6666CC; font-weight: bold;">long</span> longValue <span style="color: #008000;">=</span> intValue<span style="color: #008000;">;</span> <span style="color: #696969; font-style: italic;">// 隐式转换，从 int 到 long</span><br/>
 </div></div>
 <h3>显式转换</h3>
 <p>明示的型変換、すなわちキャストは、プログラマがコード内で明確に指定する必要があります。</p>
 <p>明示的変換とは、より大きい範囲のデータ型をより小さい範囲のデータ型に変換する場合、またはあるオブジェクト型を別のオブジェクト型に変換する場合に、キャスト演算子を使用して明示的に変換する必要があることを指します。キャストはデータ損失を引き起こす可能性があります。</p><p>例えば、int型の変数をbyte型の変数に代入する場合、明示的な変換が必要です。</p>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
-<span style="color: #6666cc; font-weight: bold;">int</span> i <span style="color: #008000;">=</span> <span style="color: Maroon;">10</span><span style="color: #008000;">;</span><br/>
-<span style="color: #6666cc; font-weight: bold;">byte</span> b <span style="color: #008000;">=</span> <span style="color: #008000;">(</span><span style="color: #6666cc; font-weight: bold;">byte</span><span style="color: #008000;">)</span>i<span style="color: #008000;">;</span> <span style="color: #696969; font-style: italic;">// 显式转换，需要使用强制类型转换符号</span><br/>
+<span style="color: #6666CC; font-weight: bold;">int</span> i <span style="color: #008000;">=</span> <span style="color: Maroon;">10</span><span style="color: #008000;">;</span><br/>
+<span style="color: #6666CC; font-weight: bold;">byte</span> b <span style="color: #008000;">=</span> <span style="color: #008000;">(</span><span style="color: #6666CC; font-weight: bold;">byte</span><span style="color: #008000;">)</span>i<span style="color: #008000;">;</span> <span style="color: #696969; font-style: italic;">// 显式转换，需要使用强制类型转换符号</span><br/>
 </div></div>
 <p>整数型への強制変換：</p>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
-<span style="color: #6666cc; font-weight: bold;">double</span> doubleValue <span style="color: #008000;">=</span> <span style="color: Maroon;">3.14</span><span style="color: #008000;">;</span><br/>
-<span style="color: #6666cc; font-weight: bold;">int</span> intValue <span style="color: #008000;">=</span> <span style="color: #008000;">(</span><span style="color: #6666cc; font-weight: bold;">int</span><span style="color: #008000;">)</span>doubleValue<span style="color: #008000;">;</span> <span style="color: #696969; font-style: italic;">// 强制从 double 到 int，数据可能损失小数部分</span><br/>
+<span style="color: #6666CC; font-weight: bold;">double</span> doubleValue <span style="color: #008000;">=</span> <span style="color: Maroon;">3.14</span><span style="color: #008000;">;</span><br/>
+<span style="color: #6666CC; font-weight: bold;">int</span> intValue <span style="color: #008000;">=</span> <span style="color: #008000;">(</span><span style="color: #6666CC; font-weight: bold;">int</span><span style="color: #008000;">)</span>doubleValue<span style="color: #008000;">;</span> <span style="color: #696969; font-style: italic;">// 强制从 double 到 int，数据可能损失小数部分</span><br/>
 </div></div>
 <p>浮動小数点型への強制変換：</p>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
-<span style="color: #6666cc; font-weight: bold;">int</span> intValue <span style="color: #008000;">=</span> <span style="color: Maroon;">42</span><span style="color: #008000;">;</span><br/>
-<span style="color: #6666cc; font-weight: bold;">float</span> floatValue <span style="color: #008000;">=</span> <span style="color: #008000;">(</span><span style="color: #6666cc; font-weight: bold;">float</span><span style="color: #008000;">)</span>intValue<span style="color: #008000;">;</span> <span style="color: #696969; font-style: italic;">// 强制从 int 到 float，数据可能损失精度</span><br/>
+<span style="color: #6666CC; font-weight: bold;">int</span> intValue <span style="color: #008000;">=</span> <span style="color: Maroon;">42</span><span style="color: #008000;">;</span><br/>
+<span style="color: #6666CC; font-weight: bold;">float</span> floatValue <span style="color: #008000;">=</span> <span style="color: #008000;">(</span><span style="color: #6666CC; font-weight: bold;">float</span><span style="color: #008000;">)</span>intValue<span style="color: #008000;">;</span> <span style="color: #696969; font-style: italic;">// 强制从 int 到 float，数据可能损失精度</span><br/>
 </div></div>
 <p>文字列型への強制変換：</p>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
-<span style="color: #6666cc; font-weight: bold;">int</span> intValue <span style="color: #008000;">=</span> <span style="color: Maroon;">123</span><span style="color: #008000;">;</span><br/>
-<span style="color: #6666cc; font-weight: bold;">string</span> stringValue <span style="color: #008000;">=</span> intValue<span style="color: #008000;">.</span><span style="color: #05a;">ToString</span><span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span> <span style="color: #696969; font-style: italic;">// 将 int 转换为字符串</span><br/>
+<span style="color: #6666CC; font-weight: bold;">int</span> intValue <span style="color: #008000;">=</span> <span style="color: Maroon;">123</span><span style="color: #008000;">;</span><br/>
+<span style="color: #6666CC; font-weight: bold;">string</span> stringValue <span style="color: #008000;">=</span> intValue<span style="color: #008000;">.</span><span style="color: #05a;">ToString</span><span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span> <span style="color: #696969; font-style: italic;">// 将 int 转换为字符串</span><br/>
 </div></div>
 <p>以下の例は、明示的な型変換を示しています：</p>
 <div class="example">
@@ -209,15 +209,15 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <br/>
 <span style="color: #05a; font-weight: bold;">namespace</span> TypeConversionApplication<br/>
 <span style="color: #008000;">{</span><br/>
-    <span style="color: #6666cc; font-weight: bold;">class</span> ExplicitConversion<br/>
+    <span style="color: #6666CC; font-weight: bold;">class</span> ExplicitConversion<br/>
     <span style="color: #008000;">{</span><br/>
-        <span style="color: #05a; font-weight: bold;">static</span> <span style="color: #6666cc; font-weight: bold;">void</span> Main<span style="color: #008000;">(</span><span style="color: #6666cc; font-weight: bold;">string</span><span style="color: #008000;">[</span><span style="color: #008000;">]</span> args<span style="color: #008000;">)</span><br/>
+        <span style="color: #05a; font-weight: bold;">static</span> <span style="color: #6666CC; font-weight: bold;">void</span> Main<span style="color: #008000;">(</span><span style="color: #6666CC; font-weight: bold;">string</span><span style="color: #008000;">[</span><span style="color: #008000;">]</span> args<span style="color: #008000;">)</span><br/>
         <span style="color: #008000;">{</span><br/>
-            <span style="color: #6666cc; font-weight: bold;">double</span> d <span style="color: #008000;">=</span> <span style="color: Maroon;">5673.74</span><span style="color: #008000;">;</span><br/>
-            <span style="color: #6666cc; font-weight: bold;">int</span> i<span style="color: #008000;">;</span><br/>
+            <span style="color: #6666CC; font-weight: bold;">double</span> d <span style="color: #008000;">=</span> <span style="color: Maroon;">5673.74</span><span style="color: #008000;">;</span><br/>
+            <span style="color: #6666CC; font-weight: bold;">int</span> i<span style="color: #008000;">;</span><br/>
 <br/>
             <span style="color: #696969; font-style: italic;">// 强制转换 double 为 int</span><br/>
-            i <span style="color: #008000;">=</span> <span style="color: #008000;">(</span><span style="color: #6666cc; font-weight: bold;">int</span><span style="color: #008000;">)</span>d<span style="color: #008000;">;</span><br/>
+            i <span style="color: #008000;">=</span> <span style="color: #008000;">(</span><span style="color: #6666CC; font-weight: bold;">int</span><span style="color: #008000;">)</span>d<span style="color: #008000;">;</span><br/>
             Console<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span>i<span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
             Console<span style="color: #008000;">.</span><span style="color: #05a;">ReadKey</span><span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
             <br/>
@@ -263,21 +263,21 @@ int number = Convert.ToInt32(str); // 转换成功，number为123</pre><p>文字
 <br/>
 <span style="color: #05a; font-weight: bold;">namespace</span> TypeConversionApplication<br/>
 <span style="color: #008000;">{</span><br/>
-    <span style="color: #6666cc; font-weight: bold;">class</span> StringConversion<br/>
+    <span style="color: #6666CC; font-weight: bold;">class</span> StringConversion<br/>
     <span style="color: #008000;">{</span><br/>
-        <span style="color: #05a; font-weight: bold;">static</span> <span style="color: #6666cc; font-weight: bold;">void</span> Main<span style="color: #008000;">(</span><span style="color: #6666cc; font-weight: bold;">string</span><span style="color: #008000;">[</span><span style="color: #008000;">]</span> args<span style="color: #008000;">)</span><br/>
+        <span style="color: #05a; font-weight: bold;">static</span> <span style="color: #6666CC; font-weight: bold;">void</span> Main<span style="color: #008000;">(</span><span style="color: #6666CC; font-weight: bold;">string</span><span style="color: #008000;">[</span><span style="color: #008000;">]</span> args<span style="color: #008000;">)</span><br/>
         <span style="color: #008000;">{</span><br/>
             <span style="color: #696969; font-style: italic;">// 定义一个整型变量</span><br/>
-            <span style="color: #6666cc; font-weight: bold;">int</span> i <span style="color: #008000;">=</span> <span style="color: Maroon;">75</span><span style="color: #008000;">;</span><br/>
+            <span style="color: #6666CC; font-weight: bold;">int</span> i <span style="color: #008000;">=</span> <span style="color: Maroon;">75</span><span style="color: #008000;">;</span><br/>
             <br/>
             <span style="color: #696969; font-style: italic;">// 定义一个浮点型变量</span><br/>
-            <span style="color: #6666cc; font-weight: bold;">float</span> f <span style="color: #008000;">=</span> 53<span style="color: #008000;">.</span>005f<span style="color: #008000;">;</span><br/>
+            <span style="color: #6666CC; font-weight: bold;">float</span> f <span style="color: #008000;">=</span> 53<span style="color: #008000;">.</span>005f<span style="color: #008000;">;</span><br/>
             <br/>
             <span style="color: #696969; font-style: italic;">// 定义一个双精度浮点型变量</span><br/>
-            <span style="color: #6666cc; font-weight: bold;">double</span> d <span style="color: #008000;">=</span> <span style="color: Maroon;">2345.7652</span><span style="color: #008000;">;</span><br/>
+            <span style="color: #6666CC; font-weight: bold;">double</span> d <span style="color: #008000;">=</span> <span style="color: Maroon;">2345.7652</span><span style="color: #008000;">;</span><br/>
             <br/>
             <span style="color: #696969; font-style: italic;">// 定义一个布尔型变量</span><br/>
-            <span style="color: #6666cc; font-weight: bold;">bool</span> b <span style="color: #008000;">=</span> <span style="color: #05a; font-weight: bold;">true</span><span style="color: #008000;">;</span><br/>
+            <span style="color: #6666CC; font-weight: bold;">bool</span> b <span style="color: #008000;">=</span> <span style="color: #05a; font-weight: bold;">true</span><span style="color: #008000;">;</span><br/>
 <br/>
             <span style="color: #696969; font-style: italic;">// 将整型变量转换为字符串并输出</span><br/>
             Console<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span>i<span style="color: #008000;">.</span><span style="color: #05a;">ToString</span><span style="color: #008000;">(</span><span style="color: #008000;">)</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
@@ -313,20 +313,20 @@ True
 <p>C# は、Convert クラス、Parse メソッド、TryParse メソッドなど、さまざまな型変換メソッドを提供しています。これらのメソッドは、異なるデータ型間の変換を処理するのに役立ちます。</p>
 <h3>Convert クラスの使用</h3><p>Convertクラスは、さまざまな基本データ型間で変換を行うための一連の静的メソッドを提供します。</p>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
-<span style="color: #6666cc; font-weight: bold;">string</span> str <span style="color: #008000;">=</span> <span style="color: #a11;">"123"</span><span style="color: #008000;">;</span><br/>
-<span style="color: #6666cc; font-weight: bold;">int</span> num <span style="color: #008000;">=</span> Convert<span style="color: #008000;">.</span><span style="color: #05a;">ToInt32</span><span style="color: #008000;">(</span>str<span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
+<span style="color: #6666CC; font-weight: bold;">string</span> str <span style="color: #008000;">=</span> <span style="color: #a11;">"123"</span><span style="color: #008000;">;</span><br/>
+<span style="color: #6666CC; font-weight: bold;">int</span> num <span style="color: #008000;">=</span> Convert<span style="color: #008000;">.</span><span style="color: #05a;">ToInt32</span><span style="color: #008000;">(</span>str<span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
 </div></div>
 <h3>Parse メソッドの使用</h3>
 <p>Parseメソッドは、文字列を対応する数値型に変換するために使用され、変換に失敗した場合は例外をスローします。</p>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
-<span style="color: #6666cc; font-weight: bold;">string</span> str <span style="color: #008000;">=</span> <span style="color: #a11;">"123.45"</span><span style="color: #008000;">;</span><br/>
-<span style="color: #6666cc; font-weight: bold;">double</span> d <span style="color: #008000;">=</span> <span style="color: #6666cc; font-weight: bold;">double</span><span style="color: #008000;">.</span><span style="color: #05a;">Parse</span><span style="color: #008000;">(</span>str<span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
+<span style="color: #6666CC; font-weight: bold;">string</span> str <span style="color: #008000;">=</span> <span style="color: #a11;">"123.45"</span><span style="color: #008000;">;</span><br/>
+<span style="color: #6666CC; font-weight: bold;">double</span> d <span style="color: #008000;">=</span> <span style="color: #6666CC; font-weight: bold;">double</span><span style="color: #008000;">.</span><span style="color: #05a;">Parse</span><span style="color: #008000;">(</span>str<span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
 </div></div>
 <h3>TryParse メソッドの使用</h3><p>TryParseメソッドはParseに似ていますが、例外をスローせず、変換が成功したかどうかを示すブール値を返します。</p>
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
-<span style="color: #6666cc; font-weight: bold;">string</span> str <span style="color: #008000;">=</span> <span style="color: #a11;">"123.45"</span><span style="color: #008000;">;</span><br/>
-<span style="color: #6666cc; font-weight: bold;">double</span> d<span style="color: #008000;">;</span><br/>
-<span style="color: #6666cc; font-weight: bold;">bool</span> success <span style="color: #008000;">=</span> <span style="color: #6666cc; font-weight: bold;">double</span><span style="color: #008000;">.</span><span style="color: #05a;">TryParse</span><span style="color: #008000;">(</span>str, <span style="color: #05a; font-weight: bold;">out</span> d<span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
+<span style="color: #6666CC; font-weight: bold;">string</span> str <span style="color: #008000;">=</span> <span style="color: #a11;">"123.45"</span><span style="color: #008000;">;</span><br/>
+<span style="color: #6666CC; font-weight: bold;">double</span> d<span style="color: #008000;">;</span><br/>
+<span style="color: #6666CC; font-weight: bold;">bool</span> success <span style="color: #008000;">=</span> <span style="color: #6666CC; font-weight: bold;">double</span><span style="color: #008000;">.</span><span style="color: #05a;">TryParse</span><span style="color: #008000;">(</span>str, <span style="color: #05a; font-weight: bold;">out</span> d<span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
 <br/>
 <span style="color: #05a; font-weight: bold;">if</span> <span style="color: #008000;">(</span>success<span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
     Console<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span><span style="color: #a11;">"转换成功: "</span> <span style="color: #008000;">+</span> d<span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
@@ -338,36 +338,36 @@ True
 <div class="example"><h2 class="example">实例</h2> <div class="example_code">
 <span style="color: #05a; font-weight: bold;">using</span> <span style="color: #696969;">System</span><span style="color: #008000;">;</span><br/>
 <br/>
-<span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666cc; font-weight: bold;">class</span> Fahrenheit<br/>
+<span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666CC; font-weight: bold;">class</span> Fahrenheit<br/>
 <span style="color: #008000;">{</span><br/>
-    <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666cc; font-weight: bold;">double</span> Degrees <span style="color: #008000;">{</span> <span style="color: #05a; font-weight: bold;">get</span><span style="color: #008000;">;</span> <span style="color: #05a; font-weight: bold;">set</span><span style="color: #008000;">;</span> <span style="color: #008000;">}</span><br/>
+    <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666CC; font-weight: bold;">double</span> Degrees <span style="color: #008000;">{</span> <span style="color: #05a; font-weight: bold;">get</span><span style="color: #008000;">;</span> <span style="color: #05a; font-weight: bold;">set</span><span style="color: #008000;">;</span> <span style="color: #008000;">}</span><br/>
 <br/>
-    <span style="color: #05a; font-weight: bold;">public</span> Fahrenheit<span style="color: #008000;">(</span><span style="color: #6666cc; font-weight: bold;">double</span> degrees<span style="color: #008000;">)</span><br/>
+    <span style="color: #05a; font-weight: bold;">public</span> Fahrenheit<span style="color: #008000;">(</span><span style="color: #6666CC; font-weight: bold;">double</span> degrees<span style="color: #008000;">)</span><br/>
     <span style="color: #008000;">{</span><br/>
         Degrees <span style="color: #008000;">=</span> degrees<span style="color: #008000;">;</span><br/>
     <span style="color: #008000;">}</span><br/>
 <br/>
     <span style="color: #696969; font-style: italic;">// 隐式转换从Fahrenheit到double</span><br/>
-    <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #05a; font-weight: bold;">static</span> <span style="color: #05a; font-weight: bold;">implicit</span> <span style="color: #05a; font-weight: bold;">operator</span> <span style="color: #6666cc; font-weight: bold;">double</span><span style="color: #008000;">(</span>Fahrenheit f<span style="color: #008000;">)</span><br/>
+    <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #05a; font-weight: bold;">static</span> <span style="color: #05a; font-weight: bold;">implicit</span> <span style="color: #05a; font-weight: bold;">operator</span> <span style="color: #6666CC; font-weight: bold;">double</span><span style="color: #008000;">(</span>Fahrenheit f<span style="color: #008000;">)</span><br/>
     <span style="color: #008000;">{</span><br/>
         <span style="color: #05a; font-weight: bold;">return</span> f<span style="color: #008000;">.</span><span style="color: #05a;">Degrees</span><span style="color: #008000;">;</span><br/>
     <span style="color: #008000;">}</span><br/>
 <br/>
     <span style="color: #696969; font-style: italic;">// 显式转换从double到Fahrenheit</span><br/>
-    <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #05a; font-weight: bold;">static</span> <span style="color: #05a; font-weight: bold;">explicit</span> <span style="color: #05a; font-weight: bold;">operator</span> Fahrenheit<span style="color: #008000;">(</span><span style="color: #6666cc; font-weight: bold;">double</span> d<span style="color: #008000;">)</span><br/>
+    <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #05a; font-weight: bold;">static</span> <span style="color: #05a; font-weight: bold;">explicit</span> <span style="color: #05a; font-weight: bold;">operator</span> Fahrenheit<span style="color: #008000;">(</span><span style="color: #6666CC; font-weight: bold;">double</span> d<span style="color: #008000;">)</span><br/>
     <span style="color: #008000;">{</span><br/>
         <span style="color: #05a; font-weight: bold;">return</span> <span style="color: #008000;">new</span> Fahrenheit<span style="color: #008000;">(</span>d<span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
     <span style="color: #008000;">}</span><br/>
 <span style="color: #008000;">}</span><br/>
 <br/>
-<span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666cc; font-weight: bold;">class</span> Program<br/>
+<span style="color: #05a; font-weight: bold;">public</span> <span style="color: #6666CC; font-weight: bold;">class</span> Program<br/>
 <span style="color: #008000;">{</span><br/>
-    <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #05a; font-weight: bold;">static</span> <span style="color: #6666cc; font-weight: bold;">void</span> Main<span style="color: #008000;">(</span><span style="color: #008000;">)</span><br/>
+    <span style="color: #05a; font-weight: bold;">public</span> <span style="color: #05a; font-weight: bold;">static</span> <span style="color: #6666CC; font-weight: bold;">void</span> Main<span style="color: #008000;">(</span><span style="color: #008000;">)</span><br/>
     <span style="color: #008000;">{</span><br/>
         Fahrenheit f <span style="color: #008000;">=</span> <span style="color: #008000;">new</span> Fahrenheit<span style="color: #008000;">(</span><span style="color: Maroon;">98.6</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
         Console<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span><span style="color: #a11;">"Fahrenheit object: "</span> <span style="color: #008000;">+</span> f<span style="color: #008000;">.</span><span style="color: #05a;">Degrees</span> <span style="color: #008000;">+</span> <span style="color: #a11;">" degrees"</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
 <br/>
-        <span style="color: #6666cc; font-weight: bold;">double</span> temp <span style="color: #008000;">=</span> f<span style="color: #008000;">;</span> <span style="color: #696969; font-style: italic;">// 隐式转换</span><br/>
+        <span style="color: #6666CC; font-weight: bold;">double</span> temp <span style="color: #008000;">=</span> f<span style="color: #008000;">;</span> <span style="color: #696969; font-style: italic;">// 隐式转换</span><br/>
         Console<span style="color: #008000;">.</span><span style="color: #05a;">WriteLine</span><span style="color: #008000;">(</span><span style="color: #a11;">"After implicit conversion to double: "</span> <span style="color: #008000;">+</span> temp <span style="color: #008000;">+</span> <span style="color: #a11;">" degrees"</span><span style="color: #008000;">)</span><span style="color: #008000;">;</span><br/>
 <br/>
         Fahrenheit newF <span style="color: #008000;">=</span> <span style="color: #008000;">(</span>Fahrenheit<span style="color: #008000;">)</span>temp<span style="color: #008000;">;</span> <span style="color: #696969; font-style: italic;">// 显式转换</span><br/>
@@ -415,7 +415,7 @@ After explicit conversion back to Fahrenheit: 98.6 degrees</pre>
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -460,7 +460,7 @@ After explicit conversion back to Fahrenheit: 98.6 degrees</pre>
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -678,7 +678,7 @@ class 测试
 </div>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">笔记需要是本篇文章的内容扩展！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">文章投稿，可点击这里</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">注册邀请码获取方式</a></p>

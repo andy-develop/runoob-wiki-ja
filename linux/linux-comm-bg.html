@@ -312,11 +312,11 @@ bg [作业号]</pre>
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-$ <span style="color: #c20cb9; font-weight: bold;">sleep</span> <span style="color: #000000;">100</span>  <span style="color: #666666; font-style: italic;"># 長時間実行するコマンドを起動する</span><br/>
+$ <span style="color: #C20CB9; font-weight: bold;">sleep</span> <span style="color: #000000;">100</span>  <span style="color: #666666; font-style: italic;"># 長時間実行するコマンドを起動する</span><br/>
 ^Z           <span style="color: #666666; font-style: italic;"># Ctrl+Z を押して一時停止する</span><br/>
-<span style="color: #7a0874; font-weight: bold;">[</span><span style="color: #000000;">1</span><span style="color: #7a0874; font-weight: bold;">]</span>+  Stopped        <span style="color: #c20cb9; font-weight: bold;">sleep</span> <span style="color: #000000;">100</span><br/>
-$ <span style="color: #7a0874; font-weight: bold;">bg</span>         <span style="color: #666666; font-style: italic;"># バックグラウンドで実行を継続させる</span><br/>
-<span style="color: #7a0874; font-weight: bold;">[</span><span style="color: #000000;">1</span><span style="color: #7a0874; font-weight: bold;">]</span>+ <span style="color: #c20cb9; font-weight: bold;">sleep</span> <span style="color: #000000;">100</span> <span style="color: #000000; font-weight: bold;">&amp;</span><br/>
+<span style="color: #7A0874; font-weight: bold;">[</span><span style="color: #000000;">1</span><span style="color: #7A0874; font-weight: bold;">]</span>+  Stopped        <span style="color: #C20CB9; font-weight: bold;">sleep</span> <span style="color: #000000;">100</span><br/>
+$ <span style="color: #7A0874; font-weight: bold;">bg</span>         <span style="color: #666666; font-style: italic;"># バックグラウンドで実行を継続させる</span><br/>
+<span style="color: #7A0874; font-weight: bold;">[</span><span style="color: #000000;">1</span><span style="color: #7A0874; font-weight: bold;">]</span>+ <span style="color: #C20CB9; font-weight: bold;">sleep</span> <span style="color: #000000;">100</span> <span style="color: #000000; font-weight: bold;">&amp;</span><br/>
 </div>
 </div>
 <h3>2. ジョブ番号を指定して再開する</h3>
@@ -324,10 +324,10 @@ $ <span style="color: #7a0874; font-weight: bold;">bg</span>         <span s
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-$ <span style="color: #7a0874; font-weight: bold;">jobs</span><br/>
-<span style="color: #7a0874; font-weight: bold;">[</span><span style="color: #000000;">1</span><span style="color: #7a0874; font-weight: bold;">]</span>-  Stopped        <span style="color: #c20cb9; font-weight: bold;">vim</span> file1.txt<br/>
-<span style="color: #7a0874; font-weight: bold;">[</span><span style="color: #000000;">2</span><span style="color: #7a0874; font-weight: bold;">]</span>+  Stopped        python script.py<br/>
-$ <span style="color: #7a0874; font-weight: bold;">bg</span> <span style="color: #000000;">2</span>  <span style="color: #666666; font-style: italic;"># 2番目のジョブをバックグラウンドで実行し続ける</span><br/>
+$ <span style="color: #7A0874; font-weight: bold;">jobs</span><br/>
+<span style="color: #7A0874; font-weight: bold;">[</span><span style="color: #000000;">1</span><span style="color: #7A0874; font-weight: bold;">]</span>-  Stopped        <span style="color: #C20CB9; font-weight: bold;">vim</span> file1.txt<br/>
+<span style="color: #7A0874; font-weight: bold;">[</span><span style="color: #000000;">2</span><span style="color: #7A0874; font-weight: bold;">]</span>+  Stopped        python script.py<br/>
+$ <span style="color: #7A0874; font-weight: bold;">bg</span> <span style="color: #000000;">2</span>  <span style="color: #666666; font-style: italic;"># 2番目のジョブをバックグラウンドで実行し続ける</span><br/>
 </div>
 </div>
 <h3>3. fg コマンドと組み合わせて使用する</h3>
@@ -343,22 +343,22 @@ $ <span style="color: #7a0874; font-weight: bold;">bg</span> <span style="color:
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># 1. エディタを起動する</span><br/>
-$ <span style="color: #c20cb9; font-weight: bold;">vim</span> app.py<br/>
+$ <span style="color: #C20CB9; font-weight: bold;">vim</span> app.py<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># 2. 一時的にテストを実行する必要がある（Ctrl+Z を押して vim を一時停止）</span><br/>
 ^Z<br/>
-<span style="color: #7a0874; font-weight: bold;">[</span><span style="color: #000000;">1</span><span style="color: #7a0874; font-weight: bold;">]</span>+  Stopped        <span style="color: #c20cb9; font-weight: bold;">vim</span> app.py<br/>
+<span style="color: #7A0874; font-weight: bold;">[</span><span style="color: #000000;">1</span><span style="color: #7A0874; font-weight: bold;">]</span>+  Stopped        <span style="color: #C20CB9; font-weight: bold;">vim</span> app.py<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># 3. テストスクリプトを実行する</span><br/>
 $ python test.py<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># 4. テスト完了後、エディタをバックグラウンドに戻して作業を続行する</span><br/>
-$ <span style="color: #7a0874; font-weight: bold;">bg</span> <span style="color: #000000;">1</span><br/>
-<span style="color: #7a0874; font-weight: bold;">[</span><span style="color: #000000;">1</span><span style="color: #7a0874; font-weight: bold;">]</span>+ <span style="color: #c20cb9; font-weight: bold;">vim</span> app.py <span style="color: #000000; font-weight: bold;">&amp;</span><br/>
+$ <span style="color: #7A0874; font-weight: bold;">bg</span> <span style="color: #000000;">1</span><br/>
+<span style="color: #7A0874; font-weight: bold;">[</span><span style="color: #000000;">1</span><span style="color: #7A0874; font-weight: bold;">]</span>+ <span style="color: #C20CB9; font-weight: bold;">vim</span> app.py <span style="color: #000000; font-weight: bold;">&amp;</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># 5. バックグラウンドジョブを確認する</span><br/>
-$ <span style="color: #7a0874; font-weight: bold;">jobs</span><br/>
-<span style="color: #7a0874; font-weight: bold;">[</span><span style="color: #000000;">1</span><span style="color: #7a0874; font-weight: bold;">]</span>+  Running        <span style="color: #c20cb9; font-weight: bold;">vim</span> app.py <span style="color: #000000; font-weight: bold;">&amp;</span><br/>
+$ <span style="color: #7A0874; font-weight: bold;">jobs</span><br/>
+<span style="color: #7A0874; font-weight: bold;">[</span><span style="color: #000000;">1</span><span style="color: #7A0874; font-weight: bold;">]</span>+  Running        <span style="color: #C20CB9; font-weight: bold;">vim</span> app.py <span style="color: #000000; font-weight: bold;">&amp;</span><br/>
 </div>
 </div>
 <hr/>
@@ -368,9 +368,9 @@ $ <span style="color: #7a0874; font-weight: bold;">jobs</span><br/>
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-$ <span style="color: #7a0874; font-weight: bold;">jobs</span><br/>
-<span style="color: #7a0874; font-weight: bold;">[</span><span style="color: #000000;">1</span><span style="color: #7a0874; font-weight: bold;">]</span>-  Running        <span style="color: #c20cb9; font-weight: bold;">sleep</span> <span style="color: #000000;">100</span> <span style="color: #000000; font-weight: bold;">&amp;</span><br/>
-<span style="color: #7a0874; font-weight: bold;">[</span><span style="color: #000000;">2</span><span style="color: #7a0874; font-weight: bold;">]</span>+  Stopped        <span style="color: #c20cb9; font-weight: bold;">vim</span> notes.txt<br/>
+$ <span style="color: #7A0874; font-weight: bold;">jobs</span><br/>
+<span style="color: #7A0874; font-weight: bold;">[</span><span style="color: #000000;">1</span><span style="color: #7A0874; font-weight: bold;">]</span>-  Running        <span style="color: #C20CB9; font-weight: bold;">sleep</span> <span style="color: #000000;">100</span> <span style="color: #000000; font-weight: bold;">&amp;</span><br/>
+<span style="color: #7A0874; font-weight: bold;">[</span><span style="color: #000000;">2</span><span style="color: #7A0874; font-weight: bold;">]</span>+  Stopped        <span style="color: #C20CB9; font-weight: bold;">vim</span> notes.txt<br/>
 </div>
 </div>
 <h3>Q2: bg と &amp; の違いは何ですか？</h3>
@@ -383,7 +383,7 @@ $ <span style="color: #7a0874; font-weight: bold;">jobs</span><br/>
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #c20cb9; font-weight: bold;">nohup</span> <span style="color: #7a0874; font-weight: bold;">command</span> <span style="color: #000000; font-weight: bold;">&amp;</span>  <span style="color: #666666; font-style: italic;"># または tmux/screen を使用する</span><br/>
+<span style="color: #C20CB9; font-weight: bold;">nohup</span> <span style="color: #7A0874; font-weight: bold;">command</span> <span style="color: #000000; font-weight: bold;">&amp;</span>  <span style="color: #666666; font-style: italic;"># または tmux/screen を使用する</span><br/>
 </div>
 </div>
 <hr/>
@@ -393,10 +393,10 @@ $ <span style="color: #7a0874; font-weight: bold;">jobs</span><br/>
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-$ <span style="color: #c20cb9; font-weight: bold;">sleep</span> <span style="color: #000000;">1000</span><br/>
+$ <span style="color: #C20CB9; font-weight: bold;">sleep</span> <span style="color: #000000;">1000</span><br/>
 ^Z<br/>
-$ <span style="color: #7a0874; font-weight: bold;">bg</span><br/>
-$ <span style="color: #7a0874; font-weight: bold;">disown</span> <span style="color: #000000; font-weight: bold;">%</span>1<br/>
+$ <span style="color: #7A0874; font-weight: bold;">bg</span><br/>
+$ <span style="color: #7A0874; font-weight: bold;">disown</span> <span style="color: #000000; font-weight: bold;">%</span>1<br/>
 </div>
 </div>
 <h3>2. ジョブ番号のショートカットを使用する</h3>
@@ -408,7 +408,7 @@ $ <span style="color: #7a0874; font-weight: bold;">disown</span> <span style="co
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-$ <span style="color: #7a0874; font-weight: bold;">bg</span> <span style="color: #000000; font-weight: bold;">%</span><span style="color: #c20cb9; font-weight: bold;">sleep</span>  <span style="color: #666666; font-style: italic;"># "sleep" を含むジョブを再開する</span><br/>
+$ <span style="color: #7A0874; font-weight: bold;">bg</span> <span style="color: #000000; font-weight: bold;">%</span><span style="color: #C20CB9; font-weight: bold;">sleep</span>  <span style="color: #666666; font-style: italic;"># "sleep" を含むジョブを再開する</span><br/>
 </div>
 </div>
 <hr/>
@@ -449,7 +449,7 @@ $ <span style="color: #7a0874; font-weight: bold;">bg</span> <span style="color:
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -494,7 +494,7 @@ $ <span style="color: #7a0874; font-weight: bold;">bg</span> <span style="color:
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -533,7 +533,7 @@ $ <span style="color: #7a0874; font-weight: bold;">bg</span> <span style="color:
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、こちらをクリックしてください</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -752,7 +752,7 @@ function kFormatter(num) {
 </style>
 <div class="sidebar-box re-box re-box-large">
 <div class="sidebar-box recommend-here" style="margin: 0 auto;">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
+<a href="#" style="font-size: 16px; color:#5B80A6;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
 </div>
 <div class="sidebar-box sidebar-cate">
 <div class="sidebar-tree">

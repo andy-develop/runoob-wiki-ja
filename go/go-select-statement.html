@@ -288,17 +288,17 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>Goプログラミング言語におけるselect文の構文は次のとおりです。</p>
 <div class="example"><div class="example_code">
 <br/>
-<span style="color: #b1b100; font-weight: bold;">select</span> <span style="color: #339933;">{</span><br/>
-  <span style="color: #b1b100; font-weight: bold;">case</span> &lt;<span style="color: #339933;">-</span> channel1<span style="color: #339933;">:</span><br/>
+<span style="color: #B1B100; font-weight: bold;">select</span> <span style="color: #339933;">{</span><br/>
+  <span style="color: #B1B100; font-weight: bold;">case</span> &lt;<span style="color: #339933;">-</span> channel1<span style="color: #339933;">:</span><br/>
     <span style="color: #666666; font-style: italic;">// 実行するコード</span><br/>
-  <span style="color: #b1b100; font-weight: bold;">case</span> value <span style="color: #339933;">:=</span> &lt;<span style="color: #339933;">-</span> channel2<span style="color: #339933;">:</span><br/>
+  <span style="color: #B1B100; font-weight: bold;">case</span> value <span style="color: #339933;">:=</span> &lt;<span style="color: #339933;">-</span> channel2<span style="color: #339933;">:</span><br/>
     <span style="color: #666666; font-style: italic;">// 実行するコード</span><br/>
-  <span style="color: #b1b100; font-weight: bold;">case</span> channel3 &lt;<span style="color: #339933;">-</span> value<span style="color: #339933;">:</span><br/>
+  <span style="color: #B1B100; font-weight: bold;">case</span> channel3 &lt;<span style="color: #339933;">-</span> value<span style="color: #339933;">:</span><br/>
     <span style="color: #666666; font-style: italic;">// 実行するコード</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">// caseは任意の数だけ定義できます</span><br/>
 <br/>
-  <span style="color: #b1b100; font-weight: bold;">default</span><span style="color: #339933;">:</span><br/>
+  <span style="color: #B1B100; font-weight: bold;">default</span><span style="color: #339933;">:</span><br/>
     <span style="color: #666666; font-style: italic;">// すべてのチャネルが準備できていない場合に実行するコード</span><br/>
 <span style="color: #339933;">}</span><br/>
 </div></div>
@@ -309,11 +309,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h3>実例</h3>
 <p>select文の適用デモ：</p>
 <div class="example"><h2 class="example">実例</h2> <div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
-    <span style="color: #cc66cc;">"fmt"</span><br/>
-    <span style="color: #cc66cc;">"time"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #339933;">(</span><br/>
+    <span style="color: #CC66CC;">"fmt"</span><br/>
+    <span style="color: #CC66CC;">"time"</span><br/>
 <span style="color: #339933;">)</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
@@ -321,21 +321,21 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     c1 <span style="color: #339933;">:=</span> <span style="color: #000066;">make</span><span style="color: #339933;">(</span><span style="color: #993333;">chan</span> <span style="color: #993333;">string</span><span style="color: #339933;">)</span><br/>
     c2 <span style="color: #339933;">:=</span> <span style="color: #000066;">make</span><span style="color: #339933;">(</span><span style="color: #993333;">chan</span> <span style="color: #993333;">string</span><span style="color: #339933;">)</span><br/>
 <br/>
-    <span style="color: #b1b100; font-weight: bold;">go</span> <span style="color: #993333;">func</span><span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
-        time<span style="color: #339933;">.</span>Sleep<span style="color: #339933;">(</span><span style="color: #cc66cc;">1</span> <span style="color: #339933;">*</span> time<span style="color: #339933;">.</span>Second<span style="color: #339933;">)</span><br/>
-        c1 &lt;<span style="color: #339933;">-</span> <span style="color: #cc66cc;">"one"</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">go</span> <span style="color: #993333;">func</span><span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
+        time<span style="color: #339933;">.</span>Sleep<span style="color: #339933;">(</span><span style="color: #CC66CC;">1</span> <span style="color: #339933;">*</span> time<span style="color: #339933;">.</span>Second<span style="color: #339933;">)</span><br/>
+        c1 &lt;<span style="color: #339933;">-</span> <span style="color: #CC66CC;">"one"</span><br/>
     <span style="color: #339933;">}()</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">go</span> <span style="color: #993333;">func</span><span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
-        time<span style="color: #339933;">.</span>Sleep<span style="color: #339933;">(</span><span style="color: #cc66cc;">2</span> <span style="color: #339933;">*</span> time<span style="color: #339933;">.</span>Second<span style="color: #339933;">)</span><br/>
-        c2 &lt;<span style="color: #339933;">-</span> <span style="color: #cc66cc;">"two"</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">go</span> <span style="color: #993333;">func</span><span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
+        time<span style="color: #339933;">.</span>Sleep<span style="color: #339933;">(</span><span style="color: #CC66CC;">2</span> <span style="color: #339933;">*</span> time<span style="color: #339933;">.</span>Second<span style="color: #339933;">)</span><br/>
+        c2 &lt;<span style="color: #339933;">-</span> <span style="color: #CC66CC;">"two"</span><br/>
     <span style="color: #339933;">}()</span><br/>
 <br/>
-    <span style="color: #b1b100; font-weight: bold;">for</span> <span style="">i</span> <span style="color: #339933;">:=</span> <span style="color: #cc66cc;">0</span><span style="color: #339933;">;</span> <span style="">i</span> &lt; <span style="color: #cc66cc;">2</span><span style="color: #339933;">;</span> <span style="">i</span><span style="color: #339933;">++</span> <span style="color: #339933;">{</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">select</span> <span style="color: #339933;">{</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">case</span> msg1 <span style="color: #339933;">:=</span> &lt;<span style="color: #339933;">-</span>c1<span style="color: #339933;">:</span><br/>
-            fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #cc66cc;">"received"</span><span style="color: #339933;">,</span> msg1<span style="color: #339933;">)</span><br/>
-        <span style="color: #b1b100; font-weight: bold;">case</span> msg2 <span style="color: #339933;">:=</span> &lt;<span style="color: #339933;">-</span>c2<span style="color: #339933;">:</span><br/>
-            fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #cc66cc;">"received"</span><span style="color: #339933;">,</span> msg2<span style="color: #339933;">)</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">for</span> <span style="">i</span> <span style="color: #339933;">:=</span> <span style="color: #CC66CC;">0</span><span style="color: #339933;">;</span> <span style="">i</span> &lt; <span style="color: #CC66CC;">2</span><span style="color: #339933;">;</span> <span style="">i</span><span style="color: #339933;">++</span> <span style="color: #339933;">{</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">select</span> <span style="color: #339933;">{</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">case</span> msg1 <span style="color: #339933;">:=</span> &lt;<span style="color: #339933;">-</span>c1<span style="color: #339933;">:</span><br/>
+            fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #CC66CC;">"received"</span><span style="color: #339933;">,</span> msg1<span style="color: #339933;">)</span><br/>
+        <span style="color: #B1B100; font-weight: bold;">case</span> msg2 <span style="color: #339933;">:=</span> &lt;<span style="color: #339933;">-</span>c2<span style="color: #339933;">:</span><br/>
+            fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span><span style="color: #CC66CC;">"received"</span><span style="color: #339933;">,</span> msg2<span style="color: #339933;">)</span><br/>
         <span style="color: #339933;">}</span><br/>
     <span style="color: #339933;">}</span><br/>
 <span style="color: #339933;">}</span><br/>
@@ -349,9 +349,9 @@ received two
 <p>次の例では、2つのチャネルを定義し、2つのコルーチン（Goroutine）を起動してこれらのチャネルからデータを取得します。main関数では、select文を使用してこれら2つのチャネルに対してノンブロッキングな選択を行い、両方のチャネルに利用可能なデータがない場合はdefault句の文を実行します。</p>
 <p>次の例を実行すると、2つのチャネルからデータを取得し続け、両方のチャネルに利用可能なデータがない場合は "no message received" と出力します。</p>
 <div class="example"><h2 class="example">実例</h2> <div class="example_code">
-<span style="color: #b1b100; font-weight: bold;">package</span> main<br/>
+<span style="color: #B1B100; font-weight: bold;">package</span> main<br/>
 <br/>
-<span style="color: #b1b100; font-weight: bold;">import</span> <span style="color: #cc66cc;">"fmt"</span><br/>
+<span style="color: #B1B100; font-weight: bold;">import</span> <span style="color: #CC66CC;">"fmt"</span><br/>
 <br/>
 <span style="color: #993333;">func</span> main<span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
   <span style="color: #666666; font-style: italic;">// 2つのチャネルを定義</span><br/>
@@ -359,27 +359,27 @@ received two
   ch2 <span style="color: #339933;">:=</span> <span style="color: #000066;">make</span><span style="color: #339933;">(</span><span style="color: #993333;">chan</span> <span style="color: #993333;">string</span><span style="color: #339933;">)</span><br/>
 <br/>
   <span style="color: #666666; font-style: italic;">// 2つのgoroutineを起動し、それぞれのチャネルからデータを取得</span><br/>
-  <span style="color: #b1b100; font-weight: bold;">go</span> <span style="color: #993333;">func</span><span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">for</span> <span style="color: #339933;">{</span><br/>
-      ch1 &lt;<span style="color: #339933;">-</span> <span style="color: #cc66cc;">"from 1"</span><br/>
+  <span style="color: #B1B100; font-weight: bold;">go</span> <span style="color: #993333;">func</span><span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">for</span> <span style="color: #339933;">{</span><br/>
+      ch1 &lt;<span style="color: #339933;">-</span> <span style="color: #CC66CC;">"from 1"</span><br/>
     <span style="color: #339933;">}</span><br/>
   <span style="color: #339933;">}()</span><br/>
-  <span style="color: #b1b100; font-weight: bold;">go</span> <span style="color: #993333;">func</span><span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">for</span> <span style="color: #339933;">{</span><br/>
-      ch2 &lt;<span style="color: #339933;">-</span> <span style="color: #cc66cc;">"from 2"</span><br/>
+  <span style="color: #B1B100; font-weight: bold;">go</span> <span style="color: #993333;">func</span><span style="color: #339933;">()</span> <span style="color: #339933;">{</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">for</span> <span style="color: #339933;">{</span><br/>
+      ch2 &lt;<span style="color: #339933;">-</span> <span style="color: #CC66CC;">"from 2"</span><br/>
     <span style="color: #339933;">}</span><br/>
   <span style="color: #339933;">}()</span><br/>
 <br/>
   <span style="color: #666666; font-style: italic;">// select文を使用して2つのチャネルからノンブロッキングでデータを取得</span><br/>
-  <span style="color: #b1b100; font-weight: bold;">for</span> <span style="color: #339933;">{</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">select</span> <span style="color: #339933;">{</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">case</span> msg1 <span style="color: #339933;">:=</span> &lt;<span style="color: #339933;">-</span>ch1<span style="color: #339933;">:</span><br/>
+  <span style="color: #B1B100; font-weight: bold;">for</span> <span style="color: #339933;">{</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">select</span> <span style="color: #339933;">{</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">case</span> msg1 <span style="color: #339933;">:=</span> &lt;<span style="color: #339933;">-</span>ch1<span style="color: #339933;">:</span><br/>
       fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span>msg1<span style="color: #339933;">)</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">case</span> msg2 <span style="color: #339933;">:=</span> &lt;<span style="color: #339933;">-</span>ch2<span style="color: #339933;">:</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">case</span> msg2 <span style="color: #339933;">:=</span> &lt;<span style="color: #339933;">-</span>ch2<span style="color: #339933;">:</span><br/>
       fmt<span style="color: #339933;">.</span>Println<span style="color: #339933;">(</span>msg2<span style="color: #339933;">)</span><br/>
-    <span style="color: #b1b100; font-weight: bold;">default</span><span style="color: #339933;">:</span><br/>
+    <span style="color: #B1B100; font-weight: bold;">default</span><span style="color: #339933;">:</span><br/>
       <span style="color: #666666; font-style: italic;">// 両方のチャネルに利用可能なデータがない場合は、ここにある文を実行</span><br/>
-      fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #cc66cc;">"no message received"</span><span style="color: #339933;">)</span><br/>
+      fmt<span style="color: #339933;">.</span><span style="">Println</span><span style="color: #339933;">(</span><span style="color: #CC66CC;">"no message received"</span><span style="color: #339933;">)</span><br/>
     <span style="color: #339933;">}</span><br/>
   <span style="color: #339933;">}</span><br/>
 <span style="color: #339933;">}</span><br/>
@@ -419,7 +419,7 @@ received two
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -464,7 +464,7 @@ received two
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -590,7 +590,7 @@ end:
 </div>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style="display:none; padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります。</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -809,7 +809,7 @@ function kFormatter(num) {
 </style>
 <div class="sidebar-box re-box re-box-large">
 <div class="sidebar-box recommend-here" style="margin: 0 auto;">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
+<a href="#" style="font-size: 16px; color:#5B80A6;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
 </div>
 <div class="sidebar-box sidebar-cate">
 <div class="sidebar-tree">

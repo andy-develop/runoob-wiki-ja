@@ -380,7 +380,7 @@ white-space: pre-wrap;
 </ul>
 <h2>使用法</h2>
 <p>ツリー（tree）は &lt;ul&gt; 要素内に定義されます。このマークアップはリーフノードと子ノードを定義できます。ノードは ul リスト内の &lt;li&gt; 要素になります。以下に、ul 要素内にネストされたツリーノードを作成するために使用される要素を示します。</p>
-<pre style="color:#006600">
+<pre style="color:#0053A6">
 &lt;ul id="tt" class="easyui-tree"&gt;
     &lt;li&gt;
         &lt;span&gt;Folder&lt;/span&gt;
@@ -401,16 +401,16 @@ white-space: pre-wrap;
 &lt;/ul&gt;
 </pre>
 <p>ツリー（Tree）は空の &lt;ul&gt; 要素内に定義し、javascript を使用してデータを読み込むこともできます。</p>
-<pre style="color:#006600">
+<pre style="color:#0053A6">
 &lt;ul id="tt"&gt;&lt;/ul&gt;
 </pre>
-<pre style="color:#006600">
+<pre style="color:#0053A6">
 $('#tt').tree({
     url:'tree_data.json'
 });
 </pre>
 <p>loadFilter を使用して、ASP.NET Web サービスからの json データを処理します。</p>
-<pre style="color:#006600">
+<pre style="color:#0053A6">
 $('#tt').tree({
     url: ...,
     loadFilter: function(data){
@@ -433,7 +433,7 @@ $('#tt').tree({
 <li>children: 子ノードを定義するノード配列。</li>
 </ul>
 <p>例：</p>
-<pre style="color:#006600">
+<pre style="color:#0053A6">
 [{
     "id":1,
     "text":"Folder1",
@@ -469,12 +469,12 @@ $('#tt').tree({
 </pre>
 <h2>非同期ツリー</h2>
 <p>ツリーは組み込みの非同期読み込みモードをサポートしているため、ユーザーは空のツリーを作成し、要件に応じてツリーを非同期に埋めるための JSON データを動的に返すサーバーサイドを指定できます。以下は例です：</p>
-<pre style="color:#006600">
+<pre style="color:#0053A6">
 &lt;ul class="easyui-tree" data-options="url:'get_data.php'"&gt;&lt;/ul&gt;
 </pre>
 <p>ツリーは URL 'get_data.php' を介して読み込まれます。子ノードは親ノードの状態に応じて読み込まれます。閉じたノードを展開するとき、そのノードに子ノードが読み込まれていない場合、定義された URL を介してサーバーにノードの id 値を 'id' という名前の http リクエストパラメータとして送信し、子ノードを取得します。</p>
 <p>サーバーから返されるデータを見てください：</p>
-<pre style="color:#006600">
+<pre style="color:#0053A6">
 [{
     "id": 1,
     "text": "Node 1",
@@ -553,7 +553,7 @@ $('#tt').tree({
 <tr>
 <td>data</td>
 <td>array</td>
-<td>読み込むノードデータ。<pre style="color:#006600">
+<td>読み込むノードデータ。<pre style="color:#0053A6">
 $('#tt').tree({
     data: [{
         text: 'Item1',
@@ -574,7 +574,7 @@ $('#tt').tree({
 <tr>
 <td>formatter</td>
 <td>function(node)</td>
-<td>ノードテキストの表示方法を定義します。<br/>コード例：<pre style="color:#006600">
+<td>ノードテキストの表示方法を定義します。<br/>コード例：<pre style="color:#0053A6">
 $('#tt').tree({
     formatter:function(node){
         return node.text;
@@ -618,7 +618,7 @@ $('#tt').tree({
 <tr>
 <td>onClick</td>
 <td>node</td>
-<td>ユーザーがノードをクリックしたときにトリガーされます。コード例：<pre style="color:#006600">
+<td>ユーザーがノードをクリックしたときにトリガーされます。コード例：<pre style="color:#0053A6">
 $('#tt').tree({
     onClick: function(node){
         alert(node.text);  // alert node text property when clicked
@@ -690,7 +690,7 @@ $('#tt').tree({
 <tr>
 <td>onContextMenu</td>
 <td>e, node</td>
-<td>ノードを右クリックしたときにトリガーされます。コード例：<pre style="color:#006600">
+<td>ノードを右クリックしたときにトリガーされます。コード例：<pre style="color:#0053A6">
 // right click node and then display the context menu
 $('#tt').tree({
     onContextMenu: function(e, node){
@@ -825,7 +825,7 @@ $('#tt').tree({
 <tr>
 <td>getChecked</td>
 <td>state</td>
-<td>選択されたノードを取得します。状態の指定可能な値は、'checked'、'unchecked'、'indeterminate' です。状態が指定されていない場合は、'checked' ノードを返します。<br/>コード例：<pre style="color:#006600">
+<td>選択されたノードを取得します。状態の指定可能な値は、'checked'、'unchecked'、'indeterminate' です。状態が指定されていない場合は、'checked' ノードを返します。<br/>コード例：<pre style="color:#0053A6">
 var nodes = $('#tt').tree('getChecked');    // get checked nodes
 var nodes = $('#tt').tree('getChecked', 'unchecked');    // get unchecked nodes
 var nodes = $('#tt').tree('getChecked', 'indeterminate');    // get indeterminate nodes
@@ -846,7 +846,7 @@ var nodes = $('#tt').tree('getChecked', ['checked','indeterminate']);    // 
 <tr>
 <td>find</td>
 <td>id</td>
-<td>指定されたノードを見つけて、そのノードオブジェクトを返します。コード例：<pre style="color:#006600">
+<td>指定されたノードを見つけて、そのノードオブジェクトを返します。コード例：<pre style="color:#0053A6">
 // find a node and then select it
 var node = $('#tt').tree('find', 12);
 $('#tt').tree('select', node.target);
@@ -902,7 +902,7 @@ $('#tt').tree('select', node.target);
 <td>append</td>
 <td>param</td>
 <td>親ノードに子ノードを追加します。param パラメータには2つのプロパティがあります：<br/>parent：DOM オブジェクト。追加先の親ノードです。指定されていない場合は、ルートノードとして追加されます。<br/>data：配列。ノードのデータです。<br/>
-<br/>コード例：<pre style="color:#006600">
+<br/>コード例：<pre style="color:#0053A6">
 // append some nodes to the selected node
 var selected = $('#tt').tree('getSelected');
 $('#tt').tree('append', {
@@ -932,7 +932,7 @@ $('#tt').tree('append', {
 <td>insert</td>
 <td>param</td>
 <td>指定されたノードの前または後ろにノードを挿入します。param パラメータには次のプロパティが含まれます：<br/>before：DOM オブジェクト。前に挿入するノードです。<br/>after：DOM オブジェクト。後ろに挿入するノードです。<br/>data：オブジェクト。ノードデータです。<br/>
-<br/>次のコードは、選択されたノードの前に新しいノードを挿入する方法を示しています：<pre style="color:#006600">
+<br/>次のコードは、選択されたノードの前に新しいノードを挿入する方法を示しています：<pre style="color:#0053A6">
 var node = $('#tt').tree('getSelected');
 if (node){
     $('#tt').tree('insert', {
@@ -960,7 +960,7 @@ if (node){
 <td>update</td>
 <td>param</td>
 <td>指定されたノードを更新します。'param' パラメータには次のプロパティがあります：<br/>target（DOM オブジェクト。更新対象のノード）、id、text、iconCls、checked など。<br/>
-<br/>コード例：<pre style="color:#006600">
+<br/>コード例：<pre style="color:#0053A6">
 // update the selected node text
 var node = $('#tt').tree('getSelected');
 if (node){
@@ -1033,7 +1033,7 @@ if (node){
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -1078,7 +1078,7 @@ if (node){
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -1117,7 +1117,7 @@ if (node){
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容の拡張である必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックしてください</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -1336,7 +1336,7 @@ function kFormatter(num) {
 </style>
 <div class="sidebar-box re-box re-box-large">
 <div class="sidebar-box recommend-here" style="margin: 0 auto;">
-<a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
+<a href="#" style="font-size: 16px; color:#5B80A6;font-weight:bold;"> <i aria-hidden="true" class="fa fa-list"></i> カテゴリーナビゲーション</a>
 </div>
 <div class="sidebar-box sidebar-cate">
 <div class="sidebar-tree">

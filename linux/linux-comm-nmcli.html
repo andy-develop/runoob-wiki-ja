@@ -283,7 +283,7 @@ nmcli device wifi connect <span style="color: #a10;">「SSID名」</span> passwo
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-nmcli connection add <span style="color: #7a0874; font-weight: bold;">type</span> wifi ifname wlan0 con-name <span style="color: #a10;">「マイWiFi」</span> ssid <span style="color: #a10;">「SSID名」</span><br/>
+nmcli connection add <span style="color: #7A0874; font-weight: bold;">type</span> wifi ifname wlan0 con-name <span style="color: #a10;">「マイWiFi」</span> ssid <span style="color: #a10;">「SSID名」</span><br/>
 nmcli connection modify <span style="color: #a10;">「マイWiFi」</span> wifi-sec.key-mgmt wpa-psk<br/>
 nmcli connection modify <span style="color: #a10;">「マイWiFi」</span> wifi-sec.psk <span style="color: #a10;">「パスワード」</span><br/>
 </div>
@@ -294,7 +294,7 @@ nmcli connection modify <span style="color: #a10;">「マイWiFi」</span> wifi-
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-nmcli connection add <span style="color: #7a0874; font-weight: bold;">type</span> ethernet ifname eth0 con-name <span style="color: #a10;">「静的接続」</span> \<br/>
+nmcli connection add <span style="color: #7A0874; font-weight: bold;">type</span> ethernet ifname eth0 con-name <span style="color: #a10;">「静的接続」</span> \<br/>
 ip4 192.168.1.100<span style="color: #000000; font-weight: bold;">/</span><span style="color: #000000;">24</span> gw4 192.168.1.1<br/>
 nmcli connection modify <span style="color: #a10;">「静的接続」</span> ipv4.dns <span style="color: #a10;">"8.8.8.8,8.8.4.4"</span><br/>
 </div>
@@ -312,7 +312,7 @@ nmcli connection modify <span style="color: #a10;">「接続名」</span> ipv4.m
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-nmcli connection add <span style="color: #7a0874; font-weight: bold;">type</span> vpn vpn-type openvpn \<br/>
+nmcli connection add <span style="color: #7A0874; font-weight: bold;">type</span> vpn vpn-type openvpn \<br/>
 con-name <span style="color: #a10;">「マイVPN」</span> ifname tun0 \<br/>
 vpn.data <span style="color: #a10;">"remote=vpn.example.com, username=user, password=pass"</span><br/>
 </div>
@@ -321,16 +321,16 @@ vpn.data <span style="color: #a10;">"remote=vpn.example.com, username=user, pass
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-nmcli connection add <span style="color: #7a0874; font-weight: bold;">type</span> bridge ifname br0 con-name <span style="color: #a10;">「マイブリッジ」</span><br/>
-nmcli connection add <span style="color: #7a0874; font-weight: bold;">type</span> bridge-slave ifname eth0 master br0<br/>
+nmcli connection add <span style="color: #7A0874; font-weight: bold;">type</span> bridge ifname br0 con-name <span style="color: #a10;">「マイブリッジ」</span><br/>
+nmcli connection add <span style="color: #7A0874; font-weight: bold;">type</span> bridge-slave ifname eth0 master br0<br/>
 </div>
 </div>
 <h3>VLAN の作成</h3>
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-nmcli connection add <span style="color: #7a0874; font-weight: bold;">type</span> vlan ifname eth0.100 con-name <span style="color: #a10;">"VLAN100"</span> \<br/>
-dev eth0 <span style="color: #c20cb9; font-weight: bold;">id</span> <span style="color: #000000;">100</span> ip4 192.168.100.100<span style="color: #000000; font-weight: bold;">/</span><span style="color: #000000;">24</span><br/>
+nmcli connection add <span style="color: #7A0874; font-weight: bold;">type</span> vlan ifname eth0.100 con-name <span style="color: #a10;">"VLAN100"</span> \<br/>
+dev eth0 <span style="color: #C20CB9; font-weight: bold;">id</span> <span style="color: #000000;">100</span> ip4 192.168.100.100<span style="color: #000000; font-weight: bold;">/</span><span style="color: #000000;">24</span><br/>
 </div>
 </div>
 <hr/>
@@ -340,7 +340,7 @@ dev eth0 <span style="color: #c20cb9; font-weight: bold;">id</span> <span style=
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># NetworkManager.conf を確認する</span><br/>
-<span style="color: #c20cb9; font-weight: bold;">cat</span> <span style="color: #000000; font-weight: bold;">/</span>etc<span style="color: #000000; font-weight: bold;">/</span>NetworkManager<span style="color: #000000; font-weight: bold;">/</span>NetworkManager.conf<br/>
+<span style="color: #C20CB9; font-weight: bold;">cat</span> <span style="color: #000000; font-weight: bold;">/</span>etc<span style="color: #000000; font-weight: bold;">/</span>NetworkManager<span style="color: #000000; font-weight: bold;">/</span>NetworkManager.conf<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># unmanaged-devices 設定がある場合は、関連する行をコメントアウトする</span><br/>
 <span style="color: #666666; font-style: italic;"># その後、NetworkManager を再起動する</span><br/>
@@ -351,7 +351,7 @@ systemctl restart NetworkManager<br/>
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-nmcli connection show <span style="color: #a10;">「接続名」</span> <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #c20cb9; font-weight: bold;">grep</span> psk<br/>
+nmcli connection show <span style="color: #a10;">「接続名」</span> <span style="color: #000000; font-weight: bold;">|</span> <span style="color: #C20CB9; font-weight: bold;">grep</span> psk<br/>
 </div>
 </div>
 <h3>3. ネットワーク設定のリセット</h3>
@@ -412,7 +412,7 @@ nmcli connection reload<br/>
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -457,7 +457,7 @@ nmcli connection reload<br/>
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -496,7 +496,7 @@ nmcli connection reload<br/>
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事の投稿は、ここをクリックできます</a></p>
 	<p style="font-size:14px;"><a href="../w3cnote/runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>

@@ -118,9 +118,9 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>テンプレート仮引数には3つの型があります：型仮引数、非型仮引数、テンプレート仮引数です。</p>
 <h3>1、型仮引数</h3>
 <p>1.1、型テンプレート仮引数：<strong><span>型仮引数は、キーワードclassまたはtypenameの後ろに指定子を続けて構成されます。</span></strong>例えば<strong>template&lt;class T&gt; void h(T a){}</strong>;ここで<strong>T</strong>は型仮引数であり、型仮引数の名前はユーザー自身が決定します。<span><strong>テンプレート仮引数は未知の型を表します。</strong></span>テンプレート型仮引数は、型指定子としてテンプレート内のどこでも使用でき、組み込み型指定子やクラス型指定子とまったく同じように使用できます。つまり、戻り値の型の指定や変数の宣言などに使用できます。</p>
-<p><strong><span style="color: #ff0000;">著者オリジナル版：</span><span style="color: #ff0000;">1.2、</span></strong>同じテンプレート型仮引数に2つの異なる型を指定することはできません。例えば<strong>template&lt;class T&gt;void h(T a, T b){}，</strong>文の呼び出し<strong>h(2, 3.2)</strong>はエラーになります。なぜなら、その文は同じテンプレート仮引数<strong>T</strong>に2つの型を指定しているからです。最初の実引数<strong>2</strong>はテンプレート仮引数Tを<strong>int</strong>に指定し、2番目の実引数<strong>3.2</strong>はテンプレート仮引数を<strong>double</strong>に指定しています。2つの型の仮引数が一致しないため、エラーになります。<span style="color: #ff0000; background-color: #99ccff;"><strong>（関数テンプレートに関するもの）</strong></span></p>
+<p><strong><span style="color: #FF0000;">著者オリジナル版：</span><span style="color: #FF0000;">1.2、</span></strong>同じテンプレート型仮引数に2つの異なる型を指定することはできません。例えば<strong>template&lt;class T&gt;void h(T a, T b){}，</strong>文の呼び出し<strong>h(2, 3.2)</strong>はエラーになります。なぜなら、その文は同じテンプレート仮引数<strong>T</strong>に2つの型を指定しているからです。最初の実引数<strong>2</strong>はテンプレート仮引数Tを<strong>int</strong>に指定し、2番目の実引数<strong>3.2</strong>はテンプレート仮引数を<strong>double</strong>に指定しています。2つの型の仮引数が一致しないため、エラーになります。<span style="color: #FF0000; background-color: #99ccff;"><strong>（関数テンプレートに関するもの）</strong></span></p>
 <p>著者オリジナル版：1.2は関数テンプレートに対しては正しいですが、クラステンプレートを無視しています。以下でクラステンプレートの場合を補足します。</p>
-<p><strong><span style="color: #ff0000;">筆者による1.2補足版（クラステンプレート向け）、</span></strong>クラスオブジェクトを次のように宣言した場合：<strong>A&lt;int&gt; a</strong>、例えば<strong>template&lt;class T&gt;T g(T a, T b){}</strong>、文の呼び出し<strong>a.g(2, 3.2)</strong>はコンパイル時にはエラーになりませんが、警告が出ます。なぜなら、クラスオブジェクトを宣言するときに既に<strong>T</strong>を<strong>int</strong>型に変換しており、2番目の実引数<strong>3.2</strong>はテンプレート仮引数を<strong>double</strong>に指定しているため、実行時に<strong>3.2</strong>が<strong>3</strong>に強制型変換されます。クラスのオブジェクトを次のように宣言した場合：<strong>A&lt;double&gt; a</strong>、このときは上記の警告はありません。なぜなら<strong>int</strong>到<strong>double</strong>は自動型変換だからです。</p>
+<p><strong><span style="color: #FF0000;">筆者による1.2補足版（クラステンプレート向け）、</span></strong>クラスオブジェクトを次のように宣言した場合：<strong>A&lt;int&gt; a</strong>、例えば<strong>template&lt;class T&gt;T g(T a, T b){}</strong>、文の呼び出し<strong>a.g(2, 3.2)</strong>はコンパイル時にはエラーになりませんが、警告が出ます。なぜなら、クラスオブジェクトを宣言するときに既に<strong>T</strong>を<strong>int</strong>型に変換しており、2番目の実引数<strong>3.2</strong>はテンプレート仮引数を<strong>double</strong>に指定しているため、実行時に<strong>3.2</strong>が<strong>3</strong>に強制型変換されます。クラスのオブジェクトを次のように宣言した場合：<strong>A&lt;double&gt; a</strong>、このときは上記の警告はありません。なぜなら<strong>int</strong>到<strong>double</strong>は自動型変換だからです。</p>
 <h3>デモ例1：</h3>
 <div class="example">
 <h2 class="example">TemplateDemo.h</h2>
@@ -159,15 +159,15 @@ TemplateDemo.obj - 0 error(s), 1 warning(s)</pre>
 
 <p>上記のテスト例からわかるように、著者のオリジナル版ほど厳密ではありません！ここは筆者の個人的なテスト結果に過ぎません！皆さんには事実を重んじる態度で、ご自身で検証していただきたいと思います！</p>
 <h3>2、非型仮引数</h3>
-<p>2.1、非型テンプレート仮引数：<span style="color: #0000ff;"><strong>テンプレートの非型仮引数は、組み込み型の仮引数です。</strong></span>例えば<strong>template&lt;class T, int a&gt; class B{};</strong>ここで<strong>int a</strong>は非型テンプレート仮引数です。</p>
+<p>2.1、非型テンプレート仮引数：<span style="color: #0000FF;"><strong>テンプレートの非型仮引数は、組み込み型の仮引数です。</strong></span>例えば<strong>template&lt;class T, int a&gt; class B{};</strong>ここで<strong>int a</strong>は非型テンプレート仮引数です。</p>
 <p>2.2、非型仮引数はテンプレート定義の内部では定数値です。つまり、非型仮引数はテンプレートの内部では定数です。</p>
-<p>　　　　<strong>2.3、 <span style="color: #0000ff;">非型<strong><span style="color: #0000ff;">テンプレート</span></strong>の仮引数は、整数型、ポインタ、参照のみです。</span>、double、String、String **のような型は許可されません。</strong>ただし、<strong>double &amp;，double *，</strong>オブジェクトの参照またはポインタは正しいです。</p>
+<p>　　　　<strong>2.3、 <span style="color: #0000FF;">非型<strong><span style="color: #0000FF;">テンプレート</span></strong>の仮引数は、整数型、ポインタ、参照のみです。</span>、double、String、String **のような型は許可されません。</strong>ただし、<strong>double &amp;，double *，</strong>オブジェクトの参照またはポインタは正しいです。</p>
 <p>　　　　2.4、 <strong>非型テンプレート仮引数に渡す実引数は定数式でなければなりません。</strong>つまり、コンパイル時に結果を計算できなければなりません。</p>
 <p>2.5、注意：<strong>ローカルオブジェクト、ローカル変数、ローカルオブジェクトのアドレス、ローカル変数のアドレスはすべて定数式ではないため、非型テンプレート仮引数の実引数として使用できません。</strong>グローバルポインタ型、グローバル変数、グローバルオブジェクトも定数式ではないため、非型テンプレート仮引数の実引数として使用できません。</p>
-<p>　　　　2.6、 <span style="color: #0000ff;"><strong>; A&lt;b&gt; m; すなわち配列からポインタへの変換です。</strong></span>。</p>
+<p>　　　　2.6、 <span style="color: #0000FF;"><strong>; A&lt;b&gt; m; すなわち配列からポインタへの変換です。</strong></span>。</p>
 <p>　　　　2.7 、<strong>sizeof</strong>式の結果が定数式である場合も、非型テンプレート仮引数の実引数として使用できます。</p>
 <p>2.8、テンプレートの仮引数が整数型の場合、そのテンプレートを呼び出す際の実引数は整数型でなければならず、かつコンパイル期間中に定数である必要があります。例えば<strong>template &lt;class T, int a&gt; class A{};</strong>もし<strong>int b があり、このとき A&lt;int, b&gt; m;</strong>はエラーになります。なぜなら<strong>b</strong>b は定数ではないからです。もし<strong>const int b の場合、A&lt;int, b&gt; m</strong>; は正しいです。なぜならこのとき<strong>b</strong>b は定数だからです。</p>
-<p>　　　　<strong>2.9 、<span style="color: #0000ff;">非型仮引数は通常、関数テンプレート内では使用すべきではありません。</span></strong>、例えば関数テンプレートがあると、<strong>template&lt;class T, int a&gt; void h(T b){}</strong>これを使用して<strong>h(2)</strong>呼び出すと、非型仮引数 a に対して実引数を推論できないというエラーが発生します。このようなテンプレート関数は、明示的テンプレート実引数を使用して解決できます。例えば、h&lt;int, 3&gt;(2) のようにすると、非型仮引数 a が整数 3 に設定されます。明示的テンプレート実引数については後で説明します。</p>
+<p>　　　　<strong>2.9 、<span style="color: #0000FF;">非型仮引数は通常、関数テンプレート内では使用すべきではありません。</span></strong>、例えば関数テンプレートがあると、<strong>template&lt;class T, int a&gt; void h(T b){}</strong>これを使用して<strong>h(2)</strong>呼び出すと、非型仮引数 a に対して実引数を推論できないというエラーが発生します。このようなテンプレート関数は、明示的テンプレート実引数を使用して解決できます。例えば、h&lt;int, 3&gt;(2) のようにすると、非型仮引数 a が整数 3 に設定されます。明示的テンプレート実引数については後で説明します。</p>
 <p>2.10、非型テンプレート仮引数と実引数の間で許可される変換<br/><strong>1、配列からポインタへ、関数からポインタへの変換が許可されます。例：template &lt;int *a&gt; class A{}; int b</strong><br/><strong>2、const修飾子の変換。例：template&lt;const int *a&gt; class A{}; int b; A&lt;&amp;b&gt; m; すなわち int * から const int * への変換です。</strong><br/><strong>3、昇格変換。例：template&lt;int a&gt; class A{}; const short b=2; A&lt;b&gt; m; すなわち short から int への昇格変換です。</strong><br/><strong>4、整数値変換。例：template&lt;unsigned int a&gt; class A{}; A&lt;3&gt; m; すなわち int から unsigned int への変換です。</strong><br/><strong>5、通常の変換。</strong></p>
 <p><span style="color: #008000;"><strong><span style="font-size: 14pt;">非型仮引数のデモ例1：</span></strong></span></p>
 <p>　　<strong>ユーザー自身がスタックのサイズを指定し、スタックに関する操作を実装します。</strong></p>
@@ -374,7 +374,7 @@ TemplateDemo02.obj - 0 error(s), 2 warning(s)</pre>
 <p>2、クラステンプレートの型仮引数のデフォルト値の形式は次のとおりです：<strong>template&lt;class T1, class T2=int&gt; class A{};</strong>2番目のテンプレート型仮引数に<strong>T2</strong>提供します<strong>int</strong>型のデフォルト値を。</p>
 <p>3、クラステンプレートの型仮引数のデフォルト値は関数のデフォルト引数と同じです。複数の型仮引数がある場合、最初の仮引数にデフォルト値を設定した後のすべてのテンプレート仮引数にもデフォルト値を設定する必要があります。例えば<strong>template&lt;class T1=int, class T2&gt;class A{};</strong>これはエラーです。なぜなら<strong>T1</strong>デフォルト値を指定したが、<strong>T2</strong>設定されていないからです。</p>
 <p>4、クラステンプレートの外部でクラスのメンバーを定義する場合<strong>template</strong>template の後の仮引数リストではデフォルトの仮引数型を省略する必要があります。例えば<strong>template&lt;class  T1, class T2=int&gt; class A{public: void h();}</strong>; 定義方法は次のとおりです。<strong>template&lt;class T1,class T2&gt; void A&lt;T1,T2&gt;::h(){}</strong>。</p>
-<p><span style="color: #ff0000;"><strong>クラステンプレートの型仮引数を定義します：</strong></span></p>
+<p><span style="color: #FF0000;"><strong>クラステンプレートの型仮引数を定義します：</strong></span></p>
 <h3>デモ実例1：</h3>
 <div class="example">
 <h2 class="example">TemplateDemo.h</h2>
@@ -692,7 +692,7 @@ p.note-author {
     border-bottom: 1px solid #ddd;
     font-size: 18px;
     font-weight: bold;
-    color: #78a15a;
+    color: #5B80A6;
     padding-bottom: 2px;
     margin-bottom: 4px;
 }
@@ -723,7 +723,7 @@ var aid = 19684;
 
 	&lt;div class="sidebar-box cate-list"&gt;
 	&lt;div class="sidebar-box recommend-here list-link"&gt;
-			&lt;a href="#" style="font-size: 16px; color:#64854c;font-weight:bold;"&gt;ノート一覧&lt;/a&gt;
+			&lt;a href="#" style="font-size: 16px; color:#5B80A6;font-weight:bold;"&gt;ノート一覧&lt;/a&gt;
 		&lt;/div&gt;
 
  

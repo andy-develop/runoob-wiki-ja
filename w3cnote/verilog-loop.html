@@ -105,22 +105,22 @@ end</pre>
 <p>もちろん、実行文が1つだけの場合は、キーワード begin と end を省略できます。</p>
 <p>次のコードを実行すると、counter は11回実行されます。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #008800;">`timescale</span> <span style="color: #ff0055;">1ns</span><span style="color: #5D478B;">/</span><span style="color: #ff0055;">1ns</span><br/>
+<span style="color: #008800;">`timescale</span> <span style="color: #FF0055;">1ns</span><span style="color: #5D478B;">/</span><span style="color: #FF0055;">1ns</span><br/>
  <br/>
 <span style="color: #A52A2A; font-weight: bold;">module</span> test <span style="color: #5D478B;">;</span><br/>
  <br/>
-    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>    counter <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>    counter <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">initial</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
         counter <span style="color: #5D478B;">=</span> 'b0 <span style="color: #5D478B;">;</span><br/>
-        <span style="color: #A52A2A; font-weight: bold;">while</span> <span style="color: #9F79EE;">(</span>counter<span style="color: #5D478B;">&lt;=</span><span style="color: #ff0055;">10</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-            <span style="color: #5D478B;">#</span><span style="color: #ff0055;">10</span> <span style="color: #5D478B;">;</span><br/>
-            counter <span style="color: #5D478B;">=</span> counter <span style="color: #5D478B;">+</span> <span style="color: #ff0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
+        <span style="color: #A52A2A; font-weight: bold;">while</span> <span style="color: #9F79EE;">(</span>counter<span style="color: #5D478B;">&lt;=</span><span style="color: #FF0055;">10</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
+            <span style="color: #5D478B;">#</span><span style="color: #FF0055;">10</span> <span style="color: #5D478B;">;</span><br/>
+            counter <span style="color: #5D478B;">=</span> counter <span style="color: #5D478B;">+</span> <span style="color: #FF0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
  <br/>
    <span style="color: #00008B; font-style: italic;">//stop the simulation</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-        <span style="color: #5D478B;">#</span><span style="color: #ff0055;">10</span> <span style="color: #5D478B;">;</span>  <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span><span style="color: #9932CC;">$time</span> <span style="color: #5D478B;">&gt;=</span> <span style="color: #ff0055;">1000</span><span style="color: #9F79EE;">)</span> <span style="color: #9932CC;">$finish</span> <span style="color: #5D478B;">;</span><br/>
+        <span style="color: #5D478B;">#</span><span style="color: #FF0055;">10</span> <span style="color: #5D478B;">;</span>  <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span><span style="color: #9932CC;">$time</span> <span style="color: #5D478B;">&gt;=</span> <span style="color: #FF0055;">1000</span><span style="color: #9F79EE;">)</span> <span style="color: #9932CC;">$finish</span> <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
  <br/>
 <span style="color: #A52A2A; font-weight: bold;">endmodule</span><br/>
@@ -140,12 +140,12 @@ end</pre>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #00008B; font-style: italic;">// for ループ文</span><br/>
 <span style="color: #A52A2A; font-weight: bold;">integer</span>      i <span style="color: #5D478B;">;</span><br/>
-<span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>    counter2 <span style="color: #5D478B;">;</span><br/>
+<span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>    counter2 <span style="color: #5D478B;">;</span><br/>
 <span style="color: #A52A2A; font-weight: bold;">initial</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
     counter2 <span style="color: #5D478B;">=</span> 'b0 <span style="color: #5D478B;">;</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">for</span> <span style="color: #9F79EE;">(</span>i<span style="color: #5D478B;">=</span><span style="color: #ff0055;">0</span><span style="color: #5D478B;">;</span> i<span style="color: #5D478B;">&lt;=</span><span style="color: #ff0055;">10</span><span style="color: #5D478B;">;</span> i<span style="color: #5D478B;">=</span>i<span style="color: #5D478B;">+</span><span style="color: #ff0055;">1</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-        <span style="color: #5D478B;">#</span><span style="color: #ff0055;">10</span> <span style="color: #5D478B;">;</span><br/>
-        counter2 <span style="color: #5D478B;">=</span> counter2 <span style="color: #5D478B;">+</span> <span style="color: #ff0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">for</span> <span style="color: #9F79EE;">(</span>i<span style="color: #5D478B;">=</span><span style="color: #FF0055;">0</span><span style="color: #5D478B;">;</span> i<span style="color: #5D478B;">&lt;=</span><span style="color: #FF0055;">10</span><span style="color: #5D478B;">;</span> i<span style="color: #5D478B;">=</span>i<span style="color: #5D478B;">+</span><span style="color: #FF0055;">1</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
+        <span style="color: #5D478B;">#</span><span style="color: #FF0055;">10</span> <span style="color: #5D478B;">;</span><br/>
+        counter2 <span style="color: #5D478B;">=</span> counter2 <span style="color: #5D478B;">+</span> <span style="color: #FF0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 </div></div>
@@ -157,29 +157,29 @@ end</pre>
 <p>次の repeat ループの例は、while ループの例と同じ効果を実現します。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #00008B; font-style: italic;">// repeat ループ文</span><br/>
-<span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #ff0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #ff0055;">0</span><span style="color: #9F79EE;">]</span>    counter3 <span style="color: #5D478B;">;</span><br/>
+<span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">3</span><span style="color: #5D478B;">:</span><span style="color: #FF0055;">0</span><span style="color: #9F79EE;">]</span>    counter3 <span style="color: #5D478B;">;</span><br/>
 <span style="color: #A52A2A; font-weight: bold;">initial</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
     counter3 <span style="color: #5D478B;">=</span> 'b0 <span style="color: #5D478B;">;</span><br/>
-    <span style="color: #A52A2A; font-weight: bold;">repeat</span> <span style="color: #9F79EE;">(</span><span style="color: #ff0055;">11</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span>  <span style="color: #00008B; font-style: italic;">// 11回繰り返す</span><br/>
-        <span style="color: #5D478B;">#</span><span style="color: #ff0055;">10</span> <span style="color: #5D478B;">;</span><br/>
-        counter3 <span style="color: #5D478B;">=</span> counter3 <span style="color: #5D478B;">+</span> <span style="color: #ff0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
+    <span style="color: #A52A2A; font-weight: bold;">repeat</span> <span style="color: #9F79EE;">(</span><span style="color: #FF0055;">11</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span>  <span style="color: #00008B; font-style: italic;">// 11回繰り返す</span><br/>
+        <span style="color: #5D478B;">#</span><span style="color: #FF0055;">10</span> <span style="color: #5D478B;">;</span><br/>
+        counter3 <span style="color: #5D478B;">=</span> counter3 <span style="color: #5D478B;">+</span> <span style="color: #FF0055;">1'b1</span> <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 </div></div>
 <p>次の repeat ループの例は、8個のデータを連続して格納する機能を実現します：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">posedge</span> clk <span style="color: #A52A2A; font-weight: bold;">or</span> <span style="color: #A52A2A; font-weight: bold;">negedge</span> rstn<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-    j <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span>  <span style="color: #5D478B;">;</span><br/>
+    j <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span>  <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span><span style="color: #5D478B;">!</span>rstn<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-        <span style="color: #A52A2A; font-weight: bold;">repeat</span> <span style="color: #9F79EE;">(</span><span style="color: #ff0055;">8</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
+        <span style="color: #A52A2A; font-weight: bold;">repeat</span> <span style="color: #9F79EE;">(</span><span style="color: #FF0055;">8</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
             buffer<span style="color: #9F79EE;">[</span>j<span style="color: #9F79EE;">]</span>   <span style="color: #5D478B;">&lt;=</span> 'b0 <span style="color: #5D478B;">;</span>      <span style="color: #00008B; font-style: italic;">// 遅延のない代入、つまり同時に0を代入</span><br/>
-            j <span style="color: #5D478B;">=</span> j <span style="color: #5D478B;">+</span> <span style="color: #ff0055;">1</span> <span style="color: #5D478B;">;</span><br/>
+            j <span style="color: #5D478B;">=</span> j <span style="color: #5D478B;">+</span> <span style="color: #FF0055;">1</span> <span style="color: #5D478B;">;</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">else</span> <span style="color: #A52A2A; font-weight: bold;">if</span> <span style="color: #9F79EE;">(</span>enable<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-        <span style="color: #A52A2A; font-weight: bold;">repeat</span> <span style="color: #9F79EE;">(</span><span style="color: #ff0055;">8</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
+        <span style="color: #A52A2A; font-weight: bold;">repeat</span> <span style="color: #9F79EE;">(</span><span style="color: #FF0055;">8</span><span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
             <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">posedge</span> clk<span style="color: #9F79EE;">)</span> buffer<span style="color: #9F79EE;">[</span>j<span style="color: #9F79EE;">]</span>    <span style="color: #5D478B;">&lt;=</span> counter3 <span style="color: #5D478B;">;</span>       <span style="color: #00008B; font-style: italic;">// 次の clk の立ち上がりエッジで代入</span><br/>
-            j <span style="color: #5D478B;">=</span> j <span style="color: #5D478B;">+</span> <span style="color: #ff0055;">1</span> <span style="color: #5D478B;">;</span><br/>
+            j <span style="color: #5D478B;">=</span> j <span style="color: #5D478B;">+</span> <span style="color: #FF0055;">1</span> <span style="color: #5D478B;">;</span><br/>
         <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
      <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
@@ -195,10 +195,10 @@ end</pre>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #A52A2A; font-weight: bold;">reg</span>          clk <span style="color: #5D478B;">;</span><br/>
 <span style="color: #A52A2A; font-weight: bold;">initial</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-    clk       <span style="color: #5D478B;">=</span> <span style="color: #ff0055;">0</span> <span style="color: #5D478B;">;</span><br/>
+    clk       <span style="color: #5D478B;">=</span> <span style="color: #FF0055;">0</span> <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">forever</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
         clk <span style="color: #5D478B;">=</span> <span style="color: #5D478B;">~</span>clk <span style="color: #5D478B;">;</span><br/>
-        <span style="color: #5D478B;">#</span><span style="color: #ff0055;">5</span> <span style="color: #5D478B;">;</span><br/>
+        <span style="color: #5D478B;">#</span><span style="color: #FF0055;">5</span> <span style="color: #5D478B;">;</span><br/>
     <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 </div></div>
@@ -236,7 +236,7 @@ end</pre>
   white-space: nowrap;
   font-size: 14px;
   text-align: left;
-  background: #96b97d;
+  background: #668FB9;
   bottom: 100%;
   color: #fff;
   display: block;
@@ -281,7 +281,7 @@ end</pre>
 .wrapper .tooltip:after {
   border-left: solid transparent 10px;
   border-right: solid transparent 10px;
-  border-top: solid #96b97d 10px;
+  border-top: solid #668FB9 10px;
   bottom: -10px;
   content: " ";
   height: 0;
@@ -320,7 +320,7 @@ end</pre>
 <script src="../static.char123.com/assets/upvotejs/dist/upvotejs/upvotejs.jquery.js"></script>
 <div class="no_webshot" id="respond">
 <div class="comment-signarea" style=" padding: 20px 20px;">
-<h3 class="text-muted" id="share_code" style="color: #799961;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
+<h3 class="text-muted" id="share_code" style="color: #5B80A6;"><i aria-hidden="true" class="fa fa-pencil-square-o"></i>クリックしてノートを共有</h3>
 <p style="font-size:14px;">ノートはこの記事の内容を拡張したものである必要があります！</p><br>
 	<p style="font-size:12px;"><a href="../tougao.html" target="_blank">記事投稿は、ここをクリックしてください</a></p>
 	<p style="font-size:14px;"><a href="./runoob-user-test-intro.html" target="_blank">登録招待コードの取得方法</a></p>
@@ -531,7 +531,7 @@ p.note-author {
     border-bottom: 1px solid #ddd;
     font-size: 18px;
     font-weight: bold;
-    color: #78a15a;
+    color: #5B80A6;
     padding-bottom: 2px;
     margin-bottom: 4px;
 }
