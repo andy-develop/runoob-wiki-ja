@@ -347,7 +347,7 @@ model <span style="color: Gray;">=</span> init_chat_model<span style="color: Oli
 agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;">(</span><br/>
     model<span style="color: Gray;">=</span>model<span style="color: Gray;">,</span><br/>
     middleware<span style="color: Gray;">=</span><span style="color: Olive;">[</span>limit_context<span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは菜鸟教程 RUNOOB のアシスタントです。"</span><span style="color: Gray;">,</span><br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたはサンプル のアシスタントです。"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 複数ターンの会話をシミュレーション</span><br/>
@@ -368,8 +368,8 @@ result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invo
 </div>
 <p>実行結果：</p>
 <pre>
-消息数: 8
-回复: 你好！看起来你正在进行多轮对话测试。有什么可以帮你的吗？
+メッセージ数: 8
+返答: こんにちは！複数ターンの会話テストを行っているようですね。何かお手伝いできることはありますか？
 </pre>
 <h3>シナリオ 2：コンテンツフィルタリング——NGワードをブロック</h3>
 <div class="example">
@@ -409,7 +409,7 @@ model <span style="color: Gray;">=</span> init_chat_model<span style="color: Oli
 agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;">(</span><br/>
     model<span style="color: Gray;">=</span>model<span style="color: Gray;">,</span><br/>
     middleware<span style="color: Gray;">=</span><span style="color: Olive;">[</span>content_filter<span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは菜鸟教程 RUNOOB のアシスタントです。"</span><span style="color: Gray;">,</span><br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたはサンプル のアシスタントです。"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 正常な質問</span><br/>
@@ -428,9 +428,9 @@ result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invo
 <p>実行結果：</p>
 <pre>
 [拦截] 检测到敏感词: 银行卡号
-正常问题: Python 入门可以从安装 Python 环境开始...
+通常の質問: Python 入门可以从安装 Python 环境开始...
 
-敏感问题: 抱歉，为了安全，不能处理包含「银行卡号」的请求。
+機密の質問: 抱歉，为了安全，不能处理包含「银行卡号」的请求。
 </pre>
 <hr/>
 <h2>@after_model——モデル呼び出し後の処理</h2>
@@ -477,7 +477,7 @@ model <span style="color: Gray;">=</span> init_chat_model<span style="color: Oli
 agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;">(</span><br/>
     model<span style="color: Gray;">=</span>model<span style="color: Gray;">,</span><br/>
     middleware<span style="color: Gray;">=</span><span style="color: Olive;">[</span>response_audit<span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは菜鸟教程 RUNOOB のアシスタントです。"</span><span style="color: Gray;">,</span><br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたはサンプル のアシスタントです。"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: Olive;">{</span><br/>
@@ -513,7 +513,7 @@ result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invo
                 AIMessage<span style="color: Olive;">(</span><br/>
                     content<span style="color: Gray;">=</span><span style="color: Olive;">(</span><br/>
                         last_msg.<span style="color: #05a;">content</span><br/>
-                        + <span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span><span style="color: #000099; font-weight: bold;">\n</span>---<span style="color: #000099; font-weight: bold;">\n</span>*上記の内容は菜鸟教程 RUNOOB AI アシスタントによって生成されたものであり、参考までに提供されています。*</span><br/>
+                        + <span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span><span style="color: #000099; font-weight: bold;">\n</span>---<span style="color: #000099; font-weight: bold;">\n</span>*上記の内容はサンプル AI アシスタントによって生成されたものであり、参考までに提供されています。*</span><br/>
                     <span style="color: Olive;">)</span><br/>
                 <span style="color: Olive;">)</span><br/>
             <span style="color: Olive;">]</span><br/>
@@ -526,7 +526,7 @@ model <span style="color: Gray;">=</span> init_chat_model<span style="color: Oli
 agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;">(</span><br/>
     model<span style="color: Gray;">=</span>model<span style="color: Gray;">,</span><br/>
     middleware<span style="color: Gray;">=</span><span style="color: Olive;">[</span>append_disclaimer<span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは菜鸟教程のアシスタントです。"</span><span style="color: Gray;">,</span><br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたはサンプルのアシスタントです。"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: Olive;">{</span><br/>
@@ -539,7 +539,7 @@ result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invo
 <pre>
 Python 是一门非常适合初学者的编程语言，它的语法简洁、贴近自然语言...
 ---
-*以上内容由菜鸟教程 RUNOOB AI 助手生成，仅供参考。*
+*上記の内容はサンプルのAIアシスタントが生成したもので、参考までにご覧ください。*
 </pre>
 <hr/>
 <h2>can_jump_to——フロー遷移制御</h2>

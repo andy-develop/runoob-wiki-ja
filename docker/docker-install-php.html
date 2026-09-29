@@ -280,7 +280,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>Sort by で他のバージョンの php を表示できます。デフォルトは最新バージョンです<strong>php:latest</strong>。</p>
 <p>さらに、docker search php コマンドで利用可能なバージョンを確認することもできます：</p>
 <pre>
-runoob@runoob:~/php-fpm$ docker search php
+サンプル@サンプル:~/php-fpm$ docker search php
 NAME                      DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
 php                       While designed for web development, the PH...   1232      [OK]       
 richarvey/nginx-php-fpm   Container running Nginx + PHP-FPM capable ...   207                  [OK]
@@ -296,10 +296,10 @@ webdevops/php             PHP (FPM and CLI) service container             10    
 ...
 </pre>
 <p>ここでは公式のイメージを取得します。タグは 5.6-fpm です</p>
-<pre>runoob@runoob:~/php-fpm$ docker pull php:5.6-fpm</pre>
+<pre>サンプル@サンプル:~/php-fpm$ docker pull php:5.6-fpm</pre>
 <p>ダウンロードが完了すると、ローカルイメージリストで REPOSITORY が php、タグが 5.6-fpm のイメージを確認できます。</p>
 <pre>
-runoob@runoob:~/php-fpm$ docker images
+サンプル@サンプル:~/php-fpm$ docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 php                 5.6-fpm             025041cd3aa5        6 days ago          456.3 MB
 </pre>
@@ -315,7 +315,7 @@ php                 5.6-fpm             025041cd3aa5        6 days ago          
 </ul>
 <p>~/nginx/conf/conf.d ディレクトリを作成：</p>
 <pre>mkdir ~/nginx/conf/conf.d </pre>
-<p>このディレクトリに<strong>~/nginx/conf/conf.d/runoob-test-php.conf</strong>ファイルを追加します。内容は以下の通りです：</p>
+<p>このディレクトリに<strong>~/nginx/conf/conf.d/サンプル-test-php.conf</strong>ファイルを追加します。内容は以下の通りです：</p>
 <pre>server {
     listen       80;
     server_name  localhost;
@@ -343,7 +343,7 @@ php                 5.6-fpm             025041cd3aa5        6 days ago          
 <li> <strong>/www/</strong>: は<strong>myphp-fpm</strong>内の php ファイルの保存パスで、ローカルの ~/nginx/www ディレクトリにマッピングされます。</li>
 </ul>
 <p>nginx を起動：</p>
-<pre>docker run --name runoob-php-nginx -p 8083:80 -d \
+<pre>docker run --name サンプル-php-nginx -p 8083:80 -d \
     -v ~/nginx/www:/usr/share/nginx/html:ro \
     -v ~/nginx/conf/conf.d:/etc/nginx/conf.d:ro \
     --link myphp-fpm:php \

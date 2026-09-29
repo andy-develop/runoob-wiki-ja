@@ -350,7 +350,7 @@ END TRANSACTION;</pre>
 <pre>ROLLBACK;</pre>
 <h3>実例</h3>
 <p>COMPANY テーブルを作成します（<a href="https://static.jyshare.com/download/company.sql">COMPANY SQL ファイルをダウンロード</a>）。データ内容は次のとおりです：</p>
-<pre>runoobdb# select * from COMPANY;
+<pre>サンプルdb# select * from COMPANY;
  id | name  | age | address   | salary
 ----+-------+-----+-----------+--------
   1 | Paul  |  32 | California|  20000
@@ -362,7 +362,7 @@ END TRANSACTION;</pre>
   7 | James |  24 | Houston   |  10000
 (7 rows)</pre>
 <p>では、トランザクションを開始し、テーブルから age = 25 のレコードを削除します。最後に、ROLLBACK コマンドを使用してすべての変更を元に戻します。</p>
-<pre>runoobdb=# BEGIN;
+<pre>サンプルdb=# BEGIN;
 DELETE FROM COMPANY WHERE AGE = 25;
 ROLLBACK;</pre>
 <p>COMPANY テーブルを確認すると、次のレコードがまだあります：</p>
@@ -376,7 +376,7 @@ ROLLBACK;</pre>
   6 | Kim   |  22 | South-Hall|  45000
   7 | James |  24 | Houston   |  10000</pre>
 <p>では、別のトランザクションを開始し、テーブルから age = 25 のレコードを削除します。最後に、COMMIT コマンドを使用してすべての変更をコミットします。</p>
-<pre>runoobdb=# BEGIN;
+<pre>サンプルdb=# BEGIN;
 DELETE FROM COMPANY WHERE AGE = 25;
 COMMIT;</pre>
 <p>COMPANY テーブルを確認すると、レコードが削除されています：</p>

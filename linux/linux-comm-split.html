@@ -323,11 +323,11 @@ $ split -l 1000 data.txt part_
 
 # 查看生成的文件
 $ ls -lh part_*
--rw-r--r-- 1 runoob runoob 3.9K May 19 14:30 part_aa
--rw-r--r-- 1 runoob runoob 3.9K May 19 14:30 part_ab
--rw-r--r-- 1 runoob runoob 3.9K May 19 14:30 part_ac
--rw-r--r-- 1 runoob runoob 3.9K May 19 14:30 part_ad
--rw-r--r-- 1 runoob runoob 3.9K May 19 14:30 part_ae</pre>
+-rw-r--r-- 1 サンプル サンプル 3.9K May 19 14:30 part_aa
+-rw-r--r-- 1 サンプル サンプル 3.9K May 19 14:30 part_ab
+-rw-r--r-- 1 サンプル サンプル 3.9K May 19 14:30 part_ac
+-rw-r--r-- 1 サンプル サンプル 3.9K May 19 14:30 part_ad
+-rw-r--r-- 1 サンプル サンプル 3.9K May 19 14:30 part_ae</pre>
 <p>実行すると5つのファイルが生成され、各ファイルはちょうど1000行で、ファイル名は<code>part_</code>を接頭辞とします。</p>
 <h3>ファイルサイズで分割</h3>
 <p>サイズでの分割は、バイナリファイルの切断や、単一ファイルのサイズ上限を制御するのに適しています。</p>
@@ -340,11 +340,11 @@ $ split -b 2M test.bin chunk_
 
 # 查看拆分结果
 $ ls -lh chunk_*
--rw-r--r-- 1 runoob runoob 2.0M May 19 14:32 chunk_aa
--rw-r--r-- 1 runoob runoob 2.0M May 19 14:32 chunk_ab
--rw-r--r-- 1 runoob runoob 2.0M May 19 14:32 chunk_ac
--rw-r--r-- 1 runoob runoob 2.0M May 19 14:32 chunk_ad
--rw-r--r-- 1 runoob runoob 2.0M May 19 14:32 chunk_ae</pre>
+-rw-r--r-- 1 サンプル サンプル 2.0M May 19 14:32 chunk_aa
+-rw-r--r-- 1 サンプル サンプル 2.0M May 19 14:32 chunk_ab
+-rw-r--r-- 1 サンプル サンプル 2.0M May 19 14:32 chunk_ac
+-rw-r--r-- 1 サンプル サンプル 2.0M May 19 14:32 chunk_ad
+-rw-r--r-- 1 サンプル サンプル 2.0M May 19 14:32 chunk_ae</pre>
 <h3>分割数の指定</h3>
 <p>使用すると、<code>-n</code>ファイルを指定した数の小さなファイルに均等に分割できます。</p>
 <pre>
@@ -363,17 +363,17 @@ $ wc -l equal_*
 <p>デフォルトのアルファベット接尾辞（<code>aa</code>、<code>ab</code>...）は直感的ではないため、<code>-d</code>を使用して数字に切り替えることができます。</p>
 <pre>
 # 使用数字后缀，并指定后缀长度为 3
-$ split -d -a 3 -l 1000 data.txt runoob_
+$ split -d -a 3 -l 1000 data.txt サンプル_
 
 # 生成的文件名
-$ ls runoob_*
-runoob_000  runoob_001  runoob_002  runoob_003  runoob_004</pre>
+$ ls サンプル_*
+サンプル_000  サンプル_001  サンプル_002  サンプル_003  サンプル_004</pre>
 <p>ここで接尾辞の長さが3の場合、最大1000ファイル（000から999）をサポートします。大量の小さなファイルに分割する場合は、<code>-a</code>の値を増やすことができます。</p>
 <h3>行の整合性を保ってテキストを分割</h3>
 <p>使用すると、<code>-C</code>サイズで分割しながら、各行が途切れないことを保証できます。</p>
 <pre>
 # 生成一个包含不同长度行的测试日志
-$ for i in $(seq 1 100); do echo "Line $i: RUNOOB testing data $(head -c $((RANDOM % 50 + 10)) /dev/urandom | base64)"; done &gt; log.txt
+$ for i in $(seq 1 100); do echo "Line $i: サンプル testing data $(head -c $((RANDOM % 50 + 10)) /dev/urandom | base64)"; done &gt; log.txt
 
 # 按 1KB 拆分，同时保持行完整性
 $ split -C 1K log.txt log_

@@ -289,11 +289,11 @@ claude</pre>
 <pre>
 先读取 remotion-best-practices skill，然后创建一个 Remotion 项目。
 
-目标：6 秒钟的「Hello Runoob」好莱坞风格片头视频，1920x1080，30fps。
+目标：6 秒钟的「Hello サンプル」好莱坞风格片头视频，1920x1080，30fps。
 
 效果要求：
 - 纯黑背景
-- "HELLO RUNOOB" 文字以冲击力方式砸入画面，伴随冲击波扭曲效果
+- "HELLO サンプル" 文字以冲击力方式砸入画面，伴随冲击波扭曲效果
 - 撞击瞬间爆发金色粒子
 - 强烈的色差闪光（chromatic aberration）
 - 文字落定后，绿色（#3A7EC2）轮廓光晕脉冲
@@ -305,12 +305,12 @@ claude</pre>
 <p>完了すると、mp4 ファイルの生成方法が表示されます：</p>
 <p><img decoding="async" src="../wp-content/uploads/2026/05/runoob_1778851808568.png"/></p>
 <p>ブラウザプレビュー：</p>
-<pre>cd hello-runoob
+<pre>cd hello-サンプル
 npm run dev</pre><p>プレビュー結果：</p>
 <p><img decoding="async" src="../wp-content/uploads/2026/05/runoob_1778851923535.png"/></p>
 <p>mp4 生成：</p>
-<pre>cd hello-runoob
-npx remotion render HelloRunoob out/hello-runoob.mp4</pre><p>エクスポート情報：</p>
+<pre>cd hello-サンプル
+npx remotion render Helloサンプル out/hello-サンプル.mp4</pre><p>エクスポート情報：</p>
 <p><img decoding="async" src="../wp-content/uploads/2026/05/runoob_1778854525291.png"/></p>
 <p>動画は out ディレクトリにあります：</p>
 <p><img decoding="async" src="../wp-content/uploads/2026/05/runoob_1778854660714.png"/></p>
@@ -376,7 +376,7 @@ Claude Code 接到这个指令后会：</pre>
 <h2>生成されたプロジェクト構造の理解</h2>
 <p>プロジェクトの構築が完了すると、ディレクトリ構造は次のようになります：</p>
 <pre>
-hello-runoob/
+hello-サンプル/
 ├── package.json
 ├── tsconfig.json
 ├── remotion.config.ts
@@ -405,14 +405,14 @@ hello-runoob/
 <div class="example_code">
 <span style="color: #FF0000;">import</span> <span style="color: #3366CC;">"./index.css"</span><span style="color: #339933;">;</span><br/>
 <span style="color: #FF0000;">import</span> <span style="color: #009900;">{</span> Composition <span style="color: #009900;">}</span> from <span style="color: #3366CC;">"remotion"</span><span style="color: #339933;">;</span><br/>
-<span style="color: #FF0000;">import</span> <span style="color: #009900;">{</span> HelloRunoob <span style="color: #009900;">}</span> from <span style="color: #3366CC;">"./Composition"</span><span style="color: #339933;">;</span><br/>
+<span style="color: #FF0000;">import</span> <span style="color: #009900;">{</span> Helloサンプル <span style="color: #009900;">}</span> from <span style="color: #3366CC;">"./Composition"</span><span style="color: #339933;">;</span><br/>
 <br/>
 <span style="color: #FF0000;">export</span> <span style="color: #000066; font-weight: bold;">const</span> RemotionRoot<span style="color: #339933;">:</span> React.<span style="color: #660066;">FC</span> <span style="color: #339933;">=</span> <span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
   <span style="color: #000066; font-weight: bold;">return</span> <span style="color: #009900;">(</span><br/>
     <span style="color: #339933;">&lt;&gt;</span><br/>
       <span style="color: #339933;">&lt;</span>Composition<br/>
-        id<span style="color: #339933;">=</span><span style="color: #3366CC;">"HelloRunoob"</span><br/>
-        component<span style="color: #339933;">=</span><span style="color: #009900;">{</span>HelloRunoob<span style="color: #009900;">}</span><br/>
+        id<span style="color: #339933;">=</span><span style="color: #3366CC;">"Helloサンプル"</span><br/>
+        component<span style="color: #339933;">=</span><span style="color: #009900;">{</span>Helloサンプル<span style="color: #009900;">}</span><br/>
         durationInFrames<span style="color: #339933;">=</span><span style="color: #009900;">{</span><span style="color: #CC0000;">180</span><span style="color: #009900;">}</span><br/>
         fps<span style="color: #339933;">=</span><span style="color: #009900;">{</span><span style="color: #CC0000;">30</span><span style="color: #009900;">}</span><br/>
         width<span style="color: #339933;">=</span><span style="color: #009900;">{</span><span style="color: #CC0000;">1920</span><span style="color: #009900;">}</span><br/>
@@ -450,7 +450,7 @@ npm install</pre>
 <pre>
 npx remotion studio</pre>
 <pre>
-&gt; runoob-promo@1.0.0 studio
+&gt; サンプル-promo@1.0.0 studio
 &gt; remotion studio
 
 Remotion Studio running at http://localhost:3000
@@ -503,17 +503,17 @@ Remotion Studio running at http://localhost:3000
 
 npx remotion render \<br/>
   src<span style="color: #000000; font-weight: bold;">/</span>index.ts \           <span style="color: #666666; font-style: italic;"># エントリーファイル</span><br/>
-  RunoobPromo \            <span style="color: #666666; font-style: italic;"># Composition ID。Root.tsx 内のものと一致</span><br/>
-  out<span style="color: #000000; font-weight: bold;">/</span>runoob-promo.mp4 \   <span style="color: #666666; font-style: italic;"># 出力パス</span><br/>
+  サンプルPromo \            <span style="color: #666666; font-style: italic;"># Composition ID。Root.tsx 内のものと一致</span><br/>
+  out<span style="color: #000000; font-weight: bold;">/</span>サンプル-promo.mp4 \   <span style="color: #666666; font-style: italic;"># 出力パス</span><br/>
   <span style="color: #660033;">--codec</span>=h264 \           <span style="color: #666666; font-style: italic;"># コーデック形式。互換性が最も高い</span><br/>
   <span style="color: #660033;">--width</span>=<span style="color: #000000;">1920</span> \           <span style="color: #666666; font-style: italic;"># 出力幅</span><br/>
   <span style="color: #660033;">--height</span>=<span style="color: #000000;">1080</span>            <span style="color: #666666; font-style: italic;"># 出力高さ</span><br/>
 </div>
 </div>
 <pre>
-Rendering RunoobPromo (1800 frames)
+Rendering サンプルPromo (1800 frames)
 Progress: ████████████████████ 100%
-Rendered in 2m 34s → out/runoob-promo.mp4
+Rendered in 2m 34s → out/サンプル-promo.mp4
 </pre><hr/>
 <h2>Remotion のベストプラクティス：AI に作業を任せてより良い成果を得る</h2>
 <p>レンダリング速度はシーンの複雑さとマシンの性能に依存します。動画が長くエフェクトが多い場合は、以下を追加できます:<span class="marked">--concurrency=4</span>パラメータでマルチスレッド並列レンダリングを有効にすると、速度が3〜4倍向上します。</p>

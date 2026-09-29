@@ -186,12 +186,12 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <ul><li><code>SET key value</code>：キーの値を設定します。</li><li><code>GET key</code>：キーの値を取得します。</li><li><code>INCR key</code>：キーの値を 1 増やします。</li><li><code>DECR key</code>：キーの値を 1 減らします。</li><li><code>APPEND key value</code>：値をキーの値の末尾に追加します。</li></ul>
 <h3>例</h3>
 <pre>
-redis 127.0.0.1:6379&gt; SET runoob "菜鸟教程"
+redis 127.0.0.1:6379&gt; SET サンプル "サンプル"
 OK
-redis 127.0.0.1:6379&gt; GET runoob
-"菜鸟教程"
+redis 127.0.0.1:6379&gt; GET サンプル
+"サンプル"
 </pre>
-<p>上記の例では、Redis の<b>SET</b>と<b>GET</b>コマンドを使用しました。キーは runoob で、対応する値は<strong>菜鸟教程</strong>。</p>
+<p>上記の例では、Redis の<b>SET</b>と<b>GET</b>コマンドを使用しました。キーは サンプル で、対応する値は<strong>サンプル</strong>。</p>
 <p><b>注意：</b>1 つのキーは最大 512MB まで格納できます。</p>
 <hr/>
 <h2>Hash（ハッシュ）</h2>
@@ -200,15 +200,15 @@ redis 127.0.0.1:6379&gt; GET runoob
 <p>各ハッシュには最大 2^32 - 1 個のキーバリューペアを格納できます。</p>
 <ul><h3>よく使うコマンド</h3><li><code>HSET key field value</code>：ハッシュテーブル内のフィールドの値を設定します。</li><li><code>HGET key field</code>：ハッシュテーブル内のフィールドの値を取得します。</li><li><code>HGETALL key</code>：ハッシュテーブル内のすべてのフィールドと値を取得します。</li><li><code>HDEL key field</code>：ハッシュテーブル内の1つ以上のフィールドを削除します。</li></ul>
 <h3>例</h3>
-<p><span class="marked">DEL runoob</span>以前のテストで使用したキーを削除するために使います。そうしないとエラーが発生します：<strong>(error) WRONGTYPE Operation against a key holding the wrong kind of value</strong></p>
+<p><span class="marked">DEL サンプル</span>以前のテストで使用したキーを削除するために使います。そうしないとエラーが発生します：<strong>(error) WRONGTYPE Operation against a key holding the wrong kind of value</strong></p>
 <p><img decoding="async" src="../wp-content/uploads/2014/11/B104156B-7270-4D03-8EB3-B72D4022ED78.jpg"/></p>
 <pre>
-redis 127.0.0.1:6379&gt; DEL runoob
-redis 127.0.0.1:6379&gt; HMSET runoob field1 "Hello" field2 "World"
+redis 127.0.0.1:6379&gt; DEL サンプル
+redis 127.0.0.1:6379&gt; HMSET サンプル field1 "Hello" field2 "World"
 "OK"
-redis 127.0.0.1:6379&gt; HGET runoob field1
+redis 127.0.0.1:6379&gt; HGET サンプル field1
 "Hello"
-redis 127.0.0.1:6379&gt; HGET runoob field2
+redis 127.0.0.1:6379&gt; HGET サンプル field2
 "World"
 </pre>
 <p>この例では、Redis の<strong>HMSET, HGET</strong>コマンドを使用し、<b>HMSET</b>2 つの<span class="marked">field=&gt;value</span>ペアを設定し、HGET で対応する<strong>field</strong>対応する<strong>value</strong>。
@@ -220,14 +220,14 @@ redis 127.0.0.1:6379&gt; HGET runoob field2
 <ul><li><code>LPUSH key value</code>：値をリストの先頭に挿入します。</li><li><code>RPUSH key value</code>：値をリストの末尾に挿入します。</li><li><code>LPOP key</code>：リストの最初の要素を削除して取得します。</li><li><code>RPOP key</code>：リストの最後の要素を削除して取得します。</li><li><code>LRANGE key start stop</code>：リストの指定範囲内の要素を取得します。</li></ul>
 <h3>例</h3>
 <pre>
-redis 127.0.0.1:6379&gt; DEL runoob
-redis 127.0.0.1:6379&gt; lpush runoob redis
+redis 127.0.0.1:6379&gt; DEL サンプル
+redis 127.0.0.1:6379&gt; lpush サンプル redis
 (integer) 1
-redis 127.0.0.1:6379&gt; lpush runoob mongodb
+redis 127.0.0.1:6379&gt; lpush サンプル mongodb
 (integer) 2
-redis 127.0.0.1:6379&gt; lpush runoob rabbitmq
+redis 127.0.0.1:6379&gt; lpush サンプル rabbitmq
 (integer) 3
-redis 127.0.0.1:6379&gt; lrange runoob 0 10
+redis 127.0.0.1:6379&gt; lrange サンプル 0 10
 1) "rabbitmq"
 2) "mongodb"
 3) "redis"
@@ -245,16 +245,16 @@ sadd key member
 </pre>
 <h3>例</h3>
 <pre>
-redis 127.0.0.1:6379&gt; DEL runoob
-redis 127.0.0.1:6379&gt; sadd runoob redis
+redis 127.0.0.1:6379&gt; DEL サンプル
+redis 127.0.0.1:6379&gt; sadd サンプル redis
 (integer) 1
-redis 127.0.0.1:6379&gt; sadd runoob mongodb
+redis 127.0.0.1:6379&gt; sadd サンプル mongodb
 (integer) 1
-redis 127.0.0.1:6379&gt; sadd runoob rabbitmq
+redis 127.0.0.1:6379&gt; sadd サンプル rabbitmq
 (integer) 1
-redis 127.0.0.1:6379&gt; sadd runoob rabbitmq
+redis 127.0.0.1:6379&gt; sadd サンプル rabbitmq
 (integer) 0
-redis 127.0.0.1:6379&gt; smembers runoob
+redis 127.0.0.1:6379&gt; smembers サンプル
 
 1) "redis"
 2) "rabbitmq"
@@ -273,16 +273,16 @@ zadd key score member
 </pre>
 <h3>例</h3>
 <pre>
-redis 127.0.0.1:6379&gt; DEL runoob
-redis 127.0.0.1:6379&gt; zadd runoob 0 redis
+redis 127.0.0.1:6379&gt; DEL サンプル
+redis 127.0.0.1:6379&gt; zadd サンプル 0 redis
 (integer) 1
-redis 127.0.0.1:6379&gt; zadd runoob 0 mongodb
+redis 127.0.0.1:6379&gt; zadd サンプル 0 mongodb
 (integer) 1
-redis 127.0.0.1:6379&gt; zadd runoob 0 rabbitmq
+redis 127.0.0.1:6379&gt; zadd サンプル 0 rabbitmq
 (integer) 1
-redis 127.0.0.1:6379&gt; zadd runoob 0 rabbitmq
+redis 127.0.0.1:6379&gt; zadd サンプル 0 rabbitmq
 (integer) 0
-redis 127.0.0.1:6379&gt; ZRANGEBYSCORE runoob 0 1000
+redis 127.0.0.1:6379&gt; ZRANGEBYSCORE サンプル 0 1000
 1) "mongodb"
 2) "rabbitmq"
 3) "redis"

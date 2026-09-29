@@ -287,7 +287,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2>Buffer と文字エンコーディング</h2>
 <p>Buffer インスタンスは通常、UTF-8、UCS2、Base64、または16進数エンコードされたデータなどの文字エンコードされたシーケンスを表すために使用されます。明示的な文字エンコーディングを使用することで、Buffer インスタンスと通常の JavaScript 文字列の間で相互に変換できます。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #000066; font-weight: bold;">const</span> buf <span style="color: #339933;">=</span> Buffer.<span style="color: #660066;">from</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'runoob'</span><span style="color: #339933;">,</span> <span style="color: #3366CC;">'ascii'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+<span style="color: #000066; font-weight: bold;">const</span> buf <span style="color: #339933;">=</span> Buffer.<span style="color: #660066;">from</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'サンプル'</span><span style="color: #339933;">,</span> <span style="color: #3366CC;">'ascii'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
 <span style="color: #006600; font-style: italic;">// 出力: 72756e6f6f62</span><br/>
 console.<span style="color: #660066;">log</span><span style="color: #009900;">(</span>buf.<span style="color: #660066;">toString</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'hex'</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
@@ -363,7 +363,7 @@ buf.write(string[, offset[, length]][, encoding])
 <h3>例</h3>
 <pre>
 buf = Buffer.alloc(256);
-len = buf.write("www.runoob.com");
+len = buf.write("www.example.com");
 
 console.log("写入字节数 : "+  len);
 </pre>
@@ -457,13 +457,13 @@ Buffer.concat(list[, totalLength])
 <p>複数のメンバーを結合した新しい Buffer オブジェクトを返します。</p>
 <h3>例</h3>
 <pre>
-var buffer1 = Buffer.from(('菜鸟教程'));
-var buffer2 = Buffer.from(('www.runoob.com'));
+var buffer1 = Buffer.from(('サンプル'));
+var buffer2 = Buffer.from(('www.example.com'));
 var buffer3 = Buffer.concat([buffer1,buffer2]);
 console.log("buffer3 内容: " + buffer3.toString());
 </pre>
 <p>上記のコードを実行すると、出力結果は次のとおりです：</p>
-<pre>buffer3 内容: 菜鸟教程www.runoob.com
+<pre>buffer3 内容: サンプルwww.example.com
 </pre>
 <hr/><h2>バッファの比較</h2>
 <h3>構文</h3>
@@ -515,7 +515,7 @@ buf.copy(targetBuffer[, targetStart[, sourceStart[, sourceEnd]]])
 <h3>例</h3>
 <pre>
 var buf1 = Buffer.from('abcdefghijkl');
-var buf2 = Buffer.from('RUNOOB');
+var buf2 = Buffer.from('サンプル');
 
 //将 buf2 插入到 buf1 指定位置上
 buf2.copy(buf1, 2);
@@ -524,7 +524,7 @@ console.log(buf1.toString());
 </pre>
 <p>上記のコードを実行すると、出力結果は次のとおりです。</p>
 <pre>
-abRUNOOBijkl
+abサンプルijkl
 </pre>
 <hr/>
 <h2>バッファのスライス</h2>
@@ -540,7 +540,7 @@ abRUNOOBijkl
 <p>新しいバッファを返します。これは古いバッファと同じメモリを指しますが、インデックス start から end の位置で切り出されます。</p>
 <h3>例</h3>
 <pre>
-var buffer1 = Buffer.from('runoob');
+var buffer1 = Buffer.from('サンプル');
 // 剪切缓冲区
 var buffer2 = buffer1.slice(0,2);
 console.log("buffer2 content: " + buffer2.toString());</pre>
@@ -557,7 +557,7 @@ buf.length;
 <p>Buffer オブジェクトが占めるメモリ長を返します。</p>
 <h3>例</h3>
 <pre>
-var buffer = Buffer.from('www.runoob.com');
+var buffer = Buffer.from('www.example.com');
 //  缓冲区长度
 console.log("buffer length: " + buffer.length);
 </pre>

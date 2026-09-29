@@ -86,24 +86,24 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <!-- ad start-->
 <!-- ad end-->
 <p>本稿は設定によって<strong>Access-Control-Allow-Origin</strong>クロスドメインを実現するために。</p>
-<p>例えば、クライアントのドメインはclient.runoob.comで、リクエストされたドメインはserver.runoob.comです。</p>
+<p>例えば、クライアントのドメインはclient.example.comで、リクエストされたドメインはserver.example.comです。</p>
 <p>直接ajaxでアクセスすると、以下のエラーが発生します：</p>
 <pre>
-XMLHttpRequest cannot load http://server.runoob.com/server.php. No 'Access-Control-Allow-Origin' header is present on the requested resource.Origin 'http://client.runoob.com' is therefore not allowed access.
+XMLHttpRequest cannot load http://server.example.com/server.php. No 'Access-Control-Allow-Origin' header is present on the requested resource.Origin 'http://client.example.com' is therefore not allowed access.
 </pre>
 <h2>1、単一ドメインのアクセスを許可する</h2>
-<p>特定のドメイン（http://client.runoob.com）にクロスドメインアクセスを許可するには、http://server.runoob.com/server.phpファイルの先頭に以下のコードを追加するだけでよい：</p>
+<p>特定のドメイン（http://client.example.com）にクロスドメインアクセスを許可するには、http://server.example.com/server.phpファイルの先頭に以下のコードを追加するだけでよい：</p>
 <pre>
-header('Access-Control-Allow-Origin:http://client.runoob.com');
+header('Access-Control-Allow-Origin:http://client.example.com');
 </pre>
 <h2>2、複数のドメインからのアクセスを許可する</h2>
-<p>複数のドメイン（http://client1.runoob.com、http://client2.runoob.comなど）を指定してクロスドメインアクセスする場合、http://server.runoob.com/server.phpファイルの先頭に以下のコードを追加するだけでよい：</p>
+<p>複数のドメイン（http://client1.example.com、http://client2.example.comなど）を指定してクロスドメインアクセスする場合、http://server.example.com/server.phpファイルの先頭に以下のコードを追加するだけでよい：</p>
 <pre>
 $origin = isset($_SERVER['HTTP_ORIGIN'])? $_SERVER['HTTP_ORIGIN'] : '';  
   
 $allow_origin = array(  
-    'http://client1.runoob.com',  
-    'http://client2.runoob.com'  
+    'http://client1.example.com',  
+    'http://client2.example.com'  
 );  
   
 if(in_array($origin, $allow_origin)){  
@@ -111,7 +111,7 @@ if(in_array($origin, $allow_origin)){
 } 
 </pre>
 <h2>3、すべてのドメインからのアクセスを許可する</h2>
-<p>すべてのドメインからのアクセスを許可するには、http://server.runoob.com/server.phpファイルの冒頭に次のコードを追加するだけです。<p>
+<p>すべてのドメインからのアクセスを許可するには、http://server.example.com/server.phpファイルの冒頭に次のコードを追加するだけです。<p>
 <pre>header('Access-Control-Allow-Origin:*'); </pre> </p></p></div>
 </div>
 <div class="previous-next-links">

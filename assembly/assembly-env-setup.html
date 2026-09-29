@@ -207,17 +207,17 @@ $ gdb --version
 GNU gdb (Ubuntu 12.1-0ubuntu1) 12.1
 </pre>
 <hr/>
-<h2>最初のアセンブリプログラム：Hello, runoob</h2>
+<h2>最初のアセンブリプログラム：Hello, サンプル</h2>
 <p>新しいファイルを作成する<code>hello.asm</code>次の内容を入力します：</p>
 <div class="example">
 <h2 class="example">实例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;">; 文件路径：hello.asm</span><br/>
-<span style="color: #666666; font-style: italic;">; 第一个汇编程序：打印 Hello, runoob!</span><br/>
+<span style="color: #666666; font-style: italic;">; 第一个汇编程序：打印 Hello, サンプル!</span><br/>
 <span style="color: #666666; font-style: italic;">; NASM 语法，Linux 32位</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span>                       <span style="color: #666666; font-style: italic;">; データセグメント：初期化済みデータを格納</span><br/>
-    msg <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'Hello, runoob!'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0xA</span>    <span style="color: #666666; font-style: italic;">; 文字列 msg を定義する。0xA は改行文字</span><br/>
+    msg <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'Hello, サンプル!'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0xA</span>    <span style="color: #666666; font-style: italic;">; 文字列 msg を定義する。0xA は改行文字</span><br/>
     len <span style="color: #0000FF; font-weight: bold;">equ</span> <span style="color: #0000FF; font-weight: bold;">$</span> <span style="color: #339933;">-</span> msg                 <span style="color: #666666; font-style: italic;">; 计算字符串长度：当前地址 - msg 起始地址</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.text</span>                       <span style="color: #666666; font-style: italic;">; 代码段：存放可执行指令</span><br/>
@@ -246,7 +246,7 @@ _start<span style="color: #339933;">:</span>                        
 $ nasm -f elf32 hello.asm -o hello.o    # 汇编：将 .asm 转为 .o 目标文件
 $ ld -m elf_i386 hello.o -o hello       # 链接：将 .o 转为可执行文件
 $ ./hello                               # 运行程序
-Hello, runoob!
+Hello, サンプル!
 </pre>
 <p>上記の3つのコマンドのそれぞれの役割：</p>
 <table class="reference">
@@ -262,7 +262,7 @@ Hello, runoob!
 $ nasm -f elf32 hello.asm -o hello.o
 $ gcc -m32 hello.o -o hello -nostartfiles
 $ ./hello
-Hello, runoob!
+Hello, サンプル!
 </pre>
 <p><code>-nostartfiles</code>このオプションは GCC にデフォルトの起動コードを追加しないよう指示します。自分で定義しているためです。<code>_start</code>入口点。</p>
 <hr/>
@@ -271,7 +271,7 @@ Hello, runoob!
 <table class="reference">
 <tr><th>部分</th><th>代码</th><th>说明</th></tr>
 <tr><td>数据段声明</td><td><code>section .data</code></td><td>データセグメントを宣言し、変数と定数を格納する</td></tr>
-<tr><td>字符串定义</td><td><code>msg db 'Hello, runoob!', 0xA</code></td><td>db はバイト列を定義し、0xA は改行文字の ASCII コードです。</td></tr>
+<tr><td>字符串定义</td><td><code>msg db 'Hello, サンプル!', 0xA</code></td><td>db はバイト列を定義し、0xA は改行文字の ASCII コードです。</td></tr>
 <tr><td>长度计算</td><td><code>len equ $ - msg</code></td><td>$ は現在のアドレスを表し、msg のアドレスを引くことで文字列の長さが得られます。</td></tr>
 <tr><td>代码段声明</td><td><code>section .text</code></td><td>コードセグメントを宣言し、命令を格納する</td></tr>
 <tr><td>入口声明</td><td><code>global _start</code></td><td>_start をグローバルシンボルとしてエクスポートします。リンカがそれを必要とします。</td></tr>

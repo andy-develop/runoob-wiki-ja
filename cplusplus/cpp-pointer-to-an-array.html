@@ -420,16 +420,16 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>この章は飛ばして、C++ポインタの概念を理解してから、この章の内容を学習しても構いません。</p>
 <p>C++ポインタの概念を理解しているなら、この章の学習を始めることができます。配列名は、配列の最初の要素を指す定数ポインタです。したがって、次の宣言では：</p>
 <pre>
-double runoobAarray[50];
+double サンプルAarray[50];
 </pre>
-<p><b>runoobAarray</b>は &amp;runoobAarray<b>p</b>に代入します。<b>runoobAarray</b>の最初の要素のアドレス：</p>
+<p><b>サンプルAarray</b>は &amp;サンプルAarray<b>p</b>に代入します。<b>サンプルAarray</b>の最初の要素のアドレス：</p>
 <pre>
 double *p;
-double runoobAarray[10];
+double サンプルAarray[10];
 
-p = runoobAarray;
+p = サンプルAarray;
 </pre>
-<p>配列名を定数ポインタとして使用することは合法であり、その逆も同様です。したがって、*(runoobAarray + 4) は runoobAarray</p>
+<p>配列名を定数ポインタとして使用することは合法であり、その逆も同様です。したがって、*(PythonAarray + 4) は PythonAarray</p>
 <p>最初の要素のアドレスを p に格納すると、*p、*(p+1)、*(p+2) などを使用して配列要素にアクセスできます。次の例は、上記で説明した概念を示しています：</p>
 <div class="example">
 <h2 class="example">サンプル</h2>
@@ -440,10 +440,10 @@ p = runoobAarray;
 </span><span class="hl-types">int</span><span class="hl-code"> </span><span class="hl-identifier">main</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">
 </span><span class="hl-brackets">{</span><span class="hl-code">
 </span><span class="hl-comment">// 5つの要素を持つ double 型配列</span><span class="hl-comment"></span><span class="hl-code">
-</span><span class="hl-types">double</span><span class="hl-code"> </span><span class="hl-identifier">runoobAarray</span><span class="hl-brackets">[</span><span class="hl-number">5</span><span class="hl-brackets">]</span><span class="hl-code"> = </span><span class="hl-brackets">{</span><span class="hl-number">1000</span><span class="hl-number">.0</span><span class="hl-code">, </span><span class="hl-number">2</span><span class="hl-number">.0</span><span class="hl-code">, </span><span class="hl-number">3</span><span class="hl-number">.4</span><span class="hl-code">, </span><span class="hl-number">17</span><span class="hl-number">.0</span><span class="hl-code">, </span><span class="hl-number">50</span><span class="hl-number">.0</span><span class="hl-brackets">}</span><span class="hl-code">;
+</span><span class="hl-types">double</span><span class="hl-code"> </span><span class="hl-identifier">サンプルAarray</span><span class="hl-brackets">[</span><span class="hl-number">5</span><span class="hl-brackets">]</span><span class="hl-code"> = </span><span class="hl-brackets">{</span><span class="hl-number">1000</span><span class="hl-number">.0</span><span class="hl-code">, </span><span class="hl-number">2</span><span class="hl-number">.0</span><span class="hl-code">, </span><span class="hl-number">3</span><span class="hl-number">.4</span><span class="hl-code">, </span><span class="hl-number">17</span><span class="hl-number">.0</span><span class="hl-code">, </span><span class="hl-number">50</span><span class="hl-number">.0</span><span class="hl-brackets">}</span><span class="hl-code">;
    </span><span class="hl-types">double</span><span class="hl-code"> *</span><span class="hl-identifier">p</span><span class="hl-code">;
  
-   </span><span class="hl-identifier">p</span><span class="hl-code"> = </span><span class="hl-identifier">runoobAarray</span><span class="hl-code">;
+   </span><span class="hl-identifier">p</span><span class="hl-code"> = </span><span class="hl-identifier">サンプルAarray</span><span class="hl-code">;
  
    </span><span class="hl-comment">// 配列内の各要素の値を出力</span><span class="hl-comment"></span><span class="hl-code">
 </span><span class="hl-identifier">cout</span><span class="hl-code"> &lt;&lt; </span><span class="hl-quotes">"</span><span class="hl-string">ポインタを使用した配列の値</span><span class="hl-quotes">"</span><span class="hl-code"> &lt;&lt; </span><span class="hl-identifier">endl</span><span class="hl-code">; 
@@ -452,11 +452,11 @@ p = runoobAarray;
 </span><span class="hl-identifier">cout</span><span class="hl-code"> &lt;&lt; </span><span class="hl-quotes">"</span><span class="hl-string">*(p + </span><span class="hl-quotes">"</span><span class="hl-code"> &lt;&lt; </span><span class="hl-identifier">i</span><span class="hl-code"> &lt;&lt; </span><span class="hl-quotes">"</span><span class="hl-string">) : </span><span class="hl-quotes">"</span><span class="hl-code">;
        </span><span class="hl-identifier">cout</span><span class="hl-code"> &lt;&lt; *</span><span class="hl-brackets">(</span><span class="hl-identifier">p</span><span class="hl-code"> + </span><span class="hl-identifier">i</span><span class="hl-brackets">)</span><span class="hl-code"> &lt;&lt; </span><span class="hl-identifier">endl</span><span class="hl-code">;
    </span><span class="hl-brackets">}</span><span class="hl-code">
-</span><span class="hl-identifier">cout</span><span class="hl-code"> &lt;&lt; </span><span class="hl-quotes">"</span><span class="hl-string">runoobAarray をアドレスとして使用した配列の値</span><span class="hl-quotes">"</span><span class="hl-code"> &lt;&lt; </span><span class="hl-identifier">endl</span><span class="hl-code">;
+</span><span class="hl-identifier">cout</span><span class="hl-code"> &lt;&lt; </span><span class="hl-quotes">"</span><span class="hl-string">サンプルAarray をアドレスとして使用した配列の値</span><span class="hl-quotes">"</span><span class="hl-code"> &lt;&lt; </span><span class="hl-identifier">endl</span><span class="hl-code">;
    </span><span class="hl-reserved">for</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-types">int</span><span class="hl-code"> </span><span class="hl-identifier">i</span><span class="hl-code"> = </span><span class="hl-number">0</span><span class="hl-code">; </span><span class="hl-identifier">i</span><span class="hl-code"> &lt; </span><span class="hl-number">5</span><span class="hl-code">; </span><span class="hl-identifier">i</span><span class="hl-code">++ </span><span class="hl-brackets">)</span><span class="hl-code">
 </span><span class="hl-brackets">{</span><span class="hl-code">
-</span><span class="hl-identifier">cout</span><span class="hl-code"> &lt;&lt; </span><span class="hl-quotes">"</span><span class="hl-string">*(runoobAarray + </span><span class="hl-quotes">"</span><span class="hl-code"> &lt;&lt; </span><span class="hl-identifier">i</span><span class="hl-code"> &lt;&lt; </span><span class="hl-quotes">"</span><span class="hl-string">) : </span><span class="hl-quotes">"</span><span class="hl-code">;
-       </span><span class="hl-identifier">cout</span><span class="hl-code"> &lt;&lt; *</span><span class="hl-brackets">(</span><span class="hl-identifier">runoobAarray</span><span class="hl-code"> + </span><span class="hl-identifier">i</span><span class="hl-brackets">)</span><span class="hl-code"> &lt;&lt; </span><span class="hl-identifier">endl</span><span class="hl-code">;
+</span><span class="hl-identifier">cout</span><span class="hl-code"> &lt;&lt; </span><span class="hl-quotes">"</span><span class="hl-string">*(サンプルAarray + </span><span class="hl-quotes">"</span><span class="hl-code"> &lt;&lt; </span><span class="hl-identifier">i</span><span class="hl-code"> &lt;&lt; </span><span class="hl-quotes">"</span><span class="hl-string">) : </span><span class="hl-quotes">"</span><span class="hl-code">;
+       </span><span class="hl-identifier">cout</span><span class="hl-code"> &lt;&lt; *</span><span class="hl-brackets">(</span><span class="hl-identifier">サンプルAarray</span><span class="hl-code"> + </span><span class="hl-identifier">i</span><span class="hl-brackets">)</span><span class="hl-code"> &lt;&lt; </span><span class="hl-identifier">endl</span><span class="hl-code">;
    </span><span class="hl-brackets">}</span><span class="hl-code">
 </span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-number">0</span><span class="hl-code">;
 </span><span class="hl-brackets">}</span></div>
@@ -470,12 +470,12 @@ p = runoobAarray;
 *(p + 2) : 3.4
 *(p + 3) : 17
 *(p + 4) : 50
-使用 runoobAarray 作为地址的数组值 
-*(runoobAarray + 0) : 1000
-*(runoobAarray + 1) : 2
-*(runoobAarray + 2) : 3.4
-*(runoobAarray + 3) : 17
-*(runoobAarray + 4) : 50
+使用 サンプルAarray 作为地址的数组值 
+*(サンプルAarray + 0) : 1000
+*(サンプルAarray + 1) : 2
+*(サンプルAarray + 2) : 3.4
+*(サンプルAarray + 3) : 17
+*(サンプルAarray + 4) : 50
 </pre>
 <p>上記のサンプルでは、p は double 型を指すポインタであり、double 型の変数を格納できることを意味します。p にアドレスがあれば、<b>*p</b>は、上記のサンプルで示したように、p に格納された対応するアドレスの値を返します。</p>
 <p><a href="cpp-arrays.html"><img alt="C++ 数组" class="navup" decoding="async" src="../images/up.gif"/>C++ 配列</a></p> その他の拡張

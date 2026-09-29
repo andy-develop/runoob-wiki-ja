@@ -374,7 +374,7 @@ type ToolGuard = (execution: Readonly&lt;ToolExecution&gt;) =&gt; string | undef
 <span style="color: #FF0000;">import</span> type <span style="color: #009900;">{</span> Context <span style="color: #009900;">}</span> from <span style="color: #3366CC;">'@deepseek-ai/cordis'</span><br/>
 <span style="color: #FF0000;">import</span> type <span style="color: #009900;">{</span> PreToolDecision<span style="color: #339933;">,</span> ToolExecution <span style="color: #009900;">}</span> from <span style="color: #3366CC;">'@deepseek-ai/dsh-tools'</span><br/>
 <br/>
-<span style="color: #006600; font-style: italic;">// ブラックリスト：runoob プロジェクトでファイルシステムへの直接書き込みを禁止するツール。</span><br/>
+<span style="color: #006600; font-style: italic;">// ブラックリスト：サンプル プロジェクトでファイルシステムへの直接書き込みを禁止するツール。</span><br/>
 <span style="color: #006600; font-style: italic;">// ここでは最も単純な集合でデモする。実際のプロジェクトではデータベースを参照したり承認サービスに問い合わせたりできる。</span><br/>
 <span style="color: #000066; font-weight: bold;">const</span> DENY_TOOLS <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">new</span> Set<span style="color: #009900;">(</span><span style="color: #009900;">[</span><span style="color: #3366CC;">'fs_write'</span><span style="color: #339933;">,</span> <span style="color: #3366CC;">'fs_edit'</span><span style="color: #009900;">]</span><span style="color: #009900;">)</span><br/>
 <br/>
@@ -382,7 +382,7 @@ type ToolGuard = (execution: Readonly&lt;ToolExecution&gt;) =&gt; string | undef
 <span style="color: #006600; font-style: italic;">// exec は不変の呼び出し ID（callId、name、arguments、agent、token、signal）を持つ。</span><br/>
 async <span style="color: #000066; font-weight: bold;">function</span> isAllowed<span style="color: #009900;">(</span>exec<span style="color: #339933;">:</span> ToolExecution<span style="color: #009900;">)</span><span style="color: #339933;">:</span> Promise<span style="color: #339933;">&lt;</span>boolean<span style="color: #339933;">&gt;</span> <span style="color: #009900;">{</span><br/>
   <span style="color: #000066; font-weight: bold;">if</span> <span style="color: #009900;">(</span>DENY_TOOLS.<span style="color: #660066;">has</span><span style="color: #009900;">(</span>exec.<span style="color: #660066;">name</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span> <span style="color: #000066; font-weight: bold;">return</span> <span style="color: #003366; font-weight: bold;">false</span><br/>
-  <span style="color: #006600; font-style: italic;">// 追加例：runoob デモでは .env ファイルの変更を禁止する（パラメータはポリシーに入る前に凍結されている）。</span><br/>
+  <span style="color: #006600; font-style: italic;">// 追加例：サンプル デモでは .env ファイルの変更を禁止する（パラメータはポリシーに入る前に凍結されている）。</span><br/>
   <span style="color: #000066; font-weight: bold;">const</span> raw <span style="color: #339933;">=</span> exec.<span style="color: #660066;">arguments</span> as <span style="color: #009900;">{</span> path<span style="color: #339933;">?:</span> string <span style="color: #009900;">}</span><br/>
   <span style="color: #000066; font-weight: bold;">if</span> <span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">typeof</span> raw.<span style="color: #660066;">path</span> <span style="color: #339933;">===</span> <span style="color: #3366CC;">'string'</span> <span style="color: #339933;">&amp;&amp;</span> raw.<span style="color: #660066;">path</span>.<span style="color: #660066;">includes</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'.env'</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span> <span style="color: #000066; font-weight: bold;">return</span> <span style="color: #003366; font-weight: bold;">false</span><br/>
   <span style="color: #000066; font-weight: bold;">return</span> <span style="color: #003366; font-weight: bold;">true</span><br/>
@@ -395,7 +395,7 @@ async <span style="color: #000066; font-weight: bold;">function</span> isAllowed
   ctx.<span style="color: #660066;">on</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'tools/pre-execute'</span><span style="color: #339933;">,</span> async <span style="color: #009900;">(</span>exec<span style="color: #339933;">,</span> next<span style="color: #009900;">)</span><span style="color: #339933;">:</span> Promise<span style="color: #339933;">&lt;</span>PreToolDecision<span style="color: #339933;">&gt;</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
     <span style="color: #000066; font-weight: bold;">if</span> <span style="color: #009900;">(</span><span style="color: #339933;">!</span><span style="color: #009900;">(</span>await isAllowed<span style="color: #009900;">(</span>exec<span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
       <span style="color: #006600; font-style: italic;">// deny を返すとこの呼び出しは即座に終了し、後続のリスナーは実行されない。</span><br/>
-      <span style="color: #000066; font-weight: bold;">return</span> <span style="color: #009900;">{</span> kind<span style="color: #339933;">:</span> <span style="color: #3366CC;">'deny'</span><span style="color: #339933;">,</span> reason<span style="color: #339933;">:</span> <span style="color: #3366CC;">'Denied by policy: this tool is not allowed in the runoob workspace.'</span> <span style="color: #009900;">}</span><br/>
+      <span style="color: #000066; font-weight: bold;">return</span> <span style="color: #009900;">{</span> kind<span style="color: #339933;">:</span> <span style="color: #3366CC;">'deny'</span><span style="color: #339933;">,</span> reason<span style="color: #339933;">:</span> <span style="color: #3366CC;">'Denied by policy: this tool is not allowed in the サンプル workspace.'</span> <span style="color: #009900;">}</span><br/>
     <span style="color: #009900;">}</span><br/>
     <span style="color: #006600; font-style: italic;">// 許可：決定権をパイプライン内の後続リスナーに委ねる。</span><br/>
     <span style="color: #000066; font-weight: bold;">return</span> next<span style="color: #009900;">(</span><span style="color: #009900;">)</span><br/>
@@ -449,7 +449,7 @@ async <span style="color: #000066; font-weight: bold;">function</span> isAllowed
 <h2 class="example">実装例</h2>
 <div class="example_code">
 <span style="color: #006600; font-style: italic;">// ファイルパス: my-plugins/invariant-guard/src/index.ts</span><br/>
-<span style="color: #006600; font-style: italic;">// 取り消し不可能な最終拒否: runoob デモ環境での run_code の実行を禁止します。</span><br/>
+<span style="color: #006600; font-style: italic;">// 取り消し不可能な最終拒否: サンプル デモ環境での run_code の実行を禁止します。</span><br/>
 <span style="color: #FF0000;">import</span> type <span style="color: #009900;">{</span> Context <span style="color: #009900;">}</span> from <span style="color: #3366CC;">'@deepseek-ai/cordis'</span><br/>
 <br/>
 <span style="color: #FF0000;">export</span> <span style="color: #000066; font-weight: bold;">const</span> name <span style="color: #339933;">=</span> <span style="color: #3366CC;">'invariant-guard'</span><br/>
@@ -458,7 +458,7 @@ async <span style="color: #000066; font-weight: bold;">function</span> isAllowed
   <span style="color: #006600; font-style: italic;">// 単調ガードを登録します。文字列を返すと拒否; undefined を返すと現状維持を意味します。</span><br/>
   <span style="color: #000066; font-weight: bold;">const</span> disposer <span style="color: #339933;">=</span> ctx.<span style="color: #660066;">tools</span>.<span style="color: #660066;">guard</span><span style="color: #009900;">(</span><span style="color: #009900;">(</span>execution<span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
     <span style="color: #000066; font-weight: bold;">if</span> <span style="color: #009900;">(</span>execution.<span style="color: #660066;">name</span> <span style="color: #339933;">===</span> <span style="color: #3366CC;">'run_code'</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
-      <span style="color: #000066; font-weight: bold;">return</span> <span style="color: #3366CC;">'run_code is disabled in the runoob demo profile.'</span><br/>
+      <span style="color: #000066; font-weight: bold;">return</span> <span style="color: #3366CC;">'run_code is disabled in the サンプル demo profile.'</span><br/>
     <span style="color: #009900;">}</span><br/>
     <span style="color: #000066; font-weight: bold;">return</span> <span style="color: #003366; font-weight: bold;">undefined</span> <span style="color: #006600; font-style: italic;">// 通過: pre-execute の決定をそのまま維持します</span><br/>
   <span style="color: #009900;">}</span><span style="color: #009900;">)</span><br/>

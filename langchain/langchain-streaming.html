@@ -190,13 +190,13 @@ load_dotenv<span style="color: Olive;">(</span><span style="color: Olive;">)</sp
 model <span style="color: Gray;">=</span> init_chat_model<span style="color: Olive;">(</span><span style="color: #a11;">"deepseek:deepseek-v4-flash"</span><span style="color: Olive;">)</span><br/>
 agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;">(</span><br/>
     model<span style="color: Gray;">=</span>model<span style="color: Gray;">,</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは菜鸟教程 RUNOOB のアシスタントです。"</span><span style="color: Gray;">,</span><br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたはサンプル のアシスタントです。"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># stream_mode="messages" で Token ごとに返す</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"リアルタイムストリーミング出力："</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">for</span> msg_chunk<span style="color: Gray;">,</span> metadata <span style="color: Green;font-weight:bold;">in</span> agent.<span style="color: #05a;">stream</span><span style="color: Olive;">(</span><br/>
-    <span style="color: Olive;">{</span><span style="color: #a11;">"messages"</span>: <span style="color: Olive;">[</span>HumanMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"菜鸟教程 RUNOOB を一言で紹介してください"</span><span style="color: Olive;">)</span><span style="color: Olive;">]</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span><br/>
+    <span style="color: Olive;">{</span><span style="color: #a11;">"messages"</span>: <span style="color: Olive;">[</span>HumanMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"サンプル を一言で紹介してください"</span><span style="color: Olive;">)</span><span style="color: Olive;">]</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span><br/>
     stream_mode<span style="color: Gray;">=</span><span style="color: #a11;">"messages"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span>:<br/>
     <span style="color: #a50"># msg_chunk は AIMessageChunk</span><br/>
@@ -208,8 +208,8 @@ agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;
 </div>
 <p>実行結果：</p>
 <pre>
-实时流式输出：
-菜鸟教程（RUNOOB）是一个面向编程初学者的免费在线学习平台，提供丰富的技术教程和实战示例。
+ライブストリーミング出力:
+サンプルはプログラミング初心者向けの無料オンライン学習プラットフォームで、豊富な技術チュートリアルと実践的なサンプルを提供しています。
 </pre>
 <h3>metadata について</h3>
 <p>metadata には、この chunk の出所情報が含まれています：</p>
@@ -230,11 +230,11 @@ agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;
 </div>
 <p>実行結果：</p>
 <pre>
-查看 metadata 信息：
+メタデータを確認:
 
-内容: 你好！我是菜
-来源节点: model
-消息类型: AIMessageChunk
+内容: こんにちは！私はAIアシスタントです
+ソースノード: model
+メッセージタイプ: AIMessageChunk
 </pre>
 <hr/>
 <h2>stream_mode="updates"——Agent の実行過程を段階的に確認</h2>
@@ -247,7 +247,7 @@ agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;
 <br/>
 <span style="color: Gray;">@</span>tool<br/>
 <span style="color: Green;font-weight:bold;">def</span> search_course<span style="color: Olive;">(</span><span style="color: #05a;">keyword</span>: <span style="color: Teal;">str</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
-    <span style="color: #a11;">"""菜鸟教程 RUNOOB でコースを検索"""</span><br/>
+    <span style="color: #a11;">"""サンプル でコースを検索"""</span><br/>
     courses <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><br/>
         <span style="color: #a11;">"python"</span>: <span style="color: #a11;">"Python3 基礎チュートリアル（30章、20時間）"</span><span style="color: Gray;">,</span><br/>
         <span style="color: #a11;">"html"</span>: <span style="color: #a11;">"HTML 基礎チュートリアル（25章、15時間）"</span><span style="color: Gray;">,</span><br/>
@@ -258,7 +258,7 @@ agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;
 agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;">(</span><br/>
     model<span style="color: Gray;">=</span>init_chat_model<span style="color: Olive;">(</span><span style="color: #a11;">"deepseek:deepseek-v4-flash"</span><span style="color: Gray;">,</span> temperature<span style="color: Gray;">=</span><span style="color: Maroon;">0</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
     tools<span style="color: Gray;">=</span><span style="color: Olive;">[</span>search_course<span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは菜鸟教程 RUNOOB のコースアドバイザーです。"</span><span style="color: Gray;">,</span><br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたはサンプル のコースアドバイザーです。"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># updates モードで各ステップを確認</span><br/>
@@ -287,7 +287,7 @@ agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;
 
 [model] 请求调用: ['search_course']
 [tools] 工具返回 [search_course]: Python3 基础教程（30章，20小时）
-[model] 回复: 菜鸟教程 RUNOOB 中有 Python3 基础教程，共30章，学习时长约20小时，非常适合Python初学者入门学习。
+[model] 返答: サンプルにはPython3基礎チュートリアル（全30章、学習時間約20時間）があり、Python初心者の入門に最適です。
 </pre>
 <hr/>
 <h2>stream_mode="custom"——カスタムイベントの送信</h2>
@@ -332,7 +332,7 @@ agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;
     model<span style="color: Gray;">=</span>init_chat_model<span style="color: Olive;">(</span><span style="color: #a11;">"deepseek:deepseek-v4-flash"</span><span style="color: Gray;">,</span> temperature<span style="color: Gray;">=</span><span style="color: Maroon;">0</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
     tools<span style="color: Gray;">=</span><span style="color: Olive;">[</span>search_course<span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
     middleware<span style="color: Gray;">=</span><span style="color: Olive;">[</span>notify_before<span style="color: Gray;">,</span> notify_after<span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは菜鸟教程 RUNOOB のコースアドバイザーです。"</span><span style="color: Gray;">,</span><br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたはサンプル のコースアドバイザーです。"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># stream_mode=["updates", "custom"] を使用して両方のイベントを受け取る</span><br/>
@@ -355,11 +355,11 @@ agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;
 <pre>
 === 混合流式输出 ===
 
-[自定义事件] 状态: 正在思考...
-[自定义事件] 状态: 正在调用工具: search_course...
-[回复] 菜鸟教程 RUNOOB 中有 Python3 基础教程，共30章，学习时长约20小时。
-[自定义事件] 状态: 正在思考...
-[自定义事件] 状态: 回答已完成
+[カスタムイベント] ステータス: 思考中...
+[カスタムイベント] ステータス: ツール呼び出し中: search_course...
+[返答] サンプルにはPython3基礎チュートリアル（全30章、学習時間約20時間）があります。
+[カスタムイベント] ステータス: 思考中...
+[カスタムイベント] ステータス: 回答完了
 </pre>
 <blockquote><p>stream_mode は組み合わせて使用できます。例: stream_mode=["updates", "custom", "messages"]。ただし、モードが多すぎるとストリーム内のイベント量が増えるため、必要に応じて選択することをお勧めします。</p></blockquote>
 <hr/>
@@ -375,12 +375,12 @@ async <span style="color: Green;font-weight:bold;">def</span> stream_agent<span 
     <span style="color: #a11;">"""Agent を非同期ストリーミングで実行"""</span><br/>
     agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;">(</span><br/>
         model<span style="color: Gray;">=</span>init_chat_model<span style="color: Olive;">(</span><span style="color: #a11;">"deepseek:deepseek-v4-flash"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
-        system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは菜鸟教程 RUNOOB のアシスタントです。"</span><span style="color: Gray;">,</span><br/>
+        system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたはサンプル のアシスタントです。"</span><span style="color: Gray;">,</span><br/>
     <span style="color: Olive;">)</span><br/>
 <br/>
     full_response <span style="color: Gray;">=</span> <span style="color: #a11;">""</span><br/>
     async <span style="color: Green;font-weight:bold;">for</span> msg_chunk<span style="color: Gray;">,</span> metadata <span style="color: Green;font-weight:bold;">in</span> agent.<span style="color: #05a;">astream</span><span style="color: Olive;">(</span><br/>
-        <span style="color: Olive;">{</span><span style="color: #a11;">"messages"</span>: <span style="color: Olive;">[</span>HumanMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"菜鸟教程 を一言で紹介してください"</span><span style="color: Olive;">)</span><span style="color: Olive;">]</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span><br/>
+        <span style="color: Olive;">{</span><span style="color: #a11;">"messages"</span>: <span style="color: Olive;">[</span>HumanMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"サンプル を一言で紹介してください"</span><span style="color: Olive;">)</span><span style="color: Olive;">]</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span><br/>
         stream_mode<span style="color: Gray;">=</span><span style="color: #a11;">"messages"</span><span style="color: Gray;">,</span><br/>
     <span style="color: Olive;">)</span>:<br/>
         <span style="color: Green;font-weight:bold;">if</span> msg_chunk.<span style="color: #05a;">content</span>:<br/>
@@ -407,7 +407,7 @@ asyncio.<span style="color: #05a;">run</span><span style="color: Olive;">(</span
 app <span style="color: Gray;">=</span> FastAPI<span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;">(</span><br/>
     model<span style="color: Gray;">=</span>init_chat_model<span style="color: Olive;">(</span><span style="color: #a11;">"deepseek:deepseek-v4-flash"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは菜鸟教程 RUNOOB のアシスタントです。"</span><span style="color: Gray;">,</span><br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたはサンプル のアシスタントです。"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 <br/>

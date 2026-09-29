@@ -169,29 +169,29 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>NULL合体演算子は、変数が存在し値がNULLでないかどうかを判断し、その場合自身の値を返し、そうでなければ2番目のオペランドを返します。</p>
 <p>以前は三項演算子を次のように書いていました：</p>
 <pre>
-$site = isset($_GET['site']) ? $_GET['site'] : '菜鸟教程';
+$site = isset($_GET['site']) ? $_GET['site'] : 'サンプル';
 </pre>
 <p>現在は、直接このように書くことができます：</p>
 <pre>
-$site = $_GET['site'] ?? '菜鸟教程';
+$site = $_GET['site'] ?? 'サンプル';
 </pre>
 <h3>例</h3>
 <pre>
 &lt;?php
-// 获取 $_GET['site'] 的值，如果不存在返回 '菜鸟教程'
-$site = $_GET['site'] ?? '菜鸟教程';
+// 获取 $_GET['site'] 的值，如果不存在返回 'サンプル'
+$site = $_GET['site'] ?? 'サンプル';
 
 print($site);
 print(PHP_EOL); // PHP_EOL 为换行符
 
 
 // 以上代码等价于
-$site = isset($_GET['site']) ? $_GET['site'] : '菜鸟教程';
+$site = isset($_GET['site']) ? $_GET['site'] : 'サンプル';
 
 print($site);
 print(PHP_EOL);
 // ?? 链
-$site = $_GET['site'] ?? $_POST['site'] ?? '菜鸟教程';
+$site = $_GET['site'] ?? $_POST['site'] ?? 'サンプル';
 
 print($site);
 ?&gt;

@@ -343,12 +343,12 @@ Running 6 tests using 4 workers
 <span style="color: #006600; font-style: italic;">// test(name, callback) はテストを定義します</span><br/>
 <span style="color: #006600; font-style: italic;">// name: テスト名。テストレポートに表示されます</span><br/>
 <span style="color: #006600; font-style: italic;">// callback の引数 { page } は Playwright が提供する fixture（フィクスチャ）です</span><br/>
-test<span style="color: #009900;">(</span><span style="color: #3366CC;">'RUNOOB のトップページにアクセスしてタイトルを確認する'</span><span style="color: #339933;">,</span> async <span style="color: #009900;">(</span><span style="color: #009900;">{</span> page <span style="color: #009900;">}</span><span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
+test<span style="color: #009900;">(</span><span style="color: #3366CC;">'サンプル のトップページにアクセスしてタイトルを確認する'</span><span style="color: #339933;">,</span> async <span style="color: #009900;">(</span><span style="color: #009900;">{</span> page <span style="color: #009900;">}</span><span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
   <span style="color: #006600; font-style: italic;">// 指定された URL に移動します</span><br/>
-  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.runoob.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.example.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
-  <span style="color: #006600; font-style: italic;">// アサーション: ページタイトルに「RUNOOB」が含まれる</span><br/>
-  await expect<span style="color: #009900;">(</span>page<span style="color: #009900;">)</span>.<span style="color: #660066;">toHaveTitle</span><span style="color: #009900;">(</span><span style="color: #009966; font-style: italic;">/RUNOOB/</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+  <span style="color: #006600; font-style: italic;">// アサーション: ページタイトルに「サンプル」が含まれる</span><br/>
+  await expect<span style="color: #009900;">(</span>page<span style="color: #009900;">)</span>.<span style="color: #660066;">toHaveTitle</span><span style="color: #009900;">(</span><span style="color: #009966; font-style: italic;">/サンプル/</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 </div>
 </div>
@@ -360,7 +360,7 @@ npx playwright test tests/first-test.spec.ts
 <pre>
 Running 1 test using 1 worker
 
-  ✓  1 [chromium] › tests/first-test.spec.ts:4:1 › 访问 RUNOOB 首页并检查标题 (2.5s)
+  ✓  1 [chromium] › tests/first-test.spec.ts:4:1 › 访问 サンプル 首页并检查标题 (2.5s)
 
   1 passed (2.5s)
 </pre>
@@ -409,10 +409,10 @@ test<span style="color: #009900;">(</span><span style="color: #3366CC;">'テス�
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #006600; font-style: italic;">// 基本的な使い方</span><br/>
-await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.runoob.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.example.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
 <span style="color: #006600; font-style: italic;">// オプション付きのナビゲーション</span><br/>
-await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.runoob.com/'</span><span style="color: #339933;">,</span> <span style="color: #009900;">{</span><br/>
+await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.example.com/'</span><span style="color: #339933;">,</span> <span style="color: #009900;">{</span><br/>
   <span style="color: #006600; font-style: italic;">// 'load' イベントが発生するまで待機（デフォルト値）</span><br/>
   waitUntil<span style="color: #339933;">:</span> <span style="color: #3366CC;">'load'</span><span style="color: #339933;">,</span><br/>
   <span style="color: #006600; font-style: italic;">// 操作のタイムアウト時間（ミリ秒）</span><br/>
@@ -439,13 +439,13 @@ await page.<span style="color: #000066; font-weight: bold;">goto</span><span sty
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #006600; font-style: italic;">// ページタイトルのアサーション</span><br/>
-await expect<span style="color: #009900;">(</span>page<span style="color: #009900;">)</span>.<span style="color: #660066;">toHaveTitle</span><span style="color: #009900;">(</span><span style="color: #009966; font-style: italic;">/RUNOOB/</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+await expect<span style="color: #009900;">(</span>page<span style="color: #009900;">)</span>.<span style="color: #660066;">toHaveTitle</span><span style="color: #009900;">(</span><span style="color: #009966; font-style: italic;">/サンプル/</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
 <span style="color: #006600; font-style: italic;">// ページ URL のアサーション</span><br/>
-await expect<span style="color: #009900;">(</span>page<span style="color: #009900;">)</span>.<span style="color: #660066;">toHaveURL</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.runoob.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+await expect<span style="color: #009900;">(</span>page<span style="color: #009900;">)</span>.<span style="color: #660066;">toHaveURL</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.example.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
 <span style="color: #006600; font-style: italic;">// 要素の可視性のアサーション</span><br/>
-await expect<span style="color: #009900;">(</span>page.<span style="color: #660066;">getByText</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'RUNOOB'</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span>.<span style="color: #660066;">toBeVisible</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+await expect<span style="color: #009900;">(</span>page.<span style="color: #660066;">getByText</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'サンプル'</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span>.<span style="color: #660066;">toBeVisible</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 </div>
 </div>
 <p>Playwright のアサーションには重要な特性があります：<span class="marked">自動再試行</span>。</p>
@@ -460,14 +460,14 @@ await expect<span style="color: #009900;">(</span>page.<span style="color: #6600
 <div class="example_code">
 <span style="color: #006600; font-style: italic;">// 正しい書き方</span><br/>
 test<span style="color: #009900;">(</span><span style="color: #3366CC;">'正しい例'</span><span style="color: #339933;">,</span> async <span style="color: #009900;">(</span><span style="color: #009900;">{</span> page <span style="color: #009900;">}</span><span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
-  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.runoob.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
-  await expect<span style="color: #009900;">(</span>page<span style="color: #009900;">)</span>.<span style="color: #660066;">toHaveTitle</span><span style="color: #009900;">(</span><span style="color: #009966; font-style: italic;">/RUNOOB/</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.example.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+  await expect<span style="color: #009900;">(</span>page<span style="color: #009900;">)</span>.<span style="color: #660066;">toHaveTitle</span><span style="color: #009900;">(</span><span style="color: #009966; font-style: italic;">/サンプル/</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
 <span style="color: #006600; font-style: italic;">// 誤った書き方（await がない）</span><br/>
 test<span style="color: #009900;">(</span><span style="color: #3366CC;">'誤った例'</span><span style="color: #339933;">,</span> async <span style="color: #009900;">(</span><span style="color: #009900;">{</span> page <span style="color: #009900;">}</span><span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
-  page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.runoob.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>        <span style="color: #006600; font-style: italic;">// await がない！</span><br/>
-  expect<span style="color: #009900;">(</span>page<span style="color: #009900;">)</span>.<span style="color: #660066;">toHaveTitle</span><span style="color: #009900;">(</span><span style="color: #009966; font-style: italic;">/RUNOOB/</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>           <span style="color: #006600; font-style: italic;">// await がない！</span><br/>
+  page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.example.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>        <span style="color: #006600; font-style: italic;">// await がない！</span><br/>
+  expect<span style="color: #009900;">(</span>page<span style="color: #009900;">)</span>.<span style="color: #660066;">toHaveTitle</span><span style="color: #009900;">(</span><span style="color: #009966; font-style: italic;">/サンプル/</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>           <span style="color: #006600; font-style: italic;">// await がない！</span><br/>
 <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 </div>
 </div>
@@ -484,7 +484,7 @@ test<span style="color: #009900;">(</span><span style="color: #3366CC;">'誤っ�
 <span style="color: #FF0000;">import</span> <span style="color: #009900;">{</span> test<span style="color: #339933;">,</span> expect <span style="color: #009900;">}</span> from <span style="color: #3366CC;">'@playwright/test'</span><span style="color: #339933;">;</span><br/>
 <br/>
 test<span style="color: #009900;">(</span><span style="color: #3366CC;">'意図的に失敗させるテスト'</span><span style="color: #339933;">,</span> async <span style="color: #009900;">(</span><span style="color: #009900;">{</span> page <span style="color: #009900;">}</span><span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
-  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.runoob.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.example.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
   <span style="color: #006600; font-style: italic;">// タイトルに存在しない文字列が含まれるとアサーションし、失敗することを期待</span><br/>
   await expect<span style="color: #009900;">(</span>page<span style="color: #009900;">)</span>.<span style="color: #660066;">toHaveTitle</span><span style="color: #009900;">(</span><span style="color: #009966; font-style: italic;">/存在しない文字/</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>

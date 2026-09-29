@@ -235,7 +235,7 @@ Future<span style="font-weight: bold;">&lt;</span>String<span style="font-weight
   <span style="color: #999988; font-style: italic;">// Future を作成する</span><br/>
   Future<span style="font-weight: bold;">&lt;</span>String<span style="font-weight: bold;">&gt;</span> future <span style="font-weight: bold;">=</span> Future<span style="">(</span><span style="">(</span><span style="">)</span> <span style="">{</span><br/>
     <span style="color: #999988; font-style: italic;">// この関数は将来のある時点で実行される</span><br/>
-    <span style="font-weight: bold;">return</span> <span style="color: #d14;">'RUNOOB 非同期結果'</span><span style="font-weight: bold;">;</span><br/>
+    <span style="font-weight: bold;">return</span> <span style="color: #d14;">'サンプル 非同期結果'</span><span style="font-weight: bold;">;</span><br/>
   <span style="">}</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
 <br/>
   print<span style="">(</span><span style="color: #d14;">Future は作成されたが、まだ完了していない</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
@@ -253,7 +253,7 @@ Future<span style="font-weight: bold;">&lt;</span>String<span style="font-weight
 程序开始
 Future 已创建，但还没完成
 程序继续执行...
-收到结果: RUNOOB 异步结果
+收到结果: サンプル 异步结果
 </pre>
 <p>出力の順序に注目：最初に「プログラムは実行を継続」が出力され、次に「結果を受信」が出力されます。</p>
 <p>これは、Future のコールバックが非同期に実行され、後続のコードをブロックしないことを示しています。</p>
@@ -289,7 +289,7 @@ Future<span style="font-weight: bold;">&lt;</span>void<span style="font-weight: 
   <span style="font-weight: bold;">var</span> age <span style="font-weight: bold;">=</span> await fetchUserAge<span style="">(</span>id<span style="">)</span><span style="font-weight: bold;">;</span><br/>
   print<span style="">(</span><span style="color: #d14;">'年齢を取得: $age'</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
 <br/>
-  print<span style="">(</span><span style="color: #d14;">'RUNOOB ユーザー: $name, 年齢: $age'</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
+  print<span style="">(</span><span style="color: #d14;">'サンプル ユーザー: $name, 年齢: $age'</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
 <span style="">}</span><br/>
 <br/>
 <span style="color: #999988; font-style: italic;">// 複数の非同期操作を並行して実行</span><br/>
@@ -305,7 +305,7 @@ Future<span style="font-weight: bold;">&lt;</span>void<span style="font-weight: 
   <span style="font-weight: bold;">var</span> name <span style="font-weight: bold;">=</span> results<span style="">[</span><span style="color: #009999;">0</span><span style="">]</span> <span style="font-weight: bold;">as</span> String<span style="font-weight: bold;">;</span><br/>
   <span style="font-weight: bold;">var</span> age <span style="font-weight: bold;">=</span> results<span style="">[</span><span style="color: #009999;">1</span><span style="">]</span> <span style="font-weight: bold;">as</span> <span style="color: #445588; font-weight: bold;">int</span><span style="font-weight: bold;">;</span><br/>
 <br/>
-  print<span style="">(</span><span style="color: #d14;">'RUNOOB ユーザー(並行): $name, 年齢: $age'</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
+  print<span style="">(</span><span style="color: #d14;">'サンプル ユーザー(並行): $name, 年齢: $age'</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
 <span style="">}</span><br/>
 <br/>
 <span style="color: #445588; font-weight: bold;">void</span> main<span style="">(</span><span style="">)</span> async <span style="">{</span><br/>
@@ -323,10 +323,10 @@ Future<span style="font-weight: bold;">&lt;</span>void<span style="font-weight: 
 开始获取用户信息...
 获取到名称: 用户1
 获取到年龄: 21
-RUNOOB 用户: 用户1, 年龄: 21
+サンプル 用户: 用户1, 年龄: 21
 ---
 开始并发获取用户信息...
-RUNOOB 用户(并发): 用户2, 年龄: 22
+サンプル 用户(并发): 用户2, 年龄: 22
 </pre>
 <blockquote><p>複数の非同期操作の間に依存関係がない場合は、個別に await するのではなく、Future.wait を使って並行実行させるべきです。これによりパフォーマンスが大幅に向上します——合計所要時間は最も遅い操作と同じになり、全操作の合計ではありません。</p></blockquote>
 <h3>async/await の主要ルール</h3>
@@ -358,7 +358,7 @@ Future<span style="font-weight: bold;">&lt;</span>String<span style="font-weight
   print<span style="">(</span><span style="color: #d14;">'リクエスト開始...'</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
 <br/>
   <span style="color: #999988; font-style: italic;">// then / catchError チェーン呼び出し</span><br/>
-  fetchData<span style="">(</span><span style="color: #d14;">'https://runoob.com/api'</span><span style="">)</span><br/>
+  fetchData<span style="">(</span><span style="color: #d14;">'https://example.com/api'</span><span style="">)</span><br/>
       .<span style="color: #006633;">then</span><span style="">(</span><span style="">(</span>data<span style="">)</span> <span style="">{</span><br/>
         <span style="color: #999988; font-style: italic;">// リクエスト成功</span><br/>
         print<span style="">(</span><span style="color: #d14;">'データを取得: $data'</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
@@ -384,8 +384,8 @@ Future<span style="font-weight: bold;">&lt;</span>String<span style="font-weight
 <pre>
 开始请求...
 请求已发出，程序继续...
-获取到数据: 来自 https://runoob.com/api 的数据
-处理后的: 来自 https://runoob.com/api 的数据
+获取到数据: 来自 https://example.com/api 的数据
+处理后的: 来自 https://example.com/api 的数据
 请求结束（无论成功或失败）
 </pre>
 <h3>async/await vs then/catchError の選び方</h3>

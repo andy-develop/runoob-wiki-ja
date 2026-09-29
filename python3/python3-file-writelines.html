@@ -377,7 +377,7 @@ fileObject.writelines( [ sequence ])
 <span style="color: #a50"># with 文を使用してファイルを開き、ファイルが正しく閉じられるようにします</span><br/>
 <span style="color: Green;font-weight:bold;">with</span> <span style="color: Teal;">open</span><span style="color: Olive;">(</span><span style="color: #a11;">"test.txt"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"w"</span><span style="color: Olive;">)</span> <span style="color: Green;font-weight:bold;">as</span> fo:<br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"ファイル名: "</span><span style="color: Gray;">,</span> fo.<span style="color: #05a;">name</span><span style="color: Olive;">)</span><br/>
-    seq <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: #a11;">"菜鸟教程 1<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"菜鸟教程 2"</span><span style="color: Olive;">]</span><br/>
+    seq <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: #a11;">"サンプル 1<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"サンプル 2"</span><span style="color: Olive;">]</span><br/>
     fo.<span style="color: #05a;">writelines</span><span style="color: Olive;">(</span>seq<span style="color: Olive;">)</span><br/>
 </div></div>
 <p>上記の例の出力結果は次のとおりです。</p>
@@ -387,8 +387,8 @@ fileObject.writelines( [ sequence ])
 <p>ファイルの内容を表示：</p>
 <pre>
 $ cat test.txt 
-菜鸟教程 1
-菜鸟教程 2
+サンプル 1
+サンプル 2
 </pre>
 <h3>注意事項</h3>
 <ol><li><p><strong>改行は自動的に追加されません</strong>：</p><ul><li><p><code>writelines()</code>各行の末尾に自動的に改行は追加されません。改行が必要な場合は、各文字列に明示的に追加する必要があります。<code>\n</code>。</p></li></ul></li><li><p><strong>ファイルモード</strong>：</p><ul><li><p>ファイルが読み取り専用モード（<code>"r"</code>）で開かれた場合、呼び出すと<code>writelines()</code>スローされる<code>io.UnsupportedOperation</code>例外。</p></li><li><p>ファイルが書き込みモード（<code>"w"</code> 或 <code>"w+"</code>）で開かれた場合、ファイルの内容はクリアされ、新しい内容が書き込まれます。</p></li><li><p>ファイルが追記モード（<code>"a"</code> 或 <code>"a+"</code>）で開かれた場合、書き込まれた内容はファイルの末尾に追加されます。</p></li></ul></li><li><p><strong>ファイルポインタ</strong>：</p><ul><li><p>書き込み操作は現在のファイルポインタの位置から始まります。ファイルの先頭または特定の位置から書き込む必要がある場合は、<code>seek()</code>メソッドを使用してファイルポインタを移動できます。</p></li></ul></li><li><p><strong>反復可能オブジェクト</strong>：</p><ul><li><p><code>sequence</code>任意の反復可能オブジェクト（リスト、タプル、ジェネレーターなど）を使用できますが、その各要素は文字列である必要があります。</p></li></ul></li></ol>

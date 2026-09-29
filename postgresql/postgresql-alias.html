@@ -326,7 +326,7 @@ FROM table_name
 WHERE [condition];</pre>
 <h3>例</h3>
 <p>COMPANY テーブルを作成します（<a href="https://static.jyshare.com/download/company.sql">COMPANY SQL ファイルをダウンロード</a>）、データ内容は以下のとおりです：</p>
-<pre>runoobdb# select * from COMPANY;
+<pre>サンプルdb# select * from COMPANY;
  id | name  | age | address   | salary
 ----+-------+-----+-----------+--------
   1 | Paul  |  32 | California|  20000
@@ -338,7 +338,7 @@ WHERE [condition];</pre>
   7 | James |  24 | Houston   |  10000
 (7 rows)</pre>
 <p>DEPARTMENT テーブルを作成します（<a href="https://static.jyshare.com/download/department.sql">COMPANY SQL ファイルをダウンロード</a>）、データ内容は以下のとおりです：</p>
-<pre>runoobdb=# SELECT * from DEPARTMENT;
+<pre>サンプルdb=# SELECT * from DEPARTMENT;
  id | dept        | emp_id
 ----+-------------+--------
   1 | IT Billing  |      1
@@ -350,7 +350,7 @@ WHERE [condition];</pre>
   7 | Finance     |      6
 (7 rows)</pre>
 <p>次に、C と D をそれぞれ COMPANY テーブルと DEPAERMENT テーブルのエイリアスとして使用します：</p>
-<pre>runoobdb=# SELECT C.ID, C.NAME, C.AGE, D.DEPT FROM COMPANY AS C, DEPARTMENT AS D WHERE  C.ID = D.EMP_ID;</pre>
+<pre>サンプルdb=# SELECT C.ID, C.NAME, C.AGE, D.DEPT FROM COMPANY AS C, DEPARTMENT AS D WHERE  C.ID = D.EMP_ID;</pre>
 <p>結果は以下のとおりです：</p>
 <pre> id | name  | age |  dept
 ----+-------+-----+------------
@@ -363,7 +363,7 @@ WHERE [condition];</pre>
   6 | Kim   |  22 | Finance
 (7 rows)</pre>
 <p>次に、COMPANY_ID で ID 列、COMPANY_NAME で NAME 列を表して、列エイリアスの使い方を示します：</p>
-<pre>runoobdb=# SELECT C.ID AS COMPANY_ID, C.NAME AS COMPANY_NAME, C.AGE, D.DEPT  FROM COMPANY AS C, DEPARTMENT AS D WHERE  C.ID = D.EMP_ID;</pre>
+<pre>サンプルdb=# SELECT C.ID AS COMPANY_ID, C.NAME AS COMPANY_NAME, C.AGE, D.DEPT  FROM COMPANY AS C, DEPARTMENT AS D WHERE  C.ID = D.EMP_ID;</pre>
 <p>結果は以下のとおりです：</p>
 <pre>company_id | company_name | age | dept
 ------------+--------------+-----+------------

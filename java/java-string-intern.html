@@ -342,38 +342,38 @@ public String intern()
 <ul><li><p>JDK 6 以前では、文字列定数プールはメソッド領域（パーマネント世代）に格納され、容量に制限があるため、 intern() を多用すると OutOfMemoryError が発生する可能性があります。</p></li><li><p>JDK 7 以降では、文字列定数プールはヒープメモリに移動され、より多くのデータを格納できます。</p></li></ul>
 <h3>例</h3><p>以下の例は、 intern() メソッドの適用を示しています。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">class</span> RunoobTest <span style="color: #009900;">{</span><br/>
+<span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">class</span> サンプルTest <span style="color: #009900;">{</span><br/>
     <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">static</span> <span style="color: #000066; font-weight: bold;">void</span> main<span style="color: #009900;">(</span><span style="color: #003399;">String</span> args<span style="color: #009900;">[</span><span style="color: #009900;">]</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
-        <span style="color: #666666; font-style: italic;">// str1 は文字列リテラル "Runoob" を直接代入します。これは文字列定数プール（String Pool）に格納されます。</span><br/>
-        <span style="color: #003399;">String</span> str1 <span style="color: #339933;">=</span> <span style="color: #0000FF;">"Runoob"</span><span style="color: #339933;">;</span><br/>
+        <span style="color: #666666; font-style: italic;">// str1 は文字列リテラル "サンプル" を直接代入します。これは文字列定数プール（String Pool）に格納されます。</span><br/>
+        <span style="color: #003399;">String</span> str1 <span style="color: #339933;">=</span> <span style="color: #0000FF;">"サンプル"</span><span style="color: #339933;">;</span><br/>
 <br/>
         <span style="color: #666666; font-style: italic;">// str2 は new キーワードを使用して作成され、ヒープ（Heap）メモリに格納されます。</span><br/>
-        <span style="color: #003399;">String</span> str2 <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> <span style="color: #003399;">String</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"Runoob"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+        <span style="color: #003399;">String</span> str2 <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> <span style="color: #003399;">String</span><span style="color: #009900;">(</span><span style="color: #0000FF;">"サンプル"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
         <span style="color: #666666; font-style: italic;">// str3 は str2 が intern() メソッドを呼び出した後に取得される参照です。</span><br/>
-        <span style="color: #666666; font-style: italic;">// intern() メソッドは "Runoob" を文字列定数プールに入れ、プール内の参照を返します。</span><br/>
+        <span style="color: #666666; font-style: italic;">// intern() メソッドは "サンプル" を文字列定数プールに入れ、プール内の参照を返します。</span><br/>
         <span style="color: #003399;">String</span> str3 <span style="color: #339933;">=</span> str2.<span style="color: #006633;">intern</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
         <span style="color: #666666; font-style: italic;">// str1 と str2 の比較</span><br/>
-        <span style="color: #666666; font-style: italic;">// str1 は定数プール内の "Runoob" を指し、 str2 はヒープメモリ内のオブジェクトを指します。</span><br/>
+        <span style="color: #666666; font-style: italic;">// str1 は定数プール内の "サンプル" を指し、 str2 はヒープメモリ内のオブジェクトを指します。</span><br/>
         <span style="color: #666666; font-style: italic;">// それらのアドレスが異なるため、結果は false になります。</span><br/>
         <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span>str1 <span style="color: #339933;">==</span> str2<span style="color: #009900;">)</span><span style="color: #339933;">;</span>  <span style="color: #666666; font-style: italic;">// false</span><br/>
 <br/>
         <span style="color: #666666; font-style: italic;">// str1 と str3 の比較</span><br/>
-        <span style="color: #666666; font-style: italic;">// str3 は str2 が intern() メソッドを呼び出した後に返される参照で、定数プール内の "Runoob" を指します。</span><br/>
-        <span style="color: #666666; font-style: italic;">// 一方、 str1 も定数プール内の "Runoob" を指しているため、それらのアドレスは同じで、結果は true になります。</span><br/>
+        <span style="color: #666666; font-style: italic;">// str3 は str2 が intern() メソッドを呼び出した後に返される参照で、定数プール内の "サンプル" を指します。</span><br/>
+        <span style="color: #666666; font-style: italic;">// 一方、 str1 も定数プール内の "サンプル" を指しているため、それらのアドレスは同じで、結果は true になります。</span><br/>
         <span style="color: #003399;">System</span>.<span style="color: #006633;">out</span>.<span style="color: #006633;">println</span><span style="color: #009900;">(</span>str1 <span style="color: #339933;">==</span> str3<span style="color: #009900;">)</span><span style="color: #339933;">;</span>  <span style="color: #666666; font-style: italic;">// true</span><br/>
     <span style="color: #009900;">}</span><br/>
 <span style="color: #009900;">}</span><br/>
 </div></div>
 <p><strong>コードの説明：</strong></p>
-<p><code>String str1 = "Runoob";</code></p>
+<p><code>String str1 = "サンプル";</code></p>
 <ul>
 <li>
-<p><strong>文字列リテラルを直接代入すると</strong> <code>"Runoob"</code>、それは<strong>自動的に文字列定数プールに格納されます</strong>（String Pool）内に。</p>
+<p><strong>文字列リテラルを直接代入すると</strong> <code>"サンプル"</code>、それは<strong>自動的に文字列定数プールに格納されます</strong>（String Pool）内に。</p>
 </li>
 </ul>
-<p><code>String str2 = new String("Runoob");</code></p>
+<p><code>String str2 = new String("サンプル");</code></p>
 <ul>
 <li>
 <p>new キーワードを使用するため<code>new</code>、それは<strong>ヒープ（Heap）内に新しい文字列オブジェクトを作成します</strong>、つまり<code>str2</code> <strong>定数プールを指すのではなく</strong>、新しいメモリアドレスを指します。</p>
@@ -382,7 +382,7 @@ public String intern()
 <p><code>String str3 = str2.intern();</code></p>
 <ul>
 <li>
-<p><code>intern()</code>intern() メソッドは文字列が<code>"Runoob"</code>すでに<strong>文字列定数プールに存在するかどうかをチェックします</strong>：</p>
+<p><code>intern()</code>intern() メソッドは文字列が<code>"サンプル"</code>すでに<strong>文字列定数プールに存在するかどうかをチェックします</strong>：</p>
 <ul>
 <li><p><strong>存在する場合</strong>、その文字列の参照を返します；</p></li>
 <li><p><strong>存在しない場合</strong>、それを定数プールに追加し、プール内の参照を返します。</p></li>

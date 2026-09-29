@@ -433,7 +433,7 @@ np.<span style="color: #05a;">random</span>.<span style="color: #05a;">seed</spa
             <span style="color: Teal;">self</span>.<span style="color: #05a;">backward</span><span style="color: Olive;">(</span>X<span style="color: Gray;">,</span> y<span style="color: Olive;">)</span><br/>
             <span style="color: Green;font-weight:bold;">if</span> epoch % <span style="color: Maroon;">200</span> <span style="color: Gray;">==</span> <span style="color: Maroon;">0</span>:<br/>
                 acc <span style="color: Gray;">=</span> np.<span style="color: #05a;">mean</span><span style="color: Olive;">(</span><span style="color: Olive;">(</span>y_pred.<span style="color: #05a;">flatten</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span> <span style="color: Gray;">&gt;</span> <span style="color: Maroon;">0.5</span><span style="color: Olive;">)</span> <span style="color: Gray;">==</span> y<span style="color: Olive;">)</span><br/>
-                <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"RUNOOB epoch {epoch:4d}  loss={loss:.4f}  acc={acc:.3f}"</span><span style="color: Olive;">)</span><br/>
+                <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"サンプル epoch {epoch:4d}  loss={loss:.4f}  acc={acc:.3f}"</span><span style="color: Olive;">)</span><br/>
 <br/>
     <span style="color: Green;font-weight:bold;">def</span> predict<span style="color: Olive;">(</span><span style="color: Teal;">self</span><span style="color: Gray;">,</span> X<span style="color: Olive;">)</span>:<br/>
         <span style="color: Green;font-weight:bold;">return</span> <span style="color: Olive;">(</span><span style="color: Teal;">self</span>.<span style="color: #05a;">forward</span><span style="color: Olive;">(</span>X<span style="color: Olive;">)</span>.<span style="color: #05a;">flatten</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span> <span style="color: Gray;">&gt;</span> <span style="color: Maroon;">0.5</span><span style="color: Olive;">)</span>.<span style="color: #05a;">astype</span><span style="color: Olive;">(</span><span style="color: Teal;">int</span><span style="color: Olive;">)</span><br/>
@@ -452,19 +452,19 @@ y <span style="color: Gray;">=</span> np.<span style="color: #05a;">array</span>
 <br/>
 model <span style="color: Gray;">=</span> TwoLayerNN<span style="color: Olive;">(</span>n_input<span style="color: Gray;">=</span><span style="color: Maroon;">2</span><span style="color: Gray;">,</span> n_hidden<span style="color: Gray;">=</span><span style="color: Maroon;">8</span><span style="color: Gray;">,</span> lr<span style="color: Gray;">=</span><span style="color: Maroon;">0.5</span><span style="color: Olive;">)</span><br/>
 model.<span style="color: #05a;">fit</span><span style="color: Olive;">(</span>X<span style="color: Gray;">,</span> y<span style="color: Gray;">,</span> epochs<span style="color: Gray;">=</span><span style="color: Maroon;">1000</span><span style="color: Olive;">)</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>RUNOOB 最終精度: {np.mean(model.predict(X) == y):.2%}"</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>サンプル 最終精度: {np.mean(model.predict(X) == y):.2%}"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"損失: {model.loss_history</span><span style="color: Olive;">)</span><br/>
 </div>
 </div>
 <pre>
-RUNOOB epoch    0  loss=0.6932  acc=0.497
-RUNOOB epoch  200  loss=0.1494  acc=0.930
-RUNOOB epoch  400  loss=0.0615  acc=0.967
-RUNOOB epoch  600  loss=0.0272  acc=0.990
-RUNOOB epoch  800  loss=0.0134  acc=1.000
-RUNOOB epoch 1000  loss=0.0075  acc=1.000
+サンプル epoch    0  loss=0.6932  acc=0.497
+サンプル epoch  200  loss=0.1494  acc=0.930
+サンプル epoch  400  loss=0.0615  acc=0.967
+サンプル epoch  600  loss=0.0272  acc=0.990
+サンプル epoch  800  loss=0.0134  acc=1.000
+サンプル epoch 1000  loss=0.0075  acc=1.000
 
-RUNOOB 最终准确率: 100.00%
+サンプル 最终准确率: 100.00%
 损失: 0.6932 -&gt; 0.0075
 </pre>
 <hr/>

@@ -311,56 +311,56 @@ VALUES (value1, value2, value3, ...);
 <p>データが文字型の場合は、一重引用符を使用する必要があります<span class="marked">'</span>または二重引用符<span class="marked">"</span>、例： 'value1', "value1"。</p>
 <p>簡単な例として、users という名前のテーブルに1行のデータを挿入します：</p>
 <pre>INSERT INTO users (username, email, birthdate, is_active)
-VALUES ('test', 'test@runoob.com', '1990-01-01', true);</pre>
+VALUES ('test', 'test@example.com', '1990-01-01', true);</pre>
 <ul><li><code>username</code>: ユーザー名、文字列型。</li><li><code>email</code>: メールアドレス、文字列型。</li><li><code>birthdate</code>: ユーザーの誕生日、日付型。</li><li><code>is_active</code>: アクティブかどうか、ブール型。</li></ul>
 <p>すべての列のデータを挿入する場合は、列名を省略できます：</p>
 <pre>
 INSERT INTO users
-VALUES (NULL,'test', 'test@runoob.com', '1990-01-01', true);</pre>
+VALUES (NULL,'test', 'test@example.com', '1990-01-01', true);</pre>
 <p>ここでは、<span class="marked">NULL</span>自動増加列のプレースホルダーであり、システムが<strong>id</strong>列に一意の値を生成することを示します。</p>
 <p>複数行のデータを挿入する場合は、VALUES句で複数の値グループを指定できます：</p>
 <pre>INSERT INTO users (username, email, birthdate, is_active)
 VALUES
-    ('test1', 'test1@runoob.com', '1985-07-10', true),
-    ('test2', 'test2@runoob.com', '1988-11-25', false),
-    ('test3', 'test3@runoob.com', '1993-05-03', true);</pre>
+    ('test1', 'test1@example.com', '1985-07-10', true),
+    ('test2', 'test2@example.com', '1988-11-25', false),
+    ('test3', 'test3@example.com', '1993-05-03', true);</pre>
 <p>上記のコードは users テーブルに3行のデータを挿入します。</p>
 <hr/>
 <h2>コマンドプロンプトウィンドウからデータを挿入する</h2>
-<p>以下では、<span class="marked">INSERT INTO</span>ステートメントを使用して MySQL データテーブル runoob_tbl にデータを挿入します。</p>
+<p>以下では、<span class="marked">INSERT INTO</span>ステートメントを使用して MySQL データテーブル サンプル_tbl にデータを挿入します。</p>
 <h3>例</h3>
-<p>次の例では、runoob_tbl テーブルに3つのデータを挿入します：</p>
+<p>次の例では、サンプル_tbl テーブルに3つのデータを挿入します：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 root@host# mysql <span style="color: #66CC66;">-</span>u root <span style="color: #66CC66;">-</span>p password;<br/>
 Enter password:<span style="color: #66CC66;">*******</span><br/>
-mysql<span style="color: #66CC66;">&gt;</span> <span style="color: #993333; font-weight: bold;">USE</span> RUNOOB;<br/>
+mysql<span style="color: #66CC66;">&gt;</span> <span style="color: #993333; font-weight: bold;">USE</span> サンプル;<br/>
 <span style="color: #993333; font-weight: bold;">DATABASE</span> changed<br/>
-mysql<span style="color: #66CC66;">&gt;</span> <span style="color: #993333; font-weight: bold;">INSERT</span> <span style="color: #993333; font-weight: bold;">INTO</span> runoob_tbl <br/>
-    <span style="color: #66CC66;">-&gt;</span> <span style="color: #66CC66;">(</span>runoob_title<span style="color: #66CC66;">,</span> runoob_author<span style="color: #66CC66;">,</span> submission_date<span style="color: #66CC66;">)</span><br/>
+mysql<span style="color: #66CC66;">&gt;</span> <span style="color: #993333; font-weight: bold;">INSERT</span> <span style="color: #993333; font-weight: bold;">INTO</span> サンプル_tbl <br/>
+    <span style="color: #66CC66;">-&gt;</span> <span style="color: #66CC66;">(</span>サンプル_title<span style="color: #66CC66;">,</span> サンプル_author<span style="color: #66CC66;">,</span> submission_date<span style="color: #66CC66;">)</span><br/>
     <span style="color: #66CC66;">-&gt;</span> <span style="color: #993333; font-weight: bold;">VALUES</span><br/>
-    <span style="color: #66CC66;">-&gt;</span> <span style="color: #66CC66;">(</span><span style="color: #FF0000;">"学习 PHP"</span><span style="color: #66CC66;">,</span> <span style="color: #FF0000;">"菜鸟教程"</span><span style="color: #66CC66;">,</span> NOW<span style="color: #66CC66;">(</span><span style="color: #66CC66;">)</span><span style="color: #66CC66;">)</span>;<br/>
+    <span style="color: #66CC66;">-&gt;</span> <span style="color: #66CC66;">(</span><span style="color: #FF0000;">"学习 PHP"</span><span style="color: #66CC66;">,</span> <span style="color: #FF0000;">"サンプル"</span><span style="color: #66CC66;">,</span> NOW<span style="color: #66CC66;">(</span><span style="color: #66CC66;">)</span><span style="color: #66CC66;">)</span>;<br/>
 Query OK<span style="color: #66CC66;">,</span> <span style="color: #CC66CC;">1</span> <span style="color: #993333; font-weight: bold;">ROWS</span> affected<span style="color: #66CC66;">,</span> <span style="color: #CC66CC;">1</span> warnings <span style="color: #66CC66;">(</span><span style="color: #CC66CC;">0.01</span> sec<span style="color: #66CC66;">)</span><br/>
-mysql<span style="color: #66CC66;">&gt;</span> <span style="color: #993333; font-weight: bold;">INSERT</span> <span style="color: #993333; font-weight: bold;">INTO</span> runoob_tbl<br/>
-    <span style="color: #66CC66;">-&gt;</span> <span style="color: #66CC66;">(</span>runoob_title<span style="color: #66CC66;">,</span> runoob_author<span style="color: #66CC66;">,</span> submission_date<span style="color: #66CC66;">)</span><br/>
+mysql<span style="color: #66CC66;">&gt;</span> <span style="color: #993333; font-weight: bold;">INSERT</span> <span style="color: #993333; font-weight: bold;">INTO</span> サンプル_tbl<br/>
+    <span style="color: #66CC66;">-&gt;</span> <span style="color: #66CC66;">(</span>サンプル_title<span style="color: #66CC66;">,</span> サンプル_author<span style="color: #66CC66;">,</span> submission_date<span style="color: #66CC66;">)</span><br/>
     <span style="color: #66CC66;">-&gt;</span> <span style="color: #993333; font-weight: bold;">VALUES</span><br/>
-    <span style="color: #66CC66;">-&gt;</span> <span style="color: #66CC66;">(</span><span style="color: #FF0000;">"学习 MySQL"</span><span style="color: #66CC66;">,</span> <span style="color: #FF0000;">"菜鸟教程"</span><span style="color: #66CC66;">,</span> NOW<span style="color: #66CC66;">(</span><span style="color: #66CC66;">)</span><span style="color: #66CC66;">)</span>;<br/>
+    <span style="color: #66CC66;">-&gt;</span> <span style="color: #66CC66;">(</span><span style="color: #FF0000;">"学习 MySQL"</span><span style="color: #66CC66;">,</span> <span style="color: #FF0000;">"サンプル"</span><span style="color: #66CC66;">,</span> NOW<span style="color: #66CC66;">(</span><span style="color: #66CC66;">)</span><span style="color: #66CC66;">)</span>;<br/>
 Query OK<span style="color: #66CC66;">,</span> <span style="color: #CC66CC;">1</span> <span style="color: #993333; font-weight: bold;">ROWS</span> affected<span style="color: #66CC66;">,</span> <span style="color: #CC66CC;">1</span> warnings <span style="color: #66CC66;">(</span><span style="color: #CC66CC;">0.01</span> sec<span style="color: #66CC66;">)</span><br/>
-mysql<span style="color: #66CC66;">&gt;</span> <span style="color: #993333; font-weight: bold;">INSERT</span> <span style="color: #993333; font-weight: bold;">INTO</span> runoob_tbl<br/>
-    <span style="color: #66CC66;">-&gt;</span> <span style="color: #66CC66;">(</span>runoob_title<span style="color: #66CC66;">,</span> runoob_author<span style="color: #66CC66;">,</span> submission_date<span style="color: #66CC66;">)</span><br/>
+mysql<span style="color: #66CC66;">&gt;</span> <span style="color: #993333; font-weight: bold;">INSERT</span> <span style="color: #993333; font-weight: bold;">INTO</span> サンプル_tbl<br/>
+    <span style="color: #66CC66;">-&gt;</span> <span style="color: #66CC66;">(</span>サンプル_title<span style="color: #66CC66;">,</span> サンプル_author<span style="color: #66CC66;">,</span> submission_date<span style="color: #66CC66;">)</span><br/>
     <span style="color: #66CC66;">-&gt;</span> <span style="color: #993333; font-weight: bold;">VALUES</span><br/>
-    <span style="color: #66CC66;">-&gt;</span> <span style="color: #66CC66;">(</span><span style="color: #FF0000;">"JAVA 教程"</span><span style="color: #66CC66;">,</span> <span style="color: #FF0000;">"RUNOOB.COM"</span><span style="color: #66CC66;">,</span> <span style="color: #FF0000;">'2016-05-06'</span><span style="color: #66CC66;">)</span>;<br/>
+    <span style="color: #66CC66;">-&gt;</span> <span style="color: #66CC66;">(</span><span style="color: #FF0000;">"JAVA 教程"</span><span style="color: #66CC66;">,</span> <span style="color: #FF0000;">"example.com"</span><span style="color: #66CC66;">,</span> <span style="color: #FF0000;">'2016-05-06'</span><span style="color: #66CC66;">)</span>;<br/>
 Query OK<span style="color: #66CC66;">,</span> <span style="color: #CC66CC;">1</span> <span style="color: #993333; font-weight: bold;">ROWS</span> affected <span style="color: #66CC66;">(</span><span style="color: #CC66CC;">0.00</span> sec<span style="color: #66CC66;">)</span><br/>
 mysql<span style="color: #66CC66;">&gt;</span><br/>
 </div></div>
 <p>
 <strong>注意：</strong>矢印記号（-&gt;）は<span class="marked">-&gt;</span>SQL文の一部ではなく、単に新しい行を表します。SQL文が長すぎる場合は、Enterキーで新しい行を作成してSQL文を記述できます。SQL文の終端記号はセミコロンです。<span class="marked">;</span>。
 </p>
-<p>上記の例では、<strong>runoob_id</strong>のデータは提供していません。なぜなら、そのフィールドはテーブル作成時にすでに<strong>AUTO_INCREMENT</strong>(自動増加) 属性に設定したからです。<strong>NOW()</strong>は MySQL 関数で、日付と時刻を返します。</p>
+<p>上記の例では、<strong>サンプル_id</strong>のデータは提供していません。なぜなら、そのフィールドはテーブル作成時にすでに<strong>AUTO_INCREMENT</strong>(自動増加) 属性に設定したからです。<strong>NOW()</strong>は MySQL 関数で、日付と時刻を返します。</p>
 <p>次に、以下のステートメントでデータテーブルのデータを確認できます：</p>
 <div class="example">
 <h2 class="example">データテーブルの読み取り：</h2>
 <div class="example_code">
-<div class="hl-main"><span class="hl-reserved">select</span><span class="hl-code"> * </span><span class="hl-reserved">from</span><span class="hl-code"> </span><span class="hl-identifier">runoob_tbl</span><span class="hl-code">;</span></div>
+<div class="hl-main"><span class="hl-reserved">select</span><span class="hl-code"> * </span><span class="hl-reserved">from</span><span class="hl-code"> </span><span class="hl-identifier">サンプル_tbl</span><span class="hl-code">;</span></div>
 </div>
 <p>出力結果：</p>
 <div class="example_code">
@@ -417,18 +417,18 @@ mysqli_query(connection,query,resultmode);
 </span><span class="hl-comment">//</span><span class="hl-comment">文字コードを設定し、中国語の文字化けを防ぎます</span><span class="hl-comment"></span><span class="hl-code">
 </span><span class="hl-identifier">mysqli_query</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-code"> , </span><span class="hl-quotes">"</span><span class="hl-string">set names utf8</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
  
-</span><span class="hl-var">$runoob_title</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">学习 Python</span><span class="hl-quotes">'</span><span class="hl-code">;
-</span><span class="hl-var">$runoob_author</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">RUNOOB.COM</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-var">$サンプル_title</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">学习 Python</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-var">$サンプル_author</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">example.com</span><span class="hl-quotes">'</span><span class="hl-code">;
 </span><span class="hl-var">$submission_date</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">2016-03-06</span><span class="hl-quotes">'</span><span class="hl-code">;
  
-</span><span class="hl-var">$sql</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">INSERT INTO runoob_tbl </span><span class="hl-quotes">"</span><span class="hl-code">.
-        </span><span class="hl-quotes">"</span><span class="hl-string">(runoob_title,runoob_author, submission_date) </span><span class="hl-quotes">"</span><span class="hl-code">.
+</span><span class="hl-var">$sql</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">INSERT INTO サンプル_tbl </span><span class="hl-quotes">"</span><span class="hl-code">.
+        </span><span class="hl-quotes">"</span><span class="hl-string">(サンプル_title,サンプル_author, submission_date) </span><span class="hl-quotes">"</span><span class="hl-code">.
         </span><span class="hl-quotes">"</span><span class="hl-string">VALUES </span><span class="hl-quotes">"</span><span class="hl-code">.
-        </span><span class="hl-quotes">"</span><span class="hl-string">('</span><span class="hl-var">$runoob_title</span><span class="hl-string">','</span><span class="hl-var">$runoob_author</span><span class="hl-string">','</span><span class="hl-var">$submission_date</span><span class="hl-string">')</span><span class="hl-quotes">"</span><span class="hl-code">;
+        </span><span class="hl-quotes">"</span><span class="hl-string">('</span><span class="hl-var">$サンプル_title</span><span class="hl-string">','</span><span class="hl-var">$サンプル_author</span><span class="hl-string">','</span><span class="hl-var">$submission_date</span><span class="hl-string">')</span><span class="hl-quotes">"</span><span class="hl-code">;
  
  
  
-</span><span class="hl-identifier">mysqli_select_db</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">RUNOOB</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">mysqli_select_db</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">サンプル</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-var">$retval</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_query</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-var">$sql</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-code">! </span><span class="hl-var">$retval</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">
 </span><span class="hl-brackets">{</span><span class="hl-code">
@@ -443,7 +443,7 @@ mysqli_query(connection,query,resultmode);
 <div class="example">
 <h2 class="example">データテーブルの読み取り：</h2>
 <div class="example_code">
-<div class="hl-main"><span class="hl-reserved">select</span><span class="hl-code"> * </span><span class="hl-reserved">from</span><span class="hl-code"> </span><span class="hl-identifier">runoob_tbl</span><span class="hl-code">;</span></div>
+<div class="hl-main"><span class="hl-reserved">select</span><span class="hl-code"> * </span><span class="hl-reserved">from</span><span class="hl-code"> </span><span class="hl-identifier">サンプル_tbl</span><span class="hl-code">;</span></div>
 </div>
 <p>出力結果：</p>
 <div class="example_code">

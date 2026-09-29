@@ -353,7 +353,7 @@ store.<span style="color: #05a;">put</span><span style="color: Olive;">(</span><
 <br/>
 <span style="color: #a50"># Store を作成しデータを事前にセットする</span><br/>
 store <span style="color: Gray;">=</span> InMemoryStore<span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
-store.<span style="color: #05a;">put</span><span style="color: Olive;">(</span><span style="color: Olive;">(</span><span style="color: #a11;">"runoob"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"courses"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span> <span style="color: #a11;">"catalog"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><br/>
+store.<span style="color: #05a;">put</span><span style="color: Olive;">(</span><span style="color: Olive;">(</span><span style="color: #a11;">"サンプル"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"courses"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span> <span style="color: #a11;">"catalog"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><br/>
     <span style="color: #a11;">"data"</span>: <span style="color: Olive;">{</span><br/>
         <span style="color: #a11;">"Python3 基礎教程"</span>: <span style="color: Olive;">{</span><span style="color: #a11;">"price"</span>: <span style="color: #a11;">"無料"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"duration"</span>: <span style="color: #a11;">"20時間"</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span><br/>
         <span style="color: #a11;">"Python データ分析"</span>: <span style="color: Olive;">{</span><span style="color: #a11;">"price"</span>: <span style="color: #a11;">"会員"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"duration"</span>: <span style="color: #a11;">"30時間"</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span><br/>
@@ -367,11 +367,11 @@ store.<span style="color: #05a;">put</span><span style="color: Olive;">(</span><
     course_name: <span style="color: Teal;">str</span><span style="color: Gray;">,</span><br/>
     store: Annotated<span style="color: Olive;">[</span>BaseStore<span style="color: Gray;">,</span> InjectedStore<span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
-    <span style="color: #a11;">"""菜鸟教程 RUNOOB 内の指定コースの価格情報を照会します。<br/>
+    <span style="color: #a11;">"""サンプル 内の指定コースの価格情報を照会します。<br/>
 <br/>
     Args:<br/>course_name: コース名<br/>
     """</span><br/>
-    item <span style="color: Gray;">=</span> store.<span style="color: #05a;">get</span><span style="color: Olive;">(</span><span style="color: Olive;">(</span><span style="color: #a11;">"runoob"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"courses"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span> <span style="color: #a11;">"catalog"</span><span style="color: Olive;">)</span><br/>
+    item <span style="color: Gray;">=</span> store.<span style="color: #05a;">get</span><span style="color: Olive;">(</span><span style="color: Olive;">(</span><span style="color: #a11;">"サンプル"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"courses"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span> <span style="color: #a11;">"catalog"</span><span style="color: Olive;">)</span><br/>
     catalog <span style="color: Gray;">=</span> item.<span style="color: #05a;">value</span><span style="color: Olive;">[</span><span style="color: #a11;">"data"</span><span style="color: Olive;">]</span> <span style="color: Green;font-weight:bold;">if</span> item <span style="color: Green;font-weight:bold;">else</span> <span style="color: Olive;">{</span><span style="color: Olive;">}</span><br/>
 <br/>
     <span style="color: Green;font-weight:bold;">if</span> course_name <span style="color: Green;font-weight:bold;">in</span> catalog:<br/>
@@ -385,7 +385,7 @@ agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;
     model<span style="color: Gray;">=</span>model<span style="color: Gray;">,</span><br/>
     tools<span style="color: Gray;">=</span><span style="color: Olive;">[</span>query_course_price<span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
     store<span style="color: Gray;">=</span>store<span style="color: Gray;">,</span>  <span style="color: #a50"># Store を Agent に渡す</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは菜鸟教程 RUNOOB のコースアドバイザーです。"</span><span style="color: Gray;">,</span><br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたはサンプル のコースアドバイザーです。"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: Olive;">{</span><br/>

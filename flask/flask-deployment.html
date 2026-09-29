@@ -337,14 +337,14 @@ $ gunicorn -w 4 -b 0.0.0.0:8000 "app:create_app()"
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #666666; font-style: italic;"># ファイルパス：/etc/nginx/sites-available/runoob</span><br/>
+<span style="color: #666666; font-style: italic;"># ファイルパス：/etc/nginx/sites-available/サンプル</span><br/>
 server <span style="color: #7A0874; font-weight: bold;">{</span><br/>
     listen <span style="color: #000000;">80</span>;<br/>
-    server_name runoob.com www.runoob.com;<br/>
+    server_name example.com www.example.com;<br/>
 <br/>
     <span style="color: #666666; font-style: italic;"># 静的ファイルは Nginx が直接処理</span><br/>
     location <span style="color: #000000; font-weight: bold;">/</span>static<span style="color: #000000; font-weight: bold;">/</span> <span style="color: #7A0874; font-weight: bold;">{</span><br/>
-        <span style="color: #7A0874; font-weight: bold;">alias</span> <span style="color: #000000; font-weight: bold;">/</span>var<span style="color: #000000; font-weight: bold;">/</span>www<span style="color: #000000; font-weight: bold;">/</span>runoob<span style="color: #000000; font-weight: bold;">/</span>static<span style="color: #000000; font-weight: bold;">/</span>;<br/>
+        <span style="color: #7A0874; font-weight: bold;">alias</span> <span style="color: #000000; font-weight: bold;">/</span>var<span style="color: #000000; font-weight: bold;">/</span>www<span style="color: #000000; font-weight: bold;">/</span>サンプル<span style="color: #000000; font-weight: bold;">/</span>static<span style="color: #000000; font-weight: bold;">/</span>;<br/>
         expires 30d;  <span style="color: #666666; font-style: italic;"># ブラウザキャッシュ 30 日</span><br/>
     <span style="color: #7A0874; font-weight: bold;">}</span><br/>
 <br/>
@@ -360,7 +360,7 @@ server <span style="color: #7A0874; font-weight: bold;">{</span><br/>
 </div>
 <p>設定を有効にして Nginx をリロード：</p>
 <pre>
-$ sudo ln -s /etc/nginx/sites-available/runoob /etc/nginx/sites-enabled/
+$ sudo ln -s /etc/nginx/sites-available/サンプル /etc/nginx/sites-enabled/
 $ sudo nginx -t          # 检查配置语法
 $ sudo systemctl reload nginx
 </pre>
@@ -370,18 +370,18 @@ $ sudo systemctl reload nginx
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-<span style="color: #666666; font-style: italic;"># ファイルパス：/etc/systemd/system/runoob.service</span><br/>
+<span style="color: #666666; font-style: italic;"># ファイルパス：/etc/systemd/system/サンプル.service</span><br/>
 <span style="color: #7A0874; font-weight: bold;">[</span>Unit<span style="color: #7A0874; font-weight: bold;">]</span><br/>
-<span style="color: #007800;">Description</span>=RUNOOB Flask Application<br/>
+<span style="color: #007800;">Description</span>=サンプル Flask Application<br/>
 <span style="color: #007800;">After</span>=network.target<br/>
 <br/>
 <span style="color: #7A0874; font-weight: bold;">[</span>Service<span style="color: #7A0874; font-weight: bold;">]</span><br/>
 <span style="color: #007800;">User</span>=www-data<br/>
-<span style="color: #007800;">WorkingDirectory</span>=<span style="color: #000000; font-weight: bold;">/</span>var<span style="color: #000000; font-weight: bold;">/</span>www<span style="color: #000000; font-weight: bold;">/</span>runoob<br/>
+<span style="color: #007800;">WorkingDirectory</span>=<span style="color: #000000; font-weight: bold;">/</span>var<span style="color: #000000; font-weight: bold;">/</span>www<span style="color: #000000; font-weight: bold;">/</span>サンプル<br/>
 <span style="color: #666666; font-style: italic;"># 起動時に .env ファイルの環境変数を自動読み込み</span><br/>
-<span style="color: #007800;">EnvironmentFile</span>=-<span style="color: #000000; font-weight: bold;">/</span>var<span style="color: #000000; font-weight: bold;">/</span>www<span style="color: #000000; font-weight: bold;">/</span>runoob<span style="color: #000000; font-weight: bold;">/</span>.env<br/>
+<span style="color: #007800;">EnvironmentFile</span>=-<span style="color: #000000; font-weight: bold;">/</span>var<span style="color: #000000; font-weight: bold;">/</span>www<span style="color: #000000; font-weight: bold;">/</span>サンプル<span style="color: #000000; font-weight: bold;">/</span>.env<br/>
 <span style="color: #666666; font-style: italic;"># Gunicorn を使用してアプリを起動</span><br/>
-<span style="color: #007800;">ExecStart</span>=<span style="color: #000000; font-weight: bold;">/</span>var<span style="color: #000000; font-weight: bold;">/</span>www<span style="color: #000000; font-weight: bold;">/</span>runoob<span style="color: #000000; font-weight: bold;">/</span>.venv<span style="color: #000000; font-weight: bold;">/</span>bin<span style="color: #000000; font-weight: bold;">/</span>gunicorn <span style="color: #660033;">-w</span> <span style="color: #000000;">4</span> <span style="color: #660033;">-b</span> 127.0.0.1:<span style="color: #000000;">8000</span> <span style="color: #a10;">"app:create_app()"</span><br/>
+<span style="color: #007800;">ExecStart</span>=<span style="color: #000000; font-weight: bold;">/</span>var<span style="color: #000000; font-weight: bold;">/</span>www<span style="color: #000000; font-weight: bold;">/</span>サンプル<span style="color: #000000; font-weight: bold;">/</span>.venv<span style="color: #000000; font-weight: bold;">/</span>bin<span style="color: #000000; font-weight: bold;">/</span>gunicorn <span style="color: #660033;">-w</span> <span style="color: #000000;">4</span> <span style="color: #660033;">-b</span> 127.0.0.1:<span style="color: #000000;">8000</span> <span style="color: #a10;">"app:create_app()"</span><br/>
 <span style="color: #666666; font-style: italic;"># クラッシュ後に自動再起動</span><br/>
 <span style="color: #007800;">Restart</span>=always<br/>
 <span style="color: #007800;">RestartSec</span>=<span style="color: #000000;">5</span><br/>
@@ -393,10 +393,10 @@ $ sudo systemctl reload nginx
 <p>サービスの起動と管理：</p>
 <pre>
 $ sudo systemctl daemon-reload        # 重载配置文件
-$ sudo systemctl enable runoob        # 设置开机自启
-$ sudo systemctl start runoob         # 启动服务
-$ sudo systemctl status runoob        # 查看服务状态
-$ sudo journalctl -u runoob -f        # 实时查看日志
+$ sudo systemctl enable サンプル        # 设置开机自启
+$ sudo systemctl start サンプル         # 启动服务
+$ sudo systemctl status サンプル        # 查看服务状态
+$ sudo journalctl -u サンプル -f        # 实时查看日志
 </pre>
 <hr/>
 <h2>WSGI サーバー早見表</h2>

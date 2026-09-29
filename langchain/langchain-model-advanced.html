@@ -365,8 +365,8 @@ response <span style="color: Gray;">=</span> model_with_tools.<span style="color
 <pre>
 模型请求调用以下工具：
   工具名: get_weather
-  参数: {'city': '杭州'}
-  调用ID: call_abc123def456
+  引数: {'city': '杭州'}
+  呼び出しID: call_abc123def456
 </pre>
 <blockquote><p>モデルは実際には get_weather 関数を実行していないことに注意してください。bind_tools() は単にモデルに「利用できるツールがある」と伝えるだけで、モデルはツール呼び出しのリクエストを返します。実際の実行は Agent または自分で書いたコードが行います。</p></blockquote>
 <hr/>
@@ -454,7 +454,7 @@ result <span style="color: Gray;">=</span> structured_model.<span style="color: 
 年龄: 28
 职业: 全栈工程师
 技能: Python, React, Docker
-类型: &lt;class '__main__.PersonInfo'&gt;
+タイプ: &lt;class '__main__.PersonInfo'&gt;
 </pre>
 <p>戻り値は直接<span class="marked">Pydantic モデルのインスタンス</span>であり、.name、.age などの属性で直接アクセスできます。</p>
 <hr/>
@@ -520,7 +520,7 @@ result <span style="color: Gray;">=</span> structured_model.<span style="color: 
 <p>実行結果：</p>
 <pre>
 菜名: 番茄炒蛋
-难度: 简单
+難易度: 简单
 食材 (5 种):
   - 番茄: 2个
   - 鸡蛋: 3个
@@ -568,7 +568,7 @@ json_schema <span style="color: Gray;">=</span> <span style="color: Olive;">{</s
 <span style="color: Olive;">}</span><br/>
 <br/>
 structured_model <span style="color: Gray;">=</span> model.<span style="color: #05a;">with_structured_output</span><span style="color: Olive;">(</span>json_schema<span style="color: Olive;">)</span><br/>
-result <span style="color: Gray;">=</span> structured_model.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: #a11;">"菜鸟教程 RUNOOB は本当に素晴らしいので、すべてのプログラミング初心者に強くおすすめします！"</span><span style="color: Olive;">)</span><br/>
+result <span style="color: Gray;">=</span> structured_model.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: #a11;">"サンプル は本当に素晴らしいので、すべてのプログラミング初心者に強くおすすめします！"</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"感情: {result['sentiment']}"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"信頼度: {result['confidence']}"</span><span style="color: Olive;">)</span><br/>
@@ -577,9 +577,9 @@ result <span style="color: Gray;">=</span> structured_model.<span style="color: 
 </div>
 <p>実行結果：</p>
 <pre>
-情感: positive
-置信度: 0.95
-关键词: ['太棒了', '强烈推荐']
+感情: positive
+信頼度: 0.95
+キーワード: ['太棒了', '强烈推荐']
 </pre>
 <hr/>
 <h2>ConfigurableModel での bind_tools と with_structured_output</h2>

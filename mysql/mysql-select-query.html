@@ -211,13 +211,13 @@ FROM table_name
 </div></div>
 <hr/>
 <h2>コマンドプロンプトでデータを取得する</h2>
-<p>次の例では、SQL SELECT コマンドを使用して MySQL データテーブル runoob_tbl のデータを取得します：</p>
+<p>次の例では、SQL SELECT コマンドを使用して MySQL データテーブル サンプル_tbl のデータを取得します：</p>
 <h3>例</h3>
-<p>次の例では、データテーブル runoob_tbl のすべてのレコードを返します:</p>
+<p>次の例では、データテーブル サンプル_tbl のすべてのレコードを返します:</p>
 <div class="example">
 <h2 class="example">データテーブルの読み取り：</h2>
 <div class="example_code">
-<div class="hl-main"><span class="hl-reserved">select</span><span class="hl-code"> * </span><span class="hl-reserved">from</span><span class="hl-code"> </span><span class="hl-identifier">runoob_tbl</span><span class="hl-code">;</span></div>
+<div class="hl-main"><span class="hl-reserved">select</span><span class="hl-code"> * </span><span class="hl-reserved">from</span><span class="hl-code"> </span><span class="hl-identifier">サンプル_tbl</span><span class="hl-code">;</span></div>
 </div>
 <p>出力結果：</p>
 <div class="example_code">
@@ -229,9 +229,9 @@ FROM table_name
 <p>PHP 関数の<span class="marked">mysqli_query()</span> 及 <span class="marked">SQL SELECT</span>コマンドを使用してデータを取得します。</p><p>この関数は SQL コマンドを実行するために使用され、その後 PHP 関数<span class="marked">mysqli_fetch_array() </span>を使用して、クエリされたすべてのデータを使用または出力します。</p>
 <p>
 <span class="marked">mysqli_fetch_array() </span>関数は結果セットから 1 行を連想配列、数値配列、またはその両方として取得します。
-結果セットから取得した行に基づいて生成された配列を返し、それ以上行がない場合は false を返します。</p><p>次の例では、データテーブル runoob_tbl からすべてのレコードを読み取ります。</p>
+結果セットから取得した行に基づいて生成された配列を返し、それ以上行がない場合は false を返します。</p><p>次の例では、データテーブル サンプル_tbl からすべてのレコードを読み取ります。</p>
 <h3>例</h3>
-<p>次の例を試して、データテーブル runoob_tbl のすべてのレコードを表示します。<div class="example">
+<p>次の例を試して、データテーブル サンプル_tbl のすべてのレコードを表示します。<div class="example">
 <h2 class="example">mysqli_fetch_array の MYSQLI_ASSOC パラメータを使用してデータを取得する：</h2>
 <div class="example_code">
 <div class="hl-main"><span class="hl-inlinetags">&lt;?php</span><span class="hl-code">
@@ -246,23 +246,23 @@ FROM table_name
 </span><span class="hl-comment">//</span><span class="hl-comment">文字コードを設定し、中国語の文字化けを防止</span><span class="hl-comment"></span><span class="hl-code">
 </span><span class="hl-identifier">mysqli_query</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-code"> , </span><span class="hl-quotes">"</span><span class="hl-string">set names utf8</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
  
-</span><span class="hl-var">$sql</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">SELECT runoob_id, runoob_title, 
-        runoob_author, submission_date
-        FROM runoob_tbl</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-var">$sql</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">SELECT サンプル_id, サンプル_title, 
+        サンプル_author, submission_date
+        FROM サンプル_tbl</span><span class="hl-quotes">'</span><span class="hl-code">;
  
-</span><span class="hl-identifier">mysqli_select_db</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">RUNOOB</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">mysqli_select_db</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">サンプル</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-var">$retval</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_query</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-var">$sql</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-code">! </span><span class="hl-var">$retval</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">
 </span><span class="hl-brackets">{</span><span class="hl-code">
 </span><span class="hl-reserved">die</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">データを読み取れません:</span><span class="hl-quotes">'</span><span class="hl-code"> . </span><span class="hl-identifier">mysqli_error</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-brackets">}</span><span class="hl-code">
-</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">&lt;h2&gt;菜鸟教程 mysqli_fetch_array テスト&lt;/h2&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">&lt;h2&gt;サンプル mysqli_fetch_array テスト&lt;/h2&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
 </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">&lt;table border="1"&gt;&lt;tr&gt;&lt;td&gt;チュートリアル ID&lt;/td&gt;&lt;td&gt;タイトル&lt;/td&gt;&lt;td&gt;著者&lt;/td&gt;&lt;td&gt;提出日&lt;/td&gt;&lt;/tr&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
 </span><span class="hl-reserved">while</span><span class="hl-brackets">(</span><span class="hl-var">$row</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_fetch_array</span><span class="hl-brackets">(</span><span class="hl-var">$retval</span><span class="hl-code">, </span><span class="hl-identifier">MYSQLI_ASSOC</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">
 </span><span class="hl-brackets">{</span><span class="hl-code">
-</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">&lt;tr&gt;&lt;td&gt; </span><span class="hl-var">{$row['runoob_id']}</span><span class="hl-string">&lt;/td&gt; </span><span class="hl-quotes">"</span><span class="hl-code">.
-         </span><span class="hl-quotes">"</span><span class="hl-string">&lt;td&gt;</span><span class="hl-var">{$row['runoob_title']}</span><span class="hl-string"> &lt;/td&gt; </span><span class="hl-quotes">"</span><span class="hl-code">.
-         </span><span class="hl-quotes">"</span><span class="hl-string">&lt;td&gt;</span><span class="hl-var">{$row['runoob_author']}</span><span class="hl-string"> &lt;/td&gt; </span><span class="hl-quotes">"</span><span class="hl-code">.
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">&lt;tr&gt;&lt;td&gt; </span><span class="hl-var">{$row['サンプル_id']}</span><span class="hl-string">&lt;/td&gt; </span><span class="hl-quotes">"</span><span class="hl-code">.
+         </span><span class="hl-quotes">"</span><span class="hl-string">&lt;td&gt;</span><span class="hl-var">{$row['サンプル_title']}</span><span class="hl-string"> &lt;/td&gt; </span><span class="hl-quotes">"</span><span class="hl-code">.
+         </span><span class="hl-quotes">"</span><span class="hl-string">&lt;td&gt;</span><span class="hl-var">{$row['サンプル_author']}</span><span class="hl-string"> &lt;/td&gt; </span><span class="hl-quotes">"</span><span class="hl-code">.
          </span><span class="hl-quotes">"</span><span class="hl-string">&lt;td&gt;</span><span class="hl-var">{$row['submission_date']}</span><span class="hl-string"> &lt;/td&gt; </span><span class="hl-quotes">"</span><span class="hl-code">.
          </span><span class="hl-quotes">"</span><span class="hl-string">&lt;/tr&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
 </span><span class="hl-brackets">}</span><span class="hl-code">
@@ -283,7 +283,7 @@ FROM table_name
 <p>PHP にはもう 1 つの関数<strong>mysqli_fetch_assoc()</strong>があります。この関数は結果セットから 1 行を連想配列として取得します。
 結果セットから取得した行に基づいて生成された連想配列を返し、それ以上行がない場合は false を返します。</p>
 <h3>例</h3>
-<p>次の例を試してください。この例では<strong>mysqli_fetch_assoc()</strong>関数を使用して、データテーブル runoob_tbl のすべてのレコードを出力します：</p>
+<p>次の例を試してください。この例では<strong>mysqli_fetch_assoc()</strong>関数を使用して、データテーブル サンプル_tbl のすべてのレコードを出力します：</p>
 <div class="example">
 <h2 class="example">mysqli_fetch_assoc を使用してデータを取得する：</h2>
 <div class="example_code">
@@ -299,23 +299,23 @@ FROM table_name
 </span><span class="hl-comment">//</span><span class="hl-comment">文字コードを設定し、中国語の文字化けを防止</span><span class="hl-comment"></span><span class="hl-code">
 </span><span class="hl-identifier">mysqli_query</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-code"> , </span><span class="hl-quotes">"</span><span class="hl-string">set names utf8</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
  
-</span><span class="hl-var">$sql</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">SELECT runoob_id, runoob_title, 
-        runoob_author, submission_date
-        FROM runoob_tbl</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-var">$sql</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">SELECT サンプル_id, サンプル_title, 
+        サンプル_author, submission_date
+        FROM サンプル_tbl</span><span class="hl-quotes">'</span><span class="hl-code">;
  
-</span><span class="hl-identifier">mysqli_select_db</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">RUNOOB</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">mysqli_select_db</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">サンプル</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-var">$retval</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_query</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-var">$sql</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-code">! </span><span class="hl-var">$retval</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">
 </span><span class="hl-brackets">{</span><span class="hl-code">
 </span><span class="hl-reserved">die</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">データを読み取れません:</span><span class="hl-quotes">'</span><span class="hl-code"> . </span><span class="hl-identifier">mysqli_error</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-brackets">}</span><span class="hl-code">
-</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">&lt;h2&gt;菜鸟教程 mysqli_fetch_assoc テスト&lt;/h2&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">&lt;h2&gt;サンプル mysqli_fetch_assoc テスト&lt;/h2&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
 </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">&lt;table border="1"&gt;&lt;tr&gt;&lt;td&gt;チュートリアル ID&lt;/td&gt;&lt;td&gt;タイトル&lt;/td&gt;&lt;td&gt;著者&lt;/td&gt;&lt;td&gt;提出日&lt;/td&gt;&lt;/tr&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
 </span><span class="hl-reserved">while</span><span class="hl-brackets">(</span><span class="hl-var">$row</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_fetch_assoc</span><span class="hl-brackets">(</span><span class="hl-var">$retval</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">
 </span><span class="hl-brackets">{</span><span class="hl-code">
-</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">&lt;tr&gt;&lt;td&gt; </span><span class="hl-var">{$row['runoob_id']}</span><span class="hl-string">&lt;/td&gt; </span><span class="hl-quotes">"</span><span class="hl-code">.
-         </span><span class="hl-quotes">"</span><span class="hl-string">&lt;td&gt;</span><span class="hl-var">{$row['runoob_title']}</span><span class="hl-string"> &lt;/td&gt; </span><span class="hl-quotes">"</span><span class="hl-code">.
-         </span><span class="hl-quotes">"</span><span class="hl-string">&lt;td&gt;</span><span class="hl-var">{$row['runoob_author']}</span><span class="hl-string"> &lt;/td&gt; </span><span class="hl-quotes">"</span><span class="hl-code">.
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">&lt;tr&gt;&lt;td&gt; </span><span class="hl-var">{$row['サンプル_id']}</span><span class="hl-string">&lt;/td&gt; </span><span class="hl-quotes">"</span><span class="hl-code">.
+         </span><span class="hl-quotes">"</span><span class="hl-string">&lt;td&gt;</span><span class="hl-var">{$row['サンプル_title']}</span><span class="hl-string"> &lt;/td&gt; </span><span class="hl-quotes">"</span><span class="hl-code">.
+         </span><span class="hl-quotes">"</span><span class="hl-string">&lt;td&gt;</span><span class="hl-var">{$row['サンプル_author']}</span><span class="hl-string"> &lt;/td&gt; </span><span class="hl-quotes">"</span><span class="hl-code">.
          </span><span class="hl-quotes">"</span><span class="hl-string">&lt;td&gt;</span><span class="hl-var">{$row['submission_date']}</span><span class="hl-string"> &lt;/td&gt; </span><span class="hl-quotes">"</span><span class="hl-code">.
          </span><span class="hl-quotes">"</span><span class="hl-string">&lt;/tr&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
 </span><span class="hl-brackets">}</span><span class="hl-code">
@@ -330,7 +330,7 @@ FROM table_name
 </div>
 <p>定数 MYSQLI_NUM を PHP mysqli_fetch_array() 関数の 2 番目のパラメータとして使用して、数値配列を返すこともできます。</p>
 <h3>例</h3>
-<p>次の例では<strong> MYSQLI_NUM </strong>パラメータを使用して、データテーブル runoob_tbl のすべてのレコードを表示します:</p>
+<p>次の例では<strong> MYSQLI_NUM </strong>パラメータを使用して、データテーブル サンプル_tbl のすべてのレコードを表示します:</p>
 <div class="example">
 <h2 class="example">mysqli_fetch_array の MYSQLI_NUM パラメータを使用してデータを取得する：</h2>
 <div class="example_code">
@@ -346,17 +346,17 @@ FROM table_name
 </span><span class="hl-comment">//</span><span class="hl-comment">文字コードを設定し、中国語の文字化けを防止</span><span class="hl-comment"></span><span class="hl-code">
 </span><span class="hl-identifier">mysqli_query</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-code"> , </span><span class="hl-quotes">"</span><span class="hl-string">set names utf8</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
  
-</span><span class="hl-var">$sql</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">SELECT runoob_id, runoob_title, 
-        runoob_author, submission_date
-        FROM runoob_tbl</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-var">$sql</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">SELECT サンプル_id, サンプル_title, 
+        サンプル_author, submission_date
+        FROM サンプル_tbl</span><span class="hl-quotes">'</span><span class="hl-code">;
  
-</span><span class="hl-identifier">mysqli_select_db</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">RUNOOB</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">mysqli_select_db</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">サンプル</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-var">$retval</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_query</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-var">$sql</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-code">! </span><span class="hl-var">$retval</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">
 </span><span class="hl-brackets">{</span><span class="hl-code">
 </span><span class="hl-reserved">die</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">データを読み取れません:</span><span class="hl-quotes">'</span><span class="hl-code"> . </span><span class="hl-identifier">mysqli_error</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-brackets">}</span><span class="hl-code">
-</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">&lt;h2&gt;菜鸟教程 mysqli_fetch_array テスト&lt;/h2&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">&lt;h2&gt;サンプル mysqli_fetch_array テスト&lt;/h2&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
 </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">&lt;table border="1"&gt;&lt;tr&gt;&lt;td&gt;チュートリアル ID&lt;/td&gt;&lt;td&gt;タイトル&lt;/td&gt;&lt;td&gt;著者&lt;/td&gt;&lt;td&gt;提出日&lt;/td&gt;&lt;/tr&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
 </span><span class="hl-reserved">while</span><span class="hl-brackets">(</span><span class="hl-var">$row</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_fetch_array</span><span class="hl-brackets">(</span><span class="hl-var">$retval</span><span class="hl-code">, </span><span class="hl-identifier">MYSQLI_NUM</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">
 </span><span class="hl-brackets">{</span><span class="hl-code">
@@ -397,17 +397,17 @@ FROM table_name
 </span><span class="hl-comment">//</span><span class="hl-comment">文字コードを設定し、中国語の文字化けを防止</span><span class="hl-comment"></span><span class="hl-code">
 </span><span class="hl-identifier">mysqli_query</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-code"> , </span><span class="hl-quotes">"</span><span class="hl-string">set names utf8</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
  
-</span><span class="hl-var">$sql</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">SELECT runoob_id, runoob_title, 
-        runoob_author, submission_date
-        FROM runoob_tbl</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-var">$sql</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">SELECT サンプル_id, サンプル_title, 
+        サンプル_author, submission_date
+        FROM サンプル_tbl</span><span class="hl-quotes">'</span><span class="hl-code">;
  
-</span><span class="hl-identifier">mysqli_select_db</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">RUNOOB</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">mysqli_select_db</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">サンプル</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-var">$retval</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_query</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-var">$sql</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-code">! </span><span class="hl-var">$retval</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">
 </span><span class="hl-brackets">{</span><span class="hl-code">
 </span><span class="hl-reserved">die</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">データを読み取れません:</span><span class="hl-quotes">'</span><span class="hl-code"> . </span><span class="hl-identifier">mysqli_error</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-brackets">}</span><span class="hl-code">
-</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">&lt;h2&gt;菜鸟教程 mysqli_fetch_array テスト&lt;/h2&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">&lt;h2&gt;サンプル mysqli_fetch_array テスト&lt;/h2&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
 </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">&lt;table border="1"&gt;&lt;tr&gt;&lt;td&gt;チュートリアル ID&lt;/td&gt;&lt;td&gt;タイトル&lt;/td&gt;&lt;td&gt;著者&lt;/td&gt;&lt;td&gt;提出日&lt;/td&gt;&lt;/tr&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
 </span><span class="hl-reserved">while</span><span class="hl-brackets">(</span><span class="hl-var">$row</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_fetch_array</span><span class="hl-brackets">(</span><span class="hl-var">$retval</span><span class="hl-code">, </span><span class="hl-identifier">MYSQLI_NUM</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">
 </span><span class="hl-brackets">{</span><span class="hl-code">

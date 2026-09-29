@@ -435,7 +435,7 @@ load_dotenv<span style="color: Olive;">(</span><span style="color: Olive;">)</sp
 <span style="color: #a50"># ========== 1. ナレッジベースの準備 ==========</span><br/>
 <br/>
 knowledge_base <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><br/>
-    <span style="color: #a11;">"菜鸟教程（RUNOOB）は2013年に設立され、中国国内でトップクラスの無料プログラミング学習プラットフォームです。"</span><span style="color: Gray;">,</span><br/>
+    <span style="color: #a11;">"サンプルは2013年に設立され、中国国内でトップクラスの無料プログラミング学習プラットフォームです。"</span><span style="color: Gray;">,</span><br/>
     <span style="color: #a11;">"このプラットフォームは、Python、Java、HTML、CSS、JavaScript などを含む 300 以上のチュートリアルを提供しています。"</span><span style="color: Gray;">,</span><br/>
     <span style="color: #a11;">"Python3 基礎チュートリアルは全30章で、累計学習者数は500万人を超えています。コースは完全に無料です。"</span><span style="color: Gray;">,</span><br/>
     <span style="color: #a11;">"VIP 会員費は月額 ¥99、年額 ¥799 で、ビデオコースと1対1の質疑応答サービスが含まれます。"</span><span style="color: Gray;">,</span><br/>
@@ -474,7 +474,7 @@ retriever <span style="color: Gray;">=</span> vector_store.<span style="color: #
 <br/>
 <span style="color: Gray;">@</span>tool<br/>
 <span style="color: Green;font-weight:bold;">def</span> search_kb<span style="color: Olive;">(</span>query: <span style="color: Teal;">str</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
-    <span style="color: #a11;">"""菜鸟教程（RUNOOB）のナレッジベースを検索し、プラットフォーム、コース、ポリシーなどの公式情報を取得します。<br/>
+    <span style="color: #a11;">"""サンプルのナレッジベースを検索し、プラットフォーム、コース、ポリシーなどの公式情報を取得します。<br/>
 <br/>
     Args:<br/>query: 検索する質問またはキーワード<br/>
     """</span><br/>
@@ -560,7 +560,7 @@ orders_db <span style="color: Gray;">=</span> <span style="color: Olive;">{</spa
         <span style="color: Green;font-weight:bold;">return</span> <span style="color: Olive;">{</span><span style="color: #a11;">"messages"</span>: <span style="color: Olive;">[</span>AIMessage<span style="color: Olive;">(</span><br/>
             <span style="color: Teal;">id</span><span style="color: Gray;">=</span>last.<span style="color: Teal;">id</span><span style="color: Gray;">,</span><br/>
             content<span style="color: Gray;">=</span>last.<span style="color: #05a;">content</span><br/>
-            + <span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span><span style="color: #000099; font-weight: bold;">\n</span>---<span style="color: #000099; font-weight: bold;">\n</span>菜鸟教程 RUNOOB カスタマーセンター | 営業時間 9:00-18:00"</span><br/>
+            + <span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span><span style="color: #000099; font-weight: bold;">\n</span>---<span style="color: #000099; font-weight: bold;">\n</span>サンプル カスタマーセンター | 営業時間 9:00-18:00"</span><br/>
         <span style="color: Olive;">)</span><span style="color: Olive;">]</span><span style="color: Olive;">}</span><br/>
     <span style="color: Green;font-weight:bold;">return</span> <span style="color: Teal;">None</span><br/>
 <br/>
@@ -581,7 +581,7 @@ agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;
     tools<span style="color: Gray;">=</span><span style="color: Olive;">[</span>search_kb<span style="color: Gray;">,</span> query_order<span style="color: Gray;">,</span> transfer_to_human<span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
     middleware<span style="color: Gray;">=</span><span style="color: Olive;">[</span>content_guard<span style="color: Gray;">,</span> auto_signature<span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
     checkpointer<span style="color: Gray;">=</span>checkpointer<span style="color: Gray;">,</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"""あなたは菜鸟教程 RUNOOB のスマートカスタマーサービス「小菜」です。<br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"""あなたはサンプル のスマートカスタマーサービス「小菜」です。<br/>
 <br/>## あなたの役割<br/>1. すべてのユーザーを熱意を持って対応し、「您」という敬称で呼ぶ<br/>2. プラットフォーム情報、コース内容、ポリシーなどの問題については、search_kb を使って検索する<br/>3. 注文照会については、query_order ツールを使用する<br/>4. 解決できない問題に遭遇した場合は、transfer_to_human を使用して人工オペレーターに転送する<br/>
 <br/>## 行動規範<br/>- 回答は簡潔に、毎回 2〜3 文で<br/>- 分からない場合はナレッジベースを検索し、見つからない場合は正直に伝える<br/>- 友好的で親しみやすい口調を保つ"""</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
@@ -657,25 +657,25 @@ agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;
 <p>実行結果：</p>
 <pre>
 === 测试 1：知识库查询 ===
-您好！菜鸟教程的 **Python3 基础教程共 30 章**，完全免费，累计学习人次已超 500 万哦！如需了解其他教程，也可以随时问我～
+您好！サンプル的 **Python3 基础教程共 30 章**，完全免费，累计学习人次已超 500 万哦！如需了解其他教程，也可以随时问我～
 
 ---
-菜鸟教程 RUNOOB 客服中心 | 工作时间 9:00-18:00
+サンプル 客服中心 | 工作时间 9:00-18:00
 
 === 测试 2：订单查询 ===
 您好！您查询的订单 **ORD-2024-001** 状态为 **已完成**。订单内容是 **VIP 年费会员**，金额 **¥799**，下单日期为 **2024-01-15**。请问还有什么可以帮您的吗？
 
 ---
-菜鸟教程 RUNOOB 客服中心 | 工作时间 9:00-18:00
+サンプル 客服中心 | 工作时间 9:00-18:00
 
 === 测试 3：VIP 咨询 ===
 您好！VIP 会员有 **¥99/月** 和 **¥799/年** 两种套餐，包含视频课程和一对一答疑服务哦～请问您需要办理哪种呢？
 
 ---
-菜鸟教程 RUNOOB 客服中心 | 工作时间 9:00-18:00
+サンプル 客服中心 | 工作时间 9:00-18:00
 
 ---
-菜鸟教程 RUNOOB 客服中心 | 工作时间 9:00-18:00
+サンプル 客服中心 | 工作时间 9:00-18:00
 
 === 测试 4：测试记忆 ===
 您好！您刚才问了以下三个问题：
@@ -686,20 +686,20 @@ agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;
 还有什么需要我帮忙的吗？
 
 ---
-菜鸟教程 RUNOOB 客服中心 | 工作时间 9:00-18:00
+サンプル 客服中心 | 工作时间 9:00-18:00
 
 ---
-菜鸟教程 RUNOOB 客服中心 | 工作时间 9:00-18:00
+サンプル 客服中心 | 工作时间 9:00-18:00
 
 === 测试 5：人工转接（HITL） ===
 [需要审批] 用户请求转接人工客服，原因：用户要求投诉，需要转接人工客服处理。是否转接？
 您好！已经为您转接人工客服，预计等待约 5 分钟。您的工单号是 **TK-8823**，请稍候，客服会尽快为您处理～
 
 ---
-菜鸟教程 RUNOOB 客服中心 | 工作时间 9:00-18:00
+サンプル 客服中心 | 工作时间 9:00-18:00
 
 ---
-菜鸟教程 RUNOOB 客服中心 | 工作时间 9:00-18:00
+サンプル 客服中心 | 工作时间 9:00-18:00
 </pre>
 <hr/>
 <h2>プロジェクトのまとめ</h2>

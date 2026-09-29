@@ -329,7 +329,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <br/>
 <span style="color: #060;"># 関数：すべてのターゲットにコンパイラの警告オプションを一括設定する</span><br/>
 <span style="color: #060;"># 引数 ARG_TARGET：警告を設定する必要があるターゲット名</span><br/>
-function<span style="color: #008000;">(</span>runoob_set_warnings ARG_TARGET<span style="color: #008000;">)</span><br/>
+function<span style="color: #008000;">(</span>サンプル_set_warnings ARG_TARGET<span style="color: #008000;">)</span><br/>
     <span style="color: #060;"># コンパイラの種類に応じて異なる警告フラグを設定する</span><br/>
     <span style="color: #05a;">if</span><span style="color: #008000;">(</span>MSVC<span style="color: #008000;">)</span><br/>
         <span style="color: #060;"># MSVC 编译器：启用 /W4 警告级别</span><br/>
@@ -341,7 +341,7 @@ function<span style="color: #008000;">(</span>runoob_set_warnings ARG_TARGET<spa
 endfunction<span style="color: #008000;">(</span><span style="color: #008000;">)</span><br/>
 <br/>
 <span style="color: #060;"># 関数：ターゲットの基本的なビルド情報を出力する</span><br/>
-function<span style="color: #008000;">(</span>runoob_print_target_info ARG_TARGET<span style="color: #008000;">)</span><br/>
+function<span style="color: #008000;">(</span>サンプル_print_target_info ARG_TARGET<span style="color: #008000;">)</span><br/>
     message<span style="color: #008000;">(</span>STATUS <span style="color: #a11;">"目标名称：${ARG_TARGET}"</span><span style="color: #008000;">)</span><br/>
     message<span style="color: #008000;">(</span>STATUS <span style="color: #a11;">"源文件列表：$&lt;TARGET_PROPERTY:${ARG_TARGET},SOURCES&gt;"</span><span style="color: #008000;">)</span><br/>
 endfunction<span style="color: #008000;">(</span><span style="color: #008000;">)</span><br/>
@@ -365,10 +365,10 @@ include<span style="color: #008000;">(</span>MyModule<span style="color: #008000
 add_executable<span style="color: #008000;">(</span>MyApp main.<span style="color: #007788;">cpp</span><span style="color: #008000;">)</span><br/>
 <br/>
 <span style="color: #060;"># モジュール内のカスタム関数を呼び出して、MyApp に警告オプションを設定します</span><br/>
-runoob_set_warnings<span style="color: #008000;">(</span>MyApp<span style="color: #008000;">)</span><br/>
+サンプル_set_warnings<span style="color: #008000;">(</span>MyApp<span style="color: #008000;">)</span><br/>
 <br/>
 <span style="color: #060;"># モジュール内のカスタム関数を呼び出して、目標情報を出力する</span><br/>
-runoob_print_target_info<span style="color: #008000;">(</span>MyApp<span style="color: #008000;">)</span><br/>
+サンプル_print_target_info<span style="color: #008000;">(</span>MyApp<span style="color: #008000;">)</span><br/>
 </div>
 </div>
 <blockquote>
@@ -503,13 +503,13 @@ find_package(Boost REQUIRED COMPONENTS filesystem)
 <span style="color: #666666;">// CMake 設定テンプレートファイル。configure_file() によって config.h を生成する</span><br/>
 <br/>
 <span style="color: #666666;">// プロジェクトバージョン番号（CMake 変数 @PROJECT_VERSION@ で置き換えられる）</span><br/>
-<span style="color: #060;">#define RUNOOB_VERSION "@PROJECT_VERSION@"</span><br/>
+<span style="color: #060;">#define サンプル_VERSION "@PROJECT_VERSION@"</span><br/>
 <br/>
 <span style="color: #666666;">// ビルドタイプ（Debug または Release）</span><br/>
-<span style="color: #060;">#define RUNOOB_BUILD_TYPE "@CMAKE_BUILD_TYPE@"</span><br/>
+<span style="color: #060;">#define サンプル_BUILD_TYPE "@CMAKE_BUILD_TYPE@"</span><br/>
 <br/>
 <span style="color: #666666;">// コンパイルタイムスタンプ</span><br/>
-<span style="color: #060;">#define RUNOOB_BUILD_TIMESTAMP "@BUILD_TIMESTAMP@"</span><br/>
+<span style="color: #060;">#define サンプル_BUILD_TIMESTAMP "@BUILD_TIMESTAMP@"</span><br/>
 </div>
 </div>
 <p><strong>CMakeLists.txt で設定し、ヘッダーファイルを生成する：</strong></p>
@@ -532,8 +532,8 @@ include_directories<span style="color: #008000;">(</span>$<span style="color: #0
 // 在 main.cpp 中包含生成的配置文件
 #include "config.h"
 
-std::cout &lt;&lt; "RUNOOB Version: " &lt;&lt; RUNOOB_VERSION &lt;&lt; std::endl;
-std::cout &lt;&lt; "Build Type: " &lt;&lt; RUNOOB_BUILD_TYPE &lt;&lt; std::endl;
+std::cout &lt;&lt; "サンプル Version: " &lt;&lt; サンプル_VERSION &lt;&lt; std::endl;
+std::cout &lt;&lt; "Build Type: " &lt;&lt; サンプル_BUILD_TYPE &lt;&lt; std::endl;
 </pre>
 <hr/>
 <h2>カスタムビルドステップの生成</h2>
@@ -594,7 +594,7 @@ add_custom_target<span style="color: #008000;">(</span>deploy<br/>
     COMMAND $<span style="color: #008000;">{</span>CMAKE_COMMAND<span style="color: #008000;">}</span> <span style="color: #000040;">-</span>E echo <span style="color: #a11;">"サーバーにデプロイしています..."</span><br/>
     COMMAND $<span style="color: #008000;">{</span>CMAKE_COMMAND<span style="color: #008000;">}</span> <span style="color: #000040;">-</span>E copy_directory<br/>
         $<span style="color: #008000;">{</span>CMAKE_BINARY_DIR<span style="color: #008000;">}</span><span style="color: #000040;">/</span>bin<br/>
-        <span style="color: #000040;">/</span>opt<span style="color: #000040;">/</span>runoob<span style="color: #000040;">/</span>deploy<span style="color: #000040;">/</span><br/>
+        <span style="color: #000040;">/</span>opt<span style="color: #000040;">/</span>サンプル<span style="color: #000040;">/</span>deploy<span style="color: #000040;">/</span><br/>
     COMMENT <span style="color: #a11;">"デプロイ操作を実行します"</span><br/>
 <span style="color: #008000;">)</span><br/>
 <br/>
@@ -732,14 +732,14 @@ add_executable<span style="color: #008000;">(</span>MyApp main.<span style="colo
 <span style="color: #060;"># ターゲットにコンパイルオプションとリンカーフラグを設定する</span><br/>
 set_target_properties<span style="color: #008000;">(</span>MyApp PROPERTIES<br/>
     COMPILE_OPTIONS <span style="color: #a11;">"-Wall;-Wextra"</span><br/>
-    COMPILE_DEFINITIONS <span style="color: #a11;">"RUNOOB_DEBUG"</span><br/>
+    COMPILE_DEFINITIONS <span style="color: #a11;">"サンプル_DEBUG"</span><br/>
     LINK_FLAGS <span style="color: #a11;">"-L/usr/local/lib"</span><br/>
     OUTPUT_NAME <span style="color: #a11;">"my_app"</span><br/>
 <span style="color: #008000;">)</span><br/>
 <br/>
 <span style="color: #060;"># 上記の set_target_properties は、以下の 3 つのディレクティブと同じ効果を持つ：</span><br/>
 <span style="color: #060;"># target_compile_options(MyApp PRIVATE -Wall -Wextra)</span><br/>
-<span style="color: #060;"># target_compile_definitions(MyApp PRIVATE RUNOOB_DEBUG)</span><br/>
+<span style="color: #060;"># target_compile_definitions(MyApp PRIVATE サンプル_DEBUG)</span><br/>
 <span style="color: #060;"># target_link_options(MyApp PRIVATE -L/usr/local/lib)</span><br/>
 </div>
 </div>
@@ -756,8 +756,8 @@ set_target_properties<span style="color: #008000;">(</span>MyApp PROPERTIES<br/>
 target_compile_options<span style="color: #008000;">(</span>MyApp PRIVATE <span style="color: #000040;">-</span>Wall <span style="color: #000040;">-</span>Wextra <span style="color: #000040;">-</span>Wpedantic<span style="color: #008000;">)</span><br/>
 <br/>
 <span style="color: #060;"># MyApp のプリプロセッサ定義を設定する</span><br/>
-<span style="color: #060;"># ソースファイルに #define RUNOOB_VERSION "1.0" と書くのと同じ</span><br/>
-target_compile_definitions<span style="color: #008000;">(</span>MyApp PRIVATE RUNOOB_VERSION<span style="color: #000080;">=</span><span style="color: #a11;">"1.0"</span><span style="color: #008000;">)</span><br/>
+<span style="color: #060;"># ソースファイルに #define サンプル_VERSION "1.0" と書くのと同じ</span><br/>
+target_compile_definitions<span style="color: #008000;">(</span>MyApp PRIVATE サンプル_VERSION<span style="color: #000080;">=</span><span style="color: #a11;">"1.0"</span><span style="color: #008000;">)</span><br/>
 <br/>
 <span style="color: #060;"># MyApp のリンクオプションを設定する</span><br/>
 target_link_options<span style="color: #008000;">(</span>MyApp PRIVATE <span style="color: #000040;">-</span>L<span style="color: #000040;">/</span>usr<span style="color: #000040;">/</span>local<span style="color: #000040;">/</span>lib<span style="color: #008000;">)</span><br/>

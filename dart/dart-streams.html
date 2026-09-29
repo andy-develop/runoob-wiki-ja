@@ -297,7 +297,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
   <span style="font-weight: bold;">var</span> subscription <span style="font-weight: bold;">=</span> stream.<span style="color: #006633;">listen</span><span style="">(</span><br/>
     <span style="">(</span>data<span style="">)</span> <span style="">{</span><br/>
       <span style="color: #999988; font-style: italic;">// 新しいデータが到着するたびに呼び出される</span><br/>
-      print<span style="">(</span><span style="color: #d14;">'RUNOOB データを受信: $data'</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
+      print<span style="">(</span><span style="color: #d14;">'サンプル データを受信: $data'</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
     <span style="">}</span><span style="font-weight: bold;">,</span><br/>
     onError<span style="font-weight: bold;">:</span> <span style="">(</span>error<span style="">)</span> <span style="">{</span><br/>
       <span style="color: #999988; font-style: italic;">// Stream でエラーが発生したときに呼び出される</span><br/>
@@ -319,11 +319,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div>
 <pre>
 开始监听 Stream...
-RUNOOB 收到数据: 1
-RUNOOB 收到数据: 2
-RUNOOB 收到数据: 3
-RUNOOB 收到数据: 4
-RUNOOB 收到数据: 5
+サンプル 收到数据: 1
+サンプル 收到数据: 2
+サンプル 收到数据: 3
+サンプル 收到数据: 4
+サンプル 收到数据: 5
 已取消订阅
 </pre>
 <p>listen() は StreamSubscription オブジェクトを返します。これを使って購読を制御できます：</p>
@@ -354,7 +354,7 @@ Future<span style="font-weight: bold;">&lt;</span>void<span style="font-weight: 
 <br/>
   <span style="color: #999988; font-style: italic;">// await for: 各データの到着を待ち、1つずつ処理する</span><br/>
   await <span style="font-weight: bold;">for</span> <span style="">(</span><span style="font-weight: bold;">var</span> value <span style="font-weight: bold;">in</span> countStream<span style="">(</span><span style="color: #009999;">5</span><span style="">)</span><span style="">)</span> <span style="">{</span><br/>
-    print<span style="">(</span><span style="color: #d14;">'RUNOOB カウント: $value'</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
+    print<span style="">(</span><span style="color: #d14;">'サンプル カウント: $value'</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
   <span style="">}</span><br/>
 <br/>
   print<span style="">(</span><span style="color: #d14;">'Stream の消費が完了しました'</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
@@ -363,11 +363,11 @@ Future<span style="font-weight: bold;">&lt;</span>void<span style="font-weight: 
 </div>
 <pre>
 开始用 await for 消费 Stream...
-RUNOOB 计数: 1
-RUNOOB 计数: 2
-RUNOOB 计数: 3
-RUNOOB 计数: 4
-RUNOOB 计数: 5
+サンプル 计数: 1
+サンプル 计数: 2
+サンプル 计数: 3
+サンプル 计数: 4
+サンプル 计数: 5
 Stream 消费完毕
 </pre>
 <p>await for の特徴：</p>
@@ -435,7 +435,7 @@ Future<span style="font-weight: bold;">&lt;</span>void<span style="font-weight: 
   <span style="color: #999988; font-style: italic;">// カウントダウンイベントを購読</span><br/>
   timer.<span style="color: #006633;">tickStream</span>.<span style="color: #006633;">listen</span><span style="">(</span><br/>
     <span style="">(</span>remaining<span style="">)</span> <span style="">{</span><br/>
-      print<span style="">(</span><span style="color: #d14;">'RUNOOB カウントダウン: $remaining 秒'</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
+      print<span style="">(</span><span style="color: #d14;">'サンプル カウントダウン: $remaining 秒'</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
     <span style="">}</span><span style="font-weight: bold;">,</span><br/>
     onError<span style="font-weight: bold;">:</span> <span style="">(</span>error<span style="">)</span> <span style="">{</span><br/>
       print<span style="">(</span><span style="color: #d14;">'エラー: $error'</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
@@ -454,12 +454,12 @@ Future<span style="font-weight: bold;">&lt;</span>void<span style="font-weight: 
 </div>
 </div>
 <pre>
-RUNOOB 倒计时: 5 秒
-RUNOOB 倒计时: 4 秒
-RUNOOB 倒计时: 3 秒
-RUNOOB 倒计时: 2 秒
-RUNOOB 倒计时: 1 秒
-RUNOOB 倒计时: 0 秒
+サンプル 倒计时: 5 秒
+サンプル 倒计时: 4 秒
+サンプル 倒计时: 3 秒
+サンプル 倒计时: 2 秒
+サンプル 倒计时: 1 秒
+サンプル 倒计时: 0 秒
 倒计时结束！
 </pre>
 <h3>async* ジェネレータ関数</h3>
@@ -470,7 +470,7 @@ RUNOOB 倒计时: 0 秒
 <span style="color: #999988; font-style: italic;">// async* はこれが非同期ジェネレータ関数であることを示す</span><br/>
 <span style="color: #999988; font-style: italic;">// 戻り値の型は Stream でなければならない</span><br/>
 Stream<span style="font-weight: bold;">&lt;</span>String<span style="font-weight: bold;">&gt;</span> readLinesAsync<span style="">(</span><span style="">)</span> async<span style="font-weight: bold;">*</span> <span style="">{</span><br/>
-  <span style="font-weight: bold;">var</span> lines <span style="font-weight: bold;">=</span> <span style="">[</span><span style="color: #d14;">'最初の行'</span><span style="font-weight: bold;">,</span> <span style="color: #d14;">'2番目の行'</span><span style="font-weight: bold;">,</span> <span style="color: #d14;">'3番目の行'</span><span style="font-weight: bold;">,</span> <span style="color: #d14;">'RUNOOB'</span><span style="">]</span><span style="font-weight: bold;">;</span><br/>
+  <span style="font-weight: bold;">var</span> lines <span style="font-weight: bold;">=</span> <span style="">[</span><span style="color: #d14;">'最初の行'</span><span style="font-weight: bold;">,</span> <span style="color: #d14;">'2番目の行'</span><span style="font-weight: bold;">,</span> <span style="color: #d14;">'3番目の行'</span><span style="font-weight: bold;">,</span> <span style="color: #d14;">'サンプル'</span><span style="">]</span><span style="font-weight: bold;">;</span><br/>
 <br/>
   <span style="font-weight: bold;">for</span> <span style="">(</span><span style="font-weight: bold;">var</span> line <span style="font-weight: bold;">in</span> lines<span style="">)</span> <span style="">{</span><br/>
     await Future.<span style="color: #006633;">delayed</span><span style="">(</span>Duration<span style="">(</span>milliseconds<span style="font-weight: bold;">:</span> <span style="color: #009999;">500</span><span style="">)</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
@@ -513,7 +513,7 @@ Future<span style="font-weight: bold;">&lt;</span>void<span style="font-weight: 
   第一行
   第二行
   第三行
-  RUNOOB
+  サンプル
 
 带错误的生成器：
   数字: 1
@@ -554,11 +554,11 @@ Future<span style="font-weight: bold;">&lt;</span>void<span style="font-weight: 
 <br/>
   <span style="color: #999988; font-style: italic;">// 複数の購読者が同時にリッスンできる</span><br/>
   controller.<span style="color: #006633;">stream</span>.<span style="color: #006633;">listen</span><span style="">(</span><br/>
-    <span style="">(</span>data<span style="">)</span> <span style="font-weight: bold;">=&gt;</span> print<span style="">(</span><span style="color: #d14;">'RUNOOB 購読者A: 受信 $data'</span><span style="">)</span><span style="font-weight: bold;">,</span><br/>
+    <span style="">(</span>data<span style="">)</span> <span style="font-weight: bold;">=&gt;</span> print<span style="">(</span><span style="color: #d14;">'サンプル 購読者A: 受信 $data'</span><span style="">)</span><span style="font-weight: bold;">,</span><br/>
   <span style="">)</span><span style="font-weight: bold;">;</span><br/>
 <br/>
   controller.<span style="color: #006633;">stream</span>.<span style="color: #006633;">listen</span><span style="">(</span><br/>
-    <span style="">(</span>data<span style="">)</span> <span style="font-weight: bold;">=&gt;</span> print<span style="">(</span><span style="color: #d14;">'RUNOOB 購読者B: 受信 $data'</span><span style="">)</span><span style="font-weight: bold;">,</span><br/>
+    <span style="">(</span>data<span style="">)</span> <span style="font-weight: bold;">=&gt;</span> print<span style="">(</span><span style="color: #d14;">'サンプル 購読者B: 受信 $data'</span><span style="">)</span><span style="font-weight: bold;">,</span><br/>
   <span style="">)</span><span style="font-weight: bold;">;</span><br/>
 <br/>
   <span style="color: #999988; font-style: italic;">// データを送信すると、両方の購読者が受け取る</span><br/>
@@ -569,7 +569,7 @@ Future<span style="font-weight: bold;">&lt;</span>void<span style="font-weight: 
   <span style="color: #999988; font-style: italic;">// 遅れて購読しても以降のデータは受け取れる（ただし、以前のデータは受け取れない）</span><br/>
   Future.<span style="color: #006633;">delayed</span><span style="">(</span>Duration<span style="">(</span>seconds<span style="font-weight: bold;">:</span> <span style="color: #009999;">1</span><span style="">)</span><span style="font-weight: bold;">,</span> <span style="">(</span><span style="">)</span> <span style="">{</span><br/>
     controller.<span style="color: #006633;">stream</span>.<span style="color: #006633;">listen</span><span style="">(</span><br/>
-      <span style="">(</span>data<span style="">)</span> <span style="font-weight: bold;">=&gt;</span> print<span style="">(</span><span style="color: #d14;">'RUNOOB 遅れてきた購読者C: 受信 $data'</span><span style="">)</span><span style="font-weight: bold;">,</span><br/>
+      <span style="">(</span>data<span style="">)</span> <span style="font-weight: bold;">=&gt;</span> print<span style="">(</span><span style="color: #d14;">'サンプル 遅れてきた購読者C: 受信 $data'</span><span style="">)</span><span style="font-weight: bold;">,</span><br/>
     <span style="">)</span><span style="font-weight: bold;">;</span><br/>
     controller.<span style="color: #006633;">add</span><span style="">(</span><span style="color: #009999;">4</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
     controller.<span style="color: #006633;">close</span><span style="">(</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
@@ -578,15 +578,15 @@ Future<span style="font-weight: bold;">&lt;</span>void<span style="font-weight: 
 </div>
 </div>
 <pre>
-RUNOOB 订阅者A: 收到 1
-RUNOOB 订阅者B: 收到 1
-RUNOOB 订阅者A: 收到 2
-RUNOOB 订阅者B: 收到 2
-RUNOOB 订阅者A: 收到 3
-RUNOOB 订阅者B: 收到 3
-RUNOOB 订阅者A: 收到 4
-RUNOOB 订阅者B: 收到 4
-RUNOOB 迟到的订阅者C: 收到 4
+サンプル 订阅者A: 收到 1
+サンプル 订阅者B: 收到 1
+サンプル 订阅者A: 收到 2
+サンプル 订阅者B: 收到 2
+サンプル 订阅者A: 收到 3
+サンプル 订阅者B: 收到 3
+サンプル 订阅者A: 收到 4
+サンプル 订阅者B: 收到 4
+サンプル 迟到的订阅者C: 收到 4
 </pre>
 <p>2つの Stream の比較：</p>
 <table class="reference">
@@ -628,7 +628,7 @@ RUNOOB 迟到的订阅者C: 收到 4
   <span style="">)</span><span style="font-weight: bold;">;</span><br/>
   print<span style="">(</span><span style="color: #d14;">'先頭の3個だけ:'</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
   await <span style="font-weight: bold;">for</span> <span style="">(</span><span style="font-weight: bold;">var</span> n <span style="font-weight: bold;">in</span> infinite.<span style="color: #006633;">take</span><span style="">(</span><span style="color: #009999;">3</span><span style="">)</span><span style="">)</span> <span style="">{</span><br/>
-    print<span style="">(</span><span style="color: #d14;">'  RUNOOB: $n'</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
+    print<span style="">(</span><span style="color: #d14;">'  サンプル: $n'</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
   <span style="">}</span><br/>
 <br/>
   <span style="color: #999988; font-style: italic;">// skip：先頭のN個をスキップ</span><br/>
@@ -660,9 +660,9 @@ RUNOOB 迟到的订阅者C: 收到 4
   20
   30
 只取前 3 个:
-  RUNOOB: 1
-  RUNOOB: 2
-  RUNOOB: 3
+  サンプル: 1
+  サンプル: 2
+  サンプル: 3
 跳过前 2 个:
   3
   4

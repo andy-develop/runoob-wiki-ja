@@ -251,26 +251,26 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: #006600; font-style: italic;">// console.log でライフサイクルイベントを出力し、apply と effect の順序を観察する</span><br/>
 <span style="color: #FF0000;">export</span> <span style="color: #000066; font-weight: bold;">function</span> apply<span style="color: #009900;">(</span>ctx<span style="color: #339933;">:</span> Context<span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
   <span style="color: #006600; font-style: italic;">// apply が呼び出される：プラグインは LOADING から ACTIVE へ移行する</span><br/>
-  console.<span style="color: #660066;">log</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'runoob plugin loading'</span><span style="color: #009900;">)</span><br/>
+  console.<span style="color: #660066;">log</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'サンプル plugin loading'</span><span style="color: #009900;">)</span><br/>
 <br/>
   <span style="color: #006600; font-style: italic;">// エフェクトを登録：返されたクリーンアップ関数はアンマウント時に実行される</span><br/>
   ctx.<span style="color: #660066;">effect</span><span style="color: #009900;">(</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
     <span style="color: #006600; font-style: italic;">// エフェクト登録完了（apply はまだ実行中）</span><br/>
-    console.<span style="color: #660066;">log</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'runoob effect registered'</span><span style="color: #009900;">)</span><br/>
+    console.<span style="color: #660066;">log</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'サンプル effect registered'</span><span style="color: #009900;">)</span><br/>
     <span style="color: #006600; font-style: italic;">// 返回 disposer：插件卸载时调用</span><br/>
-    <span style="color: #000066; font-weight: bold;">return</span> <span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> console.<span style="color: #660066;">log</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'runoob effect cleaned up'</span><span style="color: #009900;">)</span><br/>
+    <span style="color: #000066; font-weight: bold;">return</span> <span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> console.<span style="color: #660066;">log</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'サンプル effect cleaned up'</span><span style="color: #009900;">)</span><br/>
   <span style="color: #009900;">}</span><span style="color: #009900;">)</span><br/>
 <span style="color: #009900;">}</span><br/>
 </div>
 </div>
 <p>ロード時の出力：</p>
 <pre>
-runoob plugin loading
-runoob effect registered
+サンプル plugin loading
+サンプル effect registered
 </pre>
 <p>アンロード時の出力：</p>
 <pre>
-runoob effect cleaned up
+サンプル effect cleaned up
 </pre>
 <p>apply が最初に実行され、その後 effect の登録が実行され、返されたディスポーザがアンロード段階で呼び出されることがわかります。</p>
 <hr/>

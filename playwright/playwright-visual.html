@@ -321,18 +321,18 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2 class="example">例</h2>
 <div class="example_code">
 
-test<span style="color: #009900;">(</span><span style="color: #3366CC;">'RUNOOB ホームページのビジュアルリグレッション'</span><span style="color: #339933;">,</span> async <span style="color: #009900;">(</span><span style="color: #009900;">{</span> page <span style="color: #009900;">}</span><span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
-  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.runoob.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+test<span style="color: #009900;">(</span><span style="color: #3366CC;">'サンプル ホームページのビジュアルリグレッション'</span><span style="color: #339933;">,</span> async <span style="color: #009900;">(</span><span style="color: #009900;">{</span> page <span style="color: #009900;">}</span><span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
+  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.example.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
   <span style="color: #006600; font-style: italic;">// 初回実行: 基準スクリーンショットを保存</span><br/>
   <span style="color: #006600; font-style: italic;">// 以降の実行: 基準スクリーンショットと比較</span><br/>
-  await expect<span style="color: #009900;">(</span>page<span style="color: #009900;">)</span>.<span style="color: #660066;">toHaveScreenshot</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'runoob-homepage.png'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+  await expect<span style="color: #009900;">(</span>page<span style="color: #009900;">)</span>.<span style="color: #660066;">toHaveScreenshot</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'サンプル-homepage.png'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 </div>
 </div>
 <p>初回実行時、Playwright はエラーを報告し、基準スクリーンショットを生成します:</p>
 <pre>
-Error: A snapshot doesn't exist at runoob-homepage-chromium-darwin.png,
+Error: A snapshot doesn't exist at サンプル-homepage-chromium-darwin.png,
 writing actual.
 </pre>
 <p>2回目の実行時には、自動的に基準スクリーンショットと比較されます。</p>
@@ -360,7 +360,7 @@ await expect<span style="color: #009900;">(</span>page<span style="color: #00990
 <div class="example_code">
 
 test<span style="color: #009900;">(</span><span style="color: #3366CC;">'ナビゲーションバーのビジュアルリグレッション'</span><span style="color: #339933;">,</span> async <span style="color: #009900;">(</span><span style="color: #009900;">{</span> page <span style="color: #009900;">}</span><span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
-  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.runoob.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.example.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
   <span style="color: #006600; font-style: italic;">// ナビゲーションバーのスクリーンショットのみを比較</span><br/>
   <span style="color: #000066; font-weight: bold;">const</span> navbar <span style="color: #339933;">=</span> page.<span style="color: #660066;">getByRole</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'navigation'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
@@ -376,7 +376,7 @@ test<span style="color: #009900;">(</span><span style="color: #3366CC;">'ナビ�
 tests/
 ├── example.spec.ts
 └── example.spec.ts-snapshots/
-    └── runoob-homepage-chromium-darwin.png
+    └── サンプル-homepage-chromium-darwin.png
 </pre>
 <p>ファイル名にはブラウザ名とオペレーティングシステムが含まれ、異なるプラットフォームの基準を独立して管理できます。</p>
 <h3>Golden File の更新</h3>

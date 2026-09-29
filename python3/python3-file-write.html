@@ -379,25 +379,25 @@ fileObject.write( [ str ])
 <h3>戻り値</h3>
 <p>戻り値は、書き込まれた文字の長さです。</p>
 <h3>例</h3>
-<p>ファイル runoob.txt の内容は次のとおりです：</p>
+<p>ファイル サンプル.txt の内容は次のとおりです：</p>
 <pre>
-1:www.runoob.com
-2:www.runoob.com
-3:www.runoob.com
-4:www.runoob.com
-5:www.runoob.com
+1:www.example.com
+2:www.example.com
+3:www.example.com
+4:www.example.com
+5:www.example.com
 </pre>
 <p>次の例は、write() メソッドの使用法を示しています：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #a50">#!/usr/bin/python3</span><br/>
 <br/>
 <span style="color: #a50"># with 文を使用してファイルを開き、ファイルが正しく閉じられるようにします</span><br/>
-<span style="color: Green;font-weight:bold;">with</span> <span style="color: Teal;">open</span><span style="color: Olive;">(</span><span style="color: #a11;">"runoob.txt"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"r+"</span><span style="color: Olive;">)</span> <span style="color: Green;font-weight:bold;">as</span> fo:<br/>
+<span style="color: Green;font-weight:bold;">with</span> <span style="color: Teal;">open</span><span style="color: Olive;">(</span><span style="color: #a11;">"サンプル.txt"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"r+"</span><span style="color: Olive;">)</span> <span style="color: Green;font-weight:bold;">as</span> fo:<br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"ファイル名: "</span><span style="color: Gray;">,</span> fo.<span style="color: #05a;">name</span><span style="color: Olive;">)</span><br/>
 <br/>
     <span style="color: #a50"># ファイルの末尾に1行書き込む</span><br/>
     fo.<span style="color: #05a;">seek</span><span style="color: Olive;">(</span><span style="color: Maroon;">0</span><span style="color: Gray;">,</span> <span style="color: Maroon;">2</span><span style="color: Olive;">)</span>  <span style="color: #a50"># ファイルポインタをファイルの末尾に移動する</span><br/>
-    fo.<span style="color: #05a;">write</span><span style="color: Olive;">(</span><span style="color: #a11;">"6:www.runoob.com<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 内容を書き込み、改行を追加する</span><br/>
+    fo.<span style="color: #05a;">write</span><span style="color: Olive;">(</span><span style="color: #a11;">"6:www.example.com<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 内容を書き込み、改行を追加する</span><br/>
 <br/>
     <span style="color: #a50"># ファイルのすべての内容を読み取る</span><br/>
     fo.<span style="color: #05a;">seek</span><span style="color: Olive;">(</span><span style="color: Maroon;">0</span><span style="color: Olive;">)</span>  <span style="color: #a50"># ファイルポインタをファイルの先頭に移動する</span><br/>
@@ -406,22 +406,22 @@ fileObject.write( [ str ])
 </div></div>
 <p>上記の例の出力結果は次のとおりです：</p>
 <pre>
-文件行号 0 - 1:www.runoob.com
-文件行号 1 - 2:www.runoob.com
-文件行号 2 - 3:www.runoob.com
-文件行号 3 - 4:www.runoob.com
-文件行号 4 - 5:www.runoob.com
-文件行号 5 - 6:www.runoob.com
+文件行号 0 - 1:www.example.com
+文件行号 1 - 2:www.example.com
+文件行号 2 - 3:www.example.com
+文件行号 3 - 4:www.example.com
+文件行号 4 - 5:www.example.com
+文件行号 5 - 6:www.example.com
 </pre>
 <p>ファイルの内容を確認：</p>
 <pre>
-$ cat runoob.txt 
-1:www.runoob.com
-2:www.runoob.com
-3:www.runoob.com
-4:www.runoob.com
-5:www.runoob.com
-6:www.runoob.com
+$ cat サンプル.txt 
+1:www.example.com
+2:www.example.com
+3:www.example.com
+4:www.example.com
+5:www.example.com
+6:www.example.com
 </pre>
 <h3>注意事項</h3><ol><li><p><strong>ファイルモード</strong>：</p><ul><li><p>ファイルが読み取り専用モード（<code>"r"</code>）で開かれている場合、呼び出すと<code>write()</code>例外が発生し<code>io.UnsupportedOperation</code>ます。</p></li><li><p>ファイルが書き込みモード（<code>"w"</code> 或 <code>"w+"</code>）で開かれている場合、ファイルの内容はクリアされ、その後新しい内容が書き込まれます。</p></li><li><p>ファイルが追加モード（<code>"a"</code> 或 <code>"a+"</code>）で開かれている場合、書き込まれた内容はファイルの末尾に追加されます。</p></li></ul></li><li><p><strong>ファイルポインタ</strong>：</p><ul><li><p>書き込み操作は、現在のファイルポインタの位置から開始されます。ファイルの先頭や特定の位置から書き込む必要がある場合は、<code>seek()</code>メソッドを使用してファイルポインタを移動できます。</p></li></ul></li><li><p><strong>改行文字</strong>：</p><ul><li><p><code>write()</code>メソッドは自動的に改行文字を追加しません。改行が必要な場合は、文字列内に明示的に追加する必要があります。<code>\n</code>。</p></li></ul></li><li><p><strong>戻り値</strong>：</p><ul><li><p><code>write()</code>メソッドは書き込まれた文字数を返します。書き込みに失敗すると、例外が発生する場合があります。</p></li></ul></li></ol>
 <hr/>

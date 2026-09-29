@@ -276,7 +276,7 @@ client <span style="color: Gray;">=</span> OpenAI<span style="color: Olive;">(</
 <span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># ローカル画像を読み込み、base64 文字列にエンコード</span><br/>
-<span style="color: Green;font-weight:bold;">with</span> <span style="color: Teal;">open</span><span style="color: Olive;">(</span><span style="color: #a11;">"runoob-logo.png"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"rb"</span><span style="color: Olive;">)</span> <span style="color: Green;font-weight:bold;">as</span> f:<br/>
+<span style="color: Green;font-weight:bold;">with</span> <span style="color: Teal;">open</span><span style="color: Olive;">(</span><span style="color: #a11;">"サンプル-logo.png"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"rb"</span><span style="color: Olive;">)</span> <span style="color: Green;font-weight:bold;">as</span> f:<br/>
     b64 <span style="color: Gray;">=</span> <span style="color: #05a;">base64</span>.<span style="color: #05a;">b64encode</span><span style="color: Olive;">(</span>f.<span style="color: #05a;">read</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span>.<span style="color: #05a;">decode</span><span style="color: Olive;">(</span><span style="color: #a11;">"utf-8"</span><span style="color: Olive;">)</span><br/>
 <br/>
 response <span style="color: Gray;">=</span> client.<span style="color: #05a;">chat</span>.<span style="color: #05a;">completions</span>.<span style="color: #05a;">create</span><span style="color: Olive;">(</span><br/>
@@ -303,7 +303,7 @@ response <span style="color: Gray;">=</span> client.<span style="color: #05a;">c
 </div>
 <p>実行出力:</p>
 <pre>
-图片中的文字是 "RUNOOB"。
+图片中的文字是 "サンプル"。
 </pre>
 <h3>方法2: 外部URL</h3>
 <p>画像を公開アクセス可能なサーバーにデプロイし、リクエストには URL 文字列だけを渡すため、リクエストボディが非常に小さくなります。</p>
@@ -320,7 +320,7 @@ curl https:<span style="color: #000000; font-weight: bold;">//</span>api.deepsee
     {<br/>
       "role": "user",<br/>
       "content": [<br/>{"type": "text", "text": "このグラフの傾向を一言でまとめてください"},<br/>
-        {"type": "image_url", "image_url": {"url": "https://static.runoob.com/images/chart-demo.png"}}<br/>
+        {"type": "image_url", "image_url": {"url": "https://static.example.com/images/chart-demo.png"}}<br/>
       ]<br/>
     }<br/>
   ]<br/>
@@ -363,7 +363,7 @@ curl https:<span style="color: #000000; font-weight: bold;">//</span>api.deepsee
           "type": "image",<br/>
           "source": {<br/>
             "type": "url",<br/>
-            "url": "https://static.runoob.com/images/code-screenshot.png"<br/>
+            "url": "https://static.example.com/images/code-screenshot.png"<br/>
           }<br/>
         },<br/>{"type": "text", "text": "このコードを実行するとエラーになりますが、問題は何行目ですか？"}<br/>
       ]<br/>
@@ -388,7 +388,7 @@ response <span style="color: Gray;">=</span> client.<span style="color: #05a;">r
                 <span style="color: Olive;">{</span><span style="color: #a11;">"type"</span>: <span style="color: #a11;">"input_text"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"text"</span>: <span style="color: #a11;">"スクリーンショット内のテーブルを Markdown に整理する"</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span><br/>
                 <span style="color: Olive;">{</span><br/>
                     <span style="color: #a11;">"type"</span>: <span style="color: #a11;">"input_image"</span><span style="color: Gray;">,</span><br/>
-                    <span style="color: #a11;">"image_url"</span>: <span style="color: #a11;">"https://static.runoob.com/images/table.png"</span><br/>
+                    <span style="color: #a11;">"image_url"</span>: <span style="color: #a11;">"https://static.example.com/images/table.png"</span><br/>
                 <span style="color: Olive;">}</span><br/>
             <span style="color: Olive;">]</span><br/>
         <span style="color: Olive;">}</span><br/>
@@ -413,7 +413,7 @@ response <span style="color: Gray;">=</span> client.<span style="color: #05a;">r
 curl https:<span style="color: #000000; font-weight: bold;">//</span>api.deepseek.com<span style="color: #000000; font-weight: bold;">/</span>files \<br/>
   <span style="color: #660033;">-H</span> <span style="color: #a10;">"Authorization: Bearer <span style="color: #007800;">${DEEPSEEK_API_KEY}</span>"</span> \<br/>
   <span style="color: #660033;">-F</span> <span style="color: #a10;">"purpose=user_data"</span> \<br/>
-  <span style="color: #660033;">-F</span> <span style="color: #a10;">"file=@runoob-chart.png"</span><br/>
+  <span style="color: #660033;">-F</span> <span style="color: #a10;">"file=@サンプル-chart.png"</span><br/>
 </div>
 </div>
 <p>アップロードに成功すると、プラットフォームはファイルのメタ情報を返します。</p>
@@ -424,7 +424,7 @@ curl https:<span style="color: #000000; font-weight: bold;">//</span>api.deepsee
 {<br/>
   "id": "file-api-qw3x8v2m6n",<br/>
   "object": "file",<br/>
-  "filename": "runoob-chart.png",<br/>
+  "filename": "サンプル-chart.png",<br/>
   "purpose": "user_data",<br/>
   "bytes": 154320,<br/>
   "created_at": 1787300000,<br/>

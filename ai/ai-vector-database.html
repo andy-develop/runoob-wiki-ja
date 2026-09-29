@@ -789,12 +789,12 @@ v4 <span style="color: Gray;">=</span> np.<span style="color: #05a;">random</spa
     <span style="color: Green;font-weight:bold;">from</span> chromadb.<span style="color: #05a;">utils</span> <span style="color: Green;font-weight:bold;">import</span> embedding_functions<br/>
 <br/>
     <span style="color: #a50"># 1. クライアントの初期化（ローカルモード、データはディスクに保存）</span><br/>
-    client <span style="color: Gray;">=</span> chromadb.<span style="color: #05a;">PersistentClient</span><span style="color: Olive;">(</span>path<span style="color: Gray;">=</span><span style="color: #a11;">"./runoob-chroma-db"</span><span style="color: Olive;">)</span><br/>
+    client <span style="color: Gray;">=</span> chromadb.<span style="color: #05a;">PersistentClient</span><span style="color: Olive;">(</span>path<span style="color: Gray;">=</span><span style="color: #a11;">"./サンプル-chroma-db"</span><span style="color: Olive;">)</span><br/>
 <br/>
     <span style="color: #a50"># 2. コレクションの作成または取得</span><br/>
     collection <span style="color: Gray;">=</span> client.<span style="color: #05a;">get_or_create_collection</span><span style="color: Olive;">(</span><br/>
-        name<span style="color: Gray;">=</span><span style="color: #a11;">"runoob_docs"</span><span style="color: Gray;">,</span><br/>
-        metadata<span style="color: Gray;">=</span><span style="color: Olive;">{</span><span style="color: #a11;">"description"</span>: <span style="color: #a11;">"菜鳥教程（Runoob）ドキュメントコレクション"</span><span style="color: Olive;">}</span><br/>
+        name<span style="color: Gray;">=</span><span style="color: #a11;">"サンプル_docs"</span><span style="color: Gray;">,</span><br/>
+        metadata<span style="color: Gray;">=</span><span style="color: Olive;">{</span><span style="color: #a11;">"description"</span>: <span style="color: #a11;">"菜鳥教程（サンプル）ドキュメントコレクション"</span><span style="color: Olive;">}</span><br/>
     <span style="color: Olive;">)</span><br/>
 <br/>
     <span style="color: #a50"># 3. ドキュメントの追加（Chromaがembeddingを自動処理）</span><br/>
@@ -884,7 +884,7 @@ v4 <span style="color: Gray;">=</span> np.<span style="color: #05a;">random</spa
 <br/>
     <span style="color: #a50"># 2. コレクションの作成</span><br/>
     client.<span style="color: #05a;">recreate_collection</span><span style="color: Olive;">(</span><br/>
-        collection_name<span style="color: Gray;">=</span><span style="color: #a11;">"runoob_collection"</span><span style="color: Gray;">,</span><br/>
+        collection_name<span style="color: Gray;">=</span><span style="color: #a11;">"サンプル_collection"</span><span style="color: Gray;">,</span><br/>
         vectors_config<span style="color: Gray;">=</span>VectorParams<span style="color: Olive;">(</span><br/>
             size<span style="color: Gray;">=</span><span style="color: Maroon;">128</span><span style="color: Gray;">,</span><br/>
             distance<span style="color: Gray;">=</span>Distance.<span style="color: #05a;">COSINE</span>  <span style="color: #a50"># または L2, DOT</span><br/>
@@ -911,7 +911,7 @@ v4 <span style="color: Gray;">=</span> np.<span style="color: #05a;">random</spa
     <span style="color: Olive;">]</span><br/>
 <br/>
     client.<span style="color: #05a;">upsert</span><span style="color: Olive;">(</span><br/>
-        collection_name<span style="color: Gray;">=</span><span style="color: #a11;">"runoob_collection"</span><span style="color: Gray;">,</span><br/>
+        collection_name<span style="color: Gray;">=</span><span style="color: #a11;">"サンプル_collection"</span><span style="color: Gray;">,</span><br/>
         points<span style="color: Gray;">=</span>points<br/>
     <span style="color: Olive;">)</span><br/>
 <br/>
@@ -919,7 +919,7 @@ v4 <span style="color: Gray;">=</span> np.<span style="color: #05a;">random</spa
     query_vector <span style="color: Gray;">=</span> np.<span style="color: #05a;">random</span>.<span style="color: #05a;">randn</span><span style="color: Olive;">(</span><span style="color: Maroon;">128</span><span style="color: Olive;">)</span>.<span style="color: #05a;">tolist</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
     results <span style="color: Gray;">=</span> client.<span style="color: #05a;">search</span><span style="color: Olive;">(</span><br/>
-        collection_name<span style="color: Gray;">=</span><span style="color: #a11;">"runoob_collection"</span><span style="color: Gray;">,</span><br/>
+        collection_name<span style="color: Gray;">=</span><span style="color: #a11;">"サンプル_collection"</span><span style="color: Gray;">,</span><br/>
         query_vector<span style="color: Gray;">=</span>query_vector<span style="color: Gray;">,</span><br/>
         limit<span style="color: Gray;">=</span><span style="color: Maroon;">5</span><span style="color: Gray;">,</span><br/>
         <span style="color: #a50"># フィルタを追加できます</span><br/>

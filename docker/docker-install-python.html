@@ -172,7 +172,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>Sort by を使用して他のバージョンの python を確認できます。デフォルトは最新バージョンです。<strong>python:latest</strong>。</p>
 <p>さらに、docker search python コマンドを使用して利用可能なバージョンを確認することもできます。</p>
 <pre>
-runoob@runoob:~/python$ docker search python
+サンプル@サンプル:~/python$ docker search python
 NAME                           DESCRIPTION                        STARS     OFFICIAL   AUTOMATED
 python                         Python is an interpreted,...       982       [OK]       
 kaggle/python                  Docker image for Python...         33                   [OK]
@@ -189,10 +189,10 @@ ruimashita/python              ubuntu 14.04 python                0             
 tnanba/python                  Python on CentOS-7 image.          0                    [OK]
 </pre>
 <p>ここでは、公式のイメージを取得します。タグは3.5です。</p>
-<pre>runoob@runoob:~/python$ docker pull python:3.5</pre>
+<pre>サンプル@サンプル:~/python$ docker pull python:3.5</pre>
 <p>ダウンロードが完了するのを待つと、ローカルのイメージリストで REPOSITORY が python、タグが 3.5 のイメージを確認できます。</p>
 <pre>
-runoob@runoob:~/python$ docker images python:3.5 
+サンプル@サンプル:~/python$ docker images python:3.5 
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 python              3.5              045767ddf24a        9 days ago          684.1 MB
 </pre>
@@ -200,7 +200,7 @@ python              3.5              045767ddf24a        9 days ago          684
 <p><strong>创建 Dockerfile&lt;</strong>/p&gt;
 <p>まず、python ディレクトリを作成します。後で関連するものを保存するためです。</p>
 <pre>
-runoob@runoob:~$ mkdir -p ~/python ~/python/myapp
+サンプル@サンプル:~$ mkdir -p ~/python ~/python/myapp
 </pre>
 <p>myapp ディレクトリは、python コンテナで設定されたアプリケーションディレクトリにマッピングされます。</p>
 <p>作成した python ディレクトリに移動し、Dockerfile を作成します。</p>
@@ -259,11 +259,11 @@ CMD ["python3"]
 </pre>
 <p>Dockerfile を使用してイメージを作成し、自分の名前に置き換えます：</p>
 <pre>
-runoob@runoob:~/python$ docker build -t python:3.5 .
+サンプル@サンプル:~/python$ docker build -t python:3.5 .
 </pre>
 <p>作成が完了すると、ローカルのイメージリストで先ほど作成したイメージを見つけることができます。</p>
 <pre>
-runoob@runoob:~/python$ docker images python:3.5 
+サンプル@サンプル:~/python$ docker images python:3.5 
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 python              3.5              045767ddf24a        9 days ago          684.1 MB
 </pre>
@@ -277,7 +277,7 @@ print("Hello, World!");
 </pre>
 <h3>运行容器</h3>
 <pre>
-runoob@runoob:~/python$ docker run  -v $PWD/myapp:/usr/src/myapp  -w /usr/src/myapp python:3.5 python helloworld.py
+サンプル@サンプル:~/python$ docker run  -v $PWD/myapp:/usr/src/myapp  -w /usr/src/myapp python:3.5 python helloworld.py
 </pre>
 <p>命令说明：</p>
 <p><strong>-v $PWD/myapp:/usr/src/myapp:</strong>ホストの現在のディレクトリにある myapp を、コンテナの /usr/src/myapp にマウントします。</p>

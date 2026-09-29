@@ -285,7 +285,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <ul><li><code>-c</code>：送信するデータパケット数を指定します。例：<code>-c 4</code>4 つのデータパケットを送信することを示します。</li><li><code>-i</code>：データパケットを送信する間隔（秒）を指定します。例：<code>-i 0.5</code>0.5 秒ごとに 1 回送信することを示します。</li><li><code>-w</code>：データパケット送信の待機時間の上限を設定し、その時間を超えると自動的に停止します。例：<code>-w 5</code>5 秒間待機することを示します。</li><li><code>-s</code>：各データパケットのサイズ（バイト）を指定します。デフォルトは 56 バイトです。</li><li><code>-t</code>：データパケットの生存時間（TTL）を設定し、ルーティングホップ数を指定します。</li><li><code>-q</code>：静音モード。開始時と終了時の統計データのみを表示し、各データパケットの詳細情報は表示しません。</li><li><code>-f</code>：クレイジーモード。データパケットを高速送信し、ネットワークの負荷容量をテストするために使用します。慎重に使用する必要があります。</li><li><code>-l</code>：一度に送信するデータパケット数を指定します。通常、負荷テストに使用されます。</li><li><code>-v</code>：詳細な出力情報を表示し、デバッグに使用します。</li><li><code>-4</code>：IPv4 プロトコルの使用を強制します。</li><li><code>-6</code>：IPv6 プロトコルの使用を強制します。</li></ul>
 <h3>例</h3>
 <p><strong>1、ホストとの接続を確認：</strong></p>
-<pre># ping www.runoob.com //ping主机
+<pre># ping www.example.com //ping主机
 PING aries.m.alikunlun.com (114.80.174.110) 56(84) bytes of data.
 64 bytes from 114.80.174.110: icmp_seq=1 ttl=64 time=0.025 ms
 64 bytes from 114.80.174.110: icmp_seq=2 ttl=64 time=0.036 ms
@@ -305,7 +305,7 @@ rtt min/avg/max/mdev = 0.021/0.035/0.078/0.011 ms
 //需要手动终止Ctrl+C
 </pre>
 <p><strong>2、送信するデータパケット数を制限：</strong></p>
-<pre># ping -c 2 www.runoob.com
+<pre># ping -c 2 www.example.com
 PING aries.m.alikunlun.com (114.80.174.120) 56(84) bytes of data.
 64 bytes from 114.80.174.120: icmp_seq=1 ttl=54 time=6.18 ms
 64 bytes from 114.80.174.120: icmp_seq=2 ttl=54 time=15.4 ms
@@ -329,11 +329,11 @@ rtt min/avg/max/mdev = 61.959/62.843/63.984/0.894 ms, pipe 2
 </pre>
 <p><strong>4、データパケットの間隔時間の設定：</strong>0.2 秒間隔でデータパケットを送信します。このパラメータは、短時間でのネットワーク安定性のテストに適しています。</p>
 <pre>
-ping -i 0.2 www.runoob.com</pre>
+ping -i 0.2 www.example.com</pre>
 <p>
 <strong>5、データパケットサイズの指定：</strong>データパケットサイズを 128 バイトに設定します。大きなデータ転送時の安定性を確認するのに適しています。</p>
 <pre>
-ping -s 128 www.runoob.com</pre>
+ping -s 128 www.example.com</pre>
 <p>
 <strong>6、ネットワークタイムアウトの設定：</strong>テスト時間を 10 秒に制限します。ネットワーク環境が不確実な場合の接続テストに適しています。</p>
 <pre>

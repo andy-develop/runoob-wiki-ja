@@ -332,7 +332,7 @@ WHERE  column_name OPERATOR
       [WHERE])</pre>
 <h3>例</h3>
 <p>COMPANY テーブルを作成します（<a href="https://static.jyshare.com/download/company.sql">COMPANY SQL ファイルをダウンロード</a>）、データ内容は次のとおりです：</p>
-<pre>runoobdb# select * from COMPANY;
+<pre>サンプルdb# select * from COMPANY;
  id | name  | age | address   | salary
 ----+-------+-----+-----------+--------
   1 | Paul  |  32 | California|  20000
@@ -344,7 +344,7 @@ WHERE  column_name OPERATOR
   7 | James |  24 | Houston   |  10000
 (7 rows)</pre>
 <p>では、SELECT 文でサブクエリを使用してみましょう：</p>
-<pre>runoobdb=# SELECT * FROM COMPANY WHERE ID IN (SELECT ID FROM COMPANY  WHERE SALARY &gt; 45000) ;</pre>
+<pre>サンプルdb=# SELECT * FROM COMPANY WHERE ID IN (SELECT ID FROM COMPANY  WHERE SALARY &gt; 45000) ;</pre>
 <p>結果は次のとおりです：</p>
 <pre> id | name  | age |  address    | salary
 ----+-------+-----+-------------+--------
@@ -362,7 +362,7 @@ WHERE  column_name OPERATOR
    [ WHERE VALUE OPERATOR ]</pre>
 <h3>例</h3>
 <p>COMPANY_BKP の構造は COMPANY テーブルと似ており、同じ CREATE TABLE を使用して作成できますが、テーブル名を COMPANY_BKP に変更するだけです。では、COMPANY テーブル全体を COMPANY_BKP にコピーします。構文は次のとおりです：</p>
-<pre>runoobdb=# INSERT INTO COMPANY_BKP SELECT * FROM COMPANY  WHERE ID IN (SELECT ID FROM COMPANY) ;</pre>
+<pre>サンプルdb=# INSERT INTO COMPANY_BKP SELECT * FROM COMPANY  WHERE ID IN (SELECT ID FROM COMPANY) ;</pre>
 <hr/>
 <h2>UPDATE 文でのサブクエリの使用</h2>
 <p>サブクエリは UPDATE 文と組み合わせて使用できます。UPDATE 文でサブクエリを使用すると、テーブルの1つまたは複数の列が更新されます。</p>
@@ -376,7 +376,7 @@ SET column_name = new_value
 <h3>例</h3>
 <p>COMPANY_BKP テーブルがあり、これは COMPANY テーブルのバックアップであるとします。</p>
 <p>次の例では、COMPANY テーブル内の AGE が 27 より大きいすべての顧客の SALARY を元の 0.50 倍に更新します：</p>
-<pre>runoobdb=# UPDATE COMPANY SET SALARY = SALARY * 0.50 WHERE AGE IN (SELECT AGE FROM COMPANY_BKP WHERE AGE &gt;= 27 );</pre>
+<pre>サンプルdb=# UPDATE COMPANY SET SALARY = SALARY * 0.50 WHERE AGE IN (SELECT AGE FROM COMPANY_BKP WHERE AGE &gt;= 27 );</pre>
 <p>これは2行に影響し、最終的な COMPANY テーブルのレコードは次のとおりです：</p>
 <pre> id | name  | age | address     | salary
 ----+-------+-----+-------------+--------
@@ -400,7 +400,7 @@ SET column_name = new_value
 <h3>例</h3>
 <p>COMPANY_BKP テーブルがあり、これは COMPANY テーブルのバックアップであるとします。</p>
 <p>次の例では、COMPANY テーブル内の AGE が 27 以上であるすべての顧客レコードを削除します：</p>
-<pre>runoobdb=# DELETE FROM COMPANY WHERE AGE IN (SELECT AGE FROM COMPANY_BKP WHERE AGE &gt; 27 );</pre>
+<pre>サンプルdb=# DELETE FROM COMPANY WHERE AGE IN (SELECT AGE FROM COMPANY_BKP WHERE AGE &gt; 27 );</pre>
 <p>これは2行に影響し、最終的な COMPANY テーブルのレコードは次のとおりです：</p>
 <pre> id | name  | age | address     | salary
 ----+-------+-----+-------------+--------

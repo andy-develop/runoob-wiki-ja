@@ -107,26 +107,26 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h3>PLI の使用</h3><p>システムタスクとシステム関数を作成することで、ユーザーは PLI と C プログラムを使用して Verilog 言語を拡張できます。これらのユーザー定義のシステムタスクと関数の名前は、必ずドル記号 "$" で始まる必要があります。このとき、Verilog のタスクはサブルーチンに相当します。タスクが呼び出されると、シミュレータの実行フローはサブルーチンにジャンプし、タスクを完了すると実行フローが戻ります。Verilog タスクは値を返しませんが、入力、出力、双方向の仮パラメータを持つことができます。</p><p>Verilog の関数は、ほとんどの言語の関数と同じです。関数が呼び出されると、一連の命令を実行し、呼び出し元の命令に値を返します。</p>
 <p><strong>PLI のフロー</strong></p><p>PLI インターフェースを使用してユーザー定義のシステムタスクを実現する基本的なフローは次のとおりです。</p>
 <p><img decoding="async" src="../wp-content/uploads/2021/05/v-pli-1.png"/></p>
-<p>次に、簡単なシステムタスク $hello_runoob を例に説明します。このシステムタスクが呼び出されると、1行の文字列 "Hello Runoob!" を出力します。</p>
-<p><strong>PLI でのシステムタスクの作成</strong></p><p>C 言語で記述された出力プログラムは次のとおりです。ファイル名は<span class="marked">hello_runoob.c</span> 。</p>
+<p>次に、簡単なシステムタスク $hello_サンプル を例に説明します。このシステムタスクが呼び出されると、1行の文字列 "Hello サンプル!" を出力します。</p>
+<p><strong>PLI でのシステムタスクの作成</strong></p><p>C 言語で記述された出力プログラムは次のとおりです。ファイル名は<span class="marked">hello_サンプル.c</span> 。</p>
 <p>PLI 使用の一般的な流れを説明するため、このプログラムは TF/ACC サブルーチンを呼び出していません。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #085;">#include "stdio.h" //不包含 PLI 库子程序</span><br/>
-<span style="color: #993333;">int</span> hello_runoob<span style="color: #000;">(</span><span style="color: #000;">)</span><span style="color: #000;">{</span><br/>
-        <span style="color: #000066;">printf</span><span style="color: #000;">(</span><span style="color: #a11;">"Hello Runoob! <span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #000;">)</span><span style="color: #339933;">;</span><br/>
+<span style="color: #993333;">int</span> hello_サンプル<span style="color: #000;">(</span><span style="color: #000;">)</span><span style="color: #000;">{</span><br/>
+        <span style="color: #000066;">printf</span><span style="color: #000;">(</span><span style="color: #a11;">"Hello サンプル! <span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #000;">)</span><span style="color: #339933;">;</span><br/>
 <span style="color: #000;">}</span><br/>
 </div></div>
 <p><strong>PLI とシミュレータの接続</strong></p><p>VCS の使用を例にとると、VCS コンパイル時に必要な C 関連ファイルをコンパイルまたは作成します。</p>
-<p>上記の hello_runoob.c を簡単にコンパイルし、hello_runoob.o ファイルを出力します。相対パスに注意してください。</p><pre>
-gcc -c ../tb/hello_runoob.c</pre><p>VCS が認識できるリンクテーブルファイルを作成します。ファイル名は hello_runoob.tab とし、内容は以下のとおりです。</p><pre>
-$hello_runoob call=hello_runoob</pre>
-<p><strong>Verilog でのシステムタスクの呼び出し</strong></p><p>Verilog では、システムタスク呼び出しの形式で $hello_runoob を呼び出します。記述は以下のとおりです。</p>
+<p>上記の hello_サンプル.c を簡単にコンパイルし、hello_サンプル.o ファイルを出力します。相対パスに注意してください。</p><pre>
+gcc -c ../tb/hello_サンプル.c</pre><p>VCS が認識できるリンクテーブルファイルを作成します。ファイル名は hello_サンプル.tab とし、内容は以下のとおりです。</p><pre>
+$hello_サンプル call=hello_サンプル</pre>
+<p><strong>Verilog でのシステムタスクの呼び出し</strong></p><p>Verilog では、システムタスク呼び出しの形式で $hello_サンプル を呼び出します。記述は以下のとおりです。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #008800;">`timescale</span> <span style="color: #FF0055;">1ns</span><span style="color: #5D478B;">/</span><span style="color: #FF0055;">1ps</span><br/>
 <span style="color: #A52A2A; font-weight: bold;">module</span> test <span style="color: #5D478B;">;</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">initial</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
      <span style="color: #5D478B;">#</span><span style="color: #FF0055;">10</span> <span style="color: #5D478B;">;</span><br/>
-     $hello_runoob<span style="color: #5D478B;">;</span><br/>
+     $hello_サンプル<span style="color: #5D478B;">;</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 <br/>
    <span style="color: #A52A2A; font-weight: bold;">initial</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
@@ -139,7 +139,7 @@ $hello_runoob call=hello_runoob</pre>
 </div></div>
 <p><strong>Verilog のコンパイルとシミュレーション</strong></p><p>RTL と作成した PLI 中間ファイルをコンパイルします。PLI ライブラリ内のテーブルファイルをリンクすることを示すには、"-P" パラメータで指定する必要があります。例えば、このシミュレーションでは VCS コマンドラインに次のパラメータを追加します（相対パスに注意）：</p>
 <pre> 
--P ../tb/hello_runoob.tab hello_runoob.o</pre>
+-P ../tb/hello_サンプル.tab hello_サンプル.o</pre>
 <p>シミュレーション結果に出力された情報が確認できます。スクリーンショットは以下のとおりです。</p>
 <p><img decoding="async" src="../wp-content/uploads/2021/05/v-pli-2.png"/></p>
 <h3>本章のソースコードのダウンロード</h3><p>

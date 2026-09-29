@@ -311,7 +311,7 @@ undef   NULL 值表示未定义
 <hr/>
 <h2>データベース接続</h2>
 <p>次に、MySQL データベースを例として、Perl がデータベースに対してどのように操作を行うかを示します。</p>
-<p>ここでは、MySQL データベースに RUNOOB データベースを作成します。テーブルは Websites で、テーブル構造とデータは次の図のとおりです。</p><p>
+<p>ここでは、MySQL データベースに サンプル データベースを作成します。テーブルは Websites で、テーブル構造とデータは次の図のとおりです。</p><p>
 <img decoding="async" src="../wp-content/uploads/2016/06/FCB5CC2E-384A-4A73-BA02-C9AC4FCC94CB.jpg"/></p>
 <p>このテーブルをダウンロード：<a download="" href="https://static.jyshare.com/download/websites_perl.sql">https://static.jyshare.com/download/websites_perl.sql</a></p>
 <p>次に、以下のコードを使用してデータベースに接続します。</p>
@@ -324,7 +324,7 @@ undef   NULL 值表示未定义
  
 </span><span class="hl-reserved">my</span><span class="hl-code"> </span><span class="hl-var">$host</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">localhost</span><span class="hl-quotes">"</span><span class="hl-code">;         </span><span class="hl-comment"># ホストアドレス</span><span class="hl-code">
 </span><span class="hl-reserved">my</span><span class="hl-code"> </span><span class="hl-var">$driver</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">mysql</span><span class="hl-quotes">"</span><span class="hl-code">;           </span><span class="hl-comment"># インターフェースタイプ デフォルトは localhost</span><span class="hl-code">
-</span><span class="hl-reserved">my</span><span class="hl-code"> </span><span class="hl-var">$database</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">RUNOOB</span><span class="hl-quotes">"</span><span class="hl-code">;        </span><span class="hl-comment"># データベース</span><span class="hl-code">
+</span><span class="hl-reserved">my</span><span class="hl-code"> </span><span class="hl-var">$database</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">サンプル</span><span class="hl-quotes">"</span><span class="hl-code">;        </span><span class="hl-comment"># データベース</span><span class="hl-code">
 </span><span class="hl-comment"># ドライバオブジェクトのハンドル</span><span class="hl-code">
 </span><span class="hl-reserved">my</span><span class="hl-code"> </span><span class="hl-var">$dsn</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">DBI:</span><span class="hl-var">$driver</span><span class="hl-string">:database=</span><span class="hl-var">$database</span><span class="hl-string">:</span><span class="hl-var">$host</span><span class="hl-quotes">"</span><span class="hl-code">;  
 </span><span class="hl-reserved">my</span><span class="hl-code"> </span><span class="hl-var">$userid</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">root</span><span class="hl-quotes">"</span><span class="hl-code">;            </span><span class="hl-comment"># データベースユーザー名</span><span class="hl-code">
@@ -401,7 +401,7 @@ $dbh-&gt;commit or die $DBI::errstr;
 </pre>
 <p>アプリケーションは出力パラメータと入力パラメータをバインドすることもできます。次の例では、? プレースホルダの位置を変数で置き換えて、更新クエリを実行します。</p>
 <pre>
-$name = '菜鸟教程';
+$name = 'サンプル';
 
 my $sth = $dbh-&gt;prepare("UPDATE Websites
                         SET   alexa = alexa + 1 

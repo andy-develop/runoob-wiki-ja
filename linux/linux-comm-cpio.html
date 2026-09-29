@@ -330,7 +330,7 @@ cpio [-0aABckLovV][-C &lt;输入/输出大小&gt;][-F &lt;备份档&gt;][-H &lt;
 <h3>実例</h3>
 <p>バックアップファイルを作成する</p>
 <pre>
-[root@runoob.com var]# ll //显示当前目录下的文件
+[root@example.com var]# ll //显示当前目录下的文件
 总用量 164
 drwxr-xr-x  2 root  root  4096 2008-03-30 account
 drwxr-xr-x  9 root  root  4096 2008-03-30 cache
@@ -353,9 +353,9 @@ drwxrwxrwt  3 root  root  4096 1月 13 18:53 tmp
 drwx------  2 root  root  4096 2004-07-08 tux
 drwxr-xr-x  8 root  root  4096 1月 19 19:39 www
 drwxr-xr-x  3 root  root  4096 2008-03-30 yp
-[root@runoob.com var]# ls | cpio -o &gt;123.cpio //制作备份文件
+[root@example.com var]# ls | cpio -o &gt;123.cpio //制作备份文件
 25 blocks
-[root@runoob.com var]# ll //显示当前目录下的文件
+[root@example.com var]# ll //显示当前目录下的文件
 总用量 172
 -rw-r--r--  1 root  root  1024 5月 24 13:06 123.cpio
 drwxr-xr-x  2 root  root  4096 2008-03-30 account
@@ -379,14 +379,14 @@ drwxrwxrwt  3 root  root  4096 1月 13 18:53 tmp
 drwx------  2 root  root  4096 2004-07-08 tux
 drwxr-xr-x  8 root  root  4096 1月 19 19:39 www
 drwxr-xr-x  3 root  root  4096 2008-03-30 yp
-[root@runoob.com var]# 
+[root@example.com var]# 
 </pre>
 <p>バックアップファイルを解凍する</p><pre>
-[root@runoob.com var]# ls | cpio -i -l 123.cpio
+[root@example.com var]# ls | cpio -i -l 123.cpio
 </pre>
 <p>バックアップファイルを解凍し、詳細情報を一覧表示する</p>
 <pre>
-[root@runoob.com var]# cpio -t -I 123.cpio  
+[root@example.com var]# cpio -t -I 123.cpio  
 123.cpio
 a.c
 b.c
@@ -395,39 +395,39 @@ c.c
 </pre>
 <p>強制解凍</p>
 <pre>
-[root@runoob.com var]# cpio -i -u -I 123.cpio 
+[root@example.com var]# cpio -i -u -I 123.cpio 
 </pre>
 <p>解凍時に逆マッチングを行い、解凍しないファイルを指定する</p>
 <pre>
-[root@runoob.com var]# cpio -i -I 123.cpio -f *.c 
+[root@example.com var]# cpio -i -I 123.cpio -f *.c 
 
 //不解压.c结尾的文件
 </pre>
 <p>指定した.cpioファイルにファイルを追加する</p>
 <pre>
-[root@runoob.com var]# ls
+[root@example.com var]# ls
 123.cpio crash ftp local mail preserve tmp yp
 account  db    gdm lock  nis  run       tux
 cache     empty lib log  opt  spool   www
-[root@runoob.com var]# cpio -o -O 123.cpio -A
+[root@example.com var]# cpio -o -O 123.cpio -A
 db  //用户输入 按下Ctrl+D结束输入
 1 block
-[root@runoob.com var]# 
+[root@example.com var]# 
 </pre>
 <p>標準入力からファイルをバックアップする</p>
 <pre>
-[root@runoob.com test]# ls              
+[root@example.com test]# ls              
 a. a.c b.c c.c d.c    f.c
-[root@runoob.com test]# cpio -o &gt;123.cpio
+[root@example.com test]# cpio -o &gt;123.cpio
 a.c  //用户输入
 b.c
 c.c  //按下Ctrl+D完成输入
 3 block
-[root@runoob.com test]# 
+[root@example.com test]# 
 </pre>
 <p>ファイルをコピーする</p>
 <pre>
-[root@runoob.com test]# cpio -p /root
+[root@example.com test]# cpio -p /root
 a.c  //用户输入
 b.c
 c.c  //按下Ctrl+D完成输入

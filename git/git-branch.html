@@ -331,7 +331,7 @@ $ git branch
 <pre>
 $ ls
 README
-$ echo 'runoob.com' &gt; test.txt
+$ echo 'example.com' &gt; test.txt
 $ git add .
 $ git commit -m 'add test.txt'
 [master 3e92c19] add test.txt
@@ -359,22 +359,22 @@ $ git rm test.txt
 rm 'test.txt'
 $ ls
 README
-$ touch runoob.php
+$ touch サンプル.php
 $ git add .
-$ git commit -am 'removed test.txt、add runoob.php'
-[newtest c1501a2] removed test.txt、add runoob.php
+$ git commit -am 'removed test.txt、add サンプル.php'
+[newtest c1501a2] removed test.txt、add サンプル.php
  2 files changed, 1 deletion(-)
- create mode 100644 runoob.php
+ create mode 100644 サンプル.php
  delete mode 100644 test.txt
 $ ls
-README        runoob.php
+README        サンプル.php
 $ git checkout master
 Switched to branch 'master'
 $ ls
 README        test.txt
 
 </pre>
-<p>ご覧のとおり、ブランチを作成し、そのブランチで一部のファイル test.txt を削除し、runoob.php ファイルを追加しました。その後メインブランチに切り替えると、削除した test.txt ファイルは元に戻り、新しく追加した runoob.php はメインブランチには存在しません。</p><p>ブランチを使用して作業を分離することで、異なる開発環境で作業を行い、行ったり来たり切り替えることができます。</p>
+<p>ご覧のとおり、ブランチを作成し、そのブランチで一部のファイル test.txt を削除し、サンプル.php ファイルを追加しました。その後メインブランチに切り替えると、削除した test.txt ファイルは元に戻り、新しく追加した サンプル.php はメインブランチには存在しません。</p><p>ブランチを使用して作業を分離することで、異なる開発環境で作業を行い、行ったり来たり切り替えることができます。</p>
 <h3>ブランチの削除</h3>
 <p>ブランチ削除コマンド：</p>
 <pre>git branch -d (branchname)</pre>
@@ -401,13 +401,13 @@ README        test.txt
 $ git merge newtest
 Updating 3e92c19..c1501a2
 Fast-forward
- runoob.php | 0
+ サンプル.php | 0
  test.txt   | 1 -
  2 files changed, 1 deletion(-)
- create mode 100644 runoob.php
+ create mode 100644 サンプル.php
  delete mode 100644 test.txt
 $ ls
-README        runoob.php
+README        サンプル.php
 
 </pre>
 <p>上記の例では、newtest ブランチをメインブランチにマージし、test.txt ファイルを削除しました。</p>
@@ -422,41 +422,41 @@ Deleted branch newtest (was c1501a2).</pre>
 <pre>
 $ git branch
 * master
-$ cat runoob.php
+$ cat サンプル.php
 </pre>
-<p><strong>注意：</strong>runoob.php がない場合は、まずこのファイルを作成する必要があります。コマンドは次のとおりです。<span class="marked">touch runoob.php</span>。</p>
-<p>まず、change_site というブランチを作成して切り替え、runoob.php の内容を次のように変更します：</p>
+<p><strong>注意：</strong>サンプル.php がない場合は、まずこのファイルを作成する必要があります。コマンドは次のとおりです。<span class="marked">touch サンプル.php</span>。</p>
+<p>まず、change_site というブランチを作成して切り替え、サンプル.php の内容を次のように変更します：</p>
 <pre>&lt;?php
-echo 'runoob';
+echo 'サンプル';
 ?&gt;</pre>
 <p>change_site ブランチを作成：</p>
 <pre>
 $ git checkout -b change_site
 Switched to a new branch 'change_site'
-$ vim runoob.php
-$ head -3 runoob.php
+$ vim サンプル.php
+$ head -3 サンプル.php
 &lt;?php
-echo 'runoob';
+echo 'サンプル';
 ?&gt;
-$ git commit -am 'changed the runoob.php'
-[change_site 7774248] changed the runoob.php
+$ git commit -am 'changed the サンプル.php'
+[change_site 7774248] changed the サンプル.php
  1 file changed, 3 insertions(+)
  </pre><p>vim コマンドの操作については、次を参照してください：<a href="../linux/linux-vim.html" target="_blank">Linux vi/vim</a>。</p>
-<p>変更内容を change_site ブランチにコミットします。ここで master ブランチに切り替えると、内容が変更前（空ファイル、コードなし）に戻っていることがわかります。再度 runoob.php ファイルを変更します。</p>
+<p>変更内容を change_site ブランチにコミットします。ここで master ブランチに切り替えると、内容が変更前（空ファイル、コードなし）に戻っていることがわかります。再度 サンプル.php ファイルを変更します。</p>
 <pre>
 $ git checkout master
 Switched to branch 'master'
-$ cat runoob.php
-$ vim runoob.php    # 修改内容如下
-$ cat runoob.php
+$ cat サンプル.php
+$ vim サンプル.php    # 修改内容如下
+$ cat サンプル.php
 &lt;?php
 echo 1;
 ?&gt;
 $ git diff
-diff --git a/runoob.php b/runoob.php
+diff --git a/サンプル.php b/サンプル.php
 index e69de29..ac60739 100644
---- a/runoob.php
-+++ b/runoob.php
+--- a/サンプル.php
++++ b/サンプル.php
 @@ -0,0 +1,3 @@
 +&lt;?php
 +echo 1;
@@ -468,45 +468,45 @@ $ git commit -am '修改代码'
 <p>これでこれらの変更は「master」ブランチに記録されました。次に、「change_site」ブランチをマージします。</p>
 <pre>
 $ git merge change_site
-Auto-merging runoob.php
-CONFLICT (content): Merge conflict in runoob.php
+Auto-merging サンプル.php
+CONFLICT (content): Merge conflict in サンプル.php
 Automatic merge failed; fix conflicts and then commit the result.
 
-$ cat runoob.php     # 打开文件，看到冲突内容
+$ cat サンプル.php     # 打开文件，看到冲突内容
 &lt;?php
 &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 echo 1;
 =======
-echo 'runoob';
+echo 'サンプル';
 &gt;&gt;&gt;&gt;&gt;&gt;&gt; change_site
 ?&gt;
 </pre>
 <p>前のブランチを master ブランチにマージすると、マージコンフリクトが発生しました。次に手動で修正する必要があります。</p>
 <pre>
-$ vim runoob.php 
-$ cat runoob.php
+$ vim サンプル.php 
+$ cat サンプル.php
 &lt;?php
 echo 1;
-echo 'runoob';
+echo 'サンプル';
 ?&gt;
 $ git diff
-diff --cc runoob.php
+diff --cc サンプル.php
 index ac60739,b63d7d7..0000000
---- a/runoob.php
-+++ b/runoob.php
+--- a/サンプル.php
++++ b/サンプル.php
 @@@ -1,3 -1,3 +1,4 @@@
   &lt;?php
  +echo 1;
-+ echo 'runoob';
++ echo 'サンプル';
   ?&gt;
 </pre>
 <p>Git では、git add を使用して、ファイルのコンフリクトが解決済みであることを Git に伝えることができます。</p>
 <pre>
 $ git status -s
-UU runoob.php
-$ git add runoob.php
+UU サンプル.php
+$ git add サンプル.php
 $ git status -s
-M  runoob.php
+M  サンプル.php
 $ git commit
 [master 88afe0e] Merge branch 'change_site'
 </pre>

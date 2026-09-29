@@ -433,13 +433,13 @@ prevNode</strong></p><p>前の仮想ノード。beforeUpdate と updated フッ�
 <h2 class="example">例</h2>
 <div class="example_code">
 <div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">app</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
-</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">v-runoob</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">{ name: '菜鸟教程', url: 'www.runoob.com' }</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">v-サンプル</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">{ name: 'サンプル', url: 'www.example.com' }</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
 </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
 ​
 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">const app = Vue.createApp({})
-app.directive('runoob', (el, binding, vnode) =&gt; {
-console.log(binding.value.name) // =&gt; "菜鸟教程"
-console.log(binding.value.url) // =&gt; "www.runoob.com"
+app.directive('サンプル', (el, binding, vnode) =&gt; {
+console.log(binding.value.name) // =&gt; "サンプル"
+console.log(binding.value.url) // =&gt; "www.example.com"
 var s = JSON.stringify
 el.innerHTML = s(binding.value)
 })
@@ -450,7 +450,7 @@ app.mount('#app')</span><span class="hl-brackets">&lt;/</span><span class="hl-re
 </div>
 <p>場合によっては、他のフック関数が不要なこともあります。次の形式で関数を簡略化できます：</p>
 <pre>
-Vue.directive('runoob', function (el, binding) {
+Vue.directive('サンプル', function (el, binding) {
   // 设置指令的背景颜色
   el.style.backgroundColor = binding.value.color
 })
@@ -460,9 +460,9 @@ Vue.directive('runoob', function (el, binding) {
 <h2 class="example">例</h2>
 <div class="example_code">
 <div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">id</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">app</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
-</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">v-runoob</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">{ color: 'green', text: '菜鸟教程!' }</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">div</span><span class="hl-code"> </span><span class="hl-var">v-サンプル</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">{ color: 'green', text: 'サンプル!' }</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
 </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">div</span><span class="hl-brackets">&gt;</span><span class="hl-code">
-</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">Vue.directive('runoob', function (el, binding) {
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">Vue.directive('サンプル', function (el, binding) {
     // 简写方式设置文本及背景颜色
     el.innerHTML = binding.value.text
     el.style.backgroundColor = binding.value.color

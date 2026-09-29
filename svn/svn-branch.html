@@ -259,22 +259,22 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>その場合、グループ2のためにブランチを作成できます。ブランチは実際には trunk 版（幹線）のコピーですが、ブランチにもバージョン管理機能があり、幹線とは相互に独立しています。もちろん、最終的には（マージ）機能を使用してブランチを trunk にマージし、最終的に1つのプロジェクトに統合できます。</p>
 <p>ローカルコピーに<strong>my_branch</strong>ブランチを作成します。</p>
 <pre>
-root@runoob:~/svn/runoob01# ls
+root@サンプル:~/svn/サンプル01# ls
 branches  tags  trunk
-root@runoob:~/svn/runoob01# svn copy trunk/ branches/my_branch
+root@サンプル:~/svn/サンプル01# svn copy trunk/ branches/my_branch
 A         branches/my_branch
-root@runoob:~/svn/runoob01# 
+root@サンプル:~/svn/サンプル01# 
 </pre>
 <p>状態を確認：</p>
 <pre>
-root@runoob:~/svn/runoob01# svn status
+root@サンプル:~/svn/サンプル01# svn status
 A  +    branches/my_branch
 A  +    branches/my_branch/HelloWorld.html
 A  +    branches/my_branch/readme
 </pre>
 <p>新しく追加したブランチをリポジトリにコミットします。</p>
 <pre>
-root@runoob:~/svn/runoob01# svn commit -m "add my_branch" 
+root@サンプル:~/svn/サンプル01# svn commit -m "add my_branch" 
 Adding         branches/my_branch
 Replacing      branches/my_branch/HelloWorld.html
 Adding         branches/my_branch/readme
@@ -283,24 +283,24 @@ Committed revision 9.
 </pre>
 <p>次に、my_branch ブランチで開発を進めます。ブランチのパスに切り替えて、index.html ファイルを作成します。</p>
 <pre>
-root@runoob:~/svn/runoob01# cd branches/my_branch/
-root@runoob:~/svn/runoob01/branches/my_branch# ls
+root@サンプル:~/svn/サンプル01# cd branches/my_branch/
+root@サンプル:~/svn/サンプル01/branches/my_branch# ls
 HelloWorld.html  index.html  readme
 </pre>
 <p>index.html をバージョン管理に追加し、リポジトリにコミットします。</p>
 <pre>
-root@runoob:~/svn/runoob01/branches/my_branch# svn status
+root@サンプル:~/svn/サンプル01/branches/my_branch# svn status
 ?       index.html
-root@runoob:~/svn/runoob01/branches/my_branch# svn add index.html 
+root@サンプル:~/svn/サンプル01/branches/my_branch# svn add index.html 
 A         index.html
-root@runoob:~/svn/runoob01/branches/my_branch# svn commit -m "add index.html"
+root@サンプル:~/svn/サンプル01/branches/my_branch# svn commit -m "add index.html"
 Adding         index.html
 Transmitting file data .
 Committed revision 10.
 </pre>
 trunk に切り替えて、svn update を実行し、その後 my_branch ブランチを trunk にマージします。
 <pre>
-root@runoob:~/svn/runoob01/trunk# svn merge ../branches/my_branch/
+root@サンプル:~/svn/サンプル01/trunk# svn merge ../branches/my_branch/
 --- Merging r10 into '.':
 A    index.html
 --- Recording mergeinfo for merge of r10 into '.':
@@ -308,7 +308,7 @@ A    index.html
 </pre>
 <p>このときディレクトリを確認すると、trunk 内に my_branch ブランチで作成された index.html ファイルが追加されていることがわかります。</p>
 <pre>
-root@runoob:~/svn/runoob01/trunk# ll
+root@サンプル:~/svn/サンプル01/trunk# ll
 total 16
 drwxr-xr-x 2 root root 4096 Nov  7 03:52 ./
 drwxr-xr-x 6 root root 4096 Jul 21 19:19 ../
@@ -318,7 +318,7 @@ drwxr-xr-x 6 root root 4096 Jul 21 19:19 ../
 </pre>
 <p>マージが完了した trunk をリポジトリにコミットします。</p>
 <pre>
-root@runoob:~/svn/runoob01/trunk# svn commit -m "add index.html"
+root@サンプル:~/svn/サンプル01/trunk# svn commit -m "add index.html"
 Adding         index.html
 Transmitting file data .
 Committed revision 11.

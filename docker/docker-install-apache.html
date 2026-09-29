@@ -280,7 +280,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>Sort by を使用して他のバージョンの httpd を表示できます。デフォルトは最新バージョンです。<strong>httpd:latest</strong>。</p>
 <p>さらに、docker search httpd コマンドを使用して利用可能なバージョンを確認することもできます：</p>
 <pre>
-runoob@runoob:~/apache$ docker search httpd
+サンプル@サンプル:~/apache$ docker search httpd
 NAME                           DESCRIPTION                  STARS  OFFICIAL AUTOMATED
 httpd                          The Apache HTTP Server ..    524     [OK]       
 centos/httpd                                                7                [OK]
@@ -300,11 +300,11 @@ alizarion/httpd                httpd on centos with mo...   0                [OK
 </pre>
 <p>ここでは公式イメージをプルします</p>
 <pre>
-runoob@runoob:~/apache$ docker pull httpd
+サンプル@サンプル:~/apache$ docker pull httpd
 </pre>
 <p>ダウンロードが完了すると、ローカルイメージリストでREPOSITORYがhttpdのイメージを確認できます。</p>
 <pre>
-runoob@runoob:~/apache$ docker images httpd
+サンプル@サンプル:~/apache$ docker images httpd
 REPOSITORY     TAG        IMAGE ID        CREATED           SIZE
 httpd          latest     da1536b4ef14    23 seconds ago    195.1 MB
 </pre>
@@ -312,7 +312,7 @@ httpd          latest     da1536b4ef14    23 seconds ago    195.1 MB
 <p><b>Dockerfile を作成</b></p>
 <p>まず、後の関連ファイルを保存するためのディレクトリ apache を作成します。</p>
 <pre>
-runoob@runoob:~$ mkdir -p  ~/apache/www ~/apache/logs ~/apache/conf 
+サンプル@サンプル:~$ mkdir -p  ~/apache/www ~/apache/logs ~/apache/conf 
 </pre>
 <p>www ディレクトリは、apache コンテナで設定されたアプリケーションディレクトリにマッピングされます。</p>
 <p>logs ディレクトリは、apache コンテナのログディレクトリにマッピングされます。</p>
@@ -405,12 +405,12 @@ rm -f /usr/local/apache2/logs/httpd.pid
 exec httpd -DFOREGROUND
 </pre>
 <p>httpd-foreground ファイルに実行権限を付与します。</p>
-<pre>runoob@runoob:~/apache$ chmod +x httpd-foreground</pre>
+<pre>サンプル@サンプル:~/apache$ chmod +x httpd-foreground</pre>
 <p>Dockerfile を使用してイメージを作成し、名前を自分の名前に置き換えます。</p>
-<pre>runoob@runoob:~/apache$ docker build -t httpd .</pre>
+<pre>サンプル@サンプル:~/apache$ docker build -t httpd .</pre>
 <p>作成が完了すると、ローカルイメージリストで先ほど作成したイメージを確認できます。</p>
 <pre>
-runoob@runoob:~/apache$ docker images httpd
+サンプル@サンプル:~/apache$ docker images httpd
 REPOSITORY     TAG        IMAGE ID        CREATED           SIZE
 httpd          latest     da1536b4ef14    23 seconds ago    195.1 MB
 </pre>
@@ -428,7 +428,7 @@ docker run -p 80:80 -v $PWD/www/:/usr/local/apache2/htdocs/ -v $PWD/conf/httpd.c
 <p>より詳細なコマンドリファレンス：<a href="../docker/docker-run-command.html" rel="noopener" target="_blank">Docker run コマンド</a></p>
 <p>コンテナの起動状況を確認：</p>
 <pre>
-runoob@runoob:~/apache$ docker ps
+サンプル@サンプル:~/apache$ docker ps
 CONTAINER ID  IMAGE   COMMAND             ... PORTS               NAMES
 79a97f2aac37  httpd   "httpd-foreground"  ... 0.0.0.0:80-&gt;80/tcp  sharp_swanson
 </pre>

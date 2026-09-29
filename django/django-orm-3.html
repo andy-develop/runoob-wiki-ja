@@ -337,13 +337,13 @@ res<span style="color: Gray;">=</span>models.<span style="color: #05a;">Book</sp
 res <span style="color: Gray;">=</span> models.<span style="color: #05a;">Publish</span>.<span style="color: #05a;">objects</span>.<span style="color: #05a;">values</span><span style="color: Olive;">(</span><span style="color: #a11;">"name"</span><span style="color: Olive;">)</span>.<span style="color: #05a;">annotate</span><span style="color: Olive;">(</span>in_price <span style="color: Gray;">=</span> Min<span style="color: Olive;">(</span><span style="color: #a11;">"book__price"</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>res<span style="color: Olive;">)</span> <br/>
 </div></div> <p>コマンドラインで以下の出力を確認できます：</p><pre>
-&lt;QuerySet [{'name': '菜鸟出版社', 'in_price': Decimal('100.00')}, {'name': '明教出版社', 'in_price': Decimal('300.00')}]&gt;</pre>
+&lt;QuerySet [{'name': 'サンプル出版社', 'in_price': Decimal('100.00')}, {'name': '明教出版社', 'in_price': Decimal('300.00')}]&gt;</pre>
 <p><img decoding="async" src="../wp-content/uploads/2020/05/Django-orm3_3.gif"/></p>
 <p>各本の著者数を集計する：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 res <span style="color: Gray;">=</span> models.<span style="color: #05a;">Book</span>.<span style="color: #05a;">objects</span>.<span style="color: #05a;">annotate</span><span style="color: Olive;">(</span>c <span style="color: Gray;">=</span> Count<span style="color: Olive;">(</span><span style="color: #a11;">"authors__name"</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span>.<span style="color: #05a;">values</span><span style="color: Olive;">(</span><span style="color: #a11;">"title"</span><span style="color: Gray;">,</span><span style="color: #a11;">"c"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>res<span style="color: Olive;">)</span><br/>
-</div></div>コマンドラインで以下の出力を確認できます：<pre>&lt;QuerySet [{'title': '菜鸟教程', 'c': 1}, {'title': '吸星大法', 'c': 1}, {'title': '冲灵剑法', 'c': 1}]&gt;</pre>
+</div></div>コマンドラインで以下の出力を確認できます：<pre>&lt;QuerySet [{'title': 'サンプル', 'c': 1}, {'title': '吸星大法', 'c': 1}, {'title': '冲灵剑法', 'c': 1}]&gt;</pre>
 <p><img decoding="async" src="../wp-content/uploads/2020/05/Django-orm3_4.gif"/></p>
 <p>「菜」で始まる各書籍の著者数を集計する：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
@@ -355,7 +355,7 @@ res <span style="color: Gray;">=</span> models.<span style="color: #05a;">Book</
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 res <span style="color: Gray;">=</span> models.<span style="color: #05a;">Book</span>.<span style="color: #05a;">objects</span>.<span style="color: #05a;">annotate</span><span style="color: Olive;">(</span>c <span style="color: Gray;">=</span> Count<span style="color: Olive;">(</span><span style="color: #a11;">"authors__name"</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span>.<span style="color: Teal;">filter</span><span style="color: Olive;">(</span>c__gt<span style="color: Gray;">=</span><span style="color: Maroon;">0</span><span style="color: Olive;">)</span>.<span style="color: #05a;">values</span><span style="color: Olive;">(</span><span style="color: #a11;">"title"</span><span style="color: Gray;">,</span><span style="color: #a11;">"c"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>res<span style="color: Olive;">)</span><br/>
-</div></div>コマンドラインで以下の出力を確認できます：<pre>&lt;QuerySet [{'title': '菜鸟教程', 'c': 1}, {'title': '吸星大法', 'c': 1}, {'title': '冲灵剑法', 'c': 1}]&gt;</pre>
+</div></div>コマンドラインで以下の出力を確認できます：<pre>&lt;QuerySet [{'title': 'サンプル', 'c': 1}, {'title': '吸星大法', 'c': 1}, {'title': '冲灵剑法', 'c': 1}]&gt;</pre>
 <p><img decoding="async" src="../wp-content/uploads/2020/05/Django-orm3_6.gif"/></p>
 <p>1冊の本の著者数に基づいて、クエリセット QuerySet を降順に並べ替える：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">

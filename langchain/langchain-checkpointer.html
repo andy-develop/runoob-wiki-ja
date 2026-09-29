@@ -181,7 +181,7 @@ load_dotenv<span style="color: Olive;">(</span><span style="color: Olive;">)</sp
 model <span style="color: Gray;">=</span> init_chat_model<span style="color: Olive;">(</span><span style="color: #a11;">"deepseek:deepseek-v4-flash"</span><span style="color: Gray;">,</span> temperature<span style="color: Gray;">=</span><span style="color: Maroon;">0</span><span style="color: Olive;">)</span><br/>
 agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;">(</span><br/>
     model<span style="color: Gray;">=</span>model<span style="color: Gray;">,</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは菜鳥教程（RUNOOB）のアシスタントです。"</span><span style="color: Gray;">,</span><br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは菜鳥教程（サンプル）のアシスタントです。"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 第1ターン</span><br/>
@@ -198,9 +198,9 @@ result2 <span style="color: Gray;">=</span> agent.<span style="color: #05a;">inv
 </div>
 </div>
 <p>実行結果：</p>
-<pre>第一轮: 你好小明！很高兴认识你。  
+<pre>第1ラウンド: 你好小明！很高兴认识你。  
 → 第一ラウンド：こんにちは、小明！お会いできて嬉しいです。  
-第二轮: 抱歉，我没有你的信息，不知道你叫什么名字。  
+第2ラウンド: 抱歉，我没有你的信息，不知道你叫什么名字。  
 → 第二ラウンド：申し訳ありません、あなたの情報を持っていないので、お名前がわかりません。</pre>
 <hr/>
 <h2>Checkpointer を使用して会話を記憶する</h2>
@@ -220,7 +220,7 @@ model <span style="color: Gray;">=</span> init_chat_model<span style="color: Oli
 agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;">(</span><br/>
     model<span style="color: Gray;">=</span>model<span style="color: Gray;">,</span><br/>
     checkpointer<span style="color: Gray;">=</span>checkpointer<span style="color: Gray;">,</span>  <span style="color: #a50"># Checkpointer を渡す</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは菜鳥教程（RUNOOB）のアシスタントです。"</span><span style="color: Gray;">,</span><br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは菜鳥教程（サンプル）のアシスタントです。"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># thread_id を使用して会話スレッドを識別する</span><br/>
@@ -243,8 +243,8 @@ result2 <span style="color: Gray;">=</span> agent.<span style="color: #05a;">inv
 </div>
 <p>実行結果：</p>
 <pre>
-第一轮: 你好小明！Python 是一门很好的入门语言，有什么需要帮助的吗？
-第二轮: 你叫小明，你正在学习 Python。有什么具体问题我可以帮你吗？
+第1ラウンド: こんにちは、小明さん！Pythonは入門に最適な言語です。何かお手伝いできることはありますか？
+第2ラウンド: あなたの名前は小明さんで、Pythonを学習しています。具体的な質問はありますか？
 </pre>
 <blockquote><p>thread_id が鍵です。同じ thread_id の会話は連続しており、異なる thread_id の会話は完全に分離されています。これにより、1つの Agent インスタンスで複数のユーザーを同時にサービスを提供できます。</p></blockquote>
 <hr/>
@@ -269,7 +269,7 @@ checkpointer <span style="color: Gray;">=</span> InMemorySaver<span style="color
 agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;">(</span><br/>
     model<span style="color: Gray;">=</span>init_chat_model<span style="color: Olive;">(</span><span style="color: #a11;">"deepseek:deepseek-v4-flash"</span><span style="color: Gray;">,</span> temperature<span style="color: Gray;">=</span><span style="color: Maroon;">0</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
     checkpointer<span style="color: Gray;">=</span>checkpointer<span style="color: Gray;">,</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは菜鳥教程（RUNOOB）のアシスタントです。"</span><span style="color: Gray;">,</span><br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは菜鳥教程（サンプル）のアシスタントです。"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 config <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: #a11;">"configurable"</span>: <span style="color: Olive;">{</span><span style="color: #a11;">"thread_id"</span>: <span style="color: #a11;">"demo-001"</span><span style="color: Olive;">}</span><span style="color: Olive;">}</span><br/>
@@ -297,20 +297,20 @@ questions <span style="color: Gray;">=</span> <span style="color: Olive;">[</spa
 </div>
 <p>実行結果：</p>
 <pre>
-第 1 轮后:
-  消息数: 2
-  下一步: ()
-  回复: 你好小明！很高兴认识你。
+第1ラウンド後:
+  メッセージ数: 2
+  次のステップ: ()
+  返答: こんにちは、小明さん！お会いできてうれしいです。
 
-第 2 轮后:
-  消息数: 4
-  下一步: ()
-  回复: Python 是一门非常流行的编程语言，简单易学。
+第2ラウンド後:
+  メッセージ数: 4
+  次のステップ: ()
+  返答: Pythonは非常に人気のあるプログラミング言語で、シンプルで学びやすいです。
 
-第 3 轮后:
-  消息数: 6
-  下一步: ()
-  回复: 根据我们的对话，你的信息如下：你叫小明，正在学习 Python。
+第3ラウンド後:
+  メッセージ数: 6
+  次のステップ: ()
+  返答: 会話に基づくと、あなたの情報は次のとおりです: 名前は小明さんで、Pythonを学習しています。
 </pre>
 <hr/>
 <h2>Checkpointer の種類</h2>
@@ -367,7 +367,7 @@ model <span style="color: Gray;">=</span> init_chat_model<span style="color: Oli
     agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;">(</span><br/>
         model<span style="color: Gray;">=</span>model<span style="color: Gray;">,</span><br/>
         checkpointer<span style="color: Gray;">=</span>checkpointer<span style="color: Gray;">,</span><br/>
-        system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは菜鳥教程（RUNOOB）のアシスタントです。"</span><span style="color: Gray;">,</span><br/>
+        system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは菜鳥教程（サンプル）のアシスタントです。"</span><span style="color: Gray;">,</span><br/>
     <span style="color: Olive;">)</span><br/>
 <br/>
     config <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: #a11;">"configurable"</span>: <span style="color: Olive;">{</span><span style="color: #a11;">"thread_id"</span>: <span style="color: #a11;">"user-001"</span><span style="color: Olive;">}</span><span style="color: Olive;">}</span><br/>

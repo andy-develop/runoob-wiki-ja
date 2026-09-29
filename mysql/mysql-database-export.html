@@ -323,14 +323,14 @@ WHERE your_conditions;</pre>
 </div></div>
 <p>上記の SQL 文では、users テーブルから id、name、email 列を選択し、結果を /tmp/user_data.csv ファイルに書き込みました。FIELDS TERMINATED BY ',' は列間の区切り文字（カンマ）を指定し、LINES TERMINATED BY '\n' は行間の区切り文字（改行）を指定します。</p>
 <p>注意すべき点として、実行には<span class="marked">SELECT...INTO OUTFILE</span>対応する権限が必要であり、出力ファイルのディレクトリは MySQL サーバーが書き込み可能な場所である必要があります。</p>
-<p>次の例では、データテーブル runoob_tbl のデータを /tmp/runoob.txt ファイルにエクスポートします：</p>
+<p>次の例では、データテーブル サンプル_tbl のデータを /tmp/サンプル.txt ファイルにエクスポートします：</p>
 <pre>
-mysql&gt; SELECT * FROM runoob_tbl 
-    -&gt; INTO OUTFILE '/tmp/runoob.txt';
+mysql&gt; SELECT * FROM サンプル_tbl 
+    -&gt; INTO OUTFILE '/tmp/サンプル.txt';
 </pre>
 <p>コマンドオプションを使用してデータ出力の指定形式を設定できます。次の例は CSV 形式でのエクスポートです：</p>
 <pre>
-mysql&gt; SELECT * FROM passwd INTO OUTFILE '/tmp/runoob.txt'
+mysql&gt; SELECT * FROM passwd INTO OUTFILE '/tmp/サンプル.txt'
     -&gt; FIELDS TERMINATED BY ',' ENCLOSED BY '"'
     -&gt; LINES TERMINATED BY '\r\n';
 </pre>
@@ -358,10 +358,10 @@ FROM test_table;
 <p>mysqldump の基本的な使用方法：</p>
 <pre>mysqldump -u username -p password -h hostname database_name &gt; output_file.sql</pre><p><strong>パラメータの説明：</strong></p>
 <ul><li><code>-u</code>: MySQL ユーザー名を指定します。</li><li><code>-p</code>: パスワードの入力を求めます。</li><li><code>-h</code>: MySQL ホスト名を指定します。</li><li><code>database_name</code>: エクスポートするデータベース名。</li><li><code>output_file.sql</code>: エクスポートデータが保存されるファイル。</li></ul>
-<p>次の例では、データテーブル runoob_tbl を /tmp ディレクトリにエクスポートします：</p>
+<p>次の例では、データテーブル サンプル_tbl を /tmp ディレクトリにエクスポートします：</p>
 <pre>
 $ mysqldump -u root -p --no-create-info \
-            --tab=/tmp RUNOOB runoob_tbl
+            --tab=/tmp サンプル サンプル_tbl
 password ******
 </pre><h3>mysqldump の例</h3>
 <p><strong>1. データベース全体をエクスポート</strong></p>
@@ -382,44 +382,44 @@ mysqldump -u username -p password -h hostname database_name | gzip &gt; output_f
 <h3>SQL 形式のデータをエクスポート</h3>
 <p>SQL 形式のデータを指定したファイルにエクスポートするには、次のようにします：</p>
 <pre>
-$ mysqldump -u root -p RUNOOB runoob_tbl &gt; dump.txt
+$ mysqldump -u root -p サンプル サンプル_tbl &gt; dump.txt
 password ******
 </pre>
 <p>上記のコマンドで作成されるファイルの内容は次のとおりです：</p>
 <pre>
 -- MySQL dump 8.23
 --
--- Host: localhost    Database: RUNOOB
+-- Host: localhost    Database: サンプル
 ---------------------------------------------------------
 -- Server version       3.23.58
 
 --
--- Table structure for table `runoob_tbl`
+-- Table structure for table `サンプル_tbl`
 --
 
-CREATE TABLE runoob_tbl (
-  runoob_id int(11) NOT NULL auto_increment,
-  runoob_title varchar(100) NOT NULL default '',
-  runoob_author varchar(40) NOT NULL default '',
+CREATE TABLE サンプル_tbl (
+  サンプル_id int(11) NOT NULL auto_increment,
+  サンプル_title varchar(100) NOT NULL default '',
+  サンプル_author varchar(40) NOT NULL default '',
   submission_date date default NULL,
-  PRIMARY KEY  (runoob_id),
-  UNIQUE KEY AUTHOR_INDEX (runoob_author)
+  PRIMARY KEY  (サンプル_id),
+  UNIQUE KEY AUTHOR_INDEX (サンプル_author)
 ) TYPE=MyISAM;
 
 --
--- Dumping data for table `runoob_tbl`
+-- Dumping data for table `サンプル_tbl`
 --
 
-INSERT INTO runoob_tbl 
+INSERT INTO サンプル_tbl 
        VALUES (1,'Learn PHP','John Poul','2007-05-24');
-INSERT INTO runoob_tbl 
+INSERT INTO サンプル_tbl 
        VALUES (2,'Learn MySQL','Abdul S','2007-05-24');
-INSERT INTO runoob_tbl 
+INSERT INTO サンプル_tbl 
        VALUES (3,'JAVA Tutorial','Sanjay','2007-05-06');
 </pre>
 <p>データベース全体のデータをエクスポートする必要がある場合は、次のコマンドを使用できます：</p>
 <pre>
-$ mysqldump -u root -p RUNOOB &gt; database_dump.txt
+$ mysqldump -u root -p サンプル &gt; database_dump.txt
 password ******
 </pre>
 <p>すべてのデータベースをバックアップする必要がある場合は、次のコマンドを使用できます：</p>

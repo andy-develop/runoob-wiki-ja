@@ -192,7 +192,7 @@ docs <span style="color: Gray;">=</span> loader.<span style="color: #05a;">load<
 <span style="color: #a50"># pip install langchain-community beautifulsoup4</span><br/>
 <span style="color: Green;font-weight:bold;">from</span> langchain_community.<span style="color: #05a;">document_loaders</span> <span style="color: Green;font-weight:bold;">import</span> WebBaseLoader<br/>
 <br/>
-loader <span style="color: Gray;">=</span> WebBaseLoader<span style="color: Olive;">(</span><span style="color: #a11;">"https://www.runoob.com/python/python-tutorial.html"</span><span style="color: Olive;">)</span><br/>
+loader <span style="color: Gray;">=</span> WebBaseLoader<span style="color: Olive;">(</span><span style="color: #a11;">"https://www.example.com/python/python-tutorial.html"</span><span style="color: Olive;">)</span><br/>
 docs <span style="color: Gray;">=</span> loader.<span style="color: #05a;">load</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>ウェブページの内容: {docs</span><span style="color: Olive;">)</span><br/>
 </div>
@@ -214,7 +214,7 @@ text_splitter <span style="color: Gray;">=</span> RecursiveCharacterTextSplitter
 <span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># サンプルドキュメント</span><br/>
-long_text <span style="color: Gray;">=</span> <span style="color: #a11;">"""菜鸟教程（RUNOOB）は無料のプログラミング学習プラットフォームです。<br/>
+long_text <span style="color: Gray;">=</span> <span style="color: #a11;">"""サンプルは無料のプログラミング学習プラットフォームです。<br/>
 <br/>このプラットフォームは、以下のような豊富なプログラミング言語チュートリアルを提供しています：<br/>- Python チュートリアル：基本構文からデータ分析まで<br/>- Java チュートリアル：オブジェクト指向プログラミングから Spring フレームワークまで<br/>- フロントエンドチュートリアル：HTML、CSS、JavaScript とそのフレームワーク<br/>
 <br/>すべてのチュートリアルには、詳細なコード例とオンライン実行環境が付属しています。<br/>学習者は、学びながら練習することで、プログラミングスキルを素早く習得できます。"""</span><br/>
 <br/>
@@ -232,11 +232,11 @@ chunks <span style="color: Gray;">=</span> text_splitter.<span style="color: #05
 </div>
 <p>実行結果：</p>
 <pre>
-原文长度: 153 字
-切分后: 3 块
+元の長さ: 153 字
+分割後のチャンク: 3 块
 
 --- 块 1 (54 字) ---
-菜鸟教程（RUNOOB）是一个免费的编程学习平台。
+サンプルは無料のプログラミング学習プラットフォームです。
 平台提供了丰富的编程语言教程，包括但不限于：
 
 --- 块 2 (49 字) ---
@@ -269,16 +269,16 @@ chunks <span style="color: Gray;">=</span> text_splitter.<span style="color: #05
 <br/>
 <br/>
 <span style="color: #a50"># フロー 1：読み込み</span><br/>
-<span style="color: #a50"># loader = TextLoader("runoob_knowledge.txt", encoding="utf-8")</span><br/>
+<span style="color: #a50"># loader = TextLoader("サンプル_knowledge.txt", encoding="utf-8")</span><br/>
 <span style="color: #a50"># docs = loader.load()</span><br/>
 <br/>
 <span style="color: #a50"># デモのため、サンプルテキストを直接使用</span><br/>
 docs <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><br/>
-    <span style="color: #a11;">"菜鸟教程（RUNOOB）は無料のプログラミング学習ウェブサイトです。"</span><span style="color: Gray;">,</span><br/>
+    <span style="color: #a11;">"サンプルは無料のプログラミング学習ウェブサイトです。"</span><span style="color: Gray;">,</span><br/>
     <span style="color: #a11;">"このウェブサイトでは、Python、Java、HTML など、さまざまなプログラミング言語のチュートリアルを提供しています。"</span><span style="color: Gray;">,</span><br/>
     <span style="color: #a11;">"Python3 基礎チュートリアルは全30章で、初心者の入門学習に適しています。"</span><span style="color: Gray;">,</span><br/>
     <span style="color: #a11;">"HTML 基礎チュートリアルは全25章で、フォーム、マルチメディアなどの内容を含みます。"</span><span style="color: Gray;">,</span><br/>
-    <span style="color: #a11;">"菜鸟教程のすべての基礎チュートリアルは無料です。"</span><span style="color: Gray;">,</span><br/>
+    <span style="color: #a11;">"サンプルのすべての基礎チュートリアルは無料です。"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">]</span><br/>
 <br/>
 <span style="color: #a50"># フロー 2：分割</span><br/>
@@ -293,7 +293,7 @@ embeddings <span style="color: Gray;">=</span> OpenAIEmbeddings<span style="colo
 vector_store <span style="color: Gray;">=</span> Chroma.<span style="color: #05a;">from_documents</span><span style="color: Olive;">(</span><br/>
     documents<span style="color: Gray;">=</span>chunks<span style="color: Gray;">,</span><br/>
     embedding<span style="color: Gray;">=</span>embeddings<span style="color: Gray;">,</span><br/>
-    persist_directory<span style="color: Gray;">=</span><span style="color: #a11;">"./runoob_db"</span><span style="color: Gray;">,</span><br/>
+    persist_directory<span style="color: Gray;">=</span><span style="color: #a11;">"./サンプル_db"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"インデックスを作成しました：{len(chunks)} 個のドキュメントチャンク"</span><span style="color: Olive;">)</span><br/>
@@ -306,9 +306,9 @@ results <span style="color: Gray;">=</span> vector_store.<span style="color: #05
 </div>
 <p>実行結果：</p>
 <pre>
-已建立索引：5 个文档块
-检索结果: Python3 基础教程共 30 章，适合零基础入门学习。
-检索结果: 菜鸟教程（RUNOOB）是一个免费的编程学习网站。
+インデックス作成済み:5 个文档块
+検索結果: Python3 基础教程共 30 章，适合零基础入门学习。
+検索結果: サンプルは無料のプログラミング学習ウェブサイトです。
 </pre>
 その他の拡張
 </div>

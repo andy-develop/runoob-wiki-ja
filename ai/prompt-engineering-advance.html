@@ -263,7 +263,7 @@ compare_prompt_styles<span style="color: Olive;">(</span><span style="color: Oli
 <br/>
 <br/>
 <span style="color: #a50"># テスト：少し複雑な論理問題</span><br/>
-problem <span style="color: Gray;">=</span> <span style="color: #a11;">"""RUNOOB技術チームには3人います：張三、李四、王五。<br/>既知：<br/>1. 張三の給料はプロダクトマネージャーより高い<br/>2. 李四の給料はデザイナーより低い<br/>3. デザイナーの給料は王五より低い<br/>質問：プロダクトマネージャーは誰ですか？"""</span><br/>
+problem <span style="color: Gray;">=</span> <span style="color: #a11;">"""サンプル技術チームには3人います：張三、李四、王五。<br/>既知：<br/>1. 張三の給料はプロダクトマネージャーより高い<br/>2. 李四の給料はデザイナーより低い<br/>3. デザイナーの給料は王五より低い<br/>質問：プロダクトマネージャーは誰ですか？"""</span><br/>
 <br/>
 cot_prompt <span style="color: Gray;">=</span> create_cot_prompt<span style="color: Olive;">(</span>problem<span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"="</span> * <span style="color: Maroon;">60</span><span style="color: Olive;">)</span><br/>
@@ -319,11 +319,11 @@ cot_prompt <span style="color: Gray;">=</span> create_cot_prompt<span style="col
     <span style="color: #a11;">"""フューショットプロンプトのテンプレートを作成する"""</span><br/>
 <br/>
     <span style="color: #a50"># まずいくつかの例を示します（入力 → 出力）</span><br/>
-    examples <span style="color: Gray;">=</span> <span style="color: #a11;">"""【例 1】<br/>入力：この RUNOOB チュートリアルはとてもよく書かれていて、わかりやすいです。<br/>出力：ポジティブ<br/>
+    examples <span style="color: Gray;">=</span> <span style="color: #a11;">"""【例 1】<br/>入力：この サンプル チュートリアルはとてもよく書かれていて、わかりやすいです。<br/>出力：ポジティブ<br/>
 <br/>【例 2】<br/>入力：この機能は使いにくすぎて、多くの時間を無駄にしました。<br/>出力：ネガティブ<br/>
 <br/>【例 3】<br/>入力：今日の天気は普通で、寒くも暑くもありません。<br/>出力：ニュートラル<br/>
 <br/>【例 4】<br/>入力：このレストランは雰囲気が良いですが、サービスが少し遅いです。<br/>出力：ニュートラル<br/>
-<br/>【例 5】<br/>入力：RUNOOB の AI コースを強くお勧めします。得るものが大きいです。<br/>出力：ポジティブ"""</span><br/>
+<br/>【例 5】<br/>入力：サンプル の AI コースを強くお勧めします。得るものが大きいです。<br/>出力：ポジティブ"""</span><br/>
 <br/>
     <span style="color: #a50"># 次にタスクの説明</span><br/>
     task <span style="color: Gray;">=</span> <span style="color: #a11;">"""<br/>【タスク】<br/>以下の入力テキストの感情を分析し、「ポジティブ」「ネガティブ」「ニュートラル」のみを返してください。説明は不要です。<br/>
@@ -336,7 +336,7 @@ cot_prompt <span style="color: Gray;">=</span> create_cot_prompt<span style="col
 <br/>
 <span style="color: #a50"># 使用例</span><br/>
 prompt <span style="color: Gray;">=</span> create_few_shot_prompt<span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
-test_text <span style="color: Gray;">=</span> <span style="color: #a11;">RUNOOB の Prompt チュートリアルはとても実用のですが、もう少し詳しくできる部分もあります。</span><br/>
+test_text <span style="color: Gray;">=</span> <span style="color: #a11;">サンプル の Prompt チュートリアルはとても実用のですが、もう少し詳しくできる部分もあります。</span><br/>
 final_prompt <span style="color: Gray;">=</span> prompt.<span style="color: #05a;">format</span><span style="color: Olive;">(</span>text<span style="color: Gray;">=</span>test_text<span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"="</span> * <span style="color: Maroon;">60</span><span style="color: Olive;">)</span><br/>
@@ -436,7 +436,7 @@ builder.<span style="color: #05a;">add_example</span><span style="color: Olive;"
     output_text<span style="color: Gray;">=</span><span style="color: #a11;">'{"name": "李四", "gender": "女", "age": 35, "job": "设计师", "city": "上海"}'</span><br/>
 <span style="color: Olive;">)</span><br/>
 builder.<span style="color: #05a;">add_example</span><span style="color: Olive;">(</span><br/>
-    input_text<span style="color: Gray;">=</span><span style="color: #a11;">"王五、RUNOOB で働いている、30歳、プロダクトマネージャー、男性、深圳"</span><span style="color: Gray;">,</span><br/>
+    input_text<span style="color: Gray;">=</span><span style="color: #a11;">"王五、サンプル で働いている、30歳、プロダクトマネージャー、男性、深圳"</span><span style="color: Gray;">,</span><br/>
     output_text<span style="color: Gray;">=</span><span style="color: #a11;">'{"name": "王五", "gender": "男", "age": 30, "job": "产品经理", "city": "深圳"}'</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
@@ -490,7 +490,7 @@ final_prompt <span style="color: Gray;">=</span> builder.<span style="color: #05
 <span style="color: #a50"># ============================================</span><br/>
 <br/>
 <span style="color: #a50"># 例 1：コードアシスタントの System Prompt</span><br/>
-CODE_ASSISTANT_SYSTEM_PROMPT <span style="color: Gray;">=</span> <span style="color: #a11;">"""# 役割<br/>あなたは RUNOOB テクニカルチームのシニアコードアシスタントであり、Python 開発に特化しています。<br/>
+CODE_ASSISTANT_SYSTEM_PROMPT <span style="color: Gray;">=</span> <span style="color: #a11;">"""# 役割<br/>あなたは サンプル テクニカルチームのシニアコードアシスタントであり、Python 開発に特化しています。<br/>
 <br/># 中核となる能力<br/>- 明確で効率的かつ保守しやすい Python コードを作成する<br/>- コードの仕組みを説明し、ユーザーの理解を助ける<br/>- エラーをデバッグし、問題の根本原因を特定する<br/>- ベストプラクティスの提案を提供する<br/>
 <br/># 出力仕様<br/>1. まずユーザーのニーズを理解し、1〜2文で確認する<br/>2. 解決策を提示する際は、最初に考え方を説明し、次にコードを示す<br/>3. コードは以下を満たす必要がある：<br/>- 詳細なコメントを含む<br/>- 型ヒント（Type Hints）を使用する<br/>- 境界条件を考慮する<br/>- テストコードを含む<br/>4. 複数の選択肢がある場合は、メリットとデメリットを比較し、推奨理由を示す<br/>5. 最後に注意事項を伝える<br/>
 <br/># 禁止事項<br/>- 有害なコード、悪意のあるコードを生成しないこと<br/>- 存在しない API やライブラリをでっち上げないこと<br/>- 不確かな場合は正直に説明し、いい加減に作らないこと<br/>- セキュリティ上の脆弱性に関するコードを生成しないこと<br/>
@@ -498,10 +498,10 @@ CODE_ASSISTANT_SYSTEM_PROMPT <span style="color: Gray;">=</span> <span style="co
 <br/>
 <br/>
 <span style="color: #a50"># 例2：コピーライティングのSystem Prompt</span><br/>
-COPYWRITER_SYSTEM_PROMPT <span style="color: Gray;">=</span> <span style="color: #a11;">"""# 役割<br/>あなたはRUNOOBのシニアコピーライターであり、技術ドキュメントやチュートリアルの執筆を得意としています。<br/>
+COPYWRITER_SYSTEM_PROMPT <span style="color: Gray;">=</span> <span style="color: #a11;">"""# 役割<br/>あなたはサンプルのシニアコピーライターであり、技術ドキュメントやチュートリアルの執筆を得意としています。<br/>
 <br/># 執筆原則<br/>- わかりやすく：難しい技術を平易な言葉で説明し、空論を述べない<br/>- 論理的に明確：問題から出発し、段階的に深掘りする<br/>- 実例豊富：各概念に実行可能なコード例を添える<br/>- 厳密かつ正確：誤解を招かず、誇張せず、間違いがあれば修正する<br/>
 <br/># 出力構造<br/>各トピックについて、以下の構造で構成する：<br/>1. 何か：一言で概念を定義する<br/>2. なぜか：なぜこれが必要なのか、どのような問題を解決するのかを説明する<br/>3. どう使うか：完全な例を示し、注釈を詳しく書く<br/>4. 注意事項：よくある落とし穴とベストプラクティスを指摘する<br/>
-<br/># スタイル要件<br/>- 段落は短く、一文で一段落にする<br/>- 重要な内容は【注意】または【重要】で示す<br/>- コード例にはテストケースとして「runoob」キーワードを含める<br/>- emojiを使わない<br/>- ネットスラングを使わない<br/>
+<br/># スタイル要件<br/>- 段落は短く、一文で一段落にする<br/>- 重要な内容は【注意】または【重要】で示す<br/>- コード例にはテストケースとして「サンプル」キーワードを含める<br/>- emojiを使わない<br/>- ネットスラングを使わない<br/>
 <br/># 使用禁止表現<br/>「とても簡単」「簡単だ」「あっという間にできる」とは言わない——これは困難に直面しているユーザーに挫折感を与える。<br/>「一歩ずつ進めましょう」「この例を見てみましょう」と言う。"""</span><br/>
 <br/>
 <br/>
@@ -776,7 +776,7 @@ JSON_OUTPUT_PROMPT <span style="color: Gray;">=</span> <span style="color: #a11;
 <br/>
 <br/>
 <span style="color: #a50"># テスト</span><br/>
-text <span style="color: Gray;">=</span> <span style="color: #a11;">"李四、女性、32 歳、RUNOOB で働いており、読書と旅行が好き、既婚、5 歳の子供が一人いる。"</span><br/>
+text <span style="color: Gray;">=</span> <span style="color: #a11;">"李四、女性、32 歳、サンプル で働いており、読書と旅行が好き、既婚、5 歳の子供が一人いる。"</span><br/>
 prompt <span style="color: Gray;">=</span> extract_info_to_json<span style="color: Olive;">(</span>text<span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"="</span> * <span style="color: Maroon;">60</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"JSON 出力プロンプト："</span><span style="color: Olive;">)</span><br/>
@@ -789,7 +789,7 @@ prompt <span style="color: Gray;">=</span> extract_info_to_json<span style="colo
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"-"</span> * <span style="color: Maroon;">60</span><span style="color: Olive;">)</span><br/>
 expected <span style="color: Gray;">=</span> <span style="color: #a11;">'''{<br/>"name": "李四",<br/>"gender": "女性",<br/>
     "age": 32,<br/>
-    "company": "RUNOOB",<br/>"hobbies": ["読書", "旅行"],<br/>
+    "company": "サンプル",<br/>"hobbies": ["読書", "旅行"],<br/>
     "married": true,<br/>
     "children": 1<br/>
 }'''</span><br/>
@@ -805,7 +805,7 @@ expected <span style="color: Gray;">=</span> <span style="color: #a11;">'''{<br/
 <span style="color: #a50"># XML タグ構造化プロンプトの例</span><br/>
 <span style="color: #a50"># ============================================</span><br/>
 <br/>
-XML_TAG_PROMPT <span style="color: Gray;">=</span> <span style="color: #a11;">"""&lt;system&gt;<br/>あなたは RUNOOB の専門的な教育アシスタントで、複雑な概念をわかりやすく説明するのが得意です。<br/>
+XML_TAG_PROMPT <span style="color: Gray;">=</span> <span style="color: #a11;">"""&lt;system&gt;<br/>あなたは サンプル の専門的な教育アシスタントで、複雑な概念をわかりやすく説明するのが得意です。<br/>
 &lt;/system&gt;<br/>
 <br/>
 &lt;task&gt;<br/>以下の技術概念についてチュートリアルカードを作成してください。<br/>
@@ -880,7 +880,7 @@ SHORT_PROMPT <span style="color: Gray;">=</span> <span style="color: #a11;">"""�
 <br/>要約："""</span><br/>
 <br/>
 <span style="color: #a50"># 2. 詳細な出力</span><br/>
-LONG_PROMPT <span style="color: Gray;">=</span> <span style="color: #a11;">"""以下の内容を詳細に分析してください。要件：<br/>- 少なくとも 300 文字<br/>- 5 つの部分に分ける：背景、核となる見解、証拠、長所と短所、まとめ<br/>- 各部分に小見出しを付ける<br/>- RUNOOB の教育スタイルに合わせて、わかりやすい言葉を使う<br/>
+LONG_PROMPT <span style="color: Gray;">=</span> <span style="color: #a11;">"""以下の内容を詳細に分析してください。要件：<br/>- 少なくとも 300 文字<br/>- 5 つの部分に分ける：背景、核となる見解、証拠、長所と短所、まとめ<br/>- 各部分に小見出しを付ける<br/>- サンプル の教育スタイルに合わせて、わかりやすい言葉を使う<br/>
 <br/>内容：{text}<br/>
 <br/>分析："""</span><br/>
 <br/>
@@ -1264,7 +1264,7 @@ wrapped <span style="color: Gray;">=</span> guard.<span style="color: #05a;">wra
     <span style="color: Gray;">@</span><span style="color: Teal;">staticmethod</span><br/>
     <span style="color: Green;font-weight:bold;">def</span> text_summarizer<span style="color: Olive;">(</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
         <span style="color: #a11;">"""1. テキスト要約 Prompt"""</span><br/>
-        <span style="color: Green;font-weight:bold;">return</span> <span style="color: #a11;">"""# 役割<br/>あなたはRUNOOBのプロのテキスト要約専門家で、核心となる要点を捉えるのが得意です。<br/>
+        <span style="color: Green;font-weight:bold;">return</span> <span style="color: #a11;">"""# 役割<br/>あなたはサンプルのプロのテキスト要約専門家で、核心となる要点を捉えるのが得意です。<br/>
 <br/># タスク<br/>以下のテキストの要約を生成してください。<br/>
 <br/># 要件<br/>- 【一言まとめ】30文字以内<br/>- 【核心ポイント】3〜5点、各点50文字以内<br/>- 【重要なデータ】重要なデータがあれば、別途列挙<br/>- 原文にない情報を追加しない<br/>
 <br/># 原文<br/>
@@ -1281,7 +1281,7 @@ wrapped <span style="color: Gray;">=</span> guard.<span style="color: #05a;">wra
     <span style="color: Green;font-weight:bold;">def</span> sentiment_analyzer<span style="color: Olive;">(</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
         <span style="color: #a11;">"""2. 感情分析 Prompt"""</span><br/>
         <span style="color: Green;font-weight:bold;">return</span> <span style="color: #a11;">"""# タスク<br/>以下のテキストの感情傾向を分析してください。<br/>
-<br/># 例<br/>入力：このRUNOOBチュートリアルは素晴らしい、収穫が大きい！<br/>出力：{{"sentiment": "positive", "confidence": 0.95, "reasoning": "肯定的で前向きな表現"}}<br/>
+<br/># 例<br/>入力：このサンプルチュートリアルは素晴らしい、収穫が大きい！<br/>出力：{{"sentiment": "positive", "confidence": 0.95, "reasoning": "肯定的で前向きな表現"}}<br/>
 <br/>入力：この商品はひどすぎる、二度と買わない。<br/>出力：{{"sentiment": "negative", "confidence": 0.9, "reasoning": "不満の感情を表現"}}<br/>
 <br/>入力：今日の天気はまあまあだ。<br/>出力：{{"sentiment": "neutral", "confidence": 0.85, "reasoning": "客観的な記述で、明確な感情はない"}}<br/>
 <br/># 分析対象テキスト<br/>
@@ -1291,7 +1291,7 @@ wrapped <span style="color: Gray;">=</span> guard.<span style="color: #05a;">wra
     <span style="color: Gray;">@</span><span style="color: Teal;">staticmethod</span><br/>
     <span style="color: Green;font-weight:bold;">def</span> code_generator<span style="color: Olive;">(</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
         <span style="color: #a11;">"""3. コード生成 Prompt"""</span><br/>
-        <span style="color: Green;font-weight:bold;">return</span> <span style="color: #a11;">"""# 役割<br/>あなたはRUNOOBのシニアPythonエンジニアで、コードの品質が高く、コメントが詳細です。<br/>
+        <span style="color: Green;font-weight:bold;">return</span> <span style="color: #a11;">"""# 役割<br/>あなたはサンプルのシニアPythonエンジニアで、コードの品質が高く、コメントが詳細です。<br/>
 <br/># タスク<br/>要件に基づいてPythonコードを作成してください。<br/>
 <br/># コード要件<br/>1. 型ヒント（Type Hints）を使用する<br/>2. 詳細なdocstringとコメントを含める<br/>3. エッジケースと例外を処理する<br/>4. 実行可能なテストコードを含める<br/>5. PEP 8 規約に準拠する<br/>
 <br/># 思考ステップ<br/>まず考える：<br/>1. この要件は何の問題を解決するのか？<br/>2. どのようなアプローチが適切か？<br/>3. どのようなエッジケースを考慮すべきか？<br/>その後でコードを書く。<br/>
@@ -1311,7 +1311,7 @@ wrapped <span style="color: Gray;">=</span> guard.<span style="color: #05a;">wra
     <span style="color: Gray;">@</span><span style="color: Teal;">staticmethod</span><br/>
     <span style="color: Green;font-weight:bold;">def</span> content_polisher<span style="color: Olive;">(</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
         <span style="color: #a11;">"""4. 文章ブラッシュアップ Prompt"""</span><br/>
-        <span style="color: Green;font-weight:bold;">return</span> <span style="color: #a11;">"""# 役割<br/>あなたはRUNOOBのベテラン編集者で、文章をより明確で流暢にすることに長けています。<br/>
+        <span style="color: Green;font-weight:bold;">return</span> <span style="color: #a11;">"""# 役割<br/>あなたはサンプルのベテラン編集者で、文章をより明確で流暢にすることに長けています。<br/>
 <br/># ブラッシュアップの原則<br/>1. 元の意味を保つ：原文が伝えたい意味を変えない<br/>2. より明確に：論理を整え、理解しやすくする<br/>3. より簡潔に：冗長を削除し、無駄なことを言わない<br/>4. 段落を短く：一文一段で読みやすくする<br/>
 <br/># タスク<br/>以下の文章をブラッシュアップし、修正の説明を提供してください。<br/>
 <br/># 原文<br/>
@@ -1324,7 +1324,7 @@ wrapped <span style="color: Gray;">=</span> guard.<span style="color: #05a;">wra
     <span style="color: Gray;">@</span><span style="color: Teal;">staticmethod</span><br/>
     <span style="color: Green;font-weight:bold;">def</span> question_answerer<span style="color: Olive;">(</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
         <span style="color: #a11;">"""5. 質問応答 Prompt"""</span><br/>
-        <span style="color: Green;font-weight:bold;">return</span> <span style="color: #a11;">"""# 役割<br/>あなたはRUNOOBのAI技術コンサルタントで、専門的で、忍耐強く、わかりやすい説明をします。<br/>
+        <span style="color: Green;font-weight:bold;">return</span> <span style="color: #a11;">"""# 役割<br/>あなたはサンプルのAI技術コンサルタントで、専門的で、忍耐強く、わかりやすい説明をします。<br/>
 <br/># 回答の原則<br/>1. まず問題を理解し、要件を確認する<br/>2. ステップごとに説明し、論理を明確にする<br/>3. 実際の例を示し、実行可能であればより良い<br/>4. 複数の選択肢がある場合は、長所と短所を比較する<br/>5. 正直に「わからない」と言う——捏造しない<br/>
 <br/># 思考プロセス<br/>回答する前に考えてください：<br/>- ユーザーは一体何を尋ねたいのか？<br/>- ユーザーの背景は何か（初心者か専門家か）？<br/>- 回答はどの程度詳細であるべきか？<br/>- 注意すべき一般的な落とし穴はあるか？<br/>
 <br/># 質問<br/>
@@ -1348,7 +1348,7 @@ wrapped <span style="color: Gray;">=</span> guard.<span style="color: #05a;">wra
     <span style="color: Gray;">@</span><span style="color: Teal;">staticmethod</span><br/>
     <span style="color: Green;font-weight:bold;">def</span> translator<span style="color: Olive;">(</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
         <span style="color: #a11;">"""7. 翻訳 Prompt"""</span><br/>
-        <span style="color: Green;font-weight:bold;">return</span> <span style="color: #a11;">"""# 役割<br/>あなたはRUNOOBのプロの翻訳者で、中文と英語に精通し、技術文書の翻訳に詳しいです。<br/>
+        <span style="color: Green;font-weight:bold;">return</span> <span style="color: #a11;">"""# 役割<br/>あなたはサンプルのプロの翻訳者で、中文と英語に精通し、技術文書の翻訳に詳しいです。<br/>
 <br/># 翻訳の原則<br/>1. 正確さ：元の意味を歪めない<br/>2. 自然さ：目標言語の表現習慣に合うようにし、硬い直訳にしない<br/>3. 専門性：用語の翻訳を正確かつ一貫させる<br/>4. 形式を保つ：原文のリスト、コードなどの形式を維持する<br/>
 <br/># タスク<br/>以下の{source_lang}テキストを{target_lang}に翻訳してください。<br/>
 <br/># 原文<br/>
@@ -1358,7 +1358,7 @@ wrapped <span style="color: Gray;">=</span> guard.<span style="color: #05a;">wra
     <span style="color: Gray;">@</span><span style="color: Teal;">staticmethod</span><br/>
     <span style="color: Green;font-weight:bold;">def</span> brainstormer<span style="color: Olive;">(</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
         <span style="color: #a11;">"""8. ブレインストーミング Prompt"""</span><br/>
-        <span style="color: Green;font-weight:bold;">return</span> <span style="color: #a11;">"""# 役割<br/>あなたはRUNOOBのクリエイティブコンサルタントで、アイデアが多く、視野が広く、いつも面白い提案ができます。<br/>
+        <span style="color: Green;font-weight:bold;">return</span> <span style="color: #a11;">"""# 役割<br/>あなたはサンプルのクリエイティブコンサルタントで、アイデアが多く、視野が広く、いつも面白い提案ができます。<br/>
 <br/># タスク<br/>以下のテーマについてブレインストーミングを行ってください。<br/>
 <br/># 要件<br/>1. まず10個のアイデアを考える（実現可能かどうかは気にしない）<br/>2. その中から最も有望な3つを選び、詳しく展開する<br/>3. 各アイデアにタイトルと簡単な説明を付ける<br/>4. 大胆に革新し、常識に縛られない<br/>
 <br/># テーマ<br/>
@@ -1389,7 +1389,7 @@ wrapped <span style="color: Gray;">=</span> guard.<span style="color: #05a;">wra
     <span style="color: Gray;">@</span><span style="color: Teal;">staticmethod</span><br/>
     <span style="color: Green;font-weight:bold;">def</span> content_reviewer<span style="color: Olive;">(</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
         <span style="color: #a11;">"""10. コンテンツレビュー Prompt"""</span><br/>
-        <span style="color: Green;font-weight:bold;">return</span> <span style="color: #a11;">"""# 役割<br/>あなたはRUNOOBのコンテンツ品質チェッカーで、厳格で、細かく、客観的です。<br/>
+        <span style="color: Green;font-weight:bold;">return</span> <span style="color: #a11;">"""# 役割<br/>あなたはサンプルのコンテンツ品質チェッカーで、厳格で、細かく、客観的です。<br/>
 <br/># レビューの観点<br/>1. 正確性：事実誤認はないか？<br/>2. 明確さ：論理は明確か？理解しやすいか？<br/>3. 完全性：重要な情報の漏れはないか？<br/>4. 安全性：機密性や不適切な内容はないか？<br/>
 <br/># タスク<br/>以下の内容を審査し、評価と提案を行ってください。<br/>
 <br/># 審査対象の内容<br/>

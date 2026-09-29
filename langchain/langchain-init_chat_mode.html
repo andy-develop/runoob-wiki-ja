@@ -402,7 +402,7 @@ model <span style="color: Gray;">=</span> init_chat_model<span style="color: Oli
 <br/>
 <span style="color: #a50"># model を指定すると、固定モデルが返される</span><br/>
 model <span style="color: Gray;">=</span> init_chat_model<span style="color: Olive;">(</span><span style="color: #a11;">"deepseek:deepseek-v4-flash"</span><span style="color: Gray;">,</span> temperature<span style="color: Gray;">=</span><span style="color: Maroon;">0.7</span><span style="color: Olive;">)</span><br/>
-response <span style="color: Gray;">=</span> model.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: #a11;">"菜鸟教程 RUNOOB を紹介"</span><span style="color: Olive;">)</span><br/>
+response <span style="color: Gray;">=</span> model.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: #a11;">"サンプル を紹介"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>response.<span style="color: #05a;">content</span><span style="color: Olive;">)</span><br/>
 </div>
 </div>
@@ -417,7 +417,7 @@ from langchain.chat_models import init_chat_model
 
 # 指定了 model，返回固定模型
 model = init_chat_model("deepseek:deepseek-v4-flash", temperature=0.7)
-response = model.invoke("介绍菜鸟教程 RUNOOB")
+response = model.invoke("介绍サンプル")
 print(response.content)</pre></blockquote>
 <h3>パターン 2：設定可能モデル</h3>
 <p>model を指定せず（または None に設定）、実行時に動的に切り替えられるモデルを作成します：</p>
@@ -432,14 +432,14 @@ configurable_model <span style="color: Gray;">=</span> init_chat_model<span styl
 <br/>
 <span style="color: #a50"># 実行時に config でモデルを指定する</span><br/>
 response <span style="color: Gray;">=</span> configurable_model.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><br/>
-    <span style="color: #a11;">"菜鸟教程 RUNOOB を紹介"</span><span style="color: Gray;">,</span><br/>
+    <span style="color: #a11;">"サンプル を紹介"</span><span style="color: Gray;">,</span><br/>
     config<span style="color: Gray;">=</span><span style="color: Olive;">{</span><span style="color: #a11;">"configurable"</span>: <span style="color: Olive;">{</span><span style="color: #a11;">"model"</span>: <span style="color: #a11;">"deepseek-v4-flash"</span><span style="color: Olive;">}</span><span style="color: Olive;">}</span><br/>
 <span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>response.<span style="color: #05a;">content</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 同じモデルインスタンスでも、異なるモデルで実行できる</span><br/>
 response <span style="color: Gray;">=</span> configurable_model.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><br/>
-    <span style="color: #a11;">"菜鸟教程 RUNOOB を紹介"</span><span style="color: Gray;">,</span><br/>
+    <span style="color: #a11;">"サンプル を紹介"</span><span style="color: Gray;">,</span><br/>
     config<span style="color: Gray;">=</span><span style="color: Olive;">{</span><span style="color: #a11;">"configurable"</span>: <span style="color: Olive;">{</span><span style="color: #a11;">"model"</span>: <span style="color: #a11;">"claude-sonnet-4-5"</span><span style="color: Olive;">}</span><span style="color: Olive;">}</span><br/>
 <span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>response.<span style="color: #05a;">content</span><span style="color: Olive;">)</span><br/>
@@ -497,7 +497,7 @@ model <span style="color: Gray;">=</span> init_chat_model<span style="color: Oli
     <span style="color: #a50"># rate_limiter=MyRateLimiter(requests_per_second=5),</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
-response <span style="color: Gray;">=</span> model.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: #a11;">"菜鸟教程 RUNOOB とは？"</span><span style="color: Olive;">)</span><br/>
+response <span style="color: Gray;">=</span> model.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: #a11;">"Python とは？"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>response.<span style="color: #05a;">content</span><span style="color: Olive;">)</span><br/>
 </div>
 </div>
@@ -530,12 +530,12 @@ model <span style="color: Gray;">=</span> init_chat_model<span style="color: Oli
 <span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># デフォルト設定で実行</span><br/>
-response <span style="color: Gray;">=</span> model.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: #a11;">"菜鸟教程 を紹介"</span><span style="color: Olive;">)</span><br/>
+response <span style="color: Gray;">=</span> model.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: #a11;">"サンプル を紹介"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"デフォルト設定: {response.content[:50]}..."</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 実行時にモデルとパラメータを上書き（my_ プレフィックスに注意）</span><br/>
 response <span style="color: Gray;">=</span> model.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><br/>
-    <span style="color: #a11;">"菜鸟教程 RUNOOB を紹介"</span><span style="color: Gray;">,</span><br/>
+    <span style="color: #a11;">"サンプル を紹介"</span><span style="color: Gray;">,</span><br/>
     config<span style="color: Gray;">=</span><span style="color: Olive;">{</span><br/>
         <span style="color: #a11;">"configurable"</span>: <span style="color: Olive;">{</span><br/>
             <span style="color: #a11;">"my_model"</span>: <span style="color: #a11;">"deepseek:deepseek-v4-pro"</span><span style="color: Gray;">,</span>       <span style="color: #a50"># モデルの切り替え</span><br/>

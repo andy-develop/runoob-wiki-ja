@@ -375,23 +375,23 @@ test<span style="color: #339933;">&gt;</span> show dbs<br/>
 admin   <span style="color: #CC0000;">40.00</span> KiB<br/>
 config  <span style="color: #CC0000;">72.00</span> KiB<br/>
 local   <span style="color: #CC0000;">40.00</span> KiB<br/>
-runoob  <span style="color: #CC0000;">72.00</span> KiB<br/>
-test<span style="color: #339933;">&gt;</span> use runoob<br/>
-switched to db runoob<br/>
+サンプル  <span style="color: #CC0000;">72.00</span> KiB<br/>
+test<span style="color: #339933;">&gt;</span> use サンプル<br/>
+switched to db サンプル<br/>
 <br/># ドキュメントを挿入<br/>
-runoob<span style="color: #339933;">&gt;</span> db.<span style="color: #660066;">mycollection</span>.<span style="color: #660066;">insertOne</span><span style="color: #009900;">(</span><span style="color: #009900;">{</span> name<span style="color: #339933;">:</span> <span style="color: #3366CC;">"Alice"</span><span style="color: #339933;">,</span> age<span style="color: #339933;">:</span> <span style="color: #CC0000;">30</span> <span style="color: #009900;">}</span><span style="color: #009900;">)</span><br/>
+サンプル<span style="color: #339933;">&gt;</span> db.<span style="color: #660066;">mycollection</span>.<span style="color: #660066;">insertOne</span><span style="color: #009900;">(</span><span style="color: #009900;">{</span> name<span style="color: #339933;">:</span> <span style="color: #3366CC;">"Alice"</span><span style="color: #339933;">,</span> age<span style="color: #339933;">:</span> <span style="color: #CC0000;">30</span> <span style="color: #009900;">}</span><span style="color: #009900;">)</span><br/>
 <span style="color: #009900;">{</span><br/>
   acknowledged<span style="color: #339933;">:</span> <span style="color: #003366; font-weight: bold;">true</span><span style="color: #339933;">,</span><br/>
   insertedId<span style="color: #339933;">:</span> ObjectId<span style="color: #009900;">(</span><span style="color: #3366CC;">'667cd8789a69705686ed70f2'</span><span style="color: #009900;">)</span><br/>
 <span style="color: #009900;">}</span><br/>
 <br/>
 <br/># ドキュメントを検索<br/>
-runoob<span style="color: #339933;">&gt;</span> db.<span style="color: #660066;">mycollection</span>.<span style="color: #660066;">find</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><br/>
+サンプル<span style="color: #339933;">&gt;</span> db.<span style="color: #660066;">mycollection</span>.<span style="color: #660066;">find</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><br/>
 <span style="color: #009900;">[</span><br/>
   <span style="color: #009900;">{</span> _id<span style="color: #339933;">:</span> ObjectId<span style="color: #009900;">(</span><span style="color: #3366CC;">'667cd8789a69705686ed70f2'</span><span style="color: #009900;">)</span><span style="color: #339933;">,</span> name<span style="color: #339933;">:</span> <span style="color: #3366CC;">'Alice'</span><span style="color: #339933;">,</span> age<span style="color: #339933;">:</span> <span style="color: #CC0000;">30</span> <span style="color: #009900;">}</span><br/>
 <span style="color: #009900;">]</span><br/>
 <br/># ドキュメントを更新<br/>
-runoob<span style="color: #339933;">&gt;</span> db.<span style="color: #660066;">mycollection</span>.<span style="color: #660066;">updateOne</span><span style="color: #009900;">(</span><span style="color: #009900;">{</span> name<span style="color: #339933;">:</span> <span style="color: #3366CC;">"Alice"</span> <span style="color: #009900;">}</span><span style="color: #339933;">,</span> <span style="color: #009900;">{</span> $set<span style="color: #339933;">:</span> <span style="color: #009900;">{</span> age<span style="color: #339933;">:</span> <span style="color: #CC0000;">31</span> <span style="color: #009900;">}</span> <span style="color: #009900;">}</span><span style="color: #009900;">)</span><br/>
+サンプル<span style="color: #339933;">&gt;</span> db.<span style="color: #660066;">mycollection</span>.<span style="color: #660066;">updateOne</span><span style="color: #009900;">(</span><span style="color: #009900;">{</span> name<span style="color: #339933;">:</span> <span style="color: #3366CC;">"Alice"</span> <span style="color: #009900;">}</span><span style="color: #339933;">,</span> <span style="color: #009900;">{</span> $set<span style="color: #339933;">:</span> <span style="color: #009900;">{</span> age<span style="color: #339933;">:</span> <span style="color: #CC0000;">31</span> <span style="color: #009900;">}</span> <span style="color: #009900;">}</span><span style="color: #009900;">)</span><br/>
 <span style="color: #009900;">{</span><br/>
   acknowledged<span style="color: #339933;">:</span> <span style="color: #003366; font-weight: bold;">true</span><span style="color: #339933;">,</span><br/>
   insertedId<span style="color: #339933;">:</span> <span style="color: #003366; font-weight: bold;">null</span><span style="color: #339933;">,</span><br/>
@@ -400,10 +400,10 @@ runoob<span style="color: #339933;">&gt;</span> db.<span style="color: #660066;"
   upsertedCount<span style="color: #339933;">:</span> <span style="color: #CC0000;">0</span><br/>
 <span style="color: #009900;">}</span><br/>
 <br/># ドキュメントを削除<br/>
-runoob<span style="color: #339933;">&gt;</span> db.<span style="color: #660066;">mycollection</span>.<span style="color: #660066;">deleteOne</span><span style="color: #009900;">(</span><span style="color: #009900;">{</span> name<span style="color: #339933;">:</span> <span style="color: #3366CC;">"Alice"</span> <span style="color: #009900;">}</span><span style="color: #009900;">)</span><br/>
+サンプル<span style="color: #339933;">&gt;</span> db.<span style="color: #660066;">mycollection</span>.<span style="color: #660066;">deleteOne</span><span style="color: #009900;">(</span><span style="color: #009900;">{</span> name<span style="color: #339933;">:</span> <span style="color: #3366CC;">"Alice"</span> <span style="color: #009900;">}</span><span style="color: #009900;">)</span><br/>
 <span style="color: #009900;">{</span> acknowledged<span style="color: #339933;">:</span> <span style="color: #003366; font-weight: bold;">true</span><span style="color: #339933;">,</span> deletedCount<span style="color: #339933;">:</span> <span style="color: #CC0000;">1</span> <span style="color: #009900;">}</span><br/>
 <br/># MongoDB Shell を終了<br/>
-runoob<span style="color: #339933;">&gt;</span> quit<span style="color: #009900;">(</span><span style="color: #009900;">)</span><br/>
+サンプル<span style="color: #339933;">&gt;</span> quit<span style="color: #009900;">(</span><span style="color: #009900;">)</span><br/>
 </div></div>
 <img decoding="async" src="../wp-content/uploads/2024/06/d867822e85a8b2baf7456a230132beb5.png"/></p>
 <p>上記の手順と例を通じて、MongoDB Shell を使用して MongoDB データベースを管理および操作できるようになります。</p><p>公式インストールガイド：<a href="https://www.mongodb.com/zh-cn/docs/mongodb-shell/install/" rel="noopener" target="_blank">https://www.mongodb.com/zh-cn/docs/mongodb-shell/install/</a></p> その他の拡張

@@ -282,7 +282,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="article-body">
 <div class="article-intro" id="content">
 <h1>Ollama ローカル AI プログラミングアシスタント</h1>
-<p>この章では、コーディング専用のローカルモデル「runoob-coder」をカスタマイズし、VS Code と Claude Code に接続して、完全オフラインでトークン費用がかからないプログラミングアシスタントを構築します。</p>
+<p>この章では、コーディング専用のローカルモデル「サンプル-coder」をカスタマイズし、VS Code と Claude Code に接続して、完全オフラインでトークン費用がかからないプログラミングアシスタントを構築します。</p>
 <p>中心となる作業は3つ：コードモデルを正しく選ぶこと、コーディング用Modelfileを適切に書くこと、使い慣れたツールに接続することです。</p>
 <hr/>
 <h2>ステップ1：コードモデルを選ぶ、VRAMが決める</h2>
@@ -311,7 +311,7 @@ ollama pull qwen3.5:9b         # 16GB 内存</pre>
 <span style="color: #666666; font-style: italic;"># VRAM 24GB+ の場合はベースを qwen3-coder に変更</span><br/>
 FROM qwen3.5:9b<br/>
 <br/>
-SYSTEM <span style="color: #a10;">""</span><span style="color: #a10;">"<br/>あなたは RUNOOB チームのプログラミングアシスタントです。以下の規範を守ってください：<br/>1. 断片ではなく、完全でそのまま実行できるコードを優先して提示する<br/>2. 各重要なステップに中国語のコメントを書き、「なぜ」を説明する</span>なぜ<span style="color: #a10;">"<br/>3. PEP 8（Python）または言語の公式スタイルに従う<br/>4. 不慣れなAPIに関わる場合は公式ドキュメントを確認するよう促し、インターフェースを捏造しない<br/>5. 回答構成：考え方を一言 - コード - 注意事項<br/>
+SYSTEM <span style="color: #a10;">""</span><span style="color: #a10;">"<br/>あなたは サンプル チームのプログラミングアシスタントです。以下の規範を守ってください：<br/>1. 断片ではなく、完全でそのまま実行できるコードを優先して提示する<br/>2. 各重要なステップに中国語のコメントを書き、「なぜ」を説明する</span>なぜ<span style="color: #a10;">"<br/>3. PEP 8（Python）または言語の公式スタイルに従う<br/>4. 不慣れなAPIに関わる場合は公式ドキュメントを確認するよう促し、インターフェースを捏造しない<br/>5. 回答構成：考え方を一言 - コード - 注意事項<br/>
 "</span><span style="color: #a10;">""</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># コードシナリオでは安定性が必要、ランダム性を低く抑える</span><br/>
@@ -323,7 +323,7 @@ PARAMETER num_ctx <span style="color: #000000;">65536</span><br/>
 </div>
 <p>専用コーディングモデルを構築：</p>
 <pre>
-ollama create runoob-coder -f Modelfile</pre>
+ollama create サンプル-coder -f Modelfile</pre>
 <p>「調整が十分か」を検収するには、3つの標準タスクでテストします：関数をそのまま使える状態にする（完全性を確認）、落とし穴のある古いコードを解説する（理解力を確認）、ユニットテスト作成を依頼する（規範順守を確認）。3つすべて合格してからエディタに接続しましょう。</p>
 <blockquote><p>num_ctx 65536 はエディタと Agent シナリオ向けです：ファイル全体や複数ファイルをコンテキストに入れるためです。VRAMが不足する場合は 32768 に下げ、ollama ps で PROCESSOR が依然として 100% GPU かどうかを確認してください。</p></blockquote>
 <hr/>
@@ -331,18 +331,18 @@ ollama create runoob-coder -f Modelfile</pre>
 <p>カスタムモデルと素のモデルは、ツールから見れば違いはありません。接続方法は第11篇と完全に同じです。</p>
 <p><img alt="编码助手三层结构：工具层、协议层、模型层" decoding="async" src="../wp-content/uploads/2026/08/coder-layers.svg" style="max-width:100%;"/></p>
 <h3>VS Code Chat への接続</h3>
-<p>Ollama 公式拡張機能をインストール後、Chat のモデルセレクターで runoob-coder を選択するだけです。他の設定は不要です。</p>
+<p>Ollama 公式拡張機能をインストール後、Chat のモデルセレクターで サンプル-coder を選択するだけです。他の設定は不要です。</p>
 <h3>Claude Code への接続</h3>
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># ワンクリック方式</span><br/>
-ollama launch claude <span style="color: #660033;">--model</span> runoob-coder<br/>
+ollama launch claude <span style="color: #660033;">--model</span> サンプル-coder<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># 手動方式：環境変数でローカルを指定し、モデル名にはカスタムモデルを使用</span><br/>
 <span style="color: #7A0874; font-weight: bold;">export</span> <span style="color: #007800;">ANTHROPIC_AUTH_TOKEN</span>=ollama<br/>
 <span style="color: #7A0874; font-weight: bold;">export</span> <span style="color: #007800;">ANTHROPIC_BASE_URL</span>=http:<span style="color: #000000; font-weight: bold;">//</span>localhost:<span style="color: #000000;">11434</span><br/>
-claude <span style="color: #660033;">--model</span> runoob-coder<br/>
+claude <span style="color: #660033;">--model</span> サンプル-coder<br/>
 </div>
 </div>
 <p>接続後、Claude Code のファイル編集、コマンド実行、複数ターンのリファクタリング機能はすべてローカルモデルが駆動します。長時間のタスクを実行する前に、コンテキストウィンドウが上記の設定になっているか確認してください。</p>
@@ -354,7 +354,7 @@ claude <span style="color: #660033;">--model</span> runoob-coder<br/>
 <tr><th>タスクタイプ</th><th>推奨モデル</th><th>理由</th></tr>
 </thead>
 <tbody>
-<tr><td>関数補完、コード解説、ユニットテスト作成</td><td>runoob-coder（ローカル）</td><td>高速、無料、プライバシー保護</td></tr>
+<tr><td>関数補完、コード解説、ユニットテスト作成</td><td>サンプル-coder（ローカル）</td><td>高速、無料、プライバシー保護</td></tr>
 <tr><td>ファイル横断のリファクタリング、複雑なデバッグ</td><td>qwen3-coder またはクラウド最上位モデル</td><td>より強力な長文コンテキスト理解が必要</td></tr>
 <tr><td>バッチ生成、スクリプト処理</td><td>ローカル小モデル + API</td><td>ゼロコストで大量処理</td></tr>
 </tbody>

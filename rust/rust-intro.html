@@ -217,7 +217,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example_code">
 <span style="color: #708;">fn</span> main<span style="">(</span><span style="">)</span> <span style="">{</span><br/>
     <span style="color: #a50; font-style: italic;">// s1 が文字列の所有権を取得（データはヒープに保存）</span><br/>
-    <span style="color: #708;">let</span> s1 <span style="">=</span> String<span style="">::</span><span style="color: #164;">from</span><span style="">(</span><span style="color: #a11;">"Hello, RUNOOB!"</span><span style="">)</span><span style="">;</span><br/>
+    <span style="color: #708;">let</span> s1 <span style="">=</span> String<span style="">::</span><span style="color: #164;">from</span><span style="">(</span><span style="color: #a11;">"Hello, サンプル!"</span><span style="">)</span><span style="">;</span><br/>
 <br/>
     <span style="color: #a50; font-style: italic;">// 所有権が s1 から s2 に移動し、以降 s1 は無効</span><br/>
     <span style="color: #708;">let</span> s2 <span style="">=</span> s1<span style="">;</span><br/>
@@ -236,7 +236,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     println<span style="">!</span><span style="">(</span><span style="color: #a11;">"s3 = {}, s4 = {}"</span><span style="">,</span> s3<span style="">,</span> s4<span style="">)</span><span style="">;</span><br/>
 <br/>
     <span style="color: #a50; font-style: italic;">// 可変参照：同時に1つだけ</span><br/>
-    <span style="color: #708;">let</span> <span style="color: #708;">mut</span> data <span style="">=</span> String<span style="">::</span><span style="color: #164;">from</span><span style="">(</span><span style="color: #a11;">"runoob"</span><span style="">)</span><span style="">;</span><br/>
+    <span style="color: #708;">let</span> <span style="color: #708;">mut</span> data <span style="">=</span> String<span style="">::</span><span style="color: #164;">from</span><span style="">(</span><span style="color: #a11;">"サンプル"</span><span style="">)</span><span style="">;</span><br/>
     <span style="color: #708;">let</span> r <span style="">=</span> <span style="">&amp;</span><span style="color: #708;">mut</span> data<span style="">;</span> <span style="color: #a50; font-style: italic;">// 可変借用</span><br/>
     r.push_str<span style="">(</span><span style="color: #a11;">"!"</span><span style="">)</span><span style="">;</span>   <span style="color: #a50; font-style: italic;">// 可変参照を通して元の値を変更する</span><br/>
     println<span style="">!</span><span style="">(</span><span style="color: #a11;">"変更後: {}"</span><span style="">,</span> r<span style="">)</span><span style="">;</span><br/>
@@ -254,9 +254,9 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     <span style="color: #a50; font-style: italic;">// match と数値のマッチング</span><br/>
     <span style="color: #708;">let</span> score <span style="">=</span> <span style="color: #0000DD;">85</span><span style="">;</span><br/>
     <span style="color: #708;">match</span> score <span style="">{</span><br/>
-        <span style="color: #0000DD;">90</span>..<span style="">=</span><span style="color: #0000DD;">100</span> <span style="">=&gt;</span> println<span style="">!</span><span style="">(</span><span style="color: #a11;">"RUNOOB 評価: A"</span><span style="">)</span><span style="">,</span> <span style="color: #a50; font-style: italic;">// 範囲マッチング</span><br/>
-        <span style="color: #0000DD;">60</span>..<span style="">=</span><span style="color: #0000DD;">89</span>  <span style="">=&gt;</span> println<span style="">!</span><span style="">(</span><span style="color: #a11;">"RUNOOB 評価: B"</span><span style="">)</span><span style="">,</span><br/>
-        <span style="color: #0000DD;">0</span>..<span style="">=</span><span style="color: #0000DD;">59</span>   <span style="">=&gt;</span> println<span style="">!</span><span style="">(</span><span style="color: #a11;">"RUNOOB 評価: C"</span><span style="">)</span><span style="">,</span><br/>
+        <span style="color: #0000DD;">90</span>..<span style="">=</span><span style="color: #0000DD;">100</span> <span style="">=&gt;</span> println<span style="">!</span><span style="">(</span><span style="color: #a11;">"サンプル 評価: A"</span><span style="">)</span><span style="">,</span> <span style="color: #a50; font-style: italic;">// 範囲マッチング</span><br/>
+        <span style="color: #0000DD;">60</span>..<span style="">=</span><span style="color: #0000DD;">89</span>  <span style="">=&gt;</span> println<span style="">!</span><span style="">(</span><span style="color: #a11;">"サンプル 評価: B"</span><span style="">)</span><span style="">,</span><br/>
+        <span style="color: #0000DD;">0</span>..<span style="">=</span><span style="color: #0000DD;">59</span>   <span style="">=&gt;</span> println<span style="">!</span><span style="">(</span><span style="color: #a11;">"サンプル 評価: C"</span><span style="">)</span><span style="">,</span><br/>
         _ <span style="">=&gt;</span> println<span style="">!</span><span style="">(</span><span style="color: #a11;">"無効なスコア"</span><span style="">)</span><span style="">,</span>                <span style="color: #a50; font-style: italic;">// ワイルドカード、残りのすべてのケースにマッチ</span><br/>
     <span style="">}</span><br/>
 <br/>
@@ -428,11 +428,11 @@ cargo 1.85.0
 <p>Cargo を使ってプロジェクトを作成するのが最も推奨される方法で、標準的なプロジェクト構造を自動生成します。</p>
 <pre>
 # 创建新项目
-$ cargo new hello_runoob
-     Created binary (application) `hello_runoob` package
+$ cargo new hello_サンプル
+     Created binary (application) `hello_サンプル` package
 
 # 项目结构
-hello_runoob/
+hello_サンプル/
 ├── Cargo.toml     # 项目元数据和依赖配置
 └── src/
     └── main.rs    # 程序入口文件
@@ -442,7 +442,7 @@ hello_runoob/
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #7A0874; font-weight: bold;">[</span>package<span style="color: #7A0874; font-weight: bold;">]</span><br/>
-name = <span style="color: #a10;">"hello_runoob"</span>           <span style="color: #666666; font-style: italic;"># パッケージ名（必須、アンダースコアで区切る）</span><br/>
+name = <span style="color: #a10;">"hello_サンプル"</span>           <span style="color: #666666; font-style: italic;"># パッケージ名（必須、アンダースコアで区切る）</span><br/>
 version = <span style="color: #a10;">"0.1.0"</span>               <span style="color: #666666; font-style: italic;"># バージョン番号（必須、セマンティックバージョニングに従う）</span><br/>
 edition = <span style="color: #a10;">"2024"</span>                <span style="color: #666666; font-style: italic;"># Rust Edition（必須、言語の構文規則に影響）</span><br/>
 <br/>
@@ -461,7 +461,7 @@ edition = <span style="color: #a10;">"2024"</span>                <span 
 <span style="color: #708;">fn</span> main<span style="">(</span><span style="">)</span> <span style="">{</span><br/>
     <span style="color: #a50; font-style: italic;">// println! はマクロです（末尾の ! 記号に注意）</span><br/>
     <span style="color: #a50; font-style: italic;">// マクロはコンパイル時により複雑なコードに展開される</span><br/>
-    println<span style="">!</span><span style="">(</span><span style="color: #a11;">"Hello, RUNOOB!"</span><span style="">)</span><span style="">;</span><br/>
+    println<span style="">!</span><span style="">(</span><span style="color: #a11;">"Hello, サンプル!"</span><span style="">)</span><span style="">;</span><br/>
     println<span style="">!</span><span style="">(</span><span style="color: #a11;">"Rust言語の世界へようこそ"</span><span style="">)</span><span style="">;</span><br/>
 <span style="">}</span><br/>
 </div>
@@ -469,10 +469,10 @@ edition = <span style="color: #a10;">"2024"</span>                <span 
 <pre>
 # 编译并运行
 $ cargo run
-   Compiling hello_runoob v0.1.0
+   Compiling hello_サンプル v0.1.0
     Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.52s
-     Running `target/debug/hello_runoob`
-Hello, RUNOOB!
+     Running `target/debug/hello_サンプル`
+Hello, サンプル!
 欢迎来到 Rust 语言的世界
 </pre>
 <hr/>
@@ -485,7 +485,7 @@ Hello, RUNOOB!
 <div class="example_code">
 <span style="color: #708;">fn</span> main<span style="">(</span><span style="">)</span> <span style="">{</span><br/>
     <span style="color: #a50; font-style: italic;">// 不変変数（デフォルト）：宣言後に再代入できない</span><br/>
-    <span style="color: #708;">let</span> name <span style="">=</span> <span style="color: #a11;">"RUNOOB"</span><span style="">;</span><br/>
+    <span style="color: #708;">let</span> name <span style="">=</span> <span style="color: #a11;">"サンプル"</span><span style="">;</span><br/>
     <span style="color: #a50; font-style: italic;">// name = "other"; // コンパイルエラー！不変変数は再代入できない</span><br/>
     println<span style="">!</span><span style="">(</span><span style="color: #a11;">"名前: {}"</span><span style="">,</span> name<span style="">)</span><span style="">;</span><br/>
 <br/>
@@ -539,7 +539,7 @@ Hello, RUNOOB!
     <span style="">}</span> <span style="color: #708;">else</span> <span style="">{</span><br/>
         <span style="color: #a11;">"C"</span><br/>
     <span style="">}</span><span style="">;</span><br/>
-    println<span style="">!</span><span style="">(</span><span style="color: #a11;">"RUNOOB 評価: {}"</span><span style="">,</span> grade<span style="">)</span><span style="">;</span><br/>
+    println<span style="">!</span><span style="">(</span><span style="color: #a11;">"サンプル 評価: {}"</span><span style="">,</span> grade<span style="">)</span><span style="">;</span><br/>
 <br/>
     <span style="color: #a50; font-style: italic;">// loop は無限ループ（break で終了、戻り値を返せる）</span><br/>
     <span style="color: #708;">let</span> <span style="color: #708;">mut</span> count <span style="">=</span> <span style="color: #0000DD;">0</span><span style="">;</span><br/>
@@ -615,7 +615,7 @@ Hello, RUNOOB!
 <br/>
     <span style="color: #a50; font-style: italic;">// ジェネリック関数を呼び出す</span><br/>
     <span style="color: #708;">let</span> nums <span style="">=</span> vec<span style="">!</span><span style="">[</span><span style="color: #0000DD;">3</span><span style="">,</span> <span style="color: #0000DD;">7</span><span style="">,</span> <span style="color: #0000DD;">2</span><span style="">,</span> <span style="color: #0000DD;">9</span><span style="">,</span> <span style="color: #0000DD;">5</span><span style="">]</span><span style="">;</span><br/>
-    println<span style="">!</span><span style="">(</span><span style="color: #a11;">"RUNOOB 最大値: {}"</span><span style="">,</span> largest<span style="">(</span><span style="">&amp;</span>nums<span style="">)</span><span style="">)</span><span style="">;</span><br/>
+    println<span style="">!</span><span style="">(</span><span style="color: #a11;">"サンプル 最大値: {}"</span><span style="">,</span> largest<span style="">(</span><span style="">&amp;</span>nums<span style="">)</span><span style="">)</span><span style="">;</span><br/>
 <span style="">}</span><br/>
 </div>
 </div>
@@ -658,8 +658,8 @@ Hello, RUNOOB!
 <span style="color: #708;">fn</span> main<span style="">(</span><span style="">)</span> <span style="">{</span><br/>
     <span style="color: #a50; font-style: italic;">// 関連関数を使ってインスタンスを作成</span><br/>
     <span style="color: #708;">let</span> <span style="color: #708;">mut</span> user <span style="">=</span> User<span style="">::</span><span style="color: #164;">new</span><span style="">(</span><br/>
-        String<span style="">::</span><span style="color: #164;">from</span><span style="">(</span><span style="color: #a11;">"runoob"</span><span style="">)</span><span style="">,</span><br/>
-        String<span style="">::</span><span style="color: #164;">from</span><span style="">(</span><span style="color: #a11;">"runoob@example.com"</span><span style="">)</span><span style="">,</span><br/>
+        String<span style="">::</span><span style="color: #164;">from</span><span style="">(</span><span style="color: #a11;">"サンプル"</span><span style="">)</span><span style="">,</span><br/>
+        String<span style="">::</span><span style="color: #164;">from</span><span style="">(</span><span style="color: #a11;">"サンプル@example.com"</span><span style="">)</span><span style="">,</span><br/>
     <span style="">)</span><span style="">;</span><br/>
 <br/>
     println<span style="">!</span><span style="">(</span><span style="color: #a11;">"{}"</span><span style="">,</span> user.summary<span style="">(</span><span style="">)</span><span style="">)</span><span style="">;</span><br/>
@@ -715,7 +715,7 @@ serde_json = "1"           # JSON 支持
 <span style="color: #a50; font-style: italic;">// GET /hello リクエストを処理</span><br/>
 <span style="color: #a50; font-style: italic;">// Query(HelloParams) が URL のクエリパラメータから name を自動的に抽出</span><br/>
 async <span style="color: #708;">fn</span> hello_handler<span style="">(</span>Query<span style="">(</span>params<span style="">)</span><span style="">:</span> Query<span style="">&lt;</span>HelloParams<span style="">&gt;</span><span style="">)</span> <span style="">-&gt;</span> Json<span style="">&lt;</span>ApiResponse<span style="">&gt;</span> <span style="">{</span><br/>
-    <span style="color: #708;">let</span> name <span style="">=</span> params.name.unwrap_or_else<span style="">(</span><span style="">||</span> String<span style="">::</span><span style="color: #164;">from</span><span style="">(</span><span style="color: #a11;">"RUNOOB"</span><span style="">)</span><span style="">)</span><span style="">;</span><br/>
+    <span style="color: #708;">let</span> name <span style="">=</span> params.name.unwrap_or_else<span style="">(</span><span style="">||</span> String<span style="">::</span><span style="color: #164;">from</span><span style="">(</span><span style="color: #a11;">"サンプル"</span><span style="">)</span><span style="">)</span><span style="">;</span><br/>
 <br/>
     <span style="color: #708;">let</span> <span style="color: #708;">mut</span> data <span style="">=</span> <span style="color: #05a;">HashMap</span><span style="">::</span><span style="color: #164;">new</span><span style="">(</span><span style="">)</span><span style="">;</span><br/>
     data.insert<span style="">(</span><span style="color: #a11;">"name"</span>.to_string<span style="">(</span><span style="">)</span><span style="">,</span> name.clone<span style="">(</span><span style="">)</span><span style="">)</span><span style="">;</span><br/>
@@ -739,7 +739,7 @@ async <span style="color: #708;">fn</span> main<span style="">(</span><span styl
         .await<br/>
         .unwrap<span style="">(</span><span style="">)</span><span style="">;</span><br/>
 <br/>
-    println<span style="">!</span><span style="">(</span><span style="color: #a11;">"RUNOOB サーバー起動、リスニングアドレス: http://localhost:8080"</span><span style="">)</span><span style="">;</span><br/>
+    println<span style="">!</span><span style="">(</span><span style="color: #a11;">"サンプル サーバー起動、リスニングアドレス: http://localhost:8080"</span><span style="">)</span><span style="">;</span><br/>
     println<span style="">!</span><span style="">(</span><span style="color: #a11;">"アクセス例: http://localhost:8080/hello?name=Rust開発者"</span><span style="">)</span><span style="">;</span><br/>
 <br/>
     axum<span style="">::</span><span style="color: #164;">serve</span><span style="">(</span>listener<span style="">,</span> app<span style="">)</span>.await.unwrap<span style="">(</span><span style="">)</span><span style="">;</span><br/>
@@ -748,7 +748,7 @@ async <span style="color: #708;">fn</span> main<span style="">(</span><span styl
 </div>
 <pre>
 $ cargo run
-RUNOOB 服务器启动，监听地址: http://localhost:8080
+サンプル 服务器启动，监听地址: http://localhost:8080
 访问示例: http://localhost:8080/hello?name=Rust开发者
 
 # 使用 curl 测试
@@ -756,7 +756,7 @@ $ curl http://localhost:8080/hello?name=Rust开发者
 {"code":200,"message":"你好，Rust开发者！欢迎访问 Rust HTTP 服务","data":{"name":"Rust开发者"}}
 
 $ curl http://localhost:8080/hello
-{"code":200,"message":"你好，RUNOOB！欢迎访问 Rust HTTP 服务","data":{"name":"RUNOOB"}}
+{"code":200,"message":"你好，サンプル！欢迎访问 Rust HTTP 服务","data":{"name":"サンプル"}}
 </pre>
 <blockquote><p>Axum は Rust エコシステムで最も人気のある Web フレームワークの1つで、Tokio チームによってメンテナンスされています。Rust の型システムを最大限に活用し、ルートパラメータの抽出や状態の共有などの操作をコンパイル時にチェックすることで、実行時エラーを大幅に削減します。</p></blockquote>
 <h3>ファイル一括処理ツール</h3>
@@ -812,7 +812,7 @@ walkdir = "2"  # 递归遍历目录
     <span style="color: #708;">let</span> <span style="color: #708;">mut</span> sorted<span style="">:</span> Vec<span style="">&lt;</span>_<span style="">&gt;</span> <span style="">=</span> stats.into_iter<span style="">(</span><span style="">)</span>.collect<span style="">(</span><span style="">)</span><span style="">;</span><br/>
     sorted.sort_by<span style="">(</span><span style="">|</span>a<span style="">,</span> b<span style="">|</span> b.1 <span style="color:#800080;">.0</span>.cmp<span style="">(</span><span style="">&amp;</span>a.1 <span style="color:#800080;">.0</span><span style="">)</span><span style="">)</span><span style="">;</span><br/>
 <br/>
-    println<span style="">!</span><span style="">(</span><span style="color: #a11;">"=== RUNOOB ディレクトリファイル統計 ==="</span><span style="">)</span><span style="">;</span><br/>
+    println<span style="">!</span><span style="">(</span><span style="color: #a11;">"=== サンプル ディレクトリファイル統計 ==="</span><span style="">)</span><span style="">;</span><br/>
     println<span style="">!</span><span style="">(</span><span style="color: #a11;">"{:&lt;15} {:&gt;8} {:&gt;10} {:&gt;12}"</span><span style="">,</span> <span style="color: #a11;">"拡張子"</span><span style="">,</span> <span style="color: #a11;">"ファイル数"</span><span style="">,</span> <span style="color: #a11;">"総行数"</span><span style="">,</span> <span style="color: #a11;">"総サイズ(bytes)"</span><span style="">)</span><span style="">;</span><br/>
     println<span style="">!</span><span style="">(</span><span style="color: #a11;">"{}"</span><span style="">,</span> <span style="color: #a11;">"-"</span>.repeat<span style="">(</span><span style="color: #0000DD;">50</span><span style="">)</span><span style="">)</span><span style="">;</span><br/>
     <span style="color: #708;">for</span> <span style="">(</span>ext<span style="">,</span> <span style="">(</span>count<span style="">,</span> lines<span style="">,</span> size<span style="">)</span><span style="">)</span> <span style="color: #708;">in</span> <span style="">&amp;</span>sorted <span style="">{</span><br/>
@@ -823,7 +823,7 @@ walkdir = "2"  # 递归遍历目录
 </div>
 <pre>
 $ cargo run --release
-=== RUNOOB 目录文件统计 ===
+=== サンプル 目录文件统计 ===
 扩展名            文件数       总行数   总大小(bytes)
 --------------------------------------------------
 rs                  12        856        28432
@@ -863,14 +863,14 @@ html                 1        510        14256
     <span style="color: #708;">let</span> <span style="color: #708;">mut</span> s <span style="">=</span> String<span style="">::</span><span style="color: #164;">from</span><span style="">(</span><span style="color: #a11;">"Hello"</span><span style="">)</span><span style="">;</span><br/>
 <br/>
     <span style="color: #a50; font-style: italic;">// &amp;str: 参照であり、変更不可、通常は関数の引数として使われる</span><br/>
-    <span style="color: #708;">let</span> slice<span style="">:</span> <span style="">&amp;</span><span style="color: #05a;">str</span> <span style="">=</span> <span style="color: #a11;">"RUNOOB"</span><span style="">;</span> <span style="color: #a50; font-style: italic;">// 文字列リテラル自体が &amp;str である</span><br/>
+    <span style="color: #708;">let</span> slice<span style="">:</span> <span style="">&amp;</span><span style="color: #05a;">str</span> <span style="">=</span> <span style="color: #a11;">"サンプル"</span><span style="">;</span> <span style="color: #a50; font-style: italic;">// 文字列リテラル自体が &amp;str である</span><br/>
 <br/>
     s.push_str<span style="">(</span><span style="color: #a11;">", world!"</span><span style="">)</span><span style="">;</span> <span style="color: #a50; font-style: italic;">// String は変更可能</span><br/>
     println<span style="">!</span><span style="">(</span><span style="color: #a11;">"{}"</span><span style="">,</span> s<span style="">)</span><span style="">;</span><br/>
     println<span style="">!</span><span style="">(</span><span style="color: #a11;">"{}"</span><span style="">,</span> slice<span style="">)</span><span style="">;</span><br/>
 <br/>
     <span style="color: #a50; font-style: italic;">// 関数の引数には String ではなく &amp;str を選ぶ方が柔軟</span><br/>
-    greet<span style="">(</span><span style="color: #a11;">"RUNOOB"</span><span style="">)</span><span style="">;</span>          <span style="color: #a50; font-style: italic;">// &amp;str を直接渡せる</span><br/>
+    greet<span style="">(</span><span style="color: #a11;">"サンプル"</span><span style="">)</span><span style="">;</span>          <span style="color: #a50; font-style: italic;">// &amp;str を直接渡せる</span><br/>
     greet<span style="">(</span><span style="">&amp;</span>s<span style="">)</span><span style="">;</span>                <span style="color: #a50; font-style: italic;">// &amp;String から自動的に &amp;str に変換して渡すこともできる</span><br/>
 <span style="">}</span><br/>
 <br/>

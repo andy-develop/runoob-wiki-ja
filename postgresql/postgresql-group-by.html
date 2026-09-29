@@ -323,7 +323,7 @@ ORDER BY column1, column2....columnN</pre>
 <p>GROUP BY 句では、1つの列または複数の列でグループ化できますが、グループ化する列は列リストに存在している必要があります。</p>
 <h3>例</h3>
 <p>COMPANY テーブルを作成します（<a href="https://static.jyshare.com/download/company.sql">COMPANY SQL ファイルをダウンロード</a>）、データ内容は以下のとおりです：</p>
-<pre>runoobdb# select * from COMPANY;
+<pre>サンプルdb# select * from COMPANY;
  id | name  | age | address   | salary
 ----+-------+-----+-----------+--------
   1 | Paul  |  32 | California|  20000
@@ -335,7 +335,7 @@ ORDER BY column1, column2....columnN</pre>
   7 | James |  24 | Houston   |  10000
 (7 rows)</pre>
 <p>次の例では、NAME フィールドの値に基づいてグループ化し、各人の給与総額を求めます：</p>
-<pre>runoobdb=# SELECT NAME, SUM(SALARY) FROM COMPANY GROUP BY NAME;</pre>
+<pre>サンプルdb=# SELECT NAME, SUM(SALARY) FROM COMPANY GROUP BY NAME;</pre>
 <p>以下の結果が得られます：</p>
 <pre>  name  |  sum
  -------+-------
@@ -366,7 +366,7 @@ INSERT INTO COMPANY VALUES (10, 'James', 45, 'Texas', 5000.00);</pre>
   10 | James |  45 | Texas        |   5000
 (10 rows)</pre>
 <p>次に再度 NAME フィールドの値に基づいてグループ化し、各顧客の給与総額を求めます：</p>
-<pre>runoobdb=# SELECT NAME, SUM(SALARY) FROM COMPANY GROUP BY NAME ORDER BY NAME;</pre>
+<pre>サンプルdb=# SELECT NAME, SUM(SALARY) FROM COMPANY GROUP BY NAME ORDER BY NAME;</pre>
 <p>このとき得られる結果は以下のとおりです：</p>
 <pre>name  |  sum
 -------+-------
@@ -379,7 +379,7 @@ INSERT INTO COMPANY VALUES (10, 'James', 45, 'Texas', 5000.00);</pre>
  Teddy | 20000
 (7 rows)</pre>
 <p>次の例では、ORDER BY 句と GROUP BY 句を一緒に使用します：</p>
-<pre>runoobdb=#  SELECT NAME, SUM(SALARY) FROM COMPANY GROUP BY NAME ORDER BY NAME DESC;</pre>
+<pre>サンプルdb=#  SELECT NAME, SUM(SALARY) FROM COMPANY GROUP BY NAME ORDER BY NAME DESC;</pre>
 <p>以下の結果が得られます：</p>
 <pre>name  |  sum
 -------+-------

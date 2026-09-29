@@ -318,7 +318,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: Green;font-weight:bold;">from</span> langchain.<span style="color: #05a;">chat_models</span> <span style="color: Green;font-weight:bold;">import</span> init_chat_model<br/>
 <br/>
 <span style="color: #a50"># 同じ質問に対する、異なる temperature の比較</span><br/>
-question <span style="color: Gray;">=</span> <span style="color: #a11;">"菜鸟教程 RUNOOB を一言で紹介してください"</span><br/>
+question <span style="color: Gray;">=</span> <span style="color: #a11;">"サンプル を一言で紹介してください"</span><br/>
 <br/>
 <span style="color: #a50"># temperature=0：出力は非常に決定的で、ほぼ毎回同じ結果になります</span><br/>
 model_low <span style="color: Gray;">=</span> init_chat_model<span style="color: Olive;">(</span><span style="color: #a11;">"deepseek:deepseek-v4-flash"</span><span style="color: Gray;">,</span> temperature<span style="color: Gray;">=</span><span style="color: Maroon;">0</span><span style="color: Olive;">)</span><br/>
@@ -339,12 +339,12 @@ resp2 <span style="color: Gray;">=</span> model_high.<span style="color: #05a;">
 </div>
 <p>実行結果：</p>
 <pre>
-temperature=0 第1次: 菜鸟教程（RUNOOB）是一个为编程初学者提供免费教程的学习平台。
-temperature=0 第2次: 菜鸟教程（RUNOOB）是一个为编程初学者提供免费教程的学习平台。
+temperature=0 第1次: サンプル是一个为编程初学者提供免费教程的学习平台。
+temperature=0 第2次: サンプル是一个为编程初学者提供免费教程的学习平台。
 两次结果相同: True
 
-temperature=1.5 第1次: 菜鸟教程（RUNOOB）是一个简单易懂的编程与网络技术入门学习平台。
-temperature=1.5 第2次: RUNOOB（菜鸟教程）是深受编程新手喜爱的中文免费在线技术学习平台。
+temperature=1.5 第1次: サンプル是一个简单易懂的编程与网络技术入门学习平台。
+temperature=1.5 第2次: サンプル是深受编程新手喜爱的中文免费在线技术学习平台。
 </pre>
 <table class="reference">
 <tr><th>temperature の値</th><th>効果</th><th>適用シナリオ</th></tr>
@@ -366,7 +366,7 @@ model <span style="color: Gray;">=</span> init_chat_model<span style="color: Oli
 <br/>
 <span style="color: #a50"># max_tokens=30：出力を30トークン以内に制限します</span><br/>
 response_short <span style="color: Gray;">=</span> model.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><br/>
-    <span style="color: #a11;">"菜鸟教程 RUNOOB プラットフォームについて詳しく紹介してください"</span><span style="color: Gray;">,</span><br/>
+    <span style="color: #a11;">"サンプル プラットフォームについて詳しく紹介してください"</span><span style="color: Gray;">,</span><br/>
     max_tokens<span style="color: Gray;">=</span><span style="color: Maroon;">30</span><br/>
 <span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"30トークンに制限 ({len(response_short.content)} 文字):"</span><span style="color: Olive;">)</span><br/>
@@ -375,7 +375,7 @@ response_short <span style="color: Gray;">=</span> model.<span style="color: #05
 <br/>
 <span style="color: #a50"># max_tokens=200：より長い出力を許可します</span><br/>
 response_long <span style="color: Gray;">=</span> model.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><br/>
-    <span style="color: #a11;">"菜鸟教程 RUNOOB プラットフォームについて詳しく紹介してください"</span><span style="color: Gray;">,</span><br/>
+    <span style="color: #a11;">"サンプル プラットフォームについて詳しく紹介してください"</span><span style="color: Gray;">,</span><br/>
     max_tokens<span style="color: Gray;">=</span><span style="color: Maroon;">200</span><br/>
 <span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"200トークンに制限 ({len(response_long.content)} 文字):"</span><span style="color: Olive;">)</span><br/>
@@ -385,12 +385,12 @@ response_long <span style="color: Gray;">=</span> model.<span style="color: #05a
 <p>実行結果：</p>
 <pre>
 限制 30 tokens (42 字符):
-菜鸟教程（RUNOOB）是一个面向编程初学者的在线学习平台，提供各种编程语言的教程和实例。
+サンプル是一个面向编程初学者的在线学习平台，提供各种编程语言的教程和实例。
 
 限制 200 tokens (306 字符):
-菜鸟教程（RUNOOB）是一个面向编程初学者的在线学习平台，提供了丰富的编程教程和参考资料。
+サンプル是一个面向编程初学者的在线学习平台，提供了丰富的编程教程和参考资料。
 该平台涵盖了 HTML、CSS、JavaScript、Python、Java、C、C++、PHP、SQL 等多种编程语言和技术。
-菜鸟教程的特点包括：
+サンプル的特点包括：
 1. 内容系统化：从基础到进阶，帮助学习者逐步掌握编程知识
 2. 实例丰富：每个知识点都配有可运行的代码示例
 3. ...
@@ -417,7 +417,7 @@ model <span style="color: Gray;">=</span> init_chat_model<span style="color: Oli
 <br/>
 <span style="color: #a50"># 正常な呼び出しをシミュレート</span><br/>
 <span style="color: Green;font-weight:bold;">try</span>:<br/>
-    response <span style="color: Gray;">=</span> model.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: #a11;">"菜鸟教程 RUNOOB とは何ですか？"</span><span style="color: Olive;">)</span><br/>
+    response <span style="color: Gray;">=</span> model.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: #a11;">"Python とは何ですか？"</span><span style="color: Olive;">)</span><br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"呼び出し成功: {response.content[:50]}..."</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">except</span> <span style="color: Teal;">Exception</span> <span style="color: Green;font-weight:bold;">as</span> e:<br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"呼び出し失敗: {e}"</span><span style="color: Olive;">)</span><br/>
@@ -482,7 +482,7 @@ model <span style="color: Gray;">=</span> init_chat_model<span style="color: Oli
     top_p<span style="color: Gray;">=</span><span style="color: Maroon;">0.9</span><span style="color: Gray;">,</span>       <span style="color: #a50"># 累積確率上位90%の語彙のみを考慮します</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
-response <span style="color: Gray;">=</span> model.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: #a11;">"菜鸟教程 RUNOOB を紹介してください"</span><span style="color: Olive;">)</span><br/>
+response <span style="color: Gray;">=</span> model.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: #a11;">"サンプル を紹介してください"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>response.<span style="color: #05a;">content</span><span style="color: Olive;">[</span>:<span style="color: Maroon;">100</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
 </div>
 </div>
@@ -505,7 +505,7 @@ response <span style="color: Gray;">=</span> model.<span style="color: #05a;">in
 </div>
 <p>実行結果：</p>
 <pre>
-限制 stop=['\n']: 1. 菜鸟教程（RUNOOB）
+限制 stop=['\n']: 1. サンプル
 </pre>
 <h3>seed——再現性（一部のモデルで対応）</h3>
 <div class="example">
@@ -516,8 +516,8 @@ response <span style="color: Gray;">=</span> model.<span style="color: #05a;">in
 <span style="color: #a50"># 一部のモデルでは seed パラメータに対応しており、決定的な出力を得るために使用します</span><br/>
 <span style="color: #a50"># 同じ seed + 同じ入力 = 同じ出力</span><br/>
 model <span style="color: Gray;">=</span> init_chat_model<span style="color: Olive;">(</span><span style="color: #a11;">"deepseek:deepseek-v4-flash"</span><span style="color: Gray;">,</span> seed<span style="color: Gray;">=</span><span style="color: Maroon;">42</span><span style="color: Gray;">,</span> temperature<span style="color: Gray;">=</span><span style="color: Maroon;">0</span><span style="color: Olive;">)</span><br/>
-resp1 <span style="color: Gray;">=</span> model.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: #a11;">"菜鸟教程 を紹介してください"</span><span style="color: Olive;">)</span><br/>
-resp2 <span style="color: Gray;">=</span> model.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: #a11;">"菜鸟教程 を紹介してください"</span><span style="color: Olive;">)</span><br/>
+resp1 <span style="color: Gray;">=</span> model.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: #a11;">"サンプル を紹介してください"</span><span style="color: Olive;">)</span><br/>
+resp2 <span style="color: Gray;">=</span> model.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: #a11;">"サンプル を紹介してください"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"seed=42, 結果は同じ: {resp1.content == resp2.content}"</span><span style="color: Olive;">)</span><br/>
 </div>
 </div>

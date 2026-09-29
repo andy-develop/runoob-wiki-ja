@@ -521,7 +521,7 @@ agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;
 <br/>
 <span style="color: Green;font-weight:bold;">if</span> __name__ <span style="color: Gray;">==</span> <span style="color: #a11;">"__main__"</span>:<br/>
     chat<span style="color: Olive;">(</span><span style="color: #a11;">"杭州の今日の天気はどうですか？私のスケジュールを見て、今日のまとめをください"</span><span style="color: Olive;">)</span><br/>
-    chat<span style="color: Olive;">(</span><span style="color: #a11;">"team@runoob.com にメールを送ってください。件名は「今日のサマリー」、内容は今日のスケジュールが確認済みです"</span><span style="color: Olive;">)</span><br/>
+    chat<span style="color: Olive;">(</span><span style="color: #a11;">"team@example.com にメールを送ってください。件名は「今日のサマリー」、内容は今日のスケジュールが確認済みです"</span><span style="color: Olive;">)</span><br/>
     <span style="color: #a50"># 第3ラウンドは新しい情報を一切含まず、純粋にエージェントが前のラウンドの会話を覚えているかを試す——</span><br/>
     <span style="color: #a50"># 同じ thread_id を渡しているため、チェックポインターが完全な履歴を持ち帰る</span><br/>
     chat<span style="color: Olive;">(</span><span style="color: #a11;">"さっき送ってもらったあのメールの件名は何でしたっけ？"</span><span style="color: Olive;">)</span><br/>
@@ -530,7 +530,7 @@ agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;
 <p>実行結果：</p>
 <pre>
 ============================================================
-你: 杭州今天天气怎么样？看看我的日程，然后给我一个今日总结
+あなた: 杭州今天天气怎么样？看看我的日程，然后给我一个今日总结
 ============================================================
 &amp;#x1f914; 决定调用工具: get_weather，参数: {'city': '杭州'}
 &amp;#x1f527; get_weather 返回: 杭州天气：晴，温度 25°C，湿度 60%
@@ -552,11 +552,11 @@ agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;
 **今日建议**：上午先参加团队周会，下午集中精力学习 Python，注意劳逸结合
 
 ============================================================
-你: 帮我发一封邮件给 team@runoob.com，主题是'今日总结'，内容是今天日程已确认
+あなた: 帮我发一封邮件给 team@example.com，主题是'今日总结'，内容是今天日程已确认
 ============================================================
-&amp;#x1f914; 决定调用工具: send_email，参数: {'to': 'team@runoob.com', 'subject': '今日总结', 'body': '今天日程已确认'}
-&amp;#x1f527; send_email 返回: 邮件已发送！收件人：team@runoob.com，主题：今日总结，邮件ID：MSG-20240325143000
-&amp;#x1f916; 助手: 邮件已经发送成功啦！收件人是 team@runoob.com，主题"今日总结"。
+&amp;#x1f914; 决定调用工具: send_email，参数: {'to': 'team@example.com', 'subject': '今日总结', 'body': '今天日程已确认'}
+&amp;#x1f527; send_email 返回: 邮件已发送！收件人：team@example.com，主题：今日总结，邮件ID：MSG-20240325143000
+&amp;#x1f916; 助手: 邮件已经发送成功啦！收件人是 team@example.com，主题"今日总结"。
 
 --- 结构化摘要（Markdown） ---
 ## 2024-03-25 今日摘要
@@ -564,9 +564,9 @@ agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;
      属于前面提到的已知局限）
 
 ============================================================
-你: 我刚才让你发的那封邮件，主题是什么来着？
+あなた: 我刚才让你发的那封邮件，主题是什么来着？
 ============================================================
-&amp;#x1f916; 助手: 你刚才让我发的那封邮件主题是"今日总结"，收件人是 team@runoob.com。
+&amp;#x1f916; 助手: 你刚才让我发的那封邮件主题是"今日总结"，收件人是 team@example.com。
 </pre>
 <blockquote><p>第3ラウンドはまったくツール呼び出しをトリガーせず、アシスタントが答えられたのは純粋に<code>thread_id</code>同じ thread_id であるため、SqliteSaver が前2ラウンドの完全なメッセージ履歴を持ち帰りました——これこそが「対話記憶」が本当に機能している姿です。もし<code>thread_id</code>新しい値に変えると、第3ラウンドは孤立した会話になり、アシスタントは「さっき」何が起こったのか分からなくなります。</p></blockquote>
 <hr/>

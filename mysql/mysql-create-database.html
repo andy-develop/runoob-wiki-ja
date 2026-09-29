@@ -303,12 +303,12 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <hr/>
 <p>MySQL サービスにログインした後、<span class="marked">create</span>次のコマンドを使用してデータベースを作成します。構文は次のとおりです:</p>
 <pre>CREATE DATABASE 数据库名;</pre>
-<p>次のコマンドは、データベース作成のプロセスを簡単に示しています。データベース名は RUNOOB です:</p>
+<p>次のコマンドは、データベース作成のプロセスを簡単に示しています。データベース名は サンプル です:</p>
 <pre>
 [root@host]# mysql -u root -p   
 Enter password:******  # 登录后进入终端
 
-mysql&gt; create DATABASE RUNOOB;
+mysql&gt; create DATABASE サンプル;
 </pre>
 <p>データベース作成の基本構文は次のとおりです：</p>
 <pre>CREATE DATABASE [IF NOT EXISTS] database_name
@@ -330,12 +330,12 @@ mysql&gt; create DATABASE RUNOOB;
 <ul><li><code>-u</code>パラメータは MySQL ユーザー名を指定するために使用します。</li><li><code>-p</code>パラメータはパスワードの入力を必要とすることを示します。</li><li><code>create</code>は実行する操作で、データベースの作成を表します。</li><li><code>your_database</code>は作成するデータベースの名前です。</li></ul><p>一般ユーザーを使用する場合、MySQL データベースを作成または削除するには特定の権限が必要な場合があります。</p>
 <p>ここでは root ユーザーでログインします。root ユーザーは最高権限を持っているため、mysql<span class="marked">mysqladmin</span>コマンドを使用してデータベースを作成します。</p>
 <p>上記のコマンドを実行すると、システムはパスワードの入力を求めます。パスワードを入力して Enter キーを押してください。</p>
-<p>次のコマンドは、データベース作成のプロセスを簡単に示しています。データベース名は RUNOOB です:</p>
+<p>次のコマンドは、データベース作成のプロセスを簡単に示しています。データベース名は サンプル です:</p>
 <pre>
-[root@host]# mysqladmin -u root -p create RUNOOB
+[root@host]# mysqladmin -u root -p create サンプル
 Enter password:******
 </pre>
-<p>上記のコマンドが正常に実行されると、MySQL データベース RUNOOB が作成されます。</p>
+<p>上記のコマンドが正常に実行されると、MySQL データベース サンプル が作成されます。</p>
 <p>データベース作成時に文字セットと照合順序を指定したい場合は、<span class="marked">-default-character-set</span>と<span class="marked">-default-collation</span>次のパラメータを使用できます：</p>
 <pre>mysqladmin -u your_username -p create your_database \
   --default-character-set=utf8mb4 \
@@ -391,13 +391,13 @@ mysqli_query(connection,query,resultmode);
 </span><span class="hl-reserved">die</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">接続エラー:</span><span class="hl-quotes">'</span><span class="hl-code"> . </span><span class="hl-identifier">mysqli_error</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-brackets">}</span><span class="hl-code">
 </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">接続成功&lt;br /&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
-</span><span class="hl-var">$sql</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">CREATE DATABASE RUNOOB</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-var">$sql</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">CREATE DATABASE サンプル</span><span class="hl-quotes">'</span><span class="hl-code">;
 </span><span class="hl-var">$retval</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_query</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-code">,</span><span class="hl-var">$sql</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-code">! </span><span class="hl-var">$retval</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">
 </span><span class="hl-brackets">{</span><span class="hl-code">
 </span><span class="hl-reserved">die</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">データベースの作成に失敗:</span><span class="hl-quotes">'</span><span class="hl-code"> . </span><span class="hl-identifier">mysqli_error</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-brackets">}</span><span class="hl-code">
-</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">データベース RUNOOB が正常に作成されました</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">データベース サンプル が正常に作成されました</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
 </span><span class="hl-identifier">mysqli_close</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-inlinetags">?&gt;</span></div>
 </div></div>

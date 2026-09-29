@@ -169,7 +169,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <table class="reference"><thead><tr><th>機能</th><th>構文/例</th><th>適用シーン</th></tr></thead><tbody><tr><td><strong>変数のレンダリング</strong></td><td><code>{{ variable }}</code></td><td>データを動的に表示する</td></tr><tr><td><strong>ロジック制御</strong></td><td><code>{% if %}</code>, <code>{% for %}</code></td><td>条件/ループレンダリング</td></tr><tr><td><strong>テンプレート継承</strong></td><td><code>{% extends %}</code>, <code>{% block %}</code></td><td>重複する HTML 構造を避ける</td></tr><tr><td><strong>静的ファイル</strong></td><td><code>{% static 'path' %}</code></td><td>CSS/JS/画像を読み込む</td></tr><tr><td><strong>カスタムフィルタ</strong></td><td><code>@register.filter</code></td><td>テンプレート機能を拡張する</td></tr></tbody></table>
 <hr/>
 <h2>テンプレート応用例</h2>
-<p>前の章のプロジェクトに続いて、HelloWorld ディレクトリの下に templates ディレクトリを作成し、runoob.html ファイルを作成します。ディレクトリ構造全体は次のとおりです。</p>
+<p>前の章のプロジェクトに続いて、HelloWorld ディレクトリの下に templates ディレクトリを作成し、サンプル.html ファイルを作成します。ディレクトリ構造全体は次のとおりです。</p>
 <pre>
 HelloWorld/
 |-- HelloWorld
@@ -185,11 +185,11 @@ HelloWorld/
 |   `-- wsgi.pyc
 |-- manage.py
 `-- templates
-    `-- runoob.html
+    `-- サンプル.html
 </pre>
-<p>runoob.html ファイルのコードは次のとおりです。</p>
+<p>サンプル.html ファイルのコードは次のとおりです。</p>
 <div class="example">
-<h2 class="example">HelloWorld/templates/runoob.html ファイルコード：</h2>
+<h2 class="example">HelloWorld/templates/サンプル.html ファイルコード：</h2>
 <div class="example_code">
 <div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">{{ hello }}</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span></div>
 </div>
@@ -224,10 +224,10 @@ HelloWorld/
 <h2 class="example">HelloWorld/HelloWorld/views.py ファイルコード：</h2>
 <div class="example_code">
 <div class="hl-main"><span class="hl-reserved">from</span><span class="hl-code"> </span><span class="hl-identifier">django</span><span class="hl-code">.</span><span class="hl-identifier">shortcuts</span><span class="hl-code"> </span><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-identifier">render</span><span class="hl-code">
-</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">runoob</span><span class="hl-brackets">(</span><span class="hl-identifier">request</span><span class="hl-brackets">)</span><span class="hl-code">:
+</span><span class="hl-reserved">def</span><span class="hl-code"> </span><span class="hl-identifier">サンプル</span><span class="hl-brackets">(</span><span class="hl-identifier">request</span><span class="hl-brackets">)</span><span class="hl-code">:
     </span><span class="hl-identifier">context</span><span class="hl-code">          = {}
     </span><span class="hl-identifier">context</span><span class="hl-brackets">[</span><span class="hl-quotes">'</span><span class="hl-string">hello</span><span class="hl-quotes">'</span><span class="hl-brackets">]</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">Hello World!</span><span class="hl-quotes">'</span><span class="hl-code">
-</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-identifier">render</span><span class="hl-brackets">(</span><span class="hl-identifier">request</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">runoob.html</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-identifier">context</span><span class="hl-brackets">)</span></div>
+</span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-identifier">render</span><span class="hl-brackets">(</span><span class="hl-identifier">request</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">サンプル.html</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-identifier">context</span><span class="hl-brackets">)</span></div>
 </div>
 </div>
 <p>ご覧のとおり、ここでは以前使用した HttpResponse の代わりに render を使用しています。render は辞書 context を引数としても使用します。</p>
@@ -240,14 +240,14 @@ HelloWorld/
 </span><span class="hl-reserved">from</span><span class="hl-code"> . </span><span class="hl-reserved">import</span><span class="hl-code"> </span><span class="hl-identifier">views</span><span class="hl-code">
 </span><span class="hl-identifier">urlpatterns</span><span class="hl-code"> = </span><span class="hl-brackets">[</span><span class="hl-code">
 </span><span class="hl-identifier">path</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">admin/</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-identifier">admin</span><span class="hl-code">.</span><span class="hl-identifier">site</span><span class="hl-code">.</span><span class="hl-identifier">urls</span><span class="hl-brackets">)</span><span class="hl-code">,
-    </span><span class="hl-identifier">path</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">runoob/</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-identifier">views</span><span class="hl-code">.</span><span class="hl-identifier">runoob</span><span class="hl-brackets">)</span><span class="hl-code">,
+    </span><span class="hl-identifier">path</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">サンプル/</span><span class="hl-quotes">'</span><span class="hl-code">, </span><span class="hl-identifier">views</span><span class="hl-code">.</span><span class="hl-identifier">サンプル</span><span class="hl-brackets">)</span><span class="hl-code">,
 </span><span class="hl-brackets">]</span></div>
 </div>
 </div>
 <p>次に、HelloWorld ディレクトリに入り、以下のコマンドを入力してサーバーを起動します。</p>
 <pre>
 python3 manage.py runserver 0.0.0.0:8000</pre>
-<p>再度アクセスします<strong>http://127.0.0.1:8000/runoob</strong>、ページが表示されます。</p>
+<p>再度アクセスします<strong>http://127.0.0.1:8000/サンプル</strong>、ページが表示されます。</p>
 <p><img decoding="async" src="../wp-content/uploads/2015/01/6BC47EC1-ABC8-4EA7-A536-756648FBBC20.jpg" width="50%"/></p>
 <p>これで、テンプレートを使用してデータを出力し、データとビューの分離を実現しました。</p><p>次に、テンプレートでよく使われる構文規則について具体的に説明します。</p>
 <hr/>
@@ -262,45 +262,45 @@ HTML：｛｛变量名｝｝</pre>
 <div class="example"><h2 class="example">HelloWorld/HelloWorld/views.py ファイルコード：</h2> <div class="example_code">
 <span style="color: Green;font-weight:bold;">from</span> django.<span style="color: #05a;">shortcuts</span> <span style="color: Green;font-weight:bold;">import</span> render<br/>
 <br/>
-<span style="color: Green;font-weight:bold;">def</span> runoob<span style="color: Olive;">(</span>request<span style="color: Olive;">)</span>: <br/>
-  views_name <span style="color: Gray;">=</span> <span style="color: #a11;">"菜鸟教程"</span> <br/>
-  <span style="color: Green;font-weight:bold;">return</span>  render<span style="color: Olive;">(</span>request<span style="color: Gray;">,</span><span style="color: #a11;">"runoob.html"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"name"</span>:views_name<span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">def</span> サンプル<span style="color: Olive;">(</span>request<span style="color: Olive;">)</span>: <br/>
+  views_name <span style="color: Gray;">=</span> <span style="color: #a11;">"サンプル"</span> <br/>
+  <span style="color: Green;font-weight:bold;">return</span>  render<span style="color: Olive;">(</span>request<span style="color: Gray;">,</span><span style="color: #a11;">"サンプル.html"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"name"</span>:views_name<span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
 </div></div>
-<p>templates 内の runoob.html：</p>
+<p>templates 内の サンプル.html：</p>
 <pre>&lt;p&gt;{{ name }}&lt;/p&gt;</pre>
 <p><img decoding="async" src="../wp-content/uploads/2015/01/Django_1.png"/></p>
-<p>再度 http://127.0.0.1:8000/runoob にアクセスすると、ページが表示されます。</p>
+<p>再度 http://127.0.0.1:8000/サンプル にアクセスすると、ページが表示されます。</p>
 <p><img decoding="async" src="../wp-content/uploads/2015/01/3B90F88C-3E6A-48A7-AA0C-738EE10E0543.jpg"/></p>
 <h3>リスト</h3>
-<p>templates 内の runoob.html では、使用できます<span class="marked">.</span>インデックス（添え字）で対応する要素を取り出します。</p>
+<p>templates 内の サンプル.html では、使用できます<span class="marked">.</span>インデックス（添え字）で対応する要素を取り出します。</p>
 <div class="example"><h2 class="example">HelloWorld/HelloWorld/views.py ファイルコード：</h2> <div class="example_code">
 <span style="color: Green;font-weight:bold;">from</span> django.<span style="color: #05a;">shortcuts</span> <span style="color: Green;font-weight:bold;">import</span> render<br/>
 <br/>
-<span style="color: Green;font-weight:bold;">def</span> runoob<span style="color: Olive;">(</span>request<span style="color: Olive;">)</span>:<br/>
-    views_list <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: #a11;">"菜鸟教程1"</span><span style="color: Gray;">,</span><span style="color: #a11;">"菜鸟教程2"</span><span style="color: Gray;">,</span><span style="color: #a11;">"菜鸟教程3"</span><span style="color: Olive;">]</span><br/>
-    <span style="color: Green;font-weight:bold;">return</span> render<span style="color: Olive;">(</span>request<span style="color: Gray;">,</span> <span style="color: #a11;">"runoob.html"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"views_list"</span>: views_list<span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">def</span> サンプル<span style="color: Olive;">(</span>request<span style="color: Olive;">)</span>:<br/>
+    views_list <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: #a11;">"サンプル1"</span><span style="color: Gray;">,</span><span style="color: #a11;">"サンプル2"</span><span style="color: Gray;">,</span><span style="color: #a11;">"サンプル3"</span><span style="color: Olive;">]</span><br/>
+    <span style="color: Green;font-weight:bold;">return</span> render<span style="color: Olive;">(</span>request<span style="color: Gray;">,</span> <span style="color: #a11;">"サンプル.html"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"views_list"</span>: views_list<span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
 </div></div>
 <div class="example">
-<h2 class="example">HelloWorld/templates/runoob.html ファイルコード：</h2>
+<h2 class="example">HelloWorld/templates/サンプル.html ファイルコード：</h2>
 <div class="example_code">
 <div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">{{ views_list }}</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code"># リスト全体を取り出す</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">{{ views_list.0 }}</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code"># リストの最初の要素を取り出す</span></div></div></div>
-<p>再度 http://127.0.0.1:8000/runoob にアクセスすると、次のページが表示されます：</p>
+<p>再度 http://127.0.0.1:8000/サンプル にアクセスすると、次のページが表示されます：</p>
 <p><img decoding="async" src="../wp-content/uploads/2015/01/Django_3.png"/></p>
 <h3>辞書</h3>
-<p>templates 内の runoob.html では、次を使用できます<span class="marked">.キー</span>対応する値を取り出します。</p>
+<p>templates 内の サンプル.html では、次を使用できます<span class="marked">.キー</span>対応する値を取り出します。</p>
 <div class="example"><h2 class="example">HelloWorld/HelloWorld/views.py ファイルコード：</h2> <div class="example_code">
 <span style="color: Green;font-weight:bold;">from</span> django.<span style="color: #05a;">shortcuts</span> <span style="color: Green;font-weight:bold;">import</span> render<br/>
 <br/>
-<span style="color: Green;font-weight:bold;">def</span> runoob<span style="color: Olive;">(</span>request<span style="color: Olive;">)</span>:<br/>
-    views_dict <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: #a11;">"name"</span>:<span style="color: #a11;">"菜鸟教程"</span><span style="color: Olive;">}</span><br/>
-    <span style="color: Green;font-weight:bold;">return</span> render<span style="color: Olive;">(</span>request<span style="color: Gray;">,</span> <span style="color: #a11;">"runoob.html"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"views_dict"</span>: views_dict<span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">def</span> サンプル<span style="color: Olive;">(</span>request<span style="color: Olive;">)</span>:<br/>
+    views_dict <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: #a11;">"name"</span>:<span style="color: #a11;">"サンプル"</span><span style="color: Olive;">}</span><br/>
+    <span style="color: Green;font-weight:bold;">return</span> render<span style="color: Olive;">(</span>request<span style="color: Gray;">,</span> <span style="color: #a11;">"サンプル.html"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"views_dict"</span>: views_dict<span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
 </div></div>
 <div class="example">
-<h2 class="example">HelloWorld/templates/runoob.html ファイルコード：</h2>
+<h2 class="example">HelloWorld/templates/サンプル.html ファイルコード：</h2>
 <div class="example_code">
 <div class="hl-main"><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">{{ views_dict }}</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">{{ views_dict.name }}</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span></div></div></div>
-<p>再度 http://127.0.0.1:8000/runoob にアクセスすると、次のページが表示されます：</p>
+<p>再度 http://127.0.0.1:8000/サンプル にアクセスすると、次のページが表示されます：</p>
 <p><img decoding="async" src="../wp-content/uploads/2015/01/Django_4.png"/></p>
 <h3>フィルタ</h3>テンプレート構文：<pre>{{ 変数名 | フィルター：オプション引数 }}</pre>
 <p>テンプレートフィルターは、変数が表示される前に変数を修正できます。フィルターはパイプ文字を使用します。以下に示します：</p>
@@ -332,30 +332,30 @@ HTML：｛｛变量名｝｝</pre>
 <div class="example"><h2 class="example">HelloWorld/HelloWorld/views.py ファイルコード：</h2> <div class="example_code">
 <span style="color: Green;font-weight:bold;">from</span> django.<span style="color: #05a;">shortcuts</span> <span style="color: Green;font-weight:bold;">import</span> render<br/>
 <br/>
-<span style="color: Green;font-weight:bold;">def</span> runoob<span style="color: Olive;">(</span>request<span style="color: Olive;">)</span>:<br/>
+<span style="color: Green;font-weight:bold;">def</span> サンプル<span style="color: Olive;">(</span>request<span style="color: Olive;">)</span>:<br/>
     name <span style="color: Gray;">=</span><span style="color: Maroon;">0</span><br/>
-    <span style="color: Green;font-weight:bold;">return</span> render<span style="color: Olive;">(</span>request<span style="color: Gray;">,</span> <span style="color: #a11;">"runoob.html"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"name"</span>: name<span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
+    <span style="color: Green;font-weight:bold;">return</span> render<span style="color: Olive;">(</span>request<span style="color: Gray;">,</span> <span style="color: #a11;">"サンプル.html"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"name"</span>: name<span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
 </div></div>
 <div class="example">
-<h2 class="example">HelloWorld/templates/runoob.html ファイルコード：</h2>
+<h2 class="example">HelloWorld/templates/サンプル.html ファイルコード：</h2>
 <div class="example_code">
-<div class="hl-main"><span class="hl-code">{{ name|default:"菜鸟教程666" }}</span></div></div></div>
-<p>再度 http://127.0.0.1:8000/runoob にアクセスすると、次のページが表示されます：</p>
+<div class="hl-main"><span class="hl-code">{{ name|default:"サンプル666" }}</span></div></div></div>
+<p>再度 http://127.0.0.1:8000/サンプル にアクセスすると、次のページが表示されます：</p>
 <p><img decoding="async" src="../wp-content/uploads/2015/01/Django_5.png"/></p>
 <p><strong>length</strong></p>
 <p>オブジェクトの長さを返します。文字列とリストに適用されます。</p><p>辞書はキーと値のペアの数を返し、集合は重複を除去した後の長さを返します。</p>
 <div class="example"><h2 class="example">HelloWorld/HelloWorld/views.py ファイルコード：</h2> <div class="example_code">
 <span style="color: Green;font-weight:bold;">from</span> django.<span style="color: #05a;">shortcuts</span> <span style="color: Green;font-weight:bold;">import</span> render<br/>
 <br/>
-<span style="color: Green;font-weight:bold;">def</span> runoob<span style="color: Olive;">(</span>request<span style="color: Olive;">)</span>:<br/>
-    name <span style="color: Gray;">=</span><span style="color: #a11;">"菜鸟教程"</span><br/>
-    <span style="color: Green;font-weight:bold;">return</span> render<span style="color: Olive;">(</span>request<span style="color: Gray;">,</span> <span style="color: #a11;">"runoob.html"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"name"</span>: name<span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">def</span> サンプル<span style="color: Olive;">(</span>request<span style="color: Olive;">)</span>:<br/>
+    name <span style="color: Gray;">=</span><span style="color: #a11;">"サンプル"</span><br/>
+    <span style="color: Green;font-weight:bold;">return</span> render<span style="color: Olive;">(</span>request<span style="color: Gray;">,</span> <span style="color: #a11;">"サンプル.html"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"name"</span>: name<span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
 </div></div>
 <div class="example">
-<h2 class="example">HelloWorld/templates/runoob.html ファイルコード：</h2>
+<h2 class="example">HelloWorld/templates/サンプル.html ファイルコード：</h2>
 <div class="example_code">
 <div class="hl-main"><span class="hl-code">{{ name|length}}</span></div></div></div>
-<p>再度 http://127.0.0.1:8000/runoob にアクセスすると、次のページが表示されます：</p>
+<p>再度 http://127.0.0.1:8000/サンプル にアクセスすると、次のページが表示されます：</p>
 <p><img decoding="async" src="../wp-content/uploads/2015/01/Django_6.png"/></p>
 <p><strong>filesizeformat</strong></p>
 <p>ファイルサイズをより読みやすい方法で表示します（例：'13 KB', '4.1 MB', '102 bytes' など）。</p>
@@ -363,30 +363,30 @@ HTML：｛｛变量名｝｝</pre>
 <div class="example"><h2 class="example">HelloWorld/HelloWorld/views.py ファイルコード：</h2> <div class="example_code">
 <span style="color: Green;font-weight:bold;">from</span> django.<span style="color: #05a;">shortcuts</span> <span style="color: Green;font-weight:bold;">import</span> render<br/>
 <br/>
-<span style="color: Green;font-weight:bold;">def</span> runoob<span style="color: Olive;">(</span>request<span style="color: Olive;">)</span>:<br/>
+<span style="color: Green;font-weight:bold;">def</span> サンプル<span style="color: Olive;">(</span>request<span style="color: Olive;">)</span>:<br/>
     num<span style="color: Gray;">=</span><span style="color: Maroon;">1024</span><br/>
-    <span style="color: Green;font-weight:bold;">return</span> render<span style="color: Olive;">(</span>request<span style="color: Gray;">,</span> <span style="color: #a11;">"runoob.html"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"num"</span>: num<span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
+    <span style="color: Green;font-weight:bold;">return</span> render<span style="color: Olive;">(</span>request<span style="color: Gray;">,</span> <span style="color: #a11;">"サンプル.html"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"num"</span>: num<span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
 </div></div>
 <div class="example">
-<h2 class="example">HelloWorld/templates/runoob.html ファイルコード：</h2>
+<h2 class="example">HelloWorld/templates/サンプル.html ファイルコード：</h2>
 <div class="example_code">
 <div class="hl-main"><span class="hl-code">{{ num|filesizeformat}}</span></div></div></div>
-<p>再度 http://127.0.0.1:8000/runoob にアクセスすると、次のページが表示されます：</p>
+<p>再度 http://127.0.0.1:8000/サンプル にアクセスすると、次のページが表示されます：</p>
 <p><img decoding="async" src="../wp-content/uploads/2015/01/Django_7.png"/></p>
 <p><strong>date</strong></p><p>指定された形式に従って日付変数をフォーマットします。</p><p>フォーマット<span class="marked">Y-m-d H:i:s</span>戻り値<strong>年-月-日 時:分:秒</strong>の形式の時間。</p>
 <div class="example"><h2 class="example">HelloWorld/HelloWorld/views.py ファイルコード：</h2> <div class="example_code">
 <span style="color: Green;font-weight:bold;">from</span> django.<span style="color: #05a;">shortcuts</span> <span style="color: Green;font-weight:bold;">import</span> render<br/>
 <br/>
-<span style="color: Green;font-weight:bold;">def</span> runoob<span style="color: Olive;">(</span>request<span style="color: Olive;">)</span>:<br/>
+<span style="color: Green;font-weight:bold;">def</span> サンプル<span style="color: Olive;">(</span>request<span style="color: Olive;">)</span>:<br/>
     <span style="color: Green;font-weight:bold;">import</span> <span style="color: #05a;">datetime</span><br/>
     now  <span style="color: Gray;">=</span><span style="color: #05a;">datetime</span>.<span style="color: #05a;">datetime</span>.<span style="color: #05a;">now</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
-    <span style="color: Green;font-weight:bold;">return</span> render<span style="color: Olive;">(</span>request<span style="color: Gray;">,</span> <span style="color: #a11;">"runoob.html"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"time"</span>: now<span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
+    <span style="color: Green;font-weight:bold;">return</span> render<span style="color: Olive;">(</span>request<span style="color: Gray;">,</span> <span style="color: #a11;">"サンプル.html"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"time"</span>: now<span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
 </div></div>
 <div class="example">
-<h2 class="example">HelloWorld/templates/runoob.html ファイルコード：</h2>
+<h2 class="example">HelloWorld/templates/サンプル.html ファイルコード：</h2>
 <div class="example_code">
 <div class="hl-main"><span class="hl-code">{{ time|date:"Y-m-d" }}</span></div></div></div>
-<p>再度 http://127.0.0.1:8000/runoob にアクセスすると、次のページが表示されます：</p>
+<p>再度 http://127.0.0.1:8000/サンプル にアクセスすると、次のページが表示されます：</p>
 <p><img decoding="async" src="../wp-content/uploads/2015/01/Django_9.png"/></p>
 <p><strong>truncatechars</strong></p>
 <p>文字列に含まれる文字の総数が指定された文字数より多い場合、後ろの部分が切り捨てられます。</p>
@@ -394,15 +394,15 @@ HTML：｛｛变量名｝｝</pre>
 <div class="example"><h2 class="example">HelloWorld/HelloWorld/views.py ファイルコード：</h2> <div class="example_code">
 <span style="color: Green;font-weight:bold;">from</span> django.<span style="color: #05a;">shortcuts</span> <span style="color: Green;font-weight:bold;">import</span> render<br/>
 <br/>
-<span style="color: Green;font-weight:bold;">def</span> runoob<span style="color: Olive;">(</span>request<span style="color: Olive;">)</span>:<br/>
-    views_str <span style="color: Gray;">=</span> <span style="color: #a11;">"菜鸟教程"</span><br/>
-    <span style="color: Green;font-weight:bold;">return</span> render<span style="color: Olive;">(</span>request<span style="color: Gray;">,</span> <span style="color: #a11;">"runoob.html"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"views_str"</span>: views_str<span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">def</span> サンプル<span style="color: Olive;">(</span>request<span style="color: Olive;">)</span>:<br/>
+    views_str <span style="color: Gray;">=</span> <span style="color: #a11;">"サンプル"</span><br/>
+    <span style="color: Green;font-weight:bold;">return</span> render<span style="color: Olive;">(</span>request<span style="color: Gray;">,</span> <span style="color: #a11;">"サンプル.html"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"views_str"</span>: views_str<span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
 </div></div>
 <div class="example">
-<h2 class="example">HelloWorld/templates/runoob.html ファイルコード：</h2>
+<h2 class="example">HelloWorld/templates/サンプル.html ファイルコード：</h2>
 <div class="example_code">
 <div class="hl-main"><span class="hl-code">{{ views_str|truncatechars:2}}</span></div></div></div>
-<p>再度 http://127.0.0.1:8000/runoob にアクセスすると、次のページが表示されます：</p>
+<p>再度 http://127.0.0.1:8000/サンプル にアクセスすると、次のページが表示されます：</p>
 <p><img decoding="async" src="../wp-content/uploads/2015/01/Django_10.png"/></p>
 <p><strong>safe </strong></p>
 <p>文字列を安全としてマークし、エスケープする必要がありません。</p><p>views.py から渡されたデータが絶対に安全であることを保証して初めて safe を使用できます。</p>
@@ -411,15 +411,15 @@ HTML：｛｛变量名｝｝</pre>
 <div class="example"><h2 class="example">HelloWorld/HelloWorld/views.py ファイルコード：</h2> <div class="example_code">
 <span style="color: Green;font-weight:bold;">from</span> django.<span style="color: #05a;">shortcuts</span> <span style="color: Green;font-weight:bold;">import</span> render<br/>
 <br/>
-<span style="color: Green;font-weight:bold;">def</span> runoob<span style="color: Olive;">(</span>request<span style="color: Olive;">)</span>:<br/>
+<span style="color: Green;font-weight:bold;">def</span> サンプル<span style="color: Olive;">(</span>request<span style="color: Olive;">)</span>:<br/>
     views_str <span style="color: Gray;">=</span> <span style="color: #a11;">"&lt;a href='/index.html'&gt;点击跳转&lt;/a&gt;"</span><br/>
-    <span style="color: Green;font-weight:bold;">return</span> render<span style="color: Olive;">(</span>request<span style="color: Gray;">,</span> <span style="color: #a11;">"runoob.html"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"views_str"</span>: views_str<span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
+    <span style="color: Green;font-weight:bold;">return</span> render<span style="color: Olive;">(</span>request<span style="color: Gray;">,</span> <span style="color: #a11;">"サンプル.html"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"views_str"</span>: views_str<span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
 </div></div>
 <div class="example">
-<h2 class="example">HelloWorld/templates/runoob.html ファイルコード：</h2>
+<h2 class="example">HelloWorld/templates/サンプル.html ファイルコード：</h2>
 <div class="example_code">
 <div class="hl-main"><span class="hl-code">{{ views_str|safe }}</span></div></div></div>
-<p>再度 http://127.0.0.1:8000/runoob にアクセスすると、次のページが表示されます：</p>
+<p>再度 http://127.0.0.1:8000/サンプル にアクセスすると、次のページが表示されます：</p>
 <p><img decoding="async" src="../wp-content/uploads/2015/01/Django_1.gif"/></p>
 <h3>if/else タグ</h3>
 <p>基本構文は次のとおりです：</p>
@@ -448,12 +448,12 @@ HTML：｛｛变量名｝｝</pre>
 <div class="example"><h2 class="example">HelloWorld/HelloWorld/views.py ファイルコード：</h2> <div class="example_code">
 <span style="color: Green;font-weight:bold;">from</span> django.<span style="color: #05a;">shortcuts</span> <span style="color: Green;font-weight:bold;">import</span> render<br/>
 <br/>
-<span style="color: Green;font-weight:bold;">def</span> runoob<span style="color: Olive;">(</span>request<span style="color: Olive;">)</span>:<br/>
+<span style="color: Green;font-weight:bold;">def</span> サンプル<span style="color: Olive;">(</span>request<span style="color: Olive;">)</span>:<br/>
     views_num <span style="color: Gray;">=</span> <span style="color: Maroon;">88</span><br/>
-    <span style="color: Green;font-weight:bold;">return</span> render<span style="color: Olive;">(</span>request<span style="color: Gray;">,</span> <span style="color: #a11;">"runoob.html"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"num"</span>: views_num<span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
+    <span style="color: Green;font-weight:bold;">return</span> render<span style="color: Olive;">(</span>request<span style="color: Gray;">,</span> <span style="color: #a11;">"サンプル.html"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"num"</span>: views_num<span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
 </div></div>
 <div class="example">
-<h2 class="example">HelloWorld/templates/runoob.html ファイルコード：</h2>
+<h2 class="example">HelloWorld/templates/サンプル.html ファイルコード：</h2>
 <div class="example_code">
 <div class="hl-main"><span class="hl-code">{%</span><span class="hl-reserved">if</span><span class="hl-code"> </span><span class="hl-identifier">num</span><span class="hl-code"> &gt; </span><span class="hl-number">90</span><span class="hl-code"> </span><span class="hl-reserved">and</span><span class="hl-code"> </span><span class="hl-identifier">num</span><span class="hl-code"> &lt;= </span><span class="hl-number">100</span><span class="hl-code">%}  
 优秀  
@@ -462,7 +462,7 @@ HTML：｛｛变量名｝｝</pre>
 {%</span><span class="hl-reserved">else</span><span class="hl-code">%}  
 一边玩去～  
 {%</span><span class="hl-identifier">endif</span><span class="hl-code"> %}</span></div></div></div>
-<p>再度 http://127.0.0.1:8000/runoob にアクセスすると、次のページが表示されます：</p>
+<p>再度 http://127.0.0.1:8000/サンプル にアクセスすると、次のページが表示されます：</p>
 <p><img decoding="async" src="../wp-content/uploads/2015/01/Django_15.png"/></p>
 <h3>for タグ</h3>
 <p>{% for %} を使用すると、シーケンス上で反復処理ができます。</p>
@@ -477,17 +477,17 @@ HTML：｛｛变量名｝｝</pre>
 <div class="example"><h2 class="example">HelloWorld/HelloWorld/views.py ファイルコード：</h2> <div class="example_code">
 <span style="color: Green;font-weight:bold;">from</span> django.<span style="color: #05a;">shortcuts</span> <span style="color: Green;font-weight:bold;">import</span> render<br/>
 <br/>
-<span style="color: Green;font-weight:bold;">def</span> runoob<span style="color: Olive;">(</span>request<span style="color: Olive;">)</span>:<br/>
-    views_list <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: #a11;">"菜鸟教程"</span><span style="color: Gray;">,</span><span style="color: #a11;">"菜鸟教程1"</span><span style="color: Gray;">,</span><span style="color: #a11;">"菜鸟教程2"</span><span style="color: Gray;">,</span><span style="color: #a11;">"菜鸟教程3"</span><span style="color: Gray;">,</span><span style="color: Olive;">]</span><br/>
-    <span style="color: Green;font-weight:bold;">return</span> render<span style="color: Olive;">(</span>request<span style="color: Gray;">,</span> <span style="color: #a11;">"runoob.html"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"views_list"</span>: views_list<span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">def</span> サンプル<span style="color: Olive;">(</span>request<span style="color: Olive;">)</span>:<br/>
+    views_list <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: #a11;">"サンプル"</span><span style="color: Gray;">,</span><span style="color: #a11;">"サンプル1"</span><span style="color: Gray;">,</span><span style="color: #a11;">"サンプル2"</span><span style="color: Gray;">,</span><span style="color: #a11;">"サンプル3"</span><span style="color: Gray;">,</span><span style="color: Olive;">]</span><br/>
+    <span style="color: Green;font-weight:bold;">return</span> render<span style="color: Olive;">(</span>request<span style="color: Gray;">,</span> <span style="color: #a11;">"サンプル.html"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"views_list"</span>: views_list<span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
 </div></div>
 <div class="example">
-<h2 class="example">HelloWorld/templates/runoob.html ファイルコード：</h2>
+<h2 class="example">HelloWorld/templates/サンプル.html ファイルコード：</h2>
 <div class="example_code">
 <div class="hl-main"><span class="hl-code">{% for i in views_list %}
 {{ i }}
 {% endfor %}</span></div></div></div>
-<p>再度 http://127.0.0.1:8000/runoob にアクセスすると、次のページが表示されます：</p>
+<p>再度 http://127.0.0.1:8000/サンプル にアクセスすると、次のページが表示されます：</p>
 <p><img decoding="async" src="../wp-content/uploads/2015/01/Django_11.png"/></p>
 <p>タグに reversed を追加すると、リストが逆方向に反復処理されます：</p>
 <pre>
@@ -496,38 +496,38 @@ HTML：｛｛变量名｝｝</pre>
 {% endfor %}
 </pre>
 <div class="example">
-<h2 class="example">HelloWorld/templates/runoob.html ファイルコード：</h2>
+<h2 class="example">HelloWorld/templates/サンプル.html ファイルコード：</h2>
 <div class="example_code">
 <div class="hl-main"><span class="hl-code">{% for i in views_list  reversed%}
 {{ i }}
 {% endfor %}</span></div></div></div>
-<p>再度 http://127.0.0.1:8000/runoob にアクセスすると、次のページが表示されます：</p>
+<p>再度 http://127.0.0.1:8000/サンプル にアクセスすると、次のページが表示されます：</p>
 <p><img decoding="async" src="../wp-content/uploads/2015/01/Django_12.png"/></p>
 <p><strong>辞書の反復処理</strong>: 辞書を直接使用できます<strong>.items</strong>メソッド、変数のアンパックを使用してキーと値をそれぞれ取得します。</p>
 <div class="example"><h2 class="example">HelloWorld/HelloWorld/views.py ファイルコード：</h2> <div class="example_code">
 <span style="color: Green;font-weight:bold;">from</span> django.<span style="color: #05a;">shortcuts</span> <span style="color: Green;font-weight:bold;">import</span> render<br/>
 <br/>
-<span style="color: Green;font-weight:bold;">def</span> runoob<span style="color: Olive;">(</span>request<span style="color: Olive;">)</span>:<br/>
-    views_dict <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: #a11;">"name"</span>:<span style="color: #a11;">"菜鸟教程"</span><span style="color: Gray;">,</span><span style="color: #a11;">"age"</span>:<span style="color: Maroon;">18</span><span style="color: Olive;">}</span><br/>
-    <span style="color: Green;font-weight:bold;">return</span> render<span style="color: Olive;">(</span>request<span style="color: Gray;">,</span> <span style="color: #a11;">"runoob.html"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"views_dict"</span>: views_dict<span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">def</span> サンプル<span style="color: Olive;">(</span>request<span style="color: Olive;">)</span>:<br/>
+    views_dict <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: #a11;">"name"</span>:<span style="color: #a11;">"サンプル"</span><span style="color: Gray;">,</span><span style="color: #a11;">"age"</span>:<span style="color: Maroon;">18</span><span style="color: Olive;">}</span><br/>
+    <span style="color: Green;font-weight:bold;">return</span> render<span style="color: Olive;">(</span>request<span style="color: Gray;">,</span> <span style="color: #a11;">"サンプル.html"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"views_dict"</span>: views_dict<span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
 </div></div>
 <div class="example">
-<h2 class="example">HelloWorld/templates/runoob.html ファイルコード：</h2>
+<h2 class="example">HelloWorld/templates/サンプル.html ファイルコード：</h2>
 <div class="example_code">
 <div class="hl-main"><span class="hl-code">{% for i,j in views_dict.items %}
 {{ i }}---{{ j }}
 {% endfor %}</span></div></div></div>
-<p>再度 http://127.0.0.1:8000/runoob にアクセスすると、次のページが表示されます：</p>
+<p>再度 http://127.0.0.1:8000/サンプル にアクセスすると、次のページが表示されます：</p>
 <p><img decoding="async" src="../wp-content/uploads/2015/01/Django_13.png"/></p>{% for %} タグ内では、{{ forloop }} 変数を使用してループ番号を取得できます。<ul><li>forloop.counter: 順にループ番号を取得します。1 から数えます</li><li>forloop.counter0: 順にループ番号を取得します。0 から数えます</li><li>forloop.revcounter: 逆順にループ番号を取得します。末尾の番号は 1 です</li><li>forloop.revcounter0: 逆順にループ番号を取得します。末尾の番号は 0 です</li><li>forloop.first（通常は if タグと組み合わせて使用）: 最初のデータは True を返し、その他のデータは False を返します</li><li>forloop.last（通常は if タグと組み合わせて使用）：最後のデータは True を返し、他のデータは False を返します。</li></ul>
 <div class="example"><h2 class="example">HelloWorld/HelloWorld/views.py ファイルコード：</h2> <div class="example_code">
 <span style="color: Green;font-weight:bold;">from</span> django.<span style="color: #05a;">shortcuts</span> <span style="color: Green;font-weight:bold;">import</span> render<br/>
 <br/>
-<span style="color: Green;font-weight:bold;">def</span> runoob<span style="color: Olive;">(</span>request<span style="color: Olive;">)</span>:<br/>
+<span style="color: Green;font-weight:bold;">def</span> サンプル<span style="color: Olive;">(</span>request<span style="color: Olive;">)</span>:<br/>
      views_list <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: #a11;">"a"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"b"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"c"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"d"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"e"</span><span style="color: Olive;">]</span><br/>
-     <span style="color: Green;font-weight:bold;">return</span> render<span style="color: Olive;">(</span>request<span style="color: Gray;">,</span> <span style="color: #a11;">"runoob.html"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"listvar"</span>: views_list<span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
+     <span style="color: Green;font-weight:bold;">return</span> render<span style="color: Olive;">(</span>request<span style="color: Gray;">,</span> <span style="color: #a11;">"サンプル.html"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"listvar"</span>: views_list<span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
 </div></div>
 <div class="example">
-<h2 class="example">HelloWorld/templates/runoob.html ファイルコード：</h2>
+<h2 class="example">HelloWorld/templates/サンプル.html ファイルコード：</h2>
 <div class="example_code">
 <div class="hl-main"><span class="hl-code">{% for i in listvar %}
     {{ forloop.counter }}
@@ -537,26 +537,26 @@ HTML：｛｛变量名｝｝</pre>
     {{ forloop.first }}
     {{ forloop.last }}
 {% endfor %}</span></div></div></div>
-<p>再度 http://127.0.0.1:8000/runoob にアクセスすると、ページが表示されます：</p>
+<p>再度 http://127.0.0.1:8000/サンプル にアクセスすると、ページが表示されます：</p>
 <p><img decoding="async" src="../wp-content/uploads/2015/01/Django_2.gif"/></p>
 <p>
 <strong>{% empty %}</strong></p><p>オプションの {% empty %} 句：ループが空のときに実行されます（つまり in の後のパラメータのブール値が False の場合）。</p>
 <div class="example"><h2 class="example">HelloWorld/HelloWorld/views.py ファイルコード：</h2> <div class="example_code">
 <span style="color: Green;font-weight:bold;">from</span> django.<span style="color: #05a;">shortcuts</span> <span style="color: Green;font-weight:bold;">import</span> render<br/>
 <br/>
-<span style="color: Green;font-weight:bold;">def</span> runoob<span style="color: Olive;">(</span>request<span style="color: Olive;">)</span>:<br/>
+<span style="color: Green;font-weight:bold;">def</span> サンプル<span style="color: Olive;">(</span>request<span style="color: Olive;">)</span>:<br/>
   views_list <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: Olive;">]</span><br/>
-  <span style="color: Green;font-weight:bold;">return</span> render<span style="color: Olive;">(</span>request<span style="color: Gray;">,</span> <span style="color: #a11;">"runoob.html"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"listvar"</span>: views_list<span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
+  <span style="color: Green;font-weight:bold;">return</span> render<span style="color: Olive;">(</span>request<span style="color: Gray;">,</span> <span style="color: #a11;">"サンプル.html"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"listvar"</span>: views_list<span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
 </div></div>
 <div class="example">
-<h2 class="example">HelloWorld/templates/runoob.html ファイルコード：</h2>
+<h2 class="example">HelloWorld/templates/サンプル.html ファイルコード：</h2>
 <div class="example_code">
 <div class="hl-main"><span class="hl-code">{% for i in listvar %}
     {{ forloop.counter0 }}
 {% empty %}
     空っぽです〜
 {% endfor %}</span></div></div></div>
-<p>再度 http://127.0.0.1:8000/runoob にアクセスすると、ページが表示されます：</p>
+<p>再度 http://127.0.0.1:8000/サンプル にアクセスすると、ページが表示されます：</p>
 <p><img decoding="async" src="../wp-content/uploads/2015/01/Django_14.png"/></p>
 <p>{% for %} タグはネストして使用できます：</p>
 <pre>
@@ -664,16 +664,16 @@ STATICFILES_DIRS = [
 <div class="example"><h2 class="example">HelloWorld/HelloWorld/views.py ファイルコード：</h2> <div class="example_code">
 <span style="color: Green;font-weight:bold;">from</span> django.<span style="color: #05a;">shortcuts</span> <span style="color: Green;font-weight:bold;">import</span> render<br/>
 <br/>
-<span style="color: Green;font-weight:bold;">def</span> runoob<span style="color: Olive;">(</span>request<span style="color: Olive;">)</span>:<br/>
-    name <span style="color: Gray;">=</span><span style="color: #a11;">"菜鸟教程"</span><br/>
-    <span style="color: Green;font-weight:bold;">return</span> render<span style="color: Olive;">(</span>request<span style="color: Gray;">,</span> <span style="color: #a11;">"runoob.html"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"name"</span>: name<span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">def</span> サンプル<span style="color: Olive;">(</span>request<span style="color: Olive;">)</span>:<br/>
+    name <span style="color: Gray;">=</span><span style="color: #a11;">"サンプル"</span><br/>
+    <span style="color: Green;font-weight:bold;">return</span> render<span style="color: Olive;">(</span>request<span style="color: Gray;">,</span> <span style="color: #a11;">"サンプル.html"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"name"</span>: name<span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
 </div></div>
 <div class="example">
-<h2 class="example">HelloWorld/templates/runoob.html ファイルコード：</h2>
+<h2 class="example">HelloWorld/templates/サンプル.html ファイルコード：</h2>
 <div class="example_code">
 <div class="hl-main"><span class="hl-code">{% load static %}
-{{name}}</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">img</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">{% static 'images/runoob-logo.png' %}</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">alt</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">runoob-logo</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span></div></div></div>
-<p>再度 http://127.0.0.1:8000/runoob にアクセスすると、ページが表示されます：</p>
+{{name}}</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">img</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">{% static 'images/サンプル-logo.png' %}</span><span class="hl-quotes">"</span><span class="hl-code"> </span><span class="hl-var">alt</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">サンプル-logo</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span></div></div></div>
+<p>再度 http://127.0.0.1:8000/サンプル にアクセスすると、ページが表示されます：</p>
 <p><img decoding="async" src="../wp-content/uploads/2015/01/87493622-D5C4-4883-8229-0813B608BB4A.jpg"/></p>
 <hr/>
 <h2>テンプレート継承</h2>
@@ -702,11 +702,11 @@ STATICFILES_DIRS = [
 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">meta</span><span class="hl-code"> </span><span class="hl-var">charset</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">utf-8</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
-</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">菜鸟教程(runoob.com)</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">サンプル(example.com)</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">
 </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">body</span><span class="hl-brackets">&gt;</span><span class="hl-code">
 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">Hello World!</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">h1</span><span class="hl-brackets">&gt;</span><span class="hl-code">
-</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">菜鸟教程 Django テスト。</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">サンプル Django テスト。</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
     {% block mainbody %}
        </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">original</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">p</span><span class="hl-brackets">&gt;</span><span class="hl-code">
     {% endblock %}
@@ -716,9 +716,9 @@ STATICFILES_DIRS = [
 </div>
 <p>上記のコードでは、mainbody という名前の block タグは、継承側によって置き換え可能な部分です。</p>
 <p>すべての {% block %} タグはテンプレートエンジンに、子テンプレートがこれらの部分をオーバーライドできることを伝えます。</p>
-<p>runoob.html は base.html を継承し、特定の block を置き換えます。修正後の runoob.html のコードは以下の通りです：</p>
+<p>サンプル.html は base.html を継承し、特定の block を置き換えます。修正後の サンプル.html のコードは以下の通りです：</p>
 <div class="example">
-<h2 class="example">HelloWorld/templates/runoob.html ファイルコード：</h2>
+<h2 class="example">HelloWorld/templates/サンプル.html ファイルコード：</h2>
 <div class="example_code">
 <div class="hl-main"><span class="hl-code">{%</span><span class="hl-identifier">extends</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">base.html</span><span class="hl-quotes">"</span><span class="hl-code"> %}
  
@@ -727,8 +727,8 @@ STATICFILES_DIRS = [
 {% </span><span class="hl-identifier">endblock</span><span class="hl-code"> %}</span></div>
 </div>
 </div>
-<p>最初の行のコードは、runoob.html が base.html ファイルを継承していることを示しています。ここで、同じ名前の block タグが base.html の対応する block を置き換えるために使用されていることがわかります。</p>
-<p>再度 http://127.0.0.1:8000/runoob にアクセスすると、出力結果は以下の通りです：</p><p>
+<p>最初の行のコードは、サンプル.html が base.html ファイルを継承していることを示しています。ここで、同じ名前の block タグが base.html の対応する block を置き換えるために使用されていることがわかります。</p>
+<p>再度 http://127.0.0.1:8000/サンプル にアクセスすると、出力結果は以下の通りです：</p><p>
 <img decoding="async" src="../wp-content/uploads/2015/01/F54E0EF3-2E76-4B3E-B1DA-1541EDCB5CD2.jpg"/></p> その他の拡張
 </div>
 </div>

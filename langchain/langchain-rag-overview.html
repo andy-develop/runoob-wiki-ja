@@ -362,7 +362,7 @@ load_dotenv<span style="color: Olive;">(</span><span style="color: Olive;">)</sp
 embeddings <span style="color: Gray;">=</span> OpenAIEmbeddings<span style="color: Olive;">(</span>model<span style="color: Gray;">=</span><span style="color: #a11;">"text-embedding-3-small"</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># テスト：テキストをベクトルに変換する</span><br/>
-text <span style="color: Gray;">=</span> <span style="color: #a11;">"RUNOOB（初心者向けチュートリアル）はプログラミング学習プラットフォームです"</span><br/>
+text <span style="color: Gray;">=</span> <span style="color: #a11;">"サンプル（初心者向けチュートリアル）はプログラミング学習プラットフォームです"</span><br/>
 vector <span style="color: Gray;">=</span> embeddings.<span style="color: #05a;">embed_query</span><span style="color: Olive;">(</span>text<span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"テキスト: {text}"</span><span style="color: Olive;">)</span><br/>
@@ -372,9 +372,9 @@ vector <span style="color: Gray;">=</span> embeddings.<span style="color: #05a;"
 </div>
 <p>実行結果：</p>
 <pre>
-文本: 菜鸟教程 RUNOOB 是一个编程学习平台
-向量维度: 1536
-向量前 5 个值: [0.0123, -0.0045, 0.0234, -0.0012, 0.0089]
+テキスト: サンプル 是一个编程学习平台
+ベクトル次元: 1536
+ベクトルの最初の5つの値: [0.0123, -0.0045, 0.0234, -0.0012, 0.0089]
 </pre>
 <p>また、OpenAIのキーがない場合は、Alibaba Cloud百炼のEmbeddingサービスを利用できます。<span class="marked">.env</span>設定ファイルにAlibaba Cloud百炼のキーを追加する必要があります：</p>
 <pre>DASHSCOPE_API_KEY="sk-xxx"</pre><p>設定後のコード：</p>
@@ -409,7 +409,7 @@ embeddings <span style="color: Gray;">=</span> OpenAIEmbeddings<span style="colo
     chunk_size<span style="color: Gray;">=</span><span style="color: Maroon;">10</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <span style="color: #a50"># テスト：テキストをベクトルに変換する</span><br/>
-text <span style="color: Gray;">=</span> <span style="color: #a11;">"RUNOOB（初心者向けチュートリアル）はプログラミング学習プラットフォームです"</span><br/>
+text <span style="color: Gray;">=</span> <span style="color: #a11;">"サンプル（初心者向けチュートリアル）はプログラミング学習プラットフォームです"</span><br/>
 vector <span style="color: Gray;">=</span> embeddings.<span style="color: #05a;">embed_query</span><span style="color: Olive;">(</span>text<span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"テキスト: {text}"</span><span style="color: Olive;">)</span><br/>
@@ -429,14 +429,14 @@ embeddings <span style="color: Gray;">=</span> OpenAIEmbeddings<span style="colo
 <br/>
 <span style="color: #a50"># Chromaベクトルストアを作成（データはローカルディレクトリに保存）</span><br/>
 vector_store <span style="color: Gray;">=</span> Chroma<span style="color: Olive;">(</span><br/>
-    collection_name<span style="color: Gray;">=</span><span style="color: #a11;">"runoob_docs"</span><span style="color: Gray;">,</span><br/>
+    collection_name<span style="color: Gray;">=</span><span style="color: #a11;">"サンプル_docs"</span><span style="color: Gray;">,</span><br/>
     embedding_function<span style="color: Gray;">=</span>embeddings<span style="color: Gray;">,</span><br/>
     persist_directory<span style="color: Gray;">=</span><span style="color: #a11;">"./chroma_db"</span><span style="color: Gray;">,</span>  <span style="color: #a50"># 永続化ディレクトリ</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># ドキュメントを追加（最も簡単な形式：テキストリスト）</span><br/>
 texts <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><br/>
-    <span style="color: #a11;">"RUNOOB（初心者向けチュートリアル）は無料のプログラミング学習サイトで、HTML、CSS、JavaScript、Pythonなどのチュートリアルを提供しています。"</span><span style="color: Gray;">,</span><br/>
+    <span style="color: #a11;">"サンプル（初心者向けチュートリアル）は無料のプログラミング学習サイトで、HTML、CSS、JavaScript、Pythonなどのチュートリアルを提供しています。"</span><span style="color: Gray;">,</span><br/>
     <span style="color: #a11;">"Python3基礎チュートリアルは全30章で、ゼロから始める初心者に適しており、環境構築、構文の基礎、オブジェクト指向などの内容が含まれています。"</span><span style="color: Gray;">,</span><br/>
     <span style="color: #a11;">"HTML基礎チュートリアルは全25章で、HTMLタグ、フォーム、マルチメディアなどの基礎知識をカバーしています。"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">]</span><br/>
@@ -468,13 +468,13 @@ results <span style="color: Gray;">=</span> vector_store.<span style="color: #05
 <pre>
 搜索结果：
 
-结果 1:
+結果1:
   内容: Python3 基础教程共 30 章，适合零基础入门...
-  元数据: {}
+  メタデータ: {}
 
-结果 2:
-  内容: 菜鸟教程（RUNOOB）是一个免费的编程学习网站...
-  元数据: {}
+結果2:
+  内容: サンプル是一个免费的编程学习网站...
+  メタデータ: {}
 </pre>
 <blockquote><p>最初の検索結果は2番目の結果よりも関連性が高いことに注意してください。最初の結果には"Python"というキーワードが含まれていますが、それは<span class="marked">意味的な類似度</span>ではなく、キーワード一致による並び替えです。これがベクトル検索の強みです。</p></blockquote>
 <hr/>

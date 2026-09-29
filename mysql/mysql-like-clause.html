@@ -301,8 +301,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="article-intro" id="content">
 <h1>MySQL LIKE 句</h1>
 <p>ご存知のように、MySQL では<span class="marked">SELECT</span>コマンドを使用してデータを読み取ります。同時に、<span class="marked">SELECT</span>文で<span class="marked">WHERE</span>句を使用して、指定されたレコードを取得できます。</p>
-<p>WHERE 句では等号を使用できます。<span class="marked">=</span>データ取得の条件を設定します。例: "runoob_author = 'RUNOOB.COM'"</p>
-<p>しかし、場合によっては runoob_author フィールドに "COM" という文字を含むすべてのレコードを取得する必要があります。その場合は WHERE 句で<span class="marked">LIKE</span>句を使用する必要があります。</p>
+<p>WHERE 句では等号を使用できます。<span class="marked">=</span>データ取得の条件を設定します。例: "サンプル_author = 'example.com'"</p>
+<p>しかし、場合によっては サンプル_author フィールドに "COM" という文字を含むすべてのレコードを取得する必要があります。その場合は WHERE 句で<span class="marked">LIKE</span>句を使用する必要があります。</p>
 <span class="marked">LIKE</span>句はMySQLのWHERE句内で曖昧（あいまい）マッチングを行うためのキーワードです。通常はワイルドカードと一緒に使用して、特定のパターンに一致する文字列を検索します。<p><span class="marked">LIKE</span>句でパーセント記号<span class="marked">%</span>文字を使用して任意の文字を表します。UNIXや正規表現のアスタリスクに似ています。<span class="marked">*</span>。</p>
 <p>パーセント記号を使用しない場合、<span class="marked">%</span>LIKE 句は等号と<span class="marked">=</span>同じ効果があります。</p>
 <h3>構文</h3>
@@ -336,20 +336,20 @@ SELECT * FROM employees WHERE last_name LIKE 'smi%' COLLATE utf8mb4_general_ci;<
 <p><span class="marked">LIKE</span>句は強力なあいまい検索機能を提供し、さまざまなパターンやニーズに合わせてカスタマイズできます。使用する際は、ワイルドカードの意味を理解し、実際の状況に応じてマッチングしてください。</p>
 <hr/>
 <h2>コマンドプロンプトで LIKE 句を使用する</h2>
-<p>以下では、<span class="marked">SELECT</span>コマンドで<span class="marked">WHERE...LIKE</span>句を使用して、MySQL データテーブル runoob_tbl からデータを読み取ります。</p>
+<p>以下では、<span class="marked">SELECT</span>コマンドで<span class="marked">WHERE...LIKE</span>句を使用して、MySQL データテーブル サンプル_tbl からデータを読み取ります。</p>
 <h3>例</h3>
-<p>以下は、runoob_tbl テーブルから runoob_author フィールドの末尾が<span class="marked">COM</span>であるすべてのレコードを取得します。</p>
+<p>以下は、サンプル_tbl テーブルから サンプル_author フィールドの末尾が<span class="marked">COM</span>であるすべてのレコードを取得します。</p>
 <div class="example">
 <h2 class="example">SQL LIKE 文：</h2>
 <div class="example_code">
-<div class="hl-main"><span class="hl-identifier">mysql</span><span class="hl-code">&gt; </span><span class="hl-identifier">use</span><span class="hl-code"> </span><span class="hl-identifier">RUNOOB</span><span class="hl-code">;
+<div class="hl-main"><span class="hl-identifier">mysql</span><span class="hl-code">&gt; </span><span class="hl-identifier">use</span><span class="hl-code"> </span><span class="hl-identifier">サンプル</span><span class="hl-code">;
 </span><span class="hl-identifier">Database</span><span class="hl-code"> </span><span class="hl-identifier">changed</span><span class="hl-code">
-</span><span class="hl-identifier">mysql</span><span class="hl-code">&gt; </span><span class="hl-reserved">SELECT</span><span class="hl-code"> * </span><span class="hl-reserved">from</span><span class="hl-code"> </span><span class="hl-identifier">runoob_tbl</span><span class="hl-code"> </span><span class="hl-reserved">WHERE</span><span class="hl-code"> </span><span class="hl-identifier">runoob_author</span><span class="hl-code"> </span><span class="hl-reserved">LIKE</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">%COM</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-identifier">mysql</span><span class="hl-code">&gt; </span><span class="hl-reserved">SELECT</span><span class="hl-code"> * </span><span class="hl-reserved">from</span><span class="hl-code"> </span><span class="hl-identifier">サンプル_tbl</span><span class="hl-code"> </span><span class="hl-reserved">WHERE</span><span class="hl-code"> </span><span class="hl-identifier">サンプル_author</span><span class="hl-code"> </span><span class="hl-reserved">LIKE</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">%COM</span><span class="hl-quotes">'</span><span class="hl-code">;
 +-----------+---------------+---------------+-----------------+
-| </span><span class="hl-identifier">runoob_id</span><span class="hl-code"> | </span><span class="hl-identifier">runoob_title</span><span class="hl-code">  | </span><span class="hl-identifier">runoob_author</span><span class="hl-code"> | </span><span class="hl-identifier">submission_date</span><span class="hl-code"> |
+| </span><span class="hl-identifier">サンプル_id</span><span class="hl-code"> | </span><span class="hl-identifier">サンプル_title</span><span class="hl-code">  | </span><span class="hl-identifier">サンプル_author</span><span class="hl-code"> | </span><span class="hl-identifier">submission_date</span><span class="hl-code"> |
 +-----------+---------------+---------------+-----------------+
-| </span><span class="hl-number">3</span><span class="hl-code">| 学習</span><span class="hl-identifier">Java</span><span class="hl-code">   | </span><span class="hl-identifier">RUNOOB</span><span class="hl-code">.</span><span class="hl-identifier">COM</span><span class="hl-code">    | </span><span class="hl-number">2015</span><span class="hl-code">-</span><span class="hl-number">05</span><span class="hl-code">-</span><span class="hl-number">01</span><span class="hl-code">      |
-| </span><span class="hl-number">4</span><span class="hl-code">| 学習</span><span class="hl-identifier">Python</span><span class="hl-code"> | </span><span class="hl-identifier">RUNOOB</span><span class="hl-code">.</span><span class="hl-identifier">COM</span><span class="hl-code">    | </span><span class="hl-number">2016</span><span class="hl-code">-</span><span class="hl-number">03</span><span class="hl-code">-</span><span class="hl-number">06</span><span class="hl-code">      |
+| </span><span class="hl-number">3</span><span class="hl-code">| 学習</span><span class="hl-identifier">Java</span><span class="hl-code">   | </span><span class="hl-identifier">サンプル</span><span class="hl-code">.</span><span class="hl-identifier">COM</span><span class="hl-code">    | </span><span class="hl-number">2015</span><span class="hl-code">-</span><span class="hl-number">05</span><span class="hl-code">-</span><span class="hl-number">01</span><span class="hl-code">      |
+| </span><span class="hl-number">4</span><span class="hl-code">| 学習</span><span class="hl-identifier">Python</span><span class="hl-code"> | </span><span class="hl-identifier">サンプル</span><span class="hl-code">.</span><span class="hl-identifier">COM</span><span class="hl-code">    | </span><span class="hl-number">2016</span><span class="hl-code">-</span><span class="hl-number">03</span><span class="hl-code">-</span><span class="hl-number">06</span><span class="hl-code">      |
 +-----------+---------------+---------------+-----------------+
 </span><span class="hl-number">2</span><span class="hl-code"> </span><span class="hl-reserved">rows</span><span class="hl-code"> </span><span class="hl-reserved">in</span><span class="hl-code"> </span><span class="hl-reserved">set</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-number">0.01</span><span class="hl-code"> </span><span class="hl-identifier">sec</span><span class="hl-brackets">)</span></div>
 </div>
@@ -360,7 +360,7 @@ SELECT * FROM employees WHERE last_name LIKE 'smi%' COLLATE utf8mb4_general_ci;<
 <p>この関数は SQL コマンドの実行に使用され、次に PHP 関数 mysqli_fetch_array() を使用してクエリされたすべてのデータを出力します。</p>
 <p>ただし、DELETE または UPDATE で WHERE...LIKE 句を使用する SQL 文の場合は、mysqli_fetch_array() 関数を使用する必要はありません。</p>
 <h3>例</h3>
-<p>以下は、PHP スクリプトを使用して runoob_tbl テーブル内の runoob_author フィールドの末尾が COM であるすべてのレコードを読み取ったものです。</p>
+<p>以下は、PHP スクリプトを使用して サンプル_tbl テーブル内の サンプル_author フィールドの末尾が COM であるすべてのレコードを読み取ったものです。</p>
 <div class="example">
 <h2 class="example">MySQL LIKE 句テスト：</h2>
 <div class="example_code">
@@ -376,24 +376,24 @@ SELECT * FROM employees WHERE last_name LIKE 'smi%' COLLATE utf8mb4_general_ci;<
 </span><span class="hl-comment">//</span><span class="hl-comment">文字コードを設定して、中国語の文字化けを防ぎます</span><span class="hl-comment"></span><span class="hl-code">
 </span><span class="hl-identifier">mysqli_query</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-code"> , </span><span class="hl-quotes">"</span><span class="hl-string">set names utf8</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
  
-</span><span class="hl-var">$sql</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">SELECT runoob_id, runoob_title, 
-        runoob_author, submission_date
-        FROM runoob_tbl
-        WHERE runoob_author LIKE "%COM"</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-var">$sql</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">SELECT サンプル_id, サンプル_title, 
+        サンプル_author, submission_date
+        FROM サンプル_tbl
+        WHERE サンプル_author LIKE "%COM"</span><span class="hl-quotes">'</span><span class="hl-code">;
  
-</span><span class="hl-identifier">mysqli_select_db</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">RUNOOB</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">mysqli_select_db</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">サンプル</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-var">$retval</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_query</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-var">$sql</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-code">! </span><span class="hl-var">$retval</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">
 </span><span class="hl-brackets">{</span><span class="hl-code">
 </span><span class="hl-reserved">die</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">データを読み取れません:</span><span class="hl-quotes">'</span><span class="hl-code"> . </span><span class="hl-identifier">mysqli_error</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-brackets">}</span><span class="hl-code">
-</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">&lt;h2&gt;菜鸟教程 mysqli_fetch_array テスト&lt;h2&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">&lt;h2&gt;サンプル mysqli_fetch_array テスト&lt;h2&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
 </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">&lt;table border="1"&gt;&lt;tr&gt;&lt;td&gt;チュートリアル ID&lt;/td&gt;&lt;td&gt;タイトル&lt;/td&gt;&lt;td&gt;著者&lt;/td&gt;&lt;td&gt;提出日&lt;/td&gt;&lt;/tr&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
 </span><span class="hl-reserved">while</span><span class="hl-brackets">(</span><span class="hl-var">$row</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_fetch_array</span><span class="hl-brackets">(</span><span class="hl-var">$retval</span><span class="hl-code">, </span><span class="hl-identifier">MYSQLI_ASSOC</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">
 </span><span class="hl-brackets">{</span><span class="hl-code">
-</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">&lt;tr&gt;&lt;td&gt; </span><span class="hl-var">{$row['runoob_id']}</span><span class="hl-string">&lt;/td&gt; </span><span class="hl-quotes">"</span><span class="hl-code">.
-         </span><span class="hl-quotes">"</span><span class="hl-string">&lt;td&gt;</span><span class="hl-var">{$row['runoob_title']}</span><span class="hl-string"> &lt;/td&gt; </span><span class="hl-quotes">"</span><span class="hl-code">.
-         </span><span class="hl-quotes">"</span><span class="hl-string">&lt;td&gt;</span><span class="hl-var">{$row['runoob_author']}</span><span class="hl-string"> &lt;/td&gt; </span><span class="hl-quotes">"</span><span class="hl-code">.
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">&lt;tr&gt;&lt;td&gt; </span><span class="hl-var">{$row['サンプル_id']}</span><span class="hl-string">&lt;/td&gt; </span><span class="hl-quotes">"</span><span class="hl-code">.
+         </span><span class="hl-quotes">"</span><span class="hl-string">&lt;td&gt;</span><span class="hl-var">{$row['サンプル_title']}</span><span class="hl-string"> &lt;/td&gt; </span><span class="hl-quotes">"</span><span class="hl-code">.
+         </span><span class="hl-quotes">"</span><span class="hl-string">&lt;td&gt;</span><span class="hl-var">{$row['サンプル_author']}</span><span class="hl-string"> &lt;/td&gt; </span><span class="hl-quotes">"</span><span class="hl-code">.
          </span><span class="hl-quotes">"</span><span class="hl-string">&lt;td&gt;</span><span class="hl-var">{$row['submission_date']}</span><span class="hl-string"> &lt;/td&gt; </span><span class="hl-quotes">"</span><span class="hl-code">.
          </span><span class="hl-quotes">"</span><span class="hl-string">&lt;/tr&gt;</span><span class="hl-quotes">"</span><span class="hl-code">;
 </span><span class="hl-brackets">}</span><span class="hl-code">

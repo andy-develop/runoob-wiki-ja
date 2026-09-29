@@ -288,7 +288,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <pre>
 id,name,url,likes
 1,Google,www.google.com,111
-2,Runoob,www.runoob.com,222
+2,サンプル,www.example.com,222
 3,Taobao,www.taobao.com,333
 
 </pre>
@@ -310,7 +310,7 @@ In read.table(file = file, header = header, sep = sep, quote = quote,  :
 <pre>
   id   name            url likes
 1  1 Google www.google.com   111
-2  2 Runoob www.runoob.com   222
+2  2 サンプル www.example.com   222
 3  3 Taobao www.taobao.com   333
 </pre><p>read.csv() 関数はデータフレームを返します。データの統計処理を簡単に行うことができます。次の例では、行数と列数を確認します：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
@@ -345,23 +345,23 @@ retval <span style="color: #170;">&lt;-</span> <span style="color: #05a; font-we
 <p>上記のコードを実行すると、出力結果は次のとおりです：</p>
 <pre>
   id   name            url likes
-2  2 Runoob www.runoob.com   222
+2  2 サンプル www.example.com   222
 </pre>
 <p><strong>注意</strong>：条件文では、等号は次を使用します<span class="marked">==</span>。</p>
-<p>複数の条件では<span class="marked">&amp;</span>区切り文字を使用します。次の例では、likes が 1 より大きく、name が Runoob のデータを検索します：</p>
+<p>複数の条件では<span class="marked">&amp;</span>区切り文字を使用します。次の例では、likes が 1 より大きく、name が サンプル のデータを検索します：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #05a; font-weight: bold;">data</span> <span style="color: #170;">&lt;-</span> <span style="color: #05a; font-weight: bold;">read.<span style="">csv</span></span><span style="color: #080;">(</span><span style="color: #a11;">"sites.csv"</span>, encoding<span style="color: #170;">=</span><span style="color: #a11;">"UTF-8"</span><span style="color: #080;">)</span><br/>
 <br/>
-<span style="color: #a50;"># likes が 1 より大きく name が Runoob のデータ</span><br/>
-retval <span style="color: #170;">&lt;-</span> <span style="color: #05a; font-weight: bold;">subset</span><span style="color: #080;">(</span><span style="color: #05a; font-weight: bold;">data</span>, likes <span style="color: #170;">&gt;</span> <span style="color: #a11;">1</span> <span style="color: #170;">&amp;</span> name<span style="color: #170;">==</span><span style="color: #a11;">"Runoob"</span><span style="color: #080;">)</span><br/>
+<span style="color: #a50;"># likes が 1 より大きく name が サンプル のデータ</span><br/>
+retval <span style="color: #170;">&lt;-</span> <span style="color: #05a; font-weight: bold;">subset</span><span style="color: #080;">(</span><span style="color: #05a; font-weight: bold;">data</span>, likes <span style="color: #170;">&gt;</span> <span style="color: #a11;">1</span> <span style="color: #170;">&amp;</span> name<span style="color: #170;">==</span><span style="color: #a11;">"サンプル"</span><span style="color: #080;">)</span><br/>
 <span style="color: #05a; font-weight: bold;">print</span><span style="color: #080;">(</span>retval<span style="color: #080;">)</span><br/>
 </div></div>
 <p>上記のコードを実行すると、出力結果は次のとおりです：</p>
 <pre>
   id   name            url likes
-2  2 Runoob www.runoob.com   222
+2  2 サンプル www.example.com   222
 </pre>
-<h3>CSV ファイルとして保存</h3><p>R 言語では、<strong>write.csv()</strong>関数を使用してデータを CSV ファイルとして保存できます。</p><p>上記の例に続いて、likes が 222 のデータを runoob.csv ファイルに保存します：</p>
+<h3>CSV ファイルとして保存</h3><p>R 言語では、<strong>write.csv()</strong>関数を使用してデータを CSV ファイルとして保存できます。</p><p>上記の例に続いて、likes が 222 のデータを サンプル.csv ファイルに保存します：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #05a; font-weight: bold;">data</span> <span style="color: #170;">&lt;-</span> <span style="color: #05a; font-weight: bold;">read.<span style="">csv</span></span><span style="color: #080;">(</span><span style="color: #a11;">"sites.csv"</span>, encoding<span style="color: #170;">=</span><span style="color: #a11;">"UTF-8"</span><span style="color: #080;">)</span><br/>
 <br/>
@@ -369,14 +369,14 @@ retval <span style="color: #170;">&lt;-</span> <span style="color: #05a; font-we
 retval <span style="color: #170;">&lt;-</span> <span style="color: #05a; font-weight: bold;">subset</span><span style="color: #080;">(</span><span style="color: #05a; font-weight: bold;">data</span>, likes <span style="color: #170;">==</span> <span style="color: #a11;">222</span><span style="color: #080;">)</span><br/>
 <br/>
 <span style="color: #a50;"># 新しいファイルに書き込む</span><br/>
-<span style="color: #05a; font-weight: bold;">write.<span style="">csv</span></span><span style="color: #080;">(</span>retval,<span style="color: #a11;">"runoob.csv"</span><span style="color: #080;">)</span><br/>
-newdata <span style="color: #170;">&lt;-</span> <span style="color: #05a; font-weight: bold;">read.<span style="">csv</span></span><span style="color: #080;">(</span><span style="color: #a11;">"runoob.csv"</span><span style="color: #080;">)</span><br/>
+<span style="color: #05a; font-weight: bold;">write.<span style="">csv</span></span><span style="color: #080;">(</span>retval,<span style="color: #a11;">"サンプル.csv"</span><span style="color: #080;">)</span><br/>
+newdata <span style="color: #170;">&lt;-</span> <span style="color: #05a; font-weight: bold;">read.<span style="">csv</span></span><span style="color: #080;">(</span><span style="color: #a11;">"サンプル.csv"</span><span style="color: #080;">)</span><br/>
 <span style="color: #05a; font-weight: bold;">print</span><span style="color: #080;">(</span>newdata<span style="color: #080;">)</span><br/>
 </div></div>
 <p>上記のコードを実行すると、出力結果は次のとおりです：</p>
 <pre>
  X id   name            url likes
-1 2  2 Runoob www.runoob.com   222
+1 2  2 サンプル www.example.com   222
 </pre><p>X はデータセット newper に由来します。パラメータ row.names = FALSE でそれを削除できます：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #05a; font-weight: bold;">data</span> <span style="color: #170;">&lt;-</span> <span style="color: #05a; font-weight: bold;">read.<span style="">csv</span></span><span style="color: #080;">(</span><span style="color: #a11;">"sites.csv"</span>, encoding<span style="color: #170;">=</span><span style="color: #a11;">"UTF-8"</span><span style="color: #080;">)</span><br/>
@@ -385,15 +385,15 @@ newdata <span style="color: #170;">&lt;-</span> <span style="color: #05a; font-w
 retval <span style="color: #170;">&lt;-</span> <span style="color: #05a; font-weight: bold;">subset</span><span style="color: #080;">(</span><span style="color: #05a; font-weight: bold;">data</span>, likes <span style="color: #170;">==</span> <span style="color: #a11;">222</span><span style="color: #080;">)</span><br/>
 <br/>
 <span style="color: #a50;"># 新しいファイルに書き込む</span><br/>
-<span style="color: #05a; font-weight: bold;">write.<span style="">csv</span></span><span style="color: #080;">(</span>retval,<span style="color: #a11;">"runoob.csv"</span>, <span style="color: #05a; font-weight: bold;">row.<span style="">names</span></span> <span style="color: #170;">=</span> FALSE<span style="color: #080;">)</span><br/>
-newdata <span style="color: #170;">&lt;-</span> <span style="color: #05a; font-weight: bold;">read.<span style="">csv</span></span><span style="color: #080;">(</span><span style="color: #a11;">"runoob.csv"</span><span style="color: #080;">)</span><br/>
+<span style="color: #05a; font-weight: bold;">write.<span style="">csv</span></span><span style="color: #080;">(</span>retval,<span style="color: #a11;">"サンプル.csv"</span>, <span style="color: #05a; font-weight: bold;">row.<span style="">names</span></span> <span style="color: #170;">=</span> FALSE<span style="color: #080;">)</span><br/>
+newdata <span style="color: #170;">&lt;-</span> <span style="color: #05a; font-weight: bold;">read.<span style="">csv</span></span><span style="color: #080;">(</span><span style="color: #a11;">"サンプル.csv"</span><span style="color: #080;">)</span><br/>
 <span style="color: #05a; font-weight: bold;">print</span><span style="color: #080;">(</span>newdata<span style="color: #080;">)</span><br/>
 </div></div>
 <p>上記のコードを実行すると、出力結果は次のとおりです：</p>
 <pre>
   id   name            url likes
-1  2 Runoob www.runoob.com   222
-</pre><p>実行が完了すると、runoob.csv ファイルが生成されたことを確認できます：</p>
+1  2 サンプル www.example.com   222
+</pre><p>実行が完了すると、サンプル.csv ファイルが生成されたことを確認できます：</p>
 <p><img decoding="async" src="../wp-content/uploads/2020/07/r-csv-1.jpeg"/></p>
 その他の拡張
 </div>

@@ -337,10 +337,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <pre>public void broadcastIntent(View view)
 {
    Intent intent = new Intent();
-   intent.setAction("com.runoob.CUSTOM_INTENT");
+   intent.setAction("com.サンプル.CUSTOM_INTENT");
    sendBroadcast(intent);
 }</pre>
-<p>com.runoob.CUSTOM_INTENT インテントは、以前システム生成インテントを登録したのと同じ方法で登録できます。</p>
+<p>com.サンプル.CUSTOM_INTENT インテントは、以前システム生成インテントを登録したのと同じ方法で登録できます。</p>
 <pre>&lt;application
    android:icon="@drawable/ic_launcher"
    android:label="@string/app_name"
@@ -348,7 +348,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
    &lt;receiver android:name="MyReceiver"&gt;
 
       &lt;intent-filter&gt;
-         &lt;action android:name="com.runoob.CUSTOM_INTENT"&gt;
+         &lt;action android:name="com.サンプル.CUSTOM_INTENT"&gt;
          &lt;/action&gt;
       &lt;/intent-filter&gt;
 
@@ -368,7 +368,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <tbody>
 <tr>
 <td>1</td>
-<td>Android Studioを使用してAndroidアプリケーションを作成し、broadcastreceiverという名前を付け、Hello Worldの例の章のcom.runoob.broadcastreceiverパッケージの下に配置します。</td>
+<td>Android Studioを使用してAndroidアプリケーションを作成し、broadcastreceiverという名前を付け、Hello Worldの例の章のcom.サンプル.broadcastreceiverパッケージの下に配置します。</td>
 </tr>
 <tr>
 <td>2</td>
@@ -376,7 +376,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </tr>
 <tr>
 <td>3</td>
-<td>com.runoob.broadcastreceiverパッケージの下に、ブロードキャストレシーバーを定義する新しいJavaファイルMyReceiver.javaを作成します。</td>
+<td>com.サンプル.broadcastreceiverパッケージの下に、ブロードキャストレシーバーを定義する新しいJavaファイルMyReceiver.javaを作成します。</td>
 </tr>
 <tr>
 <td>4</td>
@@ -396,8 +396,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </tr>
 </tbody>
 </table>
-<p>以下は、変更したメインアクティビティファイル src/com.runoob.broadcastreceiver/MainActivity.java の内容です。このファイルには、基本的なライフサイクルメソッドがすべて含まれています。カスタムイベントをブロードキャストするためのbroadcastIntent()メソッドを追加しました。</p>
-<pre>package com.runoob.broadcastreceiver;
+<p>以下は、変更したメインアクティビティファイル src/com.サンプル.broadcastreceiver/MainActivity.java の内容です。このファイルには、基本的なライフサイクルメソッドがすべて含まれています。カスタムイベントをブロードキャストするためのbroadcastIntent()メソッドを追加しました。</p>
+<pre>package com.サンプル.broadcastreceiver;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -426,8 +426,8 @@ public class MainActivity extends Activity {
         sendBroadcast(intent);
     }
 }</pre>
-<p>以下は src/com.runoob.broadcastreceiver/MyReceiver.java の内容です：</p>
-<pre>package com.runoob.broadcastreceiver;
+<p>以下は src/com.サンプル.broadcastreceiver/MyReceiver.java の内容です：</p>
+<pre>package com.サンプル.broadcastreceiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -443,7 +443,7 @@ public class MyReceiver extends BroadcastReceiver {
 <p>次にAndroidManifest.xmlファイルを変更します。ここでは、&lt;receiver.../&gt;タグを追加してブロードキャストレシーバーを含めます：</p>
 <pre>&lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.runoob.broadcastreceiver"
+    package="com.サンプル.broadcastreceiver"
     android:versionCode="1"
     android:versionName="1.0" &gt;
 
@@ -500,7 +500,7 @@ public class MyReceiver extends BroadcastReceiver {
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="www.runoob.com"
+        android:text="www.example.com"
         android:textColor="#ff87ff09"
         android:textSize="30dp"
         android:layout_above="@+id/imageButton"

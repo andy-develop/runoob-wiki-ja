@@ -296,13 +296,13 @@ x.. 等价于位置 x 到数据结束
 <p>スライスによって参照されている文字列は、その値を変更することが禁止されています：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #708;">fn</span> main<span style="">(</span><span style="">)</span> <span style="">{</span><br/>
-    <span style="color: #708;">let</span> <span style="color: #708;">mut</span> s <span style="">=</span> String<span style="">::</span><span style="color: #164;">from</span><span style="">(</span><span style="color: #a11;">"runoob"</span><span style="">)</span><span style="">;</span><br/>
+    <span style="color: #708;">let</span> <span style="color: #708;">mut</span> s <span style="">=</span> String<span style="">::</span><span style="color: #164;">from</span><span style="">(</span><span style="color: #a11;">"サンプル"</span><span style="">)</span><span style="">;</span><br/>
     <span style="color: #708;">let</span> slice <span style="">=</span> <span style="">&amp;</span>s<span style="">[</span><span style="color: #0000DD;">0</span>..<span style="color: #0000DD;">3</span><span style="">]</span><span style="">;</span><br/>
     s.push_str<span style="">(</span><span style="color: #a11;">"yes!"</span><span style="">)</span><span style="">;</span> <span style="color: #a50; font-style: italic;">// エラー</span><br/>
     println<span style="">!</span><span style="">(</span><span style="color: #a11;">"slice = {}"</span><span style="">,</span> slice<span style="">)</span><span style="">;</span><br/>
 <span style="">}</span><br/>
 </div></div>
-<p>このプログラムは正しくありません。</p><p>s は部分的に参照されているため、その値を変更することはできません。</p><p>実際、今までなぜ毎回文字列を使うときにこのように書くのか、きっと疑問に思っているでしょう、<span class="marked">String::from("runoob")</span>、直接書く<strong>"runoob"</strong>のはダメですか？</p>
+<p>このプログラムは正しくありません。</p><p>s は部分的に参照されているため、その値を変更することはできません。</p><p>実際、今までなぜ毎回文字列を使うときにこのように書くのか、きっと疑問に思っているでしょう、<span class="marked">String::from("サンプル")</span>、直接書く<strong>"サンプル"</strong>のはダメですか？</p>
 <p>こうなった以上、この2つの概念の違いを区別しなければなりません。Rust にはよく使われる文字列型が2つあります：str と String です。str は Rust のコア言語型であり、この章でずっと説明してきた文字列スライス（String Slice）で、通常は参照の形（&amp;str）で現れます。</p><p>ダブルクォーテーションで囲まれた文字列定数の型は、すべて<strong>&amp;str</strong>：</p>
 <pre>let s = "hello";</pre><p>ここでの s は &amp;str 型の変数です。</p><p>String 型は Rust 標準ライブラリが提供するデータ型で、機能がより充実しています。文字列の追加やクリアなどの実用的な操作をサポートしています。String と str は、どちらも文字の開始位置属性と文字列の長さ属性を持っているほかに、容量（capacity）属性も持っています。</p><p>String と str はどちらもスライスをサポートしており、スライスの結果は &amp;str 型のデータになります。</p><p>注意：スライスの結果は参照型でなければなりませんが、開発者はこれを自分で明示する必要があります：</p>
 <pre>let slice = &amp;s[0..3];</pre><p>String を &amp;str に変換する簡単な方法があります：</p><pre>

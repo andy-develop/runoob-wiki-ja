@@ -351,22 +351,22 @@ db.<span style="color: #660066;">createCollection</span><span style="color: #009
 </div></div><p>この例では、次の特性を持つコレクションを作成します：</p>
 <ul><li>固定サイズで、最大 10MB、最大 5000 個のドキュメントを格納できます。</li><li>ドキュメントには、必ず<code>name</code>と<code>email</code>フィールドが含まれており、そのうち<code>name</code>は文字列である必要があり、<code>email</code>は有効なメールアドレスの形式である必要があります。</li><li>検証レベルは strict で、検証に失敗した場合は挿入または更新がブロックされます。</li><li>WiredTiger ストレージエンジンを使用し、ブロック圧縮アルゴリズムに zstd を指定します。</li><li>デフォルトでは英語の照合順序を使用します。</li></ul>
 <h3>例</h3>
-<p>test データベースに runoob コレクションを作成します：</p>
+<p>test データベースに サンプル コレクションを作成します：</p>
 <pre>&gt; use test
 switched to db test
-&gt; db.createCollection("runoob")
+&gt; db.createCollection("サンプル")
 { "ok" : 1 }
 &gt;</pre>
 <p>既存のコレクションを確認するには、次を使用できます<span class="marked">show collections</span> 或 <span class="marked">show tables</span>コマンド：</p>
 <pre>&gt; show collections
-runoob
+サンプル
 system.indexes</pre>
 <p>以下は、いくつかの主要なパラメータを指定した createCollection() の使用法です：</p>
 <p>固定サイズのコレクションを作成します。最大サイズは 5MB（5242880 バイト）で、最大 5000 個のドキュメントを格納できます。</p>
 <pre>db.createCollection("myCappedCollection", { capped: true, size: 5242880, max: 5000 });
 </pre>
 <p>MongoDB では、コレクションを作成する必要はありません。ドキュメントを挿入すると、MongoDB が自動的にコレクションを作成します。</p>
-<pre>&gt; db.mycol2.insert({"name" : "菜鸟教程"})
+<pre>&gt; db.mycol2.insert({"name" : "サンプル"})
 &gt; show collections
 mycol2
 ...</pre>

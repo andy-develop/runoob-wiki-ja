@@ -397,7 +397,7 @@ X <span style="color: Gray;">=</span> np.<span style="color: #05a;">hstack</span
     base * <span style="color: Maroon;">1.5</span> + np.<span style="color: #05a;">random</span>.<span style="color: #05a;">randn</span><span style="color: Olive;">(</span>n<span style="color: Gray;">,</span> <span style="color: Maroon;">1</span><span style="color: Olive;">)</span> * <span style="color: Maroon;">0.3</span><span style="color: Gray;">,</span>  <span style="color: #a50"># x2列</span><br/>
     np.<span style="color: #05a;">random</span>.<span style="color: #05a;">randn</span><span style="color: Olive;">(</span>n<span style="color: Gray;">,</span> <span style="color: Maroon;">1</span><span style="color: Olive;">)</span> * <span style="color: Maroon;">0.2</span><span style="color: Gray;">,</span>               <span style="color: #a50"># x3列（ノイズ）</span><br/>
 <span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">RUNOOB 生データの形状:</span><span style="color: Gray;">,</span> X.<span style="color: #05a;">shape</span><span style="color: Gray;">,</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">サンプル 生データの形状:</span><span style="color: Gray;">,</span> X.<span style="color: #05a;">shape</span><span style="color: Gray;">,</span><br/>
       <span style="color: #a11;">(300個のサンプル、各サンプルは3次元)</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 2. PCAを自前で実装（4つのステップ）</span><br/>
@@ -421,7 +421,7 @@ X <span style="color: Gray;">=</span> np.<span style="color: #05a;">hstack</span
 <br/>
 X_reduced<span style="color: Gray;">,</span> eigvals<span style="color: Gray;">,</span> explained_ratio <span style="color: Gray;">=</span> pca<span style="color: Olive;">(</span>X<span style="color: Gray;">,</span> n_components<span style="color: Gray;">=</span><span style="color: Maroon;">2</span><span style="color: Olive;">)</span><br/>
 <br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>RUNOOB 3つの固有値（分散の大きさ）:</span><span style="color: Gray;">,</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>サンプル 3つの固有値（分散の大きさ）:</span><span style="color: Gray;">,</span><br/>
       np.<span style="color: Teal;">round</span><span style="color: Olive;">(</span>eigvals<span style="color: Gray;">,</span> <span style="color: Maroon;">3</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">最初の2つの主成分が説明する分散の比率:</span><span style="color: Gray;">,</span><br/>
       np.<span style="color: Teal;">round</span><span style="color: Olive;">(</span>explained_ratio<span style="color: Gray;">,</span> <span style="color: Maroon;">3</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
@@ -431,20 +431,20 @@ X_reduced<span style="color: Gray;">,</span> eigvals<span style="color: Gray;">,
       <span style="color: #a11;">(3次元から2次元に削減)</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 3. 重要な観察：3番目の固有値が非常に小さい</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>RUNOOB 3番目の固有値はわずか {eigvals</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>サンプル 3番目の固有値はわずか {eigvals</span><br/>
       f<span style="color: #a11;">最初の2つ（{eigvals</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">3番目の次元には情報量がほとんどないことを示しています——安全に捨てられます！</span><span style="color: Olive;">)</span><br/>
 </div>
 </div>
 <pre>
-RUNOOB 原始数据形状: (300, 3) (300 个样本，每个样本 3 维)
+サンプル 原始数据形状: (300, 3) (300 个样本，每个样本 3 维)
 
-RUNOOB 三个特征值 (方差大小): [9.569 2.267 0.04 ]
+サンプル 三个特征值 (方差大小): [9.569 2.267 0.04 ]
 前 2 个主成分解释的方差比例: [0.806 0.191]
 累计保留信息: 99.7 %
 降维后数据形状: (300, 2) (从 3 维降到了 2 维)
 
-RUNOOB 第三个特征值只有 0.0404，远小于前两个 (9.57, 2.27)
+サンプル 第三个特征值只有 0.0404，远小于前两个 (9.57, 2.27)
 说明第三维几乎没有信息量——可以安全丢掉！
 </pre>
 <hr/>

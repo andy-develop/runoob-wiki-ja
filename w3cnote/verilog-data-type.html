@@ -237,11 +237,11 @@ mem<span style="color: #9F79EE;">[</span><span style="color: #FF0055;">511</span
 <p>ローカルパラメータは localparam で宣言します。その作用と使い方は parameter と同じですが、値が変更できない点が異なります。そのため、パラメータがこのモジュール内でのみ使用される場合は、localparam で記述できます。</p>
 <h3>文字列</h3>
 <p>文字列は reg 型の変数に保存され、各文字は1バイト（8ビット）を占有します。したがって、レジスタ変数のビット幅はオーバーフローしないように十分な大きさが必要です。</p>
-<p>文字列は複数行にわたって記述できません。つまり、文字列に復帰文字を含めることはできません。レジスタ変数のビット幅が文字列のサイズより大きい場合は、左側の余ったビットを 0 で埋めます。レジスタ変数のビット幅が文字列サイズより小さい場合は、文字列の左側の余分なデータが切り捨てられます。たとえば、文字列 "run.runoob.com" を格納するには、14*8ビットの記憶ユニットが必要です。</p>
+<p>文字列は複数行にわたって記述できません。つまり、文字列に復帰文字を含めることはできません。レジスタ変数のビット幅が文字列のサイズより大きい場合は、左側の余ったビットを 0 で埋めます。レジスタ変数のビット幅が文字列サイズより小さい場合は、文字列の左側の余分なデータが切り捨てられます。たとえば、文字列 "run.Python.com" を格納するには、14*8ビットの記憶ユニットが必要です。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #A52A2A; font-weight: bold;">reg</span> <span style="color: #9F79EE;">[</span><span style="color: #FF0055;">0</span><span style="color: #5D478B;">:</span> <span style="color: #FF0055;">14</span><span style="color: #5D478B;">*</span><span style="color: #FF0055;">8</span><span style="color: #5D478B;">-</span><span style="color: #FF0055;">1</span><span style="color: #9F79EE;">]</span>       str <span style="color: #5D478B;">;</span><br/>
 <span style="color: #A52A2A; font-weight: bold;">initial</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>
-    str <span style="color: #5D478B;">=</span> <span style="color: #FF00FF;">"run.runoob.com"</span><span style="color: #5D478B;">;</span> <br/>
+    str <span style="color: #5D478B;">=</span> <span style="color: #FF00FF;">"run.example.com"</span><span style="color: #5D478B;">;</span> <br/>
 <span style="color: #A52A2A; font-weight: bold;">end</span>  <br/>
 </div></div>
 <p>一部の特殊文字は、表示される文字列の中で特別な意味を持ちます。たとえば改行文字やタブ文字などです。これらの特殊文字を文字列内で表示する必要がある場合は、前にエスケープ文字の接頭辞を付ける必要があります。<span class="marked">\</span>。次の表のようになります。</p>

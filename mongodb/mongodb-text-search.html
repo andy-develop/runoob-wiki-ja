@@ -199,10 +199,10 @@ mongod --setParameter textSearchEnabled=true
 <p>次の posts コレクションのドキュメントデータを考えます。記事の内容（post_text）とタグ（tags）が含まれています：</p>
 <pre>
 {
-   "post_text": "enjoy the mongodb articles on Runoob",
+   "post_text": "enjoy the mongodb articles on サンプル",
    "tags": [
       "mongodb",
-      "runoob"
+      "サンプル"
    ]
 }
 </pre>
@@ -212,21 +212,21 @@ mongod --setParameter textSearchEnabled=true
 </pre>
 <hr/>
 <h2>全文インデックスの使用</h2>
-<p>これで post_text に全文インデックスが作成されたので、記事内のキーワード runoob を検索できます：</p>
+<p>これで post_text に全文インデックスが作成されたので、記事内のキーワード サンプル を検索できます：</p>
 <pre>
-&gt;db.posts.find({$text:{$search:"runoob"}})
+&gt;db.posts.find({$text:{$search:"サンプル"}})
 </pre>
-<p>次のコマンドは、runoob キーワードを含むドキュメントデータを返します：</p>
+<p>次のコマンドは、サンプル キーワードを含むドキュメントデータを返します：</p>
 <pre>
 { 
    "_id" : ObjectId("53493d14d852429c10000002"), 
-   "post_text" : "enjoy the mongodb articles on Runoob", 
-   "tags" : [ "mongodb", "runoob" ]
+   "post_text" : "enjoy the mongodb articles on サンプル", 
+   "tags" : [ "mongodb", "サンプル" ]
 }
 </pre>
 <p>古いバージョンの MongoDB を使用している場合は、次のコマンドを使用できます：</p>
 <pre>
-&gt;db.posts.runCommand("text",{search:"runoob"})
+&gt;db.posts.runCommand("text",{search:"サンプル"})
 </pre>
 <p>全文インデックスを使用すると、検索効率を向上させることができます。</p>
 <hr/>

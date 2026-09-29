@@ -348,7 +348,7 @@ ollama list<br/>
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># モデルの完全なレシピをエクスポートする</span><br/>
-ollama show <span style="color: #660033;">--modelfile</span> runoob-coder <span style="color: #000000; font-weight: bold;">&gt;</span> runoob-coder.modelfile<br/>
+ollama show <span style="color: #660033;">--modelfile</span> サンプル-coder <span style="color: #000000; font-weight: bold;">&gt;</span> サンプル-coder.modelfile<br/>
 </div>
 </div>
 <p>1つの詳細に注意：エクスポートしたレシピの FROM 行はローカルマシンの blob ファイルパスを指しているため、マシンを変更すると直接使用できません。復元時は FROM をベースモデル名（例：FROM qwen3.5:9b）に変更してから再構築してください。</p>
@@ -356,7 +356,7 @@ ollama show <span style="color: #660033;">--modelfile</span> runoob-coder <span 
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># FROM を変更して再構築すると、レシピが復元される</span><br/>
-ollama create runoob-coder <span style="color: #660033;">-f</span> runoob-coder.modelfile<br/>
+ollama create サンプル-coder <span style="color: #660033;">-f</span> サンプル-coder.modelfile<br/>
 </div>
 </div>
 <h3>方法2：モデルライブラリにプッシュしてクラウドバックアップ</h3>
@@ -364,8 +364,8 @@ ollama create runoob-coder <span style="color: #660033;">-f</span> runoob-coder.
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># 名前空間付きの名前にコピーしてからプッシュする（プライベート公開はチーム導入章を参照）</span><br/>
-ollama <span style="color: #C20CB9; font-weight: bold;">cp</span> runoob-coder myteam<span style="color: #000000; font-weight: bold;">/</span>runoob-coder:v1<br/>
-ollama push myteam<span style="color: #000000; font-weight: bold;">/</span>runoob-coder:v1<br/>
+ollama <span style="color: #C20CB9; font-weight: bold;">cp</span> サンプル-coder myteam<span style="color: #000000; font-weight: bold;">/</span>サンプル-coder:v1<br/>
+ollama push myteam<span style="color: #000000; font-weight: bold;">/</span>サンプル-coder:v1<br/>
 </div>
 </div>
 <p>おすすめの整理方法：すべての Modelfile を1つの Git リポジトリで管理し、ゼロから環境を再構築するスクリプトを併用します——ハードウェアは交換され、システムは再インストールされますが、レシピがあれば10分ですべてのカスタムモデルを復元できます。</p>

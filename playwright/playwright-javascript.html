@@ -319,7 +319,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example_code">
 
 test<span style="color: #009900;">(</span><span style="color: #3366CC;">'ページデータを取得'</span><span style="color: #339933;">,</span> async <span style="color: #009900;">(</span><span style="color: #009900;">{</span> page <span style="color: #009900;">}</span><span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
-  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.runoob.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.example.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
   <span style="color: #006600; font-style: italic;">// ページタイトルを取得（ページコンテキストで実行）</span><br/>
   <span style="color: #000066; font-weight: bold;">const</span> title <span style="color: #339933;">=</span> await page.<span style="color: #660066;">evaluate</span><span style="color: #009900;">(</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
@@ -348,15 +348,15 @@ test<span style="color: #009900;">(</span><span style="color: #3366CC;">'ペー�
 <div class="example_code">
 
 test<span style="color: #009900;">(</span><span style="color: #3366CC;">'ページに引数を渡す'</span><span style="color: #339933;">,</span> async <span style="color: #009900;">(</span><span style="color: #009900;">{</span> page <span style="color: #009900;">}</span><span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
-  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.runoob.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.example.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
   <span style="color: #006600; font-style: italic;">// 単一の引数を渡す</span><br/>
   <span style="color: #000066; font-weight: bold;">const</span> result1 <span style="color: #339933;">=</span> await page.<span style="color: #660066;">evaluate</span><span style="color: #009900;">(</span><span style="color: #009900;">(</span>name<span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
     <span style="color: #000066; font-weight: bold;">return</span> `Hello<span style="color: #339933;">,</span> $<span style="color: #009900;">{</span>name<span style="color: #009900;">}</span><span style="color: #339933;">!</span>`<span style="color: #339933;">;</span><br/>
-  <span style="color: #009900;">}</span><span style="color: #339933;">,</span> <span style="color: #3366CC;">'RUNOOB'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+  <span style="color: #009900;">}</span><span style="color: #339933;">,</span> <span style="color: #3366CC;">'サンプル'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
   <span style="color: #006600; font-style: italic;">// オブジェクトの引数を渡す</span><br/>
-  <span style="color: #000066; font-weight: bold;">const</span> userInfo <span style="color: #339933;">=</span> <span style="color: #009900;">{</span> name<span style="color: #339933;">:</span> <span style="color: #3366CC;">'runoob'</span><span style="color: #339933;">,</span> role<span style="color: #339933;">:</span> <span style="color: #3366CC;">'admin'</span> <span style="color: #009900;">}</span><span style="color: #339933;">;</span><br/>
+  <span style="color: #000066; font-weight: bold;">const</span> userInfo <span style="color: #339933;">=</span> <span style="color: #009900;">{</span> name<span style="color: #339933;">:</span> <span style="color: #3366CC;">'サンプル'</span><span style="color: #339933;">,</span> role<span style="color: #339933;">:</span> <span style="color: #3366CC;">'admin'</span> <span style="color: #009900;">}</span><span style="color: #339933;">;</span><br/>
   <span style="color: #000066; font-weight: bold;">const</span> result2 <span style="color: #339933;">=</span> await page.<span style="color: #660066;">evaluate</span><span style="color: #009900;">(</span><span style="color: #009900;">(</span>user<span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
     <span style="color: #000066; font-weight: bold;">return</span> `$<span style="color: #009900;">{</span>user.<span style="color: #660066;">name</span><span style="color: #009900;">}</span>の役割は $ です。<span style="color: #009900;">{</span>user.<span style="color: #660066;">role</span><span style="color: #009900;">}</span>`<span style="color: #339933;">;</span><br/>
   <span style="color: #009900;">}</span><span style="color: #339933;">,</span> userInfo<span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
@@ -384,11 +384,11 @@ test<span style="color: #009900;">(</span><span style="color: #3366CC;">'ペー�
 <div class="example_code">
 
 test<span style="color: #009900;">(</span><span style="color: #3366CC;">'要素の DOM 属性を取得'</span><span style="color: #339933;">,</span> async <span style="color: #009900;">(</span><span style="color: #009900;">{</span> page <span style="color: #009900;">}</span><span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
-  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.runoob.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.example.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
   <span style="color: #006600; font-style: italic;">// 特定の要素の textContent を取得</span><br/>
   <span style="color: #000066; font-weight: bold;">const</span> text <span style="color: #339933;">=</span> await page<br/>
-    .<span style="color: #660066;">getByRole</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'heading'</span><span style="color: #339933;">,</span> <span style="color: #009900;">{</span> name<span style="color: #339933;">:</span> <span style="color: #3366CC;">'RUNOOB'</span> <span style="color: #009900;">}</span><span style="color: #009900;">)</span><br/>
+    .<span style="color: #660066;">getByRole</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'heading'</span><span style="color: #339933;">,</span> <span style="color: #009900;">{</span> name<span style="color: #339933;">:</span> <span style="color: #3366CC;">'サンプル'</span> <span style="color: #009900;">}</span><span style="color: #009900;">)</span><br/>
     .<span style="color: #660066;">evaluate</span><span style="color: #009900;">(</span>node <span style="color: #339933;">=&gt;</span> node.<span style="color: #660066;">textContent</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
   <span style="color: #006600; font-style: italic;">// 要素のスタイル属性を取得</span><br/>
@@ -406,7 +406,7 @@ test<span style="color: #009900;">(</span><span style="color: #3366CC;">'要素�
 <div class="example_code">
 
 test<span style="color: #009900;">(</span><span style="color: #3366CC;">'すべてのリスト項目のテキストを取得'</span><span style="color: #339933;">,</span> async <span style="color: #009900;">(</span><span style="color: #009900;">{</span> page <span style="color: #009900;">}</span><span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
-  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.runoob.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.example.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
   <span style="color: #006600; font-style: italic;">// すべてのメニュー項目のテキストを取得</span><br/>
   <span style="color: #000066; font-weight: bold;">const</span> menuItems <span style="color: #339933;">=</span> await page<br/>
@@ -435,16 +435,16 @@ test<span style="color: #009900;">(</span><span style="color: #3366CC;">'初期�
     <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
     <span style="color: #006600; font-style: italic;">// window 上のグローバル変数をモック</span><br/>
-    window.<span style="color: #660066;">RUNOOB_CONFIG</span> <span style="color: #339933;">=</span> <span style="color: #009900;">{</span><br/>
+    window.<span style="color: #660066;">サンプル_CONFIG</span> <span style="color: #339933;">=</span> <span style="color: #009900;">{</span><br/>
       env<span style="color: #339933;">:</span> <span style="color: #3366CC;">'test'</span><span style="color: #339933;">,</span><br/>
       version<span style="color: #339933;">:</span> <span style="color: #3366CC;">'1.0.0'</span><span style="color: #339933;">,</span><br/>
     <span style="color: #009900;">}</span><span style="color: #339933;">;</span><br/>
   <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
-  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.runoob.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.example.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
   <span style="color: #006600; font-style: italic;">// 注入した変数が有効であることを確認</span><br/>
-  <span style="color: #000066; font-weight: bold;">const</span> config <span style="color: #339933;">=</span> await page.<span style="color: #660066;">evaluate</span><span style="color: #009900;">(</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> window.<span style="color: #660066;">RUNOOB_CONFIG</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+  <span style="color: #000066; font-weight: bold;">const</span> config <span style="color: #339933;">=</span> await page.<span style="color: #660066;">evaluate</span><span style="color: #009900;">(</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> window.<span style="color: #660066;">サンプル_CONFIG</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
   console.<span style="color: #660066;">log</span><span style="color: #009900;">(</span>config<span style="color: #009900;">)</span><span style="color: #339933;">;</span> <span style="color: #006600; font-style: italic;">// { env: 'test', version: '1.0.0' }</span><br/>
 <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 </div>

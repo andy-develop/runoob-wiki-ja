@@ -179,7 +179,7 @@ FROM table_name;</pre>
 FROM table_name AS alias_name;</pre>
 <br/><hr/>
 <h2>デモデータベース</h2>
-<p>このチュートリアルでは、RUNOOBサンプルデータベースを使用します。</p>
+<p>このチュートリアルでは、サンプルサンプルデータベースを使用します。</p>
 <p>以下は "Websites" テーブルから選択したデータです：</p>
 <pre>
 mysql&gt; SELECT * FROM Websites;
@@ -188,7 +188,7 @@ mysql&gt; SELECT * FROM Websites;
 +----+---------------+---------------------------+-------+---------+
 |  1 | Google        | https://www.google.cm/    |     1 | USA     |
 |  2 | 淘宝          | https://www.taobao.com/   |    13 | CN      |
-|  3 | 菜鸟教程       | http://www.runoob.com/    |  5000 | USA     |
+|  3 | サンプル       | http://www.example.com/    |  5000 | USA     |
 |  4 | 微博           | http://weibo.com/         |    20 | CN      |
 |  5 | Facebook      | https://www.facebook.com/ |     3 | USA     |
 |  7 | stackoverflow | http://stackoverflow.com/ |     0 | IND     |
@@ -241,11 +241,11 @@ FROM Websites;</div>
 <br/>
 <hr/>
 <h2>テーブルのエイリアスの例</h2>
-<p>次のSQL文は、"菜鸟教程" のすべてのアクセス記録を選択します。"Websites" テーブルと "access_log" テーブルを使用し、それぞれにテーブルエイリアス "w" と "a" を指定します（エイリアスを使用してSQLをより簡潔にします）：</p>
+<p>次のSQL文は、"サンプル" のすべてのアクセス記録を選択します。"Websites" テーブルと "access_log" テーブルを使用し、それぞれにテーブルエイリアス "w" と "a" を指定します（エイリアスを使用してSQLをより簡潔にします）：</p>
 <div class="example">
 <h2 class="example">例</h2>
 <div class="example_code">
-SELECT w.name, w.url, a.count, a.date <br/>FROM Websites AS w, access_log AS a  <br/>WHERE a.site_id=w.id and w.name="菜鸟教程";</div>
+SELECT w.name, w.url, a.count, a.date <br/>FROM Websites AS w, access_log AS a  <br/>WHERE a.site_id=w.id and w.name="サンプル";</div>
 <p>実行出力結果：</p>
 <div class="example_code">
 <img decoding="async" src="../wp-content/uploads/2013/09/alias3.jpg" width="70%"/>
@@ -256,7 +256,7 @@ SELECT w.name, w.url, a.count, a.date <br/>FROM Websites AS w, access_log AS a  
 <h2 class="example">例</h2>
 <div class="example_code">
 
-SELECT Websites.name, Websites.url, access_log.count, access_log.date <br/>FROM Websites, access_log  <br/>WHERE Websites.id=access_log.site_id and Websites.name="菜鸟教程";</div>
+SELECT Websites.name, Websites.url, access_log.count, access_log.date <br/>FROM Websites, access_log  <br/>WHERE Websites.id=access_log.site_id and Websites.name="サンプル";</div>
 <p>実行出力結果：</p>
 <div class="example_code">
 <img decoding="async" src="../wp-content/uploads/2013/09/alias4.jpg" width="70%"/>

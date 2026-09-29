@@ -172,41 +172,41 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>以下を考慮してください<strong>posts</strong>コレクションのドキュメント構造です。このドキュメントには記事の内容とタグが含まれています。</p>
 <pre>
 {
-   "post_text": "enjoy the mongodb articles on runoob",
+   "post_text": "enjoy the mongodb articles on サンプル",
    "tags": [
       "mongodb",
-      "runoob"
+      "サンプル"
    ]
 }
 </pre>
 <hr/>
 <h2>正規表現を使用する</h2>
-<p>次のコマンドは、正規表現を使用して runoob という文字列を含む記事を検索します。</p>
+<p>次のコマンドは、正規表現を使用して サンプル という文字列を含む記事を検索します。</p>
 <pre>
-&gt;db.posts.find({post_text:{$regex:"runoob"}})
+&gt;db.posts.find({post_text:{$regex:"サンプル"}})
 </pre>
 <p>上記のクエリは次のようにも記述できます：</p>
 <pre>
-&gt;db.posts.find({post_text:/runoob/})
+&gt;db.posts.find({post_text:/サンプル/})
 </pre>
 <hr/>
 <h2>大文字と小文字を区別しない正規表現</h2>
 <p>検索で大文字と小文字を区別する必要がない場合は、$options を $i に設定できます。</p>
-<p>次のコマンドは、大文字と小文字を区別せずに文字列 runoob を検索します。</p>
+<p>次のコマンドは、大文字と小文字を区別せずに文字列 サンプル を検索します。</p>
 <pre>
-&gt;db.posts.find({post_text:{$regex:"runoob",$options:"$i"}})
+&gt;db.posts.find({post_text:{$regex:"サンプル",$options:"$i"}})
 </pre>
-<p>コレクション内の runoob という文字列を含むすべてのデータが、大文字と小文字を区別せずに返されます。</p>
+<p>コレクション内の サンプル という文字列を含むすべてのデータが、大文字と小文字を区別せずに返されます。</p>
 <pre>
 {
    "_id" : ObjectId("53493d37d852429c10000004"),
-   "post_text" : "hey! this is my post on  runoob", 
-   "tags" : [ "runoob" ]
+   "post_text" : "hey! this is my post on  サンプル", 
+   "tags" : [ "サンプル" ]
 } 
 </pre>
 <hr/>
 <h2>配列要素での正規表現の使用</h2>
-<p>配列フィールドでも正規表現を使用して内容を検索できます。これはタグの実装に非常に便利です。run で始まるタグデータ（ru、run、runoob）を検索する必要がある場合は、次のコードを使用できます：</p>
+<p>配列フィールドでも正規表現を使用して内容を検索できます。これはタグの実装に非常に便利です。run で始まるタグデータ（ru、run、サンプル）を検索する必要がある場合は、次のコードを使用できます：</p>
 <pre>
 &gt;db.posts.find({tags:{$regex:"run"}})
 </pre>

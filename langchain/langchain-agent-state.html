@@ -370,8 +370,8 @@ result <span style="color: Gray;">=</span> add_messages<span style="color: Olive
 </div>
 <p>実行結果：</p>
 <pre>
-合并前: 2 条
-合并后: 3 条
+マージ前: 2 条
+マージ後: 3 条
   [human] 你好
   [ai] 你好！
   [ai] 有什么可以帮你的？
@@ -419,7 +419,7 @@ model <span style="color: Gray;">=</span> init_chat_model<span style="color: Oli
 agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;">(</span><br/>
     model<span style="color: Gray;">=</span>model<span style="color: Gray;">,</span><br/>
     middleware<span style="color: Gray;">=</span><span style="color: Olive;">[</span>check_question<span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは RUNOOB のアシスタントです。"</span><span style="color: Gray;">,</span><br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは サンプル のアシスタントです。"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 通常の質問</span><br/>
@@ -437,9 +437,9 @@ result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invo
 </div>
 <p>実行結果：</p>
 <pre>
-正常问题: Python 入门可以从以下几个方面开始：1. 安装 Python 环境...
+通常の質問: Python 入门可以从以下几个方面开始：1. 安装 Python 环境...
 
-敏感问题: 抱歉，出于安全原因，不能回答关于密码的问题。
+機密の質問: 抱歉，出于安全原因，不能回答关于密码的问题。
 </pre>
 <table class="reference">
 <tr><th>jump_to の値</th><th>遷移先</th><th>効果</th></tr>
@@ -471,7 +471,7 @@ model <span style="color: Gray;">=</span> init_chat_model<span style="color: Oli
 agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;">(</span><br/>
     model<span style="color: Gray;">=</span>model<span style="color: Gray;">,</span><br/>
     response_format<span style="color: Gray;">=</span>CourseRecommendation<span style="color: Gray;">,</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは RUNOOB の学習コンサルタントです。"</span><span style="color: Gray;">,</span><br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは サンプル の学習コンサルタントです。"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: Olive;">{</span><br/>
@@ -491,9 +491,9 @@ result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invo
 </div>
 <p>実行結果：</p>
 <pre>
-推荐课程: Python3 基础教程
-推荐理由: Python 语法简洁，适合零基础入门，应用范围广泛
-难度等级: 入门
+おすすめコース: Python3 基础教程
+理由: Python 语法简洁，适合零基础入门，应用范围广泛
+レベル: 入门
 </pre>
 <hr/>
 <h2>カスタム State 拡張</h2>
@@ -554,7 +554,7 @@ agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;
     model<span style="color: Gray;">=</span>model<span style="color: Gray;">,</span><br/>
     tools<span style="color: Gray;">=</span><span style="color: Olive;">[</span>add_to_cart<span style="color: Gray;">,</span> view_cart<span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
     state_schema<span style="color: Gray;">=</span>ShoppingAgentState<span style="color: Gray;">,</span>  <span style="color: #a50"># カスタム状態を使用</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは RUNOOB ストアの買い物アシスタントです。"</span><span style="color: Gray;">,</span><br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは サンプル ストアの買い物アシスタントです。"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 初期状態は空の買い物カートを含む</span><br/>
@@ -571,9 +571,9 @@ result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invo
 </div>
 <p>実行結果：</p>
 <pre>
-购物车: ['Python 教程']
-总价: ¥49.90
-回复: 已将《Python 教程》（¥49.90）添加到购物车。当前购物车共 1 件商品，总价 ¥49.90。
+カート: ['Python 教程']
+合計: ¥49.90
+返答: 已将《Python 教程》（¥49.90）添加到购物车。当前购物车共 1 件商品，总价 ¥49.90。
 </pre>
 <hr/>
 <h2>state_schema vs middleware state_schema</h2>

@@ -279,7 +279,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>Sort byを使用して他のバージョンのtomcatを確認できます。デフォルトは最新バージョンです。<strong>tomcat:latest</strong>。</p>
 <p>さらに、コンソールで次のコマンドを<span class="marked">docker search tomcat</span>使用して利用可能なバージョンを確認できます：</p>
 <pre>
-runoob@runoob:~/tomcat$ docker search tomcat
+サンプル@サンプル:~/tomcat$ docker search tomcat
 NAME                       DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
 tomcat                     Apache Tomcat is an open source implementa...   744       [OK]       
 dordoka/tomcat             Ubuntu 14.04, Oracle JDK 8 and Tomcat 8 ba...   19                   [OK]
@@ -293,16 +293,16 @@ fbrx/tomcat                Minimal Tomcat image based on Alpine Linux      2    
 jtech/tomcat               Latest Tomcat production distribution on l...   1                    [OK]
 </pre>
 <p>ここでは公式イメージをプルします：</p>
-<pre>runoob@runoob:~/tomcat$ docker pull tomcat</pre>
+<pre>サンプル@サンプル:~/tomcat$ docker pull tomcat</pre>
 <p>ダウンロードが完了すると、ローカルのイメージリストでREPOSITORYがtomcatのイメージを確認できます。</p>
 <pre>
-runoob@runoob:~/tomcat$ docker images|grep tomcat
+サンプル@サンプル:~/tomcat$ docker images|grep tomcat
 tomcat              latest              70f819d3d2d9        7 days ago          335.8 MB
 </pre>
 <h3>方法2、Dockerfileで構築</h3>
 <p>Dockerfileを作成</p>
 <p>まず、後続の関連ファイルを格納するためのディレクトリtomcatを作成します。</p>
-<pre>runoob@runoob:~$ mkdir -p ~/tomcat/webapps ~/tomcat/logs ~/tomcat/conf</pre>
+<pre>サンプル@サンプル:~$ mkdir -p ~/tomcat/webapps ~/tomcat/logs ~/tomcat/conf</pre>
 <p>webappsディレクトリは、tomcatコンテナのアプリケーションディレクトリとしてマッピングされます。</p>
 <p>logsディレクトリは、tomcatコンテナのログディレクトリとしてマッピングされます。</p>
 <p>confディレクトリ内の設定ファイルは、tomcatコンテナの設定ファイルとしてマッピングされます。</p>
@@ -471,26 +471,26 @@ EXPOSE 8080
 CMD ["catalina.sh", "run"]
 </pre>
 <p>Dockerfileからイメージを作成します。名前は自分の名前に置き換えてください：</p>
-<pre>runoob@runoob:~/tomcat$ docker build -t tomcat .</pre>
+<pre>サンプル@サンプル:~/tomcat$ docker build -t tomcat .</pre>
 <p>作成が完了すると、ローカルのイメージリストで先ほど作成したイメージを確認できます：</p>
 <pre>
-runoob@runoob:~/tomcat$ docker images|grep tomcat
+サンプル@サンプル:~/tomcat$ docker images|grep tomcat
 tomcat              latest              70f819d3d2d9        7 days ago          335.8 MB
 </pre>
 <hr/>
 <h2>tomcatイメージを使用</h2>
 <h3>コンテナを実行</h3>
 <pre>
-runoob@runoob:~/tomcat$ docker run --name tomcat -p 8080:8080 -v $PWD/test:/usr/local/tomcat/webapps/test -d tomcat  
+サンプル@サンプル:~/tomcat$ docker run --name tomcat -p 8080:8080 -v $PWD/test:/usr/local/tomcat/webapps/test -d tomcat  
 acb33fcb4beb8d7f1ebace6f50f5fc204b1dbe9d524881267aa715c61cf75320
-runoob@runoob:~/tomcat$
+サンプル@サンプル:~/tomcat$
 </pre>
 <p>コマンドの説明：</p>
 <p><strong>-p 8080:8080：</strong>ホストの8080ポートをコンテナの8080ポートにマッピングします。</p>
 <p><strong>-v $PWD/test:/usr/local/tomcat/webapps/test：</strong>ホストの現在のディレクトリにあるtestをコンテナの/testにマウントします。</p>
 <p>コンテナの起動状況を確認</p>
 <pre>
-runoob@runoob:~/tomcat$ docker ps 
+サンプル@サンプル:~/tomcat$ docker ps 
 CONTAINER ID    IMAGE     COMMAND               ... PORTS                    NAMES
 acb33fcb4beb    tomcat    "catalina.sh run"     ... 0.0.0.0:8080-&gt;8080/tcp   tomcat
 </pre>

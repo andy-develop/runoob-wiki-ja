@@ -183,10 +183,10 @@ http://www.test.com/hello?key1=value1&amp;key2=value2
 </ul>
 <h2>URL を使用する GET メソッドの例</h2>
 <p>以下は、GET メソッドを使用して HelloForm プログラムに2つの値を渡す簡単な URL です。</p>
-<p><b><strong>http://localhost:8080/TomcatTest/HelloForm?name=菜鸟教程&amp;url=www.runoob.com</strong></b></p>
+<p><b><strong>http://localhost:8080/TomcatTest/HelloForm?name=サンプル&amp;url=www.example.com</strong></b></p>
 <p>以下は Web ブラウザからの入力を処理する<b>HelloForm.java</b>Servlet プログラムです。次を使用します<b>getParameter()</b>メソッドを使用すると、渡された情報に簡単にアクセスできます：</p>
 <pre>
-package com.runoob.test;
+package com.サンプル.test;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -249,7 +249,7 @@ public class HelloForm extends HttpServlet {
 &lt;web-app&gt;
   &lt;servlet&gt;
     &lt;servlet-name&gt;HelloForm&lt;/servlet-name&gt;
-    &lt;servlet-class&gt;com.runoob.test.HelloForm&lt;/servlet-class&gt;
+    &lt;servlet-class&gt;com.サンプル.test.HelloForm&lt;/servlet-class&gt;
   &lt;/servlet&gt;
   &lt;servlet-mapping&gt;
     &lt;servlet-name&gt;HelloForm&lt;/servlet-name&gt;
@@ -257,7 +257,7 @@ public class HelloForm extends HttpServlet {
   &lt;/servlet-mapping&gt;
 &lt;/web-app&gt;
 </pre>
-<p>ブラウザのアドレスバーに次のように入力します<i><strong>http://localhost:8080/TomcatTest/HelloForm?name=菜鸟教程&amp;url=www.runoob.com</strong></i>、上記のコマンドを実行する前に Tomcat サーバーが起動していることを確認してください。すべてがうまくいけば、次の結果が得られます：</p>
+<p>ブラウザのアドレスバーに次のように入力します<i><strong>http://localhost:8080/TomcatTest/HelloForm?name=サンプル&amp;url=www.example.com</strong></i>、上記のコマンドを実行する前に Tomcat サーバーが起動していることを確認してください。すべてがうまくいけば、次の結果が得られます：</p>
 <p><img decoding="async" src="../wp-content/uploads/2014/07/775E6A82-D4BF-4499-A934-DDA7B3D70555.jpg"/></p>
 <hr/>
 <h2>フォームを使用する GET メソッドの例</h2>
@@ -267,7 +267,7 @@ public class HelloForm extends HttpServlet {
 &lt;html&gt;
 &lt;head&gt;
 &lt;meta charset="utf-8"&gt;
-&lt;title&gt;菜鸟教程(runoob.com)&lt;/title&gt;
+&lt;title&gt;サンプル(example.com)&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
 &lt;form action="HelloForm" method="GET"&gt;
@@ -293,7 +293,7 @@ String name =new String(request.getParameter("name").getBytes("ISO8859-1"),"UTF-
 </pre>
 </blockquote>
 <pre>
-package com.runoob.test;
+package com.サンプル.test;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -357,7 +357,7 @@ public class HelloForm extends HttpServlet {
 &lt;html&gt;
 &lt;head&gt;
 &lt;meta charset="utf-8"&gt;
-&lt;title&gt;菜鸟教程(runoob.com)&lt;/title&gt;
+&lt;title&gt;サンプル(example.com)&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
 &lt;form action="HelloForm" method="POST"&gt;
@@ -380,11 +380,11 @@ public class HelloForm extends HttpServlet {
 &lt;html&gt;
 &lt;head&gt;
 &lt;meta charset="utf-8"&gt;
-&lt;title&gt;菜鸟教程(runoob.com)&lt;/title&gt;
+&lt;title&gt;サンプル(example.com)&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
 &lt;form action="CheckBox" method="POST" target="_blank"&gt;
-&lt;input type="checkbox" name="runoob" checked="checked" /&gt; 菜鸟教程
+&lt;input type="checkbox" name="サンプル" checked="checked" /&gt; サンプル
 &lt;input type="checkbox" name="google"  /&gt; Google
 &lt;input type="checkbox" name="taobao" checked="checked" /&gt; 淘宝
 &lt;input type="submit" value="选择站点" /&gt;
@@ -394,7 +394,7 @@ public class HelloForm extends HttpServlet {
 </pre>
 <p>以下は CheckBox.java Servlet プログラムで、Web ブラウザから渡されたチェックボックスの入力を処理します。</p>
 <pre>
-package com.runoob.test;
+package com.サンプル.test;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -426,8 +426,8 @@ public class CheckBox extends HttpServlet {
                 "&lt;body bgcolor=\"#F0F0F0\"&gt;\n" +
                 "&lt;h1 align=\"center\"&gt;" + title + "&lt;/h1&gt;\n" +
                 "&lt;ul&gt;\n" +
-                "  &lt;li&gt;&lt;b&gt;菜鸟按教程标识：&lt;/b&gt;: "
-                + request.getParameter("runoob") + "\n" +
+                "  &lt;li&gt;&lt;b&gt;サンプル按教程标识：&lt;/b&gt;: "
+                + request.getParameter("サンプル") + "\n" +
                 "  &lt;li&gt;&lt;b&gt;Google 标识：&lt;/b&gt;: "
                 + request.getParameter("google") + "\n" +
                 "  &lt;li&gt;&lt;b&gt;淘宝标识：&lt;/b&gt;: "
@@ -448,7 +448,7 @@ public class CheckBox extends HttpServlet {
 &lt;web-app&gt;
   &lt;servlet&gt;
     &lt;servlet-name&gt;CheckBox&lt;/servlet-name&gt;
-    &lt;servlet-class&gt;com.runoob.test.CheckBox&lt;/servlet-class&gt;
+    &lt;servlet-class&gt;com.サンプル.test.CheckBox&lt;/servlet-class&gt;
   &lt;/servlet&gt;
   &lt;servlet-mapping&gt;
     &lt;servlet-name&gt;CheckBox&lt;/servlet-name&gt;
@@ -552,7 +552,7 @@ public class ReadParams extends HttpServlet {
 &lt;html&gt;
 &lt;head&gt;
 &lt;meta charset="utf-8"&gt;
-&lt;title&gt;菜鸟教程(runoob.com)&lt;/title&gt;
+&lt;title&gt;サンプル(example.com)&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
 
@@ -572,7 +572,7 @@ public class ReadParams extends HttpServlet {
 &lt;web-app&gt;
   &lt;servlet&gt;
     &lt;servlet-name&gt;ReadParams&lt;/servlet-name&gt;
-    &lt;servlet-class&gt;com.runoob.test.ReadParams&lt;/servlet-class&gt;
+    &lt;servlet-class&gt;com.サンプル.test.ReadParams&lt;/servlet-class&gt;
   &lt;/servlet&gt;
   &lt;servlet-mapping&gt;
     &lt;servlet-name&gt;ReadParams&lt;/servlet-name&gt;

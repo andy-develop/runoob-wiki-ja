@@ -424,7 +424,7 @@ vocab_words <span style="color: Gray;">=</span> <span style="color: Olive;">[</s
 <br/>
 <span style="color: #a50"># 5 句话 → 5 个向量</span><br/>
 vectors <span style="color: Gray;">=</span> np.<span style="color: #05a;">array</span><span style="color: Olive;">(</span><span style="color: Olive;">[</span>to_vector<span style="color: Olive;">(</span>s<span style="color: Gray;">,</span> vocab_words<span style="color: Olive;">)</span> <span style="color: Green;font-weight:bold;">for</span> s <span style="color: Green;font-weight:bold;">in</span> sentences<span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">RUNOOB 各文のベクトル次元:</span><span style="color: Gray;">,</span> vectors.<span style="color: #05a;">shape</span><span style="color: Olive;">[</span><span style="color: Maroon;">1</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">サンプル 各文のベクトル次元:</span><span style="color: Gray;">,</span> vectors.<span style="color: #05a;">shape</span><span style="color: Olive;">[</span><span style="color: Maroon;">1</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
       <span style="color: #a11;">（語彙リストのサイズ）</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 3. 手写余弦相似度函数（不调 sklearn）</span><br/>
@@ -442,13 +442,13 @@ query_vec <span style="color: Gray;">=</span> to_vector<span style="color: Olive
 <br/>
 sims <span style="color: Gray;">=</span> <span style="color: Olive;">[</span>cosine_similarity<span style="color: Olive;">(</span>query_vec<span style="color: Gray;">,</span> v<span style="color: Olive;">)</span> <span style="color: Green;font-weight:bold;">for</span> v <span style="color: Green;font-weight:bold;">in</span> vectors<span style="color: Olive;">]</span><br/>
 <br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>RUNOOB 查询句子: {query!r}<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>サンプル 查询句子: {query!r}<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">for</span> s<span style="color: Gray;">,</span> sim <span style="color: Green;font-weight:bold;">in</span> <span style="color: Teal;">sorted</span><span style="color: Olive;">(</span><span style="color: Teal;">zip</span><span style="color: Olive;">(</span>sentences<span style="color: Gray;">,</span> sims<span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
                      key<span style="color: Gray;">=</span><span style="color: Green;font-weight:bold;">lambda</span> x: -x<span style="color: Olive;">[</span><span style="color: Maroon;">1</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span>:<br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"  相似度 {sim:.3f}  &lt;-  {s}"</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 5. 検証：無関係な文の類似度は0</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>RUNOOB 検証：2つの完全に関係のない文</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>サンプル 検証：2つの完全に関係のない文</span><span style="color: Olive;">)</span><br/>
 v1 <span style="color: Gray;">=</span> to_vector<span style="color: Olive;">(</span><span style="color: #a11;">"python机器学习"</span><span style="color: Gray;">,</span> vocab_words<span style="color: Olive;">)</span><br/>
 v2 <span style="color: Gray;">=</span> to_vector<span style="color: Olive;">(</span><span style="color: #a11;">"散步放松"</span><span style="color: Gray;">,</span> vocab_words<span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"  'python机器学习' vs '散步放松': "</span><br/>
@@ -456,9 +456,9 @@ v2 <span style="color: Gray;">=</span> to_vector<span style="color: Olive;">(</s
 </div>
 </div>
 <pre>
-RUNOOB 每句话的向量维度: 25 (词表大小)
+サンプル 每句话的向量维度: 25 (词表大小)
 
-RUNOOB 查询句子: '我在学习python和人工智能'
+サンプル 查询句子: '我在学习python和人工智能'
 
   相似度 0.577  &lt;-  python是学习人工智能的好工具
   相似度 0.500  &lt;-  我喜欢用python学习机器学习
@@ -466,7 +466,7 @@ RUNOOB 查询句子: '我在学习python和人工智能'
   相似度 0.000  &lt;-  深度学习需要大量的数据和算力
   相似度 0.000  &lt;-  散步是一种很好的放松方式
 
-RUNOOB 验证：两个完全不相关的句子
+サンプル 验证：两个完全不相关的句子
   'python机器学习' vs '散步放松': cos = 0.000
 </pre>
 <p>結果はとても直感的です。同じキーワードを含む文は類似度が高く、内容が全く無関係な文は類似度が0になります。</p>

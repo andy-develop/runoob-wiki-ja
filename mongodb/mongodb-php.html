@@ -183,7 +183,7 @@ $db = $m-&gt;test; // 获取名称为 "test" 的数据库
 &lt;?php
 $m = new MongoClient(); // 连接
 $db = $m-&gt;test; // 获取名称为 "test" 的数据库
-$collection = $db-&gt;createCollection("runoob");
+$collection = $db-&gt;createCollection("サンプル");
 echo "集合创建成功";
 ?&gt;
 </pre>
@@ -197,13 +197,13 @@ echo "集合创建成功";
 &lt;?php
 $m = new MongoClient();    // 连接到mongodb
 $db = $m-&gt;test;            // 选择一个数据库
-$collection = $db-&gt;runoob; // 选择集合
+$collection = $db-&gt;サンプル; // 选择集合
 $document = array( 
     "title" =&gt; "MongoDB", 
     "description" =&gt; "database", 
     "likes" =&gt; 100,
-    "url" =&gt; "http://www.runoob.com/mongodb/",
-    "by", "菜鸟教程"
+    "url" =&gt; "http://www.example.com/mongodb/",
+    "by", "サンプル"
 );
 $collection-&gt;insert($document);
 echo "数据插入成功";
@@ -211,7 +211,7 @@ echo "数据插入成功";
 </pre>
 <p>上記のプログラムを実行すると、出力結果は次のとおりです：</p>
 <pre>データの挿入に成功しました</pre>
-<p>次に、mongoクライアントで次のコマンドを使用して<b>db.runoob.find().pretty();</b>データを確認します：</p>
+<p>次に、mongoクライアントで次のコマンドを使用して<b>db.サンプル.find().pretty();</b>データを確認します：</p>
 <p><img decoding="async" src="../wp-content/uploads/2015/09/D1BA0B68-F33C-4597-AAEC-DF3F09BD0C0E.jpg" width="70%"/></p>
 <hr/>
 <h2>ドキュメントを検索する</h2>
@@ -221,7 +221,7 @@ echo "数据插入成功";
 &lt;?php
 $m = new MongoClient();    // 连接到mongodb
 $db = $m-&gt;test;            // 选择一个数据库
-$collection = $db-&gt;runoob; // 选择集合
+$collection = $db-&gt;サンプル; // 选择集合
 
 $cursor = $collection-&gt;find();
 // 迭代显示文档标题
@@ -243,7 +243,7 @@ MongoDB
 &lt;?php
 $m = new MongoClient();    // 连接到mongodb
 $db = $m-&gt;test;            // 选择一个数据库
-$collection = $db-&gt;runoob; // 选择集合
+$collection = $db-&gt;サンプル; // 选择集合
 // 更新文档
 $collection-&gt;update(array("title"=&gt;"MongoDB"), array('$set'=&gt;array("title"=&gt;"MongoDB 教程")));
 // 显示更新后的文档
@@ -258,7 +258,7 @@ foreach ($cursor as $document) {
 <pre>
 MongoDB 教程
 </pre>
-<p>次に、mongoクライアントで次のコマンドを使用して<b>db.runoob.find().pretty();</b>データを確認します：</p>
+<p>次に、mongoクライアントで次のコマンドを使用して<b>db.サンプル.find().pretty();</b>データを確認します：</p>
 <p><img decoding="async" src="../wp-content/uploads/2015/09/D1BA0B68-F33C-4597-AAEC-DF3F09BD0C0E.jpg" width="70%"/></p>
 <hr/>
 <h2>ドキュメントを削除する</h2>
@@ -268,7 +268,7 @@ MongoDB 教程
 &lt;?php
 $m = new MongoClient();    // 连接到mongodb
 $db = $m-&gt;test;            // 选择一个数据库
-$collection = $db-&gt;runoob; // 选择集合
+$collection = $db-&gt;サンプル; // 选择集合
    
 // 移除文档
 $collection-&gt;remove(array("title"=&gt;"MongoDB 教程"), array("justOne" =&gt; true));

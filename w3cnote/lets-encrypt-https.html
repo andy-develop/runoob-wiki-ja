@@ -100,14 +100,14 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 export Ali_Key="123"
 export Ali_Secret="abbcddddd"
 # 换成自己的域名
-acme.sh --issue --dns dns_ali -d runoob.com -d *.runoob.com</pre>
+acme.sh --issue --dns dns_ali -d example.com -d *.example.com</pre>
 <p>実行が成功すると、次のように出力されます:</p>
 <pre>...
 [Tue Sep 24 18:28:45 CST 2019] Download cert, Le_LinkCert: https://acme-v02.api.letsencrypt.org/acme/cert/03324bb19fec1de831b1083a9810ccdd2109
 [Tue Sep 24 18:28:47 CST 2019] Cert success.
 ...</pre>
 <p><strong>出力された情報には、証明書が保存されているディレクトリが含まれています。</strong></p>
-<p>私の環境では、生成された証明書はこのディレクトリに配置されています:<span class="marked">/www/server/panel/vhost/cert/runoob.com/runoob.com.cer</span>。 </p>
+<p>私の環境では、生成された証明書はこのディレクトリに配置されています:<span class="marked">/www/server/panel/vhost/cert/example.com/example.com.cer</span>。 </p>
 <p>初回成功後、acme.sh は App_Key と App_Secret を記録し、スケジュールタスクを生成します。それを通じて<span class="marked">crontab -e</span>このコマンドを確認できます。不要であれば、スケジュールタスクを削除し、~/.acme.sh フォルダーも削除するだけで大丈夫です。</p>
 <blockquote><p><strong>注意</strong>：中国国内の一部のベンダーは pem 形式の内容を要求する場合があります。以下の2つの証明書の内容を直接コピーするだけで十分です（<span class="marked">cer === PEM</span>）：</p>
 <p>証明書の内容（PEM 形式）：</p><pre>$ cat domain.cer</pre>

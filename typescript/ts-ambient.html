@@ -386,7 +386,7 @@ jQuery('#foo');
 <h3>ファイル命名規則</h3>
 <p>宣言ファイルは統一して<span class="marked">.d.ts</span>を拡張子とします。<span class="marked">d</span>は declaration（宣言）を意味します。例：</p>
 <pre>
-runoob.d.ts
+サンプル.d.ts
 </pre>
 <h3>基本構文</h3>
 <p>モジュールを宣言する構文は次のとおりです：</p>
@@ -396,7 +396,7 @@ declare module Module_Name {
 </pre>
 <p>TypeScript ファイルでは、トリプルスラッシュ指令を使って宣言ファイルを読み込みます：</p>
 <pre>
-/// &lt;reference path = "runoob.d.ts" /&gt;
+/// &lt;reference path = "サンプル.d.ts" /&gt;
 </pre>
 <p>トリプルスラッシュ指令は TypeScript 固有の構文で、コンパイル時に指定した宣言ファイルを含める必要があることをコンパイラに伝えます。</p>
 <blockquote><p>多くの人気サードパーティライブラリ（jQuery、Lodash など）の宣言ファイルは、コミュニティによってすでにメンテナンスされており、<a href="https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jquery/index.d.ts" target="_blank">DefinitelyTyped</a>プロジェクトに格納されています。npm で対応する<span class="marked">@types/xxx</span>パッケージをインストールするだけで使用でき、手動で作成する必要はありません。</p></blockquote>
@@ -410,21 +410,21 @@ declare module Module_Name {
 <tr><td>Calc.d.ts</td><td>宣言ファイル（手動で作成し、ライブラリの型を記述）</td></tr>
 <tr><td>CalcTest.ts</td><td>TypeScript ビジネスコード（宣言ファイルを参照し、ライブラリを呼び出す）</td></tr>
 <tr><td>CalcTest.js</td><td>コンパイル成果物（tsc コンパイル後の JS ファイル）</td></tr>
-<tr><td>runoob.html</td><td>ブラウザで実行される最終ページ</td></tr>
+<tr><td>サンプル.html</td><td>ブラウザで実行される最終ページ</td></tr>
 </table>
 <h3>ステップ1：サードパーティ JavaScript ライブラリを作成する</h3>
-<p>累加合計の機能を提供するサードパーティライブラリがあるとします。名前空間<span class="marked">Runoob</span>を使ってコードを整理し、変数名の衝突を避けています：</p>
+<p>累加合計の機能を提供するサードパーティライブラリがあるとします。名前空間<span class="marked">サンプル</span>を使ってコードを整理し、変数名の衝突を避けています：</p>
 <div class="example">
 <h2 class="example">CalcThirdPartyJsLib.js ファイルコード：</h2>
 <div class="example_code">
 <span style="color: #006600; font-style: italic;">// ファイルパス：CalcThirdPartyJsLib.js</span><br/>
 <span style="color: #006600; font-style: italic;">// これは模擬的なサードパーティ JavaScript ライブラリです</span><br/>
 <br/>
-<span style="color: #006600; font-style: italic;">// Runoob 名前空間変数を宣言（存在しない場合は空オブジェクトを作成）</span><br/>
-<span style="color: #000066; font-weight: bold;">var</span> Runoob<span style="color: #339933;">;</span><br/>
+<span style="color: #006600; font-style: italic;">// サンプル 名前空間変数を宣言（存在しない場合は空オブジェクトを作成）</span><br/>
+<span style="color: #000066; font-weight: bold;">var</span> サンプル<span style="color: #339933;">;</span><br/>
 <br/>
 <span style="color: #006600; font-style: italic;">// 即時実行関数（IIFE）でコードをカプセル化し、内部変数がグローバルスコープに漏れるのを防ぐ</span><br/>
-<span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">function</span><span style="color: #009900;">(</span>Runoob<span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
+<span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">function</span><span style="color: #009900;">(</span>サンプル<span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
     <span style="color: #006600; font-style: italic;">// Calc コンストラクタ。計算機オブジェクトを作成するために使用</span><br/>
     <span style="color: #000066; font-weight: bold;">var</span> Calc <span style="color: #339933;">=</span> <span style="color: #009900;">(</span><span style="color: #000066; font-weight: bold;">function</span> <span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
         <span style="color: #000066; font-weight: bold;">function</span> Calc<span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
@@ -444,14 +444,14 @@ declare module Module_Name {
         <span style="color: #000066; font-weight: bold;">return</span> sum<span style="color: #339933;">;</span><br/>
     <span style="color: #009900;">}</span><br/>
 <br/>
-    <span style="color: #006600; font-style: italic;">// Calc コンストラクタを Runoob 名前空間にマウント</span><br/>
-    <span style="color: #006600; font-style: italic;">// これで外部から new Runoob.Calc() でインスタンスを作成できる</span><br/>
-    Runoob.<span style="color: #660066;">Calc</span> <span style="color: #339933;">=</span> Calc<span style="color: #339933;">;</span><br/>
+    <span style="color: #006600; font-style: italic;">// Calc コンストラクタを サンプル 名前空間にマウント</span><br/>
+    <span style="color: #006600; font-style: italic;">// これで外部から new サンプル.Calc() でインスタンスを作成できる</span><br/>
+    サンプル.<span style="color: #660066;">Calc</span> <span style="color: #339933;">=</span> Calc<span style="color: #339933;">;</span><br/>
     <span style="color: #000066; font-weight: bold;">return</span> Calc<span style="color: #339933;">;</span><br/>
-<span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #009900;">(</span>Runoob <span style="color: #339933;">||</span> <span style="color: #009900;">(</span>Runoob <span style="color: #339933;">=</span> <span style="color: #009900;">{</span><span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+<span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #009900;">(</span>サンプル <span style="color: #339933;">||</span> <span style="color: #009900;">(</span>サンプル <span style="color: #339933;">=</span> <span style="color: #009900;">{</span><span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
 <span style="color: #006600; font-style: italic;">// ライブラリ内部のセルフテストコード</span><br/>
-<span style="color: #000066; font-weight: bold;">var</span> test <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">new</span> Runoob.<span style="color: #660066;">Calc</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+<span style="color: #000066; font-weight: bold;">var</span> test <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">new</span> サンプル.<span style="color: #660066;">Calc</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 </div>
 </div>
 <p>このライブラリは一般的なパターンである即時実行関数（IIFE）を使用しています。わかりやすく言うと、コードを関数の中に包んで即座に実行することで、関数内で定義された変数が外部に漏れず、他のコードと変数名が衝突するのを防ぎます。</p>
@@ -463,8 +463,8 @@ declare module Module_Name {
 <span style="color: #006600; font-style: italic;">// ファイルパス：Calc.d.ts</span><br/>
 <span style="color: #006600; font-style: italic;">// これは宣言ファイルです。型情報のみを含み、実行可能なコードは一切含みません</span><br/>
 <br/>
-<span style="color: #006600; font-style: italic;">// Runoob モジュールを宣言。JS ライブラリの Runoob 名前空間に対応</span><br/>
-declare module Runoob <span style="color: #009900;">{</span><br/>
+<span style="color: #006600; font-style: italic;">// サンプル モジュールを宣言。JS ライブラリの サンプル 名前空間に対応</span><br/>
+declare module サンプル <span style="color: #009900;">{</span><br/>
    <span style="color: #006600; font-style: italic;">// Calc クラスを宣言。TypeScript にこのクラスが new でインスタンス化可能であることを伝える</span><br/>
    <span style="color: #FF0000;">export</span> <span style="color: #FF0000;">class</span> Calc <span style="color: #009900;">{</span><br/>
       <span style="color: #006600; font-style: italic;">// doSum メソッドを宣言：number 型のパラメータを受け取り、number 型を返す</span><br/>
@@ -485,7 +485,7 @@ declare module Runoob <span style="color: #009900;">{</span><br/>
 <span style="color: #006600; font-style: italic;">/// &lt;reference path = "Calc.d.ts" /&gt;</span><br/>
 <br/>
 <span style="color: #006600; font-style: italic;">// Calc インスタンスを作成。TypeScript は obj の型を正しく認識できる</span><br/>
-<span style="color: #000066; font-weight: bold;">var</span> obj <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">new</span> Runoob.<span style="color: #660066;">Calc</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+<span style="color: #000066; font-weight: bold;">var</span> obj <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">new</span> サンプル.<span style="color: #660066;">Calc</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
 <span style="color: #006600; font-style: italic;">// obj.doSum("Hello"); // コンパイルエラー！"Hello" は文字列だが、doSum は number を要求する</span><br/>
 console.<span style="color: #660066;">log</span><span style="color: #009900;">(</span>obj.<span style="color: #660066;">doSum</span><span style="color: #009900;">(</span><span style="color: #CC0000;">10</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span> <span style="color: #006600; font-style: italic;">// 正しい呼び出し：10 を渡し、55 が得られることを期待</span><br/>
@@ -507,7 +507,7 @@ tsc CalcTest.ts
 <div class="example_code">
 <span style="color: #006600; font-style: italic;">// ファイルパス：CalcTest.js（tsc コマンドで自動生成）</span><br/>
 <span style="color: #006600; font-style: italic;">/// &lt;reference path = "Calc.d.ts" /&gt;</span><br/>
-<span style="color: #000066; font-weight: bold;">var</span> obj <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">new</span> Runoob.<span style="color: #660066;">Calc</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+<span style="color: #000066; font-weight: bold;">var</span> obj <span style="color: #339933;">=</span> <span style="color: #000066; font-weight: bold;">new</span> サンプル.<span style="color: #660066;">Calc</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <span style="color: #006600; font-style: italic;">//obj.doSum("Hello"); // コンパイルエラー</span><br/>
 console.<span style="color: #660066;">log</span><span style="color: #009900;">(</span>obj.<span style="color: #660066;">doSum</span><span style="color: #009900;">(</span><span style="color: #CC0000;">10</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span> <span style="color: #006600; font-style: italic;">// 実行結果：コンソールに55が出力されます</span><br/>
 </div>
@@ -522,15 +522,15 @@ console.<span style="color: #660066;">log</span><span style="color: #009900;">(<
 <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">html</span>&gt;</span><br/>
 <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">head</span>&gt;</span><br/>
 <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">meta</span> <span style="color: #00c;">charset</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"utf-8"</span>&gt;</span><br/>
-<span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">title</span>&gt;</span>菜鸟教程(runoob.com)<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">title</span>&gt;</span><br/>
-<span style="color: #808080; font-style: italic;">&lt;!-- ステップ1：サードパーティライブラリを読み込み、Runoob名前空間をグローバルで利用可能にする --&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">title</span>&gt;</span>サンプル(example.com)<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">title</span>&gt;</span><br/>
+<span style="color: #808080; font-style: italic;">&lt;!-- ステップ1：サードパーティライブラリを読み込み、サンプル名前空間をグローバルで利用可能にする --&gt;</span><br/>
 <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">script</span> <span style="color: #00c;">src</span> <span style="color: #66CC66;">=</span> <span style="color: #a11;">"CalcThirdPartyJsLib.js"</span>&gt;&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">script</span>&gt;</span><br/>
 <span style="color: #808080; font-style: italic;">&lt;!-- ステップ2：コンパイルされた業務コードを読み込む --&gt;</span><br/>
 <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">script</span> <span style="color: #00c;">src</span> <span style="color: #66CC66;">=</span> <span style="color: #a11;">"CalcTest.js"</span>&gt;&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">script</span>&gt;</span><br/>
 <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">head</span>&gt;</span><br/>
 <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">body</span>&gt;</span><br/>
     <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">h1</span>&gt;</span>宣言ファイルのテスト<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">h1</span>&gt;</span><br/>
-    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">p</span>&gt;</span>Runoobでテストしてみます。<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">p</span>&gt;</span><br/>
+    <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">p</span>&gt;</span>サンプルでテストしてみます。<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">p</span>&gt;</span><br/>
 <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">body</span>&gt;</span><br/>
 <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">html</span>&gt;</span><br/>
 </div>

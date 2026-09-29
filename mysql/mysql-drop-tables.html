@@ -322,13 +322,13 @@ TRUNCATE TABLE table_name;</pre><p>これによりテーブル内のすべての
 <p><strong>注意事項：</strong></p>
 <ul><li><strong>データのバックアップ</strong>：テーブルを削除する前に、必要であればデータをバックアップしていることを確認してください。</li><li><strong>外部キー制約</strong>：このテーブルが他のテーブルと外部キー制約がある場合、外部キー制約を先に削除するか、依存関係が適切に処理されていることを確認する必要があるかもしれません。</li></ul>
 <h3>例</h3>
-<p>次の例では、データテーブル runoob_tbl を削除します：</p>
+<p>次の例では、データテーブル サンプル_tbl を削除します：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 root@host# mysql <span style="color: #66CC66;">-</span>u root <span style="color: #66CC66;">-</span>p<br/>
 Enter password:<span style="color: #66CC66;">*******</span><br/>
-mysql<span style="color: #66CC66;">&gt;</span> <span style="color: #993333; font-weight: bold;">USE</span> RUNOOB;<br/>
+mysql<span style="color: #66CC66;">&gt;</span> <span style="color: #993333; font-weight: bold;">USE</span> サンプル;<br/>
 <span style="color: #993333; font-weight: bold;">DATABASE</span> changed<br/>
-mysql<span style="color: #66CC66;">&gt;</span> <span style="color: #993333; font-weight: bold;">DROP</span> <span style="color: #993333; font-weight: bold;">TABLE</span> runoob_tbl;<br/>
+mysql<span style="color: #66CC66;">&gt;</span> <span style="color: #993333; font-weight: bold;">DROP</span> <span style="color: #993333; font-weight: bold;">TABLE</span> サンプル_tbl;<br/>
 Query OK<span style="color: #66CC66;">,</span> <span style="color: #CC66CC;">0</span> <span style="color: #993333; font-weight: bold;">ROWS</span> affected <span style="color: #66CC66;">(</span><span style="color: #CC66CC;">0.8</span> sec<span style="color: #66CC66;">)</span><br/>
 mysql<span style="color: #66CC66;">&gt;</span><br/>
 </div></div>
@@ -363,7 +363,7 @@ mysqli_query(connection,query,resultmode);
 </tr>
 </tbody></table>
 <h3>例</h3>
-<p>次の例では、PHP スクリプトを使用してデータテーブル runoob_tbl を削除しています：</p>
+<p>次の例では、PHP スクリプトを使用してデータテーブル サンプル_tbl を削除しています：</p>
 <div class="example">
 <h2 class="example">データベースの削除</h2>
 <div class="example_code">
@@ -377,8 +377,8 @@ mysqli_query(connection,query,resultmode);
 </span><span class="hl-reserved">die</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">接続失敗：</span><span class="hl-quotes">'</span><span class="hl-code"> . </span><span class="hl-identifier">mysqli_error</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-brackets">}</span><span class="hl-code">
 </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">接続成功&lt;br /&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
-</span><span class="hl-var">$sql</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">DROP TABLE runoob_tbl</span><span class="hl-quotes">"</span><span class="hl-code">;
-</span><span class="hl-identifier">mysqli_select_db</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">RUNOOB</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-var">$sql</span><span class="hl-code"> = </span><span class="hl-quotes">"</span><span class="hl-string">DROP TABLE サンプル_tbl</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-identifier">mysqli_select_db</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">サンプル</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-var">$retval</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_query</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-var">$sql</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-code">! </span><span class="hl-var">$retval</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">
 </span><span class="hl-brackets">{</span><span class="hl-code">
@@ -388,7 +388,7 @@ mysqli_query(connection,query,resultmode);
 </span><span class="hl-identifier">mysqli_close</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-inlinetags">?&gt;</span></div>
 </div></div>
-<p>実行が成功すると、次のコマンドを使用すると runoob_tbl テーブルは表示されなくなります：</p>
+<p>実行が成功すると、次のコマンドを使用すると サンプル_tbl テーブルは表示されなくなります：</p>
 <pre>
 mysql&gt; show tables;
 Empty set (0.01 sec)

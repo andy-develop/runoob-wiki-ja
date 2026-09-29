@@ -286,40 +286,40 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>すべてのパッケージ操作は pi コマンドで完結し、settings.json を手動で編集する必要はありません。</p>
 <table class="reference">
 <tr><th>コマンド</th><th>機能</th><th>例</th></tr>
-<tr><td>pi install &lt;source&gt;</td><td>パッケージをインストールする。-l パラメータでプロジェクトレベルとしてインストール</td><td>pi install npm:@runoob/pi-todo-kit</td></tr>
-<tr><td>pi remove &lt;source&gt;</td><td>パッケージを削除</td><td>pi remove npm:@runoob/pi-todo-kit</td></tr>
-<tr><td>pi uninstall &lt;source&gt;</td><td>remove と同じ</td><td>pi uninstall npm:@runoob/pi-todo-kit</td></tr>
+<tr><td>pi install &lt;source&gt;</td><td>パッケージをインストールする。-l パラメータでプロジェクトレベルとしてインストール</td><td>pi install npm:@サンプル/pi-todo-kit</td></tr>
+<tr><td>pi remove &lt;source&gt;</td><td>パッケージを削除</td><td>pi remove npm:@サンプル/pi-todo-kit</td></tr>
+<tr><td>pi uninstall &lt;source&gt;</td><td>remove と同じ</td><td>pi uninstall npm:@サンプル/pi-todo-kit</td></tr>
 <tr><td>pi list</td><td>インストール済みパッケージの一覧表示</td><td>pi list</td></tr>
 <tr><td>pi update --all</td><td>Pi Agent とすべてのパッケージを更新</td><td>pi update --all</td></tr>
 <tr><td>pi update --extensions</td><td>インストール済みのパッケージのみ更新（Pi Agent 本体は含まない）</td><td>pi update --extensions</td></tr>
-<tr><td>pi update &lt;source&gt;</td><td>指定したパッケージの更新</td><td>pi update npm:@runoob/pi-todo-kit</td></tr>
+<tr><td>pi update &lt;source&gt;</td><td>指定したパッケージの更新</td><td>pi update npm:@サンプル/pi-todo-kit</td></tr>
 </table>
 <p>使用例：</p>
 <pre>
 # 安装 npm 包
-$ pi install npm:@runoob/pi-todo-kit@1.0.0
+$ pi install npm:@サンプル/pi-todo-kit@1.0.0
 
 # 安装 git 包
-$ pi install git:github.com/runoob/pi-todo-kit@v1
+$ pi install git:github.com/サンプル/pi-todo-kit@v1
 
 # 安装本地包
 $ pi install ./packages/pi-todo-kit
 $ pi install ~/projects/pi-share-kit
 
 # 安装为项目级（写入 .pi/settings.json）
-$ pi install -l npm:@runoob/pi-todo-kit
+$ pi install -l npm:@サンプル/pi-todo-kit
 
 # 临时试用包（不安装到配置中）
-$ pi -e npm:@runoob/pi-todo-kit
-$ pi -e git:github.com/runoob/pi-todo-kit
+$ pi -e npm:@サンプル/pi-todo-kit
+$ pi -e git:github.com/サンプル/pi-todo-kit
 </pre>
 <p>インストール出力はおおよそ次のようになります（イメージ）。extensions と skills の数はパッケージの pi フィールドによって異なります。</p>
 <pre>
-$ pi install npm:@runoob/pi-todo-kit
-Resolving @runoob/pi-todo-kit@1.2.0
-Downloading @runoob/pi-todo-kit (12.4 kB)
-Running npm install in ~/.pi/agent/npm/@runoob/pi-todo-kit
-Installed @runoob/pi-todo-kit@1.2.0
+$ pi install npm:@サンプル/pi-todo-kit
+Resolving @サンプル/pi-todo-kit@1.2.0
+Downloading @サンプル/pi-todo-kit (12.4 kB)
+Running npm install in ~/.pi/agent/npm/@サンプル/pi-todo-kit
+Installed @サンプル/pi-todo-kit@1.2.0
   extensions: 2
   skills:     1
   prompts:    3
@@ -355,7 +355,7 @@ pi install ssh://git@github.com/user/repo@v1
 <h3>ローカルパス</h3>
 <p>ローカルファイルシステムのパスを指し、ファイルはコピーされません：</p>
 <pre>
-pi install /Users/runoob/.pi/agent/packages/my-kit
+pi install /Users/サンプル/.pi/agent/packages/my-kit
 pi install ./packages/my-kit
 </pre>
 <hr/>
@@ -366,7 +366,7 @@ pi install ./packages/my-kit
 <div class="example_code">
 
 {<br/>
-  "name": "@runoob/pi-todo-kit",<br/>
+  "name": "@サンプル/pi-todo-kit",<br/>
   "keywords": ["pi-package"],<br/>
   "pi": {<br/>
     "extensions": ["./extensions"],<br/>
@@ -402,7 +402,7 @@ pi install ./packages/my-kit
   "packages": [<br/>
     "npm:simple-pkg",<br/>
     {<br/>
-      "source": "npm:@runoob/pi-todo-kit",<br/>
+      "source": "npm:@サンプル/pi-todo-kit",<br/>
       "extensions": ["extensions/*.ts", "!extensions/legacy.ts"],<br/>
       "skills": ["skills/brave-search"],<br/>
       "prompts": [],<br/>
@@ -454,7 +454,7 @@ $ pi config -l
 <p>パッケージの同一性は以下の方法で決定され、Pi Agent はこれに基づいて2つの設定が同じパッケージを指しているかどうかを判断します：</p>
 <table class="reference">
 <tr><th>ソース</th><th>識別子</th></tr>
-<tr><td>npm パッケージ</td><td>パッケージ名（例：@runoob/pi-todo-kit）</td></tr>
+<tr><td>npm パッケージ</td><td>パッケージ名（例：@サンプル/pi-todo-kit）</td></tr>
 <tr><td>git パッケージ</td><td>リポジトリ URL（ref を含まない）</td></tr>
 <tr><td>ローカルパス</td><td>解決後の絶対パス</td></tr>
 </table> その他の拡張機能

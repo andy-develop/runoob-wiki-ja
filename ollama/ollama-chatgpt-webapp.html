@@ -392,7 +392,7 @@ init_db<span style="color: Olive;">(</span><span style="color: Olive;">)</span><
         <span style="color: Olive;">)</span><span style="color: Olive;">]</span><br/>
 <br/>
     messages <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: Olive;">{</span><span style="color: #a11;">'role'</span>: <span style="color: #a11;">'system'</span><span style="color: Gray;">,</span><br/>
-                 <span style="color: #a11;">'content'</span>: <span style="color: #a11;">'あなたは RUNOOB プログラミングアシスタントです。正確かつ簡潔に答えてください。'</span><span style="color: Olive;">}</span><span style="color: Olive;">]</span><br/>
+                 <span style="color: #a11;">'content'</span>: <span style="color: #a11;">'あなたは サンプル プログラミングアシスタントです。正確かつ簡潔に答えてください。'</span><span style="color: Olive;">}</span><span style="color: Olive;">]</span><br/>
     messages +<span style="color: Gray;">=</span> history<br/>
 <br/>
     <span style="color: Green;font-weight:bold;">def</span> generate<span style="color: Olive;">(</span><span style="color: Olive;">)</span>:<br/>
@@ -553,13 +553,13 @@ python server.py</pre><p>ブラウザで http://localhost:5000 を開くと、�
 <p>クラウドサーバーで systemd を使ってアプリを常駐させます：</p>
 <div class="example">
 <h2 class="example">実装例</h2>
-<div class="example_code"># ファイルパス：/etc/systemd/system/runoob-chat.service<br/>
+<div class="example_code"># ファイルパス：/etc/systemd/system/サンプル-chat.service<br/>
 <span style="color: #000066; font-weight:bold;"><span style="">[</span>Unit<span style="">]</span></span><br/>
-<span style="color: #000099;">Description</span><span style="color: #000066; font-weight:bold;">=</span><span style="color: #660066;">Runoob Chat Web App</span><br/>
+<span style="color: #000099;">Description</span><span style="color: #000066; font-weight:bold;">=</span><span style="color: #660066;">サンプル Chat Web App</span><br/>
 <span style="color: #000099;">After</span><span style="color: #000066; font-weight:bold;">=</span><span style="color: #660066;">network.target ollama.service</span><br/>
 <br/>
 <span style="color: #000066; font-weight:bold;"><span style="">[</span>Service<span style="">]</span></span><br/>
-<span style="color: #000099;">WorkingDirectory</span><span style="color: #000066; font-weight:bold;">=</span><span style="color: #660066;">/opt/runoob-chat</span><br/>
+<span style="color: #000099;">WorkingDirectory</span><span style="color: #000066; font-weight:bold;">=</span><span style="color: #660066;">/opt/サンプル-chat</span><br/>
 <span style="color: #000099;">ExecStart</span><span style="color: #000066; font-weight:bold;">=</span><span style="color: #660066;">/usr/bin/python3 server.py</span><br/>
 <span style="color: #000099;">Restart</span><span style="color: #000066; font-weight:bold;">=</span><span style="color: #660066;">always</span><br/>
 <span style="color: #000099;">RestartSec</span><span style="color: #000066; font-weight:bold;">=</span><span style="color: #660066;">3</span><br/>
@@ -569,7 +569,7 @@ python server.py</pre><p>ブラウザで http://localhost:5000 を開くと、�
 </div>
 </div><p>長期運用を設定します：</p><pre>
 sudo systemctl daemon-reload
-sudo systemctl enable --now runoob-chat</pre>
+sudo systemctl enable --now サンプル-chat</pre>
 <blockquote><p>外部公開デプロイの完全なセキュリティチェックリスト（ループバックポート、リバースプロキシ認証、露出面の自己点検）はセキュリティとコンプライアンスの章にあります。公開前に必ず確認してください。</p></blockquote>
 その他の拡張
 </div>

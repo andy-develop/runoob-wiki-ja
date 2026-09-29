@@ -328,14 +328,14 @@ load_dotenv<span style="color: Olive;">(</span><span style="color: Olive;">)</sp
 <span style="color: #a50"># 通常のツール: 結果はモデルに返され、モデルが再び要約する</span><br/>
 <span style="color: Gray;">@</span>tool<br/>
 <span style="color: Green;font-weight:bold;">def</span> search_normal<span style="color: Olive;">(</span><span style="color: #05a;">keyword</span>: <span style="color: Teal;">str</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
-    <span style="color: #a11;">"""菜鸟教程 RUNOOB のコースを検索（通常モード）"""</span><br/>
+    <span style="color: #a11;">"""サンプル のコースを検索（通常モード）"""</span><br/>
     <span style="color: Green;font-weight:bold;">return</span> f<span style="color: #a11;">"検索結果: Python3 基礎チュートリアル、Python データ分析、Python クローラー入門"</span><br/>
 <br/>
 <br/>
 <span style="color: #a50"># return_direct ツール: 結果を直接最終出力とする</span><br/>
 <span style="color: Gray;">@</span>tool<span style="color: Olive;">(</span>return_direct<span style="color: Gray;">=</span><span style="color: Teal;">True</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">def</span> search_direct<span style="color: Olive;">(</span><span style="color: #05a;">keyword</span>: <span style="color: Teal;">str</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
-    <span style="color: #a11;">"""菜鸟教程 RUNOOB のコースを検索（直接返却モード）。<br/>
+    <span style="color: #a11;">"""サンプル のコースを検索（直接返却モード）。<br/>
 <br/>ユーザーが検索結果だけを必要とし、追加の分析が不要な場合にこのツールを使用します。<br/>
     """</span><br/>
     <span style="color: Green;font-weight:bold;">return</span> f<span style="color: #a11;">"検索結果: Python3 基礎チュートリアル、Python データ分析、Python クローラー入門"</span><br/>
@@ -347,13 +347,13 @@ model <span style="color: Gray;">=</span> init_chat_model<span style="color: Oli
 agent_normal <span style="color: Gray;">=</span> create_agent<span style="color: Olive;">(</span><br/>
     model<span style="color: Gray;">=</span>model<span style="color: Gray;">,</span><br/>
     tools<span style="color: Gray;">=</span><span style="color: Olive;">[</span>search_normal<span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは菜鸟教程の学習コンサルタントです。"</span><span style="color: Gray;">,</span><br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたはサンプルの学習コンサルタントです。"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 agent_direct <span style="color: Gray;">=</span> create_agent<span style="color: Olive;">(</span><br/>
     model<span style="color: Gray;">=</span>model<span style="color: Gray;">,</span><br/>
     tools<span style="color: Gray;">=</span><span style="color: Olive;">[</span>search_direct<span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは菜鸟教程の学習コンサルタントです。"</span><span style="color: Gray;">,</span><br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたはサンプルの学習コンサルタントです。"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 通常モード: モデルは検索結果に基づいてさらに要約を生成する</span><br/>
@@ -374,7 +374,7 @@ result <span style="color: Gray;">=</span> agent_direct.<span style="color: #05a
 <p>実行結果:</p>
 <pre>
 === 普通模式（模型会再加工）===
-在菜鸟教程 RUNOOB 中，我为您找到了以下 Python 相关课程：
+在サンプル 中，我为您找到了以下 Python 相关课程：
 1. Python3 基础教程 - 适合零基础入门
 2. Python 数据分析 - 进阶学习
 3. Python 爬虫入门 - 实战项目
@@ -588,7 +588,7 @@ handle_tool_error=True: 未收录城市 '北境'。可使用城市：杭州, 北
 <br/>
 <span style="color: Gray;">@</span>tool<span style="color: Olive;">(</span>handle_tool_error<span style="color: Gray;">=</span><span style="color: Teal;">True</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">def</span> book_course<span style="color: Olive;">(</span>user_name: <span style="color: Teal;">str</span><span style="color: Gray;">,</span> course_name: <span style="color: Teal;">str</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
-    <span style="color: #a11;">"""ユーザーに菜鸟教程 RUNOOB のコースを予約します。<br/>
+    <span style="color: #a11;">"""ユーザーにサンプル のコースを予約します。<br/>
 <br/>
     Args:<br/>user_name: ユーザー氏名<br/>course_name: コース名<br/>
     """</span><br/>
@@ -615,7 +615,7 @@ model <span style="color: Gray;">=</span> init_chat_model<span style="color: Oli
 agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;">(</span><br/>
     model<span style="color: Gray;">=</span>model<span style="color: Gray;">,</span><br/>
     tools<span style="color: Gray;">=</span><span style="color: Olive;">[</span>book_course<span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは菜鸟教程 RUNOOB のコースコンサルタントです。"</span><span style="color: Gray;">,</span><br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたはサンプル のコースコンサルタントです。"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 正常な呼び出し</span><br/>

@@ -343,13 +343,13 @@ pd.notna(obj)
 <span style="color: #a50"># 1. スカラー値が非欠損値かどうかを検出</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"=== スカラー検出 ==="</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"pd.notna(10): {pd.notna(10)}"</span><span style="color: Olive;">)</span>              <span style="color: #a50"># 正常な数値 -&gt; True</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"pd.notna('runoob'): {pd.notna('runoob')}"</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 正常な文字列 -&gt; True</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"pd.notna('サンプル'): {pd.notna('サンプル')}"</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 正常な文字列 -&gt; True</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"pd.notna(None): {pd.notna(None)}"</span><span style="color: Olive;">)</span>          <span style="color: #a50"># None -&gt; False</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"pd.notna(np.nan): {pd.notna(np.nan)}"</span><span style="color: Olive;">)</span>      <span style="color: #a50"># np.nan -&gt; False</span><br/>
 <br/>
 <span style="color: #a50"># 2. リスト内の欠損値を検出</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>=== リスト検出 ===</span><span style="color: Olive;">)</span><br/>
-data_list <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: Maroon;">1</span><span style="color: Gray;">,</span> <span style="color: Maroon;">2</span><span style="color: Gray;">,</span> np.<span style="color: #05a;">nan</span><span style="color: Gray;">,</span> <span style="color: #a11;">'runoob'</span><span style="color: Gray;">,</span> <span style="color: Teal;">None</span><span style="color: Gray;">,</span> <span style="color: Maroon;">5</span><span style="color: Olive;">]</span><br/>
+data_list <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: Maroon;">1</span><span style="color: Gray;">,</span> <span style="color: Maroon;">2</span><span style="color: Gray;">,</span> np.<span style="color: #05a;">nan</span><span style="color: Gray;">,</span> <span style="color: #a11;">'サンプル'</span><span style="color: Gray;">,</span> <span style="color: Teal;">None</span><span style="color: Gray;">,</span> <span style="color: Maroon;">5</span><span style="color: Olive;">]</span><br/>
 result <span style="color: Gray;">=</span> pd.<span style="color: #05a;">notna</span><span style="color: Olive;">(</span>data_list<span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"元のリスト: {data_list}"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"検出結果: {result.tolist()}"</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 確認しやすいようにリストに変換</span><br/>
@@ -359,17 +359,17 @@ result <span style="color: Gray;">=</span> pd.<span style="color: #05a;">notna</
 <pre>
 === 标量检测 ===
 pd.notna(10): True
-pd.notna('runoob'): True
+pd.notna('サンプル'): True
 pd.notna(None): False
 pd.notna(np.nan): False
 
 === 列表检测 ===
-原始列表: [1, 2, nan, 'runoob', None, 5]
+原始列表: [1, 2, nan, 'サンプル', None, 5]
 检测结果: [True, False, True, False, True]
 </pre>
 <p><strong>コードの解説:</strong></p>
 <ol>
-<li><code>pd.notna(10)</code>と<code>pd.notna('runoob')</code>正常な数値と文字列を検出すると、Trueを返し、<code>True</code>。</li>
+<li><code>pd.notna(10)</code>と<code>pd.notna('サンプル')</code>正常な数値と文字列を検出すると、Trueを返し、<code>True</code>。</li>
 <li><code>pd.notna(None)</code>と<code>pd.notna(np.nan)</code>PythonとNumPyの欠損値マーカーを検出すると、Falseを返します。<code>False</code>。</li>
 <li>リストに対してpd.notna()を使用すると、<code>pd.notna()</code>ブール型のリストが返され、欠損値の位置はFalseになります。<code>False</code>。</li>
 </ol>
@@ -382,7 +382,7 @@ pd.notna(np.nan): False
 <span style="color: Green;font-weight:bold;">import</span> numpy <span style="color: Green;font-weight:bold;">as</span> np<br/>
 <br/>
 <span style="color: #a50"># 欠損値を含むSeriesを作成</span><br/>
-s <span style="color: Gray;">=</span> pd.<span style="color: #05a;">Series</span><span style="color: Olive;">(</span><span style="color: Olive;">[</span><span style="color: Maroon;">1</span><span style="color: Gray;">,</span> <span style="color: Maroon;">2</span><span style="color: Gray;">,</span> np.<span style="color: #05a;">nan</span><span style="color: Gray;">,</span> <span style="color: Maroon;">4</span><span style="color: Gray;">,</span> <span style="color: Teal;">None</span><span style="color: Gray;">,</span> <span style="color: #a11;">'runoob'</span><span style="color: Gray;">,</span> np.<span style="color: #05a;">nan</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
+s <span style="color: Gray;">=</span> pd.<span style="color: #05a;">Series</span><span style="color: Olive;">(</span><span style="color: Olive;">[</span><span style="color: Maroon;">1</span><span style="color: Gray;">,</span> <span style="color: Maroon;">2</span><span style="color: Gray;">,</span> np.<span style="color: #05a;">nan</span><span style="color: Gray;">,</span> <span style="color: Maroon;">4</span><span style="color: Gray;">,</span> <span style="color: Teal;">None</span><span style="color: Gray;">,</span> <span style="color: #a11;">'サンプル'</span><span style="color: Gray;">,</span> np.<span style="color: #05a;">nan</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"=== 元のSeries ==="</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>s<span style="color: Olive;">)</span><br/>
@@ -410,7 +410,7 @@ result <span style="color: Gray;">=</span> pd.<span style="color: #05a;">notna</
 2     NaN
 3       4
 4    None
-5    runoob
+5    サンプル
 6     NaN
 dtype: object
 
@@ -438,7 +438,7 @@ dtype: bool
 0       1
 1       2
 3       4
-5    runoob
+5    サンプル
 dtype: object
 </pre>
 <p><strong>コードの解説:</strong></p>

@@ -380,7 +380,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example"><h2 class="example">実例</h2> <div class="example_code">
 <span style="color: Green;font-weight:bold;">from</span> <span style="color: #05a;">urllib</span>.<span style="color: #05a;">request</span> <span style="color: Green;font-weight:bold;">import</span> urlopen<br/>
 <br/>
-myURL <span style="color: Gray;">=</span> urlopen<span style="color: Olive;">(</span><span style="color: #a11;">"https://www.runoob.com/"</span><span style="color: Olive;">)</span><br/>
+myURL <span style="color: Gray;">=</span> urlopen<span style="color: Olive;">(</span><span style="color: #a11;">"https://www.example.com/"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>myURL.<span style="color: #05a;">read</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 </div></div>
 <p>上記のコードは、urlopen を使用して URL を開き、次に read() 関数を使用して Webページの HTML ソースコードを取得します。</p>
@@ -388,7 +388,7 @@ myURL <span style="color: Gray;">=</span> urlopen<span style="color: Olive;">(</
 <div class="example"><h2 class="example">実例</h2> <div class="example_code">
 <span style="color: Green;font-weight:bold;">from</span> <span style="color: #05a;">urllib</span>.<span style="color: #05a;">request</span> <span style="color: Green;font-weight:bold;">import</span> urlopen<br/>
 <br/>
-myURL <span style="color: Gray;">=</span> urlopen<span style="color: Olive;">(</span><span style="color: #a11;">"https://www.runoob.com/"</span><span style="color: Olive;">)</span><br/>
+myURL <span style="color: Gray;">=</span> urlopen<span style="color: Olive;">(</span><span style="color: #a11;">"https://www.example.com/"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>myURL.<span style="color: #05a;">read</span><span style="color: Olive;">(</span><span style="color: Maroon;">300</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 </div></div>
 <p>read() 関数の他に、Webページのコンテンツを読み取るための次の2つの関数も含まれています：</p>
@@ -396,13 +396,13 @@ myURL <span style="color: Gray;">=</span> urlopen<span style="color: Olive;">(</
 <p><strong>readline()</strong>- ファイルの1行のコンテンツを読み取ります</p>
 <pre>from urllib.request import urlopen
 
-myURL = urlopen("https://www.runoob.com/")
+myURL = urlopen("https://www.example.com/")
 print(myURL.readline()) #读取一行内容</pre>
 </li><li>
 <p><strong>readlines()</strong>- ファイルの全コンテンツを読み取り、読み取ったコンテンツをリスト変数に代入します。</p>
 <pre>from urllib.request import urlopen
 
-myURL = urlopen("https://www.runoob.com/")
+myURL = urlopen("https://www.example.com/")
 lines = myURL.readlines()
 for line in lines:
     print(line) </pre>
@@ -411,39 +411,39 @@ for line in lines:
 <div class="example"><h2 class="example">実例</h2> <div class="example_code">
 <span style="color: Green;font-weight:bold;">import</span> <span style="color: #05a;">urllib</span>.<span style="color: #05a;">request</span><br/>
 <br/>
-myURL1 <span style="color: Gray;">=</span> <span style="color: #05a;">urllib</span>.<span style="color: #05a;">request</span>.<span style="color: #05a;">urlopen</span><span style="color: Olive;">(</span><span style="color: #a11;">"https://www.runoob.com/"</span><span style="color: Olive;">)</span><br/>
+myURL1 <span style="color: Gray;">=</span> <span style="color: #05a;">urllib</span>.<span style="color: #05a;">request</span>.<span style="color: #05a;">urlopen</span><span style="color: Olive;">(</span><span style="color: #a11;">"https://www.example.com/"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>myURL1.<span style="color: #05a;">getcode</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span>   <span style="color: #a50"># 200</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">try</span>:<br/>
-    myURL2 <span style="color: Gray;">=</span> <span style="color: #05a;">urllib</span>.<span style="color: #05a;">request</span>.<span style="color: #05a;">urlopen</span><span style="color: Olive;">(</span><span style="color: #a11;">"https://www.runoob.com/no.html"</span><span style="color: Olive;">)</span><br/>
+    myURL2 <span style="color: Gray;">=</span> <span style="color: #05a;">urllib</span>.<span style="color: #05a;">request</span>.<span style="color: #05a;">urlopen</span><span style="color: Olive;">(</span><span style="color: #a11;">"https://www.example.com/no.html"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">except</span> <span style="color: #05a;">urllib</span>.<span style="color: #05a;">error</span>.<span style="color: #05a;">HTTPError</span> <span style="color: Green;font-weight:bold;">as</span> e:<br/>
     <span style="color: Green;font-weight:bold;">if</span> e.<span style="color: #05a;">code</span> <span style="color: Gray;">==</span> <span style="color: Maroon;">404</span>:<br/>
         <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: Maroon;">404</span><span style="color: Olive;">)</span>   <span style="color: #a50"># 404</span><br/>
-</div></div><p>その他の Webページのステータスコードについては、次を参照してください：<a href="../http/http-status-codes.html" rel="noopener" target="_blank">https://www.runoob.com/http/http-status-codes.html</a>。</p>
+</div></div><p>その他の Webページのステータスコードについては、次を参照してください：<a href="../http/http-status-codes.html" rel="noopener" target="_blank">https://www.example.com/http/http-status-codes.html</a>。</p>
 <p>スクレイピングした Webページをローカルに保存する場合は、次を使用できます：<a href="../python3/python3-file-write.html" rel="noopener" target="_blank">Python3 File write() メソッド</a>関数：</p>
 <div class="example"><h2 class="example">実例</h2> <div class="example_code">
 <span style="color: Green;font-weight:bold;">from</span> <span style="color: #05a;">urllib</span>.<span style="color: #05a;">request</span> <span style="color: Green;font-weight:bold;">import</span> urlopen<br/>
 <br/>
-myURL <span style="color: Gray;">=</span> urlopen<span style="color: Olive;">(</span><span style="color: #a11;">"https://www.runoob.com/"</span><span style="color: Olive;">)</span><br/>
-f <span style="color: Gray;">=</span> <span style="color: Teal;">open</span><span style="color: Olive;">(</span><span style="color: #a11;">"runoob_urllib_test.html"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"wb"</span><span style="color: Olive;">)</span><br/>
+myURL <span style="color: Gray;">=</span> urlopen<span style="color: Olive;">(</span><span style="color: #a11;">"https://www.example.com/"</span><span style="color: Olive;">)</span><br/>
+f <span style="color: Gray;">=</span> <span style="color: Teal;">open</span><span style="color: Olive;">(</span><span style="color: #a11;">"サンプル_urllib_test.html"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"wb"</span><span style="color: Olive;">)</span><br/>
 content <span style="color: Gray;">=</span> myURL.<span style="color: #05a;">read</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span>  <span style="color: #a50"># Webページのコンテンツを読み取る</span><br/>
 f.<span style="color: #05a;">write</span><span style="color: Olive;">(</span>content<span style="color: Olive;">)</span><br/>
 f.<span style="color: #05a;">close</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
-</div></div><p>上記のコードを実行すると、ローカルに runoob_urllib_test.html ファイルが生成され、その中に https://www.runoob.com/ の Webページのコンテンツが含まれます。</p>
-<p>Python File 処理の詳細については、次を参照してください：<a href="../python3/python3-file-methods.html" rel="noopener" target="_blank">https://www.runoob.com/python3/python3-file-methods.html</a></p>。
+</div></div><p>上記のコードを実行すると、ローカルに サンプル_urllib_test.html ファイルが生成され、その中に https://www.example.com/ の Webページのコンテンツが含まれます。</p>
+<p>Python File 処理の詳細については、次を参照してください：<a href="../python3/python3-file-methods.html" rel="noopener" target="_blank">https://www.example.com/python3/python3-file-methods.html</a></p>。
 <p>URL のエンコードとデコードには、次を使用できます：<strong>urllib.request.quote()</strong>と<strong>urllib.request.unquote()</strong>メソッド：</p>
 <div class="example"><h2 class="example">実例</h2> <div class="example_code">
 <span style="color: Green;font-weight:bold;">import</span> <span style="color: #05a;">urllib</span>.<span style="color: #05a;">request</span> <br/>
 <br/>
-encode_url <span style="color: Gray;">=</span> <span style="color: #05a;">urllib</span>.<span style="color: #05a;">request</span>.<span style="color: #05a;">quote</span><span style="color: Olive;">(</span><span style="color: #a11;">"https://www.runoob.com/"</span><span style="color: Olive;">)</span>  <span style="color: #a50"># エンコード</span><br/>
+encode_url <span style="color: Gray;">=</span> <span style="color: #05a;">urllib</span>.<span style="color: #05a;">request</span>.<span style="color: #05a;">quote</span><span style="color: Olive;">(</span><span style="color: #a11;">"https://www.example.com/"</span><span style="color: Olive;">)</span>  <span style="color: #a50"># エンコード</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>encode_url<span style="color: Olive;">)</span><br/>
 <br/>
 unencode_url <span style="color: Gray;">=</span> <span style="color: #05a;">urllib</span>.<span style="color: #05a;">request</span>.<span style="color: #05a;">unquote</span><span style="color: Olive;">(</span>encode_url<span style="color: Olive;">)</span>    <span style="color: #a50"># デコード</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>unencode_url<span style="color: Olive;">)</span><br/>
 </div></div>
 <p>出力結果は次のとおりです：</p>
-<pre>https%3A//www.runoob.com/
-https://www.runoob.com/</pre>
+<pre>https%3A//www.example.com/
+https://www.example.com/</pre>
 <h3>ヘッダー情報のシミュレーション</h3><p>Webページをスクレイピングする際、通常は headers（Webページのヘッダー情報）をシミュレートする必要があります。この場合、urllib.request.Request クラスを使用する必要があります：</p>
 <pre>class urllib.request.Request(url, data=None, headers={}, origin_req_host=None, unverifiable=False, method=None)
 </pre>
@@ -458,7 +458,7 @@ https://www.runoob.com/</pre>
 <span style="color: Green;font-weight:bold;">import</span> <span style="color: #05a;">urllib</span>.<span style="color: #05a;">request</span><br/>
 <span style="color: Green;font-weight:bold;">import</span> <span style="color: #05a;">urllib</span>.<span style="color: #05a;">parse</span><br/>
 <br/>
-url <span style="color: Gray;">=</span> <span style="color: #a11;">'https://www.runoob.com/?s='</span>  <span style="color: #a50"># 菜鸟教程 検索ページ</span><br/>
+url <span style="color: Gray;">=</span> <span style="color: #a11;">'https://www.example.com/?s='</span>  <span style="color: #a50"># サンプル 検索ページ</span><br/>
 <span style="color: #05a;">keyword</span> <span style="color: Gray;">=</span> <span style="color: #a11;">'Python チュートリアル'</span> <br/>
 key_code <span style="color: Gray;">=</span> <span style="color: #05a;">urllib</span>.<span style="color: #05a;">request</span>.<span style="color: #05a;">quote</span><span style="color: Olive;">(</span><span style="color: #05a;">keyword</span><span style="color: Olive;">)</span>  <span style="color: #a50"># リクエストをエンコードする</span><br/>
 url_all <span style="color: Gray;">=</span> url+key_code<br/>
@@ -468,10 +468,10 @@ header <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><
 request <span style="color: Gray;">=</span> <span style="color: #05a;">urllib</span>.<span style="color: #05a;">request</span>.<span style="color: #05a;">Request</span><span style="color: Olive;">(</span>url_all<span style="color: Gray;">,</span>headers<span style="color: Gray;">=</span>header<span style="color: Olive;">)</span><br/>
 reponse <span style="color: Gray;">=</span> <span style="color: #05a;">urllib</span>.<span style="color: #05a;">request</span>.<span style="color: #05a;">urlopen</span><span style="color: Olive;">(</span>request<span style="color: Olive;">)</span>.<span style="color: #05a;">read</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
-fh <span style="color: Gray;">=</span> <span style="color: Teal;">open</span><span style="color: Olive;">(</span><span style="color: #a11;">"./urllib_test_runoob_search.html"</span><span style="color: Gray;">,</span><span style="color: #a11;">"wb"</span><span style="color: Olive;">)</span>    <span style="color: #a50"># ファイルを現在のディレクトリに書き込む</span><br/>
+fh <span style="color: Gray;">=</span> <span style="color: Teal;">open</span><span style="color: Olive;">(</span><span style="color: #a11;">"./urllib_test_サンプル_search.html"</span><span style="color: Gray;">,</span><span style="color: #a11;">"wb"</span><span style="color: Olive;">)</span>    <span style="color: #a50"># ファイルを現在のディレクトリに書き込む</span><br/>
 fh.<span style="color: #05a;">write</span><span style="color: Olive;">(</span>reponse<span style="color: Olive;">)</span><br/>
 fh.<span style="color: #05a;">close</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
-</div></div><p>上記の Python コードを実行すると、現在のディレクトリに urllib_test_runoob_search.html ファイルが生成されます。urllib_test_runoob_search.html ファイルを開くと（ブラウザで開くことができます）、内容は次のとおりです：</p>
+</div></div><p>上記の Python コードを実行すると、現在のディレクトリに urllib_test_サンプル_search.html ファイルが生成されます。urllib_test_サンプル_search.html ファイルを開くと（ブラウザで開くことができます）、内容は次のとおりです：</p>
 <p><img decoding="async" src="../wp-content/uploads/2021/04/6BD0D456-E929-4C11-9118-F09C85AEA427.jpg"/></p>
 <p>フォームの POST データ転送では、まずフォームを作成します。コードは次のとおりです。ここでは PHP コードを使用してフォームのデータを取得しています：</p>
 <div class="example"><h2 class="example">実例 - py3_urllib_test.php ファイルコード：</h2> <div class="example_code">
@@ -479,7 +479,7 @@ fh.<span style="color: #05a;">close</span><span style="color: Olive;">(</span><s
 <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">html</span>&gt;</span><br/>
 <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">head</span>&gt;</span><br/>
 <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">meta</span> <span style="color: #00c;">charset</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"utf-8"</span>&gt;</span><br/>
-<span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">title</span>&gt;</span>菜鸟教程(runoob.com) urllib POST テスト<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">title</span>&gt;</span><br/>
+<span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">title</span>&gt;</span>サンプル(example.com) urllib POST テスト<span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">title</span>&gt;</span><br/>
 <span style="color: #170;">&lt;<span style="color: #66CC66;">/</span><span style="color: #170; font-weight: bold;">head</span>&gt;</span><br/>
 <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">body</span>&gt;</span><br/>
 <span style="color: #170;">&lt;<span style="color: #170; font-weight: bold;">form</span> <span style="color: #00c;">action</span><span style="color: #66CC66;">=</span><span style="color: #a11;">""</span> <span style="color: #00c;">method</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"post"</span> <span style="color: #00c;">name</span><span style="color: #66CC66;">=</span><span style="color: #a11;">"myForm"</span>&gt;</span><br/>
@@ -501,8 +501,8 @@ fh.<span style="color: #05a;">close</span><span style="color: Olive;">(</span><s
 <span style="color: Green;font-weight:bold;">import</span> <span style="color: #05a;">urllib</span>.<span style="color: #05a;">request</span><br/>
 <span style="color: Green;font-weight:bold;">import</span> <span style="color: #05a;">urllib</span>.<span style="color: #05a;">parse</span><br/>
 <br/>
-url <span style="color: Gray;">=</span> <span style="color: #a11;">'https://www.runoob.com/try/py3/py3_urllib_test.php'</span>  <span style="color: #a50"># フォームページに送信</span><br/>
-data <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: #a11;">'name'</span>:<span style="color: #a11;">'RUNOOB'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'tag'</span> : <span style="color: #a11;">'菜鸟教程'</span><span style="color: Olive;">}</span>   <span style="color: #a50"># データを送信</span><br/>
+url <span style="color: Gray;">=</span> <span style="color: #a11;">'https://www.example.com/try/py3/py3_urllib_test.php'</span>  <span style="color: #a50"># フォームページに送信</span><br/>
+data <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: #a11;">'name'</span>:<span style="color: #a11;">'サンプル'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'tag'</span> : <span style="color: #a11;">'サンプル'</span><span style="color: Olive;">}</span>   <span style="color: #a50"># データを送信</span><br/>
 header <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><br/>
     <span style="color: #a11;">'User-Agent'</span>:<span style="color: #a11;">'Mozilla/5.0 (X11; Fedora; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'</span><br/>
 <span style="color: Olive;">}</span>   <span style="color: #a50">#ヘッダー情報</span><br/>
@@ -510,12 +510,12 @@ data <span style="color: Gray;">=</span> <span style="color: #05a;">urllib</span
 request<span style="color: Gray;">=</span><span style="color: #05a;">urllib</span>.<span style="color: #05a;">request</span>.<span style="color: #05a;">Request</span><span style="color: Olive;">(</span>url<span style="color: Gray;">,</span> data<span style="color: Gray;">,</span> header<span style="color: Olive;">)</span>   <span style="color: #a50"># リクエスト処理</span><br/>
 reponse<span style="color: Gray;">=</span><span style="color: #05a;">urllib</span>.<span style="color: #05a;">request</span>.<span style="color: #05a;">urlopen</span><span style="color: Olive;">(</span>request<span style="color: Olive;">)</span>.<span style="color: #05a;">read</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span>      <span style="color: #a50"># 結果を読み取る</span><br/>
 <br/>
-fh <span style="color: Gray;">=</span> <span style="color: Teal;">open</span><span style="color: Olive;">(</span><span style="color: #a11;">"./urllib_test_post_runoob.html"</span><span style="color: Gray;">,</span><span style="color: #a11;">"wb"</span><span style="color: Olive;">)</span>    <span style="color: #a50"># ファイルを現在のディレクトリに書き込む</span><br/>
+fh <span style="color: Gray;">=</span> <span style="color: Teal;">open</span><span style="color: Olive;">(</span><span style="color: #a11;">"./urllib_test_post_サンプル.html"</span><span style="color: Gray;">,</span><span style="color: #a11;">"wb"</span><span style="color: Olive;">)</span>    <span style="color: #a50"># ファイルを現在のディレクトリに書き込む</span><br/>
 fh.<span style="color: #05a;">write</span><span style="color: Olive;">(</span>reponse<span style="color: Olive;">)</span><br/>
 fh.<span style="color: #05a;">close</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 </div></div>
-<p>上記のコードを実行すると、フォームデータが py3_urllib_test.php ファイルに送信され、出力結果が urllib_test_post_runoob.html ファイルに書き込まれます。</p>
-<p>urllib_test_post_runoob.html ファイルを開くと（ブラウザで開くことができます）、表示結果は次のとおりです：</p>
+<p>上記のコードを実行すると、フォームデータが py3_urllib_test.php ファイルに送信され、出力結果が urllib_test_post_サンプル.html ファイルに書き込まれます。</p>
+<p>urllib_test_post_サンプル.html ファイルを開くと（ブラウザで開くことができます）、表示結果は次のとおりです：</p>
 <p><img decoding="async" src="../wp-content/uploads/2021/04/CFE5A0A5-6E9C-4CBF-B866-0C559F239DF8.jpg"/></p>
 <hr/>
 <h2>urllib.error</h2>
@@ -527,11 +527,11 @@ fh.<span style="color: #05a;">close</span><span style="color: Olive;">(</span><s
 <span style="color: Green;font-weight:bold;">import</span> <span style="color: #05a;">urllib</span>.<span style="color: #05a;">request</span><br/>
 <span style="color: Green;font-weight:bold;">import</span> <span style="color: #05a;">urllib</span>.<span style="color: #05a;">error</span><br/>
 <br/>
-myURL1 <span style="color: Gray;">=</span> <span style="color: #05a;">urllib</span>.<span style="color: #05a;">request</span>.<span style="color: #05a;">urlopen</span><span style="color: Olive;">(</span><span style="color: #a11;">"https://www.runoob.com/"</span><span style="color: Olive;">)</span><br/>
+myURL1 <span style="color: Gray;">=</span> <span style="color: #05a;">urllib</span>.<span style="color: #05a;">request</span>.<span style="color: #05a;">urlopen</span><span style="color: Olive;">(</span><span style="color: #a11;">"https://www.example.com/"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>myURL1.<span style="color: #05a;">getcode</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span>   <span style="color: #a50"># 200</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">try</span>:<br/>
-    myURL2 <span style="color: Gray;">=</span> <span style="color: #05a;">urllib</span>.<span style="color: #05a;">request</span>.<span style="color: #05a;">urlopen</span><span style="color: Olive;">(</span><span style="color: #a11;">"https://www.runoob.com/no.html"</span><span style="color: Olive;">)</span><br/>
+    myURL2 <span style="color: Gray;">=</span> <span style="color: #05a;">urllib</span>.<span style="color: #05a;">request</span>.<span style="color: #05a;">urlopen</span><span style="color: Olive;">(</span><span style="color: #a11;">"https://www.example.com/no.html"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">except</span> <span style="color: #05a;">urllib</span>.<span style="color: #05a;">error</span>.<span style="color: #05a;">HTTPError</span> <span style="color: Green;font-weight:bold;">as</span> e:<br/>
     <span style="color: Green;font-weight:bold;">if</span> e.<span style="color: #05a;">code</span> <span style="color: Gray;">==</span> <span style="color: Maroon;">404</span>:<br/>
         <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: Maroon;">404</span><span style="color: Olive;">)</span>   <span style="color: #a50"># 404</span><br/>
@@ -544,17 +544,17 @@ myURL1 <span style="color: Gray;">=</span> <span style="color: #05a;">urllib</sp
 <div class="example"><h2 class="example">実例</h2> <div class="example_code">
 <span style="color: Green;font-weight:bold;">from</span> <span style="color: #05a;">urllib</span>.<span style="color: #05a;">parse</span> <span style="color: Green;font-weight:bold;">import</span> <span style="color: #05a;">urlparse</span><br/>
 <br/>
-o <span style="color: Gray;">=</span> <span style="color: #05a;">urlparse</span><span style="color: Olive;">(</span><span style="color: #a11;">"https://www.runoob.com/?s=python+%E6%95%99%E7%A8%8B"</span><span style="color: Olive;">)</span><br/>
+o <span style="color: Gray;">=</span> <span style="color: #05a;">urlparse</span><span style="color: Olive;">(</span><span style="color: #a11;">"https://www.example.com/?s=python+%E6%95%99%E7%A8%8B"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>o<span style="color: Olive;">)</span><br/>
 </div></div>
 <p>上記の実例の出力結果は次のとおりです：</p>
-<pre>ParseResult(scheme='https', netloc='www.runoob.com', path='/', params='', query='s=python+%E6%95%99%E7%A8%8B', fragment='')</pre>
+<pre>ParseResult(scheme='https', netloc='www.example.com', path='/', params='', query='s=python+%E6%95%99%E7%A8%8B', fragment='')</pre>
 <p>結果からわかるように、内容はタプルであり、プロトコル、ネットワーク位置、パス、パラメータ、クエリ、フラグメントの6つの文字列が含まれています。</p>
 <p>プロトコルの内容を直接読み取ることができます：</p>
 <div class="example"><h2 class="example">実例</h2> <div class="example_code">
 <span style="color: Green;font-weight:bold;">from</span> <span style="color: #05a;">urllib</span>.<span style="color: #05a;">parse</span> <span style="color: Green;font-weight:bold;">import</span> <span style="color: #05a;">urlparse</span><br/>
 <br/>
-o <span style="color: Gray;">=</span> <span style="color: #05a;">urlparse</span><span style="color: Olive;">(</span><span style="color: #a11;">"https://www.runoob.com/?s=python+%E6%95%99%E7%A8%8B"</span><span style="color: Olive;">)</span><br/>
+o <span style="color: Gray;">=</span> <span style="color: #05a;">urlparse</span><span style="color: Olive;">(</span><span style="color: #a11;">"https://www.example.com/?s=python+%E6%95%99%E7%A8%8B"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>o.<span style="color: #05a;">scheme</span><span style="color: Olive;">)</span><br/>
 </div></div>
 <p>上記の実例の出力結果は次のとおりです：</p>

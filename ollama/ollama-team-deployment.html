@@ -388,13 +388,13 @@ sudo htpasswd -c /etc/nginx/.htpasswd zhangsan
 <p>手順は4ステップ：ollama.com のアカウントを登録する；公式サイトの設定ページでローカルマシンの公開鍵（~/.ollama/id_ed25519.pub）をバインドする；モデルをユーザー名付きの名前にコピーする；プッシュする。</p>
 <pre>
 # 复制成带命名空间的名字，用 tag 标版本
-ollama cp runoob-helper myteam/runoob-helper:v1
+ollama cp サンプル-helper myteam/サンプル-helper:v1
 
 # 推送到 ollama.com
-ollama push myteam/runoob-helper:v1
+ollama push myteam/サンプル-helper:v1
 
 # 成员拉取使用（私有模型需登录授权账号）
-ollama run myteam/runoob-helper:v1</pre>
+ollama run myteam/サンプル-helper:v1</pre>
 </div>
 <p>バージョン管理は tag で表現する：v1、v2 はそれぞれ独立しており、ロールバックは古い tag に戻すだけである。</p>
 <p>完全オフラインのイントラネット代替案も存在する：カスタマイズした Modelfile と重みファイルを内部コードリポジトリまたはファイルサービスに置き、メンバーがローカルで create してビルドする。Ollama 公式は現在、自前のプライベートリポジトリのサーバーを提供しておらず、ネットワークを跨ぐ配布は主にこの2つの形態である。</p>

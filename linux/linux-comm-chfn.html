@@ -199,9 +199,9 @@ chfn [选项] [用户名]
 # 交互式修改当前用户信息
 $ chfn
 Password:
-Changing the user information for runoob
+Changing the user information for サンプル
 Enter the new value, or press ENTER for the default
-        Full Name: runoob
+        Full Name: サンプル
         Room Number []: A-301
         Work Phone []: 010-12345678
         Home Phone []: 010-87654321</pre>
@@ -211,36 +211,36 @@ Enter the new value, or press ENTER for the default
 <p>スクリプトや一括操作では、オプションを使って対話形式のプロンプトをスキップし、新しい値を直接指定できます：</p>
 <pre>
 # 一次性设置用户全名和办公室号码
-$ chfn -f "Li Si" -r "B-202" runoob</pre>
-<p>実行後、ユーザー<code>runoob</code>のフルネームは "Li Si" に設定され、オフィス番号は "B-202" に設定されます。</p>
+$ chfn -f "Li Si" -r "B-202" サンプル</pre>
+<p>実行後、ユーザー<code>サンプル</code>のフルネームは "Li Si" に設定され、オフィス番号は "B-202" に設定されます。</p>
 <h3>変更後の情報を確認</h3>
 <p>変更が完了したら、<code>finger</code>コマンドで更新された情報を確認できます：</p>
 <pre>
 # 使用 finger 查看用户信息
-$ finger runoob
-Login: runoob                    Name: Li Si
-Directory: /home/runoob          Shell: /bin/bash
+$ finger サンプル
+Login: サンプル                    Name: Li Si
+Directory: /home/サンプル          Shell: /bin/bash
 Office: B-202, 010-12345678      Home Phone: 010-87654321
 Last login Tue May 19 10:30 (CST) on pts/0
 No mail.
 No Plan.</pre>
-<blockquote><p>システムにインストールされていない場合は、<code>finger</code>、使用できます<code>getent passwd runoob</code>直接確認する<code>/etc/passwd</code>内の GECOS フィールド。</p></blockquote>
+<blockquote><p>システムにインストールされていない場合は、<code>finger</code>、使用できます<code>getent passwd サンプル</code>直接確認する<code>/etc/passwd</code>内の GECOS フィールド。</p></blockquote>
 <h3>/etc/passwd を直接読んで確認</h3>
 <p>GECOS フィールド内の各部分はカンマで区切られ、形式は次のとおりです：<code>氏名、オフィス、勤務先電話、自宅電話、その他</code>。</p>
 <pre>
-# 查看 /etc/passwd 中 runoob 用户的 GECOS 字段
-$ grep runoob /etc/passwd
-runoob:x:1001:1001:Li Si,B-202,010-12345678,010-87654321:/home/runoob:/bin/bash</pre>
+# 查看 /etc/passwd 中 サンプル 用户的 GECOS 字段
+$ grep サンプル /etc/passwd
+サンプル:x:1001:1001:Li Si,B-202,010-12345678,010-87654321:/home/サンプル:/bin/bash</pre>
 <p>GECOS フィールド（5番目のコロン区切りの内容）に、先ほど設定したすべての情報が完全に記録されていることがわかります。</p>
 <h3>特定の項目だけを変更</h3>
 <p>他の情報は変更せずに、特定の項目だけを変更できます：</p>
 <pre>
 # 只修改全名，其他信息保持不变
-$ chfn -f "Wang Wu" runoob
+$ chfn -f "Wang Wu" サンプル
 
 # 验证修改结果
-$ finger runoob | grep Name
-Login: runoob                    Name: Wang Wu</pre>
+$ finger サンプル | grep Name
+Login: サンプル                    Name: Wang Wu</pre>
 <hr/>
 <h2>chfn 設定ファイル</h2>
 <p><code>chfn</code>の動作は、<code>/etc/login.defs</code>内の設定によって制御されます：</p>

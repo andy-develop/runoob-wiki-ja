@@ -229,11 +229,11 @@ app <span style="color: Gray;">=</span> Flask<span style="color: Olive;">(</span
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>current_app.<span style="color: #05a;">name</span><span style="color: Olive;">)</span>  <span style="color: #a50"># ✓ 正常</span><br/>
     <span style="color: #a50"># print(request.method)  # ✗ エラー：Working outside of request context</span><br/>
 <br/>
-<span style="color: Green;font-weight:bold;">with</span> app.<span style="color: #05a;">test_request_context</span><span style="color: Olive;">(</span><span style="color: #a11;">"/hello?name=runoob"</span><span style="color: Olive;">)</span>:<br/>
+<span style="color: Green;font-weight:bold;">with</span> app.<span style="color: #05a;">test_request_context</span><span style="color: Olive;">(</span><span style="color: #a11;">"/hello?name=サンプル"</span><span style="color: Olive;">)</span>:<br/>
     <span style="color: #a50"># リクエストコンテキストにはアプリケーションコンテキストも含まれる——両方利用可能</span><br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>current_app.<span style="color: #05a;">name</span><span style="color: Olive;">)</span>     <span style="color: #a50"># ✓ アプリ名を出力</span><br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>request.<span style="color: #05a;">path</span><span style="color: Olive;">)</span>         <span style="color: #a50"># ✓ /hello を出力</span><br/>
-    <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>request.<span style="color: #05a;">args</span><span style="color: Olive;">[</span><span style="color: #a11;">"name"</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span> <span style="color: #a50"># ✓ runoob を出力</span><br/>
+    <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>request.<span style="color: #05a;">args</span><span style="color: Olive;">[</span><span style="color: #a11;">"name"</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span> <span style="color: #a50"># ✓ サンプル を出力</span><br/>
 </div>
 </div>
 <table class="reference">
@@ -296,7 +296,7 @@ app.<span style="color: #05a;">secret_key</span> <span style="color: Gray;">=</s
 <br/>
 <span style="color: Gray;">@</span>app.<span style="color: #05a;">route</span><span style="color: Olive;">(</span><span style="color: #a11;">"/dashboard"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">def</span> dashboard<span style="color: Olive;">(</span><span style="color: Olive;">)</span>:<br/>
-    <span style="color: Green;font-weight:bold;">return</span> f<span style="color: #a11;">"ようこそ {session['username']}、RUNOOB コンソールへ"</span><br/>
+    <span style="color: Green;font-weight:bold;">return</span> f<span style="color: #a11;">"ようこそ {session['username']}、サンプル コンソールへ"</span><br/>
 </div>
 </div>
 <h3>第4段階：dispatch_request（ルーティング）</h3>

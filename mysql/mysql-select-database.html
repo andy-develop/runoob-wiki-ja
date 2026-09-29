@@ -309,22 +309,22 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <ul>
 <li><strong>database_name</strong>は、選択するデータベースの名前です。</li></ul>
 <p>データベースを選択すると、その後の SQL クエリと操作は指定されたデータベース上で<strong>database_name</strong>実行されます。</p>
-<h3>例</h3><p>次の例では、データベース RUNOOB を選択しています。</p>
+<h3>例</h3><p>次の例では、データベース サンプル を選択しています。</p>
 <pre>
 [root@host]# mysql -u root -p
 Enter password:******
-mysql&gt; use RUNOOB;
+mysql&gt; use サンプル;
 Database changed
 mysql&gt;
 </pre>
-<p>上記のコマンドを実行すると、RUNOOB データベースの選択が成功し、以降の操作はすべて RUNOOB データベース内で実行されます。</p>
+<p>上記のコマンドを実行すると、サンプル データベースの選択が成功し、以降の操作はすべて サンプル データベース内で実行されます。</p>
 <p>コマンドラインでは、次の方法でデータベースを選択できます。</p>
 <pre>
 mysql -u your_username -p -D your_database</pre>
 <ul>
 <li><span class="marked">-D</span>パラメータは、選択するデータベースを指定するために使用されます。</li></ul>
 <p>例：</p>
-<pre>mysql -u root -p -D RUNOOB</pre><p>パスワードを入力すると、MySQL プロンプトに入り、その後のクエリと操作はすべて RUNOOB データベース上で実行されます。</p>
+<pre>mysql -u root -p -D サンプル</pre><p>パスワードを入力すると、MySQL プロンプトに入り、その後のクエリと操作はすべて サンプル データベース上で実行されます。</p>
 <blockquote><p>選択したデータベースが存在することを確認してください。存在しない場合はエラーメッセージが表示されます。次のコマンドを使用して、<span class="marked">SHOW DATABASES;</span>利用可能なデータベースをクエリし、選択したいデータベースがリストにあることを確認できます。</p></blockquote>
 <hr/>
 <h2>PHP スクリプトを使用して MySQL データベースを選択する</h2>
@@ -362,7 +362,7 @@ mysqli_select_db(connection,dbname);
 </span><span class="hl-reserved">die</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">接続失敗：</span><span class="hl-quotes">'</span><span class="hl-code"> . </span><span class="hl-identifier">mysqli_error</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-brackets">}</span><span class="hl-code">
 </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">接続成功</span><span class="hl-quotes">'</span><span class="hl-code">;
-</span><span class="hl-identifier">mysqli_select_db</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">RUNOOB</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">mysqli_select_db</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">サンプル</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-identifier">mysqli_close</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-inlinetags">?&gt;</span></div>
 </div></div> その他の拡張

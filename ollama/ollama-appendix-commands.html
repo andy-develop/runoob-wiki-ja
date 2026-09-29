@@ -323,10 +323,10 @@ curl http:<span style="color: #000000; font-weight: bold;">//</span>localhost:<s
 <tr><td>ollama show &lt;model&gt;</td><td>モデルの詳細を表示：パラメータ、テンプレート、システムプロンプトなど</td><td>ollama show qwen3.5</td></tr>
 <tr><td>ollama ps</td><td>メモリにロードされているモデルと残りの有効時間を表示します。</td><td>ollama ps</td></tr>
 <tr><td>ollama stop &lt;model&gt;</td><td>実行中のモデルをすぐに停止してアンロードします。</td><td>ollama stop qwen3.5</td></tr>
-<tr><td>ollama cp &lt;src&gt; &lt;dst&gt;</td><td>モデルをコピーまたは名前変更します。</td><td>ollama cp qwen3.5 runoob-clone</td></tr>
+<tr><td>ollama cp &lt;src&gt; &lt;dst&gt;</td><td>モデルをコピーまたは名前変更します。</td><td>ollama cp qwen3.5 サンプル-clone</td></tr>
 <tr><td>ollama rm &lt;model&gt;</td><td>ローカルモデルを削除し、ディスク領域を解放します。</td><td>ollama rm qwen3.5:0.8b</td></tr>
-<tr><td>ollama create &lt;name&gt; -f &lt;file&gt;</td><td>Modelfile に基づいてカスタムモデルを作成します。</td><td>ollama create runoob-coder -f Modelfile</td></tr>
-<tr><td>ollama push &lt;model&gt;</td><td>モデルをリモートのモデルライブラリにプッシュします。事前にログインが必要です。</td><td>ollama push myteam/runoob-coder</td></tr>
+<tr><td>ollama create &lt;name&gt; -f &lt;file&gt;</td><td>Modelfile に基づいてカスタムモデルを作成します。</td><td>ollama create サンプル-coder -f Modelfile</td></tr>
+<tr><td>ollama push &lt;model&gt;</td><td>モデルをリモートのモデルライブラリにプッシュします。事前にログインが必要です。</td><td>ollama push myteam/サンプル-coder</td></tr>
 <tr><td>ollama serve</td><td>バックグラウンドサービスを起動します。通常はシステムとともに自動実行されます。</td><td>ollama serve</td></tr>
 </tbody>
 </table>
@@ -338,7 +338,7 @@ curl http:<span style="color: #000000; font-weight: bold;">//</span>localhost:<s
 ollama pull qwen3.5:0.8b<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># コピーして自分の名前に変更</span><br/>
-ollama <span style="color: #C20CB9; font-weight: bold;">cp</span> qwen3.5 runoob-clone<br/>
+ollama <span style="color: #C20CB9; font-weight: bold;">cp</span> qwen3.5 サンプル-clone<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># コピーが成功したことを確認したら、不要になったサイズを削除</span><br/>
 ollama <span style="color: #C20CB9; font-weight: bold;">rm</span> qwen3.5:0.8b<br/>
@@ -357,7 +357,7 @@ ollama <span style="color: #C20CB9; font-weight: bold;">rm</span> qwen3.5:0.8b<b
 ollama run qwen3.5<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># 単発 Q&amp;A：プロンプトをモデル名の後に続けて指定し、回答後に自動終了します。</span><br/>
-ollama run qwen3.5 <span style="color: #a10;">"runoob 菜鸟教程 を一言で紹介してください"</span><br/>
+ollama run qwen3.5 <span style="color: #a10;">"サンプル サンプル を一言で紹介してください"</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># token 統計を表示：総所要時間、1秒あたりの token 数などのパフォーマンス指標</span><br/>
 ollama run qwen3.5 <span style="color: #660033;">--verbose</span><br/>
@@ -412,10 +412,10 @@ PARAMETER num_ctx <span style="color: #000000;">8192</span><br/>
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># Modelfile を使用して新しいモデルを構築</span><br/>
-ollama create runoob-coder <span style="color: #660033;">-f</span> Modelfile<br/>
+ollama create サンプル-coder <span style="color: #660033;">-f</span> Modelfile<br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># 通常のモデルと同じように実行</span><br/>
-ollama run runoob-coder <span style="color: #a10;">"クイックソートをテスト付きで書いてください"</span><br/>
+ollama run サンプル-coder <span style="color: #a10;">"クイックソートをテスト付きで書いてください"</span><br/>
 </div>
 </div>
 <p>ローカルの GGUF ウェイトをインポートするには、FROM にファイルパスを指定するだけです。オープンソースコミュニティからダウンロードしたモデルファイルを実行する際によく使われます。</p>
@@ -501,14 +501,14 @@ client <span style="color: Gray;">=</span> OpenAI<span style="color: Olive;">(</
 <br/>
 resp <span style="color: Gray;">=</span> client.<span style="color: #05a;">chat</span>.<span style="color: #05a;">completions</span>.<span style="color: #05a;">create</span><span style="color: Olive;">(</span><br/>
     model<span style="color: Gray;">=</span><span style="color: #a11;">"qwen3.5"</span><span style="color: Gray;">,</span>  <span style="color: #a50"># ローカルにダウンロード済みのモデル名</span><br/>
-    messages<span style="color: Gray;">=</span><span style="color: Olive;">[</span><span style="color: Olive;">{</span><span style="color: #a11;">"role"</span>: <span style="color: #a11;">"user"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"content"</span>: <span style="color: #a11;">"こんにちは、runoobについて紹介してください"</span><span style="color: Olive;">}</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
+    messages<span style="color: Gray;">=</span><span style="color: Olive;">[</span><span style="color: Olive;">{</span><span style="color: #a11;">"role"</span>: <span style="color: #a11;">"user"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"content"</span>: <span style="color: #a11;">"こんにちは、サンプルについて紹介してください"</span><span style="color: Olive;">}</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>resp.<span style="color: #05a;">choices</span><span style="color: Olive;">[</span><span style="color: Maroon;">0</span><span style="color: Olive;">]</span>.<span style="color: #05a;">message</span>.<span style="color: #05a;">content</span><span style="color: Olive;">)</span><br/>
 </div>
 </div>
 <pre>
 $ python3 openai_compat.py
-你好！runoob（菜鸟教程）是一个面向初学者的编程学习网站，提供大量免费的基础技术教程。
+你好！サンプル（サンプル）是一个面向初学者的编程学习网站，提供大量免费的基础技术教程。
 </pre>
 <hr/>
 <h2>環境変数クイックリファレンス</h2>

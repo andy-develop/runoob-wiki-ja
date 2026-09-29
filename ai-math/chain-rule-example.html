@@ -236,8 +236,8 @@ du_dx <span style="color: Gray;">=</span> g_prime<span style="color: Olive;">(</
 manual_grad <span style="color: Gray;">=</span> dy_du * du_dx<br/>
 <br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"="</span> * <span style="color: Maroon;">55</span><span style="color: Olive;">)</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"RUNOOB 手动链式法则"  
-→ "RUNOOB 手動による連鎖律"</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"サンプル 手动链式法则"  
+→ "サンプル 手動による連鎖律"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"x0 = {x0}, u = g(x0) = {u0:.4f}"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"dy/du = 3*cos(u) = {dy_du:.4f}"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"du/dx = 2*x0     = {du_dx:.4f}"</span><span style="color: Olive;">)</span><br/>
@@ -249,8 +249,8 @@ manual_grad <span style="color: Gray;">=</span> dy_du * du_dx<br/>
 x <span style="color: Gray;">=</span> sp.<span style="color: #05a;">Symbol</span><span style="color: Olive;">(</span><span style="color: #a11;">'x'</span><span style="color: Olive;">)</span><br/>
 y_expr <span style="color: Gray;">=</span> <span style="color: Maroon;">3</span> * sp.<span style="color: #05a;">sin</span><span style="color: Olive;">(</span>x**<span style="color: Maroon;">2</span> + <span style="color: Maroon;">1</span><span style="color: Olive;">)</span><br/>
 auto_grad <span style="color: Gray;">=</span> <span style="color: Teal;">float</span><span style="color: Olive;">(</span>sp.<span style="color: #05a;">diff</span><span style="color: Olive;">(</span>y_expr<span style="color: Gray;">,</span> x<span style="color: Olive;">)</span>.<span style="color: #05a;">subs</span><span style="color: Olive;">(</span>x<span style="color: Gray;">,</span> x0<span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>RUNOOB sympy 自动求导 = {auto_grad:.4f}"  
-→ RUNOOB sympy 自動微分 = {auto_grad:.4f}"</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>サンプル sympy 自动求导 = {auto_grad:.4f}"  
+→ サンプル sympy 自動微分 = {auto_grad:.4f}"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"两种方法一致: {np.isclose(manual_grad, auto_grad)}"  
 → "2つの方法は一致: {np.isclose(manual_grad, auto_grad)}"</span><span style="color: Olive;">)</span><br/>
 <br/>
@@ -262,24 +262,24 @@ v0 <span style="color: Gray;">=</span> f<span style="color: Olive;">(</span>u0<s
 dy_dv <span style="color: Gray;">=</span> h_prime<span style="color: Olive;">(</span>v0<span style="color: Olive;">)</span><br/>
 grad_3layer <span style="color: Gray;">=</span> dy_dv * dy_du * du_dx<br/>
 <br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>RUNOOB 三层梯度传递："  
-→ RUNOOB 3層勾配の伝達："</span><span style="color: Olive;">)</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>サンプル 三层梯度传递："  
+→ サンプル 3層勾配の伝達："</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"  第3层: {dy_dv:.4f} x 第2层: {dy_du:.4f} x 第1层: {du_dx:.4f} = {grad_3layer:.4f}"  
 → "  第3層: {dy_dv:.4f} x 第2層: {dy_du:.4f} x 第1層: {du_dx:.4f} = {grad_3layer:.4f}"</span><span style="color: Olive;">)</span><br/>
 </div>
 </div>
 <pre>
 =======================================================
-RUNOOB 手动链式法则
+サンプル 手动链式法则
 x0 = 1.5, u = g(x0) = 3.2500
 dy/du = 3*cos(u) = -2.9838
 du/dx = 2*x0     = 3.0000
 链式相乘: dy/dx = -8.9514
 
-RUNOOB sympy 自动求导 = -8.9514
+サンプル sympy 自动求导 = -8.9514
 两种方法一致: True
 
-RUNOOB 三层梯度传递：
+サンプル 三层梯度传递：
   第3层: 6.5000 x 第2层: -2.9838 x 第1层: 3.0000 = -58.1841
 </pre>
 <hr/>

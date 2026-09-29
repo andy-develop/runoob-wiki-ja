@@ -183,9 +183,9 @@ finger [选项] [用户@主机]
 <table class="reference">
 <tr><th>オプション</th><th>機能</th><th>例</th></tr>
 <tr><td><code>-s</code></td><td>簡潔な形式でユーザー情報を表示する</td><td><code>finger -s</code></td></tr>
-<tr><td><code>-l</code></td><td>詳細な長い形式でユーザー情報を表示する</td><td><code>finger -l runoob</code></td></tr>
-<tr><td><code>-p</code></td><td>.plan と .project ファイルの内容を表示しない</td><td><code>finger -p runoob</code></td></tr>
-<tr><td><code>-m</code></td><td>ユーザー名に対する一致検索を無効にする</td><td><code>finger -m runoob</code></td></tr>
+<tr><td><code>-l</code></td><td>詳細な長い形式でユーザー情報を表示する</td><td><code>finger -l サンプル</code></td></tr>
+<tr><td><code>-p</code></td><td>.plan と .project ファイルの内容を表示しない</td><td><code>finger -p サンプル</code></td></tr>
+<tr><td><code>-m</code></td><td>ユーザー名に対する一致検索を無効にする</td><td><code>finger -m サンプル</code></td></tr>
 </table>
 <hr/>
 <h2>詳細な使い方</h2>
@@ -196,16 +196,16 @@ finger [选项] [用户@主机]
 $ finger
 Login     Name           Tty      Idle  Login Time   Office     Office Phone
 root      root           tty1           May 19 09:00
-runoob    Zhang San      pts/0      3  May 19 10:30  A-301      010-12345678
+サンプル    Zhang San      pts/0      3  May 19 10:30  A-301      010-12345678
 </pre>
 <p>出力には、ログイン名、フルネーム、端末、アイドル時間、ログイン時間、オフィス、電話などの情報が含まれます。</p>
 <h3>指定したユーザーの詳細情報を確認する</h3>
 <p>ユーザー名を指定すると、そのユーザーの完全な情報を確認できます。</p>
 <pre>
-# 查看 runoob 用户的详细信息
-$ finger runoob
-Login: runoob                    Name: Zhang San
-Directory: /home/runoob          Shell: /bin/bash
+# 查看 サンプル 用户的详细信息
+$ finger サンプル
+Login: サンプル                    Name: Zhang San
+Directory: /home/サンプル          Shell: /bin/bash
 Office: A-301, 010-12345678      Home Phone: 010-87654321
 Last login Tue May 19 10:30 (CST) on pts/0
 Mail last read Tue May 19 09:00 2026 (CST)
@@ -217,25 +217,25 @@ No Plan.
 <p>を使用すると<code>-s</code>オプションで重要なフィールドのみを出力でき、すばやく確認するのに適しています。</p>
 <pre>
 # 以简短格式查看用户信息
-$ finger -s runoob
+$ finger -s サンプル
 Login     Name           Tty      Idle  Login Time   Office     Office Phone
-runoob    Zhang San      pts/0      3  May 19 10:30  A-301      010-12345678
+サンプル    Zhang San      pts/0      3  May 19 10:30  A-301      010-12345678
 </pre>
 <p>簡潔な形式では、ホームディレクトリ、シェル、最終ログイン時間などの詳細情報が省略され、1行の表として出力されます。</p>
 <h3>曖昧一致を無効にする</h3>
 <p>デフォルトでは、<code>finger</code>指定された文字列を含むすべてのユーザー名、フルネームなどの情報を一致させようとします。<code>-m</code>この動作を無効にして、ユーザー名のみを完全一致で検索できます。</p>
 <pre>
 # 精确匹配用户名，不搜索全名和其他字段
-$ finger -m runoob
+$ finger -m サンプル
 </pre>
 <p>システムに対象のユーザー名と似たフルネームやエイリアスが存在する場合、<code>-m</code>予期しない結果が返るのを防ぐことができます。</p>
 <h3>複数ユーザーを確認する</h3>
 <p>複数のユーザー名を同時に指定して、一度に複数のユーザー情報を確認できます。</p>
 <pre>
 # 同时查看多个用户
-$ finger runoob root
-Login: runoob                    Name: Zhang San
-Directory: /home/runoob          Shell: /bin/bash
+$ finger サンプル root
+Login: サンプル                    Name: Zhang San
+Directory: /home/サンプル          Shell: /bin/bash
 Office: A-301, 010-12345678      Home Phone: 010-87654321
 Last login Tue May 19 10:30 (CST) on pts/0
 No Plan.
@@ -249,9 +249,9 @@ No Plan.
 <p><code>finger</code>リモートホスト上のユーザーを照会できます。形式は次のとおりです：<code>ユーザー名@ホストアドレス</code>。</p>
 <pre>
 # 查看远程主机上的用户信息（需要远程主机开启 fingerd 服务）
-$ finger runoob@192.168.1.100
-Login: runoob                    Name: Zhang San
-Directory: /home/runoob          Shell: /bin/bash
+$ finger サンプル@192.168.1.100
+Login: サンプル                    Name: Zhang San
+Directory: /home/サンプル          Shell: /bin/bash
 Last login Tue May 19 08:00 (CST) on pts/1
 No Plan.
 </pre>
@@ -260,26 +260,26 @@ No Plan.
 <p>ユーザーはホームディレクトリに<code>.plan</code>と<code>.project</code>ファイルを作成して、個性的な情報を表示できます。</p>
 <pre>
 # 创建 .project 文件（单行项目说明）
-$ echo "RUNOOB Platform Development" &gt; ~/.project
+$ echo "サンプル Platform Development" &gt; ~/.project
 
 # 创建 .plan 文件（多行计划或简介）
 $ cat &gt; ~/.plan &amp;lt;&amp;lt; 'EOF'
 当前任务：
-1. 负责 RUNOOB 后端 API 开发
+1. 负责 サンプル 后端 API 开发
 2. 维护数据库迁移脚本
 3. Code Review 本周三之前完成
 EOF
 
 # 再次查看用户信息
-$ finger runoob
-Login: runoob                    Name: Zhang San
-Directory: /home/runoob          Shell: /bin/bash
+$ finger サンプル
+Login: サンプル                    Name: Zhang San
+Directory: /home/サンプル          Shell: /bin/bash
 Office: A-301, 010-12345678      Home Phone: 010-87654321
 Last login Tue May 19 10:30 (CST) on pts/0
-Project: RUNOOB Platform Development
+Project: サンプル Platform Development
 Plan:
 当前任务：
-1. 负责 RUNOOB 后端 API 开发
+1. 负责 サンプル 后端 API 开发
 2. 维护数据库迁移脚本
 3. Code Review 本周三之前完成
 </pre>

@@ -180,12 +180,12 @@ model <span style="color: Gray;">=</span> init_chat_model<span style="color: Oli
 <span style="color: #a50"># 方法1：文字列（最も簡単）</span><br/>
 agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;">(</span><br/>
     model<span style="color: Gray;">=</span>model<span style="color: Gray;">,</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">あなたは初心者向けチュートリアル RUNOOB の学習アドバイザーです。回答は簡潔かつ専門のにしてください。</span><span style="color: Gray;">,</span><br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">あなたは初心者向けチュートリアル サンプル の学習アドバイザーです。回答は簡潔かつ専門のにしてください。</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 方法2：SystemMessage オブジェクト（再利用可能）</span><br/>
 system_msg <span style="color: Gray;">=</span> SystemMessage<span style="color: Olive;">(</span><br/>
-    content<span style="color: Gray;">=</span><span style="color: #a11;">あなたは初心者向けチュートリアル RUNOOB の学習アドバイザーです。回答は簡潔かつ専門のにしてください。</span><br/>
+    content<span style="color: Gray;">=</span><span style="color: #a11;">あなたは初心者向けチュートリアル サンプル の学習アドバイザーです。回答は簡潔かつ専門のにしてください。</span><br/>
 <span style="color: Olive;">)</span><br/>
 agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;">(</span>model<span style="color: Gray;">=</span>model<span style="color: Gray;">,</span> system_prompt<span style="color: Gray;">=</span>system_msg<span style="color: Olive;">)</span><br/>
 </div>
@@ -204,7 +204,7 @@ agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;
 <br/>
 <span style="color: Gray;">@</span>tool<br/>
 <span style="color: Green;font-weight:bold;">def</span> search_course<span style="color: Olive;">(</span><span style="color: #05a;">keyword</span>: <span style="color: Teal;">str</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
-    <span style="color: #a11;">"""菜鸟教程でコースを検索"""</span><br/>
+    <span style="color: #a11;">"""サンプルでコースを検索"""</span><br/>
     courses <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><br/>
         <span style="color: #a11;">"python"</span>: <span style="color: #a11;">"Python3 基本チュートリアル（無料）"</span><span style="color: Gray;">,</span><br/>
         <span style="color: #a11;">"html"</span>: <span style="color: #a11;">"HTML 基本チュートリアル（無料）"</span><span style="color: Gray;">,</span><br/>
@@ -213,7 +213,7 @@ agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;
 <br/>
 <br/>
 <span style="color: #a50"># 適切に設計された system_prompt</span><br/>
-GOOD_PROMPT <span style="color: Gray;">=</span> <span style="color: #a11;">"""あなたは菜鸟教程 RUNOOB の学習アドバイザーです。<br/>
+GOOD_PROMPT <span style="color: Gray;">=</span> <span style="color: #a11;">"""あなたはサンプル の学習アドバイザーです。<br/>
 <br/>## あなたの職責<br/>- ユーザーが適切なプログラミングコースを見つけるのを助ける<br/>- プログラミング学習に関する質問に答える<br/>- ユーザーのレベルに応じて学習パスを推薦する<br/>
 <br/>## 行動規範<br/>- 回答は簡潔に、毎回3文以内<br/>- コース情報の検索には search_course ツールを優先的に使用する<br/>- ユーザーが初心者の場合は、入門コースを優先的に推薦する<br/>- emoji は使わない<br/>- 知らないことは「知らない」と言い、でっち上げない"""</span><br/>
 <br/>
@@ -233,7 +233,7 @@ result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invo
 <p>実行結果：</p>
 <pre>
 建议从 Python3 基础教程开始学习。Python 语法简洁，适合零基础入门。
-该课程在菜鸟教程 RUNOOB 上免费提供，内容系统全面。
+该课程在サンプル 上免费提供，内容系统全面。
 </pre>
 <hr/>
 <h2>@dynamic_prompt——プロンプトを動的に生成する</h2>
@@ -252,7 +252,7 @@ result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invo
 <br/>
 <span style="color: Gray;">@</span>tool<br/>
 <span style="color: Green;font-weight:bold;">def</span> search_course<span style="color: Olive;">(</span><span style="color: #05a;">keyword</span>: <span style="color: Teal;">str</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
-    <span style="color: #a11;">"""菜鸟教程でコースを検索"""</span><br/>
+    <span style="color: #a11;">"""サンプルでコースを検索"""</span><br/>
     courses <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><br/>
         <span style="color: #a11;">"python"</span>: <span style="color: #a11;">"Python3 基本チュートリアル（無料、20時間）"</span><span style="color: Gray;">,</span><br/>
         <span style="color: #a11;">"html"</span>: <span style="color: #a11;">"HTML 基本チュートリアル（無料、15時間）"</span><span style="color: Gray;">,</span><br/>
@@ -269,7 +269,7 @@ result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invo
     message_count <span style="color: Gray;">=</span> <span style="color: Teal;">len</span><span style="color: Olive;">(</span>messages<span style="color: Olive;">)</span><br/>
 <br/>
     <span style="color: #a50"># 異なる条件に応じてプロンプトを動的に調整できる</span><br/>
-    base_prompt <span style="color: Gray;">=</span> <span style="color: #a11;">"あなたは菜鸟教程 RUNOOB の学習アドバイザーです。"</span><br/>
+    base_prompt <span style="color: Gray;">=</span> <span style="color: #a11;">"あなたはサンプル の学習アドバイザーです。"</span><br/>
 <br/>
     <span style="color: Green;font-weight:bold;">if</span> message_count <span style="color: Gray;">&lt;=</span> <span style="color: Maroon;">2</span>:<br/>
         <span style="color: #a50"># 会話が始まったばかりのときは、丁寧にガイドする</span><br/>
@@ -307,7 +307,7 @@ result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invo
 </div>
 <p>実行結果：</p>
 <pre>
-第一轮回复: 你好！欢迎来到菜鸟教程 RUNOOB。请问您想学习什么内容？
+1回目の返答: 你好！欢迎来到サンプル。请问您想学习什么内容？
 目前的编程水平如何？我可以根据您的情况推荐合适的课程。
 </pre>
 <hr/>
@@ -336,7 +336,7 @@ result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invo
     <span style="color: #a50"># 現在のメッセージ数を取得する</span><br/>
     messages <span style="color: Gray;">=</span> request.<span style="color: #05a;">state</span>.<span style="color: #05a;">get</span><span style="color: Olive;">(</span><span style="color: #a11;">"messages"</span><span style="color: Gray;">,</span> <span style="color: Olive;">[</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
 <br/>
-    prompt <span style="color: Gray;">=</span> f<span style="color: #a11;">"""あなたは菜鸟教程 RUNOOB の学習アドバイザーです。<br/>
+    prompt <span style="color: Gray;">=</span> f<span style="color: #a11;">"""あなたはサンプル の学習アドバイザーです。<br/>
 <br/>現在時刻：{now.strftime('%Y年%m月%d日 %H:%M')}<br/>ユーザー情報：{user_name}、{user_level} レベル<br/>
 <br/>## 行動規範<br/>- ユーザーを「{user_name}」と呼ぶ<br/>- ユーザーのレベル（{user_level}）に応じて、適切な難易度のコースを推薦する<br/>- 回答は親しみやすく、ただし冗長にしない"""</span><br/>
 <br/>
@@ -369,7 +369,7 @@ result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invo
 model <span style="color: Gray;">=</span> init_chat_model<span style="color: Olive;">(</span><span style="color: #a11;">"deepseek:deepseek-v4-flash"</span><span style="color: Gray;">,</span> temperature<span style="color: Gray;">=</span><span style="color: Maroon;">0.7</span><span style="color: Olive;">)</span><br/>
 agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;">(</span><br/>
     model<span style="color: Gray;">=</span>model<span style="color: Gray;">,</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは初心者向けチュートリアル RUNOOB の専門のな学習アドバイザーです。"</span><span style="color: Gray;">,</span>  <span style="color: #a50"># 上書きされる</span><br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは初心者向けチュートリアル サンプル の専門のな学習アドバイザーです。"</span><span style="color: Gray;">,</span>  <span style="color: #a50"># 上書きされる</span><br/>
     middleware<span style="color: Gray;">=</span><span style="color: Olive;">[</span>override_prompt<span style="color: Olive;">]</span><span style="color: Gray;">,</span>  <span style="color: #a50"># 優先順位が高い</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
@@ -386,7 +386,7 @@ result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invo
 <h2>System Prompt 設計チェックリスト</h2>
 <table class="reference">
 <tr><th>要素</th><th>説明</th><th>例</th></tr>
-<tr><td>役割定義</td><td>AI の役割と職責を明確にする</td><td>あなたは菜鸟教程 RUNOOB の学習アドバイザー</td></tr>
+<tr><td>役割定義</td><td>AI の役割と職責を明確にする</td><td>あなたはサンプル の学習アドバイザー</td></tr>
 <tr><td>行動規範</td><td>返信のスタイルと境界を制約する</td><td>回答は簡潔に、毎回3文以内</td></tr>
 <tr><td>ツール使用ガイド</td><td>モデルにいつどのツールを使うかを伝える</td><td>コースを検索するときは search_course ツールを優先的に使用する</td></tr>
 <tr><td>境界の制約</td><td>何をしてはいけないかを明確にする</td><td>知らないことは「知らない」と言い、でっち上げない</td></tr>

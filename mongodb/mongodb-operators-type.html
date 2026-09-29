@@ -358,14 +358,14 @@ db.<span style="color: #660066;">myCollection</span>.<span style="color: #660066
 <span style="color: #009900;">}</span><span style="color: #009900;">)</span><br/>
 </div></div><p>$type オペレーターを使用すると、ドキュメント内の特定のフィールドのデータ型を正確にクエリでき、より細かい粒度のデータフィルタリングと管理が可能になります。</p>
 <hr/><h2>その他の例</h2>
-<p><strong>使用するデータベース名は "runoob"、コレクション名は "col" です。以下は挿入したデータです。</strong></p>
+<p><strong>使用するデータベース名は "サンプル"、コレクション名は "col" です。以下は挿入したデータです。</strong></p>
 <p>シンプルなコレクション "col"：</p>
 <pre>
 &gt;db.col.insert({
     title: 'PHP 教程', 
     description: 'PHP 是一种创建动态交互性站点的强有力的服务器端脚本语言。',
-    by: '菜鸟教程',
-    url: 'http://www.runoob.com',
+    by: 'サンプル',
+    url: 'http://www.example.com',
     tags: ['php'],
     likes: 200
 })
@@ -374,8 +374,8 @@ db.<span style="color: #660066;">myCollection</span>.<span style="color: #660066
 <pre>
 &gt;db.col.insert({title: 'Java 教程', 
     description: 'Java 是由Sun Microsystems公司于1995年5月推出的高级程序设计语言。',
-    by: '菜鸟教程',
-    url: 'http://www.runoob.com',
+    by: 'サンプル',
+    url: 'http://www.example.com',
     tags: ['java'],
     likes: 150
 })
@@ -384,8 +384,8 @@ db.<span style="color: #660066;">myCollection</span>.<span style="color: #660066
 <pre>
 &gt;db.col.insert({title: 'MongoDB 教程', 
     description: 'MongoDB 是一个 Nosql 数据库',
-    by: '菜鸟教程',
-    url: 'http://www.runoob.com',
+    by: 'サンプル',
+    url: 'http://www.example.com',
     tags: ['mongodb'],
     likes: 100
 })
@@ -393,9 +393,9 @@ db.<span style="color: #660066;">myCollection</span>.<span style="color: #660066
 <p>find() コマンドを使用してデータを確認する：</p>
 <pre>
 &gt; db.col.find()
-{ "_id" : ObjectId("56066542ade2f21f36b0313a"), "title" : "PHP 教程", "description" : "PHP 是一种创建动态交互性站点的强有力的服务器端脚本语言。", "by" : "菜鸟教程", "url" : "http://www.runoob.com", "tags" : [ "php" ], "likes" : 200 }
-{ "_id" : ObjectId("56066549ade2f21f36b0313b"), "title" : "Java 教程", "description" : "Java 是由Sun Microsystems公司于1995年5月推出的高级程序设计语言。", "by" : "菜鸟教程", "url" : "http://www.runoob.com", "tags" : [ "java" ], "likes" : 150 }
-{ "_id" : ObjectId("5606654fade2f21f36b0313c"), "title" : "MongoDB 教程", "description" : "MongoDB 是一个 Nosql 数据库", "by" : "菜鸟教程", "url" : "http://www.runoob.com", "tags" : [ "mongodb" ], "likes" : 100 }
+{ "_id" : ObjectId("56066542ade2f21f36b0313a"), "title" : "PHP 教程", "description" : "PHP 是一种创建动态交互性站点的强有力的服务器端脚本语言。", "by" : "サンプル", "url" : "http://www.example.com", "tags" : [ "php" ], "likes" : 200 }
+{ "_id" : ObjectId("56066549ade2f21f36b0313b"), "title" : "Java 教程", "description" : "Java 是由Sun Microsystems公司于1995年5月推出的高级程序设计语言。", "by" : "サンプル", "url" : "http://www.example.com", "tags" : [ "java" ], "likes" : 150 }
+{ "_id" : ObjectId("5606654fade2f21f36b0313c"), "title" : "MongoDB 教程", "description" : "MongoDB 是一个 Nosql 数据库", "by" : "サンプル", "url" : "http://www.example.com", "tags" : [ "mongodb" ], "likes" : 100 }
 </pre>
 <br/><h2 class="tutheader">MongoDB オペレーター - $type の例</h2>
 <p>"col" コレクション内の title が String であるデータを取得するには、次のコマンドを使用できます：</p>
@@ -406,9 +406,9 @@ db.col.find({"title" : {$type : 'string'}})
 </pre>
 <p>出力結果は次のとおりです：</p>
 <pre>
-{ "_id" : ObjectId("56066542ade2f21f36b0313a"), "title" : "PHP 教程", "description" : "PHP 是一种创建动态交互性站点的强有力的服务器端脚本语言。", "by" : "菜鸟教程", "url" : "http://www.runoob.com", "tags" : [ "php" ], "likes" : 200 }
-{ "_id" : ObjectId("56066549ade2f21f36b0313b"), "title" : "Java 教程", "description" : "Java 是由Sun Microsystems公司于1995年5月推出的高级程序设计语言。", "by" : "菜鸟教程", "url" : "http://www.runoob.com", "tags" : [ "java" ], "likes" : 150 }
-{ "_id" : ObjectId("5606654fade2f21f36b0313c"), "title" : "MongoDB 教程", "description" : "MongoDB 是一个 Nosql 数据库", "by" : "菜鸟教程", "url" : "http://www.runoob.com", "tags" : [ "mongodb" ], "likes" : 100 }
+{ "_id" : ObjectId("56066542ade2f21f36b0313a"), "title" : "PHP 教程", "description" : "PHP 是一种创建动态交互性站点的强有力的服务器端脚本语言。", "by" : "サンプル", "url" : "http://www.example.com", "tags" : [ "php" ], "likes" : 200 }
+{ "_id" : ObjectId("56066549ade2f21f36b0313b"), "title" : "Java 教程", "description" : "Java 是由Sun Microsystems公司于1995年5月推出的高级程序设计语言。", "by" : "サンプル", "url" : "http://www.example.com", "tags" : [ "java" ], "likes" : 150 }
+{ "_id" : ObjectId("5606654fade2f21f36b0313c"), "title" : "MongoDB 教程", "description" : "MongoDB 是一个 Nosql 数据库", "by" : "サンプル", "url" : "http://www.example.com", "tags" : [ "mongodb" ], "likes" : 100 }
 </pre> その他の拡張
 </div>
 </div>

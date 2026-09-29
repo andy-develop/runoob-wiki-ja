@@ -360,16 +360,16 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p><strong>with</strong>ステートメントはコードをより明確で読みやすくし、ファイルストリームなどの共通リソースの管理を簡素化します。</p>
 <p>ファイルオブジェクトを処理する際に with キーワードを使用するのは良い習慣です。</p>以下のいくつかのコード例を見てみましょう：<p>使用しない<strong>with</strong>、また使用しない<strong>try…except…finally</strong></p>
 <div class="example"><h2 class="example">実例</h2> <div class="example_code">
-<span style="color: Teal;">file</span> <span style="color: Gray;">=</span> <span style="color: Teal;">open</span><span style="color: Olive;">(</span><span style="color: #a11;">'./test_runoob.txt'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'w'</span><span style="color: Olive;">)</span><br/>
+<span style="color: Teal;">file</span> <span style="color: Gray;">=</span> <span style="color: Teal;">open</span><span style="color: Olive;">(</span><span style="color: #a11;">'./test_サンプル.txt'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'w'</span><span style="color: Olive;">)</span><br/>
 <span style="color: Teal;">file</span>.<span style="color: #05a;">write</span><span style="color: Olive;">(</span><span style="color: #a11;">'hello world !'</span><span style="color: Olive;">)</span><br/>
 <span style="color: Teal;">file</span>.<span style="color: #05a;">close</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 </div></div>
 <p>上記のコードでは、write の呼び出し中に例外が発生した場合、close メソッドが実行されず、リソースがプログラムに占有されたまま解放されないことになります。</p>
 <blockquote>
-<p>Python with キーワードの詳細については、以下を参照してください：<a href="../python3/python3-with-keyword.html" target="_blank">https://www.runoob.com/python3/python3-with-keyword.html</a></p></blockquote>
+<p>Python with キーワードの詳細については、以下を参照してください：<a href="../python3/python3-with-keyword.html" target="_blank">https://www.example.com/python3/python3-with-keyword.html</a></p></blockquote>
 <p>次に、私たちは使用できます<strong>try…except…finally</strong>コードを改善します：</p>
 <div class="example"><h2 class="example">実例</h2> <div class="example_code">
-<span style="color: Teal;">file</span> <span style="color: Gray;">=</span> <span style="color: Teal;">open</span><span style="color: Olive;">(</span><span style="color: #a11;">'./test_runoob.txt'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'w'</span><span style="color: Olive;">)</span><br/>
+<span style="color: Teal;">file</span> <span style="color: Gray;">=</span> <span style="color: Teal;">open</span><span style="color: Olive;">(</span><span style="color: #a11;">'./test_サンプル.txt'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'w'</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">try</span>:<br/>
     <span style="color: Teal;">file</span>.<span style="color: #05a;">write</span><span style="color: Olive;">(</span><span style="color: #a11;">'hello world'</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">finally</span>:<br/>
@@ -378,11 +378,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>上記のコードでは、例外が発生する可能性のあるコードに対して try でキャッチし、例外発生時には except コードブロックを実行します。finally コードブロックはどのような場合でも実行されるため、ファイルは閉じられ、例外が発生してもリソースを占有しません。</p>
 <p>使用する<strong>with</strong>キーワード：</p>
 <div class="example"><h2 class="example">実例</h2> <div class="example_code">
-<span style="color: Green;font-weight:bold;">with</span> <span style="color: Teal;">open</span><span style="color: Olive;">(</span><span style="color: #a11;">'./test_runoob.txt'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'w'</span><span style="color: Olive;">)</span> <span style="color: Green;font-weight:bold;">as</span> <span style="color: Teal;">file</span>:<br/>
+<span style="color: Green;font-weight:bold;">with</span> <span style="color: Teal;">open</span><span style="color: Olive;">(</span><span style="color: #a11;">'./test_サンプル.txt'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'w'</span><span style="color: Olive;">)</span> <span style="color: Green;font-weight:bold;">as</span> <span style="color: Teal;">file</span>:<br/>
     <span style="color: Teal;">file</span>.<span style="color: #05a;">write</span><span style="color: Olive;">(</span><span style="color: #a11;">'hello world !'</span><span style="color: Olive;">)</span><br/>
 </div></div>
 <p>使用する<strong>with</strong>with キーワードを使用すると、システムは自動的に f.close() メソッドを呼び出します。with の効果は try/finally ステートメントと同じです。</p>with キーワードを実行した後、ファイルが閉じられているかどうかを確認できます：<div class="example"><h2 class="example">実例</h2> <div class="example_code">
-<span style="color: Gray;">&gt;&gt;&gt;</span> <span style="color: Green;font-weight:bold;">with</span> <span style="color: Teal;">open</span><span style="color: Olive;">(</span><span style="color: #a11;">'./test_runoob.txt'</span><span style="color: Olive;">)</span> <span style="color: Green;font-weight:bold;">as</span> f:<br/>
+<span style="color: Gray;">&gt;&gt;&gt;</span> <span style="color: Green;font-weight:bold;">with</span> <span style="color: Teal;">open</span><span style="color: Olive;">(</span><span style="color: #a11;">'./test_サンプル.txt'</span><span style="color: Olive;">)</span> <span style="color: Green;font-weight:bold;">as</span> f:<br/>
 ...     <span style="color: #05a;">read_data</span> <span style="color: Gray;">=</span> f.<span style="color: #05a;">read</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: Gray;">&gt;&gt;&gt;</span> <span style="color: #a50"># ファイルが閉じられているか確認する</span><br/>
@@ -394,10 +394,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>with ステートメントを使用すると、ネストされたブロックの末尾で __exit__ メソッドが確実に呼び出されます。</p>
 <p>この概念は try...finally ブロックの使用に似ています。</p>
 <div class="example"><h2 class="example">実例</h2> <div class="example_code">
-<span style="color: Green;font-weight:bold;">with</span> <span style="color: Teal;">open</span><span style="color: Olive;">(</span><span style="color: #a11;">'./test_runoob.txt'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'w'</span><span style="color: Olive;">)</span> <span style="color: Green;font-weight:bold;">as</span> my_file:<br/>
+<span style="color: Green;font-weight:bold;">with</span> <span style="color: Teal;">open</span><span style="color: Olive;">(</span><span style="color: #a11;">'./test_サンプル.txt'</span><span style="color: Gray;">,</span> <span style="color: #a11;">'w'</span><span style="color: Olive;">)</span> <span style="color: Green;font-weight:bold;">as</span> my_file:<br/>
     my_file.<span style="color: #05a;">write</span><span style="color: Olive;">(</span><span style="color: #a11;">'hello world!'</span><span style="color: Olive;">)</span><br/>
 </div></div>
-<p>上記のインスタンスは<strong>hello world!</strong>./test_runoob.txt ファイルに書き込みます。</p>
+<p>上記のインスタンスは<strong>hello world!</strong>./test_サンプル.txt ファイルに書き込みます。</p>
 <p>ファイルオブジェクトには __enter__ と __exit__ メソッドが定義されています。つまり、ファイルオブジェクトもコンテキストマネージャーを実装しており、まず __enter__ メソッドが呼び出され、次に with ステートメント内のコードが実行され、最後に __exit__ メソッドが呼び出されます。エラーが発生しても __exit__ メソッドが呼び出され、ファイルストリームが閉じられます。</p>
 <h3>実例</h3>
 <p>以下の Python コードは簡単な旅行計画管理ツールで、5A.txt ファイルから都市リストを読み取り、以下の機能を提供します：</p>

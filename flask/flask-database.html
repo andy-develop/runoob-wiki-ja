@@ -335,21 +335,21 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: #a50"># シンプルな SQLite の例（Flask は使用しない）</span><br/>
 <span style="color: Green;font-weight:bold;">import</span> sqlite3<br/>
 <br/>
-<span style="color: #a50"># データベースに接続（runoob.db が存在しない場合は自動的に作成される）</span><br/>
-conn <span style="color: Gray;">=</span> sqlite3.<span style="color: #05a;">connect</span><span style="color: Olive;">(</span><span style="color: #a11;">"runoob.db"</span><span style="color: Olive;">)</span><br/>
+<span style="color: #a50"># データベースに接続（サンプル.db が存在しない場合は自動的に作成される）</span><br/>
+conn <span style="color: Gray;">=</span> sqlite3.<span style="color: #05a;">connect</span><span style="color: Olive;">(</span><span style="color: #a11;">"サンプル.db"</span><span style="color: Olive;">)</span><br/>
 <span style="color: #a50"># row_factory を設定すると、クエリ結果を辞書のようにフィールド名でアクセスできる</span><br/>
 conn.<span style="color: #05a;">row_factory</span> <span style="color: Gray;">=</span> sqlite3.<span style="color: #05a;">Row</span><br/>
 <br/>
 <span style="color: #a50"># テーブルを作成</span><br/>
 conn.<span style="color: #05a;">execute</span><span style="color: Olive;">(</span><span style="color: #a11;">"CREATE TABLE IF NOT EXISTS user (id INTEGER PRIMARY KEY, username TEXT UNIQUE, password TEXT)"</span><span style="color: Olive;">)</span><br/>
 <span style="color: #a50"># データを挿入</span><br/>
-conn.<span style="color: #05a;">execute</span><span style="color: Olive;">(</span><span style="color: #a11;">"INSERT INTO user (username, password) VALUES (?, ?)"</span><span style="color: Gray;">,</span> <span style="color: Olive;">(</span><span style="color: #a11;">"runoob"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"pass123"</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
+conn.<span style="color: #05a;">execute</span><span style="color: Olive;">(</span><span style="color: #a11;">"INSERT INTO user (username, password) VALUES (?, ?)"</span><span style="color: Gray;">,</span> <span style="color: Olive;">(</span><span style="color: #a11;">"サンプル"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"pass123"</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 conn.<span style="color: #05a;">commit</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># データを照会する</span><br/>
 rows <span style="color: Gray;">=</span> conn.<span style="color: #05a;">execute</span><span style="color: Olive;">(</span><span style="color: #a11;">"SELECT * FROM user"</span><span style="color: Olive;">)</span>.<span style="color: #05a;">fetchall</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">for</span> row <span style="color: Green;font-weight:bold;">in</span> rows:<br/>
-    <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: Teal;">dict</span><span style="color: Olive;">(</span>row<span style="color: Olive;">)</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 出力: {'id': 1, 'username': 'runoob', 'password': 'pass123'}</span><br/>
+    <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: Teal;">dict</span><span style="color: Olive;">(</span>row<span style="color: Olive;">)</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 出力: {'id': 1, 'username': 'サンプル', 'password': 'pass123'}</span><br/>
 <br/>
 conn.<span style="color: #05a;">close</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 </div>
@@ -369,7 +369,7 @@ conn.<span style="color: #05a;">close</span><span style="color: Olive;">(</span>
     <span style="color: #a11;">"""データベース接続を取得し、同じリクエスト内で再利用する"""</span><br/>
     <span style="color: Green;font-weight:bold;">if</span> <span style="color: #a11;">"db"</span> <span style="color: Green;font-weight:bold;">not</span> <span style="color: Green;font-weight:bold;">in</span> g:<br/>
         <span style="color: #a50"># 設定からデータベースのパスを読み取る</span><br/>
-        db_path <span style="color: Gray;">=</span> current_app.<span style="color: #05a;">config</span>.<span style="color: #05a;">get</span><span style="color: Olive;">(</span><span style="color: #a11;">"DATABASE"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"runoob.db"</span><span style="color: Olive;">)</span><br/>
+        db_path <span style="color: Gray;">=</span> current_app.<span style="color: #05a;">config</span>.<span style="color: #05a;">get</span><span style="color: Olive;">(</span><span style="color: #a11;">"DATABASE"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"サンプル.db"</span><span style="color: Olive;">)</span><br/>
         g.<span style="color: #05a;">db</span> <span style="color: Gray;">=</span> sqlite3.<span style="color: #05a;">connect</span><span style="color: Olive;">(</span>db_path<span style="color: Olive;">)</span><br/>
         g.<span style="color: #05a;">db</span>.<span style="color: #05a;">row_factory</span> <span style="color: Gray;">=</span> sqlite3.<span style="color: #05a;">Row</span>  <span style="color: #a50"># 結果をフィールド名でアクセスできるようにする</span><br/>
     <span style="color: Green;font-weight:bold;">return</span> g.<span style="color: #05a;">db</span><br/>
@@ -426,7 +426,7 @@ conn.<span style="color: #05a;">close</span><span style="color: Olive;">(</span>
 <br/>
     <span style="color: #a50"># データベースのパスを設定（instance フォルダーに保存）</span><br/>
     <span style="color: Green;font-weight:bold;">import</span> <span style="color: #05a;">os</span><br/>
-    app.<span style="color: #05a;">config</span><span style="color: Olive;">[</span><span style="color: #a11;">"DATABASE"</span><span style="color: Olive;">]</span> <span style="color: Gray;">=</span> <span style="color: #05a;">os</span>.<span style="color: #05a;">path</span>.<span style="color: #05a;">join</span><span style="color: Olive;">(</span>app.<span style="color: #05a;">instance_path</span><span style="color: Gray;">,</span> <span style="color: #a11;">"runoob.db"</span><span style="color: Olive;">)</span><br/>
+    app.<span style="color: #05a;">config</span><span style="color: Olive;">[</span><span style="color: #a11;">"DATABASE"</span><span style="color: Olive;">]</span> <span style="color: Gray;">=</span> <span style="color: #05a;">os</span>.<span style="color: #05a;">path</span>.<span style="color: #05a;">join</span><span style="color: Olive;">(</span>app.<span style="color: #05a;">instance_path</span><span style="color: Gray;">,</span> <span style="color: #a11;">"サンプル.db"</span><span style="color: Olive;">)</span><br/>
 <br/>
     <span style="color: #a50"># instance フォルダーが存在することを確認</span><br/>
     <span style="color: #05a;">os</span>.<span style="color: #05a;">makedirs</span><span style="color: Olive;">(</span>app.<span style="color: #05a;">instance_path</span><span style="color: Gray;">,</span> exist_ok<span style="color: Gray;">=</span><span style="color: Teal;">True</span><span style="color: Olive;">)</span><br/>
@@ -538,12 +538,12 @@ $ curl http://127.0.0.1:5000/api/posts
 # 创建文章
 $ curl -X POST http://127.0.0.1:5000/api/posts \
   -H "Content-Type: application/json" \
-  -d '{"title":"RUNOOB 教程","body":"Flask 入门教程内容","author_id":1}'
+  -d '{"title":"サンプル 教程","body":"Flask 入门教程内容","author_id":1}'
 
 # 更新文章
 $ curl -X PUT http://127.0.0.1:5000/api/posts/1 \
   -H "Content-Type: application/json" \
-  -d '{"title":"RUNOOB 教程（修订版）","body":"更新后的内容"}'
+  -d '{"title":"サンプル 教程（修订版）","body":"更新后的内容"}'
 
 # 删除文章
 $ curl -X DELETE http://127.0.0.1:5000/api/posts/1
@@ -557,7 +557,7 @@ $ curl -X DELETE http://127.0.0.1:5000/api/posts/1
 (.venv) $ flask init-db
 
 # 验证表已创建
-(.venv) $ sqlite3 instance/runoob.db ".tables"
+(.venv) $ sqlite3 instance/サンプル.db ".tables"
 post  user
 </pre>
 <hr/>
@@ -587,7 +587,7 @@ db.<span style="color: #05a;">execute</span><span style="color: Olive;">(</span>
 <span style="color: Green;font-weight:bold;">from</span> flask_sqlalchemy <span style="color: Green;font-weight:bold;">import</span> SQLAlchemy<br/>
 <br/>
 app <span style="color: Gray;">=</span> Flask<span style="color: Olive;">(</span>__name__<span style="color: Olive;">)</span><br/>
-app.<span style="color: #05a;">config</span><span style="color: Olive;">[</span><span style="color: #a11;">"SQLALCHEMY_DATABASE_URI"</span><span style="color: Olive;">]</span> <span style="color: Gray;">=</span> <span style="color: #a11;">"sqlite:///runoob.db"</span><br/>
+app.<span style="color: #05a;">config</span><span style="color: Olive;">[</span><span style="color: #a11;">"SQLALCHEMY_DATABASE_URI"</span><span style="color: Olive;">]</span> <span style="color: Gray;">=</span> <span style="color: #a11;">"sqlite:///サンプル.db"</span><br/>
 db <span style="color: Gray;">=</span> SQLAlchemy<span style="color: Olive;">(</span>app<span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># データモデルを定義（テーブル構造は Python クラスで表現）</span><br/>
@@ -604,13 +604,13 @@ db <span style="color: Gray;">=</span> SQLAlchemy<span style="color: Olive;">(</
     db.<span style="color: #05a;">create_all</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># ユーザーを作成</span><br/>
-<span style="color: #05a;">user</span> <span style="color: Gray;">=</span> User<span style="color: Olive;">(</span>username<span style="color: Gray;">=</span><span style="color: #a11;">"runoob"</span><span style="color: Gray;">,</span> <span style="color: #05a;">email</span><span style="color: Gray;">=</span><span style="color: #a11;">"test@runoob.com"</span><span style="color: Olive;">)</span><br/>
+<span style="color: #05a;">user</span> <span style="color: Gray;">=</span> User<span style="color: Olive;">(</span>username<span style="color: Gray;">=</span><span style="color: #a11;">"サンプル"</span><span style="color: Gray;">,</span> <span style="color: #05a;">email</span><span style="color: Gray;">=</span><span style="color: #a11;">"test@example.com"</span><span style="color: Olive;">)</span><br/>
 db.<span style="color: #05a;">session</span>.<span style="color: #05a;">add</span><span style="color: Olive;">(</span><span style="color: #05a;">user</span><span style="color: Olive;">)</span><br/>
 db.<span style="color: #05a;">session</span>.<span style="color: #05a;">commit</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># ユーザーを照会する</span><br/>
 users <span style="color: Gray;">=</span> User.<span style="color: #05a;">query</span>.<span style="color: Teal;">all</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
-runoob_user <span style="color: Gray;">=</span> User.<span style="color: #05a;">query</span>.<span style="color: #05a;">filter_by</span><span style="color: Olive;">(</span>username<span style="color: Gray;">=</span><span style="color: #a11;">"runoob"</span><span style="color: Olive;">)</span>.<span style="color: #05a;">first</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
+サンプル_user <span style="color: Gray;">=</span> User.<span style="color: #05a;">query</span>.<span style="color: #05a;">filter_by</span><span style="color: Olive;">(</span>username<span style="color: Gray;">=</span><span style="color: #a11;">"サンプル"</span><span style="color: Olive;">)</span>.<span style="color: #05a;">first</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
 </div>
 </div>
 <blockquote><p>この章でネイティブ SQLite を使用するのは、追加の依存関係を導入しないためであり、学習や小規模プロジェクトに適しています。実際の本番プロジェクトでは、SQLAlchemy または類似の ORM を使用することをお勧めします。これにより、重複コードを大幅に削減し、安全性を向上させることができます。</p></blockquote> その他の拡張機能

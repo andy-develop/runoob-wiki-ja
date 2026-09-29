@@ -339,8 +339,8 @@ db.<span style="color: #660066;">col</span>.<span style="color: #660066;">find</
         <span style="color: #3366CC;">"_id"</span> <span style="color: #339933;">:</span> ObjectId<span style="color: #009900;">(</span><span style="color: #3366CC;">"56063f17ade2f21f36b03133"</span><span style="color: #009900;">)</span><span style="color: #339933;">,</span><br/>
         <span style="color: #3366CC;">"title"</span> <span style="color: #339933;">:</span> <span style="color: #3366CC;">"MongoDB 教程"</span><span style="color: #339933;">,</span><br/>
         <span style="color: #3366CC;">"description"</span> <span style="color: #339933;">:</span> <span style="color: #3366CC;">MongoDB は NoSQL データベースです。</span><span style="color: #339933;">,</span><br/>
-        <span style="color: #3366CC;">"by"</span> <span style="color: #339933;">:</span> <span style="color: #3366CC;">"菜鸟教程"</span><span style="color: #339933;">,</span><br/>
-        <span style="color: #3366CC;">"url"</span> <span style="color: #339933;">:</span> <span style="color: #3366CC;">"http://www.runoob.com"</span><span style="color: #339933;">,</span><br/>
+        <span style="color: #3366CC;">"by"</span> <span style="color: #339933;">:</span> <span style="color: #3366CC;">"サンプル"</span><span style="color: #339933;">,</span><br/>
+        <span style="color: #3366CC;">"url"</span> <span style="color: #339933;">:</span> <span style="color: #3366CC;">"http://www.example.com"</span><span style="color: #339933;">,</span><br/>
         <span style="color: #3366CC;">"tags"</span> <span style="color: #339933;">:</span> <span style="color: #009900;">[</span><br/>
                 <span style="color: #3366CC;">"mongodb"</span><span style="color: #339933;">,</span><br/>
                 <span style="color: #3366CC;">"database"</span><span style="color: #339933;">,</span><br/>
@@ -428,8 +428,8 @@ db.<span style="color: #660066;">myCollection</span>.<span style="color: #660066
 <tr>
 <td>等しい</td>
 <td><code>{&lt;key&gt;:&lt;value&gt;</code>}</td>
-<td><code>db.col.find({"by":"菜鸟教程"}).pretty()</code></td>
-<td><code>where by = '菜鸟教程'</code></td>
+<td><code>db.col.find({"by":"サンプル"}).pretty()</code></td>
+<td><code>where by = 'サンプル'</code></td>
 </tr>
 <tr>
 <td>小なり</td>
@@ -470,15 +470,15 @@ db.<span style="color: #660066;">myCollection</span>.<span style="color: #660066
 &gt;db.col.find({key1:value1, key2:value2}).pretty()
 </pre>
 <h3>例</h3>
-<p>次の例では、<strong>by</strong>と<strong>title</strong>キーを使用して<b>菜鸟教程</b> 中 <b>MongoDB 教程</b>のデータをクエリします。</p>
+<p>次の例では、<strong>by</strong>と<strong>title</strong>キーを使用して<b>サンプル</b> 中 <b>MongoDB 教程</b>のデータをクエリします。</p>
 <pre>
-&gt; db.col.find({"by":"菜鸟教程", "title":"MongoDB 教程"}).pretty()
+&gt; db.col.find({"by":"サンプル", "title":"MongoDB 教程"}).pretty()
 {
         "_id" : ObjectId("56063f17ade2f21f36b03133"),
         "title" : "MongoDB 教程",
         "description" : "MongoDB 是一个 Nosql 数据库",
-        "by" : "菜鸟教程",
-        "url" : "http://www.runoob.com",
+        "by" : "サンプル",
+        "url" : "http://www.example.com",
         "tags" : [
                 "mongodb",
                 "database",
@@ -487,7 +487,7 @@ db.<span style="color: #660066;">myCollection</span>.<span style="color: #660066
         "likes" : 100
 }
 </pre>
-<p>上記の例は WHERE ステートメントに類似しています：<strong>WHERE by='菜鸟教程' AND title='MongoDB 教程'</strong></p>
+<p>上記の例は WHERE ステートメントに類似しています：<strong>WHERE by='サンプル' AND title='MongoDB 教程'</strong></p>
 <hr/><h2>MongoDB の OR 条件</h2>
 <p>MongoDB の OR 条件ステートメントではキーワードを使用し、<b>$or</b>構文形式は次のとおりです。</p>
 <pre>
@@ -500,15 +500,15 @@ db.<span style="color: #660066;">myCollection</span>.<span style="color: #660066
 ).pretty()
 </pre>
 <h3>例</h3>
-<p>次の例では、キー<b>by</b>の値が菜鸟教程またはキー<b>title</b>の値が<b>MongoDB 教程</b>のドキュメントをクエリすることを示します。</p>
+<p>次の例では、キー<b>by</b>の値がサンプルまたはキー<b>title</b>の値が<b>MongoDB 教程</b>のドキュメントをクエリすることを示します。</p>
 <pre>
-&gt;db.col.find({$or:[{"by":"菜鸟教程"},{"title": "MongoDB 教程"}]}).pretty()
+&gt;db.col.find({$or:[{"by":"サンプル"},{"title": "MongoDB 教程"}]}).pretty()
 {
         "_id" : ObjectId("56063f17ade2f21f36b03133"),
         "title" : "MongoDB 教程",
         "description" : "MongoDB 是一个 Nosql 数据库",
-        "by" : "菜鸟教程",
-        "url" : "http://www.runoob.com",
+        "by" : "サンプル",
+        "url" : "http://www.example.com",
         "tags" : [
                 "mongodb",
                 "database",
@@ -520,15 +520,15 @@ db.<span style="color: #660066;">myCollection</span>.<span style="color: #660066
 </pre>
 <hr/>
 <h2>AND と OR の組み合わせ使用</h2>
-<p>次の例では、AND と OR の併用を示しています。対応する通常の SQL ステートメントは次のとおりです。<b>'where likes&gt;50 AND (by = '菜鸟教程' OR title = 'MongoDB 教程')'</b></p>
+<p>次の例では、AND と OR の併用を示しています。対応する通常の SQL ステートメントは次のとおりです。<b>'where likes&gt;50 AND (by = 'サンプル' OR title = 'MongoDB 教程')'</b></p>
 <pre>
-&gt;db.col.find({"likes": {$gt:50}, $or: [{"by": "菜鸟教程"},{"title": "MongoDB 教程"}]}).pretty()
+&gt;db.col.find({"likes": {$gt:50}, $or: [{"by": "サンプル"},{"title": "MongoDB 教程"}]}).pretty()
 {
         "_id" : ObjectId("56063f17ade2f21f36b03133"),
         "title" : "MongoDB 教程",
         "description" : "MongoDB 是一个 Nosql 数据库",
-        "by" : "菜鸟教程",
-        "url" : "http://www.runoob.com",
+        "by" : "サンプル",
+        "url" : "http://www.example.com",
         "tags" : [
                 "mongodb",
                 "database",

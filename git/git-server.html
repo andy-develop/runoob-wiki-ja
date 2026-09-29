@@ -180,16 +180,16 @@ yum -y install git-core
 $ groupadd git
 $ useradd git -g git
 </pre>
-<h3>2、ベアリポジトリの作成</h3><p>Git ユーザーにログインし、そのホームディレクトリにベアリポジトリを作成します。</p><pre>$ sudo su - git</pre>まず、Git リポジトリとして使用するディレクトリを選択します。/home/gitrepo/runoob.git と仮定し、/home/gitrepo ディレクトリで次のコマンドを入力します：<pre>
+<h3>2、ベアリポジトリの作成</h3><p>Git ユーザーにログインし、そのホームディレクトリにベアリポジトリを作成します。</p><pre>$ sudo su - git</pre>まず、Git リポジトリとして使用するディレクトリを選択します。/home/gitrepo/サンプル.git と仮定し、/home/gitrepo ディレクトリで次のコマンドを入力します：<pre>
 $ cd /home
 $ mkdir gitrepo
 $ chown git:git gitrepo/
 $ cd gitrepo
 
-$ git init --bare runoob.git</pre>
+$ git init --bare サンプル.git</pre>
 <p>上記のコマンドで Git は空のリポジトリを作成します。サーバー上の Git リポジトリは通常、末尾が<span class="marked">.git</span>で終わります。次に、リポジトリの所有者を git ユーザーに変更します（root など他のユーザーで操作した場合）：</p>
 <pre>
-$ chown -R git:git runoob.git
+$ chown -R git:git サンプル.git
 </pre>
 <h3>3、証明書ログインの作成</h3>
 <p>公開鍵を ~/.ssh/authorized_keys に追加して、リモートアクセスを許可します。</p>
@@ -205,8 +205,8 @@ $ chmod 644 .ssh/authorized_keys
 </p>
 <h3>4、リポジトリのクローン</h3>
 <pre>
-$ git clone git@192.168.45.4:/home/gitrepo/runoob.git
-Cloning into 'runoob'...
+$ git clone git@192.168.45.4:/home/gitrepo/サンプル.git
+Cloning into 'サンプル'...
 warning: You appear to have cloned an empty repository.
 Checking connectivity... done.
 </pre>
@@ -246,7 +246,7 @@ ssh-keygen</pre>
 <pre>
 cat .ssh/id_rsa.pub</pre>
 <p>次のような情報が表示されます：</p>
-<pre>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDQVwWjF3KXmI549jDI0fuCgl+syJjjn55iMUDRRiCd/B+9TwUda3l9WXH5i7RU53QGRCsDVFZxixLOlmXr9E3VSqkf8xXBnHs/5E2z5PIOCN0nxfB9xeA1db/QxPwK4gkHisep+eNHRn9x+DpCYDoSoYQN0nBg+H3uqfOqL42mJ+tqSfkyqbhjBf1kjtDTlBfVCWtI0siu7owm+c65+8KNyPlj5/0AyJ4Aqk1OX2jv+YE4nTipucn7rHwWuowasPU86l+uBsLNwOSb+H7loJvQyhEINX2FS1KnpRU+ld20t07n+N3ErfX5xBAGfxXpoN9BKKSP+RT7rvTeXTVE**** test@runoob.com****</pre>
+<pre>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDQVwWjF3KXmI549jDI0fuCgl+syJjjn55iMUDRRiCd/B+9TwUda3l9WXH5i7RU53QGRCsDVFZxixLOlmXr9E3VSqkf8xXBnHs/5E2z5PIOCN0nxfB9xeA1db/QxPwK4gkHisep+eNHRn9x+DpCYDoSoYQN0nBg+H3uqfOqL42mJ+tqSfkyqbhjBf1kjtDTlBfVCWtI0siu7owm+c65+8KNyPlj5/0AyJ4Aqk1OX2jv+YE4nTipucn7rHwWuowasPU86l+uBsLNwOSb+H7loJvQyhEINX2FS1KnpRU+ld20t07n+N3ErfX5xBAGfxXpoN9BKKSP+RT7rvTeXTVE**** test@example.com****</pre>
 <p><strong>5、プロジェクトを作成</strong></p><p>GitLab のホームページで、Create a project オプションをクリックします：</p>
 <p><img decoding="async" src="../wp-content/uploads/2015/03/gitlab-5.png"/></p>
 <p>Create blank project をクリックし、Project name と Project URL を設定して、Create project をクリックします：</p>

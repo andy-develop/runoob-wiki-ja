@@ -294,9 +294,9 @@ println<span style="color: #008000;">(</span>value2<span style="color: #008000;"
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color:#05a; font-weight: bold;">object</span> Test <span style="color: #008000;">{</span><br/>
    <span style="color:#05a; font-weight: bold;">def</span> main<span style="color: #008000;">(</span>args<span style="color: #000080;">:</span> Array<span style="color: #008000;">[</span>String<span style="color: #008000;">]</span><span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
-      <span style="color:#05a; font-weight: bold;">val</span> sites <span style="color: #000080;">=</span> Map<span style="color: #008000;">(</span><span style="color: #a11;">"runoob"</span> -<span style="color: #000080;">&gt;</span> <span style="color: #a11;">"www.runoob.com"</span>, <span style="color: #a11;">"google"</span> -<span style="color: #000080;">&gt;</span> <span style="color: #a11;">"www.google.com"</span><span style="color: #008000;">)</span><br/>
+      <span style="color:#05a; font-weight: bold;">val</span> sites <span style="color: #000080;">=</span> Map<span style="color: #008000;">(</span><span style="color: #a11;">"サンプル"</span> -<span style="color: #000080;">&gt;</span> <span style="color: #a11;">"www.example.com"</span>, <span style="color: #a11;">"google"</span> -<span style="color: #000080;">&gt;</span> <span style="color: #a11;">"www.google.com"</span><span style="color: #008000;">)</span><br/>
       <br/>
-      println<span style="color: #008000;">(</span><span style="color: #a11;">"sites.get( <span style="color: #000099; font-weight: bold;">\"</span>runoob<span style="color: #000099; font-weight: bold;">\"</span> ) : "</span> +  sites.<span style="color: #007788;">get</span><span style="color: #008000;">(</span> <span style="color: #a11;">"runoob"</span> <span style="color: #008000;">)</span><span style="color: #008000;">)</span> <span style="#666666;">// Some(www.runoob.com)</span><br/>
+      println<span style="color: #008000;">(</span><span style="color: #a11;">"sites.get( <span style="color: #000099; font-weight: bold;">\"</span>サンプル<span style="color: #000099; font-weight: bold;">\"</span> ) : "</span> +  sites.<span style="color: #007788;">get</span><span style="color: #008000;">(</span> <span style="color: #a11;">"サンプル"</span> <span style="color: #008000;">)</span><span style="color: #008000;">)</span> <span style="#666666;">// Some(www.example.com)</span><br/>
       println<span style="color: #008000;">(</span><span style="color: #a11;">"sites.get( <span style="color: #000099; font-weight: bold;">\"</span>baidu<span style="color: #000099; font-weight: bold;">\"</span> ) : "</span> +  sites.<span style="color: #007788;">get</span><span style="color: #008000;">(</span> <span style="color: #a11;">"baidu"</span> <span style="color: #008000;">)</span><span style="color: #008000;">)</span>  <span style="#666666;">//  None</span><br/>
    <span style="color: #008000;">}</span><br/>
 <span style="color: #008000;">}</span><br/>
@@ -305,17 +305,17 @@ println<span style="color: #008000;">(</span>value2<span style="color: #008000;"
 <pre>
 $ scalac Test.scala 
 $ scala Test
-sites.get( "runoob" ) : Some(www.runoob.com)
+sites.get( "サンプル" ) : Some(www.example.com)
 sites.get( "baidu" ) : None
 </pre>
 <p>パターンマッチングを使用して、一致する値を出力することもできます。例は次のとおりです：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color:#05a; font-weight: bold;">object</span> Test <span style="color: #008000;">{</span><br/>
    <span style="color:#05a; font-weight: bold;">def</span> main<span style="color: #008000;">(</span>args<span style="color: #000080;">:</span> Array<span style="color: #008000;">[</span>String<span style="color: #008000;">]</span><span style="color: #008000;">)</span> <span style="color: #008000;">{</span><br/>
-      <span style="color:#05a; font-weight: bold;">val</span> sites <span style="color: #000080;">=</span> Map<span style="color: #008000;">(</span><span style="color: #a11;">"runoob"</span> -<span style="color: #000080;">&gt;</span> <span style="color: #a11;">"www.runoob.com"</span>, <span style="color: #a11;">"google"</span> -<span style="color: #000080;">&gt;</span> <span style="color: #a11;">"www.google.com"</span><span style="color: #008000;">)</span><br/>
+      <span style="color:#05a; font-weight: bold;">val</span> sites <span style="color: #000080;">=</span> Map<span style="color: #008000;">(</span><span style="color: #a11;">"サンプル"</span> -<span style="color: #000080;">&gt;</span> <span style="color: #a11;">"www.example.com"</span>, <span style="color: #a11;">"google"</span> -<span style="color: #000080;">&gt;</span> <span style="color: #a11;">"www.google.com"</span><span style="color: #008000;">)</span><br/>
       <br/>
-      println<span style="color: #008000;">(</span><span style="color: #a11;">"show(sites.get( <span style="color: #000099; font-weight: bold;">\"</span>runoob<span style="color: #000099; font-weight: bold;">\"</span>)) : "</span> +  <br/>
-                                          show<span style="color: #008000;">(</span>sites.<span style="color: #007788;">get</span><span style="color: #008000;">(</span> <span style="color: #a11;">"runoob"</span><span style="color: #008000;">)</span><span style="color: #008000;">)</span> <span style="color: #008000;">)</span><br/>
+      println<span style="color: #008000;">(</span><span style="color: #a11;">"show(sites.get( <span style="color: #000099; font-weight: bold;">\"</span>サンプル<span style="color: #000099; font-weight: bold;">\"</span>)) : "</span> +  <br/>
+                                          show<span style="color: #008000;">(</span>sites.<span style="color: #007788;">get</span><span style="color: #008000;">(</span> <span style="color: #a11;">"サンプル"</span><span style="color: #008000;">)</span><span style="color: #008000;">)</span> <span style="color: #008000;">)</span><br/>
       println<span style="color: #008000;">(</span><span style="color: #a11;">"show(sites.get( <span style="color: #000099; font-weight: bold;">\"</span>baidu<span style="color: #000099; font-weight: bold;">\"</span>)) : "</span> +  <br/>
                                           show<span style="color: #008000;">(</span>sites.<span style="color: #007788;">get</span><span style="color: #008000;">(</span> <span style="color: #a11;">"baidu"</span><span style="color: #008000;">)</span><span style="color: #008000;">)</span> <span style="color: #008000;">)</span><br/>
    <span style="color: #008000;">}</span><br/>
@@ -330,7 +330,7 @@ sites.get( "baidu" ) : None
 <pre>
 $ scalac Test.scala 
 $ scala Test
-show(sites.get( "runoob")) : www.runoob.com
+show(sites.get( "サンプル")) : www.example.com
 show(sites.get( "baidu")) : ?
 </pre>
 <hr/>

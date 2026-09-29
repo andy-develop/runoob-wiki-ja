@@ -482,11 +482,11 @@ app.<span style="color: #05a;">config</span><span style="color: Olive;">[</span>
 <br/>
         <span style="color: #a50"># POST JSON リクエスト</span><br/>
         resp <span style="color: Gray;">=</span> client.<span style="color: #05a;">post</span><span style="color: Olive;">(</span><span style="color: #a11;">"/api/posts"</span><span style="color: Gray;">,</span> json<span style="color: Gray;">=</span><span style="color: Olive;">{</span><br/>
-            <span style="color: #a11;">"title"</span>: <span style="color: #a11;">"RUNOOB チュートリアル"</span><span style="color: Gray;">,</span><br/>
+            <span style="color: #a11;">"title"</span>: <span style="color: #a11;">"サンプル チュートリアル"</span><span style="color: Gray;">,</span><br/>
             <span style="color: #a11;">"body"</span>: <span style="color: #a11;">"入門コンテンツ"</span><br/>
         <span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
         <span style="color: Green;font-weight:bold;">assert</span> resp.<span style="color: #05a;">status_code</span> <span style="color: Gray;">==</span> <span style="color: Maroon;">201</span><br/>
-        <span style="color: Green;font-weight:bold;">assert</span> resp.<span style="color: #05a;">get_json</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">[</span><span style="color: #a11;">"title"</span><span style="color: Olive;">]</span> <span style="color: Gray;">==</span> <span style="color: #a11;">"RUNOOB チュートリアル"</span><br/>
+        <span style="color: Green;font-weight:bold;">assert</span> resp.<span style="color: #05a;">get_json</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">[</span><span style="color: #a11;">"title"</span><span style="color: Olive;">]</span> <span style="color: Gray;">==</span> <span style="color: #a11;">"サンプル チュートリアル"</span><br/>
 <br/>
         <span style="color: #a50"># クエリパラメータ付きのリクエスト</span><br/>
         resp <span style="color: Gray;">=</span> client.<span style="color: #05a;">get</span><span style="color: Olive;">(</span><span style="color: #a11;">"/search?q=flask"</span><span style="color: Olive;">)</span><br/>
@@ -494,9 +494,9 @@ app.<span style="color: #05a;">config</span><span style="color: Olive;">[</span>
 <br/>
         <span style="color: #a50"># ログイン済み状態をシミュレート</span><br/>
         <span style="color: Green;font-weight:bold;">with</span> client.<span style="color: #05a;">session_transaction</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span> <span style="color: Green;font-weight:bold;">as</span> sess:<br/>
-            sess<span style="color: Olive;">[</span><span style="color: #a11;">"username"</span><span style="color: Olive;">]</span> <span style="color: Gray;">=</span> <span style="color: #a11;">"runoob"</span><br/>
+            sess<span style="color: Olive;">[</span><span style="color: #a11;">"username"</span><span style="color: Olive;">]</span> <span style="color: Gray;">=</span> <span style="color: #a11;">"サンプル"</span><br/>
         resp <span style="color: Gray;">=</span> client.<span style="color: #05a;">get</span><span style="color: Olive;">(</span><span style="color: #a11;">"/dashboard"</span><span style="color: Olive;">)</span><br/>
-        <span style="color: Green;font-weight:bold;">assert</span> b<span style="color: #a11;">"runoob"</span> <span style="color: Green;font-weight:bold;">in</span> resp.<span style="color: #05a;">data</span><br/>
+        <span style="color: Green;font-weight:bold;">assert</span> b<span style="color: #a11;">"サンプル"</span> <span style="color: Green;font-weight:bold;">in</span> resp.<span style="color: #05a;">data</span><br/>
 <br/>
         <span style="color: #a50"># リダイレクトを追跡</span><br/>
         resp <span style="color: Gray;">=</span> client.<span style="color: #05a;">post</span><span style="color: Olive;">(</span><span style="color: #a11;">"/login"</span><span style="color: Gray;">,</span> data<span style="color: Gray;">=</span><span style="color: Olive;">{</span><br/>

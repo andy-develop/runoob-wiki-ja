@@ -309,20 +309,20 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <li>テーブルの内容をコピーしたい場合は、<strong> INSERT INTO ... SELECT </strong>文を使用して実現できます。</li>
 </li></ul>
 <h3>例</h3>
-<p>以下の例を試して、テーブル runoob_tbl をコピーしてください。</p>
+<p>以下の例を試して、テーブル サンプル_tbl をコピーしてください。</p>
 <p><strong>ステップ1：</strong></p>
 <p>データテーブルの完全な構造を取得します。</p>
 <pre>
-mysql&gt; SHOW CREATE TABLE runoob_tbl \G;
+mysql&gt; SHOW CREATE TABLE サンプル_tbl \G;
 *************************** 1. row ***************************
-       Table: runoob_tbl
-Create Table: CREATE TABLE `runoob_tbl` (
-  `runoob_id` int(11) NOT NULL auto_increment,
-  `runoob_title` varchar(100) NOT NULL default '',
-  `runoob_author` varchar(40) NOT NULL default '',
+       Table: サンプル_tbl
+Create Table: CREATE TABLE `サンプル_tbl` (
+  `サンプル_id` int(11) NOT NULL auto_increment,
+  `サンプル_title` varchar(100) NOT NULL default '',
+  `サンプル_author` varchar(40) NOT NULL default '',
   `submission_date` date default NULL,
-  PRIMARY KEY  (`runoob_id`),
-  UNIQUE KEY `AUTHOR_INDEX` (`runoob_author`)
+  PRIMARY KEY  (`サンプル_id`),
+  UNIQUE KEY `AUTHOR_INDEX` (`サンプル_author`)
 ) ENGINE=InnoDB 
 1 row in set (0.00 sec)
 
@@ -333,25 +333,25 @@ No query specified
 <p>SQL 文のデータテーブル名を変更し、SQL 文を実行します。</p>
 <pre>
 mysql&gt; CREATE TABLE `clone_tbl` (
-  -&gt; `runoob_id` int(11) NOT NULL auto_increment,
-  -&gt; `runoob_title` varchar(100) NOT NULL default '',
-  -&gt; `runoob_author` varchar(40) NOT NULL default '',
+  -&gt; `サンプル_id` int(11) NOT NULL auto_increment,
+  -&gt; `サンプル_title` varchar(100) NOT NULL default '',
+  -&gt; `サンプル_author` varchar(40) NOT NULL default '',
   -&gt; `submission_date` date default NULL,
-  -&gt; PRIMARY KEY  (`runoob_id`),
-  -&gt; UNIQUE KEY `AUTHOR_INDEX` (`runoob_author`)
+  -&gt; PRIMARY KEY  (`サンプル_id`),
+  -&gt; UNIQUE KEY `AUTHOR_INDEX` (`サンプル_author`)
 -&gt; ) ENGINE=InnoDB;
 Query OK, 0 rows affected (1.80 sec)
 </pre>
 <p><strong>ステップ3：</strong></p>
 <p>ステップ2 を実行すると、データベースに新しいクローンテーブル clone_tbl が作成されます。<strong> INSERT INTO... SELECT </strong>データテーブルのデータをコピーしたい場合は、</p>
 <pre>
-mysql&gt; INSERT INTO clone_tbl (runoob_id,
-    -&gt;                        runoob_title,
-    -&gt;                        runoob_author,
+mysql&gt; INSERT INTO clone_tbl (サンプル_id,
+    -&gt;                        サンプル_title,
+    -&gt;                        サンプル_author,
     -&gt;                        submission_date)
-    -&gt; SELECT runoob_id,runoob_title,
-    -&gt;        runoob_author,submission_date
-    -&gt; FROM runoob_tbl;
+    -&gt; SELECT サンプル_id,サンプル_title,
+    -&gt;        サンプル_author,submission_date
+    -&gt; FROM サンプル_tbl;
 Query OK, 3 rows affected (0.07 sec)
 Records: 3  Duplicates: 0  Warnings: 0
 </pre>

@@ -312,22 +312,22 @@ DROP DATABASE &lt;database_name&gt;;        -- 直接删除数据库，不检查
 DROP DATABASE [IF EXISTS] &lt;database_name&gt;;
 </pre><p><strong>パラメータの説明：</strong></p>
 <ul><li><code>IF EXISTS</code>はオプションの句で、データベースが存在する場合にのみ削除操作を実行し、データベースが存在しないことによるエラーを回避します。</li><li><code>database_name</code>は削除するデータベースの名前です。</li></ul>
-<p>例として、RUNOOB という名前のデータベースを削除します：</p>
+<p>例として、サンプル という名前のデータベースを削除します：</p>
 <pre>
 -- 直接删除数据库，不检查是否存在
-mysql&gt; DROP DATABASE RUNOOB;
+mysql&gt; DROP DATABASE サンプル;
 
 -- 删除数据库，如果存在的话
-DROP DATABASE IF EXISTS RUNOOB;
+DROP DATABASE IF EXISTS サンプル;
 </pre>
 <p><strong>注意：</strong>データベース削除操作を実行する前に、そのデータベースとすべてのデータを本当に削除したいかどうかを確認してください。この操作は取り消しできないためです。誤操作を避けるために、通常は削除を実行する前にデータベースをバックアップすることをお勧めします。</p>
 <h2>mysqladmin を使用してデータベースを削除</h2>
 <p>MySQL を使用することもできます<span class="marked">mysqladmin</span>コマンドをターミナルで実行して削除します。</p><p>以下は mysqladmin を使用してデータベースを削除するコマンドです：</p>
 <pre>mysqladmin -u your_username -p drop your_database</pre>
 <p><strong>your_username</strong>は MySQL ユーザー名、<strong>your_database</strong>は削除するデータベースの名前です。</p>
-<p>このコマンドを実行すると、システムはパスワードの入力を求め、パスワードを入力して Enter キーを押すとデータベースが削除されます。</p>次の例では、データベース RUNOOB（前の章で作成済み）を削除します：</p>
+<p>このコマンドを実行すると、システムはパスワードの入力を求め、パスワードを入力して Enter キーを押すとデータベースが削除されます。</p>次の例では、データベース サンプル（前の章で作成済み）を削除します：</p>
 <pre>
-[root@host]# mysqladmin -u root -p drop RUNOOB
+[root@host]# mysqladmin -u root -p drop サンプル
 Enter password:******
 </pre>
 <p>上記のデータベース削除コマンドを実行すると、データベースを本当に削除するかどうかを確認するプロンプトボックスが表示されます：</p>
@@ -335,8 +335,8 @@ Enter password:******
 Dropping the database is potentially a very bad thing to do.
 Any data stored in the database will be destroyed.
 
-Do you really want to drop the 'RUNOOB' database [y/N] y
-Database "RUNOOB" dropped
+Do you really want to drop the 'サンプル' database [y/N] y
+Database "サンプル" dropped
 </pre>
 <hr/>
 <h2>PHP スクリプトを使用してデータベースを削除</h2>
@@ -384,13 +384,13 @@ mysqli_query(connection,query,resultmode);
 </span><span class="hl-reserved">die</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">接続失敗：</span><span class="hl-quotes">'</span><span class="hl-code"> . </span><span class="hl-identifier">mysqli_error</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-brackets">}</span><span class="hl-code">
 </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">'</span><span class="hl-string">接続成功&lt;br /&gt;</span><span class="hl-quotes">'</span><span class="hl-code">;
-</span><span class="hl-var">$sql</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">DROP DATABASE RUNOOB</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-var">$sql</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">DROP DATABASE サンプル</span><span class="hl-quotes">'</span><span class="hl-code">;
 </span><span class="hl-var">$retval</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_query</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-var">$sql</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-code">! </span><span class="hl-var">$retval</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">
 </span><span class="hl-brackets">{</span><span class="hl-code">
 </span><span class="hl-reserved">die</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">データベースの削除失敗：</span><span class="hl-quotes">'</span><span class="hl-code"> . </span><span class="hl-identifier">mysqli_error</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-brackets">}</span><span class="hl-code">
-</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">データベース RUNOOB の削除に成功しました</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
+</span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">"</span><span class="hl-string">データベース サンプル の削除に成功しました</span><span class="hl-special">\n</span><span class="hl-quotes">"</span><span class="hl-code">;
 </span><span class="hl-identifier">mysqli_close</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-inlinetags">?&gt;</span></div>
 </div></div>

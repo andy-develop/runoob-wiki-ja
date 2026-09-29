@@ -286,37 +286,37 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <img decoding="async" src="../wp-content/uploads/2014/11/pubsub2.png"/>
 <hr/>
 <h2>例</h2>
-<p>以下の例では、パブリッシュ/サブスクライブの仕組みを説明しています。2つの redis-cli クライアントを起動する必要があります。</p><p>この例では、次の名前の購読チャンネルを作成しました：<b>runoobChat</b>:</p>
+<p>以下の例では、パブリッシュ/サブスクライブの仕組みを説明しています。2つの redis-cli クライアントを起動する必要があります。</p><p>この例では、次の名前の購読チャンネルを作成しました：<b>サンプルChat</b>:</p>
 <div class="example"><h2 class="example">1つ目の redis-cli クライアント</h2> <div class="example_code">
-redis 127.0.0.1:<span style="color: #000000;">6379</span><span style="color: #000000; font-weight: bold;">&gt;</span> SUBSCRIBE runoobChat<br/>
+redis 127.0.0.1:<span style="color: #000000;">6379</span><span style="color: #000000; font-weight: bold;">&gt;</span> SUBSCRIBE サンプルChat<br/>
 <br/>
 Reading messages... <span style="color: #7A0874; font-weight: bold;">(</span>press Ctrl-C to quit<span style="color: #7A0874; font-weight: bold;">)</span><br/>
 <span style="color: #000000;">1</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"subscribe"</span><br/>
-<span style="color: #000000;">2</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"runoobChat"</span><br/>
+<span style="color: #000000;">2</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #a10;">"サンプルChat"</span><br/>
 <span style="color: #000000;">3</span><span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #7A0874; font-weight: bold;">(</span>integer<span style="color: #7A0874; font-weight: bold;">)</span> <span style="color: #000000;">1</span><br/>
 </div></div>
-<p>次に、別の redis クライアントを起動し、同じチャンネル runoobChat に2回メッセージを公開します。購読者はメッセージを受信できます。</p>
+<p>次に、別の redis クライアントを起動し、同じチャンネル サンプルChat に2回メッセージを公開します。購読者はメッセージを受信できます。</p>
 <div class="example"><h2 class="example">2つ目の redis-cli クライアント</h2> <div class="example_code">
-redis 127.0.0.1:6379&gt; PUBLISH runoobChat "Redis PUBLISH test"<br/>
+redis 127.0.0.1:6379&gt; PUBLISH サンプルChat "Redis PUBLISH test"<br/>
 <br/>
 (integer) 1<br/>
 <br/>
-redis 127.0.0.1:6379&gt; PUBLISH runoobChat "Learn redis by runoob.com"<br/>
+redis 127.0.0.1:6379&gt; PUBLISH サンプルChat "Learn redis by example.com"<br/>
 <br/>
 (integer) 1<br/>
 <br/># 購読者のクライアントには以下のメッセージが表示されます<br/>
  1) "message"<br/>
-2) "runoobChat"<br/>
+2) "サンプルChat"<br/>
 3) "Redis PUBLISH test"<br/>
  1) "message"<br/>
-2) "runoobChat"<br/>
-3) "Learn redis by runoob.com"<br/>
+2) "サンプルChat"<br/>
+3) "Learn redis by example.com"<br/>
 </div></div>
 <p>gif デモは次のとおりです：</p>
 <ul>
 <li><p>ローカルの Redis サービスを起動し、2つの redis-cli クライアントを起動します。</p></li>
-<li><p>に<strong>1つ目の redis-cli クライアント</strong>入力：<span class="marked">SUBSCRIBE runoobChat</span>これは購読を意味します<code>runoobChat</code>チャンネル。</p></li>
-<li><p>に<strong>2つ目の redis-cli クライアント</strong>入力：<span class="marked">PUBLISH runoobChat "Redis PUBLISH test"</span>runoobChat チャンネルにメッセージを送信すると、1つ目の redis-cli クライアントに2つ目の redis-cli クライアントから送信されたテストメッセージが表示されます。</p></li>
+<li><p>に<strong>1つ目の redis-cli クライアント</strong>入力：<span class="marked">SUBSCRIBE サンプルChat</span>これは購読を意味します<code>サンプルChat</code>チャンネル。</p></li>
+<li><p>に<strong>2つ目の redis-cli クライアント</strong>入力：<span class="marked">PUBLISH サンプルChat "Redis PUBLISH test"</span>サンプルChat チャンネルにメッセージを送信すると、1つ目の redis-cli クライアントに2つ目の redis-cli クライアントから送信されたテストメッセージが表示されます。</p></li>
 </ul>
 <p><img decoding="async" src="../wp-content/uploads/2014/11/redis-pub-sub.gif"/></p>
 <hr/><h2>Redis パブリッシュ/サブスクライブコマンド</h2>

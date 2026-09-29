@@ -204,13 +204,13 @@ await page.<span style="color: #660066;">getByRole</span><span style="color: #00
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #006600; font-style: italic;">// 基本ナビゲーション</span><br/>
-await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.runoob.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.example.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
 <span style="color: #006600; font-style: italic;">// DOMContentLoaded（ページ構造の読み込み完了）を待機</span><br/>
-await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.runoob.com/'</span><span style="color: #339933;">,</span> <span style="color: #009900;">{</span> waitUntil<span style="color: #339933;">:</span> <span style="color: #3366CC;">'domcontentloaded'</span> <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.example.com/'</span><span style="color: #339933;">,</span> <span style="color: #009900;">{</span> waitUntil<span style="color: #339933;">:</span> <span style="color: #3366CC;">'domcontentloaded'</span> <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
 <span style="color: #006600; font-style: italic;">// ネットワークがアイドル状態（すべての非同期データの読み込み完了）を待機</span><br/>
-await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.runoob.com/'</span><span style="color: #339933;">,</span> <span style="color: #009900;">{</span><br/>
+await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.example.com/'</span><span style="color: #339933;">,</span> <span style="color: #009900;">{</span><br/>
   waitUntil<span style="color: #339933;">:</span> <span style="color: #3366CC;">'networkidle'</span><span style="color: #339933;">,</span>    <span style="color: #006600; font-style: italic;">// ネットワークアイドル</span><br/>
   timeout<span style="color: #339933;">:</span> <span style="color: #CC0000;">60000</span><span style="color: #339933;">,</span>              <span style="color: #006600; font-style: italic;">// タイムアウト60秒</span><br/>
   referer<span style="color: #339933;">:</span> <span style="color: #3366CC;">'https://google.com'</span><span style="color: #339933;">,</span> <span style="color: #006600; font-style: italic;">// Referer 参照元</span><br/>
@@ -316,9 +316,9 @@ await page.<span style="color: #660066;">getByRole</span><span style="color: #00
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #006600; font-style: italic;">// 入力欄をクリアして新しい値を入力</span><br/>
-await page.<span style="color: #660066;">getByLabel</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'用户名'</span><span style="color: #009900;">)</span>.<span style="color: #660066;">fill</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'runoob_user'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+await page.<span style="color: #660066;">getByLabel</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'用户名'</span><span style="color: #009900;">)</span>.<span style="color: #660066;">fill</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'サンプル_user'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 await page.<span style="color: #660066;">getByLabel</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'密码'</span><span style="color: #009900;">)</span>.<span style="color: #660066;">fill</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'secure_password'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
-await page.<span style="color: #660066;">getByPlaceholder</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'搜索RUNOOB教程'</span><span style="color: #009900;">)</span>.<span style="color: #660066;">fill</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'Playwright'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+await page.<span style="color: #660066;">getByPlaceholder</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'搜索サンプル教程'</span><span style="color: #009900;">)</span>.<span style="color: #660066;">fill</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'Playwright'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 </div>
 </div>
 <h3>locator.type() 一文字ずつ入力</h3>
@@ -437,7 +437,7 @@ await page.<span style="color: #660066;">keyboard</span>.<span style="color: #66
 <h2 class="example">例</h2>
 <div class="example_code">
 <span style="color: #006600; font-style: italic;">// フォーカス中の要素にテキストを入力</span><br/>
-await page.<span style="color: #660066;">keyboard</span>.<span style="color: #660066;">type</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'RUNOOB チュートリアル'</span><span style="color: #339933;">,</span> <span style="color: #009900;">{</span> delay<span style="color: #339933;">:</span> <span style="color: #CC0000;">50</span> <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+await page.<span style="color: #660066;">keyboard</span>.<span style="color: #660066;">type</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'サンプル チュートリアル'</span><span style="color: #339933;">,</span> <span style="color: #009900;">{</span> delay<span style="color: #339933;">:</span> <span style="color: #CC0000;">50</span> <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 </div>
 </div>
 <h3>page.keyboard.insertText() 直接挿入</h3>

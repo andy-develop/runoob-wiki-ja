@@ -255,27 +255,27 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <hr/>
 <h3>バージョン競合の原因：</h3>
 <p>A、B の2人のユーザーがバージョン番号100のときに kingtuns.txt ファイルを更新したとします。A ユーザーは修正完了後、kingtuns.txt をサーバーにコミットしました。このときコミットは成功し、kingtuns.txt ファイルのバージョン番号は101になりました。同時に B ユーザーはバージョン番号100の kingtuns.txt ファイルに修正を加えました。修正完了後にサーバーへコミットしようとしたとき、現在の最新バージョン101に基づいた修正ではないため、コミットは失敗しました。</p>
-<p>私たちはすでにローカルに runoob01 リポジトリをチェックアウトしています。以下ではバージョン競合の解決方法を実践します。</p>
+<p>私たちはすでにローカルに サンプル01 リポジトリをチェックアウトしています。以下ではバージョン競合の解決方法を実践します。</p>
 <p>HelloWorld.html ファイルにエラーがあることを発見しました。ファイルを修正してバージョンリポジトリにコミットする必要があります。</p>
-<p>HelloWorld.html の内容を "HelloWorld! https://www.runoob.com/" に変更します。</p>
+<p>HelloWorld.html の内容を "HelloWorld! https://www.example.com/" に変更します。</p>
 <pre>
-root@runoob:~/svn/runoob01/trunk# cat HelloWorld.html 
-HelloWorld! http://www.runoob.com/
+root@サンプル:~/svn/サンプル01/trunk# cat HelloWorld.html 
+HelloWorld! http://www.example.com/
 </pre>
 <p>以下のコマンドで変更を確認します：</p>
 <pre>
-root@runoob:~/svn/runoob01/trunk# svn diff 
+root@サンプル:~/svn/サンプル01/trunk# svn diff 
 Index: HelloWorld.html
 ===================================================================
 --- HelloWorld.html     (revision 5)
 +++ HelloWorld.html     (working copy)
 @@ -1,2 +1 @@
--HelloWorld! http://www.runoob.com/
-+HelloWorld! http://www.runoob.com/!
+-HelloWorld! http://www.example.com/
++HelloWorld! http://www.example.com/!
 </pre>
 <p>以下のコマンドで変更をコミットしてみてください。</p>
 <pre>
-root@runoob:~/svn/runoob01/trunk# svn commit -m "change HelloWorld.html first"
+root@サンプル:~/svn/サンプル01/trunk# svn commit -m "change HelloWorld.html first"
 Sending        HelloWorld.html
 Transmitting file data .svn: E160028: Commit failed (details follow):
 svn: E160028: File '/trunk/HelloWorld.html' is out of date
@@ -284,7 +284,7 @@ svn: E160028: File '/trunk/HelloWorld.html' is out of date
 <p>なぜなら、この時点で HelloWorld.html は user02 によって修正され、リポジトリにコミットされているからです。Subversion は user01 (この例で使用している svn アカウント) が変更をコミットすることを許可しません。user02 がすでにリポジトリを変更しているため、私たちの作業コピーは無効になっています。</p>
 <p>二人のコードが互いに上書きされるのを防ぐため、Subversion はこのような操作を許可しません。したがって、変更をコミットする前に作業コピーを更新する必要があります。そこで、次のように update コマンドを使用します。</p>
 <pre>
-root@runoob:~/svn/runoob01/trunk# svn update
+root@サンプル:~/svn/サンプル01/trunk# svn update
 Updating '.':
 C    HelloWorld.html
 Updated to revision 6.
@@ -301,7 +301,7 @@ Summary of conflicts:
 <pre>svn update -r6</pre>
 <p>このとき、作業コピーはリポジトリと同期しているため、安全に変更をコミットできます。</p>
 <pre>
-root@runoob:~/svn/runoob01/trunk# svn commit -m "change HelloWorld.html second"
+root@サンプル:~/svn/サンプル01/trunk# svn commit -m "change HelloWorld.html second"
 Sending        HelloWorld.html
 Transmitting file data .
 Committed revision 7.

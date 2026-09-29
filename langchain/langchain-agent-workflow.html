@@ -388,17 +388,17 @@ step <span style="color: Gray;">=</span> <span style="color: Maroon;">0</span><b
 === Agent 执行过程追踪 ===
 
 --- 步骤 1 ---
-节点: model
+ノード: model
   → 请求调用工具: get_weather({'city': '杭州'})
   → 请求调用工具: get_time({'city': '杭州'})
 
 --- 步骤 2 ---
-节点: tools
+ノード: tools
   → 工具结果 [get_weather]: 晴，25°C
   → 工具结果 [get_time]: 14:30
 
 --- 步骤 3 ---
-节点: model
+ノード: model
   → AI 回复: 杭州现在天气晴朗，气温25°C，当前时间是14:30。
 </pre>
 <p>この追跡から Agent が実行した<span class="marked">3 つのステップ</span>：</p>
@@ -438,19 +438,19 @@ step <span style="color: Gray;">=</span> <span style="color: Maroon;">0</span><b
 <pre>
 === stream_mode='values' ===
 
-状态 0: 1 条消息
+状態0: 1 条消息
   [human] 杭州天气怎么样？
 
-状态 1: 2 条消息
+状態1: 2 条消息
   [human] 杭州天气怎么样？
   [ai]
 
-状态 2: 3 条消息
+状態2: 3 条消息
   [human] 杭州天气怎么样？
   [ai]
   [tool] 晴，25°C
 
-状态 3: 4 条消息
+状態3: 4 条消息
   [human] 杭州天气怎么样？
   [ai]
   [tool] 晴，25°C
@@ -462,7 +462,7 @@ step <span style="color: Gray;">=</span> <span style="color: Maroon;">0</span><b
 <div class="example_code">
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"=== stream_mode='messages'（ストリーミングタイピング効果）===<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">for</span> msg_chunk<span style="color: Gray;">,</span> metadata <span style="color: Green;font-weight:bold;">in</span> agent.<span style="color: #05a;">stream</span><span style="color: Olive;">(</span><br/>
-    <span style="color: Olive;">{</span><span style="color: #a11;">"messages"</span>: <span style="color: Olive;">[</span>HumanMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"菜鸟教程 RUNOOB を一言で紹介してください"</span><span style="color: Olive;">)</span><span style="color: Olive;">]</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span><br/>
+    <span style="color: Olive;">{</span><span style="color: #a11;">"messages"</span>: <span style="color: Olive;">[</span>HumanMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"サンプル を一言で紹介してください"</span><span style="color: Olive;">)</span><span style="color: Olive;">]</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span><br/>
     stream_mode<span style="color: Gray;">=</span><span style="color: #a11;">"messages"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span>:<br/>
     <span style="color: #a50"># msg_chunk は AIMessageChunk で、それぞれが 1 つの Token のみを含みます</span><br/>
@@ -498,7 +498,7 @@ agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;
 <span style="color: Olive;">)</span><br/>
 <br/>
 result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: Olive;">{</span><br/>
-    <span style="color: #a11;">"messages"</span>: <span style="color: Olive;">[</span>HumanMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"菜鸟教程 を一言で紹介してください"</span><span style="color: Olive;">)</span><span style="color: Olive;">]</span><br/>
+    <span style="color: #a11;">"messages"</span>: <span style="color: Olive;">[</span>HumanMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"サンプル を一言で紹介してください"</span><span style="color: Olive;">)</span><span style="color: Olive;">]</span><br/>
 <span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
 <span style="color: #a50"># モデルが直接応答し、ループは 1 回だけ実行</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"ツールなしシナリオ、メッセージ数: {len(result['messages'])}"</span><span style="color: Olive;">)</span><br/>
@@ -508,7 +508,7 @@ result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invo
 <span style="color: #a50"># ケース 2：ツール呼び出しが必要（複数回のループ）</span><br/>
 <span style="color: Gray;">@</span>tool<br/>
 <span style="color: Green;font-weight:bold;">def</span> search_course<span style="color: Olive;">(</span><span style="color: #05a;">keyword</span>: <span style="color: Teal;">str</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
-    <span style="color: #a11;">"""菜鸟教程 のコースを検索"""</span><br/>
+    <span style="color: #a11;">"""サンプル のコースを検索"""</span><br/>
     <span style="color: Green;font-weight:bold;">return</span> f<span style="color: #a11;">"{keyword} 関連コースを 3 件見つけました"</span><br/>
 <br/>
 <br/>
@@ -533,13 +533,13 @@ result <span style="color: Gray;">=</span> agent_with_tools.<span style="color: 
 <p>実行結果：</p>
 <pre>
 无工具场景，消息数: 2
-回复: 菜鸟教程是一个面向初学者的编程学习平台，提供丰富的教程和实例...
+返答: サンプルは初心者向けのプログラミング学習プラットフォームで、豊富なチュートリアルとサンプルを提供しています...
 
 有工具场景，消息数: 4
   [human] 搜索 Python 课程
   [ai] tool_calls: ['search_course']
   [tool] 找到 python 相关课程 3 门
-  [ai] 在菜鸟教程中搜索 "Python 课程" 找到了 3 门相关课程...
+  [ai] サンプルで「Pythonコース」を検索し、関連コースを3件見つけました...
 </pre>
 <hr/>
 <h2>invoke と stream の比較</h2>

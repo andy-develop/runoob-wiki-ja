@@ -431,22 +431,22 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example_code">
 <span style="color: Green;font-weight:bold;">import</span> numpy <span style="color: Green;font-weight:bold;">as</span> np<br/>
 <br/>
-v_runoob <span style="color: Gray;">=</span> np.<span style="color: #05a;">array</span><span style="color: Olive;">(</span><span style="color: Olive;">[</span><span style="color: Maroon;">3</span><span style="color: Gray;">,</span> <span style="color: Maroon;">4</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
-w_runoob <span style="color: Gray;">=</span> np.<span style="color: #05a;">array</span><span style="color: Olive;">(</span><span style="color: Olive;">[</span><span style="color: Maroon;">6</span><span style="color: Gray;">,</span> <span style="color: Maroon;">8</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span>  <span style="color: #a50"># v の2倍</span><br/>
+v_サンプル <span style="color: Gray;">=</span> np.<span style="color: #05a;">array</span><span style="color: Olive;">(</span><span style="color: Olive;">[</span><span style="color: Maroon;">3</span><span style="color: Gray;">,</span> <span style="color: Maroon;">4</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span><br/>
+w_サンプル <span style="color: Gray;">=</span> np.<span style="color: #05a;">array</span><span style="color: Olive;">(</span><span style="color: Olive;">[</span><span style="color: Maroon;">6</span><span style="color: Gray;">,</span> <span style="color: Maroon;">8</span><span style="color: Gray;">,</span> <span style="color: Maroon;">0</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span>  <span style="color: #a50"># v の2倍</span><br/>
 <br/>
 <span style="color: #a50"># ノルム</span><br/>
-norm_v <span style="color: Gray;">=</span> np.<span style="color: #05a;">linalg</span>.<span style="color: #05a;">norm</span><span style="color: Olive;">(</span>v_runoob<span style="color: Olive;">)</span>   <span style="color: #a50"># L2 デフォルト</span><br/>
-norm_w <span style="color: Gray;">=</span> np.<span style="color: #05a;">linalg</span>.<span style="color: #05a;">norm</span><span style="color: Olive;">(</span>w_runoob<span style="color: Olive;">)</span><br/>
+norm_v <span style="color: Gray;">=</span> np.<span style="color: #05a;">linalg</span>.<span style="color: #05a;">norm</span><span style="color: Olive;">(</span>v_サンプル<span style="color: Olive;">)</span>   <span style="color: #a50"># L2 デフォルト</span><br/>
+norm_w <span style="color: Gray;">=</span> np.<span style="color: #05a;">linalg</span>.<span style="color: #05a;">norm</span><span style="color: Olive;">(</span>w_サンプル<span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"||v|| = {norm_v:.1f}, ||w|| = {norm_w:.1f}"</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 5, 10</span><br/>
 <br/>
 <span style="color: #a50"># 正規化</span><br/>
-unit_v <span style="color: Gray;">=</span> v_runoob / norm_v<br/>
-unit_w <span style="color: Gray;">=</span> w_runoob / norm_w<br/>
+unit_v <span style="color: Gray;">=</span> v_サンプル / norm_v<br/>
+unit_w <span style="color: Gray;">=</span> w_サンプル / norm_w<br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"v の正規化:"</span><span style="color: Gray;">,</span> unit_v<span style="color: Olive;">)</span>    <span style="color: #a50"># [0.6, 0.8, 0.]</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"w の正規化:"</span><span style="color: Gray;">,</span> unit_w<span style="color: Olive;">)</span>    <span style="color: #a50"># [0.6, 0.8, 0.] 完全に同じ！</span><br/>
 <br/>
 <span style="color: #a50"># コサイン類似度</span><br/>
-cos_sim <span style="color: Gray;">=</span> np.<span style="color: #05a;">dot</span><span style="color: Olive;">(</span>v_runoob<span style="color: Gray;">,</span> w_runoob<span style="color: Olive;">)</span> / <span style="color: Olive;">(</span>norm_v * norm_w<span style="color: Olive;">)</span><br/>
+cos_sim <span style="color: Gray;">=</span> np.<span style="color: #05a;">dot</span><span style="color: Olive;">(</span>v_サンプル<span style="color: Gray;">,</span> w_サンプル<span style="color: Olive;">)</span> / <span style="color: Olive;">(</span>norm_v * norm_w<span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"コサイン類似度 = {cos_sim:.4f}"</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 1.0</span><br/>
 <br/>
 <span style="color: #a50"># コサイン類似度行列を一括計算</span><br/>

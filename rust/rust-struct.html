@@ -173,9 +173,9 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 }</pre><p>注意：C/C++をよく使うなら、Rustではstruct文は定義にのみ使用され、インスタンスを宣言できないことを覚えておいてください。末尾には<span class="marked">;</span>記号は不要で、各フィールドの定義後には<span class="marked">,</span>区切り記号を使用します。</p>
 <h3>構造体インスタンス</h3><p>Rustは多くの点でJavaScriptの影響を受けており、構造体をインスタンス化する際にJSONオブジェクトの<span class="marked">key: value</span>構文を使用して定義します：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-let runoob <span style="color: #339933;">=</span> Site <span style="color: #009900;">{</span><br/>
-    domain<span style="color: #339933;">:</span> <span style="">String</span><span style="color: #339933;">::</span>from<span style="color: #009900;">(</span><span style="color: #3366CC;">"www.runoob.com"</span><span style="color: #009900;">)</span><span style="color: #339933;">,</span><br/>
-    name<span style="color: #339933;">:</span> <span style="">String</span><span style="color: #339933;">::</span>from<span style="color: #009900;">(</span><span style="color: #3366CC;">"RUNOOB"</span><span style="color: #009900;">)</span><span style="color: #339933;">,</span><br/>
+let サンプル <span style="color: #339933;">=</span> Site <span style="color: #009900;">{</span><br/>
+    domain<span style="color: #339933;">:</span> <span style="">String</span><span style="color: #339933;">::</span>from<span style="color: #009900;">(</span><span style="color: #3366CC;">"www.example.com"</span><span style="color: #009900;">)</span><span style="color: #339933;">,</span><br/>
+    name<span style="color: #339933;">:</span> <span style="">String</span><span style="color: #339933;">::</span>from<span style="color: #009900;">(</span><span style="color: #3366CC;">"サンプル"</span><span style="color: #009900;">)</span><span style="color: #339933;">,</span><br/>
     nation<span style="color: #339933;">:</span> <span style="">String</span><span style="color: #339933;">::</span>from<span style="color: #009900;">(</span><span style="color: #3366CC;">"China"</span><span style="color: #009900;">)</span><span style="color: #339933;">,</span><br/>
     found<span style="color: #339933;">:</span> <span style="color: #CC0000;">2013</span><br/>
 <span style="color: #009900;">}</span><span style="color: #339933;">;</span><br/>
@@ -185,9 +185,9 @@ let runoob <span style="color: #339933;">=</span> Site <span style="color: #
     ...
 }</pre><p>これの利点は、プログラムがより直感的になるだけでなく、定義された順序に従ってメンバーの値を入力する必要がないことです。</p><p>インスタンス化しようとしている構造体に、既存の変数名と同じフィールド名がある場合は、簡潔に記述できます：</p><div class="example"><h2 class="example">例</h2> <div class="example_code">
 <br/>
-let domain <span style="color: #339933;">=</span> <span style="">String</span><span style="color: #339933;">::</span>from<span style="color: #009900;">(</span><span style="color: #3366CC;">"www.runoob.com"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
-let name <span style="color: #339933;">=</span> <span style="">String</span><span style="color: #339933;">::</span>from<span style="color: #009900;">(</span><span style="color: #3366CC;">"RUNOOB"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
-let runoob <span style="color: #339933;">=</span> Site <span style="color: #009900;">{</span><br/>
+let domain <span style="color: #339933;">=</span> <span style="">String</span><span style="color: #339933;">::</span>from<span style="color: #009900;">(</span><span style="color: #3366CC;">"www.example.com"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+let name <span style="color: #339933;">=</span> <span style="">String</span><span style="color: #339933;">::</span>from<span style="color: #009900;">(</span><span style="color: #3366CC;">"サンプル"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+let サンプル <span style="color: #339933;">=</span> Site <span style="color: #009900;">{</span><br/>
     domain<span style="color: #339933;">,</span>  <span style="color: #006600; font-style: italic;">// domain : domain と同じ</span><br/>
     name<span style="color: #339933;">,</span>    <span style="color: #006600; font-style: italic;">// name : name と同じ</span><br/>
     nation<span style="color: #339933;">:</span> <span style="">String</span><span style="color: #339933;">::</span>from<span style="color: #009900;">(</span><span style="color: #3366CC;">"China"</span><span style="color: #009900;">)</span><span style="color: #339933;">,</span><br/>
@@ -196,10 +196,10 @@ let runoob <span style="color: #339933;">=</span> Site <span style="color: #
 </div></div>
 <p>このような場合があります：新しい構造体インスタンスを作成したいが、そのほとんどのプロパティを既存の構造体と同じに設定し、1つか2つのフィールドの値だけを変更したい場合は、構造体更新構文を使用できます：</p>
 <pre>let site = Site {
-    domain: String::from("www.runoob.com"),
-    name: String::from("RUNOOB"),
-    ..runoob
-};</pre><p>注意：<span class="marked">..runoob</span>後ろにカンマを付けることはできません。この構文では、別の構造体インスタンスをそのままコピーすることはできません。つまり、少なくとも1つのフィールドの値を再設定してからでないと、他のインスタンスの値を参照できないということです。</p>
+    domain: String::from("www.example.com"),
+    name: String::from("サンプル"),
+    ..サンプル
+};</pre><p>注意：<span class="marked">..サンプル</span>後ろにカンマを付けることはできません。この構文では、別の構造体インスタンスをそのままコピーすることはできません。つまり、少なくとも1つのフィールドの値を再設定してからでないと、他のインスタンスの値を参照できないということです。</p>
 <h3>タプル構造体</h3><p>構造体を定義して使用する、より簡単な方法があります：<strong>タプル構造体</strong>。</p>
 <p>タプル構造体は、形式がタプルである構造体です。</p><p>タプルとの違いは、名前と固定された型形式があることです。その存在意義は、型を定義する必要がある（頻繁に使用する）が、複雑にしたくない単純なデータを処理するためです：</p><pre>
 struct Color(u8, u8, u8);

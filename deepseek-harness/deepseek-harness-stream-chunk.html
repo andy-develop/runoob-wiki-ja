@@ -315,7 +315,7 @@ async <span style="color: #000066; font-weight: bold;">function</span><span styl
 <br/>
   <span style="color: #006600; font-style: italic;">// 2. Stream text through text-delta.</span><br/>
   <span style="color: #006600; font-style: italic;">// テキスト増分。複数のチャンクに分割可能</span><br/>
-  yield <span style="color: #009900;">{</span> type<span style="color: #339933;">:</span> <span style="color: #3366CC;">'text-delta'</span><span style="color: #339933;">,</span> index<span style="color: #339933;">:</span> <span style="color: #CC0000;">0</span><span style="color: #339933;">,</span> text<span style="color: #339933;">:</span> <span style="color: #3366CC;">'runoob'</span> <span style="color: #009900;">}</span><br/>
+  yield <span style="color: #009900;">{</span> type<span style="color: #339933;">:</span> <span style="color: #3366CC;">'text-delta'</span><span style="color: #339933;">,</span> index<span style="color: #339933;">:</span> <span style="color: #CC0000;">0</span><span style="color: #339933;">,</span> text<span style="color: #339933;">:</span> <span style="color: #3366CC;">'サンプル'</span> <span style="color: #009900;">}</span><br/>
   yield <span style="color: #009900;">{</span> type<span style="color: #339933;">:</span> <span style="color: #3366CC;">'text-delta'</span><span style="color: #339933;">,</span> index<span style="color: #339933;">:</span> <span style="color: #CC0000;">0</span><span style="color: #339933;">,</span> text<span style="color: #339933;">:</span> <span style="color: #3366CC;">' 教程'</span> <span style="color: #009900;">}</span><br/>
 <br/>
   <span style="color: #006600; font-style: italic;">// 3. End each content block with block-end and the complete block.</span><br/>
@@ -323,7 +323,7 @@ async <span style="color: #000066; font-weight: bold;">function</span><span styl
   yield <span style="color: #009900;">{</span><br/>
     type<span style="color: #339933;">:</span> <span style="color: #3366CC;">'block-end'</span><span style="color: #339933;">,</span><br/>
     index<span style="color: #339933;">:</span> <span style="color: #CC0000;">0</span><span style="color: #339933;">,</span><br/>
-    block<span style="color: #339933;">:</span> <span style="color: #009900;">{</span> type<span style="color: #339933;">:</span> <span style="color: #3366CC;">'text'</span><span style="color: #339933;">,</span> text<span style="color: #339933;">:</span> <span style="color: #3366CC;">'runoob 教程'</span> <span style="color: #009900;">}</span><span style="color: #339933;">,</span><br/>
+    block<span style="color: #339933;">:</span> <span style="color: #009900;">{</span> type<span style="color: #339933;">:</span> <span style="color: #3366CC;">'text'</span><span style="color: #339933;">,</span> text<span style="color: #339933;">:</span> <span style="color: #3366CC;">'サンプル 教程'</span> <span style="color: #009900;">}</span><span style="color: #339933;">,</span><br/>
   <span style="color: #009900;">}</span><br/>
 <br/>
   <span style="color: #006600; font-style: italic;">// 4. Tool-call block.</span><br/>
@@ -335,7 +335,7 @@ async <span style="color: #000066; font-weight: bold;">function</span><span styl
     index<span style="color: #339933;">:</span> <span style="color: #CC0000;">1</span><span style="color: #339933;">,</span><br/>
     id<span style="color: #339933;">:</span> CallId<span style="color: #009900;">(</span><span style="color: #3366CC;">'call-123'</span><span style="color: #009900;">)</span><span style="color: #339933;">,</span><br/>
     name<span style="color: #339933;">:</span> <span style="color: #3366CC;">'bash'</span><span style="color: #339933;">,</span><br/>
-    argumentsDelta<span style="color: #339933;">:</span> <span style="color: #3366CC;">'{"command":"echo runoob"}'</span><span style="color: #339933;">,</span><br/>
+    argumentsDelta<span style="color: #339933;">:</span> <span style="color: #3366CC;">'{"command":"echo サンプル"}'</span><span style="color: #339933;">,</span><br/>
   <span style="color: #009900;">}</span><br/>
   <span style="color: #006600; font-style: italic;">// 完全なブロックで終了。arguments は結合済みの JSON テキスト</span><br/>
   yield <span style="color: #009900;">{</span><br/>
@@ -345,7 +345,7 @@ async <span style="color: #000066; font-weight: bold;">function</span><span styl
       type<span style="color: #339933;">:</span> <span style="color: #3366CC;">'tool-call'</span><span style="color: #339933;">,</span><br/>
       id<span style="color: #339933;">:</span> CallId<span style="color: #009900;">(</span><span style="color: #3366CC;">'call-123'</span><span style="color: #009900;">)</span><span style="color: #339933;">,</span><br/>
       name<span style="color: #339933;">:</span> <span style="color: #3366CC;">'bash'</span><span style="color: #339933;">,</span><br/>
-      arguments<span style="color: #339933;">:</span> <span style="color: #3366CC;">'{"command":"echo runoob"}'</span><span style="color: #339933;">,</span><br/>
+      arguments<span style="color: #339933;">:</span> <span style="color: #3366CC;">'{"command":"echo サンプル"}'</span><span style="color: #339933;">,</span><br/>
     <span style="color: #009900;">}</span><span style="color: #339933;">,</span><br/>
   <span style="color: #009900;">}</span><br/>
 <br/>

@@ -167,7 +167,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>Docker はコンテナ内でアプリケーションを実行できます。使用するのは<strong>docker run</strong>コンテナ内でアプリケーションを実行するためのコマンドです。</p>
 <p>Hello world を出力する</p>
 <pre>
-runoob@runoob:~$ docker run ubuntu:15.10 /bin/echo "Hello world"
+サンプル@サンプル:~$ docker run ubuntu:15.10 /bin/echo "Hello world"
 Hello world
 </pre>
 <p><img decoding="async" src="../wp-content/uploads/2016/05/docker19.png"/></p>
@@ -182,7 +182,7 @@ Hello world
 <h2>インタラクティブなコンテナを実行する</h2>
 <p>docker の2つのパラメータ -i -t を使用して、docker が実行するコンテナに<strong>「対話」</strong>の能力を実現させます：</p>
 <pre>
-runoob@runoob:~$ docker run -i -t ubuntu:15.10 /bin/bash
+サンプル@サンプル:~$ docker run -i -t ubuntu:15.10 /bin/bash
 root@0123ce188bd8:/#
 </pre>
 <p>各パラメータの解説：</p>
@@ -199,13 +199,13 @@ root@0123ce188bd8:/# </pre>
 <p>exit コマンドを実行するか、CTRL+D を使用してコンテナを終了できます。</p>
 <pre>root@0123ce188bd8:/#  exit
 exit
-root@runoob:~# </pre>
-<p>3行目に注意してください<span class="marked">root@runoob:~#</span>現在のコンテナを終了し、現在のホストに戻ったことを示しています。</p>
+root@サンプル:~# </pre>
+<p>3行目に注意してください<span class="marked">root@サンプル:~#</span>現在のコンテナを終了し、現在のホストに戻ったことを示しています。</p>
 <hr/>
 <h2>コンテナを起動する（バックグラウンドモード）</h2>
 <p>以下のコマンドを使用して、プロセスとして実行されるコンテナを作成します。</p>
 <pre>
-runoob@runoob:~$ docker run -d ubuntu:15.10 /bin/sh -c "while true; do echo hello world; sleep 1; done"
+サンプル@サンプル:~$ docker run -d ubuntu:15.10 /bin/sh -c "while true; do echo hello world; sleep 1; done"
 2b1b7a428627c51ab8810d541d759f072b4fc75487eed05812646b8534a2fe63
 </pre>
 <p>出力には、期待していた "hello world" ではなく、長い文字列が表示されています。</p>
@@ -213,7 +213,7 @@ runoob@runoob:~$ docker run -d ubuntu:15.10 /bin/sh -c "while true; do echo hell
 <p>この長い文字列はコンテナ ID と呼ばれ、各コンテナごとに一意です。コンテナ ID を使用して、対応するコンテナで何が起こったのかを確認できます。</p>
 <p>まず、コンテナが実行中であることを確認する必要があります。確認するのに使用するのは<strong>docker ps</strong>次のコマンドです：</p>
 <pre>
-runoob@runoob:~$ docker ps
+サンプル@サンプル:~$ docker ps
 CONTAINER ID        IMAGE                  COMMAND              ...  
 5917eac21c36        ubuntu:15.10           "/bin/sh -c 'while t…"    ...
 </pre>
@@ -229,11 +229,11 @@ CONTAINER ID        IMAGE                  COMMAND              ...
 <p><strong>NAMES:</strong>自動的に割り当てられたコンテナ名。</p>
 <p>ホストマシン上で使用するのは<span class="marked">docker logs</span>コンテナ内の標準出力を確認するためのコマンドです：</p>
 <pre>
-runoob@runoob:~$ docker logs 2b1b7a428627
+サンプル@サンプル:~$ docker logs 2b1b7a428627
 </pre>
 <p><img decoding="async" src="../wp-content/uploads/2016/05/docker23.png"/></p>
 <pre>
-runoob@runoob:~$ docker logs amazing_cori
+サンプル@サンプル:~$ docker logs amazing_cori
 </pre>
 <p><img decoding="async" src="../wp-content/uploads/2016/05/docker24.png"/></p>
 <hr/>
@@ -242,12 +242,12 @@ runoob@runoob:~$ docker logs amazing_cori
 <p><img decoding="async" src="../wp-content/uploads/2016/05/docker25.png"/></p>
 <p>次のコマンドで<span class="marked">docker ps</span>確認すると、コンテナはすでに停止しています：</p>
 <pre>
-runoob@runoob:~$ docker ps
+サンプル@サンプル:~$ docker ps
 </pre>
 <p>コンテナがもう存在しないことがわかります。</p>
 <p>次のコマンドを使用して停止することもできます：</p>
 <pre>
-runoob@runoob:~$ docker stop amazing_cori
+サンプル@サンプル:~$ docker stop amazing_cori
 </pre>
 その他の拡張
 </div>

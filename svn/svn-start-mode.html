@@ -259,7 +259,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 mkdir /opt/svn
 </pre>
 <p>svnコマンドを使用してリポジトリを作成する</p>
-<pre>svnadmin create /opt/svn/runoob</pre>
+<pre>svnadmin create /opt/svn/サンプル</pre>
 <p>svnserveコマンドを使用してサービスを起動する<p>
 <pre>svnserve -d -r 目录 --listen-port 端口号</pre>
 <ul>
@@ -269,7 +269,7 @@ mkdir /opt/svn
 <p><strong>--listen-port:</strong>SVNのリッスンポートを指定します。このパラメータを追加しない場合、SVNはデフォルトで3690をリッスンします。</p></li>
 <p>-rの設定方法が異なるため、SVNの起動時には2つの異なるアクセス方法があります。</p>
 <p>方法1：-rでリポジトリを直接指定（シングルリポジトリsvnserve方式と呼ぶ）</p>
-<pre>svnserve -d -r /opt/svn/runoob</pre>
+<pre>svnserve -d -r /opt/svn/サンプル</pre>
 <p>この場合、1つのsvnserveは1つのリポジトリに対してのみ機能します。</p>
 <p>authz設定ファイル内のリポジトリ権限の設定は、次のように記述します：</p>
 <pre>
@@ -280,7 +280,7 @@ dev=user2
 @admin=rw
 user2=r
 </pre>
-<p>次のようなURL：svn://192.168.0.1/ を使用すると、runoobリポジトリにアクセスできます。</p>
+<p>次のようなURL：svn://192.168.0.1/ を使用すると、サンプルリポジトリにアクセスできます。</p>
 <p>方法2：リポジトリの親ディレクトリを指定（マルチリポジトリsvnserve方式と呼ぶ）</p>
 <pre>svnserve -d -r /opt/svn</pre>
 <p>この場合、1つのsvnserveは複数のリポジトリに対して機能します。<p>authz設定ファイル内のリポジトリ権限の設定は、次のように記述します：</p>
@@ -288,16 +288,16 @@ user2=r
 [groups]
 admin=user1
 dev=user2
-[runoob:/]
+[サンプル:/]
 @admin=rw
 user2=r
 
-[runoob01:/]
+[サンプル01:/]
 @admin=rw
 user2=r
 </pre>
 <p>このとき、[/]を使用すると、すべてのリポジトリのルートディレクトリを表します。同様に、[/src]はすべてのリポジトリのルートディレクトリ配下のsrcディレクトリを表します。</p>
-<p>次のようなURL：svn://192.168.0.1/runoob を使用すると、runoobリポジトリにアクセスできます。</p>
+<p>次のようなURL：svn://192.168.0.1/サンプル を使用すると、サンプルリポジトリにアクセスできます。</p>
 その他の拡張
 </p></ul></p></p></div>
 </div>

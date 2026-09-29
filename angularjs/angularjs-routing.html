@@ -167,14 +167,14 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>この章では、AngularJS ルーティングについて紹介します。</p>
 <p>AngularJS ルーティングを使用すると、異なる URL を通じて異なるコンテンツにアクセスできます。</p>
 <p>AngularJS を使用することで、マルチビューのシングルページ Web アプリケーション（single page web application、SPA）を実現できます。</p>
-<p>通常、私たちのURLの形式は次のとおりです<b>http://runoob.com/first/page</b>しかし、シングルページ Web アプリケーションでは AngularJS は<b>#! + 标记</b>実装、例えば：</p>
+<p>通常、私たちのURLの形式は次のとおりです<b>http://example.com/first/page</b>しかし、シングルページ Web アプリケーションでは AngularJS は<b>#! + 标记</b>実装、例えば：</p>
 <pre>
-http://runoob.com/#!/first
-http://runoob.com/#!/second
-http://runoob.com/#!/third
+http://example.com/#!/first
+http://example.com/#!/second
+http://example.com/#!/third
 </pre>
 <blockquote><p>注意：Angular 1.6 より前のバージョンは、... を介して行われます。<b># + 标记</b>实现路由。</p></blockquote>
-<p>上記のいずれかのリンクをクリックすると、サーバーへ要求するアドレスはすべて同じになります (http://runoob.com/)。#! の後ろの内容は、サーバーへの要求時にブラウザーによって無視されるためです。したがって、クライアント側で #! の後ろの内容の機能を実装する必要があります。AngularJS ルーティングは、... を介して実現します。<b>#! + 标记</b>異なる論理ページを区別し、異なるページを対応するコントローラーにバインドするのに役立ちます。</p>
+<p>上記のいずれかのリンクをクリックすると、サーバーへ要求するアドレスはすべて同じになります (http://example.com/)。#! の後ろの内容は、サーバーへの要求時にブラウザーによって無視されるためです。したがって、クライアント側で #! の後ろの内容の機能を実装する必要があります。AngularJS ルーティングは、... を介して実現します。<b>#! + 标记</b>異なる論理ページを区別し、異なるページを対応するコントローラーにバインドするのに役立ちます。</p>
 <p><img decoding="async" src="../wp-content/uploads/2016/04/FFFCA2C5-8A49-47B3-94D6-45406E1F3310.png"/></p>
 <p>上記の図では、/ShowOrders と /AddNewOrder の 2 つの URL が作成されていることがわかります。各 URL には、対応するビューとコントローラーがあります。</p>
 <p>次に、簡単な例を見てみましょう：</p>
@@ -185,7 +185,7 @@ http://runoob.com/#!/third
 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">meta</span><span class="hl-code"> </span><span class="hl-var">charset</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">utf-8</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
-</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">AngularJS 路由实例 - 菜鸟教程</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">AngularJS 路由实例 - サンプル</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">
 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">https://cdn.bootcss.com/angular.js/1.7.0/angular.min.js</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">https://cdn.bootcss.com/angular.js/1.7.0/angular-route.min.js</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
 </span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
@@ -290,7 +290,7 @@ $routeProvider.when('/computers', {
 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">html</span><span class="hl-brackets">&gt;</span><span class="hl-code">
 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">head</span><span class="hl-brackets">&gt;</span><span class="hl-code">
 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">meta</span><span class="hl-code"> </span><span class="hl-var">charset</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">utf-8</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">
-</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">AngularJS 路由实例 - 菜鸟教程</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">
+</span><span class="hl-brackets">&lt;</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">AngularJS 路由实例 - サンプル</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">title</span><span class="hl-brackets">&gt;</span><span class="hl-code">
 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">https://cdn.bootcss.com/angular.js/1.7.0/angular.min.js</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-code"> </span><span class="hl-var">src</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">https://cdn.bootcss.com/angular.js/1.7.0/angular-route.min.js</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-brackets">&lt;/</span><span class="hl-reserved">script</span><span class="hl-brackets">&gt;</span><span class="hl-code">
 </span><span class="hl-brackets">&lt;</span><span class="hl-reserved">script</span><span class="hl-code"> </span><span class="hl-var">type</span><span class="hl-code">=</span><span class="hl-quotes">"</span><span class="hl-string">text/javascript</span><span class="hl-quotes">"</span><span class="hl-brackets">&gt;</span><span class="hl-code">

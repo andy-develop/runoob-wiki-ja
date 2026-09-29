@@ -202,8 +202,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: #666666; font-style: italic;">; 创建文件并写入内容</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
-    filename <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'runoob_output.txt'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>    <span style="color: #666666; font-style: italic;">; 文件名（null 结尾）</span><br/>
-    content <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'Hello, RUNOOB!'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0xA</span>       <span style="color: #666666; font-style: italic;">; 書き込む内容</span><br/>
+    filename <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'サンプル_output.txt'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>    <span style="color: #666666; font-style: italic;">; 文件名（null 结尾）</span><br/>
+    content <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'Hello, サンプル!'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0xA</span>       <span style="color: #666666; font-style: italic;">; 書き込む内容</span><br/>
     content_len <span style="color: #0000FF; font-weight: bold;">equ</span> <span style="color: #0000FF; font-weight: bold;">$</span> <span style="color: #339933;">-</span> content<br/>
     create_msg <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'File created successfully!'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0xA</span><br/>
     create_msg_len <span style="color: #0000FF; font-weight: bold;">equ</span> <span style="color: #0000FF; font-weight: bold;">$</span> <span style="color: #339933;">-</span> create_msg<br/>
@@ -254,8 +254,8 @@ $ nasm -f elf32 file_write.asm -o file_write.o
 $ ld -m elf_i386 file_write.o -o file_write
 $ ./file_write
 File created successfully!
-$ cat runoob_output.txt
-Hello, RUNOOB!
+$ cat サンプル_output.txt
+Hello, サンプル!
 </pre>
 <hr/>
 <h2>ファイル内容の読み取り</h2>
@@ -266,7 +266,7 @@ Hello, RUNOOB!
 <span style="color: #666666; font-style: italic;">; 打开并读取文件内容</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
-    filename <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'runoob_output.txt'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
+    filename <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'サンプル_output.txt'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
     open_error <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'Error: cannot open file'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0xA</span><br/>
     open_error_len <span style="color: #0000FF; font-weight: bold;">equ</span> <span style="color: #0000FF; font-weight: bold;">$</span> <span style="color: #339933;">-</span> open_error<br/>
     read_success <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'File content:'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0xA</span><br/>
@@ -340,7 +340,7 @@ $ nasm -f elf32 file_read.asm -o file_read.o
 $ ld -m elf_i386 file_read.o -o file_read
 $ ./file_read
 File content:
-Hello, RUNOOB!
+Hello, サンプル!
 </pre>
 <hr/>
 <h2>ファイルに追記書き込み</h2>
@@ -351,7 +351,7 @@ Hello, RUNOOB!
 <span style="color: #666666; font-style: italic;">; 以追加模式打开文件并写入</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
-    filename <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'runoob_log.txt'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
+    filename <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'サンプル_log.txt'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
     log_entry <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'[INFO] Program executed successfully.'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0xA</span><br/>
     log_len <span style="color: #0000FF; font-weight: bold;">equ</span> <span style="color: #0000FF; font-weight: bold;">$</span> <span style="color: #339933;">-</span> log_entry<br/>
 <br/>
@@ -397,11 +397,11 @@ _start<span style="color: #339933;">:</span><br/>
 <h2 class="example">实例</h2>
 <div class="example_code">
 <span style="color: #666666; font-style: italic;">; 文件路径：file_copy.asm</span><br/>
-<span style="color: #666666; font-style: italic;">; 复制文件：将 runoob_input.txt 复制到 runoob_copy.txt</span><br/>
+<span style="color: #666666; font-style: italic;">; 复制文件：将 サンプル_input.txt 复制到 サンプル_copy.txt</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
-    src_file <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'runoob_input.txt'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
-    dst_file <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'runoob_copy.txt'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
+    src_file <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'サンプル_input.txt'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
+    dst_file <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'サンプル_copy.txt'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
     success_msg <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'File copied successfully!'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0xA</span><br/>
     success_len <span style="color: #0000FF; font-weight: bold;">equ</span> <span style="color: #0000FF; font-weight: bold;">$</span> <span style="color: #339933;">-</span> success_msg<br/>
     error_msg <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'Error during file copy'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0xA</span><br/>

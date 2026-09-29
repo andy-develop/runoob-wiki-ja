@@ -328,7 +328,7 @@ test<span style="color: #009900;">(</span><span style="color: #3366CC;">'すべ�
   await page.<span style="color: #660066;">route</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'**/*.{png,jpg,jpeg}'</span><span style="color: #339933;">,</span> route <span style="color: #339933;">=&gt;</span> route.<span style="color: #660066;">abort</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
   <span style="color: #006600; font-style: italic;">// ページに移動（画像は読み込まれない）</span><br/>
-  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.runoob.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.example.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
   <span style="color: #006600; font-style: italic;">// 画像をダウンロードしないため、ページの読み込みが速くなる可能性があります</span><br/>
 <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 </div>
@@ -353,7 +353,7 @@ test<span style="color: #009900;">(</span><span style="color: #3366CC;">'サー�
   <span style="color: #006600; font-style: italic;">// CSS ファイルをブロック</span><br/>
   await page.<span style="color: #660066;">route</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'**/*.css'</span><span style="color: #339933;">,</span> route <span style="color: #339933;">=&gt;</span> route.<span style="color: #660066;">abort</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
-  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.runoob.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.example.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
   <span style="color: #006600; font-style: italic;">// ページはスタイルなしで読み込まれますが、機能テストには影響しません</span><br/>
 <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 </div>
@@ -373,13 +373,13 @@ test<span style="color: #009900;">(</span><span style="color: #3366CC;">'ユー�
       status<span style="color: #339933;">:</span> <span style="color: #CC0000;">200</span><span style="color: #339933;">,</span><br/>
       contentType<span style="color: #339933;">:</span> <span style="color: #3366CC;">'application/json'</span><span style="color: #339933;">,</span><br/>
       json<span style="color: #339933;">:</span> <span style="color: #009900;">[</span><br/>
-        <span style="color: #009900;">{</span> id<span style="color: #339933;">:</span> <span style="color: #CC0000;">1</span><span style="color: #339933;">,</span> name<span style="color: #339933;">:</span> <span style="color: #3366CC;">'runoob_user'</span><span style="color: #339933;">,</span> email<span style="color: #339933;">:</span> <span style="color: #3366CC;">'user@runoob.com'</span> <span style="color: #009900;">}</span><span style="color: #339933;">,</span><br/>
-        <span style="color: #009900;">{</span> id<span style="color: #339933;">:</span> <span style="color: #CC0000;">2</span><span style="color: #339933;">,</span> name<span style="color: #339933;">:</span> <span style="color: #3366CC;">'test_user'</span><span style="color: #339933;">,</span> email<span style="color: #339933;">:</span> <span style="color: #3366CC;">'test@runoob.com'</span> <span style="color: #009900;">}</span><span style="color: #339933;">,</span><br/>
+        <span style="color: #009900;">{</span> id<span style="color: #339933;">:</span> <span style="color: #CC0000;">1</span><span style="color: #339933;">,</span> name<span style="color: #339933;">:</span> <span style="color: #3366CC;">'サンプル_user'</span><span style="color: #339933;">,</span> email<span style="color: #339933;">:</span> <span style="color: #3366CC;">'user@example.com'</span> <span style="color: #009900;">}</span><span style="color: #339933;">,</span><br/>
+        <span style="color: #009900;">{</span> id<span style="color: #339933;">:</span> <span style="color: #CC0000;">2</span><span style="color: #339933;">,</span> name<span style="color: #339933;">:</span> <span style="color: #3366CC;">'test_user'</span><span style="color: #339933;">,</span> email<span style="color: #339933;">:</span> <span style="color: #3366CC;">'test@example.com'</span> <span style="color: #009900;">}</span><span style="color: #339933;">,</span><br/>
       <span style="color: #009900;">]</span><span style="color: #339933;">,</span><br/>
     <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
   <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
-  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.runoob.com/users'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.example.com/users'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
   <span style="color: #006600; font-style: italic;">// ページには実際の API データではなく Mock データが表示されます</span><br/>
 <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 </div>
@@ -399,7 +399,7 @@ test<span style="color: #009900;">(</span><span style="color: #3366CC;">'API エ
     <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
   <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
-  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.runoob.com/dashboard'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.example.com/dashboard'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
   <span style="color: #006600; font-style: italic;">// エラーメッセージが正しく表示されるか検証</span><br/>
   await expect<span style="color: #009900;">(</span>page.<span style="color: #660066;">getByText</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'サーバー内部エラー'</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span>.<span style="color: #660066;">toBeVisible</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
@@ -417,12 +417,12 @@ test<span style="color: #009900;">(</span><span style="color: #3366CC;">'リク�
     <span style="color: #006600; font-style: italic;">// リクエストヘッダーを変更し、カスタムヘッダーを追加</span><br/>
     <span style="color: #000066; font-weight: bold;">const</span> headers <span style="color: #339933;">=</span> <span style="color: #009900;">{</span><br/>
       ...<span style="color: #660066;">request</span>.<span style="color: #660066;">headers</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">,</span><br/>
-      <span style="color: #3366CC;">'X-Custom-Header'</span><span style="color: #339933;">:</span> <span style="color: #3366CC;">'RUNOOB-TEST'</span><span style="color: #339933;">,</span><br/>
+      <span style="color: #3366CC;">'X-Custom-Header'</span><span style="color: #339933;">:</span> <span style="color: #3366CC;">'サンプル-TEST'</span><span style="color: #339933;">,</span><br/>
     <span style="color: #009900;">}</span><span style="color: #339933;">;</span><br/>
     await route.<span style="color: #000066; font-weight: bold;">continue</span><span style="color: #009900;">(</span><span style="color: #009900;">{</span> headers <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
   <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
-  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.runoob.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.example.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
 test<span style="color: #009900;">(</span><span style="color: #3366CC;">'POST データの変更'</span><span style="color: #339933;">,</span> async <span style="color: #009900;">(</span><span style="color: #009900;">{</span> page <span style="color: #009900;">}</span><span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
@@ -451,7 +451,7 @@ test<span style="color: #009900;">(</span><span style="color: #3366CC;">'実際�
     <span style="color: #000066; font-weight: bold;">const</span> body <span style="color: #339933;">=</span> await response.<span style="color: #660066;">json</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
     <span style="color: #006600; font-style: italic;">// レスポンスデータを変更</span><br/>
-    body.<span style="color: #660066;">items</span><span style="color: #009900;">[</span><span style="color: #CC0000;">0</span><span style="color: #009900;">]</span>.<span style="color: #660066;">name</span> <span style="color: #339933;">=</span> <span style="color: #3366CC;">'RUNOOB 変更後の商品名'</span><span style="color: #339933;">;</span><br/>
+    body.<span style="color: #660066;">items</span><span style="color: #009900;">[</span><span style="color: #CC0000;">0</span><span style="color: #009900;">]</span>.<span style="color: #660066;">name</span> <span style="color: #339933;">=</span> <span style="color: #3366CC;">'サンプル 変更後の商品名'</span><span style="color: #339933;">;</span><br/>
 <br/>
     <span style="color: #006600; font-style: italic;">// 変更後のデータを返す</span><br/>
     await route.<span style="color: #660066;">fulfill</span><span style="color: #009900;">(</span><span style="color: #009900;">{</span><br/>
@@ -494,14 +494,14 @@ test<span style="color: #009900;">(</span><span style="color: #3366CC;">'HAR フ
   <span style="color: #006600; font-style: italic;">// HAR ファイルからネットワーク記録を読み込んで再生</span><br/>
   await page.<span style="color: #660066;">routeFromHAR</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'tests/hars/api-responses.har'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
-  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.runoob.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.example.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
   <span style="color: #006600; font-style: italic;">// 一致するすべてのリクエストは HAR ファイルからレスポンスを取得します</span><br/>
 <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 </div>
 </div>
 <pre>
 # 录制 HAR 文件
-npx playwright open --save-har=tests/hars/api-responses.har https://www.runoob.com/
+npx playwright open --save-har=tests/hars/api-responses.har https://www.example.com/
 </pre>
 <blockquote>
 <p>HAR ファイルは、大量または複雑な API レスポンスの Mock に適しています。一度記録しておけば、以降のテストはすべて HAR から再生されるため、実際のサーバーに依存しません。</p>

@@ -180,7 +180,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <br/>
     Args:<br/>name: 挨拶する相手の名前<br/>
     """</span><br/>
-    <span style="color: Green;font-weight:bold;">return</span> f<span style="color: #a11;">"こんにちは、{name}！RUNOOBへようこそ。"</span><br/>
+    <span style="color: Green;font-weight:bold;">return</span> f<span style="color: #a11;">"こんにちは、{name}！サンプルへようこそ。"</span><br/>
 <br/>
 <span style="color: #a50"># ツールも通常のPython関数なので、直接呼び出せます</span><br/>
 result <span style="color: Gray;">=</span> hello_tool.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: Olive;">{</span><span style="color: #a11;">"name"</span>: <span style="color: #a11;">"太郎"</span><span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
@@ -193,10 +193,10 @@ result <span style="color: Gray;">=</span> hello_tool.<span style="color: #05a;"
 </div>
 <p>実行結果：</p>
 <pre>
-你好，小明！欢迎来到菜鸟教程 RUNOOB。
+你好，小明！欢迎来到サンプル。
 
-工具名称: hello_tool
-工具描述: 向指定的人打招呼。
+ツール名: hello_tool
+ツールの説明: 向指定的人打招呼。
 
     Args:
         name: 要打招呼的人的名字
@@ -219,7 +219,7 @@ result <span style="color: Gray;">=</span> hello_tool.<span style="color: #05a;"
     max_results: <span style="color: Teal;">int</span> <span style="color: Gray;">=</span> <span style="color: Maroon;">5</span><span style="color: Gray;">,</span><br/>
     free_only: <span style="color: Teal;">bool</span> <span style="color: Gray;">=</span> <span style="color: Teal;">True</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
-    <span style="color: #a11;">"""RUNOOBでコースを検索します。<br/>
+    <span style="color: #a11;">"""サンプルでコースを検索します。<br/>
 <br/>
     Args:<br/>keyword: 検索キーワード<br/>level: コースの難易度レベル<br/>max_results: 返す結果の最大件数<br/>free_only: 無料コースのみを表示するかどうか<br/>
     """</span><br/>
@@ -269,7 +269,7 @@ load_dotenv<span style="color: Olive;">(</span><span style="color: Olive;">)</sp
 <br/>
 <span style="color: Gray;">@</span>tool<br/>
 <span style="color: Green;font-weight:bold;">def</span> search_courses<span style="color: Olive;">(</span><span style="color: #05a;">keyword</span>: <span style="color: Teal;">str</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
-    <span style="color: #a11;">"""RUNOOBでコースを検索します。キーワードを渡すと、関連するコースのリストを返します。<br/>
+    <span style="color: #a11;">"""サンプルでコースを検索します。キーワードを渡すと、関連するコースのリストを返します。<br/>
 <br/>
     Args:<br/>keyword: 検索キーワード（例：python、html、java）<br/>
     """</span><br/>
@@ -302,7 +302,7 @@ model <span style="color: Gray;">=</span> init_chat_model<span style="color: Oli
 agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;">(</span><br/>
     model<span style="color: Gray;">=</span>model<span style="color: Gray;">,</span><br/>
     tools<span style="color: Gray;">=</span><span style="color: Olive;">[</span>search_courses<span style="color: Gray;">,</span> get_course_detail<span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたはRUNOOBの学習コンサルタントであり、ユーザーが適切なコースを見つけるのを支援します。"</span><span style="color: Gray;">,</span><br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたはサンプルの学習コンサルタントであり、ユーザーが適切なコースを見つけるのを支援します。"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 <br/>
@@ -320,13 +320,13 @@ ask<span style="color: Olive;">(</span><span style="color: #a11;">"Python3 基�
 </div>
 <p>実行結果：</p>
 <pre>
-用户: 我想学 Python，有什么课程推荐？
-顾问: 在菜鸟教程 RUNOOB 中有以下 Python 相关课程：
+ユーザー: 我想学 Python，有什么课程推荐？
+アドバイザー: 在サンプル 中有以下 Python 相关课程：
 Python3 基础教程、Python 数据分析、Python 爬虫入门。
 这些课程很适合 Python 初学者和进阶学习者，您可以根据兴趣选择！
 ------------------------------------------------------------
-用户: Python3 基础教程学完需要多久？
-顾问: Python3 基础教程共 30 章，预计学习时长 20 小时，非常适合零基础入门学习。
+ユーザー: Python3 基础教程学完需要多久？
+アドバイザー: Python3 基础教程共 30 章，预计学习时长 20 小时，非常适合零基础入门学习。
 ------------------------------------------------------------
 </pre>
 <hr/>
@@ -397,7 +397,7 @@ result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invo
 [调用工具 get_stock_price] AAPL 当前价格：$185.5
 [调用工具 convert_currency] 185.5 USD = 1344.88 CNY
 
-最终回答: 苹果（AAPL）当前股价为 $185.50，按当前汇率换算约为 1344.88 人民币。
+最終回答: 苹果（AAPL）当前股价为 $185.50，按当前汇率换算约为 1344.88 人民币。
 </pre>
 <hr/>
 <h2>ツールのオプションパラメータとデフォルト値</h2>
@@ -414,7 +414,7 @@ result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invo
     level: <span style="color: Teal;">str</span> <span style="color: Gray;">=</span> <span style="color: #a11;">"入門"</span><span style="color: Gray;">,</span><br/>
     count: <span style="color: Teal;">int</span> <span style="color: Gray;">=</span> <span style="color: Maroon;">3</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
-    <span style="color: #a11;">"""プログラミング言語と難易度に基づいてRUNOOBのコースを推薦します。<br/>
+    <span style="color: #a11;">"""プログラミング言語と難易度に基づいてサンプルのコースを推薦します。<br/>
 <br/>
     Args:<br/>language: プログラミング言語（例：Python、Java、HTML）<br/>level: 難易度レベル（"入門"、"中級"、"上級"から選択）。デフォルトは"入門"<br/>count: 推薦するコース数（デフォルトは3）<br/>
     """</span><br/>
@@ -475,7 +475,7 @@ result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invo
 <br/>
 <span style="color: Gray;">@</span>tool<span style="color: Olive;">(</span>args_schema<span style="color: Gray;">=</span>CourseSearchInput<span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">def</span> search_course<span style="color: Olive;">(</span><span style="color: #05a;">keyword</span>: <span style="color: Teal;">str</span><span style="color: Gray;">,</span> category: <span style="color: Teal;">str</span> <span style="color: Gray;">=</span> <span style="color: #a11;">"all"</span><span style="color: Gray;">,</span> page: <span style="color: Teal;">int</span> <span style="color: Gray;">=</span> <span style="color: Maroon;">1</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
-    <span style="color: #a11;">"""RUNOOBチュートリアルでコースを検索"""</span><br/>
+    <span style="color: #a11;">"""サンプルチュートリアルでコースを検索"""</span><br/>
     <span style="color: Green;font-weight:bold;">return</span> f<span style="color: #a11;">"「{keyword}」の検索（カテゴリ：{category}、{page}ページ目）：合計15件の結果が見つかりました"</span><br/>
 <br/>
 <br/>

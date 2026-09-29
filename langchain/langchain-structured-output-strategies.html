@@ -227,12 +227,12 @@ report <span style="color: Gray;">=</span> result<span style="color: Olive;">[</
 </div>
 <p>実行結果：</p>
 <pre>
-城市: 杭州
-温度: 25.0°C
-状况: 晴天
+都市: 杭州
+気温: 25.0°C
+状況: 晴天
 湿度: 60%
 
-消息总数: 4
+メッセージ総数: 4
   [human] 杭州今天晴天，温度25度，湿度60%
   [ai] 调用: ['WeatherReport']
   [tool] Returning structured response: ...
@@ -285,7 +285,7 @@ model <span style="color: Gray;">=</span> init_chat_model<span style="color: Oli
 agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;">(</span><br/>
     model<span style="color: Gray;">=</span>model<span style="color: Gray;">,</span><br/>
     response_format<span style="color: Gray;">=</span>ProviderStrategy<span style="color: Olive;">(</span>schema<span style="color: Gray;">=</span>CourseInfo<span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">「あなたは菜鸟教程（RUNOOB）のコースアシスタントです。」</span><span style="color: Gray;">,</span><br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">「あなたはサンプルのコースアシスタントです。」</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: Olive;">{</span><br/>
@@ -301,11 +301,11 @@ course <span style="color: Gray;">=</span> result<span style="color: Olive;">[</
 </div>
 <p>実行結果：</p>
 <pre>
-课程: Python3 基础教程
-难度: 入门
-价格: 免费
+コース: Python3 基础教程
+難易度: 入门
+価格: 免费
 
-消息数: 2
+メッセージ数: 2
 </pre>
 <p>ToolStrategy と比較すると、ProviderStrategy は追加のツール呼び出しステップが不要なため、メッセージ数が少なくなります（2件 vs 4件）。</p>
 <blockquote><p>ProviderStrategy は現在、主に OpenAI の GPT-4o 以降と Claude 3 以降でサポートされています。モデルが非対応の場合、LangChain は自動的に ToolStrategy にフォールバックします。モデルが対応しているかどうかは、model.profile で確認できます。</p></blockquote>
@@ -339,7 +339,7 @@ agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;
 <br/>
 result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: Olive;">{</span><br/>
     <span style="color: #a11;">"messages"</span>: <span style="color: Olive;">[</span>HumanMessage<span style="color: Olive;">(</span><br/>
-        content<span style="color: Gray;">=</span><span style="color: #a11;">RUNOOB の Python コース：内容は体系のかつ包括の、</span><br/>
+        content<span style="color: Gray;">=</span><span style="color: #a11;">サンプル の Python コース：内容は体系のかつ包括の、</span><br/>
                 <span style="color: #a11;">"实例丰富，而且完全免费。但视频教程较少，"</span><br/>
                 <span style="color: #a11;">"高级内容覆盖不够。"</span><br/>
     <span style="color: Olive;">)</span><span style="color: Olive;">]</span><br/>
@@ -354,10 +354,10 @@ analysis <span style="color: Gray;">=</span> result<span style="color: Olive;">[
 </div>
 <p>実行結果：</p>
 <pre>
-总结: 菜鸟教程 Python 课程内容系统且免费，但缺乏视频教学和高级内容
-评分: 7/10
-优点: 内容系统全面, 实例丰富, 完全免费
-缺点: 视频教程较少, 高级内容覆盖不够
+要約: サンプル Python 课程内容系统且免费，但缺乏视频教学和高级内容
+評価: 7/10
+長所: 内容系统全面, 实例丰富, 完全免费
+短所: 视频教程较少, 高级内容覆盖不够
 </pre>
 <hr/>
 <h2>3つの戦略の選択ガイド</h2>

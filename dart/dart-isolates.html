@@ -221,7 +221,7 @@ Future<span style="font-weight: bold;">&lt;</span>void<span style="font-weight: 
 <br/>
   <span style="color: #999988; font-style: italic;">// 新しい Isolate の計算結果を待つ</span><br/>
   <span style="font-weight: bold;">var</span> result <span style="font-weight: bold;">=</span> await receivePort.<span style="color: #006633;">first</span><span style="font-weight: bold;">;</span><br/>
-  print<span style="">(</span><span style="color: #d14;">'RUNOOB 計算結果: 1 から 10000000 の合計 = $result'</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
+  print<span style="">(</span><span style="color: #d14;">'サンプル 計算結果: 1 から 10000000 の合計 = $result'</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
 <br/>
   receivePort.<span style="color: #006633;">close</span><span style="">(</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
   print<span style="">(</span><span style="color: #d14;">'メイン Isolate 終了'</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
@@ -233,7 +233,7 @@ Future<span style="font-weight: bold;">&lt;</span>void<span style="font-weight: 
 主 Isolate 在等待结果的同时可以做其他事情...
 新 Isolate 开始计算...
 新 Isolate 计算完成，结果已发送
-RUNOOB 计算结果: 1 到 10000000 的和 = 50000005000000
+サンプル 计算结果: 1 到 10000000 的和 = 50000005000000
 主 Isolate 结束
 </pre>
 <h3>比較：Isolate あり・なしのパフォーマンス差</h3>
@@ -255,7 +255,7 @@ RUNOOB 计算结果: 1 到 10000000 的和 = 50000005000000
   <span style="font-weight: bold;">var</span> result <span style="font-weight: bold;">=</span> fibonacci<span style="">(</span><span style="color: #009999;">40</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
 <br/>
   <span style="font-weight: bold;">var</span> elapsed <span style="font-weight: bold;">=</span> DateTime.<span style="color: #006633;">now</span><span style="">(</span><span style="">)</span>.<span style="color: #006633;">difference</span><span style="">(</span>startTime<span style="">)</span><span style="font-weight: bold;">;</span><br/>
-  print<span style="">(</span><span style="color: #d14;">'RUNOOB フィボナッチ(40) = $result'</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
+  print<span style="">(</span><span style="color: #d14;">'サンプル フィボナッチ(40) = $result'</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
   print<span style="">(</span><span style="color: #d14;">'所要時間: ${elapsed.inMilliseconds}ms'</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
   print<span style="">(</span><span style="color: #d14;">'（注意：計算中、メイン Isolate は他のタスクを処理できません）'</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
 <span style="">}</span><br/>
@@ -342,7 +342,7 @@ Future<span style="font-weight: bold;">&lt;</span>void<span style="font-weight: 
   <span style="">}</span><br/>
 <br/>
   mainReceivePort.<span style="color: #006633;">close</span><span style="">(</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
-  print<span style="">(</span><span style="color: #d14;">RUNOOB 双方向通信デモ終了</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
+  print<span style="">(</span><span style="color: #d14;">サンプル 双方向通信デモ終了</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
 <span style="">}</span><br/>
 </div>
 </div>
@@ -356,7 +356,7 @@ Worker Isolate: 收到数据 [10, 20, 30]
 主 Isolate: 收到结果 [100, 400, 900]
 Worker Isolate: 收到退出信号，关闭
 主 Isolate: Worker 已退出
-RUNOOB 双向通信演示结束
+サンプル 双向通信演示结束
 </pre>
 <h3>Isolate.run による簡略化（Dart 3.0+）</h3>
 <p>Dart 3.0 で Isolate.run() が導入され、1回限りの計算タスクの利用が大幅に簡略化されました。</p>
@@ -379,7 +379,7 @@ Future<span style="font-weight: bold;">&lt;</span>void<span style="font-weight: 
 <br/>
   <span style="color: #999988; font-style: italic;">// Isolate.run：1行のコードで完了。Isolate の作成、実行、結果の返却を自動で行う</span><br/>
   <span style="font-weight: bold;">var</span> result <span style="font-weight: bold;">=</span> await Isolate.<span style="color: #006633;">run</span><span style="">(</span><span style="">(</span><span style="">)</span> <span style="font-weight: bold;">=&gt;</span> complexCalculation<span style="">(</span><span style="color: #009999;">10000000</span><span style="">)</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
-  print<span style="">(</span><span style="color: #d14;">'RUNOOB 計算結果: $result'</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
+  print<span style="">(</span><span style="color: #d14;">'サンプル 計算結果: $result'</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
 <br/>
   print<span style="">(</span><span style="color: #d14;">'計算完了'</span><span style="">)</span><span style="font-weight: bold;">;</span><br/>
 <br/>
@@ -390,7 +390,7 @@ Future<span style="font-weight: bold;">&lt;</span>void<span style="font-weight: 
 </div>
 <pre>
 开始计算...
-RUNOOB 计算结果: 333333283333335000000
+サンプル 计算结果: 333333283333335000000
 计算完成
 （如果在主 Isolate 中直接计算，会阻塞其他操作）
 </pre>

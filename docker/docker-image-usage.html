@@ -174,7 +174,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2>镜像列表一覧を表示する</h2>
 <p>次を使用できます<strong>docker images</strong>ローカルホスト上のイメージを一覧表示します。</p>
 <pre>
-runoob@runoob:~$ docker images           
+サンプル@サンプル:~$ docker images           
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 ubuntu              14.04               90d5884b1ee0        5 days ago          188 MB
 php                 5.6                 f40e9e0f10c8        9 days ago          444.8 MB
@@ -195,7 +195,7 @@ training/webapp     latest              6fae60ef3446        11 months ago       
 <p>同じリポジトリソースには複数の TAG を設定でき、このリポジトリソースの異なるバージョンを表します。たとえば、ubuntu リポジトリソースには 15.10、14.04 など複数の異なるバージョンがあります。REPOSITORY:TAG を使用して異なるイメージを定義します。</p>
 <p>したがって、バージョン15.10のubuntuシステムイメージを使用してコンテナを実行する場合、コマンドは次のとおりです。</p>
 <pre>
-runoob@runoob:~$ docker run -t -i ubuntu:15.10 /bin/bash 
+サンプル@サンプル:~$ docker run -t -i ubuntu:15.10 /bin/bash 
 root@d77ccb2e5cca:/#
 </pre>
 <p>パラメータの説明：</p>
@@ -206,7 +206,7 @@ root@d77ccb2e5cca:/#
 <strong>/bin/bash</strong>: イメージ名の後に置くのはコマンドです。ここではインタラクティブなシェルを希望するため、/bin/bash を使用します。</li></ul>
 <p>バージョン 14.04 の ubuntu システムイメージを使用してコンテナを実行する場合、コマンドは次のとおりです。</p>
 <pre>
-runoob@runoob:~$ docker run -t -i ubuntu:14.04 /bin/bash 
+サンプル@サンプル:~$ docker run -t -i ubuntu:14.04 /bin/bash 
 root@39e968165990:/# 
 </pre>
 <p>イメージのバージョンタグを指定しない場合、たとえば ubuntu のみを使用すると、docker はデフォルトで ubuntu:latest イメージを使用します。</p>
@@ -214,7 +214,7 @@ root@39e968165990:/#
 <h2>新しいイメージを取得する</h2>
 <p>ローカルホスト上で存在しないイメージを使用すると、Docker は自動的にそのイメージをダウンロードします。事前にこのイメージをダウンロードしたい場合は、docker pull コマンドを使用してダウンロードできます。</p>
 <pre>
-Crunoob@runoob:~$ docker pull ubuntu:13.10
+Cサンプル@サンプル:~$ docker pull ubuntu:13.10
 13.10: Pulling from library/ubuntu
 6599cadaf950: Pull complete 
 23eda618d451: Pull complete 
@@ -230,7 +230,7 @@ Status: Downloaded newer image for ubuntu:13.10
 <p>Docker Hub のウェブサイトからイメージを検索できます。Docker Hub のURLは次のとおりです。<strong><a href="https://hub.docker.com/" rel="noopener noreferrer" target="_blank">https://hub.docker.com/</a></strong></p>
 <p>docker search コマンドを使用してイメージを検索することもできます。たとえば、Web サービスとして httpd イメージが必要な場合、docker search コマンドで httpd を検索して、適切なイメージを見つけることができます。</p>
 <pre>
-runoob@runoob:~$  docker search httpd
+サンプル@サンプル:~$  docker search httpd
 </pre>
 <p>画像をクリックして拡大表示：</p>
 <p><a href="../wp-content/uploads/2016/05/423F2A2C-287A-4B03-855E-6A78E125B346.jpg" rel="noopener noreferrer" target="_blank"><img decoding="async" src="../wp-content/uploads/2016/05/423F2A2C-287A-4B03-855E-6A78E125B346.jpg"/></a></p>
@@ -243,7 +243,7 @@ runoob@runoob:~$  docker search httpd
 <h2>イメージをプルする</h2>
 <p>上図の httpd 公式バージョンのイメージを使用することにしたので、docker pull コマンドでイメージをダウンロードします。</p>
 <pre>
-runoob@runoob:~$ docker pull httpd
+サンプル@サンプル:~$ docker pull httpd
 Using default tag: latest
 latest: Pulling from library/httpd
 8b87079b7a06: Pulling fs layer 
@@ -255,7 +255,7 @@ be44112b72c7: Waiting
 </pre>
 <p>ダウンロードが完了すると、このイメージを使用できます。</p>
 <pre>
-runoob@runoob:~$ docker run httpd
+サンプル@サンプル:~$ docker run httpd
 </pre>
 <hr/>
 <h2>イメージを削除する</h2>
@@ -272,7 +272,7 @@ runoob@runoob:~$ docker run httpd
 <h3>イメージを更新する</h3>
 <p>イメージを更新する前に、イメージを使用してコンテナを作成する必要があります。</p>
 <pre>
-runoob@runoob:~$ docker run -t -i ubuntu:15.10 /bin/bash
+サンプル@サンプル:~$ docker run -t -i ubuntu:15.10 /bin/bash
 </pre>
 <p>コンテナに入ったら、システムを更新します：</p>
 <pre>apt-get update
@@ -281,19 +281,19 @@ apt-get upgrade -y</pre>
 <pre>exit</pre>
 <p>このとき、ID が e218edb10161 のコンテナは、要件に応じて変更されたコンテナです。docker commit コマンドでコンテナのコピーをコミットできます。</p>
 <pre>
-runoob@runoob:~$ docker commit -m="has update" -a="runoob" e218edb10161 runoob/ubuntu:v2
+サンプル@サンプル:~$ docker commit -m="has update" -a="サンプル" e218edb10161 サンプル/ubuntu:v2
 sha256:70bf1840fd7c0d2d8ef0a42a817eb29f854c1af8f7c59fc03ac7bdee9545aff8
 </pre>
 <p>各パラメータの説明：</p><ul><li>
 <p><strong>-m:</strong>コミットの説明情報</p></li><li>
 <p><strong>-a:</strong>イメージの作者を指定</p></li><li>
 <p><strong>e218edb10161：</strong>コンテナ ID</p></li><li>
-<p><strong>runoob/ubuntu:v2:</strong>作成するターゲットイメージ名を指定</p></li></ul>
-<p>次を使用できます<strong>docker images</strong>コマンドで新しいイメージを確認できます<strong>runoob/ubuntu:v2</strong>：
+<p><strong>サンプル/ubuntu:v2:</strong>作成するターゲットイメージ名を指定</p></li></ul>
+<p>次を使用できます<strong>docker images</strong>コマンドで新しいイメージを確認できます<strong>サンプル/ubuntu:v2</strong>：
 <pre>
-runoob@runoob:~$ docker images
+サンプル@サンプル:~$ docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-runoob/ubuntu       v2                  70bf1840fd7c        15 seconds ago      158.5 MB
+サンプル/ubuntu       v2                  70bf1840fd7c        15 seconds ago      158.5 MB
 ubuntu              14.04               90d5884b1ee0        5 days ago          188 MB
 php                 5.6                 f40e9e0f10c8        9 days ago          444.8 MB
 nginx               latest              6f8d099c3adc        12 days ago         182.7 MB
@@ -303,21 +303,21 @@ ubuntu              15.10               4e3b13c8a266        4 weeks ago         
 hello-world         latest              690ed74de00f        6 months ago        960 B
 training/webapp     latest              6fae60ef3446        12 months ago       348.8 MB
 </pre>
-<p>新しいイメージを使用して<strong>runoob/ubuntu</strong>コンテナを起動します</p>
+<p>新しいイメージを使用して<strong>サンプル/ubuntu</strong>コンテナを起動します</p>
 <pre>
-runoob@runoob:~$ docker run -t -i runoob/ubuntu:v2 /bin/bash                            
+サンプル@サンプル:~$ docker run -t -i サンプル/ubuntu:v2 /bin/bash                            
 root@1a9fbdeb5da3:/#
 </pre>
 <h3>イメージを構築する</h3>
 <p>次のコマンドを使用します<strong>docker build</strong>、ゼロから新しいイメージを作成します。そのためには、Docker にイメージの構築方法を指示する一連の命令を含む Dockerfile ファイルを作成する必要があります。</p>
 <pre>
-runoob@runoob:~$ cat Dockerfile 
+サンプル@サンプル:~$ cat Dockerfile 
 FROM    centos:6.7
 MAINTAINER      Fisher "fisher@sudops.com"
 
 RUN     /bin/echo 'root:123456' |chpasswd
-RUN     useradd runoob
-RUN     /bin/echo 'runoob:123456' |chpasswd
+RUN     useradd サンプル
+RUN     /bin/echo 'サンプル:123456' |chpasswd
 RUN     /bin/echo -e "LANG=\"en_US.UTF-8\"" &gt;/etc/default/local
 EXPOSE  22
 EXPOSE  80
@@ -328,7 +328,7 @@ CMD     /usr/sbin/sshd -D
 <p>RUN 命令は docker にイメージ内でコマンドを実行し、何かをインストールすることを指示します。。。</p>
 <p>次に、Dockerfile ファイルを使用して、docker build コマンドでイメージを構築します。</p>
 <pre>
-runoob@runoob:~$ docker build -t runoob/centos:6.7 .
+サンプル@サンプル:~$ docker build -t サンプル/centos:6.7 .
 Sending build context to Docker daemon 17.92 kB
 Step 1 : FROM centos:6.7
  ---&amp;gt; d95b5ca17cc3
@@ -338,17 +338,17 @@ Step 2 : MAINTAINER Fisher "fisher@sudops.com"
 Step 3 : RUN /bin/echo 'root:123456' |chpasswd
  ---&amp;gt; Using cache
  ---&amp;gt; 0397ce2fbd0a
-Step 4 : RUN useradd runoob
+Step 4 : RUN useradd サンプル
 ......
 </pre><p>パラメータの説明：</p><ul><li>
 <p><strong>-t</strong>：作成するターゲットイメージ名を指定</p></li><li>
 <p><strong>.</strong>：Dockerfile ファイルが置かれているディレクトリ。Dockerfile の絶対パスを指定できます。</p></li></ul>
 <p>docker images を使用して、作成したイメージがリストに存在することを確認します。イメージIDは 860c279d2fec です。</p>
 <pre>
-runoob@runoob:~$ docker images 
+サンプル@サンプル:~$ docker images 
 REPOSITORY          TAG                 IMAGE ID            CREATED              SIZE
-runoob/centos       6.7                 860c279d2fec        About a minute ago   190.6 MB
-runoob/ubuntu       v2                  70bf1840fd7c        17 hours ago         158.5 MB
+サンプル/centos       6.7                 860c279d2fec        About a minute ago   190.6 MB
+サンプル/ubuntu       v2                  70bf1840fd7c        17 hours ago         158.5 MB
 ubuntu              14.04               90d5884b1ee0        6 days ago           188 MB
 php                 5.6                 f40e9e0f10c8        10 days ago          444.8 MB
 nginx               latest              6f8d099c3adc        12 days ago          182.7 MB
@@ -361,24 +361,24 @@ training/webapp     latest              6fae60ef3446        12 months ago       
 </pre>
 <p>新しいイメージを使用してコンテナを作成できます</p>
 <pre>
-runoob@runoob:~$ docker run -t -i runoob/centos:6.7  /bin/bash
-[root@41c28d18b5fb /]# id runoob
-uid=500(runoob) gid=500(runoob) groups=500(runoob)
+サンプル@サンプル:~$ docker run -t -i サンプル/centos:6.7  /bin/bash
+[root@41c28d18b5fb /]# id サンプル
+uid=500(サンプル) gid=500(サンプル) groups=500(サンプル)
 </pre>
-<p>上記から、新しいイメージには作成したユーザー runoob が含まれていることがわかります。</p>
+<p>上記から、新しいイメージには作成したユーザー サンプル が含まれていることがわかります。</p>
 <h3>イメージタグを設定する</h3>
 <p>docker tag コマンドを使用して、イメージに新しいタグを追加できます。</p>
 <pre>
-runoob@runoob:~$ docker tag 860c279d2fec runoob/centos:dev
+サンプル@サンプル:~$ docker tag 860c279d2fec サンプル/centos:dev
 </pre>
 <p>docker tag イメージID、ここでは 860c279d2fec 、ユーザー名、イメージソース名（repository name）、新しいタグ名（tag）を指定します。</p>
 <p>docker images コマンドを使用すると、ID が 860c279d2fec のイメージにタグが1つ追加されていることがわかります。</p>
 <pre>
-runoob@runoob:~$ docker images
+サンプル@サンプル:~$ docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-runoob/centos       6.7                 860c279d2fec        5 hours ago         190.6 MB
-runoob/centos       dev                 860c279d2fec        5 hours ago         190.6 MB
-runoob/ubuntu       v2                  70bf1840fd7c        22 hours ago        158.5 MB
+サンプル/centos       6.7                 860c279d2fec        5 hours ago         190.6 MB
+サンプル/centos       dev                 860c279d2fec        5 hours ago         190.6 MB
+サンプル/ubuntu       v2                  70bf1840fd7c        22 hours ago        158.5 MB
 ubuntu              14.04               90d5884b1ee0        6 days ago          188 MB
 php                 5.6                 f40e9e0f10c8        10 days ago         444.8 MB
 nginx               latest              6f8d099c3adc        13 days ago         182.7 MB

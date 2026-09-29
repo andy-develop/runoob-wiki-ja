@@ -329,16 +329,16 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: Green;font-weight:bold;">from</span> langchain.<span style="color: #05a;">chat_models</span> <span style="color: Green;font-weight:bold;">import</span> init_chat_model<br/>
 <br/>
 <span style="color: #a50"># ユーザーメッセージを作成</span><br/>
-msg <span style="color: Gray;">=</span> HumanMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"菜鸟教程 RUNOOB とは？"</span><span style="color: Olive;">)</span><br/>
+msg <span style="color: Gray;">=</span> HumanMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"Python とは？"</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"タイプ: {msg.type}"</span><span style="color: Olive;">)</span>        <span style="color: #a50"># human</span><br/>
-<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"内容: {msg.content}"</span><span style="color: Olive;">)</span>      <span style="color: #a50"># 菜鸟教程 RUNOOB とは？</span><br/>
+<span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"内容: {msg.content}"</span><span style="color: Olive;">)</span>      <span style="color: #a50"># Python とは？</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"ロール: {msg.role}"</span><span style="color: Olive;">)</span>         <span style="color: #a50"># user</span><br/>
 <br/>
 <span style="color: #a50"># メッセージリストを作成（複数ターンの会話履歴を表す）</span><br/>
 messages <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><br/>
     HumanMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"こんにちは"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
-    HumanMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"菜鸟教程にはどのようなコースがありますか？"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
+    HumanMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"サンプルにはどのようなコースがありますか？"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
     HumanMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"Python コースは初心者向けですか？"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">]</span><br/>
 <br/>
@@ -349,12 +349,12 @@ response <span style="color: Gray;">=</span> model.<span style="color: #05a;">in
 </div>
 <p>実行結果：</p>
 <pre>
-类型: human
-内容: 菜鸟教程 RUNOOB 是什么？
-角色: user
+タイプ: human
+内容: Pythonとは何ですか？
+役割: user
 
-模型回复: 菜鸟教程（RUNOOB）是一个面向编程初学者的学习网站，提供丰富的编程教程。
-它的 Python 课程非常适合零基础学习者，从环境配置到基础语法再到实战项目都有覆盖。
+モデルの返答: Pythonは、構文が明確で読みやすいことで知られる高水準の解釈型プログラミング言語であり、さまざまな分野で広く使われています。
+豊富なエコシステムと初心者に優しい設計により、ゼロから始める人にとって最適な選択肢となっています。
 </pre>
 <h3>HumanMessage のクイック作成方法</h3>
 <p>メッセージリストを構築する際、タプルや辞書をショートカットとして使用できます：</p>
@@ -386,7 +386,7 @@ msg4 <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><sp
 <span style="color: Green;font-weight:bold;">from</span> langchain.<span style="color: #05a;">messages</span> <span style="color: Green;font-weight:bold;">import</span> AIMessage<br/>
 <br/>
 <span style="color: #a50"># 通常の AI 応答（ツール呼び出しなし）</span><br/>
-ai_msg <span style="color: Gray;">=</span> AIMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"菜鸟教程はプログラミング学習プラットフォームです"</span><span style="color: Olive;">)</span><br/>
+ai_msg <span style="color: Gray;">=</span> AIMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"サンプルはプログラミング学習プラットフォームです"</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># ツール呼び出しを含む AI 応答</span><br/>
 ai_with_tools <span style="color: Gray;">=</span> AIMessage<span style="color: Olive;">(</span><br/>
@@ -418,7 +418,7 @@ ai_with_tools <span style="color: Gray;">=</span> AIMessage<span style="color: O
 <span style="color: Green;font-weight:bold;">from</span> langchain.<span style="color: #05a;">chat_models</span> <span style="color: Green;font-weight:bold;">import</span> init_chat_model<br/>
 <br/>
 model <span style="color: Gray;">=</span> init_chat_model<span style="color: Olive;">(</span><span style="color: #a11;">"deepseek:deepseek-v4-flash"</span><span style="color: Olive;">)</span><br/>
-response <span style="color: Gray;">=</span> model.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: #a11;">"菜鸟教程 RUNOOB を紹介"</span><span style="color: Olive;">)</span><br/>
+response <span style="color: Gray;">=</span> model.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: #a11;">"サンプル を紹介"</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># AIMessage は豊富なメタデータを含む</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"内容: {response.content}"</span><span style="color: Olive;">)</span><br/>
@@ -435,13 +435,13 @@ response <span style="color: Gray;">=</span> model.<span style="color: #05a;">in
 </div>
 <p>実行結果：</p>
 <pre>
-内容: 菜鸟教程（RUNOOB）是一个面向初学者的免费编程学习平台...
-消息ID: msg_abc123def456
-模型名: deepseek-v4-flash
-完成原因: stop
-输入 tokens: 19
-输出 tokens: 47
-总计 tokens: 66
+内容: サンプルは初心者向けの無料プログラミング学習プラットフォームです...
+メッセージID: msg_abc123def456
+モデル名: deepseek-v4-flash
+完了理由: stop
+入力トークン: 19
+出力トークン: 47
+合計トークン: 66
 </pre>
 <hr/>
 <h2>SystemMessage——システム命令</h2>
@@ -455,14 +455,14 @@ response <span style="color: Gray;">=</span> model.<span style="color: #05a;">in
 model <span style="color: Gray;">=</span> init_chat_model<span style="color: Olive;">(</span><span style="color: #a11;">"deepseek:deepseek-v4-flash"</span><span style="color: Gray;">,</span> temperature<span style="color: Gray;">=</span><span style="color: Maroon;">0.7</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># システム命令なしの応答</span><br/>
-messages_no_system <span style="color: Gray;">=</span> <span style="color: Olive;">[</span>HumanMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"菜鸟教程を紹介"</span><span style="color: Olive;">)</span><span style="color: Olive;">]</span><br/>
+messages_no_system <span style="color: Gray;">=</span> <span style="color: Olive;">[</span>HumanMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"サンプルを紹介"</span><span style="color: Olive;">)</span><span style="color: Olive;">]</span><br/>
 response <span style="color: Gray;">=</span> model.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span>messages_no_system<span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"システム命令なし: {response.content[:80]}..."</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># システム命令ありの応答</span><br/>
 messages_with_system <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><br/>
     SystemMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは小红书風のブロガーです。返信は活発に、絵文字を使い、ハッシュタグを付けます"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
-    HumanMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"菜鸟教程を紹介"</span><span style="color: Olive;">)</span><br/>
+    HumanMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"サンプルを紹介"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Olive;">]</span><br/>
 response <span style="color: Gray;">=</span> model.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span>messages_with_system<span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"<span style="color: #000099; font-weight: bold;">\n</span>"システム命令あり: {response.content}"</span><span style="color: Olive;">)</span><br/>
@@ -470,12 +470,12 @@ response <span style="color: Gray;">=</span> model.<span style="color: #05a;">in
 </div>
 <p>実行結果：</p>
 <pre>
-无系统指令: 菜鸟教程是一个面向初学者的在线编程学习平台，提供丰富的教程和实例...
+システム指示なし: サンプルは初心者向けのオンラインプログラミング学習プラットフォームで、豊富なチュートリアルとサンプルを提供しています...
 
-有系统指令: 宝藏网站！给所有想学编程的新手安利菜鸟教程 RUNOOB！
-超全面的免费教程，从 HTML 到 Python 全部都有唷～
-实例超多上手超快，绝对是编程小白的入门神器！
-#编程学习 #免费教程 #零基础入门 #菜鸟教程
+システム指示あり: 素晴らしいサイト！プログラミングを学びたい初心者にサンプルをおすすめします！
+HTMLからPythonまで何でも揃う、充実の無料チュートリアル！
+サンプルが豊富ですぐ始められ、プログラミング初心者の入門に最適です！
+#プログラミング学習 #無料チュートリアル #ゼロから入門 #サンプル
 </pre>
 <hr/>
 <h2>ToolMessage——ツールの戻り結果</h2>
@@ -514,7 +514,7 @@ response <span style="color: Gray;">=</span> model.<span style="color: #05a;">in
 </div>
 <p>実行結果：</p>
 <pre>
-模型基于工具结果的回复: 杭州今天天气晴朗，气温25°C，湿度60%，适合户外活动。
+ツール結果に基づくモデルの返答: 杭州は今日晴れ、気温25°C、湿度60%で、屋外活動に適しています。
 </pre>
 <blockquote><p>ToolMessage の tool_call_id は AIMessage 内の tool_call の id と正確に一致する必要があります。一致しない場合、モデルはこのツール結果を無視したり、混乱した動作を起こす可能性があります。</p></blockquote>
 <hr/>
@@ -529,7 +529,7 @@ model <span style="color: Gray;">=</span> init_chat_model<span style="color: Oli
 <br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">ストリーミング出力プロセス：</span><span style="color: Olive;">)</span><br/>
 <span style="color: #a50"># stream() が返すのは AIMessageChunk イテレータ</span><br/>
-<span style="color: Green;font-weight:bold;">for</span> <span style="color: #05a;">chunk</span> <span style="color: Green;font-weight:bold;">in</span> model.<span style="color: #05a;">stream</span><span style="color: Olive;">(</span><span style="color: #a11;">"菜鸟教程 RUNOOB を一言で紹介"</span><span style="color: Olive;">)</span>:<br/>
+<span style="color: Green;font-weight:bold;">for</span> <span style="color: #05a;">chunk</span> <span style="color: Green;font-weight:bold;">in</span> model.<span style="color: #05a;">stream</span><span style="color: Olive;">(</span><span style="color: #a11;">"サンプル を一言で紹介"</span><span style="color: Olive;">)</span>:<br/>
     <span style="color: #a50"># 各 chunk は小さなテキスト断片</span><br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #05a;">chunk</span>.<span style="color: #05a;">content</span><span style="color: Gray;">,</span> end<span style="color: Gray;">=</span><span style="color: #a11;">""</span><span style="color: Gray;">,</span> flush<span style="color: Gray;">=</span><span style="color: Teal;">True</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span>  <span style="color: #a50"># 改行</span><br/>
@@ -537,8 +537,8 @@ model <span style="color: Gray;">=</span> init_chat_model<span style="color: Oli
 </div>
 <p>実行結果：</p>
 <pre>
-流式输出过程：
-菜鸟教程（RUNOOB）是一个面向编程初学者的免费在线学习平台，提供丰富的编程教程和实例。
+ストリーミング出力:
+サンプルはプログラミング初心者向けの無料オンライン学習プラットフォームで、豊富なチュートリアルとサンプルを提供しています。
 </pre>
 <hr/>
 <h2>メッセージタイプ早見表</h2>
@@ -614,7 +614,7 @@ model <span style="color: Gray;">=</span> init_chat_model<span style="color: Oli
 image_data <span style="color: Gray;">=</span> encode_image<span style="color: Olive;">(</span><span style="color: #a11;">"screenshot.png"</span><span style="color: Olive;">)</span><br/>
 messages <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><br/>
     HumanMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: Olive;">[</span><br/>
-        <span style="color: Olive;">{</span><span style="color: #a11;">"type"</span>: <span style="color: #a11;">"text"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"text"</span>: <span style="color: #a11;">"この菜鸟教程 RUNOOB 公式サイトのスクリーンショットの内容を説明してください"</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span><br/>
+        <span style="color: Olive;">{</span><span style="color: #a11;">"type"</span>: <span style="color: #a11;">"text"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"text"</span>: <span style="color: #a11;">"このサンプル 公式サイトのスクリーンショットの内容を説明してください"</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span><br/>
         <span style="color: Olive;">{</span><br/>
             <span style="color: #a11;">"type"</span>: <span style="color: #a11;">"image_url"</span><span style="color: Gray;">,</span><br/>
             <span style="color: #a11;">"image_url"</span>: <span style="color: Olive;">{</span><br/>
@@ -645,7 +645,7 @@ messages <span style="color: Gray;">=</span> <span style="color: Olive;">[</span
             <span style="color: Olive;">{</span><span style="color: #a11;">"type"</span>: <span style="color: #a11;">"text"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"text"</span>: <span style="color: #a11;">"この画像は何を説明していますか？"</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span><br/>
             <span style="color: Olive;">{</span><br/>
                 <span style="color: #a11;">"type"</span>: <span style="color: #a11;">"image_url"</span><span style="color: Gray;">,</span><br/>
-                <span style="color: #a11;">"image_url"</span>: <span style="color: Olive;">{</span><span style="color: #a11;">"url"</span>: <span style="color: #a11;">"https://www.runoob.com/wp-content/uploads/2024/01/logo.png"</span><span style="color: Olive;">}</span><br/>
+                <span style="color: #a11;">"image_url"</span>: <span style="color: Olive;">{</span><span style="color: #a11;">"url"</span>: <span style="color: #a11;">"https://www.example.com/wp-content/uploads/2024/01/logo.png"</span><span style="color: Olive;">}</span><br/>
             <span style="color: Olive;">}</span><br/>
         <span style="color: Olive;">]</span><br/>
     <span style="color: Olive;">}</span><br/>
@@ -737,7 +737,7 @@ response <span style="color: Gray;">=</span> model_with_tools.<span style="color
 <br/>
 <span style="color: #a50"># 長い会話履歴をシミュレートする</span><br/>
 messages <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><br/>
-    SystemMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは菜鸟教程 RUNOOB の AI アシスタントです"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
+    SystemMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"あなたはサンプル の AI アシスタントです"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
     HumanMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"Python はどうやって始めればいいですか？"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
     AIMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"Python 入門は基礎知識から始められます..."</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
     HumanMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"おすすめの IDE はありますか？"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
@@ -771,13 +771,13 @@ trimmed <span style="color: Gray;">=</span> trim_messages<span style="color: Oli
 </div>
 <p>実行結果：</p>
 <pre>
-裁剪前: 10 条消息
-裁剪后: 5 条消息
-  [system] 你是菜鸟教程 RUNOOB 的 AI 助手...
-  [human] 如何安装第三方库？...
-  [ai] 使用 pip install 命令...
-  [human] NumPy 是什么？...
-  [ai] NumPy 是一个科学计算库...
+トリミング前: 10件のメッセージ
+トリミング後: 5件のメッセージ
+  [system] あなたはサンプルのAIアシスタントです...
+  [human] サードパーティ製ライブラリはどうやってインストールしますか？...
+  [ai] pip install コマンドを使用します...
+  [human] NumPyとは何ですか？...
+  [ai] NumPyは科学計算ライブラリです...
 </pre>
 <table class="reference">
 <tr><th>戦略</th><th>説明</th><th>適用シナリオ</th></tr>
@@ -818,7 +818,7 @@ removal <span style="color: Gray;">=</span> RemoveMessage<span style="color: Oli
 <div class="example_code">
 <span style="color: Green;font-weight:bold;">from</span> langchain.<span style="color: #05a;">messages</span> <span style="color: Green;font-weight:bold;">import</span> HumanMessage<span style="color: Gray;">,</span> AIMessage<br/>
 <br/>
-msg <span style="color: Gray;">=</span> HumanMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"こんにちは、菜鸟教程"</span><span style="color: Olive;">)</span><br/>
+msg <span style="color: Gray;">=</span> HumanMessage<span style="color: Olive;">(</span>content<span style="color: Gray;">=</span><span style="color: #a11;">"こんにちは、サンプル"</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 基本属性</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"content: {msg.content}"</span><span style="color: Olive;">)</span>      <span style="color: #a50"># メッセージコンテンツ</span><br/>
@@ -834,13 +834,13 @@ msg <span style="color: Gray;">=</span> HumanMessage<span style="color: Olive;">
 </div>
 <p>実行結果：</p>
 <pre>
-content: 你好，菜鸟教程
+content: こんにちは、世界
 type: human
 id: 00000000-0000-4000-8000-000000000000
-text: 你好，菜鸟教程
-美化输出:
+text: こんにちは、世界
+整形出力:
 ================================ Human Message =================================
-你好，菜鸟教程
+こんにちは、世界
 </pre> その他の拡張
 </div>
 </div>

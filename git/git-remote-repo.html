@@ -308,16 +308,16 @@ Hi tianqixin! You've successfully authenticated, but GitHub does not provide she
 <p>次のコマンドは、Github に正常に接続できたことを示しています。</p>
 <p>その後、ログインして" New repository "をクリックします。下図のようになります：</p>
 <img decoding="async" src="../wp-content/uploads/2015/03/github1.jpg"/>
-<p>次に、Repository name に runoob-git-test（リモートリポジトリ名）を入力し、その他はデフォルト設定のままにして、"Create repository" ボタンをクリックすると、新しい Git リポジトリの作成が成功します。</p>
+<p>次に、Repository name に サンプル-git-test（リモートリポジトリ名）を入力し、その他はデフォルト設定のままにして、"Create repository" ボタンをクリックすると、新しい Git リポジトリの作成が成功します。</p>
 <img decoding="async" src="../wp-content/uploads/2015/03/299CF000-7B6E-4BEC-B8C2-D9AEB053307B.jpg"/>
 <p>作成が成功すると、次の情報が表示されます：</p>
 <img decoding="async" src="../wp-content/uploads/2015/03/1BCB4379-1A25-4C77-BB82-92B3E7185435.jpg"/>
 <p>上記の情報は、このリポジトリから新しいリポジトリをクローンできること、またローカルリポジトリの内容を GitHub リポジトリにプッシュできることを示しています。</p>
 <p>ここで、GitHub の指示に従って、ローカルのリポジトリでコマンドを実行します：</p>
 <pre>
-$ mkdir runoob-git-test                     # 创建测试目录
-$ cd runoob-git-test/                       # 进入测试目录
-$ echo "# 菜鸟教程 Git 测试" &gt;&gt; README.md     # 创建 README.md 文件并写入内容
+$ mkdir サンプル-git-test                     # 创建测试目录
+$ cd サンプル-git-test/                       # 进入测试目录
+$ echo "# サンプル Git 测试" &gt;&gt; README.md     # 创建 README.md 文件并写入内容
 $ ls                                        # 查看目录下的文件
 README
 $ git init                                  # 初始化
@@ -328,7 +328,7 @@ $ git commit -m "添加 README.md 文件"        # 提交并备注信息
  create mode 100644 README.md
 
 # 提交到 Github
-$ git remote add origin git@github.com:tianqixin/runoob-git-test.git
+$ git remote add origin git@github.com:tianqixin/サンプル-git-test.git
 $ git push -u origin master
 </pre>
 <p>以下のコマンドは、私が提供したコマンドではなく、あなたが Github で新しいリポジトリを作成した場所のものをコピーしてください。Github のユーザー名とリポジトリ名が異なるためです。</p>
@@ -342,8 +342,8 @@ $ git push -u origin master
 $ git remote
 origin
 $ git remote -v
-origin    git@github.com:tianqixin/runoob-git-test.git (fetch)
-origin    git@github.com:tianqixin/runoob-git-test.git (push)
+origin    git@github.com:tianqixin/サンプル-git-test.git (fetch)
+origin    git@github.com:tianqixin/サンプル-git-test.git (push)
 </pre>
 <p>実行時に -v パラメータを追加すると、各エイリアスの実際のリンク先アドレスも確認できます。</p>
 <hr/>
@@ -366,7 +366,7 @@ remote: Counting objects: 3, done.
 remote: Compressing objects: 100% (2/2), done.
 remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
 Unpacking objects: 100% (3/3), done.
-From github.com:tianqixin/runoob-git-test
+From github.com:tianqixin/サンプル-git-test
    0205aab..febd8ed  master     -&gt; origin/master
 </pre>
 <p>上記の情報 "0205aab..febd8ed  master     -&gt; origin/master" は、master ブランチが更新されたことを示しています。次のコマンドで更新をローカルに同期できます：</p>
@@ -380,7 +380,7 @@ Fast-forward
 <p>README.md ファイルの内容を確認します：</p>
 <pre>
 $ cat README.md 
-# 菜鸟教程 Git 测试
+# サンプル Git 测试
 ## 第一次修改内容
 </pre>
 <hr/>
@@ -391,12 +391,12 @@ git push [alias] [branch]
 </pre>
 <p>上記のコマンドは、[branch] ブランチを [alias] リモートリポジトリの [branch] ブランチとしてプッシュします。例は次のとおりです。</p>
 <pre>
-$ touch runoob-test.txt      # 添加文件
-$ git add runoob-test.txt 
+$ touch サンプル-test.txt      # 添加文件
+$ git add サンプル-test.txt 
 $ git commit -m "添加到远程"
 master 69e702d] 添加到远程
  1 file changed, 0 insertions(+), 0 deletions(-)
- create mode 100644 runoob-test.txt
+ create mode 100644 サンプル-test.txt
 
 $ git push origin master    # 推送到 Github
 </pre>
@@ -409,23 +409,23 @@ $ git push origin master    # 推送到 Github
 <h3>例</h3>
 <pre>
 $ git remote -v
-origin    git@github.com:tianqixin/runoob-git-test.git (fetch)
-origin    git@github.com:tianqixin/runoob-git-test.git (push)
+origin    git@github.com:tianqixin/サンプル-git-test.git (fetch)
+origin    git@github.com:tianqixin/サンプル-git-test.git (push)
 
 # 添加仓库 origin2
-$ git remote add origin2 git@github.com:tianqixin/runoob-git-test.git
+$ git remote add origin2 git@github.com:tianqixin/サンプル-git-test.git
 
 $ git remote -v
-origin    git@github.com:tianqixin/runoob-git-test.git (fetch)
-origin    git@github.com:tianqixin/runoob-git-test.git (push)
-origin2    git@github.com:tianqixin/runoob-git-test.git (fetch)
-origin2    git@github.com:tianqixin/runoob-git-test.git (push)
+origin    git@github.com:tianqixin/サンプル-git-test.git (fetch)
+origin    git@github.com:tianqixin/サンプル-git-test.git (push)
+origin2    git@github.com:tianqixin/サンプル-git-test.git (fetch)
+origin2    git@github.com:tianqixin/サンプル-git-test.git (push)
 
 # 删除仓库 origin2
 $ git remote rm origin2
 $ git remote -v
-origin    git@github.com:tianqixin/runoob-git-test.git (fetch)
-origin    git@github.com:tianqixin/runoob-git-test.git (push)
+origin    git@github.com:tianqixin/サンプル-git-test.git (fetch)
+origin    git@github.com:tianqixin/サンプル-git-test.git (push)
 </pre>
 &lt;div style="display:none;"&gt;
 &lt;hr&gt;

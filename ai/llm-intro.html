@@ -168,7 +168,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>本記事では「モデルとは何か → どう訓練するか → どう使うか → どう最適化するか」の順に、これらの概念をつなげて、初心者開発者が明確な知識の枠組みを構築できるようにします。</p>
 <blockquote>
 <p>本記事は単なる「用語解説」ではなく、実際に実行できるPythonコードを使って、これらの概念をどう実装するかを示します。</p>
-<p>すべてのサンプルはOpenAI互換プロトコルに基づいており、阿里云百炼、DeepSeekなどのサービスプロバイダーに変更するには、APIエンドポイントとキーを変更するだけで済みます。</p><p>Python OpenAI リファレンス：<a href="../python3/python-openai.html" target="_blank">https://www.runoob.com/python3/python-openai.html</a></p>
+<p>すべてのサンプルはOpenAI互換プロトコルに基づいており、阿里云百炼、DeepSeekなどのサービスプロバイダーに変更するには、APIエンドポイントとキーを変更するだけで済みます。</p><p>Python OpenAI リファレンス：<a href="../python3/python-openai.html" target="_blank">https://www.example.com/python3/python-openai.html</a></p>
 </blockquote>
 <hr/>
 <h2>全体的な技術チェーン</h2>
@@ -297,7 +297,7 @@ response <span style="color: Gray;">=</span> client.<span style="color: #05a;">c
         <span style="color: #a50"># System Prompt：モデルの役割と行動規範を事前に設定</span><br/>
         <span style="color: Olive;">{</span><span style="color: #a11;">"role"</span>: <span style="color: #a11;">"system"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"content"</span>: <span style="color: #a11;">"あなたはプロのPythonプログラミングアシスタントです。技術関連の質問にのみ回答します。"</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span><br/>
         <span style="color: #a50"># ユーザーメッセージ：実際の質問</span><br/>
-        <span style="color: Olive;">{</span><span style="color: #a11;">"role"</span>: <span style="color: #a11;">"user"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"content"</span>: <span style="color: #a11;">"runoobとは何ですか？"</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span><br/>
+        <span style="color: Olive;">{</span><span style="color: #a11;">"role"</span>: <span style="color: #a11;">"user"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"content"</span>: <span style="color: #a11;">"Pythonとは何ですか？"</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span><br/>
     <span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
     temperature<span style="color: Gray;">=</span><span style="color: Maroon;">0.7</span><span style="color: Gray;">,</span>  <span style="color: #a50"># 生成温度、0〜2の範囲。大きいほど多様になる（後述）</span><br/>
 <span style="color: Olive;">)</span><br/>
@@ -311,7 +311,7 @@ response <span style="color: Gray;">=</span> client.<span style="color: #05a;">c
 </div>
 <p>出力結果：</p>
 <pre>
-回答：runoob（菜鸟教程）是一个提供编程教程的中文学习网站……
+回答：サンプル（サンプル）是一个提供编程教程的中文学习网站……
 输入 Token 数：33
 输出 Token 数：18
 </pre>
@@ -383,7 +383,7 @@ client <span style="color: Gray;">=</span> OpenAI<span style="color: Olive;">(</
 <br/>
 <span style="color: #a50"># 非常に小さな「ナレッジベース」を模擬：数件のドキュメント</span><br/>
 documents <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><br/>
-    <span style="color: #a11;">"runoobは、プログラミングチュートリアルを提供する中国語の学習サイトです。"</span><span style="color: Gray;">,</span><br/>
+    <span style="color: #a11;">"サンプルは、プログラミングチュートリアルを提供する中国語の学習サイトです。"</span><span style="color: Gray;">,</span><br/>
     <span style="color: #a11;">RAGは、実際の資料を検索してから生成することで、大規模言語モデルのハルシネーションを効果のに減らせます。</span><span style="color: Gray;">,</span><br/>
     <span style="color: #a11;">"Pythonはインデントでコードブロックを表します。通常、各レベルのインデントはスペース4つが推奨されます。"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">]</span><br/>
@@ -393,7 +393,7 @@ doc_resp <span style="color: Gray;">=</span> client.<span style="color: #05a;">e
 doc_vectors <span style="color: Gray;">=</span> <span style="color: Olive;">[</span>d.<span style="color: #05a;">embedding</span> <span style="color: Green;font-weight:bold;">for</span> d <span style="color: Green;font-weight:bold;">in</span> doc_resp.<span style="color: #05a;">data</span><span style="color: Olive;">]</span><br/>
 <br/>
 <span style="color: #a50"># ステップ2：ユーザーの質問をベクトル化</span><br/>
-question <span style="color: Gray;">=</span> <span style="color: #a11;">"runoobとは何ですか？"</span><br/>
+question <span style="color: Gray;">=</span> <span style="color: #a11;">"Pythonとは何ですか？"</span><br/>
 query_vector <span style="color: Gray;">=</span> client.<span style="color: #05a;">embeddings</span>.<span style="color: #05a;">create</span><span style="color: Olive;">(</span><br/>
     <span style="color: Teal;">input</span><span style="color: Gray;">=</span>question<span style="color: Gray;">,</span> model<span style="color: Gray;">=</span><span style="color: #a11;">"text-embedding-3-small"</span><br/>
 <span style="color: Olive;">)</span>.<span style="color: #05a;">data</span><span style="color: Olive;">[</span><span style="color: Maroon;">0</span><span style="color: Olive;">]</span>.<span style="color: #05a;">embedding</span><br/>
@@ -420,8 +420,8 @@ response <span style="color: Gray;">=</span> client.<span style="color: #05a;">c
 </div>
 <p>出力結果：</p>
 <pre>
-检索到的资料：runoob 是一个提供编程教程的中文学习网站。
-回答：runoob（菜鸟教程）是一个提供编程教程的中文学习网站。
+检索到的资料：サンプル 是一个提供编程教程的中文学习网站。
+回答：サンプル（サンプル）是一个提供编程教程的中文学习网站。
 </pre>
 <p>実際のプロジェクトでは、ステップ3の「メモリ内で類似度を計算する」を「ベクトルデータベースを呼び出して検索する」に置き換えるだけで、プロセスは完全に同じです。</p>
 <h3>ファンクションコーリング（関数呼び出し）</h3>

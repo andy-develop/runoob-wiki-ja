@@ -283,7 +283,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div>
 <hr/>
 <h2>テストデータの作成</h2>
-<p>次に、MySQLでRUNOOBデータベースを作成し、websitesデータテーブルを作成します。テーブル構造は以下の通りです：</p>
+<p>次に、MySQLでサンプルデータベースを作成し、websitesデータテーブルを作成します。テーブル構造は以下の通りです：</p>
 <pre>
 CREATE TABLE `websites` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -296,15 +296,15 @@ CREATE TABLE `websites` (
 </pre>
 <p>いくつかのデータを挿入します：</p>
 <pre>
-INSERT INTO `websites` VALUES ('1', 'Google', 'https://www.google.cm/', '1', 'USA'), ('2', '淘宝', 'https://www.taobao.com/', '13', 'CN'), ('3', '菜鸟教程', 'http://www.runoob.com', '5892', ''), ('4', '微博', 'http://weibo.com/', '20', 'CN'), ('5', 'Facebook', 'https://www.facebook.com/', '3', 'USA');
+INSERT INTO `websites` VALUES ('1', 'Google', 'https://www.google.cm/', '1', 'USA'), ('2', '淘宝', 'https://www.taobao.com/', '13', 'CN'), ('3', 'サンプル', 'http://www.example.com', '5892', ''), ('4', '微博', 'http://weibo.com/', '20', 'CN'), ('5', 'Facebook', 'https://www.facebook.com/', '3', 'USA');
 </pre>
 <p>データテーブルは次のように表示されます：</p>
 <p><img decoding="async" src="../wp-content/uploads/2013/12/mysql-data.jpg"/></p><hr/>
 <hr/>
 <h2 class="tutheader">データベースへのアクセス</h2>
-<p>以下の例は、Servletを使用してRUNOOBデータベースにアクセスする方法を示しています。</p>
+<p>以下の例は、Servletを使用してサンプルデータベースにアクセスする方法を示しています。</p>
 <pre>
-package com.runoob.test;
+package com.サンプル.test;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -324,7 +324,7 @@ public class DatabaseAccess extends HttpServlet {
     private static final long serialVersionUID = 1L;
     // JDBC 驱动名及数据库 URL
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
-    static final String DB_URL = "jdbc:mysql://localhost:3306/RUNOOB";
+    static final String DB_URL = "jdbc:mysql://localhost:3306/サンプル";
     
     // 数据库的用户名与密码，需要根据自己的设置
     static final String USER = "root";
@@ -346,7 +346,7 @@ public class DatabaseAccess extends HttpServlet {
         // 设置响应内容类型
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String title = "Servlet Mysql 测试 - 菜鸟教程";
+        String title = "Servlet Mysql 测试 - サンプル";
         String docType = "&lt;!DOCTYPE html&gt;\n";
         out.println(docType +
         "&lt;html&gt;\n" +
@@ -422,7 +422,7 @@ public class DatabaseAccess extends HttpServlet {
 ....
     &lt;servlet&gt;
         &lt;servlet-name&gt;DatabaseAccess&lt;/servlet-name&gt;
-        &lt;servlet-class&gt;com.runoob.test.DatabaseAccess&lt;/servlet-class&gt;
+        &lt;servlet-class&gt;com.サンプル.test.DatabaseAccess&lt;/servlet-class&gt;
     &lt;/servlet&gt;
     &lt;servlet-mapping&gt;
         &lt;servlet-name&gt;DatabaseAccess&lt;/servlet-name&gt;

@@ -200,7 +200,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
         <span style="color: #708;">let</span> greeting <span style="">=</span> format<span style="">!</span><span style="">(</span><span style="color: #a11;">"Hello, {}!"</span><span style="">,</span> name<span style="">)</span><span style="">;</span><br/>
         greeting<br/>
     <span style="">}</span><span style="">;</span><br/>
-    println<span style="">!</span><span style="">(</span><span style="color: #a11;">"{}"</span><span style="">,</span> greet<span style="">(</span><span style="color: #a11;">"runoob"</span><span style="">)</span><span style="">)</span><span style="">;</span> <span style="color: #a50; font-style: italic;">// 出力: Hello, runoob!</span><br/>
+    println<span style="">!</span><span style="">(</span><span style="color: #a11;">"{}"</span><span style="">,</span> greet<span style="">(</span><span style="color: #a11;">"サンプル"</span><span style="">)</span><span style="">)</span><span style="">;</span> <span style="color: #a50; font-style: italic;">// 出力: Hello, サンプル!</span><br/>
 <span style="">}</span><br/>
 </div></div>
 <p>クロージャの呼び出し方は通常の関数とまったく同じで、変数名の後に括弧を付けて引数を渡すだけです。</p>
@@ -221,10 +221,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>デフォルトでは、クロージャは外部変数を不変参照として借用します。借用が終了すると、外部スコープはその変数を引き続き使用できます。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #708;">fn</span> main<span style="">(</span><span style="">)</span> <span style="">{</span><br/>
-    <span style="color: #708;">let</span> text <span style="">=</span> String<span style="">::</span><span style="color: #164;">from</span><span style="">(</span><span style="color: #a11;">"runoob"</span><span style="">)</span><span style="">;</span><br/>
+    <span style="color: #708;">let</span> text <span style="">=</span> String<span style="">::</span><span style="color: #164;">from</span><span style="">(</span><span style="color: #a11;">"サンプル"</span><span style="">)</span><span style="">;</span><br/>
     <span style="color: #a50; font-style: italic;">// 闭包按引用捕获 text，不获取所有权</span><br/>
     <span style="color: #708;">let</span> print_text <span style="">=</span> <span style="">||</span> println<span style="">!</span><span style="">(</span><span style="color: #a11;">"text = {}"</span><span style="">,</span> text<span style="">)</span><span style="">;</span><br/>
-    print_text<span style="">(</span><span style="">)</span><span style="">;</span> <span style="color: #a50; font-style: italic;">// 输出: text = runoob</span><br/>
+    print_text<span style="">(</span><span style="">)</span><span style="">;</span> <span style="color: #a50; font-style: italic;">// 输出: text = サンプル</span><br/>
     <span style="color: #a50; font-style: italic;">// 借用已结束，外部仍然可以使用 text</span><br/>
     println<span style="">!</span><span style="">(</span><span style="color: #a11;">"外部仍可使用: {}"</span><span style="">,</span> text<span style="">)</span><span style="">;</span><br/>
 <span style="">}</span><br/>
@@ -247,10 +247,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>クロージャの前に追加することで<span class="marked">move</span>`move` キーワードを付けると、クロージャはキャプチャした変数の所有権を取得します。所有権が移動した後は、外部スコープはその変数をそれ以上使用できなくなります。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #708;">fn</span> main<span style="">(</span><span style="">)</span> <span style="">{</span><br/>
-    <span style="color: #708;">let</span> owned <span style="">=</span> String<span style="">::</span><span style="color: #164;">from</span><span style="">(</span><span style="color: #a11;">"RUNOOB"</span><span style="">)</span><span style="">;</span><br/>
+    <span style="color: #708;">let</span> owned <span style="">=</span> String<span style="">::</span><span style="color: #164;">from</span><span style="">(</span><span style="color: #a11;">"サンプル"</span><span style="">)</span><span style="">;</span><br/>
     <span style="color: #a50; font-style: italic;">// move は owned の所有権をクロージャに移す</span><br/>
     <span style="color: #708;">let</span> take_owned <span style="">=</span> move <span style="">||</span> println<span style="">!</span><span style="">(</span><span style="color: #a11;">"owned = {}"</span><span style="">,</span> owned<span style="">)</span><span style="">;</span><br/>
-    take_owned<span style="">(</span><span style="">)</span><span style="">;</span> <span style="color: #a50; font-style: italic;">// 输出: owned = RUNOOB</span><br/>
+    take_owned<span style="">(</span><span style="">)</span><span style="">;</span> <span style="color: #a50; font-style: italic;">// 输出: owned = サンプル</span><br/>
     <span style="color: #a50; font-style: italic;">// 下の行のコメントを解除すると、コンパイルエラーになります：owned の所有権はクロージャに移されています。</span><br/>
     <span style="color: #a50; font-style: italic;">// println!("{}", owned);</span><br/>
 <span style="">}</span><br/>
@@ -271,7 +271,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <blockquote><p>注意：<code>move</code>`move` キーワードは所有権の取得を強制するだけで、クロージャが必ず `FnOnce` であることを意味するわけではありません。<code>FnOnce</code>クロージャ本体がキャプチャした値を消費しない場合、たとえ `move` を付けても、そのクロージャは `Fn` と `FnMut` を実装できます。<code>move</code>、クロージャは依然として実装可能である<code>Fn</code>（複数回呼び出し可能）。</p></blockquote>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #708;">fn</span> main<span style="">(</span><span style="">)</span> <span style="">{</span><br/>
-    <span style="color: #708;">let</span> name <span style="">=</span> String<span style="">::</span><span style="color: #164;">from</span><span style="">(</span><span style="color: #a11;">"runoob"</span><span style="">)</span><span style="">;</span><br/>
+    <span style="color: #708;">let</span> name <span style="">=</span> String<span style="">::</span><span style="color: #164;">from</span><span style="">(</span><span style="color: #a11;">"サンプル"</span><span style="">)</span><span style="">;</span><br/>
 <br/>
     <span style="color: #a50; font-style: italic;">// Fn 闭包：只读取，不修改，可多次调用</span><br/>
     <span style="color: #708;">let</span> greet <span style="">=</span> <span style="">||</span> println<span style="">!</span><span style="">(</span><span style="color: #a11;">"Hello, {}!"</span><span style="">,</span> name<span style="">)</span><span style="">;</span><br/>
@@ -288,7 +288,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
     println<span style="">!</span><span style="">(</span><span style="color: #a11;">"increment() = {}"</span><span style="">,</span> increment<span style="">(</span><span style="">)</span><span style="">)</span><span style="">;</span> <span style="color: #a50; font-style: italic;">// 输出: 2</span><br/>
 <br/>
     <span style="color: #a50; font-style: italic;">// FnOnce クロージャ：捕捉した変数を消費し、一度しか呼び出せない</span><br/>
-    <span style="color: #708;">let</span> data <span style="">=</span> String<span style="">::</span><span style="color: #164;">from</span><span style="">(</span><span style="color: #a11;">"RUNOOB"</span><span style="">)</span><span style="">;</span><br/>
+    <span style="color: #708;">let</span> data <span style="">=</span> String<span style="">::</span><span style="color: #164;">from</span><span style="">(</span><span style="color: #a11;">"サンプル"</span><span style="">)</span><span style="">;</span><br/>
     <span style="color: #708;">let</span> consume <span style="">=</span> move <span style="">||</span> <span style="">{</span><br/>
         <span style="color: #708;">let</span> _ <span style="">=</span> data<span style="">;</span> <span style="color: #a50; font-style: italic;">// dataをクロージャ環境から取り出して消費する</span><br/>
         println<span style="">!</span><span style="">(</span><span style="color: #a11;">"data has been consumed"</span><span style="">)</span><span style="">;</span><br/>
@@ -441,15 +441,15 @@ where<br/>
 <p>クロージャのライフタイムは、キャプチャする変数と密接に関係しています。Rust のライフタイムシステムにより、クロージャはキャプチャしたどの変数よりも長く生存することはありません。クロージャがローカル変数を参照している場合、コンパイラはコンパイル時に、その変数のスコープ外へクロージャを返すことを防ぎます。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #708;">fn</span> main<span style="">(</span><span style="">)</span> <span style="">{</span><br/>
-    <span style="color: #708;">let</span> text <span style="">=</span> String<span style="">::</span><span style="color: #164;">from</span><span style="">(</span><span style="color: #a11;">"runoob"</span><span style="">)</span><span style="">;</span><br/>
+    <span style="color: #708;">let</span> text <span style="">=</span> String<span style="">::</span><span style="color: #164;">from</span><span style="">(</span><span style="color: #a11;">"サンプル"</span><span style="">)</span><span style="">;</span><br/>
 <br/>
     <span style="color: #a50; font-style: italic;">// 正しい: クロージャを text のスコープ内で使用する</span><br/>
     <span style="color: #708;">let</span> print_text <span style="">=</span> <span style="">||</span> println<span style="">!</span><span style="">(</span><span style="color: #a11;">"{}"</span><span style="">,</span> text<span style="">)</span><span style="">;</span><br/>
-    print_text<span style="">(</span><span style="">)</span><span style="">;</span> <span style="color: #a50; font-style: italic;">// 出力: runoob</span><br/>
+    print_text<span style="">(</span><span style="">)</span><span style="">;</span> <span style="color: #a50; font-style: italic;">// 出力: サンプル</span><br/>
 <br/>
     <span style="color: #a50; font-style: italic;">// このクロージャを返そうとすると、コンパイラはエラーを報告します:</span><br/>
     <span style="color: #a50; font-style: italic;">// fn make_closure() -&gt; impl Fn() {</span><br/>
-    <span style="color: #a50; font-style: italic;">//     let text = String::from("runoob");</span><br/>
+    <span style="color: #a50; font-style: italic;">//     let text = String::from("サンプル");</span><br/>
     <span style="color: #a50; font-style: italic;">//     || println!("{}", text)  // エラー: text のライフタイムが十分ではありません</span><br/>
     <span style="color: #a50; font-style: italic;">// }</span><br/>
     <span style="color: #a50; font-style: italic;">// 解決策: move を使用して所有権をクロージャに移す</span><br/>

@@ -175,7 +175,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
     <span style="color: #666666; font-style: italic;">; 方式1：标准字符串</span><br/>
-    str1 <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'Hello, runoob!'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>     <span style="color: #666666; font-style: italic;">; C 风格：以 null 结尾</span><br/>
+    str1 <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'Hello, サンプル!'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span>     <span style="color: #666666; font-style: italic;">; C 风格：以 null 结尾</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 方式2：带换行符</span><br/>
     str2 <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'Line1'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0xA</span><span style="color: #339933;">,</span> <span style="color: #7F007F;">'Line2'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0xA</span><br/>
@@ -204,7 +204,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
     <span style="color: #666666; font-style: italic;">; 方式A：编译时计算（适用于常量字符串）</span><br/>
-    msg1 <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'Hello, RUNOOB!'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0xA</span><br/>
+    msg1 <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'Hello, サンプル!'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0xA</span><br/>
     msg1_len <span style="color: #0000FF; font-weight: bold;">equ</span> <span style="color: #0000FF; font-weight: bold;">$</span> <span style="color: #339933;">-</span> msg1          <span style="color: #666666; font-style: italic;">; 编译时自动计算</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">; 方式B：null終端の文字列（実行時計算）</span><br/>
@@ -256,7 +256,7 @@ strlen_done<span style="color: #339933;">:</span><br/>
 <span style="color: #666666; font-style: italic;">; 字符串复制两种实现方式</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
-    src <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'runoob source string'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
+    src <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'サンプル source string'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
     src_len <span style="color: #0000FF; font-weight: bold;">equ</span> <span style="color: #0000FF; font-weight: bold;">$</span> <span style="color: #339933;">-</span> src<br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.bss</span><br/>
@@ -316,9 +316,9 @@ copy_loop<span style="color: #339933;">:</span><br/>
 <span style="color: #666666; font-style: italic;">; 2つの文字列が等しいかどうかを比較する</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
-    str_a <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'runoob'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
-    str_b <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'runoob'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
-    str_c <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'RUNOOB'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
+    str_a <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'サンプル'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
+    str_b <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'サンプル'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
+    str_c <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'サンプル'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0</span><br/>
     eq_msg <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'Strings are equal'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0xA</span><br/>
     eq_len <span style="color: #0000FF; font-weight: bold;">equ</span> <span style="color: #0000FF; font-weight: bold;">$</span> <span style="color: #339933;">-</span> eq_msg<br/>
     ne_msg <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'Strings are NOT equal'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0xA</span><br/>
@@ -404,7 +404,7 @@ exit<span style="color: #339933;">:</span><br/>
 <span style="color: #666666; font-style: italic;">; 文字列内の小文字を大文字に変換する</span><br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.data</span><br/>
-    msg <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'Hello, runoob! Welcome to Assembly.'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0xA</span><br/>
+    msg <span style="color: #0000FF; font-weight: bold;">db</span> <span style="color: #7F007F;">'Hello, サンプル! Welcome to Assembly.'</span><span style="color: #339933;">,</span> <span style="color: #FF0000;">0xA</span><br/>
     len <span style="color: #0000FF; font-weight: bold;">equ</span> <span style="color: #0000FF; font-weight: bold;">$</span> <span style="color: #339933;">-</span> msg<br/>
 <br/>
 <span style="color: #0000FF; font-weight: bold;">section</span> <span style="color: #0000FF; font-weight: bold;">.text</span><br/>
@@ -454,8 +454,8 @@ next_char<span style="color: #339933;">:</span><br/>
 $ nasm -f elf32 case_convert.asm -o case_convert.o
 $ ld -m elf_i386 case_convert.o -o case_convert
 $ ./case_convert
-Hello, runoob! Welcome to Assembly.
-HELLO, RUNOOB! WELCOME TO ASSEMBLY.
+Hello, サンプル! Welcome to Assembly.
+HELLO, サンプル! WELCOME TO ASSEMBLY.
 </pre>
 <blockquote><p>方向フラグ DF は文字列操作の方向を決定します：DF=0 のとき ESI/EDI は増加（正方向）、DF=1 のときは減少（逆方向）です。使用<code>CLD</code>DFをクリア、使用<code>STD</code>DF をセットします。C 関数またはシステムコールを呼び出す前に、DF=0 を確認する必要があります（cdecl の要件）。</p></blockquote>
 其他扩展

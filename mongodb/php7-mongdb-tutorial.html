@@ -338,11 +338,11 @@ $ echo "extension=mongodb.so" &gt;&gt; `/usr/local/php7/bin/php --ini | grep "Lo
 $manager = new MongoDB\Driver\Manager("mongodb://localhost:27017");
 </pre>
 <h3>データの挿入</h3>
-<p>name が「菜鳥教程」のデータを test データベースの runoob コレクションに挿入します。</p>
+<p>name が「菜鳥教程」のデータを test データベースの サンプル コレクションに挿入します。</p>
 <pre>
 &lt;?php
 $bulk = new MongoDB\Driver\BulkWrite;
-$document = ['_id' =&gt; new MongoDB\BSON\ObjectID, 'name' =&gt; '菜鸟教程'];
+$document = ['_id' =&gt; new MongoDB\BSON\ObjectID, 'name' =&gt; 'サンプル'];
 
 $_id= $bulk-&gt;insert($document);
 
@@ -350,7 +350,7 @@ var_dump($_id);
 
 $manager = new MongoDB\Driver\Manager("mongodb://localhost:27017");  
 $writeConcern = new MongoDB\Driver\WriteConcern(MongoDB\Driver\WriteConcern::MAJORITY, 1000);
-$result = $manager-&gt;executeBulkWrite('test.runoob', $bulk, $writeConcern);
+$result = $manager-&gt;executeBulkWrite('test.サンプル', $bulk, $writeConcern);
 ?&gt;
 </pre>
 <h3>データの読み取り</h3>
@@ -361,7 +361,7 @@ $manager = new MongoDB\Driver\Manager("mongodb://localhost:27017");
 
 // 插入数据
 $bulk = new MongoDB\Driver\BulkWrite;
-$bulk-&gt;insert(['x' =&gt; 1, 'name'=&gt;'菜鸟教程', 'url' =&gt; 'http://www.runoob.com']);
+$bulk-&gt;insert(['x' =&gt; 1, 'name'=&gt;'サンプル', 'url' =&gt; 'http://www.example.com']);
 $bulk-&gt;insert(['x' =&gt; 2, 'name'=&gt;'Google', 'url' =&gt; 'http://www.google.com']);
 $bulk-&gt;insert(['x' =&gt; 3, 'name'=&gt;'taobao', 'url' =&gt; 'http://www.taobao.com']);
 $manager-&gt;executeBulkWrite('test.sites', $bulk);
@@ -403,7 +403,7 @@ stdClass Object
 $bulk = new MongoDB\Driver\BulkWrite;
 $bulk-&gt;update(
     ['x' =&gt; 2],
-    ['$set' =&gt; ['name' =&gt; '菜鸟工具', 'url' =&gt; 'tool.runoob.com']],
+    ['$set' =&gt; ['name' =&gt; 'サンプル工具', 'url' =&gt; 'tool.example.com']],
     ['multi' =&gt; false, 'upsert' =&gt; false]
 );
 

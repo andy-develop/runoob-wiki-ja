@@ -170,7 +170,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>次に、2つのテーブルを作成しましょう<strong>COMPANY</strong>と<strong>DEPARTMENT</strong>。</p>
 <h3>例</h3>
 <p>COMPANY テーブルを作成します（<a href="https://static.jyshare.com/download/company.sql">COMPANY SQL ファイルをダウンロード</a>）、データ内容は以下のとおりです：</p>
-<pre>runoobdb# select * from COMPANY;
+<pre>サンプルdb# select * from COMPANY;
  id | name  | age | address   | salary
 ----+-------+-----+-----------+--------
   1 | Paul  |  32 | California|  20000
@@ -225,9 +225,9 @@ INSERT INTO DEPARTMENT (ID, DEPT, EMP_ID) VALUES (3, 'Finance', 7 );</pre>
 <p>以下は CROSS JOIN の基本構文です：</p>
 <pre>SELECT ... FROM table1 CROSS JOIN table2 ...</pre>
 <p>上記のテーブルに基づいて、次のように交差結合（CROSS JOIN）を記述できます：</p>
-<pre>runoobdb=# SELECT EMP_ID, NAME, DEPT FROM COMPANY CROSS JOIN DEPARTMENT;</pre>
+<pre>サンプルdb=# SELECT EMP_ID, NAME, DEPT FROM COMPANY CROSS JOIN DEPARTMENT;</pre>
 <p>得られる結果は以下のとおりです：</p>
-<pre>runoobdb=# SELECT EMP_ID, NAME, DEPT FROM COMPANY CROSS JOIN DEPARTMENT;
+<pre>サンプルdb=# SELECT EMP_ID, NAME, DEPT FROM COMPANY CROSS JOIN DEPARTMENT;
  emp_id | name  |       dept
 --------+-------+--------------------
       1 | Paul  | IT Billing
@@ -263,7 +263,7 @@ FROM table1
 INNER JOIN table2
 ON table1.common_filed = table2.common_field;</pre>
 <p>上記のテーブルに基づいて、次のように内部結合を記述できます：</p>
-<pre>runoobdb=# SELECT EMP_ID, NAME, DEPT FROM COMPANY INNER JOIN DEPARTMENT ON COMPANY.ID = DEPARTMENT.EMP_ID;
+<pre>サンプルdb=# SELECT EMP_ID, NAME, DEPT FROM COMPANY INNER JOIN DEPARTMENT ON COMPANY.ID = DEPARTMENT.EMP_ID;
  emp_id | name  |        dept
 --------+-------+--------------
       1 | Paul  | IT Billing
@@ -276,7 +276,7 @@ ON table1.common_filed = table2.common_field;</pre>
 <p>以下は左外部結合（LEFT OUTER JOIN）の基本構文です：</p>
 <pre>SELECT ... FROM table1 LEFT OUTER JOIN table2 ON conditional_expression ...</pre>
 <p>上記の2つのテーブルに基づいて、次のように左外部結合を記述できます：</p>
-<pre>runoobdb=# SELECT EMP_ID, NAME, DEPT FROM COMPANY LEFT OUTER JOIN DEPARTMENT ON COMPANY.ID = DEPARTMENT.EMP_ID;
+<pre>サンプルdb=# SELECT EMP_ID, NAME, DEPT FROM COMPANY LEFT OUTER JOIN DEPARTMENT ON COMPANY.ID = DEPARTMENT.EMP_ID;
  emp_id | name  |      dept
 --------+-------+----------------
       1 | Paul  | IT Billing
@@ -296,7 +296,7 @@ ON table1.common_filed = table2.common_field;</pre>
 <p>以下は右外部結合（RIGHT OUT JOIN）の基本構文です：</p>
 <pre>SELECT ... FROM table1 RIGHT OUTER JOIN table2 ON conditional_expression ...</pre>
 <p>上記の2つのテーブルに基づいて、右外部結合を確立します：</p>
-<pre>runoobdb=# SELECT EMP_ID, NAME, DEPT FROM COMPANY RIGHT OUTER JOIN DEPARTMENT ON COMPANY.ID = DEPARTMENT.EMP_ID;
+<pre>サンプルdb=# SELECT EMP_ID, NAME, DEPT FROM COMPANY RIGHT OUTER JOIN DEPARTMENT ON COMPANY.ID = DEPARTMENT.EMP_ID;
  emp_id | name  |    dept
 --------+-------+-----------------
       1 | Paul  | IT Billing
@@ -309,7 +309,7 @@ ON table1.common_filed = table2.common_field;</pre>
 <p>以下は外部結合の基本構文です：</p>
 <pre>SELECT ... FROM table1 FULL OUTER JOIN table2 ON conditional_expression ...</pre>
 <p>上記の2つのテーブルに基づいて、外部結合を確立できます：</p>
-<pre>runoobdb=# SELECT EMP_ID, NAME, DEPT FROM COMPANY FULL OUTER JOIN DEPARTMENT ON COMPANY.ID = DEPARTMENT.EMP_ID;
+<pre>サンプルdb=# SELECT EMP_ID, NAME, DEPT FROM COMPANY FULL OUTER JOIN DEPARTMENT ON COMPANY.ID = DEPARTMENT.EMP_ID;
  emp_id | name  |      dept
 --------+-------+-----------------
       1 | Paul  | IT Billing

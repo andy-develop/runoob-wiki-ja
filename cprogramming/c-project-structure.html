@@ -365,7 +365,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <br/>
 <span style="color: #993333;">int</span> main<span style="color: #000;">(</span><span style="color: #993333;">int</span> argc<span style="color: #339933;">,</span> <span style="color: #993333;">char</span> <span style="color: #339933;">*</span>argv<span style="color: #000;">[</span><span style="color: #000;">]</span><span style="color: #000;">)</span> <span style="color: #000;">{</span><br/>
     <span style="color: #808080; font-style: italic;">/* argc: コマンドライン引数の数、argv: 引数配列 */</span><br/>
-    <span style="color: #000066;">printf</span><span style="color: #000;">(</span><span style="color: #a11;">"RUNOOB C プロジェクト起動<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #000;">)</span><span style="color: #339933;">;</span><br/>
+    <span style="color: #000066;">printf</span><span style="color: #000;">(</span><span style="color: #a11;">"サンプル C プロジェクト起動<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color: #000;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
     init_database<span style="color: #000;">(</span><span style="color: #000;">)</span><span style="color: #339933;">;</span>     <span style="color: #808080; font-style: italic;">/* データベース接続の初期化 */</span><br/>
     print_version<span style="color: #000;">(</span><span style="color: #000;">)</span><span style="color: #339933;">;</span>     <span style="color: #808080; font-style: italic;">/* バージョン情報を出力（utilsモジュール） */</span><br/>
@@ -385,7 +385,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: #085;">#define UTILS_H</span><br/>
 <br/>
 <span style="color: #808080; font-style: italic;">/* プロジェクト名とバージョン番号（マクロ定数、すべて大文字で命名） */</span><br/>
-<span style="color: #085;">#define PROJECT_NAME  "RUNOOB"</span><br/>
+<span style="color: #085;">#define PROJECT_NAME  "サンプル"</span><br/>
 <span style="color: #085;">#define VERSION_MAJOR 1</span><br/>
 <span style="color: #085;">#define VERSION_MINOR 0</span><br/>
 <br/>
@@ -440,7 +440,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 CC      = <span style="color: #C20CB9; font-weight: bold;">gcc</span>                    <span style="color: #666666; font-style: italic;"># Cコンパイラを指定</span><br/>
 CFLAGS  = <span style="color: #660033;">-Wall</span> <span style="color: #660033;">-Wextra</span> <span style="color: #660033;">-g</span>      <span style="color: #666666; font-style: italic;"># コンパイルオプション：すべての警告 + デバッグ情報</span><br/>
 INCLUDE = -I.<span style="color: #000000; font-weight: bold;">/</span>include           <span style="color: #666666; font-style: italic;"># ヘッダファイル検索パス</span><br/>
-TARGET  = runoob_app            <span style="color: #666666; font-style: italic;"># 最終的に生成される実行可能ファイル名</span><br/>
+TARGET  = サンプル_app            <span style="color: #666666; font-style: italic;"># 最終的に生成される実行可能ファイル名</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># ソースファイルとオブジェクトファイル</span><br/>
 SRCS    = $<span style="color: #7A0874; font-weight: bold;">(</span>wildcard src<span style="color: #000000; font-weight: bold;">/*</span>.c<span style="color: #7A0874; font-weight: bold;">)</span>   <span style="color: #666666; font-style: italic;"># src/ 配下のすべての.cファイルを自動収集</span><br/>
@@ -473,7 +473,7 @@ clean:<br/>
 <span style="color: #1F3F81; font-style: bold;">cmake_minimum_required</span><span style="color: #197D8B;">(</span><span style="color: #077807; font-sytle: italic;">VERSION</span> 3.10<span style="color: #197D8B;">)</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># プロジェクト名と言語</span><br/>
-<span style="color: #1F3F81; font-style: bold;">project</span><span style="color: #197D8B;">(</span>runoob_app C<span style="color: #197D8B;">)</span><br/>
+<span style="color: #1F3F81; font-style: bold;">project</span><span style="color: #197D8B;">(</span>サンプル_app C<span style="color: #197D8B;">)</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># C標準をC11に設定</span><br/>
 <span style="color: #1F3F81; font-style: bold;">set</span><span style="color: #197D8B;">(</span>CMAKE_C_STANDARD 11<span style="color: #197D8B;">)</span><br/>
@@ -497,8 +497,8 @@ clean:<br/>
 $ mkdir build &amp;&amp; cd build
 $ cmake ..
 $ make
-$ ./runoob_app
-RUNOOB C 项目启动
+$ ./サンプル_app
+サンプル C 项目启动
 版本: v1.0
 </pre>
 <hr/>
@@ -559,16 +559,16 @@ $ gcc -S main.i -o main.s
 $ gcc -c main.s -o main.o
 
 # 4. 链接：将所有目标文件链接为可执行程序
-$ gcc main.o utils.o -o runoob_app
+$ gcc main.o utils.o -o サンプル_app
 </pre>
 <hr/>
 <h2>よくある使用例</h2>
 <p>以下は、ディレクトリ作成からコンパイル・実行までの全プロセスをカバーする、完全な小規模 C プロジェクトの例です。</p>
 <h3>プロジェクトの骨格を作成する</h3>
 <pre>
-$ mkdir -p runoob_project/{src,include,tests,build,lib,doc}
-$ tree runoob_project/
-runoob_project/
+$ mkdir -p サンプル_project/{src,include,tests,build,lib,doc}
+$ tree サンプル_project/
+サンプル_project/
 ├── build/
 ├── doc/
 ├── include/
@@ -625,15 +625,15 @@ runoob_project/
 </div>
 <h3>コンパイルと実行</h3>
 <pre>
-$ cd runoob_project
+$ cd サンプル_project
 $ mkdir build &amp;&amp; cd build
 $ cmake ..
 -- Configuring done
 -- Generating done
 $ make
-[100%] Built target runoob_app
-$ ./runoob_app
-RUNOOB 项目运行成功！
+[100%] Built target サンプル_app
+$ ./サンプル_app
+サンプル 项目运行成功！
 Point(0,0) 到 Point(3,4) 的距离 = 5.00
 7 是质数: 是
 </pre>

@@ -191,7 +191,7 @@ load_dotenv<span style="color: Olive;">(</span><span style="color: Olive;">)</sp
 <br/>
 <span style="color: #a50"># 期待する出力構造を定義</span><br/>
 <span style="color: Green;font-weight:bold;">class</span> CourseInfo<span style="color: Olive;">(</span>BaseModel<span style="color: Olive;">)</span>:<br/>
-    <span style="color: #a11;">"""菜鸟教程 RUNOOB コース抽出結果"""</span><br/>
+    <span style="color: #a11;">"""サンプル コース抽出結果"""</span><br/>
     course_name: <span style="color: Teal;">str</span> <span style="color: Gray;">=</span> Field<span style="color: Olive;">(</span>description<span style="color: Gray;">=</span><span style="color: #a11;">"コース名"</span><span style="color: Olive;">)</span><br/>
     difficulty: <span style="color: Teal;">str</span> <span style="color: Gray;">=</span> Field<span style="color: Olive;">(</span>description<span style="color: Gray;">=</span><span style="color: #a11;">"難易度：入門/中級/上級"</span><span style="color: Olive;">)</span><br/>
     estimated_hours: <span style="color: Teal;">int</span> <span style="color: Gray;">=</span> Field<span style="color: Olive;">(</span>description<span style="color: Gray;">=</span><span style="color: #a11;">"予想学習時間（時間）"</span><span style="color: Olive;">)</span><br/>
@@ -202,7 +202,7 @@ model <span style="color: Gray;">=</span> init_chat_model<span style="color: Oli
 agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;">(</span><br/>
     model<span style="color: Gray;">=</span>model<span style="color: Gray;">,</span><br/>
     response_format<span style="color: Gray;">=</span>CourseInfo<span style="color: Gray;">,</span>  <span style="color: #a50"># Pydantic モデルを渡す</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは菜鸟教程 RUNOOB のコースアシスタントです。ユーザーの説明からコース情報を抽出してください。"</span><span style="color: Gray;">,</span><br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたはサンプル のコースアシスタントです。ユーザーの説明からコース情報を抽出してください。"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># ユーザーが非構造化の説明を入力</span><br/>
@@ -225,11 +225,11 @@ result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invo
 </div>
 <p>実行結果：</p>
 <pre>
-课程名: Python3 基础教程
-难度: 入门
-预计时长: 20 小时
-免费: 是
-对象类型: &lt;class '__main__.CourseInfo'&gt;
+コース名: Python3 基础教程
+難易度: 入门
+所要時間: 20 小时
+無料: 是
+オブジェクトタイプ: &lt;class '__main__.CourseInfo'&gt;
 </pre>
 <blockquote><p>返される structured_response は通常の辞書ではなく、Pydantic モデルのインスタンスです。つまり、.course_name などの属性でアクセスでき、IDE も自動補完を提供できます。</p></blockquote>
 <hr/>
@@ -247,7 +247,7 @@ result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invo
 <br/>
 <span style="color: Gray;">@</span>tool<br/>
 <span style="color: Green;font-weight:bold;">def</span> search_course<span style="color: Olive;">(</span><span style="color: #05a;">keyword</span>: <span style="color: Teal;">str</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
-    <span style="color: #a11;">"""菜鸟教程 RUNOOB でコース情報を検索"""</span><br/>
+    <span style="color: #a11;">"""サンプル でコース情報を検索"""</span><br/>
     courses <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><br/>
         <span style="color: #a11;">"python"</span>: <span style="color: #a11;">"Python3 基礎チュートリアル | 入門 | 無料 | 30章 | 約20時間"</span><span style="color: Gray;">,</span><br/>
         <span style="color: #a11;">"java"</span>: <span style="color: #a11;">"Java 基礎チュートリアル | 入門 | 無料 | 35章 | 約25時間"</span><span style="color: Gray;">,</span><br/>
@@ -268,7 +268,7 @@ agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;
     model<span style="color: Gray;">=</span>model<span style="color: Gray;">,</span><br/>
     tools<span style="color: Gray;">=</span><span style="color: Olive;">[</span>search_course<span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
     response_format<span style="color: Gray;">=</span>CourseRecommendation<span style="color: Gray;">,</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは菜鸟教程 RUNOOB のコースアドバイザーです。コースを検索してから推薦を提示してください。"</span><span style="color: Gray;">,</span><br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたはサンプル のコースアドバイザーです。コースを検索してから推薦を提示してください。"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: Olive;">{</span><br/>
@@ -289,9 +289,9 @@ rec <span style="color: Gray;">=</span> result<span style="color: Olive;">[</spa
 </div>
 <p>実行結果：</p>
 <pre>
-推荐课程: Python3 基础教程
-推荐理由: 该课程免费且适合Python初学者，学习时长约20小时
-难度: 入门
+おすすめコース: Python3 基础教程
+理由: 该课程免费且适合Python初学者，学习时长约20小时
+難易度: 入门
 
 === 执行过程 ===
   调用 search_course: Python3 基础教程 | 入门 | 免费 | 30章 | 约20小时
@@ -328,7 +328,7 @@ model <span style="color: Gray;">=</span> init_chat_model<span style="color: Oli
 agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;">(</span><br/>
     model<span style="color: Gray;">=</span>model<span style="color: Gray;">,</span><br/>
     response_format<span style="color: Gray;">=</span>LearningPlan<span style="color: Gray;">,</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは菜鸟教程 RUNOOB の学習プランナーです。"</span><span style="color: Gray;">,</span><br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたはサンプル の学習プランナーです。"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><span style="color: Olive;">{</span><br/>
@@ -349,7 +349,7 @@ plan <span style="color: Gray;">=</span> result<span style="color: Olive;">[</sp
 <p>実行結果：</p>
 <pre>
 目标: 掌握 Python 基础语法，能够独立编写简单的 Python 程序
-难度: 入门
+難易度: 入门
 总时长: 9.5 小时
 
 知识点列表 (6 个):
@@ -384,7 +384,7 @@ model <span style="color: Gray;">=</span> init_chat_model<span style="color: Oli
 structured_model <span style="color: Gray;">=</span> model.<span style="color: #05a;">with_structured_output</span><span style="color: Olive;">(</span>SentimentResult<span style="color: Olive;">)</span><br/>
 <br/>
 texts <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><br/>
-    <span style="color: #a11;">"菜鸟教程 RUNOOB は本当に使いやすく、強くおすすめします！"</span><span style="color: Gray;">,</span><br/>
+    <span style="color: #a11;">"サンプル は本当に使いやすく、強くおすすめします！"</span><span style="color: Gray;">,</span><br/>
     <span style="color: #a11;">"このチュートリアルは内容が少なすぎて、あまり価値がありません。"</span><span style="color: Gray;">,</span><br/>
     <span style="color: #a11;">"今日は天気がいいですね。"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">]</span><br/>
@@ -397,12 +397,12 @@ texts <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><b
 </div>
 <p>実行結果：</p>
 <pre>
-文本: 菜鸟教程 RUNOOB 真的太好用了，强烈推荐！...
-  情感: 积极, 强度: 0.95, 关键词: ['好用', '推荐']
-文本: 这个教程内容太少了，不太值。...
-  情感: 消极, 强度: 0.7, 关键词: ['内容太少', '不太值']
-文本: 今天天气不错。...
-  情感: 中性, 强度: 0.1, 关键词: ['不错']
+テキスト: サンプル 真的太好用了，强烈推荐！...
+  感情: 积极, 强度: 0.95, 关键词: ['好用', '推荐']
+テキスト: 这个教程内容太少了，不太值。...
+  感情: 消极, 强度: 0.7, 关键词: ['内容太少', '不太值']
+テキスト: 今天天气不错。...
+  感情: 中性, 强度: 0.1, 关键词: ['不错']
 </pre>
 <blockquote><p>with_structured_output() は model のメソッドで、Agent なしで使用できます。シナリオが「多段階推論」ではなく「情報抽出」の場合は、with_structured_output() を直接使う方が簡潔で効率的です。</p></blockquote>
 その他の拡張

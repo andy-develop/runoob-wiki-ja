@@ -311,7 +311,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>前の2つの記事では、ベクトルストアとリトリーバーを準備しました。</p><p>この記事では、それらを Agent に統合し、完全な RAG Agent——プライベートナレッジベースに基づいて質問に答えるスマートアシスタントを構築します。</p>
 <hr/>
 <h2>Retriever ツールを作成</h2>
-<p>リトリーバーをツールとしてラップすると、Agent が必要に応じて自動的にナレッジベースを検索できます。</p><p>OpenAI の key がない場合は、阿里百炼の Embedding サービスを利用できます。設定を参照してください。<a href="../langchain/langchain-alibailian.html" target="_blank">https://www.runoob.com/langchain/langchain-alibailian.html</a>：</p>
+<p>リトリーバーをツールとしてラップすると、Agent が必要に応じて自動的にナレッジベースを検索できます。</p><p>OpenAI の key がない場合は、阿里百炼の Embedding サービスを利用できます。設定を参照してください。<a href="../langchain/langchain-alibailian.html" target="_blank">https://www.example.com/langchain/langchain-alibailian.html</a>：</p>
 <pre># OpenAI 的文本嵌入模型
 # 将文本转换为向量（一组浮点数）
 
@@ -340,9 +340,9 @@ load_dotenv<span style="color: Olive;">(</span><span style="color: Olive;">)</sp
 <br/>
 <span style="color: #a50"># ----- ステップ 1: ナレッジベースの準備 -----</span><br/>
 <br/>
-<span style="color: #a50"># 菜鳥教程 RUNOOB の知識ドキュメントを模擬</span><br/>
+<span style="color: #a50"># 菜鳥教程 サンプル の知識ドキュメントを模擬</span><br/>
 knowledge_docs <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><br/>
-    <span style="color: #a11;">"菜鳥教程（RUNOOB）は 2013 年に設立され、完全無料のプログラミング学習プラットフォームです。"</span><span style="color: Gray;">,</span><br/>
+    <span style="color: #a11;">"菜鳥教程（サンプル）は 2013 年に設立され、完全無料のプログラミング学習プラットフォームです。"</span><span style="color: Gray;">,</span><br/>
     <span style="color: #a11;">"プラットフォームは 300+ のチュートリアルを公開しており、フロントエンド、バックエンド、データベース、モバイル開発などの分野をカバーしています。"</span><span style="color: Gray;">,</span><br/>
     <span style="color: #a11;">"Python3 基礎チュートリアルはプラットフォームで最も人気のあるコースで、延べ学習者数は 500 万人を超えています。"</span><span style="color: Gray;">,</span><br/>
     <span style="color: #a11;">"Python3 基礎チュートリアルは全 30 章で、環境構築、基本構文、関数、クラス、例外処理などの内容を含みます。"</span><span style="color: Gray;">,</span><br/>
@@ -372,7 +372,7 @@ retriever <span style="color: Gray;">=</span> vector_store.<span style="color: #
 <br/>
 <span style="color: Gray;">@</span>tool<br/>
 <span style="color: Green;font-weight:bold;">def</span> search_knowledge_base<span style="color: Olive;">(</span>query: <span style="color: Teal;">str</span><span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
-    <span style="color: #a11;">"""菜鳥教程 RUNOOB ナレッジベース内の関連情報を検索します。<br/>
+    <span style="color: #a11;">"""菜鳥教程 サンプル ナレッジベース内の関連情報を検索します。<br/>
 <br/>ユーザーが菜鳥教程の具体的な情報（コース数、プラットフォームの歴史、機能特性など）を尋ねた場合、<br/>正確な情報を得るために、このツールを使用してナレッジベースを検索する必要があります。<br/>
 <br/>
     Args:<br/>query: 検索キーワードまたは質問<br/>
@@ -394,7 +394,7 @@ model <span style="color: Gray;">=</span> init_chat_model<span style="color: Oli
 agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;">(</span><br/>
     model<span style="color: Gray;">=</span>model<span style="color: Gray;">,</span><br/>
     tools<span style="color: Gray;">=</span><span style="color: Olive;">[</span>search_knowledge_base<span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"""あなたは菜鳥教程 RUNOOB のスマートカスタマーサービスアシスタントです。<br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"""あなたは菜鳥教程 サンプル のスマートカスタマーサービスアシスタントです。<br/>
 <br/>## ルール<br/>1. ユーザーが菜鳥教程の具体的な情報を尋ねた場合は、必ず search_knowledge_base ツールを使用して検索します<br/>2. 検索された情報に基づいて回答し、ナレッジベースにない内容を捏造しない<br/>3. ナレッジベースに関連情報がない場合は、正直にユーザーに伝える<br/>4. 回答は親しみやすく、簡潔で、正確であること"""</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
@@ -415,14 +415,14 @@ questions <span style="color: Gray;">=</span> <span style="color: Olive;">[</spa
 </div>
 <p>実行結果：</p>
 <pre>
-Q: 菜鸟教程是什么时候创立的？
-A: 菜鸟教程（RUNOOB）创立于 2013 年，是一个完全免费的编程学习平台。
+Q: サンプル是什么时候创立的？
+A: サンプル创立于 2013 年，是一个完全免费的编程学习平台。
 ------------------------------------------------------------
 Q: Python3 基础教程有多少章？
 A: Python3 基础教程共 30 章，包含环境搭建、基本语法、函数、类、异常处理等内容。
 ------------------------------------------------------------
-Q: 菜鸟教程一共有多少套教程？
-A: 菜鸟教程已上线 300+ 套教程，涵盖前端、后端、数据库、移动开发等多个领域。
+Q: サンプル一共有多少套教程？
+A: サンプル已上线 300+ 套教程，涵盖前端、后端、数据库、移动开发等多个领域。
 ------------------------------------------------------------
 </pre>
 <hr/>
@@ -465,7 +465,7 @@ A: 菜鸟教程已上线 300+ 套教程，涵盖前端、后端、数据库、�
 <span style="color: #a50"># ドキュメントに出典情報を残すには、作成時にメタデータを追加します</span><br/>
 doc_with_meta <span style="color: Gray;">=</span> Document<span style="color: Olive;">(</span><br/>
     page_content<span style="color: Gray;">=</span><span style="color: #a11;">"Python3 基礎チュートリアルは全 30 章..."</span><span style="color: Gray;">,</span><br/>
-    metadata<span style="color: Gray;">=</span><span style="color: Olive;">{</span><span style="color: #a11;">"source"</span>: <span style="color: #a11;">"Python3 基礎チュートリアル-コース紹介"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"url"</span>: <span style="color: #a11;">"https://www.runoob.com/python3/"</span><span style="color: Olive;">}</span><br/>
+    metadata<span style="color: Gray;">=</span><span style="color: Olive;">{</span><span style="color: #a11;">"source"</span>: <span style="color: #a11;">"Python3 基礎チュートリアル-コース紹介"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"url"</span>: <span style="color: #a11;">"https://www.example.com/python3/"</span><span style="color: Olive;">}</span><br/>
 <span style="color: Olive;">)</span><br/>
 </div>
 </div>
@@ -480,12 +480,12 @@ embeddings <span style="color: Gray;">=</span> OpenAIEmbeddings<span style="colo
 vector_store <span style="color: Gray;">=</span> Chroma.<span style="color: #05a;">from_documents</span><span style="color: Olive;">(</span><br/>
     documents<span style="color: Gray;">=</span>chunks<span style="color: Gray;">,</span><br/>
     embedding<span style="color: Gray;">=</span>embeddings<span style="color: Gray;">,</span><br/>
-    persist_directory<span style="color: Gray;">=</span><span style="color: #a11;">"./runoob_vector_db"</span><span style="color: Gray;">,</span>  <span style="color: #a50"># 永続化ディレクトリ</span><br/>
+    persist_directory<span style="color: Gray;">=</span><span style="color: #a11;">"./サンプル_vector_db"</span><span style="color: Gray;">,</span>  <span style="color: #a50"># 永続化ディレクトリ</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># 後続の実行では直接ロード</span><br/>
 loaded_store <span style="color: Gray;">=</span> Chroma<span style="color: Olive;">(</span><br/>
-    persist_directory<span style="color: Gray;">=</span><span style="color: #a11;">"./runoob_vector_db"</span><span style="color: Gray;">,</span><br/>
+    persist_directory<span style="color: Gray;">=</span><span style="color: #a11;">"./サンプル_vector_db"</span><span style="color: Gray;">,</span><br/>
     embedding_function<span style="color: Gray;">=</span>embeddings<span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 retriever <span style="color: Gray;">=</span> loaded_store.<span style="color: #05a;">as_retriever</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>

@@ -276,10 +276,10 @@ scp local_file remote_ip:remote_file
 <li>3 番目と 4 番目はユーザー名を指定しておらず、コマンド実行後にユーザー名とパスワードを入力する必要があります。3 番目はリモートのディレクトリのみを指定しているためファイル名は変わりません。4 番目はファイル名を指定しています。</li></ul>
 <p>適用例：</p>
 <pre>
-scp /home/space/music/1.mp3 root@www.runoob.com:/home/root/others/music 
-scp /home/space/music/1.mp3 root@www.runoob.com:/home/root/others/music/001.mp3 
-scp /home/space/music/1.mp3 www.runoob.com:/home/root/others/music 
-scp /home/space/music/1.mp3 www.runoob.com:/home/root/others/music/001.mp3 
+scp /home/space/music/1.mp3 root@www.example.com:/home/root/others/music 
+scp /home/space/music/1.mp3 root@www.example.com:/home/root/others/music/001.mp3 
+scp /home/space/music/1.mp3 www.example.com:/home/root/others/music 
+scp /home/space/music/1.mp3 www.example.com:/home/root/others/music/001.mp3 
 </pre>
 <p>ディレクトリコピーのコマンド形式：</p>
 <pre>
@@ -292,22 +292,22 @@ scp -r local_folder remote_ip:remote_folder
 <li>2 番目はユーザー名を指定しておらず、コマンド実行後にユーザー名とパスワードを入力する必要があります。</li></ul>
 <p>適用例：</p>
 <pre>
-scp -r /home/space/music/ root@www.runoob.com:/home/root/others/ 
-scp -r /home/space/music/ www.runoob.com:/home/root/others/ 
+scp -r /home/space/music/ root@www.example.com:/home/root/others/ 
+scp -r /home/space/music/ www.example.com:/home/root/others/ 
 </pre>
 <p>上記のコマンドは、ローカルの music ディレクトリをリモートの others ディレクトリにコピーします。</p>
 <h4>2. リモートからローカルへコピー</h4>
 <p>リモートからローカルへのコピーは、ローカルからリモートへのコピーコマンドの最後の 2 つのパラメータの順序を入れ替えるだけです。以下の例のとおりです。</p>
 <p>適用例：</p>
 <pre>
-scp root@www.runoob.com:/home/root/others/music /home/space/music/1.mp3 
-scp -r www.runoob.com:/home/root/others/ /home/space/music/
+scp root@www.example.com:/home/root/others/music /home/space/music/1.mp3 
+scp -r www.example.com:/home/root/others/ /home/space/music/
 </pre>
 <h3>説明</h3>
 <p>1. リモートサーバーのファイアウォールが scp コマンド用に特定のポートを設定している場合、-P パラメータを使用してコマンドのポート番号を設定する必要があります。コマンド形式は以下のとおりです：</p>
 <pre>
 #scp 命令使用端口号 4588
-scp -P 4588 remote@www.runoob.com:/usr/local/sin.sh /home/administrator
+scp -P 4588 remote@www.example.com:/usr/local/sin.sh /home/administrator
 </pre>
 <p>2. scp コマンドを使用する際は、使用するユーザーがリモートサーバーの該当ファイルを読み取る権限を持っていることを確認してください。そうでない場合、scp コマンドは機能しません。</p>
 <hr/>

@@ -193,7 +193,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2>環境準備</h2>
 <p>必要なものは3つだけです。しかもすべて無料です。</p>
 <h3>1. VS Code エディター</h3><p>
-<p>ダウンロードURL：<a href="https://code.visualstudio.com" target="_blank">https://code.visualstudio.com</a></p></p>VS Code チュートリアル：<a href="../vscode/vscode-tutorial.html" target="_blank">https://www.runoob.com/vscode/vscode-tutorial.html</a>
+<p>ダウンロードURL：<a href="https://code.visualstudio.com" target="_blank">https://code.visualstudio.com</a></p></p>VS Code チュートリアル：<a href="../vscode/vscode-tutorial.html" target="_blank">https://www.example.com/vscode/vscode-tutorial.html</a>
 <p>VS Code は Windows / macOS / Linux に対応しており、完全無料です。</p>
 <h3>2. GitHub Copilot（VS Code に内蔵済み、インストール不要）</h3>
 <p>VS Code の最新版には GitHub Copilot がすでに内蔵されており、<strong>拡張機能をインストールする必要はありません。</strong>。</p>
@@ -208,7 +208,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>右上隅の小さなアイコンをクリックすると、Copilot のチャットウィンドウを呼び出せます：</p>
 <p><img decoding="async" src="../wp-content/uploads/2025/05/6dd666d4-9a5f-4d98-b8b1-a15c6e33a875.png" style="width:60%"/></p>
 <h3>3. Node.js</h3><p>ダウンロードURL：<a href="https://nodejs.org" target="_blank">https://nodejs.org</a></p>
-<p>Node.js チュートリアル：<a href="../nodejs/nodejs-tutorial.html" target="_blank">https://www.runoob.com/nodejs/nodejs-tutorial.html</a></p>
+<p>Node.js チュートリアル：<a href="../nodejs/nodejs-tutorial.html" target="_blank">https://www.example.com/nodejs/nodejs-tutorial.html</a></p>
 <p>LTS バージョンを選択し、インストール後にターミナルを開いて確認します：</p>
 <pre>
 node -v   # 应显示 v20.x.x 或更高
@@ -243,18 +243,18 @@ npm -v    # 应显示 10.x.x 或更高
 <tr><td>ビルドツール</td><td>Vite</td><td>起動が速く、Vue 公式推奨</td></tr>
 <tr><td>スタイル</td><td>Tailwind CSS</td><td>CSS ファイルを書く必要がなく、HTML 内で直接スタイルクラスを書ける</td></tr>
 <tr><td>データ保存</td><td>localStorage</td><td>ブラウザ標準搭載で、バックエンドサーバー不要</td></tr>
-<tr><td>プロジェクト名</td><td>vibe-coding-runoob</td><td>私たちの実践プロジェクト名</td></tr>
+<tr><td>プロジェクト名</td><td>vibe-coding-サンプル</td><td>私たちの実践プロジェクト名</td></tr>
 </table>
 <hr/>
 <h2>第1ラウンドの対話：骨組みを作る</h2>
 <p>それでは本格的な Vibe Coding を始めましょう。<strong>すべての要件を一度にAIに伝えるのではなく、一歩ずつ進めます。</strong></p>
 <h3>Step 1：プロジェクトを作成</h3>
 <p>ターミナルを開いて、プロジェクトを作成：</p>
-<pre>npm create vite@latest vibe-coding-runoob -- --template vue</pre>
+<pre>npm create vite@latest vibe-coding-サンプル -- --template vue</pre>
 <p><img decoding="async" src="../wp-content/uploads/2026/06/runoob_1782644141904.png"/></p>
 <p>新しいターミナルを開き、そのプロジェクトに入ります。次に tailwindcss に従い、<span class="marked">code .</span>コマンドを使用してプロジェクトを VS Code で開きます：</p>
 <pre>
-cd vibe-coding-runoob
+cd vibe-coding-サンプル
 npm install
 npm install -D tailwindcss @tailwindcss/vite
 code .
@@ -264,7 +264,7 @@ code .
 <h3>Step 2：最初の対話</h3>
 <p>Chat パネルに次の文章を入力します。つまり、欲しいものを自然言語で伝えるだけです：</p>
 <pre>
-我在开发一个任务管理 Web App，项目名 vibe-coding-runoob。
+我在开发一个任务管理 Web App，项目名 vibe-coding-サンプル。
 技术栈：Vue 3 + Vite + Tailwind CSS。
 
 请帮我搭建项目骨架，创建以下文件：
@@ -275,7 +275,7 @@ code .
    priority 可选值：'low' | 'medium' | 'high'
 
 2. src/App.vue — 应用主页面
-   - 顶部导航栏（标题"Vibe Coding Runoob"）
+   - 顶部导航栏（标题"Vibe Coding サンプル"）
    - 中间显示任务列表区域
 
 要求：
@@ -373,7 +373,7 @@ Emit 事件：toggle（切换完成状态）、delete（删除任务）
 1. 创建 src/utils/storage.ts：
    - saveTasks(tasks): 把任务数组存为 JSON
    - loadTasks(): 读取并解析 JSON，读取出错时返回空数组
-   - 存储键名：vibe-coding-runoob-tasks
+   - 存储键名：vibe-coding-サンプル-tasks
 
 2. 更新 src/stores/taskStore.ts：
    - 用 Vue reactive 管理状态
@@ -390,7 +390,7 @@ Emit 事件：toggle（切换完成状态）、delete（删除任务）
 1. 添加几条任务
 2. 刷新页面 → 任务还在！
 3. 按 F12 打开开发者工具 → Application → Local Storage
-4. 找到 vibe-coding-runoob-tasks，查看存储的 JSON 数据
+4. 找到 vibe-coding-サンプル-tasks，查看存储的 JSON 数据
 </pre>
 <p>データが消えた場合は、F12 コンソールのエラーメッセージを AI に貼り付けて修正させます。</p>
 <hr/>
@@ -419,7 +419,7 @@ Emit 事件：toggle（切换完成状态）、delete（删除任务）
 功能：
 - 点击按钮切换亮色/深色模式
 - 在 html 标签上添加/移除 dark class
-- 用 localStorage 记住用户选择（键名：vibe-coding-runoob-theme）
+- 用 localStorage 记住用户选择（键名：vibe-coding-サンプル-theme）
 - 首次访问时跟随系统设置（prefers-color-scheme）
 - 按钮放在导航栏右侧
 
@@ -467,15 +467,15 @@ Emit 事件：toggle（切换完成状态）、delete（删除任务）
 <pre>
 $ git init
 $ git add .
-$ git commit -m "feat: vibe-coding-runoob 任务管理应用"
+$ git commit -m "feat: vibe-coding-サンプル 任务管理应用"
 # 在 github.com 创建同名仓库后：
-$ git remote add origin https://github.com/你的用户名/vibe-coding-runoob.git
+$ git remote add origin https://github.com/你的用户名/vibe-coding-サンプル.git
 $ git push -u origin main
 </pre>
 <h3>Vercel にデプロイ</h3>
 <ol>
 <li>アクセス<a href="https://vercel.com" rel="noopener noreferrer" target="_blank">vercel.com</a>、GitHub アカウントでログイン</li>
-<li>Add New Project をクリックし、vibe-coding-runoob リポジトリを選択</li>
+<li>Add New Project をクリックし、vibe-coding-サンプル リポジトリを選択</li>
 <li>Framework は Vite を選択し、そのまま Deploy をクリック</li>
 <li>1〜2分待つと、xxxx.vercel.app ドメインを取得できます</li>
 </ol>

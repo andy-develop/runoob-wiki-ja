@@ -315,10 +315,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </table>
 <pre>
 # Windows 打开文件
-foo = open("D://runoob-test//julia//runoob-file.txt")
+foo = open("D://サンプル-test//julia//サンプル-file.txt")
 
 # Linux 或 Mac 打开文件 
-foo = open("./runoob-test/julia/runoob-file.txt")
+foo = open("./サンプル-test/julia/サンプル-file.txt")
 </pre>
 <h3>close() 関数</h3>
 <p>ファイルの操作が完了したら、ファイルを閉じる操作を行う必要があります。そうしないとリソースリークなどの問題が発生します。ファイルを閉じるには<strong>close()</strong>関数：</p>
@@ -328,41 +328,41 @@ close(foo)
 </pre>
 <p>Julia では、任意のファイル処理関数を<span class="marked">do</span>ステートメントブロック内にラップすることをお勧めします。ファイル処理関数を do ステートメントブロック内にラップする利点は、そのブロックの実行が完了すると、開いたファイルが自動的に閉じられ、つまり自動的に close() 関数が呼び出されることです。次のようになります：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #0000A8;font-weight:bold;">open</span><span style="color: #3B972E;">(</span><span style="color: #C93D39;">"./runoob-test/julia/runoob-file.txt"</span><span style="color: #3B972E;">)</span> <span style="color: #4266D5;font-weight:bold;">do</span> file<br/>
+<span style="color: #0000A8;font-weight:bold;">open</span><span style="color: #3B972E;">(</span><span style="color: #C93D39;">"./サンプル-test/julia/サンプル-file.txt"</span><span style="color: #3B972E;">)</span> <span style="color: #4266D5;font-weight:bold;">do</span> file<br/>
    <span style="color: #888888;"># ファイル操作を実行</span><br/>
 <span style="color: #4266D5;font-weight:bold;">end</span><br/>
 </div></div><p>上記のコードでは close() 関数を呼び出す必要はありません。自動的に close() 関数が呼び出されてファイルが閉じられるからです。</p>
 <p>次に、test.jl ファイルを作成します。コードは次のとおりです：</p>
 <div class="example"><h2 class="example">test.jl ファイルのコード：</h2> <div class="example_code">
-<span style="color: #888888;"># ファイルを開く。ファイルが存在しない場合は runoob-file.txt を作成する</span><br/>
-io = <span style="color: #0000A8;font-weight:bold;">open</span><span style="color: #3B972E;">(</span><span style="color: #C93D39;">"runoob-file.txt"</span>, <span style="color: #C93D39;">"w"</span><span style="color: #3B972E;">)</span><span style="color: #6BAB5B;">;</span><br/>
+<span style="color: #888888;"># ファイルを開く。ファイルが存在しない場合は サンプル-file.txt を作成する</span><br/>
+io = <span style="color: #0000A8;font-weight:bold;">open</span><span style="color: #3B972E;">(</span><span style="color: #C93D39;">"サンプル-file.txt"</span>, <span style="color: #C93D39;">"w"</span><span style="color: #3B972E;">)</span><span style="color: #6BAB5B;">;</span><br/>
 <br/>
 <span style="color: #888888;"># ファイルの内容を書き込む</span><br/>
-<span style="color: #0000A8;font-weight:bold;">write</span><span style="color: #3B972E;">(</span>io, <span style="color: #C93D39;">"Hello world!<span style="color: #000099; font-weight: bold;">\n</span>Runoob Julia Test"</span><span style="color: #3B972E;">)</span><span style="color: #6BAB5B;">;</span><br/>
+<span style="color: #0000A8;font-weight:bold;">write</span><span style="color: #3B972E;">(</span>io, <span style="color: #C93D39;">"Hello world!<span style="color: #000099; font-weight: bold;">\n</span>サンプル Julia Test"</span><span style="color: #3B972E;">)</span><span style="color: #6BAB5B;">;</span><br/>
 <br/>
 <span style="color: #888888;"># ファイルを閉じる</span><br/>
 <span style="color: #0000A8;font-weight:bold;">close</span><span style="color: #3B972E;">(</span>io<span style="color: #3B972E;">)</span><span style="color: #6BAB5B;">;</span><br/>
 </div></div>
 <p>上記のコードを実行：</p>
 <pre>$ julia test.jl</pre>
-<p>実行に成功すると、現在のコードファイルのディレクトリに runoob-file.txt ファイルが作成され、次の内容が書き込まれます：</p>
+<p>実行に成功すると、現在のコードファイルのディレクトリに サンプル-file.txt ファイルが作成され、次の内容が書き込まれます：</p>
 <pre>Hello world!
-Runoob Julia Test</pre>
+サンプル Julia Test</pre>
 <p>私たちは do<span class="marked">do</span>ステートメントを使用すれば、close()<strong>close()</strong>関数を使用する必要はありません：</p>
 <div class="example"><h2 class="example">test.jl ファイルのコード：</h2> <div class="example_code">
-<span style="color: #0000A8;font-weight:bold;">open</span><span style="color: #3B972E;">(</span><span style="color: #C93D39;">"runoob-file.txt"</span>, <span style="color: #C93D39;">"w"</span><span style="color: #3B972E;">)</span> <span style="color: #4266D5;font-weight:bold;">do</span> io<br/>
-    <span style="color: #0000A8;font-weight:bold;">write</span><span style="color: #3B972E;">(</span>io, <span style="color: #C93D39;">"Hello world!<span style="color: #000099; font-weight: bold;">\n</span>Runoob Julia Test<span style="color: #000099; font-weight: bold;">\n</span>do ステートメントを使用</span><span style="color: #3B972E;">)</span><br/>
+<span style="color: #0000A8;font-weight:bold;">open</span><span style="color: #3B972E;">(</span><span style="color: #C93D39;">"サンプル-file.txt"</span>, <span style="color: #C93D39;">"w"</span><span style="color: #3B972E;">)</span> <span style="color: #4266D5;font-weight:bold;">do</span> io<br/>
+    <span style="color: #0000A8;font-weight:bold;">write</span><span style="color: #3B972E;">(</span>io, <span style="color: #C93D39;">"Hello world!<span style="color: #000099; font-weight: bold;">\n</span>サンプル Julia Test<span style="color: #000099; font-weight: bold;">\n</span>do ステートメントを使用</span><span style="color: #3B972E;">)</span><br/>
 <span style="color: #4266D5;font-weight:bold;">end</span><span style="color: #6BAB5B;">;</span><br/>
 </div></div>
 <p>上記のコードを実行：</p>
 <pre>$ julia test.jl</pre>
-<p>実行に成功すると、現在のコードファイルのディレクトリに runoob-file.txt ファイルが作成され、次の内容が書き込まれます：</p>
+<p>実行に成功すると、現在のコードファイルのディレクトリに サンプル-file.txt ファイルが作成され、次の内容が書き込まれます：</p>
 <pre>Hello world!
-Runoob Julia Test
+サンプル Julia Test
 使用 do 语句</pre>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #888888;"># ファイルの内容を読み取る</span><br/>
-txt = <span style="color: #0000A8;font-weight:bold;">open</span><span style="color: #3B972E;">(</span><span style="color: #C93D39;">"runoob-file.txt"</span><span style="color: #3B972E;">)</span> <span style="color: #4266D5;font-weight:bold;">do</span> file<br/>
+txt = <span style="color: #0000A8;font-weight:bold;">open</span><span style="color: #3B972E;">(</span><span style="color: #C93D39;">"サンプル-file.txt"</span><span style="color: #3B972E;">)</span> <span style="color: #4266D5;font-weight:bold;">do</span> file<br/>
     read<span style="color: #3B972E;">(</span>file, <span style="color: #0000A8;font-weight:bold;">String</span><span style="color: #3B972E;">)</span><br/>
 <span style="color: #4266D5;font-weight:bold;">end</span><span style="color: #6BAB5B;">;</span><br/>
 <span style="color: #888888;"># 出力</span><br/>
@@ -373,7 +373,7 @@ txt = <span style="color: #0000A8;font-weight:bold;">open</span><span style="col
 <pre>txt = read(foo, String)</pre>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #888888;"># ファイルを開く</span><br/>
-file = <span style="color: #0000A8;font-weight:bold;">open</span><span style="color: #3B972E;">(</span><span style="color: #C93D39;">"runoob-file.txt"</span><span style="color: #3B972E;">)</span><br/>
+file = <span style="color: #0000A8;font-weight:bold;">open</span><span style="color: #3B972E;">(</span><span style="color: #C93D39;">"サンプル-file.txt"</span><span style="color: #3B972E;">)</span><br/>
 <br/>
 <span style="color: #888888;"># ファイルの内容を読み取る</span><br/>
 txt = read<span style="color: #3B972E;">(</span>file, <span style="color: #0000A8;font-weight:bold;">String</span><span style="color: #3B972E;">)</span><br/>
@@ -386,7 +386,7 @@ txt = read<span style="color: #3B972E;">(</span>file, <span style="color: #0000A
 </div></div><p>上記のコードを実行すると、出力結果は次のようになります：</p>
 <pre>$ Julia test.jl
 Hello world!
-Runoob Julia Test
+サンプル Julia Test
 </pre>
 <p><span class="marked">do</span>ステートメント内で使用する<strong>read()</strong>関数：</p>
 <pre>open(filename) do file
@@ -394,7 +394,7 @@ Runoob Julia Test
 end</pre><p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #888888;"># ファイルの内容を読み取る</span><br/>
-txt = <span style="color: #0000A8;font-weight:bold;">open</span><span style="color: #3B972E;">(</span><span style="color: #C93D39;">"runoob-file.txt"</span><span style="color: #3B972E;">)</span> <span style="color: #4266D5;font-weight:bold;">do</span> file<br/>
+txt = <span style="color: #0000A8;font-weight:bold;">open</span><span style="color: #3B972E;">(</span><span style="color: #C93D39;">"サンプル-file.txt"</span><span style="color: #3B972E;">)</span> <span style="color: #4266D5;font-weight:bold;">do</span> file<br/>
     read<span style="color: #3B972E;">(</span>file, <span style="color: #0000A8;font-weight:bold;">String</span><span style="color: #3B972E;">)</span><br/>
 <span style="color: #4266D5;font-weight:bold;">end</span><span style="color: #6BAB5B;">;</span><br/>
 <span style="color: #888888;"># 出力</span><br/>
@@ -403,13 +403,13 @@ txt = <span style="color: #0000A8;font-weight:bold;">open</span><span style="col
 <p>上記のコードを実行すると、出力結果は次のようになります：</p>
 <pre>$ julia test.jl
 Hello world!
-Runoob Julia Test
+サンプル Julia Test
 </pre><p>私たちは次の関数を使用できます<strong>readlines()</strong>この関数でファイルの内容を行ごとに配列に格納します。構文は次のとおりです：</p>
 <pre>readlines(io::IO=stdin; keep::Bool=false)
 readlines(filename::AbstractString; keep::Bool=false)</pre>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #888888;"># ファイルを開く</span><br/>
-file = <span style="color: #0000A8;font-weight:bold;">open</span><span style="color: #3B972E;">(</span><span style="color: #C93D39;">"runoob-file.txt"</span><span style="color: #3B972E;">)</span><br/>
+file = <span style="color: #0000A8;font-weight:bold;">open</span><span style="color: #3B972E;">(</span><span style="color: #C93D39;">"サンプル-file.txt"</span><span style="color: #3B972E;">)</span><br/>
 <br/>
 <span style="color: #888888;"># ファイルの内容を読み取る</span><br/>
 txt=readlines<span style="color: #3B972E;">(</span>file, keep=<span style="color: #4266D5;font-weight:bold;">true</span><span style="color: #3B972E;">)</span><br/>
@@ -421,12 +421,12 @@ txt=readlines<span style="color: #3B972E;">(</span>file, keep=<span style="color
 <span style="color: #0000A8;font-weight:bold;">println</span><span style="color: #3B972E;">(</span>txt<span style="color: #3B972E;">)</span><br/>
 </div></div><p>上記のコードを実行すると、出力結果は次のようになります：</p>
 <pre>$ julia test.jl
-["Hello world!\n", "Runoob Julia Test\n", "使用 do 语句"]
+["Hello world!\n", "サンプル Julia Test\n", "使用 do 语句"]
 </pre>
 <p>私たちは次の関数を使用することもできます<strong>eachline()</strong>この関数でファイルを1行ごとに処理します：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #888888;"># ファイルを開く</span><br/>
-<span style="color: #0000A8;font-weight:bold;">open</span><span style="color: #3B972E;">(</span><span style="color: #C93D39;">"runoob-file.txt"</span><span style="color: #3B972E;">)</span> <span style="color: #4266D5;font-weight:bold;">do</span> file<br/>
+<span style="color: #0000A8;font-weight:bold;">open</span><span style="color: #3B972E;">(</span><span style="color: #C93D39;">"サンプル-file.txt"</span><span style="color: #3B972E;">)</span> <span style="color: #4266D5;font-weight:bold;">do</span> file<br/>
 <span style="color: #888888;"># ファイルの内容を1行ずつ読み取る</span><br/>
     <span style="color: #4266D5;font-weight:bold;">for</span> ln <span style="color: #4266D5;font-weight:bold;">in</span> <span style="color: #0000A8;font-weight:bold;">eachline</span><span style="color: #3B972E;">(</span>file<span style="color: #3B972E;">)</span><br/>
         <span style="color: #888888;"># 文字列の長さと文字列を出力</span><br/>
@@ -437,11 +437,11 @@ txt=readlines<span style="color: #3B972E;">(</span>file, keep=<span style="color
 <p>上記のコードを実行すると、出力結果は次のようになります：</p>
 <pre>$ julia test.jl
 12, Hello world!
-17, Runoob Julia Test
+17, サンプル Julia Test
 8, 使用 do 语句
 </pre><p>現在の行番号を取得することもできます：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #0000A8;font-weight:bold;">open</span><span style="color: #3B972E;">(</span><span style="color: #C93D39;">"runoob-file.txt"</span><span style="color: #3B972E;">)</span> <span style="color: #4266D5;font-weight:bold;">do</span> f<br/>
+<span style="color: #0000A8;font-weight:bold;">open</span><span style="color: #3B972E;">(</span><span style="color: #C93D39;">"サンプル-file.txt"</span><span style="color: #3B972E;">)</span> <span style="color: #4266D5;font-weight:bold;">do</span> f<br/>
     <span style="color: #888888;"># 行番号を設定</span><br/>
     line = <span style="color: black;">1</span><br/>
     <span style="color: #4266D5;font-weight:bold;">while</span> <span style="color: #6BAB5B;">!</span><span style="color: #0000A8;font-weight:bold;">eof</span><span style="color: #3B972E;">(</span>f<span style="color: #3B972E;">)</span><br/>
@@ -455,20 +455,20 @@ txt=readlines<span style="color: #3B972E;">(</span>file, keep=<span style="color
 <p>上記のコードを実行すると、出力結果は次のようになります：</p>
 <pre>$ julia test.jl
 1 Hello world!
-2 Runoob Julia Test
+2 サンプル Julia Test
 3 使用 do 语句
 </pre>
 <h3>stat() 関数</h3>
 <p><strong>stat() </strong>この関数はファイルの情報を取得するために使用します。書式は次のとおりです：</p>
 <pre>stat(pathname) </pre>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-<span style="color: #4266D5;font-weight:bold;">for</span> n <span style="color: #4266D5;font-weight:bold;">in</span> fieldnames<span style="color: #3B972E;">(</span>typeof<span style="color: #3B972E;">(</span>stat<span style="color: #3B972E;">(</span><span style="color: #C93D39;">"runoob-file.txt"</span><span style="color: #3B972E;">)</span><span style="color: #3B972E;">)</span><span style="color: #3B972E;">)</span><br/>
-    <span style="color: #0000A8;font-weight:bold;">println</span><span style="color: #3B972E;">(</span>n, <span style="color: #C93D39;">": "</span>, getfield<span style="color: #3B972E;">(</span>stat<span style="color: #3B972E;">(</span><span style="color: #C93D39;">"runoob-file.txt"</span><span style="color: #3B972E;">)</span>,n<span style="color: #3B972E;">)</span><span style="color: #3B972E;">)</span><br/>
+<span style="color: #4266D5;font-weight:bold;">for</span> n <span style="color: #4266D5;font-weight:bold;">in</span> fieldnames<span style="color: #3B972E;">(</span>typeof<span style="color: #3B972E;">(</span>stat<span style="color: #3B972E;">(</span><span style="color: #C93D39;">"サンプル-file.txt"</span><span style="color: #3B972E;">)</span><span style="color: #3B972E;">)</span><span style="color: #3B972E;">)</span><br/>
+    <span style="color: #0000A8;font-weight:bold;">println</span><span style="color: #3B972E;">(</span>n, <span style="color: #C93D39;">": "</span>, getfield<span style="color: #3B972E;">(</span>stat<span style="color: #3B972E;">(</span><span style="color: #C93D39;">"サンプル-file.txt"</span><span style="color: #3B972E;">)</span>,n<span style="color: #3B972E;">)</span><span style="color: #3B972E;">)</span><br/>
 <span style="color: #4266D5;font-weight:bold;">end</span><br/>
 </div></div>
 <p>上記のコードを実行すると、出力結果は次のようになります：</p>
 <pre>$ julia test.jl
-desc: runoob-file.txt
+desc: サンプル-file.txt
 device: 16777222
 inode: 35345094
 mode: 33188
@@ -490,7 +490,7 @@ ctime: 1.6524042534674733e9
 </div></div>
 <p>上記のコードを実行すると、出力結果は次のようになります：</p>
 <pre>
-["/Users/RUNOOB/runoob-test/.Rhistory", "/Users/RUNOOB/runoob-test/.vscode", 
+["/Users/サンプル/サンプル-test/.Rhistory", "/Users/サンプル/サンプル-test/.vscode", 
 ...</pre>
 <h3>その他の関数</h3><p>次の表に、ファイルを処理するためのその他の関連関数を示します：</p>
 <table class="reference">

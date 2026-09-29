@@ -301,7 +301,7 @@ This is a linux testfile!
 Linux test 
 Google
 Taobao
-Runoob
+サンプル
 Tesetfile
 Wiki
 </pre>
@@ -319,7 +319,7 @@ Linux test
 newLine
 Google
 Taobao
-Runoob
+サンプル
 Tesetfile
 Wiki
 </pre>
@@ -329,7 +329,7 @@ Wiki
 $ nl testfile | sed '2,5d'
      1  HELLO LINUX!  
      6  Taobao
-     7  Runoob
+     7  サンプル
      8  Tesetfile
      9  Wiki
 </pre>
@@ -341,7 +341,7 @@ $ nl testfile | sed '2d'
      4  Linux test 
      5  Google
      6  Taobao
-     7  Runoob
+     7  サンプル
      8  Tesetfile
      9  Wiki
 </pre>
@@ -361,7 +361,7 @@ drink tea
      4  Linux test 
      5  Google
      6  Taobao
-     7  Runoob
+     7  サンプル
      8  Tesetfile
      9  Wiki
 </pre>
@@ -375,7 +375,7 @@ drink tea
      4  Linux test 
      5  Google
      6  Taobao
-     7  Runoob
+     7  サンプル
      8  Tesetfile
      9  Wiki
 </pre>
@@ -392,7 +392,7 @@ drink beer ?
      4  Linux test 
      5  Google
      6  Taobao
-     7  Runoob
+     7  サンプル
      8  Tesetfile
      9  Wiki
 </pre>
@@ -404,7 +404,7 @@ $ nl testfile | sed '2,5c No 2-5 number'
      1  HELLO LINUX!  
 No 2-5 number
      6  Taobao
-     7  Runoob
+     7  サンプル
      8  Tesetfile
      9  Wiki
 </pre>
@@ -413,14 +413,14 @@ No 2-5 number
 $ nl testfile | sed -n '5,7p'
      5  Google
      6  Taobao
-     7  Runoob
+     7  サンプル
 </pre><p>この sed の行単位の表示機能を使用すると、ファイル内の特定の行番号を選択して表示することができます。</p>
 <h3>データの検索と表示</h3>
 <p>testfile から<span class="marked">oo</span>キーワードを含む行を検索します:</p>
 <pre>
 $ nl testfile | sed -n '/oo/p'
      5  Google
-     7  Runoob
+     7  サンプル
 </pre>
 <p>root が見つかった場合、すべての行を出力するだけでなく、一致した行も出力します。</p>
 <h3>データの検索と削除</h3>
@@ -474,18 +474,18 @@ $ /sbin/ifconfig eth0 | grep 'inet addr' | sed 's/^.*addr://g' | sed 's/Bcast.*$
 192.168.1.100
 </pre>
 <h3>複数編集</h3>
-<p>1つの sed コマンドで、testfile の3行目から末尾までのデータを削除し、HELLO を RUNOOB に置き換えます:</p>
+<p>1つの sed コマンドで、testfile の3行目から末尾までのデータを削除し、HELLO を サンプル に置き換えます:</p>
 <pre>
-$ nl testfile | sed -e '3,$d' -e 's/HELLO/RUNOOB/'
-     1  RUNOOB LINUX!  
+$ nl testfile | sed -e '3,$d' -e 's/HELLO/サンプル/'
+     1  サンプル LINUX!  
      2  Linux is a free unix-type opterating system.  
 </pre>
-<p>-e は複数編集を表します。最初の編集コマンドは testfile の3行目から末尾までのデータを削除し、2番目のコマンドは HELLO を検索して RUNOOB に置き換えます。</p>
+<p>-e は複数編集を表します。最初の編集コマンドは testfile の3行目から末尾までのデータを削除し、2番目のコマンドは HELLO を検索して サンプル に置き換えます。</p>
 <h3>ファイル内容を直接変更(危険な操作)</h3>
 <p>sed はパイプコマンドやデータストリームリダイレクトを使用せずに、ファイルの内容を直接変更できます！ただし、この操作は元のファイルを直接変更するため、システム設定をむやみにテストに使用しないでください！ここでは regular_express.txt ファイルを使用してテストしてみましょう！</p>
 <p>regular_express.txt ファイルの内容は以下の通りです：</p>
 <pre>$ cat regular_express.txt 
-runoob.
+サンプル.
 google.
 taobao.
 facebook.
@@ -494,7 +494,7 @@ weibo-</pre>
 <p>sed を使用して、regular_express.txt 内の各行の末尾が . の場合は ! に置き換えます</p><pre>
 $ sed -i 's/\.$/\!/g' regular_express.txt
 $ cat regular_express.txt 
-runoob!
+サンプル!
 google!
 taobao!
 facebook!
@@ -507,7 +507,7 @@ weibo-
 <pre>
 $ sed -i '$a # This is a test' regular_express.txt
 $ cat regular_express.txt 
-runoob!
+サンプル!
 google!
 taobao!
 facebook!

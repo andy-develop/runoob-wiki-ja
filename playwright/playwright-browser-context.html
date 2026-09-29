@@ -196,13 +196,13 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example_code">
 <span style="color: #006600; font-style: italic;">// テスト A が Cookie を設定</span><br/>
 test<span style="color: #009900;">(</span><span style="color: #3366CC;">'テスト A'</span><span style="color: #339933;">,</span> async <span style="color: #009900;">(</span><span style="color: #009900;">{</span> page <span style="color: #009900;">}</span><span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
-  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.runoob.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.example.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
   <span style="color: #006600; font-style: italic;">// Cookie を設定（現在の Context でのみ有効）</span><br/>
   await page.<span style="color: #660066;">context</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span>.<span style="color: #660066;">addCookies</span><span style="color: #009900;">(</span><span style="color: #009900;">[</span><span style="color: #009900;">{</span><br/>
-    name<span style="color: #339933;">:</span> <span style="color: #3366CC;">'runoob_session'</span><span style="color: #339933;">,</span><br/>
+    name<span style="color: #339933;">:</span> <span style="color: #3366CC;">'サンプル_session'</span><span style="color: #339933;">,</span><br/>
     value<span style="color: #339933;">:</span> <span style="color: #3366CC;">'abc123'</span><span style="color: #339933;">,</span><br/>
-    domain<span style="color: #339933;">:</span> <span style="color: #3366CC;">'www.runoob.com'</span><span style="color: #339933;">,</span><br/>
+    domain<span style="color: #339933;">:</span> <span style="color: #3366CC;">'www.example.com'</span><span style="color: #339933;">,</span><br/>
     path<span style="color: #339933;">:</span> <span style="color: #3366CC;">'/'</span><span style="color: #339933;">,</span><br/>
   <span style="color: #009900;">}</span><span style="color: #009900;">]</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
@@ -211,7 +211,7 @@ test<span style="color: #009900;">(</span><span style="color: #3366CC;">'テス�
 <br/>
 <span style="color: #006600; font-style: italic;">// テスト B は新しい Context を受け取るため、テスト A が設定した Cookie は存在しない</span><br/>
 test<span style="color: #009900;">(</span><span style="color: #3366CC;">'テスト B'</span><span style="color: #339933;">,</span> async <span style="color: #009900;">(</span><span style="color: #009900;">{</span> page <span style="color: #009900;">}</span><span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
-  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.runoob.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.example.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
   <span style="color: #006600; font-style: italic;">// context().cookies() は空の配列を返す</span><br/>
   <span style="color: #000066; font-weight: bold;">const</span> cookies <span style="color: #339933;">=</span> await page.<span style="color: #660066;">context</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span>.<span style="color: #660066;">cookies</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
@@ -235,7 +235,7 @@ test<span style="color: #009900;">(</span><span style="color: #3366CC;">'context
   await context.<span style="color: #660066;">route</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'**/*.{png,jpg,jpeg}'</span><span style="color: #339933;">,</span> route <span style="color: #339933;">=&gt;</span> route.<span style="color: #660066;">abort</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
   <span style="color: #006600; font-style: italic;">// page は同じ context 内にあるため、上記の設定を引き継ぐ</span><br/>
-  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.runoob.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.example.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 </div>
 </div>
@@ -255,8 +255,8 @@ test<span style="color: #009900;">(</span><span style="color: #3366CC;">'2人の
   <span style="color: #000066; font-weight: bold;">const</span> pageA <span style="color: #339933;">=</span> await userAContext.<span style="color: #660066;">newPage</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
   <span style="color: #000066; font-weight: bold;">const</span> pageB <span style="color: #339933;">=</span> await userBContext.<span style="color: #660066;">newPage</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
-  await pageA.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.runoob.com/login'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
-  await pageB.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.runoob.com/login'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+  await pageA.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.example.com/login'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+  await pageB.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.example.com/login'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
   <span style="color: #006600; font-style: italic;">// ユーザー A がログイン</span><br/>
   await pageA.<span style="color: #660066;">getByLabel</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'ユーザー名'</span><span style="color: #009900;">)</span>.<span style="color: #660066;">fill</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'user_a'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>

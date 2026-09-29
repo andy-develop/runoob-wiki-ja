@@ -108,36 +108,36 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 3、<strong>permissions</strong>：権限の組み合わせ文字列で、cdrwa で構成され、各英字は異なる権限をサポートすることを表します。作成権限 create(c)、削除権限 delete(d)、読み取り権限 read(r)、書き込み権限 write(w)、管理権限 admin(a)。</li></ul>
 <h3>world インスタンス</h3><p>デフォルトノードの権限を確認し、ノードの permissions 権限部分を crwa に更新すると、ノードの削除に失敗します。world はオープンな権限を表します。</p>
 <pre>
-$ getAcl /runoob/child
-$ setAcl /runoob/child world:anyone:crwa
-$ delete /runoob/child
+$ getAcl /サンプル/child
+$ setAcl /サンプル/child world:anyone:crwa
+$ delete /サンプル/child
 </pre>
 <p><img decoding="async" src="../wp-content/uploads/2020/09/zk-acl-01.png"/></p>
 <h3>auth インスタンス</h3><p>auth は権限を付与するために使用され、先にユーザーを作成する必要があることに注意してください。</p>
 <pre>
-$ setAcl /runoob/child auth:user1:123456:cdrwa
+$ setAcl /サンプル/child auth:user1:123456:cdrwa
 $ addauth digest user1:123456
-$ setAcl /runoob/child auth:user1:123456:cdrwa
-$ getAcl /runoob/child
+$ setAcl /サンプル/child auth:user1:123456:cdrwa
+$ getAcl /サンプル/child
 </pre>
 <p><img decoding="async" src="../wp-content/uploads/2020/09/zk-acl-02.png"/></p>
 <h3>digest インスタンス</h3><p>現在のユーザーをログアウトし、端末に再接続します。digest はアカウント・パスワードでのログインと検証に使用できます。</p>
 <pre>
-$ ls /runoob
-$ create /runoob/child01 runoob
-$ getAcl /runoob/child01
-$ setAcl /runoob/child01 digest:user1:HYGa7IZRm2PUBFiFFu8xY2pPP/s=:cdra
-$ getAcl /runoob/child01
+$ ls /サンプル
+$ create /サンプル/child01 サンプル
+$ getAcl /サンプル/child01
+$ setAcl /サンプル/child01 digest:user1:HYGa7IZRm2PUBFiFFu8xY2pPP/s=:cdra
+$ getAcl /サンプル/child01
 $ addauth digest user1:123456
-$ getAcl /runoob/child01
+$ getAcl /サンプル/child01
 </pre><p><strong>ヒント：</strong>暗号化パスワードは前のステップで作成したものです。</p>
 <p><img decoding="async" src="../wp-content/uploads/2020/09/zk-acl-03.png"/></p>
 <h3>IP インスタンス</h3><p>IP アドレスのアクセス権限を制限し、権限を IP アドレス 192.168.3.7 に設定した後、IP が 192.168.3.38 にはアクセス権限がなくなります。</p>
 <pre>
-$ create /runoob/ip 0
-$ getAcl /runoob/ip
-$ setAcl /runoob/ip ip:192.168.3.7:cdrwa
-$ get /runoob/ip
+$ create /サンプル/ip 0
+$ getAcl /サンプル/ip
+$ setAcl /サンプル/ip ip:192.168.3.7:cdrwa
+$ get /サンプル/ip
 </pre>
 <p><img decoding="async" src="../wp-content/uploads/2020/09/zk-acl-04.png"/></p> </div>
 </div>

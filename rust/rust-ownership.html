@@ -173,7 +173,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>次のプログラムを使って変数のスコープの概念を説明します：</p><pre>
 {
     // 在声明以前，变量 s 无效
-    let s = "runoob";
+    let s = "サンプル";
     // 这里是变量 s 的可用范围
 }
 // 变量范围已经结束，变量 s 无效</pre><p>変数のスコープは変数の属性の1つで、変数の有効範囲を表します。デフォルトでは変数の宣言から始まり、変数が存在するスコープが終わるまで有効です。</p>
@@ -182,11 +182,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>割り当てがあれば解放もあります。プログラムは特定のメモリリソースを永続的に占有することはできません。したがって、リソースが無駄になるかどうかを決める重要な要素は、リソースが適時に解放されるかどうかです。</p><p>文字列のサンプルプログラムを C 言語で同等に書くと次のようになります：</p>
 <div class="example"> <div class="example_code">
 <span style="color: #000;">{</span><br/>
-    <span style="color: #993333;">char</span> <span style="color: #339933;">*</span>s <span style="color: #339933;">=</span> strdup<span style="color: #000;">(</span><span style="color: #a11;">"runoob"</span><span style="color: #000;">)</span><span style="color: #339933;">;</span><br/>
+    <span style="color: #993333;">char</span> <span style="color: #339933;">*</span>s <span style="color: #339933;">=</span> strdup<span style="color: #000;">(</span><span style="color: #a11;">"サンプル"</span><span style="color: #000;">)</span><span style="color: #339933;">;</span><br/>
     <span style="color: #000066;">free</span><span style="color: #000;">(</span>s<span style="color: #000;">)</span><span style="color: #339933;">;</span> <span style="color: #666666; font-style: italic;">// s のリソースを解放</span><br/>
 <span style="color: #000;">}</span><br/>
 </div></div>
-<p>明らかに、Rust では文字列 s のリソースを解放するために free 関数を呼び出していません（C 言語では正しくない書き方だと分かっています。"runoob" はヒープにないためです。ここではヒープにあると仮定します）。Rust が解放の手順を明示しないのは、変数のスコープが終了するときに、Rust コンパイラがリソース解放関数を呼び出す手順を自動的に追加するためです。</p><p>この仕組みは一見とても単純です。プログラマが適切な場所にリソース解放関数の呼び出しを追加するのを助けるだけです。しかし、この単純な仕組みは、プログラマーを史上最も悩ませてきたプログラミング問題を効果的に解決できます。</p>
+<p>明らかに、Rust では文字列 s のリソースを解放するために free 関数を呼び出していません（C 言語では正しくない書き方だと分かっています。"サンプル" はヒープにないためです。ここではヒープにあると仮定します）。Rust が解放の手順を明示しないのは、変数のスコープが終了するときに、Rust コンパイラがリソース解放関数を呼び出す手順を自動的に追加するためです。</p><p>この仕組みは一見とても単純です。プログラマが適切な場所にリソース解放関数の呼び出しを追加するのを助けるだけです。しかし、この単純な仕組みは、プログラマーを史上最も悩ませてきたプログラミング問題を効果的に解決できます。</p>
 <hr/>
 <h2>変数とデータのやり取りの方法</h2>
 <p>変数とデータのやり取りの方法には、主にムーブ（Move）とクローン（Clone）の2つがあります：</p>

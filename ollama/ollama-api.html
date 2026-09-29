@@ -189,7 +189,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example_code">
 
 curl http:<span style="color: #000000; font-weight: bold;">//</span>localhost:<span style="color: #000000;">11434</span><span style="color: #000000; font-weight: bold;">/</span>api<span style="color: #000000; font-weight: bold;">/</span>generate <span style="color: #660033;">-d</span> <span style="color: #a10;">'{<br/>
-  "model": "qwen3.5",<br/>"prompt": "RUNOOB を一言で紹介してください",<br/>
+  "model": "qwen3.5",<br/>"prompt": "サンプル を一言で紹介してください",<br/>
   "stream": false<br/>
 }'</span><br/>
 </div>
@@ -199,7 +199,7 @@ curl http:<span style="color: #000000; font-weight: bold;">//</span>localhost:<s
 {
   "model": "qwen3.5",
   "created_at": "2026-08-29T03:20:00.499127Z",
-  "response": "RUNOOB（菜鸟教程）是一个面向编程初学者的免费中文教程网站。",
+  "response": "サンプル是一个面向编程初学者的免费中文教程网站。",
   "done": true,
   "total_duration": 10706818083,
   "load_duration": 6338219291,
@@ -247,7 +247,7 @@ curl http:<span style="color: #000000; font-weight: bold;">//</span>localhost:<s
 
 curl http:<span style="color: #000000; font-weight: bold;">//</span>localhost:<span style="color: #000000;">11434</span><span style="color: #000000; font-weight: bold;">/</span>api<span style="color: #000000; font-weight: bold;">/</span>chat <span style="color: #660033;">-d</span> <span style="color: #a10;">'{<br/>
   "model": "qwen3.5",<br/>
-  "messages": [<br/>{ "role": "user", "content": "RUNOOB とは何ですか？" },<br/>{ "role": "assistant", "content": "初心者向けの中国語チュートリアルサイトです。" },<br/>{ "role": "user", "content": "それは無料ですか？一言で答えてください" }<br/>
+  "messages": [<br/>{ "role": "user", "content": "Python とは何ですか？" },<br/>{ "role": "assistant", "content": "初心者向けの中国語チュートリアルサイトです。" },<br/>{ "role": "user", "content": "それは無料ですか？一言で答えてください" }<br/>
   ],<br/>
   "stream": false<br/>
 }'</span><br/>
@@ -276,7 +276,7 @@ curl http:<span style="color: #000000; font-weight: bold;">//</span>localhost:<s
 <div class="example_code">
 <span style="color: #666666; font-style: italic;"># 単一テキスト</span><br/>
 curl http:<span style="color: #000000; font-weight: bold;">//</span>localhost:<span style="color: #000000;">11434</span><span style="color: #000000; font-weight: bold;">/</span>api<span style="color: #000000; font-weight: bold;">/</span>embed <span style="color: #660033;">-d</span> <span style="color: #a10;">'{<br/>
-  "model": "embeddinggemma",<br/>"input": "RUNOOB はプログラミングチュートリアルサイトです"<br/>
+  "model": "embeddinggemma",<br/>"input": "サンプル はプログラミングチュートリアルサイトです"<br/>
 }'</span><br/>
 <br/>
 <span style="color: #666666; font-style: italic;"># バッチ：input に配列を渡すと、一度に複数のベクトルを返します</span><br/>
@@ -291,8 +291,8 @@ curl http:<span style="color: #000000; font-weight: bold;">//</span>localhost:<s
 <h2>ストリーミングと非ストリーミング：レスポンスの処理方法</h2>
 <p>生成系インターフェースはデフォルトでストリーミング返却され、形式は NDJSON です。各行が独立した JSON オブジェクトになります。</p>
 <pre>
-{"model":"qwen3.5","created_at":"...","response":"RUNOOB","done":false}
-{"model":"qwen3.5","created_at":"...","response":"（菜鸟教程）","done":false}
+{"model":"qwen3.5","created_at":"...","response":"サンプル","done":false}
+{"model":"qwen3.5","created_at":"...","response":"（サンプル）","done":false}
 {"model":"qwen3.5","created_at":"...","response":"是编程初学者的入门网站。","done":false}
 {"model":"qwen3.5","created_at":"...","response":"","done":true,"done_reason":"stop"}
 </pre>
@@ -386,7 +386,7 @@ curl http:<span style="color: #000000; font-weight: bold;">//</span>localhost:<s
 curl http:<span style="color: #000000; font-weight: bold;">//</span>localhost:<span style="color: #000000;">11434</span><span style="color: #000000; font-weight: bold;">/</span>v1<span style="color: #000000; font-weight: bold;">/</span>chat<span style="color: #000000; font-weight: bold;">/</span>completions \<br/>
   <span style="color: #660033;">-H</span> <span style="color: #a10;">"Content-Type: application/json"</span> \<br/>
   <span style="color: #660033;">-d</span> <span style="color: #a10;">'{<br/>
-    "model": "qwen3.5",<br/>"messages": [{ "role": "user", "content": "RUNOOB を一言で紹介してください" }]<br/>
+    "model": "qwen3.5",<br/>"messages": [{ "role": "user", "content": "サンプル を一言で紹介してください" }]<br/>
   }'</span><br/>
 </div>
 </div>
@@ -418,7 +418,7 @@ curl http:<span style="color: #000000; font-weight: bold;">//</span>localhost:<s
   <span style="color: #660033;">-H</span> <span style="color: #a10;">"anthropic-version: 2023-06-01"</span> \<br/>
   <span style="color: #660033;">-d</span> <span style="color: #a10;">'{<br/>
     "model": "qwen3.5",<br/>
-    "max_tokens": 1024,<br/>"messages": [{ "role": "user", "content": "RUNOOB を一言で紹介してください" }]<br/>
+    "max_tokens": 1024,<br/>"messages": [{ "role": "user", "content": "サンプル を一言で紹介してください" }]<br/>
   }'</span><br/>
 </div>
 </div>

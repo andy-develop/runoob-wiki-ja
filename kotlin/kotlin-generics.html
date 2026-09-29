@@ -282,7 +282,7 @@ class Box&lt;T&gt;(t : T) {
 
 fun main(args: Array&lt;String&gt;) {
     var boxInt = Box&lt;Int&gt;(10)
-    var boxString = Box&lt;String&gt;("Runoob")
+    var boxString = Box&lt;String&gt;("サンプル")
 
     println(boxInt.value)
     println(boxString.value)
@@ -290,7 +290,7 @@ fun main(args: Array&lt;String&gt;) {
 </pre>
 <p>出力結果は次のとおりです:</p>
 <pre>10
-Runoob</pre>
+サンプル</pre>
 <p>ジェネリクス型変数を定義する場合、型パラメータを完全に記述できます。コンパイラが型パラメータを自動的に推定できる場合は、型パラメータを省略することもできます。</p><p>Kotlin のジェネリクス関数の宣言は Java と同じで、型パラメータは関数名の前に置きます:</p>
 <pre>
 fun &lt;T&gt; boxIn(value: T) = Box(value)
@@ -304,7 +304,7 @@ val box5 = boxIn(1)     // 编译器会进行类型推断
 <pre>
 fun main(args: Array&lt;String&gt;) {
     val age = 23
-    val name = "runoob"
+    val name = "サンプル"
     val bool = true
 
     doPrintln(age)    // 整型
@@ -323,7 +323,7 @@ fun &lt;T&gt; doPrintln(content: T) {
 </pre>
 <p>出力結果は次のとおりです:</p>
 <pre>整型数字为 23
-字符串转换为大写：RUNOOB
+字符串转换为大写：サンプル
 T 不是整型，也不是字符串
 </pre>
 <hr/>
@@ -358,29 +358,29 @@ fun &lt;T&gt; copyWhenGreater(list: List&lt;T&gt;, threshold: T): List&lt;String
 <p>out を使用すると型パラメータは共変になります。共変の型パラメータは出力としてのみ使用でき、戻り値の型としては使用できますが、引数の型としては使用できません:</p>
 <pre>
 // 定义一个支持协变的类
-class Runoob&lt;out A&gt;(val a: A) {
+class サンプル&lt;out A&gt;(val a: A) {
     fun foo(): A {
         return a
     }
 }
 
 fun main(args: Array&lt;String&gt;) {
-    var strCo: Runoob&lt;String&gt; = Runoob("a")
-    var anyCo: Runoob&lt;Any&gt; = Runoob&lt;Any&gt;("b")
+    var strCo: サンプル&lt;String&gt; = サンプル("a")
+    var anyCo: サンプル&lt;Any&gt; = サンプル&lt;Any&gt;("b")
     anyCo = strCo
     println(anyCo.foo())   // 输出 a
 }
 </pre><p>in を使用すると型パラメータは反変になります。反変の型パラメータは入力としてのみ使用でき、引数の型としては使用できますが、戻り値の型としては使用できません:</p>
 <pre>
 // 定义一个支持逆变的类
-class Runoob&lt;in A&gt;(a: A) {
+class サンプル&lt;in A&gt;(a: A) {
     fun foo(a: A) {
     }
 }
 
 fun main(args: Array&lt;String&gt;) {
-    var strDCo = Runoob("a")
-    var anyDCo = Runoob&lt;Any&gt;("b")
+    var strDCo = サンプル("a")
+    var anyDCo = サンプル&lt;Any&gt;("b")
     strDCo = anyDCo
 }
 </pre>

@@ -390,7 +390,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <a href="php-ref-filter.html"><img alt="PHP Filter 参考手册" class="navup" decoding="async" src="../images/up.gif"/>完全な PHP Filter リファレンスマニュアル</a>
 <div class="example"><h2 class="example">例</h2><p>URL の形式が正しいかどうかを判定：</p> <div class="example_code">
 <span style="color: #000000; ">&lt;?php</span><br/>
-<span style="color: #05a;">$url</span> <span style="color: #000000;">=</span> <span style="color: #a11;">"https://www.runoob.com"</span><span style="color: #000000;">;</span><br/>
+<span style="color: #05a;">$url</span> <span style="color: #000000;">=</span> <span style="color: #a11;">"https://www.example.com"</span><span style="color: #000000;">;</span><br/>
 <br/>
 <span style="color: #708;">if</span> <span style="color: #164;">(</span><span style="color: #990000;">filter_var</span><span style="color: #164;">(</span><span style="color: #05a;">$url</span><span style="color: #000000;">,</span> FILTER_VALIDATE_URL<span style="color: #164;">)</span><span style="color: #164;">)</span> <span style="color: #164;">{</span><br/>
     <span style="color: #708;">echo</span><span style="color: #164;">(</span><span style="color: #a11;">"<span style="color: #006699; font-weight: bold;">$url</span>正しい URL です"</span><span style="color: #164;">)</span><span style="color: #000000;">;</span><br/>
@@ -400,7 +400,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: #000000; ">?&gt;</span><br/>
 </div></div>
 <p>上記のコードを実行すると、出力結果は次のようになります：</p>
-<pre>https://www.runoob.com 是正确的 URL</pre>
+<pre>https://www.example.com 是正确的 URL</pre>
 <hr/>
 <h2>定義と使用法</h2>
 <p>FILTER_VALIDATE_URL フィルタは、値を URL として検証します。</p>
@@ -410,9 +410,9 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </ul>
 <p>可能なフラグ：</p>
 <ul>
-<li>FILTER_FLAG_SCHEME_REQUIRED - URL が RFC 準拠の URL であることを要求（例：http://runoob）</li>
-<li>FILTER_FLAG_HOST_REQUIRED - URL にホスト名が含まれることを要求（例：http://www.runoob.com）</li>
-<li>FILTER_FLAG_PATH_REQUIRED - URL のドメイン名の後にパスが存在することを要求（例：www.runoob.com/example1/test2/）</li>
+<li>FILTER_FLAG_SCHEME_REQUIRED - URL が RFC 準拠の URL であることを要求（例：http://サンプル）</li>
+<li>FILTER_FLAG_HOST_REQUIRED - URL にホスト名が含まれることを要求（例：http://www.example.com）</li>
+<li>FILTER_FLAG_PATH_REQUIRED - URL のドメイン名の後にパスが存在することを要求（例：www.example.com/example1/test2/）</li>
 <li>FILTER_FLAG_QUERY_REQUIRED - URL にクエリ文字列が存在することを要求（例："example.php?name=Peter&amp;age=37"）</li>
 </ul>
 <hr/>
@@ -420,7 +420,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>以下の例では、変数 $url から不正な文字を削除し、それが有効な URL かどうかを確認します：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #000000; ">&lt;?php</span><br/>
-<span style="color: #05a;">$url</span> <span style="color: #000000;">=</span> <span style="color: #a11;">"https://www.runoob.com"</span><span style="color: #000000;">;</span><br/>
+<span style="color: #05a;">$url</span> <span style="color: #000000;">=</span> <span style="color: #a11;">"https://www.example.com"</span><span style="color: #000000;">;</span><br/>
 <br/>
 <span style="color: #a50; font-style: italic;">// url から不正な文字を削除</span><br/>
 <span style="color: #05a;">$url</span> <span style="color: #000000;">=</span> <span style="color: #990000;">filter_var</span><span style="color: #164;">(</span><span style="color: #05a;">$url</span><span style="color: #000000;">,</span> FILTER_SANITIZE_URL<span style="color: #164;">)</span><span style="color: #000000;">;</span><br/>
@@ -434,12 +434,12 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: #000000; ">?&gt;</span><br/>
 </div></div>
 <p>コードの出力は次のようになります：</p>
-<pre>https://www.runoob.com 是正确的 URL</pre>
+<pre>https://www.example.com 是正确的 URL</pre>
 <p>以下では、URL に有効なクエリ文字列が含まれているかどうかを確認します：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #000000; ">&lt;?php</span><br/>
 <span style="color: #a50; font-style: italic;">// パラメータなしの URL</span><br/>
-<span style="color: #05a;">$url</span> <span style="color: #000000;">=</span> <span style="color: #a11;">"https://www.runoob.com"</span><span style="color: #000000;">;</span><br/>
+<span style="color: #05a;">$url</span> <span style="color: #000000;">=</span> <span style="color: #a11;">"https://www.example.com"</span><span style="color: #000000;">;</span><br/>
 <br/>
 <span style="color: #708;">if</span> <span style="color: #164;">(</span><span style="color: #990000;">filter_var</span><span style="color: #164;">(</span><span style="color: #05a;">$url</span><span style="color: #000000;">,</span> FILTER_VALIDATE_URL<span style="color: #000000;">,</span> FILTER_FLAG_QUERY_REQUIRED<span style="color: #164;">)</span><span style="color: #164;">)</span> <span style="color: #164;">{</span><br/>
     <span style="color: #708;">echo</span><span style="color: #164;">(</span><span style="color: #a11;">"<span style="color: #006699; font-weight: bold;">$url</span>正しい URL です"</span><span style="color: #164;">)</span><span style="color: #000000;">;</span><br/>
@@ -450,7 +450,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: #708;">echo</span> PHP_EOL<span style="color: #000000;">;</span> <span style="color: #a50; font-style: italic;">// 改行文字</span><br/>
 <br/>
 <span style="color: #a50; font-style: italic;">// パラメータ付きの URL</span><br/>
-<span style="color: #05a;">$url2</span> <span style="color: #000000;">=</span> <span style="color: #a11;">"https://www.runoob.com?s=php"</span><span style="color: #000000;">;</span><br/>
+<span style="color: #05a;">$url2</span> <span style="color: #000000;">=</span> <span style="color: #a11;">"https://www.example.com?s=php"</span><span style="color: #000000;">;</span><br/>
 <br/>
 <span style="color: #708;">if</span> <span style="color: #164;">(</span><span style="color: #990000;">filter_var</span><span style="color: #164;">(</span><span style="color: #05a;">$url2</span><span style="color: #000000;">,</span> FILTER_VALIDATE_URL<span style="color: #000000;">,</span> FILTER_FLAG_QUERY_REQUIRED<span style="color: #164;">)</span><span style="color: #164;">)</span> <span style="color: #164;">{</span><br/>
     <span style="color: #708;">echo</span><span style="color: #164;">(</span><span style="color: #a11;">"<span style="color: #006699; font-weight: bold;">$url2</span>正しい URL です"</span><span style="color: #164;">)</span><span style="color: #000000;">;</span><br/>
@@ -460,8 +460,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: #000000; ">?&gt;</span><br/>
 </div></div>
 <p>コードの出力は次のようになります：</p>
-<pre>https://www.runoob.com 是错误的 URL
-https://www.runoob.com?s=php 是正确的 URL</pre>
+<pre>https://www.example.com 是错误的 URL
+https://www.example.com?s=php 是正确的 URL</pre>
 <br/><hr/>
 <a href="php-ref-filter.html"><img alt="PHP Filter 参考手册" class="navup" decoding="async" src="../images/up.gif"/>完全な PHP Filter リファレンスマニュアル</a> その他の拡張機能
 </div>

@@ -332,15 +332,15 @@ WHERE customer_id IN (
 <strong>注意：</strong>DELETE 文を使用する際は、削除したい行だけが削除されるように十分な条件を指定してください。WHERE 句を指定しない場合、テーブル内のすべての行が削除され、予期しない結果が生じる可能性があります。</p></blockquote>
 <hr/>
 <h2>コマンドラインからデータを削除する</h2>
-<p>ここでは、DELETE コマンドで WHERE 句を使用して、MySQL データテーブル runoob_tbl から選択したデータを削除します。</p>
+<p>ここでは、DELETE コマンドで WHERE 句を使用して、MySQL データテーブル サンプル_tbl から選択したデータを削除します。</p>
 <h3>例</h3>
-<p>以下の例では、runoob_tbl テーブル内の runoob_id が 3 のレコードを削除します：</p>
+<p>以下の例では、サンプル_tbl テーブル内の サンプル_id が 3 のレコードを削除します：</p>
 <div class="example">
 <h2 class="example">DELETE 文：</h2>
 <div class="example_code">
-<div class="hl-main"><span class="hl-identifier">mysql</span><span class="hl-code">&gt; </span><span class="hl-identifier">use</span><span class="hl-code"> </span><span class="hl-identifier">RUNOOB</span><span class="hl-code">;
+<div class="hl-main"><span class="hl-identifier">mysql</span><span class="hl-code">&gt; </span><span class="hl-identifier">use</span><span class="hl-code"> </span><span class="hl-identifier">サンプル</span><span class="hl-code">;
 </span><span class="hl-identifier">Database</span><span class="hl-code"> </span><span class="hl-identifier">changed</span><span class="hl-code">
-</span><span class="hl-identifier">mysql</span><span class="hl-code">&gt; </span><span class="hl-reserved">DELETE</span><span class="hl-code"> </span><span class="hl-reserved">FROM</span><span class="hl-code"> </span><span class="hl-identifier">runoob_tbl</span><span class="hl-code"> </span><span class="hl-reserved">WHERE</span><span class="hl-code"> </span><span class="hl-identifier">runoob_id</span><span class="hl-code">=</span><span class="hl-number">3</span><span class="hl-code">;
+</span><span class="hl-identifier">mysql</span><span class="hl-code">&gt; </span><span class="hl-reserved">DELETE</span><span class="hl-code"> </span><span class="hl-reserved">FROM</span><span class="hl-code"> </span><span class="hl-identifier">サンプル_tbl</span><span class="hl-code"> </span><span class="hl-reserved">WHERE</span><span class="hl-code"> </span><span class="hl-identifier">サンプル_id</span><span class="hl-code">=</span><span class="hl-number">3</span><span class="hl-code">;
 </span><span class="hl-identifier">Query</span><span class="hl-code"> </span><span class="hl-identifier">OK</span><span class="hl-code">, </span><span class="hl-number">1</span><span class="hl-code"> </span><span class="hl-reserved">row</span><span class="hl-code"> </span><span class="hl-identifier">affected</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-number">0.23</span><span class="hl-code"> </span><span class="hl-identifier">sec</span><span class="hl-brackets">)</span></div>
 </div>
 </div>
@@ -348,7 +348,7 @@ WHERE customer_id IN (
 <p>PHP は mysqli_query() 関数を使用して SQL 文を実行します。DELETE コマンドでは WHERE 句を使用することも、使用しないこともできます。</p>
 <p>この関数は、<span class="marked">mysql&gt;</span>コマンドラインで SQL コマンドを実行するのと同じ効果があります。</p>
 <h3>例</h3>
-<p>以下の PHP の例では、runoob_tbl テーブル内の runoob_id が 3 のレコードを削除します：</p>
+<p>以下の PHP の例では、サンプル_tbl テーブル内の サンプル_id が 3 のレコードを削除します：</p>
 <div class="example">
 <h2 class="example">MySQL DELETE 句のテスト：</h2>
 <div class="example_code">
@@ -364,10 +364,10 @@ WHERE customer_id IN (
 </span><span class="hl-comment">//</span><span class="hl-comment">文字コードを設定して、中国語の文字化けを防ぎます</span><span class="hl-comment"></span><span class="hl-code">
 </span><span class="hl-identifier">mysqli_query</span><span class="hl-brackets">(</span><span class="hl-var">$conn</span><span class="hl-code"> , </span><span class="hl-quotes">"</span><span class="hl-string">set names utf8</span><span class="hl-quotes">"</span><span class="hl-brackets">)</span><span class="hl-code">;
  
-</span><span class="hl-var">$sql</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">DELETE FROM runoob_tbl
-        WHERE runoob_id=3</span><span class="hl-quotes">'</span><span class="hl-code">;
+</span><span class="hl-var">$sql</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">DELETE FROM サンプル_tbl
+        WHERE サンプル_id=3</span><span class="hl-quotes">'</span><span class="hl-code">;
  
-</span><span class="hl-identifier">mysqli_select_db</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">RUNOOB</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-identifier">mysqli_select_db</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-quotes">'</span><span class="hl-string">サンプル</span><span class="hl-quotes">'</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-var">$retval</span><span class="hl-code"> = </span><span class="hl-identifier">mysqli_query</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$conn</span><span class="hl-code">, </span><span class="hl-var">$sql</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-code">! </span><span class="hl-var">$retval</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">
 </span><span class="hl-brackets">{</span><span class="hl-code">

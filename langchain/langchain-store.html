@@ -370,14 +370,14 @@ deleted <span style="color: Gray;">=</span> store.<span style="color: #05a;">get
 </div>
 <p>実行結果：</p>
 <pre>
-偏好设置: {'theme': 'dark', 'language': 'zh-CN', 'level': '入门'}
-学习进度: {'completed_courses': ['HTML 基础', 'Python 基础'], 'total_hours': 35}
+設定: {'theme': 'dark', 'language': 'zh-CN', 'level': '入门'}
+学習進捗: {'completed_courses': ['HTML 基础', 'Python 基础'], 'total_hours': 35}
 
 用户的所有数据 (2 项):
   preferences: {'theme': 'dark', 'language': 'zh-CN', 'level': '入门'}
   progress: {'completed_courses': ['HTML 基础', 'Python 基础'], 'total_hours': 35}
 
-删除后: None
+削除後: None
 </pre>
 <hr/>
 <h2>Agent で Store を使用する</h2>
@@ -398,13 +398,13 @@ load_dotenv<span style="color: Olive;">(</span><span style="color: Olive;">)</sp
 <br/>
 <span style="color: #a50"># Store を作成し、データをプリセットする</span><br/>
 store <span style="color: Gray;">=</span> InMemoryStore<span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
-store.<span style="color: #05a;">put</span><span style="color: Olive;">(</span><span style="color: Olive;">(</span><span style="color: #a11;">"runoob"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"courses"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span> <span style="color: #a11;">"catalog"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><br/>
+store.<span style="color: #05a;">put</span><span style="color: Olive;">(</span><span style="color: Olive;">(</span><span style="color: #a11;">"サンプル"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"courses"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span> <span style="color: #a11;">"catalog"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><br/>
     <span style="color: #a11;">"Python3 基礎チュートリアル"</span>: <span style="color: Olive;">{</span><span style="color: #a11;">"price"</span>: <span style="color: #a11;">"無料"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"hours"</span>: <span style="color: Maroon;">20</span><span style="color: Gray;">,</span> <span style="color: #a11;">"level"</span>: <span style="color: #a11;">"入門"</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span><br/>
     <span style="color: #a11;">"Python データ分析"</span>: <span style="color: Olive;">{</span><span style="color: #a11;">"price"</span>: <span style="color: #a11;">"会員"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"hours"</span>: <span style="color: Maroon;">30</span><span style="color: Gray;">,</span> <span style="color: #a11;">"level"</span>: <span style="color: #a11;">"上級"</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span><br/>
     <span style="color: #a11;">"Java オブジェクト指向"</span>: <span style="color: Olive;">{</span><span style="color: #a11;">"price"</span>: <span style="color: #a11;">"無料"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"hours"</span>: <span style="color: Maroon;">25</span><span style="color: Gray;">,</span> <span style="color: #a11;">"level"</span>: <span style="color: #a11;">"上級"</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">}</span><span style="color: Olive;">)</span><br/>
 <br/>
-store.<span style="color: #05a;">put</span><span style="color: Olive;">(</span><span style="color: Olive;">(</span><span style="color: #a11;">"runoob"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"users"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span> <span style="color: #a11;">"user_vip_001"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><br/>
+store.<span style="color: #05a;">put</span><span style="color: Olive;">(</span><span style="color: Olive;">(</span><span style="color: #a11;">"サンプル"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"users"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span> <span style="color: #a11;">"user_vip_001"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><br/>
     <span style="color: #a11;">"name"</span>: <span style="color: #a11;">"小明"</span><span style="color: Gray;">,</span><br/>
     <span style="color: #a11;">"membership"</span>: <span style="color: #a11;">"VIP"</span><span style="color: Gray;">,</span><br/>
     <span style="color: #a11;">"joined"</span>: <span style="color: #a11;">"2024-01-15"</span><span style="color: Gray;">,</span><br/>
@@ -416,11 +416,11 @@ store.<span style="color: #05a;">put</span><span style="color: Olive;">(</span><
     course_name: <span style="color: Teal;">str</span><span style="color: Gray;">,</span><br/>
     store: Annotated<span style="color: Olive;">[</span>BaseStore<span style="color: Gray;">,</span> InjectedStore<span style="color: Olive;">(</span><span style="color: Olive;">)</span><span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span> -<span style="color: Gray;">&gt;</span> <span style="color: Teal;">str</span>:<br/>
-    <span style="color: #a11;">"""Runoob のコースの詳細情報を照会します。<br/>
+    <span style="color: #a11;">"""サンプル のコースの詳細情報を照会します。<br/>
 <br/>
     Args:<br/>course_name: コース名<br/>
     """</span><br/>
-    item <span style="color: Gray;">=</span> store.<span style="color: #05a;">get</span><span style="color: Olive;">(</span><span style="color: Olive;">(</span><span style="color: #a11;">"runoob"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"courses"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span> <span style="color: #a11;">"catalog"</span><span style="color: Olive;">)</span><br/>
+    item <span style="color: Gray;">=</span> store.<span style="color: #05a;">get</span><span style="color: Olive;">(</span><span style="color: Olive;">(</span><span style="color: #a11;">"サンプル"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"courses"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span> <span style="color: #a11;">"catalog"</span><span style="color: Olive;">)</span><br/>
     catalog <span style="color: Gray;">=</span> item.<span style="color: #05a;">value</span> <span style="color: Green;font-weight:bold;">if</span> item <span style="color: Green;font-weight:bold;">else</span> <span style="color: Olive;">{</span><span style="color: Olive;">}</span><br/>
 <br/>
     <span style="color: Green;font-weight:bold;">if</span> course_name <span style="color: Green;font-weight:bold;">in</span> catalog:<br/>
@@ -441,7 +441,7 @@ store.<span style="color: #05a;">put</span><span style="color: Olive;">(</span><
 <br/>
     Args:<br/>user_id: ユーザー ID<br/>
     """</span><br/>
-    item <span style="color: Gray;">=</span> store.<span style="color: #05a;">get</span><span style="color: Olive;">(</span><span style="color: Olive;">(</span><span style="color: #a11;">"runoob"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"users"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span> user_id<span style="color: Olive;">)</span><br/>
+    item <span style="color: Gray;">=</span> store.<span style="color: #05a;">get</span><span style="color: Olive;">(</span><span style="color: Olive;">(</span><span style="color: #a11;">"サンプル"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"users"</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span> user_id<span style="color: Olive;">)</span><br/>
     <span style="color: Green;font-weight:bold;">if</span> item <span style="color: Green;font-weight:bold;">is</span> <span style="color: Teal;">None</span>:<br/>
         <span style="color: Green;font-weight:bold;">return</span> f<span style="color: #a11;">"ユーザー {user_id} が見つかりません"</span><br/>
 <br/>
@@ -457,7 +457,7 @@ agent <span style="color: Gray;">=</span> create_agent<span style="color: Olive;
     model<span style="color: Gray;">=</span>model<span style="color: Gray;">,</span><br/>
     tools<span style="color: Gray;">=</span><span style="color: Olive;">[</span>query_course_info<span style="color: Gray;">,</span> get_user_membership<span style="color: Olive;">]</span><span style="color: Gray;">,</span><br/>
     store<span style="color: Gray;">=</span>store<span style="color: Gray;">,</span><br/>
-    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは Runoob のコースアドバイザーです。"</span><span style="color: Gray;">,</span><br/>
+    system_prompt<span style="color: Gray;">=</span><span style="color: #a11;">"あなたは サンプル のコースアドバイザーです。"</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># コース情報を照会（データは Store から）</span><br/>
@@ -475,8 +475,8 @@ result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invo
 </div>
 <p>実行結果：</p>
 <pre>
-查询课程: 《Python3 基础教程》是免费的，学习时长约20小时，难度为入门级别。
-查询用户: 用户小明是 VIP 会员，注册日期为 2024年1月15日。
+コース照会: 《Python3 基础教程》是免费的，学习时长约20小时，难度为入门级别。
+ユーザー照会: 用户小明是 VIP 会员，注册日期为 2024年1月15日。
 </pre>
 <hr/>
 <h2>Store の永続化</h2>

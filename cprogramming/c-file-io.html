@@ -696,14 +696,14 @@ size_t fwrite(const void *ptr, size_t size, size_t count, FILE *stream);</pre>
 <span style="color: #000;">}</span><br/>
 <br/>
 <span style="color: #993333;">int</span> main<span style="color: #000;">(</span><span style="color: #000;">)</span> <span style="color: #000;">{</span><br/>
-    <span style="color: #666666; font-style: italic;">// 使用例：runoob テストファイルを複製する</span><br/>
-    copy_file<span style="color: #000;">(</span><span style="color: #a11;">"runoob_input.bin"</span><span style="color: #339933;">,</span> <span style="color: #a11;">"runoob_output.bin"</span><span style="color: #000;">)</span><span style="color: #339933;">;</span><br/>
+    <span style="color: #666666; font-style: italic;">// 使用例：サンプル テストファイルを複製する</span><br/>
+    copy_file<span style="color: #000;">(</span><span style="color: #a11;">"サンプル_input.bin"</span><span style="color: #339933;">,</span> <span style="color: #a11;">"サンプル_output.bin"</span><span style="color: #000;">)</span><span style="color: #339933;">;</span><br/>
     <span style="color: #708;">return</span> <span style="color: #164;">0</span><span style="color: #339933;">;</span><br/>
 <span style="color: #000;">}</span><br/>
 </div>
 </div>
 <pre>
-文件复制成功: runoob_input.bin -&gt; runoob_output.bin
+文件复制成功: サンプル_input.bin -&gt; サンプル_output.bin
 </pre>
 <p>このパターンの要点は<span class="tag1">fread</span>実際に読み取ったバイト数を返し、次に<span class="tag1">fwrite</span>実際に読み取ったバイト数だけを書き込むことで、末尾の余分なデータの書き込みを防ぎます。</p>
 <h3>重要な注意点</h3>
@@ -812,7 +812,7 @@ size_t fwrite(const void *ptr, size_t size, size_t count, FILE *stream);</pre>
     BadStudent bs<span style="color: #339933;">;</span><br/>
     bs.<span style="color: #202020;">id</span> <span style="color: #339933;">=</span> <span style="color: #164;">1</span><span style="color: #339933;">;</span><br/>
     bs.<span style="color: #202020;">name</span> <span style="color: #339933;">=</span> <span style="color: #000066;">malloc</span><span style="color: #000;">(</span><span style="color: #164;">50</span><span style="color: #000;">)</span><span style="color: #339933;">;</span><br/>
-    <span style="color: #000066;">strcpy</span><span style="color: #000;">(</span>bs.<span style="color: #202020;">name</span><span style="color: #339933;">,</span> <span style="color: #a11;">"RUNOOB"</span><span style="color: #000;">)</span><span style="color: #339933;">;</span><br/>
+    <span style="color: #000066;">strcpy</span><span style="color: #000;">(</span>bs.<span style="color: #202020;">name</span><span style="color: #339933;">,</span> <span style="color: #a11;">"サンプル"</span><span style="color: #000;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
     <span style="color: #666666; font-style: italic;">// BadStudent を書き込む：このとき name ポインタのアドレスが書き込まれ、文字列の内容は書き込まれない</span><br/>
     FILE <span style="color: #339933;">*</span>fp <span style="color: #339933;">=</span> <span style="color: #000066;">fopen</span><span style="color: #000;">(</span><span style="color: #a11;">"bad.bin"</span><span style="color: #339933;">,</span> <span style="color: #a11;">"wb"</span><span style="color: #000;">)</span><span style="color: #339933;">;</span><br/>
@@ -912,7 +912,7 @@ fclose 也会自动刷新缓冲区
 <pre>
 文件大小: 6000 字节
 包含 100 条学生记录
-第 6 条记录: id=106, name=RUNOOB
+第 6 条记录: id=106, name=サンプル
 </pre>
 <h3>よくあるエラーのまとめ</h3>
 <p>次の表は、fread/fwrite を使用する際に最も頻繁に発生する問題と正しい対処法をまとめたものです。</p>

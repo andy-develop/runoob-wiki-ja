@@ -342,7 +342,7 @@ pid-file=/var/run/mysqld/mysqld.pid
 <ul>
 <li><p><strong>USE <em>データベース名</em></strong> :<br/>操作するMySQLデータベースを選択します。このコマンドを使用すると、以降のすべてのMySQLコマンドはそのデータベースのみを対象とします。</p>
 <pre>
-mysql&gt; use RUNOOB;
+mysql&gt; use サンプル;
 Database changed
 </pre>
 </li>
@@ -353,7 +353,7 @@ mysql&gt; SHOW DATABASES;
 | Database           |
 +--------------------+
 | information_schema |
-| RUNOOB             |
+| サンプル             |
 | cdcol              |
 | mysql              |
 | onethink           |
@@ -368,14 +368,14 @@ mysql&gt; SHOW DATABASES;
 </li>
 <li><p><strong>SHOW TABLES:</strong><br/>指定したデータベースのすべてのテーブルを表示します。このコマンドを使用する前に、use コマンドを使用して操作するデータベースを選択する必要があります。</p>
 <pre>
-mysql&gt; use RUNOOB;
+mysql&gt; use サンプル;
 Database changed
 mysql&gt; SHOW TABLES;
 +------------------+
-| Tables_in_runoob |
+| Tables_in_サンプル |
 +------------------+
 | employee_tbl     |
-| runoob_tbl       |
+| サンプル_tbl       |
 | tcount_tbl       |
 +------------------+
 3 rows in set (0.00 sec)
@@ -383,13 +383,13 @@ mysql&gt; SHOW TABLES;
 </li>
 <li><p><strong>SHOW COLUMNS FROM <em>データテーブル</em>:</strong><br/>データテーブルの属性、属性タイプ、主キー情報、NULLかどうか、デフォルト値などのその他の情報を表示します。</p>
 <pre>
-mysql&gt; SHOW COLUMNS FROM runoob_tbl;
+mysql&gt; SHOW COLUMNS FROM サンプル_tbl;
 +-----------------+--------------+------+-----+---------+-------+
 | Field           | Type         | Null | Key | Default | Extra |
 +-----------------+--------------+------+-----+---------+-------+
-| runoob_id       | int(11)      | NO   | PRI | NULL    |       |
-| runoob_title    | varchar(255) | YES  |     | NULL    |       |
-| runoob_author   | varchar(255) | YES  |     | NULL    |       |
+| サンプル_id       | int(11)      | NO   | PRI | NULL    |       |
+| サンプル_title    | varchar(255) | YES  |     | NULL    |       |
+| サンプル_author   | varchar(255) | YES  |     | NULL    |       |
 | submission_date | date         | YES  |     | NULL    |       |
 +-----------------+--------------+------+-----+---------+-------+
 4 rows in set (0.01 sec)
@@ -397,21 +397,21 @@ mysql&gt; SHOW COLUMNS FROM runoob_tbl;
 </li>
 <li><p><strong>SHOW INDEX FROM <em>データテーブル</em>:</strong><br/>データテーブルの詳細なインデックス情報を表示します。PRIMARY KEY（主キー）を含みます。</p>
 <pre>
-mysql&gt; SHOW INDEX FROM runoob_tbl;
+mysql&gt; SHOW INDEX FROM サンプル_tbl;
 +------------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
 | Table      | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
 +------------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
-| runoob_tbl |          0 | PRIMARY  |            1 | runoob_id   | A         |           2 |     NULL | NULL   |      | BTREE      |         |               |
+| サンプル_tbl |          0 | PRIMARY  |            1 | サンプル_id   | A         |           2 |     NULL | NULL   |      | BTREE      |         |               |
 +------------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
 1 row in set (0.00 sec)
 </pre>
 </li>
 <li><p><strong>SHOW TABLE STATUS [FROM db_name] [LIKE 'pattern'] \G:</strong> <br/>このコマンドは、MySQLデータベース管理システムのパフォーマンスおよび統計情報を出力します。</p>
 <pre>
-mysql&gt; SHOW TABLE STATUS  FROM RUNOOB;   # 显示数据库 RUNOOB 中所有表的信息
+mysql&gt; SHOW TABLE STATUS  FROM サンプル;   # 显示数据库 サンプル 中所有表的信息
 
-mysql&gt; SHOW TABLE STATUS from RUNOOB LIKE 'runoob%';     # 表名以runoob开头的表的信息
-mysql&gt; SHOW TABLE STATUS from RUNOOB LIKE 'runoob%'\G;   # 加上 \G，查询结果按列打印
+mysql&gt; SHOW TABLE STATUS from サンプル LIKE 'サンプル%';     # 表名以サンプル开头的表的信息
+mysql&gt; SHOW TABLE STATUS from サンプル LIKE 'サンプル%'\G;   # 加上 \G，查询结果按列打印
 </pre>
 </li>
 </ul>

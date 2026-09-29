@@ -321,7 +321,7 @@ FROM table_name
 WHERE [condition1]</pre>
 <p>WHERE句では、比較演算子や論理演算子を使用できます。例えば<span class="marked">&gt;, &lt;, =, LIKE, NOT</span>などです。</p>
 <p>COMPANYテーブルを作成します（<a href="https://static.jyshare.com/download/company.sql">COMPANY SQLファイルをダウンロード</a>）、データ内容は以下の通りです：</p>
-<pre>runoobdb# select * from COMPANY;
+<pre>サンプルdb# select * from COMPANY;
  id | name  | age | address   | salary
 ----+-------+-----+-----------+--------
   1 | Paul  |  32 | California|  20000
@@ -333,7 +333,7 @@ WHERE [condition1]</pre>
   7 | James |  24 | Houston   |  10000
 (7 rows)</pre>以下のいくつかの例では、論理演算子を使用してテーブル内のデータを読み取ります。<h3>AND</h3>
 <p>検索する<strong>AGE(年齢)</strong>フィールドが25以上、かつ<strong>SALARY(給与)</strong>フィールドが65000以上のデータ：</p>
-<pre>runoobdb=# SELECT * FROM COMPANY WHERE AGE &gt;= 25 AND SALARY &gt;= 65000;
+<pre>サンプルdb=# SELECT * FROM COMPANY WHERE AGE &gt;= 25 AND SALARY &gt;= 65000;
  id | name  | age |  address   | salary
 ----+-------+-----+------------+--------
   4 | Mark  |  25 | Rich-Mond  |  65000
@@ -341,7 +341,7 @@ WHERE [condition1]</pre>
 (2 rows)</pre>
 <h3>OR</h3>
 <p>検索する<strong>AGE(年齢)</strong>フィールドが25以上、または<strong>SALARY(給与)</strong>フィールドが65000以上のデータ：</p>
-<pre>runoobdb=# SELECT * FROM COMPANY WHERE AGE &gt;= 25 OR SALARY &gt;= 65000;
+<pre>サンプルdb=# SELECT * FROM COMPANY WHERE AGE &gt;= 25 OR SALARY &gt;= 65000;
 id | name  | age | address     | salary
 ----+-------+-----+-------------+--------
   1 | Paul  |  32 | California  |  20000
@@ -351,7 +351,7 @@ id | name  | age | address     | salary
 (4 rows)</pre>
 <h3>NOT NULL</h3>
 <p>COMPANYテーブルから検索する<strong>AGE(年齢)</strong>フィールドがNULLでないレコード：</p>
-<pre>runoobdb=#  SELECT * FROM COMPANY WHERE AGE IS NOT NULL;
+<pre>サンプルdb=#  SELECT * FROM COMPANY WHERE AGE IS NOT NULL;
   id | name  | age | address    | salary
  ----+-------+-----+------------+--------
    1 | Paul  |  32 | California |  20000
@@ -364,13 +364,13 @@ id | name  | age | address     | salary
 (7 rows)</pre>
 <h3>LIKE</h3>
 <p>COMPANYテーブルから検索する<strong>NAME(名前)</strong>フィールドがPaで始まるデータ：</p>
-<pre>runoobdb=# SELECT * FROM COMPANY WHERE NAME LIKE 'Pa%';
+<pre>サンプルdb=# SELECT * FROM COMPANY WHERE NAME LIKE 'Pa%';
 id | name | age |address    | salary
 ----+------+-----+-----------+--------
   1 | Paul |  32 | California|  20000</pre>
 <h3>IN</h3>
 <p>以下のSELECT文は、<strong>AGE(年齢)</strong>フィールドが25または27のデータ：</p>
-<pre>runoobdb=# SELECT * FROM COMPANY WHERE AGE IN ( 25, 27 );
+<pre>サンプルdb=# SELECT * FROM COMPANY WHERE AGE IN ( 25, 27 );
  id | name  | age | address    | salary
 ----+-------+-----+------------+--------
   2 | Allen |  25 | Texas      |  15000
@@ -379,7 +379,7 @@ id | name | age |address    | salary
 (3 rows)</pre>
 <h3>NOT IN</h3>
 <p>以下のSELECT文は、<strong>AGE(年齢)</strong>フィールドが25または27でないデータ：</p>
-<pre>runoobdb=# SELECT * FROM COMPANY WHERE AGE NOT IN ( 25, 27 );
+<pre>サンプルdb=# SELECT * FROM COMPANY WHERE AGE NOT IN ( 25, 27 );
  id | name  | age | address    | salary
 ----+-------+-----+------------+--------
   1 | Paul  |  32 | California |  20000
@@ -389,7 +389,7 @@ id | name | age |address    | salary
 (4 rows)</pre>
 <h3>BETWEEN </h3>
 <p>以下のSELECT文は、<strong>AGE(年齢)</strong>フィールドが25から27の間のデータ：</p>
-<pre>runoobdb=# SELECT * FROM COMPANY WHERE AGE BETWEEN 25 AND 27;
+<pre>サンプルdb=# SELECT * FROM COMPANY WHERE AGE BETWEEN 25 AND 27;
  id | name  | age | address    | salary
 ----+-------+-----+------------+--------
   2 | Allen |  25 | Texas      |  15000
@@ -398,7 +398,7 @@ id | name | age |address    | salary
 (3 rows)</pre>
 <h3>副問い合わせ</h3>
 <p>以下のSELECT文はSQLの副問い合わせを使用しており、副問い合わせ文では<strong>SALARY(給与)</strong>フィールドが65000より大きいデータを読み取り、次に<strong>EXISTS</strong>演算子で行が返されるかどうかを判断し、行が返された場合はすべての<strong>AGE(年齢)</strong>フィールドを読み取ります。</p>
-<pre>runoobdb=# SELECT AGE FROM COMPANY
+<pre>サンプルdb=# SELECT AGE FROM COMPANY
         WHERE EXISTS (SELECT AGE FROM COMPANY WHERE SALARY &gt; 65000);
  age
 -----
@@ -411,7 +411,7 @@ id | name | age |address    | salary
   24
 (7 rows)</pre>
 <p>以下のSELECT文もSQLの副問い合わせを使用しており、副問い合わせ文では<strong>SALARY(給与)</strong>フィールドが65000より大きい<strong>AGE(年齢)</strong>フィールドデータを読み取り、次に<strong>&gt;</strong>演算子を使用して、その<strong>AGE(年齢)</strong>フィールドデータより大きい値を照会します：</p>
-<pre>runoobdb=# SELECT * FROM COMPANY
+<pre>サンプルdb=# SELECT * FROM COMPANY
         WHERE AGE &gt; (SELECT AGE FROM COMPANY WHERE SALARY &gt; 65000);
  id | name | age | address    | salary
 ----+------+-----+------------+--------

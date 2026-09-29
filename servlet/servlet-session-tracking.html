@@ -316,7 +316,7 @@ HttpSession session = request.getSession();
 <h2 class="tutheader">セッショントラッキングの例</h2>
 <p>この例では、HttpSession オブジェクトを使用して、セッションの作成時刻と最終アクセス時刻を取得する方法を示します。セッションが存在しない場合は、リクエストを通じて新しいセッションを作成します。</p>
 <pre>
-package com.runoob.test;
+package com.サンプル.test;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -349,11 +349,11 @@ public class SessionTrack extends HttpServlet {
         //设置日期输出的格式  
         SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");  
     
-        String title = "Servlet Session 实例 - 菜鸟教程";
+        String title = "Servlet Session 实例 - サンプル";
         Integer visitCount = new Integer(0);
         String visitCountKey = new String("visitCount");
         String userIDKey = new String("userID");
-        String userID = new String("Runoob");
+        String userID = new String("サンプル");
         if(session.getAttribute(visitCountKey) == null) {
             session.setAttribute(visitCountKey, new Integer(0));
         }
@@ -361,7 +361,7 @@ public class SessionTrack extends HttpServlet {
     
         // 检查网页上是否有新的访问者
         if (session.isNew()){
-            title = "Servlet Session 实例 - 菜鸟教程";
+            title = "Servlet Session 实例 - サンプル";
              session.setAttribute(userIDKey, userID);
         } else {
              visitCount = (Integer)session.getAttribute(visitCountKey);
@@ -415,7 +415,7 @@ public class SessionTrack extends HttpServlet {
     &lt;!-- 类名 --&gt;  
     &lt;servlet-name&gt;SessionTrack&lt;/servlet-name&gt;
     &lt;!-- 所在的包 --&gt;
-    &lt;servlet-class&gt;com.runoob.test.SessionTrack&lt;/servlet-class&gt;
+    &lt;servlet-class&gt;com.サンプル.test.SessionTrack&lt;/servlet-class&gt;
   &lt;/servlet&gt;
   &lt;servlet-mapping&gt;
     &lt;servlet-name&gt;SessionTrack&lt;/servlet-name&gt;

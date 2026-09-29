@@ -366,7 +366,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>これは最も一般的な検索方法です：質問ベクトルとすべてのドキュメントベクトルの類似度を計算し、最も関連する上位K件を返します。</p>
 <p>利点：意味を理解でき、同義語や類義語もマッチングできます。</p>
 <p>欠点：正確な専門用語や固有名詞については、キーワード検索ほど正確でない場合があります。</p>
-<p>例えばユーザーが「runoob 的 Python 教程」と尋ねた場合、ベクトル検索は「教程」と「课程」が類似していることを理解できますが、ユーザーが「runoob Python3.10 文档」と尋ねた場合は、キーワード検索の方が正確かもしれません。</p>
+<p>例えばユーザーが「サンプル 的 Python 教程」と尋ねた場合、ベクトル検索は「教程」と「课程」が類似していることを理解できますが、ユーザーが「サンプル Python3.10 文档」と尋ねた場合は、キーワード検索の方が正確かもしれません。</p>
 <h3>キーワード検索（BM25）</h3>
 <p>これは従来の検索エンジンが使う方法です：キーワードをマッチングし、語頻度や逆文書頻度などに基づいてスコアリングします。</p>
 <ul>
@@ -464,19 +464,19 @@ OPENAI_API_KEY=你的-api-key-在这里</pre>
     """</span><br/>
     documents <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><br/>
         Document<span style="color: Olive;">(</span><br/>
-            page_content<span style="color: Gray;">=</span><span style="color: #a11;">"""RUNOOB チュートリアルサイトは 2013 年に菜鳥教程チームによって設立されました。<br/>サイトの目標は、プログラミング初心者にわかりやすいプログラミングチュートリアルを提供することです。<br/>HTML、CSS、JavaScript、Python、Java、C++ など、さまざまなプログラミング言語のチュートリアルを提供しています。"""</span><span style="color: Gray;">,</span><br/>
-            metadata<span style="color: Gray;">=</span><span style="color: Olive;">{</span><span style="color: #a11;">"source"</span>: <span style="color: #a11;">"runoob_intro.txt"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"page"</span>: <span style="color: Maroon;">1</span><span style="color: Olive;">}</span><br/>
+            page_content<span style="color: Gray;">=</span><span style="color: #a11;">"""サンプル チュートリアルサイトは 2013 年に菜鳥教程チームによって設立されました。<br/>サイトの目標は、プログラミング初心者にわかりやすいプログラミングチュートリアルを提供することです。<br/>HTML、CSS、JavaScript、Python、Java、C++ など、さまざまなプログラミング言語のチュートリアルを提供しています。"""</span><span style="color: Gray;">,</span><br/>
+            metadata<span style="color: Gray;">=</span><span style="color: Olive;">{</span><span style="color: #a11;">"source"</span>: <span style="color: #a11;">"サンプル_intro.txt"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"page"</span>: <span style="color: Maroon;">1</span><span style="color: Olive;">}</span><br/>
         <span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
         Document<span style="color: Olive;">(</span><br/>
-            page_content<span style="color: Gray;">=</span><span style="color: #a11;">"""RUNOOB の Python チュートリアルは、Python の重要な知識ポイントをすべて網羅しています。<br/>内容は、Python の基本構文、データ型、制御文、関数、モジュール、ファイル操作などです。<br/>チュートリアルには多数のコード例が用意されており、各例は慎重に設計・テストされています。<br/>オンラインの Python エディタも提供しており、ブラウザで直接コードを実行できます。"""</span><span style="color: Gray;">,</span><br/>
+            page_content<span style="color: Gray;">=</span><span style="color: #a11;">"""サンプル の Python チュートリアルは、Python の重要な知識ポイントをすべて網羅しています。<br/>内容は、Python の基本構文、データ型、制御文、関数、モジュール、ファイル操作などです。<br/>チュートリアルには多数のコード例が用意されており、各例は慎重に設計・テストされています。<br/>オンラインの Python エディタも提供しており、ブラウザで直接コードを実行できます。"""</span><span style="color: Gray;">,</span><br/>
             metadata<span style="color: Gray;">=</span><span style="color: Olive;">{</span><span style="color: #a11;">"source"</span>: <span style="color: #a11;">"python_tutorial.txt"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"page"</span>: <span style="color: Maroon;">1</span><span style="color: Olive;">}</span><br/>
         <span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
         Document<span style="color: Olive;">(</span><br/>
-            page_content<span style="color: Gray;">=</span><span style="color: #a11;">"""RUNOOB チュートリアルの特徴は、内容が簡潔で、例が豊富、実践重視であることです。<br/>「プログラミングを学ぶ最良の方法はコードを書くことだ」と私たちは信じています。<br/>そのため、各知識ポイントに実行可能なコード例が付属しており、見ながら練習できます。<br/>私たちのチュートリアルは完全無料で、誰でもアクセスして学習できます。"""</span><span style="color: Gray;">,</span><br/>
+            page_content<span style="color: Gray;">=</span><span style="color: #a11;">"""サンプル チュートリアルの特徴は、内容が簡潔で、例が豊富、実践重視であることです。<br/>「プログラミングを学ぶ最良の方法はコードを書くことだ」と私たちは信じています。<br/>そのため、各知識ポイントに実行可能なコード例が付属しており、見ながら練習できます。<br/>私たちのチュートリアルは完全無料で、誰でもアクセスして学習できます。"""</span><span style="color: Gray;">,</span><br/>
             metadata<span style="color: Gray;">=</span><span style="color: Olive;">{</span><span style="color: #a11;">"source"</span>: <span style="color: #a11;">"features.txt"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"page"</span>: <span style="color: Maroon;">1</span><span style="color: Olive;">}</span><br/>
         <span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
         Document<span style="color: Olive;">(</span><br/>
-            page_content<span style="color: Gray;">=</span><span style="color: #a11;">"""テキストチュートリアルに加えて、RUNOOB はビデオチュートリアルも提供しています。<br/>ビデオチュートリアルはより直感的で、視覚学習型のユーザーに適しています。<br/>ビデオチュートリアルは、Python、Web 開発、データ分析などの人気テーマをカバーしています。<br/>動画は Bilibili と YouTube で見つけられます。"""</span><span style="color: Gray;">,</span><br/>
+            page_content<span style="color: Gray;">=</span><span style="color: #a11;">"""テキストチュートリアルに加えて、サンプル はビデオチュートリアルも提供しています。<br/>ビデオチュートリアルはより直感的で、視覚学習型のユーザーに適しています。<br/>ビデオチュートリアルは、Python、Web 開発、データ分析などの人気テーマをカバーしています。<br/>動画は Bilibili と YouTube で見つけられます。"""</span><span style="color: Gray;">,</span><br/>
             metadata<span style="color: Gray;">=</span><span style="color: Olive;">{</span><span style="color: #a11;">"source"</span>: <span style="color: #a11;">"video_course.txt"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"page"</span>: <span style="color: Maroon;">1</span><span style="color: Olive;">}</span><br/>
         <span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
     <span style="color: Olive;">]</span><br/>
@@ -524,7 +524,7 @@ OPENAI_API_KEY=你的-api-key-在这里</pre>
     <span style="color: #a11;">"""RAG Q&amp;A チェーンを作成"""</span><br/>
 <br/>
     <span style="color: #a50"># カスタム Prompt テンプレート</span><br/>
-    template <span style="color: Gray;">=</span> <span style="color: #a11;">"""あなたはプロの RUNOOB カスタマーサポートアシスタントです。<br/>以下のコンテキストに基づいてユーザーの質問に回答してください。コンテキストに関連情報がない場合は、「申し訳ございません、関連情報が見つかりませんでした」と答えてください。<br/>回答は簡潔明瞭にし、中国語を使用してください。<br/>
+    template <span style="color: Gray;">=</span> <span style="color: #a11;">"""あなたはプロの サンプル カスタマーサポートアシスタントです。<br/>以下のコンテキストに基づいてユーザーの質問に回答してください。コンテキストに関連情報がない場合は、「申し訳ございません、関連情報が見つかりませんでした」と答えてください。<br/>回答は簡潔明瞭にし、中国語を使用してください。<br/>
 <br/>コンテキスト：<br/>
 {context}<br/>
 <br/>ユーザーの質問：{question}<br/>
@@ -574,11 +574,11 @@ OPENAI_API_KEY=你的-api-key-在这里</pre>
 <br/>
     <span style="color: #a50"># 5. クエリをテスト</span><br/>
     test_questions <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><br/>
-        <span style="color: #a11;">"RUNOOB はいつ設立されましたか？"</span><span style="color: Gray;">,</span><br/>
-        <span style="color: #a11;">"RUNOOB の Python チュートリアルの特徴は何ですか？"</span><span style="color: Gray;">,</span><br/>
-        <span style="color: #a11;">"RUNOOB にはビデオチュートリアルはありますか？"</span><span style="color: Gray;">,</span><br/>
-        <span style="color: #a11;">"RUNOOB で C++ を学ぶにはどうすればよいですか？"</span><span style="color: Gray;">,</span><br/>
-        <span style="color: #a11;">"RUNOOB のチュートリアルは有料ですか？"</span><span style="color: Gray;">,</span><br/>
+        <span style="color: #a11;">"サンプル はいつ設立されましたか？"</span><span style="color: Gray;">,</span><br/>
+        <span style="color: #a11;">"サンプル の Python チュートリアルの特徴は何ですか？"</span><span style="color: Gray;">,</span><br/>
+        <span style="color: #a11;">"サンプル にはビデオチュートリアルはありますか？"</span><span style="color: Gray;">,</span><br/>
+        <span style="color: #a11;">"サンプル で C++ を学ぶにはどうすればよいですか？"</span><span style="color: Gray;">,</span><br/>
+        <span style="color: #a11;">"サンプル のチュートリアルは有料ですか？"</span><span style="color: Gray;">,</span><br/>
     <span style="color: Olive;">]</span><br/>
 <br/>
     <span style="color: Green;font-weight:bold;">for</span> question <span style="color: Green;font-weight:bold;">in</span> test_questions:<br/>
@@ -609,26 +609,26 @@ OPENAI_API_KEY=你的-api-key-在这里</pre>
 向量数据库已创建，共 4 条记录
 
 ============================================================
-问题：RUNOOB 是什么时候创立的？
+问题：サンプル 是什么时候创立的？
 ============================================================
-回答：RUNOOB 教程网站创立于 2013 年。
+回答：サンプル 教程网站创立于 2013 年。
 
 参考来源：
-  [1] runoob_intro.txt (第 1 页)
-      片段：RUNOOB 教程网站创立于 2013 年，由菜鸟教程团队创建。...
+  [1] サンプル_intro.txt (第 1 页)
+      片段：サンプル 教程网站创立于 2013 年，由サンプル团队创建。...
   [2] features.txt (第 1 页)
-      片段：除了文字教程，RUNOOB 还提供了视频教程。...
+      片段：除了文字教程，サンプル 还提供了视频教程。...
 
 ============================================================
-问题：RUNOOB 的 Python 教程有什么特点？
+问题：サンプル 的 Python 教程有什么特点？
 ============================================================
-回答：RUNOOB 的 Python 教程涵盖了 Python 的所有重要知识点，包括基础语法、数据类型、控制语句、函数、模块、文件操作等，并且提供了大量经过精心设计和测试的代码示例，还提供了在线 Python 编辑器，可以直接在浏览器中运行代码。
+回答：サンプル 的 Python 教程涵盖了 Python 的所有重要知识点，包括基础语法、数据类型、控制语句、函数、模块、文件操作等，并且提供了大量经过精心设计和测试的代码示例，还提供了在线 Python 编辑器，可以直接在浏览器中运行代码。
 
 参考来源：
   [1] python_tutorial.txt (第 1 页)
-      片段：RUNOOB 的 Python 教程涵盖了 Python 的所有重要知识点。...
+      片段：サンプル 的 Python 教程涵盖了 Python 的所有重要知识点。...
   [2] features.txt (第 1 页)
-      片段：RUNOOB 教程的特点是内容简洁、示例丰富、注重实践。...</pre>
+      片段：サンプル 教程的特点是内容简洁、示例丰富、注重实践。...</pre>
 <p>おめでとうございます！完全な RAG ドキュメント Q&amp;A システムの構築に成功しました。</p>
 <hr/>
 <h2>高度な最適化：Re-ranking、HyDE</h2>
@@ -647,8 +647,8 @@ OPENAI_API_KEY=你的-api-key-在这里</pre>
 <p>なぜこれが効果的なのでしょうか？質問は通常短く情報密度が低いのに対し、仮の回答はより長くドキュメントのスタイルに近いため、実際のドキュメントとの類似度が高くなるからです。</p>
 <p>例：</p>
 <ul>
-<li>ユーザーの質問：「RUNOOB はいつ設立されたのですか？」</li>
-<li>仮の回答：「RUNOOB チュートリアルサイトは 2013 年に菜鳥教程チームによって設立され、プログラミング初心者に高品質なチュートリアルを提供することを目的としています。」</li>
+<li>ユーザーの質問：「サンプル はいつ設立されたのですか？」</li>
+<li>仮の回答：「サンプル チュートリアルサイトは 2013 年に菜鳥教程チームによって設立され、プログラミング初心者に高品質なチュートリアルを提供することを目的としています。」</li>
 </ul>
 <p>仮の回答を使って検索すると、より関連性の高いドキュメントが見つかることが多いです。</p>
 その他の拡張

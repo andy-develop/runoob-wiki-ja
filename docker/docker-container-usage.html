@@ -171,13 +171,13 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2>Dockerクライアント</h2><p>Dockerクライアントは、Dockerデーモン（Docker Daemon）と対話するコマンドラインツールです。</p>
 <p>docker クライアントは非常にシンプルで、docker コマンドを直接入力することで、Dockerクライアントのすべてのコマンドオプションを確認できます。</p>
 <pre>
-runoob@runoob:~# docker
+サンプル@サンプル:~# docker
 </pre>
 <p><img decoding="async" src="../wp-content/uploads/2016/05/docker27.png"/></p>
 <p>コマンドを使って<strong>docker command --help</strong>指定したDockerコマンドの使用方法をより深く理解できます。</p>
 <p>例えば、確認したいのは<strong>docker stats</strong>コマンドの具体的な使用方法：</p>
 <pre>
-runoob@runoob:~# docker stats --help
+サンプル@サンプル:~# docker stats --help
 </pre>
 <p><img decoding="async" src="../wp-content/uploads/2016/05/docker28.png"/></p>
 <p>以下はよく使われるDockerクライアントコマンドです：</p>
@@ -265,8 +265,8 @@ runoob@runoob:~# docker stats --help
 <p>次に、docker を使用してWebアプリケーションを構築してみましょう。</p>
 <p>dockerコンテナ内でPython Flaskアプリケーションを実行して、Webアプリケーションを起動します。</p>
 <pre>
-runoob@runoob:~# docker pull training/webapp  # 载入镜像
-runoob@runoob:~# docker run -d -P training/webapp python app.py
+サンプル@サンプル:~# docker pull training/webapp  # 载入镜像
+サンプル@サンプル:~# docker run -d -P training/webapp python app.py
 </pre>
 <p><img decoding="async" src="../wp-content/uploads/2016/05/docker29.png"/></p>
 <p>パラメータの説明：</p>
@@ -278,7 +278,7 @@ runoob@runoob:~# docker run -d -P training/webapp python app.py
 <h2>WEBアプリケーションコンテナの確認</h2>
 <p>docker ps を使用して、実行中のコンテナを確認します：</p>
 <pre>
-runoob@runoob:~#  docker ps
+サンプル@サンプル:~#  docker ps
 CONTAINER ID        IMAGE               COMMAND             ...        PORTS                 
 d3d5e39ed9d3        training/webapp     "python app.py"     ...        0.0.0.0:32769-&gt;5000/tcp
 </pre>
@@ -292,10 +292,10 @@ PORTS
 <p><img decoding="async" src="../wp-content/uploads/2016/05/docker31.png"/></p>
 <p>-p パラメータを使用して、別のポートを設定することもできます：</p>
 <pre>
-runoob@runoob:~$ docker run -d -p 5000:5000 training/webapp python app.py
+サンプル@サンプル:~$ docker run -d -p 5000:5000 training/webapp python app.py
 </pre>
 <p><strong>docker ps</strong>実行中のコンテナを確認する</p>
-<pre>runoob@runoob:~#  docker ps
+<pre>サンプル@サンプル:~#  docker ps
 CONTAINER ID        IMAGE                             PORTS                     NAMES
 bf08b7f2cd89        training/webapp     ...        0.0.0.0:5000-&gt;5000/tcp    wizardly_chandrasekhar
 d3d5e39ed9d3        training/webapp     ...        0.0.0.0:32769-&gt;5000/tcp   xenodochial_hoov
@@ -307,18 +307,18 @@ d3d5e39ed9d3        training/webapp     ...        0.0.0.0:32769-&gt;5000/tcp   
 <p>上記で作成したWebアプリケーションコンテナのIDは<strong>bf08b7f2cd89</strong>名前は<strong>wizardly_chandrasekhar</strong>。</p>
 <p>次を使用できます<span class="marked">docker port bf08b7f2cd89</span>  或 <span class="marked">docker port wizardly_chandrasekhar</span>コンテナポートのマッピング状況を確認できます。</p>
 <pre>
-runoob@runoob:~$ docker port bf08b7f2cd89
+サンプル@サンプル:~$ docker port bf08b7f2cd89
 5000/tcp -&gt; 0.0.0.0:5000
 </pre>
 <pre>
-runoob@runoob:~$ docker port wizardly_chandrasekhar
+サンプル@サンプル:~$ docker port wizardly_chandrasekhar
 5000/tcp -&gt; 0.0.0.0:5000
 </pre>
 <hr/>
 <h2>WEBアプリケーションログの確認</h2>
 <p>docker logs [IDまたは名前] でコンテナ内部の標準出力を確認できます。</p>
 <pre>
-runoob@runoob:~$ docker logs -f bf08b7f2cd89
+サンプル@サンプル:~$ docker logs -f bf08b7f2cd89
  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
 192.168.239.1 - - [09/May/2016 16:30:37] "GET / HTTP/1.1" 200 -
 192.168.239.1 - - [09/May/2016 16:30:37] "GET /favicon.ico HTTP/1.1" 404 -
@@ -329,7 +329,7 @@ runoob@runoob:~$ docker logs -f bf08b7f2cd89
 <h2>WEBアプリケーションコンテナのプロセスを確認する</h2>
 <p>docker top を使用してコンテナ内部で実行中のプロセスを確認することもできます</p>
 <pre>
-runoob@runoob:~$ docker top wizardly_chandrasekhar
+サンプル@サンプル:~$ docker top wizardly_chandrasekhar
 UID     PID         PPID          ...       TIME                CMD
 root    23245       23228         ...       00:00:00            python app.py
 </pre>
@@ -337,7 +337,7 @@ root    23245       23228         ...       00:00:00            python app.py
 <h2>WEBアプリケーションを検査する</h2>
 <p>使用して<strong>docker inspect</strong>Dockerの基本情報を確認できます。Dockerコンテナの設定と状態情報を記録したJSONファイルが返されます。</p>
 <pre>
-runoob@runoob:~$ docker inspect wizardly_chandrasekhar
+サンプル@サンプル:~$ docker inspect wizardly_chandrasekhar
 [
     {
         "Id": "bf08b7f2cd897b5964943134aa6d373e355c286db9b9885b1f60b6e8f82b2b85",
@@ -364,14 +364,14 @@ runoob@runoob:~$ docker inspect wizardly_chandrasekhar
 <hr/>
 <h2>WEBアプリケーションコンテナを停止する</h2>
 <pre>
-runoob@runoob:~$ docker stop wizardly_chandrasekhar   
+サンプル@サンプル:~$ docker stop wizardly_chandrasekhar   
 wizardly_chandrasekhar
 </pre>
 <hr/>
 <h2>WEBアプリケーションコンテナを再起動する</h2>
 <p>停止済みのコンテナは、docker start コマンドで起動できます。</p>
 <pre>
-runoob@runoob:~$ docker start wizardly_chandrasekhar
+サンプル@サンプル:~$ docker start wizardly_chandrasekhar
 wizardly_chandrasekhar
 </pre>
 <p>docker ps -l で最後に作成したコンテナを確認：</p>
@@ -383,12 +383,12 @@ bf08b7f2cd89        training/webapp     ...        0.0.0.0:5000-&gt;5000/tcp    
 <h2>WEBアプリケーションコンテナを削除する</h2>
 <p>docker rm コマンドを使用して不要なコンテナを削除できます</p>
 <pre>
-runoob@runoob:~$ docker rm wizardly_chandrasekhar  
+サンプル@サンプル:~$ docker rm wizardly_chandrasekhar  
 wizardly_chandrasekhar
 </pre>
 <p>コンテナを削除する際は、コンテナが停止状態である必要があります。そうでない場合は次のエラーが発生します</p>
 <pre>
-runoob@runoob:~$ docker rm wizardly_chandrasekhar
+サンプル@サンプル:~$ docker rm wizardly_chandrasekhar
 Error response from daemon: You cannot remove a running container bf08b7f2cd897b5964943134aa6d373e355c286db9b9885b1f60b6e8f82b2b85. Stop the container before attempting removal or force remove
 </pre> その他の拡張
 </div>

@@ -170,14 +170,14 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <pre>use DATABASE_NAME</pre>
 <p>データベースが存在しない場合はデータベースを作成し、存在する場合は指定したデータベースに切り替えます。</p>
 <h3>例</h3>
-<p>次の例では、データベース runoob を作成しました：</p>
+<p>次の例では、データベース サンプル を作成しました：</p>
 <pre>
-&gt; use runoob
-switched to db runoob
+&gt; use サンプル
+switched to db サンプル
 &gt; db
-runoob
+サンプル
 &gt; 
-</pre><p>実行<span class="marked">use runoob</span>コマンドを実行すると、MongoDBは runoob という名前の新しいデータベースを作成します。この時点で、このデータベースにコレクションを作成し、ドキュメントを挿入することができます。</p>
+</pre><p>実行<span class="marked">use サンプル</span>コマンドを実行すると、MongoDBは サンプル という名前の新しいデータベースを作成します。この時点で、このデータベースにコレクションを作成し、ドキュメントを挿入することができます。</p>
 <p>すべてのデータベースを表示したい場合は、次を使用できます：<strong>show dbs</strong>コマンド：</p>
 <pre>
 &gt; show dbs
@@ -186,15 +186,15 @@ config  0.000GB
 local   0.000GB
 &gt; 
 </pre>
-<p>見てわかるように、作成したばかりのデータベース runoob はデータベースのリストにありません。それを表示するには、runoob データベースにデータを挿入する必要があります。</p>
+<p>見てわかるように、作成したばかりのデータベース サンプル はデータベースのリストにありません。それを表示するには、サンプル データベースにデータを挿入する必要があります。</p>
 <pre>
-&gt; db.runoob.insertOne({"name":"菜鸟教程"})
+&gt; db.サンプル.insertOne({"name":"サンプル"})
 WriteResult({ "nInserted" : 1 })
 &gt; show dbs
 admin   0.000GB
 config  0.000GB
 local   0.000GB
-runoob  0.000GB
+サンプル  0.000GB
 </pre>
 <h3>コレクションの作成</h3><p>データベースを作成した後、通常はその中にコレクション（collections）を作成して、ドキュメント（documents）を格納する必要があります。</p><p>コレクションはリレーショナルデータベースのテーブルに似ています。以下はコレクションを作成する手順です：</p>
 <p>use コマンドを使用してデータベースを指定します。</p><p>db.createCollection() メソッドを使用してコレクションを作成します。</p>

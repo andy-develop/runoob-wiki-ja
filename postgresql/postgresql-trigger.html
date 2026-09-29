@@ -345,7 +345,7 @@ ON table_name
 ];</pre>
 <h3>例</h3>
 <p>新しく作成した COMPANY テーブル（既に存在する場合は削除して再作成）に挿入される各レコードについて監査証跡を維持したいと仮定しましょう：</p>
-<pre>runoobdb=# CREATE TABLE COMPANY(
+<pre>サンプルdb=# CREATE TABLE COMPANY(
    ID INT PRIMARY KEY     NOT NULL,
    NAME           TEXT    NOT NULL,
    AGE            INT     NOT NULL,
@@ -353,12 +353,12 @@ ON table_name
    SALARY         REAL
 );</pre>
 <p>監査証跡を維持するために、AUDIT という名前の新しいテーブルを作成します。COMPANY テーブルに新しいレコードが追加されるたびに、ログメッセージがそのテーブルに挿入されます。</p>
-<pre>runoobdb=# CREATE TABLE AUDIT(
+<pre>サンプルdb=# CREATE TABLE AUDIT(
    EMP_ID INT NOT NULL,
    ENTRY_DATE TEXT NOT NULL
 );</pre>
 <p>ここで、ID は AUDIT レコードの ID、EMP_ID は COMPANY テーブルの ID、DATE は COMPANY でレコードが作成されたときのタイムスタンプを保持します。それでは、COMPANY テーブルにトリガーを作成しましょう：</p>
-<pre>runoobdb=# CREATE TRIGGER example_trigger AFTER INSERT ON COMPANY FOR EACH ROW EXECUTE PROCEDURE auditlogfunc();</pre>
+<pre>サンプルdb=# CREATE TRIGGER example_trigger AFTER INSERT ON COMPANY FOR EACH ROW EXECUTE PROCEDURE auditlogfunc();</pre>
 <p>auditlogfunc() は PostgreSQL のプログラムで、その定義は次のとおりです：</p>
 <pre>CREATE OR REPLACE FUNCTION auditlogfunc() RETURNS TRIGGER AS $example_table$
    BEGIN
@@ -367,7 +367,7 @@ ON table_name
    END;
 $example_table$ LANGUAGE plpgsql;</pre>
 <p>では、COMPANY テーブルにデータを挿入してみましょう：</p>
-<pre>runoobdb=# INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) VALUES (1, 'Paul', 32, 'California', 20000.00 );</pre>
+<pre>サンプルdb=# INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) VALUES (1, 'Paul', 32, 'California', 20000.00 );</pre>
 <p>このとき、COMPANY テーブルに1つのレコードが挿入されました：</p>
 <p>同時に、AUDIT テーブルにもレコードが挿入されました。COMPANY テーブルに挿入するときにトリガーを作成したためです。同様に、必要に応じて更新時や削除時のトリガーも作成できます：</p>
 <pre>emp_id |          entry_date
@@ -376,9 +376,9 @@ $example_table$ LANGUAGE plpgsql;</pre>
 (1 row)</pre>
 <h3>トリガーの一覧表示</h3>
 <p>pg_trigger テーブルから現在のデータベースのすべてのトリガーを一覧表示できます：</p>
-<pre>runoobdb=# SELECT * FROM pg_trigger;</pre>
+<pre>サンプルdb=# SELECT * FROM pg_trigger;</pre>
 <p>特定のテーブルのトリガーを一覧表示したい場合は、構文は次のとおりです：</p>
-<pre>runoobdb=# SELECT tgname FROM pg_trigger, pg_class WHERE tgrelid=pg_class.oid AND relname='company';</pre>
+<pre>サンプルdb=# SELECT tgname FROM pg_trigger, pg_class WHERE tgrelid=pg_class.oid AND relname='company';</pre>
 <p>結果は次のとおりです：</p>
 <pre> tgname
 -----------------

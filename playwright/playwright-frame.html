@@ -320,14 +320,14 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="example_code">
 
 test<span style="color: #009900;">(</span><span style="color: #3366CC;">'iframe 内の要素を操作'</span><span style="color: #339933;">,</span> async <span style="color: #009900;">(</span><span style="color: #009900;">{</span> page <span style="color: #009900;">}</span><span style="color: #009900;">)</span> <span style="color: #339933;">=&gt;</span> <span style="color: #009900;">{</span><br/>
-  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.runoob.com/iframe-demo'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.example.com/iframe-demo'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
   <span style="color: #006600; font-style: italic;">// iframe を特定し、その中で要素を特定する</span><br/>
   <span style="color: #000066; font-weight: bold;">const</span> iframe <span style="color: #339933;">=</span> page.<span style="color: #660066;">frameLocator</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'#my-iframe'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
   <span style="color: #006600; font-style: italic;">// iframe 内で要素を操作する</span><br/>
   await iframe.<span style="color: #660066;">getByRole</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'button'</span><span style="color: #339933;">,</span> <span style="color: #009900;">{</span> name<span style="color: #339933;">:</span> <span style="color: #3366CC;">'送信'</span> <span style="color: #009900;">}</span><span style="color: #009900;">)</span>.<span style="color: #660066;">click</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
-  await iframe.<span style="color: #660066;">getByLabel</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'ユーザー名'</span><span style="color: #009900;">)</span>.<span style="color: #660066;">fill</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'runoob_user'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+  await iframe.<span style="color: #660066;">getByLabel</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'ユーザー名'</span><span style="color: #009900;">)</span>.<span style="color: #660066;">fill</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'サンプル_user'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
   <span style="color: #006600; font-style: italic;">// iframe 内でアサーションする</span><br/>
   await expect<span style="color: #009900;">(</span>iframe.<span style="color: #660066;">getByText</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'操作成功'</span><span style="color: #009900;">)</span><span style="color: #009900;">)</span>.<span style="color: #660066;">toBeVisible</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
@@ -389,7 +389,7 @@ test<span style="color: #009900;">(</span><span style="color: #3366CC;">'ダイ�
       await dialog.<span style="color: #660066;">dismiss</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
     <span style="color: #009900;">}</span> <span style="color: #000066; font-weight: bold;">else</span> <span style="color: #000066; font-weight: bold;">if</span> <span style="color: #009900;">(</span>dialog.<span style="color: #660066;">type</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span> <span style="color: #339933;">===</span> <span style="color: #3366CC;">'prompt'</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><br/>
       <span style="color: #006600; font-style: italic;">// カスタム内容を入力</span><br/>
-      await dialog.<span style="color: #660066;">accept</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'RUNOOB が入力した内容'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+      await dialog.<span style="color: #660066;">accept</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'サンプル が入力した内容'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
     <span style="color: #009900;">}</span> <span style="color: #000066; font-weight: bold;">else</span> <span style="color: #009900;">{</span><br/>
       <span style="color: #006600; font-style: italic;">// その他のタイプは直接確認</span><br/>
       await dialog.<span style="color: #660066;">accept</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
@@ -428,7 +428,7 @@ test<span style="color: #009900;">(</span><span style="color: #3366CC;">'新し�
   <span style="color: #000066; font-weight: bold;">const</span> popup <span style="color: #339933;">=</span> await popupPromise<span style="color: #339933;">;</span><br/>
 <br/>
   <span style="color: #006600; font-style: italic;">// 新しいページ上で操作</span><br/>
-  await expect<span style="color: #009900;">(</span>popup<span style="color: #009900;">)</span>.<span style="color: #660066;">toHaveTitle</span><span style="color: #009900;">(</span><span style="color: #009966; font-style: italic;">/RUNOOB/</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+  await expect<span style="color: #009900;">(</span>popup<span style="color: #009900;">)</span>.<span style="color: #660066;">toHaveTitle</span><span style="color: #009900;">(</span><span style="color: #009966; font-style: italic;">/サンプル/</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
   await popup.<span style="color: #660066;">getByRole</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'button'</span><span style="color: #339933;">,</span> <span style="color: #009900;">{</span> name<span style="color: #339933;">:</span> <span style="color: #3366CC;">'確定'</span> <span style="color: #009900;">}</span><span style="color: #009900;">)</span>.<span style="color: #660066;">click</span><span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
   <span style="color: #006600; font-style: italic;">// 新しいページを閉じる</span><br/>
@@ -450,7 +450,7 @@ test<span style="color: #009900;">(</span><span style="color: #3366CC;">'Context
     <span style="color: #006600; font-style: italic;">// 新しいページ上で操作</span><br/>
   <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 <br/>
-  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.runoob.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
+  await page.<span style="color: #000066; font-weight: bold;">goto</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'https://www.example.com/'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
   <span style="color: #006600; font-style: italic;">// 後続の新しいウィンドウを開く操作は、上記のリスナーを自動的にトリガーします</span><br/>
 <span style="color: #009900;">}</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 </div>

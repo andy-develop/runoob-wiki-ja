@@ -169,9 +169,9 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <pre>
 c = 'x'
 
-str = "RUNOOB"
+str = "サンプル"
 
-runoob = """菜鸟教程 "RUNOOB"，包含了单个引号"""
+サンプル = """サンプル "サンプル"，包含了单个引号"""
 </pre>
 <p>Julia の文字列型の特徴：</p>
 <ul><li>Julia で文字列（および文字列リテラル）に使用される組み込みの具体的な型は String です。</li><li>Julia の文字列型はすべて抽象型 AbstractString のサブタイプです。</li><li>Julia には単一文字を表す優れた型である AbstractChar があります。Char は AbstractChar の組み込みサブタイプであり、任意の Unicode 文字を表すことができる32ビットのプリミティブ型です（UTF-8 エンコーディングに基づきます）。</li><li>Julia の文字列は変更不可です。つまり、任意の AbstractString オブジェクトの値は変更できません。</li></ul>
@@ -220,11 +220,11 @@ julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #C93D39;">'A'
 <h2>文字列</h2>
 <p>Julia の文字列は二重引用符<span class="marked">"</span>または三重引用符<span class="marked">"""</span>で宣言できます。文字列内の一部で引用符を使用する必要がある場合は、三重引用符を使用してそれを実行できます。次に示すように：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6BAB5B;">&gt;</span> str = <span style="color: #C93D39;">"RUNOOB"</span><br/>
-<span style="color: #C93D39;">"RUNOOB"</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> str = <span style="color: #C93D39;">"サンプル"</span><br/>
+<span style="color: #C93D39;">"サンプル"</span><br/>
 <br/>
-julia<span style="color: #6BAB5B;">&gt;</span> runoob = <span style="color: #C93D39;">菜鸟教程 "RUNOOB"、単一引用符を含みます</span><br/>
-<span style="color: #C93D39;">"菜鸟教程<span style="color: #000099; font-weight: bold;">\"</span>RUNOOB<span style="color: #000099; font-weight: bold;">\"</span>、単一引用符を含む'</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> サンプル = <span style="color: #C93D39;">サンプル "サンプル"、単一引用符を含みます</span><br/>
+<span style="color: #C93D39;">"サンプル<span style="color: #000099; font-weight: bold;">\"</span>サンプル<span style="color: #000099; font-weight: bold;">\"</span>、単一引用符を含む'</span><br/>
 </div></div>
 <p>文字列が長すぎる場合は、バックスラッシュを使用して<span class="marked">\</span>分割できます：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
@@ -233,8 +233,8 @@ julia<span style="color: #6BAB5B;">&gt;</span> <span style="color: #C93D39;">"Th
 <span style="color: #C93D39;">"This is a long line"</span><br/>
 </div></div>Julia の文字列は配列と同様に、インデックスを使用して指定位置の文字を読み取ったり、指定位置の文字列を切り出したりできます。インデックスの開始位置は<span class="marked">1</span>または<span class="marked">begin</span>、終了位置は<span class="marked">end</span> ：
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6BAB5B;">&gt;</span> str = <span style="color: #C93D39;">"RUNOOB"</span><br/>
-<span style="color: #C93D39;">"RUNOOB"</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> str = <span style="color: #C93D39;">"サンプル"</span><br/>
+<span style="color: #C93D39;">"サンプル"</span><br/>
 <br/>
 julia<span style="color: #6BAB5B;">&gt;</span> str<span style="color: #3B972E;">[</span>begin<span style="color: #3B972E;">]</span><br/>
 <span style="color: #C93D39;">'R'</span>: ASCII/Unicode U+0052 <span style="color: #3B972E;">(</span>category Lu: Letter, <span style="color: #0000A8;font-weight:bold;">uppercase</span><span style="color: #3B972E;">)</span><br/>
@@ -253,11 +253,11 @@ julia<span style="color: #6BAB5B;">&gt;</span> str<span style="color: #3B972E;">
 </div></div>
 <p>範囲インデックスを使用して部分文字列を抽出できます：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
-julia<span style="color: #6BAB5B;">&gt;</span> str = <span style="color: #C93D39;">"RUNOOB"</span><br/>
-<span style="color: #C93D39;">"RUNOOB"</span><br/>
+julia<span style="color: #6BAB5B;">&gt;</span> str = <span style="color: #C93D39;">"サンプル"</span><br/>
+<span style="color: #C93D39;">"サンプル"</span><br/>
 <br/>
 julia<span style="color: #6BAB5B;">&gt;</span> str<span style="color: #3B972E;">[</span>begin:<span style="color: #4266D5;font-weight:bold;">end</span><span style="color: #3B972E;">]</span><br/>
-<span style="color: #C93D39;">"RUNOOB"</span><br/>
+<span style="color: #C93D39;">"サンプル"</span><br/>
 <br/>
 julia<span style="color: #6BAB5B;">&gt;</span> str<span style="color: #3B972E;">[</span>begin:end-<span style="color: black;">1</span><span style="color: #3B972E;">]</span><br/>
 <span style="color: #C93D39;">"RUNOO"</span><br/>

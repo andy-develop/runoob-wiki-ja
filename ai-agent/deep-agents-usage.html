@@ -509,11 +509,11 @@ agent <span style="color: Gray;">=</span> create_deep_agent<span style="color: O
 <span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># thread_id は対話スレッドの一意の識別子です。同じ thread_id は同じコンテキストを共有します。</span><br/>
-config <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: #a11;">"configurable"</span>: <span style="color: Olive;">{</span><span style="color: #a11;">"thread_id"</span>: <span style="color: #a11;">"runoob-session-001"</span><span style="color: Olive;">}</span><span style="color: Olive;">}</span><br/>
+config <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: #a11;">"configurable"</span>: <span style="color: Olive;">{</span><span style="color: #a11;">"thread_id"</span>: <span style="color: #a11;">"サンプル-session-001"</span><span style="color: Olive;">}</span><span style="color: Olive;">}</span><br/>
 <br/>
 <span style="color: #a50"># 1 ターン目</span><br/>
 result1 <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invoke</span><span style="color: Olive;">(</span><br/>
-    <span style="color: Olive;">{</span><span style="color: #a11;">"messages"</span>: <span style="color: Olive;">[</span><span style="color: Olive;">{</span><span style="color: #a11;">"role"</span>: <span style="color: #a11;">"user"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"content"</span>: <span style="color: #a11;">"私の名前は RUNOOB です。Python を勉強しています。"</span><span style="color: Olive;">}</span><span style="color: Olive;">]</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span><br/>
+    <span style="color: Olive;">{</span><span style="color: #a11;">"messages"</span>: <span style="color: Olive;">[</span><span style="color: Olive;">{</span><span style="color: #a11;">"role"</span>: <span style="color: #a11;">"user"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"content"</span>: <span style="color: #a11;">"私の名前は サンプル です。Python を勉強しています。"</span><span style="color: Olive;">}</span><span style="color: Olive;">]</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span><br/>
     config<span style="color: Gray;">=</span>config<span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"1 ターン目の返信："</span><span style="color: Gray;">,</span> result1<span style="color: Olive;">[</span><span style="color: #a11;">"messages"</span><span style="color: Olive;">]</span><span style="color: Olive;">[</span>-<span style="color: Maroon;">1</span><span style="color: Olive;">]</span>.<span style="color: #05a;">content</span><span style="color: Olive;">)</span><br/>
@@ -527,8 +527,8 @@ result2 <span style="color: Gray;">=</span> agent.<span style="color: #05a;">inv
 </div>
 </div>
 <pre>
-第一轮回复：你好，RUNOOB！很高兴认识你，Python 是一门非常适合初学者的语言...
-第二轮回复：你叫 RUNOOB，你正在学习 Python！...
+1回目の返答:你好，サンプル！很高兴认识你，Python 是一门非常适合初学者的语言...
+2回目の返答:你叫 サンプル，你正在学习 Python！...
 </pre>
 <blockquote><p><strong>thread_id の役割：</strong>同じ<code>thread_id</code>の下のすべての呼び出しは同じ会話履歴を共有します。異なる<code>thread_id</code>の間は互いに分離されており、干渉しません。「会話の部屋番号」と理解できます。</p></blockquote>
 <hr/>
@@ -658,7 +658,7 @@ result <span style="color: Gray;">=</span> agent.<span style="color: #05a;">invo
             <span style="color: #a11;">"content"</span>: <span style="color: #a11;">"LangGraphとは何か、そしてその主な応用シナリオについて調べてください。"</span><br/>
         <span style="color: Olive;">}</span><span style="color: Olive;">]</span><br/>
     <span style="color: Olive;">}</span><span style="color: Gray;">,</span><br/>
-    config<span style="color: Gray;">=</span><span style="color: Olive;">{</span><span style="color: #a11;">"configurable"</span>: <span style="color: Olive;">{</span><span style="color: #a11;">"thread_id"</span>: <span style="color: #a11;">"runoob-research-001"</span><span style="color: Olive;">}</span><span style="color: Olive;">}</span><br/>
+    config<span style="color: Gray;">=</span><span style="color: Olive;">{</span><span style="color: #a11;">"configurable"</span>: <span style="color: Olive;">{</span><span style="color: #a11;">"thread_id"</span>: <span style="color: #a11;">"サンプル-research-001"</span><span style="color: Olive;">}</span><span style="color: Olive;">}</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"="</span> * <span style="color: Maroon;">60</span><span style="color: Olive;">)</span><br/>
@@ -741,7 +741,7 @@ agent <span style="color: Gray;">=</span> create_deep_agent<span style="color: O
     checkpointer<span style="color: Gray;">=</span>checkpointer<span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">)</span><br/>
 <br/>
-config <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: #a11;">"configurable"</span>: <span style="color: Olive;">{</span><span style="color: #a11;">"thread_id"</span>: <span style="color: #a11;">"runoob-hitl-001"</span><span style="color: Olive;">}</span><span style="color: Olive;">}</span><br/>
+config <span style="color: Gray;">=</span> <span style="color: Olive;">{</span><span style="color: #a11;">"configurable"</span>: <span style="color: Olive;">{</span><span style="color: #a11;">"thread_id"</span>: <span style="color: #a11;">"サンプル-hitl-001"</span><span style="color: Olive;">}</span><span style="color: Olive;">}</span><br/>
 <br/>
 <span style="color: #a50"># 最初の呼び出し：Agentがdelete_fileを実行するときに一時停止する</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"Agentを起動中..."</span><span style="color: Olive;">)</span><br/>

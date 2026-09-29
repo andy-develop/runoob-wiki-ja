@@ -364,7 +364,7 @@ app <span style="color: Gray;">=</span> Flask<span style="color: Olive;">(</span
     <span style="color: Green;font-weight:bold;">return</span> f<span style="color: #a11;">"""<br/>&lt;h1&gt;検索結果&lt;/h1&gt;<br/>&lt;p&gt;キーワード：{keyword}&lt;/p&gt;<br/>&lt;p&gt;ページ番号：{page}&lt;/p&gt;<br/>
     """</span><br/>
 <span style="color: #a50"># テスト：/search?keyword=flask&amp;page=2</span><br/>
-<span style="color: #a50"># テスト：/search?keyword=RUNOOB</span><br/>
+<span style="color: #a50"># テスト：/search?keyword=サンプル</span><br/>
 </div>
 </div>
 <blockquote><p>推奨されるのは<span class="marked">.get()</span>メソッド（直接の添え字アクセスではなく）です<span class="marked">request.args["key"]</span>、後者は key が存在しない場合にスローするため<span class="marked">KeyError</span>、400 エラーページが返される原因になります。</p></blockquote>
@@ -384,7 +384,7 @@ app <span style="color: Gray;">=</span> Flask<span style="color: Olive;">(</span
         <span style="color: Green;font-weight:bold;">if</span> <span style="color: Green;font-weight:bold;">not</span> username <span style="color: Green;font-weight:bold;">or</span> <span style="color: Green;font-weight:bold;">not</span> password:<br/>
             <span style="color: Green;font-weight:bold;">return</span> <span style="color: #a11;">"&lt;h1&gt;エラー&lt;/h1&gt;&lt;p&gt;ユーザー名とパスワードは空にできません&lt;/p&gt;"</span><span style="color: Gray;">,</span> <span style="color: Maroon;">400</span><br/>
 <br/>
-        <span style="color: Green;font-weight:bold;">return</span> f<span style="color: #a11;">"&lt;h1&gt;登録成功&lt;/h1&gt;&lt;p&gt;{username} さん、RUNOOB へようこそ！&lt;/p&gt;"</span><br/>
+        <span style="color: Green;font-weight:bold;">return</span> f<span style="color: #a11;">"&lt;h1&gt;登録成功&lt;/h1&gt;&lt;p&gt;{username} さん、サンプル へようこそ！&lt;/p&gt;"</span><br/>
 <br/>
     <span style="color: #a50"># GET リクエストの場合は登録フォームを表示</span><br/>
     <span style="color: Green;font-weight:bold;">return</span> <span style="color: #a11;">"""<br/>&lt;h1&gt;登録&lt;/h1&gt;<br/>
@@ -404,7 +404,7 @@ app <span style="color: Gray;">=</span> Flask<span style="color: Olive;">(</span
 <span style="color: Gray;">@</span>app.<span style="color: #05a;">post</span><span style="color: Olive;">(</span><span style="color: #a11;">"/api/user"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">def</span> create_user<span style="color: Olive;">(</span><span style="color: Olive;">)</span>:<br/>
     <span style="color: #a50"># request.json は Python の dict に解析済みの JSON データを返します</span><br/>
-    data <span style="color: Gray;">=</span> request.<span style="color: #05a;">json</span>  <span style="color: #a50"># 例：クライアントが {"name": "runoob", "email": "test@runoob.com"} を送信した場合</span><br/>
+    data <span style="color: Gray;">=</span> request.<span style="color: #05a;">json</span>  <span style="color: #a50"># 例：クライアントが {"name": "サンプル", "email": "test@example.com"} を送信した場合</span><br/>
 <br/>
     <span style="color: #a50"># フィールドを安全に取得</span><br/>
     name <span style="color: Gray;">=</span> data.<span style="color: #05a;">get</span><span style="color: Olive;">(</span><span style="color: #a11;">"name"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"不明"</span><span style="color: Olive;">)</span><br/>
@@ -422,11 +422,11 @@ app <span style="color: Gray;">=</span> Flask<span style="color: Olive;">(</span
 <pre>
 $ curl -X POST http://127.0.0.1:5000/api/user \
   -H "Content-Type: application/json" \
-  -d '{"name": "runoob", "email": "test@runoob.com"}'
+  -d '{"name": "サンプル", "email": "test@example.com"}'
 {
   "message": "用户创建成功",
-  "name": "runoob",
-  "email": "test@runoob.com"
+  "name": "サンプル",
+  "email": "test@example.com"
 }
 </pre>
 <hr/>
@@ -499,7 +499,7 @@ UPLOAD_DIR <span style="color: Gray;">=</span> <span style="color: #a11;">"uploa
 <span style="color: Gray;">@</span>app.<span style="color: #05a;">get</span><span style="color: Olive;">(</span><span style="color: #a11;">"/api/tags"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">def</span> get_tags<span style="color: Olive;">(</span><span style="color: Olive;">)</span>:<br/>
     <span style="color: #a50"># list を返すと、Flask が自動的に JSON に変換</span><br/>
-    <span style="color: Green;font-weight:bold;">return</span> <span style="color: Olive;">[</span><span style="color: #a11;">"Python"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"Flask"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"Web 開発"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"RUNOOB"</span><span style="color: Olive;">]</span><br/>
+    <span style="color: Green;font-weight:bold;">return</span> <span style="color: Olive;">[</span><span style="color: #a11;">"Python"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"Flask"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"Web 開発"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"サンプル"</span><span style="color: Olive;">]</span><br/>
 </div>
 </div>
 <h3>タプルを返す——ステータスコードとレスポンスヘッダーを制御する</h3>
@@ -515,13 +515,13 @@ UPLOAD_DIR <span style="color: Gray;">=</span> <span style="color: #a11;">"uploa
 <span style="color: #a50"># 形式2：(body, headers_dict)</span><br/>
 <span style="color: Gray;">@</span>app.<span style="color: #05a;">get</span><span style="color: Olive;">(</span><span style="color: #a11;">"/custom-header"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">def</span> custom_header<span style="color: Olive;">(</span><span style="color: Olive;">)</span>:<br/>
-    <span style="color: Green;font-weight:bold;">return</span> <span style="color: #a11;">"OK"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"X-Custom-Header"</span>: <span style="color: #a11;">"runoob"</span><span style="color: Olive;">}</span><br/>
+    <span style="color: Green;font-weight:bold;">return</span> <span style="color: #a11;">"OK"</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"X-Custom-Header"</span>: <span style="color: #a11;">"サンプル"</span><span style="color: Olive;">}</span><br/>
 <br/>
 <span style="color: #a50"># 形式3：(body, status_code, headers_dict)</span><br/>
 <span style="color: Gray;">@</span>app.<span style="color: #05a;">post</span><span style="color: Olive;">(</span><span style="color: #a11;">"/api/login"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">def</span> api_login<span style="color: Olive;">(</span><span style="color: Olive;">)</span>:<br/>
     <span style="color: #a50"># token とカスタムステータスコードを返す</span><br/>
-    <span style="color: Green;font-weight:bold;">return</span> <span style="color: Olive;">{</span><span style="color: #a11;">"token"</span>: <span style="color: #a11;">"abc123"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"user"</span>: <span style="color: #a11;">"runoob"</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span> <span style="color: Maroon;">201</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"X-RateLimit"</span>: <span style="color: #a11;">"100"</span><span style="color: Olive;">}</span><br/>
+    <span style="color: Green;font-weight:bold;">return</span> <span style="color: Olive;">{</span><span style="color: #a11;">"token"</span>: <span style="color: #a11;">"abc123"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"user"</span>: <span style="color: #a11;">"サンプル"</span><span style="color: Olive;">}</span><span style="color: Gray;">,</span> <span style="color: Maroon;">201</span><span style="color: Gray;">,</span> <span style="color: Olive;">{</span><span style="color: #a11;">"X-RateLimit"</span>: <span style="color: #a11;">"100"</span><span style="color: Olive;">}</span><br/>
 </div>
 </div>
 <hr/>
@@ -596,7 +596,7 @@ app <span style="color: Gray;">=</span> Flask<span style="color: Olive;">(</span
     resp.<span style="color: #05a;">set_cookie</span><span style="color: Olive;">(</span><span style="color: #a11;">"lang"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"zh-CN"</span><span style="color: Olive;">)</span><br/>
 <br/>
     <span style="color: #a50"># レスポンスヘッダーをカスタマイズすることもできます</span><br/>
-    resp.<span style="color: #05a;">headers</span><span style="color: Olive;">[</span><span style="color: #a11;">"X-Powered-By"</span><span style="color: Olive;">]</span> <span style="color: Gray;">=</span> <span style="color: #a11;">"RUNOOB-Flask"</span><br/>
+    resp.<span style="color: #05a;">headers</span><span style="color: Olive;">[</span><span style="color: #a11;">"X-Powered-By"</span><span style="color: Olive;">]</span> <span style="color: Gray;">=</span> <span style="color: #a11;">"サンプル-Flask"</span><br/>
 <br/>
     <span style="color: Green;font-weight:bold;">return</span> resp<br/>
 </div>
@@ -638,7 +638,7 @@ app <span style="color: Gray;">=</span> Flask<span style="color: Olive;">(</span
 <td>request.json</td>
 <td>dict または None</td>
 <td>JSONリクエストボディ（解析済み）</td>
-<td>{"name": "runoob"}</td>
+<td>{"name": "サンプル"}</td>
 </tr>
 <tr>
 <td>request.files</td>

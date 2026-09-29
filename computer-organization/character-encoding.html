@@ -285,7 +285,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <tr><td>你</td><td>U+4F60</td><td>CJK 漢字「你」</td><td>CJK統合漢字</td></tr>
 <tr><td>好</td><td>U+597D</td><td>CJK 漢字「好」</td><td>CJK統合漢字</td></tr>
 <tr><td>hello</td><td>U+68D2</td><td>アラビア語の「こんにちは」</td><td>アラビア文字</td></tr>
-<tr><td>runoob</td><td>U+E0001</td><td>言語タグ</td><td>Tags ブロック</td></tr>
+<tr><td>サンプル</td><td>U+E0001</td><td>言語タグ</td><td>Tags ブロック</td></tr>
 </table>
 <p>注意：Unicode はあくまで「番号割り当て方式」です——「文字 X の番号は U+XXXX」と教えてくれます。</p>
 <p>それは「番号 U+XXXX をファイルにどう保存するか」を規定しません。</p>
@@ -698,7 +698,7 @@ analyzeEncoding();
 <ol>
 <li>純粋な英語を入力して、各文字が1バイトしか占めないことを観察してください。</li>
 <li>中国語を入力して、各漢字が3バイト占めることを観察してください。</li>
-<li>入力<code>Hello RUNOOB</code>、各字母のASCIIコードが連続して並んでいるかに注意してください。</li>
+<li>入力<code>Hello サンプル</code>、各字母のASCIIコードが連続して並んでいるかに注意してください。</li>
 <li>大文字と小文字のアルファベットの2進数を比較し、1ビットだけ異なる対応する文字ペア（A と a など）を見つけます。</li>
 </ol>
 <hr/>
@@ -733,7 +733,7 @@ analyzeEncoding();
 <div class="example">
 <h2 class="example">実例</h2>
 <div class="example_code">
-<span style="color: #a50"># 文字エンコーディング完全デモ（runoobデモ）</span><br/>
+<span style="color: #a50"># 文字エンコーディング完全デモ（サンプルデモ）</span><br/>
 <span style="color: Green;font-weight:bold;">import</span> <span style="color: #05a;">sys</span><br/>
 <br/>
 <span style="color: #a50"># =============================================</span><br/>
@@ -744,7 +744,7 @@ analyzeEncoding();
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"="</span> * <span style="color: Maroon;">60</span><span style="color: Olive;">)</span><br/>
 <br/>
 <span style="color: #a50"># ord() は文字のUnicodeコードポイントを取得する</span><br/>
-text <span style="color: Gray;">=</span> <span style="color: #a11;">"Hello RUNOOB"</span><br/>
+text <span style="color: Gray;">=</span> <span style="color: #a11;">"Hello サンプル"</span><br/>
 <span style="color: Green;font-weight:bold;">for</span> ch <span style="color: Green;font-weight:bold;">in</span> text:<br/>
     cp <span style="color: Gray;">=</span> <span style="color: Teal;">ord</span><span style="color: Olive;">(</span>ch<span style="color: Olive;">)</span><br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>f<span style="color: #a11;">"  '{ch}' → コードポイント U+{cp:04X} (10進数 {cp})"</span><span style="color: Olive;">)</span><br/>
@@ -763,7 +763,7 @@ text <span style="color: Gray;">=</span> <span style="color: #a11;">"Hello RUNOO
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"デモ 2: 文字列 → UTF-8バイトシーケンス"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"="</span> * <span style="color: Maroon;">60</span><span style="color: Olive;">)</span><br/>
 <br/>
-texts <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: #a11;">"A"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"Hello"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"你好"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"RUNOOB チュートリアル"</span><span style="color: Olive;">]</span><br/>
+texts <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><span style="color: #a11;">"A"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"Hello"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"你好"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"サンプル チュートリアル"</span><span style="color: Olive;">]</span><br/>
 <br/>
 <span style="color: Green;font-weight:bold;">for</span> text <span style="color: Green;font-weight:bold;">in</span> texts:<br/>
     utf8_bytes <span style="color: Gray;">=</span> text.<span style="color: #05a;">encode</span><span style="color: Olive;">(</span><span style="color: #a11;">'utf-8'</span><span style="color: Olive;">)</span><br/>
@@ -797,7 +797,7 @@ texts <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><s
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"デモ 3: GBKエンコーディング（UTF-8との比較）"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"="</span> * <span style="color: Maroon;">60</span><span style="color: Olive;">)</span><br/>
 <br/>
-text <span style="color: Gray;">=</span> <span style="color: #a11;">"你好 RUNOOB"</span><br/>
+text <span style="color: Gray;">=</span> <span style="color: #a11;">"你好 サンプル"</span><br/>
 utf8_bytes <span style="color: Gray;">=</span> text.<span style="color: #05a;">encode</span><span style="color: Olive;">(</span><span style="color: #a11;">'utf-8'</span><span style="color: Olive;">)</span><br/>
 gbk_bytes <span style="color: Gray;">=</span> text.<span style="color: #05a;">encode</span><span style="color: Olive;">(</span><span style="color: #a11;">'gbk'</span><span style="color: Olive;">)</span><br/>
 <br/>
@@ -852,7 +852,7 @@ decoded_latin <span style="color: Gray;">=</span> utf8_data.<span style="color: 
 <br/>
 <span style="color: #a50"># テスト</span><br/>
 test_cases <span style="color: Gray;">=</span> <span style="color: Olive;">[</span><br/>
-    <span style="color: #a11;">"Hello RUNOOB"</span>.<span style="color: #05a;">encode</span><span style="color: Olive;">(</span><span style="color: #a11;">'utf-8'</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
+    <span style="color: #a11;">"Hello サンプル"</span>.<span style="color: #05a;">encode</span><span style="color: Olive;">(</span><span style="color: #a11;">'utf-8'</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
     <span style="color: #a11;">"你好世界"</span>.<span style="color: #05a;">encode</span><span style="color: Olive;">(</span><span style="color: #a11;">'utf-8'</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
     <span style="color: #a11;">"计算机"</span>.<span style="color: #05a;">encode</span><span style="color: Olive;">(</span><span style="color: #a11;">'gbk'</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span><br/>
 <span style="color: Olive;">]</span><br/>

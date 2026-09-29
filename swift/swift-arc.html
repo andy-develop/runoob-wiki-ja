@@ -320,7 +320,7 @@ var reference2: Person?
 var reference3: Person?
 
 // 创建Person类的新实例
-reference1 = Person(name: "Runoob")
+reference1 = Person(name: "サンプル")
 
 
 //赋值给其他两个变量，该实例又会多出两个强引用
@@ -335,8 +335,8 @@ reference2 = nil
 reference3 = nil
 </pre><p>上記のプログラムを実行すると、出力結果は次のようになります：</p>
 <pre>
-Runoob 开始初始化
-Runoob 被析构
+サンプル 开始初始化
+サンプル 被析构
 </pre>
 <hr/>
 <h2>クラスインスタンス間の循環強参照</h2>
@@ -359,22 +359,22 @@ class Apartment {
 }
 
 // 两个变量都被初始化为nil
-var runoob: Person?
+var サンプル: Person?
 var number73: Apartment?
 
 // 赋值
-runoob = Person(name: "Runoob")
+サンプル = Person(name: "サンプル")
 number73 = Apartment(number: 73)
 
-// 意感叹号是用来展开和访问可选变量 runoob 和 number73 中的实例
+// 意感叹号是用来展开和访问可选变量 サンプル 和 number73 中的实例
 // 循环强引用被创建
-runoob!.apartment = number73
-number73!.tenant = runoob
+サンプル!.apartment = number73
+number73!.tenant = サンプル
 
-// 断开 runoob 和 number73 变量所持有的强引用时，引用计数并不会降为 0，实例也不会被 ARC 销毁
+// 断开 サンプル 和 number73 变量所持有的强引用时，引用计数并不会降为 0，实例也不会被 ARC 销毁
 // 注意，当你把这两个变量设为nil时，没有任何一个析构函数被调用。
 // 强引用循环阻止了Person和Apartment类实例的销毁，并在你的应用程序中造成了内存泄漏
-runoob = nil
+サンプル = nil
 number73 = nil
 </pre>
 <h3>インスタンス間の循環強参照を解決する</h3>

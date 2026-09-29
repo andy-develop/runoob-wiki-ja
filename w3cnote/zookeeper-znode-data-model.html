@@ -101,25 +101,25 @@ $ ls /zookeeper
 $ ls /zookeeper/quota
 </pre>
 <p><img decoding="async" src="../wp-content/uploads/2020/09/data-model-01.png"/></p>
-<p>このとき保存されているデータは、ルートディレクトリに runoob と zookeeper の2つのノードがあり、zookeeper ノードの下に quota というノードがあることが直感的にわかります。</p>
+<p>このとき保存されているデータは、ルートディレクトリに サンプル と zookeeper の2つのノードがあり、zookeeper ノードの下に quota というノードがあることが直感的にわかります。</p>
 <p><img decoding="async" src="../wp-content/uploads/2020/09/data-model-02.png"/></p>
-<p>runoob ノードは前の章で作成し、Java クライアントを介して値を 0 に設定しました。ここでコマンドライン端末で実行します<span class="marked">get /runoob</span>このノードの属性を表示します。</p>
-<pre>$ get /runoob</pre>
+<p>サンプル ノードは前の章で作成し、Java クライアントを介して値を 0 に設定しました。ここでコマンドライン端末で実行します<span class="marked">get /サンプル</span>このノードの属性を表示します。</p>
+<pre>$ get /サンプル</pre>
 <p><img decoding="async" src="../wp-content/uploads/2020/09/data-model-03.png"/></p>
 <p>そのうち、最初の行に表示されている 0 はこのノードの value 値です。</p>
 <h3>Znode の状態属性</h3>
 <table class="reference"><thead><tr><th>cZxid</th><th>ノード作成時のトランザクションID</th></tr></thead><tbody><tr><td>ctime</td><td>ノード作成時の時刻</td></tr><tr><td>mZxid</td><td>ノードを最後に変更したときのトランザクションID</td></tr><tr><td>mtime</td><td>ノードを最後に変更したときの時刻</td></tr><tr><td>pZxid</td><td>このノードの子ノードリストが最後に変更されたときのトランザクションIDを表します。子ノードの追加または削除は子ノードリストに影響しますが、子ノードのデータ内容を変更してもこのIDには影響しません。<strong>（注意：子ノードリストが変更された場合のみ pzxid が変更されます。子ノードの内容変更は pzxid に影響しません）</strong></td></tr><tr><td>cversion</td><td>子ノードのバージョン番号。子ノードが変更されるたびにバージョン番号が1増加します。</td></tr><tr><td>dataversion</td><td>データのバージョン番号。データが変更されるたびにこのバージョン番号が1増加します。</td></tr><tr><td>aclversion</td><td>権限のバージョン番号。権限が変更されるたびにこのバージョン番号が1増加します。</td></tr><tr><td>ephemeralOwner</td><td>この一時ノードを作成したセッションの sessionID。<strong>（*</strong>*このノードが永続ノードの場合、この属性値は0になります）**</td></tr><tr><td>dataLength</td><td>このノードのデータ長</td></tr><tr><td>numChildren</td><td>このノードが持つ子ノードの数<strong>（直接の子ノードのみカウントします）</strong></td></tr></tbody></table>
-<p>上記の状態属性値を理解したところで、私たちは<strong>/runoob</strong>ノードに一度変更を加え、コマンドを実行します<span class="marked">set /runoob 1</span>、下図に示すように：</p>
-<pre>$ set /runoob 1</pre>
+<p>上記の状態属性値を理解したところで、私たちは<strong>/サンプル</strong>ノードに一度変更を加え、コマンドを実行します<span class="marked">set /サンプル 1</span>、下図に示すように：</p>
+<pre>$ set /サンプル 1</pre>
 <p><img decoding="async" src="../wp-content/uploads/2020/09/data-model-04.png"/></p>
 <p>上記の結果と比較すると、mZxid、mtime、dataVersion がすべて変更されたことがわかります。</p>
-<p>に<strong>/runoob</strong>ノードの下に、さらに子ノードを1つ追加し、次を実行します：</p>
-<pre>$ create -e  /runoob/child  0
-$ get /runoob</pre>
+<p>に<strong>/サンプル</strong>ノードの下に、さらに子ノードを1つ追加し、次を実行します：</p>
+<pre>$ create -e  /サンプル/child  0
+$ get /サンプル</pre>
 <p><strong>ヒント：</strong>その他のコマンドの使い方は、後の章で詳しく説明します。</p>
 <p>ターミナルのコマンドラインを実行すると、以下のように表示されます：</p>
 <p><img decoding="async" src="../wp-content/uploads/2020/09/data-model-05.png"/></p>
-<p>見てわかるように、<strong>/runoob</strong>ノードの pZxid、cversion、numChildren はすべて相応に変更されました。</p>
+<p>見てわかるように、<strong>/サンプル</strong>ノードの pZxid、cversion、numChildren はすべて相応に変更されました。</p>
 </div>
 </div>
 <div class="previous-next-links">

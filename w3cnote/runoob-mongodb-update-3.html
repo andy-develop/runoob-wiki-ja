@@ -76,14 +76,14 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="col middle-column big-middle-column">
 <div class="article">
 <div class="article-heading">
-<h2>菜鸟教程 MongoDB チュートリアルは3.0に更新されました</h2> <h3><em>分类</em> <a href="../w3cnote_genre/code.html" title="编程技术">编程技术</a> </h3>
+<h2>サンプル MongoDB チュートリアルは3.0に更新されました</h2> <h3><em>分类</em> <a href="../w3cnote_genre/code.html" title="编程技术">编程技术</a> </h3>
 </div>
 <div class="article-body note-body">
 <div class="article-intro">
 <!-- ad start-->
 <!-- ad end-->
 <p>MongoDB は現在IT業界で非常に人気のある非リレーショナルデータベース(NoSql)であり、その柔軟なデータ保存方式は現在のIT従事者に高い評価を受けています。</p>
-<p>菜鸟教程もその歩調に追従し、チュートリアルの内容は3.0バージョンまで更新されています。チュートリアルのサンプルは3.0バージョンでテストに合格しています。</p><p>以下は3.0バージョンの新機能です：</p>
+<p>サンプルもその歩調に追従し、チュートリアルの内容は3.0バージョンまで更新されています。チュートリアルのサンプルは3.0バージョンでテストに合格しています。</p><p>以下は3.0バージョンの新機能です：</p>
 <h3>プラグイン式ストレージエンジンAPI</h3>
 <p>MongoDB 3.0はプラグイン式ストレージエンジンAPIを導入し、第三者のストレージエンジンベンダーがMongoDBに参入するのを容易にしました。この変更は間違いなくMySQLの設計理念を参考にしています。現在、初期のMMAPストレージエンジンの他に、WiredTigerとRocksDBはいずれもMongoDBのサポートを完了しており、前者はMongoDB社に買収された後、そのままMongoDB 3.0バージョンに導入されました。プラグイン式ストレージエンジンAPIの導入は、MongoDBがより多くの異なるタイプの業務を処理するための武器庫を充実させる無限の可能性を提供し、メモリストレージエンジン、トランザクションストレージエンジン、さらにはHadoopも将来のに接続される可能性があります。</p><p>
 <img class="attachment-medium" decoding="async" src="../wp-content/uploads/2015/09/mongodb1.jpg"/>
@@ -155,10 +155,10 @@ drwxrwxr-x 2 mongodb mongodb 4096 3月 21 13:41ycsb
 </p><h3>复制集改进</h3><p>1、レプリカセットメンバーの増加</p><p>MongoDB 3.0のレプリカセットメンバーの最大数は、以前の12個から50個に増加しましたが、投票できるメンバーの最大数は依然として7個です。それに伴い、getLastError の w:"majority" 項目も、投票ノードの過半数を意味するだけです。</p><p>2、PrimaryノードのStepDown処理方法の変更</p><p>レプリカセット内でreplSetStepDownコマンドにより、現在のPrimaryノードを退位させ、新しいPrimaryノードを再選出できます。MongoDB 3.0はStepDownの処理方法に以下の変更を加えました。1）Primaryノードが退位する前に、まずインデックス作成、書き込み操作、Mapreduceタスクなどの時間のかかるユーザー操作を中断します。2）データのロールバックを防ぐため、Primaryノードは退位前に、選出可能なSecondaryノードが最新データに同期するのを待ちます。旧バージョンでは、PrimaryノードはいずれかのSecondaryノードのデータ同期が10秒以内であれば退位していました。3）同時にreplSetStepDownコマンドに新しいパラメータsecondaryCatchUpPeriodSecsが追加され、ユーザーはPrimaryノードが、指定した秒数以内にデータが同期されたSecondaryノードを待ってから退位するように指定できます。</p><h3>シャーディングクラスタの改善</h3><p>1、新しいツール関数 sh.removeTagRange() の追加</p><p>旧バージョンではsh.addTagRange()のみが存在し、tagRangeを削除するには手動でconfig.tagsコレクションにアクセスして削除する必要がありました。</p><p>2、より予測可能なRead Preference処理の提供</p><p>新バージョンでは、mongosインスタンスは読み取り操作を実行する際、接続をレプリカセットメンバーに固定しなくなり、各読み取り操作ごとにReadPreferenceを再評価します。これにより、Read Preferenceを変更したとき、その動作がより予測しやすくなります。</p><p>3、chunkマイグレーションにwriteConcern設定を提供</p><p>新バージョンでは、バランサーを対象として、moveChunkとcleanupOrphanedというchunk移行に関連する2つのコマンドにwriteConcernパラメータを提供しています。</p><p>4、バランサーの状態表示の追加</p><p>新バージョンではsh.status()を通じてバランサーの状態情報を確認できます。</p>
 <h3>其他改动</h3><p>1、explan関数の最適化</p><p>新バージョンのexplain関数は、count、find、group、aggregate、update、removeなどの操作のクエリプラン表示をサポートし、結果はより包括的でより詳細になります。</p><p>2、mongodbツールの書き直し</p><p>新バージョンでは、mongodbに付属するすべてのツールがGo言語で書き直されており、特にmongodumpとmongorestoreには並列メカニズムが追加されているため、データのエクスポートとインポートを大幅に高速化できます。</p><p>3、ログ出力制御</p><p>新バージョンではログが異なるモジュールに分割されており、ACCESS、COMMAND、CONTROL、GEO、INDEX、NETWORK、QUERY、REPL、SHARDING、STORAGE、JOURNAL、WRITEなどが含まれます。ユーザーは各モジュールのログレベルを動的に調整できるため、システム問題の診断に間違いなく有利です。</p><p>4、インデックス構築の最適化</p><p>バックグラウンドインデックス構築中は、データベース削除・テーブル削除・インデックス削除の操作を実行できず、またバックグラウンドインデックス構築プロセスはこれによって自動的に中断されることもありません。さらに、createIndexesコマンドを使用すると複数のインデックスを同時に作成でき、データを1回だけスキャンするため、インデックス構築の効率が向上します。</p><h3>总结</h3><p>以上はMongoDB 3.0の主要な機能と変更点の一部のみを列挙したものであり、さらに詳しく知りたい場合はMongoDB 3.0のRelease-Notesを参照してください。全体的に見ると、MongoDB 3.0は多くの驚くべき新機能を提供しており、人々はその将来の発展に一層期待を寄せています。</p>
 <h2>教程地址</h2>
-<p><strong>教程地址：</strong><a href="../mongodb/mongodb-tutorial.html">http://www.runoob.com/mongodb/mongodb-tutorial.html</a></p> </p》mongo></p></div>
+<p><strong>教程地址：</strong><a href="../mongodb/mongodb-tutorial.html">http://www.example.com/mongodb/mongodb-tutorial.html</a></p> </p》mongo></p></div>
 </div>
 <div class="previous-next-links">
-<div class="previous-design-link">← <a href="./runoob-docker.html" rel="prev">菜鸟教程+Dockerはオンラインでのコンパイルと実行を全面のにサポート</a> </div>
+<div class="previous-design-link">← <a href="./runoob-docker.html" rel="prev">サンプル+Dockerはオンラインでのコンパイルと実行を全面のにサポート</a> </div>
 <div class="next-design-link"><a href="./html-meta-intro.html" rel="next">HTML 常用头部标签（meta）</a> →</div>
 </div>
 <style>
