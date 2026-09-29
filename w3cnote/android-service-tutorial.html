@@ -172,7 +172,7 @@ btnStop.setOnClickListener(new View.OnClickListener() {
 <p>上記のサンプルコードの5行目では、サービスの処理にクラス名を渡すIntentを作成し、名前などのパラメータを設定しています。そして7行目でこのServiceを起動します。同様に、17行目でこのServiceを停止します。</p>
 <p style="text-align: center;"><img alt="android-service-tutorial-1" class="alignnone size-full wp-image-11473" decoding="async" height="50" src="../wp-content/uploads/2015/03/android-service-tutorial-1.jpg" width="342"/></p>
 <p>開始ボタンをクリックすると、次のLogが得られます：</p>
-<p style="text-align: center;"><img alt="android-service-tutorial-2" class="alignnone size-full wp-image-11473" decoding="async" height="50" sizes="(max-width: 342px) 100vw, 342px" src="../wp-content/uploads/2015/03/android-service-tutorial-2.jpg" srcset="http://www.runoob.com/wp-content/uploads/2015/03/android-service-tutorial-2.jpg 342w, http://www.runoob.com/wp-content/uploads/2015/03/android-service-tutorial-2-300x44.jpg 300w" width="342"/></p>
+<p style="text-align: center;"><img alt="android-service-tutorial-2" class="alignnone size-full wp-image-11473" decoding="async" height="50" sizes="(max-width: 342px) 100vw, 342px" src="../wp-content/uploads/2015/03/android-service-tutorial-2.jpg" srcset="http://www.example.com/wp-content/uploads/2015/03/android-service-tutorial-2.jpg 342w, http://www.example.com/wp-content/uploads/2015/03/android-service-tutorial-2-300x44.jpg 300w" width="342"/></p>
 <p>onCreateメソッドが呼び出されていることに気付くでしょう。これはこのServiceを初めて起動したためです。開始ボタンを再度クリックしても、システムはonCreateメソッドを呼び出しません。停止ボタンをクリックすると、システムはこのServiceを破棄します。</p>
 <h2>IntentService</h2>
 <p>前述のように、Serviceはメインスレッドで実行されます。そのため、Service内でロジックを実装する際は非常に注意が必要です。このロジックがブロッキング操作であるか、完了するまでに長い時間がかかる場合、ANR問題を引き起こす可能性があります。このような場合は、ロジックを独立したスレッドに移動する必要があります。つまり、onStartCommandメソッド内でスレッドを作成し、それを実行します。</p>
