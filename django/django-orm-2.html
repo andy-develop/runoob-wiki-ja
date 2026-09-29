@@ -326,7 +326,7 @@ insert into app01_authordetail(gender,tel,addr,birthday) values (1,13432335433,"
 
 # 再将数据插入 author，这样 author 才能找到 authordetail 
 insert into app01_author(name,age,au_detail_id) values ("令狐冲",25,1), ("任我行",58,2), ("任盈盈",23,3)</pre>
-<p><img decoding="async" src="../wp-content/uploads/2020/05/Django-orm2_1.gif"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/05/Django-orm2_1.gif"/></p>
 <hr/>
 <h2>ORM - データの追加</h2>
 <h3>一対多（外部キー ForeignKey）</h3>
@@ -342,7 +342,7 @@ insert into app01_author(name,age,au_detail_id) values ("令狐冲",25,1), ("任
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>book<span style="color: Gray;">,</span> <span style="color: Teal;">type</span><span style="color: Olive;">(</span>book<span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
     <span style="color: Green;font-weight:bold;">return</span> HttpResponse<span style="color: Olive;">(</span>book<span style="color: Olive;">)</span><br/>
 </div></div>
-<p><img decoding="async" src="../wp-content/uploads/2020/05/Django-orm2_2.gif"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/05/Django-orm2_2.gif"/></p>
 <p>方法2: オブジェクトの id を渡す形式（渡されるデータは通常 id なので、オブジェクトの id を渡すのが一般的です）。</p>
 <p>一対多において、外部キー属性を設定するクラス（多側のテーブル）では、MySQL に表示されるフィールド名は次のとおりです：<strong>外部キー属性名_id</strong>。</p>
 <p>戻り値のデータ型はオブジェクト、つまり書籍オブジェクトです。</p>
@@ -358,7 +358,7 @@ insert into app01_author(name,age,au_detail_id) values ("令狐冲",25,1), ("任
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>book<span style="color: Gray;">,</span> <span style="color: Teal;">type</span><span style="color: Olive;">(</span>book<span style="color: Olive;">)</span><span style="color: Olive;">)</span> <br/>
     <span style="color: Green;font-weight:bold;">return</span> HttpResponse<span style="color: Olive;">(</span>book<span style="color: Olive;">)</span><br/>
 </div></div>
-<p><img decoding="async" src="../wp-content/uploads/2020/05/Django-orm2_3.gif"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/05/Django-orm2_3.gif"/></p>
 <h3>多対多（ManyToManyField）：3番目のリレーションテーブルにデータを追加</h3>
 <p><strong>方法1:</strong>オブジェクトを渡す形式で、戻り値はありません。</p>
 <p><strong>手順：</strong></p>
@@ -374,7 +374,7 @@ insert into app01_author(name,age,au_detail_id) values ("令狐冲",25,1), ("任
     book.<span style="color: #05a;">authors</span>.<span style="color: #05a;">add</span><span style="color: Olive;">(</span>chong<span style="color: Gray;">,</span> ying<span style="color: Olive;">)</span><br/>
     <span style="color: Green;font-weight:bold;">return</span> HttpResponse<span style="color: Olive;">(</span>book<span style="color: Olive;">)</span><br/>
 </div></div>
-<p><img decoding="async" src="../wp-content/uploads/2020/05/Django-orm2_4.gif"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/05/Django-orm2_4.gif"/></p>
 <p><strong>方法2:</strong>オブジェクトの id を渡す形式で、戻り値はありません。</p>
 <p><strong>手順：</strong></p>
 <ul><li>a. 著者オブジェクトの id を取得</li><li>b. 書籍オブジェクトを取得</li><li>c. 書籍オブジェクトの authors 属性に add メソッドで著者オブジェクトの id を渡す</li></ul>
@@ -389,7 +389,7 @@ insert into app01_author(name,age,au_detail_id) values ("令狐冲",25,1), ("任
     <span style="color: #a50"># 書籍オブジェクトの authors 属性に add メソッドで著者オブジェクトの id を渡す</span><br/>
     book.<span style="color: #05a;">authors</span>.<span style="color: #05a;">add</span><span style="color: Olive;">(</span>pk<span style="color: Olive;">)</span><br/>
 </div></div>
-<p><img decoding="async" src="../wp-content/uploads/2020/05/Django-orm2_5.gif"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/05/Django-orm2_5.gif"/></p>
 <h3>関連マネージャー（オブジェクト呼び出し）</h3>
 <p><strong>前提条件：</strong></p>
 <ul><li>多対多（双方向ともに関連マネージャーを持つ）</li><li>一対多（多側のクラスのオブジェクトだけが関連マネージャーを持ち、つまり逆方向のみ）</li></ul>
@@ -408,7 +408,7 @@ book_obj.<span style="color: #05a;">authors</span>.<span style="color: #05a;">ad
 book_obj.<span style="color: #05a;">authors</span>.<span style="color: #05a;">add</span><span style="color: Olive;">(</span>*<span style="color: Olive;">[</span><span style="color: Maroon;">1</span><span style="color: Gray;">,</span><span style="color: Maroon;">3</span><span style="color: Olive;">]</span><span style="color: Olive;">)</span> <span style="color: #a50"># id=1 と id=3 の著者オブジェクトをこの本の著者セットに追加します</span><br/>
 <span style="color: Green;font-weight:bold;">return</span> HttpResponse<span style="color: Olive;">(</span><span style="color: #a11;">"ok"</span><span style="color: Olive;">)</span><br/>
 </div></div>
-<p><img decoding="async" src="../wp-content/uploads/2020/05/Django-orm2_6.gif"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/05/Django-orm2_6.gif"/></p>
 <p>逆方向：<span class="marked">小文字のテーブル名_set</span></p>
 <div class="example"> <div class="example_code">
 ying <span style="color: Gray;">=</span> models.<span style="color: #05a;">Author</span>.<span style="color: #05a;">objects</span>.<span style="color: Teal;">filter</span><span style="color: Olive;">(</span>name<span style="color: Gray;">=</span><span style="color: #a11;">"任盈盈"</span><span style="color: Olive;">)</span>.<span style="color: #05a;">first</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
@@ -416,7 +416,7 @@ book <span style="color: Gray;">=</span> models.<span style="color: #05a;">Book<
 ying.<span style="color: #05a;">book_set</span>.<span style="color: #05a;">add</span><span style="color: Olive;">(</span>book<span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">return</span> HttpResponse<span style="color: Olive;">(</span><span style="color: #a11;">"ok"</span><span style="color: Olive;">)</span><br/>
 </div></div>
-<p><img decoding="async" src="../wp-content/uploads/2020/05/Django-orm2_7.gif"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/05/Django-orm2_7.gif"/></p>
 <p><strong>create()</strong>：新しいオブジェクトを作成し、同時に関連オブジェクトセットに追加します。</p>
 <p>新しく作成されたオブジェクトを返します。</p>
 <div class="example"> <div class="example_code">
@@ -426,7 +426,7 @@ book <span style="color: Gray;">=</span> wo.<span style="color: #05a;">book_set<
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>book<span style="color: Gray;">,</span> <span style="color: Teal;">type</span><span style="color: Olive;">(</span>book<span style="color: Olive;">)</span><span style="color: Olive;">)</span> <br/>
 <span style="color: Green;font-weight:bold;">return</span> HttpResponse<span style="color: Olive;">(</span><span style="color: #a11;">"ok"</span><span style="color: Olive;">)</span><br/>
 </div></div>
-<p><img decoding="async" src="../wp-content/uploads/2020/05/Django-orm2_8.gif"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/05/Django-orm2_8.gif"/></p>
 <p><strong>remove()</strong>：関連オブジェクトセットから指定されたモデルオブジェクトを削除します。</p><p>ForeignKey オブジェクトの場合、このメソッドは null=True（空にできる）のときのみ存在し、戻り値はありません。</p>
 <div class="example"><h2 class="example">インスタンス</h2> <div class="example_code">
 author_obj <span style="color: Gray;">=</span>models.<span style="color: #05a;">Author</span>.<span style="color: #05a;">objects</span>.<span style="color: #05a;">get</span><span style="color: Olive;">(</span><span style="color: Teal;">id</span><span style="color: Gray;">=</span><span style="color: Maroon;">1</span><span style="color: Olive;">)</span><br/>
@@ -434,7 +434,7 @@ book_obj <span style="color: Gray;">=</span> models.<span style="color: #05a;">B
 author_obj.<span style="color: #05a;">book_set</span>.<span style="color: #05a;">remove</span><span style="color: Olive;">(</span>book_obj<span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">return</span> HttpResponse<span style="color: Olive;">(</span><span style="color: #a11;">"ok"</span><span style="color: Olive;">)</span><br/>
 </div></div>
-<p><img decoding="async" src="../wp-content/uploads/2020/05/Django-orm2_9.gif"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/05/Django-orm2_9.gif"/></p>
 <p><strong>clear()</strong>：関連オブジェクトセットからすべてのオブジェクトを削除し、関連付けを削除しますが、オブジェクト自体は削除しません。</p>
 <p>ForeignKey オブジェクトの場合、このメソッドは null=True（空にできる）のときのみ存在します。</p>
 <p>戻り値はありません。</p>
@@ -455,7 +455,7 @@ res <span style="color: Gray;">=</span> book.<span style="color: #05a;">publish<
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>res<span style="color: Gray;">,</span> <span style="color: Teal;">type</span><span style="color: Olive;">(</span>res<span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">return</span> HttpResponse<span style="color: Olive;">(</span><span style="color: #a11;">"ok"</span><span style="color: Olive;">)</span><br/>
 </div></div>
-<p><img decoding="async" src="../wp-content/uploads/2020/05/Django-orm2_10.gif"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/05/Django-orm2_10.gif"/></p>
 <p>明教出版社が出版した書籍名を検索する（逆方向）。</p><p>逆方向：<span class="marked">オブジェクト.小文字クラス名_set(pub.book_set)</span>関連するテーブル（書籍テーブル）にジャンプできます。</p>
 <p>
 <strong>pub.book_set.all()</strong>：書籍テーブルのすべての書籍オブジェクトを取得し、QuerySet内で繰り返して個々の書籍オブジェクトを取り出します。</p>
@@ -466,7 +466,7 @@ res <span style="color: Gray;">=</span> pub.<span style="color: #05a;">book_set<
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>i.<span style="color: #05a;">title</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">return</span> HttpResponse<span style="color: Olive;">(</span><span style="color: #a11;">"ok"</span><span style="color: Olive;">)</span><br/>
 </div></div>
-<p><img decoding="async" src="../wp-content/uploads/2020/05/Django-orm2_11.gif"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/05/Django-orm2_11.gif"/></p>
 <h3>一対一</h3>
 <p>令狐冲の電話番号を検索する（正方向）</p>
 <p>正方向：オブジェクト.属性 (author.au_detail) で関連するテーブル（著者詳細テーブル）にジャンプできます。</p>
@@ -476,7 +476,7 @@ res <span style="color: Gray;">=</span> author.<span style="color: #05a;">au_det
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>res<span style="color: Gray;">,</span> <span style="color: Teal;">type</span><span style="color: Olive;">(</span>res<span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">return</span> HttpResponse<span style="color: Olive;">(</span><span style="color: #a11;">"ok"</span><span style="color: Olive;">)</span><br/>
 </div></div>
-<p><img decoding="async" src="../wp-content/uploads/2020/05/Django-orm2_12.gif"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/05/Django-orm2_12.gif"/></p>
 <p>住所が黑木崖にあるすべての著者の氏名を検索する（逆方向）。</p><p>一対一の逆方向では、次を使用します。<strong>オブジェクト.小文字クラス名</strong>それだけでよく、_set を付ける必要はありません。</p>
 <p>逆方向：オブジェクト.小文字クラス名(addr.author)で関連するテーブル（著者テーブル）にジャンプできます。</p>
 <div class="example"><h2 class="example">インスタンス</h2> <div class="example_code">
@@ -485,7 +485,7 @@ res <span style="color: Gray;">=</span> addr.<span style="color: #05a;">author</
 <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>res<span style="color: Gray;">,</span> <span style="color: Teal;">type</span><span style="color: Olive;">(</span>res<span style="color: Olive;">)</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">return</span> HttpResponse<span style="color: Olive;">(</span><span style="color: #a11;">"ok"</span><span style="color: Olive;">)</span><br/>
 </div></div>
-<p><img decoding="async" src="../wp-content/uploads/2020/05/Django-orm2_13.gif"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/05/Django-orm2_13.gif"/></p>
 <h3>多対多</h3><p>サンプルのすべての著者の名前と携帯電話番号（正方向）。</p><p>正方向：<strong>オブジェクト.属性(book.authors)</strong>関連するテーブル（著者テーブル）にジャンプできます。</p><p>著者テーブルには著者の電話番号がないため、再度次を使用します。<strong>オブジェクト.属性(i.au_detail)</strong>関連するテーブル（著者詳細テーブル）にジャンプします。</p>
 <div class="example"><h2 class="example">インスタンス</h2> <div class="example_code">
 book <span style="color: Gray;">=</span> models.<span style="color: #05a;">Book</span>.<span style="color: #05a;">objects</span>.<span style="color: Teal;">filter</span><span style="color: Olive;">(</span>title<span style="color: Gray;">=</span><span style="color: #a11;">"サンプル"</span><span style="color: Olive;">)</span>.<span style="color: #05a;">first</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
@@ -494,7 +494,7 @@ res <span style="color: Gray;">=</span> book.<span style="color: #05a;">authors<
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>i.<span style="color: #05a;">name</span><span style="color: Gray;">,</span> i.<span style="color: #05a;">au_detail</span>.<span style="color: #05a;">tel</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">return</span> HttpResponse<span style="color: Olive;">(</span><span style="color: #a11;">"ok"</span><span style="color: Olive;">)</span><br/>
 </div></div>
-<p><img decoding="async" src="../wp-content/uploads/2020/05/Django-orm2_14.gif"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/05/Django-orm2_14.gif"/></p>
 <p>任我行が出版したすべての書籍の名前を検索する（逆方向）。</p>
 <div class="example"><h2 class="example">インスタンス</h2> <div class="example_code">
 author <span style="color: Gray;">=</span> models.<span style="color: #05a;">Author</span>.<span style="color: #05a;">objects</span>.<span style="color: Teal;">filter</span><span style="color: Olive;">(</span>name<span style="color: Gray;">=</span><span style="color: #a11;">"任我行"</span><span style="color: Olive;">)</span>.<span style="color: #05a;">first</span><span style="color: Olive;">(</span><span style="color: Olive;">)</span><br/>
@@ -502,7 +502,7 @@ res <span style="color: Gray;">=</span> author.<span style="color: #05a;">book_s
 <span style="color: Green;font-weight:bold;">for</span> i <span style="color: Green;font-weight:bold;">in</span> res:<br/>
     <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span>i.<span style="color: #05a;">title</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">return</span> HttpResponse<span style="color: Olive;">(</span><span style="color: #a11;">"ok"</span><span style="color: Olive;">)</span><br/>
-</div></div><p><img decoding="async" src="../wp-content/uploads/2020/05/Django-orm2_15.gif"/></p>
+</div></div><p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/05/Django-orm2_15.gif"/></p>
 <hr/>
 <h2>ダブルアンダースコアに基づくクロステーブルクエリ</h2>
 <h3>順方向：属性名__跨テーブルの属性名
@@ -510,23 +510,23 @@ res <span style="color: Gray;">=</span> author.<span style="color: #05a;">book_s
 <h3>一対多</h3><p>菜鳥出版社が出版したすべての書籍の名前と価格を検索する。</p><div class="example"><h2 class="example">インスタンス</h2> <div class="example_code">
 res <span style="color: Gray;">=</span> models.<span style="color: #05a;">Book</span>.<span style="color: #05a;">objects</span>.<span style="color: Teal;">filter</span><span style="color: Olive;">(</span>publish__name<span style="color: Gray;">=</span><span style="color: #a11;">"菜鳥出版社"</span><span style="color: Olive;">)</span>.<span style="color: #05a;">values_list</span><span style="color: Olive;">(</span><span style="color: #a11;">"title"</span><span style="color: Gray;">,</span> <span style="color: #a11;">"price"</span><span style="color: Olive;">)</span><br/>
 </div></div>
-<p><img decoding="async" src="../wp-content/uploads/2020/05/Django-orm2_16.gif"/></p><p>逆方向：小<strong>文字クラス名__関連テーブルの属性名（book__title，book__price）</strong>テーブル間でデータを取得します。</p><div class="example"><h2 class="example">インスタンス</h2> <div class="example_code">
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/05/Django-orm2_16.gif"/></p><p>逆方向：小<strong>文字クラス名__関連テーブルの属性名（book__title，book__price）</strong>テーブル間でデータを取得します。</p><div class="example"><h2 class="example">インスタンス</h2> <div class="example_code">
 res <span style="color: Gray;">=</span> models.<span style="color: #05a;">Publish</span>.<span style="color: #05a;">objects</span>.<span style="color: Teal;">filter</span><span style="color: Olive;">(</span>name<span style="color: Gray;">=</span><span style="color: #a11;">"菜鳥出版社"</span><span style="color: Olive;">)</span>.<span style="color: #05a;">values_list</span><span style="color: Olive;">(</span><span style="color: #a11;">"book__title"</span><span style="color: Gray;">,</span><span style="color: #a11;">"book__price"</span><span style="color: Olive;">)</span><br/>
 <span style="color: Green;font-weight:bold;">return</span> HttpResponse<span style="color: Olive;">(</span><span style="color: #a11;">"ok"</span><span style="color: Olive;">)</span><br/>
 </div></div>
-<p><img decoding="async" src="../wp-content/uploads/2020/05/Django-orm2_17.gif"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/05/Django-orm2_17.gif"/></p>
 <h3>多対多</h3><p>任我行が出版したすべての書籍の名前を検索する。</p><p>正方向：属性名__関連テーブルの属性名(authors__name) を使用してテーブル間でデータを取得します。</p>
 <pre>res = models.Book.objects.filter(authors__name="任我行").values_list("title")</pre>
 <p>逆方向：小文字クラス名__関連テーブルの属性名（book__title） を使用してテーブル間でデータを取得します。</p>
 <pre>res = models.Author.objects.filter(name="任我行").values_list("book__title")</pre>
-<p><img decoding="async" src="../wp-content/uploads/2020/05/Django-orm2_18.gif"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/05/Django-orm2_18.gif"/></p>
 <h3>一対一</h3>
 <p>任我行の携帯電話番号を検索する。</p><p>正方向：<strong>属性名__関連テーブルの属性名(au_detail__tel)</strong>テーブル間でデータを取得します。</p>
 <pre>res = models.Author.objects.filter(name="任我行").values_list("au_detail__tel")</pre>
-<p><img decoding="async" src="../wp-content/uploads/2020/05/Django-orm2_19.gif"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/05/Django-orm2_19.gif"/></p>
 <p>逆方向：<strong>小文字クラス名__関連テーブルの属性名（author__name）</strong>テーブル間でデータを取得します。</p><pre>
 res = models.AuthorDetail.objects.filter(author__name="任我行").values_list("tel")</pre>
-<p><img decoding="async" src="../wp-content/uploads/2020/05/Django-orm2_20.gif"/></p> その他の拡張
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/05/Django-orm2_20.gif"/></p> その他の拡張
 </div>
 </div>
 <div class="archive-list" style="display:none;font-size: 14px;line-height: 1.8;margin-top: 20px;padding: 10px;">

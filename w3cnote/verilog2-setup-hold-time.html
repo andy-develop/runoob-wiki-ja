@@ -92,12 +92,12 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>ホールド時間とは、クロックトリガイベントが到来した後、データが安定して保持される必要がある最小時間であり、データが回路によって正確に伝送されるようにするためのものです。</p><p>通俗的には次のように理解できます。クロックが到来する前に、データは事前に準備しておく必要があります。クロックが到来した後も、データはしばらく安定している必要があります。セットアップ時間とホールド時間は、データが安定するウィンドウを構成します。下図のとおりです。</p>
 <p><img decoding="async" src="../wp-content/uploads/2021/05/v-set-hold-time-1.png"/></p>
 <p><a href="./verilog2-gate-delay.html" rel="noopener" target="_blank">『1.3 ゲート遅延』</a>で、簡単なDフリップフロップを紹介しました。次に、典型的な立ち上がりエッジDフリップフロップを見て、セットアップ時間とホールド時間の由来を説明します。</p>
-<p><img decoding="async" src="../wp-content/uploads/2021/05/v-set-hold-time-2.png"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2021/05/v-set-hold-time-2.png"/></p>
 <p>G1~G4のNANDゲートは維持ブロック回路であり、G5~G6はRSフリップフロップを構成します。</p><p>クロックはG2/G3ゲートに直接作用します。クロックがLowのときG2/G3の経路は閉じ、Highのとき経路が開いてデータのサンプリング伝送を行います。</p><p>しかし、データがG2/G3ゲートに伝送される前に、G4/G1 NANDゲートを経由するため、時間遅延が生じます。セットアップ時間の概念を導入するのは、G4/G1ゲートでのデータ遅延を補償するためです。すなわち、クロックが到来する前に、G2/G3側の入力データが準備できている必要があり、データが正しくサンプリングされるようにします。</p><p>データがクロックによってサンプリングされた後、RSフリップフロップに伝送されてラッチされる前に、G2/G3ゲートも経由するため、遅延が生じます。ホールド時間は、G2/G3ゲートでのデータ遅延を補償するためのものです。すなわち、クロックが到来した後、データがG6/G5 NANDゲートの入力端に正しく伝送されることを保証する必要があります。</p><p>データが伝送中にセットアップ時間またはホールド時間を満たさない場合、メタステーブル状態になり、伝送エラーが発生します。</p>
 <hr/>
 <h2>制約条件</h2>
 <h3>セットアップ時間の制約条件</h3><p>下図は、典型的なフリップフロップ間のデータ伝送の概略図です。ここで "Comb" は組み合わせ論理遅延を表し、"Clock Skew" はクロックスキューを表し、データはすべてクロックの立ち上がりエッジでトリガされます。</p>
-<p><img decoding="async" src="../wp-content/uploads/2021/05/v-set-hold-time-3.png"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2021/05/v-set-hold-time-3.png"/></p>
 <p>クロックが到来する前に、データは事前に準備できている必要があり、クロックによって正しくサンプリングされるためには、データパス（data path）がクロックパス（clock path）よりも速いこと、すなわちデータ到達時間（data arrival time）がデータ要求時間（data required time）より小さいことが要求されます。このときセットアップ時間が満たすべき式は次のとおりです。</p>
 <pre>Tcq + Tcomb + Tsu &lt;= Tclk + Tskew （1）</pre>
 <p>各時間パラメータの説明は次のとおりです。</p>
@@ -111,10 +111,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h3>セットアップ時間とホールド時間のタイミング図</h3><p>セットアップ時間とホールド時間に関する複雑なタイミング図を次に示します。</p><p>ここで、緑色の部分はセットアップ時間のマージン（margin）を表し、青色の部分はホールド時間のマージンを表します。時間マージンとは、回路がタイミング制約を満たす条件下での、不等式(1)または(2)の両辺の時間差のことです。</p>
 <pre>セットアップ時間マージンは：（クロックパスタイム）-（データパスタイム）</pre>
 <p>この図は、セットアップ時間とホールド時間の制約条件の導出を理解しやすくするためのものです。ここで記憶が混乱するようであれば、深く追求しないことをお勧めします(^_^)。</p>
-<p><img decoding="async" src="../wp-content/uploads/2021/05/v-set-hold-time-4.png"/></p><hr/>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2021/05/v-set-hold-time-4.png"/></p><hr/>
 <h2>計算例</h2><p>セットアップ時間とホールド時間の概念をよりよく理解し、面接や仕事にも役立つよう、ここでは典型的なセットアップ時間とホールド時間の試験問題をいくつか挙げて参考にします。</p>
 <p>例1：</p><p>ネット遅延を考慮すると、ある回路の各種遅延値（単位：ns）は次のとおりで、クロック周期は15nsです。この回路のセットアップ時間とホールド時間にviolation（違反）があるかどうか判断してください。</p>
-<p><img decoding="async" src="../wp-content/uploads/2021/05/v-set-hold-time-5.png"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2021/05/v-set-hold-time-5.png"/></p>
 <p><strong>解：</strong></p><p>ここでは遅延値の最大値と最小値が関係します。</p>
 <p>タイミング制約が常に成立することが要求されるため、式(1)(2)は次のように変形されます。</p>
 <pre>max (data path time) &lt;= min (clock path time)
@@ -141,9 +141,9 @@ Thold &lt;= T2min</pre><p>この例では多くの遅延タイプが考慮され
 <pre>Tcq + Tbuf + Tsu &lt;= Tclk</pre>
 <p>この回路の最高動作周波数は次のように求められます。</p><pre>1 / (6ns + 1ns + 3ns) = 100Mhz。</pre><p>この例はフリップフロップ自身から自身へのフィードバックです。データパスとクロックパスをしっかり分析する必要があります。次に、このタイプの拡張例題をもう1つ見てみましょう。</p>
 <p>例4：</p><ul><li>（1）次の回路の固有のセットアップ時間とホールド時間は？</li><li>（2）この回路の最高動作周波数は？</li></ul>
-<p><img decoding="async" src="../wp-content/uploads/2021/05/v-set-hold-time-7.png"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2021/05/v-set-hold-time-7.png"/></p>
 <p><strong>解：</strong></p><p>この回路はデータパスとクロックパスの両方に遅延があります。フリップフロップと同じセットアップ時間とホールド時間の制約条件を達成するために、フリップフロップのD端子とクロック端子CK、および等価なデータ端子Dataとクロック端子Clockのタイミング図は次のとおりです（簡潔に描くためにかなり努力しました~_~）：</p>
-<p><img decoding="async" src="../wp-content/uploads/2021/05/v-set-hold-time-8.png"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2021/05/v-set-hold-time-8.png"/></p>
 <p>(1) 図からわかるように：</p>
 <p>この回路の固有のセットアップ時間は次のとおりです。<strong>2.1 + 2 - 1.2 = 2.9ns</strong></p>
 <p>固有のホールド時間は次のとおりです。<strong>1.2 + 1.5 - 2.1 = 0.6ns</strong></p>

@@ -99,7 +99,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <ul><li>メッセージブロードキャスト</li><li>クラッシュリカバリ</li></ul>
 <h3>メッセージブロードキャスト</h3>
 <p>Zookeeper は単一のメインプロセスである Leader を使用して、クライアントからのすべてのトランザクション要求を受信・処理し、ZAB プロトコルの原子ブロードキャストプロトコルを用いて、トランザクション要求を Proposal として全ての Follower ノードにブロードキャストします。クラスタ内の過半数の Follower サーバーが正しい ACK を返すと、Leader は再びすべての Follower サーバーに commit メッセージを送信し、この提案をコミットします。このプロセスは 2PC トランザクションコミットと略称できます。全体のフローは下図を参照してください。Observer ノードは Leader データの同期のみを担当し、2PC データ同期プロセスには参加しないことに注意してください。</p>
-<p><img decoding="async" src="../wp-content/uploads/2020/09/zk-data-stream-async.png"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/09/zk-data-stream-async.png"/></p>
 <h3>クラッシュリカバリ</h3><p>通常のメッセージブロードキャスト状況では問題なく動作しますが、Leader サーバーがクラッシュした場合、またはネットワークの原因により Leader サーバーが過半数の Follower との通信を失った場合、クラッシュリカバリモードに入り、新しい Leader サーバーを選出する必要があります。このプロセスでは、データ不整合の2つの潜在的な問題が発生する可能性があり、ZAB プロトコルの特性によって回避する必要があります。</p>
 <ul><li>1. Leader サーバーが commit メッセージを送信した後、すぐにクラッシュする</li><li>2. Leader サーバーが proposal を提出した直後にクラッシュする</li></ul>
 <p>ZAB プロトコルのリカバリモードでは、以下の戦略を使用します：</p>

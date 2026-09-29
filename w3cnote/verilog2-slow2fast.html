@@ -158,7 +158,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: #A52A2A; font-weight: bold;">endmodule</span><br/>
 </div></div>
 <p>この方法のタイミング結果図は以下のとおりです。</p><p>明らかに、clk2クロックドメインでは、t2の時点でデータをサンプリングしてバッファリングする方が、t1の時点よりもはるかに安全です。</p>
-<p><img decoding="async" src="../wp-content/uploads/2021/05/v-slow2fast-2.png"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2021/05/v-slow2fast-2.png"/></p>
 <p>
 <strong>しかし、低速クロックドメインにデータイネーブル信号 din_en がない場合、またはデータイネーブル信号が常に有効な場合、高速クロックドメインでデータイネーブル信号の立ち上がりエッジを検出する方法は無効になります。データイネーブル信号が常に有効であるため、最初のデータを除いて、高速クロックドメインは後続データの転送タイミングを検出できません。</strong></p><p>解決方法は、高速クロックドメインで低速クロック信号のエッジを検出することです。</p><p>2つのクロックの周波数差が小さい場合、サンプリングするデータが現在のクロックサイクルのデータであることを保証するために、データを遅延バッファリングする必要があるかもしれません。2つのクロックの周波数差が大きい場合、データのサンプリングタイミングはカウント方法によって取得できるため、データをバッファリングする必要はありません。</p><p>カウントによる遅延サンプリング方法を利用して低速クロックのエッジを検出するVerilog記述は以下のとおりです。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">

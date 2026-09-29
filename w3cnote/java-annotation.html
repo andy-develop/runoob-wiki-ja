@@ -97,7 +97,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <ul><li>@SafeVarargs - Java 7 からサポートされ、パラメータがジェネリック変数であるメソッドまたはコンストラクタ呼び出しによって生成される警告を無視します。</li><li>@FunctionalInterface - Java 8 からサポートされ、匿名関数または関数型インターフェースを識別します。</li><li>@Repeatable - Java 8 からサポートされ、あるアノテーションが同じ宣言で複数回使用できることを示します。</li></ul>
 <hr/>
 <h2>1、Annotationのアーキテクチャ</h2>
-<p><img decoding="async" src="../wp-content/uploads/2019/08/28123151-d471f82eb2bc4812b46cc5ff3e9e6b82.jpg"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2019/08/28123151-d471f82eb2bc4812b46cc5ff3e9e6b82.jpg"/></p>
 <p>これから、次のことがわかります:</p>
 <p><strong>(01) 1つのAnnotationは1つのRetentionPolicyと関連付けられます。</strong></p>つまり、各Annotationオブジェクトには固有のRetentionPolicyプロパティがあります。<p><strong>(02) 1つのAnnotationは1〜n個のElementTypeと関連付けられます。</strong></p>
 <p>つまり、各Annotationオブジェクトには複数のElementTypeプロパティを持つことができます。</p>
@@ -209,7 +209,7 @@ public @interface Deprecated {
 <ul><li>(01) @interface -- これは Deprecated を修飾するために使用され、Deprecated が java.lang.annotation.Annotation インターフェースを実装していることを意味します。つまり、Deprecated は 1 つの Annotation です。  
 (02) @Documented -- その作用は、この Annotation が javadoc に表示できることを説明することです。</li><li>(03) @Retention(RetentionPolicy.RUNTIME) -- その作用は、Deprecated のポリシーが RetentionPolicy.RUNTIME であることを指定することです。つまり、コンパイラは Deprecated の情報を .class ファイルに保持し、仮想マシンが読み取ることができます。</li><li>(04) @Deprecated が示す内容は、もはや使用が推奨されません。</li></ul>
 <p>たとえば、あるメソッドが @Deprecated で示されている場合、そのメソッドは使用が推奨されません。開発者が @Deprecated で示されたメソッドを使用またはオーバーライドしようとすると、コンパイラは対応するヒント情報を表示します。例は次のとおりです：</p>
-<p><img decoding="async" src="../wp-content/uploads/2019/08/28132554-8729c2663c5943a4b3302f210904e1d7.jpg"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2019/08/28132554-8729c2663c5943a4b3302f210904e1d7.jpg"/></p>
 <div class="example"><h2 class="example">DeprecatedTest.java</h2> <div class="example_code">
 <span style="color: #000000; font-weight: bold;">import</span> <span style="color: #006699;">java.util.Date</span><span style="color: #339933;">;</span><br/>
 <span style="color: #000000; font-weight: bold;">import</span> <span style="color: #006699;">java.util.Calendar</span><span style="color: #339933;">;</span><br/>
@@ -364,7 +364,7 @@ public @interface SuppressWarnings {
 <ul><li>TYPE は、「クラス、インターフェース（アノテーションタイプを含む）、または列挙型の宣言」を注釈できることを意味します。</li><li>FIELD は、「フィールド宣言」を注釈できることを意味します。</li><li>METHOD は、「メソッド」を注釈できることを意味します。</li><li>PARAMETER は、「パラメータ」を注釈できることを意味します。</li><li>CONSTRUCTOR は、「コンストラクタ」を注釈できることを意味します。</li><li>LOCAL_VARIABLE は、「ローカル変数」を注釈できることを意味します。</li></ul>
 <p>(04) String[] value(); は、SuppressWarnings がパラメータを指定できることを意味します</p>
 <p>(05) SuppressWarnings の役割は、コンパイラに「それが注釈した内容」の特定の警告を抑制させることです。例えば、"@SuppressWarnings(value={"deprecation", "unchecked"})" は、「それが注釈した内容」の中の「非推奨警告」と「未チェック変換時の警告」を抑制することを示します。例は以下の通りです：</p>
-<p><img decoding="async" src="../wp-content/uploads/2019/08/28133438-ba03c958e2c047a08d150d9abe298b73.jpg"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2019/08/28133438-ba03c958e2c047a08d150d9abe298b73.jpg"/></p>
 <p><img decoding="async" src="../wp-content/uploads/2019/08/28133459-3f430d51736d44edb17ada87e4398808.jpg"/></p>
 <div class="example"><h2 class="example">SuppressWarningTest.java</h2> <div class="example_code">
 <span style="color: #000000; font-weight: bold;">import</span> <span style="color: #006699;">java.util.Date</span><span style="color: #339933;">;</span><br/>
@@ -401,7 +401,7 @@ all          -- 关于以上所有情况的警告。</pre>
 <p>例えば、@SuppressWarnings、@Deprecated、@Override はすべてコンパイルチェックの役割を持ちます。</p>
 <p>(01) @SuppressWarnings と @Deprecated については、「第3部分」で詳しく説明済みです。ここでは例を挙げて説明しません。</p>
 <p>(02) あるメソッドが @Override で注釈されている場合、そのメソッドが親クラスの同名メソッドをオーバーライドすることを意味します。もし @Override で示されたメソッドがあるのに、親クラスに対応する同名メソッドが存在しない場合、コンパイラはエラーを報告します。例は以下の通りです：</p>
-<p><img decoding="async" src="../wp-content/uploads/2019/08/28134305-4722f5184b1d4cc0aac2c0d1223c0fcb.jpg"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2019/08/28134305-4722f5184b1d4cc0aac2c0d1223c0fcb.jpg"/></p>
 <div class="example"><h2 class="example">OverrideTest.java</h2> <div class="example_code">
 <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">class</span> OverrideTest <span style="color: #009900;">{</span><br/>
 <br/>

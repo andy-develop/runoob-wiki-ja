@@ -151,7 +151,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>文（9）〜（12）はすべてノンブロッキング代入であり、並列実行されます。</p>
 <p>まず、(9)～(12)はすべて並列実行ですが、実行順序は(8)より後です。したがって、信号 value_non = ai + bi の計算でも信号 ai、bi の新しい値が使用され、結果は7になります。</p>
 <p>次に、(10)～(12)は並列実行であるため、value_non2 = ai2 + bi2 の計算時には、信号 ai2、bi2 の最新のノンブロッキング代入結果は考慮されません。つまり、value_non2 の計算時には信号 ai2、bi2 の古い値が使用され、結果は 4'hF になります。</p><p>
-<img decoding="async" src="../wp-content/uploads/2020/09/K8eLzJ7786CQdN66.png"/></p>
+<img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/09/K8eLzJ7786CQdN66.png"/></p>
 <h3>ノンブロッキング代入を使用して競合ハザードを回避する</h3><p>上記のシミュレーションコードは、読者がブロッキング代入とノンブロッキング代入の違いをよりよく理解するためのものです。実際のVerilogコード設計では、1つの手続き構造内でブロッキング代入とノンブロッキング代入を混在させないように注意してください。2つの代入方法を混用すると、タイミングを制御しにくくなり、予期しない結果が得られやすくなります。</p><p>多くの場合、回路を設計するときは、always順序論理ブロックではノンブロッキング代入を多用し、always組み合わせ論理ブロックではブロッキング代入を多用します。回路をシミュレーションするときは、initialブロックでは一般的にブロッキング代入を多用します。</p><p>下に示すように、クロックの立ち上がりエッジで2つのレジスタ値を交換する機能を実現するために、2つのalwaysブロックでブロッキング代入を使用します。</p><p>2つのalwaysブロック内の文は同時に実行されますが、a=b と b=a の実行順序は判定できないため、競合状態を引き起こします。</p><p>しかし、どちらが先に実行されるかにかかわらず（コンパイラなどに関係します）、タイミング問題を考慮しない場合、それらの実行順序には必ず前後があり、最終的に a と b の値は常に等しくなります。2つのレジスタ値を交換する効果は得られません。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 <span style="color: #A52A2A; font-weight: bold;">always</span> <span style="color: #5D478B;">@</span><span style="color: #9F79EE;">(</span><span style="color: #A52A2A; font-weight: bold;">posedge</span> clk<span style="color: #9F79EE;">)</span> <span style="color: #A52A2A; font-weight: bold;">begin</span><br/>

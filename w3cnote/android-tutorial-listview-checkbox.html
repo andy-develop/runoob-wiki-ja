@@ -99,7 +99,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <hr/>
 <h2>1. 問題が発生する原因：</h2>
 <p>これはネットで見つけた、ListViewのgetViewメソッドの呼び出しメカニズムに関する図です。</p>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2015/09/23101560K-0.jpg"/></p>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/09/23101560K-0.jpg"/></p>
 <p>上の図には一つの<strong>Recycler</strong>ものがあります。普段、ListView上で見えるItemはメモリ内にあり、その他のItemはこのRecyclerの中に置かれます。最初にitemを読み込むとき、現在のページ内のconvertViewはすべてNULLです。画面外にスクロールすると、このとき<strong>ConvertView</strong>空ではないため、新しい項目はこのConvertViewを再利用します！簡単な例を書いて、ログを追ってみましょう。以下は実行後のログの図の一部です！</p>
 <p><img alt="" decoding="async" src="../wp-content/uploads/2015/09/64217183.jpg"/></p>
 <p>図からわかるように、Positionが12から始まると、ConvertViewは空ではなくなります。具体的にここで何を表しているのかは、私もわかりません。おそらくソースコードを追う必要があります...ここでConvertViewがキャッシュされることを知っておけば十分です。この原因でcheckboxの位置ずれが発生するため、最初の解決方法はこのConvertViewを再利用しないこと、あるいは毎回getViewでこのConvertViewをnullに設定することです。しかし、表示する必要があるItemの数が膨大な場合、この方法は非常に冗長になります。一般のに実際の開発では、以下の解決方法を使用します。<strong>現在のItemのCheckBox状態を保存するものを見つけて、初期化時に判断し、選択済みかどうかを設定します！</strong></p>

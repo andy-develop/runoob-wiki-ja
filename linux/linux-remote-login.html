@@ -282,9 +282,9 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>Windows システム上の Linux リモートログインクライアントには、SecureCRT、Putty、SSH Secure Shell などがあります。この記事では Putty を例としてリモートサーバーにログインします。</p>
 <p>Putty ダウンロードアドレス：<a href="https://www.putty.org/" rel="noopener noreferrer" target="_blank">https://www.putty.org/</a></p>
 <p>Putty をダウンロードしたら、putty.exe をダブルクリックすると、次のようなウィンドウが表示されます。</p>
-<p><img class="attachment-full" decoding="async" src="../wp-content/uploads/2014/06/5_1.png"/></p>
+<p><img class="attachment-full" decoding="async" src="https://www.runoob.com/wp-content/uploads/2014/06/5_1.png"/></p>
 <p>Host Name (or IP address) の下のボックスに、ログインしたいリモートサーバーの IP を入力します（ifconfig コマンドでサーバーの IP を確認できます）。その後 Enter キーを押します。</p>
-<p><img class="attachment-full" decoding="async" src="../wp-content/uploads/2014/06/5_12.png"/></p>
+<p><img class="attachment-full" decoding="async" src="https://www.runoob.com/wp-content/uploads/2014/06/5_12.png"/></p>
 <p>ここで、ログインするユーザー名の入力を求められます。</p>
 <p><img class="attachment-full" decoding="async" src="../wp-content/uploads/2014/06/5_13.png"/></p>
 <p>root と入力して Enter キーを押し、パスワードを入力すると、リモートの Linux システムにログインできます。</p>
@@ -294,13 +294,13 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>SSH は Secure Shell の略で、IETF のネットワークワーキンググループ（Network Working Group）によって策定されました。</p>
 <p>SSH は、アプリケーション層とトランスポート層の上に構築された安全なプロトコルです。</p>
 <p>まず、ツール PUTTYGEN.EXE を使用して鍵ペアを生成します。ツール PUTTYGEN.EXE を開くと、次の図のようになります。</p>
-<p><img class="attachment-full" decoding="async" src="../wp-content/uploads/2014/06/5_15.png"/></p>
+<p><img class="attachment-full" decoding="async" src="https://www.runoob.com/wp-content/uploads/2014/06/5_15.png"/></p>
 <p>このツールは、SSH-1(RSA)、SSH-2(RSA)、SSH-2(DSA) の3種類の形式のキーを生成できます。ここではデフォルトの形式である SSH-2(RSA) を使用します。Number of bits in a generated key は、生成されるキーのサイズを示します。この数値が大きいほど、生成されるキーはより複雑になり、セキュリティは高くなります。ここでは 2048 と入力します。</p>
 <p><img class="attachment-full" decoding="async" src="../wp-content/uploads/2014/06/5_16.png"/></p>
 <p>次に Generate をクリックして鍵ペアの生成を開始します：</p>
 <p><img class="attachment-full" decoding="async" src="../wp-content/uploads/2014/06/5_17.png"/></p>
 <p>注意すべき点は、このプロセス中にマウスを動かし続ける必要があることです。そうしないと、プログレスバーが進みません。</p>
-<p><img class="attachment-full" decoding="async" src="../wp-content/uploads/2014/06/5_18.png"/></p>
+<p><img class="attachment-full" decoding="async" src="https://www.runoob.com/wp-content/uploads/2014/06/5_18.png"/></p>
 <p>ここまでで、鍵ペアが生成されました。鍵にパスワード（Key Passphrase）を入力することもできますし、空のままにすることもできます。次に、Save public key をクリックして公開鍵を保存し、Save private Key をクリックして秘密鍵を保存します。筆者は、他人に覗かれるのを防ぎ、誤って削除するのを防ぐために、安全な場所に保管することをお勧めします。次は、リモートの Linux ホストでの設定です。</p>
 <p>1) ディレクトリ /root/.ssh を作成し、権限を設定します</p>
 <p>[root@localhost ~]# mkdir /root/.ssh mkdir コマンドはディレクトリを作成するために使用されます。詳細は後で説明しますので、今は概要だけ理解しておいてください。</p>
@@ -309,9 +309,9 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>[root@localhost ~]# vim /root/.ssh/authorized_keys vim コマンドはテキストファイルを編集するためのコマンドです。これも後の章で詳しく説明します。</p>
 <p>3) 先ほど生成した public key ファイルを開きます。ワードパッドで開くことをお勧めします。見やすいからです。AAAA で始まり「---- END SSH2 PUBLIC KEY ----」の行までのすべての内容をコピーし、/root/.ssh/authorized_keys ファイルに貼り付けます。すべての文字が1行にあることを確認してください。（コピーした内容をまずメモ帳に貼り付け、1行に編集してからそのファイルに貼り付けることもできます。）</p>
 <p>ここで貼り付け方法を簡単に紹介します。vim でそのファイルを開くと、ファイルが存在しないため vim が自動的に作成します。キーボードの「i」を押してから、Shift + Insert を同時に押して貼り付けます（またはマウスの右クリックでも構いません）。ただし、クリップボードにコピー済みであることが前提です。貼り付けが完了したら、カーソルをその行の先頭に移動して入力します。<strong>ssh-rsa</strong>、その後スペースキーを押します。次に ESC を押し、コロン wq つまり :wq と入力すると保存されます。形式は次の図のとおりです：</p>
-<p><img class="attachment-full" decoding="async" src="../wp-content/uploads/2014/06/5_19.png"/></p>
+<p><img class="attachment-full" decoding="async" src="https://www.runoob.com/wp-content/uploads/2014/06/5_19.png"/></p>
 <p>4) 次に putty のオプションを設定します。ウィンドウ左側の SSh –&gt; Auth をクリックし、ウィンドウ右側の Browse… をクリックして、先ほど生成した秘密鍵を選択します。そして Open をクリックします。このとき root と入力すれば、パスワードを入力しなくてもログインできます。</p>
-<p><img class="attachment-full" decoding="async" src="../wp-content/uploads/2014/06/5_20.png"/></p>
+<p><img class="attachment-full" decoding="async" src="https://www.runoob.com/wp-content/uploads/2014/06/5_20.png"/></p>
 <p>先ほど Key Passphrase を設定した場合は、この時点でパスワードの入力を求められます。より安全にするために、Key Passphrase を設定することをお勧めします。</p> その他の拡張
 </div>
 </div>

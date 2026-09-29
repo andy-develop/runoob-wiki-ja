@@ -86,20 +86,20 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <!-- ad start-->
 <!-- ad end-->
 <p>Perl言語を使用している多くの皆さんは、よくこんな問題に直面します。Perlは中国語をサポートしていない？ Perlで中国語を入出力すると文字化けが発生します。どうすればいいのでしょうか？ 以下で筆者が皆さんにこの問題の解決方法を説明します。</p>
-<p><img decoding="async" src="../wp-content/uploads/2019/02/xcc8bae8c5bb5b3f01a9f8b37a24dd25295e7b66d.jpg"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2019/02/xcc8bae8c5bb5b3f01a9f8b37a24dd25295e7b66d.jpg"/></p>
 <h2>方法/手順</h2>
 <p>Windows上のActivePerlを例にとります。</p>
 <p>私のコードは非常に簡単で、たったの一行です:</p>
 <pre>print "你好";</pre>
 <p>しかし文字化けが発生しました。図のとおりです。</p>
-<p><img decoding="async" src="../wp-content/uploads/2019/02/x35be09a4109b2868d2ec7eac62289a34549a58ae.jpg"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2019/02/x35be09a4109b2868d2ec7eac62289a34549a58ae.jpg"/></p>
 <p>このような問題に遭遇した場合、どうすればよいでしょうか？</p>
 <p>実はこれはPerlのエンコーディングの問題で、オペレーティングシステムのエンコーディングに関係しています。</p>
 <p>cmdコマンドプロンプトを開き、chcp と入力してエンコーディングタイプのコードを取得します。</p>
 <p>見てわかるように、私のWindowsはコード番号936がデフォルトのエンコーディング形式です。</p>
-<p><img decoding="async" src="../wp-content/uploads/2019/02/x553e8168918f15cb12267053779ad837308e1db4.jpg"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2019/02/x553e8168918f15cb12267053779ad837308e1db4.jpg"/></p>
 <p>すると、936コードページはgb2313（つまり中国語）、またはgbkに対応していることがわかります。</p>
-<p><img decoding="async" src="../wp-content/uploads/2019/02/xb965d3e97cb3fcc77081ae6ae3f7719c689b980d.jpg"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2019/02/xb965d3e97cb3fcc77081ae6ae3f7719c689b980d.jpg"/></p>
 <p>Windowsがgb2312エンコーディングを使っていることがわかったので、エンコーディング形式を変更するだけで済みます。</p>
 <p>コードの先頭に入力します：</p>
 <pre>use utf8;
@@ -119,8 +119,8 @@ print "你好";
 </pre>
 <p>これで中国語を正常に出力できるようになったのではないでしょうか？</p>
 <p>一点注意してください。コードが中国語のファイルの読み取りに関わる場合は、必ず次を追加してください。<span class="marked">binmode(STDIN,":encoding(gbk)");</span>。</p>
-<p><img decoding="async" src="../wp-content/uploads/2019/02/x8bf07a2442f03b30b6b498f9dc6eaf5370aca669.jpg"/></p>
-<p><img decoding="async" src="../wp-content/uploads/2019/02/x68dd4a12a4f42216c279d358bf55d6d3ee746d72.jpg"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2019/02/x8bf07a2442f03b30b6b498f9dc6eaf5370aca669.jpg"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2019/02/x68dd4a12a4f42216c279d358bf55d6d3ee746d72.jpg"/></p>
 <p>もう一つの方法として、STDIN、STDOUT、STDERR（つまり標準入力、標準出力、標準エラー）に対して、すべて特定のエンコーディングをエンコーディング形式として使用します。</p>
 <p>あの簡単な小さなプログラムで、print が中国語を出力します。</p>
 <p>コードは次のとおりです：</p>
@@ -130,8 +130,8 @@ use open ":encoding(gbk)",":std";
 #标准输入、输出、错误皆用gbk编码格式进行编码
 
 print "你好";</pre>
-<p><img decoding="async" src="../wp-content/uploads/2019/02/x8bf07a2442f03b30b6b498f9dc6eaf5370aca669-1.jpg"/></p>
-<p><img decoding="async" src="../wp-content/uploads/2019/02/x68dd4a12a4f42216c279d358bf55d6d3ee746d72-1.jpg"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2019/02/x8bf07a2442f03b30b6b498f9dc6eaf5370aca669-1.jpg"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2019/02/x68dd4a12a4f42216c279d358bf55d6d3ee746d72-1.jpg"/></p>
 <blockquote><p>原文アドレス：https://jingyan.baidu.com/article/4f7d5712fd36301a21192744.html</p></blockquote>
 </div>
 </div>

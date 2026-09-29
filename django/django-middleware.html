@@ -313,7 +313,7 @@ MIDDLEWARE <span style="color: Gray;">=</span> <span style="color: Olive;">[</sp
 </div></div>
 <hr/>
 <h2>カスタムミドルウェアク​​ラスのメソッド</h2><p>カスタムミドルウェアク​​ラスのメソッドには、process_request と process_response があります。</p>
-<p><img decoding="async" src="../wp-content/uploads/2020/05/Django-md_5.png"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/05/Django-md_5.png"/></p>
 <h3>process_request メソッド</h3><p>process_request メソッドには request という 1 つのパラメータがあります。この request はビュー関数の request と同じものです。</p>
 <p>process_request メソッドの戻り値は、None または HttpResponse オブジェクトです。</p>
 <ul><li>戻り値が None の場合は、通常のフローで続行し、次のミドルウェアに処理を渡します。</li><li>戻り値が HttpResponse オブジェクトの場合、Django は後続のビュー関数の前に実行するメソッドとビュー関数を実行せず、そのミドルウェアを起点としてミドルウェアを逆順に実行し、実行するのはビュー関数の後に実行するメソッドです。</li></ul>
@@ -329,7 +329,7 @@ MIDDLEWARE <span style="color: Gray;">=</span> <span style="color: Olive;">[</sp
     <span style="color: Green;font-weight:bold;">def</span> process_request<span style="color: Olive;">(</span><span style="color: Teal;">self</span><span style="color: Gray;">,</span> request<span style="color: Olive;">)</span>:<br/>
        <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"md1  process_request メソッド。"</span><span style="color: Gray;">,</span> <span style="color: Teal;">id</span><span style="color: Olive;">(</span>request<span style="color: Olive;">)</span><span style="color: Olive;">)</span> <span style="color: #a50">#ビューの前に実行</span><br/>
 </div></div>
-<p><img decoding="async" src="../wp-content/uploads/2020/05/Django-md_1.gif"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/05/Django-md_1.gif"/></p>
 <h3>process_response</h3><p>process_response メソッドには 2 つのパラメータがあります。1 つは request、もう 1 つは response です。request はリクエストオブジェクト、response はビュー関数が返す HttpResponse オブジェクトです。このメソッドは戻り値を持つ必要があり、かつ response である必要があります。</p>
 <p>process_response メソッドはビュー関数の後に実行されます。</p>
 <p>複数のミドルウェアを設定する場合、MIDDLEWARE の登録順序、つまりリストのインデックス値に従って逆順に実行されます。</p>
@@ -366,8 +366,8 @@ process_view(request, view_func, view_args, view_kwargs)</pre>process_view メ�
         <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"md1  process_view メソッド！"</span><span style="color: Olive;">)</span> <span style="color: #a50">#ビューの前に実行 順に実行</span><br/>
         <span style="color: #a50">#return view_func(request)</span><br/>
 </div></div>
-<p><img decoding="async" src="../wp-content/uploads/2020/05/Django-md_2.gif"/></p>
-<p><img decoding="async" src="../wp-content/uploads/2020/05/md-32rdf.png"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/05/Django-md_2.gif"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/05/md-32rdf.png"/></p>
 <h3>
 process_exception</h3><p>process_exception メソッドは次のとおりです。</p><pre>
 process_exception(request, exception)</pre>
@@ -397,7 +397,7 @@ process_exception(request, exception)</pre>
         <span style="color: Green;font-weight:bold;">print</span><span style="color: Olive;">(</span><span style="color: #a11;">"md1  process_exception メソッド！"</span><span style="color: Olive;">)</span> <br/>
         <span style="color: #a50"># return HttpResponse(exception) #エラー情報を返す</span><br/>
 </div></div>
-<p><img decoding="async" src="../wp-content/uploads/2020/05/Django-md_3.gif"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/05/Django-md_3.gif"/></p>
 その他の拡張
 </li></ul></div>
 </div>

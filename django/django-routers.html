@@ -345,7 +345,7 @@ urlpatterns <span style="color: Gray;">=</span> <span style="color: Olive;">[</s
     path<span style="color: Olive;">(</span><span style="color: #a11;">"app01/"</span><span style="color: Gray;">,</span> include<span style="color: Olive;">(</span><span style="color: #a11;">"app01.urls"</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span> <br/>
     path<span style="color: Olive;">(</span><span style="color: #a11;">"app02/"</span><span style="color: Gray;">,</span> include<span style="color: Olive;">(</span><span style="color: #a11;">"app02.urls"</span><span style="color: Olive;">)</span><span style="color: Olive;">)</span><span style="color: Gray;">,</span> <br/>
 <span style="color: Olive;">]</span><br/>
-</div></div><p><img decoding="async" src="../wp-content/uploads/2020/05/Django-env3.png"/></p>
+</div></div><p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/05/Django-env3.png"/></p>
 <p>各 app ディレクトリで、独自の urls.py ファイルを書き、パスの遷移を行います。</p>
 <p>app01 ディレクトリ：</p>
 <pre>from django.urls import path,re_path 
@@ -376,14 +376,14 @@ urlpatterns = [
 <p><img decoding="async" src="../wp-content/uploads/2020/05/Django-env7.png"/></p>
 <p>テンプレート templates 内の HTML ファイルで、次を使用して<strong>{% url "ルートエイリアス" %}</strong>逆解析します。</p>
 <pre>&lt;form action="{% url 'login' %}" method="post"&gt; </pre>
-<p><img decoding="async" src="../wp-content/uploads/2020/05/Django-env8.png"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/05/Django-env8.png"/></p>
 <h3>正規表現パス（無名グループ）</h3>
 <p>urls.py でルートにエイリアスを付けます。<strong>name="ルートエイリアス"</strong>。</p>
 <pre>re_path(r"^login/([0-9]{2})/$", views.login, name="login")</pre>
 <p><img decoding="async" src="../wp-content/uploads/2020/05/Django-env9.png"/></p>
 <p>views.py で、django.urls から reverse をインポートし、次を使用して<strong>reverse("ルートエイリアス", args=(正規表現にマッチするパラメータ,))</strong>逆解析します。</p>
 <pre>return redirect(reverse("login",args=(10,)))</pre>
-<p><img decoding="async" src="../wp-content/uploads/2020/05/Django-env10.png"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/05/Django-env10.png"/></p>
 <p>テンプレート templates 内の HTML ファイルで次を使用して<strong>{% url "ルートエイリアス" 正規表現にマッチするパラメータ %}</strong>逆解析します。</p>
 <pre>&lt;form action="{% url 'login' 10 %}" method="post"&gt; </pre>
 <p><img decoding="async" src="../wp-content/uploads/2020/05/Django-env11.png"/></p>
@@ -393,7 +393,7 @@ urlpatterns = [
 <p><img decoding="async" src="../wp-content/uploads/2020/05/Django-env12.png"/></p>
 <p>views.py で、django.urls から reverse をインポートし、次を使用して<strong>reverse("ルートエイリアス", kwargs={"グループ名": 正規表現にマッチするパラメータ})</strong>逆解析します。</p>
 <pre>return redirect(reverse("login",kwargs={"year":3333}))</pre>
-<p><img decoding="async" src="../wp-content/uploads/2020/05/Django-env13.png"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/05/Django-env13.png"/></p>
 <p>テンプレート templates 内の HTML ファイルで、次を使用して<strong>{% url "ルートエイリアス" グループ名=正規表現にマッチするパラメータ %}</strong>逆解析します。</p>
 <pre>&lt;form action="{% url 'login' year=3333 %}" method="post"&gt;</pre>
 <p><img decoding="async" src="../wp-content/uploads/2020/05/Django-env14.png"/></p>
@@ -413,7 +413,7 @@ path("app02/", include(("app02.urls","app02")))</pre>
 <pre>reverse("app名称：路由别名")</pre>
 <p>実例：</p>
 <pre>return redirect(reverse("app01:login")</pre>
-<p><img decoding="async" src="../wp-content/uploads/2020/05/Django-env17.png"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/05/Django-env17.png"/></p>
 <p>テンプレート templates 内の HTML ファイルで名前空間を使用する場合、構文は次の形式です：</p>
 <pre>{% url "app名称：路由别名" %}</pre><p>実例：</p>
 <pre>&lt;form action="{% url 'app01:login' %}" method="post"&gt;</pre>

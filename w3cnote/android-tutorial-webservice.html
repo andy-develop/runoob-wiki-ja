@@ -98,7 +98,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <blockquote><p>これまでの学習で、データリクエスト、データ解析、ファイルのアップロード/ダウンロードなど、サーバーとやりとりする基本的なニーズは満たせるはずです。そして本節では、Android で WebService を呼び出す方法を紹介します。実はこれ、生のデータ API サービスを提供するデータプラットフォーム（例えば「聚合数据」のようなもの）に少し似ています。WebService は XML と SOAP を使用し、HTTP プロトコルを介してリモートマシンとのやりとりを完了できます。では、あまり多くは語らずに、本節の内容を始めましょう〜</p></blockquote>
 <hr/>
 <h2>1.WebService の概要</h2>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2015/09/29885464.jpg"/></p>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/09/29885464.jpg"/></p>
 <p>PS：上記の概要を読んでもまだよくわからない場合は、それで構いません。以前の会社では C# で WebService を構築していました！本節では WebService の構築方法については説明しません。WebService が提供するサービスを取得し、返された XML データを解析して、関連するデータを Android デバイスに表示する方法だけを理解すれば十分です！</p>
 <hr/>
 <h2>2.WebService サービスはどこで取得するか</h2>
@@ -106,23 +106,23 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p><strong>webXml</strong>：<a href="http://www.webxml.com.cn/zh_cn/index.aspx">http://www.webxml.com.cn/zh_cn/index.aspx</a></p>
 <blockquote><p>以前は無料でしたが、商業化されており、多くのサービスは有料ですが、試用は可能です〜 このサイトでは16個の異なる Web サービスが提供されており、自分のニーズに応じてサービスを検索し、さまざまなインターフェースを呼び出すことができます！</p></blockquote>
 <p><strong>webXml の関連ページ</strong>：</p>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2015/09/14506413.jpg"/></p>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/09/14506413.jpg"/></p>
 <p><strong>関連する利用回数の説明</strong>:</p>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2015/09/24990554.jpg"/></p>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/09/24990554.jpg"/></p>
 <p><strong>云聚36wu</strong>：<a href="http://www.36wu.com/Service">http://www.36wu.com/Service</a></p>
 <blockquote><p>同様に多くのサービスを提供しており、多くのスマホアプリはここの API を使用しています。例えば「彩虹公交」や「手机天气」などです。ただし、これも有料です=-=。試用は可能ですが、1時間に20回しかリクエストを送信できません。使用を申請して key を取得すればOKです！どちらでも好きな方を選んでください！</p></blockquote>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2015/09/2918446.jpg"/></p>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/09/2918446.jpg"/></p>
 <hr/>
 <h2>3.サードパーティ jar パッケージの準備</h2>
 <blockquote><p>まず、Android プラットフォームで WebService を呼び出すには、サードパーティのライブラリ ksoap2 に依存する必要があります。Android プラットフォームでは、高効率で軽量な SOAP 開発パッケージである ksoap2 Android を使用します。</p><p>jar パッケージのダウンロードアドレス：<a href="https://code.google.com/p/ksoap2-android/wiki/HowToUse?tm=2">https://code.google.com/p/ksoap2-android/wiki/HowToUse?tm=2</a></p><p>中国からはアクセスできないかもしれません。ここではダウンロード用に百度云のリンクを2つ提供します：</p><p>
 <strong>2.54 バージョン</strong>：<a href="../try/download/ksoap2-android-assembly-2.5.4-jar-with-dependencies.jar.html">ksoap2-android 2.54.jar</a></p><p>
 <strong>3.30 バージョン</strong>：<a href="../try/download/ksoap2-android-assembly-3.3.0-jar-with-dependencies.jar.html">ksoap2-android 3.30.jar</a></p><p>幸運にも jar パッケージのダウンロードアドレスに入れたなら、以下の画面が表示されるでしょう：</p><p>
-<img alt="" decoding="async" src="../wp-content/uploads/2015/09/67390549.jpg"/></p><p>
-<img alt="" decoding="async" src="../wp-content/uploads/2015/09/14715990.jpg"/></p></blockquote>
+<img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/09/67390549.jpg"/></p><p>
+<img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/09/14715990.jpg"/></p></blockquote>
 <hr/>
 <h2>4.関連するパラメータの取得</h2>
 <blockquote><p>まず、取得する必要があるサービスを見つけて、関連するパラメータを記録します：<strong>NameSpace</strong>(ネームスペース)、および<strong>SoapAction</strong>は言うまでもなく、他のパラメータは次のように探します：<strong>URL</strong>例えば、ここでは天気の照会パラメータを探しています。クリックすると、このようなパラメータドキュメントが表示されます：</p>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2015/09/77830142.jpg"/></p>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/09/77830142.jpg"/></p>
 <p><strong>例えば、ここで必要なのは天気照会部分の機能です：</strong></p>
 <p><img alt="" decoding="async" src="../wp-content/uploads/2015/09/4860400.jpg"/></p>
 <p><strong>まず、四角で囲んだ SoapAction と NameSpace をコピーしましょう！もちろん、このページでテストすることもできます。また、無料ユーザーなので、id は入力しなくてもスキップできます。入力後に「呼び出し」ボタンをクリックすると、次のようなページが開きます：</strong></p>
@@ -136,10 +136,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p><img alt="" decoding="async" src="../wp-content/uploads/2015/09/30595401.jpg"/></p>
 <hr/>
 <h2>5.関連する WEB サービスの登録と有効化</h2>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2015/09/93886000.jpg"/></p>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2015/09/81129909.jpg"/></p>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/09/93886000.jpg"/></p>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/09/81129909.jpg"/></p>
 <p>はい、自分の key をマークしておくことを忘れないでくださいね〜</p>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2015/09/61530107.jpg"/></p>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/09/61530107.jpg"/></p>
 <p>6.WebService を呼び出すコード例</p>
 <hr/>
 <h2>6.WebService を呼び出すコード例</h2>

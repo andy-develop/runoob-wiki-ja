@@ -101,7 +101,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <ul><li>a. まず epoch を比較する</li><li>b. zxid を確認し、zxid が大きいサーバーを優先的に leader とする</li><li>c. zxid が同じ場合は myid を比較し、myid が大きいサーバーを leader サーバーとする</li></ul></li><li>
 <p>（4）投票を集計します。投票のたびに、サーバーは投票情報を集計し、過半数のマシンが同じ投票情報を受け取ったかどうかを判断します。server1、server2 はどちらもクラスタ内の2台のマシンが（2,0）の投票情報を受け入れたと集計し、この時点で server2 が leader ノードとして選出されました。</p></li><li>
 <p>（5）サーバーの状態を変更します。leader が確定すると、各サーバーはそれに応じて自分の状態を更新します。follower であれば FOLLOWING に変更し、Leader であれば LEADING に変更します。このとき server3 が引き続き起動し、直接参加して自分を FOLLOWING に変更します。</p></li></ul>
-<p><img decoding="async" src="../wp-content/uploads/2020/09/vote-01.png"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/09/vote-01.png"/></p>
 <h3>2、稼働中の leader 選挙</h3>
 <p>クラスタ内の leader サーバーがダウンした、または使用できない状態になった場合、クラスタ全体が外部にサービスを提供できなくなり、新たなラウンドの leader 選挙に入ります。</p><ul><li>（1）状態を変更します。leader がダウンした後、他の非 Oberver サーバーは自身のサーバー状態を LOOKING に変更します。</li><li>（2）各 server は1つの投票を出します。稼働中、各サーバーの zxid は異なる可能性があります。</li><li>（3）投票を処理します。ルールは起動プロセスと同じです。</li><li>（4）投票を集計します。起動プロセスと同じです。</li><li>（5）サーバーの状態を変更します。起動プロセスと同じです。</li></ul>
 </div>

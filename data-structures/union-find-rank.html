@@ -301,7 +301,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="article-intro" id="content">
 <h1>Union-Find rank の最適化</h1>
 <p>前の節では Union-Find の size に基づく最適化を紹介しましたが、特定のシナリオでは問題が発生する場合もあります。下図のように、union(4,2) を実行します。</p>
-<p><img decoding="async" src="../wp-content/uploads/2020/10/rank-01.png"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/10/rank-01.png"/></p>
 <p>前の節の size の最適化に従うと、要素が少ない集合のルートノードが要素が多い集合のルートノードを指します。操作後、深さは 4 になり、以前より 1 層増えました。下図のようになります。</p>
 <p><img decoding="async" src="../wp-content/uploads/2020/10/rank-02.png"/></p>
 <p>このことから、集合の size に基づく方向の判断は完全に正しいわけではないことがわかります。より正確には、2 つの集合の深さに基づいてルートノードの向きを具体的に判断します。深さが浅い集合のルートノードが、深さが深い集合のルートノードを指します。下図のようになります。これが rank に基づく最適化です。</p>

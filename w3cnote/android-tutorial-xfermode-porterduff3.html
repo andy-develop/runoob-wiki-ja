@@ -96,11 +96,11 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <!-- ad end-->
 <h2>本節の導入：</h2>
 <blockquote><p>前の節では、Xfermodeの中の三番目の子（サブクラス）であるPorterDuffXfermodeのコンストラクタのパラメータが一つであることを学びました：<strong>PorterDuff.Mode</strong>そして、16種類の画像合成モードを見た後、自分でコードを書いてドキュメント内の18種類の異なる合成モードを検証してみました。18種類は、ADDとOVERLAYの2つのモードが新しく追加されたものです！もちろん、ただ検証して知るだけでは不十分です。本節では、実際にPorterDuff.Modeが提供するこれらの合成モードをどのように使うかを理解するために、例を書いてみましょう。本節で取り上げる例は、円形＆角丸図形の実現です！</p><p>に<a href="./android-tutorial-imageview.html" target="_top" title="2.3.4 ImageView(图像视图)">2.3.4 ImageView（画像ビュー）</a>最後に、最も簡単な円形ImageViewを描画する実装を説明しました。原理は、画像上でclipPathを呼び出して円形を切り出すことです！</p><p>そして本節では、<strong>PorterDuff.Mode</strong>の中の<strong>DST_IN</strong>モードを用いて実現します。<a href="http://blog.csdn.net/lmj623565791/article/details/42094215">Android Xfermode 実践 円形・角丸画像の実装</a>また、やはりPorterDuff.Modeの効果図を貼っておきます：</p>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2015/10/31597067.jpg"/></p></blockquote>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/10/31597067.jpg"/></p></blockquote>
 <hr/>
 <h2>1.実現する効果図と実装フローの分析：</h2>
 <p><strong>実行後の効果図</strong>：</p>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2015/10/57870575.jpg"/></p>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/10/57870575.jpg"/></p>
 <p>ええと、上記が私たちが実現したい一つの効果です。この<strong>PorterDuff.Mode.DST_IN</strong>モードで実現します！実装フローを分析してみましょう。</p>
 <blockquote><ul>
 <li><strong>Step 1</strong>：Xfermodeは二つの層の画像で構成されているにすぎません。先に描画される画像をDST画像（ターゲット画像）、後から描画される画像をSRC画像（ソース画像）と呼びます。円形または角丸を実現するには、まず表示したい画像を（DSTとして）描画します。ここではsrc属性を使って設定しました。次に円形や角丸（SRC）を描画します。表示したい部分は、それらが交差する場所であり、しかも画像部分の内容なので、次を選択します：<strong>DST_IN</strong>モード！</li>

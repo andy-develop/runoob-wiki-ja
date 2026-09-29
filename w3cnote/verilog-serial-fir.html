@@ -337,14 +337,14 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: #A52A2A; font-weight: bold;">endmodule</span> <br/>
 </div></div>
 <p><strong>シミュレーション結果</strong></p><p>下図のシミュレーション結果からわかるように、FIR フィルタを通過した後の信号は低周波信号（250KHz）のみであり、高周波信号（7.5MHz）は除去されています。波形をより美しくするために、16個以降のフィルタデータを有効出力として使用します。</p><p>
-<img decoding="async" src="../wp-content/uploads/2020/10/kkReHpOO1QNe60Rs.png"/></p><p>波形を局所的に拡大すると下図のようになります。このとき、入力データ有効信号 en と出力データ有効信号 valid は周期（50MHz）が同じパルス信号であり、持続的に有効ではありません。ただし、動作クロックは 400MHz なので、出力も 50MHz サンプリング周波数における 250KHz 周波数の正弦波信号として現れます。</p><p>
-<img decoding="async" src="../wp-content/uploads/2020/10/qeQPvnHLQpg5L9Yi.png"/></p>
+<img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/10/kkReHpOO1QNe60Rs.png"/></p><p>波形を局所的に拡大すると下図のようになります。このとき、入力データ有効信号 en と出力データ有効信号 valid は周期（50MHz）が同じパルス信号であり、持続的に有効ではありません。ただし、動作クロックは 400MHz なので、出力も 50MHz サンプリング周波数における 250KHz 周波数の正弦波信号として現れます。</p><p>
+<img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/10/qeQPvnHLQpg5L9Yi.png"/></p>
 <h3>付録：matlab 使用（<a href="./verilog-fir.html" rel="noopener noreferrer" target="_blank">『並列 FIR フィルタ設計』</a>一致）</h3>
 <p><strong>FIR フィルタ係数の生成</strong></p><p>matlab を開き、コマンドウィンドウにコマンド「fdatool」を入力します。</p><p>続いて、以下のウィンドウが開くので、FIR フィルタパラメータに従って設定します。下図のとおりです。</p><p>ここで選択する FIR 実装方法は最小二乗法（Least-squares）です。実装方式が異なるとフィルタ効果も異なります。</p>
 <p>
-<img decoding="async" src="../wp-content/uploads/2020/10/9QnVRqsnDU7qqWn1-1.png"/></p>
+<img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/10/9QnVRqsnDU7qqWn1-1.png"/></p>
 <p>File -&gt; Export をクリックします。</p><p>フィルタパラメータを出力し、変数 coef に保存します。下図のとおりです。</p><p>
-<img decoding="async" src="../wp-content/uploads/2020/10/ofJimBJSeof88y1g-1.png"/></p>
+<img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/10/ofJimBJSeof88y1g-1.png"/></p>
 <p>このとき、coef 変数は浮動小数点型データのはずです。これに一定倍率の乗算で拡大を行い、その近似の固定小数点型データを設計中の FIR フィルタパラメータとします。ここでは拡大倍率を 2048 とし、結果は以下のとおりです。</p><p>
 <img decoding="async" src="../wp-content/uploads/2020/10/CA3vJ3Bqq7INC16U-1.png"/></p>
 <p><strong>入力する混合信号の生成</strong></p><p>matlab を使用して混合入力信号を生成する参考コードは以下のとおりです。</p><p>信号は符号なし固定小数点型データで、ビット幅は 12bit であり、ファイルに保存されます。<strong>cosx0p25m7p5m12bit.txt</strong> 。</p>

@@ -96,7 +96,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <!-- ad end-->
 <h2>1.Activity、WindowとViewの関係</h2>
 <blockquote><p>まあ、本来はこれらの関係を理解したいだけだったのに、つい手を出して、彼らの呼び出しプロセスまで見始めてしまいました...結果、2時間も費やして、ほんのわずかな部分しか理解できませんでした。やはり、低レイヤーのソースコードを読み漁る人はみんな神です。例えば老罗のような。私はまだそのレベルには達していません。以下は自分で資料を調べて、少しソースコードを見てまとめたものです。もし間違いがあれば、ぜひご指摘ください！下にまとめの図を貼ります：</p></blockquote>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2015/08/93497523.jpg"/></p>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/08/93497523.jpg"/></p>
 <p><strong>フロー解析：</strong>ActivityがstartActivityを呼び出した後、最終のにattachメソッドを呼び出します。そしてPolicyManagerでIpolicyインターフェースを実装し、次にPolicyオブジェクトを実装し、次にmakenewwindow(Context)メソッドを呼び出します。このメソッドはPhoneWindowオブジェクトを返します。PhoneWindowはWindowのサブクラスです。このPhoneWindowの中にDecorViewという内部クラスがあり、これはすべてのアプリウィンドウのルートView、つまりViewのトップであり、Activityを表示するかどうかを直接制御します（ベテランの言葉を引用）。そして、その中にLinearLayoutがあり、さらにその中に2つのFrameLayoutがあり、それぞれActionBarとCustomViewを格納します。そして、私たちがsetContentView()で読み込むレイアウトは、このCustomViewの中に配置されます！</p>
 <p><strong>これら3者の関係をまとめる：</strong>強引な例えを出す：この3つのクラスをそれぞれこう見なすことができる：画家、キャンバス、筆が描くもの。画家は筆（<strong>LayoutInflater.infalte</strong>）で図案を描き、さらにキャンバス（<strong>addView</strong>）の上に描く！最後に表示される（<strong>setContentView</strong>)</p>
 <hr/>
@@ -114,7 +114,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>続けて公式ドキュメントに別の2つの図も見つけました。好奇心から、その説明も読み、グループの人たちと少し議論しました：</p>
 <p><img alt="" decoding="async" src="../wp-content/uploads/2015/08/76132682.jpg"/> <img alt="" decoding="async" src="../wp-content/uploads/2015/08/2159561.jpg"/></p>
 <p>そして、このような説明もありました：</p>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2015/08/94874923.jpg"/></p>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/08/94874923.jpg"/></p>
 <p><strong>そして結論をまとめました：</strong></p>
 <blockquote><p>TaskはActivityの集まりであり、概念です。実際にはBack Stackを使用してActivityを保存します。Taskは複数存在できますが、同時に最前面にあるスタックは1つだけで、他はすべてバックグラウンドにあります！では、スタックはどのようにして生まれるのでしょうか？</p>
 <p>答え：ホーム画面でアイコンをクリックして新しいAppを開くと、その時に新しいTaskが作成されます！例を挙げると：<br/>連絡先APPのアイコンをクリックしてAPPを開くと、このとき新しいスタック1が作成され、その後、新しく生成されたActivityが追加されていきます。連絡先APPの中でSMS APPのページを開いたとしても、このとき新しいスタックは作成されず、そのままスタック1に追加されます。これはAndroidが推奨するユーザー体験の方法です。つまり、異なるアプリケーション間の切り替えが、ユーザーにはまるで同じアプリケーションであるかのように感じられ、非常に一貫性のあるユーザー体験を提供します。公式にはseamless（シームレス/无缝衔接）と呼ばれます。——————このとき、もしHomeキーを押してホーム画面に戻ると、スタック1はバックグラウンドに入ります。このとき以下の2つの操作が考えられます：<br/>1）メニューキー（正方形のボタン）をクリックし、先ほどのプログラムをクリックして開くと、スタック1が再びフォアグラウンドに戻ります！または、ホーム画面の連絡先アイコンをクリックしてAPPを開いても、このときも新しいスタックは作成されず、スタック1がフォアグラウンドに戻ります！<br/>2）もしこのとき別のアイコンをクリックして新しいAPPを開くと、その時は新しいスタック2が作成され、スタック2がフォアグラウンドに来て、スタック1は引き続きバックグラウンドに留まります；<br/>3) その後も同様です...以下同様に続きます！</p></blockquote>
@@ -164,7 +164,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <h2>4.Activityの4つの起動モード詳解：</h2>
 <p>次に4つのロードモードについて詳しく説明します。それらはそれぞれ：<strong>standard</strong>（デフォルト）、<strong>singleTop</strong>，<strong>singleTask</strong>，<strong>singleInstance</strong>「泡在网上的日子」で起動モードについての図解入りの説明を見ました。とても素晴らしく、理解しやすいかもしれません。ここで参考にします：</p><p>原文リンク：<a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0520/2897.html">Activity起動モード図解詳説：standard, singleTop, singleTask および singleInstance</a></p><p>英文原文：<a href="http://inthecheesefactory.com/blog/understand-android-activity-launchmode/en">Understand Android Activity's launchMode: standard, singleTop, singleTask and singleInstance</a>他にもロードモードを詳しく解説した記事があります：<a href="http://blog.csdn.net/zhangjg_blog/article/details/10923643">AndroidにおけるActivityの4つの起動モードとtaskAffinity属性の詳解</a></p>
 <p><strong>まず概要図を見てみましょう：</strong></p>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2015/08/50179298.jpg"/></p>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/08/50179298.jpg"/></p>
 <p><strong>モード詳解：</strong></p>
 <hr/>
 <h3>standardモード：</h3>

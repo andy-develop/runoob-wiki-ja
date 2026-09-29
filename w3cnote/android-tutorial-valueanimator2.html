@@ -108,9 +108,9 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>例では、ofIntとofFloatの両方を使用しました。それぞれ浮動小数点型と整数型のデータに対してアニメーション操作を行うためのものです！</p>
 <p>では<strong>ofObject</strong>()？初期オブジェクトと終了オブジェクト？どのように遷移させるのか？つまりこれはどう使うのか？</p>
 <p>では、疑問を抱えつつ、まずあるものについて理解しましょう：Evaluatorです。属性アニメーションの概念についてあれこれ話したところで、実はこのことについてすでに触れていました：</p>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2015/11/54469594.jpg"/></p>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/11/54469594.jpg"/></p>
 <p><strong>アニメーションシステムに初期値から終了値へどのように遷移するかを伝えるために使われます</strong>！では、私たちの着手点は間違いありません！IntEvaluatorのソースコードに入って、中に何が書かれているか見てみましょう？</p>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2015/11/48403251.jpg"/></p>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/11/48403251.jpg"/></p>
 <p>うん、<strong>TypeEvaluator</strong>インターフェースを実装して、それから<strong>evaluate()</strong>メソッドをオーバーライドしています。パラメータは3つあり、順に：</p>
 <ul>
 <li><strong>fraction</strong>：アニメーションの進行度。これに基づいてアニメーションの値がいくつであるべきかを計算します</li>
@@ -121,7 +121,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>同様にFloatEvaluatorもあります。システムに初期オブジェクトから終了オブジェクトへどのように遷移するかを伝えたい場合、自分で<strong>TypeEvaluator</strong>インターフェース、すなわちEvaluatorをカスタマイズする必要があります。言葉よりも、例を書いて見てみましょう：</p>
 <h3><strong>2）使用例</strong></h3>
 <p><strong>実行結果の画像</strong>：</p>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2015/11/10209964.jpg"/></p>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/11/10209964.jpg"/></p>
 <p><strong>コード実装</strong>：</p>
 <p>オブジェクトを定義します<strong>Point.java</strong>、オブジェクトにはx、yの2つのプロパティとget、setメソッドのみがあります〜</p>
 <pre>
@@ -248,7 +248,7 @@ public class MainActivity extends AppCompatActivity {
 <h3><strong>3）サンプル強化版</strong></h3>
 <p>上記のサンプルに、円が移動するときの色の変化を追加します。ここでは別のObjectAnimatorを使って色変化のアニメーションを読み込みます。Viewにint colorを追加して色を制御し、さらにgetColor()とsetColor()メソッドを書きます。まずEvaluatorをカスタマイズしましょう〜</p>
 <p><strong>実行結果の画像</strong>：</p>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2015/11/65529491.jpg"/></p>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/11/65529491.jpg"/></p>
 <p><strong>実装コード</strong>：</p>
 <p><strong>ColorEvaluator.java</strong>：
 </p>
@@ -359,12 +359,12 @@ public class AnimView2 extends View {
 <hr/>
 <h2>2. Interpolator（補間器）</h2>
 <p>うん、補間アニメーションの説明のときにこのことをすでに話しましたね〜まだ覚えていますか？</p>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2015/11/73854084.jpg"/></p>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/11/73854084.jpg"/></p>
 <p>上記の補間器は補間アニメーションと属性アニメーションの両方で使用できます。さらに、補間アニメーションには新しい<strong>TimeInterpolator</strong>インターフェースが追加されました。このインターフェースは以前のInterpolatorとの互換性を保つためのもので、これにより過去のすべてのInterpolator実装クラスをそのまま属性アニメーションで使用できます！アニメーションオブジェクトのsetInterpolator()メソッドを呼び出して、異なるInterpolatorを設定できます！まず少し変更して、小さなボールを画面の中央上部から下部に落下させます。そして、集合アニメーションに対して以下の文を呼び出します：<strong>animatorSet.setInterpolator(new AccelerateInterpolator(2f));</strong>括弧内の値は加速度を制御するために使われます〜</p>
 <p><strong>実行結果</strong>：</p>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2015/11/6420198.jpg"/></p>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/11/6420198.jpg"/></p>
 <p>ちょっと不自然に見えますね。普通なら跳ね返るはずですよね。次に<strong>BounceInterpolator</strong>を試してみましょう〜</p>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2015/11/42165604.jpg"/></p>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/11/42165604.jpg"/></p>
 <p>へへ、効果はかなりいいですね。もちろん、システムが提供する多数のInterpolatorもあります。皆さん自分で一つずつ試してみてください。ここではいちいち説明しません〜</p>
 <p>次に、以下のことを見てみましょう：</p>
 <h3><strong>1）Interpolatorの内部実装メカニズム</strong></h3>
@@ -376,11 +376,11 @@ getInterpolation()メソッドはinputパラメータを受け取ります。こ
 <p>私たちは見てみることができます<strong>LinearInterpolator</strong>の中のコード：</p>
 <p><img alt="" decoding="async" src="../wp-content/uploads/2015/11/53510297.jpg"/></p>
 <p>ここでは何も処理せずに直接input値を返しています。つまりfractionの値はinputの値と等しくなります。これが等速運動のInterpolatorの実装方法です！実際にはアルゴリズムが違うだけで、これは数学的なことが関わってきます。再び数学の重要性を実感しましたね。ここでもう一つ<strong>BounceInterpolator</strong>のソースコードを貼っておきます：</p>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2015/11/43642406.jpg"/></p>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/11/43642406.jpg"/></p>
 <p>ここのアルゴリズムを私に聞かないでください、私も知りませんよ。もう少し理解しやすいものを見つけましょう：<strong>AccelerateDecelerateInterpolator</strong></p>
 <p><img alt="" decoding="async" src="../wp-content/uploads/2015/11/80592279.jpg"/></p>
 <p>このInterpolatorは最初に加速してから減速する効果があります：<strong>(float)(Math.cos((input + 1) * Math.PI) / 2.0f) + 0.5f</strong>のアルゴリズムの理解：</p><p>解：inputの値の範囲が[0,1]であるため、cosの中の値の範囲は[π,2π]となり、対応する値は-1と1です。この値を2で割って0.5を加えると、getInterpolation()メソッドが最終のに返す結果の値の範囲はやはり[0,1]となり、対応する曲線グラフは以下のとおりです。</p>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2015/11/Center.html"/></p>
+<p></p>
 <p>したがって、最初に加速してから減速する過程です！</p>
 <p>うーん、勉強が苦手な者には手に負えない…<img alt="" decoding="async" src="../wp-content/uploads/2015/11/90823139.jpg"/>、上記は全部、郭大叔の記事から引っ張ってきたものです…私は静かにしたい…</p>
 <h3><strong>2）Interpolatorのカスタマイズ</strong></h3>

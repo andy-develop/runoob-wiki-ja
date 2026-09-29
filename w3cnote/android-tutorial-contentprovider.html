@@ -103,7 +103,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>なんだかすごそうに見えますが、実はとても簡単に使えます。それではContentProviderについて学んでいきましょう〜<strong>公式ドキュメント</strong>：<a href="http://androiddoc.qiniudn.com/guide/topics/providers/content-providers.html">ContentProvider</a>本節では、ContentProviderの概念を解説し、システムのContentProviderをよく使う例をいくつか紹介し、さらにカスタムContentProviderについても説明します！</p></blockquote>
 <hr/>
 <h2>1. ContentProviderの概念解説：</h2>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2015/08/58811327.jpg"/></p>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/08/58811327.jpg"/></p>
 <hr/>
 <h2>2. システム提供のContentProviderを使用する</h2>
 <blockquote><p>実際、ContentProviderを使用するときは、自分のデータを公開するためではなく、多くの場合は<strong>ContentResolver</strong>他アプリの情報を読み取るために使われます。最もよく使われるのは、システムアプリ、SMS、連絡先、マルチメディア情報などの読み取りです！ これらのContentProviderを呼び出したい場合は、関連するAPI資料を自分で調べる必要があります！ また、バージョンによって対応するURLが異なる場合があります！ ここでは、URLと対応するデータベーステーブルのフィールドの取得方法を示します。最もよく使われる連絡先を例にして、他は自分でgoogle検索してください〜<br/>①システムソースコードのファイル（all-src.rar）に移動します: all-src.rar -&gt; TeleponeProvider -&gt; AndroidManifest.xml で対応するAPIを探します<br/>②エミュレータのfile exploerを開き、/data/data/com.android.providers.contacts/databases/contact2.db に移動し、エクスポート後にSQLite GUIツールで表示します。3つのコアとなるテーブル：<strong>raw_contactテーブル</strong>，<strong>dataテーブル</strong>，<strong>mimetypesテーブル</strong>！<br/>以下に基本的な操作の例を示します：</p></blockquote>
@@ -251,7 +251,7 @@ private void AddContact() throws RemoteException, OperationApplicationException 
 }
 </pre>
 <p><b>実行結果：</b></p>
-<img decoding="async" src="../wp-content/uploads/2015/08/41407183.jpg"/>
+<img decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/08/41407183.jpg"/>
 <p><b>忘れずに権限を追加してください：</b></p>
 <pre>
 &lt;uses-permission android:name="android.permission.WRITE_CONTACTS"/&gt;
@@ -260,7 +260,7 @@ private void AddContact() throws RemoteException, OperationApplicationException 
 <hr/>
 <h2>3. カスタムContentProvider</h2>
 <blockquote><p>私たちは自分のContentProviderを定義することはめったにありません。なぜなら、自分のアプリのデータを他のアプリに公開したくないことが多いからです。それでも、ContentProviderを学ぶことは必要です。データ転送の方法が1つ増えるからです。そう思いませんか？<br/>これは以前に描いたフローチャートです：</p></blockquote>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2015/08/40787698.jpg"/></p>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/08/40787698.jpg"/></p>
 <p>次に、段階的に実装していきましょう：</p>
 <p>始める前に、まずデータベース作成クラスを作成する必要があります（データベースの内容は後で説明します〜）：</p>
 <p><strong>DBOpenHelper.java</strong>
@@ -403,7 +403,7 @@ public class MainActivity extends Activity {
 <p><strong>使用するには？</strong>まあ、コードはかなり簡単です。まずContentProviderのプロジェクトを実行し、次にContentResolverのプロジェクトを実行します。ボタンをクリックして1件のデータを挿入し、その後file exploerを開いてContentProviderのdbデータベースを取り出し、GUIツールで表示するとデータが挿入されていることを確認できます。時間の関係で、結果のデモはしません〜</p>
 <hr/>
 <h2>4. ContentObserverを介してContentProviderのデータ変更を監視する</h2>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2015/08/34168859.jpg"/></p>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/08/34168859.jpg"/></p>
 <p><strong>使用ガイド</strong>：</p>
 <blockquote><p>プログラムを実行したらそのままにしておくと、SMSを受信した後、logcatでそのメッセージの内容を確認できます。自分のニーズに応じて、ActivityをServiceに変更して、バックグラウンドでこのようなことを行うこともできます〜</p></blockquote>
 <hr/>

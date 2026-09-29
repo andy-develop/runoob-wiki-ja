@@ -97,7 +97,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>FIR（Finite Impulse Response）フィルタは、有限長単位インパルス応答フィルタであり、非再帰型フィルタとも呼ばれます。</p><p>FIRフィルタは厳密な線形位相周波数特性を持ち、その単位応答は有限長であるため安定したシステムであり、デジタル通信、画像処理などの分野で広く応用されています。</p>
 <h3>FIRフィルタの原理</h3>
 <p>FIRフィルタは有限長単位インパルス応答フィルタです。直接型構造は以下のとおりです。</p>
-<p><img decoding="async" src="../wp-content/uploads/2020/10/D9lZSuIQcPTnGJfB.png"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/10/D9lZSuIQcPTnGJfB.png"/></p>
 <p>FIRフィルタは本質的に、入力信号と単位インパルス応答関数の畳み込みであり、式は以下のとおりです。</p>
 <p><img decoding="async" src="../wp-content/uploads/2020/10/wa2y7ATjbJV2jmFR.png"/></p>
 <p>FIRフィルタには次のような特性があります：</p>
@@ -345,16 +345,16 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div></div>
 <p><strong>シミュレーション結果</strong></p>
 <p>下図のシミュレーション結果からわかるように、FIRフィルタを通過した後の信号は、低周波信号（250KHz）のみであり、高周波信号（7.5MHz）は除去されています。また、出力波形は連続しており、持続的に出力できます。</p><p>ただし、赤い円で示されているように、波形の開始部分は不規則な状態です。これを拡大します。</p>
-<p><img decoding="async" src="../wp-content/uploads/2020/10/HtNqJpEq5lJ3xDjO.png"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/10/HtNqJpEq5lJ3xDjO.png"/></p>
 <p>波形の開始端を拡大すると下図のようになります。不規則な波形の時間帯、つまり2本の縦線の間の時間間隔が16クロック周期であることがわかります。</p><p>データはシリアル入力であり、設計では16組の遅延レジスタを使用しているため、フィルタリング後の最初の正常点は、最初のフィルタデータ出力時刻より16クロック周期遅延するはずです。つまり、データ出力有効信号 valid をさらに16クロック周期遅延させると、出力波形がより完璧になります。</p>
-<p><img decoding="async" src="../wp-content/uploads/2020/10/Uu7ivtcmfUQpkR5N.png"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/10/Uu7ivtcmfUQpkR5N.png"/></p>
 <h3>付録：matlabの使用</h3>
 <p><strong>FIRフィルタ係数の生成</strong></p>
 <p>matlab を開き、コマンドウィンドウにコマンド「 fdatool」を入力します。</p>
 <p>すると以下のウィンドウが開くので、FIRフィルタのパラメータに従って設定します。</p><p>ここで選択する FIR の実装方法は最小二乗法（Least-squares）です。実装方法が異なるとフィルタリング効果も異なります。</p>
-<p><img decoding="async" src="../wp-content/uploads/2020/10/9QnVRqsnDU7qqWn1.png"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/10/9QnVRqsnDU7qqWn1.png"/></p>
 <p>File -&gt; Export をクリックします。</p><p>フィルタパラメータを出力し、変数 coef に保存します。下図のとおりです。</p>
-<p><img decoding="async" src="../wp-content/uploads/2020/10/ofJimBJSeof88y1g.png"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/10/ofJimBJSeof88y1g.png"/></p>
 <p>このとき、coef 変数は浮動小数点型データです。これを一定倍率で乗算して拡大し、その近似の固定小数点型データを設計における FIR フィルタパラメータとします。ここでは拡大倍率を 2048 とし、結果は以下のとおりです。</p>
 <p><img decoding="async" src="../wp-content/uploads/2020/10/CA3vJ3Bqq7INC16U.png"/></p>
 <p><strong>入力混合信号の生成</strong></p>matlab を使用して混合入力信号を生成する参考コードは以下のとおりです。<p>信号は符号なし固定小数点型データで、ビット幅は 12bit であり、ファイルに保存されます。<strong>cosx0p25m7p5m12bit.txt</strong>。</p>

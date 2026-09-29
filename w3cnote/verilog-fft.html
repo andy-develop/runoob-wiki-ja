@@ -106,7 +106,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>同様に、後半の N/2 個の点は次のように表せます：</p>
 <p><img alt="" decoding="async" src="../wp-content/uploads/2020/10/MMmgQxwSMAEcLjjl.png"/></p><p>このことから、後半の N/2 個の点の値は、前半の N/2 個の点を計算する際の中間過程の値によって完全に決定できることがわかります。A[k] と B[k] に対してさらに奇数・偶数分解を、2 点の DFT になるまで繰り返すことで、多くの重複計算を避けることができ、高速離散フーリエ変換（FFT）のプロセスが実現されます。</p>
 <p><strong>アルゴリズム構造</strong></p><p>8 点 FFT 計算の構造概略図は次のとおりです。</p><p>図からわかるように、数回の乗算と加算を簡単に計算するだけで離散フーリエ変換のプロセスを完了でき、各データに対して煩雑な乗算と累積を行う必要はありません。</p>
-<p><img decoding="async" src="../static.jyshare.com/images/mix/uuE5FKpYLflJt5EF.jpg"/></p>
+<p><img decoding="async" src="https://static.jyshare.com/images/mix/uuE5FKpYLflJt5EF.jpg"/></p>
 <p><strong>重要な特性</strong></p>
 <p>(1) 段の概念</p>
 <p>1 回分割するごとに、1 段の演算と呼びます。</p><p>FFT の演算点数を N とし、全体で M 段の演算があるとすると、次の関係が成り立ちます：</p>
@@ -553,7 +553,7 @@ timescale <span style="color: #FF0055;">1ns</span><span style="color: #5D478B;">
 </div></div>
 <p><strong>シミュレーション結果</strong></p>
 <p>おおよそ、FFT 結果をパイプライン出力できることがわかります。</p>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2020/10/Ax6nfRQh1amzJmPE.png"/></p>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/10/Ax6nfRQh1amzJmPE.png"/></p>
 <p>matlab 標準の FFT 関数を使用して同じデータを演算した場合の、最初の 2 グループのデータの FFT 結果は次のとおりです。</p><p>最初に入力したデータ信号が実部のみ有効な場合、FFT 結果は完全に一致することがわかります。</p><p>しかし、2 回目に入力したデータは虚部にも信号があるため、このとき両者の結果に誤差が生じ始め、場合によっては誤差が非常に大きくなります。</p>
 <p><img alt="" decoding="async" src="../wp-content/uploads/2020/10/aq7TX9tZrWCmGahi.png"/></p>
 <p>matlab で Verilog 実装の FFT プロセスをシミュレートしたところ、このプロセスの FFT 結果と Verilog 実装の FFT 結果はほぼ一致することがわかりました。</p><p>誤差のある 2 種類の FFT 結果の絶対値を取って比較した図は次のとおりです。</p><p>FFT 結果の傾向はおおよそ同じですが、一部の点で目に見える誤差があることがわかります。</p>

@@ -278,7 +278,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <div class="article-body">
 <div class="article-intro" id="content">
 <h1>Node.js Domain モジュール</h1>
-<p><a href="../nodejs/nodejs-buildin-modules.html"><img alt="Java File" class="navup" decoding="async" src="../images/up.gif"/>Node.js 組み込みモジュール</a></p>
+<p><a href="../nodejs/nodejs-buildin-modules.html"><img alt="Java File" class="navup" decoding="async" src="https://www.runoob.com/images/up.gif"/>Node.js 組み込みモジュール</a></p>
 <hr/><p>Domain モジュールは、Node.js で非同期コードのエラー処理を簡素化するためのツールです。複数の非同期操作を1つの「ドメイン」にグループ化し、そのドメイン内でエラーを一元的にキャッチして処理することができます。</p>
 <p>簡単に言うと、Domain はエラー処理の「コンテナ」のようなもので、関連する非同期操作をこのコンテナに入れて、それらの操作で発生する可能性のあるエラーを一元的に管理できます。</p>
 <p class="important">domain モジュールの使用は Node.js 14 で非推奨（deprecated）になりました。Node.js コミュニティは、async/await やより包括的なエラー監視・処理ロジックなど、より現代的な方法でエラーを処理することを推奨しているためです。</p>
@@ -515,7 +515,7 @@ emitter.<span style="color: #660066;">on</span><span style="color: #009900;">(</
 <br/>
 emitter.<span style="color: #660066;">emit</span><span style="color: #009900;">(</span><span style="color: #3366CC;">'data'</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span><br/>
 </div></div><p>data イベントがエラーをスローしたとき、domain はこのエラーをキャッチし、プログラムはクラッシュしません。</p><h3>domain の注意点と制限</h3><ul><li><strong>パフォーマンスへの影響</strong>：<code>domain</code>パフォーマンスに一定の影響を与える可能性があり、特に高並行のシナリオでは影響が出るため、頻繁な使用は推奨されません。</li><li><strong>新規プロジェクトでの使用は推奨されない</strong>：Node.js 4.0 以降、<code>domain</code>は非推奨モジュールとしてマークされています。新しいプロジェクトでは、次のようなより現代的なエラー処理方式を使用することを推奨します。<code>async/await</code>、<code>try/catch</code>やイベント監視など。</li><li><strong>すべてのシナリオに適しているわけではない</strong>：<code>domain</code>すべてのタイプのエラー（構文エラーなど）をキャッチできるわけではなく、非同期操作やコールバック関数内の実行時エラーの処理にのみ適用されます。</li></ul><h3>代替案</h3><p>は<code>domain</code>非推奨となっているため、非同期操作のエラーを処理するには以下の方法を使用することを推奨します：</p><ul><li><strong>使用<code>async/await</code>と<code>try/catch</code></strong>：async/await をサポートする関数では、<code>try/catch</code>を使用してエラーをキャッチできます。</li><li><strong>グローバルエラー処理</strong>：以下を使用して<code>process.on('uncaughtException')</code>と<code>process.on('unhandledRejection')</code>未キャッチの例外や未処理の Promise 拒否を監視できます。</li><li><strong>イベントリスナーのエラー処理</strong>：各 EventEmitter の<code>error</code>イベントにリスナーを追加します。</li></ul><p>ただし<code>domain</code>モジュールは非同期操作のエラーを捕捉する簡便な方法を提供しますが、パフォーマンスと信頼性の問題があるため、Node.js 公式は新規プロジェクトでの使用を推奨していません。例外処理には、より現代的な方法、例えば<code>async/await</code>やイベントリスナーなどを使用して、エラーがアプリケーション内で効果的に処理されることを保証します。</p>
-<p><a href="../nodejs/nodejs-buildin-modules.html"><img alt="Java File" class="navup" decoding="async" src="../images/up.gif"/>Node.js 組み込みモジュール</a></p> その他の拡張
+<p><a href="../nodejs/nodejs-buildin-modules.html"><img alt="Java File" class="navup" decoding="async" src="https://www.runoob.com/images/up.gif"/>Node.js 組み込みモジュール</a></p> その他の拡張
 </div>
 </div>
 <div class="archive-list" style="display:none;font-size: 14px;line-height: 1.8;margin-top: 20px;padding: 10px;">

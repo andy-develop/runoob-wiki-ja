@@ -104,10 +104,10 @@ b) その鍵でハンドシェイクメッセージを暗号化し、ブラウ�
 <h2>証明書の検証プロセス</h2><p>証明書は証明書チェーンの形式で構成されます。証明書を発行する際には、まずルートCA機関が発行したルート証明書が必要であり、次にルートCA機関が中間CA機関の証明書を発行し、最後に中間CA機関が具体的なSSL証明書を発行します。次のように理解できます。ルートCA機関は1つの会社であり、ルート証明書はその身分証明書です。各会社は異なる部門が異なる用途の証明書を発行します。これらの異なる部門が中間CA機関であり、これらの中間CA機関は中間証明書を自身の身分証明書として使用します。その中の1つの部門はSSL証明書を専門に発行します。ルート証明書、中間証明書、および最後に申請したSSL証明書をつなぎ合わせると証明書チェーンが形成され、これは証明書パスとも呼ばれます。証明書を検証する際、ブラウザはシステムの証明書マネージャーインターフェースを呼び出して、証明書パス内のすべての証明書をレベルごとに検証します。パス内のすべての証明書が信頼されている場合のみ、検証結果全体が信頼できます。引き続きlogin.live.comのこの証明書を例に挙げます。証明書を表示するときに「証明書パス」タブをクリックすると、下図のように表示されます。</p>
 <p><img decoding="async" src="../wp-content/uploads/2017/05/jOgm5Z07bBKA5FNVJFzuI99LxGzyg2U-8U_c7sYqn4GjAQAACQIAAEpQ.jpg"/></p>
 <p>ルート証明書は最も重要な証明書です。ルート証明書が信頼されていない場合、その下で発行されたすべての証明書は信頼されません。オペレーティングシステムはインストール中に、信頼されたCA機関のルート証明書をデフォルトでいくつかインストールします。「ファイル名を指定して実行」で「certmgr.msc」を実行すると、証明書マネージャーを起動できます。下図のようになります。</p>
-<p><img decoding="async" src="../wp-content/uploads/2017/05/tQGTE_tnxxP0fsE4gtvnAXSl6E2MaSe_A9Qdockrn3ucAwAAGgIAAEpQ.jpg"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2017/05/tQGTE_tnxxP0fsE4gtvnAXSl6E2MaSe_A9Qdockrn3ucAwAAGgIAAEpQ.jpg"/></p>
 <p>ルート証明書は有効期限が長く、サポートする用途も多いため、さまざまな用途タイプの中間証明書を発行しやすくなっています。中間証明書は用途が単一で、有効期限は比較的短いですが、具体的なSSL証明書よりははるかに長いです。</p><p>SSL証明書の検証に失敗した場合、ブラウザによって以下のエラーメッセージが表示されます。</p>
-<p><img decoding="async" src="../wp-content/uploads/2017/05/EmdncPaZhVS65SfPqhIaabLfdQ5wMNsy-3Hu1hOG8m4gAwAAMAIAAEpQ.jpg"/></p>
-<p><img decoding="async" src="../wp-content/uploads/2017/05/GZLvVaGauRJDk79ESMv5P6G42ocWSjDTmIbsw2FRq30lAwAAGQIAAEpQ.jpg"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2017/05/EmdncPaZhVS65SfPqhIaabLfdQ5wMNsy-3Hu1hOG8m4gAwAAMAIAAEpQ.jpg"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2017/05/GZLvVaGauRJDk79ESMv5P6G42ocWSjDTmIbsw2FRq30lAwAAGQIAAEpQ.jpg"/></p>
 <p>SSL証明書の検証失敗には、以下の3つの原因があります。</p><ul><li>1、SSL証明書が信頼されたCA機関によって発行されていない</li><li>2、証明書の有効期限が切れている</li><li>3、アクセスしたWebサイトのドメイン名が証明書にバインドされているドメイン名と一致しない</li></ul>
 <p>この3つの原因は、IEブラウザが表示するメッセージでもあります。</p>
 <blockquote>

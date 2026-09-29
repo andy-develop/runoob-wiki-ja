@@ -94,7 +94,7 @@ FrameLayout（フレームレイアウト）、AbsoluteLayout（絶対レイア�
 今日説明するのは最初のレイアウト、LinearLayout（線形レイアウト）です。画面サイズへの対応でよく使われるのはLinearLayoutのweight（重み属性）です。この節では、LinearLayoutを詳しく解析します。基本的な属性、Weight属性の使い方、比率の計算方法に加えて、あまり使われない属性：android:dividerによる下線の描画についても説明します。</p>
 <hr/>
 <h2>1. 本節の学習図</h2>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2015/07/15116314.jpg"/></p>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/07/15116314.jpg"/></p>
 <hr/>
 <h2>2. weight（重み）属性の詳細：</h2>
 <h3>①最も簡単な使い方：</h3>
@@ -131,7 +131,7 @@ FrameLayout（フレームレイアウト）、AbsoluteLayout（絶対レイア�
 <h3>② weight属性の詳細：</h3>
 <p>もちろん、上記のような0dpに設定する方法を使わず、直接wrap_contentとmatch_parentを使う場合は、weight属性をさらに解析する必要があります。wrap_contentとmatch_parentの2つのケースに分けられます。また、LinearLayoutのorientationが水平か垂直かを見る必要があります。これによって、どの方向で等比率分割するかが決まります。</p>
 <p><strong>1) wrap_contentは比較的簡単で、直接比率に従います。</strong></p>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2015/07/2036364.jpg"/></p>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/07/2036364.jpg"/></p>
 <p>実装コード：</p>
 <pre>
 &lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"    
@@ -199,17 +199,17 @@ FrameLayout（フレームレイアウト）、AbsoluteLayout（絶対レイア�
 &lt;/LinearLayout&gt; 
  </pre>
 <p>実行結果図：</p>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2015/07/6746070.jpg"/></p>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/07/6746070.jpg"/></p>
 <blockquote><p>この時点で疑問が湧きます。どうしてこうなるのか？この比率は2:1ですよね？ではthreeはどこへ行ったのでしょう？コードには明らかにthreeがあるし、3も設定しているのに、1と2の比率もおかしいです。1:2:3が2:1:0になってしまいました。なぜなのでしょうか？
 答え：ここは実はそれほど単純ではなく、計算が必要です。ネット上にはいくつかのアルゴリズムがありますが、ここでは筆者が理解しやすいと思うものを紹介します：<strong>step 1：</strong>すべてがfill_parentですが、画面は1つしかありません。すると 1 - 3 = -2 fill_parent になります。<strong>step 2：</strong>各比率は順に 1/6、2/6、3/6 です。<strong>step 3：</strong>早い者勝ちです。最初にoneに割り当てます。計算： 1 - 2 * (1/6) = 2/3 fill_parent
            次にtwoに割り当てます。計算： 1 - 2 * (2/6) = 1/3 fill_parent
            最後にthreeに割り当てます。計算： 1 - 2 * (3/6) = 0 fill_parent<strong>step 4：</strong>したがって最終結果は、oneが2つ分、twoが1つ分、threeは何もありません。
 以上が、threeが表示されなかった理由です。皆さんはまだ少し混乱しているかもしれませんが、大丈夫です。もう少し例を挙げて試してみれば分かります！</p></blockquote>
 <p><strong>比率：1：1：1</strong></p>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2015/07/77411800.jpg"/></p>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/07/77411800.jpg"/></p>
 <p>上記の計算方法で一度計算すると、結果は 1/3、1/3、1/3 となり、正しいです。</p>
 <p><strong>次に、2:3:4 で試してみます。</strong></p>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2015/07/81150547.jpg"/></p>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/07/81150547.jpg"/></p>
 <p>計算結果は 5/9、3/9、1/9 で、効果図と比較すると 5:3:1 であり、これも正しいです。だからこの計算方法はしっかり覚えておきましょう！</p>
 <h3>③ Javaコードでweight属性を設定する：</h3>
 <pre>
@@ -219,7 +219,7 @@ setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
 <hr/>
 <h2>3. LinearLayoutに区切り線を設定する</h2>
 <p>多くのUI開発では、下線や区切り線を設定して、インターフェースをより整然として美しくします。例えば、下のKugou Musicの登録ページです：</p>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2015/07/91165417.jpg"/></p>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/07/91165417.jpg"/></p>
 <p>このような線に対して、通常のやり方は2つあります。<strong>① レイアウトにviewを直接追加する</strong>、このviewの役割は単に線を表示するだけであり、コードも非常に簡単です：</p>
 <pre>
 &lt;View  

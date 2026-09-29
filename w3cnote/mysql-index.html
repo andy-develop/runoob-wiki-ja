@@ -291,7 +291,7 @@ select * from dept where dname='xxx' or loc='xx' or deptno=45 --如果条件中�
 <li>SELECT * FROM `houdunwang` WHERE `uname` LIKE '后盾%' — インデックスを使用します</li>
 <li>SELECT * FROM `houdunwang` WHERE `uname` LIKE '%后盾%' — インデックスを使用しません</li>
 </ul>
-<p><img decoding="async" src="../wp-content/uploads/2015/06/9dc0c2bc09374310718f0dbfd1d2ec54.jpg"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/06/9dc0c2bc09374310718f0dbfd1d2ec54.jpg"/></p>
 <p>上の図からわかるように、すべてのテーブルのtypeがallであり、全テーブルスキャンを意味します。つまり6 6 6で、合計216回の走査クエリが実行されました。</p>
 <p>最初のテーブルが全テーブルスキャンであること（必須であり、これを使って他のテーブルと関連付ける）を除き、残りはrange（インデックス範囲取得）です。つまり6+1+1+1で、合計9回の走査クエリで済みます。</p>
 <p>そのため、複数テーブルのJOINでは、JOINするテーブル数をできるだけ少なくすることをお勧めします。うっかりするとデカルト積の恐ろしいスキャンになるからです。また、LEFT JOINをできるだけ使い、少ないテーブルを基準に多くのテーブルを関連付けることをお勧めします。JOINを使用する場合、最初のテーブルは必ず全スキャンされるため、少ないテーブルを基準にすれば、このスキャン回数を減らせます。</p>

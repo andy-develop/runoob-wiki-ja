@@ -246,7 +246,7 @@ New data3: 00000000</pre>
    <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 </div></div>
 <p>シミュレーション結果は以下の通りである。</p><p>最初の4行のデータは文字列型として読み込み・表示され、結果は正常である。</p><p>ファイルの5行目のデータを読み込む際、変数 line_buf のビット幅 100 という制限により、ファイル内容"New data1: 80000003 "は2回に分けて読み込む必要がある。</p><p>各行の末尾には改行文字"\n"が含まれているため、$display 関数で表示すると、空行が1行余分に出力される。</p><p>文字列型として読み込み、データを16進数で表示する場合、ファイルの対応するデータ内容を直感的に表示することはできない。例えば、2行目の内容は"12345678,"ではなく、それに対応する ASCII コードが表示される。したがって、$fgets タスクは文字列型として読み込むものであることに注意が必要である。</p>
-<p><img decoding="async" src="../wp-content/uploads/2021/05/v-file-5.png"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2021/05/v-file-5.png"/></p>
 <p><strong>$fscanf、$sscanf の呼び出し例</strong></p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
    <span style="color: #00008B; font-style: italic;">//(4.3) $fscanf/$sscanf</span><br/>
@@ -312,7 +312,7 @@ New data3: 00000000</pre>
 <p><img decoding="async" src="../wp-content/uploads/2021/05/v-file-7.png"/></p>
 <h3>ファイルの位置決め</h3>
 <table class="reference"><thead><tr><th style="text-align:left;"><span>システムタスク</span></th><th style="text-align:left;"><span>呼び出し形式</span></th><th style="text-align:left;"><span>タスク説明</span></th></tr></thead><tbody><tr><td style="text-align:left;"><span>ファイル位置の取得</span></td><td style="text-align:left;"><span>pos = $ftell( fd ) ;</span></td><td style="text-align:left;"><span>ファイルの現在位置からファイル先頭までのオフセットを返す。初期アドレスは 0 である</span><br/><span>オフセットはバイト（8ビット）を1単位とする</span><br/><span>$fseek と組み合わせて使用する</span></td></tr><tr><td style="text-align:left;"><span>再位置決め</span></td><td style="text-align:left;"><span>code = $fseek(fd, offset, type) ;</span></td><td style="text-align:left;"><span>ファイルの次の入力または出力の位置を設定する</span><br/><span>offset は設定するオフセットである</span><br/><span>type はオフセットの操作タイプである</span><br/><span>--- 0: 位置をオフセットアドレスに設定する</span><br/><span>--- 1: 位置を現在位置にオフセットを加えた位置に設定する</span><br/><span>--- 2: 位置をファイル末尾にオフセットを加えた位置に設定する。ファイル末尾から前方へのオフセットを表すには負の数をよく使用する</span></td></tr><tr><td style="text-align:left;"><span>オフセットなしの再位置決め</span></td><td style="text-align:left;"><span>code = $rewind( fd ) ;</span></td><td style="text-align:left;"><span>$fseek( fd, 0, 0) ; と等価である</span></td></tr><tr><td style="text-align:left;"><span>ファイル末尾の判定</span></td><td style="text-align:left;"><span>code = $feof(fd) ;</span></td><td style="text-align:left;"><span>ファイル末尾に達したかどうかを判定する</span><br/><span>ファイル末尾を検出した場合の戻り値は 1、それ以外の場合は 0 である</span></td></tr></tbody></table><p>ファイル DATA_RD.HEX の内容は以下のように表すことができる。</p><p>改行文字"\n"を終端記号とすると、ファイルサイズは 4x9 + 3x20 = 96 バイトとなる。</p>
-<p><img decoding="async" src="../wp-content/uploads/2021/05/5DFBDFE8-9113-4188-BF53-7CC3656B6CE3.jpg"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2021/05/5DFBDFE8-9113-4188-BF53-7CC3656B6CE3.jpg"/></p>
 <p>ファイル位置決めのテストコードは以下の通りである：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
    <span style="color: #00008B; font-style: italic;">// file position</span><br/>
@@ -362,7 +362,7 @@ New data3: 00000000</pre>
       <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 </div></div><p>シミュレーション結果は以下の通りである。</p><p>図から分かるように、log の末尾に1行多いデータが表示されている。これは、ファイル DATA_RD.TXT の末尾に空白行がもう1行ある（改行操作の結果）ためであり、システムタスク $feof はこの空白行をファイル末尾とは見なさないため、戻り値は依然として 0 である。しかし実際にはこの行にはデータがないため、読み込まれるデータは制御不能となる。</p><p>ファイルの最終行データにおける改行文字の影響を排除するには、「ファイル書き込み」の例で最後のファイル書き込みシステムタスク $fdisplay を $write に置き換えればよい。</p><p>その他の log については、コードのコメントと照合すればシミュレーションが正しいことが分かるため、ここではまとめて説明しない。</p>
-<p><img decoding="async" src="../wp-content/uploads/2021/05/v-file-8.png"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2021/05/v-file-8.png"/></p>
 <h3>メモリのロード</h3>
 <table class="reference"><thead><tr><th style="text-align:left;"><span>システムタスク</span></th><th style="text-align:left;"><span>呼び出し形式と説明</span></th><th style="text-align:left;"> </th></tr></thead><tbody><tr><td style="text-align:left;"><span>16進数ファイルのロード</span></td><td style="text-align:left;"><span>$readmemh("fname", mem, start_addr, finish_addr)</span></td><td style="text-align:left;"> </td></tr><tr><td style="text-align:left;"> </td><td style="text-align:left;"><span>fname はデータファイル名である</span><br/><span>mem は配列型/メモリ型変数である</span><br/><span>start_addr、finish_addr はそれぞれ開始アドレスと終了アドレスである</span><br/><span>start_addr、finish_addr は省略できる。この場合、データロードの停止条件は、メモリ変数 mem が満たされるか、ファイルの読み込みが完了することである</span><br/><span>ファイル内容には、空白文字（または改行、スペース文字）、バイナリまたは16進数データのみが含まれるべきである</span><br/><span>コメントは"//"で記述する。データ間は改行文字で区切ることを推奨する</span></td><td style="text-align:left;"> </td></tr><tr><td style="text-align:left;"><span>バイナリファイルのロード</span></td><td style="text-align:left;"><span>$readmemb("fname", mem, start_addr, finish_addr)</span></td><td style="text-align:left;"> </td></tr><tr><td style="text-align:left;"> </td><td style="text-align:left;"><span>使用方法と形式は $readmemb と同じである</span></td><td style="text-align:left;"> </td></tr></tbody></table>
 <p>ファイル DATA_WITHNOTE.HEX の内容は以下の通りである。このファイルの内容をメモリ変数にロードする。</p>

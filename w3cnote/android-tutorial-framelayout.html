@@ -125,7 +125,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <b>コード解説：</b>非常に簡単です。3つのTextViewに異なるサイズと背景色を設定し、順に重ねます。右下にあるのは前景画像で、android:foreground="@drawable/logo" で前景画像の画像を設定し、android:foregroundGravity="right|bottom" で前景画像の位置を右下に設定しています。</p>
 <h3>2)指に沿って動く萌え少女</h3>
 <p>結果図は以下の通りです：</p>
-<img alt="18442553" class="attachment-full" decoding="async" height="730" src="../wp-content/uploads/2015/07/18442553.jpg" width="395"/>
+<img alt="18442553" class="attachment-full" decoding="async" height="730" src="https://www.runoob.com/wp-content/uploads/2015/07/18442553.jpg" width="395"/>
 <p>実装フローの解説：</p>
 <ul>
 <li>ステップ1:まずmain.xmlレイアウトを空のFrameLayoutに設定し、画像の背景を設定します。</li><li>ステップ2:Viewクラスを継承したMeziViewカスタムコンポーネントクラスを新規作成し、コンストラクタでviewの初期座標を初期化します。</li><li>ステップ3:onDraw()メソッドをオーバーライドし、空のペンクラスPaintをインスタンス化します。</li><li>ステップ4:BitmapFactory.decodeResource()を呼び出してビットマップオブジェクトを生成します。</li><li>ステップ5:canvas.drawBitmap()を呼び出して萌え少女のビットマップオブジェクトを描画します。</li><li>ステップ6:画像がリサイクルされているかどうかを確認し、されていなければ強制的に画像をリサイクルします。</li><li>ステップ7:メインのJavaコードでフレームレイアウトオブジェクトを取得し、MeziViewクラスをインスタンス化します。</li><li>ステップ8:インスタンス化したmeziオブジェクトにタッチイベントのリスナーを追加し、onTouchメソッドをオーバーライドしてmeziのX,Y座標を変更し、invalidate()再描画メソッドを呼び出します。</li><li>ステップ9:meziオブジェクトをフレームレイアウトに追加します。</li>
@@ -223,7 +223,7 @@ public class MainActivity extends Activity {
 <h3>3)走り回る萌え少女</h3>
 <p>
 <b>結果図は以下の通りです：</b></p>
-<img decoding="async" src="../wp-content/uploads/2015/07/3405501.jpg"/>
+<img decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/07/3405501.jpg"/>
 <p><b>実装フロー：</b></p>
 <ul>
 <li>ステップ1:空のFrameLayoutレイアウトを定義し、前景画像の位置を中央に設定します。</li><li>ステップ2:ActivityでそのFrameLayoutレイアウトを取得し、Handlerオブジェクトを新規作成して、handlerMessage()メソッドをオーバーライドし、画像を更新するメソッドを呼び出します。</li><li>ステップ3:move()メソッドを自作し、switchで前景画像に表示するビットマップを動的に設定します。</li><li>ステップ4:onCreate()メソッド内でタイマーオブジェクトTimerを新規作成し、runメソッドをオーバーライドして、170ミリ秒ごとにhandlerに空のメッセージを送信します。</li>

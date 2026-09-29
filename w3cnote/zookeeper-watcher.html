@@ -141,10 +141,10 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p><img decoding="async" src="../wp-content/uploads/2020/09/watcher-03.png"/></p><p>クライアントがサーバーにリクエストを送信する際、TCP 長接続でネットワークチャネルを確立します。デフォルトでは Java の NIO 方式を使用しますが、Netty の実装方式に設定することもできます。</p>
 <p><img decoding="async" src="../wp-content/uploads/2020/09/watcher-04.png"/></p>
 <p>watcher 監視イベントの登録フローチャート：</p>
-<p><img decoding="async" src="../wp-content/uploads/2020/09/watcher-05.png"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/09/watcher-05.png"/></p>
 <h3>1、クライアントがイベント通知リクエストを送信</h3>
 <p>Zookeeper クラスで exists メソッドを呼び出すとき、イベントリスナーの作成を request オブジェクトにカプセル化し、watch 属性を true に設定します。サーバーが response を返した後、リスナーイベントをクライアントの ZKWatchManager クラスにカプセル化します。</p>
-<p><img decoding="async" src="../wp-content/uploads/2020/09/watcher-06.png"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/09/watcher-06.png"/></p>
 <h3>2、サーバー側が watcher イベントのリクエストを処理</h3>
 <p>サーバー側の NIOServerCnxn クラスは、クライアントから送信されたリクエストを処理するために使用され、最終的に FinalRequestProcessor を呼び出します。その中に、クライアントから送信された watcher イベントを追加するソースコードがあります：</p>
 <p><img decoding="async" src="../wp-content/uploads/2020/09/watcher-07.png"/></p>
@@ -156,7 +156,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>削除の呼び出しチェーンは、最終的に DataTree クラスのノード削除ブランチのトリガーコードセグメントに到達します：</p>
 <p><img decoding="async" src="../wp-content/uploads/2020/09/watcher-11.png"/></p>
 <p>WatchManager クラスの triggerWatch メソッドに入ります：</p>
-<p><img decoding="async" src="../wp-content/uploads/2020/09/watcher-12.png"/></p><p>さらに追跡して NIOServerCnxn に入り、xid が -1、zxid が -1 の ReplyHeader オブジェクトを構築し、その後 sendResonpe メソッドを呼び出します。</p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/09/watcher-12.png"/></p><p>さらに追跡して NIOServerCnxn に入り、xid が -1、zxid が -1 の ReplyHeader オブジェクトを構築し、その後 sendResonpe メソッドを呼び出します。</p>
 <p><img decoding="async" src="../wp-content/uploads/2020/09/watcher-13.png"/></p>
 <h3>4、クライアントが watcher イベントをコールバック</h3><p>クライアントの SendThread クラスの readResponse メソッドは、サーバー側がトリガーしたイベント通知を受信し、xid が -1 のフローに入り、Event イベントを処理します。</p>
 <p><img decoding="async" src="../wp-content/uploads/2020/09/watcher-14.png"/></p>

@@ -102,12 +102,12 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p>何か問題に気づいたでしょうか。美女の服を消すとき、消した部分はすべて四角いブロックです。しかし、お絵かきボードで絵を描くとき、線はとても滑らかです。この2つを組み合わせて、服を消すときも滑らかにできないでしょうか？答えはもちろんあります。Xfermodeを使うのです！本節では別のモードを使用します。<strong>DST_OUT</strong>モード！交差しない場所にターゲット画像を描画します。</p>
 <p><img alt="" decoding="async" src="../wp-content/uploads/2015/10/21369612.jpg"/></p>
 <p>もしモードを忘れてしまった場合、または18種類のモードを一度も見たことがない場合は、こちらへ移動してください：<a href="./android-tutorial-xfermode-porterduff2.html">Android 基礎入門チュートリアル——8.3.5 Paint APIの—— XfermodeとPorterDuff詳解(二)</a>また、やはりPorterDuff.Modeの効果図も掲載しておきます：</p>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2015/10/aHR0cHM6Ly93d3cuc.png"/></p>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/10/aHR0cHM6Ly93d3cuc.png"/></p>
 <p>では、余計な話はここまでにして、本節の内容を始めましょう～</p></blockquote>
 <hr/>
 <h2>1. 実現する効果図と実装フローの分析：</h2>
 <p><strong>実現する効果図</strong>：</p>
-<p><img decoding="async" src="../wp-content/uploads/2015/10/xxx-222.png" width="50%"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2015/10/xxx-222.png" width="50%"/></p>
 <blockquote><p><img alt="" decoding="async" src="../wp-content/uploads/2015/10/31236777.jpg"/>んー、あのGIFを何回見たでしょうか？画像が皆さんの好みに合うかどうかは分かりませんが、小豚は他の人のAPPから取ってきました。番号を聞いたり、メールアドレスを残したりしないでください。私は何も知りません～ 番号を探したりするなら、グループのベテランドライバー、基神に聞いてください。では、実装フローを分析しましょう～</p>
 <ul>
 <li>原理を説明しましょう。実は2つのBitmapがあり、前後に配置されています。前にあるのは服を着た画像、後ろにあるのは服を着ていない画像です。そしてPathを使ってユーザーが描いた図形を記録し、ブラシにDST_OUTモードを設定します。そうすると、Pathと重なる部分のDST（ターゲット画像）、つまり服を着た画像が透明になります！はい、とても簡単です！さらにゆっくり詳しく説明していきましょう。</li>

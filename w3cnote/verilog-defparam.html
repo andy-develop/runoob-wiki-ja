@@ -198,7 +198,7 @@ ram_4x4    u_ram_4x4<br/>
 <span style="color: #A52A2A; font-weight: bold;">endmodule</span> <span style="color: #00008B; font-style: italic;">// test</span><br/>
 </div></div>
 <p>シミュレーション結果は次のとおりです：</p><p>図中の黄色い部分では、アドレスが最初に c のときにデータ 4 が書き込まれ、2回目にアドレスが c のときに読み出されるデータは 4 です。このとき ram の動作は正しく、MASK が 3 ではないことがわかります。ram の Q 端子の bit2 がマスクされていないためです。</p><p>最初にアドレスが 1 のときに書き込まれたデータは 9 ですが、2回目にアドレスが 1 のときに読み出されたデータは 1 です。これは、このとき MASK が 7 であり、ram の Q 端子の信号 bit3 がマスクされているためです。これにより、MASK パラメータが正しく書き換えられたことがわかります。</p>
-<a href="../wp-content/uploads/2020/09/tnlPObwYSjF2Y5Qj.png" rel="noopener noreferrer" target="_blank"><img decoding="async" src="../wp-content/uploads/2020/09/tnlPObwYSjF2Y5Qj.png"/></a>
+<a href="../wp-content/uploads/2020/09/tnlPObwYSjF2Y5Qj.png" rel="noopener noreferrer" target="_blank"><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/09/tnlPObwYSjF2Y5Qj.png"/></a>
 <h3>パラメータ付きモジュールインスタンス化</h3><p>2つ目の方法は、モジュールをインスタンス化するときに、新しいパラメータ値をモジュールのインスタンス化文に記述し、これにより元の module のパラメータ値を書き換える方法です。</p>
 <p>例えば、アドレスとデータのビット幅がどちらも可変の ram モジュールに対して、パラメータ付きのモジュールインスタンス化を行います：</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
@@ -240,7 +240,7 @@ ram <span style="color: #5D478B;">#</span><span style="color: #9F79EE;">(</span>
 <span style="color: #A52A2A; font-weight: bold;">endmodule</span><br/>
 </div></div>
 <p>シミュレーション時は、前の例の testbench で、今回インスタンス化したモジュール u_ram を u_ram_4x4 の代わりに置き換えるか、あるいは新しく追加するだけでよいです。</p><p>シミュレーション結果は次のとおりです。図からわかるように、ram モジュールのパラメータ AW と DW はどちらも 4 に書き換えられており、ram の動作も正しいです。</p>
-<a href="../wp-content/uploads/2020/09/ffkMeqEwZhiGqvPc.png" rel="noopener noreferrer" target="_blank"><img decoding="async" src="../wp-content/uploads/2020/09/ffkMeqEwZhiGqvPc.png"/></a>
+<a href="../wp-content/uploads/2020/09/ffkMeqEwZhiGqvPc.png" rel="noopener noreferrer" target="_blank"><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/09/ffkMeqEwZhiGqvPc.png"/></a>
 <h3>違いと提案</h3><p>(1) モジュールポートのインスタンス化と同様に、パラメータ付きインスタンス化では、元のパラメータ名を指定せずに順番にパラメータをインスタンス化することもできます。例えば、u_ram のインスタンス化は次のように記述できます：</p>
 <pre>ram #(4, 4)   u_ram (......) ;</pre>
 <p>(2) もちろん、defparam を利用すれば、モジュールがポート宣言で宣言したパラメータも書き換えることができ、パラメータ付きインスタンス化を利用すれば、モジュール本体で宣言されたパラメータも書き換えることができます。例えば、u_ram と u_ram_4x4 のインスタンス化は、それぞれ次のように記述できます：</p>

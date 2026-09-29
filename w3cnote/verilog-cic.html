@@ -133,7 +133,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <p><strong>パラメータの説明</strong></p><p>CICフィルタの構造変換前のパラメータDは、コムフィルタの遅延または次数と理解できます。変換後、Dの意味は間引き率に変わり、このときのコムフィルタの遅延は1、すなわち次数は1です。</p><p>多くの学者は変数 M を導入して、コムフィルタの各段の遅延を表します。この場合、コム部分の遅延は1ではなくなります。すると、コムフィルタのシステム関数は次のようになります。</p>
 <p><img alt="" decoding="async" src="../wp-content/uploads/2020/10/yHsYHzAeVvbB8A6j.png"/></p><p>実のところ、DM を全体として単段フィルタの遅延、あるいは間引き率と理解しても構いません。実現方法や構造は異なるかもしれませんが、最終的な結果は同じです。今回の設計では、単段フィルタの遅延はすべて M=1 であり、すなわち間引き率とフィルタ遅延は同じです。</p>
 <p><strong>多段 CIC フィルタ</strong></p><p>単段CICフィルタは阻止帯域減衰が比較的低いため、フィルタリング効果を高めるために、間引きフィルタリングでは多段CICフィルタをカスケード接続した構造がよく採用されます。</p><p>多段を直接カスケード接続したCICフィルタは、設計とリソースの面で最適な方法ではないため、その構造を調整する必要があります。次に示すように、積分器とコムフィルタをそれぞれ1つのグループに移動し、間引き器をコムフィルタの前に移動します。先に間引きを行ってからフィルタリングを行うことで、データ処理の長さを短縮し、ハードウェアリソースを節約できます。</p>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2020/10/Vvzxwfm3XATUytdT.jpg"/></p>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/10/Vvzxwfm3XATUytdT.jpg"/></p>
 <p>もちろん、カスケード数が大きいほどサイドローブ抑制は良くなりますが、通過帯域内の平坦度も劣化します。したがって、カスケード数は多すぎない方がよく、通常は最大5段です。</p>
 <h3>CIC フィルタ設計</h3>
 <p><strong>設計の説明</strong></p><p>CICフィルタは本質的には単純なローパスフィルタであり、遮断周波数はサンプリング周波数を間引き率で割った後の半分です。入力データ信号は依然として7.5MHzと250KHzで、サンプリング周波数は50MHzです。間引き率を5に設定すると、遮断周波数は5MHzとなり、7.5MHzより小さいため、7.5MHzの周波数成分を除去できます。設計パラメータは次のとおりです。</p>
@@ -460,8 +460,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 <span style="color: #A52A2A; font-weight: bold;">endmodule</span> <span style="color: #00008B; font-style: italic;">// test</span><br/>
 </div></div>
 <p><strong>シミュレーション結果</strong></p><p>下図のシミュレーション結果からわかるように、CICフィルタを通過した後の信号は低周波信号（250KHz）のみとなり、高周波信号（7.5MHz）は除去されました。</p><p>ただし、波形はそれほど完璧ではありません。これは設計したカットオフ周波数や、データが連続して出力されないことなどに起因します。</p><p>このとき、積分器から出力されるデータ信号も非常に不規則であることがわかりました。これはそのビット幅に関係しています。</p>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2020/10/CXBickL1DuFgadEe.png"/></p><p>積分器の出力データをより良く観察するために、そのビット幅を21bitから34bitに変更しました。シミュレーション結果は以下の通りです。</p><p>このとき、CICフィルタのデータ出力には実質的な変化は見られませんでしたが、積分器から出力されるデータ信号は鋸歯状、すなわち梳状（コーム状）になります。これが梳状フィルタ（コームフィルタ）という名前の由来です。</p>
-<p><img alt="" decoding="async" src="../wp-content/uploads/2020/10/VuYWYLeLqjinV87n.png"/></p>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/10/CXBickL1DuFgadEe.png"/></p><p>積分器の出力データをより良く観察するために、そのビット幅を21bitから34bitに変更しました。シミュレーション結果は以下の通りです。</p><p>このとき、CICフィルタのデータ出力には実質的な変化は見られませんでしたが、積分器から出力されるデータ信号は鋸歯状、すなわち梳状（コーム状）になります。これが梳状フィルタ（コームフィルタ）という名前の由来です。</p>
+<p><img alt="" decoding="async" src="https://www.runoob.com/wp-content/uploads/2020/10/VuYWYLeLqjinV87n.png"/></p>
 <h3>ソースコードダウンロード</h3>
 <p><a class="download" download="" href="../wp-content/uploads/2020/10/7.4cic.zip">Download</a></p>
 </div>

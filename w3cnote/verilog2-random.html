@@ -108,7 +108,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
    <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 </div></div>
 <p>シミュレーション波形図は次のとおりです。</p>
-<p><img decoding="async" src="../wp-content/uploads/2021/05/v-random-1.png"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2021/05/v-random-1.png"/></p>
 <p>初期値を与えるかどうかに関わらず、乱数を1回生成するたびに seed の値が変わり、乱数もそれに伴って変わります。</p><p>seed の値を変更するたびに、現在出力される乱数値は変わります。しかし、次の状態では、乱数の並びはシステム内部で生成されるランダムシーケンスに戻ります。</p><p>例えば、シミュレーション図の t1 と t2 の時点では乱数シードが異なり、生成される乱数も異なります。しかし、他のクロック周期では、生成される乱数はすべて同じです。</p><p>システムタスク $random を呼び出すときは、seed オプションを指定しないか、seed オプションを指定する場合は変数を使用してパラメータを渡すことを推奨します。</p><p>$random を呼び出すときに、定数を seed パラメータに直接記述することは推奨されません。この場合、seed の値が固定されるため、乱数が1つしか生成されない可能性があります。例えば、以下の書き方は推奨されません。</p><pre>
       randnum_wtseed &lt;= $random(2); //不建议将常数项指定给 seed</pre>
 <p>剰余演算を使用して、乱数を一定のデータ範囲に制限することができます。例：</p>
@@ -126,7 +126,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
       num_range3 <span style="color: #5D478B;">&lt;=</span> MIN_NUM <span style="color: #5D478B;">+</span> <span style="color: #9F79EE;">{</span><span style="color: #9932CC;">$random</span><span style="color: #9F79EE;">(</span><span style="color: #9F79EE;">)</span><span style="color: #9F79EE;">}</span> <span style="color: #5D478B;">%</span> <span style="color: #9F79EE;">(</span>MAX_NUM<span style="color: #5D478B;">-</span>MIN_NUM<span style="color: #5D478B;">+</span><span style="color: #FF0055;">1</span><span style="color: #9F79EE;">)</span><span style="color: #5D478B;">;</span><br/>
    <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 </div></div><p>乱数は符号付き10進数形式で表示され、最初のいくつかのデータ結果は次のとおりです。</p>
-<p><img decoding="async" src="../wp-content/uploads/2021/05/v-random-2.png"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2021/05/v-random-2.png"/></p>
 <hr/><h2>確率分布</h2>
 <p>Verilog は、一定の確率分布に従ってデータを生成する多くのシステムタスクを提供しています。簡単に説明すると以下のとおりです。</p>
 <table class="reference"><thead><tr><th style="text-align:left;"><span>システムタスク</span></th><th style="text-align:left;"><span>呼び出し形式</span></th><th style="text-align:left;"><span>タスクの説明</span></th></tr></thead><tbody><tr><td style="text-align:left;"><span>一様分布</span></td><td style="text-align:left;"><span>$dist_uniform(seed, start, end);</span></td><td style="text-align:left;"><span>start、end はデータの開始、終了</span></td></tr><tr><td style="text-align:left;"><span>正規分布</span></td><td style="text-align:left;"><span>$dist_normal (seed, mean, std_dev);</span></td><td style="text-align:left;"><span>mean は期待値、std_dev は標準偏差</span></td></tr><tr><td style="text-align:left;"><span>ポアソン分布</span></td><td style="text-align:left;"><span>$dist_poisson(seed, mean);</span></td><td style="text-align:left;"><span>mean は期待値（標準偏差に等しい）</span></td></tr><tr><td style="text-align:left;"><span>指数分布</span></td><td style="text-align:left;"><span>$dist_exponential(seed , mean);</span></td><td style="text-align:left;"><span>mean は単位時間あたりに事象が発生する回数</span></td></tr><tr><td style="text-align:left;"><span>カイ二乗分布</span></td><td style="text-align:left;"><span>$dist_chi_square(seed, free_deg);</span></td><td style="text-align:left;"><span>free_deg は自由度</span></td></tr><tr><td style="text-align:left;"><span>t分布</span></td><td style="text-align:left;"><span>$dist_t(seed, free_deg);</span></td><td style="text-align:left;"><span>free_deg は自由度</span></td></tr><tr><td style="text-align:left;"><span>アーラン分布</span></td><td style="text-align:left;"><span>$dist_erlang(seed, k_stage, mean);</span></td><td style="text-align:left;"><span>k_stage は次数、mean は期待値</span></td></tr></tbody></table>
@@ -162,7 +162,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
    <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 </div></div>
 <h3>指数分布（Exponential Distribution）</h3><p>指数分布は、ポアソン過程においてランダムな事象が発生する時間間隔の確率を表すために使用されます。ポアソン過程とは、事象が一定の平均速度で連続的かつ独立的に発生する過程です。例えば、バスを待つときに2台のバスが到着する時間間隔は、指数分布に従います。</p><p>λ&gt;0 を単位時間あたりに事象が発生する回数（率パラメータとも呼ばれる）、x を事象が発生する時間間隔とすると、その確率密度関数と分布図は次のとおりです。</p>
-<p><img decoding="async" src="../wp-content/uploads/2021/05/v-random-9.png" style="width: 45.33%; padding: 5px;"/><img decoding="async" src="../wp-content/uploads/2021/05/v-random-10.png" style="width: 45.33%; padding: 5px;"/></p>
+<p><img decoding="async" src="../wp-content/uploads/2021/05/v-random-9.png" style="width: 45.33%; padding: 5px;"/><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2021/05/v-random-10.png" style="width: 45.33%; padding: 5px;"/></p>
 <p>$dist_exponential を呼び出して、率パラメータが 1 の指数分布データを生成するコードは次のとおりです。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
    <span style="color: #00008B; font-style: italic;">//2.4 exp dis</span><br/>
@@ -173,7 +173,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div></div>
 <h3>カイ二乗分布（Chi-Square Distribution）</h3>
 <p>標準正規分布に従う n 個の確率変数の2乗和によって構成される新しい確率変数の分布則をカイ二乗分布と呼び、次のように表記される。<img decoding="async" src="../wp-content/uploads/2021/05/v-random-1-1.png"/>、ここで n は自由度と呼ばれます。</p><p>カイ二乗分布の確率密度関数と分布図は次のとおりです。</p>
-<p><img decoding="async" src="../wp-content/uploads/2021/05/v-random-11.png" style="width: 45.33%; padding: 5px;"/><img decoding="async" src="../wp-content/uploads/2021/05/v-random-12.png" style="width: 45.33%; padding: 5px;"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2021/05/v-random-11.png" style="width: 45.33%; padding: 5px;"/><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2021/05/v-random-12.png" style="width: 45.33%; padding: 5px;"/></p>
 <p>$dist_chi_square を呼び出して、自由度 6 のカイ二乗分布データを生成するコードは次のとおりです。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
    <span style="color: #00008B; font-style: italic;">//2.5 chi-square dis</span><br/>
@@ -184,7 +184,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </div></div>
 <p><strong>t分布（T-Distribution）</strong></p>
 <p>X が標準正規分布 N (0, 1) に従い、Y がカイ二乗分布に従うとします。<img decoding="async" src="../wp-content/uploads/2021/05/v-random-1-1.png"/>この分布は、自由度 n の t分布と呼ばれ、Z ~ t(n) と表記されます。</p><p>t分布は、小さなサンプルから、正規分布に従い分散が不明なデータ変数の母集団の平均を推定するために使用されます。サンプル数が十分に多く、母集団の分散が既知の場合は、正規分布を使用して母集団の平均を推定すべきです。</p><p>t分布は対称な釣鐘型の分布で、正規分布に似ていますが、裾が重く、平均から遠く離れた値が生成されやすいことを意味します。その確率密度関数と分布図は次のとおりです。</p>
-<p><img decoding="async" src="../wp-content/uploads/2021/05/v-random-13.png" style="width: 45.33%; padding: 5px;"/><img decoding="async" src="../wp-content/uploads/2021/05/v-random-14.jpeg" style="width: 45.33%; padding: 5px;"/></p>
+<p><img decoding="async" src="../wp-content/uploads/2021/05/v-random-14.jpeg" style="width: 45.33%; padding: 5px;"/></p>
 <p>$dist_t を呼び出して、自由度 5 の t分布データを生成するコードは次のとおりです。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
    <span style="color: #00008B; font-style: italic;">//2.6 t dis</span><br/>
@@ -194,7 +194,7 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
    <span style="color: #A52A2A; font-weight: bold;">end</span><br/>
 </div></div>
 <p><strong>アーラン分布（Erlang Distribution）</strong></p><p>パラメータ λ のポアソン過程 V1, V2, ..., V3, Vn が互いに独立であるとし、N (t) が [0, t) 内のランダム点の出現数を表すとすると、N (t) = V1 + V2 + ... + Vn の分布はアーラン分布と呼ばれます。</p><p>アーラン分布は指数分布と同様に、独立したランダムな事象が発生する時間間隔を表すために多く使用されます。アーラン分布に従う確率変数は、同じパラメータを持つ複数の指数分布の確率変数の和に分解できるため、アーラン分布は信頼性理論や待ち行列理論で広く応用されています。</p><p>アーラン分布の確率密度関数と分布図は次のとおりです。</p>
-<p><img decoding="async" src="../wp-content/uploads/2021/05/v-random-15.png" style="width: 45.33%; padding: 5px;"/><img decoding="async" src="../wp-content/uploads/2021/05/v-random-16.jpeg" style="width: 45.33%; padding: 5px;"/></p>
+<p><img decoding="async" src="../wp-content/uploads/2021/05/v-random-15.png" style="width: 45.33%; padding: 5px;"/><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2021/05/v-random-16.jpeg" style="width: 45.33%; padding: 5px;"/></p>
 <p>Why The Face? まさかそんな果物のアイデアでアーラン分布の数を水増しするつもりか？</p><p>上記の確率分布タスクは、呼び出し方法を列挙しただけで、データの分析・検証は行っていません。以下では、Matlab のプロットツールを利用して、自分で $dist_erlang が生成するデータの特性を分析する方法を紹介します。</p><p>$dist_erlang を呼び出して、次数 3、期待値 6 のアーラン分布データを生成するコードは次のとおりです。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
    <span style="color: #00008B; font-style: italic;">//2.7 Erlang dis</span><br/>
@@ -268,9 +268,9 @@ legend<span style="color: #9F79EE;">(</span>'n<span style="color: #5D478B;">=</s
 </div></div><p>Verilog モデルが生成した Erlang データの分布図は以下のとおりです。</p>
 <p><img decoding="async" src="../wp-content/uploads/2021/05/v-random-17.png"/></p>
 <h3>アーラン分布の期待値</h3><p>くれぐれも注意すべき点は、λ パラメータはポアソン分布の期待値であり、Erlang 分布の期待値ではないということです。</p><p>Verilog システムタスク $dist_erlang(seed, k_stage, mean) の3番目のパラメータは期待値です。期待値をそのまま λ パラメータに代入すると、誤った分布結果になります。</p><p>以下、簡単に（手抜きで参考程度に）Erlang 分布の数学の期待の値を導出します。</p>
-<p><img decoding="async" src="../wp-content/uploads/2021/05/v-random-18.png" width="50%"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2021/05/v-random-18.png" width="50%"/></p>
 <p>Erlang 分布の分散の導出過程を付記します。</p>
-<p><img decoding="async" src="../wp-content/uploads/2021/05/v-random-19.png" width="50%"/></p>
+<p><img decoding="async" src="https://www.runoob.com/wp-content/uploads/2021/05/v-random-19.png" width="50%"/></p>
 <h3>Matlab 理論分布</h3><p>Matlab の組み込み関数 random を使用すると、さまざまな種類の分布データを生成できますが、Erlang 分布だけはありません。</p><p>以下では、確率密度分布関数を用いて Erlang 分布に従うデータを生成します。</p><p>ここで、Verilog モデルの期待値は 6 なので、実際のパラメータは λ = n/6 となります。</p><p>Matlab で Erlang 分布データを生成するコードは次のとおりです。</p>
 <div class="example"><h2 class="example">例</h2> <div class="example_code">
 clear all<span style="color: #5D478B;">;</span>close all<span style="color: #5D478B;">;</span>clc<span style="color: #5D478B;">;</span><br/>
